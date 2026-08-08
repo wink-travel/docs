@@ -18,7 +18,7 @@
 // config drift, never transient, and silently keeping the old snapshot is how the site
 // ends up publishing a months-old copy of an API that has since been renamed.
 
-import { existsSync, mkdirSync, writeFileSync } from "fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "fs";
 import { resolve, dirname } from "path";
 import { fileURLToPath } from "url";
 
@@ -116,26 +116,60 @@ const PARTNER_GROUPS: readonly { readonly group: string; readonly audience: stri
   { group: "partner", audience: "partner" },
 ];
 
+// A schema comes from one of two places, and the difference is architectural rather than incidental.
+//
+//   "url"  — springdoc assembles the document by scanning a RUNNING app's handler mappings, so the only
+//            way to obtain it is to ask a deployment for it.
+//   "file" — the document is a BUILD artifact of the code it describes, so no deployment is involved.
+//
+// partner-app is the second kind and is the reason this distinction exists. It is becoming gRPC-only;
+// Cloud Run exposes one port, so once Netty takes it there is no servlet left to serve /v3/api-docs and a
+// fetch-based sync would break exactly when the migration completes. Its spec is generated from the
+// protobuf descriptors by PartnerOpenApiSpecWriter in monorepo-java (open-api/open-api-grpc).
+type SchemaSource =
+  | { readonly kind: "url"; readonly url: string }
+  | { readonly kind: "file"; readonly path: string };
+
 type SchemaTarget = {
   readonly name: string;
-  readonly url: string;
+  readonly source: SchemaSource;
   readonly outFile: string;
 };
+
+// Where monorepo-java is checked out, for the file-sourced schemas above. Override with WINK_MONOREPO_PATH
+// when the two repos are not siblings.
+const MONOREPO_PATH = resolve(
+  __dirname, "..", optionalEnvPath("WINK_MONOREPO_PATH", "../monorepo-java")
+);
+
+function optionalEnvPath(name: string, fallback: string): string {
+  const value = process.env[name];
+  return value && value.trim().length > 0 ? value : fallback;
+}
 
 const targets: readonly SchemaTarget[] = [
   ...INVENTORY_GROUPS.map((group) => ({
     name: group,
-    url: `${API_BASE}/v3/api-docs/${group}`,
+    source: { kind: "url" as const, url: `${API_BASE}/v3/api-docs/${group}` },
     outFile: `${group}.json`,
   })),
   ...INTEGRATIONS_GROUPS.map(({ group, audience }) => ({
     name: audience,
-    url: `${INTEGRATIONS_BASE}/v3/api-docs/${group}`,
+    source: { kind: "url" as const, url: `${INTEGRATIONS_BASE}/v3/api-docs/${group}` },
     outFile: `${audience}.json`,
   })),
-  ...PARTNER_GROUPS.map(({ group, audience }) => ({
+  // Read, not fetched. PARTNER_BASE is deliberately unused for this one -- see SchemaSource. The
+  // generated file is committed in monorepo-java, so this sync works offline and for any commit,
+  // including one that has not been deployed.
+  ...PARTNER_GROUPS.map(({ audience }) => ({
     name: audience,
-    url: `${PARTNER_BASE}/v3/api-docs/${group}`,
+    source: {
+      kind: "file" as const,
+      path: resolve(
+        MONOREPO_PATH,
+        "open-api/open-api-grpc/target/openapi/partner.json"
+      ),
+    },
     outFile: `${audience}.json`,
   })),
 ];
@@ -154,11 +188,72 @@ const isOpenApiDoc = (value: unknown): boolean => {
 // snapshot, but only the second is a bug we must not ship past.
 type SyncResult = "refreshed" | "stale" | "unknown-group";
 
+/** Validates and writes one already-fetched/read document. Shared by both source kinds. */
+const persist = (target: SchemaTarget, outPath: string, body: string): SyncResult => {
+  let parsed: unknown;
+  try {
+    parsed = JSON.parse(body);
+  } catch {
+    console.warn(`  ✗ Not valid JSON — keeping existing snapshot`);
+    return "stale";
+  }
+  if (!isOpenApiDoc(parsed)) {
+    console.warn(`  ✗ Does not look like an OpenAPI/Swagger doc — keeping existing snapshot`);
+    return "stale";
+  }
+  // The golden test fixture is deliberately built with placeholder values so a version bump does not
+  // re-record it. Publishing that file instead of the real build output would put "0.0.0-TEST" on the
+  // docs site's version badge and a fake issuer in the Authentication section.
+  const info = (parsed as Record<string, unknown>).info as Record<string, unknown> | undefined;
+  if (typeof info?.version === "string" && info.version.includes("TEST")) {
+    console.error(
+      `  ✗ info.version is "${info.version}" — that is the golden TEST fixture, not the published build\n` +
+      `    output. Read target/openapi/partner.json, not src/test/resources.`
+    );
+    return "unknown-group";
+  }
+  const pretty = JSON.stringify(parsed, null, 2) + "\n";
+  writeFileSync(outPath, pretty, "utf8");
+  const paths = (parsed as Record<string, unknown>).paths as Record<string, unknown> | undefined;
+  console.log(`  ✓ wrote ${target.outFile} (${paths ? Object.keys(paths).length : 0} path(s))`);
+  return "refreshed";
+};
+
+/**
+ * Reads a build-generated schema off disk.
+ *
+ * A missing file is treated like a 404, not like a network blip: it means the generator moved, was
+ * renamed, or was never run for this checkout. That is config drift, never transient, and quietly keeping
+ * the previous snapshot is how the site publishes a stale contract without saying so.
+ */
+const syncFromFile = (target: SchemaTarget, path: string, outPath: string): SyncResult => {
+  process.stdout.write(`→ ${target.name}: READ ${path}\n`);
+  if (!existsSync(path)) {
+    console.error(
+      `  ✗ No such file. This schema is generated by monorepo-java, not served by an app.\n` +
+      `    Generate it with:\n` +
+      `      mvnd package -pl open-api/open-api-grpc -DskipTests\n` +
+      `    or point WINK_MONOREPO_PATH at your checkout. Keeping ${outPath}, but this run will fail.`
+    );
+    return "unknown-group";
+  }
+  try {
+    return persist(target, outPath, readFileSync(path, "utf8"));
+  } catch (err) {
+    console.warn(`  ✗ ${err instanceof Error ? err.message : String(err)} — keeping existing snapshot`);
+    return "stale";
+  }
+};
+
 const syncOne = async (target: SchemaTarget): Promise<SyncResult> => {
   const outPath = resolve(SCHEMAS_DIR, target.outFile);
-  process.stdout.write(`→ ${target.name}: GET ${target.url}\n`);
+  if (target.source.kind === "file") {
+    return syncFromFile(target, target.source.path, outPath);
+  }
+  const url = target.source.url;
+  process.stdout.write(`→ ${target.name}: GET ${url}\n`);
   try {
-    const res = await fetch(target.url, {
+    const res = await fetch(url, {
       headers: { Accept: "application/json" },
     });
     if (res.status === 404) {
@@ -179,28 +274,7 @@ const syncOne = async (target: SchemaTarget): Promise<SyncResult> => {
       );
       return "stale";
     }
-    const body = await res.text();
-    let parsed: unknown;
-    try {
-      parsed = JSON.parse(body);
-    } catch {
-      console.warn(`  ✗ Response was not valid JSON — keeping existing snapshot`);
-      return "stale";
-    }
-    if (!isOpenApiDoc(parsed)) {
-      console.warn(
-        `  ✗ Response does not look like an OpenAPI/Swagger doc — keeping existing snapshot`
-      );
-      return "stale";
-    }
-    const pretty = JSON.stringify(parsed, null, 2) + "\n";
-    writeFileSync(outPath, pretty, "utf8");
-    const paths = (parsed as Record<string, unknown>).paths as
-      | Record<string, unknown>
-      | undefined;
-    const count = paths ? Object.keys(paths).length : 0;
-    console.log(`  ✓ wrote ${target.outFile} (${count} path(s))`);
-    return "refreshed";
+    return persist(target, outPath, await res.text());
   } catch (err) {
     const message = err instanceof Error ? err.message : String(err);
     console.warn(`  ✗ ${message} — keeping existing snapshot at ${outPath}`);

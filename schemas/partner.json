@@ -1,43 +1,267 @@
 {
-  "openapi": "3.1.0",
+  "openapi": "3.0.1",
   "info": {
-    "title": "Lookup",
-    "description": "\n# Partner Integrator API\nAuthenticated, usage-metered access to bookable travel inventory for API integrators. Query\nproperties, availability and rates programmatically at scale under\n/api/partner/{managingEntityIdentifier}/. Requests are counted and rate-limited per account:\na free tier applies until you subscribe to the metered paid tier. See the Partner API\npricing & SLA page for current limits, per-request pricing and terms.\n\nAuthenticate with a bearer token in the `authorization` gRPC metadata header — the same\ntoken the REST surface accepts. Authorization is per account: every request carries a\n`managingEntityIdentifier` and is checked for `INVENTORY:READ` on it.\n\n### Generating a client\n\nYou call this API with a generated gRPC client, not with `curl`. Wink publishes the\nschema two ways:\n\n- **Server reflection** — the server describes itself, so `grpcurl`, Postman and Insomnia discover the schema at runtime with nothing to download. Reflection needs the same bearer token as any other call.\n- **The `.proto` files**, if you would rather vendor the schema and generate ahead of time.\n\n```bash\ngrpcurl -H \"authorization: Bearer $WINK_TOKEN\" partner.wink.travel:443 list\n```\n\n[Generating a Wink gRPC client](https://wink.travel/developers/rest-and-grpc/) walks through it with our schema. For the language-specific toolchain, see the official [gRPC quick starts](https://grpc.io/docs/languages/).\n\n> **This is a gRPC API, not a REST API.** Each operation is listed at the HTTP/2 path the transport really uses (`/package.Service/Method`, always `POST`), and the schemas are the [proto3 JSON mapping](https://protobuf.dev/programming-guides/json/) of each message — so the contract is readable and model generation is correct. But these endpoints are **not callable with an ordinary HTTP client**: a real request body is a length-prefixed protobuf frame. Use a generated gRPC client, or the `.proto` schema published via server reflection.\n\n### Errors\n\nFailures arrive as a gRPC status code in the response **trailers**, not as an HTTP status code:\n\n| Status | Meaning |\n| --- | --- |\n| `INVALID_ARGUMENT` | The request was malformed, or a required field was missing. |\n| `UNAUTHENTICATED` | Bearer token missing, expired or invalid. |\n| `PERMISSION_DENIED` | The token is valid but lacks the required grant on the account. |\n| `NOT_FOUND` | No record matched (only on operations that resolve a single record). |\n| `RESOURCE_EXHAUSTED` | Quota exceeded. Carries `retry-after` and `x-ratelimit-*` trailers — back off by the value given. |",
+    "title": "Lookup, Media, Search & Inventory",
+    "description": "\n# Partner Integrator API\nAuthenticated, usage-metered access to bookable travel inventory for API integrators. Query\nproperties, availability and rates programmatically at scale under\n/api/partner/{managingEntityIdentifier}/. Requests are counted and rate-limited per account:\na free tier applies until you subscribe to the metered paid tier. See the Partner API\npricing & SLA page for current limits, per-request pricing and terms.\n\nEvery call carries **two** gRPC metadata headers:\n\n| Header | Value |\n| --- | --- |\n| `authorization` | `Bearer <token>` — the same token the REST surface accepts |\n| `wink-managing-entity-id` | The account you are calling on behalf of |\n\nAuthorization is per account: the account named in `wink-managing-entity-id` is checked for `INVENTORY:READ`, and metered usage is billed to it. Omit the header and the call fails with `INVALID_ARGUMENT`; name an account you do not hold `INVENTORY:READ` on and it fails with `PERMISSION_DENIED`.\n\nThe account is a header rather than a request field so that it is known before the request body is read — which is what lets quota and rate-limit checks reject a call without decoding it. Request messages therefore have no account field, and setting one is not possible.\n\n### Generating a client\n\nYou call this API with a generated gRPC client, not with `curl`. Wink publishes the\nschema two ways:\n\n- **Server reflection** — the server describes itself, so `grpcurl`, Postman and Insomnia discover the schema at runtime with nothing to download. Reflection needs the same bearer token as any other call.\n- **The `.proto` files**, if you would rather vendor the schema and generate ahead of time.\n\n```bash\n# Reflection describes the schema and needs only the token — it is not account-scoped.\ngrpcurl -H \"authorization: Bearer $WINK_TOKEN\" partner.wink.travel:443 list\n\n# Every actual call additionally needs the account header.\ngrpcurl -H \"authorization: Bearer $WINK_TOKEN\" \\\n        -H \"wink-managing-entity-id: $WINK_ACCOUNT_ID\" \\\n        -d '{\"urlName\": \"bangkok-thailand\", \"type\": \"CITY\"}' \\\n        partner.wink.travel:443 wink.partner.v1.Lookup/Get\n```\n\n[Generating a Wink gRPC client](https://wink.travel/developers/rest-and-grpc/) walks through it with our schema. For the language-specific toolchain, see the official [gRPC quick starts](https://grpc.io/docs/languages/).\n\n> **This is a gRPC API, not a REST API.** Each operation is listed at the HTTP/2 path the transport really uses (`/package.Service/Method`, always `POST`), and the schemas are the [proto3 JSON mapping](https://protobuf.dev/programming-guides/json/) of each message — so the contract is readable and model generation is correct. But these endpoints are **not callable with an ordinary HTTP client**: a real request body is a length-prefixed protobuf frame. Use a generated gRPC client, or the `.proto` schema published via server reflection.\n\n### Errors\n\nFailures arrive as a gRPC status code in the response **trailers**, not as an HTTP status code:\n\n| Status | Meaning |\n| --- | --- |\n| `INVALID_ARGUMENT` | The request was malformed, or a required field was missing. |\n| `UNAUTHENTICATED` | Bearer token missing, expired or invalid. |\n| `PERMISSION_DENIED` | The token is valid but lacks the required grant on the account. |\n| `NOT_FOUND` | No record matched (only on operations that resolve a single record). |\n| `RESOURCE_EXHAUSTED` | Quota exceeded. Carries `retry-after` and `x-ratelimit-*` trailers — back off by the value given. |",
     "contact": {
       "name": "Contact",
       "email": "hi@wink.travel"
     },
-    "version": "33.0.2-SNAPSHOT",
+    "version": "34.5.2-SNAPSHOT",
     "x-logo": {
       "backgroundColor": "#FFFFFF",
       "altText": "wink",
       "url": "https://res.cloudinary.com/traveliko/image/upload/c_scale,h_129/v1653285543/wink/logo_text_white.svg"
     }
   },
-  "servers": [
-    {
-      "url": "https://dev-api.wink.travel:8446",
-      "description": "Generated server url"
-    }
-  ],
   "tags": [
     {
+      "name": "Search",
+      "description": "Search Wink's bookable property inventory and get live prices — the paid Partner Search API.\n\nSix ways to find properties: by map position, by city, or ranked by agency, city, country or globally.\nAll six return the same page shape, so one result renderer serves every entry point.\n\nThese endpoints return PRICES, not property content. Each result carries just enough to render a list row\n— name, location, star rating, one image — plus the prices themselves. Descriptions, galleries, addresses,\nroom detail, amenities and policies come from the Content service, which you should cache per property and\nrefresh when `last_update` changes. That split keeps search responses small and fast, and it means\nproperty content has exactly one source of truth.\n\nEvery call needs an authenticated token with `INVENTORY:READ` on the account you pass, and is billed in\nhotel-day units: (properties actually returned) x min(itinerary nights, 90). You are charged for what comes\nback, not for what you asked for — a request for 50 results that matches 3 properties bills 3 properties.\n\nPrices are live and are not cached. Treat a result as valid for the length of a user's session."
+    },
+    {
       "name": "Lookup",
-      "description": "Find the destinations you can query and sell through Wink: hotels, cities, countries, islands\nand attractions.\n\nThe usual flow is two calls. Use **Search** as your user types to offer suggestions, then take\nthe `urlName` of whichever one they pick and pass it to **Get** to resolve the full record and\nconfirm you are allowed to sell it.\n\nBoth calls are free. They count towards your per-minute call quota but are not hotel-day\nmetered, so you can drive an autocomplete from Search without affecting your bill.",
-      "externalDocs": {
-        "description": "Try it in Scalar",
-        "url": "https://dev-api.wink.travel:8446/scalar#partner/tag/lookup"
-      }
+      "description": "Find the destinations you can query and sell through Wink: properties, cities, countries, islands\nand attractions.\n\nThe usual flow is two calls. Use **Search** as your user types to offer suggestions, then take\nthe `urlName` of whichever one they pick and pass it to **Get** to resolve the full record and\nconfirm you are allowed to sell it.\n\nBoth calls are free. They count towards your per-minute call quota but are not hotel-day\nmetered, so you can drive an autocomplete from Search without affecting your bill."
+    },
+    {
+      "name": "Inventory",
+      "description": "Look up live prices for a property you already know — the paid Partner Inventory API.\n\nSearch finds properties and returns each one's best offer. Inventory is the next step: given a property,\nreturn EVERY priced offer for the requested dates and occupancy, plus a rate calendar for planning across\na date range.\n\nThese endpoints return PRICES, not property content. Names, descriptions, galleries, addresses, amenities,\npolicies, restaurants, spas and everything else come from the Content service — call it once per property,\ncache the answer, and refresh when `last_update` changes. That keeps these responses small and means\nproperty content has exactly one source of truth.\n\nEvery call needs an authenticated token with `INVENTORY:READ` on the account you name in the\n`wink-managing-entity-id` metadata header, and is billed in hotel-day units.\n\nPrices are live and are not cached. Treat a result as valid for the length of a user's session."
+    },
+    {
+      "name": "Media",
+      "description": "Retrieve published property and inventory media through Wink — the paid Partner Media API.\n\nSource of truth is the same published, entitlement-checked galleries the REST twin serves: your\nsales-channel inventory for the property, never the internal media catalog. Key every asset you store\non `media_identifier`, not on any URL — see the field docs on `MediaAsset` and `MediaUrlSet` for\nwhy URLs are not permanent.\n\nBoth calls require an authenticated token with `INVENTORY:READ` on the account you pass, and are\nbilled 1 unit per property whose media is actually returned."
     }
   ],
   "paths": {
+    "/wink.partner.v1.Search/SearchByGeo": {
+      "post": {
+        "tags": [
+          "Search"
+        ],
+        "summary": "Search by map position",
+        "description": "Search by map position\n\nFind properties near a point or inside map bounds. Set one member of the `area` oneof: `location` with\n`search_filters.radius_in_meters` for \"near here\", or `bounds` for \"everything in this viewport\".\n\nBecause `area` is a oneof, setting one member clears the other — you cannot send both. Returns\nINVALID_ARGUMENT if you send neither.",
+        "operationId": "Search_SearchByGeo",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/wink.partner.v1.SearchByGeoRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "The RPC completed with gRPC status OK.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/wink.partner.v1.SearchByGeoResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentials": []
+          }
+        ]
+      }
+    },
+    "/wink.partner.v1.Search/SearchByCity": {
+      "post": {
+        "tags": [
+          "Search"
+        ],
+        "summary": "Search by city",
+        "description": "Search by city\n\nFind available properties in or around a city, identified by its GeoNames id — the same id the Lookup\nservice returns for a destination.",
+        "operationId": "Search_SearchByCity",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/wink.partner.v1.SearchByCityRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "The RPC completed with gRPC status OK.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/wink.partner.v1.SearchByCityResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentials": []
+          }
+        ]
+      }
+    },
+    "/wink.partner.v1.Search/RankByAgency": {
+      "post": {
+        "tags": [
+          "Search"
+        ],
+        "summary": "Rank a management agency's properties",
+        "description": "Rank a management agency's properties\n\nReturn the properties represented by one management agency, ordered by the scoring type you choose.\nUnlike the other ranked calls this one takes no search filters.",
+        "operationId": "Search_RankByAgency",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/wink.partner.v1.RankByAgencyRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "The RPC completed with gRPC status OK.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/wink.partner.v1.RankByAgencyResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentials": []
+          }
+        ]
+      }
+    },
+    "/wink.partner.v1.Search/RankByCity": {
+      "post": {
+        "tags": [
+          "Search"
+        ],
+        "summary": "Rank a city's properties",
+        "description": "Rank a city's properties\n\nReturn properties in or around a city by url name, ordered by the scoring type you choose.",
+        "operationId": "Search_RankByCity",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/wink.partner.v1.RankByCityRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "The RPC completed with gRPC status OK.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/wink.partner.v1.RankByCityResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentials": []
+          }
+        ]
+      }
+    },
+    "/wink.partner.v1.Search/RankByCountry": {
+      "post": {
+        "tags": [
+          "Search"
+        ],
+        "summary": "Rank a country's properties",
+        "description": "Rank a country's properties\n\nReturn properties within a country, ordered by the scoring type you choose.",
+        "operationId": "Search_RankByCountry",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/wink.partner.v1.RankByCountryRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "The RPC completed with gRPC status OK.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/wink.partner.v1.RankByCountryResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentials": []
+          }
+        ]
+      }
+    },
+    "/wink.partner.v1.Search/RankGlobal": {
+      "post": {
+        "tags": [
+          "Search"
+        ],
+        "summary": "Rank properties worldwide",
+        "description": "Rank properties worldwide\n\nReturn the best-scoring properties across the whole platform. Use this for editorial and discovery\nsurfaces rather than for a destination search.",
+        "operationId": "Search_RankGlobal",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/wink.partner.v1.RankGlobalRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "The RPC completed with gRPC status OK.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/wink.partner.v1.RankGlobalResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentials": []
+          }
+        ]
+      }
+    },
     "/wink.partner.v1.Lookup/Search": {
       "post": {
         "tags": [
           "Lookup"
         ],
         "summary": "Search by term",
-        "description": "Search by term\n\nTypeahead search across destinations. Send the partial text your user has typed and render\nthe results as suggestions.\n\nTerms shorter than 3 characters return an empty list rather than an error, so it is safe to\ncall on every keystroke. At most 50 results are returned, most relevant first.\n\nSuggestions are not filtered by your sales channel — a hotel you cannot sell may still\nappear here. Get is where that is enforced.",
+        "description": "Search by term\n\nTypeahead search across destinations. Send the partial text your user has typed and render\nthe results as suggestions.\n\nTerms shorter than 3 characters return an empty list rather than an error, so it is safe to\ncall on every keystroke. At most 50 results are returned, most relevant first.\n\nSuggestions are not filtered by your sales channel — a property you cannot sell may still\nappear here. Get is where that is enforced.",
         "operationId": "Lookup_Search",
         "requestBody": {
           "content": {
@@ -46,7 +270,6 @@
                 "$ref": "#/components/schemas/wink.partner.v1.SearchRequest"
               },
               "example": {
-                "managingEntityIdentifier": "71f0ec54-c24b-463a-a72e-b060c6c7a6fe",
                 "term": "bangkok"
               }
             }
@@ -96,7 +319,12 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentials": []
+          }
+        ]
       }
     },
     "/wink.partner.v1.Lookup/Get": {
@@ -105,7 +333,7 @@
           "Lookup"
         ],
         "summary": "Look up by URL slug",
-        "description": "Look up by URL slug\n\nResolve one destination from its URL slug and type — for example `bangkok-thailand` plus\nCITY. Use it after Search, or whenever you already hold a Wink destination slug in your own\nrouting.\n\nBoth fields are required, because a slug is only unique within a type.\n\nReturns NOT_FOUND when nothing matches. For a hotel that exists but sits outside your sales\nchannel it returns PERMISSION_DENIED instead, so you can tell \"not yours to sell\" apart from\n\"no such destination\".",
+        "description": "Look up by URL slug\n\nResolve one destination from its URL slug and type — for example `bangkok-thailand` plus\nDESTINATION_TYPE_CITY. Use it after Search, or whenever you already hold a Wink destination slug in your own\nrouting.\n\nBoth fields are required, because a slug is only unique within a type.\n\nReturns PROPERTY_MEDIA_STATUS_NOT_FOUND when nothing matches. For a property that exists but sits outside your sales\nchannel it returns PERMISSION_DENIED instead, so you can tell \"not yours to sell\" apart from\n\"no such destination\".",
         "operationId": "Lookup_Get",
         "requestBody": {
           "content": {
@@ -114,7 +342,6 @@
                 "$ref": "#/components/schemas/wink.partner.v1.GetRequest"
               },
               "example": {
-                "managingEntityIdentifier": "71f0ec54-c24b-463a-a72e-b060c6c7a6fe",
                 "urlName": "bangkok-thailand",
                 "type": "CITY"
               }
@@ -149,22 +376,1161 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentials": []
+          }
+        ]
+      }
+    },
+    "/wink.partner.v1.Inventory/GetPropertyInventory": {
+      "post": {
+        "tags": [
+          "Inventory"
+        ],
+        "summary": "Prices for one property",
+        "description": "Prices for one property\n\nReturns every offer bookable at this property for the requested dates and occupancy, cheapest first.\nIdentify the property by `property_id` or by `url_name` — set exactly one.\n\nBilled as min(itinerary nights, 90) hotel-day units, whether or not anything is available.",
+        "operationId": "Inventory_GetPropertyInventory",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/wink.partner.v1.GetPropertyInventoryRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "The RPC completed with gRPC status OK.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/wink.partner.v1.GetPropertyInventoryResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentials": []
+          }
+        ]
+      }
+    },
+    "/wink.partner.v1.Inventory/ListPropertyInventory": {
+      "post": {
+        "tags": [
+          "Inventory"
+        ],
+        "summary": "Prices for several properties",
+        "description": "Prices for several properties\n\nThe same lookup for many properties at once, resolved in parallel. Each entry carries its own dates and\noccupancy, so you can price different stays in one call.\n\nBilled as the SUM over entries of min(that entry's nights, 90) — a batch costs exactly what the same\nentries would cost individually, so batching is a latency optimisation rather than a discount.",
+        "operationId": "Inventory_ListPropertyInventory",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/wink.partner.v1.ListPropertyInventoryRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "The RPC completed with gRPC status OK.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/wink.partner.v1.ListPropertyInventoryResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentials": []
+          }
+        ]
+      }
+    },
+    "/wink.partner.v1.Inventory/GetRatePeriod": {
+      "post": {
+        "tags": [
+          "Inventory"
+        ],
+        "summary": "Rate calendar",
+        "description": "Rate calendar\n\nThe best available rate for every check-in/check-out combination across a date range — what you need to\nrender a \"cheapest night to stay\" calendar without one call per date.\n\nBilled as `period_in_days` hotel-day units.",
+        "operationId": "Inventory_GetRatePeriod",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/wink.partner.v1.GetRatePeriodRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "The RPC completed with gRPC status OK.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/wink.partner.v1.GetRatePeriodResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentials": []
+          }
+        ]
+      }
+    },
+    "/wink.partner.v1.Media/GetPropertyMedia": {
+      "post": {
+        "tags": [
+          "Media"
+        ],
+        "summary": "Get one property's media gallery",
+        "description": "Get one property's media gallery\n\nReturn a single property's published media — the property itself plus every bookable inventory\nitem entitled to your sales channel (guest rooms, restaurants, spas, meeting rooms, add-ons) —\npaginated and filterable.\n\nReturns PERMISSION_DENIED when the property exists but is not in your sales channel, and PROPERTY_MEDIA_STATUS_NOT_FOUND\nwhen the property identifier is unknown, so you can tell the two apart the same way the REST twin's\n403/404 split lets you. Billed 1 unit per property whose media is returned.",
+        "operationId": "Media_GetPropertyMedia",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/wink.partner.v1.GetPropertyMediaRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "The RPC completed with gRPC status OK.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/wink.partner.v1.GetPropertyMediaResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentials": []
+          }
+        ]
+      }
+    },
+    "/wink.partner.v1.Media/ListMedia": {
+      "post": {
+        "tags": [
+          "Media"
+        ],
+        "summary": "List media across multiple properties",
+        "description": "List media across multiple properties\n\nBatch gallery retrieval across up to 20 properties in one call — built for a nightly or hourly sync\njob rather than a page render. A bad property identifier never fails the whole batch: each entry\ncarries its own status (`PROPERTY_MEDIA_STATUS_OK`, `PROPERTY_MEDIA_STATUS_NOT_IN_CHANNEL`, `PROPERTY_MEDIA_STATUS_NOT_FOUND`) instead.\n\nBilled 1 unit per property whose media is returned — that is, per entry with status `PROPERTY_MEDIA_STATUS_OK`. A\n`PROPERTY_MEDIA_STATUS_NOT_IN_CHANNEL` or `PROPERTY_MEDIA_STATUS_NOT_FOUND` entry costs nothing.",
+        "operationId": "Media_ListMedia",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/wink.partner.v1.ListMediaRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "The RPC completed with gRPC status OK.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/wink.partner.v1.ListMediaResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentials": []
+          }
+        ]
       }
     }
   },
   "components": {
     "schemas": {
+      "wink.partner.v1.SearchByGeoRequest": {
+        "type": "object",
+        "properties": {
+          "userSession": {
+            "description": "Traveller context: dates, occupancy, language and currency. Required.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/wink.partner.v1.UserSession"
+              }
+            ]
+          },
+          "location": {
+            "description": "Search around this point.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/wink.partner.v1.GeoPoint"
+              }
+            ]
+          },
+          "bounds": {
+            "description": "Search inside this viewport.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/wink.partner.v1.MapBounds"
+              }
+            ]
+          },
+          "searchFilters": {
+            "description": "Optional narrowing of the result set.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/wink.partner.v1.SearchFilters"
+              }
+            ]
+          },
+          "page": {
+            "type": "integer",
+            "description": "Zero-based page number. Defaults to 0.",
+            "format": "int32"
+          },
+          "size": {
+            "type": "integer",
+            "description": "Results per page. Defaults to 20, which is also the maximum. A larger value is rejected with\nINVALID_ARGUMENT rather than clamped, so a caller never pages through a result set believing it is\nlarger than it is. Every property returned is billed, so the cap bounds cost as well as fan-out.",
+            "format": "int32"
+          }
+        },
+        "description": "Request for SearchByGeo.\n\nAt most one of `location, bounds` is set (protobuf `oneof area`)."
+      },
+      "wink.partner.v1.UserSession": {
+        "type": "object",
+        "properties": {
+          "itinerary": {
+            "description": "Stay dates and occupancy. Required — searches without an itinerary cannot be priced.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/wink.partner.v1.Itinerary"
+              }
+            ]
+          },
+          "language": {
+            "type": "string",
+            "description": "ISO 639-1 language, e.g. \"en\". Affects the little text this surface returns; for descriptions and other\nprose, pass the language to the Content service instead. Defaults to \"en\"."
+          },
+          "currency": {
+            "type": "string",
+            "description": "ISO 4217 currency for all returned prices, e.g. \"THB\". Exactly three characters. Defaults to the\nproperty's own currency."
+          },
+          "promotionalCodes": {
+            "type": "array",
+            "description": "Promotional codes to apply. Codes your account is not entitled to are ignored, not rejected.",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "description": "Who is travelling, when, and in what currency and language.\n\nThis drives pricing, not just presentation: `currency` selects the currency every Money on the response is\nconverted into, and `itinerary` determines both availability and how the call is billed."
+      },
+      "wink.partner.v1.Itinerary": {
+        "type": "object",
+        "properties": {
+          "startDate": {
+            "type": "string",
+            "description": "Check-in date, ISO-8601 \"YYYY-MM-DD\". Required. Must be today or later -- a past date is rejected\nwith INVALID_ARGUMENT."
+          },
+          "nights": {
+            "type": "integer",
+            "description": "Number of nights. Billing caps this at 90; a longer stay is rejected with INVALID_ARGUMENT.",
+            "format": "int32"
+          },
+          "rooms": {
+            "type": "array",
+            "description": "The rooms being searched for. Supply at least one. Multiple entries search for several rooms at\nonce — two adults in one room and a family of four in another is two entries, not two searches.",
+            "items": {
+              "$ref": "#/components/schemas/wink.partner.v1.RoomConfiguration"
+            }
+          }
+        },
+        "description": "Stay dates and occupancy."
+      },
+      "wink.partner.v1.RoomConfiguration": {
+        "type": "object",
+        "properties": {
+          "adults": {
+            "type": "integer",
+            "description": "Adults in this room. Defaults to 1.",
+            "format": "int32"
+          },
+          "children": {
+            "type": "array",
+            "description": "Children in this room, by age. Ages are REQUIRED, not optional detail: properties price children in\nage bands, and an unpriceable age produces a rate the guest cannot actually book.",
+            "items": {
+              "$ref": "#/components/schemas/wink.partner.v1.ChildOccupancy"
+            }
+          },
+          "quantity": {
+            "type": "integer",
+            "description": "How many identical rooms of this configuration. Defaults to 1.",
+            "format": "int32"
+          }
+        },
+        "description": "The occupancy of one room."
+      },
+      "wink.partner.v1.ChildOccupancy": {
+        "type": "object",
+        "properties": {
+          "age": {
+            "type": "integer",
+            "description": "Age at check-in, in years. Zero is valid — infants are priced differently from older children, not\nignored.",
+            "format": "int32"
+          },
+          "quantity": {
+            "type": "integer",
+            "description": "How many children of this age. Defaults to 1.",
+            "format": "int32"
+          }
+        },
+        "description": "A number of children of the same age."
+      },
+      "wink.partner.v1.GeoPoint": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Always \"Point\". Present so the value round-trips as valid GeoJSON."
+          },
+          "coordinates": {
+            "type": "array",
+            "description": "[longitude, latitude]. Longitude first.",
+            "items": {
+              "type": "number",
+              "format": "double"
+            }
+          }
+        },
+        "description": "A geographic point, GeoJSON-style.\n\nMirrors the GeoJSON `Point` the REST API emits: `type` is always `\"Point\"` and `coordinates` is\n`[longitude, latitude]` — in that order, which is GeoJSON's and is the REVERSE of the `lat,lng` ordering\nmost mapping UIs use. Getting this backwards places properties in the wrong hemisphere, so it is worth\nasserting in your client tests."
+      },
+      "wink.partner.v1.MapBounds": {
+        "type": "object",
+        "properties": {
+          "northEast": {
+            "description": "North-east corner.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/wink.partner.v1.GeoPoint"
+              }
+            ]
+          },
+          "southWest": {
+            "description": "South-west corner.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/wink.partner.v1.GeoPoint"
+              }
+            ]
+          }
+        },
+        "description": "A rectangular map viewport, for SearchByGeo."
+      },
+      "wink.partner.v1.SearchFilters": {
+        "type": "object",
+        "properties": {
+          "nameSoundsLike": {
+            "type": "string",
+            "description": "Fuzzy match on property name."
+          },
+          "radiusInMeters": {
+            "type": "string",
+            "description": "Radius around `location`, in metres. Only meaningful for SearchByGeo with a point.",
+            "format": "int64"
+          },
+          "lifestyle": {
+            "description": "Restrict to properties oriented toward this lifestyle.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/wink.partner.v1.LifestyleType"
+              }
+            ]
+          },
+          "starRating": {
+            "type": "integer",
+            "description": "Minimum star rating, 1-5.",
+            "format": "int32"
+          },
+          "directOnly": {
+            "type": "boolean",
+            "description": "Only properties bookable direct, excluding intermediated inventory."
+          }
+        },
+        "description": "Optional narrowing applied before scoring."
+      },
+      "wink.partner.v1.SearchByGeoResponse": {
+        "type": "object",
+        "properties": {
+          "page": {
+            "$ref": "#/components/schemas/wink.partner.v1.PropertyPage"
+          },
+          "displayCurrency": {
+            "type": "string",
+            "description": "ISO 4217 currency EVERY amount in this response is denominated in — the one you asked for in\n`user_session.currency`, or the property's own when you asked for none. Stated once here rather than\nrepeated on every amount, which is why the amounts themselves are bare integers."
+          },
+          "currencyExponent": {
+            "type": "integer",
+            "description": "How many decimal places `display_currency` has: 2 for THB and USD, 0 for JPY, KRW and VND.\n\nAmounts are integers in MINOR UNITS, so the real value is `amount / 10^currency_exponent`. This is\npublished rather than assumed because a fixed divide-by-100 is wrong for a real slice of Wink's\ninventory — a JPY stay priced at 15000 is ¥15,000, not ¥150.",
+            "format": "int32"
+          },
+          "displayLanguage": {
+            "type": "string",
+            "description": "ISO 639-1 language the names and other text in this response are in — the one you asked for in\n`user_session.language`, or English when it was unavailable."
+          }
+        },
+        "description": "Response for SearchByGeo."
+      },
+      "wink.partner.v1.PropertyPage": {
+        "type": "object",
+        "properties": {
+          "content": {
+            "type": "array",
+            "description": "The properties on this page.",
+            "items": {
+              "$ref": "#/components/schemas/wink.partner.v1.PropertySearchResult"
+            }
+          },
+          "number": {
+            "type": "integer",
+            "description": "Zero-based index of this page.",
+            "format": "int32"
+          },
+          "size": {
+            "type": "integer",
+            "description": "Requested page size.",
+            "format": "int32"
+          },
+          "totalElements": {
+            "type": "string",
+            "description": "Total matching properties across all pages.",
+            "format": "int64"
+          },
+          "totalPages": {
+            "type": "integer",
+            "description": "Total number of pages.",
+            "format": "int32"
+          },
+          "numberOfElements": {
+            "type": "integer",
+            "description": "Properties on this page. Differs from `size` on the last page.",
+            "format": "int32"
+          },
+          "first": {
+            "type": "boolean",
+            "description": "True if this is the first page."
+          },
+          "last": {
+            "type": "boolean",
+            "description": "True if this is the last page."
+          }
+        },
+        "description": "One page of priced properties.\n\nWire mirror of the REST PageResponse envelope: `number` is zero-based and `total_elements` counts across\nall pages, not this one."
+      },
+      "wink.partner.v1.PropertySearchResult": {
+        "type": "object",
+        "properties": {
+          "propertyId": {
+            "type": "string",
+            "description": "Stable property identifier. Your key for everything, including Content lookups."
+          },
+          "urlName": {
+            "type": "string",
+            "description": "Url-safe slug, stable and safe to build links from."
+          },
+          "uniqueId": {
+            "type": "string",
+            "description": "The property's globally unique short code."
+          },
+          "name": {
+            "type": "string",
+            "description": "Property name in the requested language. Enough to label a result row; full localized content comes\nfrom the Content service."
+          },
+          "location": {
+            "description": "Where the property is, for map pins and distance sorting.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/wink.partner.v1.GeoPoint"
+              }
+            ]
+          },
+          "starRating": {
+            "type": "integer",
+            "description": "Official star rating, 1-5. Zero when unrated.",
+            "format": "int32"
+          },
+          "heroImage": {
+            "description": "A single representative image for the result row. The complete gallery is in Content.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/wink.partner.v1.Multimedia"
+              }
+            ]
+          },
+          "lastUpdate": {
+            "type": "string",
+            "description": "When this property's record last changed, ISO-8601 \"YYYY-MM-DDThh:mm:ss\" in UTC.\n\nUse it as the cache key for your Content responses: store it alongside what you fetched, compare on\neach search, and re-fetch only when it has moved. It advances when the property or any inventory item\nbeneath it is added, removed or edited.\n\nA caveat worth knowing before you rely on it for correctness: it tracks the property AGGREGATE, so an\nedit confined to a child entity's prose may not always advance it. Treat a stale read as possible and\nre-sync periodically regardless."
+          },
+          "prices": {
+            "type": "array",
+            "description": "Priced offers, SORTED CHEAPEST FIRST by `total`. `prices[0]` is the property's best available\nprice.",
+            "items": {
+              "$ref": "#/components/schemas/wink.partner.v1.RoomRate"
+            }
+          },
+          "commission": {
+            "type": "number",
+            "description": "Commission rate your account earns on this property, as a fraction — 0.15 for 15%. A property-channel\nterm rather than a per-rate one: it describes your commercial relationship with the property, so it\nholds for every offer below.\n\nA double rather than a float because this multiplies money. 0.15 has no exact binary representation,\nand the wider type keeps the error far enough below a minor unit that `total * commission` does not\ndrift into a visible discrepancy on large bookings.",
+            "format": "double"
+          },
+          "direct": {
+            "type": "boolean",
+            "description": "True if this is direct inventory, with no intermediary between you and the property."
+          },
+          "available": {
+            "type": "boolean",
+            "description": "True if AT LEAST ONE room type at this property is bookable for the itinerary. Per-room-type\navailability is `RoomPrice.available`; this is the \"is anything here bookable at all\" flag. When false,\n`prices` still carries the unavailable offers rather than being empty, so you can show why."
+          }
+        },
+        "description": "One property and its live prices.\n\nCarries only what a result list needs to render, plus the prices. For anything else about the property —\ndescriptions, full gallery, address, amenities, room detail, policies — call the Content service with\n`property_id` and cache the answer against `last_update`."
+      },
+      "wink.partner.v1.Multimedia": {
+        "type": "object",
+        "properties": {
+          "mediaId": {
+            "type": "string",
+            "description": "Stable identifier for this asset. Use this as your cache key."
+          },
+          "entityId": {
+            "type": "string",
+            "description": "Identifier of the inventory item this asset belongs to (the property, a guest room, and so on).\nNamed `entity_id` rather than `identifier` to match the `*_id` convention the rest of this surface\nuses, and because \"identifier\" said nothing about WHOSE identifier it is."
+          },
+          "kind": {
+            "description": "MEDIA_TYPE_IMAGE or MEDIA_TYPE_VIDEO.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/wink.partner.v1.MultimediaKind"
+              }
+            ]
+          },
+          "source": {
+            "type": "string",
+            "description": "Where the asset came from, e.g. the property's own upload or a syndicated source."
+          },
+          "sort": {
+            "type": "integer",
+            "description": "Display order within its gallery, ascending.",
+            "format": "int32"
+          },
+          "angle": {
+            "type": "string",
+            "description": "Camera angle or shot description, when the property supplied one."
+          },
+          "width": {
+            "type": "integer",
+            "description": "Intrinsic width in pixels.",
+            "format": "int32"
+          },
+          "height": {
+            "type": "integer",
+            "description": "Intrinsic height in pixels.",
+            "format": "int32"
+          },
+          "descriptions": {
+            "type": "array",
+            "description": "Localized captions.",
+            "items": {
+              "$ref": "#/components/schemas/wink.partner.v1.Description"
+            }
+          },
+          "lifestyleType": {
+            "description": "The lifestyle this asset is meant to illustrate, when tagged.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/wink.partner.v1.LifestyleType"
+              }
+            ]
+          },
+          "urls": {
+            "description": "Ready-to-use delivery URLs, one per variant. Which variants are populated depends on whether the\nasset is an image, a Cloudinary video or an externally-hosted one — see MediaUrlSet.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/wink.partner.v1.MediaUrlSet"
+              }
+            ]
+          }
+        },
+        "description": "One published image or video.\n\nKey anything you cache on `media_id`. It is stable for the life of the asset; URLs are not — they\ncarry transformation and delivery parameters that change without notice."
+      },
+      "wink.partner.v1.Description": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Short label for this description."
+          },
+          "description": {
+            "type": "string",
+            "description": "The description body."
+          },
+          "language": {
+            "type": "string",
+            "description": "ISO 639-1 language code of `name` and `description`."
+          }
+        },
+        "description": "A short piece of localized text.\n\nThe API returns descriptions already filtered to the language on your request, so you will normally see\nexactly one entry per collection. `language` is still present so you can tell which language you got when\nthe requested one was unavailable and the property's default was substituted."
+      },
+      "wink.partner.v1.MediaUrlSet": {
+        "type": "object",
+        "properties": {
+          "original": {
+            "description": "MEDIA_TYPE_IMAGE only: unscaled, best-quality delivery URL.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/wink.partner.v1.MediaUrlVariant"
+              }
+            ]
+          },
+          "large": {
+            "description": "MEDIA_TYPE_IMAGE only: large variant, max width 1920px.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/wink.partner.v1.MediaUrlVariant"
+              }
+            ]
+          },
+          "medium": {
+            "description": "MEDIA_TYPE_IMAGE only: medium variant, max width 1024px.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/wink.partner.v1.MediaUrlVariant"
+              }
+            ]
+          },
+          "thumbnail": {
+            "description": "MEDIA_TYPE_IMAGE or MEDIA_TYPE_VIDEO (Cloudinary): thumbnail variant, max width 320px. For video this is a jpg frame\nextracted from the video.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/wink.partner.v1.MediaUrlVariant"
+              }
+            ]
+          },
+          "stream": {
+            "description": "MEDIA_TYPE_VIDEO (Cloudinary) only: mp4 streaming delivery URL, unscaled.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/wink.partner.v1.MediaUrlVariant"
+              }
+            ]
+          },
+          "preview": {
+            "description": "MEDIA_TYPE_VIDEO (Cloudinary) only: mp4 preview variant, max width 1280px.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/wink.partner.v1.MediaUrlVariant"
+              }
+            ]
+          },
+          "poster": {
+            "description": "MEDIA_TYPE_VIDEO (Cloudinary) only: poster frame, a jpg still extracted from the video at medium width.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/wink.partner.v1.MediaUrlVariant"
+              }
+            ]
+          },
+          "externalUrl": {
+            "type": "string",
+            "description": "MEDIA_TYPE_VIDEO (YouTube) only: pass-through to the YouTube watch URL. Wink generates no variants for\nexternally-hosted media."
+          }
+        },
+        "description": "Ready-to-use delivery URLs for one asset, one field per variant.\n\nWhich fields are populated depends on the asset. Images carry `original`, `large`, `medium` and\n`thumbnail`; Cloudinary videos carry `stream`, `preview`, `poster` and `thumbnail`; externally-hosted\nvideo (YouTube) carries only `external_url`, because Wink generates no variants for media it does not\nhost. Always check the variant you want is present rather than assuming a fixed set.\n\nTHESE URLS MAY ROTATE. Wink's media-reorganization migration rewrites the underlying storage id of\nevery asset it touches, which changes every URL here. `Multimedia.media_id` does NOT change. Key your\nstorage on `media_id` and re-sync when `PropertySearchResult.content_version` moves; treating a URL as a\npermanent identifier will break."
+      },
+      "wink.partner.v1.MediaUrlVariant": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "description": "Ready-to-use delivery URL for this variant."
+          },
+          "maxWidth": {
+            "type": "integer",
+            "description": "Maximum pixel width this variant is scaled to. Unset for variants with no resize (image\n\"original\", video \"stream\") — explicit presence so \"not resized\" is distinguishable from a\nliteral 0px width.",
+            "format": "int32"
+          },
+          "format": {
+            "type": "string",
+            "description": "Delivery format label for this variant."
+          }
+        },
+        "description": "One delivery URL and what it is scaled to."
+      },
+      "wink.partner.v1.RoomRate": {
+        "type": "object",
+        "properties": {
+          "roomRateId": {
+            "type": "string",
+            "description": "Room rate identifier. Join to Content for the room type, rate plan (embedded on the master rate),\ndescriptions, images and amenities behind this offer."
+          },
+          "name": {
+            "type": "string",
+            "description": "The ROOM TYPE's name, localized — \"Deluxe King Room\" and the like. Enough to label the offer in a\nresult list; the full description, images and amenities are in Content.\n\nIn `user_session.language` when the property has translated it, otherwise English, otherwise whatever\nthe property supplied. A row labelled in the wrong language is still more use than a blank one."
+          },
+          "available": {
+            "type": "boolean",
+            "description": "True if THIS offer, at the requested occupancy, is bookable for the itinerary. Narrower than\n`PropertySearchResult.available`, which is true when ANY offer at the property is. An unavailable offer is\nstill returned rather than dropped, so you can show the traveller why it cannot be booked."
+          },
+          "sort": {
+            "type": "integer",
+            "description": "Ordering hint within the property's offers, ascending.",
+            "format": "int32"
+          },
+          "startDate": {
+            "type": "string",
+            "description": "Check-in date, ISO-8601 \"YYYY-MM-DD\"."
+          },
+          "endDate": {
+            "type": "string",
+            "description": "Check-out date, ISO-8601 \"YYYY-MM-DD\"."
+          },
+          "roomNights": {
+            "type": "integer",
+            "description": "Nights covered by this rate.",
+            "format": "int32"
+          },
+          "adults": {
+            "type": "integer",
+            "description": "Adults the rate is priced for, after the property's occupancy policy is applied.",
+            "format": "int32"
+          },
+          "children": {
+            "type": "integer",
+            "description": "Children the rate is priced for, after the property's occupancy policy is applied.",
+            "format": "int32"
+          },
+          "roomTotalBeforeDiscount": {
+            "type": "string",
+            "description": "The property's price for the ROOM over the whole stay BEFORE promotions, premiums and your channel\ndiscount — step 1 above. Show it struck through next to `room_total` to display the saving.\n\nEqual to `room_total` when no adjustment applies. It can also be LOWER than `room_total` when a premium\nis in force, since premiums travel the same path as discounts — so only render a strikethrough when\nthis is actually the greater of the two.",
+            "format": "int64"
+          },
+          "roomTotal": {
+            "type": "string",
+            "description": "Cost of the ROOM over the whole stay, after promotions, premiums and your channel discount — step 2\nabove. Excludes the rate plan's fixed extra charges.\n\nNamed `room_total`, not `source_total`, on purpose: everywhere else in this platform \"source\" means the\nPROPERTY'S OWN CURRENCY, and this figure is in the caller's. Reusing the word here would have had the\nnext mapper author reach for the domain's `getSourceTotal()` and quote the wrong currency.",
+            "format": "int64"
+          },
+          "extraChargesTotal": {
+            "type": "string",
+            "description": "Fixed charges attached to the rate plan — a one-time cleaning fee and the like — over the whole stay.\nReported separately so a traveller can see them as their own line rather than as an unexplained\ndifference. Never discounted. Zero when the rate plan has none.",
+            "format": "int64"
+          },
+          "total": {
+            "type": "string",
+            "description": "What the guest pays: `room_total` + `extra_charges_total`. This is the number to show.\n\nOnly meaningful when `available` is true. An unavailable offer reports 0 across all four amounts, which\nmeans \"not priced\" rather than \"free\" — show the offer with its reason, never with a price of zero.",
+            "format": "int64"
+          },
+          "meals": {
+            "description": "Meals included in the rate. These change which offer a traveller picks, so they are here rather than\nbehind an identifier.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/wink.partner.v1.MealPlan"
+              }
+            ]
+          },
+          "refundable": {
+            "type": "boolean",
+            "description": "True if the stay can be cancelled without charge before the policy's deadline."
+          },
+          "refundableUntilDays": {
+            "type": "integer",
+            "description": "How many days from TODAY the traveller has left to cancel free of charge, and -1 when the rate is not\nrefundable at all. Zero means the free-cancellation window closes today.\n\nDerived as (days until check-in) − (the policy's days-before-arrival deadline), floored at 0 — the same\ncalculation `RoomTypeBestPriceForDateRange` publishes. It is relative to the moment of the response and\nwill drift as the stay approaches, so treat it as display data, not something to cache.",
+            "format": "int32"
+          },
+          "cancellationPolicyId": {
+            "type": "string",
+            "description": "Cancellation policy identifier. Join to Content for the full terms and wording."
+          },
+          "perkIds": {
+            "type": "array",
+            "description": "Identifiers of the perks bundled with this rate. Join to Content for their names and descriptions.\nThere is deliberately no monetary \"perk value\" on this surface.",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "description": "One priced, bookable offer for the itinerary.\n\nEverything here either is a price or changes which offer a traveller would choose. The prose behind the\nidentifiers — rate plan names, perk descriptions, cancellation policy wording — lives in Content, reached\nvia `room_rate_id`.\n\nHOW THE PRICE IS BUILT, and what each field means:\n\n  1. The property gives Wink a base price for the room over these dates. That is\n     `room_total_before_discount` — the \"was\" price.\n  2. Promotions, premiums and your channel discount are applied to it. The result is `room_total` —\n     the cost of the ROOM ITSELF, all adjustments applied. This is the \"now\" price.\n  3. Fixed charges attached to the rate plan are added — a one-time cleaning fee and the like. They are\n     a distinct cost, so they are reported separately as `extra_charges_total` rather than folded in,\n     and a traveller can see what they are paying for.\n\n  room_total + extra_charges_total = total\n\nMONEY CONVENTION. Every monetary field is `<component>_total`, covers the WHOLE stay, and is an INTEGER\nIN MINOR UNITS of `PropertyPage.display_currency` — divide by 10^`PropertyPage.currency_exponent` to get\nthe real value. The currency and its exponent are stated once per page instead of on every amount, so the\namounts are directly comparable and directly addable with exact integer arithmetic and no rounding.\n`total` is the only one with no component prefix, because it is the sum of them all and the number to\nshow as the price.\n\nDiscounts apply to the ROOM only, never to extra charges — a cleaning fee is not discounted. So the\nsaving a traveller sees is exactly `room_total_before_discount - room_total`."
+      },
+      "wink.partner.v1.MealPlan": {
+        "type": "object",
+        "properties": {
+          "breakfast": {
+            "type": "boolean",
+            "description": "Breakfast included."
+          },
+          "brunch": {
+            "type": "boolean",
+            "description": "Brunch included."
+          },
+          "lunch": {
+            "type": "boolean",
+            "description": "Lunch included."
+          },
+          "dinner": {
+            "type": "boolean",
+            "description": "Dinner included."
+          },
+          "allInclusive": {
+            "type": "boolean",
+            "description": "All meals included."
+          },
+          "allInclusivePlusAlcohol": {
+            "type": "boolean",
+            "description": "All meals plus alcohol included."
+          }
+        },
+        "description": "Which meals a rate includes."
+      },
+      "wink.partner.v1.SearchByCityRequest": {
+        "type": "object",
+        "properties": {
+          "userSession": {
+            "description": "Traveller context. Required.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/wink.partner.v1.UserSession"
+              }
+            ]
+          },
+          "geoNameId": {
+            "type": "string",
+            "description": "GeoNames id of the city, as returned by the Lookup service. Required."
+          },
+          "searchFilters": {
+            "description": "Optional narrowing of the result set.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/wink.partner.v1.SearchFilters"
+              }
+            ]
+          },
+          "page": {
+            "type": "integer",
+            "description": "Zero-based page number. Defaults to 0.",
+            "format": "int32"
+          },
+          "size": {
+            "type": "integer",
+            "description": "Results per page. Defaults to 20, which is also the maximum. A larger value is rejected with\nINVALID_ARGUMENT rather than clamped, so a caller never pages through a result set believing it is\nlarger than it is. Every property returned is billed, so the cap bounds cost as well as fan-out.",
+            "format": "int32"
+          }
+        },
+        "description": "Request for SearchByCity."
+      },
+      "wink.partner.v1.SearchByCityResponse": {
+        "type": "object",
+        "properties": {
+          "page": {
+            "$ref": "#/components/schemas/wink.partner.v1.PropertyPage"
+          },
+          "displayCurrency": {
+            "type": "string",
+            "description": "ISO 4217 currency EVERY amount in this response is denominated in — the one you asked for in\n`user_session.currency`, or the property's own when you asked for none. Stated once here rather than\nrepeated on every amount, which is why the amounts themselves are bare integers."
+          },
+          "currencyExponent": {
+            "type": "integer",
+            "description": "How many decimal places `display_currency` has: 2 for THB and USD, 0 for JPY, KRW and VND.\n\nAmounts are integers in MINOR UNITS, so the real value is `amount / 10^currency_exponent`. This is\npublished rather than assumed because a fixed divide-by-100 is wrong for a real slice of Wink's\ninventory — a JPY stay priced at 15000 is ¥15,000, not ¥150.",
+            "format": "int32"
+          },
+          "displayLanguage": {
+            "type": "string",
+            "description": "ISO 639-1 language the names and other text in this response are in — the one you asked for in\n`user_session.language`, or English when it was unavailable."
+          }
+        },
+        "description": "Response for SearchByCity."
+      },
+      "wink.partner.v1.RankByAgencyRequest": {
+        "type": "object",
+        "properties": {
+          "userSession": {
+            "description": "Traveller context. Required.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/wink.partner.v1.UserSession"
+              }
+            ]
+          },
+          "cityUrlNameOrCountryCode": {
+            "type": "string",
+            "description": "City url name or ISO 3166-1 alpha-2 country code scoping the agency's properties. Required."
+          },
+          "sort": {
+            "description": "How to order the results.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/wink.partner.v1.ScoreSort"
+              }
+            ]
+          },
+          "page": {
+            "type": "integer",
+            "description": "Zero-based page number. Defaults to 0.",
+            "format": "int32"
+          },
+          "size": {
+            "type": "integer",
+            "description": "Results per page. Defaults to 20, which is also the maximum. A larger value is rejected with\nINVALID_ARGUMENT rather than clamped, so a caller never pages through a result set believing it is\nlarger than it is. Every property returned is billed, so the cap bounds cost as well as fan-out.",
+            "format": "int32"
+          }
+        },
+        "description": "Request for RankByAgency."
+      },
+      "wink.partner.v1.RankByAgencyResponse": {
+        "type": "object",
+        "properties": {
+          "page": {
+            "$ref": "#/components/schemas/wink.partner.v1.PropertyPage"
+          },
+          "displayCurrency": {
+            "type": "string",
+            "description": "ISO 4217 currency EVERY amount in this response is denominated in — the one you asked for in\n`user_session.currency`, or the property's own when you asked for none. Stated once here rather than\nrepeated on every amount, which is why the amounts themselves are bare integers."
+          },
+          "currencyExponent": {
+            "type": "integer",
+            "description": "How many decimal places `display_currency` has: 2 for THB and USD, 0 for JPY, KRW and VND.\n\nAmounts are integers in MINOR UNITS, so the real value is `amount / 10^currency_exponent`. This is\npublished rather than assumed because a fixed divide-by-100 is wrong for a real slice of Wink's\ninventory — a JPY stay priced at 15000 is ¥15,000, not ¥150.",
+            "format": "int32"
+          },
+          "displayLanguage": {
+            "type": "string",
+            "description": "ISO 639-1 language the names and other text in this response are in — the one you asked for in\n`user_session.language`, or English when it was unavailable."
+          }
+        },
+        "description": "Response for RankByAgency."
+      },
+      "wink.partner.v1.RankByCityRequest": {
+        "type": "object",
+        "properties": {
+          "userSession": {
+            "description": "Traveller context. Required.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/wink.partner.v1.UserSession"
+              }
+            ]
+          },
+          "urlName": {
+            "type": "string",
+            "description": "Url name of the city, as returned by the Lookup service. Required."
+          },
+          "sort": {
+            "description": "How to order the results.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/wink.partner.v1.ScoreSort"
+              }
+            ]
+          },
+          "searchFilters": {
+            "description": "Optional narrowing of the result set.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/wink.partner.v1.SearchFilters"
+              }
+            ]
+          },
+          "page": {
+            "type": "integer",
+            "description": "Zero-based page number. Defaults to 0.",
+            "format": "int32"
+          },
+          "size": {
+            "type": "integer",
+            "description": "Results per page. Defaults to 20, which is also the maximum. A larger value is rejected with\nINVALID_ARGUMENT rather than clamped, so a caller never pages through a result set believing it is\nlarger than it is. Every property returned is billed, so the cap bounds cost as well as fan-out.",
+            "format": "int32"
+          }
+        },
+        "description": "Request for RankByCity."
+      },
+      "wink.partner.v1.RankByCityResponse": {
+        "type": "object",
+        "properties": {
+          "page": {
+            "$ref": "#/components/schemas/wink.partner.v1.PropertyPage"
+          },
+          "displayCurrency": {
+            "type": "string",
+            "description": "ISO 4217 currency EVERY amount in this response is denominated in — the one you asked for in\n`user_session.currency`, or the property's own when you asked for none. Stated once here rather than\nrepeated on every amount, which is why the amounts themselves are bare integers."
+          },
+          "currencyExponent": {
+            "type": "integer",
+            "description": "How many decimal places `display_currency` has: 2 for THB and USD, 0 for JPY, KRW and VND.\n\nAmounts are integers in MINOR UNITS, so the real value is `amount / 10^currency_exponent`. This is\npublished rather than assumed because a fixed divide-by-100 is wrong for a real slice of Wink's\ninventory — a JPY stay priced at 15000 is ¥15,000, not ¥150.",
+            "format": "int32"
+          },
+          "displayLanguage": {
+            "type": "string",
+            "description": "ISO 639-1 language the names and other text in this response are in — the one you asked for in\n`user_session.language`, or English when it was unavailable."
+          }
+        },
+        "description": "Response for RankByCity."
+      },
+      "wink.partner.v1.RankByCountryRequest": {
+        "type": "object",
+        "properties": {
+          "userSession": {
+            "description": "Traveller context. Required.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/wink.partner.v1.UserSession"
+              }
+            ]
+          },
+          "countryCode": {
+            "type": "string",
+            "description": "ISO 3166-1 alpha-2 country code, e.g. \"TH\". Required."
+          },
+          "sort": {
+            "description": "How to order the results.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/wink.partner.v1.ScoreSort"
+              }
+            ]
+          },
+          "searchFilters": {
+            "description": "Optional narrowing of the result set.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/wink.partner.v1.SearchFilters"
+              }
+            ]
+          },
+          "page": {
+            "type": "integer",
+            "description": "Zero-based page number. Defaults to 0.",
+            "format": "int32"
+          },
+          "size": {
+            "type": "integer",
+            "description": "Results per page. Defaults to 20, which is also the maximum. A larger value is rejected with\nINVALID_ARGUMENT rather than clamped, so a caller never pages through a result set believing it is\nlarger than it is. Every property returned is billed, so the cap bounds cost as well as fan-out.",
+            "format": "int32"
+          }
+        },
+        "description": "Request for RankByCountry."
+      },
+      "wink.partner.v1.RankByCountryResponse": {
+        "type": "object",
+        "properties": {
+          "page": {
+            "$ref": "#/components/schemas/wink.partner.v1.PropertyPage"
+          },
+          "displayCurrency": {
+            "type": "string",
+            "description": "ISO 4217 currency EVERY amount in this response is denominated in — the one you asked for in\n`user_session.currency`, or the property's own when you asked for none. Stated once here rather than\nrepeated on every amount, which is why the amounts themselves are bare integers."
+          },
+          "currencyExponent": {
+            "type": "integer",
+            "description": "How many decimal places `display_currency` has: 2 for THB and USD, 0 for JPY, KRW and VND.\n\nAmounts are integers in MINOR UNITS, so the real value is `amount / 10^currency_exponent`. This is\npublished rather than assumed because a fixed divide-by-100 is wrong for a real slice of Wink's\ninventory — a JPY stay priced at 15000 is ¥15,000, not ¥150.",
+            "format": "int32"
+          },
+          "displayLanguage": {
+            "type": "string",
+            "description": "ISO 639-1 language the names and other text in this response are in — the one you asked for in\n`user_session.language`, or English when it was unavailable."
+          }
+        },
+        "description": "Response for RankByCountry."
+      },
+      "wink.partner.v1.RankGlobalRequest": {
+        "type": "object",
+        "properties": {
+          "userSession": {
+            "description": "Traveller context. Required.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/wink.partner.v1.UserSession"
+              }
+            ]
+          },
+          "sort": {
+            "description": "How to order the results.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/wink.partner.v1.ScoreSort"
+              }
+            ]
+          },
+          "searchFilters": {
+            "description": "Optional narrowing of the result set.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/wink.partner.v1.SearchFilters"
+              }
+            ]
+          },
+          "page": {
+            "type": "integer",
+            "description": "Zero-based page number. Defaults to 0.",
+            "format": "int32"
+          },
+          "size": {
+            "type": "integer",
+            "description": "Results per page. Defaults to 20, which is also the maximum. A larger value is rejected with\nINVALID_ARGUMENT rather than clamped, so a caller never pages through a result set believing it is\nlarger than it is. Every property returned is billed, so the cap bounds cost as well as fan-out.",
+            "format": "int32"
+          }
+        },
+        "description": "Request for RankGlobal."
+      },
+      "wink.partner.v1.RankGlobalResponse": {
+        "type": "object",
+        "properties": {
+          "page": {
+            "$ref": "#/components/schemas/wink.partner.v1.PropertyPage"
+          },
+          "displayCurrency": {
+            "type": "string",
+            "description": "ISO 4217 currency EVERY amount in this response is denominated in — the one you asked for in\n`user_session.currency`, or the property's own when you asked for none. Stated once here rather than\nrepeated on every amount, which is why the amounts themselves are bare integers."
+          },
+          "currencyExponent": {
+            "type": "integer",
+            "description": "How many decimal places `display_currency` has: 2 for THB and USD, 0 for JPY, KRW and VND.\n\nAmounts are integers in MINOR UNITS, so the real value is `amount / 10^currency_exponent`. This is\npublished rather than assumed because a fixed divide-by-100 is wrong for a real slice of Wink's\ninventory — a JPY stay priced at 15000 is ¥15,000, not ¥150.",
+            "format": "int32"
+          },
+          "displayLanguage": {
+            "type": "string",
+            "description": "ISO 639-1 language the names and other text in this response are in — the one you asked for in\n`user_session.language`, or English when it was unavailable."
+          }
+        },
+        "description": "Response for RankGlobal."
+      },
       "wink.partner.v1.SearchRequest": {
         "type": "object",
         "properties": {
-          "managingEntityIdentifier": {
-            "description": "Your Wink account identifier. Every call is scoped to one account, and your token must hold\nINVENTORY:READ on it."
-          },
           "term": {
+            "type": "string",
             "description": "What the user has typed so far. Fewer than 3 characters (after trimming) returns an empty\nlist rather than an error."
           }
-        }
+        },
+        "description": "Your Wink account identifier. Every call is scoped to one account, and your token must hold\nINVENTORY:READ on it."
       },
       "wink.partner.v1.SearchResponse": {
         "type": "object",
@@ -180,103 +1546,796 @@
       },
       "wink.partner.v1.Destination": {
         "type": "object",
-        "description": "A place you can search for and sell through Wink.",
         "properties": {
           "id": {
+            "type": "string",
             "description": "Wink's identifier for this destination entry."
           },
           "type": {
+            "description": "What kind of place this is. Determines what `type_identifier` refers to.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/wink.partner.v1.DestinationType"
               }
-            ],
-            "description": "What kind of place this is. Determines what `type_identifier` refers to."
+            ]
           },
           "typeIdentifier": {
-            "description": "Identifier of the underlying resource — a hotel ID for HOTEL, a geoname ID for CITY and\nCOUNTRY. This is the id you pass to the other Wink endpoints that take a property or place."
+            "type": "string",
+            "description": "Identifier of the underlying resource — a property ID for DESTINATION_TYPE_PROPERTY, a geoname ID for DESTINATION_TYPE_CITY and\nDESTINATION_TYPE_COUNTRY. This is the id you pass to the other Wink endpoints that take a property or place."
           },
           "name": {
+            "type": "string",
             "description": "Display name, in the language given by `language_code`."
           },
           "urlName": {
+            "type": "string",
             "description": "URL slug. Pass this back to the lookup-by-slug call to resolve this destination later."
           },
           "ownerName": {
+            "type": "string",
             "description": "Display name of the supplier that created this entry, where one applies."
           },
           "cityName": {
+            "type": "string",
             "description": "Nearest city."
           },
-          "countryName": {},
+          "countryName": {
+            "type": "string"
+          },
           "subCountryName": {
+            "type": "string",
             "description": "State or province."
           },
           "subSubCountryName": {
+            "type": "string",
             "description": "County or district."
           },
           "countryCode": {
+            "type": "string",
             "description": "ISO 3166-1 alpha-2 country code."
           },
           "languageCode": {
+            "type": "string",
             "description": "ISO 639-1 code for the language `name` is written in."
           },
           "longitude": {
-            "format": "double",
-            "description": "Longitude and latitude in decimal degrees. Both are omitted together when the location is\nunknown — which is why they are optional rather than defaulting to 0/0, a real place in the\nGulf of Guinea."
+            "type": "number",
+            "description": "Longitude and latitude in decimal degrees. Both are omitted together when the location is\nunknown — which is why they are optional rather than defaulting to 0/0, a real place in the\nGulf of Guinea.",
+            "format": "double"
           },
           "latitude": {
+            "type": "number",
             "format": "double"
           }
-        }
+        },
+        "description": "A place you can search for and sell through Wink."
       },
       "wink.partner.v1.GetRequest": {
         "type": "object",
         "properties": {
-          "managingEntityIdentifier": {
-            "description": "Your Wink account identifier. Every call is scoped to one account, and your token must hold\nINVENTORY:READ on it."
-          },
           "urlName": {
+            "type": "string",
             "description": "URL slug of the destination, e.g. `bangkok-thailand`. Required."
           },
           "type": {
+            "description": "Type of the destination you are resolving. Required — a slug is only unique within a type,\nso leaving this unset is rejected rather than guessed.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/wink.partner.v1.DestinationType"
               }
-            ],
-            "description": "Type of the destination you are resolving. Required — a slug is only unique within a type,\nso leaving this unset is rejected rather than guessed."
+            ]
           }
-        }
+        },
+        "description": "Your Wink account identifier. Every call is scoped to one account, and your token must hold\nINVENTORY:READ on it."
       },
       "wink.partner.v1.GetResponse": {
         "type": "object",
         "properties": {
           "destination": {
+            "description": "The resolved destination.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/wink.partner.v1.Destination"
               }
-            ],
-            "description": "The resolved destination."
+            ]
           }
         }
+      },
+      "wink.partner.v1.GetPropertyInventoryRequest": {
+        "type": "object",
+        "properties": {
+          "userSession": {
+            "description": "Traveller context: dates, occupancy, language and currency. Required.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/wink.partner.v1.UserSession"
+              }
+            ]
+          },
+          "propertyId": {
+            "type": "string",
+            "description": "Stable property identifier, as returned by Search and Lookup."
+          },
+          "urlName": {
+            "type": "string",
+            "description": "Url-safe slug, as returned by Search."
+          }
+        },
+        "description": "Request for GetPropertyInventory.\n\nAt most one of `propertyId, urlName` is set (protobuf `oneof property`)."
+      },
+      "wink.partner.v1.GetPropertyInventoryResponse": {
+        "type": "object",
+        "properties": {
+          "property": {
+            "description": "The property and its offers.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/wink.partner.v1.PropertyInventory"
+              }
+            ]
+          },
+          "displayCurrency": {
+            "type": "string",
+            "description": "ISO 4217 currency EVERY amount in this response is denominated in."
+          },
+          "currencyExponent": {
+            "type": "integer",
+            "description": "How many decimal places `display_currency` has — amounts are `amount / 10^currency_exponent`.",
+            "format": "int32"
+          },
+          "displayLanguage": {
+            "type": "string",
+            "description": "ISO 639-1 language the names in this response are in."
+          }
+        },
+        "description": "Response for GetPropertyInventory."
+      },
+      "wink.partner.v1.PropertyInventory": {
+        "type": "object",
+        "properties": {
+          "propertyId": {
+            "type": "string",
+            "description": "Stable property identifier. Your key for everything, including Content lookups."
+          },
+          "urlName": {
+            "type": "string",
+            "description": "Url-safe slug, stable and safe to build links from."
+          },
+          "uniqueId": {
+            "type": "string",
+            "description": "The property's globally unique short code."
+          },
+          "lastUpdate": {
+            "type": "string",
+            "description": "When this property's record last changed, ISO-8601 \"YYYY-MM-DDThh:mm:ss\" in UTC. Use it as the cache key\nfor your Content responses — the same value Search returns."
+          },
+          "available": {
+            "type": "boolean",
+            "description": "True if AT LEAST ONE offer is bookable for the requested stay. When false, `prices` still carries the\nunavailable offers rather than being empty, so you can show why."
+          },
+          "commission": {
+            "type": "number",
+            "description": "Commission rate your account earns on this property, as a fraction — 0.15 for 15%. A property-channel\nterm, so it holds for every offer below.",
+            "format": "double"
+          },
+          "prices": {
+            "type": "array",
+            "description": "EVERY priced offer for the requested stay, SORTED CHEAPEST FIRST by `total`.\n\nThis is where Inventory differs from Search: Search returns the best offer per room type, this returns\nevery rate and occupancy combination the property has for these dates. `prices[0]` is the best available\nprice, the same figure Search would have shown for this property.",
+            "items": {
+              "$ref": "#/components/schemas/wink.partner.v1.RoomRate"
+            }
+          }
+        },
+        "description": "One property and every priced offer available for the requested stay.\n\nFor anything else about the property — name, descriptions, gallery, address, amenities, policies, and its\nrestaurants, spas, meeting rooms and activities — call the Content service with `property_id` and cache the\nanswer against `last_update`."
+      },
+      "wink.partner.v1.ListPropertyInventoryRequest": {
+        "type": "object",
+        "properties": {
+          "entries": {
+            "type": "array",
+            "description": "The properties to price, each with its own dates and occupancy. At least one, at most 20.\n\nEvery entry must ask for the SAME `user_session.currency` and `user_session.language`, because the\nresponse declares one display currency for all of them. A batch that mixes currencies is rejected with\nINVALID_ARGUMENT rather than answered in a currency half the entries did not ask for.",
+            "items": {
+              "$ref": "#/components/schemas/wink.partner.v1.GetPropertyInventoryRequest"
+            }
+          }
+        },
+        "description": "Request for ListPropertyInventory."
+      },
+      "wink.partner.v1.ListPropertyInventoryResponse": {
+        "type": "object",
+        "properties": {
+          "properties": {
+            "type": "array",
+            "description": "One entry per request entry, in the order requested — match results back to your request by position.\n\nThe batch is ATOMIC. If any property cannot be resolved the whole call fails rather than returning a\nshort or reordered list, because a partial response that still looked well-formed would have you\nattribute one property's prices to another. Nothing is billed for a failed batch.",
+            "items": {
+              "$ref": "#/components/schemas/wink.partner.v1.PropertyInventory"
+            }
+          },
+          "displayCurrency": {
+            "type": "string",
+            "description": "ISO 4217 currency EVERY amount in this response is denominated in."
+          },
+          "currencyExponent": {
+            "type": "integer",
+            "description": "How many decimal places `display_currency` has — amounts are `amount / 10^currency_exponent`.",
+            "format": "int32"
+          },
+          "displayLanguage": {
+            "type": "string",
+            "description": "ISO 639-1 language the names in this response are in."
+          }
+        },
+        "description": "Response for ListPropertyInventory."
+      },
+      "wink.partner.v1.GetRatePeriodRequest": {
+        "type": "object",
+        "properties": {
+          "propertyId": {
+            "type": "string",
+            "description": "Stable property identifier. Required."
+          },
+          "startDate": {
+            "type": "string",
+            "description": "First check-in date to price, ISO-8601 \"YYYY-MM-DD\". Required."
+          },
+          "periodInDays": {
+            "type": "integer",
+            "description": "How many days forward to price from `start_date`. Between 2 and 30. Required.\n\nThis is also the billed unit count: a 30-day calendar costs 30 hotel-day units.",
+            "format": "int32"
+          },
+          "adults": {
+            "type": "integer",
+            "description": "Adults per room, between 1 and 10. Omit it to take the default of 2.",
+            "format": "int32"
+          },
+          "language": {
+            "type": "string",
+            "description": "ISO 639-1 language for the room names, e.g. \"en\". Required: room names are translated against it,\nand with no language supplied every name falls back to its untranslated form."
+          },
+          "currency": {
+            "type": "string",
+            "description": "ISO 4217 currency for the returned prices. Exactly three characters."
+          },
+          "ratePlanNameMatches": {
+            "type": "string",
+            "description": "Optional regular expression restricting the calendar to rate plans whose name matches — useful for\npricing only your negotiated plans. Left unset, every rate plan is considered.\n\nAt most 256 characters. Matching additionally runs under a fixed input budget, so a pathological pattern\nis abandoned rather than allowed to burn server time."
+          }
+        },
+        "description": "Request for GetRatePeriod."
+      },
+      "wink.partner.v1.GetRatePeriodResponse": {
+        "type": "object",
+        "properties": {
+          "period": {
+            "description": "The rate calendar.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/wink.partner.v1.RatePeriod"
+              }
+            ]
+          },
+          "displayCurrency": {
+            "type": "string",
+            "description": "ISO 4217 currency EVERY amount in this response is denominated in."
+          },
+          "currencyExponent": {
+            "type": "integer",
+            "description": "How many decimal places `display_currency` has — amounts are `amount / 10^currency_exponent`.",
+            "format": "int32"
+          },
+          "displayLanguage": {
+            "type": "string",
+            "description": "ISO 639-1 language the names in this response are in."
+          }
+        },
+        "description": "Response for GetRatePeriod."
+      },
+      "wink.partner.v1.RatePeriod": {
+        "type": "object",
+        "properties": {
+          "propertyId": {
+            "type": "string",
+            "description": "Stable property identifier."
+          },
+          "name": {
+            "type": "string",
+            "description": "The property's name, in the requested language."
+          },
+          "adults": {
+            "type": "integer",
+            "description": "Adults every rate in this calendar is priced for — the occupancy you asked for, so it is the same for\nevery entry and is stated once here rather than repeated on each.",
+            "format": "int32"
+          },
+          "internetIncluded": {
+            "type": "boolean",
+            "description": "True if internet is included across the priced rates."
+          },
+          "parkingIncluded": {
+            "type": "boolean",
+            "description": "True if parking is included across the priced rates."
+          },
+          "entries": {
+            "type": "array",
+            "description": "One entry per check-in/check-out combination in the range.",
+            "items": {
+              "$ref": "#/components/schemas/wink.partner.v1.RatePeriodEntry"
+            }
+          }
+        },
+        "description": "Best available rate for each check-in date across the requested range."
+      },
+      "wink.partner.v1.RatePeriodEntry": {
+        "type": "object",
+        "properties": {
+          "roomTypeId": {
+            "type": "string",
+            "description": "Identifier of the room type this rate is for. Join to Content for its description, images and amenities."
+          },
+          "name": {
+            "type": "string",
+            "description": "The room type's name, in the requested language."
+          },
+          "startDate": {
+            "type": "string",
+            "description": "Check-in date, ISO-8601 \"YYYY-MM-DD\"."
+          },
+          "endDate": {
+            "type": "string",
+            "description": "Check-out date, ISO-8601 \"YYYY-MM-DD\"."
+          },
+          "roomNights": {
+            "type": "integer",
+            "description": "Nights covered.",
+            "format": "int32"
+          },
+          "available": {
+            "type": "boolean",
+            "description": "True if this combination is bookable."
+          },
+          "refundable": {
+            "type": "boolean",
+            "description": "True if it can be cancelled without charge before the policy's deadline."
+          },
+          "refundableUntilDays": {
+            "type": "integer",
+            "description": "Days from TODAY until free cancellation closes; -1 when not refundable, 0 when it closes today. Same\ncalculation as `RoomRate.refundable_until_days`.",
+            "format": "int32"
+          },
+          "breakfastIncluded": {
+            "type": "boolean",
+            "description": "True if breakfast is included."
+          },
+          "total": {
+            "type": "string",
+            "description": "What the guest pays for this combination, in minor units of `display_currency`.\n\nOnly meaningful when `available` is true. An unavailable combination reports 0, which means \"no price\"\nrather than \"free\" — do not render it as a price.",
+            "format": "int64"
+          }
+        },
+        "description": "The best available rate for one check-in/check-out combination."
+      },
+      "wink.partner.v1.GetPropertyMediaRequest": {
+        "type": "object",
+        "properties": {
+          "propertyId": {
+            "type": "string",
+            "description": "The property to retrieve media for. Required."
+          },
+          "mediaTypes": {
+            "type": "array",
+            "description": "Restrict results to these media types. Leave empty for both images and videos.",
+            "items": {
+              "$ref": "#/components/schemas/wink.partner.v1.MediaType"
+            }
+          },
+          "inventoryTypes": {
+            "type": "array",
+            "description": "Restrict results to these galleries. Leave empty for every gallery (property plus all entitled\ninventory types).",
+            "items": {
+              "$ref": "#/components/schemas/wink.partner.v1.MediaInventoryScope"
+            }
+          },
+          "inventoryIdentifier": {
+            "type": "string",
+            "description": "Restrict results to a single inventory item's gallery, e.g. one room type. Combine with\ninventory_types to disambiguate the type. Ignored when inventory_types selects PROPERTY only."
+          },
+          "categories": {
+            "type": "array",
+            "description": "Restrict results to these OTA PIC photo-category codes. Leave empty for every category.",
+            "items": {
+              "type": "string"
+            }
+          },
+          "language": {
+            "type": "string",
+            "description": "Language to prune captions to. Falls back to English when omitted."
+          },
+          "page": {
+            "type": "integer",
+            "description": "Zero-based page number. Defaults to 0.",
+            "format": "int32"
+          },
+          "size": {
+            "type": "integer",
+            "description": "Page size, max 200. Defaults to 50 when unset (0).",
+            "format": "int32"
+          }
+        },
+        "description": "Your Wink account identifier. Every call is scoped to one account, and your token must hold\nINVENTORY:READ on it."
+      },
+      "wink.partner.v1.GetPropertyMediaResponse": {
+        "type": "object",
+        "properties": {
+          "propertyId": {
+            "type": "string",
+            "description": "Property identifier, echoed from the request."
+          },
+          "propertyName": {
+            "type": "string",
+            "description": "Property name."
+          },
+          "media": {
+            "description": "Paginated, filtered gallery for this property.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/wink.partner.v1.MediaPage"
+              }
+            ]
+          }
+        }
+      },
+      "wink.partner.v1.MediaPage": {
+        "type": "object",
+        "properties": {
+          "content": {
+            "type": "array",
+            "description": "The assets on this page.",
+            "items": {
+              "$ref": "#/components/schemas/wink.partner.v1.MediaAsset"
+            }
+          },
+          "number": {
+            "type": "integer",
+            "description": "Zero-based index of this page.",
+            "format": "int32"
+          },
+          "size": {
+            "type": "integer",
+            "description": "The requested page size.",
+            "format": "int32"
+          },
+          "totalElements": {
+            "type": "string",
+            "description": "Total number of assets across all pages.",
+            "format": "int64"
+          },
+          "totalPages": {
+            "type": "integer",
+            "description": "Total number of pages for the current page size.",
+            "format": "int32"
+          },
+          "numberOfElements": {
+            "type": "integer",
+            "description": "Number of assets actually on this page.",
+            "format": "int32"
+          },
+          "first": {
+            "type": "boolean",
+            "description": "Whether this is the first page."
+          },
+          "last": {
+            "type": "boolean",
+            "description": "Whether this is the last page."
+          }
+        },
+        "description": "A page of media assets plus flat page metadata — the wire mirror of the REST envelope every\npaginated Wink endpoint returns."
+      },
+      "wink.partner.v1.MediaAsset": {
+        "type": "object",
+        "properties": {
+          "mediaIdentifier": {
+            "type": "string",
+            "description": "Stable media identifier — key your integration on this, not on any URL. It survives the\nplatform's media reorganization, which rewrites the underlying storage path (and therefore\nevery delivery URL) without changing this identifier."
+          },
+          "propertyId": {
+            "type": "string",
+            "description": "Property this asset belongs to."
+          },
+          "inventoryType": {
+            "description": "Which gallery this asset belongs to.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/wink.partner.v1.MediaInventoryScope"
+              }
+            ]
+          },
+          "inventoryIdentifier": {
+            "type": "string",
+            "description": "Identifier of the owning inventory item (room type, restaurant, spa, meeting room, add-on).\nUnset when inventory_type is PROPERTY."
+          },
+          "inventoryName": {
+            "type": "string",
+            "description": "Display name of the owning inventory item, or the property name when inventory_type is PROPERTY."
+          },
+          "mediaType": {
+            "description": "Whether this asset is an image or video.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/wink.partner.v1.MediaType"
+              }
+            ]
+          },
+          "source": {
+            "description": "Hosting platform this asset is served from.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/wink.partner.v1.MediaSource"
+              }
+            ]
+          },
+          "category": {
+            "type": "string",
+            "description": "OTA PIC photo-category code."
+          },
+          "sort": {
+            "type": "integer",
+            "description": "Display order within the owning gallery. Lower sorts first.",
+            "format": "int32"
+          },
+          "width": {
+            "type": "integer",
+            "description": "Media width in pixels. 0 when unavailable (e.g. YouTube).",
+            "format": "int32"
+          },
+          "height": {
+            "type": "integer",
+            "description": "Media height in pixels. 0 when unavailable (e.g. YouTube).",
+            "format": "int32"
+          },
+          "caption": {
+            "type": "string",
+            "description": "Caption/alt text pruned to the requested language, falling back to English. Unset when no\ndescription is set."
+          },
+          "attribution": {
+            "type": "array",
+            "description": "Photographer/source attribution credits, if any.",
+            "items": {
+              "$ref": "#/components/schemas/wink.partner.v1.MediaAttribution"
+            }
+          },
+          "lifestyleType": {
+            "description": "Lifestyle association for this asset, if any. LIFESTYLE_TYPE_UNSPECIFIED means none is set —\nthis field is genuinely optional, unlike a request-side type selector.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/wink.partner.v1.LifestyleType"
+              }
+            ]
+          },
+          "urls": {
+            "description": "Fixed set of ready-to-use delivery-URL variants for this asset.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/wink.partner.v1.MediaUrlSet"
+              }
+            ]
+          }
+        },
+        "description": "One published media asset (image or video) belonging to a property or one of its bookable inventory\nitems."
+      },
+      "wink.partner.v1.MediaAttribution": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "description": "URL to the contributor's profile, if any."
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the contributor. Required whenever an attribution entry is present."
+          }
+        },
+        "description": "Photographer/source attribution for one media asset."
+      },
+      "wink.partner.v1.ListMediaRequest": {
+        "type": "object",
+        "properties": {
+          "propertyIds": {
+            "type": "array",
+            "description": "Properties to retrieve media for, 1 to 20 entries. Required.",
+            "items": {
+              "type": "string"
+            }
+          },
+          "mediaTypes": {
+            "type": "array",
+            "description": "Restrict results to these media types, applied to every property in the batch. Leave empty for\nboth images and videos.",
+            "items": {
+              "$ref": "#/components/schemas/wink.partner.v1.MediaType"
+            }
+          },
+          "inventoryTypes": {
+            "type": "array",
+            "description": "Restrict results to these galleries, applied to every property in the batch. Leave empty for\nevery gallery.",
+            "items": {
+              "$ref": "#/components/schemas/wink.partner.v1.MediaInventoryScope"
+            }
+          },
+          "inventoryIdentifier": {
+            "type": "string",
+            "description": "Restrict results to a single inventory item's gallery, applied to every property in the batch."
+          },
+          "categories": {
+            "type": "array",
+            "description": "Restrict results to these OTA PIC photo-category codes, applied to every property in the batch.",
+            "items": {
+              "type": "string"
+            }
+          },
+          "language": {
+            "type": "string",
+            "description": "Language to prune captions to, applied to every property in the batch. Falls back to English."
+          },
+          "perPropertyLimit": {
+            "type": "integer",
+            "description": "Maximum assets returned per property, max 200. Defaults to 50 when unset (0).",
+            "format": "int32"
+          }
+        },
+        "description": "Your Wink account identifier. Every call is scoped to one account, and your token must hold\nINVENTORY:READ on it."
+      },
+      "wink.partner.v1.ListMediaResponse": {
+        "type": "object",
+        "properties": {
+          "properties": {
+            "type": "array",
+            "description": "One entry per property identifier in the request, same order. Always as many entries as you\nrequested — a batch never fails as a whole for one bad property identifier.",
+            "items": {
+              "$ref": "#/components/schemas/wink.partner.v1.PropertyMediaEntry"
+            }
+          }
+        }
+      },
+      "wink.partner.v1.PropertyMediaEntry": {
+        "type": "object",
+        "properties": {
+          "propertyId": {
+            "type": "string",
+            "description": "Property identifier, echoed from the request."
+          },
+          "propertyName": {
+            "type": "string",
+            "description": "Property name. Unset unless status is PROPERTY_MEDIA_STATUS_OK."
+          },
+          "status": {
+            "description": "Whether this property's media was retrieved, and if not, why.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/wink.partner.v1.PropertyMediaStatus"
+              }
+            ]
+          },
+          "totalAssets": {
+            "type": "integer",
+            "description": "Total published assets matching the filter, before per_property_limit truncation. 0 unless status\nis PROPERTY_MEDIA_STATUS_OK.",
+            "format": "int32"
+          },
+          "assets": {
+            "type": "array",
+            "description": "Media assets for this property, truncated to the request's per_property_limit. Empty unless status is\nPROPERTY_MEDIA_STATUS_OK.",
+            "items": {
+              "$ref": "#/components/schemas/wink.partner.v1.MediaAsset"
+            }
+          }
+        },
+        "description": "One property's outcome within a batch ListMedia response."
+      },
+      "wink.partner.v1.LifestyleType": {
+        "type": "string",
+        "description": "The traveller lifestyle a property, room or media asset is oriented toward.\n\nValues are additive: a property may carry several. Treat an unrecognized value as \"some lifestyle this\nclient does not know about yet\" rather than an error — proto3 enums are open, and new lifestyles are\nadded without a version bump.\n\n- `LIFESTYLE_TYPE_UNSPECIFIED`: Not set.\n- `LIFESTYLE_TYPE_HEALTH_FITNESS`: Health and fitness focused.\n- `LIFESTYLE_TYPE_RELAX`: Relaxation focused.\n- `LIFESTYLE_TYPE_ADULT_ONLY`: Adults only.\n- `LIFESTYLE_TYPE_ADVENTURE`: Adventure travel.\n- `LIFESTYLE_TYPE_BUSINESS`: Business travel.\n- `LIFESTYLE_TYPE_LGBT`: LGBT focused.\n- `LIFESTYLE_TYPE_SINGLE_PARENT`: Single parent travel.\n- `LIFESTYLE_TYPE_SOLO_FEMALE`: Solo female travel.\n- `LIFESTYLE_TYPE_BEAUTY`: Beauty and wellness.\n- `LIFESTYLE_TYPE_FOODIE`: Food and dining focused.\n- `LIFESTYLE_TYPE_FAMILY`: Family travel.\n- `LIFESTYLE_TYPE_ROMANCE`: Romantic travel.\n- `LIFESTYLE_TYPE_COUPLE`: Couples travel.\n- `LIFESTYLE_TYPE_SOLO`: Solo travel.\n- `LIFESTYLE_TYPE_BACKPACKER`: Backpacking.\n- `LIFESTYLE_TYPE_SHOPPING`: Shopping focused.\n- `LIFESTYLE_TYPE_SPORTS`: Sports focused.\n- `LIFESTYLE_TYPE_MOUNTAIN`: Mountain destinations.\n- `LIFESTYLE_TYPE_BEACH`: Beach destinations.\n- `LIFESTYLE_TYPE_CITY`: City destinations.\n- `LIFESTYLE_TYPE_COUNTRY`: Countryside destinations.\n- `LIFESTYLE_TYPE_CULTURE`: Culture and heritage.\n- `LIFESTYLE_TYPE_ECO`: Eco and sustainable travel.",
+        "enum": [
+          "LIFESTYLE_TYPE_UNSPECIFIED",
+          "LIFESTYLE_TYPE_HEALTH_FITNESS",
+          "LIFESTYLE_TYPE_RELAX",
+          "LIFESTYLE_TYPE_ADULT_ONLY",
+          "LIFESTYLE_TYPE_ADVENTURE",
+          "LIFESTYLE_TYPE_BUSINESS",
+          "LIFESTYLE_TYPE_LGBT",
+          "LIFESTYLE_TYPE_SINGLE_PARENT",
+          "LIFESTYLE_TYPE_SOLO_FEMALE",
+          "LIFESTYLE_TYPE_BEAUTY",
+          "LIFESTYLE_TYPE_FOODIE",
+          "LIFESTYLE_TYPE_FAMILY",
+          "LIFESTYLE_TYPE_ROMANCE",
+          "LIFESTYLE_TYPE_COUPLE",
+          "LIFESTYLE_TYPE_SOLO",
+          "LIFESTYLE_TYPE_BACKPACKER",
+          "LIFESTYLE_TYPE_SHOPPING",
+          "LIFESTYLE_TYPE_SPORTS",
+          "LIFESTYLE_TYPE_MOUNTAIN",
+          "LIFESTYLE_TYPE_BEACH",
+          "LIFESTYLE_TYPE_CITY",
+          "LIFESTYLE_TYPE_COUNTRY",
+          "LIFESTYLE_TYPE_CULTURE",
+          "LIFESTYLE_TYPE_ECO"
+        ]
+      },
+      "wink.partner.v1.MultimediaKind": {
+        "type": "string",
+        "description": "Whether a Media entry is a still image or a video.\n\n- `MULTIMEDIA_KIND_UNSPECIFIED`: Not set.\n- `MULTIMEDIA_KIND_IMAGE`: A still image.\n- `MULTIMEDIA_KIND_VIDEO`: A video.",
+        "enum": [
+          "MULTIMEDIA_KIND_UNSPECIFIED",
+          "MULTIMEDIA_KIND_IMAGE",
+          "MULTIMEDIA_KIND_VIDEO"
+        ]
+      },
+      "wink.partner.v1.ScoreSort": {
+        "type": "string",
+        "description": "How ranked results are ordered.\n\nFour orderings, and they are the only four the platform actually has. Wink previously scored properties\non separate member, popularity, experience, perk, loyalty and add-on dimensions; those collapsed into a\nsingle demand score in 2026-07 and their backing fields no longer exist. The REST enum keeps them as\ndeprecated aliases so persisted documents keep loading — every one silently resolves to RECOMMENDED —\nbut this contract is new, so it publishes only what it can honour. A sort you can select and that does\nnothing is worse than one you cannot select.\n\n- `SCORE_SORT_UNSPECIFIED`: Not set; the server picks RECOMMENDED.\n- `SCORE_SORT_RECOMMENDED`: Wink's demand score — bookings and reviews blended, 0-100. The default.\n- `SCORE_SORT_PRICE_LOW_TO_HIGH`: Cheapest first.\n- `SCORE_SORT_PRICE_HIGH_TO_LOW`: Most expensive first.\n- `SCORE_SORT_ECO`: Sustainability, highest first — backed by the green-index rating, which is maintained separately from the demand score.",
+        "enum": [
+          "SCORE_SORT_UNSPECIFIED",
+          "SCORE_SORT_RECOMMENDED",
+          "SCORE_SORT_PRICE_LOW_TO_HIGH",
+          "SCORE_SORT_PRICE_HIGH_TO_LOW",
+          "SCORE_SORT_ECO"
+        ]
       },
       "wink.partner.v1.DestinationType": {
         "type": "string",
         "description": "What kind of place a destination is.\n\n- `DESTINATION_TYPE_UNSPECIFIED`: Never sent by the server, and rejected on a request: pick a real type.",
         "enum": [
           "DESTINATION_TYPE_UNSPECIFIED",
-          "CITY",
-          "ISLAND",
-          "HOTEL",
-          "SPA",
-          "MEETING_ROOM",
-          "RESTAURANT",
-          "ATTRACTION",
-          "ACTIVITY",
-          "PLACE",
-          "COUNTRY"
+          "DESTINATION_TYPE_CITY",
+          "DESTINATION_TYPE_ISLAND",
+          "DESTINATION_TYPE_PROPERTY",
+          "DESTINATION_TYPE_SPA",
+          "DESTINATION_TYPE_MEETING_ROOM",
+          "DESTINATION_TYPE_RESTAURANT",
+          "DESTINATION_TYPE_ATTRACTION",
+          "DESTINATION_TYPE_ACTIVITY",
+          "DESTINATION_TYPE_PLACE",
+          "DESTINATION_TYPE_COUNTRY"
+        ]
+      },
+      "wink.partner.v1.MediaType": {
+        "type": "string",
+        "description": "Classifies the format of a media asset.\n\n- `MEDIA_TYPE_UNSPECIFIED`: Never sent by the server on a real asset.",
+        "enum": [
+          "MEDIA_TYPE_UNSPECIFIED",
+          "MEDIA_TYPE_IMAGE",
+          "MEDIA_TYPE_VIDEO",
+          "MEDIA_TYPE_AUDIO",
+          "MEDIA_TYPE_RAW"
+        ]
+      },
+      "wink.partner.v1.MediaInventoryScope": {
+        "type": "string",
+        "description": "Which gallery a media asset belongs to: the property itself, or a bookable inventory type.\n\nValues are prefixed MEDIA_ (unlike DestinationType's bare DESTINATION_TYPE_CITY/DESTINATION_TYPE_PROPERTY/etc.) because proto3 enum\nvalues are siblings within the whole `wink.partner.v1` package, not scoped to their enum type —\nDestinationType in partner_destination_lookup.proto already claims DESTINATION_TYPE_RESTAURANT, DESTINATION_TYPE_SPA and\nDESTINATION_TYPE_MEETING_ROOM, and protoc rejects the redefinition outright.\n\n- `MEDIA_INVENTORY_SCOPE_UNSPECIFIED`: On a response asset this is never sent; on a request filter it is simply never included in the repeated field (an empty repeated field already means \"no restriction\").",
+        "enum": [
+          "MEDIA_INVENTORY_SCOPE_UNSPECIFIED",
+          "MEDIA_INVENTORY_SCOPE_PROPERTY",
+          "MEDIA_INVENTORY_SCOPE_GUEST_ROOM",
+          "MEDIA_INVENTORY_SCOPE_RESTAURANT",
+          "MEDIA_INVENTORY_SCOPE_SPA",
+          "MEDIA_INVENTORY_SCOPE_MEETING_ROOM",
+          "MEDIA_INVENTORY_SCOPE_ADD_ON"
+        ]
+      },
+      "wink.partner.v1.MediaSource": {
+        "type": "string",
+        "description": "Identifies the hosting platform a media asset is served from.\n\n- `MEDIA_SOURCE_UNSPECIFIED`: Never sent by the server on a real asset.",
+        "enum": [
+          "MEDIA_SOURCE_UNSPECIFIED",
+          "MEDIA_SOURCE_YOUTUBE",
+          "MEDIA_SOURCE_CLOUDINARY"
+        ]
+      },
+      "wink.partner.v1.PropertyMediaStatus": {
+        "type": "string",
+        "description": "Per-property outcome of a batch ListMedia entry.\n\n- `PROPERTY_MEDIA_STATUS_UNSPECIFIED`: Never sent by the server for a resolvable entry; present only so the zero value is not a real status.\n- `PROPERTY_MEDIA_STATUS_OK`: The property is entitled to the requesting account; property_name/assets are populated.\n- `PROPERTY_MEDIA_STATUS_NOT_IN_CHANNEL`: The property exists but is not in the requesting account's sales channel. property_name/assets are empty.\n- `PROPERTY_MEDIA_STATUS_NOT_FOUND`: No property with this identifier exists. property_name/assets are empty.",
+        "enum": [
+          "PROPERTY_MEDIA_STATUS_UNSPECIFIED",
+          "PROPERTY_MEDIA_STATUS_OK",
+          "PROPERTY_MEDIA_STATUS_NOT_IN_CHANNEL",
+          "PROPERTY_MEDIA_STATUS_NOT_FOUND"
         ]
       }
     },
@@ -287,7 +2346,7 @@
         "name": "Client Credentials",
         "flows": {
           "clientCredentials": {
-            "tokenUrl": "https://dev-iam.wink.travel:9000/oauth2/token",
+            "tokenUrl": "https://iam.wink.travel/oauth2/token",
             "scopes": {
               "inventory.read": "View your inventory & rates.",
               "inventory.write": "Create and update your inventory & rates.",
