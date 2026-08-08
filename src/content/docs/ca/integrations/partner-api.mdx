@@ -1,47 +1,57 @@
 ---
-title: API de Partner
-description: Preus, límits de tarifa i Acord de Nivell de Servei per a l'API de Partner autenticada de Wink.
+title: Partner API
+description: Preus, límits de tarifa i Acord de Nivell de Servei per a la Partner API autenticada de Wink.
 sidebar:
   order: 0
 ---
 
-L'API de **Partner** de Wink és la manera autenticada i d'alt rendiment perquè els integradors consultin l'inventari de viatges reservable — el mateix subministrament que alimenta els nostres widgets integrables i els punts finals públics de navegació, exposat com una interfície programàtica de primera classe. Mentre que els Web Components gratuïts i els punts finals públics de navegació estan pensats per a integracions lleugeres i orientades a l'usuari, l'API de Partner està dissenyada per a sistemes que cerquen, calculen preus i reserven a gran escala. L'accés és autenticat per integrador i facturat segons l'ús, de manera que només pagues pel trànsit que realment envies.
+La Wink **Partner API** és la manera autenticada i d’alta capacitat per als integradors de consultar inventari de viatges reservable — el mateix subministrament que alimenta els nostres widgets integrables i els punts finals públics de navegació, exposat com una interfície programàtica de primera classe. Mentre que els Web Components gratuïts i els punts finals públics de navegació estan pensats per a integracions lleugeres i orientades a l’usuari, la Partner API està construïda per a sistemes que cerquen, calculen preus i reserven a gran escala. L’accés és autenticat per integrador i facturat segons l’ús, de manera que només pagues pel trànsit que realment envies.
 
 ## Plans i preus
 
-Una crida a l'API = una sol·licitud. L'ús mesurat es factura per cada 1.000 sol·licituds.
+Una crida a l’API = una sol·licitud. L’ús mesurat es factura per cada 1.000 sol·licituds.
 
 | | Gratuït | De pagament | Empresarial |
 |---|---|---|---|
-| **Preu** | 0 $ | Basat en l'ús | Contacta'ns |
-| **Millor per a** | Avaluació i integracions de baix volum | Rendiment a gran escala de pagament per ús | Volum personalitzat i termes negociats |
-| Sol·licituds per minut | 30 (explosió de 60) | Il·limitat | Il·limitat |
+| **Preu** | 0 $ | Basat en l’ús | Contacta’ns |
+| **Millor per a** | Avaluació i integracions de baix volum | Pagament per ús a gran escala | Volum personalitzat i termes negociats |
+| Sol·licituds per minut | 30 (rafega de 60) | Il·limitat | Il·limitat |
 | Sol·licituds per mes | 10.000 | Il·limitat | Il·limitat |
-| Temps de resposta de l'API (P95) | — | Menys de 500 ms | Menys de 500 ms |
+| Temps de resposta de l’API (P95) | — | Menys de 500 ms | Menys de 500 ms |
 | Preu per 1.000 sol·licituds | Gratuït | 1,00 $ | Personalitzat |
-| Excés look-to-book (per 1.000 cerques excedents més enllà de 5.000:1) | — | 2,00 $ | Personalitzat |
-| Resposta a límit de tarifa | 429 (pausa / parada dura mensual) | Cap | Cap |
+| Excés look-to-book (per cada 1.000 cerques excedents més enllà de 5.000:1) | — | 2,00 $ | Personalitzat |
+| Resposta a límit de tarifa | 429 (pausa / parada mensual estricta) | Cap | Cap |
 | Acord de Nivell de Servei | — | ✓ | ✓ |
 | Suport prioritari | — | ✓ | ✓ |
 | Incorporació dedicada | — | — | ✓ |
 
-[Obteniu una clau API](https://app.wink.travel/account/applications) · [Comenceu la facturació mesurada](https://app.wink.travel/account/applications) · [Contacta amb vendes](https://cal.com/wink-ws36dy)
+[Obteniu una clau API](https://app.wink.travel/account/applications) · [Comenceu la facturació mesurada](https://app.wink.travel/account/applications) · [Contacteu amb vendes](https://cal.com/wink-ws36dy)
 
-## Referència de l'API
+## Referència de l’API
 
-Hi ha dues superfícies OpenAPI que serveixen l'inventari reservable, i es corresponen amb els dos nivells anteriors:
+Hi ha dues superfícies que serveixen inventari reservable, i es corresponen amb els dos nivells anteriors:
 
-- **Gratuït — API de Consumidor / Motor de Reserva** (`/api/public/**`): anònim, orientat a navegador i widget. [Consulta la referència del Motor de Reserva →](/ca/api/booking-engine/)
-- **De pagament — API d'Integrador Partner** (`/api/partner/**`): autenticat, amb ús mesurat, dissenyat per a integració servidor a servidor a gran escala. [Consulta la referència d'Integrador →](/ca/partner-api/partner/)
+- **Gratuït — Consumer / Booking Engine API** (REST, `/api/public/**`): anònim, orientat a navegador i widget. [Navega per la referència del Booking Engine →](/ca/api/booking-engine/)
+- **De pagament — Partner Integrator API** (**gRPC**, `wink.partner.v1`): autenticat, amb ús mesurat, dissenyat per a integració servidor a servidor a gran escala. [Navega per la referència de l’Integrator →](/ca/partner-api/partner/)
 
-## Com funcionen l'ús i els límits
+La Partner Integrator API és gRPC, no REST. La crides amb un client generat sobre HTTP/2 a
+`partner.wink.travel:443`, passant un token bearer i el compte per al qual crides:
+
+```bash
+grpcurl -H "authorization: Bearer $WINK_TOKEN" partner.wink.travel:443 list
+```
+
+La pàgina de referència anterior documenta cada servei, missatge i estat d’error, i l’esquema també està
+disponible en temps d’execució mitjançant la reflexió del servidor, així que `grpcurl`, Postman i Insomnia el descobreixen sense necessitat de descarregar res.
+
+## Com funcionen l’ús i els límits
 
 ### Nivell gratuït
 
-El nivell gratuït està dissenyat per permetre't construir, provar i executar un trànsit de producció modest sense cost.
+El nivell gratuït està dissenyat per deixar-te construir, provar i executar trànsit de producció modest sense cost.
 
-- **Límit de tarifa — 30 sol·licituds per minut, amb una explosió de 60 sol·licituds.** Els pics curts per sobre de la taxa sostinguda es cobreixen amb l'explosió permesa. Si el superes, l'API respon amb **HTTP 429 (Masses sol·licituds)** i aplica una **pausa de 5 minuts** abans que la teva clau reprengui el servei. Redueix la velocitat i torna-ho a provar després de la pausa en lloc d'insistir al punt final.
-- **Quota mensual — 10.000 sol·licituds per mes natural.** Quan arribes al límit mensual, l'API retorna **HTTP 429 durant la resta del mes** — una parada dura — juntament amb un missatge que t'invita a subscriure't al nivell de pagament per continuar. El comptador es reinicia a l'inici del mes natural següent.
+- **Límit de tarifa — 30 sol·licituds per minut, amb una rafega de 60 sol·licituds.** Els pics curts per sobre de la taxa sostinguda s’absorbeixen amb l’assignació de rafega. Si el superes, l’API respon amb **HTTP 429 (Masses sol·licituds)** i aplica una **pausa de 5 minuts** abans que la teva clau reprengui el servei. Redueix la freqüència i torna-ho a provar després de la pausa en lloc d’atacar el punt final.
+- **Quota mensual — 10.000 sol·licituds per mes natural.** Quan arribes al límit mensual, l’API retorna **HTTP 429 durant la resta del mes** — una parada estricta — juntament amb un missatge que t’invita a subscriure’t al nivell de pagament per continuar. El comptador es reinicia a l’inici del mes natural següent.
 
 El nivell gratuït no inclou Acord de Nivell de Servei ni suport prioritari.
 
@@ -50,38 +60,38 @@ El nivell gratuït no inclou Acord de Nivell de Servei ni suport prioritari.
 El nivell de pagament elimina el límit mensual i les pauses per límit de tarifa, i només et factura pel que utilitzes.
 
 - **Sol·licituds mesurades — 1,00 $ per cada 1.000 sol·licituds.** No hi ha límit mensual de sol·licituds ni restricció per límit de tarifa en un ús normal; es factura segons el volum real.
-- **Excés look-to-book — 2,00 $ per cada 1.000 cerques excedents.** Per mantenir el subministrament saludable, mesurem la ràtio de cerques ("looks") a reserves confirmades. Tens dret a **5.000 cerques per reserva** abans que s'apliqui l'excés. Les cerques excedents es calculen com:
+- **Excés look-to-book — 2,00 $ per cada 1.000 cerques excedents.** Per mantenir el subministrament saludable, mesurem la ràtio de cerques ("looks") a reserves confirmades. Tens dret a **5.000 cerques per reserva** abans que s’apliqui l’excés. Les cerques excedents es calculen com:
 
   `excess = max(0, looks − bookings × 5,000)`
 
-  L'excés es factura a **2,00 $ per cada 1.000 cerques excedents**. Les integracions amb bona conversió rarament tenen excés; el càrrec només s'aplica al trànsit que cerca molt més del que reserva.
+  L’excés es factura a **2,00 $ per cada 1.000 cerques excedents**. Les integracions que converteixen bé rarament tenen excés; el càrrec només s’aplica al trànsit que cerca molt més del que reserva.
 
-El nivell de pagament inclou l'Acord de Nivell de Servei descrit a continuació — un compromís de disponibilitat del 99,9% i un objectiu de temps de resposta P95 inferior a 500 ms — i suport prioritari basat en la gravetat.
+El nivell de pagament inclou l’Acord de Nivell de Servei descrit a continuació — un compromís de disponibilitat del 99,9% i un objectiu de temps de resposta P95 inferior a 500 ms — i suport prioritari basat en la gravetat.
 
 ## Acord de Nivell de Servei
 
-_Data d'entrada en vigor: 5 de juliol de 2026 · Versió 1.0_
+_Data d’entrada en vigor: 5 de juliol de 2026 · Versió 1.0_
 
-Aquest Acord de Nivell de Servei (l'"SLA") estableix el compromís de disponibilitat, els crèdits de servei i els objectius de suport que Wink ("Wink", "nosaltres") proporciona a un client ("Client", "tu") per a l'API de Partner autenticada de Wink (l'"API de Partner" o el "Servei") en els nivells on s'indica que s'aplica un SLA. Aquest SLA s'incorpora i es regeix per l'acord entre tu i Wink sota el qual accedeixes a l'API de Partner (l'"Acord"), i s'aplica mentre mantinguis una subscripció activa i de pagament de l'API de Partner en bon estat. Els termes en majúscula no definits aquí tenen el significat que se'ls assigna a l'Acord.
+Aquest Acord de Nivell de Servei (l’"SLA") estableix el compromís de disponibilitat, els crèdits de servei i els objectius de suport que Wink ("Wink", "nosaltres") proporciona a un client ("Client", "tu") per a la Partner API autenticada de Wink (la "Partner API" o "Servei") en els nivells on s’indica que s’aplica un SLA. Aquest SLA s’incorpora i es regeix per l’acord entre tu i Wink sota el qual accedeixes a la Partner API (l’"Acord"), i s’aplica mentre mantinguis una subscripció activa i de pagament a la Partner API en bon estat. Els termes en majúscula no definits aquí tenen el significat que se’ls assigna a l’Acord.
 
 ### 1. Definicions
 
-1. **"Temps actiu"** significa els períodes durant els quals l'API de Partner està disponible per acceptar i respondre amb èxit a sol·licituds correctament formades i autenticades.
-2. **"Temps d'inactivitat"** significa qualsevol període, mesurat en minuts, durant el qual l'API de Partner no respon amb èxit a sol·licituds correctament formades i autenticades, excloent qualsevol període que caigui dins de les Exclusions establertes a la Secció 4. Errors aïllats que afecten una fracció insignificant de sol·licituds no constitueixen, per si sols, Temps d'inactivitat.
-3. **"Percentatge mensual de temps actiu"** significa, per a un mes natural donat, el nombre total de minuts d'aquest mes menys els minuts totals de Temps d'inactivitat, dividit pel nombre total de minuts d'aquest mes, expressat en percentatge.
-4. **"Manteniment programat"** significa el manteniment planificat del Servei per al qual Wink ha proporcionat un avís previ d'acord amb la Secció 4.
-5. **"Crèdit de servei"** significa un crèdit, calculat com un percentatge de les tarifes pagades o pagables per tu per l'API de Partner en el mes natural afectat, que s'aplica contra futures tarifes de l'API de Partner com a únic i exclusiu recurs per a un incompliment del Compromís de Temps Actiu.
-6. **"Temps de resposta"** significa el temps transcorregut entre la recepció per part de Wink d'una sol·licitud correctament formada i autenticada al límit del servei de Wink i el moment en què Wink comença a retornar la resposta, excloent el trànsit de xarxa i qualsevol temps del client fora del control de Wink.
+1. **"Temps actiu"** significa els períodes durant els quals la Partner API està disponible per acceptar i respondre amb èxit a sol·licituds correctament formades i autenticades.
+2. **"Temps d’inactivitat"** significa qualsevol període, mesurat en minuts, durant el qual la Partner API no respon amb èxit a sol·licituds correctament formades i autenticades, excloent qualsevol període que caigui dins de les Exclusions establertes a la Secció 4. Errors aïllats que afectin una fracció insignificant de sol·licituds no constitueixen, per si sols, Temps d’inactivitat.
+3. **"Percentatge mensual de temps actiu"** significa, per a un mes natural donat, el nombre total de minuts d’aquell mes menys els minuts totals de Temps d’inactivitat, dividit pel nombre total de minuts d’aquell mes, expressat en percentatge.
+4. **"Manteniment programat"** significa manteniment planificat del Servei per al qual Wink ha proporcionat un avís previ d’acord amb la Secció 4.
+5. **"Crèdit de servei"** significa un crèdit, calculat com un percentatge de les tarifes pagades o pagables per tu per la Partner API en el mes natural afectat, que s’aplica contra futures tarifes de la Partner API com a únic i exclusiu recurs per a un incompliment del Compromís de Temps Actiu.
+6. **"Temps de resposta"** significa el temps transcorregut entre la recepció per part de Wink d’una sol·licitud correctament formada i autenticada al límit del servei de Wink i el moment en què Wink comença a retornar la resposta, excloent el trànsit de xarxa i qualsevol temps del client fora del control de Wink.
 
 ### 2. Compromís de disponibilitat i rendiment
 
-Wink farà esforços comercialment raonables per mantenir l'API de Partner disponible amb un **Percentatge mensual de temps actiu d'almenys el 99,9%** durant cada mes natural del termini (el "Compromís de Temps Actiu"). El Compromís de Temps Actiu es mesura al límit del servei de Wink i exclou qualsevol factor fora del control raonable de Wink, inclosos els descrits a la Secció 4. Els sistemes de monitoratge de Wink són la font autoritzada per mesurar el Percentatge mensual de temps actiu i el Temps de resposta.
+Wink farà esforços comercialment raonables per fer que la Partner API estigui disponible amb un **Percentatge mensual de temps actiu d’almenys el 99,9%** durant cada mes natural del termini (el "Compromís de Temps Actiu"). El Compromís de Temps Actiu es mesura al límit del servei de Wink i exclou qualsevol factor fora del control raonable de Wink, inclosos els descrits a la Secció 4. Els sistemes de monitoratge de Wink són la font autoritzada per mesurar el Percentatge mensual de temps actiu i el Temps de resposta.
 
-A més, Wink té com a objectiu un **Temps de resposta al percentil 95 (P95) inferior a 500 mil·lisegons** per a sol·licituds correctament formades, autenticades i amb èxit, mesurat al límit del servei de Wink durant cada mes natural (l'"Objectiu de Rendiment"). L'Objectiu de Rendiment exclou els factors descrits a la Secció 4, les sol·licituds que retornen errors a nivell d'aplicació causats per la sol·licitud mateixa, i sol·licituds per lots inusualment grans o complexes. L'Objectiu de Rendiment és un objectiu de servei; els Crèdits de Servei de la Secció 3 s'apliquen a incompliments del **Compromís de Temps Actiu** i són l'únic i exclusiu recurs per a deficiències de disponibilitat.
+A més, Wink té com a objectiu un **Temps de resposta del percentil 95 (P95) inferior a 500 mil·lisegons** per a sol·licituds correctament formades, autenticades i amb èxit, mesurat al límit del servei de Wink durant cada mes natural (l’"Objectiu de rendiment"). L’Objectiu de rendiment exclou els factors descrits a la Secció 4, les sol·licituds que retornen errors a nivell d’aplicació causats per la sol·licitud mateixa, i sol·licituds per lots inusualment grans o complexes. L’Objectiu de rendiment és un objectiu de servei; els Crèdits de servei de la Secció 3 s’apliquen a incompliments del **Compromís de Temps Actiu** i són l’únic i exclusiu recurs per a deficiències de disponibilitat.
 
 ### 3. Crèdits de servei
 
-Si el Percentatge mensual de temps actiu cau per sota del Compromís de Temps Actiu en qualsevol mes natural, pots ser elegible per a un Crèdit de Servei calculat com un percentatge de les tarifes de l'API de Partner pagades o pagables per tu per aquell mes, segons la següent escala:
+Si el Percentatge mensual de temps actiu cau per sota del Compromís de Temps Actiu en qualsevol mes natural, pots ser elegible per a un Crèdit de servei calculat com un percentatge de les tarifes de la Partner API pagades o pagables per tu per aquell mes, segons la següent escala:
 
 | Percentatge mensual de temps actiu | Crèdit de servei |
 |---|---|
@@ -89,41 +99,41 @@ Si el Percentatge mensual de temps actiu cau per sota del Compromís de Temps Ac
 | Per sota del 99,0% però igual o superior al 95,0% | 25% |
 | Per sota del 95,0% | 50% |
 
-1. **Reclamació del crèdit.** Per rebre un Crèdit de Servei has d'enviar una reclamació escrita a Wink dins dels **trenta (30) dies** següents a la fi del mes natural en què es va produir la deficiència. La reclamació ha d'incloure les dates i hores de cada incident de Temps d'inactivitat que reclames i qualsevol registre o evidència raonablement disponible. Les reclamacions presentades fora d'aquest termini no són elegibles.
-2. **Forma del crèdit.** Els Crèdits de Servei aprovats s'apliquen contra futures tarifes de l'API de Partner i no tenen valor en efectiu. No són reemborsaments i no es pagaran excepte quan ho exigeixi la llei aplicable.
-3. **Crèdit màxim.** El total de Crèdits de Servei concedits per a qualsevol mes natural no excedirà el 50% de les tarifes de l'API de Partner pagades o pagables per tu per aquell mes.
-4. **Recurs únic i exclusiu.** Els Crèdits de Servei són el teu **recurs únic i exclusiu** per a qualsevol incompliment per part de Wink del Compromís de Temps Actiu o qualsevol altra deficiència de disponibilitat de l'API de Partner.
+1. **Reclamació del crèdit.** Per rebre un Crèdit de servei has d’enviar una reclamació escrita a Wink dins dels **trenta (30) dies** següents a la fi del mes natural en què es va produir la deficiència. La reclamació ha d’incloure les dates i hores de cada incident de Temps d’inactivitat que reclames i qualsevol registre o evidència raonablement disponible per a tu. Les reclamacions presentades fora d’aquest termini no són elegibles.
+2. **Forma del crèdit.** Els Crèdits de servei aprovats s’apliquen contra futures tarifes de la Partner API i no tenen valor en efectiu. No són reemborsaments i no es pagaran excepte quan ho exigeixi la llei aplicable.
+3. **Crèdit màxim.** El total de Crèdits de servei concedits per a qualsevol mes natural no excedirà el 50% de les tarifes de la Partner API pagades o pagables per tu per aquell mes.
+4. **Recurs únic i exclusiu.** Els Crèdits de servei són el teu **recurs únic i exclusiu** per a qualsevol incompliment per part de Wink del Compromís de Temps Actiu o qualsevol altra deficiència de disponibilitat de la Partner API.
 
 ### 4. Exclusions
 
-El Compromís de Temps Actiu i els Crèdits de Servei resultants no s'apliquen, i el Temps d'inactivitat no inclou, cap indisponibilitat, suspensió, degradació o problema de rendiment que sorgeixi o estigui relacionat amb:
+El Compromís de Temps Actiu i qualsevol Crèdit de servei resultant no s’apliquen, i el Temps d’inactivitat no inclou, cap indisponibilitat, suspensió, degradació o problema de rendiment que sorgeixi o estigui relacionat amb:
 
-1. **Manteniment programat** per al qual Wink ha donat avís previ, sempre que aquest avís s'hagi fet amb un període raonable d'antelació a través d'un canal que Wink utilitza habitualment per comunicar-se amb els clients;
+1. **Manteniment programat** per al qual Wink ha donat un avís previ, sempre que aquest avís s’hagi fet amb un període raonable d’antelació a través d’un canal que Wink normalment utilitza per comunicar-se amb els clients;
 2. esdeveniments de **força major** o altres causes fora del control raonable de Wink, incloent desastres naturals, actes governamentals, fallades de xarxa o serveis públics, i atacs de denegació de servei o altres atacs maliciosos;
-3. problemes causats per **les teves** accions o omissions, el teu equipament, programari o xarxa, o per qualsevol servei, producte o proveïdor de **tercers** que no estigui sota el control directe de Wink;
-4. el **mal ús del Servei** o la **infracció de l'Acord**, aquest SLA, els termes d'ús acceptables o els límits de tarifa aplicables, inclòs el trànsit que Wink determina raonablement com a excessiu, abús automatitzat o frau; i
-5. qualsevol **suspensió o terminació** del teu accés degudament efectuada sota l'Acord, inclosa la suspensió per impagament.
+3. problemes causats pels teus actes o omissions, el teu equip, programari o xarxa, o per qualsevol servei, producte o proveïdor de **tercers** que no estigui sota el control directe de Wink;
+4. el teu **abús del Servei** o **incompliment de l’Acord**, aquest SLA, els termes d’ús acceptables o els límits de tarifa aplicables, inclòs el trànsit que Wink determina raonablement com a excessiu, abús automatitzat o frau; i
+5. qualsevol **suspensió o terminació** del teu accés degudament efectuada segons l’Acord, inclosa la suspensió per falta de pagament.
 
 ### 5. Suport i objectius de resposta
 
-Wink proporciona suport per a l'API de Partner durant l'horari laboral estàndard, excloent festius locals. Wink farà esforços comercialment raonables per reconèixer les sol·licituds de suport correctament enviades dins dels següents temps objectiu de resposta, basats en la gravetat que assignis i que Wink confirmi raonablement:
+Wink proporciona suport per a la Partner API durant l’horari laboral estàndard, excloent festius locals. Wink farà esforços comercialment raonables per reconèixer les sol·licituds de suport correctament enviades dins dels següents temps objectiu de resposta, basats en la gravetat que assignis i que Wink confirmi raonablement:
 
 | Gravetat | Descripció | Resposta inicial objectiu |
 |---|---|---|
-| **Sev 1 — Crític** | L'API de Partner està caiguda o inusable en producció sense solució alternativa. | 4 hores |
-| **Sev 2 — Major** | Funció significativa afectada o degradada; existeix una solució alternativa. | 1 dia hàbil |
+| **Sev 1 — Crític** | La Partner API està caiguda o inusable en producció sense solució alternativa. | 4 hores |
+| **Sev 2 — Important** | Funció significativa afectada o degradada; existeix una solució alternativa. | 1 dia hàbil |
 | **Sev 3 — Menor** | Preguntes generals, problemes menors o sol·licituds de funcions. | 2 dies hàbils |
 
-Els temps objectiu de resposta descriuen quan Wink pretén fer el **primer contacte**; no són garanties de temps de resolució. El suport prioritari i els objectius basats en la gravetat s'apliquen als nivells on s'indica que estan inclosos.
+Els temps objectiu de resposta descriuen quan Wink pretén fer el **primer contacte**; no són garanties de temps de resolució. El suport prioritari i els objectius basats en la gravetat s’apliquen als nivells on s’indica que estan inclosos.
 
 ### 6. Dades i seguretat
 
-Wink manté mesures administratives, tècniques i organitzatives comercialment raonables dissenyades per protegir la confidencialitat, integritat i disponibilitat de les dades processades a través de l'API de Partner, i revisa aquestes mesures periòdicament. El processament de dades personals per part de Wink es regeix per la [Política de Privacitat](/ca/privacy) i qualsevol terme de processament de dades de l'Acord. Tu segueixes sent responsable de protegir les teves credencials API, de l'ús legal de qualsevol dada que recuperis i de notificar ràpidament a Wink qualsevol sospita de compromís de credencials.
+Wink manté mesures administratives, tècniques i organitzatives comercialment raonables dissenyades per protegir la confidencialitat, integritat i disponibilitat de les dades processades a través de la Partner API, i revisa aquestes mesures periòdicament. El processament de dades personals per part de Wink es regeix per la [Política de privadesa](/ca/privacy) i qualsevol terme de processament de dades de l’Acord. Tu segueixes sent responsable de protegir les teves pròpies credencials API, de l’ús legal de qualsevol dada que recuperis, i de notificar ràpidament a Wink qualsevol sospita de compromís de credencials.
 
 ### 7. Limitació de responsabilitat
 
-Els Crèdits de Servei són l'**únic i exclusiu recurs** per a qualsevol indisponibilitat o incompliment del Compromís de Temps Actiu, i es proporcionen en lloc de qualsevol altra responsabilitat derivada d'aquest incompliment. Excepte que s'indiqui expressament en aquest SLA, l'API de Partner es proporciona "tal qual està disponible". En la màxima mesura permesa per la llei aplicable, la responsabilitat agregada de Wink derivada o relacionada amb el Servei està limitada segons s'estableix a l'Acord, i Wink no és responsable de cap dany indirecte, incidental, especial, conseqüent o punitu, ni de pèrdues de beneficis, ingressos, dades o bona voluntat, encara que se li hagi advertit de la possibilitat d'aquests danys.
+Els Crèdits de servei són l’**únic i exclusiu recurs** per a qualsevol indisponibilitat o incompliment del Compromís de Temps Actiu, i es proporcionen en lloc de qualsevol altra responsabilitat derivada d’aquest incompliment. Excepte que s’indiqui expressament en aquest SLA, la Partner API es proporciona "tal qual està disponible". En la màxima mesura permesa per la llei aplicable, la responsabilitat agregada de Wink derivada o relacionada amb el Servei està limitada segons s’estableix a l’Acord, i Wink no és responsable de danys indirectes, incidentals, especials, conseqüents o punititius, ni de pèrdues de beneficis, ingressos, dades o bona voluntat, encara que se li hagi advertit de la possibilitat d’aquests danys.
 
 ### 8. Termini, canvis i terminació
 
-Aquest SLA s'aplica mentre tinguis una subscripció activa de l'API de Partner en un nivell on s'indica que s'aplica el SLA. Wink pot actualitzar aquest SLA de tant en tant; els canvis materials es comunicaran a través d'un canal que Wink utilitza habitualment per arribar als clients, i l'ús continuat de l'API de Partner després que una actualització entri en vigor constitueix l'acceptació del SLA actualitzat. Aquest SLA finalitza automàticament en la terminació o caducitat de l'Acord o de la teva subscripció de l'API de Partner. Les seccions que per la seva naturalesa han de sobreviure a la terminació — incloent l'elegibilitat acumulada però no reclamada per a Crèdits de Servei, la limitació de responsabilitat i les definicions — continuen vigents.
+Aquest SLA s’aplica mentre tinguis una subscripció activa a la Partner API en un nivell on s’indica que s’aplica el SLA. Wink pot actualitzar aquest SLA de tant en tant; els canvis materials es comunicaran a través d’un canal que Wink normalment utilitza per arribar als clients, i l’ús continuat de la Partner API després que una actualització entri en vigor constitueix l’acceptació del SLA actualitzat. Aquest SLA finalitza automàticament en la terminació o caducitat de l’Acord o de la teva subscripció a la Partner API. Les seccions que per la seva naturalesa han de sobreviure a la terminació — incloent l’elegibilitat acumulada però no reclamada per a Crèdits de servei, la limitació de responsabilitat i les definicions — sobreviuen.

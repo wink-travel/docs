@@ -29,10 +29,20 @@ Eén API-aanroep = één verzoek. Het gebruik wordt per 1.000 verzoeken in reken
 
 ## API-referentie
 
-Twee OpenAPI-interfaces bedienen boekbare voorraad, en ze corresponderen met de twee bovenstaande niveaus:
+Twee interfaces bedienen boekbare voorraad, en ze corresponderen met de twee bovenstaande niveaus:
 
-- **Gratis — Consumer / Booking Engine API** (`/api/public/**`): anoniem, browser- en widgetgericht. [Bekijk de Booking Engine-referentie →](/nl/api/booking-engine/)
-- **Betaald — Partner Integrator API** (`/api/partner/**`): geauthenticeerd, gebruik-gemeten, gebouwd voor server-naar-server integratie op schaal. [Bekijk de Integrator-referentie →](/nl/partner-api/partner/)
+- **Gratis — Consument / Booking Engine API** (REST, `/api/public/**`): anoniem, browser- en widgetgericht. [Bekijk de Booking Engine referentie →](/nl/api/booking-engine/)
+- **Betaald — Partner Integrator API** (**gRPC**, `wink.partner.v1`): geauthenticeerd, gebruik-gemeten, gebouwd voor server-naar-server integratie op schaal. [Bekijk de Integrator referentie →](/nl/partner-api/partner/)
+
+De Partner Integrator API is gRPC, geen REST. Je roept deze aan met een gegenereerde client via HTTP/2 op
+`partner.wink.travel:443`, waarbij je een bearer token en het account waarvoor je aanroept meestuurt:
+
+```bash
+grpcurl -H "authorization: Bearer $WINK_TOKEN" partner.wink.travel:443 list
+```
+
+De referentiepagina hierboven documenteert elke service, bericht en foutstatus, en het schema is ook
+beschikbaar tijdens runtime via serverreflectie, zodat `grpcurl`, Postman en Insomnia het ontdekken zonder iets te hoeven downloaden.
 
 ## Hoe gebruik en limieten werken
 
@@ -40,7 +50,7 @@ Twee OpenAPI-interfaces bedienen boekbare voorraad, en ze corresponderen met de 
 
 Het Gratis niveau is ontworpen om je in staat te stellen bescheiden productieverkeer te bouwen, testen en draaien zonder kosten.
 
-- **Snelheidslimiet — 30 verzoeken per minuut, met een burst van 60 verzoeken.** Korte pieken boven het constante tempo worden opgevangen door de burst-toelage. Als je deze overschrijdt, reageert de API met **HTTP 429 (Too Many Requests)** en wordt een **pauze van 5 minuten** toegepast voordat je sleutel het verkeer weer bedient. Wacht en probeer opnieuw na de pauze in plaats van het eindpunt te blijven belasten.
+- **Snelheidslimiet — 30 verzoeken per minuut, met een burst van 60 verzoeken.** Korte pieken boven het constante tempo worden opgevangen door de burst-toelage. Als je deze overschrijdt, reageert de API met **HTTP 429 (Too Many Requests)** en wordt een **pauze van 5 minuten** toegepast voordat je sleutel weer verkeer mag verwerken. Wacht de pauze af en probeer het daarna opnieuw in plaats van het eindpunt te blijven belasten.
 - **Maandelijkse limiet — 10.000 verzoeken per kalendermaand.** Zodra je het maandelijkse maximum bereikt, retourneert de API **HTTP 429 voor de rest van de maand** — een harde stop — samen met een bericht dat je uitnodigt om over te stappen naar het Betaalde niveau om door te gaan. De teller wordt aan het begin van de volgende kalendermaand gereset.
 
 Het Gratis niveau bevat geen Service Level Agreement of prioriteitsondersteuning.
@@ -49,10 +59,10 @@ Het Gratis niveau bevat geen Service Level Agreement of prioriteitsondersteuning
 
 Het Betaalde niveau verwijdert het maandelijkse maximum en de pauzes door snelheidslimieten, en factureert je alleen voor wat je gebruikt.
 
-- **Gemeten verzoeken — €1,00 per 1.000 verzoeken.** Er is geen maandelijks verzoekplafond en geen snelheidslimietdemping bij normaal gebruik; je wordt gefactureerd op basis van het werkelijke volume.
-- **Look-to-book overschrijding — €2,00 per 1.000 extra looks.** Om de voorraad gezond te houden, meten we de verhouding van zoekopdrachten ("looks") tot bevestigde boekingen. Je hebt recht op **5.000 looks per boeking** voordat overschrijding van toepassing is. Extra looks worden berekend als:
+- **Gemeten verzoeken — €1,00 per 1.000 verzoeken.** Er is geen maandelijks verzoekplafond en geen snelheidslimietdemping bij normaal gebruik; je wordt gefactureerd op basis van het daadwerkelijke volume.
+- **Look-to-book overschrijding — €2,00 per 1.000 extra looks.** Om de voorraad gezond te houden meten we de verhouding tussen zoekopdrachten ("looks") en bevestigde boekingen. Je hebt recht op **5.000 looks per boeking** voordat overschrijding van toepassing is. Extra looks worden berekend als:
 
-  `excess = max(0, looks − bookings × 5.000)`
+  `overschrijding = max(0, looks − boekingen × 5.000)`
 
   Overschrijding wordt vervolgens gefactureerd tegen **€2,00 per 1.000 extra looks**. Integraties die goed converteren, hebben zelden overschrijding; de kosten gelden alleen voor verkeer dat veel meer zoekt dan boekt.
 
@@ -67,8 +77,8 @@ Deze Service Level Agreement (de "SLA") beschrijft de beschikbaarheidsverplichti
 ### 1. Definities
 
 1. **"Uptime"** betekent de perioden waarin de Partner-API beschikbaar is om correct gevormde, geauthenticeerde verzoeken te accepteren en succesvol te beantwoorden.
-2. **"Downtime"** betekent elke periode, gemeten in minuten, waarin de Partner-API niet succesvol reageert op correct gevormde, geauthenticeerde verzoeken, met uitzondering van elke periode die valt onder de Uitsluitingen zoals beschreven in Sectie 4. Geïsoleerde fouten die een onbeduidend deel van de verzoeken treffen, zijn op zichzelf geen Downtime.
-3. **"Maandelijkse Uptime Percentage"** betekent, voor een gegeven kalendermaand, het totaal aantal minuten in die maand minus het totaal aantal Downtime-minuten, gedeeld door het totaal aantal minuten in die maand, uitgedrukt als een percentage.
+2. **"Downtime"** betekent elke periode, gemeten in minuten, waarin de Partner-API niet succesvol reageert op correct gevormde, geauthenticeerde verzoeken, met uitzondering van perioden die vallen onder de Uitsluitingen in Sectie 4. Geïsoleerde fouten die een onbeduidend deel van de verzoeken treffen, zijn op zichzelf geen Downtime.
+3. **"Maandelijkse Uptime Percentage"** betekent, voor een gegeven kalendermaand, het totaal aantal minuten in die maand minus het totaal aantal Downtime-minuten, gedeeld door het totaal aantal minuten in die maand, uitgedrukt als percentage.
 4. **"Geplande Onderhoud"** betekent gepland onderhoud van de Service waarvoor Wink vooraf kennisgeving heeft gegeven in overeenstemming met Sectie 4.
 5. **"Service Credit"** betekent een tegoed, berekend als een percentage van de door jou betaalde of te betalen vergoedingen voor de Partner-API in de getroffen kalendermaand, dat wordt toegepast op toekomstige Partner-API-vergoedingen als de enige en exclusieve remedie voor het niet nakomen van de Uptime-verplichting.
 6. **"Responstijd"** betekent de verstreken tijd tussen het ontvangen van een correct gevormd, geauthenticeerd verzoek bij de servicegrens van Wink en het moment waarop Wink begint met het terugsturen van de respons, exclusief netwerktransit en enige client-side tijd buiten de controle van Wink.
@@ -77,11 +87,11 @@ Deze Service Level Agreement (de "SLA") beschrijft de beschikbaarheidsverplichti
 
 Wink zal commercieel redelijke inspanningen leveren om de Partner-API beschikbaar te maken met een **Maandelijkse Uptime Percentage van ten minste 99,9%** gedurende elke kalendermaand van de looptijd (de "Uptime-verplichting"). De Uptime-verplichting wordt gemeten bij de servicegrens van Wink en sluit factoren buiten de redelijke controle van Wink uit, waaronder die beschreven in Sectie 4. De monitoringsystemen van Wink zijn de gezaghebbende bron voor het meten van het Maandelijkse Uptime Percentage en de Responstijd.
 
-Wink streeft verder naar een **95e percentiel (P95) Responstijd van onder 500 milliseconden** voor succesvolle, correct gevormde, geauthenticeerde verzoeken, gemeten bij de servicegrens van Wink over elke kalendermaand (het "Prestatie-doel"). Het Prestatie-doel sluit de factoren beschreven in Sectie 4 uit, verzoeken die applicatiefouten teruggeven veroorzaakt door het verzoek zelf, en ongewoon grote of complexe batchverzoeken. Het Prestatie-doel is een service-objectief; de Service Credits in Sectie 3 zijn van toepassing op het niet halen van de **Uptime-verplichting** en zijn de enige en exclusieve remedie voor beschikbaarheidstekorten.
+Wink streeft daarnaast naar een **95e percentiel (P95) Responstijd van onder 500 milliseconden** voor succesvolle, correct gevormde, geauthenticeerde verzoeken, gemeten bij de servicegrens van Wink over elke kalendermaand (het "Prestatie-doel"). Het Prestatie-doel sluit de factoren beschreven in Sectie 4 uit, verzoeken die applicatiefouten teruggeven veroorzaakt door het verzoek zelf, en ongewoon grote of complexe batchverzoeken. Het Prestatie-doel is een service-objectief; de Service Credits in Sectie 3 zijn van toepassing op het niet halen van de **Uptime-verplichting** en zijn de enige en exclusieve remedie voor beschikbaarheidstekorten.
 
 ### 3. Service Credits
 
-Als het Maandelijkse Uptime Percentage onder de Uptime-verplichting valt in een kalendermaand, kom je mogelijk in aanmerking voor een Service Credit berekend als een percentage van de door jou betaalde of te betalen Partner-API-vergoedingen voor die maand, volgens de volgende schaal:
+Als het Maandelijkse Uptime Percentage onder de Uptime-verplichting valt in een kalendermaand, kom je mogelijk in aanmerking voor een Service Credit, berekend als een percentage van de door jou betaalde of te betalen Partner-API-vergoedingen voor die maand, volgens de volgende schaal:
 
 | Maandelijks Uptime Percentage | Service Credit |
 |---|---|
@@ -89,8 +99,8 @@ Als het Maandelijkse Uptime Percentage onder de Uptime-verplichting valt in een 
 | Lager dan 99,0% maar gelijk aan of hoger dan 95,0% | 25% |
 | Lager dan 95,0% | 50% |
 
-1. **Indienen van een claim.** Om een Service Credit te ontvangen, moet je binnen **dertig (30) dagen** na het einde van de kalendermaand waarin het tekort zich voordeed een schriftelijke claim indienen bij Wink. De claim moet de data en tijden van elk Downtime-incident bevatten waar je aanspraak op maakt en eventuele redelijk beschikbare ondersteunende logs of bewijzen. Claims die na deze termijn worden ingediend, komen niet in aanmerking.
-2. **Vorm van credit.** Goedgekeurde Service Credits worden toegepast op toekomstige Partner-API-vergoedingen en hebben geen contante waarde. Ze zijn geen terugbetalingen en worden niet uitbetaald, behalve waar wettelijk vereist.
+1. **Indienen van een claim.** Om een Service Credit te ontvangen, moet je binnen **dertig (30) dagen** na het einde van de kalendermaand waarin het tekort optrad een schriftelijke claim indienen bij Wink. De claim moet de data en tijden van elk Downtime-incident bevatten waarvoor je claimt, en eventuele redelijk beschikbare ondersteunende logs of bewijzen. Claims die na deze termijn worden ingediend, komen niet in aanmerking.
+2. **Vorm van de credit.** Goedgekeurde Service Credits worden toegepast op toekomstige Partner-API-vergoedingen en hebben geen contante waarde. Ze zijn geen terugbetalingen en worden niet uitbetaald, behalve waar wettelijk vereist.
 3. **Maximale credit.** De totale Service Credits die voor een enkele kalendermaand worden toegekend, zullen niet meer bedragen dan 50% van de door jou betaalde of te betalen Partner-API-vergoedingen voor die maand.
 4. **Enige en exclusieve remedie.** Service Credits zijn je **enige en exclusieve remedie** voor elk falen van Wink om te voldoen aan de Uptime-verplichting of enige andere beschikbaarheidstekort van de Partner-API.
 
@@ -99,14 +109,14 @@ Als het Maandelijkse Uptime Percentage onder de Uptime-verplichting valt in een 
 De Uptime-verplichting en eventuele resulterende Service Credits zijn niet van toepassing op, en Downtime omvat niet, enige onbeschikbaarheid, opschorting, degradatie of prestatieprobleem dat voortkomt uit of verband houdt met:
 
 1. **Gepland onderhoud** waarvoor Wink vooraf kennisgeving heeft gegeven, mits deze kennisgeving tijdig is gedaan via een kanaal dat Wink normaal gebruikt om met klanten te communiceren;
-2. **Overmacht** of andere oorzaken buiten de redelijke controle van Wink, waaronder natuurrampen, overheidsmaatregelen, netwerk- of nutsstoringen, en denial-of-service of andere kwaadaardige aanvallen;
-3. problemen veroorzaakt door **jouw** handelingen of nalatigheden, jouw apparatuur, software of netwerk, of door enige **derde partij** dienst, product of leverancier die niet onder directe controle van Wink valt;
-4. jouw **misbruik van de Service** of **schending van de Overeenkomst**, deze SLA, de voorwaarden voor acceptabel gebruik, of toepasselijke snelheidslimieten, inclusief verkeer dat Wink redelijkerwijs als excessief, geautomatiseerd misbruik of frauduleus beschouwt; en
+2. **Overmacht** of andere oorzaken buiten de redelijke controle van Wink, waaronder natuurrampen, overheidsmaatregelen, netwerk- of nutsstoringen, en denial-of-service of andere kwaadwillige aanvallen;
+3. problemen veroorzaakt door **jouw** handelingen of nalatigheden, jouw apparatuur, software of netwerk, of door enige **derde partij** service, product of aanbieder die niet onder directe controle van Wink valt;
+4. jouw **misbruik van de Service** of **schending van de Overeenkomst**, deze SLA, de acceptabele gebruiksvoorwaarden, of toepasselijke snelheidslimieten, inclusief verkeer dat Wink redelijkerwijs als excessief, geautomatiseerd misbruik of frauduleus beschouwt; en
 5. enige **opschorting of beëindiging** van jouw toegang die correct is uitgevoerd onder de Overeenkomst, inclusief opschorting wegens niet-betaling.
 
 ### 5. Ondersteuning & Reactiedoelen
 
-Wink biedt ondersteuning voor de Partner-API tijdens standaard kantooruren, exclusief lokale feestdagen. Wink zal commercieel redelijke inspanningen leveren om correct ingediende ondersteuningsverzoeken binnen de volgende streefreactietijden te erkennen, gebaseerd op de ernst die jij toekent en die Wink redelijkerwijs bevestigt:
+Wink biedt ondersteuning voor de Partner-API tijdens standaard kantooruren, exclusief lokale feestdagen. Wink zal commercieel redelijke inspanningen leveren om correct ingediende ondersteuningsverzoeken te erkennen binnen de volgende streefreactietijden, gebaseerd op de door jou toegewezen ernst en die Wink redelijkerwijs bevestigt:
 
 | Ernst | Beschrijving | Streefreactie eerste contact |
 |---|---|---|
@@ -116,13 +126,13 @@ Wink biedt ondersteuning voor de Partner-API tijdens standaard kantooruren, excl
 
 Streefreactietijden beschrijven wanneer Wink streeft naar **eerste contact**; het zijn geen garanties voor oplossingsduur. Prioriteitsondersteuning en op ernst gebaseerde doelen gelden op niveaus waar deze zijn opgenomen.
 
-### 6. Gegevens & Beveiliging
+### 6. Data & Beveiliging
 
 Wink onderhoudt commercieel redelijke administratieve, technische en organisatorische maatregelen die zijn ontworpen om de vertrouwelijkheid, integriteit en beschikbaarheid van gegevens die via de Partner-API worden verwerkt te beschermen, en beoordeelt deze maatregelen periodiek. De verwerking van persoonsgegevens door Wink wordt beheerst door het [Privacybeleid](/nl/privacy) en eventuele gegevensverwerkingsovereenkomsten in de Overeenkomst. Jij blijft verantwoordelijk voor het beveiligen van je eigen API-referenties, voor het wettelijk gebruik van alle gegevens die je opvraagt, en voor het tijdig informeren van Wink bij vermoedens van credentialcompromis.
 
 ### 7. Beperking van Aansprakelijkheid
 
-Service Credits zijn de **enige en exclusieve remedie** voor enige onbeschikbaarheid of het niet nakomen van de Uptime-verplichting, en worden verstrekt in plaats van enige andere aansprakelijkheid die voortvloeit uit een dergelijk falen. Behalve zoals uitdrukkelijk vermeld in deze SLA, wordt de Partner-API geleverd op een "as is"-basis. Voor zover toegestaan door toepasselijke wetgeving, is de totale aansprakelijkheid van Wink voortvloeiend uit of verband houdend met de Service beperkt zoals uiteengezet in de Overeenkomst, en is Wink niet aansprakelijk voor enige indirecte, incidentele, speciale, gevolg- of bestraffende schade, of voor gederfde winst, omzet, gegevens of goodwill, zelfs indien gewaarschuwd voor de mogelijkheid van dergelijke schade.
+Service Credits zijn de **enige en exclusieve remedie** voor enige onbeschikbaarheid of het niet nakomen van de Uptime-verplichting, en worden verstrekt in plaats van enige andere aansprakelijkheid die voortvloeit uit een dergelijk falen. Behalve zoals uitdrukkelijk vermeld in deze SLA, wordt de Partner-API geleverd "zoals beschikbaar". Voor zover toegestaan door toepasselijke wetgeving, is de totale aansprakelijkheid van Wink voortvloeiend uit of verband houdend met de Service beperkt zoals uiteengezet in de Overeenkomst, en is Wink niet aansprakelijk voor indirecte, incidentele, speciale, gevolg- of bestraffende schade, of voor gederfde winst, omzet, gegevens of goodwill, zelfs indien gewaarschuwd voor de mogelijkheid van dergelijke schade.
 
 ### 8. Looptijd, Wijzigingen & Beëindiging
 

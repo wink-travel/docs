@@ -1,6 +1,6 @@
 ---
-title: API Partner
-description: Harga, batasan tarif, dan Perjanjian Tingkat Layanan untuk API Partner Wink yang terautentikasi.
+title: Partner API
+description: Harga, batasan tarif, dan Perjanjian Tingkat Layanan untuk Partner API Wink yang terautentikasi.
 sidebar:
   order: 0
 ---
@@ -29,27 +29,36 @@ Satu panggilan API = satu permintaan. Penggunaan yang diukur ditagih per 1.000 p
 
 ## Referensi API
 
-Dua permukaan OpenAPI melayani inventaris yang dapat dipesan, dan mereka memetakan ke dua tingkatan di atas:
+Dua permukaan melayani inventaris yang dapat dipesan, dan mereka memetakan ke dua tingkatan di atas:
 
-- **Gratis — Consumer / Booking Engine API** (`/api/public/**`): anonim, berorientasi browser dan widget. [Jelajahi referensi Booking Engine →](/id/api/booking-engine/)
-- **Berbayar — Partner Integrator API** (`/api/partner/**`): terautentikasi, penggunaan diukur, dibangun untuk integrasi server-ke-server dalam skala besar. [Jelajahi referensi Integrator →](/id/partner-api/partner/)
+- **Gratis — Consumer / Booking Engine API** (REST, `/api/public/**`): anonim, berorientasi browser dan widget. [Jelajahi referensi Booking Engine →](/id/api/booking-engine/)
+- **Berbayar — Partner Integrator API** (**gRPC**, `wink.partner.v1`): terautentikasi, penggunaan diukur, dibangun untuk integrasi server-ke-server dalam skala besar. [Jelajahi referensi Integrator →](/id/partner-api/partner/)
 
-## Cara penggunaan dan batasan bekerja
+Partner Integrator API adalah gRPC, bukan REST. Anda memanggilnya dengan klien yang dihasilkan melalui HTTP/2 di
+`partner.wink.travel:443`, melewatkan token bearer dan akun yang Anda panggil:
 
-### Tingkat Gratis
+```bash
+grpcurl -H "authorization: Bearer $WINK_TOKEN" partner.wink.travel:443 list
+```
+
+Halaman referensi di atas mendokumentasikan setiap layanan, pesan, dan status kesalahan, dan skema juga tersedia saat runtime melalui refleksi server, sehingga `grpcurl`, Postman, dan Insomnia dapat menemukannya tanpa perlu mengunduh apa pun.
+
+## Cara kerja penggunaan dan batasan
+
+### Tingkat gratis
 
 Tingkat Gratis dirancang untuk memungkinkan Anda membangun, menguji, dan menjalankan lalu lintas produksi yang sederhana tanpa biaya.
 
-- **Batas tarif — 30 permintaan per menit, dengan ledakan 60 permintaan.** Lonjakan singkat di atas tingkat berkelanjutan diserap oleh alokasi ledakan. Jika Anda melebihi, API merespons dengan **HTTP 429 (Terlalu Banyak Permintaan)** dan menerapkan **jeda 5 menit** sebelum kunci Anda melanjutkan melayani lalu lintas. Mundur dan coba lagi setelah jendela jeda daripada membombardir endpoint.
-- **Kuota bulanan — 10.000 permintaan per bulan kalender.** Setelah mencapai batas bulanan, API mengembalikan **HTTP 429 untuk sisa bulan tersebut** — penghentian keras — bersama dengan pesan yang mengundang Anda untuk berlangganan tingkat Berbayar agar dapat melanjutkan. Penghitung direset pada awal bulan kalender berikutnya.
+- **Batas tarif — 30 permintaan per menit, dengan ledakan 60 permintaan.** Lonjakan singkat di atas tingkat berkelanjutan diserap oleh alokasi ledakan. Jika Anda melebihi itu, API merespons dengan **HTTP 429 (Terlalu Banyak Permintaan)** dan menerapkan **jeda 5 menit** sebelum kunci Anda melanjutkan melayani lalu lintas. Mundur dan coba lagi setelah jendela jeda daripada membombardir endpoint.
+- **Kuota bulanan — 10.000 permintaan per bulan kalender.** Setelah Anda mencapai batas bulanan, API mengembalikan **HTTP 429 untuk sisa bulan tersebut** — penghentian keras — bersama dengan pesan yang mengundang Anda untuk berlangganan tingkat Berbayar agar dapat melanjutkan. Penghitung direset pada awal bulan kalender berikutnya.
 
 Tingkat Gratis tidak termasuk Perjanjian Tingkat Layanan atau dukungan prioritas.
 
-### Tingkat Berbayar
+### Tingkat berbayar
 
-Tingkat Berbayar menghapus batas bulanan dan jeda batas tarif, dan menagih Anda hanya untuk apa yang Anda gunakan.
+Tingkat Berbayar menghapus batas bulanan dan jeda batas tarif, dan hanya menagih Anda untuk apa yang Anda gunakan.
 
-- **Permintaan terukur — $1,00 per 1.000 permintaan.** Tidak ada batas permintaan bulanan dan tidak ada pembatasan batas tarif dalam penggunaan normal; Anda ditagih berdasarkan volume aktual.
+- **Permintaan terukur — $1,00 per 1.000 permintaan.** Tidak ada batas permintaan bulanan dan tidak ada throttling batas tarif dalam penggunaan normal; Anda ditagih berdasarkan volume aktual.
 - **Kelebihan look-to-book — $2,00 per 1.000 look berlebih.** Untuk menjaga pasokan tetap sehat, kami mengukur rasio pencarian ("look") terhadap pemesanan yang dikonfirmasi. Anda berhak atas **5.000 look per pemesanan** sebelum kelebihan berlaku. Look berlebih dihitung sebagai:
 
   `kelebihan = max(0, look − pemesanan × 5.000)`
@@ -62,16 +71,16 @@ Tingkat Berbayar mencakup Perjanjian Tingkat Layanan yang dijelaskan di bawah �
 
 _Tanggal berlaku: 5 Juli 2026 · Versi 1.0_
 
-Perjanjian Tingkat Layanan ini ("SLA") menetapkan komitmen ketersediaan, kredit layanan, dan target dukungan yang diberikan Wink ("Wink", "kami", "kita") kepada pelanggan ("Pelanggan", "Anda") untuk API Partner Wink yang terautentikasi ("Partner API" atau "Layanan") pada tingkatan di mana SLA dinyatakan berlaku. SLA ini menjadi bagian dari dan diatur oleh perjanjian antara Anda dan Wink di mana Anda mengakses Partner API ("Perjanjian"), dan berlaku selama Anda mempertahankan langganan Partner API berbayar yang aktif dan dalam kondisi baik. Istilah yang diawali huruf kapital yang tidak didefinisikan di sini memiliki arti sebagaimana diberikan dalam Perjanjian.
+Perjanjian Tingkat Layanan ini ("SLA") menetapkan komitmen ketersediaan, kredit layanan, dan target dukungan yang diberikan Wink ("Wink", "kami", "kita") kepada pelanggan ("Pelanggan", "Anda") untuk Partner API Wink yang terautentikasi ("Partner API" atau "Layanan") pada tingkatan di mana SLA dinyatakan berlaku. SLA ini menjadi bagian dari dan diatur oleh perjanjian antara Anda dan Wink di mana Anda mengakses Partner API ("Perjanjian"), dan berlaku selama Anda mempertahankan langganan Partner API berbayar yang aktif dan dalam kondisi baik. Istilah yang diawali huruf kapital yang tidak didefinisikan di sini memiliki arti sebagaimana diberikan dalam Perjanjian.
 
 ### 1. Definisi
 
 1. **"Uptime"** berarti periode di mana Partner API tersedia untuk menerima dan berhasil merespons permintaan yang dibentuk dengan benar dan terautentikasi.
-2. **"Downtime"** berarti setiap periode, diukur dalam menit, di mana Partner API gagal merespons dengan sukses permintaan yang dibentuk dengan benar dan terautentikasi, tidak termasuk periode yang termasuk dalam Pengecualian yang diatur dalam Bagian 4. Kesalahan terisolasi yang memengaruhi sebagian kecil permintaan tidak dianggap sebagai Downtime.
+2. **"Downtime"** berarti periode apa pun, diukur dalam menit, di mana Partner API gagal merespons dengan sukses permintaan yang dibentuk dengan benar dan terautentikasi, tidak termasuk periode apa pun yang termasuk dalam Pengecualian yang diatur dalam Bagian 4. Kesalahan terisolasi yang memengaruhi sebagian kecil permintaan bukanlah Downtime.
 3. **"Persentase Uptime Bulanan"** berarti, untuk bulan kalender tertentu, jumlah total menit dalam bulan tersebut dikurangi total menit Downtime, dibagi dengan jumlah total menit dalam bulan tersebut, dinyatakan dalam persentase.
-4. **"Pemeliharaan Terjadwal"** berarti pemeliharaan layanan yang direncanakan di mana Wink telah memberikan pemberitahuan sebelumnya sesuai dengan Bagian 4.
+4. **"Pemeliharaan Terjadwal"** berarti pemeliharaan Layanan yang direncanakan di mana Wink telah memberikan pemberitahuan sebelumnya sesuai dengan Bagian 4.
 5. **"Kredit Layanan"** berarti kredit, yang dihitung sebagai persentase dari biaya yang dibayar atau harus dibayar oleh Anda untuk Partner API pada bulan kalender yang terkena dampak, yang diterapkan terhadap biaya Partner API di masa depan sebagai satu-satunya dan eksklusif solusi atas kegagalan memenuhi Komitmen Uptime.
-6. **"Waktu Respons"** berarti waktu yang berlalu antara penerimaan permintaan yang dibentuk dengan benar dan terautentikasi di batas layanan Wink dan titik di mana Wink mulai mengembalikan respons, tidak termasuk waktu transit jaringan dan waktu sisi klien di luar kendali Wink.
+6. **"Waktu Respons"** berarti waktu yang berlalu antara penerimaan permintaan yang dibentuk dengan benar dan terautentikasi di batas layanan Wink dan titik di mana Wink mulai mengembalikan respons, tidak termasuk transit jaringan dan waktu sisi klien di luar kendali Wink.
 
 ### 2. Komitmen Ketersediaan & Kinerja
 
@@ -81,32 +90,32 @@ Wink juga menargetkan **Waktu Respons persentil ke-95 (P95) di bawah 500 milidet
 
 ### 3. Kredit Layanan
 
-Jika Persentase Uptime Bulanan turun di bawah Komitmen Uptime dalam bulan kalender mana pun, Anda mungkin berhak atas Kredit Layanan yang dihitung sebagai persentase dari biaya Partner API yang dibayar atau harus dibayar oleh Anda untuk bulan tersebut, sesuai tangga berikut:
+Jika Persentase Uptime Bulanan turun di bawah Komitmen Uptime dalam bulan kalender apa pun, Anda mungkin berhak atas Kredit Layanan yang dihitung sebagai persentase dari biaya Partner API yang dibayar atau harus dibayar oleh Anda untuk bulan tersebut, sesuai tangga berikut:
 
 | Persentase Uptime Bulanan | Kredit Layanan |
 |---|---|
-| Di bawah 99,9% tapi di atas atau sama dengan 99,0% | 10% |
-| Di bawah 99,0% tapi di atas atau sama dengan 95,0% | 25% |
+| Di bawah 99,9% tetapi di atas atau sama dengan 99,0% | 10% |
+| Di bawah 99,0% tetapi di atas atau sama dengan 95,0% | 25% |
 | Di bawah 95,0% | 50% |
 
-1. **Mengklaim kredit.** Untuk menerima Kredit Layanan Anda harus mengajukan klaim tertulis kepada Wink dalam waktu **tiga puluh (30) hari** setelah akhir bulan kalender di mana kekurangan terjadi. Klaim harus mencakup tanggal dan waktu setiap insiden Downtime yang Anda klaim serta log atau bukti pendukung yang wajar tersedia bagi Anda. Klaim yang diajukan setelah jendela ini tidak memenuhi syarat.
+1. **Mengajukan klaim kredit.** Untuk menerima Kredit Layanan Anda harus mengajukan klaim tertulis kepada Wink dalam waktu **tiga puluh (30) hari** setelah akhir bulan kalender di mana kekurangan terjadi. Klaim harus mencakup tanggal dan waktu setiap insiden Downtime yang Anda klaim serta log atau bukti pendukung yang wajar tersedia bagi Anda. Klaim yang diajukan setelah jendela ini tidak memenuhi syarat.
 2. **Bentuk kredit.** Kredit Layanan yang disetujui diterapkan terhadap biaya Partner API di masa depan dan tidak memiliki nilai tunai. Kredit ini bukan pengembalian dana dan tidak akan dibayarkan kecuali diwajibkan oleh hukum yang berlaku.
-3. **Kredit maksimum.** Total Kredit Layanan yang diberikan untuk satu bulan kalender tidak akan melebihi 50% dari biaya Partner API yang dibayar atau harus dibayar oleh Anda untuk bulan tersebut.
+3. **Kredit maksimum.** Total Kredit Layanan yang diberikan untuk bulan kalender tunggal tidak akan melebihi 50% dari biaya Partner API yang dibayar atau harus dibayar oleh Anda untuk bulan tersebut.
 4. **Solusi tunggal dan eksklusif.** Kredit Layanan adalah **solusi tunggal dan eksklusif** Anda atas kegagalan Wink memenuhi Komitmen Uptime atau kekurangan ketersediaan Partner API lainnya.
 
 ### 4. Pengecualian
 
 Komitmen Uptime dan Kredit Layanan yang dihasilkan tidak berlaku untuk, dan Downtime tidak termasuk, ketidaktersediaan, penangguhan, degradasi, atau masalah kinerja yang timbul dari atau terkait dengan:
 
-1. **Pemeliharaan Terjadwal** yang telah diberitahukan sebelumnya oleh Wink, dengan catatan pemberitahuan tersebut diberikan dalam waktu yang wajar sebelumnya melalui saluran yang biasa digunakan Wink untuk berkomunikasi dengan pelanggan;
+1. **Pemeliharaan Terjadwal** yang telah diberitahukan sebelumnya oleh Wink, dengan catatan pemberitahuan tersebut diberikan dalam jangka waktu yang wajar melalui saluran yang biasanya digunakan Wink untuk berkomunikasi dengan pelanggan;
 2. kejadian **force majeure** atau penyebab lain di luar kendali wajar Wink, termasuk bencana alam, tindakan pemerintah, kegagalan jaringan atau utilitas, dan serangan denial-of-service atau serangan jahat lainnya;
 3. masalah yang disebabkan oleh tindakan atau kelalaian **Anda**, peralatan, perangkat lunak, atau jaringan Anda, atau oleh layanan, produk, atau penyedia **pihak ketiga** yang tidak berada di bawah kendali langsung Wink;
-4. **penyalahgunaan Layanan** oleh Anda atau **pelanggaran Perjanjian**, SLA ini, ketentuan penggunaan yang dapat diterima, atau batas tarif yang berlaku, termasuk lalu lintas yang secara wajar ditentukan Wink sebagai berlebihan, penyalahgunaan otomatis, atau penipuan; dan
+4. **penyalahgunaan Layanan** oleh Anda atau **pelanggaran Perjanjian**, SLA ini, ketentuan penggunaan yang dapat diterima, atau batas tarif yang berlaku, termasuk lalu lintas yang secara wajar dianggap Wink berlebihan, penyalahgunaan otomatis, atau penipuan; dan
 5. setiap **penangguhan atau penghentian** akses Anda yang dilakukan dengan benar berdasarkan Perjanjian, termasuk penangguhan karena tidak membayar.
 
 ### 5. Dukungan & Target Respons
 
-Wink menyediakan dukungan untuk Partner API selama jam kerja standar, tidak termasuk hari libur lokal. Wink akan menggunakan upaya yang wajar secara komersial untuk mengakui permintaan dukungan yang diajukan dengan benar dalam target waktu respons berikut, berdasarkan tingkat keparahan yang Anda tetapkan dan yang secara wajar dikonfirmasi oleh Wink:
+Wink menyediakan dukungan untuk Partner API selama jam kerja standar, tidak termasuk hari libur lokal. Wink akan menggunakan upaya yang wajar secara komersial untuk mengakui permintaan dukungan yang diajukan dengan benar dalam waktu target respons berikut, berdasarkan tingkat keparahan yang Anda tetapkan dan yang secara wajar dikonfirmasi oleh Wink:
 
 | Tingkat Keparahan | Deskripsi | Target respons awal |
 |---|---|---|
@@ -114,7 +123,7 @@ Wink menyediakan dukungan untuk Partner API selama jam kerja standar, tidak term
 | **Sev 2 — Mayor** | Fitur penting terganggu atau menurun; ada solusi sementara. | 1 hari kerja |
 | **Sev 3 — Minor** | Pertanyaan umum, masalah kecil, atau permintaan fitur. | 2 hari kerja |
 
-Target waktu respons menggambarkan kapan Wink bertujuan melakukan **kontak awal**; ini bukan jaminan waktu penyelesaian. Dukungan prioritas dan target berbasis tingkat keparahan berlaku pada tingkatan di mana mereka dinyatakan termasuk.
+Target waktu respons menggambarkan kapan Wink bertujuan melakukan **kontak awal**; ini bukan jaminan waktu penyelesaian. Dukungan prioritas dan target berbasis tingkat keparahan berlaku pada tingkatan di mana hal tersebut dinyatakan termasuk.
 
 ### 6. Data & Keamanan
 
@@ -126,4 +135,4 @@ Kredit Layanan adalah **solusi tunggal dan eksklusif** atas ketidaktersediaan at
 
 ### 8. Masa Berlaku, Perubahan & Penghentian
 
-SLA ini berlaku selama Anda memiliki langganan Partner API aktif pada tingkatan di mana SLA dinyatakan berlaku. Wink dapat memperbarui SLA ini dari waktu ke waktu; perubahan material akan dikomunikasikan melalui saluran yang biasa digunakan Wink untuk menjangkau pelanggan, dan penggunaan Partner API yang berkelanjutan setelah pembaruan berlaku berarti penerimaan SLA yang diperbarui. SLA ini berakhir secara otomatis setelah penghentian atau berakhirnya Perjanjian atau langganan Partner API Anda. Bagian-bagian yang secara alami harus bertahan setelah penghentian — termasuk kelayakan Kredit Layanan yang belum diklaim, batasan tanggung jawab, dan definisi — tetap berlaku.
+SLA ini berlaku selama Anda memiliki langganan Partner API aktif pada tingkatan di mana SLA dinyatakan berlaku. Wink dapat memperbarui SLA ini dari waktu ke waktu; perubahan material akan dikomunikasikan melalui saluran yang biasanya digunakan Wink untuk menjangkau pelanggan, dan penggunaan Partner API yang berkelanjutan setelah pembaruan berlaku berarti penerimaan terhadap SLA yang diperbarui. SLA ini berakhir secara otomatis setelah penghentian atau berakhirnya Perjanjian atau langganan Partner API Anda. Bagian-bagian yang secara alami harus bertahan setelah penghentian — termasuk kelayakan Kredit Layanan yang belum diklaim, batasan tanggung jawab, dan definisi — tetap berlaku.
