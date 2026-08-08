@@ -1,22 +1,33 @@
 /*
  * Copyright (c) wink.travel 2026
  */
-// Fetches per-group OpenAPI schema snapshots from the springdoc endpoints and writes
-// them to ./schemas/<group>.json for use by starlight-openapi at build time.
+// Reads the per-audience OpenAPI documents from monorepo-java's BUILD OUTPUT and writes them to
+// ./schemas/<group>.json for use by starlight-openapi at build time.
 //
-// We pull one document per springdoc group (e.g. /v3/api-docs/platform-analytics)
-// rather than the single aggregate, so the docs sidebar is organised by audience
-// instead of being one flat 80+ tag dump. The group ids here must stay in sync with
+// One document per audience (rather than the single aggregate), so the sidebar is organised by
+// audience instead of being one flat 80+ tag dump. The ids here must stay in sync with
 // INVENTORY_GROUPS / INTEGRATIONS_GROUPS / PARTNER_GROUPS in astro.config.mjs.
 //
-// Failure mode: if a fetch fails (network error, 5xx, unparseable body), the existing
-// snapshot is preserved so the build keeps working against the last-good copy, and the
-// run still exits 0 — a backend restarting should not block a docs build.
+// NOTHING IS FETCHED, and that is the point.
 //
-// A 404 is treated differently and FAILS the run: springdoc serves a document for every
-// registered group, so a 404 means the group id below no longer exists upstream. That is
-// config drift, never transient, and silently keeping the old snapshot is how the site
-// ends up publishing a months-old copy of an API that has since been renamed.
+// These documents used to be pulled from a running deployment's /v3/api-docs/<group>. That has two
+// failure modes and we hit both. It documents the last DEPLOY rather than the code, silently -- production
+// served the Partner spec with 2 paths and 6 schemas for months while the code had 13 and 57. And the
+// snapshot carries whatever environment it was taken against: every schema except partner spent months
+// telling integrators to authenticate at https://dev-iam.wink.travel:9000/oauth2/token and call hosts
+// unreachable from outside the network, because someone synced against dev and committed it.
+//
+// A build artifact cannot be pointed at the wrong environment. It is generated from the code with
+// production values and is environment-independent by construction, so there is no --env flag here and no
+// host to get wrong. If you find yourself adding a fetch back, read the two paragraphs above first.
+//
+// Generate the inputs in the monorepo checkout before running this:
+//
+//   mvnd test    -pl apps/inventory-app,apps/integrations-app   # surefire writes target/openapi/*.json
+//   mvnd package -pl open-api/open-api-grpc -DskipTests         # exec:java writes partner.json
+//
+// A missing input FAILS the run rather than quietly keeping the previous snapshot, which is how a site
+// ends up publishing a months-old contract without saying so.
 
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "fs";
 import { resolve, dirname } from "path";
@@ -30,67 +41,16 @@ const SCHEMAS_DIR = resolve(__dirname, "..", "schemas");
 // Must run before the WINK_* reads below.
 loadEnv();
 
-// Target environment. Choose with `--env=local|staging|production` (or `WINK_ENV`);
-// defaults to production. Examples:
-//   npm run schemas:sync                 # production
-//   npm run schemas:sync -- --env=staging
-//   npm run schemas:sync:local           # convenience script
-// Per-host overrides (WINK_API_BASE / WINK_PARTNER_BASE) still win if set.
-// The `local` hosts use a self-signed dev cert — point NODE_EXTRA_CA_CERTS at the dev CA
-// (e.g. NODE_EXTRA_CA_CERTS=/path/to/wink.crt) rather than disabling TLS verification.
-// Three source apps, each serving its own springdoc groups:
-//   api          = inventory-app        (the audiences in INVENTORY_GROUPS)
-//   integrations = integrations-app     (the channel-manager API; see INTEGRATIONS_GROUPS)
-//   partner      = partner-app          (the Partner Integrator API; see PARTNER_GROUPS)
-// partner-app is its own deployment; its per-env openapi.url is the source of truth for that host.
-const ENVIRONMENTS = {
-  local: {
-    api: "https://dev-api.wink.travel:8443",
-    integrations: "https://dev-api.wink.travel:8445",
-    partner: "https://dev-api.wink.travel:8446",
-  },
-  staging: {
-    api: "https://staging-api.wink.travel",
-    integrations: "https://staging-integrations.wink.travel",
-    partner: "https://staging-partner.wink.travel",
-  },
-  production: {
-    api: "https://api.wink.travel",
-    integrations: "https://integrations.wink.travel",
-    partner: "https://partner.wink.travel",
-  },
-} as const;
-
-type EnvName = keyof typeof ENVIRONMENTS;
-
-const resolveEnv = (): EnvName => {
-  const flag = process.argv.find((a) => a.startsWith("--env="))?.split("=")[1];
-  const raw = (flag ?? process.env.WINK_ENV ?? "production").toLowerCase();
-  const aliases: Record<string, EnvName> = {
-    local: "local", dev: "local",
-    staging: "staging", stage: "staging",
-    production: "production", prod: "production",
-  };
-  const env = aliases[raw];
-  if (!env) {
-    console.error(`✗ Unknown environment "${raw}". Use one of: local, staging, production.`);
-    process.exit(1);
-  }
-  return env;
-};
-
-const ENV = resolveEnv();
-const API_BASE = process.env.WINK_API_BASE ?? ENVIRONMENTS[ENV].api;
-const INTEGRATIONS_BASE = process.env.WINK_INTEGRATIONS_BASE ?? ENVIRONMENTS[ENV].integrations;
-const PARTNER_BASE = process.env.WINK_PARTNER_BASE ?? ENVIRONMENTS[ENV].partner;
-
 // springdoc audience group ids per API. Keep in sync with astro.config.mjs.
 // One document per audience -> sidebar is Audience › Resource(tag) › Operation.
+// Served by inventory-app. Generated by InventoryOpenApiSpecWriterTest (surefire), same mechanism as
+// channel-manager below: a Spring MVC surface has no protobuf descriptor, so springdoc reads the
+// annotations from a hand-assembled web context with no application running.
 const INVENTORY_GROUPS: readonly string[] = [
   "reference", "extranet", "booking-engine", "studio", "social", "link-manager", "settings", "payment", "user", "travel-agent",
 ];
 
-// Served by integrations-app (INTEGRATIONS_BASE): the channel-manager / vendor-integration API
+// Served by integrations-app: the channel-manager / vendor-integration API
 // (/api/channel-manager/**, entity-scoped config, Google Hotel).
 //
 // The backend group was renamed "partner" -> "channel-manager" (IntegrationsOpenApiConfig
@@ -102,7 +62,7 @@ const INTEGRATIONS_GROUPS: readonly { readonly group: string; readonly audience:
   { group: "channel-manager", audience: "channel-manager" },
 ];
 
-// Served by the standalone partner-app (see PARTNER_BASE), not integrations-app. Renamed from
+// Served by the standalone partner-app, not integrations-app. Renamed from
 // "integrator" to "partner" backend-side (PartnerGrpcOpenApiConfig#GRPC_GROUP) once
 // "partner" was freed up above.
 //
@@ -116,19 +76,14 @@ const PARTNER_GROUPS: readonly { readonly group: string; readonly audience: stri
   { group: "partner", audience: "partner" },
 ];
 
-// A schema comes from one of two places, and the difference is architectural rather than incidental.
+// Every schema is a BUILD artifact of the code it describes, so no deployment is involved for any of
+// them. The `kind` discriminator is kept -- rather than inlining the path -- because it is the seam where
+// a fetch would have to be reintroduced, and that should be a visible, deliberate edit rather than a
+// one-word change to a string.
 //
-//   "url"  — springdoc assembles the document by scanning a RUNNING app's handler mappings, so the only
-//            way to obtain it is to ask a deployment for it.
-//   "file" — the document is a BUILD artifact of the code it describes, so no deployment is involved.
-//
-// partner-app is the second kind and is the reason this distinction exists. It is becoming gRPC-only;
-// Cloud Run exposes one port, so once Netty takes it there is no servlet left to serve /v3/api-docs and a
-// fetch-based sync would break exactly when the migration completes. Its spec is generated from the
-// protobuf descriptors by PartnerOpenApiSpecWriter in monorepo-java (open-api/open-api-grpc).
-type SchemaSource =
-  | { readonly kind: "url"; readonly url: string }
-  | { readonly kind: "file"; readonly path: string };
+// partner-app is why this became non-negotiable rather than merely preferable: it is gRPC-only, and Cloud
+// Run exposes one port, so once Netty takes it there is no servlet left to serve /v3/api-docs at all.
+type SchemaSource = { readonly kind: "file"; readonly path: string };
 
 type SchemaTarget = {
   readonly name: string;
@@ -165,13 +120,19 @@ const PARTNER_SCHEMA_FILE = resolve(
 // create it -- see the OpenAPI schema artifacts section in monorepo-java's CLAUDE.md.
 const INTEGRATIONS_SCHEMA_DIR = resolve(MONOREPO_PATH, "apps/integrations-app/target/openapi");
 
+// inventory-app's ten audience documents, generated the same way and by the same mechanism. Also produced
+// by SUREFIRE, so a `-DskipTests` build does not create them.
+const INVENTORY_SCHEMA_DIR = resolve(MONOREPO_PATH, "apps/inventory-app/target/openapi");
+
 const targets: readonly SchemaTarget[] = [
   ...INVENTORY_GROUPS.map((group) => ({
     name: group,
-    source: { kind: "url" as const, url: `${API_BASE}/v3/api-docs/${group}` },
+    source: {
+      kind: "file" as const,
+      path: resolve(INVENTORY_SCHEMA_DIR, `${group}.json`),
+    },
     outFile: `${group}.json`,
   })),
-  // Read, not fetched -- same reasoning as partner below. INTEGRATIONS_BASE is deliberately unused.
   ...INTEGRATIONS_GROUPS.map(({ group, audience }) => ({
     name: audience,
     source: {
@@ -180,9 +141,8 @@ const targets: readonly SchemaTarget[] = [
     },
     outFile: `${audience}.json`,
   })),
-  // Read, not fetched, so PARTNER_BASE is deliberately unused here -- see SchemaSource. This works for
-  // any commit without deploying it, but it does require that commit to have been BUILT: the file lives
-  // under target/ and is not committed.
+  // Works for any commit without deploying it, but it does require that commit to have been BUILT: the
+  // file lives under target/ and is not committed.
   ...PARTNER_GROUPS.map(({ audience }) => ({
     name: audience,
     source: { kind: "file" as const, path: PARTNER_SCHEMA_FILE },
@@ -211,7 +171,7 @@ type SyncResult = "refreshed" | "stale" | "unknown-group";
  */
 const GOLDEN_FIXTURE_VERSION = "0.0.0-TEST";
 
-/** Validates and writes one already-fetched/read document. Shared by both source kinds. */
+/** Validates and writes one document read off disk. */
 const persist = (target: SchemaTarget, outPath: string, body: string): SyncResult => {
   let parsed: unknown;
   try {
@@ -224,14 +184,18 @@ const persist = (target: SchemaTarget, outPath: string, body: string): SyncResul
     console.warn(`  ✗ Does not look like an OpenAPI/Swagger doc — keeping existing snapshot`);
     return "stale";
   }
-  // The golden test fixture is deliberately built with placeholder values so a version bump does not
-  // re-record it. Publishing that file instead of the real build output would put "0.0.0-TEST" on the
-  // docs site's version badge and a fake issuer in the Authentication section.
+  // Every generator defaults to a placeholder version so a version bump does not churn its golden file.
+  // Publishing one would put "0.0.0-TEST" on the docs site's version badge, so refuse it. There are two
+  // ways to arrive here and they have different fixes, so name both rather than guess.
   const info = (parsed as Record<string, unknown>).info as Record<string, unknown> | undefined;
   if (typeof info?.version === "string" && info.version === GOLDEN_FIXTURE_VERSION) {
     console.error(
-      `  ✗ info.version is "${info.version}" — that is the golden TEST fixture, not the published build\n` +
-      `    output. Read ${PARTNER_SCHEMA_FILE}, not src/test/resources.`
+      `  ✗ info.version is "${info.version}" — the placeholder, not a published build.\n` +
+      `    The springdoc generators (inventory, integrations) stamp the real revision only when asked:\n` +
+      `      mvnd test -pl apps/inventory-app     -Dinventory.openapi.version=<revision>\n` +
+      `      mvnd test -pl apps/integrations-app  -Dintegrations.openapi.version=<revision>\n` +
+      `    partner bakes it in automatically, so for that one check you are reading\n` +
+      `    target/openapi/partner.json and not src/test/resources. Keeping ${outPath}.`
     );
     return "unknown-group";
   }
@@ -254,7 +218,8 @@ const syncFromFile = (target: SchemaTarget, path: string, outPath: string): Sync
   if (!existsSync(path)) {
     console.error(
       `  ✗ No such file. This schema is generated by monorepo-java, not served by an app.\n` +
-      `    Generate it with:\n` +
+      `    Generate it with, in the monorepo checkout:\n` +
+      `      mvnd test    -pl apps/inventory-app,apps/integrations-app\n` +
       `      mvnd package -pl open-api/open-api-grpc -DskipTests\n` +
       `    or point WINK_MONOREPO_PATH at your checkout. Keeping ${outPath}, but this run will fail.`
     );
@@ -268,77 +233,31 @@ const syncFromFile = (target: SchemaTarget, path: string, outPath: string): Sync
   }
 };
 
-const syncOne = async (target: SchemaTarget): Promise<SyncResult> => {
+const syncOne = (target: SchemaTarget): SyncResult => {
   const outPath = resolve(SCHEMAS_DIR, target.outFile);
-  if (target.source.kind === "file") {
-    return syncFromFile(target, target.source.path, outPath);
-  }
-  const url = target.source.url;
-  process.stdout.write(`→ ${target.name}: GET ${url}\n`);
-  try {
-    const res = await fetch(url, {
-      headers: { Accept: "application/json" },
-    });
-    if (res.status === 404) {
-      // springdoc serves a document for every registered group, so a 404 means the group id in
-      // this file no longer exists upstream — a rename or a removed GroupedOpenApi bean. That is
-      // never transient, and treating it as a warning is how the docs site silently serves a
-      // months-old snapshot of an API that has since changed.
-      console.error(
-        `  ✗ HTTP 404 — no springdoc group at this URL. The group id in sync-schemas.ts is stale;\n` +
-        `    check the GroupedOpenApi beans in monorepo-java (open-api/**, apps/*/config).\n` +
-        `    Keeping the existing snapshot at ${outPath}, but this run will fail.`
-      );
-      return "unknown-group";
-    }
-    if (!res.ok) {
-      console.warn(
-        `  ✗ HTTP ${res.status} ${res.statusText} — keeping existing snapshot at ${outPath}`
-      );
-      return "stale";
-    }
-    return persist(target, outPath, await res.text());
-  } catch (err) {
-    const message = err instanceof Error ? err.message : String(err);
-    console.warn(`  ✗ ${message} — keeping existing snapshot at ${outPath}`);
-    return "stale";
-  }
+  return syncFromFile(target, target.source.path, outPath);
 };
 
-const main = async (): Promise<void> => {
-  // partner prints its FILE, not PARTNER_BASE. Printing a host it no longer reads would suggest the
-  // --env flag still selects the Partner source, which is exactly the confusion warned about below.
+const main = (): void => {
+  // Directories, not hosts. There is no environment to print: every document below is generated from
+  // the code with production values baked in, which is the property that makes the published reference
+  // impossible to point at a dev deployment.
   console.log(
-    `Syncing schemas from ${ENV}\n` +
-    `  api          = ${API_BASE}\n` +
-    `  integrations = ${INTEGRATIONS_SCHEMA_DIR} (build output, environment-independent)\n` +
-    `  partner      = ${PARTNER_SCHEMA_FILE} (build output, environment-independent)\n`
+    `Reading schemas from monorepo-java build output\n` +
+    `  inventory    = ${INVENTORY_SCHEMA_DIR}\n` +
+    `  integrations = ${INTEGRATIONS_SCHEMA_DIR}\n` +
+    `  partner      = ${PARTNER_SCHEMA_FILE}\n`
   );
 
-  // The Partner document is environment-INDEPENDENT, and silently so before this warning existed.
-  // open-api-grpc's exec plugin builds it with the production issuer hardcoded, so `--env=staging`
-  // still yields production token URLs in the Authentication section. That is correct for publishing
-  // (the docs site documents production) but it means the flag does nothing for this one target, and a
-  // reader running schemas:sync:staging would reasonably assume otherwise.
-  if (ENV !== "production") {
-    console.warn(
-      `⚠ partner and integrations are read from build artifacts and ignore --env=${ENV}. Its Authentication section\n` +
-      `  always carries the PRODUCTION issuer, because that is what open-api-grpc's exec plugin bakes\n` +
-      `  in. Only the ${ENV} API and integrations schemas below are actually ${ENV}.\n`
-    );
-  }
   ensureDir(SCHEMAS_DIR);
-  // Sequential to keep the log readable and avoid hammering the backend.
-  const results: SyncResult[] = [];
-  for (const target of targets) {
-    results.push(await syncOne(target));
-  }
+  // Sequential to keep the log readable.
+  const results: SyncResult[] = targets.map(syncOne);
   const okCount = results.filter((r) => r === "refreshed").length;
   const unknownGroups = results.filter((r) => r === "unknown-group").length;
   console.log(`\nDone: ${okCount}/${targets.length} schemas refreshed.`);
   if (okCount < targets.length) {
     console.log(
-      "Note: failed fetches do not overwrite existing snapshots. Re-run when upstream recovers."
+      "Note: a failed read does not overwrite the existing snapshot. Build the monorepo and re-run."
     );
   }
   if (unknownGroups > 0) {
@@ -352,7 +271,9 @@ const main = async (): Promise<void> => {
   }
 };
 
-main().catch((err) => {
+try {
+  main();
+} catch (err) {
   console.error(err);
   process.exit(1);
-});
+}
