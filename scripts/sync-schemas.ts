@@ -136,16 +136,28 @@ type SchemaTarget = {
   readonly outFile: string;
 };
 
-// Where monorepo-java is checked out, for the file-sourced schemas above. Override with WINK_MONOREPO_PATH
-// when the two repos are not siblings.
+const optionalEnvPath = (name: string, fallback: string): string => {
+  const value = process.env[name];
+  return value && value.trim().length > 0 ? value : fallback;
+};
+
+// Where monorepo-java is checked out, for the file-sourced schemas below. Override with
+// WINK_MONOREPO_PATH when the two repos are not siblings; an absolute value wins, as resolve() gives
+// an absolute segment precedence.
 const MONOREPO_PATH = resolve(
   __dirname, "..", optionalEnvPath("WINK_MONOREPO_PATH", "../monorepo-java")
 );
 
-function optionalEnvPath(name: string, fallback: string): string {
-  const value = process.env[name];
-  return value && value.trim().length > 0 ? value : fallback;
-}
+// The generated Partner document. NOT committed -- it is build output under target/, and monorepo-java
+// gitignores that. Run this first, in the monorepo checkout:
+//
+//   mvnd package -pl open-api/open-api-grpc -DskipTests
+//
+// The file that IS committed there is the golden TEST fixture, built with placeholder values on
+// purpose; publishing it would put "0.0.0-TEST" on the version badge, which persist() refuses to do.
+const PARTNER_SCHEMA_FILE = resolve(
+  MONOREPO_PATH, "open-api/open-api-grpc/target/openapi/partner.json"
+);
 
 const targets: readonly SchemaTarget[] = [
   ...INVENTORY_GROUPS.map((group) => ({
@@ -158,18 +170,12 @@ const targets: readonly SchemaTarget[] = [
     source: { kind: "url" as const, url: `${INTEGRATIONS_BASE}/v3/api-docs/${group}` },
     outFile: `${audience}.json`,
   })),
-  // Read, not fetched. PARTNER_BASE is deliberately unused for this one -- see SchemaSource. The
-  // generated file is committed in monorepo-java, so this sync works offline and for any commit,
-  // including one that has not been deployed.
+  // Read, not fetched, so PARTNER_BASE is deliberately unused here -- see SchemaSource. This works for
+  // any commit without deploying it, but it does require that commit to have been BUILT: the file lives
+  // under target/ and is not committed.
   ...PARTNER_GROUPS.map(({ audience }) => ({
     name: audience,
-    source: {
-      kind: "file" as const,
-      path: resolve(
-        MONOREPO_PATH,
-        "open-api/open-api-grpc/target/openapi/partner.json"
-      ),
-    },
+    source: { kind: "file" as const, path: PARTNER_SCHEMA_FILE },
     outFile: `${audience}.json`,
   })),
 ];
@@ -188,6 +194,13 @@ const isOpenApiDoc = (value: unknown): boolean => {
 // snapshot, but only the second is a bug we must not ship past.
 type SyncResult = "refreshed" | "stale" | "unknown-group";
 
+/**
+ * The version PartnerOpenApiDocumentTest builds its golden fixture with. Matched exactly rather than by
+ * substring: a real version is a semver from ${revision}, and a loose `includes("TEST")` would reject a
+ * legitimate one that happened to contain it.
+ */
+const GOLDEN_FIXTURE_VERSION = "0.0.0-TEST";
+
 /** Validates and writes one already-fetched/read document. Shared by both source kinds. */
 const persist = (target: SchemaTarget, outPath: string, body: string): SyncResult => {
   let parsed: unknown;
@@ -205,10 +218,10 @@ const persist = (target: SchemaTarget, outPath: string, body: string): SyncResul
   // re-record it. Publishing that file instead of the real build output would put "0.0.0-TEST" on the
   // docs site's version badge and a fake issuer in the Authentication section.
   const info = (parsed as Record<string, unknown>).info as Record<string, unknown> | undefined;
-  if (typeof info?.version === "string" && info.version.includes("TEST")) {
+  if (typeof info?.version === "string" && info.version === GOLDEN_FIXTURE_VERSION) {
     console.error(
       `  ✗ info.version is "${info.version}" — that is the golden TEST fixture, not the published build\n` +
-      `    output. Read target/openapi/partner.json, not src/test/resources.`
+      `    output. Read ${PARTNER_SCHEMA_FILE}, not src/test/resources.`
     );
     return "unknown-group";
   }
@@ -283,7 +296,27 @@ const syncOne = async (target: SchemaTarget): Promise<SyncResult> => {
 };
 
 const main = async (): Promise<void> => {
-  console.log(`Syncing schemas from ${ENV}\n  api          = ${API_BASE}\n  integrations = ${INTEGRATIONS_BASE}\n  partner      = ${PARTNER_BASE}\n`);
+  // partner prints its FILE, not PARTNER_BASE. Printing a host it no longer reads would suggest the
+  // --env flag still selects the Partner source, which is exactly the confusion warned about below.
+  console.log(
+    `Syncing schemas from ${ENV}\n` +
+    `  api          = ${API_BASE}\n` +
+    `  integrations = ${INTEGRATIONS_BASE}\n` +
+    `  partner      = ${PARTNER_SCHEMA_FILE} (build output, environment-independent)\n`
+  );
+
+  // The Partner document is environment-INDEPENDENT, and silently so before this warning existed.
+  // open-api-grpc's exec plugin builds it with the production issuer hardcoded, so `--env=staging`
+  // still yields production token URLs in the Authentication section. That is correct for publishing
+  // (the docs site documents production) but it means the flag does nothing for this one target, and a
+  // reader running schemas:sync:staging would reasonably assume otherwise.
+  if (ENV !== "production") {
+    console.warn(
+      `⚠ partner is read from a build artifact and ignores --env=${ENV}. Its Authentication section\n` +
+      `  always carries the PRODUCTION issuer, because that is what open-api-grpc's exec plugin bakes\n` +
+      `  in. Only the ${ENV} API and integrations schemas below are actually ${ENV}.\n`
+    );
+  }
   ensureDir(SCHEMAS_DIR);
   // Sequential to keep the log readable and avoid hammering the backend.
   const results: SyncResult[] = [];
