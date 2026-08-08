@@ -29,10 +29,21 @@ One API call = one request. Metered usage is billed per 1,000 requests.
 
 ## API reference
 
-Two OpenAPI surfaces serve bookable inventory, and they map to the two tiers above:
+Two surfaces serve bookable inventory, and they map to the two tiers above:
 
-- **Free — Consumer / Booking Engine API** (`/api/public/**`): anonymous, browser- and widget-facing. [Browse the Booking Engine reference →](/api/booking-engine/)
-- **Paid — Partner Integrator API** (`/api/partner/**`): authenticated, usage-metered, built for server-to-server integration at scale. [Browse the Integrator reference →](/partner-api/partner/)
+- **Free — Consumer / Booking Engine API** (REST, `/api/public/**`): anonymous, browser- and widget-facing. [Browse the Booking Engine reference →](/api/booking-engine/)
+- **Paid — Partner Integrator API** (**gRPC**, `wink.partner.v1`): authenticated, usage-metered, built for server-to-server integration at scale. [Browse the Integrator reference →](/partner-api/partner/)
+
+The Partner Integrator API is gRPC, not REST. You call it with a generated client over HTTP/2 at
+`partner.wink.travel:443`, passing a bearer token and the account you are calling for:
+
+```bash
+grpcurl -H "authorization: Bearer $WINK_TOKEN" partner.wink.travel:443 list
+```
+
+The reference page above documents every service, message and error status, and the schema is also
+available at runtime through server reflection, so `grpcurl`, Postman and Insomnia discover it with
+nothing to download.
 
 ## How usage and limits work
 
