@@ -1,0 +1,81 @@
+---
+title: Taxonomy
+description: The controlled vocabularies the Wink platform uses — OTA codes for amenities, bed types, room views and more, plus every supported language and currency.
+sidebar:
+  order: 12
+---
+
+import taxonomy from '@/data/taxonomy.json';
+import OtaCategories from '@/components/taxonomy/ota-categories.astro';
+import CodeTable from '@/components/taxonomy/code-table.astro';
+
+Wink describes inventory using controlled vocabularies — fixed sets of codes with agreed meanings. When
+you send `"5"` as a hotel amenity, the platform reads it as *Air conditioning*, and every consumer of
+that data does too.
+
+This page is the published reference for all three vocabularies:
+
+- **OTA codes** — {taxonomy.ota.codeCount} codes across {taxonomy.ota.categoryCount} categories, covering
+  amenities, bed types, room views, accessibility features, cuisine, and more.
+- **Languages** — the {taxonomy.languages.list.length} languages content can be authored and served in.
+- **Currencies** — the {taxonomy.currencies.list.length} currencies rates can be quoted and settled in.
+
+Codes are stable. Names may be reworded for clarity, so match on the **code**, never on the name.
+
+## OTA codes
+
+Wink follows the [OpenTravel Alliance](https://opentravel.org/) code lists. Each category has a
+three-letter identifier — `HAC` for hotel amenities, `BED` for bed types — and every code within a
+category is unique to it. The same numeric value means different things in different categories, so a
+code is only meaningful alongside the category it belongs to: `BED` `1` is *Double / Full*, while `HAC`
+`1` is *24-hour front desk*.
+
+Select a category to see its codes.
+
+<OtaCategories
+  categories={taxonomy.ota.categories}
+  categoryHeader="Category"
+  descriptionHeader="Description"
+  countHeader="Codes"
+  codeHeader="Code"
+  nameHeader="Name"
+/>
+
+## Languages
+
+Content — property descriptions, room names, policies — can be authored in any of these languages.
+Codes are [IETF BCP 47](https://www.rfc-editor.org/info/bcp47) tags: a two-letter
+[ISO 639-1](https://www.iso.org/iso-639-language-code) language, optionally followed by an
+[ISO 3166-1](https://www.iso.org/iso-3166-country-codes.html) region where the platform distinguishes
+regional variants — `pt-BR` and `pt-PT` are carried separately, as are `es`, `es-AR`, and `es-MX`.
+
+The platform default is `{taxonomy.languages.default}`, used when a request specifies no language and
+when a translation is unavailable.
+
+<CodeTable
+  rows={taxonomy.languages.list}
+  codeHeader="Code"
+  nameHeader="Language"
+  unnamedLabel="No standard name"
+/>
+
+## Currencies
+
+Rates can be quoted and settled in any of these currencies. Codes are
+[ISO 4217](https://www.iso.org/iso-4217-currency-codes.html) three-letter identifiers.
+
+The platform default is `{taxonomy.currencies.default}`. It is the fallback display currency and the
+unit platform-level figures are normalised to; it is **not** the currency a booking settles in — hotels
+settle in their own currency, so a rate quoted in one currency and paid in another carries an exchange
+spread.
+
+A few entries are not national currencies: `XAU` and `XAG` are gold and silver, `XDR` is the IMF's
+Special Drawing Right, and `BTC` is Bitcoin. These are carried for valuation and reporting, and are not
+generally usable as a settlement currency.
+
+<CodeTable
+  rows={taxonomy.currencies.list}
+  codeHeader="Code"
+  nameHeader="Currency"
+  unnamedLabel="No standard name"
+/>

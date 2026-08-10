@@ -139,6 +139,35 @@ The site uses these Starlight plugins (see `astro.config.mjs`):
 
 Sidebar is explicitly listed in `astro.config.mjs` (not fully auto-generated): each top-level group is `autogenerate`'d from a directory under `src/content/docs/`, and a single "API" group (containing the `apiSidebarGroup` placeholder) appears immediately after Developers. Adding a new top-level docs section requires editing the `sidebar` array.
 
+### Taxonomy (Developers > Taxonomy)
+
+`src/data/taxonomy.json` holds the platform's three controlled vocabularies — OTA codes (25 categories,
+1,475 codes), supported languages (44), supported currencies (164) — rendered by
+`src/content/docs/developers/taxonomy.mdx` via the components in `src/components/taxonomy/`.
+
+**The values are HARDCODED here on purpose, and this repo is becoming their published home.** They are
+not synced from monorepo-java and there is no `taxonomy:sync` script, because the backend endpoints that
+used to serve them (`/reference-data/ota/list`, `/reference-data/ota/{category}`,
+`/reference-data/language/list`, `/reference-data/currency/list`) are being retired now that this page
+exists. A sync script would point the dependency back at the thing being removed.
+
+Their original upstreams, for the record — useful when reconciling a change, not as a build input:
+
+| vocabulary | was |
+|---|---|
+| OTA codes | `reference/reference-domain/src/main/resources/ota/*.json` (still used at runtime for code→label resolution in booking emails, PDFs, lead suggestions, embeddings — those stay) |
+| languages | `platform.supported-languages` in `apps/inventory-app/src/main/resources/application.properties` |
+| currencies | `platform.supported-currencies`, same file |
+
+`taxonomy.json` carries **no timestamp**, so regenerating it produces a diff only when a value actually
+changed — a "nothing moved" commit is indistinguishable from a real contract change otherwise.
+
+Component chrome (table headers, the "No standard name" placeholder) is passed in as **props from the
+MDX**, never hardcoded in the `.astro` files. `translate-i18n.ts` translates whole MDX files and never
+opens a component, so a header written inside `code-table.astro` would stay English in all 40+ locales
+with nothing to flag it. The code values themselves are deliberately outside the MDX so translation
+cannot touch them — a translated OTA code is a broken one.
+
 ## Important Patterns
 
 **Splash Pages:** Use template: splash in frontmatter and import marketing components

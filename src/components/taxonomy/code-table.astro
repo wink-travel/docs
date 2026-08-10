@@ -1,0 +1,60 @@
+---
+/*
+ * Copyright (c) wink.travel 2026
+ */
+// A two-column code/name table, used for the supported-language and supported-currency lists.
+//
+// Every human-readable string is a PROP rather than a literal. scripts/translate-i18n.ts translates
+// whole MDX files and never opens a .astro component, so a header hardcoded here would stay English
+// in all 40+ locales with nothing to flag it. Passing them in from the calling MDX puts them inside
+// the file the translation pipeline actually reads.
+
+interface Props {
+  rows: ReadonlyArray<{ readonly code: string; readonly name: string | null }>;
+  codeHeader: string;
+  nameHeader: string;
+  /** Rendered in the name cell when CLDR has no English name for the code. */
+  unnamedLabel: string;
+}
+
+const { rows, codeHeader, nameHeader, unnamedLabel } = Astro.props;
+---
+
+<div class="taxonomy-scroll">
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">{codeHeader}</th>
+        <th scope="col">{nameHeader}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {rows.map(({ code, name }) => (
+        <tr>
+          <td><code>{code}</code></td>
+          <td>{name ?? <em>{unnamedLabel}</em>}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
+<style>
+  /* Long vocabularies scroll inside their own box rather than widening the page. */
+  .taxonomy-scroll {
+    max-height: 30rem;
+    overflow: auto;
+  }
+
+  .taxonomy-scroll table {
+    margin: 0;
+    width: 100%;
+  }
+
+  .taxonomy-scroll thead th {
+    background: var(--sl-color-black);
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+</style>

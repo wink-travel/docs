@@ -1,0 +1,133 @@
+---
+/*
+ * Copyright (c) wink.travel 2026
+ */
+// Renders the OTA vocabulary: an index of the categories, then one collapsible block per category
+// holding its codes.
+//
+// Collapsed by default because the full vocabulary is ~1,475 rows. Built with <details>, so it works
+// with no JavaScript and the browser's own in-page find still reaches a closed section in Chromium
+// (hidden="until-found"); the anchors in the index open the target section natively.
+//
+// Human-readable chrome arrives as PROPS rather than literals. scripts/translate-i18n.ts translates
+// whole MDX files and never opens a .astro component, so a header hardcoded here would stay English
+// in all 40+ locales with nothing to flag it.
+
+interface OtaCategory {
+  readonly code: string;
+  readonly label: string;
+  readonly codes: ReadonlyArray<{ readonly value: string; readonly label: string }>;
+}
+
+interface Props {
+  categories: ReadonlyArray<OtaCategory>;
+  categoryHeader: string;
+  descriptionHeader: string;
+  countHeader: string;
+  codeHeader: string;
+  nameHeader: string;
+}
+
+const {
+  categories,
+  categoryHeader,
+  descriptionHeader,
+  countHeader,
+  codeHeader,
+  nameHeader,
+} = Astro.props;
+
+const anchorFor = (code: string): string => `ota-${code.toLowerCase()}`;
+---
+
+<div class="taxonomy-scroll">
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">{categoryHeader}</th>
+        <th scope="col">{descriptionHeader}</th>
+        <th scope="col">{countHeader}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {categories.map(({ code, label, codes }) => (
+        <tr>
+          <td><a href={`#${anchorFor(code)}`}><code>{code}</code></a></td>
+          <td>{label}</td>
+          <td>{codes.length}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
+{categories.map(({ code, label, codes }) => (
+  <details id={anchorFor(code)} class="taxonomy-category">
+    <summary>
+      <code>{code}</code> — {label} <span class="taxonomy-count">({codes.length})</span>
+    </summary>
+    <div class="taxonomy-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">{codeHeader}</th>
+            <th scope="col">{nameHeader}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {codes.map(({ value, label: name }) => (
+            <tr>
+              <td><code>{value}</code></td>
+              <td>{name}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </details>
+))}
+
+<style>
+  .taxonomy-scroll {
+    max-height: 30rem;
+    overflow: auto;
+  }
+
+  .taxonomy-scroll table {
+    margin: 0;
+    width: 100%;
+  }
+
+  .taxonomy-scroll thead th {
+    background: var(--sl-color-black);
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+
+  .taxonomy-category {
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 0.25rem;
+    margin-block: 0.5rem;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .taxonomy-category > summary {
+    cursor: pointer;
+    font-weight: 600;
+  }
+
+  .taxonomy-category[open] > summary {
+    margin-block-end: 0.5rem;
+  }
+
+  .taxonomy-count {
+    color: var(--sl-color-gray-3);
+    font-weight: 400;
+  }
+
+  /* Anchored category lands below the sticky header instead of under it. */
+  .taxonomy-category:target {
+    scroll-margin-top: 6rem;
+  }
+</style>
