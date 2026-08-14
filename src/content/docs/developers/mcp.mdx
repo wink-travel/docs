@@ -1,18 +1,111 @@
 ---
 title: MCP Servers
-description: Connect AI agents to the Wink platform via the Model Context Protocol. Authenticated MCP servers give your agent direct access to inventory, bookings, channel manager integrations, and more — secured by interactive OAuth2 login.
+description: Connect AI agents to the Wink platform via the Model Context Protocol. Wink publishes its tools as focused, job-shaped endpoints so your agent loads only what your work needs — secured by interactive OAuth2 login.
 sidebar:
   order: 10
 ---
 
 import { Steps, LinkButton, Aside, Tabs, TabItem } from '@astrojs/starlight/components';
 
-Wink exposes two authenticated MCP servers. Both use **interactive OAuth2 login** (PKCE authorization code flow) — your AI agent opens a browser tab so you sign in with your Wink account. No client secrets to manage.
+Wink's MCP tools are published as **toolsets** — focused endpoints, each covering one job. You connect your AI client to the one or two that match your work, not to all of them.
 
-| Server | URL | What it does |
-|--------|-----|--------------|
-| **Inventory API** | `https://api.wink.travel/mcp` | Inventory, bookings, rates, sales channels, analytics, and all platform operations |
-| **Integrations** | `https://integrations.wink.travel/mcp` | Channel manager integrations — sync properties, rates, and availability with OTAs |
+Every endpoint uses **interactive OAuth2 login** (PKCE authorization code flow): your AI agent opens a browser tab, you sign in with your Wink account, and that is it. No client secrets to manage.
+
+```bash title="A channel manager integrator connects to one endpoint"
+claude mcp add wink-channel-manager https://integrations.wink.travel/mcp/channel-manager --transport http
+```
+
+```bash title="A hotelier managing their own rates connects to another"
+claude mcp add wink-rates https://api.wink.travel/mcp/extranet/rates --transport http
+```
+
+---
+
+## Why the tools are split across endpoints
+
+Wink exposes around 500 tools. Handing all of them to an agent at once is technically possible — and a bad idea.
+
+**Tool definitions cost context.** Every tool an MCP server advertises is loaded into the model's context window before it does any work, along with its description and full parameter schema. Five hundred of those consume a large share of the budget your actual task needs, on every single request.
+
+**Choice quality falls as the list grows.** An agent picking from 500 similarly-named tools makes worse choices than one picking from 40. If you integrate a channel manager, roughly twenty tools are relevant to you; the other 480 are noise that makes the right tool harder to find.
+
+**The work is genuinely separable.** Someone syncing availability from a PMS and someone curating affiliate landing pages share almost no tools. Splitting by job means each connection carries the vocabulary of one job.
+
+<Aside type="caution" title="Toolsets are not permissions">
+Choosing a narrow toolset does **not** restrict what your account can do, and choosing a broad one does not grant anything extra. Every tool enforces the same account permissions as the web portal, under your signed-in identity. If your account cannot cancel a booking in Wink Portal, the agent cannot either — regardless of which endpoint it is connected to.
+
+Pick toolsets for **focus**, not for security.
+</Aside>
+
+---
+
+## Endpoint directory
+
+Two hosts serve toolsets. Tool counts are approximate and grow over time.
+
+### `https://api.wink.travel` — the platform
+
+| Endpoint | Tools | What it covers |
+|---|---:|---|
+| `/mcp/extranet/facilities` | ~64 | The bookable and on-site inventory: guest rooms and room types, spas, restaurants, meeting rooms, activities, attractions, places, other sellable items |
+| `/mcp/extranet/property` | ~62 | The property record and its commercial terms: profile and content, add-ons, cancellation policies, perks, announcements |
+| `/mcp/settings` | ~60 | Account administration: managing-entity profile and branding, managers and their grants, customization, webhooks, notification preferences |
+| `/mcp/studio/embeds` | ~48 | Publishing curated inventory: widgets, grids and ranked grids, cards, maps, deep links to inventory and supplier pages |
+| `/mcp/extranet/rates` | ~44 | Prices and availability: inventory rate periods and allotments, rate plans, master rates, special and promotional rates |
+| `/mcp/extranet/operations` | ~39 | Running a live property: reservations and their lifecycle, guest reviews and responses, calendar feeds, scheduled tasks |
+| `/mcp/extranet/distribution` | ~37 | Where inventory is sold: sales channels and rate modifiers, affiliate and supplier relationship requests, registration, lead capture |
+| `/mcp/studio/curation` | ~35 | Building merchandisable collections: static and dynamic lists, ranked lists, saved searches, property aggregates |
+| `/mcp/link-manager` | ~28 | Syndicated link collections, their design, categories and tags, plus shortened URLs |
+| `/mcp/reference` | ~24 | Read-only lookup data: countries, currencies and exchange rates, languages, timezones, geo lookups, IP geolocation |
+| `/mcp/analytics` | ~18 | Booking and revenue analytics: overviews, line charts, leaderboards, affiliate performance, share metrics |
+| `/mcp/payment` | ~18 | Financial operations: the ledger, withdrawals and fee estimates, booking funds aggregates |
+| `/mcp/booking-engine` | ~17 | The traveller-facing shopping path: search and lookup, shopping cart and checkout, bucket lists, campaign customization |
+| `/mcp/social` | ~17 | Connected social accounts, publishing and scheduling posts, reading post insights |
+| `/mcp/travel-agent` | ~8 | Agent-facilitated bookings on behalf of travellers, and agent reports |
+
+### `https://integrations.wink.travel` — channel manager integrations
+
+One endpoint, because this host exists for one job.
+
+| Endpoint | Tools | What it covers |
+|---|---:|---|
+| `/mcp/channel-manager` | ~9 | Connecting and verifying a channel manager, PMS or CRS integration |
+
+<Aside type="note" title="Integrating a channel manager vs. managing your own rates">
+These are different jobs for different people, and they do not share an endpoint.
+
+A **channel manager, PMS or CRS vendor** integrates once through `integrations.wink.travel/mcp/channel-manager`, and from then on exchanges properties, rates, availability and reservations over that integration. That single endpoint is the whole surface.
+
+A **hotelier changing their own rates by hand** uses the extranet toolsets on `api.wink.travel` — `/mcp/extranet/rates` and friends. Those are not part of a channel manager integration and an integrator has no reason to connect to them.
+
+Account administration is also on `api.wink.travel`, at `/mcp/settings`. There is no `/mcp/settings` on the integrations host.
+</Aside>
+
+Every endpoint also carries a `ping` tool, so you can confirm a connection is live before asking it to do real work.
+
+---
+
+## Which toolsets do I need?
+
+| If you are… | Connect to |
+|---|---|
+| **Integrating a channel manager, PMS or CRS** | `integrations.wink.travel/mcp/channel-manager` — just this one |
+| **Managing a property's content** | `/mcp/extranet/property` + `/mcp/extranet/facilities` |
+| **Managing rooms and room types** | `/mcp/extranet/facilities` |
+| **Managing prices and availability** | `/mcp/extranet/rates` |
+| **Running day-to-day reservations** | `/mcp/extranet/operations` |
+| **Growing distribution** | `/mcp/extranet/distribution` + `/mcp/analytics` |
+| **Building affiliate pages** | `/mcp/studio/curation` + `/mcp/studio/embeds` |
+| **Running link-in-bio pages** | `/mcp/link-manager` + `/mcp/social` |
+| **Booking on behalf of travellers** | `/mcp/travel-agent` |
+| **Reconciling money** | `/mcp/payment` |
+| **Building a booking experience** | `/mcp/booking-engine` + `/mcp/reference` |
+
+Start with one. Add another when you find yourself asking for something it cannot do — each connection is independent, and adding one never affects the others.
+
+<Aside type="tip" title="Still want everything?">
+`https://api.wink.travel/mcp` and `https://integrations.wink.travel/mcp` remain available and serve **every** tool on their host. They are useful for exploring what exists, but we do not recommend them for day-to-day work: the tool list is large enough to crowd out your task and degrade the agent's tool selection. Prefer the toolsets above.
+</Aside>
 
 ---
 
@@ -42,9 +135,9 @@ Every tool call runs **under your identity** — the same ACL rules that protect
    npm install -g @anthropic-ai/claude-code
    ```
 
-2. Add the Wink Inventory MCP server:
+2. Pick a toolset from the [directory above](#endpoint-directory) and add it. For example, prices and availability:
    ```bash
-   claude mcp add wink-inventory https://api.wink.travel/mcp --transport http
+   claude mcp add wink-rates https://api.wink.travel/mcp/extranet/rates --transport http
    ```
 
 3. Claude Code contacts the server, discovers the authorization server, and opens your default browser.
@@ -54,13 +147,16 @@ Every tool call runs **under your identity** — the same ACL rules that protect
 5. Claude Code confirms the connection. Type `/mcp` to verify the server appears and its tools have loaded.
 </Steps>
 
-To add the Integrations server as well:
+Add as many toolsets as your work needs — each is a separate server entry with its own name:
 ```bash
-claude mcp add wink-integrations https://integrations.wink.travel/mcp --transport http
+claude mcp add wink-operations https://api.wink.travel/mcp/extranet/operations --transport http
+claude mcp add wink-analytics  https://api.wink.travel/mcp/analytics           --transport http
 ```
 
+You only sign in once. After the first browser approval, Claude Code reuses your Wink session for additional Wink endpoints.
+
 :::tip[Share with your team]
-Add `--scope project` to `claude mcp add` and Claude Code writes the server URL to `.mcp.json` at the repo root. Commit that file — each team member completes their own browser sign-in the first time they connect.
+Add `--scope project` to `claude mcp add` and Claude Code writes the server URL to `.mcp.json` at the repo root. Commit that file — every team member gets the same toolsets, and each completes their own browser sign-in the first time they connect.
 :::
 
   </TabItem>
@@ -77,13 +173,13 @@ Add `--scope project` to `claude mcp add` and Claude Code writes the server URL 
    ```json title="claude_desktop_config.json"
    {
      "mcpServers": {
-       "wink-inventory": {
+       "wink-extranet-rates": {
          "type": "http",
-         "url": "https://api.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/rates"
        },
-       "wink-integrations": {
+       "wink-extranet-operations": {
          "type": "http",
-         "url": "https://integrations.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/operations"
        }
      }
    }
@@ -114,13 +210,13 @@ Add `--scope project` to `claude mcp add` and Claude Code writes the server URL 
    ```json title="~/.codex/config.json"
    {
      "mcpServers": {
-       "wink-inventory": {
+       "wink-extranet-rates": {
          "type": "http",
-         "url": "https://api.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/rates"
        },
-       "wink-integrations": {
+       "wink-extranet-operations": {
          "type": "http",
-         "url": "https://integrations.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/operations"
        }
      }
    }
@@ -149,20 +245,20 @@ MCP server support is available in the **ChatGPT desktop app** for Plus, Pro, Te
 
 3. Go to **Connectors** (or **MCP Servers** depending on your app version) and click **Add**.
 
-4. Enter the Wink Inventory server URL:
+4. Enter the URL of a toolset from the [directory above](#endpoint-directory), for example:
    ```
-   https://api.wink.travel/mcp
+   https://api.wink.travel/mcp/extranet/rates
    ```
    Then click **Connect**.
 
 5. ChatGPT opens a browser tab to `https://iam.wink.travel`. **Sign in to Wink** and approve permissions.
 
-6. Repeat steps 4–5 for the Integrations server:
+6. Repeat steps 4–5 for any other toolset your work needs, for example:
    ```
-   https://integrations.wink.travel/mcp
+   https://api.wink.travel/mcp/extranet/operations
    ```
 
-7. Both servers appear in your Connectors list. Start a new chat — Wink tools are available automatically.
+7. Each toolset appears in your Connectors list. Start a new chat — Wink tools are available automatically.
 </Steps>
 
 :::note[Web app limitation]
@@ -182,13 +278,13 @@ MCP servers are only configurable in the **desktop app**. The ChatGPT web interf
    ```json title="~/.cursor/mcp.json"
    {
      "mcpServers": {
-       "wink-inventory": {
+       "wink-extranet-rates": {
          "type": "http",
-         "url": "https://api.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/rates"
        },
-       "wink-integrations": {
+       "wink-extranet-operations": {
          "type": "http",
-         "url": "https://integrations.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/operations"
        }
      }
    }
@@ -218,13 +314,13 @@ You can also place an `mcp.json` file at the root of your project instead of in 
    ```json title="~/.codeium/windsurf/mcp_config.json"
    {
      "mcpServers": {
-       "wink-inventory": {
+       "wink-extranet-rates": {
          "type": "http",
-         "url": "https://api.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/rates"
        },
-       "wink-integrations": {
+       "wink-extranet-operations": {
          "type": "http",
-         "url": "https://integrations.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/operations"
        }
      }
    }
@@ -260,13 +356,13 @@ Cline is a VS Code extension with a built-in MCP server manager. No manual JSON 
    ```json title="cline_mcp_settings.json"
    {
      "mcpServers": {
-       "wink-inventory": {
+       "wink-extranet-rates": {
          "type": "http",
-         "url": "https://api.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/rates"
        },
-       "wink-integrations": {
+       "wink-extranet-operations": {
          "type": "http",
-         "url": "https://integrations.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/operations"
        }
      }
    }
@@ -278,7 +374,7 @@ Cline is a VS Code extension with a built-in MCP server manager. No manual JSON 
 </Steps>
 
 :::tip[Alternative: add via URL]
-In the MCP Servers panel, click **Add Server** and paste `https://api.wink.travel/mcp` directly. Cline auto-populates the config and handles authentication without editing JSON manually.
+In the MCP Servers panel, click **Add Server** and paste a toolset URL such as `https://api.wink.travel/mcp/extranet/rates` directly. Cline auto-populates the config and handles authentication without editing JSON manually.
 :::
 
   </TabItem>
@@ -295,10 +391,15 @@ clients use the same permission vocabulary as the rest of the platform — see t
 Two things are specific to MCP:
 
 - **The `mcp.read` `mcp.write` `mcp.remove` scopes are additionally required** to open the MCP
-  transport. A client that holds an `mcp.*` scope is admitted to `/mcp`, but every tool it invokes
-  still enforces the section scope of the endpoint it wraps (e.g. `booking.read`).
+  transport. A client that holds an `mcp.*` scope is admitted to any Wink MCP endpoint, but every
+  tool it invokes still enforces the section scope of the endpoint it wraps (e.g. `booking.read`).
 - **The AI client requests only the scopes it needs.** You can deny individual permissions on the
   consent screen — tools that require a denied scope will return an error when invoked.
+
+**Toolsets do not change any of this.** The endpoint you connect to decides which tools are *listed*,
+not what they are *allowed to do*. Connecting to `/mcp/payment` grants no financial permission you
+did not already have, and connecting to `/mcp/reference` does not stop a tool there from enforcing
+its own scope. Authorization is decided per tool call, from your token and your account's grants.
 
 ---
 
@@ -317,15 +418,27 @@ Your cached token may be stale. Remove and re-add the server to trigger a fresh 
 
 ```bash
 # Claude Code
-claude mcp remove wink-inventory
-claude mcp add wink-inventory https://api.wink.travel/mcp --transport http
+claude mcp remove wink-rates
+claude mcp add wink-rates https://api.wink.travel/mcp/extranet/rates --transport http
 ```
 
 For Claude Desktop and ChatGPT, remove the server entry from settings, restart the app, and add it again.
 
 **`403 Forbidden` when calling a specific tool**
 
-The tool requires a scope you did not approve on the consent screen. Reconnect the server — the consent screen will appear again and you can approve the missing permission.
+The tool requires a scope you did not approve on the consent screen, or a permission your account does not hold. Reconnect the server — the consent screen will appear again and you can approve the missing permission. If it still fails, the tool needs an account permission you do not have; connecting to a different toolset will not help, because toolsets do not grant permissions.
+
+**The tool I need isn't in the list**
+
+You are probably connected to a toolset that does not cover that job. Check the [endpoint directory](#endpoint-directory) and add the toolset that does — connections are independent, so adding one changes nothing about the others. If you are unsure which one has it, connect to `https://api.wink.travel/mcp` temporarily, find the tool, then look up which toolset lists it.
+
+**`404 Not Found` on a toolset endpoint**
+
+Check the path carefully — the nested toolsets have two segments (`/mcp/extranet/rates`, not `/mcp/extranet-rates`), and the flat ones have one (`/mcp/link-manager`). Note that an *unauthenticated* request to any path under `/mcp` returns `401`, not `404`, so a `401` alone does not tell you whether the endpoint exists.
+
+**I connected to `api.wink.travel/mcp/channel-manager` and got nothing**
+
+That endpoint does not exist. Channel manager integration is served from `https://integrations.wink.travel/mcp/channel-manager` only. If you also need to read or write a property's own rates by hand, that is a separate job on a separate endpoint — see `/mcp/extranet/rates`.
 
 **The server appears but tool calls return "account not found"**
 
