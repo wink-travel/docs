@@ -11,9 +11,12 @@ Wink's MCP tools are published as **toolsets** — focused endpoints, each cover
 
 Every endpoint uses **interactive OAuth2 login** (PKCE authorization code flow): your AI agent opens a browser tab, you sign in with your Wink account, and that is it. No client secrets to manage.
 
-```bash title="A channel manager integrator connects to two endpoints"
+```bash title="A channel manager integrator connects to one endpoint"
 claude mcp add wink-channel-manager https://integrations.wink.travel/mcp/channel-manager --transport http
-claude mcp add wink-rates          https://api.wink.travel/mcp/extranet/rates          --transport http
+```
+
+```bash title="A hotelier managing their own rates connects to another"
+claude mcp add wink-rates https://api.wink.travel/mcp/extranet/rates --transport http
 ```
 
 ---
@@ -44,10 +47,9 @@ Two hosts serve toolsets. Tool counts are approximate and grow over time.
 
 | Endpoint | Tools | What it covers |
 |---|---:|---|
-| `/mcp/extranet/property` | ~70 | The property record and what a guest books: profile and content, guest rooms and room types, add-ons, cancellation policies, perks, announcements |
+| `/mcp/extranet/facilities` | ~64 | The bookable and on-site inventory: guest rooms and room types, spas, restaurants, meeting rooms, activities, attractions, places, other sellable items |
+| `/mcp/extranet/property` | ~62 | The property record and its commercial terms: profile and content, add-ons, cancellation policies, perks, announcements |
 | `/mcp/settings` | ~60 | Account administration: managing-entity profile and branding, managers and their grants, customization, webhooks, notification preferences |
-| `/mcp/extranet/facilities` | ~55 | On-site and nearby facilities: spas, restaurants, meeting rooms, activities, attractions, places, other sellable items |
-| `/mcp/channel-manager` | ~50 | The inventory half of a channel manager integration: map rooms and rate plans, push availability and rates, pull reservations |
 | `/mcp/studio/embeds` | ~48 | Publishing curated inventory: widgets, grids and ranked grids, cards, maps, deep links to inventory and supplier pages |
 | `/mcp/extranet/rates` | ~44 | Prices and availability: inventory rate periods and allotments, rate plans, master rates, special and promotional rates |
 | `/mcp/extranet/operations` | ~39 | Running a live property: reservations and their lifecycle, guest reviews and responses, calendar feeds, scheduled tasks |
@@ -68,8 +70,12 @@ Two hosts serve toolsets. Tool counts are approximate and grow over time.
 | `/mcp/channel-manager` | ~9 | Connecting and verifying a channel manager, PMS or CRS integration |
 | `/mcp/settings` | ~6 | Access-control lookups for the integration account |
 
-<Aside type="note" title="Why channel-manager appears on both hosts">
-Integrating a channel manager spans two systems. **Connecting and verifying** the integration lives on the integrations host; **mapping rooms, pushing rates and availability, and pulling reservations** live on the platform host. Add both endpoints — they are two halves of one job, and each reports a distinct name (`wink-integrations-channel-manager` and `wink-inventory-channel-manager`) so your client can tell them apart.
+<Aside type="note" title="Integrating a channel manager vs. managing your own rates">
+These are different jobs for different people, and they do not share an endpoint.
+
+A **channel manager, PMS or CRS vendor** integrates once through `integrations.wink.travel/mcp/channel-manager`, and from then on exchanges properties, rates, availability and reservations over that integration. That single endpoint is the whole surface.
+
+A **hotelier changing their own rates by hand** uses the extranet toolsets on `api.wink.travel` — `/mcp/extranet/rates` and friends. Those are not part of a channel manager integration and an integrator has no reason to connect to them.
 </Aside>
 
 Every endpoint also carries a `ping` tool, so you can confirm a connection is live before asking it to do real work.
@@ -80,8 +86,9 @@ Every endpoint also carries a `ping` tool, so you can confirm a connection is li
 
 | If you are… | Connect to |
 |---|---|
-| **Integrating a channel manager, PMS or CRS** | `integrations.wink.travel/mcp/channel-manager` + `api.wink.travel/mcp/channel-manager` |
+| **Integrating a channel manager, PMS or CRS** | `integrations.wink.travel/mcp/channel-manager` — just this one |
 | **Managing a property's content** | `/mcp/extranet/property` + `/mcp/extranet/facilities` |
+| **Managing rooms and room types** | `/mcp/extranet/facilities` |
 | **Managing prices and availability** | `/mcp/extranet/rates` |
 | **Running day-to-day reservations** | `/mcp/extranet/operations` |
 | **Growing distribution** | `/mcp/extranet/distribution` + `/mcp/analytics` |
@@ -426,9 +433,9 @@ You are probably connected to a toolset that does not cover that job. Check the 
 
 Check the path carefully — the nested toolsets have two segments (`/mcp/extranet/rates`, not `/mcp/extranet-rates`), and the flat ones have one (`/mcp/link-manager`). Note that an *unauthenticated* request to any path under `/mcp` returns `401`, not `404`, so a `401` alone does not tell you whether the endpoint exists.
 
-**Two connections both called "channel manager"**
+**I connected to `api.wink.travel/mcp/channel-manager` and got nothing**
 
-Expected — the job spans both hosts. They report distinct names (`wink-integrations-channel-manager` and `wink-inventory-channel-manager`); give the entries distinct local names too, as in the examples above, so your client's server list stays readable.
+That endpoint does not exist. Channel manager integration is served from `https://integrations.wink.travel/mcp/channel-manager` only. If you also need to read or write a property's own rates by hand, that is a separate job on a separate endpoint — see `/mcp/extranet/rates`.
 
 **The server appears but tool calls return "account not found"**
 
