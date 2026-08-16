@@ -58,6 +58,9 @@ const AUDIENCES = [
   ['payment', 'Payment', 'api'],
   ['user', 'User', 'api'],
   ['travel-agent', 'Travel Agent', 'api'],
+  // Webhook management endpoints + the OpenAPI 3.1 `webhooks:` object (one page per event Wink POSTs
+  // to subscribers, rendered by starlight-openapi as a "Webhooks" group) + `x-wink-event-types`.
+  ['webhooks', 'Webhooks', 'api'],
   ['partner', 'Partner', 'partner-api'],
   ['channel-manager', 'Integrator', 'integrations-api'],
 ]

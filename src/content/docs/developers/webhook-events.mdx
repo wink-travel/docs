@@ -1,326 +1,48 @@
 ---
 title: Webhook Events Catalog
-description: Complete reference of all webhook event types available on the Wink platform, organized by category.
+description: Every webhook event type on the Wink platform, generated from the platform's event catalog — which are delivered, to whom, and where the payload is documented.
 sidebar:
   order: 3.5
 ---
 
-import { LinkButton } from '@astrojs/starlight/components';
+import webhooks from '../../../../schemas/webhooks.json';
+import WebhookEventTypes from '@/components/webhooks/event-types.astro';
 
 This page lists every webhook event you can subscribe to on Wink. For setup instructions, see the [Webhook Integration Guide](/developers/webhook-integration) or the [Webhooks management page](/portal/settings/webhooks).
 
 ## How to subscribe
 
 1. Navigate to **Applications > Webhooks** in your portal.
-2. Create a webhook and select the events you want to receive.
-3. Wink sends an HTTP POST to your endpoint each time the event occurs.
-
-For full setup steps and best practices, see [Webhook Integration](/developers/webhook-integration).
-
----
-
-## Managing entity events
-
-Events for managing entities (properties, affiliates, companies) and their administration.
-
-### Lifecycle
-
-| Event | Key | Description |
-|---|---|---|
-| Entity created | `managing_entity.created` | A new managing entity has been created. |
-| Entity deleted | `managing_entity.deleted` | A managing entity has been deleted. |
-| Status updated | `managing_entity.status.updated` | Entity status has changed. |
-| Under review | `account.under_review` | Entity account is pending review. |
-
-### Subscription
-
-| Event | Key | Description |
-|---|---|---|
-| Subscription provisioned | `managing_entity.subscription.provisioned` | A new subscription has been provisioned. |
-| Subscription changed | `managing_entity.subscription.changed` | Subscription plan has been changed. |
-| Subscription invoice changed | `managing_entity.subscription.invoice.changed` | Subscription invoice has been updated. |
-
-### Manager lifecycle
-
-| Event | Key | Description |
-|---|---|---|
-| Manager added | `managing_entity.manager.added` | A new manager has been added. |
-| Manager invited | `managing_entity.manager.invited` | A manager invitation has been sent. |
-| Manager removed | `managing_entity.manager.removed` | A manager has been removed. |
-| Manager accepted | `managing_entity.manager.accepted` | A manager invitation has been accepted. |
-| Manager rejected | `managing_entity.manager.rejected` | A manager invitation has been rejected. |
-| Owner set | `managing_entity.manager.owner.set` | Entity ownership has been transferred. |
-| Managers updated | `account.managers.update` | Manager list has changed. |
-
-### Entity information
-
-| Event | Key | Description |
-|---|---|---|
-| Information updated | `managing_entity.information.updated` | Entity information has been updated. |
-| Address updated | `managing_entity.city.updated` | Entity address/city has been changed. |
-| Name updated | `managing_entity.name.updated` | Entity name has been changed. |
-| URL name updated | `managing_entity.url_name.updated` | Entity vanity URL has changed. |
-| Unique ID updated | `managing_entity.unique_id.updated` | Entity unique identifier has changed. |
-| Managed-by updated | `managing_entity.managed_by.updated` | The entity's parent/managed-by relationship has changed. |
-| Place ID updated | `managing_entity.place_id.updated` | The entity's Google Place ID has changed. |
-| Account representative updated | `managing_entity.account_representative.updated` | Account representative has been changed. |
-| Profile picture updated | `managing_entity.profile_picture.updated` | Entity profile picture has been updated. |
-| Logo updated | `managing_entity.logo.updated` | Entity logo has been updated. |
-| Details updated | `account.details.updated` | Account detail fields have changed. |
-| Agent updated | `managing_entity.agent.updated` | Entity agent has been modified. |
-
-### Notifications
-
-| Event | Key | Description |
-|---|---|---|
-| Agent email notification | `managing_entity.agent.email.notification` | An email notification has been sent to the agent. |
-| Manager email notification | `managing_entity.manager.email.notification` | An email notification has been sent to a manager. |
-
-### Account tasks
-
-| Event | Key | Description |
-|---|---|---|
-| Task created | `account.task.create` | A new task has been added to the account. |
-| Task updated | `account.task.update` | An account task has been modified. |
-| Task removed | `account.task.remove` | An account task has been removed. |
-| Task completed | `account.task.complete` | An account task has been completed. |
-| Tax ID task completed | `account.task.tax_id.complete` | Tax ID verification task has been completed. |
-
----
-
-## Booking events
-
-Events for the Wink booking lifecycle, from creation through refunds and payouts.
-
-### Core booking
-
-| Event | Key | Description |
-|---|---|---|
-| Booking created | `booking.create` | A new booking has been created. |
-| Booking cancelled | `booking.cancelled` | A booking has been cancelled. |
-| Booking failed | `booking.failed` | A booking attempt failed. |
-| Booking processing | `booking.processing` | Booking payment is being processed. |
-| Initialization requested | `booking.initialize.request` | A booking initialization has been requested. |
-| Initialization complete | `booking.initialize.complete` | Booking initialization has completed. |
-
-### Refunds
-
-| Event | Key | Description |
-|---|---|---|
-| Refund requested | `booking.refund.request` | A refund request has been submitted. |
-| Refund error | `booking.refund.error` | An error occurred while processing a refund. |
-| Partial refund | `booking.refund.partial` | A partial refund has been issued. |
-| Full refund | `booking.refund.full` | A full refund has been issued. |
-
-### Payouts
-
-| Event | Key | Description |
-|---|---|---|
-| Payout created | `booking.payout.create` | A payout has been created for the booking. |
-| Payout completed | `booking.payout.complete` | A payout has been successfully completed. |
-| Funds available | `booking.funds.available` | Booking funds are available for settlement. |
-| Funds ledgered | `booking.funds.ledgered` | Booking funds have been recorded on the ledger. |
-
-### Reviews
-
-| Event | Key | Description |
-|---|---|---|
-| Review submitted | `booking.review.created` | A guest review has been submitted for a booking. |
-| Review responded | `booking.review.responded` | A property has responded to a booking review. |
-
----
-
-## Property events
-
-Events for property profiles and content, dispatched to the property's own webhook subscribers.
-
-| Event | Key | Description |
-|---|---|---|
-| Property created | `property.created` | A new property has been created. |
-| Property updated | `property.updated` | Property details have been updated. |
-| Property deleted | `property.deleted` | A property has been removed. |
-| Property registered | `property.registered` | A property has completed registration. |
-| Status updated | `property.status.updated` | Property external status has changed. |
-| Name updated | `property.name.updated` | Property name has changed. |
-| Address updated | `property.address.updated` | Property address has been updated. |
-| Geolocation updated | `property.geolocation.updated` | Property geolocation has been updated. |
-| Profile updated | `property.profile.updated` | Property profile content has changed. |
-| Services updated | `property.services.updated` | Property services/amenities list has changed. |
-| Welcome text updated | `property.welcome_text.updated` | Property welcome message has changed. |
-| Policy created | `property.policy.created` | A new property policy has been created. |
-| Policy updated | `property.policy.updated` | A property policy has been updated. |
-
----
-
-## Inventory events
-
-Events for inventory items within a property, dispatched to that property's webhook subscribers.
-
-### Room types
-
-| Event | Key | Description |
-|---|---|---|
-| Room type created | `room_type.created` | A new room type has been added. |
-| Room type updated | `room_type.updated` | A room type has been modified. |
-| Room type deleted | `room_type.deleted` | A room type has been removed. |
-
-### Rate plans
-
-| Event | Key | Description |
-|---|---|---|
-| Rate plan created | `rate_plan.created` | A new rate plan has been created. |
-| Rate plan updated | `rate_plan.updated` | A rate plan has been modified. |
-| Rate plan deleted | `rate_plan.deleted` | A rate plan has been removed. |
-
-### Master rates
-
-| Event | Key | Description |
-|---|---|---|
-| Master rate created | `master_rate.created` | A new master rate has been created. |
-| Master rate updated | `master_rate.updated` | A master rate has been modified. |
-| Master rate deleted | `master_rate.deleted` | A master rate has been removed. |
-
-### Add-ons
-
-| Event | Key | Description |
-|---|---|---|
-| Add-on created | `add_on.created` | A new add-on has been created. |
-| Add-on updated | `add_on.updated` | An add-on has been modified. |
-| Add-on deleted | `add_on.deleted` | An add-on has been removed. |
-
-### Meeting rooms
-
-| Event | Key | Description |
-|---|---|---|
-| Meeting room created | `meeting_room.created` | A new meeting room has been added. |
-| Meeting room updated | `meeting_room.updated` | A meeting room has been modified. |
-| Meeting room deleted | `meeting_room.deleted` | A meeting room has been removed. |
-
-### Restaurants
-
-| Event | Key | Description |
-|---|---|---|
-| Restaurant created | `restaurant.created` | A new restaurant has been added. |
-| Restaurant updated | `restaurant.updated` | A restaurant has been modified. |
-| Restaurant deleted | `restaurant.deleted` | A restaurant has been removed. |
-
-### Spas
-
-| Event | Key | Description |
-|---|---|---|
-| Spa created | `spa.created` | A new spa has been added. |
-| Spa updated | `spa.updated` | A spa has been modified. |
-| Spa deleted | `spa.deleted` | A spa has been removed. |
-
-### Activities
-
-| Event | Key | Description |
-|---|---|---|
-| Activity created | `activity.created` | A new activity has been added. |
-| Activity updated | `activity.updated` | An activity has been modified. |
-| Activity deleted | `activity.deleted` | An activity has been removed. |
-
----
-
-## Sales channel events
-
-Events for distribution channels linking suppliers and affiliates. Dispatched to both the supplier and the affiliate's webhook subscribers.
-
-| Event | Key | Description |
-|---|---|---|
-| Sales channel created | `sales_channel.created` | A new sales channel has been created. |
-| Sales channel updated | `sales_channel.updated` | A sales channel has been modified. |
-| Sales channel deleted | `sales_channel.deleted` | A sales channel has been removed. |
-
----
-
-## Special rate events
-
-Events for promotional and negotiated rates on a property.
-
-| Event | Key | Description |
-|---|---|---|
-| Special rate created | `special_rate.created` | A new special rate has been created. |
-| Special rate updated | `special_rate.updated` | A special rate has been modified. |
-| Special rate deleted | `special_rate.deleted` | A special rate has been removed. |
-| Rate modifier updated | `rate_modifier.updated` | A rate modifier has been updated. |
-
----
-
-## Payee events
-
-Events related to payee (payment recipient) management.
-
-| Event | Key | Description |
-|---|---|---|
-| Payee created | `payee.create` | A new payee has been successfully created. |
-| Payee creation failed | `payee.create.failure` | Payee creation failed. |
-| Payee updated | `payee.update` | A payee has been updated. |
-| Payee update failed | `payee.update.failure` | Payee update failed. |
-
----
-
-## Payment events
-
-Internal payment processing events from TripPay.
-
-| Event | Key | Description |
-|---|---|---|
-| Payment succeeded | `internal.payment.succeeded` | Payment has been successfully processed. |
-| Payment processing | `internal.payment.processing` | Payment is currently being processed. |
-| Payment failed | `internal.payment.failed` | Payment processing has failed. |
-
----
-
-## Channel manager events
-
-Events related to channel manager rate and availability pushes.
-
-| Event | Key | Description |
-|---|---|---|
-| Rate update | `channel-manager.update.rate` | Channel manager has pushed a rate update. |
-| Availability update | `channel-manager.update.availability` | Channel manager has pushed an availability update. |
-| General update | `channel-manager.update` | General channel manager update. |
-
----
-
-## Ledger events
-
-Events related to financial ledger entries.
-
-| Event | Key | Description |
-|---|---|---|
-| Ledger entry created | `ledger.entry.create` | A new ledger entry has been recorded. |
-
----
-
-## Email events
-
-| Event | Key | Description |
-|---|---|---|
-| Email correspondence | `email.correspondence` | An outbound email has been sent. |
-
----
-
-## Event count summary
-
-| Category | Count |
-|---|---|
-| Managing entity events | 33 |
-| Booking events | 16 |
-| Property events | 13 |
-| Inventory events (room types, rate plans, master rates, add-ons, facilities) | 24 |
-| Sales channel events | 3 |
-| Special rate events | 4 |
-| Payee events | 4 |
-| Payment events | 3 |
-| Channel manager events | 3 |
-| Ledger events | 1 |
-| Email events | 1 |
-| **Total** | **105** |
+2. Create a webhook and select the events you want to receive — or leave the list empty to receive every event.
+3. Wink sends a signed HTTP POST to your endpoint each time the event occurs. See [Webhook Integration](/developers/webhook-integration) for the envelope, headers, signature verification and retries.
+
+## Every event type
+
+This table is generated from the platform's event catalog at build time, so it always matches the API.
+Event types marked as delivered link to their reference page in the [Webhooks API](/api/webhooks/), which
+documents the exact JSON body (`WebhookEnvelope` with an event-specific `object`), the `Wink-*` headers and
+the retry policy. Event types that are not delivered exist internally (payments, ledger, channel-manager
+sync, …) but are not currently sent to webhook subscribers.
+
+**Recipients** says who receives an event: `SUPPLIER` (the hotel), `AFFILIATE` (a reseller with an active
+sales channel to the hotel), `AGENT` (the travel agency that made the booking) or `SELF` (the managing entity
+the event is about). Every recipient receives the same payload shape; role-specific detail is behind the
+payload's `links.self` URL.
+
+<WebhookEventTypes
+  types={webhooks['x-wink-event-types']}
+  referenceBase="/api/webhooks"
+  eventHeader="Event"
+  descriptionHeader="Description"
+  deliveredHeader="Delivered"
+  recipientsHeader="Recipients"
+  deliveredLabel="delivered"
+  notDeliveredLabel="not delivered"
+  noRecipientsLabel="—"
+/>
 
 :::tip
-Start by subscribing to all events during development. Once you understand which payloads your system needs, narrow your subscriptions to reduce noise.
+Start by subscribing to all events during development. Once you understand which payloads your system needs, narrow your subscriptions to reduce noise. Send yourself a test event from **Applications > Webhooks** (or `POST …/webhook/{id}/test`) to confirm your endpoint and signature check before going live.
 :::
 
 ## Further reading
