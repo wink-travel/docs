@@ -29,38 +29,148 @@ This guide is for developers integrating Wink with external systems such as prop
 5. Enter your **webhook URL** — the HTTPS endpoint on your server.
 6. **Select events** — Choose specific events to subscribe to, or leave empty to receive all events.
 7. Toggle **Enabled** to on.
-8. Click `Save`.
+8. Click `Save` — the response shows your **signing secret once**; store it now.
 </Steps>
 
 ## Event types
 
-Wink supports **64+ webhook event types** across categories including account management, booking contracts, payments, channel manager updates, and managing entity administration. Common events include:
+Wink publishes 70 webhook event types today across bookings, properties, accounts (managing entities)
+and inventory (room types, rate plans, master rates, add-ons, facilities, sales channels, promotions).
+Common ones:
 
 | Category | Examples |
 |---|---|
-| **Booking** | `booking.create`, `booking.cancelled` |
-| **Booking contract** | `booking.contract.created`, `booking.contract.processing`, `booking.contract.cancelled` |
-| **Payment** | `internal.payment.succeeded`, `internal.payment.failed` |
-| **Refunds** | `booking.contract.refund.partial`, `booking.contract.refund.full` |
-| **Channel manager** | `channel-manager.update.rate`, `channel-manager.update.availability` |
-| **Account** | `account.create`, `account.status.updated` |
+| **Booking** | `booking.create`, `booking.cancelled`, `booking.refund.partial`, `booking.refund.full`, `booking.review.created` |
+| **Property** | `property.created`, `property.status.updated`, `property.policy.updated` |
+| **Inventory** | `room_type.updated`, `rate_plan.created`, `master_rate.updated`, `special_rate.created`, `sales_channel.created` |
+| **Account** | `managing_entity.created`, `managing_entity.status.updated`, `managing_entity.manager.added` |
 
-For a complete list of every event type with descriptions, see the **Webhook Events Catalog**.
+The complete, generated list — with a description, who receives it, and a link to each event's reference
+page — is the **Webhook Events Catalog**. The reference page for every event (JSON body, headers, retry policy)
+lives in the [Webhooks API](/api/webhooks/).
 
 <LinkButton href="/developers/webhook-events">
-  View all 64+ event types
+  View every event type
 </LinkButton>
 
-:::tip
-Start by subscribing to all events during development. Once you understand the payloads, narrow down to only the events your system needs.
-:::
+## What you receive
+
+Every delivery is an HTTP `POST` to your webhook URL with `Content-Type: application/json` and this envelope:
+
+```json
+{
+  "id": "0198a4f2-6b0e-7c1d-9a3e-2f4b8c6d1e0a",
+  "type": "booking.create",
+  "occurredAt": "2026-08-15T09:30:00Z",
+  "ownerIdentifier": "3c6b1a5d-8e2f-4a0b-9c7d-6e4f0a8b2c51",
+  "recipientRole": "SUPPLIER",
+  "schemaVersion": 2,
+  "object": { "...": "event-specific payload, e.g. BookingWebhookPayload" }
+}
+```
+
+- `id` — the event identifier; identical for every endpoint of your account that receives this event and for
+  every retry. Use it as your **idempotency key**.
+- `type` — the event type key (also sent as the `Wink-Event-Type` header). Branch on `type` and `schemaVersion`
+  to parse `object`.
+- `object` — a curated summary of the resource the event is about (identifiers, status, the fields you act on)
+  plus `links.self`, the supplier-side canonical REST URL of the full resource. Fetch it with your own API
+  credentials when you need more than the summary; if you receive the event as a reseller or travel agent, use
+  the corresponding resource endpoint of your own API surface for the same identifier.
+
+Every payload schema is documented per event in the [Webhooks API](/api/webhooks/) reference.
+
+### Headers
+
+| Header | Meaning |
+|---|---|
+| `Wink-Version` | Wire contract version, `2.0`. |
+| `Wink-Event-Id` | Same as `id` in the body — your idempotency key. |
+| `Wink-Delivery-Id` | Unique per endpoint per event; changes only if you redeliver. |
+| `Wink-Event-Type` | Same as `type` in the body. |
+| `Wink-Delivery-Attempt` | 1-based attempt number for this delivery. |
+| `Wink-Signature` | HMAC signature — see below. |
+
+## Verifying signatures
+
+Every webhook has a **signing secret** (`whsec_…`) that Wink shows **once**, when you create the webhook or
+rotate its secret. Store it like a password. Each delivery carries
+
+```
+Wink-Signature: t=1755250200,v1=5d41402abc4b2a76b9719d911017c592…
+```
+
+where `t` is a Unix timestamp (seconds) and `v1` is the lower-case hex **HMAC-SHA256** of the string
+`t + "." + rawBody`, keyed with your secret, and `rawBody` is the exact request body bytes as received —
+do not re-serialise the JSON before verifying. For 24 hours after a secret rotation the header carries a
+second `v1=` value signed with the previous secret; accept the delivery if **any** `v1` matches.
+
+Verify in four steps: parse `t` and every `v1`; recompute the HMAC over `t.rawBody` with your secret;
+compare with a constant-time comparison; reject if `|now − t|` exceeds your tolerance (5 minutes recommended).
+
+```js
+// Node.js (Express-style; make sure you have the RAW body, not a parsed object)
+import { createHmac, timingSafeEqual } from 'node:crypto';
+
+export function verifyWinkSignature(header, rawBody, secret, toleranceSeconds = 300) {
+  const parts = Object.fromEntries(header.split(',').map((p) => p.split('=').map((s) => s.trim())));
+  const t = Number(parts.t);
+  if (!Number.isFinite(t) || Math.abs(Date.now() / 1000 - t) > toleranceSeconds) return false;
+  const expected = createHmac('sha256', secret).update(`${t}.${rawBody}`).digest('hex');
+  return header
+    .split(',')
+    .filter((p) => p.trim().startsWith('v1='))
+    .map((p) => p.trim().slice(3))
+    .some((v1) => v1.length === expected.length && timingSafeEqual(Buffer.from(v1, 'utf8'), Buffer.from(expected, 'utf8')));
+}
+```
+
+```java
+// Java
+static boolean verify(String header, String rawBody, String secret, long nowSeconds, long toleranceSeconds) throws Exception {
+    long t = Long.MIN_VALUE;
+    List<String> signatures = new ArrayList<>();
+    for (String part : header.split(",")) {
+        String[] kv = part.trim().split("=", 2);
+        if (kv[0].equals("t")) t = Long.parseLong(kv[1]);
+        else if (kv[0].equals("v1")) signatures.add(kv[1]);
+    }
+    if (t == Long.MIN_VALUE || Math.abs(nowSeconds - t) > toleranceSeconds) return false;
+    Mac mac = Mac.getInstance("HmacSHA256");
+    mac.init(new SecretKeySpec(secret.getBytes(StandardCharsets.UTF_8), "HmacSHA256"));
+    byte[] expected = HexFormat.of().formatHex(mac.doFinal((t + "." + rawBody).getBytes(StandardCharsets.UTF_8))).getBytes(StandardCharsets.US_ASCII);
+    return signatures.stream().anyMatch(v1 -> MessageDigest.isEqual(expected, v1.toLowerCase().getBytes(StandardCharsets.US_ASCII)));
+}
+```
+
+Rotate the secret from the portal or with `POST /api/managing-entity/{id}/webhook/{webhookId}/rotate-secret`;
+the response shows the new secret once, and the old one keeps verifying for 24 hours while you roll it out.
+
+## Retries and redelivery
+
+- Respond with any `2xx` within 10 seconds to acknowledge. Do the heavy work asynchronously.
+- A `5xx`, a timeout, `408` or `429` is retried with backoff: after 1 minute, 5 minutes, 30 minutes, 2 hours,
+  6 hours, 12 hours, then daily — 10 attempts over about 3 days — after which the delivery is marked **dead**.
+- Any other `4xx` is treated as "you rejected this delivery" and is **not** retried.
+- Every event, delivery and attempt (status, response snippet) is visible under **Applications > Webhooks**
+  and through the API (`…/webhook/event/grid`, `…/webhook/delivery/grid`). You can **redeliver** any delivery
+  (`POST …/webhook/delivery/{deliveryId}/redeliver`, which starts a fresh retry series), redeliver every dead
+  delivery of a webhook at once (`POST …/webhook/{webhookId}/redeliver-dead`), or cancel one.
+- Deliveries are retained for 30 days.
+
+## Test events
+
+Send yourself a synthetic `webhook.test` event from the portal or with
+`POST /api/managing-entity/{id}/webhook/{webhookId}/test`. It is signed and delivered exactly like a real
+event, so you can verify your endpoint, your signature check and your idempotency handling before subscribing
+to live events.
 
 ## Best practices
 
 - **Use HTTPS** — Wink sends payloads to HTTPS endpoints only.
 - **Respond quickly** — Return a `200 OK` as soon as you receive the payload. Do any heavy processing asynchronously.
-- **Idempotency** — Your handler should be idempotent. Wink may retry delivery if it does not receive a `200` response.
-- **Validate the source** — Verify that incoming requests are from Wink before processing.
+- **Idempotency** — Your handler should be idempotent; deduplicate on `Wink-Event-Id`. Wink retries when it does not receive a `2xx` response.
+- **Validate the source** — Verify the `Wink-Signature` header (see [Verifying signatures](#verifying-signatures)) before processing; reject anything that fails.
 - **Logging** — Log every webhook payload you receive. This makes debugging integration issues much easier.
 
 ## Pausing and deleting
@@ -71,7 +181,8 @@ Deleting a webhook permanently removes it. Any integration relying on that webho
 
 ## Further reading
 
-- [Webhook Events Catalog](/developers/webhook-events) — Complete list of all 64+ event types.
+- [Webhook Events Catalog](/developers/webhook-events) — Every event type, generated from the platform's catalog.
+- [Webhooks API reference](/api/webhooks/) — Per-event payload schemas, headers, and the subscription/delivery management endpoints.
 - [Webhooks](/portal/settings/webhooks) — Full reference for webhook management.
 - [Applications](/account/applications) — Manage your API credentials.
 - [Developers > APIs](/api) — Full API documentation.

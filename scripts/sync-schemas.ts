@@ -48,6 +48,10 @@ loadEnv();
 // annotations from a hand-assembled web context with no application running.
 const INVENTORY_GROUPS: readonly string[] = [
   "reference", "extranet", "booking-engine", "studio", "social", "link-manager", "settings", "payment", "user", "travel-agent",
+  // "webhooks" carries the webhook management endpoints PLUS the OpenAPI 3.1 `webhooks:` object (one entry per
+  // event Wink POSTs to subscribers) and `x-wink-event-types` (every EventNotificationType) -- both generated from
+  // monorepo-java's WebhookEventCatalog by the same InventoryOpenApiSpecWriterTest.
+  "webhooks",
 ];
 
 // Served by integrations-app: the channel-manager / vendor-integration API

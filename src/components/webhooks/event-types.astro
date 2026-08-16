@@ -1,0 +1,120 @@
+---
+/*
+ * Copyright (c) wink.travel 2026
+ */
+// The webhook event-type catalogue, rendered from `x-wink-event-types` in schemas/webhooks.json — the
+// document monorepo-java generates from its WebhookEventCatalog. Nothing here is hand-maintained: a new
+// EventNotificationType shows up on the next `npm run schemas:sync`, and an event that starts being
+// delivered gets its ✓ and a link to its reference page automatically.
+//
+// Every human-readable string is a PROP rather than a literal (see taxonomy/code-table.astro for why):
+// scripts/translate-i18n.ts translates whole MDX files and never opens a .astro component.
+
+interface EventType {
+  readonly key: string;
+  readonly name: string;
+  readonly description: string;
+  readonly delivered: boolean;
+  readonly roles: ReadonlyArray<string>;
+}
+
+interface Props {
+  types: ReadonlyArray<EventType>;
+  /** Route base of the webhooks API reference, e.g. "/api/webhooks". */
+  referenceBase: string;
+  eventHeader: string;
+  descriptionHeader: string;
+  deliveredHeader: string;
+  recipientsHeader: string;
+  deliveredLabel: string;
+  notDeliveredLabel: string;
+  /** Rendered in the recipients cell for event types that are not delivered. */
+  noRecipientsLabel: string;
+}
+
+const {
+  types,
+  referenceBase,
+  eventHeader,
+  descriptionHeader,
+  deliveredHeader,
+  recipientsHeader,
+  deliveredLabel,
+  notDeliveredLabel,
+  noRecipientsLabel,
+} = Astro.props;
+
+// starlight-openapi builds each webhook page as `<base>/webhooks/<slug(key)>` using github-slugger, which
+// lower-cases and strips everything except word characters, spaces and hyphens: `booking.create` ->
+// `bookingcreate`, `channel-manager.update.rate` -> `channel-managerupdaterate`.
+const slug = (key: string) => key.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s/g, '-');
+const referencePath = (key: string) => `${referenceBase.replace(/\/$/, '')}/webhooks/${slug(key)}/`;
+
+const groupOf = (key: string) => key.split('.')[0] ?? key;
+const groups = new Map<string, EventType[]>();
+for (const type of types) {
+  const group = groupOf(type.key);
+  const list = groups.get(group) ?? [];
+  list.push(type);
+  groups.set(group, list);
+}
+---
+
+<div class="webhook-events">
+  {[...groups.entries()].map(([group, list]) => (
+    <section>
+      <h3 id={`events-${slug(group)}`}><code>{group}.*</code></h3>
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">{eventHeader}</th>
+            <th scope="col">{descriptionHeader}</th>
+            <th scope="col">{deliveredHeader}</th>
+            <th scope="col">{recipientsHeader}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {list.map((type) => (
+            <tr>
+              <td>
+                {type.delivered ? (
+                  <a href={referencePath(type.key)}><code>{type.key}</code></a>
+                ) : (
+                  <code>{type.key}</code>
+                )}
+              </td>
+              <td>{type.description}</td>
+              <td>
+                {type.delivered ? (
+                  <span class="delivered" title={deliveredLabel}>✓ {deliveredLabel}</span>
+                ) : (
+                  <span class="not-delivered">{notDeliveredLabel}</span>
+                )}
+              </td>
+              <td>{type.roles.length > 0 ? type.roles.join(', ') : <em>{noRecipientsLabel}</em>}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </section>
+  ))}
+</div>
+
+<style>
+  .webhook-events table {
+    width: 100%;
+  }
+
+  .webhook-events td:first-child {
+    white-space: nowrap;
+  }
+
+  .webhook-events .delivered {
+    color: var(--sl-color-green-high, inherit);
+    white-space: nowrap;
+  }
+
+  .webhook-events .not-delivered {
+    color: var(--sl-color-gray-3, inherit);
+  }
+</style>

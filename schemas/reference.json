@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "Wink API",
-    "description": "Welcome to the Wink API — a programmer-friendly way to manage, sell and book travel\ninventory on the Wink platform. See the **Overview** page (under **API**) for the full\nintroduction, intended audience, testing, and versioning.\n# Reference API\nReference data for building integrations: taxonomies, currencies, exchange rates,\nlanguages, timezones, countries, OTA codes, lifestyles, perks, social networks,\nand property lookup. Use these endpoints to populate pickers, labels, and filters.\n\n",
+    "description": "Welcome to the Wink API — a programmer-friendly way to manage, sell and book travel\ninventory on the Wink platform. See the **Overview** page (under **API**) for the full\nintroduction, intended audience, testing, and versioning.\n# Reference API\nReference data for building integrations: exchange rates, timezones, countries, geolocation,\nlifestyles, perks, social networks, and property lookup. Use these endpoints to populate\npickers, labels, and filters.\n\n## Deprecated: the fixed vocabularies\n\nThe OTA codes, supported languages and supported currencies endpoints are **deprecated and\nwill be removed after Wed, 01 Oct 2026**. They change rarely, so they are now published as a\nstatic reference at https://wink.travel/developers/taxonomy — hardcode them from there rather\nthan fetching them on every start-up.\n\nUntil then those endpoints keep returning exactly what they always did, and announce their\nretirement with `Deprecation`, `Sunset` and `Link` response headers. The `/reference-data/fx/**`\nexchange-rate lookups are **not** affected; those are live data.\n\n",
     "contact": {
       "name": "Contact",
       "email": "hi@wink.travel"
@@ -25,6 +25,14 @@
     }
   ],
   "tags": [
+    {
+      "name": "Language",
+      "description": "Deprecated. Supported languages are published at https://wink.travel/developers/taxonomy and this endpoint is removed after Wed, 01 Oct 2026 00:00:00 GMT.",
+      "externalDocs": {
+        "description": "Try it in Scalar",
+        "url": "https://api.wink.travel/scalar#reference/tag/language"
+      }
+    },
     {
       "name": "Social Network",
       "description": "Social network platform identifiers supported by the platform.",
@@ -59,18 +67,18 @@
     },
     {
       "name": "Currency",
-      "description": "Supported currencies and foreign exchange rates.",
+      "description": "Foreign exchange rates, plus the deprecated supported-currency listing. Supported currencies are published at https://wink.travel/developers/taxonomy and that endpoint is removed after Wed, 01 Oct 2026 00:00:00 GMT.",
       "externalDocs": {
         "description": "Try it in Scalar",
         "url": "https://api.wink.travel/scalar#reference/tag/currency"
       }
     },
     {
-      "name": "Language",
-      "description": "Languages supported by the platform.",
+      "name": "OTA",
+      "description": "Deprecated. OTA codes are published at https://wink.travel/developers/taxonomy and these endpoints are removed after Wed, 01 Oct 2026 00:00:00 GMT.",
       "externalDocs": {
         "description": "Try it in Scalar",
-        "url": "https://api.wink.travel/scalar#reference/tag/language"
+        "url": "https://api.wink.travel/scalar#reference/tag/ota"
       }
     },
     {
@@ -103,14 +111,6 @@
       "externalDocs": {
         "description": "Try it in Scalar",
         "url": "https://api.wink.travel/scalar#reference/tag/geo-data"
-      }
-    },
-    {
-      "name": "OTA",
-      "description": "Online Travel Agency codes recognized by the platform.",
-      "externalDocs": {
-        "description": "Try it in Scalar",
-        "url": "https://api.wink.travel/scalar#reference/tag/ota"
       }
     },
     {
@@ -850,8 +850,8 @@
         "tags": [
           "OTA"
         ],
-        "summary": "List Codes by OTA Category",
-        "description": "List every OTA code belonging to the requested category as code/name pairs. Common categories include LOC (location), RTS (room type status), and RRC (room rate code).",
+        "summary": "List Codes by OTA Category (deprecated)",
+        "description": "List every OTA code belonging to the requested category as code/name pairs. Common categories include LOC (location), RTS (room type status), and RRC (room rate code).\n\n**Deprecated — removed after Wed, 01 Oct 2026 00:00:00 GMT.** The OTA vocabulary is now published as a static reference at https://wink.travel/developers/taxonomy. Hardcode the codes from there rather than fetching them.",
         "operationId": "show-available-codes-for-category",
         "parameters": [
           {
@@ -1035,6 +1035,7 @@
             }
           }
         },
+        "deprecated": true,
         "security": [
           {
             "oauth2ClientCredentials": []
@@ -1047,8 +1048,8 @@
         "tags": [
           "OTA"
         ],
-        "summary": "List OTA Categories",
-        "description": "List the supported OTA code categories as code/name pairs. Categories represent groupings of OTA codes (e.g., LOC for location codes, RTS for room type status).",
+        "summary": "List OTA Categories (deprecated)",
+        "description": "List the supported OTA code categories as code/name pairs. Categories represent groupings of OTA codes (e.g., LOC for location codes, RTS for room type status).\n\n**Deprecated — removed after Wed, 01 Oct 2026 00:00:00 GMT.** The OTA vocabulary is now published as a static reference at https://wink.travel/developers/taxonomy. Hardcode the codes from there rather than fetching them.",
         "operationId": "show-available-ota-categories",
         "parameters": [
           {
@@ -1221,6 +1222,7 @@
             }
           }
         },
+        "deprecated": true,
         "security": [
           {
             "oauth2ClientCredentials": []
@@ -1615,8 +1617,8 @@
         "tags": [
           "Language"
         ],
-        "summary": "List Supported Languages",
-        "description": "Returns the complete list of languages the platform supports. Each language includes ISO 639-1/639-3 codes, ISO 3166-1 country codes, and localized display names in the target language. Derived from the platform configuration.",
+        "summary": "List Supported Languages (deprecated)",
+        "description": "Returns the complete list of languages the platform supports. Each language includes ISO 639-1/639-3 codes, ISO 3166-1 country codes, and localized display names in the target language. Derived from the platform configuration.\n\n**Deprecated — removed after Wed, 01 Oct 2026 00:00:00 GMT.** The supported-language list is now published as a static reference at https://wink.travel/developers/taxonomy. Hardcode the tags from there rather than fetching them.",
         "operationId": "show-languages",
         "responses": {
           "200": {
@@ -1774,6 +1776,7 @@
             }
           }
         },
+        "deprecated": true,
         "security": [
           {
             "oauth2ClientCredentials": []
@@ -3530,8 +3533,8 @@
         "tags": [
           "Currency"
         ],
-        "summary": "List currencies",
-        "description": "Returns the ISO currency codes the platform supports for pricing and exchange-rate lookups.",
+        "summary": "List currencies (deprecated)",
+        "description": "Returns the ISO currency codes the platform supports for pricing and exchange-rate lookups.\n\n**Deprecated — removed after Wed, 01 Oct 2026 00:00:00 GMT.** The supported-currency list is now published as a static reference at https://wink.travel/developers/taxonomy. Hardcode the codes from there rather than fetching them. The /reference-data/fx/** lookups are unaffected.",
         "operationId": "show-currencies",
         "responses": {
           "200": {
@@ -3688,6 +3691,7 @@
             }
           }
         },
+        "deprecated": true,
         "security": [
           {
             "oauth2ClientCredentials": []

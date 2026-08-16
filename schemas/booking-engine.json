@@ -3105,7 +3105,7 @@
                                 "quantity": 2
                               }
                             ],
-                            "quantity": 1
+                            "quantity": 2
                           },
                           "direct": true,
                           "extraCharges": {
@@ -3886,7 +3886,7 @@
                                   "quantity": 2
                                 }
                               ],
-                              "quantity": 1
+                              "quantity": 2
                             },
                             "direct": true,
                             "extraCharges": {
@@ -5129,7 +5129,7 @@
                                 "quantity": 2
                               }
                             ],
-                            "quantity": 1
+                            "quantity": 2
                           },
                           "direct": true,
                           "extraCharges": {
@@ -5910,7 +5910,7 @@
                                   "quantity": 2
                                 }
                               ],
-                              "quantity": 1
+                              "quantity": 2
                             },
                             "direct": true,
                             "extraCharges": {
@@ -7153,7 +7153,7 @@
                                 "quantity": 2
                               }
                             ],
-                            "quantity": 1
+                            "quantity": 2
                           },
                           "direct": true,
                           "extraCharges": {
@@ -7934,7 +7934,7 @@
                                   "quantity": 2
                                 }
                               ],
-                              "quantity": 1
+                              "quantity": 2
                             },
                             "direct": true,
                             "extraCharges": {
@@ -9177,7 +9177,7 @@
                                 "quantity": 2
                               }
                             ],
-                            "quantity": 1
+                            "quantity": 2
                           },
                           "direct": true,
                           "extraCharges": {
@@ -9958,7 +9958,7 @@
                                   "quantity": 2
                                 }
                               ],
-                              "quantity": 1
+                              "quantity": 2
                             },
                             "direct": true,
                             "extraCharges": {
@@ -11201,7 +11201,7 @@
                                 "quantity": 2
                               }
                             ],
-                            "quantity": 1
+                            "quantity": 2
                           },
                           "direct": true,
                           "extraCharges": {
@@ -11982,7 +11982,7 @@
                                   "quantity": 2
                                 }
                               ],
-                              "quantity": 1
+                              "quantity": 2
                             },
                             "direct": true,
                             "extraCharges": {
@@ -13225,7 +13225,7 @@
                                 "quantity": 2
                               }
                             ],
-                            "quantity": 1
+                            "quantity": 2
                           },
                           "direct": true,
                           "extraCharges": {
@@ -14006,7 +14006,7 @@
                                   "quantity": 2
                                 }
                               ],
-                              "quantity": 1
+                              "quantity": 2
                             },
                             "direct": true,
                             "extraCharges": {
@@ -20343,7 +20343,7 @@
               "quantity": 2
             }
           ],
-          "quantity": 1
+          "quantity": 2
         },
         "properties": {
           "adults": {
@@ -20373,7 +20373,7 @@
             "format": "int32",
             "default": 1,
             "description": "Number of identical rooms with this configuration",
-            "example": 1,
+            "example": 2,
             "minimum": 1
           }
         },
@@ -20417,7 +20417,7 @@
                 "quantity": 2
               }
             ],
-            "quantity": 1
+            "quantity": 2
           },
           "roomRateIdentifier": "5e8a3b7c-0d4f-4a2b-8c1d-9e6f2a0b4c73",
           "specialRequests": "Please arrange a late check-in and prepare the room with champagne and rose petals for our anniversary.",
@@ -25113,7 +25113,7 @@
                 "quantity": 2
               }
             ],
-            "quantity": 1
+            "quantity": 2
           },
           "roomRateIdentifier": "5e8a3b7c-0d4f-4a2b-8c1d-9e6f2a0b4c73",
           "sourceTotal": {
@@ -27937,7 +27937,7 @@
         "default": null,
         "description": "Travel itinerary containing check-in/check-out dates and room configurations",
         "example": {
-          "children": 1,
+          "children": 4,
           "endDate": "2026-07-18",
           "guests": 4,
           "hours": 72,
@@ -27950,10 +27950,20 @@
                   "quantity": 2
                 }
               ],
-              "quantity": 1
+              "quantity": 2
             }
           ],
           "nights": 3,
+          "room": {
+            "adults": 2,
+            "children": [
+              {
+                "age": 7,
+                "quantity": 2
+              }
+            ],
+            "quantity": 2
+          },
           "rooms": 2,
           "startDate": "2026-07-15"
         },
@@ -27963,7 +27973,7 @@
             "format": "int32",
             "default": "",
             "description": "Total number of children across all rooms",
-            "example": 1
+            "example": 4
           },
           "endDate": {
             "type": "string",
@@ -27992,16 +28002,17 @@
             "contains": {
               "default": ""
             },
-            "description": "Room configurations for each room in the reservation",
+            "deprecated": true,
+            "description": "DEPRECATED pre-collapse room list, accepted for backwards compatibility and never returned. Send `room` instead. At most one entry; use `room.quantity` to book several identical rooms.",
             "items": {
               "$ref": "#/components/schemas/RoomConfiguration_Non_Authenticated_Entity",
               "default": ""
             },
-            "maxItems": 2147483647,
-            "minItems": 1,
+            "maxItems": 1,
             "unevaluatedItems": {
               "default": ""
-            }
+            },
+            "writeOnly": true
           },
           "nights": {
             "type": "integer",
@@ -28009,6 +28020,11 @@
             "default": 0,
             "description": "Number of nights for the stay (alternative to endDate; takes precedence if both provided)",
             "example": 3
+          },
+          "room": {
+            "$ref": "#/components/schemas/RoomConfiguration_Non_Authenticated_Entity",
+            "default": "",
+            "description": "The room configuration being booked, and how many identical rooms of it"
           },
           "rooms": {
             "type": "integer",
@@ -28026,7 +28042,6 @@
           }
         },
         "required": [
-          "items",
           "startDate"
         ]
       },
@@ -28084,7 +28099,7 @@
           "userSession": {
             "currency": "USD",
             "itinerary": {
-              "children": 1,
+              "children": 4,
               "endDate": "2026-07-18",
               "guests": 4,
               "hours": 72,
@@ -28097,10 +28112,20 @@
                       "quantity": 2
                     }
                   ],
-                  "quantity": 1
+                  "quantity": 2
                 }
               ],
               "nights": 3,
+              "room": {
+                "adults": 2,
+                "children": [
+                  {
+                    "age": 7,
+                    "quantity": 2
+                  }
+                ],
+                "quantity": 2
+              },
               "rooms": 2,
               "startDate": "2026-07-15"
             },
@@ -28239,7 +28264,7 @@
               "quantity": 2
             }
           ],
-          "quantity": 1
+          "quantity": 2
         },
         "properties": {
           "adults": {
@@ -28269,7 +28294,7 @@
             "format": "int32",
             "default": 1,
             "description": "Number of identical rooms with this configuration",
-            "example": 1,
+            "example": 2,
             "minimum": 1
           }
         },
@@ -28355,7 +28380,7 @@
         "example": {
           "currency": "USD",
           "itinerary": {
-            "children": 1,
+            "children": 4,
             "endDate": "2026-07-18",
             "guests": 4,
             "hours": 72,
@@ -28368,10 +28393,20 @@
                     "quantity": 2
                   }
                 ],
-                "quantity": 1
+                "quantity": 2
               }
             ],
             "nights": 3,
+            "room": {
+              "adults": 2,
+              "children": [
+                {
+                  "age": 7,
+                  "quantity": 2
+                }
+              ],
+              "quantity": 2
+            },
             "rooms": 2,
             "startDate": "2026-07-15"
           },
@@ -31922,7 +31957,7 @@
                         "quantity": 2
                       }
                     ],
-                    "quantity": 1
+                    "quantity": 2
                   },
                   "direct": true,
                   "extraCharges": {
@@ -32703,7 +32738,7 @@
                           "quantity": 2
                         }
                       ],
-                      "quantity": 1
+                      "quantity": 2
                     },
                     "direct": true,
                     "extraCharges": {
@@ -34465,7 +34500,7 @@
                     "quantity": 2
                   }
                 ],
-                "quantity": 1
+                "quantity": 2
               },
               "direct": true,
               "extraCharges": {
@@ -35246,7 +35281,7 @@
                       "quantity": 2
                     }
                   ],
-                  "quantity": 1
+                  "quantity": 2
                 },
                 "direct": true,
                 "extraCharges": {
@@ -36750,7 +36785,7 @@
                 "quantity": 2
               }
             ],
-            "quantity": 1
+            "quantity": 2
           },
           "direct": true,
           "extraCharges": {
@@ -37708,7 +37743,7 @@
                   "quantity": 2
                 }
               ],
-              "quantity": 1
+              "quantity": 2
             },
             "direct": true,
             "extraCharges": {
@@ -38940,7 +38975,7 @@
           "userSession": {
             "currency": "USD",
             "itinerary": {
-              "children": 1,
+              "children": 4,
               "endDate": "2026-07-18",
               "guests": 4,
               "hours": 72,
@@ -38953,10 +38988,20 @@
                       "quantity": 2
                     }
                   ],
-                  "quantity": 1
+                  "quantity": 2
                 }
               ],
               "nights": 3,
+              "room": {
+                "adults": 2,
+                "children": [
+                  {
+                    "age": 7,
+                    "quantity": 2
+                  }
+                ],
+                "quantity": 2
+              },
               "rooms": 2,
               "startDate": "2026-07-15"
             },
@@ -39026,7 +39071,7 @@
           "userSession": {
             "currency": "USD",
             "itinerary": {
-              "children": 1,
+              "children": 4,
               "endDate": "2026-07-18",
               "guests": 4,
               "hours": 72,
@@ -39039,10 +39084,20 @@
                       "quantity": 2
                     }
                   ],
-                  "quantity": 1
+                  "quantity": 2
                 }
               ],
               "nights": 3,
+              "room": {
+                "adults": 2,
+                "children": [
+                  {
+                    "age": 7,
+                    "quantity": 2
+                  }
+                ],
+                "quantity": 2
+              },
               "rooms": 2,
               "startDate": "2026-07-15"
             },
@@ -39119,7 +39174,7 @@
           "userSession": {
             "currency": "USD",
             "itinerary": {
-              "children": 1,
+              "children": 4,
               "endDate": "2026-07-18",
               "guests": 4,
               "hours": 72,
@@ -39132,10 +39187,20 @@
                       "quantity": 2
                     }
                   ],
-                  "quantity": 1
+                  "quantity": 2
                 }
               ],
               "nights": 3,
+              "room": {
+                "adults": 2,
+                "children": [
+                  {
+                    "age": 7,
+                    "quantity": 2
+                  }
+                ],
+                "quantity": 2
+              },
               "rooms": 2,
               "startDate": "2026-07-15"
             },
@@ -39220,7 +39285,7 @@
           "userSession": {
             "currency": "USD",
             "itinerary": {
-              "children": 1,
+              "children": 4,
               "endDate": "2026-07-18",
               "guests": 4,
               "hours": 72,
@@ -39233,10 +39298,20 @@
                       "quantity": 2
                     }
                   ],
-                  "quantity": 1
+                  "quantity": 2
                 }
               ],
               "nights": 3,
+              "room": {
+                "adults": 2,
+                "children": [
+                  {
+                    "age": 7,
+                    "quantity": 2
+                  }
+                ],
+                "quantity": 2
+              },
               "rooms": 2,
               "startDate": "2026-07-15"
             },
@@ -39314,7 +39389,7 @@
           "userSession": {
             "currency": "USD",
             "itinerary": {
-              "children": 1,
+              "children": 4,
               "endDate": "2026-07-18",
               "guests": 4,
               "hours": 72,
@@ -39327,10 +39402,20 @@
                       "quantity": 2
                     }
                   ],
-                  "quantity": 1
+                  "quantity": 2
                 }
               ],
               "nights": 3,
+              "room": {
+                "adults": 2,
+                "children": [
+                  {
+                    "age": 7,
+                    "quantity": 2
+                  }
+                ],
+                "quantity": 2
+              },
               "rooms": 2,
               "startDate": "2026-07-15"
             },
@@ -39415,7 +39500,7 @@
           "userSession": {
             "currency": "USD",
             "itinerary": {
-              "children": 1,
+              "children": 4,
               "endDate": "2026-07-18",
               "guests": 4,
               "hours": 72,
@@ -39428,10 +39513,20 @@
                       "quantity": 2
                     }
                   ],
-                  "quantity": 1
+                  "quantity": 2
                 }
               ],
               "nights": 3,
+              "room": {
+                "adults": 2,
+                "children": [
+                  {
+                    "age": 7,
+                    "quantity": 2
+                  }
+                ],
+                "quantity": 2
+              },
               "rooms": 2,
               "startDate": "2026-07-15"
             },
@@ -44779,7 +44874,7 @@
                   "quantity": 2
                 }
               ],
-              "quantity": 1
+              "quantity": 2
             },
             "direct": true,
             "extraCharges": {
@@ -45716,7 +45811,7 @@
                   "quantity": 2
                 }
               ],
-              "quantity": 1
+              "quantity": 2
             },
             "direct": true,
             "extraCharges": {
@@ -46494,7 +46589,7 @@
                     "quantity": 2
                   }
                 ],
-                "quantity": 1
+                "quantity": 2
               },
               "direct": true,
               "extraCharges": {
@@ -48094,7 +48189,7 @@
           "userSession": {
             "currency": "USD",
             "itinerary": {
-              "children": 1,
+              "children": 4,
               "endDate": "2026-07-18",
               "guests": 4,
               "hours": 72,
@@ -48107,10 +48202,20 @@
                       "quantity": 2
                     }
                   ],
-                  "quantity": 1
+                  "quantity": 2
                 }
               ],
               "nights": 3,
+              "room": {
+                "adults": 2,
+                "children": [
+                  {
+                    "age": 7,
+                    "quantity": 2
+                  }
+                ],
+                "quantity": 2
+              },
               "rooms": 2,
               "startDate": "2026-07-15"
             },
@@ -48601,7 +48706,7 @@
                       "quantity": 2
                     }
                   ],
-                  "quantity": 1
+                  "quantity": 2
                 },
                 "direct": true,
                 "extraCharges": {
@@ -49382,7 +49487,7 @@
                         "quantity": 2
                       }
                     ],
-                    "quantity": 1
+                    "quantity": 2
                   },
                   "direct": true,
                   "extraCharges": {
@@ -50741,7 +50846,7 @@
                       "quantity": 2
                     }
                   ],
-                  "quantity": 1
+                  "quantity": 2
                 },
                 "direct": true,
                 "extraCharges": {
@@ -51522,7 +51627,7 @@
                         "quantity": 2
                       }
                     ],
-                    "quantity": 1
+                    "quantity": 2
                   },
                   "direct": true,
                   "extraCharges": {
@@ -52882,7 +52987,7 @@
                       "quantity": 2
                     }
                   ],
-                  "quantity": 1
+                  "quantity": 2
                 },
                 "direct": true,
                 "extraCharges": {
@@ -53663,7 +53768,7 @@
                         "quantity": 2
                       }
                     ],
-                    "quantity": 1
+                    "quantity": 2
                   },
                   "direct": true,
                   "extraCharges": {
@@ -55298,7 +55403,7 @@
                       "quantity": 2
                     }
                   ],
-                  "quantity": 1
+                  "quantity": 2
                 },
                 "direct": true,
                 "extraCharges": {
@@ -56079,7 +56184,7 @@
                         "quantity": 2
                       }
                     ],
-                    "quantity": 1
+                    "quantity": 2
                   },
                   "direct": true,
                   "extraCharges": {
@@ -57540,7 +57645,7 @@
                       "quantity": 2
                     }
                   ],
-                  "quantity": 1
+                  "quantity": 2
                 },
                 "direct": true,
                 "extraCharges": {
@@ -58321,7 +58426,7 @@
                         "quantity": 2
                       }
                     ],
-                    "quantity": 1
+                    "quantity": 2
                   },
                   "direct": true,
                   "extraCharges": {
@@ -59680,7 +59785,7 @@
                       "quantity": 2
                     }
                   ],
-                  "quantity": 1
+                  "quantity": 2
                 },
                 "direct": true,
                 "extraCharges": {
@@ -60461,7 +60566,7 @@
                         "quantity": 2
                       }
                     ],
-                    "quantity": 1
+                    "quantity": 2
                   },
                   "direct": true,
                   "extraCharges": {
@@ -62104,7 +62209,7 @@
                       "quantity": 2
                     }
                   ],
-                  "quantity": 1
+                  "quantity": 2
                 },
                 "direct": true,
                 "extraCharges": {
@@ -62885,7 +62990,7 @@
                         "quantity": 2
                       }
                     ],
-                    "quantity": 1
+                    "quantity": 2
                   },
                   "direct": true,
                   "extraCharges": {
@@ -63815,7 +63920,7 @@
           "userSession": {
             "currency": "USD",
             "itinerary": {
-              "children": 1,
+              "children": 4,
               "endDate": "2026-07-18",
               "guests": 4,
               "hours": 72,
@@ -63828,10 +63933,20 @@
                       "quantity": 2
                     }
                   ],
-                  "quantity": 1
+                  "quantity": 2
                 }
               ],
               "nights": 3,
+              "room": {
+                "adults": 2,
+                "children": [
+                  {
+                    "age": 7,
+                    "quantity": 2
+                  }
+                ],
+                "quantity": 2
+              },
               "rooms": 2,
               "startDate": "2026-07-15"
             },
@@ -64246,13 +64361,6 @@
             "maximum": 30,
             "minimum": 2
           },
-          "ratePlanNameMatchesRegEx": {
-            "type": "string",
-            "default": "",
-            "description": "A regular expression to apply to the rate plan name",
-            "maxLength": 256,
-            "minLength": 0
-          },
           "startDate": {
             "type": "string",
             "format": "date",
@@ -64541,7 +64649,7 @@
               "userSession": {
                 "currency": "USD",
                 "itinerary": {
-                  "children": 1,
+                  "children": 4,
                   "endDate": "2026-07-18",
                   "guests": 4,
                   "hours": 72,
@@ -64554,10 +64662,20 @@
                           "quantity": 2
                         }
                       ],
-                      "quantity": 1
+                      "quantity": 2
                     }
                   ],
                   "nights": 3,
+                  "room": {
+                    "adults": 2,
+                    "children": [
+                      {
+                        "age": 7,
+                        "quantity": 2
+                      }
+                    ],
+                    "quantity": 2
+                  },
                   "rooms": 2,
                   "startDate": "2026-07-15"
                 },
@@ -64960,7 +65078,7 @@
           "userSession": {
             "currency": "USD",
             "itinerary": {
-              "children": 1,
+              "children": 4,
               "endDate": "2026-07-18",
               "guests": 4,
               "hours": 72,
@@ -64973,10 +65091,20 @@
                       "quantity": 2
                     }
                   ],
-                  "quantity": 1
+                  "quantity": 2
                 }
               ],
               "nights": 3,
+              "room": {
+                "adults": 2,
+                "children": [
+                  {
+                    "age": 7,
+                    "quantity": 2
+                  }
+                ],
+                "quantity": 2
+              },
               "rooms": 2,
               "startDate": "2026-07-15"
             },
@@ -65039,7 +65167,7 @@
           "userSession": {
             "currency": "USD",
             "itinerary": {
-              "children": 1,
+              "children": 4,
               "endDate": "2026-07-18",
               "guests": 4,
               "hours": 72,
@@ -65052,10 +65180,20 @@
                       "quantity": 2
                     }
                   ],
-                  "quantity": 1
+                  "quantity": 2
                 }
               ],
               "nights": 3,
+              "room": {
+                "adults": 2,
+                "children": [
+                  {
+                    "age": 7,
+                    "quantity": 2
+                  }
+                ],
+                "quantity": 2
+              },
               "rooms": 2,
               "startDate": "2026-07-15"
             },
@@ -65170,7 +65308,7 @@
           "userSession": {
             "currency": "USD",
             "itinerary": {
-              "children": 1,
+              "children": 4,
               "endDate": "2026-07-18",
               "guests": 4,
               "hours": 72,
@@ -65183,10 +65321,20 @@
                       "quantity": 2
                     }
                   ],
-                  "quantity": 1
+                  "quantity": 2
                 }
               ],
               "nights": 3,
+              "room": {
+                "adults": 2,
+                "children": [
+                  {
+                    "age": 7,
+                    "quantity": 2
+                  }
+                ],
+                "quantity": 2
+              },
               "rooms": 2,
               "startDate": "2026-07-15"
             },
@@ -65333,7 +65481,7 @@
           "userSession": {
             "currency": "USD",
             "itinerary": {
-              "children": 1,
+              "children": 4,
               "endDate": "2026-07-18",
               "guests": 4,
               "hours": 72,
@@ -65346,10 +65494,20 @@
                       "quantity": 2
                     }
                   ],
-                  "quantity": 1
+                  "quantity": 2
                 }
               ],
               "nights": 3,
+              "room": {
+                "adults": 2,
+                "children": [
+                  {
+                    "age": 7,
+                    "quantity": 2
+                  }
+                ],
+                "quantity": 2
+              },
               "rooms": 2,
               "startDate": "2026-07-15"
             },
@@ -65480,7 +65638,7 @@
           "userSession": {
             "currency": "USD",
             "itinerary": {
-              "children": 1,
+              "children": 4,
               "endDate": "2026-07-18",
               "guests": 4,
               "hours": 72,
@@ -65493,10 +65651,20 @@
                       "quantity": 2
                     }
                   ],
-                  "quantity": 1
+                  "quantity": 2
                 }
               ],
               "nights": 3,
+              "room": {
+                "adults": 2,
+                "children": [
+                  {
+                    "age": 7,
+                    "quantity": 2
+                  }
+                ],
+                "quantity": 2
+              },
               "rooms": 2,
               "startDate": "2026-07-15"
             },
@@ -65601,7 +65769,7 @@
           "userSession": {
             "currency": "USD",
             "itinerary": {
-              "children": 1,
+              "children": 4,
               "endDate": "2026-07-18",
               "guests": 4,
               "hours": 72,
@@ -65614,10 +65782,20 @@
                       "quantity": 2
                     }
                   ],
-                  "quantity": 1
+                  "quantity": 2
                 }
               ],
               "nights": 3,
+              "room": {
+                "adults": 2,
+                "children": [
+                  {
+                    "age": 7,
+                    "quantity": 2
+                  }
+                ],
+                "quantity": 2
+              },
               "rooms": 2,
               "startDate": "2026-07-15"
             },
@@ -65744,7 +65922,7 @@
           "userSession": {
             "currency": "USD",
             "itinerary": {
-              "children": 1,
+              "children": 4,
               "endDate": "2026-07-18",
               "guests": 4,
               "hours": 72,
@@ -65757,10 +65935,20 @@
                       "quantity": 2
                     }
                   ],
-                  "quantity": 1
+                  "quantity": 2
                 }
               ],
               "nights": 3,
+              "room": {
+                "adults": 2,
+                "children": [
+                  {
+                    "age": 7,
+                    "quantity": 2
+                  }
+                ],
+                "quantity": 2
+              },
               "rooms": 2,
               "startDate": "2026-07-15"
             },
@@ -65908,7 +66096,7 @@
           "userSession": {
             "currency": "USD",
             "itinerary": {
-              "children": 1,
+              "children": 4,
               "endDate": "2026-07-18",
               "guests": 4,
               "hours": 72,
@@ -65921,10 +66109,20 @@
                       "quantity": 2
                     }
                   ],
-                  "quantity": 1
+                  "quantity": 2
                 }
               ],
               "nights": 3,
+              "room": {
+                "adults": 2,
+                "children": [
+                  {
+                    "age": 7,
+                    "quantity": 2
+                  }
+                ],
+                "quantity": 2
+              },
               "rooms": 2,
               "startDate": "2026-07-15"
             },
@@ -66065,7 +66263,7 @@
           "userSession": {
             "currency": "USD",
             "itinerary": {
-              "children": 1,
+              "children": 4,
               "endDate": "2026-07-18",
               "guests": 4,
               "hours": 72,
@@ -66078,10 +66276,20 @@
                       "quantity": 2
                     }
                   ],
-                  "quantity": 1
+                  "quantity": 2
                 }
               ],
               "nights": 3,
+              "room": {
+                "adults": 2,
+                "children": [
+                  {
+                    "age": 7,
+                    "quantity": 2
+                  }
+                ],
+                "quantity": 2
+              },
               "rooms": 2,
               "startDate": "2026-07-15"
             },
