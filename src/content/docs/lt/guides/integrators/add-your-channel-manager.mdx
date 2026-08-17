@@ -1,0 +1,388 @@
+---
+title: Pridėkite savo Channel Manager
+description: Žingsnis po žingsnio vadovas Channel Manager ir PMS kūrėjams, integruojantiems su Wink platforma.
+sidebar:
+  order: 1
+---
+
+import { Steps, LinkButton } from '@astrojs/starlight/components';
+
+Šis vadovas veda Channel Manager ir PMS kūrėjus per visą integracijos su Wink procesą — nuo paskyrų sukūrimo iki inventoriaus susiejimo ir pirmojo pilno testavimo.
+
+## Aplinkos
+
+Channel Manager (Integrations) API yra prieinama dviejose aplinkose. Naudokite staging visam vystymui ir sertifikavimui; pereikite prie produkcijos tik paleidimo metu.
+
+| Aplinka    | Pagrindinis URL                  |
+| ---------- | ------------------------------- |
+| Produkcija | https://integrations.wink.travel |
+| Staging    | https://staging-integrations.wink.travel |
+
+## API nuoroda
+
+Channel Manager API laikosi OTA protokolo standartų (SOAP/XML), kad būtų suderinama su esamomis svetingumo sistemomis. Pradėkite nuo partnerių galinių taškų dokumentacijos peržiūros:
+
+<LinkButton href="/lt/partner-api/partner/">
+  Channel Manager API — Partnerių galiniai taškai
+</LinkButton>
+
+## Integracijos žingsniai
+
+<Steps>
+1. **Sukurkite Wink vartotojo paskyrą**
+
+   Užsiregistruokite adresu [staging-app.wink.travel](https://staging-app.wink.travel). Visi žemiau esantys žingsniai naudoja staging — pilną procesą pakartosite produkcijoje prieš paleidimą.
+
+2. **Sukurkite savo Affiliate / Channel Manager paskyrą**
+
+   Po nauju vartotoju sukurkite paskyrą ir pasirinkite **Affiliate / Channel Manager** paskyros tipą. Tai paskyra, kuria jūsų integracija autentifikuosis.
+
+3. **Užregistruokite programą ir gaukite pirmąjį tokeną**
+
+   Sukurkite [Programą](/lt/account/applications) ir susiekite ją su 2 žingsnyje sukurta channel manager paskyra. Pasirinkite **MACHINE_2_MACHINE** kaip kliento tipą — tai serverio-serverio integracija be galutinio vartotojo peradresavimo. Nedelsdami nukopijuokite **Client ID** ir **Secret Key**; slaptas raktas rodomas tik vieną kartą ir jo negalima atgauti.
+
+   Programa generuoja bearer token, kurį kiekvienas šio vadovo kvietimas perduoda kaip `Authorization: Bearer <access_token>`. Pasikeiskite savo kredencialus į tokeną naudodami `client_credentials` grantą adresu `https://staging-iam.wink.travel/oauth2/token`, prašydami `integrations.read integrations.write` teisių. Padarykite tai prieš tęsdami — be tokeno negalėsite gauti paskyros identifikatorių ar pasiekti Channel Manager galinių taškų. Žr. [Authentication](/lt/developers/authentication) pilnam procesui, produkcijos hostui ir teisų katalogui.
+
+4. **Sukurkite Viešbučio paskyrą**
+
+   To paties vartotojo vardu sukurkite antrą paskyrą ir pasirinkite **Hotel** paskyros tipą. Tai suteikia jums objektą, kurį galite naudoti testavimui be tikro viešbučio įtraukimo.
+
+5. **Patvirtinkite, kad abi paskyros yra patvirtintos**
+
+   Nei viena paskyra negali būti naudojama, kol nėra patvirtinta: nepatvirtinta channel manager paskyra neatsiranda jokio viešbučio channel manager sąraše, o nepatvirtintas viešbutis nėra grąžinamas API.
+
+   - **Staging** — patvirtinimas automatinis. Abi paskyros yra naudojamos iš karto po sukūrimo, nieko papildomai prašyti nereikia.
+   - **Produkcija** — patvirtinimas rankinis. Siųskite Wink integracijų kontaktui abiejų paskyrų pavadinimus ir vartotoją, po kurio jos yra, ir laukite patvirtinimo prieš tęsdami.
+
+6. **Sujunkite abi paskyras**
+
+   Prisijunkite prie Viešbučio paskyros ir eikite į **Extranet → Distribution → Channel Manager**. Pasirinkite savo channel manager paskyrą iš sąrašo — tai susies objektą su jūsų integracija. Jei jūsų paskyros nėra sąraše, ji dar nepatvirtinta; žr. 5 žingsnį.
+
+7. **Sukurkite bazinį kambario tipą ir kainų planą**
+
+   Viešbučio paskyroje sukurkite bent vieną kambario tipą ir vieną kainų planą. Tai būtina, kad jūsų integracija galėtų siųsti kainas ir prieinamumą arba gauti užsakymus.
+
+8. **Susiekite ir testuokite**
+
+   Savo sistemoje susiekite kambario tipo ir kainų plano identifikatorius, kuriuos grąžina API. Siųskite kainų atnaujinimą ir prieinamumo atnaujinimą, tada atlikite testinį užsakymą ir patikrinkite, ar užsakymo gavimo galinis taškas jį teisingai grąžina.
+</Steps>
+
+:::note
+Prieš paleidimą produkcijoje pakartokite visus aukščiau nurodytus žingsnius, įskaitant atskiros produkcijos programos registraciją — staging kredencialai neveikia produkcijoje. Planuokite Wink peržiūrą 5 žingsnyje — priešingai nei staging, produkcijos paskyros nėra patvirtinamos automatiškai. Wink komanda perkelia visus viešbučius, jau naudojančius jūsų channel manager, į jūsų naują produkcijos paskyrą.
+:::
+
+## Kaip rasti savo paskyros identifikatorius
+
+Kiekvienas Channel Manager API kelias yra susietas su jūsų paskyra:
+
+```
+/api/managing-entity/{managingEntityIdentifier}/channel-manager/...
+```
+
+`{managingEntityIdentifier}` yra jūsų **channel manager paskyros** ID (UUID) — ne viešbučio. Gaukite jį kartu su visų kitų jūsų vartotojo paskyrų ID ir dabartine būsena iš Platform API:
+
+```bash
+curl -s -X GET \
+  "https://staging-api.wink.travel/api/managing-entity/list" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Atsakymas yra masyvas su jūsų paskyromis:
+
+```json
+[
+  {
+    "id": "3f1c8e42-7b90-4d55-a1e2-6c8d09b4f731",
+    "type": "CHANNEL_MANAGER",
+    "name": "Jūsų Channel Manager",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "d5b8a3c2-9e6f-4a1b-8d34-7c2e1f0a5b69",
+    "type": "HOTEL",
+    "name": "Jūsų Testo Objektas",
+    "urlName": "your-test-property",
+    "status": "ACTIVE"
+  }
+]
+```
+
+- Channel manager įrašo `id` yra jūsų **`{managingEntityIdentifier}`**.
+- `HOTEL` įrašo `id` yra jūsų **`{propertyIdentifier}`**.
+- `status` leidžia patikrinti, ar paskyra patvirtinta — ypač naudinga produkcijoje, kur patvirtinimas yra rankinis. **Viešbutis** turi būti `ACTIVE`, kad būtų galima užsakyti ar matyti Channel Manager API. Jūsų **channel manager** paskyra rodys `PENDING_APPROVAL` iki sertifikavimo; tai normalu ir netrukdo vystymui.
+
+:::caution
+Šis užklausos vykdomas prieš **Platform API** (`https://staging-api.wink.travel` staging aplinkoje, `https://api.wink.travel` produkcijoje), o ne Channel Manager API hostus, nurodytus [Aplinkose](#environments). Naudokite tą patį prieigos tokeną — jis išduodamas vartotojui, o ne API.
+:::
+
+## Sertifikavimas
+
+Sertifikavimas įrodo — ir Wink patvirtina — kad jūsų integracija teisingai susieja inventorių, siunčia kainas ir prieinamumą bei gauna užsakymus pilnu ciklu. Tai savitarninis procesas: jūs valdote kiekvieną žingsnį savo sistemoje ir pateikiate vieną įrodymų paketą pabaigoje. Wink peržiūri paketą ir, jei viskas gerai, pakeičia jūsų Affiliate / Channel Manager paskyros būseną iš **PENDING_APPROVAL** į **ACTIVE**.
+
+Sertifikavimas vyksta tik staging aplinkoje
+(`https://staging-integrations.wink.travel`). Šiame skyriuje niekas nesusiję su produkcija.
+
+### Ką įrodysite
+
+<Steps>
+1. **Autentifikacija.** Jūsų OAuth2 klientas gali gauti prieigos tokeną ir sėkmingai iškviesti `/ping` galinį tašką savo Affiliate / Channel Manager paskyrai.
+
+2. **Inventoriaus susiejimas.** Galite išvardinti viešbučius, susietus su jūsų paskyra, gauti pagrindinę kainą (kambario tipas × kainų planas), kurią sukonfigūravote, ir teisingai identifikuoti `masterRateIdentifier`, į kurį nukreips jūsų sistema.
+
+3. **Kainų ir prieinamumo siuntimas.** Galite atnaujinti visų septynių sertifikavimo savaitės dienų duomenis atskirai — skirtingas kiekis, kiekis, uždarymo atvykimo/išvykimo žymos ir minimalus/maksimalus viešnagės ilgis kiekvienai dienai — ir perskaityti tikslias reikšmes iš Wink.
+
+4. **Užsakymų gavimas.** Galite gauti tikrą staging užsakymą, padarytą jūsų testiniam objektui, parodyti jį savo PMS/CM sąsajoje su teisingu kambario laikotarpiu, svečiu ir suma, o po to atspindėti atšaukimą, kai Wink pažymi užsakymą kaip atšauktą.
+</Steps>
+
+### Reikalavimai
+
+Prieš pradėdami sertifikavimą, atlikite 1–7 žingsnius iš [Integracijos žingsnių](#integration-steps), kad turėtumėte:
+
+- Wink vartotoją staging aplinkoje su **Affiliate / Channel Manager** ir **Hotel** paskyromis, susietomis tarpusavyje (Extranet → Distribution → Channel Manager). Staging paskyros patvirtinamos automatiškai, tad papildomų prašymų nereikia.
+- Bent vieną **kambario tipą** ir vieną **kainų planą** sukurtą Viešbučio paskyroje. Viešbutį paskelbkite, kad jis būtų užsakomas adresu `https://staging-book.wink.travel/hotel/<your-slug>`.
+- Užregistruotą programą Affiliate / Channel Manager paskyroje su **Client ID**, **Secret Key** ir teisėmis `integrations.read integrations.write` (žr. [Authentication](/lt/developers/authentication)).
+- **`managingEntityIdentifier`** savo Affiliate / Channel Manager paskyrai ir **`propertyIdentifier`** savo Viešbučio paskyrai (abu UUID — žr. [Kaip rasti savo paskyros identifikatorius](#finding-your-account-identifiers)).
+
+### Dažniausios užklausų konvencijos
+
+Visos šio skyriaus užklausos naudoja šiuos antraštes:
+
+```http
+Authorization: Bearer <access_token>
+Wink-Version: 2.0
+Accept: application/json
+```
+
+- `<access_token>` gaunamas per `client_credentials` grantą adresu `https://staging-iam.wink.travel/oauth2/token` — žr. [Authentication](/lt/developers/authentication#staging).
+- Antraštė `Wink-Version` yra privaloma; jos praleidimas neleidžia pasiekti v2 JSON API.
+- `Content-Type: application/json` pridedama prie `PUT` užklausų su kūnu.
+
+Toliau pateiktuose pavyzdžiuose vietos laikikliai atitinka reikšmes, kurias surinkote
+[Reikalavimuose](#prerequisites):
+
+| Vietos laikiklis             | Reikšmė |
+|-----------------------------|---------|
+| `{managingEntityIdentifier}` | Jūsų Affiliate / Channel Manager paskyros ID (UUID) — žr. [Kaip rasti savo paskyros identifikatorius](#finding-your-account-identifiers). |
+| `{propertyIdentifier}`       | Viešbučio paskyros (objekto) ID, susietas su CM paskyra. |
+| `{masterRateIdentifier}`     | Pagrindinė kaina (kambario tipas × kainų planas), kurią sertifikuosite. |
+| `{bookingIdentifier}`        | Staging užsakymo ID, gautas iš užsakymų sąrašo kvietimo. |
+
+### Žingsnis A — Ping
+
+Patikrinkite, ar jūsų kredencialai atitinka tikėtiną Affiliate / Channel Manager paskyrą.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/ping" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Tikėtinas atsakymas:
+
+```json
+{
+  "apiVersion": "2.0",
+  "name": "Jūsų Channel Manager paskyros pavadinimas",
+  "status": "PENDING_APPROVAL"
+}
+```
+
+**200** atsakymas su atitinkančiu `name` rodo, kad autentifikacija ir paskyros nustatymas yra teisingi. `status` rodys `PENDING_APPROVAL` iki Wink sertifikavimo.
+
+### Žingsnis B — Viešbučių sąrašas
+
+Gaukite puslapiuotą viešbučių, susietų su jūsų paskyra, sąrašą ir patikrinkite, ar jūsų testinis objektas yra sąraše.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/list?page=0&size=25" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Atsakymas yra Spring `Page` su `ChannelManagerProperty` įrašais. Suraskite įrašą, kurio `identifier` atitinka jūsų `{propertyIdentifier}` ir užsirašykite jo `currencyCode` — to reikės kainų atnaujinimų interpretavimui [Žingsnyje D](#step-d--load-the-certification-week).
+
+:::caution
+Tuščias sąrašas reiškia konfigūracijos signalą, o ne neteisingą užklausą. Viešbutis grąžinamas tik tada, kai yra **`ACTIVE`** *ir* priskirtas jūsų channel manager paskyrai Extranet → Distribution → Channel Manager. Patikrinkite abu su `GET /api/managing-entity/list` (žr. [Kaip rasti savo paskyros identifikatorius](#finding-your-account-identifiers)) prieš gilintis į klaidas.
+Produkcijoje pridėkite dar vieną priežastį: viešbutis nematomas, kol Wink jo nepatvirtina.
+:::
+
+### Žingsnis C — Gaukite pagrindines kainas
+
+Gaukite objektą kartu su visomis pagrindinėmis kainomis (kambario tipas × kainų planas), kurias jis skelbia. Pasirinkite tą, kurią ketinate sertifikuoti, ir užsirašykite jos `identifier` kaip savo `{masterRateIdentifier}`.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Atsakymas yra `PropertyWithRoomRateList`: `property` blokas ir `rooms` masyvas su `PropertyRoomRate` įrašais. Kiekvienas įrašas rodo kambario tipą, kainų planą, užimtumo ribas, bazinę kainą ir kainų modifikatorius, kuriuos išlaikysite siųsdami dienos kainas.
+
+:::caution
+Sertifikuokite tik vieną pagrindinę kainą visam sertifikavimo laikotarpiui. Papildomų kambarių tipų ir kainų planų susiejimas yra numatytas produkcijoje, bet įrodymų paketas turi parodyti tik vieną pagrindinę kainą pilnu ciklu.
+:::
+
+### Žingsnis D — Užpildykite sertifikavimo savaitę
+
+Užpildykite **septynių dienų kainų kalendorių**, apimantį pirmąsias septynias kalendorines dienas po mėnesio, kuriame pradedate sertifikavimą. Pavyzdžiui, jei pradedate 2026 m. rugpjūčio 21 d., taikykite nuo 2026 m. rugsėjo 1 d. iki rugsėjo 7 d.
+
+Siųsite **septynis atskirus `PUT` kvietimus** — po vieną kiekvienai dienai, kur `startDate == endDate`. Kiekviena diena turi skirtingą sumą, kiekį, uždarymo atvykimo/išvykimo žymes ir minimalų/maksimalų viešnagės ilgį, kad būtų išbandyti visi rašomi laukai. Reikšmės yra objekto valiuta (užfiksuota Žingsnyje B); praleiskite `currencyCode` ir jis bus nustatytas teisingai.
+
+| Diena | Suma   | Kiekis | closedOnArrival | closedOnDeparture | minLengthOfStay | maxLengthOfStay | Ką įrodo |
+|-------|--------|--------|-----------------|-------------------|-----------------|-----------------|----------|
+| 1     | 100.00 | 5      | false           | false             | 1               | 30              | Bazinė diena. |
+| 2     | 125.00 | 4      | false           | false             | 1               | 14              | Suma + kiekis + `maxLengthOfStay` pokytis. |
+| 3     | 150.00 | 3      | **true**        | false             | 1               | 30              | `closedOnArrival` pakeitimas. |
+| 4     | 175.00 | 2      | false           | **true**          | 2               | 7               | `closedOnDeparture` pakeitimas + siauresnis viešnagės langas. |
+| 5     | 200.00 | **0**  | false           | false             | 1               | 30              | Išparduota kiekio reikšmė. |
+| 6     | 225.00 | 5      | false           | false             | **3**           | **5**           | Ribotas viešnagės langas. |
+| 7     | 250.00 | 1      | false           | false             | 1               | 30              | Paskutinio kambario prieinamumas. |
+
+Žingsnio 1 dienos užklausos pavyzdys atrodo taip. Kartokite, keisdami `startDate` / `endDate` / reikšmes pagal lentelę, dienoms 2–7.
+
+```bash
+curl -s -X PUT \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/master-rate/{masterRateIdentifier}" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json" \
+  -d '{
+        "startDate": "2026-09-01",
+        "endDate":   "2026-09-01",
+        "amount":    100.00,
+        "master":    true,
+        "closedOnArrival":   false,
+        "closedOnDeparture": false,
+        "quantity":          5,
+        "minLengthOfStay":   1,
+        "maxLengthOfStay":   30
+      }'
+```
+
+Kiekvienas `PUT` atsako `200` su atnaujintų `PropertyRate` įrašų masyvu už nurodytą intervalą (vienas įrašas, kai `startDate == endDate`). Išsaugokite šį atsakymą — jis bus jūsų įrodymų dalis.
+
+:::note
+`master` turi būti `true` kiekviename sertifikavimo savaitės kvietime. Tai nurodo Wink, kad jūsų atnaujinimas yra šabloninė kaina, o ne per užsakymą taikomas pakeitimas.
+:::
+
+### Žingsnis E — Perskaitykite sertifikavimo savaitę
+
+Gaukite visą savaitę vienu kvietimu ir patikrinkite, ar kiekvienos dienos saugomos reikšmės atitinka Žingsnyje D nurodytas — įskaitant loginės reikšmes ir viešnagės langą.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/master-rate/{masterRateIdentifier}?startDate=2026-09-01&endDate=2026-09-07" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Atsakymas yra `PropertyRoomRateWithRateList`. Jo `rates` masyve turi būti **septyni** įrašai, po vieną kiekvienai dienai, su `amount`, `quantity`, `closedOnArrival`, `closedOnDeparture`, `minLengthOfStay` ir `maxLengthOfStay`, kuriuos įkėlėte. Bet koks neatitikimas reiškia, kad atitinkamas `PUT` Žingsnyje D nebuvo įvykdytas teisingai — ištaisykite ir patikrinkite dar kartą prieš tęsdami.
+
+### Žingsnis F — Atlikite testinį užsakymą
+
+Atidarykite šį URL naršyklėje, pakeisdami `<your-slug>` į Viešbučio paskyros slug, kurį paskelbėte Reikalavimuose:
+
+```
+https://staging-book.wink.travel/hotel/<your-slug>
+```
+
+Pasirinkite atvykimo ir išvykimo datas, kurios visiškai patenka į sertifikavimo savaitę, pasirinkite sertifikuotą kambario tipą + kainų planą ir užbaikite užsakymą. Staging naudoja testinį mokėjimo kelią — kortelė nebus nuskaičiuota.
+
+Kai patvirtinimo puslapis bus parodytas, užsirašykite **užsakymo kodą** (formatu `WNKxxxxx`), rodomą svečiui.
+
+### Žingsnis G — Gaukite užsakymą
+
+Gaukite visus užsakymus, sukurtus jūsų testiniam objektui per laikotarpį, apimantį užsakymo laiką.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/booking/list?startDate=2026-09-01T00:00:00&endDate=2026-09-08T00:00:00" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Suraskite įrašą, kurio `bookingCode` atitinka jūsų užrašytą kodą Žingsnyje F. Užsirašykite jo `bookingIdentifier`. Tada gaukite tą vieną užsakymą:
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/booking/{bookingIdentifier}" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Atsakymas yra `PropertyBooking`. Importuokite jį į savo PMS / channel manager sąsają ir patikrinkite, ar operatoriui teisingai rodomi šie duomenys:
+
+- `bookingCode`, `bookingIdentifier`, `createdDate`
+- Svečias: `firstName`, `lastName`, `email`
+- `totalAmount` + `currencyCode` (grynoji suma, kurią viešbutis gauna už visus kambarius)
+- `paymentMethodType`, `paymentMethodStatus`, `salesChannelName`
+- Kiekvienas įrašas `roomStays`: `guestRoomName`, `ratePlanName`, `adults`, `children`, `startDate`, `endDate` ir kambario `amount`
+
+Padarykite ekrano kopiją, kaip užsakymas atrodo jūsų sąsajoje — ši ekrano kopija yra viena iš reikalingų įrodymų.
+
+### Žingsnis H — Atšaukite užsakymą ir patikrinkite
+
+Paprašykite Wink komandos atšaukti sertifikavimo užsakymą jūsų vardu (arba atšaukite patys per Viešbučio paskyros Extranet, jei turite teisę). Tada dar kartą gaukite tą patį užsakymą su Žingsnio G kvietimu.
+
+Patikrinkite, ar atsakyme dabar yra:
+
+- `cancelled: true`
+- Užpildytas `cancelDate` laiko žymuo
+- `paymentMethodStatus`, atspindintis atšaukimo būseną (`CANCELLED`, `PARTIALLY_REFUNDED` arba `FULLY_REFUNDED` priklausomai nuo grąžinimo politikos)
+
+Importuokite atnaujintą užsakymą į savo sąsają ir patikrinkite, ar operatoriui matomas atšaukimas — būsena, atšaukimo laiko žyma ir bet koks jūsų UI palaikomas grąžinimo indikatorius. Padarykite antrą ekrano kopiją su atšauktu užsakymu savo UI. Tai paskutinis įrodymų elementas.
+
+### Žingsnis I — Pateikite savo įrodymų paketą
+
+Supakuokite šiuos failus į vieną archyvą (`.zip`), pavadintą
+`wink-cert-<your-channel-manager-name>-<yyyy-mm-dd>.zip`:
+
+<Steps>
+1. **API transkriptas.** Kiekvienam užklausos ir atsakymo porai iš Žingsnių A–H užfiksuokite pilną HTTP užklausą (metodą, URL, užklausos antraštes su `Authorization` reikšmės paslėpimu ir JSON kūną `PUT` kvietimams) ir pilną HTTP atsakymą (statuso kodą, atsakymo antraštes ir JSON kūną). Struktūruokite transkriptą taip, kad kiekviena pora būtų aiškiai pažymėta priklausomu žingsniu (`step-a-ping.json`, `step-d-day-3-put.json`, `step-g-list-bookings.json` ir pan.). Priimtini paprasto teksto `.http` failai arba vienas `.har` eksportas.
+
+2. **UI ekrano kopija: aktyvus užsakymas.** Ekrano kopija iš Žingsnio G, kurioje matomas sertifikavimo užsakymas jūsų PMS / channel manager UI, aiškiai matomi svečias, datos, kambario tipas, kainų planas ir suma.
+
+3. **UI ekrano kopija: atšauktas užsakymas.** Ekrano kopija iš Žingsnio H, kurioje matomas tas pats užsakymas jūsų UI po atšaukimo, aiškiai matoma atšaukimo būsena ir laiko žyma.
+
+4. **Sertifikavimo santrauka.** Trumpas `README.md` faile archyve, kuriame nurodyta:
+   - Jūsų channel manager / PMS pavadinimas ir versija.
+   - Naudoti `managingEntityIdentifier`, `propertyIdentifier`, `masterRateIdentifier` ir `bookingIdentifier`.
+   - Staging viešbučio slugas (tas `<your-slug>` `https://staging-book.wink.travel/hotel/<your-slug>`).
+   - Sertifikavimo savaitės datų intervalas (Diena 1 → Diena 7 ISO-8601 formatu).
+   - Inžinieriaus, vykdžiusio sertifikavimą, vardas ir el. paštas.
+</Steps>
+
+Išsiųskite archyvą savo Wink integracijų kontaktui. Wink peržiūrės, susisieks dėl neatitikimų ir — jei viskas gerai — pakeis jūsų Affiliate / Channel Manager paskyros būseną iš `PENDING_APPROVAL` į `ACTIVE`. Tada jūsų integracija bus tinkama produkcijos paleidimui.
+
+:::tip
+Automatizuokite transkripcijos fiksavimą. Septyni `PUT` kvietimai Žingsnyje D ir perskaitymas Žingsnyje E yra dažniausia sertifikavimo klaidų priežastis — interaktyvus HTTP klientas, kuris išsaugo kiekvieną užklausą ir atsakymą vykdymo metu, leis jums išvengti pilno pakartojimo, jei reikšmė bus netiksli.
+:::
+
+## Webhook pranešimai
+
+Galite užsiprenumeruoti channel manager webhook įvykius, kad gautumėte realaus laiko pranešimus:
+
+- `channel-manager.update.rate` — gautas kainos atnaujinimas.
+- `channel-manager.update.availability` — gautas prieinamumo atnaujinimas.
+- `channel-manager.update` — bendras channel manager atnaujinimas.
+
+Daugiau informacijos rasite [Webhook įvykių kataloge](/lt/developers/webhook-events#channel-manager-events).
+
+## Tolimesnė literatūra
+
+- [Channel Manager API](/lt/partner-api/partner/) — Pilna API galinių taškų dokumentacija.
+- [Kainų tiekėjai](/lt/portal/extranet/rate-providers) — Kainų tiekėjų valdymas Extranet.
+- [Webhook įvykių katalogas](/lt/developers/webhook-events) — Visi prenumeruojami įvykiai.
+- [Kurkite ant Wink](/lt/developers/build-on-wink) — Platformos apžvalga kūrėjams.

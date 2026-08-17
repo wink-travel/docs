@@ -1,0 +1,681 @@
+---
+title: การผสานรวม GTM Analytics
+description: วิธีเชื่อมต่อคอนเทนเนอร์ Google Tag Manager ใด ๆ (เช่น คอนเทนเนอร์ Sojern) กับ Wink เพื่อให้สามารถติดตามเส้นทางการจองของแขกและสนับสนุนแคมเปญรีทาร์เก็ตติ้งและโฆษณาของคุณ
+sidebar:
+  label: การผสานรวม GTM Analytics
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+คุณสามารถเชื่อมต่อ **คอนเทนเนอร์** Google Tag Manager (GTM) **ใดก็ได้** กับ Wink โดยการป้อน **GTM Container ID** ในพอร์ทัล Wink เมื่อเชื่อมต่อแล้ว คอนเทนเนอร์ของคุณจะโหลดโดยอัตโนมัติสำหรับที่พักของคุณและอ่านเหตุการณ์การจองของ Wink โดยตรง — ครอบคลุมเส้นทางของแขกตั้งแต่การค้นหาจนถึงการจองที่เสร็จสมบูรณ์ กรณีการใช้งานทั่วไปคือคอนเทนเนอร์ **Sojern** สำหรับรีทาร์เก็ตติ้งและโฆษณา แต่คอนเทนเนอร์ GTM ใด ๆ ก็ทำงานในลักษณะเดียวกัน
+
+<Aside type="tip">
+สมมติว่าคุณมี GTM Container ID อยู่แล้ว (รูปแบบ `GTM-XXXXXXX`) หากคอนเทนเนอร์ของคุณมาจากพันธมิตร เช่น Sojern โปรดขอ **GTM Container ID** โดยเฉพาะจากผู้จัดการบัญชีของคุณ — ซึ่งจะแตกต่างจากพิกเซลหรือรหัสแท็ก หากคุณยังใหม่กับ Sojern เยี่ยมชม [sojern.com/contact](https://www.sojern.com/contact) เพื่อเริ่มต้น
+</Aside>
+
+---
+
+## สิ่งที่คุณต้องทำ
+
+<Steps>
+
+1. **รับ GTM Container ID ของคุณ**
+
+   ขอรับ **GTM Container ID** ของคุณ (รูปแบบ `GTM-XXXXXXX`) หากมาจากพันธมิตร เช่น Sojern โปรดขอ GTM Container ID โดยเฉพาะ — ซึ่งแตกต่างจากพิกเซลหรือรหัสแท็ก
+
+2. **ป้อนในพอร์ทัล Wink**
+
+   เข้าสู่ระบบที่ [app.wink.travel](https://app.wink.travel) เลือกบัญชีของคุณ และเปิดการตั้งค่าการปรับแต่ง ในส่วน **Analytics & integrations** วาง GTM Container ID ของคุณในช่อง **GTM Container ID** แล้วบันทึก การผสานรวมของคุณจะเริ่มทำงานทันที
+
+3. **ยืนยันกับผู้ให้บริการของคุณ**
+
+   หากคอนเทนเนอร์ของคุณมาจากพันธมิตร เช่น Sojern แจ้งผู้จัดการบัญชีของคุณว่าการผสานรวมเปิดใช้งานแล้ว พวกเขาสามารถตรวจสอบจากฝั่งของตนว่าแท็กทำงานถูกต้องบน `wink.travel` สำหรับที่พักของคุณและข้อมูลไหลเข้าสู่บัญชีของคุณ
+
+</Steps>
+
+<Aside type="note">
+คุณไม่จำเป็นต้องวางโค้ดพิกเซลใด ๆ บนเว็บไซต์ของคุณสำหรับการผสานรวมนี้ Wink จะโหลดคอนเทนเนอร์ GTM ของคุณโดยอัตโนมัติบนทุกหน้าที่ที่ที่พักของคุณเปิดใช้งาน
+
+สิ่งนี้ใช้ได้กับ **GTM Container ID ใดก็ได้** — Sojern เป็นเพียงตัวอย่างที่พบบ่อยเท่านั้น
+</Aside>
+
+---
+
+## สิ่งที่ Wink ทำในฝั่งของเรา
+
+เพื่อความโปร่งใส นี่คือสิ่งที่ Wink กำหนดค่าเพื่อให้การผสานรวมนี้ทำงานได้:
+
+- **มีช่อง GTM Container ID** ในส่วน **Analytics & integrations** ของการตั้งค่าการปรับแต่งของคุณ เมื่อคุณป้อน Container ID Wink จะตรวจสอบรูปแบบ (`GTM-XXXXXXX`) และจัดเก็บอย่างปลอดภัยกับที่พักของคุณ
+- **บนทุกหน้าที่ที่ที่พักของคุณเปิดใช้งาน** บน Wink คอนเทนเนอร์ของคุณจะถูกฝังโดยตรงในหน้า — ใช้ร่วมกับ `window.dataLayer` ของ Wink — เพื่อให้โหลดพร้อมกับคอนเทนเนอร์ของ Wink โดยไม่มีการพึ่งพาการตั้งค่าเพิ่มเติมใด ๆ สิ่งนี้เกิดขึ้นโดยอัตโนมัติ โดยไม่ต้องมีงานเฉพาะสำหรับแต่ละที่พักจากทีม Wink
+- **คอนเทนเนอร์ของคุณโหลดแบบอะซิงโครนัส** ดังนั้นจึงไม่ส่งผลกระทบต่อประสิทธิภาพการโหลดหน้าเว็บสำหรับแขกของคุณ
+- **การติดตามของ Wink และคอนเทนเนอร์ของคุณทำงานคู่ขนาน** โดยอ่านจาก `dataLayer` ร่วมกัน เหตุการณ์การจองทุกเหตุการณ์ที่ Wink ติดตามจะพร้อมใช้งานในคอนเทนเนอร์ของคุณพร้อมกัน
+- **เมื่อที่พักของคุณไม่ได้ถูกดู** — เช่น เมื่อแขกกำลังเรียกดูโรงแรมอื่นบน Wink — คอนเทนเนอร์ของคุณจะไม่ถูกโหลด ดังนั้นจะได้รับข้อมูลที่เกี่ยวข้องกับที่พักของคุณเท่านั้น
+- **เหตุการณ์การจองที่เสร็จสมบูรณ์ (`purchase`) จะถูกยิงในเบราว์เซอร์บนหน้าขอบคุณ** GTM Container ID เป็นกล่องดำ — Wink ไม่สามารถสมมติได้ว่าแท็กใดอยู่ภายใน — ดังนั้น Wink จะไม่เรียก Google ในนามของคุณจากเซิร์ฟเวอร์ของเรา แทนที่จะเป็นเช่นนั้น แท็ก GA4 หรือแท็กแปลงใด ๆ ที่อยู่ในคอนเทนเนอร์ของคุณจะได้รับเหตุการณ์ `purchase` ทางฝั่งไคลเอนต์ เหมือนกับเหตุการณ์การจองอื่น ๆ เนื่องจากผู้ให้บริการชำระเงินจะเปลี่ยนเส้นทางเบราว์เซอร์ของแขกออกไปและกลับมา Wink จะเชื่อมต่อเซสชันวิเคราะห์ที่ถูกขัดจังหวะโดยการเปลี่ยนเส้นทาง **ก่อน** ยิงเหตุการณ์ `purchase` ดังนั้นการขายจึงถูกนับให้กับการเยี่ยมชมเดิมของแขกแทนที่จะนับเป็นเซสชันใหม่
+
+---
+
+## ข้อมูลอ้างอิง DataLayer
+
+Wink ส่งเหตุการณ์ที่เข้ากันได้กับ GA4 ไปยัง `dataLayer` ตลอดเส้นทางของแขก คอนเทนเนอร์ GTM ของคุณอ่านจาก `dataLayer` ร่วมกันนี้ ดังนั้นทริกเกอร์หรือค่าตัวแปรใด ๆ ที่คุณกำหนดค่าจะเข้าถึงคุณสมบัติทั้งหมดที่อธิบายไว้ด้านล่าง
+
+แต่ละเหตุการณ์เป็นไปตามโครงสร้าง GA4 Enhanced Ecommerce มาตรฐาน: สตริง `event` ระดับบนสุดและอ็อบเจ็กต์ `ecommerce` ก่อนที่จะส่งข้อมูลแต่ละครั้ง Wink จะล้างข้อมูล ecommerce ก่อนหน้าเพื่อป้องกันข้อมูลเก่ารั่วไหลไปยังทริกเกอร์ใหม่
+
+<Aside type="note">
+**รูปแบบการรีเซ็ต dataLayer**
+
+Wink รีเซ็ตอ็อบเจ็กต์ ecommerce ก่อนส่งเหตุการณ์แต่ละครั้ง:
+
+```js
+dataLayer.push({ ecommerce: null });   // ล้างเหตุการณ์ก่อนหน้า
+dataLayer.push({ event: '...', ecommerce: { ... } });
+```
+
+อย่าอาศัยว่าคุณสมบัติ ecommerce จะคงอยู่ระหว่างเหตุการณ์ อ่านค่าทุกครั้งในเวลาทริกเกอร์ภายในเหตุการณ์เดียวกัน
+</Aside>
+
+---
+
+### เหตุการณ์เส้นทางการจอง
+
+เหตุการณ์เหล่านี้จะถูกยิงโดยอัตโนมัติเมื่อแขกเคลื่อนผ่านช่องทางการจอง กำหนดค่าทริกเกอร์ GTM ของคุณเป็นทริกเกอร์ **Custom Event** ที่ตรงกับชื่อเหตุการณ์ด้านล่าง
+
+| ขั้นตอน | เหตุการณ์ | เมื่อใดที่ยิง |
+|------|-------|---------------|
+| 1 | `view_item_list` | โหลดกริดหรือรายการสินค้าของโรงแรม |
+| 2 | `view_item` | แขกดูหน้าที่พักเฉพาะ |
+| 3 | `add_to_cart` | แขกเพิ่มห้องพักลงในรถเข็น |
+| 4 | `begin_checkout` | โหลดหน้าชำระเงิน/เช็คเอาต์ |
+| 5 | `add_payment_info` | แขกเลือกวิธีชำระเงิน |
+| 6 | `login` | แขกยืนยันตัวตนผ่าน SSO |
+| 7 | `purchase` | ยืนยันการจอง |
+| 8 | `refund` | ยกเลิกการจอง |
+
+---
+
+#### `view_item_list`
+
+ยิงเมื่อกริดหรือรายการสินค้าของโรงแรมถูกแสดงผล
+
+```json
+{
+  "event": "view_item_list",
+  "ecommerce": {
+    "item_list_id": "featured_hotels",
+    "item_list_name": "Featured Hotels",
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `view_item`
+
+ยิงเมื่อแขกดูที่พักเฉพาะ
+
+```json
+{
+  "event": "view_item",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `add_to_cart`
+
+ยิงเมื่อแขกเพิ่มห้องพักลงในรถเข็น
+
+```json
+{
+  "event": "add_to_cart",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `begin_checkout`
+
+ยิงเมื่อโหลดหน้าชำระเงิน/เช็คเอาต์
+
+```json
+{
+  "event": "begin_checkout",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "items": [ ]
+  }
+}
+```
+
+`coupon` จะมีเฉพาะเมื่อมีการใช้รหัสส่วนลด
+
+---
+
+#### `add_payment_info`
+
+ยิงเมื่อแขกเลือกหรือยืนยันวิธีชำระเงิน
+
+```json
+{
+  "event": "add_payment_info",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "payment_type": "STRIPE",
+    "items": [ ]
+  }
+}
+```
+
+`payment_type` จะถูกเติมจากประเภทผู้รับชำระเงิน `coupon` จะมีเฉพาะเมื่อมีการใช้รหัสส่วนลด
+
+---
+
+#### `login`
+
+ยิงเมื่อแขกยืนยันตัวตนผ่านระบบ single sign-on
+
+```json
+{
+  "event": "login",
+  "ecommerce": {
+    "method": "IAM"
+  }
+}
+```
+
+---
+
+#### `purchase`
+
+ยิงเมื่อยืนยันการจอง
+
+```json
+{
+  "event": "purchase",
+  "ecommerce": {
+    "currency": "USD",
+    "transaction_id": "bc-a1b2c3d4",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "shipping": 0.00,
+    "tax": 0.00,
+    "items": [
+      {
+        "item_id": "rr-xyz789",
+        "item_name": "Deluxe Ocean Suite",
+        "item_brand": "Grand Resort",
+        "item_category": "GUEST_ROOM",
+        "price": 299.00,
+        "quantity": 1,
+        "property_id": "prop-abc123",
+        "property_name": "Grand Resort Maldives",
+        "property_brand": "Grand Collection",
+        "property_chain": "Luxury Hotels International",
+        "city_name": "Malé",
+        "country_code": "MV",
+        "start_date": "2026-06-01",
+        "end_date": "2026-06-05",
+        "num_adults": 2,
+        "num_children": 0,
+        "cancellation_policy": "Refundable",
+        "rate_plan_id": "rp-summer2026",
+        "room_rate_id": "rr-xyz789",
+        "room_rate_name": "Summer Escape — Bed & Breakfast",
+        "num_perks": 2,
+        "room_location": "Overwater",
+        "room_view": "Ocean",
+        "room_classification": "Suite"
+      }
+    ]
+  }
+}
+```
+
+`transaction_id` คือรหัสสัญญาการจองที่ไม่ซ้ำกัน `coupon`, `shipping` และ `tax` จะมีเฉพาะเมื่อใช้ได้
+
+---
+
+#### `refund`
+
+ยิงเมื่อยกเลิกการจอง
+
+```json
+{
+  "event": "refund",
+  "ecommerce": {
+    "currency": "USD",
+    "transaction_id": "bc-a1b2c3d4",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "shipping": 0.00,
+    "tax": 0.00,
+    "items": [ ]
+  }
+}
+```
+
+`transaction_id` ตรงกับเหตุการณ์ `purchase` สำหรับการจองเดียวกัน `coupon`, `shipping` และ `tax` จะมีเฉพาะเมื่อใช้ได้
+
+---
+
+### คุณสมบัติของรายการ
+
+เหตุการณ์ทั้งหมดที่มีอาร์เรย์ `items` ใช้สคีมารายการเดียวกัน ทุกคุณสมบัติเป็นทางเลือก ยกเว้นที่ระบุว่าจำเป็น
+
+#### ฟิลด์ GA4 มาตรฐาน
+
+ฟิลด์เหล่านี้ GA4 เข้าใจโดยตรงและปรากฏในรายงาน ecommerce มาตรฐานโดยไม่ต้องตั้งค่าเพิ่มเติม
+
+| คุณสมบัติ | ประเภท | จำเป็น | คำอธิบาย |
+|----------|------|----------|-------------|
+| `item_id` | string | ใช่ | ตัวระบุเฉพาะสำหรับห้องพักหรือสินค้า |
+| `item_name` | string | — | ชื่อห้องพักหรือสินค้า |
+| `affiliation` | string | — | ชื่อพันธมิตรหรือผู้ขาย |
+| `coupon` | string | — | รหัสคูปองที่ใช้กับรายการ |
+| `currency` | string | — | รหัสสกุลเงิน ISO 4217 (เช่น `USD`) |
+| `creative_name` | string | — | ชื่อครีเอทีฟที่ใช้ในโปรโมชั่น |
+| `creative_slot` | string | — | ตำแหน่งช่องของครีเอทีฟโปรโมชั่น |
+| `discount` | number | — | จำนวนส่วนลดที่ใช้ |
+| `index` | number | — | ตำแหน่งในรายการ (เริ่มนับจาก 1) |
+| `item_brand` | string | — | ชื่อโรงแรมหรือแบรนด์ |
+| `item_category` | string | — | ประเภทสินค้า เช่น `GUEST_ROOM`, `ACTIVITY`, `ATTRACTION`, `MEETING_ROOM`, `RESTAURANT`, `SPA` |
+| `item_list_id` | string | — | ตัวระบุของรายการที่รายการนี้อยู่ |
+| `item_list_name` | string | — | ชื่อแสดงของรายการ |
+| `location_id` | string | — | พิกัดทางภูมิศาสตร์ของที่พัก |
+| `price` | number | — | ราคาต่อหน่วย |
+| `promotion_id` | string | — | ตัวระบุโปรโมชั่น |
+| `promotion_name` | string | — | ชื่อแสดงของโปรโมชั่น |
+| `quantity` | number | — | จำนวน (ค่าเริ่มต้นเป็น `1`) |
+
+#### พารามิเตอร์เฉพาะรายการแบบกำหนดเอง
+
+พารามิเตอร์เหล่านี้บรรจุบริบทการจองเฉพาะของ Wink GA4 จะไม่แสดงโดยอัตโนมัติในรายงาน — คุณต้องลงทะเบียนแต่ละพารามิเตอร์เป็น **มิติแบบกำหนดเองที่มีขอบเขตเป็นรายการ** ในทรัพย์สิน GA4 ของคุณก่อนจึงจะปรากฏในรายงานหรือการสำรวจ ดูหัวข้อ [มิติแบบกำหนดเองใน GA4](#custom-dimensions-in-ga4) ด้านล่างสำหรับคำแนะนำการตั้งค่า
+
+| คุณสมบัติ | ประเภท | คำอธิบาย |
+|----------|------|-------------|
+| `property_id` | string | ตัวระบุที่พักของ Wink |
+| `property_name` | string | ชื่อแสดงของที่พัก |
+| `property_brand` | string | แบรนด์ที่ที่พักเป็นสมาชิก |
+| `property_chain` | string | เครือโรงแรมที่ที่พักเป็นสมาชิก |
+| `property_url_name` | string | ชื่อสลัก URL ที่เป็นมิตรสำหรับที่พัก |
+| `city_name` | string | เมืองที่ที่พักตั้งอยู่ |
+| `country_code` | string | รหัสประเทศ ISO 3166-1 alpha-2 |
+| `start_date` | string | วันที่เช็คอินในรูปแบบ `YYYY-MM-DD` |
+| `end_date` | string | วันที่เช็คเอาต์ในรูปแบบ `YYYY-MM-DD` |
+| `num_adults` | number | จำนวนผู้ใหญ่ในการจอง |
+| `num_children` | number | จำนวนเด็กในการจอง |
+| `cancellation_policy` | string | หนึ่งใน: `Refundable`, `Non-Refundable`, `Refundable-With-Restrictions`, `Non-Refundable-With-Restrictions` |
+| `rate_plan_id` | string | ตัวระบุแผนราคา |
+| `room_rate_id` | string | ตัวระบุราคาห้องเฉพาะ |
+| `room_rate_name` | string | ชื่อแสดงของราคาห้อง |
+| `num_perks` | number | จำนวนสิทธิพิเศษที่รวมในราคา |
+| `room_location` | string | คำอธิบายตำแหน่งของห้อง (เช่น `Overwater`, `Garden`) |
+| `room_view` | string | คำอธิบายวิวของห้อง (เช่น `Ocean`, `City`) |
+| `room_classification` | string | การจัดประเภทห้องหรือตำแหน่งชั้น (เช่น `Suite`, `Standard`) |
+| `bed_type` | string | การจัดเตียงสำหรับห้อง (เช่น `King`, `Twin`) |
+
+---
+
+### มิติแบบกำหนดเองใน GA4
+
+GA4 จะไม่สนใจพารามิเตอร์รายการแบบกำหนดเองในรายงานจนกว่าคุณจะลงทะเบียนเป็นมิติแบบกำหนดเองที่มีขอบเขตเป็นรายการอย่างชัดเจน คุณต้องลงทะเบียนเฉพาะพารามิเตอร์ที่ต้องการใช้ในรายงานเท่านั้น — ไม่จำเป็นต้องลงทะเบียนทั้งหมด 20 รายการ
+
+<Steps>
+
+1. **เปิดการกำหนดค่าที่กำหนดเอง**
+
+   ใน GA4 ไปที่ **Admin** (ไอคอนเฟืองมุมล่างซ้าย) → เลือกทรัพย์สินของคุณ → **Data display** → **Custom definitions**
+
+2. **สร้างมิติแบบกำหนดเองใหม่**
+
+   คลิก **Create custom dimensions**
+
+3. **กรอกรายละเอียดมิติ**
+
+   - **Dimension name** — ป้ายชื่อที่อ่านได้สำหรับมนุษย์ที่ปรากฏในรายงาน GA4 (ดูตารางด้านล่าง)
+   - **Scope** — เลือก **Item**
+   - **Event parameter** — ชื่อพารามิเตอร์ที่ตรงกับใน dataLayer (ดูตารางด้านล่าง)
+   - **Description** — ตัวเลือกแต่แนะนำให้ใส่
+
+4. **บันทึกและทำซ้ำ**
+
+   คลิก **Save** แล้วทำซ้ำสำหรับแต่ละพารามิเตอร์ที่ต้องการติดตาม
+
+</Steps>
+
+<Aside type="note">
+มิติแบบกำหนดเองอาจใช้เวลาถึง 24 ชั่วโมงกว่าจะเริ่มปรากฏในรายงาน GA4 หลังจากลงทะเบียน ข้อมูลย้อนหลังที่เก็บก่อนการลงทะเบียนจะไม่ถูกเติมกลับ
+
+GA4 อนุญาตให้มีมิติแบบกำหนดเองที่มีขอบเขตเป็นรายการสูงสุด 50 รายการต่อทรัพย์สินในทรัพย์สินมาตรฐาน (ทรัพย์สิน 360 อนุญาตมากกว่า)
+</Aside>
+
+ใช้ตารางต่อไปนี้เป็นข้อมูลอ้างอิงเมื่อสร้างมิติแบบกำหนดเอง ค่า **Event parameter** ต้องตรงกันอย่างแม่นยำ — GA4 แยกแยะตัวพิมพ์ใหญ่/เล็ก
+
+| ชื่อมิติ | Event parameter | ประเภท |
+|----------------|-----------------|------|
+| Property ID | `property_id` | ข้อความ |
+| Property name | `property_name` | ข้อความ |
+| Property brand | `property_brand` | ข้อความ |
+| Property chain | `property_chain` | ข้อความ |
+| Property URL name | `property_url_name` | ข้อความ |
+| City name | `city_name` | ข้อความ |
+| Country code | `country_code` | ข้อความ |
+| Check-in date | `start_date` | ข้อความ |
+| Check-out date | `end_date` | ข้อความ |
+| Number of adults | `num_adults` | ตัวเลข |
+| Number of children | `num_children` | ตัวเลข |
+| Cancellation policy | `cancellation_policy` | ข้อความ |
+| Rate plan ID | `rate_plan_id` | ข้อความ |
+| Room rate ID | `room_rate_id` | ข้อความ |
+| Room rate name | `room_rate_name` | ข้อความ |
+| Number of perks | `num_perks` | ตัวเลข |
+| Room location | `room_location` | ข้อความ |
+| Room view | `room_view` | ข้อความ |
+| Room classification | `room_classification` | ข้อความ |
+| Bed type | `bed_type` | ข้อความ |
+
+---
+
+### เหตุการณ์เพิ่มเติมที่มีให้ใช้งาน
+
+เหตุการณ์ต่อไปนี้มีอยู่ใน dataLayer ของ Wink แต่ไม่ใช่ส่วนหนึ่งของช่องทางการจองมาตรฐาน อาจถูกยิงโดยปฏิสัมพันธ์อื่น ๆ บนแพลตฟอร์ม
+
+#### `add_to_wishlist`
+
+```json
+{
+  "event": "add_to_wishlist",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+#### `remove_from_cart`
+
+```json
+{
+  "event": "remove_from_cart",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+#### `select_item`
+
+```json
+{
+  "event": "select_item",
+  "ecommerce": {
+    "item_list_id": "featured_hotels",
+    "item_list_name": "Featured Hotels",
+    "items": [ ]
+  }
+}
+```
+
+#### `view_cart`
+
+```json
+{
+  "event": "view_cart"
+}
+```
+
+เหตุการณ์นี้ไม่มีข้อมูล `ecommerce` แนบมา
+
+#### `view_promotion`
+
+```json
+{
+  "event": "view_promotion",
+  "ecommerce": {
+    "creative_name": "Summer Banner",
+    "creative_slot": "hero",
+    "promotion_id": "promo_001",
+    "promotion_name": "Summer Sale",
+    "items": [ ]
+  }
+}
+```
+
+#### `select_promotion`
+
+```json
+{
+  "event": "select_promotion",
+  "ecommerce": {
+    "creative_name": "Summer Banner",
+    "creative_slot": "hero",
+    "promotion_id": "promo_001",
+    "promotion_name": "Summer Sale",
+    "items": [ ]
+  }
+}
+```
+
+#### `search`
+
+```json
+{
+  "event": "search",
+  "ecommerce": {
+    "search_term": "beachfront resort"
+  }
+}
+```
+
+#### `select_content`
+
+```json
+{
+  "event": "select_content",
+  "ecommerce": {
+    "content_type": "hotel",
+    "content_id": "prop_12345"
+  }
+}
+```
+
+#### `share`
+
+```json
+{
+  "event": "share",
+  "ecommerce": {
+    "method": "copy_link",
+    "content_type": "hotel",
+    "item_id": "prop_12345"
+  }
+}
+```
+
+#### `sign_up`
+
+```json
+{
+  "event": "sign_up",
+  "ecommerce": {
+    "method": "email"
+  }
+}
+```
+
+#### `generate_lead`
+
+```json
+{
+  "event": "generate_lead",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 0.00
+  }
+}
+```
+
+#### `join_group`
+
+```json
+{
+  "event": "join_group",
+  "ecommerce": {
+    "group_id": "group_abc"
+  }
+}
+```
+
+#### `earn_virtual_currency`
+
+```json
+{
+  "event": "earn_virtual_currency",
+  "ecommerce": {
+    "virtual_currency_name": "WinkPoints",
+    "value": 100
+  }
+}
+```
+
+#### `spend_virtual_currency`
+
+```json
+{
+  "event": "spend_virtual_currency",
+  "ecommerce": {
+    "virtual_currency_name": "WinkPoints",
+    "value": 50,
+    "item_name": "Room Upgrade"
+  }
+}
+```
+
+#### `level_start`
+
+```json
+{
+  "event": "level_start",
+  "ecommerce": {
+    "level_name": "Gold"
+  }
+}
+```
+
+#### `level_end`
+
+```json
+{
+  "event": "level_end",
+  "ecommerce": {
+    "level_name": "Gold",
+    "success": true
+  }
+}
+```
+
+#### `level_up`
+
+```json
+{
+  "event": "level_up",
+  "ecommerce": {
+    "level": 2,
+    "character": "traveler"
+  }
+}
+```
+
+#### `post_score`
+
+```json
+{
+  "event": "post_score",
+  "ecommerce": {
+    "score": 980,
+    "level": 2,
+    "character": "traveler"
+  }
+}
+```
+
+#### `unlock_achievement`
+
+```json
+{
+  "event": "unlock_achievement",
+  "ecommerce": {
+    "achievement_id": "first_booking"
+  }
+}
+```
+
+#### `tutorial_begin`
+
+```json
+{
+  "event": "tutorial_begin",
+  "ecommerce": {}
+}
+```
+
+#### `tutorial_complete`
+
+```json
+{
+  "event": "tutorial_complete",
+  "ecommerce": {}
+}
+```
+
+---
+
+### `virtualPageView`
+
+นี่คือเหตุการณ์เฉพาะของ Wink — ไม่ใช่ส่วนหนึ่งของชุดเหตุการณ์ GA4 มาตรฐาน ถูกส่งทุกครั้งที่มีการเปลี่ยนหน้าและบรรจุบริบทของอุปกรณ์และเซสชัน ไม่มีอ็อบเจ็กต์ `ecommerce` แนบมา
+
+```json
+{
+  "event": "virtualPageView",
+  "device": "Desktop",
+  "deviceAgent": "Mozilla/5.0 ...",
+  "os": "MacOS",
+  "path": "/hotels/grand-resort",
+  "title": "Grand Resort — Wink",
+  "userId": "user_abc123",
+  "startDate": "2026-06-01",
+  "endDate": "2026-06-05",
+  "guests": "2",
+  "rooms": "1"
+}
+```
+
+| คุณสมบัติ | คำอธิบาย |
+|----------|-------------|
+| `device` | ประเภทอุปกรณ์ที่ตรวจพบ — `Desktop`, `Android`, `iPhone`, `iPad` หรืออื่น ๆ |
+| `deviceAgent` | สตริง user agent ดิบ |
+| `os` | ระบบปฏิบัติการที่ตรวจพบ — `Windows`, `MacOS`, `Linux`, `UNIX` |
+| `path` | เส้นทางหน้าปัจจุบัน |
+| `title` | ชื่อหน้าปัจจุบัน |
+| `userId` | ตัวระบุผู้ใช้ที่ยืนยันตัวตน (ไม่แสดงเมื่อไม่ได้เข้าสู่ระบบ) |
+| `startDate` | วันที่เช็คอินจากเซสชันการค้นหาปัจจุบัน |
+| `endDate` | วันที่เช็คเอาต์จากเซสชันการค้นหาปัจจุบัน |
+| `guests` | จำนวนแขกจากเซสชันการค้นหาปัจจุบัน |
+| `rooms` | จำนวนห้องจากเซสชันการค้นหาปัจจุบัน |

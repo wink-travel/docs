@@ -1,0 +1,384 @@
+---
+title: Kanal Yöneticinizi Ekleyin
+description: Wink platformu ile entegrasyon yapan kanal yöneticisi ve PMS geliştiricileri için adım adım rehber.
+sidebar:
+  order: 1
+---
+
+import { Steps, LinkButton } from '@astrojs/starlight/components';
+
+Bu rehber, kanal yöneticisi ve PMS geliştiricilerini Wink ile entegrasyon sürecinde — hesap oluşturma, envanter eşleme ve ilk uçtan uca testi yapmaya kadar — adım adım yönlendirir.
+
+## Ortamlar
+
+Kanal Yöneticisi (Entegrasyonlar) API'si iki ortamda mevcuttur. Tüm geliştirme ve sertifikasyon için staging ortamını kullanın; canlıya geçişte yalnızca üretim ortamına geçin.
+
+| Ortam       | Temel URL                   |
+| ----------- | ---------------------------|
+| Üretim      | https://integrations.wink.travel |
+| Staging     | https://staging-integrations.wink.travel |
+
+## API referansı
+
+Kanal Yöneticisi API'si, mevcut konaklama sistemleriyle uyumluluk için OTA protokol standartlarını (SOAP/XML) takip eder. Ortak uç nokta dokümantasyonunu inceleyerek başlayın:
+
+<LinkButton href="/tr/partner-api/partner/">
+  Kanal Yöneticisi API — Ortak uç noktalar
+</LinkButton>
+
+## Entegrasyon adımları
+
+<Steps>
+1. **Bir Wink kullanıcı hesabı oluşturun**
+
+   [staging-app.wink.travel](https://staging-app.wink.travel) adresinden kayıt olun. Aşağıdaki tüm adımlar staging ortamında yapılır — canlıya geçmeden önce üretimde tüm süreci tekrar edeceksiniz.
+
+2. **Affiliate / Kanal Yöneticisi hesabınızı oluşturun**
+
+   Yeni kullanıcı altında bir hesap oluşturun ve **Affiliate / Kanal Yöneticisi** hesap türünü seçin. Entegrasyonunuz bu hesapla kimlik doğrulaması yapacaktır.
+
+3. **Bir uygulama kaydedin ve ilk tokenınızı oluşturun**
+
+   [Application](/tr/account/applications) oluşturun ve bunu 2. adımdaki kanal yöneticisi hesabına bağlayın. İstemci türü olarak **MACHINE_2_MACHINE** seçin — bu, son kullanıcı yönlendirmesi olmayan sunucu-sunucu entegrasyonudur. **Client ID** ve **Secret Key**'i hemen kopyalayın; gizli anahtar yalnızca bir kez gösterilir ve tekrar alınamaz.
+
+   Uygulama, bu rehberdeki her çağrının `Authorization: Bearer <access_token>` olarak taşıdığı bearer tokenı oluşturur. Kimlik bilgilerinizi `client_credentials` grant ile `https://staging-iam.wink.travel/oauth2/token` adresine göndererek `integrations.read integrations.write` kapsamlarını talep edin. Devam etmeden önce bunu yapın — token olmadan hesap kimlik bilgilerini sorgulayamaz veya Kanal Yöneticisi uç noktalarına erişemezsiniz. Tam akış, üretim hostu ve kapsam kataloğu için [Authentication](/tr/developers/authentication) sayfasına bakın.
+
+4. **Bir Otel hesabı oluşturun**
+
+   Aynı kullanıcı altında ikinci bir hesap oluşturun ve **Otel** hesap türünü seçin. Bu, gerçek bir otel kullanmadan test yapabileceğiniz bir mülk sağlar.
+
+5. **Her iki hesabın da onaylandığını doğrulayın**
+
+   Hiçbir hesap onaylanmadan kullanılamaz: onaylanmamış bir kanal yöneticisi hesabı hiçbir otelin kanal yöneticisi listesinde görünmez ve onaylanmamış bir otel API tarafından döndürülmez.
+
+   - **Staging** — onay otomatik yapılır. Hesapları oluşturur oluşturmaz kullanabilirsiniz, ayrıca talep etmeniz gereken bir şey yoktur.
+   - **Üretim** — onay manuel yapılır. Wink entegrasyon kontakınıza her iki hesabın isimlerini ve bağlı oldukları kullanıcıyı gönderin, onay gelene kadar bekleyin.
+
+6. **İki hesabı bağlayın**
+
+   Otel hesabına giriş yapın ve **Extranet → Dağıtım → Kanal Yöneticisi** menüsüne gidin. Listeden kanal yöneticisi hesabınızı seçin — bu, mülkü entegrasyonunuza bağlar. Hesabınız listede yoksa henüz onaylanmamıştır; 5. adıma bakın.
+
+7. **Temel bir oda tipi ve fiyat planı oluşturun**
+
+   Otel hesabı içinde en az bir oda tipi ve bir fiyat planı oluşturun. Entegrasyonunuzun fiyat ve müsaitlik gönderebilmesi veya rezervasyon çekebilmesi için bunlar gereklidir.
+
+8. **Eşleyin ve test edin**
+
+   Kendi sisteminizde API tarafından döndürülen oda tipi ve fiyat planı kimliklerini eşleyin. Bir fiyat güncellemesi ve bir müsaitlik güncellemesi gönderin, ardından test rezervasyonu yapın ve rezervasyon çekme uç noktasının doğru şekilde döndürdüğünü doğrulayın.
+</Steps>
+
+:::note
+Canlıya geçmeden önce yukarıdaki tüm adımları üretimde tekrarlayın, ayrıca ayrı bir üretim uygulaması kaydedin — staging kimlik bilgileri üretimde çalışmaz. 5. adımdaki Wink incelemesi için zaman ayırın — stagingin aksine üretim hesapları otomatik onaylanmaz. Wink ekibi, kanal yöneticinizi zaten kullanan otelleri yeni üretim hesabınıza taşıyacaktır.
+:::
+
+## Hesap kimlik bilgilerinizi bulma
+
+Her Kanal Yöneticisi API yolu kendi hesabınıza göre sınırlandırılmıştır:
+
+```
+/api/managing-entity/{managingEntityIdentifier}/channel-manager/...
+```
+
+`{managingEntityIdentifier}`, **kanal yöneticisi hesabınızın** hesap ID'si (UUID)dir — otelin değil. Kullanıcınızın sahip olduğu diğer tüm hesapların ID ve mevcut durumlarıyla birlikte Platform API'den alın:
+
+```bash
+curl -s -X GET \
+  "https://staging-api.wink.travel/api/managing-entity/list" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Yanıt, sahip olduğunuz hesapların bir dizisidir:
+
+```json
+[
+  {
+    "id": "3f1c8e42-7b90-4d55-a1e2-6c8d09b4f731",
+    "type": "CHANNEL_MANAGER",
+    "name": "Kanal Yöneticiniz",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "d5b8a3c2-9e6f-4a1b-8d34-7c2e1f0a5b69",
+    "type": "HOTEL",
+    "name": "Test Mülkünüz",
+    "urlName": "your-test-property",
+    "status": "ACTIVE"
+  }
+]
+```
+
+- Kanal yöneticisi girdisinin `id`si sizin **`{managingEntityIdentifier}`** değerinizdir.
+- `HOTEL` girdisinin `id`si sizin **`{propertyIdentifier}`** değerinizdir.
+- `status`, her hesabın onay durumunu doğrulamak içindir — özellikle üretimde, onay manuel olduğunda faydalıdır. **Otel** `ACTIVE` olmalıdır ki rezervasyon yapılabilsin veya Kanal Yöneticisi API tarafından görünür olsun. **Kanal yöneticisi** hesabınız `PENDING_APPROVAL` olarak kalmaya devam eder; bu beklenen bir durumdur ve geliştirmeyi engellemez.
+
+:::caution
+Bu sorgu **Platform API** (`https://staging-api.wink.travel` stagingde, `https://api.wink.travel` üretimde) üzerinde çalışır, [Ortamlar](#ortamlar) bölümündeki Kanal Yöneticisi API hostları üzerinde değil. Aynı erişim tokenını kullanın — token kullanıcı bazlıdır, API bazlı değil.
+:::
+
+## Sertifikasyon
+
+Sertifikasyon, entegrasyonunuzun envanteri doğru eşlediğini, fiyat ve müsaitlik gönderdiğini ve rezervasyonları uçtan uca aldığını kanıtlamanızı ve Wink'in bunu doğrulamasını sağlar. Kendi sisteminizden her adımı sürdürdüğünüz, sonunda tek bir kanıt paketi sunduğunuz self-servis bir süreçtir. Wink paketi inceleyip onaylarsa, Affiliate / Kanal Yöneticisi hesabınızı **PENDING_APPROVAL** durumundan **ACTIVE** durumuna geçirir.
+
+Sertifikasyon tamamen staging ortamında (`https://staging-integrations.wink.travel`) yapılır. Bu bölümde üretime dokunulmaz.
+
+### Kanıtlayacaklarınız
+
+<Steps>
+1. **Kimlik doğrulama.** OAuth2 istemciniz erişim tokenı alabilir ve Affiliate / Kanal Yöneticisi hesabınıza `/ping` uç noktasını başarılı şekilde çağırabilir.
+
+2. **Envanter eşleme.** Hesabınıza bağlı otelleri listeleyebilir, yapılandırdığınız ana fiyatı (oda tipi × fiyat planı) alabilir ve sisteminizin hedefleyeceği `masterRateIdentifier` değerini doğru tanımlayabilirsiniz.
+
+3. **Fiyat ve müsaitlik gönderimi.** Sertifikasyon haftasının yedi gününü bağımsız olarak güncelleyebilirsiniz — her gün farklı miktar, adet, varışta kapanma / çıkışta kapanma bayrakları ve minimum/maksimum kalış süresi kombinasyonları ile — ve Wink'ten tam olarak aynı değerleri okuyabilirsiniz.
+
+4. **Rezervasyon çekme.** Test mülkünüze yapılan gerçek bir staging rezervasyonunu çekebilir, kendi PMS/CM arayüzünüzde doğru oda konaklaması, misafir ve toplam ile gösterebilir, ardından Wink rezervasyonu iptal ettiğinde iptali yansıtabilirsiniz.
+</Steps>
+
+### Önkoşullar
+
+Sertifikasyona başlamadan önce [Entegrasyon adımları](#entegrasyon-adımları) 1–7 arasını tamamlayın:
+
+- Stagingde bir Wink kullanıcınız ve ona bağlı bir **Affiliate / Kanal Yöneticisi** ile bir **Otel** hesabınız (Extranet → Dağıtım → Kanal Yöneticisi). Staging hesapları otomatik onaylanır.
+- Otel hesabı içinde en az bir **oda tipi** ve bir **fiyat planı** oluşturulmuş. Oteli `https://staging-book.wink.travel/hotel/<your-slug>` adresinde rezervasyona açın.
+- Affiliate / Kanal Yöneticisi hesabınız altında kayıtlı bir uygulamanız, **Client ID**, **Secret Key** ve `integrations.read integrations.write` kapsamları (bkz. [Authentication](/tr/developers/authentication)).
+- Affiliate / Kanal Yöneticisi hesabınızın **`managingEntityIdentifier`** ve Otel hesabınızın **`propertyIdentifier`** (her ikisi de UUID — bkz. [Hesap kimlik bilgilerinizi bulma](#hesap-kimlik-bilgilerinizi-bulma)).
+
+### Yaygın istek kuralları
+
+Bu bölümdeki her istek aşağıdaki başlıkları kullanır:
+
+```http
+Authorization: Bearer <access_token>
+Wink-Version: 2.0
+Accept: application/json
+```
+
+- `<access_token>`, `client_credentials` grant ile `https://staging-iam.wink.travel/oauth2/token` adresinden alınır — bkz. [Authentication](/tr/developers/authentication#staging).
+- `Wink-Version` başlığı zorunludur; atlanırsa v2 JSON API'ye yönlendirme olmaz.
+- `PUT` isteklerinde gövde varsa `Content-Type: application/json` eklenir.
+
+Aşağıdaki örneklerde yer tutucular, [Önkoşullar](#önkoşullar) bölümünde topladığınız değerlere karşılık gelir:
+
+| Yer Tutucu               | Anlamı |
+|--------------------------|--------|
+| `{managingEntityIdentifier}` | Affiliate / Kanal Yöneticisi hesap ID'niz (UUID) — bkz. [Hesap kimlik bilgilerinizi bulma](#hesap-kimlik-bilgilerinizi-bulma). |
+| `{propertyIdentifier}`         | Kanal yöneticisi hesabınıza bağladığınız Otel hesabı (mülk) ID'si. |
+| `{masterRateIdentifier}`       | Sertifikasyon yapacağınız ana fiyat (oda tipi × fiyat planı). |
+| `{bookingIdentifier}`          | Rezervasyon listesi çağrısından dönen staging rezervasyon ID'si. |
+
+### Adım A — Ping
+
+Kimlik bilgilerinizin beklediğiniz Affiliate / Kanal Yöneticisi hesabına ait olduğunu doğrulayın.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/ping" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Beklenen yanıt:
+
+```json
+{
+  "apiVersion": "2.0",
+  "name": "Kanal Yöneticisi Hesap Adınız",
+  "status": "PENDING_APPROVAL"
+}
+```
+
+Eşleşen `name` ile **200** yanıtı, kimlik doğrulama ve hesap çözümlemenin doğru olduğunu gösterir. `status` sertifikasyon tamamlanana kadar `PENDING_APPROVAL` olarak kalır.
+
+### Adım B — Mülkleri listele
+
+Hesabınıza bağlı otellerin sayfalı listesini alın ve test mülkünüzün listede olduğunu doğrulayın.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/list?page=0&size=25" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Yanıt, `ChannelManagerProperty` girdilerinden oluşan bir Spring `Page` nesnesidir. `{propertyIdentifier}` ile eşleşen girdiyi bulun ve `currencyCode` değerini not edin — bu, [Adım D](#adım-d--sertifikasyon-haftasını-yükle) fiyat güncellemelerinin yorumlanmasında gereklidir.
+
+:::caution
+Boş liste bir yapılandırma işaretidir, hatalı istek değil. Bir otel yalnızca **`ACTIVE`** olduğunda *ve* Extranet → Dağıtım → Kanal Yöneticisi altında kanal yöneticisi hesabınıza atanmışsa burada döner. Her ikisini de `GET /api/managing-entity/list` ile kontrol edin (bkz. [Hesap kimlik bilgilerinizi bulma](#hesap-kimlik-bilgilerinizi-bulma)). Üretimde üçüncü neden: Wink onaylamadan otel burada görünmez.
+:::
+
+### Adım C — Ana fiyatları al
+
+Mülkü ve yayınladığı tüm ana fiyatları (oda tipi × fiyat planı kombinasyonları) alın. Sertifikasyon yapacağınız fiyatı seçin ve `identifier` değerini `{masterRateIdentifier}` olarak kaydedin.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Yanıt, `PropertyWithRoomRateList` yapısında; bir `property` bloğu ve `PropertyRoomRate` girdilerinden oluşan `rooms` dizisi içerir. Her girdi oda tipi, fiyat planı, doluluk limitleri, temel fiyat ve günlük fiyat gönderirken koruyacağınız fiyat değiştiricilerini gösterir.
+
+:::caution
+Tüm sertifikasyon süreci boyunca tek bir ana fiyat üzerinde sertifikasyon yapın. Üretimde ek oda tipleri ve fiyat planları eşlemeniz beklenir, ancak kanıt paketi sadece bir ana fiyatın uçtan uca kullanıldığını göstermelidir.
+:::
+
+### Adım D — Sertifikasyon haftasını yükle
+
+Sertifikasyona başladığınız ayı takip eden ayın ilk yedi takvim gününü kapsayan **yedi günlük fiyat takvimi** yükleyin. Örneğin, sertifikasyona 21 Ağustos'ta başlıyorsanız, 1 Eylül - 7 Eylül arası.
+
+Her gün için `startDate == endDate` olacak şekilde **yedi ayrı `PUT` çağrısı** yapacaksınız. Her gün, miktar, adet, varışta kapanma / çıkışta kapanma bayrakları ve kalış süresi limitlerinin farklı kombinasyonlarını içerir; böylece her yazılabilir alan en az bir kez test edilmiş olur. Değerler mülkün para birimindedir (Adım B'de kaydedildi); `currencyCode` atlanırsa doğru varsayılan kullanılır.
+
+| Gün | Miktar  | Adet | closedOnArrival | closedOnDeparture | minLengthOfStay | maxLengthOfStay | Kanıtladığı şey |
+|-----|---------|------|-----------------|-------------------|-----------------|-----------------|-----------------|
+| 1   | 100.00  | 5    | false           | false             | 1               | 30              | Temel gün. |
+| 2   | 125.00  | 4    | false           | false             | 1               | 14              | Miktar + adet + `maxLengthOfStay` değişikliği. |
+| 3   | 150.00  | 3    | **true**        | false             | 1               | 30              | `closedOnArrival` değişimi. |
+| 4   | 175.00  | 2    | false           | **true**          | 2               | 7               | `closedOnDeparture` değişimi + daha sıkı kalış süresi aralığı. |
+| 5   | 200.00  | **0**| false           | false             | 1               | 30              | Tükendi adedi. |
+| 6   | 225.00  | 5    | false           | false             | **3**           | **5**           | Kısıtlayıcı kalış süresi aralığı. |
+| 7   | 250.00  | 1    | false           | false             | 1               | 30              | Son oda müsaitliği. |
+
+1. gün için istek gövdesi aşağıdaki gibidir. 2–7. günler için `startDate` / `endDate` / değerleri tablodaki gibi değiştirerek tekrarlayın.
+
+```bash
+curl -s -X PUT \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/master-rate/{masterRateIdentifier}" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json" \
+  -d '{
+        "startDate": "2026-09-01",
+        "endDate":   "2026-09-01",
+        "amount":    100.00,
+        "master":    true,
+        "closedOnArrival":   false,
+        "closedOnDeparture": false,
+        "quantity":          5,
+        "minLengthOfStay":   1,
+        "maxLengthOfStay":   30
+      }'
+```
+
+Her `PUT` isteği, gönderdiğiniz aralık için güncellenmiş `PropertyRate` girdilerinin dizisini içeren `200` yanıtı döner (tek gün için tek girdi). Bu yanıtı kaydedin — kanıtınızın parçası olacaktır.
+
+:::note
+`master` her sertifikasyon haftası çağrısında `true` olmalıdır. Bu, Wink'e güncellemenizin şablon fiyat olduğunu, rezervasyon bazlı geçersiz kılma olmadığını bildirir.
+:::
+
+### Adım E — Sertifikasyon haftasını geri oku
+
+Tüm haftayı tek çağrıda alın ve her günün saklanan değerlerinin Adım D'de gönderdiğiniz satırla eşleştiğini doğrulayın — boolean bayraklar ve kalış süresi aralığı dahil.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/master-rate/{masterRateIdentifier}?startDate=2026-09-01&endDate=2026-09-07" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Yanıt `PropertyRoomRateWithRateList` tipindedir. `rates` dizisi **yedi** girdi içermelidir, her biri gönderdiğiniz `amount`, `quantity`, `closedOnArrival`, `closedOnDeparture`, `minLengthOfStay` ve `maxLengthOfStay` değerleriyle eşleşmelidir. Herhangi bir alanda uyumsuzluk varsa, Adım D'deki ilgili `PUT` beklenen şekilde gerçekleşmemiş demektir — düzeltip tekrar doğrulayın.
+
+### Adım F — Test rezervasyonu yap
+
+Tarayıcıda aşağıdaki URL'yi açın, `<your-slug>` yerine Önkoşullarda yayınladığınız Otel hesabının slugını koyun:
+
+```
+https://staging-book.wink.travel/hotel/<your-slug>
+```
+
+Sertifikasyon haftası içinde kalan bir varış ve çıkış tarihi seçin, sertifikasyon yaptığınız oda tipi + fiyat planı kombinasyonunu seçin ve rezervasyonu tamamlayın. Staging test ödeme yolunu kullanır — gerçek karttan ücret alınmaz.
+
+Onay sayfası görüntülendiğinde, misafire gösterilen **rezervasyon kodunu** (format `WNKxxxxx`) kaydedin.
+
+### Adım G — Rezervasyonu çek
+
+Rezervasyon zaman damgasını kapsayan bir zaman aralığında test mülkünüze yapılan tüm rezervasyonları alın.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/booking/list?startDate=2026-09-01T00:00:00&endDate=2026-09-08T00:00:00" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Adım F'de kaydettiğiniz `bookingCode` ile eşleşen girdiyi bulun. `bookingIdentifier` değerini kaydedin. Ardından o tek rezervasyonu alın:
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/booking/{bookingIdentifier}" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Yanıt `PropertyBooking` tipindedir. Kendi PMS / kanal yöneticisi arayüzünüze aktarın ve aşağıdakilerin operatöre doğru şekilde göründüğünü doğrulayın:
+
+- `bookingCode`, `bookingIdentifier`, `createdDate`
+- Misafir: `firstName`, `lastName`, `email`
+- `totalAmount` + `currencyCode` (otel tarafından tüm odalar için alınan net tutar)
+- `paymentMethodType`, `paymentMethodStatus`, `salesChannelName`
+- `roomStays` içindeki her giriş: `guestRoomName`, `ratePlanName`, `adults`, `children`, `startDate`, `endDate` ve oda başına `amount`
+
+Rezervasyonun kendi arayüzünüzde göründüğü ekran görüntüsünü alın — bu kanıt belgelerinden biridir.
+
+### Adım H — Rezervasyonu iptal et ve doğrula
+
+Wink ekibinden sertifikasyon rezervasyonunu sizin adınıza iptal etmesini isteyin (veya yetkiniz varsa Otel hesabının Extranetinden kendiniz iptal edin). Ardından Adım G'deki çağrıyla aynı rezervasyonu tekrar alın.
+
+Yanıtın artık şunları gösterdiğini doğrulayın:
+
+- `cancelled: true`
+- Dolu bir `cancelDate` zaman damgası
+- İptal yaşam döngüsünü yansıtan `paymentMethodStatus` (`CANCELLED`, `PARTIALLY_REFUNDED` veya `FULLY_REFUNDED` geri ödeme politikasına bağlı olarak)
+
+Güncellenmiş rezervasyonu kendi arayüzünüze aktarın ve iptalin operatöre göründüğünü doğrulayın — durum, iptal zamanı ve arayüzünüzün desteklediği geri ödeme göstergesi dahil. İptal edilmiş rezervasyonun ikinci bir ekran görüntüsünü alın. Bu son kanıt belgesidir.
+
+### Adım I — Kanıt paketini gönder
+
+Aşağıdakileri tek bir arşiv (`.zip`) içinde paketleyin ve adını `wink-cert-<kanal-yöneticisi-adınız>-<yyyy-aa-gg>.zip` olarak belirleyin:
+
+<Steps>
+1. **API dökümü.** Adım A'dan H'ye kadar yaptığınız her isteğin tam HTTP isteği (metot, URL, `Authorization` değeri gizlenmiş istek başlıkları ve `PUT` çağrıları için JSON gövdesi) ve tam HTTP yanıtı (durum kodu, yanıt başlıkları ve JSON gövdesi) kaydedilsin. Her istek/yanıt çifti, ait olduğu adımla açıkça etiketlensin (`step-a-ping.json`, `step-d-day-3-put.json`, `step-g-list-bookings.json` vb.). Düz metin `.http` dosyaları veya tek `.har` dışa aktarımı kabul edilir.
+
+2. **Arayüz ekran görüntüsü: aktif rezervasyon.** Adım G'deki sertifikasyon rezervasyonunun kendi PMS / kanal yöneticisi arayüzünüzde misafir, tarihler, oda tipi, fiyat planı ve toplam açıkça okunabilir şekilde gösterildiği ekran görüntüsü.
+
+3. **Arayüz ekran görüntüsü: iptal edilmiş rezervasyon.** Adım H'deki aynı rezervasyonun iptal sonrası arayüzünüzde iptal durumu ve zaman damgası açıkça okunabilir şekilde gösterildiği ekran görüntüsü.
+
+4. **Sertifikasyon özeti.** Arşiv içinde kısa bir `README.md` dosyası:
+   - Kanal yöneticisi / PMS adı ve sürümü.
+   - Kullandığınız `managingEntityIdentifier`, `propertyIdentifier`, `masterRateIdentifier` ve `bookingIdentifier`.
+   - Staging otel slugı (`https://staging-book.wink.travel/hotel/<your-slug>` içindeki `<your-slug>`).
+   - Sertifikasyon haftası tarih aralığı (Gün 1 → Gün 7 ISO-8601 formatında).
+   - Sertifikasyonu yapan mühendisin adı ve e-posta adresi.
+</Steps>
+
+Arşivi Wink entegrasyon kontakınıza gönderin. Wink inceleyecek, varsa tutarsızlıkları takip edecek ve onaylanırsa Affiliate / Kanal Yöneticisi hesabınızın durumunu `PENDING_APPROVAL`dan `ACTIVE`ye çevirecektir. Entegrasyonunuz üretim onboarding için uygun hale gelir.
+
+:::tip
+Döküm yakalamayı otomatikleştirin. Adım D'deki yedi `PUT` çağrısı ve Adım E'deki geri okuma, sertifikasyon hatalarının en yaygın kaynağıdır — her isteği ve yanıtı çalıştırırken kaydeden etkileşimli bir HTTP istemcisi, ondalık farkı varsa tam bir yeniden çalıştırmayı önler.
+:::
+
+## Webhook bildirimleri
+
+Kanal yöneticisi webhook etkinliklerine abone olarak gerçek zamanlı bildirimler alabilirsiniz:
+
+- `channel-manager.update.rate` — Fiyat güncellemesi alındı.
+- `channel-manager.update.availability` — Müsaitlik güncellemesi alındı.
+- `channel-manager.update` — Genel kanal yöneticisi güncellemesi.
+
+Detaylar için [Webhook Etkinlikleri Kataloğu](/tr/developers/webhook-events#channel-manager-events) sayfasına bakın.
+
+## Daha fazla okuma
+
+- [Kanal Yöneticisi API](/tr/partner-api/partner/) — Tam API uç nokta dokümantasyonu.
+- [Fiyat Sağlayıcıları](/tr/portal/extranet/rate-providers) — Extranet'de fiyat sağlayıcıları yönetimi.
+- [Webhook Etkinlikleri Kataloğu](/tr/developers/webhook-events) — Abone olunabilir tüm etkinlikler.
+- [Wink Üzerinde Geliştirin](/tr/developers/build-on-wink) — Geliştiriciler için platform genel bakışı.

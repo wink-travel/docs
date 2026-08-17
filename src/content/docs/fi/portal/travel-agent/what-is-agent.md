@@ -5,11 +5,11 @@ sidebar:
   order: 0
 ---
 
-Ratkaisumme rekisteröidyille matkatoimistoille on [Wink Agent](https://agent.wink.travel). Se on itsepalveluportaali, jota agentit voivat käyttää asiakkaidensa puolesta hotellien etsimiseen ja varaamiseen sekä ansaita palkkion jokaisesta varauksesta itselleen.
+Ratkaisumme rekisteröidyille matkatoimistoille on [Wink Agent](https://agent.wink.travel). Se on itsepalveluportaali, jota agentit voivat käyttää asiakkaidensa puolesta etsiäkseen ja varatakseen matkoja sekä ansaitakseen palkkion jokaisesta varauksesta.
 
-Kokeneemmat matkatoimistot voivat valita integraation API-tasolla maksujen ja suoritusten käsittelyä varten Wink-alustan ulkopuolella.
+Kokeneemmat matkatoimistot voivat valita integraation API-tasolla maksujen ja suoritusten hallintaa varten Wink-alustan ulkopuolella.
 
-Matkatoimistoilla on osa samoista portaaliominaisuuksista kuin [Wink Studio](/fi/portal/studio/what-is-studio) -palvelussa, joten emme käsittele niitä tässä uudelleen.
+Matkatoimistoilla on osa samoista portaalin ominaisuuksista kuin [Studio](/fi/portal/studio/what-is-studio) -palvelussa, joten emme käsittele niitä tässä uudelleen.
 
 ## Haku
 

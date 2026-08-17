@@ -12,7 +12,7 @@ Conoce cómo se compara Wink con otros segmentos de viajes online en el mercado.
 | Característica | Wink | OTA | IBE | Bed Bank
 | ----------------------- | -- | -- | -- | -- |
 | Motor de reservas por internet | 🟢 | 🟢 | 🟢 | ⚫️ | 
-| Tienda en link-in-bio | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Tienda link-in-bio | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | Red de afiliados B2B | 🟢 | 🟢 | ⚫️ | 🟢 | 
 | Soporte para agentes de viajes | 🟢 | 🟢 | ⚫️ | 🟢 | 
 | Distribución y marketing asistidos por IA | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
@@ -34,9 +34,9 @@ Conoce cómo se compara Wink con otros segmentos de viajes online en el mercado.
 
 Algunos hoteles intentan compararnos con su motor de reservas por internet que viene incluido con su channel manager y nos piden un precio fijo mensual basado en la cantidad de habitaciones de su propiedad.
 
-No somos un IBE y esperamos que [Wink Academy](/es-AR/) ayude a aclarar esto. Hay pros y contras en cualquier servicio. Si tu IBE funciona para tu propiedad, mantenlo.  
-Wink existe para llenar varios vacíos en la industria de viajes y reunir todo en un solo lugar.
+No somos un IBE y esperamos que esto ayude a aclarar la diferencia. Todo servicio tiene pros y contras. Si tu IBE funciona para tu propiedad, mantenlo.  
+Wink existe para cubrir varios vacíos en la industria de viajes y reunir todo en un solo lugar. 
 
 :::tip
-No tienes que reemplazar tu IBE actual. Sin embargo, recomendamos probar nuestro motor de reservas amigable con redes sociales, o el gestor de links, en alguna de tus cuentas de redes sociales para ver cómo convierten. No pagas nada si no hay reservas - ¿Qué tenés para perder? 😉
+No tienes que reemplazar tu IBE actual. Sin embargo, te recomendamos probar nuestro motor de reservas amigable con redes sociales, o el gestor de links, en alguna de tus cuentas de redes sociales para ver cómo convierten. No pagas nada si no hay reservas - ¿Qué tenés para perder? 😉
 :::

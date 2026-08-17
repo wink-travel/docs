@@ -8,12 +8,12 @@ sidebar:
 Wink'te, yaptığımız her şey için her zaman 2 ortam çalıştırıyoruz:
 
 - Production bizim stabil ortamımızdır.
-- Staging sertifikasyon ve test ortamımızdır.
+- Staging bizim sertifikasyon ve test ortamımızdır.
 
 Eğer bir entegratör, otel veya seyahat acentasıysanız ve sertifikasyona hazırlanmak ya da Wink platformunu test etmek istiyorsanız, başlamak için staging ortamımızda bir hesap oluşturun.
 
 :::note
-Staging ortamı talep üzerine kullanılabilir. Bu, kullanım olmadığında uyku moduna geçeceği ve kullanım başladığında tekrar açılacağı anlamına gelir. Uyandırırken lütfen sabırlı olun. Sunucuların tamamının başlaması, ilk kez sunucularımızdan biri veya uygulamalarımızla bağlantı kurduğunuzda yaklaşık bir dakika sürer.
+Staging ortamı talep üzerine kullanılabilir. Bu, kullanım olmadığında uyku moduna geçeceği ve kullanım başladığında tekrar açılacağı anlamına gelir. Uyandırırken lütfen sabırlı olun. Sunucuların tamamının başlaması, bir sunucu veya uygulamamızla ilk bağlantınızı kurduktan sonra yaklaşık bir dakika sürer.
 :::
 
 ## Sunucular
@@ -33,10 +33,6 @@ Müşterilerimiz için uygulamalarımızın da test ve üretim ortamları bulunm
 
 | Uygulama | Staging | Production
 | ------- | ------- | ---------- |
-| Agent | https://staging-agent.wink.travel | https://agent.wink.travel | 
-| Booking engine | https://staging-ota.wink.travel | https://ota.wink.travel | 
-| Extranet | https://staging-extranet.wink.travel | https://extranet.wink.travel | 
-| My Account | https://staging-app.wink.travel | https://app.wink.travel | 
-| Payment | https://staging-pay.wink.travel | https://pay.wink.travel | 
-| Studio | https://staging-studio.wink.travel | https://studio.wink.travel | 
-| WinkLinks | https://staging-i.trvl.as | https://i.trvl.as |
+| Portal | https://staging-app.wink.travel | https://app.wink.travel | 
+| Booking engine | https://staging-book.wink.travel | https://book.wink.travel | 
+| Link Manager | https://staging-i.trvl.as | https://i.trvl.as |

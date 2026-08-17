@@ -1,0 +1,385 @@
+---
+title: Lisää kanavapäällikkösi
+description: Vaiheittainen opas kanavapäällikön ja PMS-kehittäjien integraatioon Wink-alustan kanssa.
+sidebar:
+  order: 1
+---
+
+import { Steps, LinkButton } from '@astrojs/starlight/components';
+
+Tämä opas ohjaa kanavapäällikön ja PMS-kehittäjät koko integraatioprosessin läpi Wink-alustan kanssa — käyttäjätilien luomisesta varaston kartoitukseen ja ensimmäisen end-to-end-testin suorittamiseen.
+
+## Ympäristöt
+
+Channel Manager (Integrations) API on saatavilla kahdessa ympäristössä. Käytä kehitykseen ja sertifiointiin staging-ympäristöä; siirry tuotantoon vasta käyttöönoton yhteydessä.
+
+| Ympäristö  | Perus-URL |
+| ----------- | -------- |
+| Tuotanto    | https://integrations.wink.travel |
+| Staging     | https://staging-integrations.wink.travel |
+
+## API-viite
+
+Channel Manager API noudattaa OTA-protokollan standardeja (SOAP/XML) yhteensopivuuden takaamiseksi olemassa olevien majoitusjärjestelmien kanssa. Aloita tutustumalla kumppanipäätepisteiden dokumentaatioon:
+
+<LinkButton href="/fi/partner-api/partner/">
+  Channel Manager API — Kumppanipäätepisteet
+</LinkButton>
+
+## Integraatiovaiheet
+
+<Steps>
+1. **Luo Wink-käyttäjätili**
+
+   Rekisteröidy osoitteessa [staging-app.wink.travel](https://staging-app.wink.travel). Kaikki alla olevat vaiheet tehdään staging-ympäristössä — toistat koko prosessin tuotannossa ennen käyttöönottoa.
+
+2. **Luo Affiliate / Channel Manager -tili**
+
+   Uuden käyttäjätilisi alla luo tili ja valitse **Affiliate / Channel Manager** -tilityyppi. Tämä tili toimii integraatiosi tunnistautumistilinä.
+
+3. **Rekisteröi sovellus ja luo ensimmäinen token**
+
+   Luo [Sovellus](/fi/account/applications) ja liitä se kanavapäällikkötiliin vaiheessa 2. Valitse asiakastyypiksi **MACHINE_2_MACHINE** — kyseessä on palvelin-palvelin-integraatio ilman loppukäyttäjän uudelleenohjausta. Kopioi **Client ID** ja **Secret Key** heti; salainen avain näytetään vain kerran eikä sitä voi hakea uudelleen.
+
+   Sovellus luo bearer-tokenin, jota kaikki tämän oppaan kutsut käyttävät muodossa `Authorization: Bearer <access_token>`. Vaihda tunnistetietosi tokeniin käyttämällä `client_credentials` -granttia osoitteessa `https://staging-iam.wink.travel/oauth2/token` ja pyydä `integrations.read integrations.write` -oikeuksia. Tee tämä ennen jatkamista — et voi hakea tilitunnuksia tai käyttää Channel Manager -päätepisteitä ilman tokenia. Katso [Authentication](/fi/developers/authentication) täydellinen prosessi, tuotantopalvelin ja oikeusluettelo.
+
+4. **Luo Hotelli-tili**
+
+   Samalla käyttäjällä luo toinen tili ja valitse **Hotel**-tilityyppi. Tämä antaa sinulle testattavan kiinteistön ilman oikeaa hotellia.
+
+5. **Varmista, että molemmat tilit on hyväksytty**
+
+   Kumpaakaan tiliä ei voi käyttää ennen hyväksyntää: hyväksymätön kanavapäällikkötili ei näy hotellin kanavapäällikkölistassa, eikä hyväksymätöntä hotellia palauteta API:ssa.
+
+   - **Staging** — hyväksyntä on automaattinen. Molemmat tilit ovat käytettävissä heti luomisen jälkeen, eikä erillistä pyyntöä tarvita.
+   - **Tuotanto** — hyväksyntä on manuaalinen. Lähetä Wink-integraatioyhteyshenkilölle molempien tilien nimet ja käyttäjä, jonka alla ne ovat, ja odota vahvistusta ennen jatkamista.
+
+6. **Yhdistä tilit**
+
+   Kirjaudu Hotelli-tilille ja siirry kohtaan **Extranet → Distribution → Channel Manager**. Valitse kanavapäällikkötilisi listalta — tämä linkittää kiinteistön integraatioosi. Jos tiliä ei näy listalla, sitä ei ole vielä hyväksytty; katso vaihe 5.
+
+7. **Luo perushuonetyyppi ja hintasuunnitelma**
+
+   Hotelli-tilillä luo vähintään yksi huonetyyppi ja yksi hintasuunnitelma. Nämä ovat pakollisia, jotta integraatiosi voi lähettää hintoja ja saatavuuksia tai hakea varauksia.
+
+8. **Kartoitus ja testaus**
+
+   Omassa järjestelmässäsi kartoita API:n palauttamat huonetyyppi- ja hintasuunnitelmatunnisteet. Lähetä hintapäivitys ja saatavuuspäivitys, tee testivaraus ja varmista, että varauksen hakupäätepiste palauttaa sen oikein.
+</Steps>
+
+:::note
+Toista kaikki yllä olevat vaiheet tuotannossa ennen käyttöönottoa, mukaan lukien erillisen tuotantosovelluksen rekisteröinti — staging-tunnukset eivät toimi tuotannossa. Varaudu Wink-arviointiin vaiheessa 5 — toisin kuin stagingissa, tuotantotilit eivät hyväksy automaattisesti. Wink-tiimi siirtää kaikki hotellit, jotka käyttävät kanavapäällikköäsi, uuteen tuotantotiliisi.
+:::
+
+## Tilitunnisteiden löytäminen
+
+Jokainen Channel Manager API -polku on rajattu omaan tiliisi:
+
+```
+/api/managing-entity/{managingEntityIdentifier}/channel-manager/...
+```
+
+`{managingEntityIdentifier}` on **kanavapäällikkötilisi** tunnus (UUID) — ei hotellin. Hae se sekä käyttäjäsi omistamien muiden tilien tunnukset ja nykyiset tilat Platform API:n kautta:
+
+```bash
+curl -s -X GET \
+  "https://staging-api.wink.travel/api/managing-entity/list" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Vastaus on taulukko omistamistasi tileistä:
+
+```json
+[
+  {
+    "id": "3f1c8e42-7b90-4d55-a1e2-6c8d09b4f731",
+    "type": "CHANNEL_MANAGER",
+    "name": "Kanavapäällikkösi",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "d5b8a3c2-9e6f-4a1b-8d34-7c2e1f0a5b69",
+    "type": "HOTEL",
+    "name": "Testikiinteistösi",
+    "urlName": "your-test-property",
+    "status": "ACTIVE"
+  }
+]
+```
+
+- Kanavapäällikkötilin `id` on sinun **`{managingEntityIdentifier}`**.
+- Hotellitilin `id` on sinun **`{propertyIdentifier}`**.
+- `status` kertoo, onko tili hyväksytty — erityisen tärkeää tuotannossa, jossa hyväksyntä on manuaalista. **Hotellin** tulee olla `ACTIVE` ennen kuin se on varattavissa tai näkyy Channel Manager API:ssa. Kanavapäällikkötili pysyy `PENDING_APPROVAL` -tilassa, kunnes läpäiset [Sertifioinnin](#certification); tämä on odotettua eikä estä kehitystä.
+
+:::caution
+Tämä haku suoritetaan **Platform API:lle** (`https://staging-api.wink.travel` stagingissa, `https://api.wink.travel` tuotannossa), ei Channel Manager API -palvelimille, jotka on listattu [Ympäristöt](#environments)-kohdassa. Käytä samaa access tokenia — se myönnetään käyttäjäkohtaisesti, ei API-kohtaisesti.
+:::
+
+## Sertifiointi
+
+Sertifioinnilla todistat — ja Wink vahvistaa — että integraatiosi kartoittaa varaston oikein, lähettää hinnat ja saatavuudet sekä vastaanottaa varaukset end-to-end. Sertifiointi on itsepalvelu: suoritat kaikki vaiheet omasta järjestelmästäsi ja toimitat lopuksi yhden todistusaineistopaketin. Wink arvioi aineiston ja hyväksynnän jälkeen nostaa Affiliate / Channel Manager -tilisi tilan **PENDING_APPROVAL** → **ACTIVE**.
+
+Sertifiointi suoritetaan kokonaan staging-ympäristössä (`https://staging-integrations.wink.travel`). Mikään tässä osiossa ei koske tuotantoa.
+
+### Mitä todistat
+
+<Steps>
+1. **Tunnistautuminen.** OAuth2-asiakkaasi saa access tokenin ja onnistuu kutsumaan `/ping`-päätepistettä Affiliate / Channel Manager -tililläsi.
+
+2. **Varaston kartoitus.** Pystyt listaamaan tilillesi liitetyt hotellit, hakemaan määrittämäsi master-hinnan (huonetyyppi × hintasuunnitelma) ja tunnistamaan oikein `masterRateIdentifier` -tunnisteen, johon järjestelmäsi kohdistaa.
+
+3. **Hintojen ja saatavuuden päivitys.** Pystyt päivittämään sertifiointiviikon kaikki seitsemän päivää erikseen — jokaiselle päivälle erilainen yhdistelmä määrää, saatavuutta, saapumisen/lähdön sulkemismerkintöjä sekä minimi-/maksimiyöpymisrajoja — ja lukemaan samat arvot Winkistä takaisin.
+
+4. **Varausten haku.** Pystyt hakemaan oikean staging-varauksen, joka on tehty testikiinteistöllesi, näyttämään sen omassa PMS/CM-käyttöliittymässäsi oikeilla huone-, vieras- ja kokonaistiedoilla, ja heijastamaan peruutuksen, kun Wink merkitsee varauksen peruutetuksi.
+</Steps>
+
+### Edellytykset
+
+Ennen sertifioinnin aloittamista suorita [Integraatiovaiheet](#integration-steps) kohdat 1–7, jotta sinulla on:
+
+- Wink-käyttäjä stagingissa, jolla on **Affiliate / Channel Manager** -tili ja siihen liitetty **Hotel**-tili (Extranet → Distribution → Channel Manager). Staging-tilit hyväksytään automaattisesti, joten erillistä pyyntöä ei tarvita.
+- Vähintään yksi **huonetyyppi** ja yksi **hintasuunnitelma** luotuna Hotelli-tilillä. Julkaise hotelli, jotta se on varattavissa osoitteessa `https://staging-book.wink.travel/hotel/<your-slug>`.
+- Rekisteröity sovellus Affiliate / Channel Manager -tilillä, jolla on **Client ID**, **Secret Key** ja `integrations.read integrations.write` -oikeudet (katso [Authentication](/fi/developers/authentication)).
+- Affiliate / Channel Manager -tilisi **`managingEntityIdentifier`** ja Hotelli-tilisi **`propertyIdentifier`** (molemmat UUID-muodossa — katso [Tilitunnisteiden löytäminen](#finding-your-account-identifiers)).
+
+### Yleiset pyyntöjen käytännöt
+
+Kaikki tämän osion pyynnöt käyttävät seuraavia otsikoita:
+
+```http
+Authorization: Bearer <access_token>
+Wink-Version: 2.0
+Accept: application/json
+```
+
+- `<access_token>` saadaan `client_credentials` -grantilla osoitteesta `https://staging-iam.wink.travel/oauth2/token` — katso [Authentication](/fi/developers/authentication#staging).
+- `Wink-Version` -otsikko on pakollinen; sen puuttuminen estää reitityksen v2 JSON API:iin.
+- `Content-Type: application/json` lisätään `PUT`-pyyntöihin, joissa on runko.
+
+Alla olevissa esimerkeissä paikkamerkit vastaavat arvoja, jotka keräsit [Edellytykset](#prerequisites)-kohdassa:
+
+| Paikkamerkki | Merkitys |
+|---|---|
+| `{managingEntityIdentifier}` | Affiliate / Channel Manager -tilisi tunnus (UUID) — katso [Tilitunnisteiden löytäminen](#finding-your-account-identifiers). |
+| `{propertyIdentifier}`       | Hotelli-tilin (kiinteistön) tunnus, joka on liitetty CM-tiliin. |
+| `{masterRateIdentifier}`     | Sertifioitava master-hinta (huonetyyppi × hintasuunnitelma). |
+| `{bookingIdentifier}`        | Staging-varauksen tunnus, joka palautettiin varauslistakutsussa. |
+
+### Vaihe A — Ping
+
+Varmista, että tunnistetietosi vastaavat odotettua Affiliate / Channel Manager -tiliä.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/ping" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Odotettu vastaus:
+
+```json
+{
+  "apiVersion": "2.0",
+  "name": "Kanavapäällikkötilisi nimi",
+  "status": "PENDING_APPROVAL"
+}
+```
+
+**200**-vastaus, jossa `name` vastaa odotettua, tarkoittaa, että tunnistautuminen ja tilin resoluutio ovat oikein. `status` lukee `PENDING_APPROVAL` kunnes Wink hyväksyy sinut.
+
+### Vaihe B — Listaa kiinteistöt
+
+Hae sivutettu lista tilillesi liitetyistä hotelleista ja varmista, että testikiinteistösi on mukana.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/list?page=0&size=25" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Vastaus on Springin `Page`-objekti, joka sisältää `ChannelManagerProperty`-merkintöjä. Etsi merkintä, jonka `identifier` vastaa `{propertyIdentifier}` ja tallenna sen `currencyCode` — tarvitset sitä hintapäivitysten tulkintaan [Vaihe D](#step-d--load-the-certification-week)-kohdassa.
+
+:::caution
+Tyhjä lista tarkoittaa konfiguraatiovirhettä, ei väärin muodostettua pyyntöä. Hotelli palautetaan vasta, kun se on **`ACTIVE`** *ja* liitetty kanavapäällikkötiliisi Extranet → Distribution → Channel Manager -valikossa. Tarkista molemmat `GET /api/managing-entity/list` -kutsulla (katso [Tilitunnisteiden löytäminen](#finding-your-account-identifiers)) ennen lisävirheiden etsimistä. Tuotannossa kolmas syy voi olla, että Wink ei ole vielä hyväksynyt hotellia.
+:::
+
+### Vaihe C — Hae master-hinnat
+
+Hae kiinteistö ja kaikki sen julkaistut master-hinnat (huonetyyppi × hintasuunnitelma). Valitse sertifioitava ja tallenna sen `identifier` arvoksi `{masterRateIdentifier}`.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Vastaus on `PropertyWithRoomRateList`: sisältää `property`-lohkon ja `rooms`-taulukon, jossa on `PropertyRoomRate`-merkintöjä. Jokainen sisältää huonetyypin, hintasuunnitelman, kapasiteettirajat, perushinnan ja hintamuokkaimet, jotka säilytät päivittäisiä hintoja päivitettäessä.
+
+:::caution
+Sertifioi koko sertifiointijakso yhdellä master-hinnalla. Lisähuonetyyppien ja hintasuunnitelmien kartoitus on odotettua tuotannossa, mutta todistusaineiston tulee kattaa vain yksi master-hinta end-to-end.
+:::
+
+### Vaihe D — Lataa sertifiointiviikko
+
+Lataa **seitsemän päivän hintakalenteri** kattamaan sertifiointia seuraavan kuukauden ensimmäiset seitsemän kalenteripäivää. Esimerkiksi, jos aloitat sertifioinnin 21. elokuuta, kohdenna 1.–7. syyskuuta.
+
+Lähetät **seitsemän erillistä `PUT`-kutsua** — yksi päivää kohden — joissa `startDate == endDate`. Jokaiselle päivälle asetetaan tarkoituksella erilainen yhdistelmä hintaa, määrää, saapumisen/lähdön sulkemismerkintöjä ja minimi-/maksimiyöpymisrajoja, jotta kaikki kirjoitettavat kentät testataan vähintään kerran. Arvot ovat kiinteistön valuutassa (tallennettu Vaiheessa B); jätä `currencyCode` pois, niin se oletetaan oikein.
+
+| Päivä | Määrä  | Määrä (quantity) | closedOnArrival | closedOnDeparture | minLengthOfStay | maxLengthOfStay | Mitä todistaa |
+|-------|--------|------------------|-----------------|-------------------|-----------------|-----------------|--------------|
+| 1     | 100.00 | 5                | false           | false             | 1               | 30              | Peruspäivä. |
+| 2     | 125.00 | 4                | false           | false             | 1               | 14              | Määrä + määrä + `maxLengthOfStay` muutos. |
+| 3     | 150.00 | 3                | **true**        | false             | 1               | 30              | `closedOnArrival` kääntö. |
+| 4     | 175.00 | 2                | false           | **true**          | 2               | 7               | `closedOnDeparture` kääntö + tiukempi yöpymisrajoitus. |
+| 5     | 200.00 | **0**            | false           | false             | 1               | 30              | Loppuunmyyty määrä. |
+| 6     | 225.00 | 5                | false           | false             | **3**           | **5**           | Rajoittava yöpymisikkuna. |
+| 7     | 250.00 | 1                | false           | false             | 1               | 30              | Viimeinen huone saatavilla. |
+
+Pyyntörunko Päivä 1:lle näyttää tältä. Toista, muokaten `startDate` / `endDate` / arvoja rivin mukaan Päiville 2–7.
+
+```bash
+curl -s -X PUT \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/master-rate/{masterRateIdentifier}" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json" \
+  -d '{
+        "startDate": "2026-09-01",
+        "endDate":   "2026-09-01",
+        "amount":    100.00,
+        "master":    true,
+        "closedOnArrival":   false,
+        "closedOnDeparture": false,
+        "quantity":          5,
+        "minLengthOfStay":   1,
+        "maxLengthOfStay":   30
+      }'
+```
+
+Jokainen `PUT` vastaa `200` ja palauttaa päivitetyistä `PropertyRate`-merkinnöistä koostuvan taulukon annetulta aikaväliltä (yksi merkintä, kun `startDate == endDate`). Tallenna vastaus — se kuuluu todistusaineistoon.
+
+:::note
+`master` tulee olla `true` jokaisessa sertifiointiviikon kutsussa. Tämä kertoo Winkille, että päivityksesi on mallihinta, ei varauskohtainen ylikirjoitus.
+:::
+
+### Vaihe E — Lue sertifiointiviikko takaisin
+
+Hae koko viikko yhdellä kutsulla ja varmista, että jokaisen päivän tallennetut arvot vastaavat vaiheessa D lähettämiäsi — mukaan lukien boolean-liput ja yöpymisrajoitukset.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/master-rate/{masterRateIdentifier}?startDate=2026-09-01&endDate=2026-09-07" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Vastaus on `PropertyRoomRateWithRateList`. Sen `rates`-taulukossa on **seitsemän** merkintää, yksi päivää kohden, jokaisessa kentät `amount`, `quantity`, `closedOnArrival`, `closedOnDeparture`, `minLengthOfStay` ja `maxLengthOfStay`. Jos mikään kenttä ei täsmää, vastaava `PUT` vaiheessa D ei onnistunut — korjaa ja varmista uudelleen ennen jatkoa.
+
+### Vaihe F — Tee testivaraus
+
+Avaa selain ja mene osoitteeseen, korvaten `<your-slug>` Hotelli-tilisi slugilla, jonka julkaisit edellytyksissä:
+
+```
+https://staging-book.wink.travel/hotel/<your-slug>
+```
+
+Valitse saapumis- ja lähtöpäivät, jotka ovat kokonaan sertifiointiviikon sisällä, valitse sertifioimasi huonetyyppi + hintasuunnitelma ja tee varaus. Staging käyttää testimaksupolkua — korttia ei veloiteta.
+
+Kun vahvistussivu latautuu, tallenna vieraille näytetty **varauskoodi** (muodossa `WNKxxxxx`).
+
+### Vaihe G — Hae varaus
+
+Hae kaikki varaukset, jotka on tehty testikiinteistöllesi aikavälillä, joka kattaa varauksen aikaleiman.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/booking/list?startDate=2026-09-01T00:00:00&endDate=2026-09-08T00:00:00" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Etsi merkintä, jonka `bookingCode` vastaa vaiheessa F tallentamaasi koodia. Tallenna sen `bookingIdentifier`. Hae sitten kyseinen varaus:
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/booking/{bookingIdentifier}" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Vastaus on `PropertyBooking`. Tuo se omaan PMS- tai kanavapäällikköliittymääsi ja varmista, että seuraavat tiedot näkyvät oikein operaattorille:
+
+- `bookingCode`, `bookingIdentifier`, `createdDate`
+- Vieras: `firstName`, `lastName`, `email`
+- `totalAmount` + `currencyCode` (hotellin saama nettomäärä kaikista huoneista)
+- `paymentMethodType`, `paymentMethodStatus`, `salesChannelName`
+- Jokainen `roomStays`-merkintä: `guestRoomName`, `ratePlanName`, `adults`, `children`, `startDate`, `endDate` ja huonekohtainen `amount`
+
+Ota kuvakaappaus varauksesta omassa käyttöliittymässäsi — se on yksi vaadituista todistusaineistoista.
+
+### Vaihe H — Peruuta varaus ja varmista
+
+Pyydä Wink-tiimiä peruuttamaan sertifiointivaraus puolestasi (tai peruuta itse Hotelli-tilin Extranetistä, jos sinulla on oikeudet). Hae sitten sama varaus uudelleen vaiheessa G käytetyllä kutsulla.
+
+Varmista, että vastaus näyttää nyt:
+
+- `cancelled: true`
+- Täytetty `cancelDate`-aikaleima
+- `paymentMethodStatus`, joka heijastaa peruutuksen tilaa (`CANCELLED`, `PARTIALLY_REFUNDED` tai `FULLY_REFUNDED` palautuskäytännöstä riippuen)
+
+Tuo päivitetty varaus omaan käyttöliittymääsi ja varmista, että peruutus näkyy operaattorille — tila, peruutusaikaleima ja mahdollinen hyvityksen merkintä. Ota toinen kuvakaappaus peruutetusta varauksesta käyttöliittymässäsi. Tämä on viimeinen todistusaineisto.
+
+### Vaihe I — Lähetä todistusaineistopaketti
+
+Pakkaa seuraavat tiedostot yhteen arkistoon (`.zip`) nimellä
+`wink-cert-<your-channel-manager-name>-<yyyy-mm-dd>.zip`:
+
+<Steps>
+1. **API-lokit.** Kaikista vaiheiden A–H pyynnöistä tallenna täydelliset HTTP-pyynnöt (metodi, URL, otsikot, joissa `Authorization`-arvo on piilotettu, ja `PUT`-kutsujen JSON-runko) sekä HTTP-vastaukset (statuskoodi, otsikot ja JSON-runko). Järjestä lokit niin, että jokainen pyyntö/vastauspari on selkeästi nimetty vaiheittain (`step-a-ping.json`, `step-d-day-3-put.json`, `step-g-list-bookings.json` jne.). Tavalliset `.http`-tiedostot tai yksi `.har`-vienti käyvät.
+
+2. **Käyttöliittymän kuvakaappaus: aktiivinen varaus.** Vaiheen G kuvakaappaus, jossa sertifiointivaraus näkyy omassa PMS/kanavapäällikköliittymässäsi, vieras, päivät, huonetyyppi, hintasuunnitelma ja kokonaissumma selkeästi luettavissa.
+
+3. **Käyttöliittymän kuvakaappaus: peruutettu varaus.** Vaiheen H kuvakaappaus, jossa sama varaus näkyy käyttöliittymässäsi peruutuksen jälkeen, peruutustila ja aikaleima selkeästi luettavissa.
+
+4. **Sertifiointiyhteenveto.** Lyhyt `README.md` arkistossa, jossa luetellaan:
+   - Kanavapäällikkösi / PMS:n nimi ja versio.
+   - Käytetyt `managingEntityIdentifier`, `propertyIdentifier`, `masterRateIdentifier` ja `bookingIdentifier`.
+   - Staging-hotellin slug (se `<your-slug>`, joka on osoitteessa `https://staging-book.wink.travel/hotel/<your-slug>`).
+   - Sertifiointiviikon päivämääräväli (Päivä 1 → Päivä 7 ISO-8601-muodossa).
+   - Sertifioinnin suorittaneen insinöörin nimi ja sähköposti.
+</Steps>
+
+Lähetä arkisto Wink-integraatioyhteyshenkilöllesi. Wink arvioi aineiston, seuraa mahdollisia poikkeamia ja hyväksynnän jälkeen muuttaa Affiliate / Channel Manager -tilisi tilan `PENDING_APPROVAL` → `ACTIVE`. Integraatiosi on tällöin valmis tuotantoon.
+
+:::tip
+Automatisoi lokien tallennus. Seitsemän `PUT`-kutsua vaiheessa D ja lukeminen vaiheessa E ovat yleisin syy sertifiointivirheisiin — interaktiivinen HTTP-asiakas, joka tallentaa jokaisen pyynnön ja vastauksen, säästää sinut koko prosessin uusinnalta, jos jokin arvo on väärin.
+:::
+
+## Webhook-ilmoitukset
+
+Voit tilata kanavapäällikön webhook-tapahtumia saadaksesi reaaliaikaisia ilmoituksia:
+
+- `channel-manager.update.rate` — Hintapäivitys vastaanotettu.
+- `channel-manager.update.availability` — Saatavuuspäivitys vastaanotettu.
+- `channel-manager.update` — Yleinen kanavapäällikön päivitys.
+
+Katso [Webhook Events Catalog](/fi/developers/webhook-events#channel-manager-events) lisätietoja.
+
+## Lisälukemista
+
+- [Channel Manager API](/fi/partner-api/partner/) — Täydellinen API-päätepisteiden dokumentaatio.
+- [Rate Providers](/fi/portal/extranet/rate-providers) — Hintapalveluntarjoajien hallinta Extranetissä.
+- [Webhook Events Catalog](/fi/developers/webhook-events) — Kaikki tilattavat tapahtumat.
+- [Build on Wink](/fi/developers/build-on-wink) — Alustan yleiskatsaus kehittäjille.

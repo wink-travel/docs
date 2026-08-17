@@ -5,11 +5,11 @@ sidebar:
   order: 0
 ---
 
-Giải pháp của chúng tôi dành cho các đại lý du lịch đã đăng ký là [Wink Agent](https://agent.wink.travel). Đây là một cổng tự phục vụ mà các đại lý có thể sử dụng để tìm kiếm và đặt chỗ thay mặt khách hàng của họ và kiếm hoa hồng cho mỗi lần đặt chỗ.
+Giải pháp của chúng tôi dành cho các đại lý du lịch đã đăng ký là [Wink Agent](https://agent.wink.travel). Đây là một cổng tự phục vụ mà các đại lý có thể sử dụng để tìm kiếm và đặt chỗ thay mặt khách hàng của họ và kiếm hoa hồng cho bản thân trên mỗi đặt chỗ.
 
-Các đại lý du lịch có kinh nghiệm hơn có thể chọn tích hợp ở cấp độ API nhằm mục đích xử lý thanh toán và chi trả ngoài nền tảng Wink.
+Các đại lý du lịch nâng cao hơn có thể chọn tích hợp ở cấp độ API nhằm mục đích xử lý thanh toán và chi trả bên ngoài nền tảng Wink.
 
-Các đại lý du lịch có một tập hợp con các tính năng của cổng giống như [Wink Studio](/vi/portal/studio/what-is-studio) nên chúng tôi sẽ không đề cập lại ở đây.
+Các đại lý du lịch có một tập hợp con các tính năng cổng giống như [Studio](/vi/portal/studio/what-is-studio) nên chúng tôi sẽ không đề cập lại ở đây.
 
 ## Tìm kiếm
 

@@ -1,0 +1,681 @@
+---
+title: GTM Greiningar Samþætting
+description: Hvernig á að tengja hvaða Google Tag Manager ílát (eins og Sojern ílát) við Wink svo það geti fylgst með bókunarferli gesta og stutt við endurmarkaðssetningu og auglýsingaherferðir.
+sidebar:
+  label: GTM Greiningar Samþætting
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+Þú getur tengt **hvert sem er** Google Tag Manager (GTM) ílát við Wink með því að slá inn **GTM Container ID** í Wink vefsvæðinu. Þegar tengt er hleðst ílátið þitt sjálfkrafa fyrir eignina þína og les bókunaratburði Wink beint — sem nær yfir allt ferðalag gesta frá leit að lokinni bókun. Algeng notkun er **Sojern** ílát fyrir endurmarkaðssetningu og auglýsingar, en hvaða GTM ílát sem er virkar á sama hátt.
+
+<Aside type="tip">
+Þetta gerir ráð fyrir að þú hafir þegar GTM Container ID (snið `GTM-XXXXXXX`). Ef ílátið þitt kemur frá samstarfsaðila eins og Sojern, biðjið reikningsstjóra þinn sérstaklega um **GTM Container ID** — það er ekki það sama og pixla- eða tag-kennitala. Nýr í Sojern? Farðu á [sojern.com/contact](https://www.sojern.com/contact) til að byrja.
+</Aside>
+
+---
+
+## Hvað Þú Þarf Að Gera
+
+<Steps>
+
+1. **Fáðu GTM Container ID**
+
+   Fáðu þér **GTM Container ID** (snið `GTM-XXXXXXX`). Ef það kemur frá samstarfsaðila eins og Sojern, biðjið sérstaklega um GTM Container ID — það er ekki það sama og pixla- eða tag-kennitala.
+
+2. **Sláðu það inn í Wink vefsvæðið**
+
+   Skráðu þig inn á [app.wink.travel](https://app.wink.travel), veldu reikninginn þinn og opnaðu sérsniðnarstillingar. Í kaflanum **Analytics & integrations** límdu GTM Container ID í reitinn **GTM Container ID** og vistaðu. Samþættingin er nú virk.
+
+3. **Staðfestu með þjónustuaðila þínum**
+
+   Ef ílátið þitt kemur frá samstarfsaðila eins og Sojern, láttu reikningsstjóra þinn vita að samþættingin sé virk. Hann getur staðfest að taggar skjóti rétt á `wink.travel` fyrir eignina þína og að gögn flæði inn á reikninginn þinn.
+
+</Steps>
+
+<Aside type="note">
+Þú þarft ekki að setja neinn pixlakóða á eigin vefsíðu fyrir þessa samþættingu. Wink hleður GTM ílátinu þínu sjálfkrafa á öllum síðum þar sem eignin þín er virk.
+
+Þetta virkar fyrir **hvert sem er** GTM Container ID — Sojern er bara algengt dæmi.
+</Aside>
+
+---
+
+## Hvað Wink Gert á Okkar Hlið
+
+Til gagnsæis, hér er hvað Wink stillir til að láta þessa samþættingu virka:
+
+- **Reitur fyrir GTM Container ID** er til staðar í kaflanum **Analytics & integrations** í sérsniðnum stillingum þínum. Þegar þú slærð inn Container ID staðfestir Wink sniðið (`GTM-XXXXXXX`) og geymir það örugglega fyrir eignina þína.
+- **Á hverri síðu þar sem eignin þín er virk** á Wink er ílátið þitt sprautað beint inn í síðuna — deilir eigin `window.dataLayer` Wink — svo það hleðst með eigin íláti Wink án þess að þurfa viðbótarstillingar. Þetta gerist sjálfkrafa, án vinnu frá Wink fyrir hverja eign.
+- **Ílátið þitt er hlaðið ósamstillt**, svo það hefur ekki áhrif á hleðsluhraða síðunnar fyrir gesti þína.
+- **Eigin rekja- og ílátið þitt keyra samtímis**, lesa úr sama deilda `dataLayer`. Hver bókunaratburður sem Wink fylgist með er samstundis aðgengilegur ílátinu þínu.
+- **Þegar eignin þín er ekki skoðuð** — til dæmis þegar gestur skoðar annan gististað á Wink — er ílátið þitt ekki hlaðið, svo það fær aðeins gögn sem varða eignina þína.
+- **Lokabókunin (`purchase`) fer af stað í vafranum á þakkarsíðunni.** GTM Container ID er svört kassi — Wink getur ekki gert ráð fyrir hvaða taggar eru inni — svo Wink kallar aldrei Google fyrir þig frá sínum netþjónum. Í staðinn fær hvaða GA4 eða umbreytingartagg sem er í ílátinu `purchase` viðskiptavinshlið, nákvæmlega eins og aðrir bókunaratburðir. Vegna þess að greiðsluaðilinn víkur gestavafranum burt og aftur, tengir Wink greiningarsettið aftur sem víxlið truflaði **áður en** `purchase` fer af stað, svo sala er rakin til upprunalegrar heimsóknar gesta frekar en að teljast sem nýtt set.
+
+---
+
+## DataLayer Tilvísun
+
+Wink ýtir GA4-samhæfum atburðum í `dataLayer` í gegnum allt ferðalag gesta. GTM ílátið þitt les úr sama deilda `dataLayer`, svo hvaða kveikju eða breytu sem þú stillir hefur aðgang að öllum eiginleikum sem lýst er hér að neðan.
+
+Hver atburður fylgir staðlaðri GA4 Enhanced Ecommerce uppbyggingu: efsta stigs `event` strengur og `ecommerce` hlutur. Áður en ýtt er á atburð hreinsar Wink fyrri ecommerce gagnaflutning til að koma í veg fyrir að gömul gögn blandist nýjum kveikjum.
+
+<Aside type="note">
+**dataLayer endurstillingarmynstur**
+
+Wink endurstillir ecommerce hlutinn fyrir hvern atburð:
+
+```js
+dataLayer.push({ ecommerce: null });   // hreinsa fyrri atburð
+dataLayer.push({ event: '...', ecommerce: { ... } });
+```
+
+Treystu ekki á að ecommerce eiginleikar haldist milli atburða. Lestu þá alltaf þegar kveikja fer af stað innan sama atburðar.
+</Aside>
+
+---
+
+### Bókunarferilsatburðir
+
+Þessir atburðir fara sjálfkrafa af stað þegar gestur fer í gegnum bókunarferlið. Stilltu GTM kveikjur sem **Custom Event** kveikjur sem passa við atburðanafnið hér að neðan.
+
+| Skref | Atburður | Hvenær Hann Fer Af Stað |
+|-------|----------|-------------------------|
+| 1 | `view_item_list` | Hótel birtingargrind eða listi hlaðinn |
+| 2 | `view_item` | Gestur skoðar tiltekna eignarsíðu |
+| 3 | `add_to_cart` | Gestur bætir herbergi í körfu |
+| 4 | `begin_checkout` | Úttekt / greiðslusíða hlaðinn |
+| 5 | `add_payment_info` | Gestur velur greiðslumáta |
+| 6 | `login` | Gestur auðkennir sig með SSO |
+| 7 | `purchase` | Bókun staðfest |
+| 8 | `refund` | Bókun felld niður |
+
+---
+
+#### `view_item_list`
+
+Fer af stað þegar hótel birtingargrind eða listi er sýndur.
+
+```json
+{
+  "event": "view_item_list",
+  "ecommerce": {
+    "item_list_id": "featured_hotels",
+    "item_list_name": "Featured Hotels",
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `view_item`
+
+Fer af stað þegar gestur skoðar tiltekna eign.
+
+```json
+{
+  "event": "view_item",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `add_to_cart`
+
+Fer af stað þegar gestur bætir herbergi í körfu.
+
+```json
+{
+  "event": "add_to_cart",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `begin_checkout`
+
+Fer af stað þegar úttekt / greiðslusíða hlaðinn.
+
+```json
+{
+  "event": "begin_checkout",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "items": [ ]
+  }
+}
+```
+
+`coupon` er aðeins til staðar þegar afsláttarkóði var notaður.
+
+---
+
+#### `add_payment_info`
+
+Fer af stað þegar gestur velur eða staðfestir greiðslumáta.
+
+```json
+{
+  "event": "add_payment_info",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "payment_type": "STRIPE",
+    "items": [ ]
+  }
+}
+```
+
+`payment_type` er fyllt út frá greiðsluaðila. `coupon` er aðeins til staðar þegar afsláttarkóði var notaður.
+
+---
+
+#### `login`
+
+Fer af stað þegar gestur auðkennir sig með einni innskráningu (SSO).
+
+```json
+{
+  "event": "login",
+  "ecommerce": {
+    "method": "IAM"
+  }
+}
+```
+
+---
+
+#### `purchase`
+
+Fer af stað þegar bókun er staðfest.
+
+```json
+{
+  "event": "purchase",
+  "ecommerce": {
+    "currency": "USD",
+    "transaction_id": "bc-a1b2c3d4",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "shipping": 0.00,
+    "tax": 0.00,
+    "items": [
+      {
+        "item_id": "rr-xyz789",
+        "item_name": "Deluxe Ocean Suite",
+        "item_brand": "Grand Resort",
+        "item_category": "GUEST_ROOM",
+        "price": 299.00,
+        "quantity": 1,
+        "property_id": "prop-abc123",
+        "property_name": "Grand Resort Maldives",
+        "property_brand": "Grand Collection",
+        "property_chain": "Luxury Hotels International",
+        "city_name": "Malé",
+        "country_code": "MV",
+        "start_date": "2026-06-01",
+        "end_date": "2026-06-05",
+        "num_adults": 2,
+        "num_children": 0,
+        "cancellation_policy": "Refundable",
+        "rate_plan_id": "rp-summer2026",
+        "room_rate_id": "rr-xyz789",
+        "room_rate_name": "Summer Escape — Bed & Breakfast",
+        "num_perks": 2,
+        "room_location": "Overwater",
+        "room_view": "Ocean",
+        "room_classification": "Suite"
+      }
+    ]
+  }
+}
+```
+
+`transaction_id` er einstök bókunarsamningskennitala. `coupon`, `shipping` og `tax` eru aðeins til staðar þegar við á.
+
+---
+
+#### `refund`
+
+Fer af stað þegar bókun er felld niður.
+
+```json
+{
+  "event": "refund",
+  "ecommerce": {
+    "currency": "USD",
+    "transaction_id": "bc-a1b2c3d4",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "shipping": 0.00,
+    "tax": 0.00,
+    "items": [ ]
+  }
+}
+```
+
+`transaction_id` samsvarar `purchase` atburðinum fyrir sömu bókun. `coupon`, `shipping` og `tax` eru aðeins til staðar þegar við á.
+
+---
+
+### Eiginleikar Vöru
+
+Allir atburðir sem innihalda `items` fylki deila sama vöruformi. Hver eiginleiki er valfrjáls nema merkt sé sem nauðsynlegur.
+
+#### Staðlaðir GA4 reitir
+
+Þessir reitir eru innfæddir í GA4 og birtast í staðlaðri ecommerce skýrslugerð án frekari stillinga.
+
+| Eiginleiki | Tegund | Nauðsynlegt | Lýsing |
+|------------|--------|-------------|--------|
+| `item_id` | strengur | Já | Einstök auðkenni fyrir herbergi eða vöru |
+| `item_name` | strengur | — | Nafn herbergis eða vöru |
+| `affiliation` | strengur | — | Nafn samstarfsaðila eða seljanda |
+| `coupon` | strengur | — | Afsláttarkóði sem beitt var á vöruna |
+| `currency` | strengur | — | ISO 4217 gjaldmiðlaskrá (t.d. `USD`) |
+| `creative_name` | strengur | — | Nafn auglýsingar sem notað var í kynningu |
+| `creative_slot` | strengur | — | Staðsetning auglýsingar í kynningu |
+| `discount` | tala | — | Afsláttur sem beitt var |
+| `index` | tala | — | Staða í listanum (1-undirstaða) |
+| `item_brand` | strengur | — | Nafn hótels eða vörumerkis |
+| `item_category` | strengur | — | Tegund vöru — t.d. `GUEST_ROOM`, `ACTIVITY`, `ATTRACTION`, `MEETING_ROOM`, `RESTAURANT`, `SPA` |
+| `item_list_id` | strengur | — | Auðkenni listans sem varan tilheyrir |
+| `item_list_name` | strengur | — | Birtingarnafn listans |
+| `location_id` | strengur | — | Landfræðilegar hnit eignar |
+| `price` | tala | — | Verð á einingu |
+| `promotion_id` | strengur | — | Auðkenni kynningar |
+| `promotion_name` | strengur | — | Birtingarnafn kynningar |
+| `quantity` | tala | — | Magn (sjálfgefið `1`) |
+
+#### Sérsniðnar vöruvísaðar breytur
+
+Þessar breytur bera með sér Wink-sértækan bókunarvettvang. GA4 sýnir þær ekki sjálfkrafa í skýrslum — þú verður að skrá hverja sem **vöruvísaða sérsniðna vídd** í GA4 eigninni þinni áður en þær birtast í könnunum eða staðlaðri skýrslugerð. Sjá [Sérsniðnar víddir í GA4](#custom-dimensions-in-ga4) hér að neðan fyrir leiðbeiningar.
+
+| Eiginleiki | Tegund | Lýsing |
+|------------|--------|--------|
+| `property_id` | strengur | Auðkenni Wink eignar |
+| `property_name` | strengur | Birtingarnafn eignar |
+| `property_brand` | strengur | Vörumerki eignar |
+| `property_chain` | strengur | Keðja eignar |
+| `property_url_name` | strengur | Vefslóðarvænt nafn eignar |
+| `city_name` | strengur | Borg þar sem eignin er staðsett |
+| `country_code` | strengur | ISO 3166-1 alpha-2 landakóði |
+| `start_date` | strengur | Innritunardagsetning í `YYYY-MM-DD` sniði |
+| `end_date` | strengur | Útritunardagsetning í `YYYY-MM-DD` sniði |
+| `num_adults` | tala | Fjöldi fullorðinna í bókun |
+| `num_children` | tala | Fjöldi barna í bókun |
+| `cancellation_policy` | strengur | Eitt af: `Refundable`, `Non-Refundable`, `Refundable-With-Restrictions`, `Non-Refundable-With-Restrictions` |
+| `rate_plan_id` | strengur | Auðkenni verðáætlunar |
+| `room_rate_id` | strengur | Auðkenni tiltekins herbergisverðs |
+| `room_rate_name` | strengur | Birtingarnafn herbergisverðs |
+| `num_perks` | tala | Fjöldi aukabóta með verðinu |
+| `room_location` | strengur | Staðsetning herbergis (t.d. `Overwater`, `Garden`) |
+| `room_view` | strengur | Útsýni herbergis (t.d. `Ocean`, `City`) |
+| `room_classification` | strengur | Flokkun eða stig herbergis (t.d. `Suite`, `Standard`) |
+| `bed_type` | strengur | Tegund rúms í herbergi (t.d. `King`, `Twin`) |
+
+---
+
+### Sérsniðnar Víddir í GA4
+
+GA4 hunsar sérsniðnar vöruvísaðar breytur í skýrslum þar til þú skráir þær sérstaklega sem vöruvísaðar sérsniðnar víddir. Þú þarft aðeins að skrá þær breytur sem þú ætlar að nota í skýrslum — ekki þarf að skrá allar 20.
+
+<Steps>
+
+1. **Opna Sérsniðnar Skilgreiningar**
+
+   Í GA4, farðu í **Admin** (gírinn neðst til vinstri) → veldu eignina þína → **Data display** → **Custom definitions**.
+
+2. **Búa til nýja sérsniðna vídd**
+
+   Smelltu á **Create custom dimensions**.
+
+3. **Fylltu út upplýsingar um víddina**
+
+   - **Dimension name** — mannlegur lesanlegur titill sem birtist í GA4 skýrslum (sjá töflu hér að neðan)
+   - **Scope** — veldu **Item**
+   - **Event parameter** — nákvæm breytunafn eins og það birtist í dataLayer (sjá töflu hér að neðan)
+   - **Description** — valfrjálst en mælt með
+
+4. **Vistaðu og endurtaktu**
+
+   Smelltu á **Save**, endurtaktu svo fyrir hverja breytu sem þú vilt fylgjast með.
+
+</Steps>
+
+<Aside type="note">
+Sérsniðnar víddir geta tekið allt að 24 klukkustundir að birtast í GA4 skýrslum eftir skráningu. Sögu gögn sem safnað var fyrir skráningu eru ekki uppfærð aftur.
+
+GA4 leyfir allt að 50 vöruvísaðar sérsniðnar víddir á staðlaðar eignir (360 eignir leyfa fleiri).
+</Aside>
+
+Notaðu eftirfarandi töflu sem viðmið við að búa til sérsniðnar víddir. Gildi í dálkinum **Event parameter** verður að passa nákvæmlega — GA4 er háð háum og lágum stöfum.
+
+| Víddarnafn | Event parameter | Tegund |
+|------------|-----------------|--------|
+| Property ID | `property_id` | Texti |
+| Property name | `property_name` | Texti |
+| Property brand | `property_brand` | Texti |
+| Property chain | `property_chain` | Texti |
+| Property URL name | `property_url_name` | Texti |
+| City name | `city_name` | Texti |
+| Country code | `country_code` | Texti |
+| Check-in date | `start_date` | Texti |
+| Check-out date | `end_date` | Texti |
+| Number of adults | `num_adults` | Tala |
+| Number of children | `num_children` | Tala |
+| Cancellation policy | `cancellation_policy` | Texti |
+| Rate plan ID | `rate_plan_id` | Texti |
+| Room rate ID | `room_rate_id` | Texti |
+| Room rate name | `room_rate_name` | Texti |
+| Number of perks | `num_perks` | Tala |
+| Room location | `room_location` | Texti |
+| Room view | `room_view` | Texti |
+| Room classification | `room_classification` | Texti |
+| Bed type | `bed_type` | Texti |
+
+---
+
+### Aðrir Tiltækir Atburðir
+
+Eftirfarandi atburðir eru til staðar í Wink dataLayer en eru ekki hluti af staðlaða bókunarferlinu. Þeir geta farið af stað vegna annarra samskipta á vettvangi.
+
+#### `add_to_wishlist`
+
+```json
+{
+  "event": "add_to_wishlist",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+#### `remove_from_cart`
+
+```json
+{
+  "event": "remove_from_cart",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+#### `select_item`
+
+```json
+{
+  "event": "select_item",
+  "ecommerce": {
+    "item_list_id": "featured_hotels",
+    "item_list_name": "Featured Hotels",
+    "items": [ ]
+  }
+}
+```
+
+#### `view_cart`
+
+```json
+{
+  "event": "view_cart"
+}
+```
+
+Enginn `ecommerce` hlutur fylgir þessum atburði.
+
+#### `view_promotion`
+
+```json
+{
+  "event": "view_promotion",
+  "ecommerce": {
+    "creative_name": "Summer Banner",
+    "creative_slot": "hero",
+    "promotion_id": "promo_001",
+    "promotion_name": "Summer Sale",
+    "items": [ ]
+  }
+}
+```
+
+#### `select_promotion`
+
+```json
+{
+  "event": "select_promotion",
+  "ecommerce": {
+    "creative_name": "Summer Banner",
+    "creative_slot": "hero",
+    "promotion_id": "promo_001",
+    "promotion_name": "Summer Sale",
+    "items": [ ]
+  }
+}
+```
+
+#### `search`
+
+```json
+{
+  "event": "search",
+  "ecommerce": {
+    "search_term": "beachfront resort"
+  }
+}
+```
+
+#### `select_content`
+
+```json
+{
+  "event": "select_content",
+  "ecommerce": {
+    "content_type": "hotel",
+    "content_id": "prop_12345"
+  }
+}
+```
+
+#### `share`
+
+```json
+{
+  "event": "share",
+  "ecommerce": {
+    "method": "copy_link",
+    "content_type": "hotel",
+    "item_id": "prop_12345"
+  }
+}
+```
+
+#### `sign_up`
+
+```json
+{
+  "event": "sign_up",
+  "ecommerce": {
+    "method": "email"
+  }
+}
+```
+
+#### `generate_lead`
+
+```json
+{
+  "event": "generate_lead",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 0.00
+  }
+}
+```
+
+#### `join_group`
+
+```json
+{
+  "event": "join_group",
+  "ecommerce": {
+    "group_id": "group_abc"
+  }
+}
+```
+
+#### `earn_virtual_currency`
+
+```json
+{
+  "event": "earn_virtual_currency",
+  "ecommerce": {
+    "virtual_currency_name": "WinkPoints",
+    "value": 100
+  }
+}
+```
+
+#### `spend_virtual_currency`
+
+```json
+{
+  "event": "spend_virtual_currency",
+  "ecommerce": {
+    "virtual_currency_name": "WinkPoints",
+    "value": 50,
+    "item_name": "Room Upgrade"
+  }
+}
+```
+
+#### `level_start`
+
+```json
+{
+  "event": "level_start",
+  "ecommerce": {
+    "level_name": "Gold"
+  }
+}
+```
+
+#### `level_end`
+
+```json
+{
+  "event": "level_end",
+  "ecommerce": {
+    "level_name": "Gold",
+    "success": true
+  }
+}
+```
+
+#### `level_up`
+
+```json
+{
+  "event": "level_up",
+  "ecommerce": {
+    "level": 2,
+    "character": "traveler"
+  }
+}
+```
+
+#### `post_score`
+
+```json
+{
+  "event": "post_score",
+  "ecommerce": {
+    "score": 980,
+    "level": 2,
+    "character": "traveler"
+  }
+}
+```
+
+#### `unlock_achievement`
+
+```json
+{
+  "event": "unlock_achievement",
+  "ecommerce": {
+    "achievement_id": "first_booking"
+  }
+}
+```
+
+#### `tutorial_begin`
+
+```json
+{
+  "event": "tutorial_begin",
+  "ecommerce": {}
+}
+```
+
+#### `tutorial_complete`
+
+```json
+{
+  "event": "tutorial_complete",
+  "ecommerce": {}
+}
+```
+
+---
+
+### `virtualPageView`
+
+Þetta er sérsniðinn Wink atburður — ekki hluti af staðlaða GA4 atburðasettinu. Hann er ýttur á við hverja síðuferð og ber með sér tæki- og lotuvettvang. Hann inniheldur ekki `ecommerce` hlut.
+
+```json
+{
+  "event": "virtualPageView",
+  "device": "Desktop",
+  "deviceAgent": "Mozilla/5.0 ...",
+  "os": "MacOS",
+  "path": "/hotels/grand-resort",
+  "title": "Grand Resort — Wink",
+  "userId": "user_abc123",
+  "startDate": "2026-06-01",
+  "endDate": "2026-06-05",
+  "guests": "2",
+  "rooms": "1"
+}
+```
+
+| Eiginleiki | Lýsing |
+|------------|--------|
+| `device` | Greind tækitegund — `Desktop`, `Android`, `iPhone`, `iPad` eða svipað |
+| `deviceAgent` | Óunnið user agent strengur |
+| `os` | Greint stýrikerfi — `Windows`, `MacOS`, `Linux`, `UNIX` |
+| `path` | Núverandi slóð á síðunni |
+| `title` | Núverandi titill síðunnar |
+| `userId` | Auðkenni innskráðs notanda (sleppur ef ekki skráður inn) |
+| `startDate` | Innritunardagsetning úr núverandi leitarlotu |
+| `endDate` | Útritunardagsetning úr núverandi leitarlotu |
+| `guests` | Fjöldi gesta úr núverandi leitarlotu |
+| `rooms` | Fjöldi herbergja úr núverandi leitarlotu |

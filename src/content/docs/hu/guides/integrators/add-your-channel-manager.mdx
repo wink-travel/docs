@@ -1,0 +1,389 @@
+---
+title: Add hozzá a Channel Managert
+description: Lépésről lépésre útmutató channel manager és PMS fejlesztőknek a Wink platformhoz való integrációhoz.
+sidebar:
+  order: 1
+---
+
+import { Steps, LinkButton } from '@astrojs/starlight/components';
+
+Ez az útmutató végigvezeti a channel manager és PMS fejlesztőket a Wink platformhoz való teljes integrációs folyamaton — a fiókok létrehozásától az inventory leképezésén át az első end-to-end teszt lefuttatásáig.
+
+## Környezetek
+
+A Channel Manager (Integrations) API két környezetben érhető el. Fejlesztéshez és tanúsításhoz mindig a staging környezetet használd; az éles környezetre csak a go-live előtt válts.
+
+| Környezet  | Alap URL                      |
+| ---------- | -----------------------------|
+| Éles       | https://integrations.wink.travel |
+| Staging    | https://staging-integrations.wink.travel |
+
+## API referencia
+
+A Channel Manager API az OTA protokoll szabványokat követi (SOAP/XML), hogy kompatibilis legyen a meglévő vendéglátóipari rendszerekkel. Kezdd a partner végpont dokumentációjának áttekintésével:
+
+<LinkButton href="/hu/partner-api/partner/">
+  Channel Manager API — Partner végpontok
+</LinkButton>
+
+## Integráció lépései
+
+<Steps>
+1. **Hozz létre egy Wink felhasználói fiókot**
+
+   Regisztrálj a [staging-app.wink.travel](https://staging-app.wink.travel) oldalon. Az alábbi lépések mind a staging környezetet használják — az éles környezetben a go-live előtt megismétled a teljes folyamatot.
+
+2. **Hozd létre az Affiliate / Channel Manager fiókodat**
+
+   Az új felhasználód alatt hozz létre egy fiókot, és válaszd az **Affiliate / Channel Manager** fióktípust. Ez lesz az a fiók, amellyel az integrációd hitelesít.
+
+3. **Regisztrálj egy alkalmazást és hozz létre egy első tokent**
+
+   Hozz létre egy [Alkalmazást](/hu/account/applications), és kösd hozzá a 2. lépésben létrehozott channel manager fiókhoz. Válaszd a **MACHINE_2_MACHINE** kliens típust — ez egy szerver-szerver integráció, nincs végfelhasználó átirányítás. Másold ki azonnal a **Client ID** és a **Secret Key** értékeket; a titkos kulcs csak egyszer jelenik meg, később nem kérhető le újra.
+
+   Az alkalmazás hozza létre a bearer tokent, amelyet minden hívásnál az `Authorization: Bearer <access_token>` fejlécben kell használni. Cseréld le a hitelesítő adataidat tokenre a `client_credentials` grant segítségével a `https://staging-iam.wink.travel/oauth2/token` címen, kérve az `integrations.read integrations.write` scope-okat. Ezt tedd meg mielőtt tovább lépsz — token nélkül nem tudsz fiókazonosítókat lekérni vagy bármely Channel Manager végpontot elérni. A teljes folyamatért, az éles hostért és a scope-katalógusért lásd a [Hitelesítés](/hu/developers/authentication) oldalt.
+
+4. **Hozz létre egy Hotel fiókot**
+
+   Ugyanazon felhasználó alatt hozz létre egy második fiókot, és válaszd a **Hotel** fióktípust. Ez egy olyan ingatlant ad, amelyet teszteléshez használhatsz anélkül, hogy valódi szállodát érintenél.
+
+5. **Erősítsd meg, hogy mindkét fiók jóváhagyott**
+
+   Egyik fiók sem használható, amíg nincs jóváhagyva: egy jóváhagyatlan channel manager fiók nem jelenik meg egyetlen szálloda channel manager listájában sem, és egy jóváhagyatlan hotel nem jelenik meg az API válaszában.
+
+   - **Staging** — a jóváhagyás automatikus. Mindkét fiók azonnal használható, amint létrehozod őket, nincs szükség külön kérésre.
+   - **Éles** — a jóváhagyás manuális. Küldd el a Wink integrációs kapcsolattartódnak mindkét fiók nevét és a hozzájuk tartozó felhasználót, majd várd meg a visszaigazolást, mielőtt tovább lépsz.
+
+6. **Kapcsold össze a két fiókot**
+
+   Jelentkezz be a Hotel fiókba, majd navigálj az **Extranet → Distribution → Channel Manager** menüpontra. Válaszd ki a channel manager fiókodat a listából — ezzel összekapcsolod az ingatlant az integrációddal. Ha a fiókod nem szerepel a listában, még nincs jóváhagyva; lásd az 5. lépést.
+
+7. **Hozz létre egy alap szobatípust és ártervet**
+
+   A Hotel fiókban hozz létre legalább egy szobatípust és egy ártervet. Ezek szükségesek ahhoz, hogy az integrációd árakat és elérhetőséget tudjon küldeni, illetve foglalásokat tudjon lekérni.
+
+8. **Leképezés és tesztelés**
+
+   Saját rendszeredben leképezd az API által visszaadott szobatípus és árterv azonosítókat. Küldj egy árfrissítést és egy elérhetőség frissítést, majd készíts egy teszt foglalást, és ellenőrizd, hogy a foglalás lekérő végpont helyesen adja vissza azt.
+</Steps>
+
+:::note
+Ismételd meg az összes fenti lépést az éles környezetben a go-live előtt, beleértve egy külön éles alkalmazás regisztrálását is — a staging hitelesítő adatok nem működnek éles környezetben. Számolj a Wink jóváhagyási folyamatával az 5. lépésben — az éles fiókok nem jóváhagyódnak automatikusan, ellentétben a staginggel. A Wink csapata átmigrálja azokat a szállodákat, amelyek már használják a channel managert, az új éles fiókod alá.
+:::
+
+## Fiókazonosítók megtalálása
+
+Minden Channel Manager API útvonal a saját fiókodhoz van kötve:
+
+```
+/api/managing-entity/{managingEntityIdentifier}/channel-manager/...
+```
+
+A `{managingEntityIdentifier}` a **channel manager fiókod** azonosítója (UUID) — nem a szállodáé. Ezt, valamint a felhasználód által birtokolt összes többi fiók azonosítóját és aktuális státuszát a Platform API-ból kérheted le:
+
+```bash
+curl -s -X GET \
+  "https://staging-api.wink.travel/api/managing-entity/list" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+A válasz egy tömb a birtokolt fiókokról:
+
+```json
+[
+  {
+    "id": "3f1c8e42-7b90-4d55-a1e2-6c8d09b4f731",
+    "type": "CHANNEL_MANAGER",
+    "name": "Your Channel Manager",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "d5b8a3c2-9e6f-4a1b-8d34-7c2e1f0a5b69",
+    "type": "HOTEL",
+    "name": "Your Test Property",
+    "urlName": "your-test-property",
+    "status": "ACTIVE"
+  }
+]
+```
+
+- A channel manager bejegyzés `id` értéke a te **`{managingEntityIdentifier}`**.
+- A `HOTEL` bejegyzés `id` értéke a te **`{propertyIdentifier}`**.
+- A `status` mutatja, hogy a fiók jóváhagyott-e — ez különösen fontos az éles környezetben, ahol a jóváhagyás manuális. A **hotel** csak akkor foglalható vagy látható a Channel Manager API számára, ha `ACTIVE` státuszú. A **channel manager** fiók `PENDING_APPROVAL` státuszt mutat addig, amíg meg nem kapod a [Tanúsítványt](#certification); ez normális és nem akadályozza a fejlesztést.
+
+:::caution
+Ez a lekérdezés a **Platform API**-hoz fut (`https://staging-api.wink.travel` staging alatt, `https://api.wink.travel` élesben), nem a Channel Manager API hostjaihoz, amelyek az [Környezetek](#environments) szakaszban vannak felsorolva. Ugyanazt az access tokent használd — az felhasználóhoz van kiadva, nem API-hoz.
+:::
+
+## Tanúsítás
+
+A tanúsítás bizonyítja — és Wink is megerősíti —, hogy az integrációd helyesen leképezi az inventoryt, küldi az árakat és elérhetőséget, valamint fogadja a foglalásokat end-to-end. Ez egy önkiszolgáló folyamat: minden lépést a saját rendszeredből vezérelsz, és a végén egyetlen bizonyítékcsomagot nyújtasz be. A Wink átnézi a csomagot, és ha megfeleltél, az Affiliate / Channel Manager fiókod státuszát **PENDING_APPROVAL**-ról **ACTIVE**-re váltja.
+
+A tanúsítás teljes egészében a staging környezetben zajlik
+(`https://staging-integrations.wink.travel`). Semmi sem érinti az éles környezetet.
+
+### Mit kell bizonyítanod
+
+<Steps>
+1. **Hitelesítés.** Az OAuth2 kliensed képes hozzáférési tokent szerezni, és sikeresen hívja a
+   `/ping` végpontot az Affiliate / Channel Manager fiókod ellen.
+
+2. **Inventory leképezés.** Ki tudod listázni a fiókodhoz kapcsolt szállodákat, lekérni a beállított master árat (szobatípus × árterv), és helyesen azonosítani a `masterRateIdentifier`-t, amelyet a rendszered célozni fog.
+
+3. **Ár és elérhetőség küldés.** Képes vagy a tanúsítási hét mind a hét napját külön-külön frissíteni — eltérő kombinációban az ár, mennyiség, érkezéskor/távozáskor zárás jelzők, valamint a minimális/maximális tartózkodási idő —, majd a pontos értékeket visszaolvasni Winkből.
+
+4. **Foglalás lekérés.** Le tudsz kérni egy valós staging foglalást a teszt ingatlanodhoz, meg tudod jeleníteni a saját PMS/CM felületedben a helyes szobatartást, vendéget és összeget, majd vissza tudod tükrözni a törlést, amikor Wink a foglalást töröltnek jelöli.
+</Steps>
+
+### Előfeltételek
+
+A tanúsítás megkezdése előtt végezd el az [Integráció lépései](#integration-steps) 1–7 pontjait, hogy rendelkezz:
+
+- Egy Wink felhasználóval a staging környezetben, amelyhez tartozik egy **Affiliate / Channel Manager** és egy **Hotel** fiók (Extranet → Distribution → Channel Manager). A staging fiókok automatikusan jóváhagyottak, így nincs szükség külön kérésre.
+- Legalább egy **szobatípus** és egy **árterv** létrehozva a Hotel fiókban. Tedd közzé a hotelt, hogy foglalható legyen a `https://staging-book.wink.travel/hotel/<your-slug>` címen.
+- Egy regisztrált alkalmazás az Affiliate / Channel Manager fiókod alatt, amely rendelkezik **Client ID**, **Secret Key** értékekkel, és az `integrations.read integrations.write` scope-okkal (lásd [Hitelesítés](/hu/developers/authentication)).
+- Az Affiliate / Channel Manager fiókod **`managingEntityIdentifier`** és a Hotel fiókod **`propertyIdentifier`** (mindkettő UUID — lásd [Fiókazonosítók megtalálása](#finding-your-account-identifiers)).
+
+### Gyakori kérés konvenciók
+
+Ebben a szakaszban minden kérés a következő fejléceket használja:
+
+```http
+Authorization: Bearer <access_token>
+Wink-Version: 2.0
+Accept: application/json
+```
+
+- A `<access_token>` a `client_credentials` grantból származik a
+  `https://staging-iam.wink.travel/oauth2/token` címen — lásd [Hitelesítés](/hu/developers/authentication#staging).
+- A `Wink-Version` fejléc kötelező; enélkül nem a v2 JSON API-hoz irányít.
+- A `Content-Type: application/json` fejléc hozzáadódik a `PUT` kérésekhez, amelyek törzset tartalmaznak.
+
+Az alábbi példákban a helyőrzők a [Előfeltételek](#prerequisites) szakaszban összegyűjtött értékekre utalnak:
+
+| Helyőrző                  | Jelentés |
+|---------------------------|----------|
+| `{managingEntityIdentifier}` | Az Affiliate / Channel Manager fiókod azonosítója (UUID) — lásd [Fiókazonosítók megtalálása](#finding-your-account-identifiers). |
+| `{propertyIdentifier}`         | A Hotel fiók (ingatlan) azonosítója, amelyet a CM fiókhoz kapcsoltál. |
+| `{masterRateIdentifier}`       | A master ár (szobatípus × árterv), amelyhez tanúsítást végzel. |
+| `{bookingIdentifier}`          | A staging foglalás azonosítója, amelyet a foglalás lista hívás adott vissza. |
+
+### A lépés A — Ping
+
+Ellenőrizd, hogy a hitelesítő adataid az elvárt Affiliate / Channel Manager fiókhoz tartoznak.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/ping" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Várt válasz:
+
+```json
+{
+  "apiVersion": "2.0",
+  "name": "Your Channel Manager Account Name",
+  "status": "PENDING_APPROVAL"
+}
+```
+
+Egy **200** válasz a megfelelő `name` értékkel jelzi, hogy a hitelesítés és a fiókazonosítás helyes. A `status` addig `PENDING_APPROVAL`, amíg Wink nem tanúsít.
+
+### A lépés B — Ingatlanok listázása
+
+Kérd le a fiókodhoz kapcsolt szállodák lapozott listáját, és ellenőrizd, hogy a teszt ingatlanod szerepel benne.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/list?page=0&size=25" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+A válasz egy Spring `Page` típusú `ChannelManagerProperty` bejegyzéseket tartalmaz. Keresd meg azt a bejegyzést, amelynek `identifier` értéke megegyezik a `{propertyIdentifier}`-rel, és jegyezd fel a `currencyCode` értékét — erre szükséged lesz az árfrissítések értelmezéséhez a [D lépésben](#step-d--load-the-certification-week).
+
+:::caution
+Az üres lista konfigurációs jelzés, nem hibás kérés. Egy hotel csak akkor jelenik meg itt, ha **`ACTIVE`** státuszú *és* hozzárendelték a channel manager fiókodhoz az Extranet → Distribution → Channel Manager alatt. Mindkettőt ellenőrizd a `GET /api/managing-entity/list` hívással (lásd [Fiókazonosítók megtalálása](#finding-your-account-identifiers)) mielőtt tovább hibakeresnél.
+Éles környezetben egy harmadik ok is lehet: a hotel nem látható, amíg Wink nem hagyta jóvá.
+:::
+
+### A lépés C — Master árak lekérése
+
+Kérd le az ingatlant az összes master árral (szobatípus × árterv kombináció) együtt. Válaszd ki azt, amelyhez tanúsítani szeretnél, és jegyezd fel az `identifier` értékét, ez lesz a `{masterRateIdentifier}`.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+A válasz egy `PropertyWithRoomRateList` objektum, amely egy `property` blokkot és egy `rooms` tömböt tartalmaz `PropertyRoomRate` bejegyzésekkel. Minden bejegyzés tartalmazza a szobatípust, ártervet, foglaltsági korlátokat, alapárat és az ár módosítókat, amelyeket meg kell őrizned a napi árak küldésekor.
+
+:::caution
+A tanúsítás során csak egy master árra tanúsíts. Több szobatípus és árterv leképezése elvárt az éles környezetben, de a bizonyítékcsomagnak csak egy master árat kell bemutatnia end-to-end.
+:::
+
+### A lépés D — Tanúsítási hét betöltése
+
+Tölts be egy **hét napos ár naptárt**, amely a tanúsítás megkezdését követő hónap első hét napját fedi le. Például, ha augusztus 21-én kezded, célozd meg szeptember 1-től szeptember 7-ig.
+
+**Hét különálló `PUT` hívást** küldesz — naponta egyet — ahol `startDate == endDate`. Minden nap más-más kombinációban tartalmazza az összeget, mennyiséget, érkezéskor/távozáskor zárás jelzőket, valamint a minimális/maximális tartózkodási időt, hogy minden írható mező legalább egyszer tesztelve legyen. Az értékek az ingatlan pénznemében vannak (a B lépésben feljegyzett); a `currencyCode` elhagyható, ilyenkor helyesen alapértelmeződik.
+
+| Nap | Összeg  | Mennyiség | closedOnArrival | closedOnDeparture | minLengthOfStay | maxLengthOfStay | Mit bizonyít |
+|-----|---------|-----------|-----------------|-------------------|-----------------|-----------------|-------------|
+| 1   | 100.00  | 5         | false           | false             | 1               | 30              | Alapnap. |
+| 2   | 125.00  | 4         | false           | false             | 1               | 14              | Összeg + mennyiség + `maxLengthOfStay` változás. |
+| 3   | 150.00  | 3         | **true**        | false             | 1               | 30              | `closedOnArrival` váltás. |
+| 4   | 175.00  | 2         | false           | **true**          | 2               | 7               | `closedOnDeparture` váltás + szigorúbb tartózkodási idő. |
+| 5   | 200.00  | **0**     | false           | false             | 1               | 30              | Kifogyott mennyiség. |
+| 6   | 225.00  | 5         | false           | false             | **3**           | **5**           | Korlátozott tartózkodási idő. |
+| 7   | 250.00  | 1         | false           | false             | 1               | 30              | Utolsó szoba elérhetőség. |
+
+Az 1. nap kérés törzse így néz ki. Ismételd meg, módosítva a `startDate` / `endDate` / értékeket a táblázat szerint a 2–7. napokra.
+
+```bash
+curl -s -X PUT \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/master-rate/{masterRateIdentifier}" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json" \
+  -d '{
+        "startDate": "2026-09-01",
+        "endDate":   "2026-09-01",
+        "amount":    100.00,
+        "master":    true,
+        "closedOnArrival":   false,
+        "closedOnDeparture": false,
+        "quantity":          5,
+        "minLengthOfStay":   1,
+        "maxLengthOfStay":   30
+      }'
+```
+
+Minden `PUT` kérés `200` választ ad a frissített `PropertyRate` bejegyzések tömbjével a megadott időszakra (egy bejegyzés, ha `startDate == endDate`). Ezt a választ mentsd el — a bizonyíték része lesz.
+
+:::note
+A `master` értéke minden tanúsítási hét hívásnál legyen `true`. Ez jelzi Winknek, hogy az update sablon ár, nem foglalásonkénti felülírás.
+:::
+
+### A lépés E — Tanúsítási hét visszaolvasása
+
+Egyetlen hívással kérd le az egész hetet, és ellenőrizd, hogy minden nap értékei megegyeznek a D lépésben küldött sorral — beleértve a logikai jelzőket és a tartózkodási idő ablakot is.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/master-rate/{masterRateIdentifier}?startDate=2026-09-01&endDate=2026-09-07" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+A válasz egy `PropertyRoomRateWithRateList`. A `rates` tömbnek **hét** bejegyzést kell tartalmaznia, naponta egyet, mindegyik a megfelelő `amount`, `quantity`, `closedOnArrival`, `closedOnDeparture`, `minLengthOfStay` és `maxLengthOfStay` értékekkel. Ha bármelyik mező nem egyezik, a D lépésbeli `PUT` nem sikerült megfelelően — javítsd és ellenőrizd újra, mielőtt tovább lépsz.
+
+### A lépés F — Teszt foglalás készítése
+
+Nyisd meg a böngészőben a következő URL-t, a `<your-slug>` helyére írd be a Prerequisites szakaszban közzétett Hotel fiók slugját:
+
+```
+https://staging-book.wink.travel/hotel/<your-slug>
+```
+
+Válassz érkezési és távozási dátumot, amelyek teljes egészében a tanúsítási héten belül vannak, válaszd ki a tanúsított szobatípus + árterv kombinációt, és fejezd be a foglalást. A staging teszt fizetési útvonalat használ — nem terhel élő kártyát.
+
+A visszaigazoló oldal megjelenése után jegyezd fel a vendégnek megjelenő **foglalási kódot** (formátum: `WNKxxxxx`).
+
+### A lépés G — Foglalás lekérése
+
+Kérd le az összes foglalást a teszt ingatlanodra egy olyan időablakban, amely lefedi a foglalás időbélyegét.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/booking/list?startDate=2026-09-01T00:00:00&endDate=2026-09-08T00:00:00" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Keresd meg azt a bejegyzést, amelynek `bookingCode` értéke megegyezik a F lépésben feljegyzett kóddal. Jegyezd fel a `bookingIdentifier` értékét. Ezután kérd le az adott foglalást:
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/booking/{bookingIdentifier}" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+A válasz egy `PropertyBooking`. Importáld be a saját PMS / channel manager felületedre, és ellenőrizd, hogy az alábbi adatok helyesen jelennek meg az operátor számára:
+
+- `bookingCode`, `bookingIdentifier`, `createdDate`
+- Vendég: `firstName`, `lastName`, `email`
+- `totalAmount` + `currencyCode` (a szálloda által az összes szobára kapott nettó összeg)
+- `paymentMethodType`, `paymentMethodStatus`, `salesChannelName`
+- Minden bejegyzés a `roomStays` tömbben: `guestRoomName`, `ratePlanName`, `adults`, `children`, `startDate`, `endDate`, és szobánként az `amount`
+
+Készíts képernyőképet a foglalásról, ahogy a saját felületedben megjelenik — ez az egyik szükséges bizonyíték.
+
+### A lépés H — Foglalás törlése és ellenőrzése
+
+Kérd meg a Wink csapatot, hogy töröljék a tanúsítási foglalást a nevedben (vagy ha van jogosultságod, töröld magad a Hotel fiók Extranetjéből). Ezután kérd le újra ugyanazt a foglalást a G lépésben használt hívással.
+
+Ellenőrizd, hogy a válasz most tartalmazza:
+
+- `cancelled: true`
+- Kitöltött `cancelDate` időbélyegzőt
+- Egy `paymentMethodStatus` értéket, amely a törlési életciklust tükrözi (`CANCELLED`, `PARTIALLY_REFUNDED` vagy `FULLY_REFUNDED` a visszatérítési szabályzat szerint)
+
+Importáld be az frissített foglalást a saját UI-dba, és ellenőrizd, hogy a törlés látható az operátor számára — státusz, törlés időbélyegző és bármilyen visszatérítési jelző, amelyet a UI támogat. Készíts egy második képernyőképet a törölt foglalásról a UI-ban. Ez a végső bizonyíték.
+
+### A lépés I — Bizonyítékcsomag benyújtása
+
+Csomagold be az alábbiakat egyetlen archívumba (`.zip`), amelynek neve legyen
+`wink-cert-<your-channel-manager-name>-<yyyy-mm-dd>.zip`:
+
+<Steps>
+1. **API átirat.** Minden A–H lépésben kiadott kérésről készíts teljes HTTP átiratot (módszer, URL, kérés fejlécek az `Authorization` érték eltakarásával, és a JSON törzs a `PUT` hívásoknál), valamint a teljes HTTP választ (státuszkód, válasz fejlécek és JSON törzs). Strukturáld az átiratot úgy, hogy minden kérés/válasz pár egyértelműen fel legyen címkézve a lépés szerint (`step-a-ping.json`, `step-d-day-3-put.json`, `step-g-list-bookings.json` stb.). Elfogadott formátumok a sima szöveges `.http` fájlok vagy egyetlen `.har` export.
+
+2. **UI képernyőkép: aktív foglalás.** A G lépésből származó képernyőkép, amely a tanúsítási foglalást mutatja a saját PMS / channel manager UI-dban, jól olvasható vendég, dátum, szobatípus, árterv és összeg adatokkal.
+
+3. **UI képernyőkép: törölt foglalás.** A H lépésből származó képernyőkép, amely ugyanazt a foglalást mutatja a UI-ban törlés után, jól olvasható törölt státusszal és időbélyeggel.
+
+4. **Tanúsítási összefoglaló.** Egy rövid `README.md` a csomagban, amely tartalmazza:
+   - A channel manager / PMS neved és verziószámod.
+   - A használt `managingEntityIdentifier`, `propertyIdentifier`, `masterRateIdentifier` és `bookingIdentifier` értékeket.
+   - A staging hotel slugját (a `<your-slug>` a `https://staging-book.wink.travel/hotel/<your-slug>` URL-ben).
+   - A tanúsítási hét dátumtartományát (1. nap → 7. nap ISO-8601 formátumban).
+   - A tanúsítást végző mérnök nevét és email címét.
+</Steps>
+
+Küldd el az archívumot a Wink integrációs kapcsolattartódnak. Wink átnézi, egyeztet bármilyen eltérést, és ha megfeleltél, az Affiliate / Channel Manager fiókod státuszát `PENDING_APPROVAL`-ról `ACTIVE`-re váltja. Ezután az integrációd jogosult az éles környezetbe való beléptetésre.
+
+:::tip
+Automatizáld az átirat készítését. A D lépés hét `PUT` hívása és az E lépés visszaolvasása a leggyakoribb tanúsítási hibák forrása — egy interaktív HTTP kliens, amely minden kérést és választ ment, megkímél egy teljes újrafuttatástól, ha egy érték tizedesjegyben eltér.
+:::
+
+## Webhook értesítések
+
+Feliratkozhatsz channel manager webhook eseményekre, hogy valós idejű értesítéseket kapj:
+
+- `channel-manager.update.rate` — Árfrissítés érkezett.
+- `channel-manager.update.availability` — Elérhetőség frissítés érkezett.
+- `channel-manager.update` — Általános channel manager frissítés.
+
+Részletekért lásd a [Webhook Események Katalógusa](/hu/developers/webhook-events#channel-manager-events) oldalt.
+
+## További olvasmányok
+
+- [Channel Manager API](/hu/partner-api/partner/) — Teljes API végpont dokumentáció.
+- [Ár szolgáltatók](/hu/portal/extranet/rate-providers) — Ár szolgáltatók kezelése az Extranetben.
+- [Webhook Események Katalógusa](/hu/developers/webhook-events) — Minden feliratkozható esemény.
+- [Fejlesztés Winkre](/hu/developers/build-on-wink) — Platform áttekintés fejlesztőknek.

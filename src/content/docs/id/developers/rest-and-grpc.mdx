@@ -1,0 +1,85 @@
+---
+title: REST dan gRPC
+description: Cara mengintegrasikan dengan Wink Platform melalui REST atau gRPC, menghasilkan klien dari skema kami, dan menggunakan server MCP kami untuk menghasilkan kode integrasi sesuai kasus penggunaan Anda.
+sidebar:
+  order: 7
+---
+
+import { LinkButton, Aside } from '@astrojs/starlight/components';
+
+Wink menyediakan dua transportasi. Mana yang Anda gunakan tergantung pada API mana yang Anda integrasikan.
+
+| | Transportasi | Skema | Dokumen |
+| --- | --- | --- | --- |
+| Sebagian besar API Wink | REST melalui HTTPS | OpenAPI 3 | Grup mana pun di bawah **API** di sidebar |
+| Partner Integrator API | gRPC melalui HTTP/2 | Protocol Buffers | [Partner](/id/partner-api/partner/) |
+
+<Aside type="note" title="Kami tidak lagi menerbitkan SDK bahasa">
+  SDK yang dikelola secara manual tertinggal dari API yang mereka bungkus, dan tidak pernah mencakup bahasa yang
+  sebenarnya Anda butuhkan. Hasilkan klien dari skema sebagai gantinya — itu selalu terbaru — atau biarkan
+  server MCP kami menulis kode integrasi yang disesuaikan dengan kasus penggunaan Anda.
+</Aside>
+
+## Hasilkan klien REST
+
+Setiap grup API menerbitkan dokumen OpenAPI 3. Arahkan generator OpenAPI apa pun ke dokumen tersebut dan Anda akan mendapatkan
+klien bertipe dalam bahasa Anda.
+
+```bash
+# Spesifikasi untuk sebuah grup disajikan di samping halaman referensinya.
+curl -o wink-extranet.json https://api.wink.travel/v3/api-docs/extranet
+
+npx @openapitools/openapi-generator-cli generate \
+  -i wink-extranet.json -g typescript-fetch -o ./wink-client
+```
+
+<LinkButton href="https://openapi-generator.tech/docs/generators" variant="secondary" icon="external">
+  Generator OpenAPI berdasarkan bahasa
+</LinkButton>
+
+## Hasilkan klien gRPC
+
+Partner Integrator API menggunakan gRPC. Anda menghasilkan klien dari skema `.proto`, yang Wink
+terbitkan dengan dua cara:
+
+- **Server reflection** — server mendeskripsikan dirinya sendiri, sehingga alat seperti `grpcurl`, Postman, dan Insomnia
+  dapat menemukan skema saat runtime tanpa perlu mengunduh file. Reflection memerlukan token bearer yang sama
+  seperti panggilan lainnya.
+- **File `.proto`**, jika Anda lebih suka menyertakan skema dan menghasilkan klien sebelumnya.
+
+```bash
+# Temukan skema dari server yang berjalan (terautentikasi).
+grpcurl -H "authorization: Bearer $WINK_TOKEN" \
+  partner.wink.travel:443 list
+
+# Kemudian hasilkan klien — di sini Go; setiap bahasa yang didukung bekerja dengan cara yang sama.
+protoc --go_out=. --go-grpc_out=. partner_lookup.proto
+```
+
+Panggilan membawa token bearer Anda di header metadata `authorization`, persis seperti REST membawa di header `Authorization`.
+Kesalahan muncul sebagai kode status gRPC di trailer respons, bukan sebagai kode status HTTP — [referensi Partner](/id/partner-api/partner/)
+mencantumkan status yang harus Anda harapkan.
+
+<LinkButton href="https://grpc.io/docs/languages/" variant="secondary" icon="external">
+  Mulai cepat gRPC berdasarkan bahasa
+</LinkButton>
+
+<LinkButton href="https://grpc.io/docs/what-is-grpc/introduction/" variant="secondary" icon="external">
+  Apa itu gRPC?
+</LinkButton>
+
+## Atau biarkan server MCP menulisnya
+
+Jika Anda menggunakan asisten pengkodean AI, server MCP kami adalah jalur tercepat. Server ini menyediakan API Wink sebagai
+alat yang dapat dipanggil dan dianalisis oleh asisten Anda, sehingga alih-alih menghasilkan seluruh klien dan mencari
+endpoint sendiri, Anda cukup mendeskripsikan apa yang Anda bangun dan mendapatkan kode integrasi yang disesuaikan.
+
+<LinkButton href="/id/developers/mcp/" variant="primary">
+  Siapkan server MCP Wink
+</LinkButton>
+
+## Bacaan lebih lanjut
+
+- [Setup](/id/developers/setup/) — akun, lingkungan, dan kredensial
+- [Autentikasi](/id/developers/authentication/) — memperoleh dan memperbarui token
+- [Integrasi Webhook](/id/developers/webhook-integration/) — menerima event daripada polling

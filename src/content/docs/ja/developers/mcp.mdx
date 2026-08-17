@@ -1,33 +1,126 @@
 ---
 title: MCPサーバー
-description: Model Context Protocolを介してAIエージェントをWinkプラットフォームに接続します。認証済みのMCPサーバーは、インタラクティブなOAuth2ログインで保護され、エージェントにインベントリ、予約、チャネルマネージャー統合などへの直接アクセスを提供します。
+description: Model Context Protocolを介してAIエージェントをWinkプラットフォームに接続します。Winkはツールを特定のジョブに特化したエンドポイントとして公開しているため、エージェントは作業に必要なものだけを読み込みます — インタラクティブなOAuth2ログインで安全に保護されています。
 sidebar:
   order: 10
 ---
 
 import { Steps, LinkButton, Aside, Tabs, TabItem } from '@astrojs/starlight/components';
 
-Winkは2つの認証済みMCPサーバーを公開しています。どちらも**インタラクティブなOAuth2ログイン**（PKCE認可コードフロー）を使用しており、AIエージェントがブラウザタブを開いてWinkアカウントでサインインします。クライアントシークレットの管理は不要です。
+WinkのMCPツールは**ツールセット**として公開されています — それぞれが1つのジョブに特化したエンドポイントです。AIクライアントは作業に合った1つか2つのエンドポイントに接続し、すべてに接続するわけではありません。
 
-| サーバー | URL | 機能 |
-|--------|-----|--------------|
-| **Inventory API** | `https://api.wink.travel/mcp` | インベントリ、予約、料金、販売チャネル、分析、プラットフォームのすべての操作 |
-| **Integrations** | `https://integrations.wink.travel/mcp` | チャネルマネージャー統合 — OTAsとの物件、料金、空室状況の同期 |
+すべてのエンドポイントは**インタラクティブなOAuth2ログイン**（PKCE認可コードフロー）を使用します：AIエージェントがブラウザタブを開き、Winkアカウントでサインインするだけです。クライアントシークレットの管理は不要です。
+
+```bash title="チャネルマネージャーのインテグレーターが1つのエンドポイントに接続"
+claude mcp add wink-channel-manager https://integrations.wink.travel/mcp/channel-manager --transport http
+```
+
+```bash title="自分で料金を管理するホテル経営者が別のエンドポイントに接続"
+claude mcp add wink-rates https://api.wink.travel/mcp/extranet/rates --transport http
+```
+
+---
+
+## なぜツールが複数のエンドポイントに分かれているのか
+
+Winkは約500のツールを公開しています。すべてを一度にエージェントに渡すことは技術的には可能ですが、良いアイデアではありません。
+
+**ツール定義はコンテキストを消費します。** MCPサーバーが広告するすべてのツールは、作業を始める前にモデルのコンテキストウィンドウに読み込まれます。説明や完全なパラメータスキーマとともにです。500個もあると、実際のタスクに必要な予算の大部分を消費してしまいます。
+
+**リストが増えるほど選択の質は下がります。** 500個の似た名前のツールから選ぶエージェントは、40個から選ぶエージェントよりも悪い選択をします。チャネルマネージャーを統合する場合、約20個のツールが関連し、残りの480個はノイズとなり、正しいツールを見つけにくくします。
+
+**作業は本質的に分離可能です。** PMSから空室状況を同期する人とアフィリエイトのランディングページを管理する人はほとんどツールを共有しません。ジョブごとに分割することで、各接続は1つのジョブの語彙を持ちます。
+
+<Aside type="caution" title="ツールセットは権限ではありません">
+狭いツールセットを選んでも**アカウントの権限は制限されません**し、広いツールセットを選んでも追加の権限は付与されません。すべてのツールは、サインインしたあなたのIDのもとでウェブポータルと同じアカウント権限を強制します。Winkポータルで予約をキャンセルできないアカウントなら、どのエンドポイントに接続していてもエージェントもキャンセルできません。
+
+ツールセットは**フォーカスのために選び、セキュリティのためではありません**。
+</Aside>
+
+---
+
+## エンドポイント一覧
+
+2つのホストがツールセットを提供しています。ツール数は概算で、時間とともに増加します。
+
+### `https://api.wink.travel` — プラットフォーム
+
+| エンドポイント | ツール数 | 対応範囲 |
+|---|---:|---|
+| `/mcp/extranet/facilities` | 約64 | 予約可能かつ現地の在庫：客室と部屋タイプ、スパ、レストラン、会議室、アクティビティ、アトラクション、場所、その他販売可能なアイテム |
+| `/mcp/extranet/property` | 約62 | 物件情報と商業条件：プロフィールとコンテンツ、アドオン、キャンセルポリシー、特典、告知 |
+| `/mcp/settings` | 約60 | アカウント管理：管理主体のプロフィールとブランディング、マネージャーと権限、カスタマイズ、Webhook、通知設定 |
+| `/mcp/studio/embeds` | 約48 | キュレーションされた在庫の公開：ウィジェット、グリッドとランキンググリッド、カード、地図、在庫やサプライヤーページへのディープリンク |
+| `/mcp/extranet/rates` | 約44 | 価格と空室状況：在庫の料金期間と割当、料金プラン、マスターレート、特別料金やプロモーション料金 |
+| `/mcp/extranet/operations` | 約39 | ライブ物件の運営：予約とそのライフサイクル、ゲストレビューと返信、カレンダーフィード、スケジュールタスク |
+| `/mcp/extranet/distribution` | 約37 | 在庫の販売先：販売チャネルと料金修正、アフィリエイトやサプライヤーの関係リクエスト、登録、リード獲得 |
+| `/mcp/studio/curation` | 約35 | マーチャンダイズ可能なコレクションの構築：静的・動的リスト、ランキングリスト、保存検索、物件集計 |
+| `/mcp/link-manager` | 約28 | シンジケートされたリンクコレクション、そのデザイン、カテゴリとタグ、短縮URL |
+| `/mcp/reference` | 約24 | 読み取り専用の参照データ：国、通貨と為替レート、言語、タイムゾーン、地理的検索、IPジオロケーション |
+| `/mcp/analytics` | 約18 | 予約と収益の分析：概要、折れ線グラフ、リーダーボード、アフィリエイトパフォーマンス、シェア指標 |
+| `/mcp/payment` | 約18 | 財務業務：元帳、出金と手数料見積もり、予約資金の集計 |
+| `/mcp/booking-engine` | 約17 | 旅行者向けのショッピングパス：検索と参照、ショッピングカートとチェックアウト、バケットリスト、キャンペーンカスタマイズ |
+| `/mcp/social` | 約17 | 連携されたソーシャルアカウント、投稿の公開とスケジューリング、投稿インサイトの閲覧 |
+| `/mcp/travel-agent` | 約8 | 旅行者代理の予約代行とエージェントレポート |
+
+### `https://integrations.wink.travel` — チャネルマネージャー統合
+
+このホストは1つのジョブのために存在するため、エンドポイントは1つだけです。
+
+| エンドポイント | ツール数 | 対応範囲 |
+|---|---:|---|
+| `/mcp/channel-manager` | 約9 | チャネルマネージャー、PMS、CRS統合の接続と検証 |
+
+<Aside type="note" title="チャネルマネージャー統合と自社料金管理の違い">
+これらは異なるジョブであり、異なる担当者が行い、エンドポイントも共有しません。
+
+**チャネルマネージャー、PMS、CRSベンダー**は`integrations.wink.travel/mcp/channel-manager`を通じて一度統合し、その後は物件、料金、空室状況、予約をその統合経由でやり取りします。この単一のエンドポイントが全体のインターフェースです。
+
+**自分で料金を手動で変更するホテル経営者**は`api.wink.travel`のエクストラネットツールセット（`/mcp/extranet/rates`など）を使用します。これらはチャネルマネージャー統合の一部ではなく、統合者が接続する理由はありません。
+
+アカウント管理も`api.wink.travel`の`/mcp/settings`にあります。統合ホストには`/mcp/settings`はありません。
+</Aside>
+
+すべてのエンドポイントには`ping`ツールもあり、実際の作業を依頼する前に接続が生きているか確認できます。
+
+---
+
+## どのツールセットが必要ですか？
+
+| あなたが… | 接続先 |
+|---|---|
+| **チャネルマネージャー、PMS、CRSを統合する場合** | `integrations.wink.travel/mcp/channel-manager` — これだけで十分 |
+| **物件のコンテンツを管理する場合** | `/mcp/extranet/property` + `/mcp/extranet/facilities` |
+| **部屋や部屋タイプを管理する場合** | `/mcp/extranet/facilities` |
+| **価格と空室状況を管理する場合** | `/mcp/extranet/rates` |
+| **日々の予約を運営する場合** | `/mcp/extranet/operations` |
+| **流通を拡大する場合** | `/mcp/extranet/distribution` + `/mcp/analytics` |
+| **アフィリエイトページを構築する場合** | `/mcp/studio/curation` + `/mcp/studio/embeds` |
+| **リンクインバイオページを運営する場合** | `/mcp/link-manager` + `/mcp/social` |
+| **旅行者の代理で予約する場合** | `/mcp/travel-agent` |
+| **資金の照合をする場合** | `/mcp/payment` |
+| **予約体験を構築する場合** | `/mcp/booking-engine` + `/mcp/reference` |
+
+まず1つから始めてください。できないことがあれば別のツールセットを追加しましょう — 各接続は独立しており、追加しても他に影響はありません。
+
+<Aside type="tip" title="すべてを使いたい場合">
+`https://api.wink.travel/mcp` と `https://integrations.wink.travel/mcp` はそれぞれのホスト上の**すべての**ツールを提供し続けています。存在を調べるのに便利ですが、日常作業には推奨しません：ツールリストが大きすぎてタスクを圧迫し、エージェントのツール選択を悪化させます。上記のツールセットを優先してください。
+</Aside>
 
 ---
 
 ## 認証の仕組み
 
-Wink MCPサーバーは**OAuth2認可コード＋PKCE**フローを使用し、**Dynamic Client Registration (RFC 7591)**に対応しています。初回接続時の流れは以下の通りです：
+Wink MCPサーバーは**OAuth2認可コード＋PKCE**フローを使用し、**動的クライアント登録（RFC 7591）**に対応しています。初回接続時の流れは以下の通りです：
 
 1. AIクライアントはMCPエンドポイントの`/.well-known/oauth-protected-resource`メタデータから認可サーバーを検出します。
-2. クライアントは**Dynamic Client Registration**を通じて自己登録します — 手動のアプリケーション設定は不要です。
-3. クライアントは`https://iam.wink.travel`の**ブラウザタブ**を開きます。Winkアカウントでサインインし、同意画面で要求された権限を承認します。
+2. クライアントは**動的クライアント登録**を行い、手動のアプリ設定は不要です。
+3. クライアントは`https://iam.wink.travel`の**ブラウザタブ**を開きます。Winkアカウントでサインインし、同意画面で権限を承認します。
 4. Winkはアカウントに紐づく**アクセストークン**を発行します。
-5. AIクライアントはすべてのMCPリクエストにトークンを添付します。すべてのツール結果は自動的に管理エンティティにスコープされます。
-6. トークンは3時間で期限切れになります。AIクライアントはバックグラウンドで静かにトークンを更新し、再度のプロンプトはありません。
+5. AIクライアントはすべてのMCPリクエストにトークンを添付します。すべてのツール結果は管理主体にスコープされます。
+6. トークンは3時間で期限切れになります。AIクライアントはバックグラウンドで静かに更新し、再度のプロンプトはありません。
 
-すべてのツール呼び出しは**あなたのIDのもとで**実行されます — ウェブポータルを保護するのと同じACLルールがAIエージェントにも適用されます。
+すべてのツール呼び出しは**あなたのIDのもとで実行され**、ウェブポータルを保護するのと同じACLルールがAIエージェントにも適用されます。
 
 ---
 
@@ -42,9 +135,9 @@ Wink MCPサーバーは**OAuth2認可コード＋PKCE**フローを使用し、*
    npm install -g @anthropic-ai/claude-code
    ```
 
-2. Wink Inventory MCPサーバーを追加します：
+2. [上記のディレクトリ](#endpoint-directory)からツールセットを選び、追加します。例：価格と空室状況の場合：
    ```bash
-   claude mcp add wink-inventory https://api.wink.travel/mcp --transport http
+   claude mcp add wink-rates https://api.wink.travel/mcp/extranet/rates --transport http
    ```
 
 3. Claude Codeがサーバーに接続し、認可サーバーを検出してデフォルトブラウザを開きます。
@@ -54,13 +147,16 @@ Wink MCPサーバーは**OAuth2認可コード＋PKCE**フローを使用し、*
 5. Claude Codeが接続を確認します。`/mcp`と入力してサーバーが表示され、ツールが読み込まれていることを確認してください。
 </Steps>
 
-Integrationsサーバーも追加する場合：
+作業に必要なだけツールセットを追加してください — それぞれが独立したサーバーエントリで名前も別です：
 ```bash
-claude mcp add wink-integrations https://integrations.wink.travel/mcp --transport http
+claude mcp add wink-operations https://api.wink.travel/mcp/extranet/operations --transport http
+claude mcp add wink-analytics  https://api.wink.travel/mcp/analytics           --transport http
 ```
 
+サインインは1回だけです。最初のブラウザ承認後、Claude Codeは追加のWinkエンドポイントでもWinkセッションを再利用します。
+
 :::tip[チームと共有]
-`claude mcp add`に`--scope project`を追加すると、Claude CodeはサーバーURLをリポジトリルートの`.mcp.json`に書き込みます。そのファイルをコミットし、チームメンバーは初回接続時に各自ブラウザでサインインを完了します。
+`claude mcp add`に`--scope project`を付けると、Claude CodeはサーバーURLをリポジトリルートの`.mcp.json`に書き込みます。そのファイルをコミットすれば、チーム全員が同じツールセットを使い、各自が初回接続時にブラウザでサインインを完了します。
 :::
 
   </TabItem>
@@ -72,28 +168,28 @@ claude mcp add wink-integrations https://integrations.wink.travel/mcp --transpor
    - **Windows:** `%APPDATA%\Claude\claude_desktop_config.json`
    - **Linux:** `~/.config/Claude/claude_desktop_config.json`
 
-2. MCPサーバーのエントリを追加します：
+2. MCPサーバーエントリを追加します：
 
    ```json title="claude_desktop_config.json"
    {
      "mcpServers": {
-       "wink-inventory": {
+       "wink-extranet-rates": {
          "type": "http",
-         "url": "https://api.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/rates"
        },
-       "wink-integrations": {
+       "wink-extranet-operations": {
          "type": "http",
-         "url": "https://integrations.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/operations"
        }
      }
    }
    ```
 
-3. Claude Desktopを**完全に終了して再起動**します（メニューバーのQuitを使用してください。ウィンドウを閉じるだけでは不十分です）。
+3. **完全に終了して再起動**してください（メニューバーのQuitを使うこと。ウィンドウを閉じるだけでは不十分です）。
 
 4. Claude Desktopは新しいサーバーごとにブラウザタブを開きます。Winkにサインインし、権限を承認してください。
 
-5. 下部ツールバーのプラグアイコンが両方のサーバーが接続されていることを示します。
+5. 下部ツールバーのプラグアイコンが両方のサーバーが接続済みであることを示します。
 </Steps>
 
   </TabItem>
@@ -105,22 +201,22 @@ claude mcp add wink-integrations https://integrations.wink.travel/mcp --transpor
    npm install -g @openai/codex
    ```
 
-2. Codexの設定ファイルを開く（または作成）します：
+2. Codex設定ファイルを開くか作成します：
    - **macOS / Linux:** `~/.codex/config.json`
    - **Windows:** `%USERPROFILE%\.codex\config.json`
 
-3. Wink MCPサーバーのエントリを追加します：
+3. Wink MCPサーバーエントリを追加します：
 
    ```json title="~/.codex/config.json"
    {
      "mcpServers": {
-       "wink-inventory": {
+       "wink-extranet-rates": {
          "type": "http",
-         "url": "https://api.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/rates"
        },
-       "wink-integrations": {
+       "wink-extranet-operations": {
          "type": "http",
-         "url": "https://integrations.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/operations"
        }
      }
    }
@@ -128,13 +224,13 @@ claude mcp add wink-integrations https://integrations.wink.travel/mcp --transpor
 
 4. Codexを起動します。初回使用時に`https://iam.wink.travel`のブラウザタブが開きます。
 
-5. **Winkにサインイン**し、要求された権限を承認します。
+5. **Winkにサインイン**し、権限を承認します。
 
-6. Codexが接続を確認します。`codex`を実行し、利用可能なツールをリストアップしてWinkサーバーが有効であることを確認してください。
+6. Codexが接続を確認します。`codex`を実行し、利用可能なツールをリストアップしてWinkサーバーが有効か確認してください。
 </Steps>
 
 :::note
-Codex CLIのMCPサポートにはバージョン**1.0**以降が必要です。`codex --version`で確認し、`npm install -g @openai/codex`でアップグレードしてください。
+Codex CLIのMCPサポートはバージョン**1.0**以降が必要です。`codex --version`で確認し、`npm install -g @openai/codex`でアップグレードしてください。
 :::
 
   </TabItem>
@@ -143,26 +239,26 @@ Codex CLIのMCPサポートにはバージョン**1.0**以降が必要です。`
 MCPサーバーのサポートは、Plus、Pro、Team、Enterpriseのサブスクライバー向けの**ChatGPTデスクトップアプリ**で利用可能です。
 
 <Steps>
-1. まだの場合は[ChatGPTデスクトップアプリ](https://openai.com/chatgpt/download/)をダウンロードしてインストールします。
+1. まだの場合は[ChatGPTデスクトップアプリ](https://openai.com/chatgpt/download/)をダウンロードしてインストールしてください。
 
 2. アプリを開き、右上の**プロフィールアイコン**をクリックして**設定**を選択します。
 
-3. **Connectors**（またはアプリのバージョンによっては**MCP Servers**）に移動し、**追加**をクリックします。
+3. **Connectors**（またはアプリバージョンによっては**MCP Servers**）に移動し、**追加**をクリックします。
 
-4. Wink InventoryサーバーのURLを入力します：
+4. [上記のディレクトリ](#endpoint-directory)からツールセットのURLを入力します。例：
    ```
-   https://api.wink.travel/mcp
+   https://api.wink.travel/mcp/extranet/rates
    ```
    そして**接続**をクリックします。
 
-5. ChatGPTが`https://iam.wink.travel`のブラウザタブを開きます。**Winkにサインイン**し、権限を承認します。
+5. ChatGPTが`https://iam.wink.travel`のブラウザタブを開きます。**Winkにサインイン**し、権限を承認してください。
 
-6. Integrationsサーバーについても同様に4〜5の手順を繰り返します：
+6. 作業に必要な他のツールセットも同様に4〜5の手順を繰り返します。例：
    ```
-   https://integrations.wink.travel/mcp
+   https://api.wink.travel/mcp/extranet/operations
    ```
 
-7. 両方のサーバーがConnectorsリストに表示されます。新しいチャットを開始すると、Winkツールが自動的に利用可能になります。
+7. 各ツールセットがConnectorsリストに表示されます。新しいチャットを開始するとWinkツールが自動的に利用可能です。
 </Steps>
 
 :::note[ウェブアプリの制限]
@@ -173,82 +269,82 @@ MCPサーバーは**デスクトップアプリ**でのみ設定可能です。c
   <TabItem label="Cursor">
 
 <Steps>
-1. CursorのMCP設定ファイルを開く（または作成）します：
+1. Cursor MCP設定ファイルを開くか作成します：
    - **macOS / Linux:** `~/.cursor/mcp.json`
    - **Windows:** `%USERPROFILE%\.cursor\mcp.json`
 
-2. Wink MCPサーバーのエントリを追加します：
+2. Wink MCPサーバーエントリを追加します：
 
    ```json title="~/.cursor/mcp.json"
    {
      "mcpServers": {
-       "wink-inventory": {
+       "wink-extranet-rates": {
          "type": "http",
-         "url": "https://api.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/rates"
        },
-       "wink-integrations": {
+       "wink-extranet-operations": {
          "type": "http",
-         "url": "https://integrations.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/operations"
        }
      }
    }
    ```
 
-3. Cursorを開き、**設定 → Cursor設定 → MCP**に移動して両方のサーバーが緑のステータスで表示されていることを確認します。赤の場合は**更新**をクリックしてください。
+3. Cursorを開き、**設定 → Cursor設定 → MCP**に移動し、両方のサーバーが緑のステータスで表示されていることを確認します。赤の場合は**更新**をクリックしてください。
 
 4. Cursorが`https://iam.wink.travel`のブラウザタブを開きます。**Winkにサインイン**し、権限を承認します。
 
-5. チャットを開き（`Ctrl+L` / `Cmd+L`）、Cursorに利用可能なWinkツールをリストアップするよう依頼して接続を確認します。
+5. チャットを開き（`Ctrl+L` / `Cmd+L`）、Cursorに利用可能なWinkツールをリストアップさせて接続を確認します。
 </Steps>
 
 :::tip[プロジェクトスコープの設定]
-`~/.cursor/`ではなくプロジェクトのルートに`mcp.json`ファイルを置くこともできます。プロジェクトレベルの設定が優先され、プロジェクトを開くチームメンバー全員がサーバーを利用可能になります。
+`~/.cursor/`ではなくプロジェクトのルートに`mcp.json`を置くこともできます。プロジェクトレベルの設定が優先され、プロジェクトを開くチーム全員がサーバーを利用可能になります。
 :::
 
   </TabItem>
   <TabItem label="Windsurf">
 
 <Steps>
-1. WindsurfのMCP設定ファイルを開く（または作成）します：
+1. Windsurf MCP設定ファイルを開くか作成します：
    - **macOS / Linux:** `~/.codeium/windsurf/mcp_config.json`
    - **Windows:** `%USERPROFILE%\.codeium\windsurf\mcp_config.json`
 
-2. Wink MCPサーバーのエントリを追加します：
+2. Wink MCPサーバーエントリを追加します：
 
    ```json title="~/.codeium/windsurf/mcp_config.json"
    {
      "mcpServers": {
-       "wink-inventory": {
+       "wink-extranet-rates": {
          "type": "http",
-         "url": "https://api.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/rates"
        },
-       "wink-integrations": {
+       "wink-extranet-operations": {
          "type": "http",
-         "url": "https://integrations.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/operations"
        }
      }
    }
    ```
 
-3. **Windsurfを完全に再起動**します（ファイル → 終了、そして再起動）。
+3. **Windsurfを完全に再起動**してください（ファイルメニューのQuitを使い、再度開く）。
 
 4. **設定 → MCPサーバー**に移動し、両方のサーバーが接続済みであることを確認します。初回使用時にWindsurfは`https://iam.wink.travel`のブラウザタブを開きます。
 
-5. **Winkにサインイン**し、権限を承認します。認証後、設定パネルのサーバーが緑色に変わります。
+5. **Winkにサインイン**し、権限を承認します。認証後、設定パネルのサーバーが緑色になります。
 </Steps>
 
 :::note
-WindsurfのMCPサポートにはバージョン**1.4**以降が必要です。**ヘルプ → Windsurfについて**で確認し、必要に応じてWindsurfのウェブサイトからアップデートしてください。
+WindsurfのMCPサポートはバージョン**1.4**以降が必要です。**Help → About Windsurf**で確認し、必要に応じてWindsurfのウェブサイトからアップデートしてください。
 :::
 
   </TabItem>
   <TabItem label="Cline (VS Code)">
 
-ClineはVS Code拡張機能で、組み込みのMCPサーバーマネージャーを備えています。手動でJSONを編集する必要はありません。
+ClineはVS Code拡張機能で、MCPサーバーマネージャーを内蔵しています。手動でJSONを編集する必要はありません。
 
 <Steps>
-1. VS CodeマーケットプレイスからClineをインストールします：
-   - VS Codeを開き、`Ctrl+Shift+X` / `Cmd+Shift+X`を押します
+1. VS Code MarketplaceからClineをインストールします：
+   - VS Codeを開き、`Ctrl+Shift+X` / `Cmd+Shift+X`を押す
    - **Cline**を検索し、**インストール**をクリック
 
 2. アクティビティバー（左サイドバー）の**Clineアイコン**をクリックしてClineパネルを開きます。
@@ -260,25 +356,25 @@ ClineはVS Code拡張機能で、組み込みのMCPサーバーマネージャ�
    ```json title="cline_mcp_settings.json"
    {
      "mcpServers": {
-       "wink-inventory": {
+       "wink-extranet-rates": {
          "type": "http",
-         "url": "https://api.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/rates"
        },
-       "wink-integrations": {
+       "wink-extranet-operations": {
          "type": "http",
-         "url": "https://integrations.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/operations"
        }
      }
    }
    ```
 
-5. **ファイルを保存**します。Clineは自動的にリロードされ、`https://iam.wink.travel`のブラウザタブを開きます。
+5. **ファイルを保存**します。Clineは自動的にリロードし、`https://iam.wink.travel`のブラウザタブを開きます。
 
 6. **Winkにサインイン**し、権限を承認します。MCPサーバーパネルに両方のサーバーがアクティブとして表示されます。
 </Steps>
 
 :::tip[代替：URLで追加]
-MCPサーバーパネルで**サーバーを追加**をクリックし、`https://api.wink.travel/mcp`を直接貼り付けます。Clineが自動的に設定を入力し、JSONを手動で編集せずに認証を処理します。
+MCPサーバーパネルで**サーバーを追加**をクリックし、`https://api.wink.travel/mcp/extranet/rates`のようなツールセットURLを直接貼り付けると、Clineが自動で設定を補完し、JSON編集なしで認証を処理します。
 :::
 
   </TabItem>
@@ -288,12 +384,14 @@ MCPサーバーパネルで**サーバーを追加**をクリックし、`https:
 
 ## スコープ
 
-同意画面でエージェントが要求している内容の内訳が表示されます。MCPクライアントはプラットフォームの他の部分と同じ権限語彙を使用しています — 詳細は[認証ページのスコープリファレンス](/ja/developers/authentication#scopes)を参照してください。
+同意画面でエージェントが要求している内容の内訳が表示されます。MCPクライアントはプラットフォームの他の部分と同じ権限語彙を使います — 詳細は[認証ページのスコープリファレンス](/ja/developers/authentication#scopes)を参照してください。
 
 MCP特有の点は2つあります：
 
-- **`mcp.read`、`mcp.write`、`mcp.remove`スコープが追加で必要**で、MCPトランスポートを開きます。`mcp.*`スコープを持つクライアントは`/mcp`にアクセスできますが、呼び出す各ツールは依然としてそのエンドポイントのセクションスコープ（例：`booking.read`）を適用します。
-- **AIクライアントは必要なスコープのみを要求します。** 同意画面で個別の権限を拒否できます — 拒否されたスコープを必要とするツールは呼び出し時にエラーを返します。
+- **`mcp.read` `mcp.write` `mcp.remove`スコープはMCPトランスポートを開くために追加で必要です。** `mcp.*`スコープを持つクライアントは任意のWink MCPエンドポイントにアクセスできますが、呼び出すツールはそれぞれのエンドポイントのセクションスコープ（例：`booking.read`）を依然として強制します。
+- **AIクライアントは必要なスコープだけを要求します。** 同意画面で個別の権限を拒否できます — 拒否されたスコープを必要とするツールは呼び出すとエラーを返します。
+
+**ツールセットはこれらを変更しません。** 接続するエンドポイントが*リストされる*ツールを決め、*許可される*内容は決めません。`/mcp/payment`に接続しても新たな財務権限は付与されず、`/mcp/reference`に接続してもツールが独自のスコープを強制するのを止めません。認可はツール呼び出しごとに、トークンとアカウントの権限から決まります。
 
 ---
 
@@ -301,54 +399,66 @@ MCP特有の点は2つあります：
 
 **ブラウザタブが開かない**
 
-AIクライアントがまだインタラクティブなPKCEフローをサポートしていない可能性があります。最新バージョンを使用しているか確認してください：
+AIクライアントがまだインタラクティブなPKCEフローをサポートしていない可能性があります。最新版を使っているか確認してください：
 - **Claude Code:** `npm install -g @anthropic-ai/claude-code`
 - **Codex CLI:** `npm install -g @openai/codex`
-- **Claude Desktop / ChatGPTデスクトップ:** アプリ内のアップデーターから更新
+- **Claude Desktop / ChatGPTデスクトップ:** アプリ内のアップデーターで更新
 
 **サインイン後に`401 Unauthorized`が出る**
 
-キャッシュされたトークンが古い可能性があります。サーバーを削除して再追加し、新しいサインインをトリガーしてください：
+キャッシュされたトークンが古い可能性があります。サーバーを削除して再追加し、新しいサインインを促してください：
 
 ```bash
 # Claude Code
-claude mcp remove wink-inventory
-claude mcp add wink-inventory https://api.wink.travel/mcp --transport http
+claude mcp remove wink-rates
+claude mcp add wink-rates https://api.wink.travel/mcp/extranet/rates --transport http
 ```
 
-Claude DesktopやChatGPTでは設定からサーバーエントリを削除し、アプリを再起動して再度追加してください。
+Claude DesktopやChatGPTでは設定からサーバーを削除し、アプリを再起動して再追加してください。
 
 **特定のツール呼び出しで`403 Forbidden`が出る**
 
-ツールが同意画面で承認されなかったスコープを必要としています。サーバーを再接続すると同意画面が再表示され、欠落した権限を承認できます。
+ツールが同意画面で承認されなかったスコープや、アカウントにない権限を必要としています。サーバーを再接続すると同意画面が再表示され、権限を承認できます。失敗が続く場合は、ツールが必要とするアカウント権限が不足しています。ツールセットを変えても権限は付与されません。
 
-**サーバーは表示されるがツール呼び出しで「アカウントが見つかりません」となる**
+**必要なツールがリストにない**
 
-管理エンティティのないWinkアカウントでサインインしています。使用前に[Winkポータル](https://app.wink.travel)でアカウント設定を確認してください。
+おそらくそのジョブをカバーしないツールセットに接続しています。[エンドポイント一覧](#endpoint-directory)を確認し、該当するツールセットを追加してください。接続は独立しているため、追加しても他に影響はありません。どれにあるか分からない場合は、一時的に`https://api.wink.travel/mcp`に接続してツールを探し、どのツールセットにあるか調べてください。
+
+**ツールセットエンドポイントで`404 Not Found`が出る**
+
+パスをよく確認してください。ネストされたツールセットは2つのセグメントがあります（例：`/mcp/extranet/rates`、`/mcp/extranet-rates`ではありません）、フラットなものは1つです（例：`/mcp/link-manager`）。認証されていないリクエストは`/mcp`以下のどのパスでも`401`を返すため、`401`だけではエンドポイントの存在は判断できません。
+
+**`api.wink.travel/mcp/channel-manager`に接続しても何も起きない**
+
+そのエンドポイントは存在しません。チャネルマネージャー統合は`https://integrations.wink.travel/mcp/channel-manager`のみで提供されています。物件の料金を手動で読み書きする必要がある場合は別のジョブで別のエンドポイントです — `/mcp/extranet/rates`を参照してください。
+
+**サーバーは表示されるがツール呼び出しで「アカウントが見つかりません」と出る**
+
+管理主体のないWinkアカウントでサインインしています。必ず[Wink Portal](https://app.wink.travel)でアカウントを設定してからMCPサーバーを使用してください。
 
 **セッション中にトークンが期限切れになる**
 
-トークンは3時間有効です。Claude CodeとClaude Desktopはトークンを静かに更新し、セッションを中断しません。長時間アイドル後に認証エラーが出た場合は新しいメッセージを入力すると自動的に再認証されます。
+トークンは3時間有効です。Claude CodeとClaude Desktopはトークンを静かに更新し、セッションを中断しません。長時間アイドル後に認証エラーが出たら、新しいメッセージを入力してください。クライアントが自動的に再認証します。
 
-**Codex CLIで「MCPサーバーに接続できません」と表示される**
+**Codex CLIで「MCP server unreachable」と表示される**
 
-`~/.codex/config.json`が有効なJSON（末尾のカンマなし）であることと、`"type": "http"`が設定されていることを確認してください。CodexはリモートサーバーにHTTPトランスポートを要求し、stdioトランスポートはローカルバイナリ用です。
+`~/.codex/config.json`が有効なJSON（末尾のカンマなし）で、`"type": "http"`が設定されているか確認してください。CodexはリモートサーバーにHTTPトランスポートを要求します。stdioトランスポートはローカルバイナリ用です。
 
-**ChatGPTの「Connectors」メニューが見当たらない**
+**ChatGPTの「Connectors」メニューがない**
 
-MCPサポートにはChatGPTデスクトップアプリのバージョン**1.2024.352**以降と、Plus、Pro、Team、Enterpriseの有効なサブスクリプションが必要です。アプリを更新し、設定 → アカウントでプランを確認してください。
+MCPサポートはChatGPTデスクトップアプリのバージョン**1.2024.352**以降かつPlus、Pro、Team、Enterpriseのサブスクリプションが必要です。アプリを更新し、設定→アカウントでプランを確認してください。
 
-**Cursorサーバーが赤表示 / 「接続に失敗しました」**
+**Cursorサーバーが赤表示 / 「接続失敗」**
 
-`~/.cursor/mcp.json`が有効なJSONで`"type": "http"`を含んでいることを確認してください。次に**設定 → Cursor設定 → MCP**で**更新**をクリックします。エラーが続く場合はCursorを完全に再起動してください — 設定変更は再起動なしでは反映されないことがあります。
+`~/.cursor/mcp.json`が有効なJSONで`"type": "http"`を含むか確認してください。次に**設定 → Cursor設定 → MCP**で**更新**をクリック。エラーが続く場合はCursorを完全に再起動してください。設定変更は再起動なしでは反映されないことがあります。
 
-**WindsurfのMCPサーバーが設定に表示されない**
+**Windsurf MCPサーバーが設定に表示されない**
 
-Windsurfは`mcp_config.json`の変更を反映するために完全な再起動（ウィンドウのリロードではなく）が必要です。**ファイル → 終了**で終了し、再起動してください。サーバーが表示されない場合は、**ヘルプ → Windsurfについて**でバージョンが**1.4以上**であることを確認してください。
+Windsurfは`mcp_config.json`の変更を反映するのに完全な再起動が必要です（ウィンドウのリロードだけでは不十分）。**ファイル → Quit**で終了し、再起動してください。まだ表示されない場合はWindsurfのバージョンが**1.4以上**か**Help → About Windsurf**で確認し、必要に応じてアップデートしてください。
 
-**Clineで「サーバーを追加」オプションが見当たらない**
+**Clineで「サーバーを追加」オプションが見えない**
 
-MCPサーバーマネージャーにはClineのバージョン**2.0**以降が必要です。VS Codeの拡張機能パネルでClineを見つけ、更新があれば**更新**をクリックしてください。更新後、VS Codeをリロードします（`Ctrl+Shift+P` → 「Developer: Reload Window」）。
+MCPサーバーマネージャーはClineのバージョン**2.0**以降が必要です。VS Codeの拡張機能パネルでClineを探し、更新があればクリックしてください。更新後、VS Codeをリロードしてください（`Ctrl+Shift+P` → 「Developer: Reload Window」）。
 
 ---
 

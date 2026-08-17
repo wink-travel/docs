@@ -5,11 +5,11 @@ sidebar:
   order: 4
 ---
 
-For å administrere dine WinkLinks-innstillinger, gå til `WinkLinks` i hovednavigasjonsfeltet og klikk på fanen `Innstillinger`.
+For å administrere dine WinkLinks-innstillinger, gå til `WinkLinks` i hovednavigasjonsfeltet og klikk på fanen `Design`.
 
-Her er måtene du kan konfigurere WinkLinks-oppførselen din med `Innstillinger`:
+Her er måtene du kan konfigurere WinkLinks-oppførselen din med `Design`:
 
-- **Intelligent** Ved å aktivere intelligens prøver vi å hente det `rike` innholdet som er tilgjengelig fra nettsteder som `Wink`, `Spotify`, `Instagram`, `Facebook`, `YouTube`, `X (tidligere Twitter)` og andre. *f.eks. Hvis du deler et IG-innlegg på WinkLinks, vil innlegget vises slik du ser det på IG, med likerklikk, kommentarer og en måte å samhandle med innlegget på.*
+- **Intelligent** Ved å aktivere intelligens prøver vi å hente `rik` innhold tilgjengelig fra sider som `Wink`, `Spotify`, `Instagram`, `Facebook`, `YouTube`, `X (tidligere Twitter)` og andre. *f.eks. Hvis du deler et IG-innlegg på WinkLinks, vil innlegget vises slik du ser det på IG, med likerklikk, kommentarer og en måte å samhandle med innlegget på.*
 - **Første visning** Kontroller hvordan publikum først interagerer med siden din og ser innholdet ditt. Du har tre alternativer tilgjengelig:
     - `Kolonnebasert` design. Dette er vårt foretrukne design, og hvis du ikke viser for mye innhold, vil det se flott ut på siden din. Det kan imidlertid bli `tungt` hvis du deler mye rikt innhold.
     - `Radbasert` design. Dette er en måte å gjøre innholdet ditt litt mindre tungt for nettlesere å håndtere, men vi anbefaler at innholdet ditt har omtrent samme mengde tekst for å få kortene til å justere seg bedre.
@@ -22,13 +22,13 @@ Her er måtene du kan konfigurere WinkLinks-oppførselen din med `Innstillinger`
 Ytterligere kontroller inkluderer:  
 
 - Oppførsel for visning av innlegg (Banner-modus, Smart banner/interaktiv, Layout-bevisst automatisk justering)  
-- Egendefinerte QR-koder med merkevare (form, farger, prikker, hjørner)  
-- Organisering av innhold med tagger (kategoriser lenker som "Hoteller", "Reise", "Salg")  
+- Egendefinerte merkevare-QR-koder (form, farger, prikker, hjørner)  
+- Innholdsorganisering med tagger (kategoriser lenker som "Hoteller", "Reise", "Salg")  
 - Full kontroll over lenkeoppsett, filopplastinger og innholdsblokker
 
 ## API
 
-Utviklere som ønsker å administrere `WinkLinks` kan gå til [Developers > API > WinkLinks](/no/api).
+Utviklere som ønsker å administrere `WinkLinks` kan gå til [Utviklere > API > WinkLinks](/no/api).
 
 ## Videre lesning
 

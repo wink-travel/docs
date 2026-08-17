@@ -29,14 +29,10 @@ Allpool on tabel, mis sisaldab meie serverite nimesid ja nende kasutusotstarvet.
 
 ## Rakendused
 
-Meie rakendustel on samuti test- ja tootmiskeskkonnad meie klientidele.
+Meie rakendustel on samuti testimise ja tootmise keskkonnad meie klientidele.
 
 | Rakendus | Staging | Production
 | ------- | ------- | ---------- |
-| Agent | https://staging-agent.wink.travel | https://agent.wink.travel | 
-| Booking engine | https://staging-ota.wink.travel | https://ota.wink.travel | 
-| Extranet | https://staging-extranet.wink.travel | https://extranet.wink.travel | 
-| My Account | https://staging-app.wink.travel | https://app.wink.travel | 
-| Payment | https://staging-pay.wink.travel | https://pay.wink.travel | 
-| Studio | https://staging-studio.wink.travel | https://studio.wink.travel | 
-| WinkLinks | https://staging-i.trvl.as | https://i.trvl.as |
+| Portal | https://staging-app.wink.travel | https://app.wink.travel | 
+| Booking engine | https://staging-book.wink.travel | https://book.wink.travel | 
+| Link Manager | https://staging-i.trvl.as | https://i.trvl.as |

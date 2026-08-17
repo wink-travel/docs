@@ -1,33 +1,126 @@
 ---
 title: MCP 伺服器
-description: 透過 Model Context Protocol 將 AI 代理連接到 Wink 平台。經過驗證的 MCP 伺服器讓您的代理能直接存取庫存、訂單、渠道管理整合等功能 — 並透過互動式 OAuth2 登入保障安全。
+description: 透過 Model Context Protocol 將 AI 代理連接到 Wink 平台。Wink 將其工具發布為專注且具工作導向的端點，讓您的代理只載入工作所需內容 — 並透過互動式 OAuth2 登入保障安全。
 sidebar:
   order: 10
 ---
 
 import { Steps, LinkButton, Aside, Tabs, TabItem } from '@astrojs/starlight/components';
 
-Wink 提供兩個經過驗證的 MCP 伺服器。兩者皆使用 **互動式 OAuth2 登入**（PKCE 授權碼流程）— 您的 AI 代理會開啟瀏覽器分頁，讓您使用 Wink 帳號登入。無需管理客戶端密鑰。
+Wink 的 MCP 工具以 **工具集** 形式發布 — 專注的端點，每個端點涵蓋一項工作。您將 AI 用戶端連接到符合您工作的一兩個端點，而非全部。
 
-| 伺服器 | URL | 功能說明 |
-|--------|-----|----------|
-| **Inventory API** | `https://api.wink.travel/mcp` | 庫存、訂單、價格、銷售渠道、分析及所有平台操作 |
-| **Integrations** | `https://integrations.wink.travel/mcp` | 渠道管理整合 — 與 OTA 同步物業、價格與可用性 |
+每個端點都使用 **互動式 OAuth2 登入**（PKCE 授權碼流程）：您的 AI 代理會開啟瀏覽器分頁，您使用 Wink 帳號登入，完成後即完成設定。無需管理用戶端密鑰。
+
+```bash title="頻道管理整合者連接到一個端點"
+claude mcp add wink-channel-manager https://integrations.wink.travel/mcp/channel-manager --transport http
+```
+
+```bash title="飯店業者管理自己的價格連接到另一個端點"
+claude mcp add wink-rates https://api.wink.travel/mcp/extranet/rates --transport http
+```
+
+---
+
+## 為什麼工具分散在多個端點
+
+Wink 提供約 500 個工具。一次交給代理全部使用技術上可行，但並不理想。
+
+**工具定義會佔用上下文。** MCP 伺服器廣告的每個工具都會在模型執行工作前載入到上下文視窗中，包含其描述與完整參數結構。五百個工具會佔用大量預算，影響您實際任務的執行，每次請求皆是如此。
+
+**選擇品質隨列表增長而下降。** 從 500 個名稱相似的工具中挑選，代理做出較差的選擇；從 40 個中挑選則較佳。若您整合頻道管理器，約有二十個工具與您相關；其餘 480 個是噪音，讓正確工具更難找到。
+
+**工作本質上是可分離的。** 同步 PMS 可用性的人與策劃聯盟登陸頁的人幾乎不共用工具。依工作拆分，讓每個連線只帶有該工作的詞彙。
+
+<Aside type="caution" title="工具集不是權限">
+選擇狹窄的工具集**不會**限制您的帳號權限，選擇廣泛的工具集也不會授予額外權限。每個工具都依照您登入身份執行與網頁入口相同的帳號權限。如果您的帳號無法在 Wink Portal 取消訂單，代理也無法 — 不論連接哪個端點。
+
+選擇工具集是為了**專注**，不是為了安全。
+</Aside>
+
+---
+
+## 端點目錄
+
+兩個主機提供工具集。工具數量為近似值，且會隨時間增加。
+
+### `https://api.wink.travel` — 平台端
+
+| 端點 | 工具數 | 涵蓋範圍 |
+|---|---:|---|
+| `/mcp/extranet/facilities` | 約 64 | 可預訂及現場庫存：客房與房型、SPA、餐廳、會議室、活動、景點、地點、其他可銷售項目 |
+| `/mcp/extranet/property` | 約 62 | 物業紀錄及商業條款：檔案與內容、附加項目、取消政策、優惠、公告 |
+| `/mcp/settings` | 約 60 | 帳號管理：管理實體檔案與品牌、管理者及其授權、自訂、Webhook、通知偏好 |
+| `/mcp/studio/embeds` | 約 48 | 發布策劃庫存：小工具、格子與排名格子、卡片、地圖、庫存及供應商頁面深層連結 |
+| `/mcp/extranet/rates` | 約 44 | 價格與可用性：庫存價格期間與配額、價格方案、主價格、特殊及促銷價格 |
+| `/mcp/extranet/operations` | 約 39 | 物業營運：訂房及其生命周期、旅客評論與回應、行事曆訂閱、排程任務 |
+| `/mcp/extranet/distribution` | 約 37 | 庫存銷售地點：銷售通路與價格修正、聯盟及供應商關係請求、註冊、潛在客戶捕捉 |
+| `/mcp/studio/curation` | 約 35 | 建立可銷售收藏：靜態與動態清單、排名清單、已儲存搜尋、物業彙整 |
+| `/mcp/link-manager` | 約 28 | 聯盟連結集合、設計、分類與標籤，以及縮短網址 |
+| `/mcp/reference` | 約 24 | 只讀查詢資料：國家、貨幣與匯率、語言、時區、地理查詢、IP 地理定位 |
+| `/mcp/analytics` | 約 18 | 訂房與營收分析：概覽、折線圖、排行榜、聯盟績效、分享指標 |
+| `/mcp/payment` | 約 18 | 財務作業：帳本、提款與費用估算、訂房資金彙整 |
+| `/mcp/booking-engine` | 約 17 | 旅客購物流程：搜尋與查詢、購物車與結帳、願望清單、活動自訂 |
+| `/mcp/social` | 約 17 | 連結社群帳號、發布與排程貼文、閱讀貼文洞察 |
+| `/mcp/travel-agent` | 約 8 | 代理人代旅客訂房及代理報告 |
+
+### `https://integrations.wink.travel` — 頻道管理整合
+
+一個端點，因為此主機只服務一項工作。
+
+| 端點 | 工具數 | 涵蓋範圍 |
+|---|---:|---|
+| `/mcp/channel-manager` | 約 9 | 連接與驗證頻道管理器、PMS 或 CRS 整合 |
+
+<Aside type="note" title="整合頻道管理器 vs. 自行管理價格">
+這是不同工作，針對不同人，且不共用端點。
+
+**頻道管理器、PMS 或 CRS 供應商** 透過 `integrations.wink.travel/mcp/channel-manager` 整合一次，之後透過該整合交換物業、價格、可用性與訂房。該單一端點即為整個介面。
+
+**飯店業者手動更改價格** 使用 `api.wink.travel` 上的外部網工具集 — `/mcp/extranet/rates` 等。這些不屬於頻道管理器整合，整合者無需連接。
+
+帳號管理也在 `api.wink.travel`，位於 `/mcp/settings`。整合主機上沒有 `/mcp/settings`。
+</Aside>
+
+每個端點也包含一個 `ping` 工具，讓您在要求執行實際工作前確認連線是否活躍。
+
+---
+
+## 我需要哪些工具集？
+
+| 如果您是… | 連接到 |
+|---|---|
+| **整合頻道管理器、PMS 或 CRS** | `integrations.wink.travel/mcp/channel-manager` — 只有這個 |
+| **管理物業內容** | `/mcp/extranet/property` + `/mcp/extranet/facilities` |
+| **管理客房與房型** | `/mcp/extranet/facilities` |
+| **管理價格與可用性** | `/mcp/extranet/rates` |
+| **執行日常訂房** | `/mcp/extranet/operations` |
+| **擴展銷售通路** | `/mcp/extranet/distribution` + `/mcp/analytics` |
+| **建立聯盟頁面** | `/mcp/studio/curation` + `/mcp/studio/embeds` |
+| **經營連結頁面** | `/mcp/link-manager` + `/mcp/social` |
+| **代旅客訂房** | `/mcp/travel-agent` |
+| **對帳** | `/mcp/payment` |
+| **建立訂房體驗** | `/mcp/booking-engine` + `/mcp/reference` |
+
+從一個開始。當您發現它無法完成某項工作時，再新增另一個 — 每個連線獨立，新增不會影響其他。
+
+<Aside type="tip" title="還是想要全部？">
+`https://api.wink.travel/mcp` 和 `https://integrations.wink.travel/mcp` 仍可使用，並提供其主機上的**所有**工具。它們適合探索現有工具，但不建議用於日常工作：工具列表過大會擠壓您的任務並降低代理的工具選擇品質。建議使用上述工具集。
+</Aside>
 
 ---
 
 ## 認證運作方式
 
-Wink MCP 伺服器使用 **OAuth2 授權碼 + PKCE** 流程，並支援 **動態客戶端註冊 (RFC 7591)**。首次連接時會發生以下流程：
+Wink MCP 伺服器使用 **OAuth2 授權碼 + PKCE** 流程，並支援 **動態用戶端註冊 (RFC 7591)**。首次連接時流程如下：
 
-1. 您的 AI 用戶端從 MCP 端點的 `/.well-known/oauth-protected-resource` 元資料中發現授權伺服器。
-2. 用戶端透過 **動態客戶端註冊** 自行註冊 — 無需手動設定應用程式。
-3. 用戶端開啟瀏覽器分頁至 `https://iam.wink.travel`。您使用 Wink 帳號登入並在同意畫面批准所需權限。
+1. 您的 AI 用戶端從 MCP 端點的 `/.well-known/oauth-protected-resource` 元資料發現授權伺服器。
+2. 用戶端透過 **動態用戶端註冊** 自行註冊 — 無需手動設定應用程式。
+3. 用戶端開啟瀏覽器分頁至 `https://iam.wink.travel`。您使用 Wink 帳號登入並在同意畫面批准權限。
 4. Wink 發行一個與您的帳號及身份綁定的 **存取權杖**。
 5. AI 用戶端將權杖附加於每個 MCP 請求。所有工具結果自動依管理實體範圍限制。
 6. 權杖有效期為 3 小時。AI 用戶端會在背景靜默刷新，無需再次提示。
 
-每個工具呼叫皆 **以您的身份執行** — 與保護網頁入口相同的 ACL 規則同樣適用於 AI 代理。
+每次工具呼叫皆**以您的身份執行** — 保護網頁入口的 ACL 規則同樣適用於 AI 代理。
 
 ---
 
@@ -42,25 +135,28 @@ Wink MCP 伺服器使用 **OAuth2 授權碼 + PKCE** 流程，並支援 **動態
    npm install -g @anthropic-ai/claude-code
    ```
 
-2. 新增 Wink Inventory MCP 伺服器：
+2. 從上方的[目錄](#endpoint-directory)選擇工具集並新增。例如，價格與可用性：
    ```bash
-   claude mcp add wink-inventory https://api.wink.travel/mcp --transport http
+   claude mcp add wink-rates https://api.wink.travel/mcp/extranet/rates --transport http
    ```
 
-3. Claude Code 會聯絡伺服器，發現授權伺服器並開啟預設瀏覽器。
+3. Claude Code 連絡伺服器，發現授權伺服器，並開啟預設瀏覽器。
 
-4. **登入 Wink** 並在同意畫面批准權限請求。
+4. **登入 Wink** 並在同意畫面批准權限。
 
 5. Claude Code 確認連線。輸入 `/mcp` 以驗證伺服器是否出現且工具已載入。
 </Steps>
 
-若要同時新增 Integrations 伺服器：
+根據工作需求新增多個工具集 — 每個都是獨立伺服器條目並有自己的名稱：
 ```bash
-claude mcp add wink-integrations https://integrations.wink.travel/mcp --transport http
+claude mcp add wink-operations https://api.wink.travel/mcp/extranet/operations --transport http
+claude mcp add wink-analytics  https://api.wink.travel/mcp/analytics           --transport http
 ```
 
+您只需登入一次。首次瀏覽器授權後，Claude Code 會重用您的 Wink 會話以連接其他 Wink 端點。
+
 :::tip[與團隊共享]
-在 `claude mcp add` 指令中加入 `--scope project`，Claude Code 會將伺服器 URL 寫入專案根目錄的 `.mcp.json`。提交該檔案後，每位團隊成員首次連接時完成自己的瀏覽器登入。
+在 `claude mcp add` 加上 `--scope project`，Claude Code 會將伺服器 URL 寫入專案根目錄的 `.mcp.json`。提交該檔案後，每位團隊成員都會獲得相同工具集，且首次連接時各自完成瀏覽器登入。
 :::
 
   </TabItem>
@@ -77,13 +173,13 @@ claude mcp add wink-integrations https://integrations.wink.travel/mcp --transpor
    ```json title="claude_desktop_config.json"
    {
      "mcpServers": {
-       "wink-inventory": {
+       "wink-extranet-rates": {
          "type": "http",
-         "url": "https://api.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/rates"
        },
-       "wink-integrations": {
+       "wink-extranet-operations": {
          "type": "http",
-         "url": "https://integrations.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/operations"
        }
      }
    }
@@ -91,9 +187,9 @@ claude mcp add wink-integrations https://integrations.wink.travel/mcp --transpor
 
 3. **完全退出並重新啟動** Claude Desktop（使用選單列的退出，僅關閉視窗不夠）。
 
-4. Claude Desktop 會為每個新伺服器開啟瀏覽器分頁。登入 Wink 並批准權限。
+4. Claude Desktop 為每個新伺服器開啟瀏覽器分頁。登入 Wink 並批准權限。
 
-5. 底部工具列的插頭圖示會顯示兩個伺服器皆已連接。
+5. 底部工具列的插頭圖示顯示兩個伺服器皆已連接。
 </Steps>
 
   </TabItem>
@@ -114,13 +210,13 @@ claude mcp add wink-integrations https://integrations.wink.travel/mcp --transpor
    ```json title="~/.codex/config.json"
    {
      "mcpServers": {
-       "wink-inventory": {
+       "wink-extranet-rates": {
          "type": "http",
-         "url": "https://api.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/rates"
        },
-       "wink-integrations": {
+       "wink-extranet-operations": {
          "type": "http",
-         "url": "https://integrations.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/operations"
        }
      }
    }
@@ -128,19 +224,19 @@ claude mcp add wink-integrations https://integrations.wink.travel/mcp --transpor
 
 4. 啟動 Codex。首次使用時，Codex 會開啟瀏覽器分頁至 `https://iam.wink.travel`。
 
-5. **登入 Wink** 並批准所需權限。
+5. **登入 Wink** 並批准權限。
 
-6. Codex 確認連線。執行 `codex` 並請它列出可用工具，以驗證 Wink 伺服器已啟用。
+6. Codex 確認連線。執行 `codex` 並要求列出可用工具，以驗證 Wink 伺服器是否啟用。
 </Steps>
 
 :::note
-Codex CLI MCP 支援需版本 **1.0** 或以上。執行 `codex --version` 檢查，並使用 `npm install -g @openai/codex` 升級。
+Codex CLI MCP 支援需版本 **1.0** 或以上。執行 `codex --version` 檢查，並用 `npm install -g @openai/codex` 更新。
 :::
 
   </TabItem>
   <TabItem label="ChatGPT">
 
-MCP 伺服器支援適用於 **ChatGPT 桌面應用程式**，限 Plus、Pro、Team 及 Enterprise 訂閱者。
+MCP 伺服器支援適用於 Plus、Pro、Team 和 Enterprise 訂閱者的 **ChatGPT 桌面應用程式**。
 
 <Steps>
 1. 若尚未安裝，請下載並安裝 [ChatGPT 桌面應用程式](https://openai.com/chatgpt/download/)。
@@ -149,24 +245,24 @@ MCP 伺服器支援適用於 **ChatGPT 桌面應用程式**，限 Plus、Pro、T
 
 3. 前往 **連接器**（或依版本顯示為 **MCP 伺服器**），點擊 **新增**。
 
-4. 輸入 Wink Inventory 伺服器 URL：
+4. 輸入上方[目錄](#endpoint-directory)中的工具集 URL，例如：
    ```
-   https://api.wink.travel/mcp
+   https://api.wink.travel/mcp/extranet/rates
    ```
    然後點擊 **連接**。
 
 5. ChatGPT 會開啟瀏覽器分頁至 `https://iam.wink.travel`。**登入 Wink** 並批准權限。
 
-6. 重複步驟 4–5 新增 Integrations 伺服器：
+6. 對其他工作所需工具集重複步驟 4–5，例如：
    ```
-   https://integrations.wink.travel/mcp
+   https://api.wink.travel/mcp/extranet/operations
    ```
 
-7. 兩個伺服器會出現在您的連接器清單中。開始新聊天 — Wink 工具會自動可用。
+7. 每個工具集會出現在您的連接器清單中。開始新聊天 — Wink 工具會自動可用。
 </Steps>
 
 :::note[網頁版限制]
-MCP 伺服器僅能在 **桌面應用程式**中設定。ChatGPT 網頁介面（chatgpt.com）不支援自訂 MCP 伺服器。
+MCP 伺服器僅能在 **桌面應用程式** 中設定。ChatGPT 網頁介面（chatgpt.com）不支援自訂 MCP 伺服器。
 :::
 
   </TabItem>
@@ -182,19 +278,19 @@ MCP 伺服器僅能在 **桌面應用程式**中設定。ChatGPT 網頁介面（
    ```json title="~/.cursor/mcp.json"
    {
      "mcpServers": {
-       "wink-inventory": {
+       "wink-extranet-rates": {
          "type": "http",
-         "url": "https://api.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/rates"
        },
-       "wink-integrations": {
+       "wink-extranet-operations": {
          "type": "http",
-         "url": "https://integrations.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/operations"
        }
      }
    }
    ```
 
-3. 開啟 Cursor。前往 **設定 → Cursor 設定 → MCP**，確認兩個伺服器皆顯示綠色狀態指示。若顯示紅色，點擊 **重新整理**。
+3. 開啟 Cursor。前往 **設定 → Cursor 設定 → MCP**，確認兩個伺服器皆顯示綠色狀態指示器。若顯示紅色，點擊 **重新整理**。
 
 4. Cursor 會開啟瀏覽器分頁至 `https://iam.wink.travel`。**登入 Wink** 並批准權限。
 
@@ -202,7 +298,7 @@ MCP 伺服器僅能在 **桌面應用程式**中設定。ChatGPT 網頁介面（
 </Steps>
 
 :::tip[專案範圍設定]
-您也可以將 `mcp.json` 檔案放在專案根目錄，取代放在 `~/.cursor/`。專案層級設定優先，並讓每位開啟該專案的團隊成員都能使用伺服器。
+您也可以將 `mcp.json` 放在專案根目錄，取代 `~/.cursor/`。專案層級設定優先，並讓每位開啟該專案的團隊成員都能使用這些伺服器。
 :::
 
   </TabItem>
@@ -218,13 +314,13 @@ MCP 伺服器僅能在 **桌面應用程式**中設定。ChatGPT 網頁介面（
    ```json title="~/.codeium/windsurf/mcp_config.json"
    {
      "mcpServers": {
-       "wink-inventory": {
+       "wink-extranet-rates": {
          "type": "http",
-         "url": "https://api.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/rates"
        },
-       "wink-integrations": {
+       "wink-extranet-operations": {
          "type": "http",
-         "url": "https://integrations.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/operations"
        }
      }
    }
@@ -234,7 +330,7 @@ MCP 伺服器僅能在 **桌面應用程式**中設定。ChatGPT 網頁介面（
 
 4. 前往 **設定 → MCP 伺服器**，確認兩個伺服器皆顯示已連接。首次使用時 Windsurf 會開啟瀏覽器分頁至 `https://iam.wink.travel`。
 
-5. **登入 Wink** 並批准權限。認證成功後，伺服器在設定面板中會變成綠色。
+5. **登入 Wink** 並批准權限。認證後，設定面板中的伺服器會變綠。
 </Steps>
 
 :::note
@@ -244,14 +340,14 @@ Windsurf MCP 支援需版本 **1.4** 或以上。請透過 **說明 → 關於 W
   </TabItem>
   <TabItem label="Cline (VS Code)">
 
-Cline 是 VS Code 擴充套件，內建 MCP 伺服器管理器，無需手動編輯 JSON。
+Cline 是 VS Code 擴充套件，內建 MCP 伺服器管理器。無需手動編輯 JSON。
 
 <Steps>
 1. 從 VS Code Marketplace 安裝 Cline：
    - 開啟 VS Code，按 `Ctrl+Shift+X` / `Cmd+Shift+X`
    - 搜尋 **Cline** 並點擊 **安裝**
 
-2. 點擊活動列（左側邊欄）的 **Cline 圖示** 開啟 Cline 面板。
+2. 點擊活動列（左側邊欄）的 **Cline 圖示**，開啟 Cline 面板。
 
 3. 點擊 Cline 工具列的 **MCP 伺服器圖示**（插頭圖示），選擇 **編輯 MCP 設定**。
 
@@ -260,13 +356,13 @@ Cline 是 VS Code 擴充套件，內建 MCP 伺服器管理器，無需手動編
    ```json title="cline_mcp_settings.json"
    {
      "mcpServers": {
-       "wink-inventory": {
+       "wink-extranet-rates": {
          "type": "http",
-         "url": "https://api.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/rates"
        },
-       "wink-integrations": {
+       "wink-extranet-operations": {
          "type": "http",
-         "url": "https://integrations.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/operations"
        }
      }
    }
@@ -274,11 +370,11 @@ Cline 是 VS Code 擴充套件，內建 MCP 伺服器管理器，無需手動編
 
 5. **儲存檔案。** Cline 會自動重新載入並開啟瀏覽器分頁至 `https://iam.wink.travel`。
 
-6. **登入 Wink** 並批准權限。兩個伺服器會在 MCP 伺服器面板中顯示為啟用狀態。
+6. **登入 Wink** 並批准權限。兩個伺服器會在 MCP 伺服器面板顯示為啟用狀態。
 </Steps>
 
 :::tip[替代方案：透過 URL 新增]
-在 MCP 伺服器面板點擊 **新增伺服器**，直接貼上 `https://api.wink.travel/mcp`。Cline 會自動填入設定並處理認證，無需手動編輯 JSON。
+在 MCP 伺服器面板點擊 **新增伺服器**，直接貼上工具集 URL（如 `https://api.wink.travel/mcp/extranet/rates`）。Cline 會自動填入設定並處理認證，無需手動編輯 JSON。
 :::
 
   </TabItem>
@@ -288,12 +384,14 @@ Cline 是 VS Code 擴充套件，內建 MCP 伺服器管理器，無需手動編
 
 ## 權限範圍
 
-當您在同意畫面批准時，會看到代理請求的權限細項。MCP 用戶端使用與平台其他部分相同的權限詞彙 — 請參考完整的[認證頁面權限範圍參考](/zh-TW/developers/authentication#scopes)。
+當您批准同意畫面時，會看到代理請求的權限細項。MCP 用戶端使用與平台其他部分相同的權限詞彙 — 詳見認證頁的完整[權限範圍參考](/zh-TW/developers/authentication#scopes)。
 
-MCP 特有的兩點：
+MCP 特有兩點：
 
-- **必須額外擁有 `mcp.read`、`mcp.write`、`mcp.remove` 權限範圍**才能開啟 MCP 傳輸。持有 `mcp.*` 權限的用戶端可進入 `/mcp`，但每個工具仍會強制執行其包裝端點的區段權限（例如 `booking.read`）。
-- **AI 用戶端只請求所需的權限範圍。** 您可在同意畫面拒絕個別權限 — 需要被拒絕權限的工具在呼叫時會回傳錯誤。
+- **`mcp.read`、`mcp.write`、`mcp.remove` 權限範圍是開啟 MCP 傳輸的額外要求。** 持有 `mcp.*` 權限的用戶端可存取任何 Wink MCP 端點，但每個工具仍會執行其所屬端點的區段權限（例如 `booking.read`）。
+- **AI 用戶端只請求所需權限。** 您可在同意畫面拒絕個別權限 — 需要被拒絕權限的工具呼叫會回傳錯誤。
+
+**工具集不改變這些規則。** 您連接的端點決定哪些工具*列出*，而非它們*被允許做什麼*。連接 `/mcp/payment` 不會授予您未持有的財務權限，連接 `/mcp/reference` 也不會阻止該處工具執行其權限。授權由每次工具呼叫根據您的權杖與帳號授權決定。
 
 ---
 
@@ -301,26 +399,38 @@ MCP 特有的兩點：
 
 **瀏覽器分頁未開啟**
 
-您的 AI 用戶端可能尚未支援互動式 PKCE 流程。請確認您使用的是較新版本：
+您的 AI 用戶端可能尚未支援互動式 PKCE 流程。請確認您使用的是新版：
 - **Claude Code:** `npm install -g @anthropic-ai/claude-code`
 - **Codex CLI:** `npm install -g @openai/codex`
-- **Claude Desktop / ChatGPT 桌面版:** 從應用程式內建更新器更新
+- **Claude Desktop / ChatGPT 桌面:** 從應用程式內建更新器更新
 
 **登入後出現 `401 Unauthorized`**
 
-您快取的權杖可能已過期。移除並重新新增伺服器以觸發重新登入：
+您的快取權杖可能已過期。移除並重新新增伺服器以觸發重新登入：
 
 ```bash
 # Claude Code
-claude mcp remove wink-inventory
-claude mcp add wink-inventory https://api.wink.travel/mcp --transport http
+claude mcp remove wink-rates
+claude mcp add wink-rates https://api.wink.travel/mcp/extranet/rates --transport http
 ```
 
-Claude Desktop 和 ChatGPT 請從設定中移除伺服器條目，重啟應用程式後再新增。
+Claude Desktop 和 ChatGPT 請從設定移除伺服器條目，重啟應用程式後再新增。
 
 **呼叫特定工具時出現 `403 Forbidden`**
 
-該工具需要您在同意畫面未批准的權限範圍。重新連接伺服器 — 同意畫面會再次出現，您可批准缺少的權限。
+該工具需要您在同意畫面未批准的權限範圍，或您的帳號未持有該權限。重新連接伺服器 — 同意畫面會再次出現，您可批准缺少的權限。若仍失敗，表示工具需要您未持有的帳號權限；更換工具集無法解決，因為工具集不授權權限。
+
+**我需要的工具不在列表中**
+
+您可能連接了不涵蓋該工作的工具集。檢查[端點目錄](#endpoint-directory)，新增涵蓋該工作的工具集 — 連線獨立，新增不會影響其他。若不確定工具在哪個工具集，暫時連接 `https://api.wink.travel/mcp`，找到工具後查詢其所屬工具集。
+
+**工具集端點出現 `404 Not Found`**
+
+請仔細檢查路徑 — 嵌套工具集有兩段（如 `/mcp/extranet/rates`，非 `/mcp/extranet-rates`），平面工具集有一段（如 `/mcp/link-manager`）。未認證請求至 `/mcp` 下任何路徑會回傳 `401`，非 `404`，因此僅憑 `401` 無法判斷端點是否存在。
+
+**我連接 `api.wink.travel/mcp/channel-manager` 但沒反應**
+
+該端點不存在。頻道管理整合僅由 `https://integrations.wink.travel/mcp/channel-manager` 提供。若您還需手動讀寫物業價格，請使用另一個端點 — 參見 `/mcp/extranet/rates`。
 
 **伺服器出現但工具呼叫回傳「找不到帳號」**
 
@@ -328,27 +438,27 @@ Claude Desktop 和 ChatGPT 請從設定中移除伺服器條目，重啟應用�
 
 **權杖在會話中期過期**
 
-權杖有效期為 3 小時。Claude Code 和 Claude Desktop 會靜默刷新權杖，不會中斷會話。若長時間閒置後出現認證錯誤，輸入新訊息即可自動重新認證。
+權杖有效期為 3 小時。Claude Code 和 Claude Desktop 會靜默刷新權杖，不會中斷會話。若長時間閒置後出現認證錯誤，輸入新訊息 — 用戶端會自動重新認證。
 
 **Codex CLI 顯示「MCP server unreachable」**
 
-請確認您的 `~/.codex/config.json` 是有效 JSON（無尾逗號），且 `"type": "http"` 已設定。Codex 遠端伺服器需使用 HTTP 傳輸；stdio 傳輸僅用於本地二進位檔。
+確認您的 `~/.codex/config.json` 是有效 JSON（無尾逗號），且 `"type": "http"` 已設定。Codex 遠端伺服器需 HTTP 傳輸；stdio 傳輸僅用於本地二進位檔。
 
-**ChatGPT 「連接器」選單消失**
+**ChatGPT「連接器」選單消失**
 
-MCP 支援需 ChatGPT 桌面版 **1.2024.352** 或以上，且需 Plus、Pro、Team 或 Enterprise 訂閱。請更新應用程式並在設定 → 帳戶確認方案。
+MCP 支援需 ChatGPT 桌面應用程式版本 **1.2024.352** 或以上，且需 Plus、Pro、Team 或 Enterprise 訂閱。請更新應用程式並在設定 → 帳號確認方案。
 
 **Cursor 伺服器顯示紅色 / 「連線失敗」**
 
-請確認您的 `~/.cursor/mcp.json` 是有效 JSON 且包含 `"type": "http"`。接著前往 **設定 → Cursor 設定 → MCP** 點擊 **重新整理**。若錯誤持續，請完全重啟 Cursor — 設定變更有時需重啟才能生效。
+確認 `~/.cursor/mcp.json` 是有效 JSON 且包含 `"type": "http"`。前往 **設定 → Cursor 設定 → MCP** 點擊 **重新整理**。若錯誤持續，請完全重新啟動 Cursor — 設定變更有時需重啟才能生效。
 
 **Windsurf MCP 伺服器未出現在設定中**
 
-Windsurf 需完全重啟（非僅重新載入視窗）才能讀取 `mcp_config.json` 變更。請使用 **檔案 → 退出** 並重新啟動。若仍未出現，請確認您使用 Windsurf **1.4+** 版本（透過 **說明 → 關於 Windsurf**）。
+Windsurf 需完全重新啟動（非僅重新載入視窗）才能讀取 `mcp_config.json` 變更。使用 **檔案 → 退出** 並重新啟動。若仍未出現，請確認 Windsurf 版本為 **1.4+**，可透過 **說明 → 關於 Windsurf** 檢查。
 
-**Cline 「新增伺服器」選項未顯示**
+**Cline 無法看到「新增伺服器」選項**
 
-MCP 伺服器管理器需 Cline **2.0** 或以上。請開啟 VS Code 擴充套件面板，找到 Cline，若有更新可用，點擊 **更新**。更新後重新載入 VS Code（`Ctrl+Shift+P` → 「Developer: Reload Window」）。
+MCP 伺服器管理器需 Cline 版本 **2.0** 或以上。開啟 VS Code 擴充套件面板，找到 Cline，若有更新按鈕請點擊更新。更新後重新載入 VS Code（`Ctrl+Shift+P` →「Developer: Reload Window」）。
 
 ---
 

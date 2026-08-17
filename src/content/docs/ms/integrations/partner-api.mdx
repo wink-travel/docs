@@ -1,0 +1,140 @@
+---
+title: API Rakan Kongsi
+description: Harga, had kadar dan Perjanjian Tahap Perkhidmatan untuk API Rakan Kongsi Wink yang disahkan.
+sidebar:
+  order: 0
+---
+
+API **Rakan Kongsi** Wink adalah cara yang disahkan dan berkapasiti tinggi untuk integrator membuat pertanyaan inventori perjalanan yang boleh ditempah — bekalan yang sama yang menggerakkan widget boleh semat dan titik akhir pelayaran awam kami, didedahkan sebagai antara muka programatik kelas pertama. Di mana Komponen Web percuma dan titik akhir pelayaran awam direka untuk penyematan ringan yang berhadapan dengan manusia, API Rakan Kongsi dibina untuk sistem yang mencari, menetapkan harga, dan menempah pada skala besar. Akses disahkan bagi setiap integrator dan dikenakan bayaran berdasarkan penggunaan, jadi anda hanya membayar untuk trafik yang anda hantar sebenarnya.
+
+## Pelan & harga
+
+Satu panggilan API = satu permintaan. Penggunaan yang diukur dikenakan bayaran setiap 1,000 permintaan.
+
+| | Percuma | Berbayar | Perusahaan |
+|---|---|---|---|
+| **Harga** | $0 | Berdasarkan penggunaan | Hubungi kami |
+| **Terbaik untuk** | Penilaian & integrasi volum rendah | Bayar mengikut penggunaan pada skala besar | Volum khusus & terma rundingan |
+| Permintaan per minit | 30 (letupan 60) | Tiada had | Tiada had |
+| Permintaan per bulan | 10,000 | Tiada had | Tiada had |
+| Masa tindak balas API (P95) | — | Di bawah 500 ms | Di bawah 500 ms |
+| Harga per 1,000 permintaan | Percuma | $1.00 | Khusus |
+| Lebihan lihat-ke-tempah (per 1,000 lihat berlebihan melebihi 5,000:1) | — | $2.00 | Khusus |
+| Tindak balas had kadar | 429 (jeda / hentian keras bulanan) | Tiada | Tiada |
+| Perjanjian Tahap Perkhidmatan | — | ✓ | ✓ |
+| Sokongan keutamaan | — | ✓ | ✓ |
+| Pengenalan khusus | — | — | ✓ |
+
+[Dapatkan kunci API](https://app.wink.travel/account/applications) · [Mulakan pengebilan berasaskan penggunaan](https://app.wink.travel/account/applications) · [Hubungi jualan](https://cal.com/wink-ws36dy)
+
+## Rujukan API
+
+Dua permukaan menyediakan inventori yang boleh ditempah, dan ia memetakan kepada dua tahap di atas:
+
+- **Percuma — API Pengguna / Enjin Tempahan** (REST, `/api/public/**`): tanpa nama, berhadapan dengan pelayar dan widget. [Semak rujukan Enjin Tempahan →](/ms/api/booking-engine/)
+- **Berbayar — API Integrator Rakan Kongsi** (**gRPC**, `wink.partner.v1`): disahkan, penggunaan diukur, dibina untuk integrasi pelayan-ke-pelayan pada skala besar. [Semak rujukan Integrator →](/ms/partner-api/partner/)
+
+API Integrator Rakan Kongsi adalah gRPC, bukan REST. Anda memanggilnya dengan klien yang dijana melalui HTTP/2 di
+`partner.wink.travel:443`, menghantar token pembawa dan akaun yang anda panggil:
+
+```bash
+grpcurl -H "authorization: Bearer $WINK_TOKEN" partner.wink.travel:443 list
+```
+
+Halaman rujukan di atas mendokumentasikan setiap perkhidmatan, mesej dan status ralat, dan skema juga
+tersedia semasa runtime melalui pantulan pelayan, jadi `grpcurl`, Postman dan Insomnia dapat menemuinya tanpa
+perlu memuat turun apa-apa.
+
+## Cara penggunaan dan had berfungsi
+
+### Tahap percuma
+
+Tahap Percuma direka untuk membolehkan anda membina, menguji, dan menjalankan trafik pengeluaran sederhana tanpa kos.
+
+- **Had kadar — 30 permintaan per minit, dengan letupan 60 permintaan.** Lonjakan pendek melebihi kadar berterusan diserap oleh elaun letupan. Jika anda melebihi, API akan memberi tindak balas dengan **HTTP 429 (Terlalu Banyak Permintaan)** dan mengenakan **jeda 5 minit** sebelum kunci anda menyambung semula trafik. Berhenti seketika dan cuba semula selepas tempoh jeda daripada membanjiri titik akhir.
+- **Kuota bulanan — 10,000 permintaan setiap bulan kalendar.** Setelah mencapai had bulanan, API akan mengembalikan **HTTP 429 untuk baki bulan itu** — hentian keras — bersama mesej yang mengajak anda melanggan tahap Berbayar untuk meneruskan. Kaunter akan diset semula pada permulaan bulan kalendar berikutnya.
+
+Tahap Percuma tidak termasuk Perjanjian Tahap Perkhidmatan atau sokongan keutamaan.
+
+### Tahap berbayar
+
+Tahap Berbayar menghapuskan had bulanan dan jeda had kadar, dan mengenakan bayaran hanya untuk apa yang anda gunakan.
+
+- **Permintaan diukur — $1.00 setiap 1,000 permintaan.** Tiada had permintaan bulanan dan tiada pengekangan had kadar di bawah penggunaan biasa; anda dikenakan bayaran berdasarkan volum sebenar.
+- **Lebihan lihat-ke-tempah — $2.00 setiap 1,000 lihat berlebihan.** Untuk mengekalkan bekalan yang sihat, kami mengukur nisbah carian ("lihat") kepada tempahan yang disahkan. Anda berhak mendapat **5,000 lihat setiap tempahan** sebelum lebihan dikenakan. Lihat berlebihan dikira sebagai:
+
+  `excess = max(0, looks − bookings × 5,000)`
+
+  Lebihan kemudian dikenakan bayaran pada **$2.00 setiap 1,000 lihat berlebihan**. Integrasi yang menukar dengan baik jarang sekali dikenakan lebihan; caj hanya dikenakan untuk trafik yang mencari jauh lebih banyak daripada yang ditempah.
+
+Tahap Berbayar termasuk Perjanjian Tahap Perkhidmatan yang diterangkan di bawah — komitmen masa operasi 99.9% dan sasaran masa tindak balas P95 di bawah 500 ms — serta sokongan keutamaan berdasarkan tahap keterukan.
+
+## Perjanjian Tahap Perkhidmatan
+
+_Tarikh berkuat kuasa: 5 Julai 2026 · Versi 1.0_
+
+Perjanjian Tahap Perkhidmatan ini ("SLA") menetapkan komitmen ketersediaan, kredit perkhidmatan, dan sasaran sokongan yang Wink ("Wink", "kami", "kita") sediakan kepada pelanggan ("Pelanggan", "anda") untuk API Rakan Kongsi Wink yang disahkan ("API Rakan Kongsi" atau "Perkhidmatan") pada tahap di mana SLA dinyatakan terpakai. SLA ini dimasukkan ke dalam dan dikawal oleh perjanjian antara anda dan Wink di bawah mana anda mengakses API Rakan Kongsi ("Perjanjian"), dan terpakai selagi anda mengekalkan langganan API Rakan Kongsi berbayar yang aktif dan dalam keadaan baik. Istilah yang dimulakan dengan huruf besar yang tidak ditakrifkan di sini mempunyai maksud yang diberikan dalam Perjanjian.
+
+### 1. Takrifan
+
+1. **"Masa operasi"** bermaksud tempoh di mana API Rakan Kongsi tersedia untuk menerima dan berjaya memberi tindak balas kepada permintaan yang dibentuk dengan betul dan disahkan.
+2. **"Masa tidak beroperasi"** bermaksud mana-mana tempoh, diukur dalam minit, di mana API Rakan Kongsi gagal memberi tindak balas berjaya kepada permintaan yang dibentuk dengan betul dan disahkan, tidak termasuk mana-mana tempoh yang termasuk dalam Pengecualian yang dinyatakan dalam Seksyen 4. Ralat terpencil yang menjejaskan sebahagian kecil permintaan bukanlah Masa tidak beroperasi dengan sendirinya.
+3. **"Peratusan Masa Operasi Bulanan"** bermaksud, untuk bulan kalendar tertentu, jumlah minit dalam bulan itu tolak jumlah minit Masa tidak beroperasi, dibahagikan dengan jumlah minit dalam bulan itu, dinyatakan sebagai peratusan.
+4. **"Penyelenggaraan Berjadual"** bermaksud penyelenggaraan Perkhidmatan yang dirancang di mana Wink telah memberikan notis awal mengikut Seksyen 4.
+5. **"Kredit Perkhidmatan"** bermaksud kredit, dikira sebagai peratusan daripada yuran yang dibayar atau perlu dibayar oleh anda untuk API Rakan Kongsi dalam bulan kalendar yang terjejas, yang digunakan terhadap yuran API Rakan Kongsi masa depan sebagai remedi tunggal dan eksklusif untuk kegagalan memenuhi Komitmen Masa Operasi.
+6. **"Masa Tindak Balas"** bermaksud masa yang berlalu antara penerimaan Wink terhadap permintaan yang dibentuk dengan betul dan disahkan di sempadan perkhidmatan Wink dan titik di mana Wink mula mengembalikan tindak balas, tidak termasuk transit rangkaian dan masa sisi klien di luar kawalan Wink.
+
+### 2. Komitmen Ketersediaan & Prestasi
+
+Wink akan menggunakan usaha komersial yang munasabah untuk menjadikan API Rakan Kongsi tersedia pada **Peratusan Masa Operasi Bulanan sekurang-kurangnya 99.9%** sepanjang setiap bulan kalendar tempoh (yang "Komitmen Masa Operasi"). Komitmen Masa Operasi diukur di sempadan perkhidmatan Wink dan tidak termasuk faktor di luar kawalan munasabah Wink, termasuk yang diterangkan dalam Seksyen 4. Sistem pemantauan Wink adalah sumber rekod yang sah untuk mengukur Peratusan Masa Operasi Bulanan dan Masa Tindak Balas.
+
+Wink juga menyasarkan **Masa Tindak Balas peratusan ke-95 (P95) di bawah 500 milisaat** untuk permintaan yang berjaya, dibentuk dengan betul, dan disahkan, diukur di sempadan perkhidmatan Wink sepanjang setiap bulan kalendar (yang "Sasaran Prestasi"). Sasaran Prestasi tidak termasuk faktor yang diterangkan dalam Seksyen 4, permintaan yang mengembalikan ralat tahap aplikasi yang disebabkan oleh permintaan itu sendiri, dan permintaan kumpulan yang luar biasa besar atau kompleks. Sasaran Prestasi adalah objektif perkhidmatan; Kredit Perkhidmatan dalam Seksyen 3 terpakai untuk kegagalan memenuhi **Komitmen Masa Operasi** dan merupakan remedi tunggal dan eksklusif untuk kekurangan ketersediaan.
+
+### 3. Kredit Perkhidmatan
+
+Jika Peratusan Masa Operasi Bulanan jatuh di bawah Komitmen Masa Operasi dalam mana-mana bulan kalendar, anda mungkin layak mendapat Kredit Perkhidmatan yang dikira sebagai peratusan daripada yuran API Rakan Kongsi yang dibayar atau perlu dibayar oleh anda untuk bulan itu, mengikut tangga berikut:
+
+| Peratusan Masa Operasi Bulanan | Kredit Perkhidmatan |
+|---|---|
+| Di bawah 99.9% tetapi pada atau di atas 99.0% | 10% |
+| Di bawah 99.0% tetapi pada atau di atas 95.0% | 25% |
+| Di bawah 95.0% | 50% |
+
+1. **Menuntut kredit.** Untuk menerima Kredit Perkhidmatan anda mesti mengemukakan tuntutan bertulis kepada Wink dalam tempoh **tiga puluh (30) hari** selepas tamat bulan kalendar di mana kekurangan berlaku. Tuntutan mesti termasuk tarikh dan masa setiap kejadian Masa tidak beroperasi yang anda tuntut dan sebarang log atau bukti sokongan yang munasabah tersedia kepada anda. Tuntutan yang dikemukakan selepas tempoh ini tidak layak.
+2. **Bentuk kredit.** Kredit Perkhidmatan yang diluluskan digunakan terhadap yuran API Rakan Kongsi masa depan dan tidak mempunyai nilai tunai. Ia bukan bayaran balik dan tidak akan dibayar kecuali jika dikehendaki oleh undang-undang yang berkuat kuasa.
+3. **Kredit maksimum.** Jumlah Kredit Perkhidmatan yang diberikan untuk mana-mana bulan kalendar tunggal tidak akan melebihi 50% daripada yuran API Rakan Kongsi yang dibayar atau perlu dibayar oleh anda untuk bulan itu.
+4. **Remedi tunggal dan eksklusif.** Kredit Perkhidmatan adalah **remedi tunggal dan eksklusif** anda untuk sebarang kegagalan oleh Wink memenuhi Komitmen Masa Operasi atau sebarang kekurangan ketersediaan API Rakan Kongsi.
+
+### 4. Pengecualian
+
+Komitmen Masa Operasi dan sebarang Kredit Perkhidmatan yang terhasil tidak terpakai, dan Masa tidak beroperasi tidak termasuk, sebarang ketidaktersediaan, penggantungan, penurunan kualiti, atau isu prestasi yang timbul daripada atau berkaitan dengan:
+
+1. **Penyelenggaraan Berjadual** di mana Wink telah memberikan notis terlebih dahulu, dengan syarat notis tersebut diberikan dalam tempoh munasabah terlebih dahulu melalui saluran yang biasanya digunakan Wink untuk berkomunikasi dengan pelanggan;
+2. kejadian **force majeure** atau sebab lain di luar kawalan munasabah Wink, termasuk bencana alam, tindakan kerajaan, kegagalan rangkaian atau utiliti, dan serangan penafian perkhidmatan atau serangan berniat jahat lain;
+3. isu yang disebabkan oleh tindakan atau kealpaan **anda**, peralatan, perisian, atau rangkaian anda, atau oleh mana-mana perkhidmatan, produk, atau penyedia **pihak ketiga** yang tidak berada di bawah kawalan langsung Wink;
+4. **penyalahgunaan Perkhidmatan** oleh anda atau **pelanggaran Perjanjian**, SLA ini, terma penggunaan yang boleh diterima, atau had kadar yang berkuat kuasa, termasuk trafik yang Wink secara munasabah menentukan sebagai berlebihan, penyalahgunaan automatik, atau penipuan; dan
+5. sebarang **penggantungan atau penamatan** akses anda yang dilaksanakan dengan betul di bawah Perjanjian, termasuk penggantungan kerana tidak membayar.
+
+### 5. Sasaran Sokongan & Tindak Balas
+
+Wink menyediakan sokongan untuk API Rakan Kongsi semasa waktu perniagaan standard, tidak termasuk cuti umum tempatan. Wink akan menggunakan usaha komersial yang munasabah untuk mengakui permintaan sokongan yang dikemukakan dengan betul dalam masa tindak balas sasaran berikut, berdasarkan tahap keterukan yang anda tetapkan dan Wink secara munasabah mengesahkan:
+
+| Keterukan | Penerangan | Sasaran tindak balas awal |
+|---|---|---|
+| **Sev 1 — Kritikal** | API Rakan Kongsi tidak berfungsi atau tidak boleh digunakan dalam pengeluaran tanpa penyelesaian sementara. | 4 jam |
+| **Sev 2 — Utama** | Ciri penting terjejas atau merosot; penyelesaian sementara wujud. | 1 hari bekerja |
+| **Sev 3 — Minor** | Soalan umum, isu kecil, atau permintaan ciri. | 2 hari bekerja |
+
+Masa tindak balas sasaran menerangkan bila Wink bertujuan untuk membuat **hubungan awal**; ia bukan jaminan masa penyelesaian. Sokongan keutamaan dan sasaran berdasarkan tahap keterukan terpakai pada tahap di mana ia dinyatakan termasuk.
+
+### 6. Data & Keselamatan
+
+Wink mengekalkan langkah pentadbiran, teknikal, dan organisasi yang munasabah secara komersial yang direka untuk melindungi kerahsiaan, integriti, dan ketersediaan data yang diproses melalui API Rakan Kongsi, dan mengkaji langkah tersebut secara berkala. Pemprosesan data peribadi oleh Wink dikawal oleh [Dasar Privasi](/ms/privacy) dan sebarang terma pemprosesan data dalam Perjanjian. Anda kekal bertanggungjawab untuk mengamankan kelayakan API anda sendiri, untuk penggunaan sah mana-mana data yang anda peroleh, dan untuk segera memberitahu Wink tentang sebarang kecurigaan kompromi kelayakan.
+
+### 7. Had Tanggungjawab
+
+Kredit Perkhidmatan adalah **remedi tunggal dan eksklusif** untuk sebarang ketidaktersediaan atau kegagalan memenuhi Komitmen Masa Operasi, dan disediakan sebagai ganti sebarang liabiliti lain yang timbul daripada kegagalan sedemikian. Kecuali dinyatakan secara jelas dalam SLA ini, API Rakan Kongsi disediakan atas asas "sebagaimana adanya". Sejauh yang dibenarkan oleh undang-undang yang berkuat kuasa, liabiliti agregat Wink yang timbul daripada atau berkaitan dengan Perkhidmatan adalah terhad seperti yang ditetapkan dalam Perjanjian, dan Wink tidak bertanggungjawab untuk sebarang kerosakan tidak langsung, insiden, khas, berbangkit, atau hukuman, atau untuk keuntungan, hasil, data, atau reputasi yang hilang, walaupun telah diberitahu tentang kemungkinan kerosakan tersebut.
+
+### 8. Tempoh, Perubahan & Penamatan
+
+SLA ini terpakai selagi anda mempunyai langganan API Rakan Kongsi aktif pada tahap di mana SLA dinyatakan terpakai. Wink boleh mengemas kini SLA ini dari semasa ke semasa; perubahan penting akan disampaikan melalui saluran yang biasanya digunakan Wink untuk menghubungi pelanggan, dan penggunaan berterusan API Rakan Kongsi selepas kemas kini berkuat kuasa dianggap sebagai penerimaan SLA yang dikemas kini. SLA ini tamat secara automatik apabila Perjanjian atau langganan API Rakan Kongsi anda ditamatkan atau tamat tempoh. Seksyen yang secara semula jadi harus terus berkuat kuasa selepas penamatan — termasuk kelayakan Kredit Perkhidmatan yang terkumpul tetapi belum dituntut, had tanggungjawab, dan takrifan — akan terus berkuat kuasa.

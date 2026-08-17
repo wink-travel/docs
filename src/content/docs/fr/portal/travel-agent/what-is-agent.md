@@ -1,5 +1,5 @@
 ---
-title: Qu'est-ce qu'un Agent ?
+title: Qu'est-ce que Agent ?
 description: Découvrez comment Wink prend en charge les agents de voyage enregistrés.
 sidebar:
   order: 0
@@ -9,7 +9,7 @@ Notre solution pour les agents de voyage enregistrés est [Wink Agent](https://a
 
 Les agents de voyage plus avancés peuvent choisir de s'intégrer au niveau de l'API afin de gérer les paiements et les versements en dehors de la plateforme Wink.
 
-Les agents de voyage disposent d'un sous-ensemble des mêmes fonctionnalités du portail que [Wink Studio](/fr/portal/studio/what-is-studio), nous ne les couvrirons donc pas à nouveau ici.
+Les agents de voyage disposent d'un sous-ensemble des mêmes fonctionnalités du portail que [Studio](/fr/portal/studio/what-is-studio), nous ne les couvrirons donc pas à nouveau ici.
 
 ## Recherche
 

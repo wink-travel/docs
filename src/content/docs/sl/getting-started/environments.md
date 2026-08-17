@@ -5,7 +5,7 @@ sidebar:
   order: 8
 ---
 
-V Winku ves čas upravljamo 2 okolji za vse, kar počnemo:
+V Wink-u ves čas upravljamo 2 okolji za vse, kar počnemo:
 
 - Produkcija je naše stabilno okolje.
 - Staging je naše okolje za certificiranje in testiranje.
@@ -13,7 +13,7 @@ V Winku ves čas upravljamo 2 okolji za vse, kar počnemo:
 Če ste integrator, hotel ali turistični agent, ki želi pripraviti certificiranje ali testirati platformo Wink, ustvarite račun v našem staging okolju, da začnete.
 
 :::note
-Staging okolje je na voljo na zahtevo. To pomeni, da bo prešlo v stanje mirovanja, če ni uporabe, in se bo ponovno aktiviralo, ko bo uporaba spet prisotna. Prosimo za potrpežljivost, če ga prebujaš. Zagon vseh strežnikov traja približno minuto po prvi povezavi z enim od naših strežnikov ali aplikacij.
+Staging okolje je na voljo na zahtevo. To pomeni, da se bo uspalo, če ni uporabe, in se bo ponovno zbudilo, ko bo uporaba. Prosimo za potrpežljivost, če ga prebujaš. Zagon vseh strežnikov traja približno minuto po prvi povezavi z enim od naših strežnikov ali aplikacij.
 :::
 
 ## Strežniki
@@ -33,10 +33,6 @@ Naše aplikacije imajo prav tako testna in produkcijska okolja za naše uporabni
 
 | Aplikacija | Staging | Produkcija
 | ------- | ------- | ---------- |
-| Agent | https://staging-agent.wink.travel | https://agent.wink.travel | 
-| Booking engine | https://staging-ota.wink.travel | https://ota.wink.travel | 
-| Extranet | https://staging-extranet.wink.travel | https://extranet.wink.travel | 
-| My Account | https://staging-app.wink.travel | https://app.wink.travel | 
-| Payment | https://staging-pay.wink.travel | https://pay.wink.travel | 
-| Studio | https://staging-studio.wink.travel | https://studio.wink.travel | 
-| WinkLinks | https://staging-i.trvl.as | https://i.trvl.as |
+| Portal | https://staging-app.wink.travel | https://app.wink.travel | 
+| Booking engine | https://staging-book.wink.travel | https://book.wink.travel | 
+| Link Manager | https://staging-i.trvl.as | https://i.trvl.as |

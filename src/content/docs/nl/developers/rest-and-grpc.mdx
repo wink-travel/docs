@@ -1,0 +1,82 @@
+---
+title: REST en gRPC
+description: Hoe te integreren met het Wink Platform via REST of gRPC, een client te genereren vanuit onze schema's, en onze MCP-server te gebruiken om integratiecode te genereren voor jouw use case.
+sidebar:
+  order: 7
+---
+
+import { LinkButton, Aside } from '@astrojs/starlight/components';
+
+Wink biedt twee transports aan. Welke je gebruikt hangt af van met welke API je integreert.
+
+| | Transport | Schema | Docs |
+| --- | --- | --- | --- |
+| De meeste Wink API's | REST via HTTPS | OpenAPI 3 | Elke groep onder **API** in de zijbalk |
+| Partner Integrator API | gRPC via HTTP/2 | Protocol Buffers | [Partner](/nl/partner-api/partner/) |
+
+<Aside type="note" title="We publiceren geen taal-SDK's meer">
+  Handmatig onderhouden SDK's liepen achter bij de API's die ze omsloten, en ondersteunden nooit de taal die je
+  daadwerkelijk nodig had. Genereer in plaats daarvan een client vanuit het schema — die is altijd actueel — of laat onze
+  MCP-server integratiecode schrijven die is afgestemd op jouw use case.
+</Aside>
+
+## Genereer een REST-client
+
+Elke API-groep publiceert een OpenAPI 3-document. Richt elke OpenAPI-generator erop en je krijgt een
+getypeerde client in jouw programmeertaal.
+
+```bash
+# De specificatie voor een groep wordt naast de referentiepagina aangeboden.
+curl -o wink-extranet.json https://api.wink.travel/v3/api-docs/extranet
+
+npx @openapitools/openapi-generator-cli generate \
+  -i wink-extranet.json -g typescript-fetch -o ./wink-client
+```
+
+<LinkButton href="https://openapi-generator.tech/docs/generators" variant="secondary" icon="external">
+  OpenAPI generators per taal
+</LinkButton>
+
+## Genereer een gRPC-client
+
+De Partner Integrator API is gRPC. Je genereert een client vanuit het `.proto`-schema, dat Wink
+op twee manieren publiceert:
+
+- **Server reflection** — de server beschrijft zichzelf, zodat tools zoals `grpcurl`, Postman en Insomnia
+  het schema tijdens runtime kunnen ontdekken zonder bestanden te downloaden. Reflection vereist dezelfde bearer
+  token als elke andere oproep.
+- **De `.proto`-bestanden**, als je het schema liever zelf beheert en vooraf genereert.
+
+```bash
+# Ontdek het schema van een draaiende server (geauthenticeerd).
+grpcurl -H "authorization: Bearer $WINK_TOKEN" \
+  partner.wink.travel:443 list
+
+# Genereer vervolgens een client — hier Go; elke ondersteunde taal werkt op dezelfde manier.
+protoc --go_out=. --go-grpc_out=. partner_lookup.proto
+```
+
+Oproepen dragen je bearer token in de `authorization` metadata-header, precies zoals REST het in de `Authorization` header doet. Fouten komen binnen als een gRPC-statuscode in de response trailers in plaats van als een HTTP-statuscode — de [Partner referentie](/nl/partner-api/partner/) vermeldt de statussen die je kunt verwachten.
+
+<LinkButton href="https://grpc.io/docs/languages/" variant="secondary" icon="external">
+  gRPC quick starts per taal
+</LinkButton>
+
+<LinkButton href="https://grpc.io/docs/what-is-grpc/introduction/" variant="secondary" icon="external">
+  Wat is gRPC?
+</LinkButton>
+
+## Of laat de MCP-server het schrijven
+
+Als je een AI-codeerassistent gebruikt, is onze MCP-server de snelste route. Hij biedt Wink's API's aan als
+tools die je assistent kan aanroepen en over kan redeneren, zodat je in plaats van een hele client te genereren en zelf de endpoints te zoeken, beschrijft wat je bouwt en integratiecode krijgt die daarop is afgestemd.
+
+<LinkButton href="/nl/developers/mcp/" variant="primary">
+  Stel de Wink MCP-server in
+</LinkButton>
+
+## Verder lezen
+
+- [Setup](/nl/developers/setup/) — accounts, omgevingen en credentials
+- [Authenticatie](/nl/developers/authentication/) — verkrijgen en vernieuwen van tokens
+- [Webhook-integratie](/nl/developers/webhook-integration/) — evenementen ontvangen in plaats van pollen

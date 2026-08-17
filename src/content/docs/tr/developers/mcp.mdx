@@ -1,33 +1,126 @@
 ---
 title: MCP Sunucuları
-description: Model Context Protocol aracılığıyla AI ajanlarını Wink platformuna bağlayın. Kimlik doğrulamalı MCP sunucuları, ajanın doğrudan envanter, rezervasyonlar, kanal yöneticisi entegrasyonları ve daha fazlasına erişmesini sağlar — etkileşimli OAuth2 oturumu açma ile güvence altına alınmıştır.
+description: Model Context Protocol aracılığıyla AI ajanlarını Wink platformuna bağlayın. Wink, araçlarını odaklanmış, iş odaklı uç noktalar olarak yayınlar, böylece ajanın yalnızca işinizin ihtiyaç duyduğu şeyleri yüklemesini sağlar — etkileşimli OAuth2 oturumu açma ile güvence altına alınmıştır.
 sidebar:
   order: 10
 ---
 
 import { Steps, LinkButton, Aside, Tabs, TabItem } from '@astrojs/starlight/components';
 
-Wink, iki kimlik doğrulamalı MCP sunucusu sunar. Her ikisi de **etkileşimli OAuth2 oturumu açma** (PKCE yetkilendirme kodu akışı) kullanır — AI ajanın, Wink hesabınızla oturum açmanız için bir tarayıcı sekmesi açar. Yönetilecek istemci gizli anahtarı yoktur.
+Wink'in MCP araçları **araç setleri** olarak yayınlanır — her biri bir işi kapsayan odaklanmış uç noktalar. AI istemcinizi işinize uyan bir veya iki uç noktaya bağlarsınız, hepsine değil.
 
-| Sunucu | URL | Ne yapar |
-|--------|-----|----------|
-| **Inventory API** | `https://api.wink.travel/mcp` | Envanter, rezervasyonlar, fiyatlar, satış kanalları, analizler ve tüm platform işlemleri |
-| **Integrations** | `https://integrations.wink.travel/mcp` | Kanal yöneticisi entegrasyonları — mülkleri, fiyatları ve müsaitliği OTA'larla senkronize eder |
+Her uç nokta **etkileşimli OAuth2 oturumu açma** (PKCE yetkilendirme kodu akışı) kullanır: AI ajanınız bir tarayıcı sekmesi açar, Wink hesabınızla oturum açarsınız ve işlem tamamdır. Yönetilecek istemci gizli anahtarı yoktur.
+
+```bash title="Bir kanal yöneticisi entegratörü bir uç noktaya bağlanır"
+claude mcp add wink-channel-manager https://integrations.wink.travel/mcp/channel-manager --transport http
+```
+
+```bash title="Kendi fiyatlarını yöneten bir otelci başka bir uç noktaya bağlanır"
+claude mcp add wink-rates https://api.wink.travel/mcp/extranet/rates --transport http
+```
+
+---
+
+## Araçların uç noktalar arasında neden ayrıldığı
+
+Wink yaklaşık 500 araç sunar. Bunların hepsini bir ajanla aynı anda kullanmak teknik olarak mümkün olsa da — kötü bir fikirdir.
+
+**Araç tanımları bağlam gerektirir.** Bir MCP sunucusunun ilan ettiği her araç, modelin bağlam penceresine iş yapmadan önce açıklaması ve tam parametre şeması ile birlikte yüklenir. Beş yüz araç, gerçek görevinizin ihtiyaç duyduğu bütçenin büyük bir kısmını her istekte tüketir.
+
+**Seçim kalitesi liste büyüdükçe düşer.** 500 benzer isimli araç arasından seçim yapan bir ajan, 40 araç arasından seçim yapan bir ajandan daha kötü seçimler yapar. Bir kanal yöneticisi entegre ediyorsanız, yaklaşık yirmi araç sizin için geçerlidir; diğer 480 araç ise doğru aracı bulmayı zorlaştıran gürültüdür.
+
+**İş gerçekten ayrılabilir.** Bir PMS'den müsaitlik senkronize eden biri ile bağlı kuruluş açılış sayfalarını yöneten biri neredeyse hiç araç paylaşmaz. İşe göre ayrım, her bağlantının bir işin sözlüğünü taşıması anlamına gelir.
+
+<Aside type="caution" title="Araç setleri izin değildir">
+Dar bir araç seti seçmek, hesabınızın yapabileceklerini **kısıtlamaz**, geniş bir set seçmek de ekstra bir şey vermez. Her araç, web portalındaki hesap izinlerini, oturum açmış kimliğiniz altında uygular. Hesabınız Wink Portal'da bir rezervasyonu iptal edemiyorsa, ajan da edemez — hangi uç noktaya bağlı olursa olsun.
+
+Araç setlerini **odaklanma için** seçin, güvenlik için değil.
+</Aside>
+
+---
+
+## Uç nokta dizini
+
+İki sunucu araç setleri sağlar. Araç sayıları yaklaşık olup zamanla artar.
+
+### `https://api.wink.travel` — platform
+
+| Uç Nokta | Araçlar | Kapsadığı Alan |
+|---|---:|---|
+| `/mcp/extranet/facilities` | ~64 | Rezervasyon yapılabilir ve yerinde envanter: misafir odaları ve oda tipleri, spa, restoranlar, toplantı odaları, aktiviteler, cazibe merkezleri, yerler, diğer satılabilir öğeler |
+| `/mcp/extranet/property` | ~62 | Mülk kaydı ve ticari koşulları: profil ve içerik, ek hizmetler, iptal politikaları, avantajlar, duyurular |
+| `/mcp/settings` | ~60 | Hesap yönetimi: yönetim varlığı profili ve markalaşma, yöneticiler ve yetkileri, özelleştirme, web kancaları, bildirim tercihleri |
+| `/mcp/studio/embeds` | ~48 | Küratörlü envanter yayınlama: widgetlar, ızgaralar ve sıralı ızgaralar, kartlar, haritalar, envanter ve tedarikçi sayfalarına derin bağlantılar |
+| `/mcp/extranet/rates` | ~44 | Fiyatlar ve müsaitlik: envanter fiyat dönemleri ve kontenjanlar, fiyat planları, ana fiyatlar, özel ve promosyon fiyatları |
+| `/mcp/extranet/operations` | ~39 | Canlı mülk yönetimi: rezervasyonlar ve yaşam döngüsü, misafir yorumları ve yanıtları, takvim beslemeleri, planlanmış görevler |
+| `/mcp/extranet/distribution` | ~37 | Envanterin satıldığı yerler: satış kanalları ve fiyat değiştiriciler, bağlı kuruluş ve tedarikçi ilişki talepleri, kayıt, potansiyel müşteri yakalama |
+| `/mcp/studio/curation` | ~35 | Satılabilir koleksiyonlar oluşturma: statik ve dinamik listeler, sıralı listeler, kaydedilmiş aramalar, mülk toplulukları |
+| `/mcp/link-manager` | ~28 | Senkronize bağlantı koleksiyonları, tasarımları, kategoriler ve etiketler, ayrıca kısaltılmış URL'ler |
+| `/mcp/reference` | ~24 | Salt okunur arama verileri: ülkeler, para birimleri ve döviz kurları, diller, zaman dilimleri, coğrafi aramalar, IP coğrafi konumu |
+| `/mcp/analytics` | ~18 | Rezervasyon ve gelir analizleri: genel bakışlar, çizgi grafikler, lider tabloları, bağlı kuruluş performansı, paylaşım metrikleri |
+| `/mcp/payment` | ~18 | Finansal işlemler: defter, çekimler ve ücret tahminleri, rezervasyon fonu toplamları |
+| `/mcp/booking-engine` | ~17 | Seyahat edenlere yönelik alışveriş yolu: arama ve sorgulama, alışveriş sepeti ve ödeme, istek listeleri, kampanya özelleştirme |
+| `/mcp/social` | ~17 | Bağlı sosyal hesaplar, gönderi yayınlama ve zamanlama, gönderi analizlerini okuma |
+| `/mcp/travel-agent` | ~8 | Seyahat edenler adına ajan aracılığıyla rezervasyonlar ve ajan raporları |
+
+### `https://integrations.wink.travel` — kanal yöneticisi entegrasyonları
+
+Tek uç nokta, çünkü bu sunucu tek bir iş için vardır.
+
+| Uç Nokta | Araçlar | Kapsadığı Alan |
+|---|---:|---|
+| `/mcp/channel-manager` | ~9 | Bir kanal yöneticisi, PMS veya CRS entegrasyonunu bağlama ve doğrulama |
+
+<Aside type="note" title="Kanal yöneticisi entegrasyonu ile kendi fiyatlarını yönetmek arasındaki fark">
+Bunlar farklı işlerdir ve farklı kişiler içindir, aynı uç noktayı paylaşmazlar.
+
+**Kanal yöneticisi, PMS veya CRS satıcısı** `integrations.wink.travel/mcp/channel-manager` üzerinden bir kez entegre olur ve ardından mülkler, fiyatlar, müsaitlik ve rezervasyonları bu entegrasyon üzerinden değiş tokuş eder. O tek uç nokta tüm yüzeyi kapsar.
+
+**Kendi fiyatlarını elle değiştiren bir otelci** `api.wink.travel` üzerindeki extranet araç setlerini kullanır — `/mcp/extranet/rates` ve benzerleri. Bunlar kanal yöneticisi entegrasyonunun parçası değildir ve bir entegratörün bunlara bağlanması gerekmez.
+
+Hesap yönetimi de `api.wink.travel` üzerindedir, `/mcp/settings` altında. Entegrasyon sunucusunda `/mcp/settings` yoktur.
+</Aside>
+
+Her uç nokta ayrıca bir `ping` aracı taşır, böylece gerçek iş yapmadan önce bağlantının canlı olduğunu doğrulayabilirsiniz.
+
+---
+
+## Hangi araç setlerine ihtiyacım var?
+
+| Eğer siz… | Bağlanın |
+|---|---|
+| **Bir kanal yöneticisi, PMS veya CRS entegre ediyorsanız** | `integrations.wink.travel/mcp/channel-manager` — sadece bu |
+| **Bir mülkün içeriğini yönetiyorsanız** | `/mcp/extranet/property` + `/mcp/extranet/facilities` |
+| **Odaları ve oda tiplerini yönetiyorsanız** | `/mcp/extranet/facilities` |
+| **Fiyatları ve müsaitliği yönetiyorsanız** | `/mcp/extranet/rates` |
+| **Günlük rezervasyonları yürütüyorsanız** | `/mcp/extranet/operations` |
+| **Dağıtımı büyütüyorsanız** | `/mcp/extranet/distribution` + `/mcp/analytics` |
+| **Bağlı kuruluş sayfaları oluşturuyorsanız** | `/mcp/studio/curation` + `/mcp/studio/embeds` |
+| **Link-in-bio sayfaları yönetiyorsanız** | `/mcp/link-manager` + `/mcp/social` |
+| **Seyahat edenler adına rezervasyon yapıyorsanız** | `/mcp/travel-agent` |
+| **Parayı mutabakat yapıyorsanız** | `/mcp/payment` |
+| **Bir rezervasyon deneyimi oluşturuyorsanız** | `/mcp/booking-engine` + `/mcp/reference` |
+
+Bir tanesiyle başlayın. Bir aracın yapamadığı bir şey istediğinizde başka bir tane ekleyin — her bağlantı bağımsızdır ve birini eklemek diğerlerini etkilemez.
+
+<Aside type="tip" title="Hala her şeyi mi istiyorsunuz?">
+`https://api.wink.travel/mcp` ve `https://integrations.wink.travel/mcp` her iki sunucuda da **tüm** araçları sunmaya devam eder. Mevcut olanları keşfetmek için faydalıdırlar, ancak günlük işler için önerilmezler: araç listesi görevinizi gölgede bırakacak kadar büyüktür ve ajanın araç seçimini kötüleştirir. Yukarıdaki araç setlerini tercih edin.
+</Aside>
 
 ---
 
 ## Kimlik doğrulama nasıl çalışır
 
-Wink MCP sunucuları **OAuth2 Yetkilendirme Kodu + PKCE** akışını kullanır ve **Dinamik İstemci Kaydı (RFC 7591)** destekler. İlk bağlantı kurulduğunda şu adımlar gerçekleşir:
+Wink MCP sunucuları **OAuth2 Yetkilendirme Kodu + PKCE** akışını kullanır ve **Dinamik İstemci Kaydı (RFC 7591)** destekler. İlk bağlandığınızda şu adımlar gerçekleşir:
 
-1. AI istemciniz, MCP uç noktasının `/.well-known/oauth-protected-resource` meta verisinden yetkilendirme sunucusunu keşfeder.
-2. İstemci, **Dinamik İstemci Kaydı** yoluyla kendini kaydeder — manuel uygulama kurulumu gerekmez.
-3. İstemci, `https://iam.wink.travel` adresinde bir **tarayıcı sekmesi** açar. Wink hesabınızla oturum açar ve izin ekranında istenen izinleri onaylarsınız.
-4. Wink, hesabınıza özel ve kimliğinize bağlı bir **erişim belirteci** verir.
-5. AI istemcisi, her MCP isteğine bu belirteci ekler. Tüm araç sonuçları otomatik olarak yönetim varlığınıza göre sınırlandırılır.
-6. Belirteçler 3 saat sonra sona erer. AI istemciniz, arka planda sessizce yeniler ve tekrar istemez.
+1. AI istemciniz MCP uç noktasının `/.well-known/oauth-protected-resource` meta verisinden yetkilendirme sunucusunu keşfeder.
+2. İstemci **Dinamik İstemci Kaydı** ile kendini kaydeder — manuel uygulama kurulumu gerekmez.
+3. İstemci `https://iam.wink.travel` adresine bir **tarayıcı sekmesi** açar. Wink hesabınızla oturum açar ve izin ekranında istenen izinleri onaylarsınız.
+4. Wink, hesabınıza ve kimliğinize bağlı bir **erişim belirteci** verir.
+5. AI istemcisi belirteci her MCP isteğine ekler. Tüm araç sonuçları otomatik olarak yönetim varlığınıza göre sınırlandırılır.
+6. Belirteçler 3 saat sonra sona erer. AI istemciniz arka planda sessizce yeniler, tekrar istemez.
 
-Her araç çağrısı **kimliğiniz altında** çalışır — web portalını koruyan aynı ACL kuralları AI ajan için de geçerlidir.
+Her araç çağrısı **kimliğiniz altında** çalışır — web portalını koruyan aynı ACL kuralları AI ajanına da uygulanır.
 
 ---
 
@@ -42,25 +135,28 @@ Her araç çağrısı **kimliğiniz altında** çalışır — web portalını k
    npm install -g @anthropic-ai/claude-code
    ```
 
-2. Wink Inventory MCP sunucusunu ekleyin:
+2. Yukarıdaki [dizinden](#endpoint-directory) bir araç seti seçin ve ekleyin. Örneğin, fiyatlar ve müsaitlik:
    ```bash
-   claude mcp add wink-inventory https://api.wink.travel/mcp --transport http
+   claude mcp add wink-rates https://api.wink.travel/mcp/extranet/rates --transport http
    ```
 
 3. Claude Code sunucuya bağlanır, yetkilendirme sunucusunu keşfeder ve varsayılan tarayıcınızı açar.
 
-4. **Wink'te oturum açın** ve izin ekranındaki istekleri onaylayın.
+4. **Wink'te oturum açın** ve izin ekranında izin isteğini onaylayın.
 
-5. Claude Code bağlantıyı doğrular. Sunucunun göründüğünü ve araçların yüklendiğini kontrol etmek için `/mcp` yazın.
+5. Claude Code bağlantıyı doğrular. Sunucunun göründüğünü ve araçların yüklendiğini doğrulamak için `/mcp` yazın.
 </Steps>
 
-Integrations sunucusunu da eklemek için:
+İşinizin ihtiyaç duyduğu kadar araç seti ekleyin — her biri kendi adıyla ayrı bir sunucu girişi:
 ```bash
-claude mcp add wink-integrations https://integrations.wink.travel/mcp --transport http
+claude mcp add wink-operations https://api.wink.travel/mcp/extranet/operations --transport http
+claude mcp add wink-analytics  https://api.wink.travel/mcp/analytics           --transport http
 ```
 
-:::tip[Ekip ile paylaşın]
-`claude mcp add` komutuna `--scope project` ekleyin, Claude Code sunucu URL'sini depo kökünde `.mcp.json` dosyasına yazar. Bu dosyayı commit edin — her ekip üyesi ilk bağlantıda kendi tarayıcı oturum açmasını tamamlar.
+Sadece bir kez oturum açarsınız. İlk tarayıcı onayından sonra Claude Code, ek Wink uç noktaları için Wink oturumunuzu yeniden kullanır.
+
+:::tip[Ekibinizle paylaşın]
+`claude mcp add` komutuna `--scope project` ekleyin, Claude Code sunucu URL'sini depo kökünde `.mcp.json` dosyasına yazar. Bu dosyayı commit edin — her ekip üyesi aynı araç setlerini alır ve ilk bağlantıda kendi tarayıcı oturum açmasını tamamlar.
 :::
 
   </TabItem>
@@ -72,24 +168,24 @@ claude mcp add wink-integrations https://integrations.wink.travel/mcp --transpor
    - **Windows:** `%APPDATA%\Claude\claude_desktop_config.json`
    - **Linux:** `~/.config/Claude/claude_desktop_config.json`
 
-2. MCP sunucu girdilerini ekleyin:
+2. MCP sunucu girişlerini ekleyin:
 
    ```json title="claude_desktop_config.json"
    {
      "mcpServers": {
-       "wink-inventory": {
+       "wink-extranet-rates": {
          "type": "http",
-         "url": "https://api.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/rates"
        },
-       "wink-integrations": {
+       "wink-extranet-operations": {
          "type": "http",
-         "url": "https://integrations.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/operations"
        }
      }
    }
    ```
 
-3. Claude Desktop'u **tamamen kapatıp yeniden başlatın** (menü çubuğundan Çıkış yapın — pencereyi kapatmak yeterli değildir).
+3. Claude Desktop'u **tamamen kapatıp yeniden başlatın** (menüden Çıkış kullanın — pencereyi kapatmak yeterli değildir).
 
 4. Claude Desktop her yeni sunucu için bir tarayıcı sekmesi açar. Wink'te oturum açın ve izinleri onaylayın.
 
@@ -109,24 +205,24 @@ claude mcp add wink-integrations https://integrations.wink.travel/mcp --transpor
    - **macOS / Linux:** `~/.codex/config.json`
    - **Windows:** `%USERPROFILE%\.codex\config.json`
 
-3. Wink MCP sunucu girdilerini ekleyin:
+3. Wink MCP sunucu girişlerini ekleyin:
 
    ```json title="~/.codex/config.json"
    {
      "mcpServers": {
-       "wink-inventory": {
+       "wink-extranet-rates": {
          "type": "http",
-         "url": "https://api.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/rates"
        },
-       "wink-integrations": {
+       "wink-extranet-operations": {
          "type": "http",
-         "url": "https://integrations.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/operations"
        }
      }
    }
    ```
 
-4. Codex'i başlatın. İlk kullanımda Codex, `https://iam.wink.travel` adresinde bir tarayıcı sekmesi açar.
+4. Codex'i başlatın. İlk kullanımda Codex `https://iam.wink.travel` adresine bir tarayıcı sekmesi açar.
 
 5. **Wink'te oturum açın** ve istenen izinleri onaylayın.
 
@@ -134,7 +230,7 @@ claude mcp add wink-integrations https://integrations.wink.travel/mcp --transpor
 </Steps>
 
 :::note
-Codex CLI MCP desteği için **1.0** veya daha yeni sürüm gereklidir. Sürümü kontrol etmek için `codex --version` komutunu çalıştırın ve güncellemek için `npm install -g @openai/codex` komutunu kullanın.
+Codex CLI MCP desteği **1.0** veya daha yeni sürüm gerektirir. Sürümü kontrol etmek için `codex --version` komutunu çalıştırın ve güncellemek için `npm install -g @openai/codex` kullanın.
 :::
 
   </TabItem>
@@ -149,20 +245,20 @@ MCP sunucu desteği, Plus, Pro, Team ve Enterprise aboneleri için **ChatGPT mas
 
 3. **Bağlayıcılar** (veya uygulama sürümünüze bağlı olarak **MCP Sunucuları**) bölümüne gidin ve **Ekle**'ye tıklayın.
 
-4. Wink Inventory sunucu URL'sini girin:
+4. Yukarıdaki [dizinden](#endpoint-directory) bir araç seti URL'si girin, örneğin:
    ```
-   https://api.wink.travel/mcp
+   https://api.wink.travel/mcp/extranet/rates
    ```
    Ardından **Bağlan**'a tıklayın.
 
-5. ChatGPT, `https://iam.wink.travel` adresinde bir tarayıcı sekmesi açar. **Wink'te oturum açın** ve izinleri onaylayın.
+5. ChatGPT `https://iam.wink.travel` adresine bir tarayıcı sekmesi açar. **Wink'te oturum açın** ve izinleri onaylayın.
 
-6. Aynı işlemi Integrations sunucusu için tekrarlayın:
+6. İşinizin ihtiyaç duyduğu diğer araç setleri için 4–5. adımları tekrarlayın, örneğin:
    ```
-   https://integrations.wink.travel/mcp
+   https://api.wink.travel/mcp/extranet/operations
    ```
 
-7. Her iki sunucu Bağlayıcılar listenizde görünür. Yeni bir sohbet başlatın — Wink araçları otomatik olarak kullanılabilir.
+7. Her araç seti Bağlayıcılar listenizde görünür. Yeni bir sohbet başlatın — Wink araçları otomatik olarak kullanılabilir.
 </Steps>
 
 :::note[Web uygulaması sınırlaması]
@@ -177,18 +273,18 @@ MCP sunucuları yalnızca **masaüstü uygulamasında** yapılandırılabilir. c
    - **macOS / Linux:** `~/.cursor/mcp.json`
    - **Windows:** `%USERPROFILE%\.cursor\mcp.json`
 
-2. Wink MCP sunucu girdilerini ekleyin:
+2. Wink MCP sunucu girişlerini ekleyin:
 
    ```json title="~/.cursor/mcp.json"
    {
      "mcpServers": {
-       "wink-inventory": {
+       "wink-extranet-rates": {
          "type": "http",
-         "url": "https://api.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/rates"
        },
-       "wink-integrations": {
+       "wink-extranet-operations": {
          "type": "http",
-         "url": "https://integrations.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/operations"
        }
      }
    }
@@ -196,13 +292,13 @@ MCP sunucuları yalnızca **masaüstü uygulamasında** yapılandırılabilir. c
 
 3. Cursor'u açın. **Ayarlar → Cursor Ayarları → MCP** bölümüne gidin ve her iki sunucunun yeşil durum göstergesiyle göründüğünü doğrulayın. Kırmızı görünüyorsa **Yenile**'ye tıklayın.
 
-4. Cursor, `https://iam.wink.travel` adresinde bir tarayıcı sekmesi açar. **Wink'te oturum açın** ve izinleri onaylayın.
+4. Cursor `https://iam.wink.travel` adresine bir tarayıcı sekmesi açar. **Wink'te oturum açın** ve izinleri onaylayın.
 
 5. Bir sohbet açın (`Ctrl+L` / `Cmd+L`) ve bağlantıyı doğrulamak için Cursor'dan mevcut Wink araçlarını listelemesini isteyin.
 </Steps>
 
 :::tip[Proje kapsamlı yapılandırma]
-`~/.cursor/` yerine projenizin kök dizinine bir `mcp.json` dosyası da koyabilirsiniz. Proje düzeyindeki yapılandırma önceliklidir ve projeyi Cursor'da açan her ekip üyesi için sunucuları kullanılabilir kılar.
+`~/.cursor/` yerine projenizin köküne bir `mcp.json` dosyası da koyabilirsiniz. Proje düzeyindeki yapılandırma önceliklidir ve projeyi Cursor'da açan her ekip üyesine sunucuları kullanılabilir hale getirir.
 :::
 
   </TabItem>
@@ -213,32 +309,32 @@ MCP sunucuları yalnızca **masaüstü uygulamasında** yapılandırılabilir. c
    - **macOS / Linux:** `~/.codeium/windsurf/mcp_config.json`
    - **Windows:** `%USERPROFILE%\.codeium\windsurf\mcp_config.json`
 
-2. Wink MCP sunucu girdilerini ekleyin:
+2. Wink MCP sunucu girişlerini ekleyin:
 
    ```json title="~/.codeium/windsurf/mcp_config.json"
    {
      "mcpServers": {
-       "wink-inventory": {
+       "wink-extranet-rates": {
          "type": "http",
-         "url": "https://api.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/rates"
        },
-       "wink-integrations": {
+       "wink-extranet-operations": {
          "type": "http",
-         "url": "https://integrations.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/operations"
        }
      }
    }
    ```
 
-3. Windsurf'u **tamamen yeniden başlatın** (Dosya → Çıkış, sonra tekrar açın).
+3. **Windsurf'u tamamen yeniden başlatın** (Dosya → Çıkış, sonra yeniden açın).
 
-4. **Ayarlar → MCP Sunucuları** bölümüne gidin ve her iki sunucunun bağlı olduğunu doğrulayın. Windsurf, ilk kullanımda `https://iam.wink.travel` adresinde bir tarayıcı sekmesi açar.
+4. **Ayarlar → MCP Sunucuları** bölümüne gidin ve her iki sunucunun bağlı olduğunu doğrulayın. Windsurf ilk kullanımda `https://iam.wink.travel` adresine bir tarayıcı sekmesi açar.
 
-5. **Wink'te oturum açın** ve izinleri onaylayın. Kimlik doğrulama tamamlandığında sunucular ayarlar panelinde yeşile döner.
+5. **Wink'te oturum açın** ve izinleri onaylayın. Kimlik doğrulandıktan sonra sunucular ayarlar panelinde yeşile döner.
 </Steps>
 
 :::note
-Windsurf MCP desteği için **1.4** veya daha yeni sürüm gereklidir. **Yardım → Windsurf Hakkında** bölümünden sürümü kontrol edin ve gerekirse Windsurf web sitesinden güncelleyin.
+Windsurf MCP desteği **1.4** veya daha yeni sürüm gerektirir. **Yardım → Windsurf Hakkında** üzerinden kontrol edin ve gerekirse Windsurf web sitesinden güncelleyin.
 :::
 
   </TabItem>
@@ -253,32 +349,32 @@ Cline, yerleşik MCP sunucu yöneticisi olan bir VS Code uzantısıdır. Manuel 
 
 2. Aktivite Çubuğundaki (sol kenar çubuğu) **Cline simgesine** tıklayarak Cline panelini açın.
 
-3. Cline araç çubuğundaki **MCP Sunucuları** simgesine (fiş simgesi) tıklayın, ardından **MCP Ayarlarını Düzenle**'yi seçin.
+3. Cline araç çubuğundaki **MCP Sunucuları simgesine** (fiş simgesi) tıklayın, ardından **MCP Ayarlarını Düzenle**'yi seçin.
 
-4. VS Code, `cline_mcp_settings.json` dosyasını açar. Wink girdilerini ekleyin:
+4. VS Code `cline_mcp_settings.json` dosyasını açar. Wink girişlerini ekleyin:
 
    ```json title="cline_mcp_settings.json"
    {
      "mcpServers": {
-       "wink-inventory": {
+       "wink-extranet-rates": {
          "type": "http",
-         "url": "https://api.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/rates"
        },
-       "wink-integrations": {
+       "wink-extranet-operations": {
          "type": "http",
-         "url": "https://integrations.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/operations"
        }
      }
    }
    ```
 
-5. **Dosyayı kaydedin.** Cline otomatik olarak yeniden yüklenir ve `https://iam.wink.travel` adresinde bir tarayıcı sekmesi açar.
+5. **Dosyayı kaydedin.** Cline otomatik olarak yeniden yüklenir ve `https://iam.wink.travel` adresine bir tarayıcı sekmesi açar.
 
 6. **Wink'te oturum açın** ve izinleri onaylayın. MCP Sunucuları panelinde her iki sunucu da aktif görünür.
 </Steps>
 
 :::tip[Alternatif: URL ile ekleyin]
-MCP Sunucuları panelinde **Sunucu Ekle**'ye tıklayın ve `https://api.wink.travel/mcp` adresini doğrudan yapıştırın. Cline yapılandırmayı otomatik doldurur ve JSON düzenlemeden kimlik doğrulamasını yönetir.
+MCP Sunucuları panelinde **Sunucu Ekle**'ye tıklayın ve `https://api.wink.travel/mcp/extranet/rates` gibi bir araç seti URL'sini doğrudan yapıştırın. Cline yapılandırmayı otomatik doldurur ve JSON düzenlemeden kimlik doğrulamayı yönetir.
 :::
 
   </TabItem>
@@ -286,14 +382,17 @@ MCP Sunucuları panelinde **Sunucu Ekle**'ye tıklayın ve `https://api.wink.tra
 
 ---
 
-## Kapsamlar
+## İzinler (Scopes)
 
-İzin ekranını onayladığınızda, ajanın hangi izinleri istediğinin dökümünü görürsünüz. MCP istemcileri, platformun geri kalanıyla aynı izin sözlüğünü kullanır — tam liste için [Kimlik Doğrulama sayfasındaki kapsam referansına](/tr/developers/authentication#scopes) bakın.
+İzin ekranını onayladığınızda, ajanın istediği izinlerin dökümünü görürsünüz. MCP istemcileri platformun geri kalanıyla aynı izin sözlüğünü kullanır — tam
+[izin referansını Kimlik Doğrulama sayfasında](/tr/developers/authentication#scopes) görebilirsiniz.
 
 MCP'ye özgü iki şey vardır:
 
-- **`mcp.read` `mcp.write` `mcp.remove` kapsamları MCP taşımasını açmak için ek olarak gereklidir.** `mcp.*` kapsamına sahip bir istemci `/mcp` yoluna erişebilir, ancak çağırdığı her araç yine de sarmaladığı uç noktanın bölüm kapsamını uygular (örneğin `booking.read`).
-- **AI istemcisi yalnızca ihtiyaç duyduğu kapsamları ister.** İzin ekranında bireysel izinleri reddedebilirsiniz — reddedilen kapsam gerektiren araçlar çağrıldığında hata döner.
+- **`mcp.read`, `mcp.write`, `mcp.remove` izinleri MCP taşıma açmak için ayrıca gereklidir.** `mcp.*` iznine sahip bir istemci herhangi bir Wink MCP uç noktasına erişebilir, ancak çağırdığı her araç yine de sarmaladığı uç noktanın bölüm iznini uygular (örneğin `booking.read`).
+- **AI istemcisi yalnızca ihtiyaç duyduğu izinleri ister.** İzin ekranında bireysel izinleri reddedebilirsiniz — reddedilen izne ihtiyaç duyan araçlar çağrıldığında hata döner.
+
+**Araç setleri bunu değiştirmez.** Bağlandığınız uç nokta hangi araçların *listeleneceğine* karar verir, ne yapabileceklerine değil. `/mcp/payment`'e bağlanmak size önceden sahip olmadığınız finansal izin vermez, `/mcp/reference`'e bağlanmak da oradaki bir aracın kendi iznini uygulamasını engellemez. Yetkilendirme, her araç çağrısında tokenınız ve hesabınızın izinleriyle belirlenir.
 
 ---
 
@@ -306,51 +405,63 @@ AI istemciniz henüz etkileşimli PKCE akışını desteklemiyor olabilir. Günc
 - **Codex CLI:** `npm install -g @openai/codex`
 - **Claude Desktop / ChatGPT masaüstü:** uygulamanın yerleşik güncelleyicisinden güncelleyin
 
-**Oturum açtıktan sonra `401 Unauthorized` hatası**
+**Oturum açtıktan sonra `401 Unauthorized`**
 
-Önbelleğe alınan belirteciniz eski olabilir. Sunucuyu kaldırıp yeniden ekleyerek yeni oturum açmayı tetikleyin:
+Önbelleğe alınan token süresi dolmuş olabilir. Sunucuyu kaldırıp yeniden ekleyerek yeni oturum açmayı tetikleyin:
 
 ```bash
 # Claude Code
-claude mcp remove wink-inventory
-claude mcp add wink-inventory https://api.wink.travel/mcp --transport http
+claude mcp remove wink-rates
+claude mcp add wink-rates https://api.wink.travel/mcp/extranet/rates --transport http
 ```
 
-Claude Desktop ve ChatGPT için, ayarlardan sunucu girdisini kaldırın, uygulamayı yeniden başlatın ve tekrar ekleyin.
+Claude Desktop ve ChatGPT için ayarlardan sunucu girişini kaldırın, uygulamayı yeniden başlatın ve tekrar ekleyin.
 
-**Belirli bir araç çağrısında `403 Forbidden` hatası**
+**Belirli bir araç çağrılırken `403 Forbidden`**
 
-Araç, izin ekranında onaylamadığınız bir kapsam gerektiriyor. Sunucuyu yeniden bağlayın — izin ekranı tekrar açılır ve eksik izni onaylayabilirsiniz.
+Araç, izin ekranında onaylamadığınız bir izne veya hesabınızda olmayan bir izne ihtiyaç duyuyor. Sunucuyu yeniden bağlayın — izin ekranı tekrar açılır ve eksik izni onaylayabilirsiniz. Hala başarısız olursa, araç hesabınızda olmayan bir izne ihtiyaç duyuyor; farklı bir araç setine bağlanmak yardımcı olmaz çünkü araç setleri izin vermez.
 
-**Sunucu görünüyor ama araç çağrıları "hesap bulunamadı" hatası veriyor**
+**İhtiyacım olan araç listede yok**
 
-Wink hesabınızda yönetim varlığı yok. MCP sunucusunu kullanmadan önce [Wink Portal](https://app.wink.travel) adresine gidip hesabınızın kurulu olduğundan emin olun.
+Muhtemelen o işi kapsayan bir araç setine bağlı değilsiniz. [Uç nokta dizinini](#endpoint-directory) kontrol edin ve işi kapsayan araç setini ekleyin — bağlantılar bağımsızdır, birini eklemek diğerlerini değiştirmez. Hangi setin olduğunu bilmiyorsanız, geçici olarak `https://api.wink.travel/mcp`'ye bağlanın, aracı bulun, sonra hangi araç setinde olduğunu kontrol edin.
 
-**Belirteç oturum ortasında sona eriyor**
+**Araç seti uç noktasında `404 Not Found`**
 
-Belirteçler 3 saat geçerlidir. Claude Code ve Claude Desktop belirteçleri arka planda sessizce yeniler, oturumunuz kesilmez. Uzun süre boş kaldıktan sonra kimlik doğrulama hatası alırsanız yeni bir mesaj yazın — istemci otomatik olarak yeniden kimlik doğrulaması yapar.
+Yolu dikkatlice kontrol edin — iç içe araç setleri iki segmentlidir (`/mcp/extranet/rates`, `/mcp/extranet-rates` değil), düz olanlar ise bir segmentlidir (`/mcp/link-manager`). Ayrıca `/mcp` altındaki herhangi bir yola kimlik doğrulaması olmadan yapılan istek `401` döner, `404` değil; bu yüzden sadece `401` görmek uç noktanın var olup olmadığını göstermez.
 
-**Codex CLI "MCP sunucusuna ulaşılamıyor" hatası veriyor**
+**`api.wink.travel/mcp/channel-manager`'a bağlandım ama sonuç yok**
 
-`~/.codex/config.json` dosyanızın geçerli JSON olduğundan (sonunda virgül yok) ve `"type": "http"` olarak ayarlandığından emin olun. Codex, uzak sunucular için HTTP taşımasını gerektirir; stdio taşıması yalnızca yerel ikililer içindir.
+O uç nokta yoktur. Kanal yöneticisi entegrasyonu yalnızca `https://integrations.wink.travel/mcp/channel-manager` üzerinden sunulur. Kendi fiyatlarını elle okumak veya yazmak istiyorsanız, bu ayrı bir iştir ve ayrı bir uç noktadır — bkz. `/mcp/extranet/rates`.
 
-**ChatGPT "Bağlayıcılar" menüsü eksik**
+**Sunucu görünüyor ama araç çağrıları "hesap bulunamadı" diyor**
 
-MCP desteği için ChatGPT masaüstü uygulaması sürüm **1.2024.352** veya daha yenisi ve aktif Plus, Pro, Team veya Enterprise aboneliği gerekir. Uygulamayı güncelleyin ve Ayarlar → Hesap bölümünden planınızı doğrulayın.
+Wink hesabınızda yönetim varlığı yok. [Wink Portal](https://app.wink.travel)'a gidin ve hesabınızın kurulu olduğundan emin olun.
 
-**Cursor sunucusu kırmızı gösteriyor / "Bağlantı başarısız"**
+**Token oturum ortasında sona eriyor**
 
-`~/.cursor/mcp.json` dosyanızın geçerli JSON ve `"type": "http"` içerdiğini doğrulayın. Sonra **Ayarlar → Cursor Ayarları → MCP** bölümüne gidip **Yenile**'ye tıklayın. Hata devam ederse Cursor'u tamamen yeniden başlatın — yapılandırma değişiklikleri bazen yeniden başlatma olmadan algılanmaz.
+Tokenler 3 saat geçerlidir. Claude Code ve Claude Desktop tokenleri sessizce yeniler, oturumunuz kesilmez. Uzun süre boş kaldıktan sonra kimlik doğrulama hatası alırsanız yeni bir mesaj yazın — istemci otomatik olarak yeniden kimlik doğrulaması yapar.
+
+**Codex CLI "MCP server unreachable" gösteriyor**
+
+`~/.codex/config.json` dosyanızın geçerli JSON olduğundan (sonunda virgül yok) ve `"type": "http"` olarak ayarlandığından emin olun. Codex uzak sunucular için HTTP taşıma gerektirir; stdio taşıma yalnızca yerel ikililer içindir.
+
+**ChatGPT "Connectors" menüsü yok**
+
+MCP desteği ChatGPT masaüstü uygulaması sürüm **1.2024.352** veya daha yenisini ve aktif Plus, Pro, Team veya Enterprise aboneliğini gerektirir. Uygulamayı güncelleyin ve Ayarlar → Hesap bölümünden planınızı doğrulayın.
+
+**Cursor sunucusu kırmızı / "Bağlantı başarısız"**
+
+`~/.cursor/mcp.json` dosyanızın geçerli JSON ve `"type": "http"` içerdiğini doğrulayın. Sonra **Ayarlar → Cursor Ayarları → MCP** bölümüne gidin ve **Yenile**'ye tıklayın. Hata devam ederse Cursor'u tamamen yeniden başlatın — yapılandırma değişiklikleri bazen yeniden başlatma olmadan alınmaz.
 
 **Windsurf MCP sunucuları ayarlarda görünmüyor**
 
-Windsurf, `mcp_config.json` değişikliklerini algılamak için tam yeniden başlatma (sadece pencere yenileme değil) gerektirir. **Dosya → Çıkış** yapıp yeniden açın. Sunucular hâlâ görünmüyorsa Windsurf sürümünüzün **1.4+** olduğundan **Yardım → Windsurf Hakkında** bölümünden emin olun.
+Windsurf, `mcp_config.json` değişikliklerini almak için tam yeniden başlatma (sadece pencere yenileme değil) gerektirir. **Dosya → Çıkış** yapın ve yeniden açın. Sunucular hala görünmüyorsa Windsurf sürümünüzün **1.4+** olduğunu **Yardım → Windsurf Hakkında** üzerinden kontrol edin.
 
 **Cline "Sunucu Ekle" seçeneği görünmüyor**
 
-MCP sunucu yöneticisi için Cline **2.0** veya daha yeni sürüm gerekir. VS Code Uzantılar panelini açın, Cline'ı bulun ve güncelleme varsa **Güncelle**'ye tıklayın. Güncellemeden sonra VS Code'u yeniden yükleyin (`Ctrl+Shift+P` → "Developer: Reload Window").
+MCP sunucu yöneticisi Cline **2.0** veya daha yeni sürüm gerektirir. VS Code Uzantılar panelini açın, Cline'ı bulun ve güncelleme varsa **Güncelle**'ye tıklayın. Güncelledikten sonra VS Code'u yeniden yükleyin (`Ctrl+Shift+P` → "Developer: Reload Window").
 
 ---
 
-<LinkButton href="https://app.wink.travel" variant="primary" icon="external">Wink Portalını Aç</LinkButton>
+<LinkButton href="https://app.wink.travel" variant="primary" icon="external">Wink Portalı Aç</LinkButton>
 <LinkButton href="https://github.com/wink-travel" variant="secondary" icon="external">GitHub'da Wink</LinkButton>

@@ -22,7 +22,7 @@ Saznajte kako se Wink upoređuje sa drugim segmentima online turizma na tržišt
 | Pristup Web Component / SDK / API | 🟢 | 🟢 | ⚫️ | 🟢 | 
 | Direktni odnosi | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | Pregovarane provizije po prodajnom kanalu | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
-| Povezanost sa channel manager-om i PMS-om | 🟢 | 🟢 | 🟢 | 🟢 | 
+| Povezivanje sa channel manager-om i PMS-om | 🟢 | 🟢 | 🟢 | 🟢 | 
 | Dobavljač poseduje kupca | 🟢 | ⚫️ | 🟢 | 🟢 | 
 | Praćenje ROI | 🟢 | 🟢 | ⚫️ | ⚫️ | 
 | Plaćanje po učinku | 🟢 | 🟢 | ⚫️ | 🟢 | 
@@ -34,9 +34,9 @@ Saznajte kako se Wink upoređuje sa drugim segmentima online turizma na tržišt
 
 Neki hoteli pokušavaju da nas uporede sa njihovim internet booking engine-om koji je došao u paketu sa njihovim channel manager-om i traže od nas da im damo fiksnu, mesečnu cenu baziranu na broju soba u njihovom objektu.
 
-Mi nismo IBE i nadamo se da [Wink Academy](/sr/) pomaže da se to razjasni. Svaka usluga ima svoje prednosti i mane. Ako vaš IBE funkcioniše za vaš objekat, ostanite pri tome.  
+Mi nismo IBE i nadamo se da ovo pomaže da se razjasni razlika. Svaka usluga ima svoje prednosti i mane. Ako vaš IBE funkcioniše za vaš objekat, ostanite pri tome.  
 Wink postoji da popuni nekoliko praznina u turističkoj industriji i da sve to objedini na jednom mestu.
 
 :::tip
-Ne morate da zamenite svoj postojeći IBE. Međutim, preporučujemo da probate naš booking engine prilagođen društvenim mrežama, ili link manager, na nekom od vaših naloga na društvenim mrežama da vidite kako se konvertuje. Ne plaćate ništa ako nema rezervacija – Šta imate da izgubite? 😉
+Ne morate da zamenite svoj postojeći IBE. Međutim, preporučujemo da probate naš booking engine prilagođen društvenim mrežama, ili link menadžer, na nekom od vaših naloga na društvenim mrežama da vidite kako se konvertuje. Ne plaćate ništa ako nema rezervacija – Šta imate da izgubite? 😉
 :::

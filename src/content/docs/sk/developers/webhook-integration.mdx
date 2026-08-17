@@ -1,0 +1,186 @@
+---
+title: Integrácia Webhookov
+description: Tento návod ukazuje vývojárom, ako nastaviť webhooky na prijímanie notifikácií v reálnom čase o rezerváciách, platbách a ďalších udalostiach.
+sidebar:
+  order: 3
+---
+
+import { Steps, LinkButton } from '@astrojs/starlight/components';
+
+Webhooky umožňujú vašim systémom prijímať notifikácie v reálnom čase, keď sa na vašom účte Wink vyskytnú udalosti — nové rezervácie, zrušenia, aktualizácie platieb a ďalšie. Tento návod vás prevedie nastavením a najlepšími praktikami.
+
+## Publikum
+
+Tento návod je určený pre vývojárov integrujúcich Wink s externými systémami, ako sú systémy správy nehnuteľností (PMS), manažéri kanálov, CRM alebo vlastné dashboardy.
+
+## Ako webhooky fungujú
+
+1. Zaregistrujete URL webhooku vo Winku.
+2. Keď nastane udalosť (napr. nová rezervácia), Wink pošle HTTP POST na vašu URL.
+3. Váš server spracuje payload a odpovie s `200 OK`.
+
+## Nastavenie webhooku
+
+<Steps>
+1. Prihláste sa do svojho účtu (Extranet, Studio alebo TripPay — všetky podporujú webhooky).
+2. Prejdite do `Applications` a potom `Webhooks`. Pozrite si [Webhooky](/sk/portal/settings/webhooks).
+3. Kliknite na `Create webhook`.
+4. Zadajte **názov** (napr. "Synchronizácia rezervácií PMS").
+5. Zadajte svoju **webhook URL** — HTTPS endpoint na vašom serveri.
+6. **Vyberte udalosti** — Vyberte konkrétne udalosti, na ktoré sa chcete prihlásiť, alebo nechajte prázdne pre prijímanie všetkých udalostí.
+7. Prepnite **Enabled** na zapnuté.
+8. Kliknite na `Save` — odpoveď zobrazí váš **signing secret iba raz**; uložte si ho teraz.
+</Steps>
+
+## Typy udalostí
+
+Wink dnes publikuje 70 typov webhook udalostí naprieč rezerváciami, nehnuteľnosťami, účtami (správa entít)
+a inventárom (typy izieb, cenové plány, hlavné ceny, doplnky, zariadenia, predajné kanály, promo akcie).
+Bežné:
+
+| Kategória | Príklady |
+|---|---|
+| **Rezervácia** | `booking.create`, `booking.cancelled`, `booking.refund.partial`, `booking.refund.full`, `booking.review.created` |
+| **Nehnuteľnosť** | `property.created`, `property.status.updated`, `property.policy.updated` |
+| **Inventár** | `room_type.updated`, `rate_plan.created`, `master_rate.updated`, `special_rate.created`, `sales_channel.created` |
+| **Účet** | `managing_entity.created`, `managing_entity.status.updated`, `managing_entity.manager.added` |
+
+Kompletný, generovaný zoznam — s popisom, kto ho prijíma, a odkazom na referenčnú stránku každej udalosti — je **Katalóg webhook udalostí**. Referenčná stránka pre každú udalosť (JSON telo, hlavičky, retry politika) je v [Webhooks API](/sk/api/webhooks/).
+
+<LinkButton href="/sk/developers/webhook-events">
+  Zobraziť všetky typy udalostí
+</LinkButton>
+
+## Čo dostanete
+
+Každé doručenie je HTTP `POST` na vašu webhook URL s `Content-Type: application/json` a týmto obalom:
+
+```json
+{
+  "id": "0198a4f2-6b0e-7c1d-9a3e-2f4b8c6d1e0a",
+  "type": "booking.create",
+  "occurredAt": "2026-08-15T09:30:00Z",
+  "ownerIdentifier": "3c6b1a5d-8e2f-4a0b-9c7d-6e4f0a8b2c51",
+  "recipientRole": "SUPPLIER",
+  "schemaVersion": 2,
+  "object": { "...": "event-specific payload, e.g. BookingWebhookPayload" }
+}
+```
+
+- `id` — identifikátor udalosti; rovnaký pre každý endpoint vášho účtu, ktorý túto udalosť prijíma, a pre
+  každé opätovné doručenie. Použite ho ako svoj **idempotentný kľúč**.
+- `type` — kľúč typu udalosti (tiež odoslaný ako hlavička `Wink-Event-Type`). Rozlišujte podľa `type` a `schemaVersion`
+  na parsovanie `object`.
+- `object` — vybraný súhrn zdroja, ktorého sa udalosť týka (identifikátory, stav, polia, na ktoré reagujete)
+  plus `links.self`, kanonická REST URL dodávateľa plného zdroja. Stiahnite si ju s vlastnými API
+  povereniami, keď potrebujete viac než súhrn; ak udalosť prijímate ako reseller alebo cestovná agentúra, použite
+  príslušný endpoint zdroja vo vašom API pre rovnaký identifikátor.
+
+Každá schéma payloadu je zdokumentovaná pre udalosť v referencii [Webhooks API](/sk/api/webhooks/).
+
+### Hlavičky
+
+| Hlavička | Význam |
+|---|---|
+| `Wink-Version` | Verzia wire kontraktu, `2.0`. |
+| `Wink-Event-Id` | Rovnaké ako `id` v tele — váš idempotentný kľúč. |
+| `Wink-Delivery-Id` | Unikátne pre endpoint a udalosť; mení sa len pri opätovnom doručení. |
+| `Wink-Event-Type` | Rovnaké ako `type` v tele. |
+| `Wink-Delivery-Attempt` | Číslo pokusu o doručenie, začínajúce od 1. |
+| `Wink-Signature` | HMAC podpis — viď nižšie. |
+
+## Overovanie podpisov
+
+Každý webhook má **signing secret** (`whsec_…`), ktorý Wink zobrazí **iba raz**, keď webhook vytvoríte alebo
+otočíte jeho tajomstvo. Uložte ho ako heslo. Každé doručenie nesie
+
+```
+Wink-Signature: t=1755250200,v1=5d41402abc4b2a76b9719d911017c592…
+```
+
+kde `t` je Unix timestamp (v sekundách) a `v1` je hexadecimálny **HMAC-SHA256** reťazec
+`t + "." + rawBody`, kľúčovaný vaším tajomstvom, a `rawBody` je presné telo požiadavky v bajtoch, ako bolo prijaté —
+nepreserializujte JSON pred overením. Po dobu 24 hodín po otočení tajomstva hlavička nesie
+druhú hodnotu `v1=` podpísanú predchádzajúcim tajomstvom; doručenie akceptujte, ak **ktorýkoľvek** `v1` sedí.
+
+Overujte v štyroch krokoch: rozparsujte `t` a všetky `v1`; prepočítajte HMAC nad `t.rawBody` s vaším tajomstvom;
+porovnajte pomocou časovo bezpečného porovnania; odmietnite, ak `|now − t|` prekročí vašu toleranciu (odporúčané 5 minút).
+
+```js
+// Node.js (Express-style; uistite sa, že máte RAW telo, nie parsovaný objekt)
+import { createHmac, timingSafeEqual } from 'node:crypto';
+
+export function verifyWinkSignature(header, rawBody, secret, toleranceSeconds = 300) {
+  const parts = Object.fromEntries(header.split(',').map((p) => p.split('=').map((s) => s.trim())));
+  const t = Number(parts.t);
+  if (!Number.isFinite(t) || Math.abs(Date.now() / 1000 - t) > toleranceSeconds) return false;
+  const expected = createHmac('sha256', secret).update(`${t}.${rawBody}`).digest('hex');
+  return header
+    .split(',')
+    .filter((p) => p.trim().startsWith('v1='))
+    .map((p) => p.trim().slice(3))
+    .some((v1) => v1.length === expected.length && timingSafeEqual(Buffer.from(v1, 'utf8'), Buffer.from(expected, 'utf8')));
+}
+```
+
+```java
+// Java
+static boolean verify(String header, String rawBody, String secret, long nowSeconds, long toleranceSeconds) throws Exception {
+    long t = Long.MIN_VALUE;
+    List<String> signatures = new ArrayList<>();
+    for (String part : header.split(",")) {
+        String[] kv = part.trim().split("=", 2);
+        if (kv[0].equals("t")) t = Long.parseLong(kv[1]);
+        else if (kv[0].equals("v1")) signatures.add(kv[1]);
+    }
+    if (t == Long.MIN_VALUE || Math.abs(nowSeconds - t) > toleranceSeconds) return false;
+    Mac mac = Mac.getInstance("HmacSHA256");
+    mac.init(new SecretKeySpec(secret.getBytes(StandardCharsets.UTF_8), "HmacSHA256"));
+    byte[] expected = HexFormat.of().formatHex(mac.doFinal((t + "." + rawBody).getBytes(StandardCharsets.UTF_8))).getBytes(StandardCharsets.US_ASCII);
+    return signatures.stream().anyMatch(v1 -> MessageDigest.isEqual(expected, v1.toLowerCase().getBytes(StandardCharsets.US_ASCII)));
+}
+```
+
+Otočte tajomstvo z portálu alebo pomocou `POST /api/managing-entity/{id}/webhook/{webhookId}/rotate-secret`;
+odpoveď zobrazí nové tajomstvo iba raz, a staré zostáva platné 24 hodín, kým ho nasadíte.
+
+## Opakované pokusy a opätovné doručenie
+
+- Odpovedzte akýmkoľvek `2xx` do 10 sekúnd na potvrdenie prijatia. Ťažkú prácu robte asynchrónne.
+- `5xx`, timeout, `408` alebo `429` sa opakujú s odstupmi: po 1 minúte, 5 minútach, 30 minútach, 2 hodinách,
+  6 hodinách, 12 hodinách, potom denne — 10 pokusov za cca 3 dni — potom je doručenie označené ako **mŕtve**.
+- Akýkoľvek iný `4xx` sa považuje za "odmietnuté doručenie" a **neopakuje sa**.
+- Každá udalosť, doručenie a pokus (stav, ukážka odpovede) je viditeľný v **Applications > Webhooks**
+  a cez API (`…/webhook/event/grid`, `…/webhook/delivery/grid`). Môžete **opätovne doručiť** akékoľvek doručenie
+  (`POST …/webhook/delivery/{deliveryId}/redeliver`, čo spustí novú sériu pokusov), opätovne doručiť všetky mŕtve
+  doručenia webhooku naraz (`POST …/webhook/{webhookId}/redeliver-dead`), alebo jedno zrušiť.
+- Doručenia sa uchovávajú 30 dní.
+
+## Testovacie udalosti
+
+Pošlite si syntetickú udalosť `webhook.test` z portálu alebo pomocou
+`POST /api/managing-entity/{id}/webhook/{webhookId}/test`. Je podpísaná a doručená presne ako skutočná
+udalosť, takže môžete overiť svoj endpoint, kontrolu podpisu a spracovanie idempotencie pred prihlásením
+na živé udalosti.
+
+## Najlepšie praktiky
+
+- **Používajte HTTPS** — Wink posiela payloady iba na HTTPS endpointy.
+- **Odpovedajte rýchlo** — Vráťte `200 OK` hneď po prijatí payloadu. Ťažké spracovanie robte asynchrónne.
+- **Idempotencia** — Váš handler by mal byť idempotentný; deduplikujte podľa `Wink-Event-Id`. Wink opakuje, ak nedostane `2xx`.
+- **Overujte zdroj** — Overte hlavičku `Wink-Signature` (pozri [Overovanie podpisov](#verifying-signatures)) pred spracovaním; odmietnite všetko, čo neprejde.
+- **Logovanie** — Logujte každý prijatý webhook payload. Uľahčuje to ladenie integrácie.
+
+## Pozastavenie a vymazanie
+
+Webhook môžete **zakázať** bez vymazania. Tým pozastavíte doručovanie, aby ste mohli riešiť problémy bez straty konfigurácie. Keď ste pripravení, opäť ho zapnite.
+
+Vymazanie webhooku ho trvalo odstráni. Akákoľvek integrácia závislá na tomto webhooku prestane prijímať notifikácie.
+
+## Ďalšie čítanie
+
+- [Katalóg webhook udalostí](/sk/developers/webhook-events) — Každý typ udalosti, generovaný z katalógu platformy.
+- [Referenčný manuál Webhooks API](/sk/api/webhooks/) — Schémy payloadov, hlavičky a endpointy na správu prihlásení/doručení.
+- [Webhooky](/sk/portal/settings/webhooks) — Kompletná referencia správy webhookov.
+- [Applications](/sk/account/applications) — Správa vašich API poverení.
+- [Developers > APIs](/sk/api) — Kompletná API dokumentácia.

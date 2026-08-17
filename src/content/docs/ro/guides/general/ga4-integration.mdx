@@ -1,0 +1,163 @@
+---
+title: Integrare GA4 Analytics
+description: Cum să conectați propria proprietate Google Analytics 4 la Wink pentru a urmări rezervările, veniturile și parcursul oaspeților direct în propriul tablou de bord GA4.
+sidebar:
+  label: Integrare GA4 Analytics
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+Prin conectarea proprietății Google Analytics 4 la Wink, evenimentele de rezervare — de la vizualizările camerelor până la rezervările finalizate — sunt transmise automat către propriul tablou de bord GA4, alături de analizele proprii Wink. Fără cod, fără configurare tehnică din partea ta.
+
+<Aside type="tip">
+Ai nevoie de un singur lucru din GA4: un **ID de măsurare** (`G-XXXXXXXXXX`). Wink îl încarcă în browserul oaspetelui și transmite întregul tău funnel de rezervare — inclusiv rezervarea finalizată (`purchase`) — direct către proprietatea ta GA4. Nu este nevoie să creezi un secret API și nici să instalezi ceva pe propriul site.
+</Aside>
+
+---
+
+## Cum Funcționează
+
+```
+Introduci ID-ul tău de măsurare (G-XXXXXXXXXX) în portalul Wink
+       ↓
+Wink încarcă GA4 în browserul oaspetelui și transmite evenimentele de rezervare
+(vizualizări, coș, finalizare) către proprietatea ta GA4 în timp real
+       ↓
+Pe pagina de mulțumire, rezervarea finalizată (purchase) se declanșează în browser —
+Wink reconectează sesiunea GA4 pe care redirecționarea de plată a întrerupt-o, astfel
+vânzarea este atribuită vizitei originale a oaspetelui
+       ↓
+Te conectezi la analytics.google.com și vezi întregul funnel de rezervare
+```
+
+---
+
+## Ce Trebuie Să Faci
+
+<Steps>
+
+1. **Creează o Proprietate GA4**
+
+   Accesează [analytics.google.com](https://analytics.google.com): Admin → Creează Proprietate. Setează fusul orar și moneda pentru a corespunde pieței tale.
+
+2. **Creează un Flux de Date Web**
+
+   Admin → Fluxuri de date → Adaugă flux → Web. Introdu `wink.travel` ca URL. Acest lucru generează **ID-ul tău de măsurare** (`G-XXXXXXXXXX`). Copiază-l.
+
+3. **Introdu ID-ul de Măsurare în Portalul Wink**
+
+   Conectează-te la [app.wink.travel](https://app.wink.travel), selectează contul tău și deschide setările de personalizare. În secțiunea **Analytics & integrations**, lipește ID-ul de măsurare în câmpul **GA4 Measurement ID** și salvează. Gata — integrarea GA4 este activă.
+
+4. **Marchează `purchase` ca Eveniment Cheie**
+
+   Înapoi în proprietatea ta GA4: Admin → Evenimente → găsește `purchase` → activează **Mark as key event**. Astfel, rezervările finalizate vor apărea în raportul tău de Conversii.
+
+5. **Vizualizează Datele**
+
+   Conectează-te la [analytics.google.com](https://analytics.google.com) și vei vedea rezervările, veniturile și funnel-ul oaspeților — toate urmărite automat prin Wink.
+
+</Steps>
+
+<Aside type="note">
+Nu este nevoie să instalezi niciun cod de urmărire pe propriul site pentru această integrare. Wink se ocupă de tot — ID-ul tău de măsurare este pur și simplu destinația unde sunt trimise datele de rezervare.
+</Aside>
+
+<Aside type="tip">
+**GA4 și GTM pot fi folosite împreună.** Dacă folosești și un container Google Tag Manager (de exemplu un container Sojern), poți configura ambele simultan — nu se exclud reciproc. Vezi [GTM Analytics Integration](/ro/guides/general/gtm-integration).
+</Aside>
+
+---
+
+## Cum Folosește Wink ID-ul Tău de Măsurare în Motorul de Rezervări
+
+Totul se întâmplă **în browserul oaspetelui** — nu există export de date server-to-server și niciun secret API implicat.
+
+- **GA4-ul tău se încarcă pe paginile de rezervare.** Ori de câte ori un oaspete vizualizează proprietatea ta în motorul de rezervări Wink, Wink încarcă ID-ul tău de măsurare în browserul acestuia, alături de propriile analize Wink, citind din aceleași date partajate. Evenimentele de navigare — căutări, vizualizări camere, coș, finalizare — sunt transmise către proprietatea ta GA4 în timp real.
+- **Rezervarea finalizată se declanșează pe pagina de mulțumire.** Când oaspetele finalizează plata și ajunge pe pagina de confirmare, evenimentul `purchase` se declanșează client-side, transportând valoarea completă a rezervării, moneda și detaliile camerei.
+- **Redirecționarea de plată nu mai pierde vânzarea.** Plățile cu cardul trimit browserul oaspetelui către furnizorul de plată și înapoi, ceea ce în mod normal ar întrerupe sesiunea GA4 din browser și ar face ca rezervarea să pară o vizită „Directă” nouă. Pentru a preveni asta, Wink transmite identificatorii sesiunii GA4 prin URL-ul de întoarcere și **reconectează sesiunea originală** pe pagina de mulțumire *înainte* ca `purchase` să se declanșeze. Astfel, rezervarea finalizată este atribuită aceleiași vizite inițiale a oaspetelui — nu este contorizată ca o sesiune separată.
+
+<Aside type="note">
+Wink elimină duplicatele pentru `purchase` per rezervare, astfel încât reîmprospătarea paginii sau redirecționarea automată către detaliile rezervării nu dublează vânzarea.
+</Aside>
+
+---
+
+## Ce Poți Urmări
+
+Odată conectată, proprietatea ta GA4 primește întregul set de evenimente Enhanced E-commerce pentru proprietatea ta:
+
+### Descoperire
+
+| Eveniment | Ce Înseamnă |
+|---|---|
+| `view_item_list` | Un oaspete a văzut proprietatea ta într-o căutare sau listă de categorii |
+| `select_item` | Un oaspete a dat click pe proprietatea ta dintr-o listă |
+| `view_item` | Un oaspete a vizualizat pagina de detalii a hotelului tău |
+
+### Considerare
+
+| Eveniment | Ce Înseamnă |
+|---|---|
+| `view_promotion` | Un oaspete a văzut o ofertă promoțională pentru proprietatea ta |
+| `select_promotion` | Un oaspete a dat click pe o ofertă promoțională |
+| `add_to_wishlist` | Un oaspete a salvat proprietatea ta în lista de dorințe |
+
+### Funnel de Rezervare
+
+| Eveniment | Ce Înseamnă |
+|---|---|
+| `add_to_cart` | Un oaspete a selectat o cameră sau un pachet |
+| `view_cart` | Un oaspete a vizualizat sumarul rezervării |
+| `remove_from_cart` | Un oaspete a eliminat o cameră sau un pachet |
+| `begin_checkout` | Un oaspete a început procesul de finalizare |
+| `add_payment_info` | Un oaspete a introdus detaliile de plată |
+| `add_shipping_info` | Un oaspete a introdus detaliile personale |
+| `purchase` | Un oaspete a finalizat o rezervare |
+| `refund` | O rezervare a fost anulată și rambursată |
+
+Toate evenimentele includ dimensiuni relevante precum venituri, monedă, tip cameră și valoarea rezervării — oferindu-ți o imagine completă a parcursului oaspetelui de la prima impresie până la rezervarea finalizată. Pentru a debloca dimensiuni suplimentare la nivel de proprietate și cameră, cum ar fi `city_name`, `cancellation_policy`, `bed_type` și altele, vezi [Custom Dimensions in GA4](/ro/guides/general/gtm-integration#custom-dimensions-in-ga4).
+
+---
+
+## Urmărire Cross-Domain (Avansat)
+
+Integrarea standard de mai sus urmărește tot ce se întâmplă în Wink. Totuși, dacă dorești să urmărești oaspeții de pe propriul site până la finalizarea rezervării pe Wink — și să atribui corect sursa originală de trafic (Google Ads, campanii email, căutare organică etc.) — este necesar un pas suplimentar pe fiecare parte.
+
+<Aside type="caution">
+Această secțiune se aplică doar dacă ai GA4 instalat pe propriul site. Dacă nu folosești GA4 pe site-ul tău, integrarea standard de mai sus este tot ce ai nevoie.
+</Aside>
+
+### De Ce Este Important
+
+Fără urmărire cross-domain, un oaspete care vizitează mai întâi site-ul tău și apoi rezervă pe Wink va apărea în GA4 ca o sesiune **Directă**, fără legătură cu vizita anterioară. Orice click-uri Google Ads, campanii email sau vizite din căutare organică care au condus la rezervare nu vor primi credit.
+
+Cu urmărirea cross-domain configurată, vezi întregul parcurs al oaspetelui:
+
+```
+google.com (reclamă plătită)
+       ↓
+site-ul tău (oaspetelui îi navighează camerele)
+       ↓
+wink.travel (oaspetelui selectează camera și rezervă)
+       ↓
+achiziția este atribuită corect click-ului original Google Ads
+```
+
+### Acțiune Necesara: Tu
+
+Configurează proprietatea ta GA4 să recunoască `wink.travel` ca parte din propriul domeniu, nu ca o referință externă. Astfel, GA4 va uni cele două sesiuni într-un parcurs continuu al oaspetelui.
+
+<Steps>
+1. GA4 Admin → Fluxuri de date → fluxul tău
+2. Configurează setările tagului → **Configurează domeniile tale**
+3. Adaugă `wink.travel` ca domeniu legat
+4. Salvează
+</Steps>
+
+### Acțiune Necesara: Wink
+
+Contactează [Wink Support](https://app.wink.travel) și furnizează domeniul site-ului tău (ex. `yourhotel.com`). Wink va adăuga domeniul tău pe lista de excluderi de referințe în proprietatea GA4 Wink. Astfel, site-ul tău nu va fi înregistrat ca sursă de referință, ceea ce altfel ar suprascrie atribuirea originală a oaspetelui și ar începe o sesiune nouă.
+
+<Aside type="tip">
+Integrarea standard de mai sus este suficientă pentru majoritatea proprietăților și îți oferă vizibilitate imediată asupra rezervărilor și veniturilor pe Wink. Urmărirea cross-domain este o opțiune avansată, recomandată să fie configurată după ce te familiarizezi cu datele GA4 și dorești o atribuire mai detaliată.
+</Aside>

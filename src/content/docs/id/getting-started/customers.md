@@ -27,6 +27,14 @@ Perusahaan manajemen perhotelan dan perusahaan manajemen destinasi dapat mengelo
 
 Influencer menggunakan Wink untuk memonetisasi audiens mereka dengan lebih baik. Mereka melakukannya dengan bermitra dengan hotel, membuat penawaran khusus, dan memanfaatkan alat yang ramah sosial serta analitik kuat Wink untuk melacak produk mana yang paling laku​.
 
+## Agen bakat
+
+Agen bakat bagi kreator seperti halnya perusahaan manajemen bagi hotel. Jika Anda mewakili kumpulan influencer, pembuat konten, atau tokoh perjalanan, Anda dapat mengelola semua akun Wink mereka dari satu tempat — menemukan inventaris, menegosiasikan kesepakatan dengan properti, membangun dan menerbitkan konten, serta melacak kinerja seluruh daftar Anda daripada satu kreator sekaligus.
+
+Anda menegosiasikan biaya agen dengan setiap talenta Anda dan mendapatkan biaya tersebut dari setiap pemesanan yang mereka hasilkan. Biaya ini dibayarkan secara otomatis sebagai bagian dari pemesanan, jadi tidak perlu mengirim faktur ke talenta Anda sendiri dan tidak perlu mengejar komisi setelahnya. Talenta Anda tetap mengendalikan sepenuhnya — mereka memiliki akun mereka, mereka yang menerapkan biaya yang disepakati, dan mereka dapat menambahkan aturan kedaluwarsa atau mengakhiri pengaturan kapan saja mereka mau.
+
+Lihat [Perwakilan agen](/id/portal/settings/agency-representation) untuk cara pengaturannya.
+
 ## Agen perjalanan
 
 Agen perjalanan mendapatkan akses ke inventaris perjalanan di seluruh dunia dengan harga terbaik melalui [portal agen perjalanan](https://agent.wink.travel) khusus kami. Mereka dapat melakukan pemesanan melalui portal kami, melalui API kami, atau membiarkan pengguna mereka memesan sendiri di situs agen perjalanan yang menggunakan teknologi kami.
@@ -35,14 +43,14 @@ Agen perjalanan mendapatkan akses ke inventaris perjalanan di seluruh dunia deng
 
 Perusahaan membutuhkan lebih dari sekadar platform perjalanan:
 
-- Mereka membutuhkan itinerary yang terorganisir dengan baik yang mendukung fleksibilitas dan perubahan menit terakhir.
+- Mereka membutuhkan rencana perjalanan yang terorganisir dengan baik yang mendukung fleksibilitas dan perubahan menit terakhir.
 - Mereka membutuhkan alat komunikasi yang andal, seperti internet.
 - Mereka memiliki preferensi vendor dengan keanggotaan.
-- Mereka sering memiliki kartu kredit korporat dan menetapkan batas pengeluaran.
+- Mereka sering memiliki kartu kredit perusahaan dan menetapkan batas pengeluaran.
 - Mereka membutuhkan manajemen pengeluaran dan integrasi pelaporan.
 - Mereka memerlukan dukungan concierge, serta layanan MICE di acara.
 
-Pelancong korporat dapat mengelola akun mereka sendiri di [portal korporat](/id/portal/corporate/what-is-group) kami atau menggunakan plugin [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) dan integrasi [Concur](https://www.concur.com/) yang didukung resmi.
+Pelancong korporat dapat mengelola akun mereka sendiri di portal korporat kami atau menggunakan plugin [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) dan integrasi [Concur](https://www.concur.com/) yang didukung resmi.
 
 ## Pengembang
 
@@ -50,4 +58,4 @@ Meskipun kami membangun platform ini oleh dan untuk hotelier... Setiap baris kod
 
 ## Lainnya
 
-Siapa pun yang ingin menemukan dan menjual inventaris perjalanan dapat mengambil manfaat dari menggunakan Wink. Ubah passion Anda dalam perhotelan menjadi aksi dengan mendapatkan komisi besar dari setiap pemesanan.
+Siapa pun yang ingin menemukan dan menjual inventaris perjalanan dapat memperoleh manfaat dengan menggunakan Wink. Ubah passion Anda dalam perhotelan menjadi tindakan dengan mendapatkan komisi besar dari setiap pemesanan.

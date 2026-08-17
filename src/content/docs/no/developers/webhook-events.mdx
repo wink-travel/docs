@@ -1,331 +1,53 @@
 ---
 title: Katalog over webhook-hendelser
-description: Komplett referanse over alle webhook-hendelsestyper tilgjengelig på Wink-plattformen, organisert etter kategori.
+description: Hver webhook-hendelsestype på Wink-plattformen, generert fra plattformens hendelseskatalog — hvem de leveres til, og hvor nyttelasten er dokumentert.
 sidebar:
-  order: 3
+  order: 3.5
 ---
 
-import { LinkButton } from '@astrojs/starlight/components';
+import webhooks from '../../../../schemas/webhooks.json';
+import WebhookEventTypes from '@/components/webhooks/event-types.astro';
 
-Denne siden viser alle webhook-hendelser du kan abonnere på i Wink. For oppsettsinstruksjoner, se [Webhook Integration Guide](/no/guides/developers/webhook-integration) eller [Webhooks management page](/no/portal/settings/webhooks).
+Denne siden viser alle webhook-hendelser du kan abonnere på i Wink. For oppsettinstruksjoner, se [Webhook Integration Guide](/no/developers/webhook-integration) eller [Webhooks management page](/no/portal/settings/webhooks).
 
 ## Hvordan abonnere
 
 1. Gå til **Applications > Webhooks** i portalen din.
-2. Opprett en webhook og velg hvilke hendelser du vil motta.
-3. Wink sender en HTTP POST til endepunktet ditt hver gang hendelsen inntreffer.
-
-For fullstendige oppsettstrinn og beste praksis, se [Webhook Integration](/no/guides/developers/webhook-integration).
-
----
-
-## Håndtering av enhetshendelser
-
-Hendelser for håndtering av enheter (eiendommer, tilknyttede selskaper, selskaper) og deres administrasjon.
-
-### Livssyklus
-
-| Hendelse | Nøkkel | Beskrivelse |
-|---|---|---|
-| Enhet opprettet | `managing_entity.created` | En ny administrerende enhet har blitt opprettet. |
-| Enhet slettet | `managing_entity.deleted` | En administrerende enhet har blitt slettet. |
-| Status oppdatert | `managing_entity.status.updated` | Enhetens status har endret seg. |
-| Under vurdering | `account.under_review` | Enhetskonto er under vurdering. |
-
-### Abonnement
-
-| Hendelse | Nøkkel | Beskrivelse |
-|---|---|---|
-| Abonnement opprettet | `managing_entity.subscription.provisioned` | Et nytt abonnement har blitt opprettet. |
-| Abonnement endret | `managing_entity.subscription.changed` | Abonnementsplanen har blitt endret. |
-| Abonnementsfaktura endret | `managing_entity.subscription.invoice.changed` | Abonnementsfakturaen har blitt oppdatert. |
-
-### Lederens livssyklus
-
-| Hendelse | Nøkkel | Beskrivelse |
-|---|---|---|
-| Leder lagt til | `managing_entity.manager.added` | En ny leder har blitt lagt til. |
-| Leder invitert | `managing_entity.manager.invited` | En lederinvitasjon har blitt sendt. |
-| Leder fjernet | `managing_entity.manager.removed` | En leder har blitt fjernet. |
-| Leder akseptert | `managing_entity.manager.accepted` | En lederinvitasjon har blitt akseptert. |
-| Leder avvist | `managing_entity.manager.rejected` | En lederinvitasjon har blitt avvist. |
-| Eier satt | `managing_entity.manager.owner.set` | Eierskap til enheten har blitt overført. |
-| Ledere oppdatert | `account.managers.update` | Listen over ledere har endret seg. |
-
-### Enhetsinformasjon
-
-| Hendelse | Nøkkel | Beskrivelse |
-|---|---|---|
-| Informasjon oppdatert | `managing_entity.information.updated` | Enhetsinformasjon har blitt oppdatert. |
-| Adresse oppdatert | `managing_entity.city.updated` | Enhetens adresse/by har blitt endret. |
-| Navn oppdatert | `managing_entity.name.updated` | Enhetens navn har blitt endret. |
-| URL-navn oppdatert | `managing_entity.url_name.updated` | Enhetens tilpassede URL har endret seg. |
-| Unik ID oppdatert | `managing_entity.unique_id.updated` | Enhetens unike identifikator har endret seg. |
-| Administrert av oppdatert | `managing_entity.managed_by.updated` | Enhetens overordnede/administrerende relasjon har endret seg. |
-| Place ID oppdatert | `managing_entity.place_id.updated` | Enhetens Google Place ID har endret seg. |
-| Kontorepresentant oppdatert | `managing_entity.account_representative.updated` | Kontorepresentanten har blitt endret. |
-| Profilbilde oppdatert | `managing_entity.profile_picture.updated` | Enhetens profilbilde har blitt oppdatert. |
-| Logo oppdatert | `managing_entity.logo.updated` | Enhetens logo har blitt oppdatert. |
-| Detaljer oppdatert | `account.details.updated` | Kontoens detaljfelter har endret seg. |
-| Agent oppdatert | `managing_entity.agent.updated` | Enhetens agent har blitt endret. |
-
-### Varsler
-
-| Hendelse | Nøkkel | Beskrivelse |
-|---|---|---|
-| Agent e-postvarsel | `managing_entity.agent.email.notification` | En e-postvarsling har blitt sendt til agenten. |
-| Leder e-postvarsel | `managing_entity.manager.email.notification` | En e-postvarsling har blitt sendt til en leder. |
-
-### Kontooppgaver
-
-| Hendelse | Nøkkel | Beskrivelse |
-|---|---|---|
-| Oppgave opprettet | `account.task.create` | En ny oppgave har blitt lagt til kontoen. |
-| Oppgave oppdatert | `account.task.update` | En kontooppgave har blitt endret. |
-| Oppgave fjernet | `account.task.remove` | En kontooppgave har blitt fjernet. |
-| Oppgave fullført | `account.task.complete` | En kontooppgave har blitt fullført. |
-| Skatte-ID-oppgave fullført | `account.task.tax_id.complete` | Oppgave for verifisering av skatte-ID er fullført. |
-
----
-
-## Bookinghendelser
-
-Hendelser for Wink booking-livssyklus, fra opprettelse til refusjoner og utbetalinger.
-
-### Kjernebooking
-
-| Hendelse | Nøkkel | Beskrivelse |
-|---|---|---|
-| Booking opprettet | `booking.create` | En ny booking har blitt opprettet. |
-| Booking kansellert | `booking.cancelled` | En booking har blitt kansellert. |
-| Booking mislyktes | `booking.failed` | Et bookingforsøk mislyktes. |
-| Booking behandles | `booking.processing` | Bookingbetaling behandles. |
-| Initialisering forespurt | `booking.initialize.request` | En bookinginitialisering er forespurt. |
-| Initialisering fullført | `booking.initialize.complete` | Bookinginitialisering er fullført. |
-
-### Refusjoner
-
-| Hendelse | Nøkkel | Beskrivelse |
-|---|---|---|
-| Refusjon forespurt | `booking.refund.request` | En refusjonsforespørsel er sendt inn. |
-| Refusjonsfeil | `booking.refund.error` | En feil oppstod under behandling av refusjon. |
-| Delvis refusjon | `booking.refund.partial` | En delvis refusjon er utstedt. |
-| Full refusjon | `booking.refund.full` | En full refusjon er utstedt. |
-
-### Utbetalinger
-
-| Hendelse | Nøkkel | Beskrivelse |
-|---|---|---|
-| Utbetaling opprettet | `booking.payout.create` | En utbetaling er opprettet for bookingen. |
-| Utbetaling fullført | `booking.payout.complete` | En utbetaling er fullført. |
-| Midler tilgjengelig | `booking.funds.available` | Bookingmidler er tilgjengelige for oppgjør. |
-| Midler bokført | `booking.funds.ledgered` | Bookingmidler er bokført i regnskapet. |
-
-### Anmeldelser
-
-| Hendelse | Nøkkel | Beskrivelse |
-|---|---|---|
-| Anmeldelse sendt inn | `booking.review.created` | En gjesteanmeldelse er sendt inn for en booking. |
-| Anmeldelse besvart | `booking.review.responded` | En eiendom har svart på en bookinganmeldelse. |
-
----
-
-## Eiendomshendelser
-
-Hendelser for eiendomsprofiler og innhold, sendt til eiendommens egne webhook-abonnenter.
-
-| Hendelse | Nøkkel | Beskrivelse |
-|---|---|---|
-| Eiendom opprettet | `property.created` | En ny eiendom har blitt opprettet. |
-| Eiendom oppdatert | `property.updated` | Eiendomsdetaljer har blitt oppdatert. |
-| Eiendom slettet | `property.deleted` | En eiendom har blitt fjernet. |
-| Eiendom registrert | `property.registered` | En eiendom har fullført registrering. |
-| Status oppdatert | `property.status.updated` | Eiendommens eksterne status har endret seg. |
-| Navn oppdatert | `property.name.updated` | Eiendommens navn har endret seg. |
-| Adresse oppdatert | `property.address.updated` | Eiendommens adresse har blitt oppdatert. |
-| Geolokalisering oppdatert | `property.geolocation.updated` | Eiendommens geolokalisering har blitt oppdatert. |
-| Profil oppdatert | `property.profile.updated` | Eiendomsprofilens innhold har endret seg. |
-| Tjenester oppdatert | `property.services.updated` | Eiendommens tjenester/fasiliteter har endret seg. |
-| Velkomsttekst oppdatert | `property.welcome_text.updated` | Eiendommens velkomstmelding har endret seg. |
-| Policy opprettet | `property.policy.created` | En ny eiendomspolicy har blitt opprettet. |
-| Policy oppdatert | `property.policy.updated` | En eiendomspolicy har blitt oppdatert. |
-
----
-
-## Lagerhendelser
-
-Hendelser for lagerartikler innen en eiendom, sendt til eiendommens webhook-abonnenter.
-
-### Romtyper
-
-| Hendelse | Nøkkel | Beskrivelse |
-|---|---|---|
-| Romtype opprettet | `room_type.created` | En ny romtype har blitt lagt til. |
-| Romtype oppdatert | `room_type.updated` | En romtype har blitt endret. |
-| Romtype slettet | `room_type.deleted` | En romtype har blitt fjernet. |
-
-### Priser
-
-| Hendelse | Nøkkel | Beskrivelse |
-|---|---|---|
-| Priser opprettet | `rate_plan.created` | En ny prisplan har blitt opprettet. |
-| Priser oppdatert | `rate_plan.updated` | En prisplan har blitt endret. |
-| Priser slettet | `rate_plan.deleted` | En prisplan har blitt fjernet. |
-
-### Hovedpriser
-
-| Hendelse | Nøkkel | Beskrivelse |
-|---|---|---|
-| Hovedpris opprettet | `master_rate.created` | En ny hovedpris har blitt opprettet. |
-| Hovedpris oppdatert | `master_rate.updated` | En hovedpris har blitt endret. |
-| Hovedpris slettet | `master_rate.deleted` | En hovedpris har blitt fjernet. |
-
-### Tillegg
-
-| Hendelse | Nøkkel | Beskrivelse |
-|---|---|---|
-| Tillegg opprettet | `add_on.created` | Et nytt tillegg har blitt opprettet. |
-| Tillegg oppdatert | `add_on.updated` | Et tillegg har blitt endret. |
-| Tillegg slettet | `add_on.deleted` | Et tillegg har blitt fjernet. |
-
-### Møterom
-
-| Hendelse | Nøkkel | Beskrivelse |
-|---|---|---|
-| Møterom opprettet | `meeting_room.created` | Et nytt møterom har blitt lagt til. |
-| Møterom oppdatert | `meeting_room.updated` | Et møterom har blitt endret. |
-| Møterom slettet | `meeting_room.deleted` | Et møterom har blitt fjernet. |
-
-### Restauranter
-
-| Hendelse | Nøkkel | Beskrivelse |
-|---|---|---|
-| Restaurant opprettet | `restaurant.created` | En ny restaurant har blitt lagt til. |
-| Restaurant oppdatert | `restaurant.updated` | En restaurant har blitt endret. |
-| Restaurant slettet | `restaurant.deleted` | En restaurant har blitt fjernet. |
-
-### Spa
-
-| Hendelse | Nøkkel | Beskrivelse |
-|---|---|---|
-| Spa opprettet | `spa.created` | Et nytt spa har blitt lagt til. |
-| Spa oppdatert | `spa.updated` | Et spa har blitt endret. |
-| Spa slettet | `spa.deleted` | Et spa har blitt fjernet. |
-
-### Aktiviteter
-
-| Hendelse | Nøkkel | Beskrivelse |
-|---|---|---|
-| Aktivitet opprettet | `activity.created` | En ny aktivitet har blitt lagt til. |
-| Aktivitet oppdatert | `activity.updated` | En aktivitet har blitt endret. |
-| Aktivitet slettet | `activity.deleted` | En aktivitet har blitt fjernet. |
-
----
-
-## Salgskanalhendelser
-
-Hendelser for distribusjonskanaler som kobler leverandører og tilknyttede selskaper. Sendes til både leverandørens og tilknyttede selskapers webhook-abonnenter.
-
-| Hendelse | Nøkkel | Beskrivelse |
-|---|---|---|
-| Salgskanal opprettet | `sales_channel.created` | En ny salgskanal har blitt opprettet. |
-| Salgskanal oppdatert | `sales_channel.updated` | En salgskanal har blitt endret. |
-| Salgskanal slettet | `sales_channel.deleted` | En salgskanal har blitt fjernet. |
-
----
-
-## Spesialprishendelser
-
-Hendelser for kampanje- og forhandlede priser på en eiendom.
-
-| Hendelse | Nøkkel | Beskrivelse |
-|---|---|---|
-| Spesialpris opprettet | `special_rate.created` | En ny spesialpris har blitt opprettet. |
-| Spesialpris oppdatert | `special_rate.updated` | En spesialpris har blitt endret. |
-| Spesialpris slettet | `special_rate.deleted` | En spesialpris har blitt fjernet. |
-| Prisendrer oppdatert | `rate_modifier.updated` | En prisendrer har blitt oppdatert. |
-
----
-
-## Mottakerhendelser
-
-Hendelser relatert til mottaker (betalingsmottaker) administrasjon.
-
-| Hendelse | Nøkkel | Beskrivelse |
-|---|---|---|
-| Mottaker opprettet | `payee.create` | En ny mottaker har blitt opprettet. |
-| Opprettelse av mottaker mislyktes | `payee.create.failure` | Opprettelse av mottaker mislyktes. |
-| Mottaker oppdatert | `payee.update` | En mottaker har blitt oppdatert. |
-| Oppdatering av mottaker mislyktes | `payee.update.failure` | Oppdatering av mottaker mislyktes. |
-
----
-
-## Betalingshendelser
-
-Interne betalingsbehandlingshendelser fra TripPay.
-
-| Hendelse | Nøkkel | Beskrivelse |
-|---|---|---|
-| Betaling vellykket | `internal.payment.succeeded` | Betalingen er behandlet med suksess. |
-| Betaling behandles | `internal.payment.processing` | Betalingen behandles nå. |
-| Betaling mislyktes | `internal.payment.failed` | Betalingsbehandlingen mislyktes. |
-
----
-
-## Channel manager-hendelser
-
-Hendelser relatert til channel manager-oppdateringer av priser og tilgjengelighet.
-
-| Hendelse | Nøkkel | Beskrivelse |
-|---|---|---|
-| Prisoppdatering | `channel-manager.update.rate` | Channel manager har sendt en prisoppdatering. |
-| Tilgjengelighetsoppdatering | `channel-manager.update.availability` | Channel manager har sendt en tilgjengelighetsoppdatering. |
-| Generell oppdatering | `channel-manager.update` | Generell channel manager-oppdatering. |
-
----
-
-## Regnskapsføringshendelser
-
-Hendelser relatert til regnskapsføringsposter.
-
-| Hendelse | Nøkkel | Beskrivelse |
-|---|---|---|
-| Regnskapsføring opprettet | `ledger.entry.create` | En ny regnskapsføringspost er registrert. |
-
----
-
-## E-posthendelser
-
-| Hendelse | Nøkkel | Beskrivelse |
-|---|---|---|
-| E-postkorrespondanse | `email.correspondence` | En utgående e-post er sendt. |
-
----
-
-## Oppsummering av hendelsestelling
-
-| Kategori | Antall |
-|---|---|
-| Hendelser for administrerende enhet | 33 |
-| Bookinghendelser | 16 |
-| Eiendomshendelser | 13 |
-| Lagerhendelser (romtyper, prisplaner, hovedpriser, tillegg, fasiliteter) | 24 |
-| Salgskanalhendelser | 3 |
-| Spesialprishendelser | 4 |
-| Mottakerhendelser | 4 |
-| Betalingshendelser | 3 |
-| Channel manager-hendelser | 3 |
-| Regnskapsføringshendelser | 1 |
-| E-posthendelser | 1 |
-| **Totalt** | **105** |
+2. Opprett en webhook og velg hvilke hendelser du vil motta — eller la listen stå tom for å motta alle hendelser.
+3. Wink sender en signert HTTP POST til endepunktet ditt hver gang hendelsen inntreffer. Se [Webhook Integration](/no/developers/webhook-integration) for informasjon om konvolutt, headere, signaturverifisering og gjentakelser.
+
+## Alle hendelsestyper
+
+Denne tabellen genereres fra plattformens hendelseskatalog ved bygging, så den stemmer alltid overens med API-et.
+Hendelsestyper merket som levert lenker til deres referanseside i [Webhooks API](/no/api/webhooks/), som
+dokumenterer den eksakte JSON-kroppen (`WebhookEnvelope` med et hendelsesspesifikt `object`), `Wink-*`-headerne og
+policy for gjentakelser. Hendelsestyper som ikke leveres, eksisterer internt (betalinger, regnskap, kanalmanager
+synkronisering, …) men sendes ikke til webhook-abonnenter for øyeblikket.
+
+**Mottakere** angir hvem som mottar en hendelse: `SUPPLIER` (hotellet), `AFFILIATE` (en forhandler med en aktiv
+salgskanal til hotellet), `AGENT` (reisebyrået som gjorde bestillingen) eller `SELF` (den styrende enheten
+hendelsen gjelder). Hver mottaker mottar samme nyttelastformat; rolletilpasset detalj finnes bak
+nyttelastens `links.self` URL.
+
+<WebhookEventTypes
+  types={webhooks['x-wink-event-types']}
+  referenceBase="/api/webhooks"
+  eventHeader="Hendelse"
+  descriptionHeader="Beskrivelse"
+  deliveredHeader="Levert"
+  recipientsHeader="Mottakere"
+  deliveredLabel="levert"
+  notDeliveredLabel="ikke levert"
+  noRecipientsLabel="—"
+/>
 
 :::tip
-Start med å abonnere på alle hendelser under utvikling. Når du forstår hvilke data systemet ditt trenger, kan du begrense abonnementene for å redusere støy.
+Start med å abonnere på alle hendelser under utvikling. Når du forstår hvilke nyttelaster systemet ditt trenger, kan du begrense abonnementene for å redusere støy. Send deg selv en testhendelse fra **Applications > Webhooks** (eller `POST …/webhook/{id}/test`) for å bekrefte endepunktet og signatursjekken før du går live.
 :::
 
 ## Videre lesning
 
-- [Webhook Integration Guide](/no/guides/developers/webhook-integration) — Oppsettstrinn og beste praksis.
+- [Webhook Integration Guide](/no/developers/webhook-integration) — Oppsett og beste praksis.
 - [Webhooks](/no/portal/settings/webhooks) — Administrer webhook-abonnementene dine.
-- [Applications](/no/portal/settings/applications) — Administrer API-legitimasjon.
+- [Applications](/no/account/applications) — Administrer API-legitimasjon.
 - [Build on Wink](/no/developers/build-on-wink) — Plattformoversikt for utviklere.

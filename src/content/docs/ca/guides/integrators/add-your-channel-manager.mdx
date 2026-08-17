@@ -1,0 +1,444 @@
+---
+title: Afegeix el teu Channel Manager
+description: Guia pas a pas per a desenvolupadors de channel manager i PMS que integren amb la plataforma Wink.
+sidebar:
+  order: 1
+---
+
+import { Steps, LinkButton } from '@astrojs/starlight/components';
+
+Aquesta guia acompanya els desenvolupadors de channel manager i PMS a través del procés complet d’integració amb Wink — des de la creació dels comptes fins a la mapeig d’inventari i la realització de la primera prova completa.
+
+## Entorns
+
+L’API de Channel Manager (Integracions) està disponible en dos entorns. Utilitza staging per a tot el desenvolupament i certificació; canvia a producció només en el moment del llançament.
+
+| Entorn     | URL base                          |
+| -----------| -------------------------------- |
+| Producció  | https://integrations.wink.travel |
+| Staging    | https://staging-integrations.wink.travel |
+
+## Referència de l’API
+
+L’API de Channel Manager segueix els estàndards del protocol OTA (SOAP/XML) per a compatibilitat amb sistemes hotelers existents. Comença revisant la documentació dels endpoints per a partners:
+
+<LinkButton href="/ca/partner-api/partner/">
+  Channel Manager API — Endpoints per a partners
+</LinkButton>
+
+## Passos d’integració
+
+<Steps>
+1. **Crea un compte d’usuari Wink**
+
+   Registra’t a [staging-app.wink.travel](https://staging-app.wink.travel). Tots els passos següents utilitzen staging — repetiràs tot el procés a producció abans del llançament.
+
+2. **Crea el teu compte d’Afiliat / Channel Manager**
+
+   Sota el teu nou usuari, crea un compte i selecciona el tipus de compte **Afiliat / Channel Manager**. Aquest és el compte amb què s’autenticarà la teva integració.
+
+3. **Registra una aplicació i genera el teu primer token**
+
+   Crea una [Aplicació](/ca/account/applications) i vincula-la al compte de channel manager del pas 2. Tria **MACHINE_2_MACHINE** com a tipus de client — és una integració servidor a servidor sense redirecció d’usuari final. Copia el **Client ID** i la **Clau Secreta** immediatament; la clau secreta es mostra només una vegada i no es pot recuperar.
+
+   L’aplicació és la que genera el token bearer que cada crida d’aquesta guia porta com a `Authorization: Bearer <access_token>`. Canvia les teves credencials per un token fent servir el grant `client_credentials` contra `https://staging-iam.wink.travel/oauth2/token`, sol·licitant els àmbits `integrations.read integrations.write`. Fes-ho abans de continuar — no podràs consultar identificadors de comptes ni accedir a cap endpoint de Channel Manager sense token. Consulta [Autenticació](/ca/developers/authentication) per al flux complet, l’host de producció i el catàleg complet d’àmbits.
+
+4. **Crea un compte d’Hotel**
+
+   Sota el mateix usuari, crea un segon compte i selecciona el tipus de compte **Hotel**. Això et proporciona una propietat per a proves sense implicar un hotel real.
+
+5. **Confirma que ambdós comptes estan aprovats**
+
+   Cap compte es pot utilitzar fins que no estigui aprovat: un compte de channel manager no aprovat no apareix a la llista de channel managers de cap hotel, i un hotel no aprovat no és retornat per l’API.
+
+   - **Staging** — l’aprovació és automàtica. Ambdós comptes són usables tan bon punt els crees, i no cal sol·licitar res.
+   - **Producció** — l’aprovació és manual. Envia al contacte d’integracions de Wink els noms dels dos comptes i l’usuari sota el qual estan, i espera la confirmació abans de continuar.
+
+6. **Connecta els dos comptes**
+
+   Inicia sessió al compte d’Hotel i ves a **Extranet → Distribució → Channel Manager**. Selecciona el teu compte de channel manager de la llista — això vincula la propietat a la teva integració. Si el teu compte no apareix a la llista, encara no està aprovat; consulta el pas 5.
+
+7. **Crea un tipus d’habitació bàsic i un pla tarifari**
+
+   Dins del compte d’Hotel, crea almenys un tipus d’habitació i un pla tarifari. Són necessaris abans que la teva integració pugui enviar tarifes i disponibilitat o recuperar reserves.
+
+8. **Mapeig i prova**
+
+   Al teu propi sistema, mapeja els identificadors de tipus d’habitació i pla tarifari retornats per l’API. Envia una actualització de tarifa i una d’disponibilitat, després fes una reserva de prova i comprova que l’endpoint de recuperació de reserves la retorna correctament.
+</Steps>
+
+:::note
+Repeteix tots els passos anteriors a producció abans del llançament, incloent registrar una aplicació separada per a producció — les credencials de staging no funcionen a producció. Preveu el temps per a la revisió de Wink al pas 5 — a diferència de staging, els comptes de producció no s’aproven automàticament. L’equip de Wink migrarà qualsevol hotel que ja utilitzi el teu channel manager al teu nou compte de producció.
+:::
+
+## Com trobar els identificadors dels teus comptes
+
+Cada ruta de l’API de Channel Manager està limitada al teu propi compte:
+
+```
+/api/managing-entity/{managingEntityIdentifier}/channel-manager/...
+```
+
+`{managingEntityIdentifier}` és l’ID del compte (un UUID) del **teu compte de channel manager** — no
+de l’hotel. Obtingues-lo, juntament amb l’ID i l’estat actual de tots els altres comptes que tingui el teu usuari,
+des de l’API de la Plataforma:
+
+```bash
+curl -s -X GET \
+  "https://staging-api.wink.travel/api/managing-entity/list" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+La resposta és un array dels comptes que posseeixes:
+
+```json
+[
+  {
+    "id": "3f1c8e42-7b90-4d55-a1e2-6c8d09b4f731",
+    "type": "CHANNEL_MANAGER",
+    "name": "El teu Channel Manager",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "d5b8a3c2-9e6f-4a1b-8d34-7c2e1f0a5b69",
+    "type": "HOTEL",
+    "name": "La teva propietat de prova",
+    "urlName": "your-test-property",
+    "status": "ACTIVE"
+  }
+]
+```
+
+- L’`id` de l’entrada channel manager és el teu **`{managingEntityIdentifier}`**.
+- L’`id` de l’entrada `HOTEL` és el teu **`{propertyIdentifier}`**.
+- `status` és on confirmes que cada compte està aprovat — més útil a producció, on
+  l’aprovació és manual. L’**hotel** ha de llegir `ACTIVE` abans que es pugui reservar o sigui visible per a l’API de Channel Manager. El teu compte de **channel manager** continuarà llegint `PENDING_APPROVAL` fins que passis la [Certificació](#certificació); això és esperat i no bloqueja el desenvolupament.
+
+:::caution
+Aquesta consulta es fa contra l’**API de la Plataforma** (`https://staging-api.wink.travel` a staging,
+`https://api.wink.travel` a producció), no contra els hosts de Channel Manager indicats a
+[Entorns](#entorns). Utilitza el mateix token d’accés — s’emet per usuari, no per API.
+:::
+
+## Certificació
+
+La certificació és com demostres — i com Wink confirma — que la teva integració mapeja correctament
+l’inventari, envia tarifes i disponibilitat, i rep reserves de principi a fi. Està dissenyada per ser
+auto-servei: tu controles cada pas des del teu propi sistema, i submits un únic paquet d’evidències al
+final. Wink revisa el paquet i, si és aprovat, canvia l’estat del teu compte d’Afiliat / Channel Manager
+de **PENDING_APPROVAL** a **ACTIVE**.
+
+La certificació es fa completament contra l’entorn staging
+(`https://staging-integrations.wink.travel`). Res d’aquesta secció toca producció.
+
+### Què demostraràs
+
+<Steps>
+1. **Autenticació.** El teu client OAuth2 pot obtenir un token d’accés i cridar amb èxit
+   l’endpoint `/ping` contra el teu compte d’Afiliat / Channel Manager.
+
+2. **Mapeig d’inventari.** Pots llistar l’hotel o hotels connectats al teu compte, recuperar la tarifa
+   mestre (tipus d’habitació × pla tarifari) que has configurat, i identificar correctament el
+   `masterRateIdentifier` que el teu sistema utilitzarà.
+
+3. **Enviament de tarifes i disponibilitat.** Pots actualitzar els set dies d’una setmana de certificació
+   de manera independent — una combinació diferent d’import, quantitat, flags de tancament a l’arribada / sortida,
+   i mínim/màxim de durada d’estada per a cada dia — i llegir els valors exactes de tornada de Wink.
+
+4. **Recuperació de reserves.** Pots recuperar una reserva real de staging feta contra la teva propietat de prova,
+   mostrar-la a la teva pròpia UI de PMS/CM amb l’habitació, hoste i total correctes, i després reflectir una
+   cancel·lació un cop Wink marqui la reserva com a cancel·lada.
+</Steps>
+
+### Prerequisits
+
+Abans de començar la certificació, completa els passos 1–7 de [Passos d’integració](#passos-d’integració) per
+assegurar-te que tens:
+
+- Un usuari Wink a staging amb un compte **Afiliat / Channel Manager** i un compte **Hotel**
+  connectats (Extranet → Distribució → Channel Manager). Els comptes de staging s’aproven
+  automàticament, així que no cal sol·licitar res aquí.
+- Almenys un **tipus d’habitació** i un **pla tarifari** creats dins del compte d’Hotel. Publica
+  l’hotel perquè sigui reservable a `https://staging-book.wink.travel/hotel/<your-slug>`.
+- Una aplicació registrada sota el teu compte d’Afiliat / Channel Manager amb un **Client ID**,
+  **Clau Secreta**, i els àmbits `integrations.read integrations.write`
+  (consulta [Autenticació](/ca/developers/authentication)).
+- El **`managingEntityIdentifier`** del teu compte d’Afiliat / Channel Manager i el
+  **`propertyIdentifier`** del teu compte d’Hotel (ambdós són UUIDs — consulta
+  [Com trobar els identificadors dels teus comptes](#com-trobar-els-identificadors-dels-teus-comptes)).
+
+### Convencions comunes de les peticions
+
+Cada petició d’aquesta secció utilitza aquests headers:
+
+```http
+Authorization: Bearer <access_token>
+Wink-Version: 2.0
+Accept: application/json
+```
+
+- `<access_token>` prové del grant `client_credentials` contra
+  `https://staging-iam.wink.travel/oauth2/token` — consulta [Autenticació](/ca/developers/authentication#staging).
+- El header `Wink-Version` és obligatori; si no es posa no es dirigirà a l’API JSON v2.
+- `Content-Type: application/json` s’afegeix a les peticions `PUT` que porten cos.
+
+Al llarg dels exemples següents, els placeholders corresponen als valors que vas obtenir a
+[Prerequisits](#prerequisits):
+
+| Placeholder               | Significat                                                                                   |
+|--------------------------|---------------------------------------------------------------------------------------------|
+| `{managingEntityIdentifier}` | L’ID del teu compte d’Afiliat / Channel Manager (UUID) — consulta [Com trobar els identificadors dels teus comptes](#com-trobar-els-identificadors-dels-teus-comptes). |
+| `{propertyIdentifier}`         | L’ID del compte d’Hotel (propietat) que vas connectar al compte de CM.                     |
+| `{masterRateIdentifier}`       | La tarifa mestre (combinació tipus d’habitació × pla tarifari) que certificaràs.           |
+| `{bookingIdentifier}`          | L’ID de la reserva de staging retornat per la crida de llista de reserves.                 |
+
+### Pas A — Ping
+
+Confirma que les teves credencials resolen al compte d’Afiliat / Channel Manager que esperes.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/ping" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Resposta esperada:
+
+```json
+{
+  "apiVersion": "2.0",
+  "name": "Nom del teu compte de Channel Manager",
+  "status": "PENDING_APPROVAL"
+}
+```
+
+Una resposta **200** amb un `name` coincident és el senyal que l’autenticació i la resolució del compte
+són correctes. `status` llegirà `PENDING_APPROVAL` fins que Wink et certifiqui.
+
+### Pas B — Llista de propietats
+
+Recupera la llista paginada d’hotels vinculats al teu compte i confirma que la teva propietat de prova hi és.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/list?page=0&size=25" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+La resposta és una `Page` de Spring amb entrades `ChannelManagerProperty`. Localitza l’entrada
+amb `identifier` que coincideixi amb el teu `{propertyIdentifier}` i anota el seu `currencyCode` — el necessitaràs
+per interpretar les actualitzacions de tarifes al [Pas D](#pas-d--carrega-la-setmana-de-certificació).
+
+:::caution
+Una llista buida és un senyal de configuració, no una petició mal formada. Un hotel només es retorna aquí
+un cop està **`ACTIVE`** *i* ha estat assignat al teu compte de channel manager a
+Extranet → Distribució → Channel Manager. Comprova amb `GET /api/managing-entity/list` (consulta
+[Com trobar els identificadors dels teus comptes](#com-trobar-els-identificadors-dels-teus-comptes)) abans de depurar més.
+A producció, afegeix una tercera causa: l’hotel és invisible aquí fins que Wink l’ha aprovat.
+:::
+
+### Pas C — Recupera les tarifes mestres
+
+Recupera la propietat juntament amb totes les tarifes mestres (combinació tipus d’habitació × pla tarifari)
+que publica. Tria la que vols certificar i anota el seu `identifier` com a
+`{masterRateIdentifier}`.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+L’envolcall de la resposta és `PropertyWithRoomRateList`: un bloc `property` més un array `rooms` d’entrades
+`PropertyRoomRate`. Cada entrada exposa el tipus d’habitació, pla tarifari, límits d’ocupació, tarifa base,
+i els modificadors de tarifa que conservaràs quan enviïs tarifes diàries.
+
+:::caution
+Certifica només una tarifa mestre per a tota la prova de certificació. Es preveu mapar més tipus d’habitació
+i plans tarifaris a producció, però el paquet d’evidències només ha de mostrar una tarifa mestre exercida de principi a fi.
+:::
+
+### Pas D — Carrega la setmana de certificació
+
+Carrega un **calendari de tarifes de set dies** que cobreixi els primers set dies del mes **següent**
+al mes en què comences la certificació. Per exemple, si comences la certificació el 21 d’agost,
+apunta de l’1 al 7 de setembre.
+
+Enviaràs **set crides `PUT` separades** — una per dia — on `startDate == endDate`. Cada dia
+porta una combinació deliberadament diferent d’import, quantitat, flags de tancament a l’arribada / sortida,
+i límits mínim/màxim de durada d’estada perquè cada camp editable s’exerciti almenys una vegada. Els valors són en la moneda de la propietat (anotada al Pas B); si omets `currencyCode` es posarà per defecte correctament.
+
+| Dia | Import | Quantitat | closedOnArrival | closedOnDeparture | minLengthOfStay | maxLengthOfStay | Què demostra |
+|-----|--------|-----------|-----------------|-------------------|-----------------|-----------------|--------------|
+| 1   | 100.00 | 5         | false           | false             | 1               | 30              | Dia base. |
+| 2   | 125.00 | 4         | false           | false             | 1               | 14              | Canvi d’import + quantitat + `maxLengthOfStay`. |
+| 3   | 150.00 | 3         | **true**        | false             | 1               | 30              | Canvi de `closedOnArrival`. |
+| 4   | 175.00 | 2         | false           | **true**          | 2               | 7               | Canvi de `closedOnDeparture` + finestra de durada d’estada més estricta. |
+| 5   | 200.00 | **0**     | false           | false             | 1               | 30              | Quantitat esgotada. |
+| 6   | 225.00 | 5         | false           | false             | **3**           | **5**           | Finestra restrictiva de durada d’estada. |
+| 7   | 250.00 | 1         | false           | false             | 1               | 30              | Disponibilitat d’última habitació. |
+
+El cos de la petició per al Dia 1 és així. Repeteix, ajustant `startDate` / `endDate` / valors per
+fila, per als Dies 2 a 7.
+
+```bash
+curl -s -X PUT \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/master-rate/{masterRateIdentifier}" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json" \
+  -d '{
+        "startDate": "2026-09-01",
+        "endDate":   "2026-09-01",
+        "amount":    100.00,
+        "master":    true,
+        "closedOnArrival":   false,
+        "closedOnDeparture": false,
+        "quantity":          5,
+        "minLengthOfStay":   1,
+        "maxLengthOfStay":   30
+      }'
+```
+
+Cada `PUT` respon amb un `200` i l’array d’entrades `PropertyRate` actualitzades per al rang enviat
+(una entrada quan `startDate == endDate`). Guarda aquesta resposta — formarà part de les teves evidències.
+
+:::note
+`master` ha de ser `true` a cada crida de la setmana de certificació. Això indica a Wink que la teva actualització és una tarifa plantilla, no una sobreescriptura per reserva.
+:::
+
+### Pas E — Llegeix la setmana de certificació
+
+Recupera tota la setmana en una sola crida i confirma que els valors emmagatzemats de cada dia coincideixen amb la fila que vas enviar al Pas D — incloent els flags booleans i la finestra de durada d’estada.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/master-rate/{masterRateIdentifier}?startDate=2026-09-01&endDate=2026-09-07" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+La resposta és un `PropertyRoomRateWithRateList`. El seu array `rates` ha de contenir **set** entrades,
+una per dia, cadascuna amb els camps `amount`, `quantity`, `closedOnArrival`, `closedOnDeparture`,
+`minLengthOfStay` i `maxLengthOfStay` que vas carregar. Qualsevol discrepància en algun camp significa que el corresponent
+`PUT` del Pas D no es va aplicar com esperat — corregeix-ho i verifica de nou abans de continuar.
+
+### Pas F — Fes una reserva de prova
+
+Obre la següent URL en un navegador, substituint `<your-slug>` pel slug del compte d’Hotel que vas
+publicar als Prerequisits:
+
+```
+https://staging-book.wink.travel/hotel/<your-slug>
+```
+
+Selecciona una data d’arribada i una de sortida que caiguin completament dins la teva setmana de certificació, tria la combinació de tipus d’habitació + pla tarifari que vas certificar, i completa la reserva. Staging utilitza un camí de pagament de prova — no es carrega cap targeta real.
+
+Quan aparegui la pàgina de confirmació, anota el **codi de reserva** (format `WNKxxxxx`) que es mostra a l’hoste.
+
+### Pas G — Recupera la reserva
+
+Recupera totes les reserves creades per la teva propietat de prova dins d’una finestra que abasta la marca temporal de la reserva.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/booking/list?startDate=2026-09-01T00:00:00&endDate=2026-09-08T00:00:00" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Troba l’entrada amb `bookingCode` que coincideixi amb el codi que vas anotar al Pas F. Anota el seu
+`bookingIdentifier`. Després recupera aquesta reserva individual:
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/booking/{bookingIdentifier}" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+La resposta és un `PropertyBooking`. Importa-la a la teva pròpia UI de PMS / channel manager i confirma
+que es mostren correctament per a un operador tots els següents:
+
+- `bookingCode`, `bookingIdentifier`, `createdDate`
+- Hoste: `firstName`, `lastName`, `email`
+- `totalAmount` + `currencyCode` (l’import net que l’hotel rep per totes les habitacions)
+- `paymentMethodType`, `paymentMethodStatus`, `salesChannelName`
+- Cada entrada a `roomStays`: `guestRoomName`, `ratePlanName`, `adults`, `children`, `startDate`,
+  `endDate`, i per habitació `amount`
+
+Fes una captura de pantalla de la reserva tal com apareix a la teva pròpia UI — aquesta captura és un dels
+artifacts d’evidència requerits.
+
+### Pas H — Cancel·la la reserva i verifica
+
+Demana a l’equip de Wink que cancel·li la reserva de certificació en el teu nom (o cancel·la-la tu mateix des de l’Extranet del compte d’Hotel si tens aquest permís). Després torna a recuperar la mateixa reserva amb la crida del Pas G.
+
+Confirma que la resposta ara mostra:
+
+- `cancelled: true`
+- Un timestamp `cancelDate` completat
+- Un `paymentMethodStatus` que reflecteixi el cicle de vida de la cancel·lació (`CANCELLED`, `PARTIALLY_REFUNDED`,
+  o `FULLY_REFUNDED` segons la política de reemborsament)
+
+Importa aquesta reserva actualitzada a la teva UI i confirma que la cancel·lació és visible per a l’operador — estat, timestamp de cancel·lació, i qualsevol indicador de reemborsament que la teva UI suporti. Fes una segona captura de pantalla de la reserva cancel·lada a la teva UI. Aquest és l’últim artifact d’evidència.
+
+### Pas I — Envia el teu paquet d’evidències
+
+Empaqueta el següent en un únic arxiu (`.zip`) anomenat
+`wink-cert-<nom-del-teu-channel-manager>-<aaaa-mm-dd>.zip`:
+
+<Steps>
+1. **Transcripció de l’API.** Per a cada petició que vas fer als Passos A a H, captura la petició HTTP completa (mètode, URL, headers de petició amb el valor `Authorization` redactat, i el cos JSON per a les crides `PUT`) i la resposta HTTP completa (codi d’estat, headers de resposta i cos JSON). Estructura la transcripció perquè cada parell petició/resposta estigui clarament etiquetat amb el pas corresponent (`step-a-ping.json`, `step-d-day-3-put.json`, `step-g-list-bookings.json`, etc.). Els fitxers `.http` en text pla o una exportació `.har` única són formats acceptables.
+
+2. **Captura de pantalla UI: reserva activa.** La captura del Pas G que mostra la reserva de certificació dins la teva pròpia UI de PMS / channel manager, amb hoste, dates, tipus d’habitació, pla tarifari i total clarament llegibles.
+
+3. **Captura de pantalla UI: reserva cancel·lada.** La captura del Pas H que mostra la mateixa reserva a la teva UI després de la cancel·lació, amb l’estat cancel·lat i el timestamp clarament llegibles.
+
+4. **Resum de la certificació.** Un `README.md` curt dins l’arxiu que llista:
+   - El nom i versió del teu channel manager / PMS.
+   - El `managingEntityIdentifier`, `propertyIdentifier`, `masterRateIdentifier` i
+     `bookingIdentifier` que vas utilitzar.
+   - El slug de l’hotel de staging (el `<your-slug>` a `https://staging-book.wink.travel/hotel/<your-slug>`).
+   - El rang de dates de la setmana de certificació (Dia 1 → Dia 7 en ISO-8601).
+   - El nom i correu electrònic de l’enginyer que va fer la certificació.
+</Steps>
+
+Envia l’arxiu al teu contacte d’integracions de Wink. Wink revisarà, farà seguiment de qualsevol
+discrepància i — si és aprovat — canviarà l’estat del teu compte d’Afiliat / Channel Manager de
+`PENDING_APPROVAL` a `ACTIVE`. La teva integració serà llavors elegible per a l’onboarding a producció.
+
+:::tip
+Automatitza la captura de la transcripció. Les set crides `PUT` del Pas D i la lectura del Pas E són
+la font més comuna de fallades en la certificació — un client HTTP interactiu que guardi cada
+petició i resposta mentre s’executa t’estalviarà haver de repetir tot el procés si algun valor falla per una coma decimal.
+:::
+
+## Notificacions webhook
+
+Pots subscriure’t als esdeveniments webhook de channel manager per rebre notificacions en temps real:
+
+- `channel-manager.update.rate` — Actualització de tarifa rebuda.
+- `channel-manager.update.availability` — Actualització de disponibilitat rebuda.
+- `channel-manager.update` — Actualització general de channel manager.
+
+Consulta el [Catàleg d’esdeveniments webhook](/ca/developers/webhook-events#channel-manager-events) per a més detalls.
+
+## Lectures recomanades
+
+- [Channel Manager API](/ca/partner-api/partner/) — Documentació completa dels endpoints de l’API.
+- [Proveïdors de tarifes](/ca/portal/extranet/rate-providers) — Gestió de proveïdors de tarifes a l’Extranet.
+- [Catàleg d’esdeveniments webhook](/ca/developers/webhook-events) — Tots els esdeveniments subscrivibles.
+- [Desenvolupa sobre Wink](/ca/developers/build-on-wink) — Visió general de la plataforma per a desenvolupadors.

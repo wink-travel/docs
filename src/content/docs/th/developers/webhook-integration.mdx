@@ -1,0 +1,166 @@
+---
+title: การรวมระบบ Webhook
+description: คู่มือนี้แสดงวิธีการตั้งค่า webhook สำหรับนักพัฒนาเพื่อรับการแจ้งเตือนแบบเรียลไทม์สำหรับการจอง การชำระเงิน และเหตุการณ์อื่นๆ
+sidebar:
+  order: 3
+---
+
+import { Steps, LinkButton } from '@astrojs/starlight/components';
+
+Webhook ช่วยให้ระบบของคุณได้รับการแจ้งเตือนแบบเรียลไทม์เมื่อเกิดเหตุการณ์ต่างๆ บนบัญชี Wink ของคุณ — การจองใหม่ การยกเลิก การอัปเดตการชำระเงิน และอื่นๆ คู่มือนี้จะแนะนำคุณผ่านการตั้งค่าและแนวทางปฏิบัติที่ดีที่สุด
+
+## กลุ่มเป้าหมาย
+
+คู่มือนี้สำหรับนักพัฒนาที่รวม Wink กับระบบภายนอก เช่น ระบบจัดการทรัพย์สิน (PMS), ตัวจัดการช่องทาง, CRM หรือแดชบอร์ดที่กำหนดเอง
+
+## วิธีการทำงานของ webhook
+
+1. คุณลงทะเบียน URL webhook บน Wink
+2. เมื่อเกิดเหตุการณ์ (เช่น การจองใหม่) Wink จะส่ง HTTP POST ไปยัง URL ของคุณ
+3. เซิร์ฟเวอร์ของคุณประมวลผล payload และตอบกลับด้วย `200 OK`
+
+## การตั้งค่า webhook
+
+<Steps>
+1. เข้าสู่ระบบบัญชีของคุณ (Extranet, Studio หรือ TripPay — ทั้งหมดรองรับ webhook)
+2. ไปที่ `Applications` แล้วเลือก `Webhooks` ดูที่ [Webhooks](/th/portal/settings/webhooks)
+3. คลิก `Create webhook`
+4. กรอก **ชื่อ** (เช่น "PMS Booking Sync")
+5. กรอก **webhook URL** — จุดสิ้นสุด HTTPS บนเซิร์ฟเวอร์ของคุณ
+6. **เลือกเหตุการณ์** — เลือกเหตุการณ์เฉพาะที่ต้องการสมัครรับ หรือปล่อยว่างเพื่อรับทุกเหตุการณ์
+7. สลับ **Enabled** เป็นเปิด
+8. คลิก `Save` — ระบบจะแสดง **signing secret** ให้คุณเห็นเพียงครั้งเดียว; ให้เก็บไว้ตอนนี้
+</Steps>
+
+## ประเภทเหตุการณ์
+
+Wink เผยแพร่เหตุการณ์ webhook 70 ประเภทในปัจจุบัน ครอบคลุมการจอง, ทรัพย์สิน, บัญชี (หน่วยงานจัดการ) และสินค้าคงคลัง (ประเภทห้อง, แผนราคา, ราคาหลัก, ส่วนเสริม, สิ่งอำนวยความสะดวก, ช่องทางขาย, โปรโมชั่น) ตัวอย่างที่พบบ่อย:
+
+| หมวดหมู่ | ตัวอย่าง |
+|---|---|
+| **การจอง** | `booking.create`, `booking.cancelled`, `booking.refund.partial`, `booking.refund.full`, `booking.review.created` |
+| **ทรัพย์สิน** | `property.created`, `property.status.updated`, `property.policy.updated` |
+| **สินค้าคงคลัง** | `room_type.updated`, `rate_plan.created`, `master_rate.updated`, `special_rate.created`, `sales_channel.created` |
+| **บัญชี** | `managing_entity.created`, `managing_entity.status.updated`, `managing_entity.manager.added` |
+
+รายการทั้งหมดที่สร้างขึ้น — พร้อมคำอธิบาย, ผู้รับ และลิงก์ไปยังหน้าข้อมูลอ้างอิงของแต่ละเหตุการณ์ — คือ **Webhook Events Catalog** หน้าข้อมูลอ้างอิงสำหรับทุกเหตุการณ์ (โครงสร้าง JSON, เฮดเดอร์, นโยบายการลองใหม่) อยู่ใน [Webhooks API](/th/api/webhooks/)
+
+<LinkButton href="/th/developers/webhook-events">
+  ดูทุกประเภทเหตุการณ์
+</LinkButton>
+
+## สิ่งที่คุณจะได้รับ
+
+การส่งแต่ละครั้งเป็น HTTP `POST` ไปยัง URL webhook ของคุณพร้อม `Content-Type: application/json` และโครงสร้างดังนี้:
+
+```json
+{
+  "id": "0198a4f2-6b0e-7c1d-9a3e-2f4b8c6d1e0a",
+  "type": "booking.create",
+  "occurredAt": "2026-08-15T09:30:00Z",
+  "ownerIdentifier": "3c6b1a5d-8e2f-4a0b-9c7d-6e4f0a8b2c51",
+  "recipientRole": "SUPPLIER",
+  "schemaVersion": 2,
+  "object": { "...": "event-specific payload, e.g. BookingWebhookPayload" }
+}
+```
+
+- `id` — ตัวระบุเหตุการณ์; เหมือนกันสำหรับทุก endpoint ของบัญชีคุณที่ได้รับเหตุการณ์นี้และสำหรับทุกการลองใหม่ ใช้เป็น **idempotency key** ของคุณ
+- `type` — คีย์ประเภทเหตุการณ์ (ส่งเป็นเฮดเดอร์ `Wink-Event-Type` ด้วย) ใช้ `type` และ `schemaVersion` เพื่อแยกวิเคราะห์ `object`
+- `object` — สรุปข้อมูลของทรัพยากรที่เหตุการณ์เกี่ยวข้อง (ตัวระบุ, สถานะ, ฟิลด์ที่คุณต้องดำเนินการ) พร้อม `links.self` ซึ่งเป็น URL REST canonical ฝั่งซัพพลายเออร์ของทรัพยากรเต็มรูปแบบ ดึงข้อมูลนี้ด้วย API ของคุณเองเมื่อคุณต้องการมากกว่าสรุป หากคุณได้รับเหตุการณ์ในฐานะผู้ขายต่อหรือเอเจนซี่ท่องเที่ยว ให้ใช้ endpoint ทรัพยากรที่สอดคล้องกันใน API ของคุณเองสำหรับตัวระบุเดียวกัน
+
+โครงสร้าง payload ของแต่ละเหตุการณ์มีเอกสารใน [Webhooks API](/th/api/webhooks/) อ้างอิง
+
+### เฮดเดอร์
+
+| เฮดเดอร์ | ความหมาย |
+|---|---|
+| `Wink-Version` | เวอร์ชันสัญญาณสาย, `2.0` |
+| `Wink-Event-Id` | เหมือนกับ `id` ในเนื้อหา — idempotency key ของคุณ |
+| `Wink-Delivery-Id` | เอกลักษณ์เฉพาะสำหรับแต่ละ endpoint ต่อเหตุการณ์; เปลี่ยนเฉพาะเมื่อคุณส่งซ้ำ |
+| `Wink-Event-Type` | เหมือนกับ `type` ในเนื้อหา |
+| `Wink-Delivery-Attempt` | หมายเลขความพยายามในการส่งครั้งนี้ เริ่มที่ 1 |
+| `Wink-Signature` | ลายเซ็น HMAC — ดูรายละเอียดด้านล่าง |
+
+## การตรวจสอบลายเซ็น
+
+Webhook แต่ละตัวมี **signing secret** (`whsec_…`) ที่ Wink แสดงให้เห็น **ครั้งเดียว** เมื่อคุณสร้าง webhook หรือหมุนเวียน secret เก็บไว้เหมือนรหัสผ่าน การส่งแต่ละครั้งจะมี
+
+```
+Wink-Signature: t=1755250200,v1=5d41402abc4b2a76b9719d911017c592…
+```
+
+โดยที่ `t` คือ timestamp แบบ Unix (วินาที) และ `v1` คือ HMAC-SHA256 แบบตัวพิมพ์เล็กของสตริง `t + "." + rawBody` โดยใช้ secret ของคุณเป็นกุญแจ และ `rawBody` คือไบต์ของเนื้อหาคำขอที่ได้รับ — ห้ามแปลง JSON ใหม่ก่อนตรวจสอบ ภายใน 24 ชั่วโมงหลังจากหมุนเวียน secret เฮดเดอร์จะมีค่า `v1=` ที่สองซึ่งเซ็นด้วย secret ก่อนหน้า; ยอมรับการส่งถ้า **ค่าใดๆ** ของ `v1` ตรงกัน
+
+ตรวจสอบใน 4 ขั้นตอน: แยกวิเคราะห์ `t` และทุก `v1`; คำนวณ HMAC ใหม่จาก `t.rawBody` ด้วย secret ของคุณ; เปรียบเทียบด้วยการเปรียบเทียบแบบเวลาคงที่; ปฏิเสธถ้า `|now − t|` เกินความทนทานที่ตั้งไว้ (แนะนำ 5 นาที)
+
+```js
+// Node.js (สไตล์ Express; ตรวจสอบให้แน่ใจว่าคุณมี RAW body ไม่ใช่อ็อบเจ็กต์ที่แยกวิเคราะห์แล้ว)
+import { createHmac, timingSafeEqual } from 'node:crypto';
+
+export function verifyWinkSignature(header, rawBody, secret, toleranceSeconds = 300) {
+  const parts = Object.fromEntries(header.split(',').map((p) => p.split('=').map((s) => s.trim())));
+  const t = Number(parts.t);
+  if (!Number.isFinite(t) || Math.abs(Date.now() / 1000 - t) > toleranceSeconds) return false;
+  const expected = createHmac('sha256', secret).update(`${t}.${rawBody}`).digest('hex');
+  return header
+    .split(',')
+    .filter((p) => p.trim().startsWith('v1='))
+    .map((p) => p.trim().slice(3))
+    .some((v1) => v1.length === expected.length && timingSafeEqual(Buffer.from(v1, 'utf8'), Buffer.from(expected, 'utf8')));
+}
+```
+
+```java
+// Java
+static boolean verify(String header, String rawBody, String secret, long nowSeconds, long toleranceSeconds) throws Exception {
+    long t = Long.MIN_VALUE;
+    List<String> signatures = new ArrayList<>();
+    for (String part : header.split(",")) {
+        String[] kv = part.trim().split("=", 2);
+        if (kv[0].equals("t")) t = Long.parseLong(kv[1]);
+        else if (kv[0].equals("v1")) signatures.add(kv[1]);
+    }
+    if (t == Long.MIN_VALUE || Math.abs(nowSeconds - t) > toleranceSeconds) return false;
+    Mac mac = Mac.getInstance("HmacSHA256");
+    mac.init(new SecretKeySpec(secret.getBytes(StandardCharsets.UTF_8), "HmacSHA256"));
+    byte[] expected = HexFormat.of().formatHex(mac.doFinal((t + "." + rawBody).getBytes(StandardCharsets.UTF_8))).getBytes(StandardCharsets.US_ASCII);
+    return signatures.stream().anyMatch(v1 -> MessageDigest.isEqual(expected, v1.toLowerCase().getBytes(StandardCharsets.US_ASCII)));
+}
+```
+
+หมุนเวียน secret จากพอร์ทัลหรือด้วย `POST /api/managing-entity/{id}/webhook/{webhookId}/rotate-secret`; ระบบจะแสดง secret ใหม่ให้เห็นครั้งเดียว และ secret เก่าจะยังตรวจสอบได้ 24 ชั่วโมงในขณะที่คุณเปลี่ยนใช้งาน
+
+## การลองใหม่และการส่งซ้ำ
+
+- ตอบกลับด้วยรหัสสถานะ `2xx` ภายใน 10 วินาทีเพื่อยืนยันการรับข้อมูล ทำงานหนักใดๆ ให้ทำแบบอะซิงโครนัส
+- รหัสสถานะ `5xx`, หมดเวลา, `408` หรือ `429` จะถูกลองใหม่โดยมีการหน่วงเวลา: หลัง 1 นาที, 5 นาที, 30 นาที, 2 ชั่วโมง, 6 ชั่วโมง, 12 ชั่วโมง แล้วทุกวัน — รวม 10 ครั้งในประมาณ 3 วัน — หลังจากนั้นการส่งจะถูกทำเครื่องหมายว่า **ตาย**
+- รหัสสถานะ `4xx` อื่นๆ จะถือว่า "คุณปฏิเสธการส่งนี้" และจะ **ไม่** ถูกลองใหม่
+- เหตุการณ์ การส่ง และความพยายามแต่ละครั้ง (สถานะ, ตัวอย่างการตอบกลับ) สามารถดูได้ใน **Applications > Webhooks** และผ่าน API (`…/webhook/event/grid`, `…/webhook/delivery/grid`) คุณสามารถ **ส่งซ้ำ** การส่งใดก็ได้ (`POST …/webhook/delivery/{deliveryId}/redeliver` ซึ่งเริ่มชุดการลองใหม่), ส่งซ้ำทุกการส่งที่ตายของ webhook พร้อมกัน (`POST …/webhook/{webhookId}/redeliver-dead`), หรือยกเลิกหนึ่งรายการ
+- การส่งจะถูกเก็บไว้ 30 วัน
+
+## เหตุการณ์ทดสอบ
+
+ส่งเหตุการณ์ `webhook.test` สังเคราะห์ให้ตัวเองจากพอร์ทัลหรือด้วย `POST /api/managing-entity/{id}/webhook/{webhookId}/test` เหตุการณ์นี้มีลายเซ็นและส่งเหมือนเหตุการณ์จริง เพื่อให้คุณตรวจสอบ endpoint, การตรวจสอบลายเซ็น และการจัดการ idempotency ก่อนสมัครรับเหตุการณ์จริง
+
+## แนวทางปฏิบัติที่ดีที่สุด
+
+- **ใช้ HTTPS** — Wink ส่ง payload ไปยังจุดสิ้นสุด HTTPS เท่านั้น
+- **ตอบกลับอย่างรวดเร็ว** — ส่งกลับ `200 OK` ทันทีที่ได้รับ payload ทำงานหนักใดๆ ให้ทำแบบอะซิงโครนัส
+- **Idempotency** — ตัวจัดการของคุณควรเป็น idempotent; กรองซ้ำโดยใช้ `Wink-Event-Id` Wink จะลองใหม่เมื่อไม่ได้รับการตอบกลับ `2xx`
+- **ตรวจสอบแหล่งที่มา** — ตรวจสอบเฮดเดอร์ `Wink-Signature` (ดู [การตรวจสอบลายเซ็น](#verifying-signatures)) ก่อนประมวลผล; ปฏิเสธทุกอย่างที่ตรวจสอบไม่ผ่าน
+- **บันทึกข้อมูล** — บันทึก payload webhook ทุกครั้งที่ได้รับ ช่วยให้การแก้ไขปัญหาการรวมระบบง่ายขึ้นมาก
+
+## การหยุดชั่วคราวและการลบ
+
+คุณสามารถ **ปิดใช้งาน** webhook โดยไม่ต้องลบ มันจะหยุดการส่งข้อมูลเพื่อให้คุณแก้ไขปัญหาโดยไม่สูญเสียการตั้งค่า เมื่อพร้อมแล้วให้เปิดใช้งานอีกครั้ง
+
+การลบ webhook จะลบถาวร การรวมระบบใดที่พึ่งพา webhook นั้นจะหยุดรับการแจ้งเตือน
+
+## การอ่านเพิ่มเติม
+
+- [Webhook Events Catalog](/th/developers/webhook-events) — ทุกประเภทเหตุการณ์ สร้างจากแคตตาล็อกของแพลตฟอร์ม
+- [Webhooks API reference](/th/api/webhooks/) — โครงสร้าง payload ของแต่ละเหตุการณ์, เฮดเดอร์ และจุดสิ้นสุดการจัดการการสมัครรับ/การส่ง
+- [Webhooks](/th/portal/settings/webhooks) — เอกสารอ้างอิงเต็มรูปแบบสำหรับการจัดการ webhook
+- [Applications](/th/account/applications) — จัดการข้อมูลรับรอง API ของคุณ
+- [Developers > APIs](/th/api) — เอกสาร API ฉบับเต็ม

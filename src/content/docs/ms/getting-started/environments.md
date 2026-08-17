@@ -5,12 +5,12 @@ sidebar:
   order: 8
 ---
 
-Di Wink, kami menjalankan 2 persekitaran untuk segala yang kami lakukan pada setiap masa:
+Di Wink, kami menjalankan 2 persekitaran untuk semua yang kami lakukan pada setiap masa:
 
 - Production adalah persekitaran stabil kami.
 - Staging adalah persekitaran pensijilan dan ujian kami.
 
-Jika anda seorang integrator, hotel atau ejen pelancongan yang ingin bersedia untuk pensijilan atau menguji platform Wink, buat akaun dalam persekitaran staging kami untuk memulakan.
+Jika anda seorang integrator, hotel atau ejen pelancongan yang ingin bersedia untuk pensijilan atau menguji platform Wink, buat akaun di persekitaran staging kami untuk memulakan.
 
 :::note
 Persekitaran staging tersedia atas permintaan. Ini bermakna ia akan tidur jika tiada penggunaan dan akan hidup semula apabila ada. Sila bersabar jika anda sedang membangunkannya. Ia mengambil masa kira-kira satu minit untuk memulakan semua pelayan selepas anda pertama kali berhubung dengan salah satu pelayan atau aplikasi kami.
@@ -33,10 +33,6 @@ Aplikasi kami juga mempunyai persekitaran ujian dan produksi untuk pelanggan kam
 
 | Aplikasi | Staging | Production
 | ------- | ------- | ---------- |
-| Agent | https://staging-agent.wink.travel | https://agent.wink.travel | 
-| Booking engine | https://staging-ota.wink.travel | https://ota.wink.travel | 
-| Extranet | https://staging-extranet.wink.travel | https://extranet.wink.travel | 
-| My Account | https://staging-app.wink.travel | https://app.wink.travel | 
-| Payment | https://staging-pay.wink.travel | https://pay.wink.travel | 
-| Studio | https://staging-studio.wink.travel | https://studio.wink.travel | 
-| WinkLinks | https://staging-i.trvl.as | https://i.trvl.as |
+| Portal | https://staging-app.wink.travel | https://app.wink.travel | 
+| Booking engine | https://staging-book.wink.travel | https://book.wink.travel | 
+| Link Manager | https://staging-i.trvl.as | https://i.trvl.as |

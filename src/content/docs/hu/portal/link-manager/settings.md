@@ -5,17 +5,17 @@ sidebar:
   order: 4
 ---
 
-A WinkLinks beállításainak kezeléséhez navigálj a fő navigációs sávban a `WinkLinks` menüpontra, majd kattints a `Beállítások` fülre.
+A WinkLinks beállításainak kezeléséhez navigálj a fő navigációs sávban a `WinkLinks` menüpontra, majd kattints a `Design` fülre.
 
-Íme, hogyan konfigurálhatod WinkLinks viselkedését a `Beállítások` segítségével:
+Íme, hogyan konfigurálhatod WinkLinks viselkedését a `Design` segítségével:
 
-- **Intelligens** Az intelligencia engedélyezésével megpróbáljuk lekérni a `gazdag` tartalmat olyan oldalakról, mint a `Wink`, `Spotify`, `Instagram`, `Facebook`, `YouTube`, `X (korábban Twitter)` és mások. *pl. Ha megosztasz egy IG posztot WinkLinks-en, a poszt úgy jelenik meg, ahogy az IG-n látod, kedvelésekkel, kommentekkel és interakciós lehetőséggel.*
-- **Kezdeti megjelenítés** Irányítsd, hogyan lép kapcsolatba először a közönséged az oldaladdal és hogyan látja a tartalmadat. Három lehetőség közül választhatsz:
+- **Intelligens** Az intelligencia engedélyezésével megpróbáljuk lekérni a `gazdag` tartalmat olyan oldalakról, mint a `Wink`, `Spotify`, `Instagram`, `Facebook`, `YouTube`, `X (korábban Twitter)` és mások. *pl. Ha megosztasz egy IG posztot WinkLinks-en, a poszt úgy jelenik meg, ahogy az IG-n látod, lájkokkal, kommentekkel és interakciós lehetőségekkel.*
+- **Kezdeti megjelenítés** Irányítsd, hogyan lép először kapcsolatba a közönséged az oldaladdal és hogyan látja a tartalmat. Három lehetőség közül választhatsz:
     - `Oszlop-alapú` dizájn. Ez a preferált dizájnunk, és ha nem jelenítesz meg túl sok tartalmat, nagyszerűen fog kinézni az oldaladon. Ugyanakkor `nehézzé` válhat, ha sok gazdag tartalmat osztasz meg.
-    - `Sor-alapú` dizájn. Ez egy módja annak, hogy a tartalmad kevésbé legyen megterhelő a böngészők számára, de ajánljuk, hogy a tartalom szövegmennyisége hasonló legyen, hogy a kártyák jobban igazodjanak egymáshoz.
+    - `Sor-alapú` dizájn. Ez egy módja annak, hogy a tartalmad kevésbé legyen megterhelő a böngészők számára, de ajánljuk, hogy a tartalom hasonló mennyiségű szöveget tartalmazzon a jobb kártyaillesztés érdekében.
     - `Lista-alapú` dizájn. A legtöbb más linkkezelő egyszerű listát jelenít meg URL-lel és minimális tartalommal. Ezt a megjelenítési módot válaszd, ha sok tartalmad van, és azt a lehető leggyorsabban szeretnéd megjeleníteni.
 - **Profilkép** Minden WinkLinks oldal tetején megjelenik a fiókod profilképe és a fiókleírásod. A profilképed kétféleképpen jelenítheted meg:
-    - `Kör` Ajánljuk a kör alakú stílust, ha a képen te magad vagy, vagy bármi más, ami beleillik egy kerek keretbe.
+    - `Kör` Ajánljuk a kör alakú stílust, ha a képen te magad vagy, vagy bármi, ami beleillik egy kerek keretbe.
     - `Téglalap` Ajánljuk a téglalap alakú stílust, ha a profilképed a céged logója, mivel a legtöbb céglogó téglalap alakú.
 - **Testreszabás** Személyre szabhatod WinkLinks oldalad megjelenését és hangulatát. Szabadon alakíthatod a színpalettádat, hogy tökéletesen illeszkedjen a márkádhoz. Ez a beállítás befolyásolja a Wink készletkártyák, térképek és rácsok megjelenését is.  
   

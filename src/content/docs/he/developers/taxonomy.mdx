@@ -1,0 +1,66 @@
+---
+title: טקסונומיה
+description: אוצר המילים המבוקר שהפלטפורמה Wink משתמשת בו — קודי OTA לנוחות, סוגי מיטות, נופים של חדרים ועוד, בנוסף לכל שפה ומטבע נתמכים.
+sidebar:
+  order: 12
+---
+
+import taxonomy from '@/data/taxonomy.json';
+import OtaCategories from '@/components/taxonomy/ota-categories.astro';
+import CodeTable from '@/components/taxonomy/code-table.astro';
+
+Wink מתארת מלאי באמצעות אוצר מילים מבוקר — מערכות קבועות של קודים עם משמעויות מוסכמות. כאשר
+אתה שולח `"5"` כנוחות במלון, הפלטפורמה קוראת זאת כ-*מיזוג אוויר*, וכל משתמש בנתונים אלו עושה כך גם כן.
+
+דף זה הוא ההתייחסות המתפרסמת לכל שלוש מערכות המילים:
+
+- **קודי OTA** — {taxonomy.ota.codeCount} קודים ב-{taxonomy.ota.categoryCount} קטגוריות, המכסים
+  נוחות, סוגי מיטות, נופים של חדרים, תכונות נגישות, מטבח ועוד.
+- **שפות** — {taxonomy.languages.list.length} השפות שבהן ניתן לכתוב ולהגיש תוכן.
+- **מטבעות** — {taxonomy.currencies.list.length} המטבעות שבהם ניתן לציין וליישב מחירים.
+
+הקודים יציבים. השמות עשויים להשתנות לנוחות בהירות, לכן יש להתאים לפי **הקוד**, לעולם לא לפי השם.
+
+## קודי OTA
+
+Wink פועלת לפי רשימות הקודים של [OpenTravel Alliance](https://opentravel.org/). לכל קטגוריה יש מזהה תלת-אותי — `HAC` לנוחות במלון, `BED` לסוגי מיטות — וכל קוד בתוך קטגוריה הוא ייחודי לה. אותו ערך מספרי משמעותו שונה בקטגוריות שונות, לכן קוד משמעותי רק לצד הקטגוריה אליה הוא שייך: `BED` `1` הוא *מיטה זוגית / מלאה*, בעוד ש-`HAC` `1` הוא *קבלה 24 שעות*.
+
+בחר קטגוריה כדי לראות את הקודים שלה.
+
+<OtaCategories
+  categories={taxonomy.ota.categories}
+  categoryHeader="קטגוריה"
+  descriptionHeader="תיאור"
+  countHeader="קודים"
+  codeHeader="קוד"
+  nameHeader="שם"
+/>
+
+## שפות
+
+תוכן — תיאורי נכס, שמות חדרים, מדיניות — ניתן לכתוב בכל אחת מהשפות האלה.
+הקודים הם תגיות [IETF BCP 47](https://www.rfc-editor.org/info/bcp47): שפת [ISO 639-1](https://www.iso.org/iso-639-language-code) בת שתי אותיות, ואופציונלית אחריה אזור [ISO 3166-1](https://www.iso.org/iso-3166-country-codes.html) שבו הפלטפורמה מבחינה בין וריאנטים אזוריים — `pt-BR` ו-`pt-PT` מטופלים בנפרד, כמו גם `es`, `es-AR`, ו-`es-MX`.
+
+ברירת המחדל של הפלטפורמה היא `{taxonomy.languages.default}`, המשמשת כאשר הבקשה אינה מציינת שפה וכאשר אין תרגום זמין.
+
+<CodeTable
+  rows={taxonomy.languages.list}
+  codeHeader="קוד"
+  nameHeader="שפה"
+  unnamedLabel="אין שם סטנדרטי"
+/>
+
+## מטבעות
+
+ניתן לציין וליישב מחירים בכל אחד מהמטבעות האלה. הקודים הם מזהים תלת-אותיים לפי [ISO 4217](https://www.iso.org/iso-4217-currency-codes.html).
+
+ברירת המחדל של הפלטפורמה היא `{taxonomy.currencies.default}`. זהו המטבע המוצג כברירת מחדל ויחידת המדידה שאליה מנורמלים נתוני הפלטפורמה; זה **אינו** המטבע שבו מתבצעת התשלום בפועל — המלונות מיישבים במטבע שלהם, ולכן מחיר שמצוין במטבע אחד ומשולם במטבע אחר כולל הפרש המרה.
+
+כמה פריטים אינם מטבעות לאומיים: `XAU` ו-`XAG` הם זהב וכסף, `XDR` הוא זכות משיכה מיוחדת של ה-IMF, ו-`BTC` הוא ביטקוין. אלה משמשים להערכה ודיווח, ואינם ניתנים לשימוש בדרך כלל כמטבע יישוב.
+
+<CodeTable
+  rows={taxonomy.currencies.list}
+  codeHeader="קוד"
+  nameHeader="מטבע"
+  unnamedLabel="אין שם סטנדרטי"
+/>

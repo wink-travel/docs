@@ -3,37 +3,37 @@ title: Şartlar ve Koşullar
 description: Tüm Wink kullanıcıları ve kuruluşları için Şartlar ve Koşullar.
 ---
 
-Her portalın farklı şartlar ve koşulları olabilir. Lütfen size uygun olan aşağıdaki bölüme gidin ve Hizmet Şartları ve Ödeme Koşulları adlı alt bölümü arayın.
+Wink’in farklı bölümleri farklı şartlar taşır. Aşağıda size uygun olan bölümü bulun — her birinin kendi Hizmet Şartları vardır ve para işlemlerini yöneten bölümlerin ayrıca Ödeme Şartları bulunur.
 
-## Ortaklık portalı
+## Tesisler
 
-Sosyal hesaplarınızı Wink ile para kazandırarak pasif gelir elde etmeyi öğrenmek isteyen ortaklar için.
-[Wink Studio](https://studio.wink.travel) profesyonel gibi satış yapmanız için gereken tüm araçlara sahiptir.
+Wink üzerinde envanter satan oteller, zincirler, markalar ve yönetim şirketleri için.
 
-<LinkButton href="/tr/portal/studio/what-is-studio">
-Wink Studio hakkında daha fazla bilgi edinin
-</LinkButton>
+- [Hizmet Şartları](/tr/portal/extranet/terms-of-service)
+- [Ödeme Şartları](/tr/portal/extranet/payment-terms)
+
+## Ortaklar
+
+Seyahat envanterini tanıtan ve komisyon kazanan yaratıcılar, influencerlar ve ortaklar için.
+
+- [Hizmet Şartları](/tr/portal/studio/terms-of-service)
+- [Ödeme Şartları](/tr/portal/studio/payment-terms)
+
+## Seyahat acenteleri
+
+Kayıtlı seyahat acenteleri için, müşterileri adına arama yapan, rezervasyon yapan ve kazanç sağlayanlar.
+
+- [Hizmet Şartları](/tr/portal/travel-agent/terms-of-service)
+- [Ödeme Şartları](/tr/portal/travel-agent/payment-terms)
 
 ## Rezervasyon motoru
 
-Tüm yollar rezervasyon motorumuza çıkar! Piyasadaki en özelleştirilebilir, seyahat odaklı rezervasyon motoru ile neler yapabileceğinizi öğrenin.
+Wink üzerinden seyahat rezervasyonu yapan herkes için.
 
-<LinkButton href="/tr/booking-engine/in-a-nutshell">
-Rezervasyon motorumuz hakkında daha fazla bilgi edinin
-</LinkButton>
+- [Hizmet Şartları](/tr/booking-engine/terms-of-service)
 
-## Mülk portalı
+## Herkes
 
-Wink'te satışa başlamak isteyen mülkler için. Kendinizi çevrimiçi olarak etkili bir şekilde satmak ve pazarlamak için araçlarımızı kullanın ve müşteriler ve rezervasyonlar almanıza yardımcı olacak dünyanın dört bir yanından bir ordu ortak edinin.
-
-<LinkButton href="/tr/portal/extranet/what-is-extranet">
-Wink Extranet hakkında daha fazla bilgi edinin
-</LinkButton>
-
-## Seyahat acentesi portalı
-
-Tedarikçilerden doğrudan özel oranlar, fırsatlar ve envanter sunan Wink'in seyahat acentelerine neler sunabileceğini öğrenmek isteyen seyahat acenteleri için.
-
-<LinkButton href="/tr/portal/travel-agent/what-is-agent">
-Wink Agent hakkında daha fazla bilgi edinin
-</LinkButton>
+- [Gizlilik Politikası](/tr/privacy)
+- [Fiyatlandırma](/tr/getting-started/pricing) — nelerin ücretsiz olduğu, bir rezervasyonun maliyeti ve kullanıma göre ücretlendirme nasıl işler.
+- [Veri silme talebi](/tr/getting-started/data-deletion-request)

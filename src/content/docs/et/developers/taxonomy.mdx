@@ -1,0 +1,67 @@
+---
+title: Taksonoomia
+description: Kontrollitud sõnavarade kogum, mida Wink platvorm kasutab — OTA koodid mugavuste, vooditüüpide, toa vaadete ja muu jaoks, samuti kõik toetatud keeled ja valuutad.
+sidebar:
+  order: 12
+---
+
+import taxonomy from '@/data/taxonomy.json';
+import OtaCategories from '@/components/taxonomy/ota-categories.astro';
+import CodeTable from '@/components/taxonomy/code-table.astro';
+
+Wink kirjeldab inventari kontrollitud sõnavarade abil — fikseeritud koodikomplektid kokkulepitud tähendustega. Kui sa saadad hotelli mugavuse jaoks `"5"`, tõlgendab platvorm seda kui *Konditsioneer*, ja iga selle andme tarbija teeb sama.
+
+See leht on avaldatud viide kõigile kolmele sõnavarale:
+
+- **OTA koodid** — {taxonomy.ota.codeCount} koodi {taxonomy.ota.categoryCount} kategoorias, hõlmates mugavusi, vooditüüpe, toa vaateid, ligipääsetavuse funktsioone, kööki ja muud.
+- **Keeled** — {taxonomy.languages.list.length} keelt, milles sisu saab luua ja esitada.
+- **Valuutad** — {taxonomy.currencies.list.length} valuutat, milles hinnad võivad olla märgitud ja arveldatud.
+
+Koodid on stabiilsed. Nimesid võidakse selguse huvides ümber sõnastada, seega sobita alati **koodi**, mitte nime järgi.
+
+## OTA koodid
+
+Wink järgib [OpenTravel Alliance](https://opentravel.org/) koodinimekirju. Igal kategoorial on kolme täheline identifikaator — `HAC` hotellimugavuste jaoks, `BED` vooditüüpide jaoks — ja iga kood kategooria sees on unikaalne. Sama numbriline väärtus tähendab erinevates kategooriates erinevaid asju, seega on kood tähenduslik ainult koos oma kategooriaga: `BED` `1` on *Kaheinimese / Täisvoodi*, samas kui `HAC` `1` on *24-tunnine vastuvõtt*.
+
+Vali kategooria, et näha selle koode.
+
+<OtaCategories
+  categories={taxonomy.ota.categories}
+  categoryHeader="Kategooria"
+  descriptionHeader="Kirjeldus"
+  countHeader="Koodid"
+  codeHeader="Kood"
+  nameHeader="Nimi"
+/>
+
+## Keeled
+
+Sisu — objekti kirjeldused, toanimed, reeglid — saab luua mis tahes neist keeltest.
+Koodid on [IETF BCP 47](https://www.rfc-editor.org/info/bcp47) sildid: kahe täheline
+[ISO 639-1](https://www.iso.org/iso-639-language-code) keel, millele võib järgneda
+[ISO 3166-1](https://www.iso.org/iso-3166-country-codes.html) piirkond, kus platvorm eristab piirkondlikke variante — `pt-BR` ja `pt-PT` on eraldi, samuti `es`, `es-AR` ja `es-MX`.
+
+Platvormi vaikekeel on `{taxonomy.languages.default}`, mida kasutatakse, kui päringus keelt ei määrata või tõlget pole saadaval.
+
+<CodeTable
+  rows={taxonomy.languages.list}
+  codeHeader="Kood"
+  nameHeader="Keel"
+  unnamedLabel="Standardnimetust pole"
+/>
+
+## Valuutad
+
+Hindu võib märkida ja arveldada mis tahes neist valuutadest. Koodid on
+[ISO 4217](https://www.iso.org/iso-4217-currency-codes.html) kolme täheline identifikaator.
+
+Platvormi vaikimisi valuuta on `{taxonomy.currencies.default}`. See on varuvaluuta kuvamiseks ja platvormi tasemel arvutatud summade normaliseerimiseks; see **ei ole** valuuta, milles broneering arveldatakse — hotellid arveldavad oma valuutas, seega ühe valuuta hinnaga ja teise valuuta maksega kaasneb valuutavahetuse marginaal.
+
+Mõned kirjed ei ole riiklikud valuutad: `XAU` ja `XAG` on kuld ja hõbe, `XDR` on IMF-i erakorraline joonistusõigus ning `BTC` on Bitcoin. Neid kasutatakse hindamiseks ja aruandluseks, kuid tavaliselt ei saa neid kasutada arveldusvaluutana.
+
+<CodeTable
+  rows={taxonomy.currencies.list}
+  codeHeader="Kood"
+  nameHeader="Valuuta"
+  unnamedLabel="Standardnimetust pole"
+/>

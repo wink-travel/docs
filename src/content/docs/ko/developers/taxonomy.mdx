@@ -1,0 +1,63 @@
+---
+title: 분류 체계
+description: Wink 플랫폼에서 사용하는 통제된 어휘 — 편의 시설, 침대 유형, 객실 전망 등에 대한 OTA 코드와 지원되는 모든 언어 및 통화.
+sidebar:
+  order: 12
+---
+
+import taxonomy from '@/data/taxonomy.json';
+import OtaCategories from '@/components/taxonomy/ota-categories.astro';
+import CodeTable from '@/components/taxonomy/code-table.astro';
+
+Wink는 통제된 어휘를 사용하여 인벤토리를 설명합니다 — 합의된 의미를 가진 고정된 코드 집합입니다. 호텔 편의 시설로 `"5"`를 보내면, 플랫폼은 이를 *에어컨*으로 인식하며, 이 데이터를 사용하는 모든 소비자도 동일하게 인식합니다.
+
+이 페이지는 세 가지 어휘에 대한 공식 참조입니다:
+
+- **OTA 코드** — {taxonomy.ota.categoryCount}개 카테고리에서 {taxonomy.ota.codeCount}개 코드, 편의 시설, 침대 유형, 객실 전망, 접근성 기능, 요리 등 포함.
+- **언어** — 콘텐츠를 작성하고 제공할 수 있는 {taxonomy.languages.list.length}개 언어.
+- **통화** — 요금이 견적되고 정산될 수 있는 {taxonomy.currencies.list.length}개 통화.
+
+코드는 안정적입니다. 명칭은 명확성을 위해 변경될 수 있으니, **코드**를 기준으로 일치시켜야 하며 명칭으로는 하지 마십시오.
+
+## OTA 코드
+
+Wink는 [OpenTravel Alliance](https://opentravel.org/) 코드 목록을 따릅니다. 각 카테고리는 세 글자 식별자를 가지며 — 호텔 편의 시설은 `HAC`, 침대 유형은 `BED` — 각 카테고리 내의 코드는 고유합니다. 동일한 숫자 값이라도 카테고리에 따라 의미가 다르므로, 코드는 속한 카테고리와 함께 해석해야 합니다: `BED` `1`은 *더블 / 풀*이고, `HAC` `1`은 *24시간 프런트 데스크*입니다.
+
+카테고리를 선택하여 코드를 확인하세요.
+
+<OtaCategories
+  categories={taxonomy.ota.categories}
+  categoryHeader="카테고리"
+  descriptionHeader="설명"
+  countHeader="코드 수"
+  codeHeader="코드"
+  nameHeader="명칭"
+/>
+
+## 언어
+
+콘텐츠 — 숙소 설명, 객실 이름, 정책 — 은 다음 언어 중 어느 것이든 작성할 수 있습니다. 코드는 [IETF BCP 47](https://www.rfc-editor.org/info/bcp47) 태그입니다: 두 글자 [ISO 639-1](https://www.iso.org/iso-639-language-code) 언어 코드이며, 선택적으로 플랫폼이 지역 변형을 구분하는 [ISO 3166-1](https://www.iso.org/iso-3166-country-codes.html) 지역 코드가 뒤따릅니다 — `pt-BR`와 `pt-PT`는 별도로 처리되며, `es`, `es-AR`, `es-MX`도 마찬가지입니다.
+
+플랫폼 기본값은 `{taxonomy.languages.default}`이며, 요청에 언어가 지정되지 않았거나 번역이 없을 때 사용됩니다.
+
+<CodeTable
+  rows={taxonomy.languages.list}
+  codeHeader="코드"
+  nameHeader="언어"
+  unnamedLabel="표준 명칭 없음"
+/>
+
+## 통화
+
+요금은 다음 통화 중 어느 것이든 견적되고 정산될 수 있습니다. 코드는 [ISO 4217](https://www.iso.org/iso-4217-currency-codes.html) 세 글자 식별자입니다.
+
+플랫폼 기본값은 `{taxonomy.currencies.default}`입니다. 이는 표시 통화의 대체값이며, 플랫폼 수준 수치가 표준화되는 단위입니다; 예약이 정산되는 통화는 **아닙니다** — 호텔은 자체 통화로 정산하므로, 한 통화로 견적된 요금이 다른 통화로 결제될 경우 환전 차익이 발생합니다.
+
+몇몇 항목은 국가 통화가 아닙니다: `XAU`와 `XAG`는 금과 은, `XDR`은 IMF 특별인출권, `BTC`는 비트코인입니다. 이들은 평가 및 보고용으로 포함되며, 일반적으로 정산 통화로 사용되지 않습니다.
+
+<CodeTable
+  rows={taxonomy.currencies.list}
+  codeHeader="코드"
+  nameHeader="통화"
+  unnamedLabel="표준 명칭 없음"
+/>

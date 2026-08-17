@@ -1,0 +1,79 @@
+---
+title: REST i gRPC
+description: Jak integrować się z platformą Wink przez REST lub gRPC, generować klienta z naszych schematów oraz używać serwera MCP do generowania kodu integracyjnego dopasowanego do Twojego przypadku użycia.
+sidebar:
+  order: 7
+---
+
+import { LinkButton, Aside } from '@astrojs/starlight/components';
+
+Wink udostępnia dwa transporty. Którego użyjesz, zależy od tego, z którym API się integrujesz.
+
+| | Transport | Schemat | Dokumentacja |
+| --- | --- | --- | --- |
+| Większość API Wink | REST przez HTTPS | OpenAPI 3 | Każda grupa pod **API** w pasku bocznym |
+| Partner Integrator API | gRPC przez HTTP/2 | Protocol Buffers | [Partner](/pl/partner-api/partner/) |
+
+<Aside type="note" title="Nie publikujemy już SDK dla języków">
+  Ręcznie utrzymywane SDK pozostawały w tyle za API, które opakowywały, i nigdy nie obejmowały języka, którego faktycznie potrzebowałeś. Zamiast tego generuj klienta ze schematu — jest zawsze aktualny — lub pozwól naszemu serwerowi MCP napisać kod integracyjny dopasowany do Twojego przypadku użycia.
+</Aside>
+
+## Generowanie klienta REST
+
+Każda grupa API publikuje dokument OpenAPI 3. Wskaż na niego dowolny generator OpenAPI, a otrzymasz
+typowanego klienta w swoim języku.
+
+```bash
+# Specyfikacja dla grupy jest dostępna obok jej strony referencyjnej.
+curl -o wink-extranet.json https://api.wink.travel/v3/api-docs/extranet
+
+npx @openapitools/openapi-generator-cli generate \
+  -i wink-extranet.json -g typescript-fetch -o ./wink-client
+```
+
+<LinkButton href="https://openapi-generator.tech/docs/generators" variant="secondary" icon="external">
+  Generatory OpenAPI według języka
+</LinkButton>
+
+## Generowanie klienta gRPC
+
+Partner Integrator API to gRPC. Generujesz klienta ze schematu `.proto`, który Wink
+publikuje na dwa sposoby:
+
+- **Odbicie serwera (server reflection)** — serwer opisuje sam siebie, więc narzędzia takie jak `grpcurl`, Postman i Insomnia
+  mogą odkryć schemat w czasie działania bez konieczności pobierania plików. Odbicie wymaga tego samego tokena bearer co każde inne wywołanie.
+- **Pliki `.proto`**, jeśli wolisz mieć schemat lokalnie i generować klienta z wyprzedzeniem.
+
+```bash
+# Odkryj schemat z działającego serwera (z uwierzytelnieniem).
+grpcurl -H "authorization: Bearer $WINK_TOKEN" \
+  partner.wink.travel:443 list
+
+# Następnie wygeneruj klienta — tutaj Go; każdy obsługiwany język działa tak samo.
+protoc --go_out=. --go-grpc_out=. partner_lookup.proto
+```
+
+Wywołania przesyłają Twój token bearer w nagłówku metadanych `authorization`, dokładnie tak jak REST przesyła go w nagłówku `Authorization`. Błędy pojawiają się jako kod statusu gRPC w trailerach odpowiedzi, a nie jako kod statusu HTTP — [referencja Partnera](/pl/partner-api/partner/) wymienia statusy, których powinieneś się spodziewać.
+
+<LinkButton href="https://grpc.io/docs/languages/" variant="secondary" icon="external">
+  Szybkie starty gRPC według języka
+</LinkButton>
+
+<LinkButton href="https://grpc.io/docs/what-is-grpc/introduction/" variant="secondary" icon="external">
+  Czym jest gRPC?
+</LinkButton>
+
+## Lub pozwól serwerowi MCP napisać to za Ciebie
+
+Jeśli korzystasz z asystenta kodowania AI, nasz serwer MCP to najszybsza droga. Udostępnia API Wink jako
+narzędzia, które Twój asystent może wywoływać i analizować, więc zamiast generować całego klienta i samodzielnie szukać punktów końcowych, opisujesz, co budujesz i otrzymujesz kod integracyjny dopasowany do tego.
+
+<LinkButton href="/pl/developers/mcp/" variant="primary">
+  Skonfiguruj serwer MCP Wink
+</LinkButton>
+
+## Dalsza lektura
+
+- [Konfiguracja](/pl/developers/setup/) — konta, środowiska i dane uwierzytelniające
+- [Uwierzytelnianie](/pl/developers/authentication/) — uzyskiwanie i odświeżanie tokenów
+- [Integracja Webhook](/pl/developers/webhook-integration/) — odbieranie zdarzeń zamiast odpytywania

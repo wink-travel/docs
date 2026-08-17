@@ -1,0 +1,188 @@
+---
+title: Integració de Webhooks
+description: Aquesta guia mostra als desenvolupadors com configurar webhooks per rebre notificacions en temps real de reserves, pagaments i altres esdeveniments.
+sidebar:
+  order: 3
+---
+
+import { Steps, LinkButton } from '@astrojs/starlight/components';
+
+Els webhooks permeten que els vostres sistemes rebin notificacions en temps real quan es produeixen esdeveniments al vostre compte Wink — noves reserves, cancel·lacions, actualitzacions de pagaments i més. Aquesta guia us acompanya en la configuració i les millors pràctiques.
+
+## Públic destinatari
+
+Aquesta guia és per a desenvolupadors que integren Wink amb sistemes externs com ara sistemes de gestió de propietats (PMS), gestors de canals, CRM o taulers personalitzats.
+
+## Com funcionen els webhooks
+
+1. Registreu una URL de webhook a Wink.
+2. Quan es produeix un esdeveniment (per exemple, una nova reserva), Wink envia un HTTP POST a la vostra URL.
+3. El vostre servidor processa la càrrega útil i respon amb un `200 OK`.
+
+## Configuració d’un webhook
+
+<Steps>
+1. Inicieu sessió al vostre compte (Extranet, Studio o TripPay — tots suporten webhooks).
+2. Navegueu a `Applications` i després a `Webhooks`. Vegeu [Webhooks](/ca/portal/settings/webhooks).
+3. Feu clic a `Create webhook`.
+4. Introduïu un **nom** (per exemple, "Sincronització de reserves PMS").
+5. Introduïu la vostra **URL de webhook** — el punt final HTTPS al vostre servidor.
+6. **Seleccioneu esdeveniments** — trieu esdeveniments específics als quals subscriure-us, o deixeu-ho buit per rebre tots els esdeveniments.
+7. Activeu el botó **Enabled**.
+8. Feu clic a `Save` — la resposta mostra el vostre **secret de signatura una sola vegada**; deseu-lo ara.
+</Steps>
+
+## Tipus d’esdeveniments
+
+Wink publica avui 70 tipus d’esdeveniments de webhook relacionats amb reserves, propietats, comptes (entitats gestores)
+i inventari (tipus d’habitació, plans tarifaris, tarifes mestres, complements, instal·lacions, canals de venda, promocions).
+Els més comuns:
+
+| Categoria | Exemples |
+|---|---|
+| **Reserva** | `booking.create`, `booking.cancelled`, `booking.refund.partial`, `booking.refund.full`, `booking.review.created` |
+| **Propietat** | `property.created`, `property.status.updated`, `property.policy.updated` |
+| **Inventari** | `room_type.updated`, `rate_plan.created`, `master_rate.updated`, `special_rate.created`, `sales_channel.created` |
+| **Compte** | `managing_entity.created`, `managing_entity.status.updated`, `managing_entity.manager.added` |
+
+La llista completa i generada — amb una descripció, qui la rep i un enllaç a la pàgina de referència de cada esdeveniment —
+és el **Catàleg d’Esdeveniments de Webhook**. La pàgina de referència per a cada esdeveniment (cos JSON, capçaleres, política de reintents)
+es troba a la [API de Webhooks](/ca/api/webhooks/).
+
+<LinkButton href="/ca/developers/webhook-events">
+  Veure tots els tipus d’esdeveniments
+</LinkButton>
+
+## Què rebeu
+
+Cada lliurament és un HTTP `POST` a la vostra URL de webhook amb `Content-Type: application/json` i aquest sobre:
+
+```json
+{
+  "id": "0198a4f2-6b0e-7c1d-9a3e-2f4b8c6d1e0a",
+  "type": "booking.create",
+  "occurredAt": "2026-08-15T09:30:00Z",
+  "ownerIdentifier": "3c6b1a5d-8e2f-4a0b-9c7d-6e4f0a8b2c51",
+  "recipientRole": "SUPPLIER",
+  "schemaVersion": 2,
+  "object": { "...": "event-specific payload, e.g. BookingWebhookPayload" }
+}
+```
+
+- `id` — l’identificador de l’esdeveniment; idèntic per a cada punt final del vostre compte que rep aquest esdeveniment i per
+  a cada reintent. Utilitzeu-lo com a **clau d’idempotència**.
+- `type` — la clau del tipus d’esdeveniment (també enviada com a capçalera `Wink-Event-Type`). Ramifiqueu per `type` i `schemaVersion`
+  per analitzar `object`.
+- `object` — un resum curat del recurs sobre el qual tracta l’esdeveniment (identificadors, estat, els camps sobre els quals actueu)
+  més `links.self`, la URL REST canònica del costat del proveïdor del recurs complet. Obteniu-la amb les vostres pròpies credencials API
+  quan necessiteu més que el resum; si rebeu l’esdeveniment com a revenedor o agent de viatges, utilitzeu
+  el punt final corresponent del vostre propi API per al mateix identificador.
+
+Cada esquema de càrrega útil està documentat per esdeveniment a la referència de la [API de Webhooks](/ca/api/webhooks/).
+
+### Capçaleres
+
+| Capçalera | Significat |
+|---|---|
+| `Wink-Version` | Versió del contracte de comunicació, `2.0`. |
+| `Wink-Event-Id` | Igual que `id` al cos — la vostra clau d’idempotència. |
+| `Wink-Delivery-Id` | Únic per punt final per esdeveniment; canvia només si torneu a lliurar. |
+| `Wink-Event-Type` | Igual que `type` al cos. |
+| `Wink-Delivery-Attempt` | Número d’intent basat en 1 per a aquest lliurament. |
+| `Wink-Signature` | Signatura HMAC — vegeu més avall. |
+
+## Verificació de signatures
+
+Cada webhook té un **secret de signatura** (`whsec_…`) que Wink mostra **una sola vegada**, quan creeu el webhook o
+gireu el seu secret. Deseu-lo com una contrasenya. Cada lliurament porta
+
+```
+Wink-Signature: t=1755250200,v1=5d41402abc4b2a76b9719d911017c592…
+```
+
+on `t` és un timestamp Unix (segons) i `v1` és el **HMAC-SHA256** en hex minúscula de la cadena
+`t + "." + rawBody`, signat amb el vostre secret, i `rawBody` és exactament els bytes del cos de la petició tal com es rep —
+no torneu a serialitzar el JSON abans de verificar. Durant 24 hores després d’una rotació del secret, la capçalera porta un
+segon valor `v1=` signat amb el secret anterior; accepteu el lliurament si **alguna** `v1` coincideix.
+
+Verifiqueu en quatre passos: analitzeu `t` i cada `v1`; torneu a calcular el HMAC sobre `t.rawBody` amb el vostre secret;
+compareu amb una comparació de temps constant; rebutgeu si `|ara − t|` excedeix la vostra tolerància (es recomanen 5 minuts).
+
+```js
+// Node.js (estil Express; assegureu-vos de tenir el cos RAW, no un objecte analitzat)
+import { createHmac, timingSafeEqual } from 'node:crypto';
+
+export function verifyWinkSignature(header, rawBody, secret, toleranceSeconds = 300) {
+  const parts = Object.fromEntries(header.split(',').map((p) => p.split('=').map((s) => s.trim())));
+  const t = Number(parts.t);
+  if (!Number.isFinite(t) || Math.abs(Date.now() / 1000 - t) > toleranceSeconds) return false;
+  const expected = createHmac('sha256', secret).update(`${t}.${rawBody}`).digest('hex');
+  return header
+    .split(',')
+    .filter((p) => p.trim().startsWith('v1='))
+    .map((p) => p.trim().slice(3))
+    .some((v1) => v1.length === expected.length && timingSafeEqual(Buffer.from(v1, 'utf8'), Buffer.from(expected, 'utf8')));
+}
+```
+
+```java
+// Java
+static boolean verify(String header, String rawBody, String secret, long nowSeconds, long toleranceSeconds) throws Exception {
+    long t = Long.MIN_VALUE;
+    List<String> signatures = new ArrayList<>();
+    for (String part : header.split(",")) {
+        String[] kv = part.trim().split("=", 2);
+        if (kv[0].equals("t")) t = Long.parseLong(kv[1]);
+        else if (kv[0].equals("v1")) signatures.add(kv[1]);
+    }
+    if (t == Long.MIN_VALUE || Math.abs(nowSeconds - t) > toleranceSeconds) return false;
+    Mac mac = Mac.getInstance("HmacSHA256");
+    mac.init(new SecretKeySpec(secret.getBytes(StandardCharsets.UTF_8), "HmacSHA256"));
+    byte[] expected = HexFormat.of().formatHex(mac.doFinal((t + "." + rawBody).getBytes(StandardCharsets.UTF_8))).getBytes(StandardCharsets.US_ASCII);
+    return signatures.stream().anyMatch(v1 -> MessageDigest.isEqual(expected, v1.toLowerCase().getBytes(StandardCharsets.US_ASCII)));
+}
+```
+
+Gireu el secret des del portal o amb `POST /api/managing-entity/{id}/webhook/{webhookId}/rotate-secret`;
+la resposta mostra el nou secret una sola vegada, i l’antic continua verificant-se durant 24 hores mentre el desplegueu.
+
+## Reintents i reentregues
+
+- Responeu amb qualsevol `2xx` en menys de 10 segons per reconèixer. Feu la feina pesada de manera asíncrona.
+- Un `5xx`, un temps d’espera, `408` o `429` es reintenta amb retrocés: després d’1 minut, 5 minuts, 30 minuts, 2 hores,
+  6 hores, 12 hores, després diàriament — 10 intents durant uns 3 dies — després dels quals el lliurament es marca com a **mort**.
+- Qualsevol altre `4xx` es tracta com "heu rebutjat aquest lliurament" i **no** es reintenta.
+- Cada esdeveniment, lliurament i intent (estat, fragment de resposta) és visible a **Applications > Webhooks**
+  i a través de l’API (`…/webhook/event/grid`, `…/webhook/delivery/grid`). Podeu **reentregar** qualsevol lliurament
+  (`POST …/webhook/delivery/{deliveryId}/redeliver`, que inicia una nova sèrie de reintents), reentregar tots els lliuraments morts
+  d’un webhook alhora (`POST …/webhook/{webhookId}/redeliver-dead`), o cancel·lar-ne un.
+- Els lliuraments es conserven durant 30 dies.
+
+## Esdeveniments de prova
+
+Envieu-vos un esdeveniment sintètic `webhook.test` des del portal o amb
+`POST /api/managing-entity/{id}/webhook/{webhookId}/test`. Està signat i lliurat exactament com un esdeveniment real,
+perquè pugueu verificar el vostre punt final, la comprovació de la signatura i la gestió de la idempotència abans de subscriure-us
+als esdeveniments en viu.
+
+## Millors pràctiques
+
+- **Utilitzeu HTTPS** — Wink envia càrregues útils només a punts finals HTTPS.
+- **Responeu ràpidament** — Retorneu un `200 OK` tan aviat com rebeu la càrrega útil. Feu qualsevol processament pesat de manera asíncrona.
+- **Idempotència** — El vostre gestor ha de ser idempotent; dedupliqueu per `Wink-Event-Id`. Wink reintenta quan no rep una resposta `2xx`.
+- **Valideu la font** — Verifiqueu la capçalera `Wink-Signature` (vegeu [Verificació de signatures](#verificació-de-signatures)) abans de processar; rebutgeu qualsevol cosa que falli.
+- **Registre** — Registreu cada càrrega útil de webhook que rebeu. Això facilita molt la depuració de problemes d’integració.
+
+## Pausar i eliminar
+
+Podeu **desactivar** un webhook sense eliminar-lo. Això pausa el lliurament perquè pugueu resoldre problemes sense perdre la configuració. Quan estigueu preparats, torneu a activar-lo.
+
+Eliminar un webhook el suprimeix permanentment. Qualsevol integració que depengui d’aquest webhook deixarà de rebre notificacions.
+
+## Lectures complementàries
+
+- [Catàleg d’Esdeveniments de Webhook](/ca/developers/webhook-events) — Tots els tipus d’esdeveniments, generats a partir del catàleg de la plataforma.
+- [Referència de l’API de Webhooks](/ca/api/webhooks/) — Esquemes de càrrega útil per esdeveniment, capçaleres i punts finals de gestió de subscripcions/lliuraments.
+- [Webhooks](/ca/portal/settings/webhooks) — Referència completa per a la gestió de webhooks.
+- [Applications](/ca/account/applications) — Gestioneu les vostres credencials API.
+- [Developers > APIs](/ca/api) — Documentació completa de l’API.

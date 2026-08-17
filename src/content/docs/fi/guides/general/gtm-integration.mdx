@@ -1,0 +1,681 @@
+---
+title: GTM-analytiikka-integraatio
+description: Kuinka yhdistää mikä tahansa Google Tag Manager -säiliö (kuten Sojern-säiliö) Winkiin, jotta se voi seurata vieraidesi varausmatkaa ja tehostaa uudelleenmarkkinointi- ja mainoskampanjoitasi.
+sidebar:
+  label: GTM-analytiikka-integraatio
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+Voit yhdistää **minkä tahansa** Google Tag Manager (GTM) -säiliön Winkiin syöttämällä sen **GTM Container ID:n** Wink-portaaliin. Kun säiliö on yhdistetty, se ladataan automaattisesti kiinteistöllesi ja lukee Wink:n varaus tapahtumat suoraan — kattaen koko vieraan matkan hausta varauksen vahvistamiseen. Yleinen käyttötapaus on **Sojern**-säiliö uudelleenmarkkinointiin ja mainontaan, mutta mikä tahansa GTM-säiliö toimii samalla tavalla.
+
+<Aside type="tip">
+Tämä edellyttää, että sinulla on jo GTM Container ID (muodossa `GTM-XXXXXXX`). Jos säiliösi tulee kumppanilta, kuten Sojernilta, pyydä tilinhoitajaltasi nimenomaan **GTM Container ID** — se eroaa pikseli- tai tagi-ID:stä. Uusi Winkissä Sojernin kanssa? Aloita osoitteessa [sojern.com/contact](https://www.sojern.com/contact).
+</Aside>
+
+---
+
+## Mitä sinun tulee tehdä
+
+<Steps>
+
+1. **Hanki GTM Container ID**
+
+   Hanki **GTM Container ID** (muodossa `GTM-XXXXXXX`). Jos se tulee kumppanilta kuten Sojern, pyydä nimenomaan GTM Container ID — se eroaa pikseli- tai tagi-ID:stä.
+
+2. **Syötä se Wink-portaaliin**
+
+   Kirjaudu sisään osoitteessa [app.wink.travel](https://app.wink.travel), valitse tilisi ja avaa mukautusasetukset. **Analytics & integrations** -osiossa liitä GTM Container ID **GTM Container ID** -kenttään ja tallenna. Integraatiosi on nyt käytössä.
+
+3. **Vahvista palveluntarjoajasi kanssa**
+
+   Jos säiliösi tulee kumppanilta kuten Sojern, ilmoita tilinhoitajallesi, että integraatio on aktiivinen. He voivat tarkistaa omalta puoleltaan, että tagit laukeavat oikein `wink.travel`-sivustolla kiinteistöllesi ja että tiedot virtaavat tilillesi.
+
+</Steps>
+
+<Aside type="note">
+Tätä integraatiota varten sinun ei tarvitse sijoittaa pikselikoodia omalle verkkosivustollesi. Wink lataa GTM-säiliösi automaattisesti kaikilla sivuilla, joilla kiinteistösi on aktiivinen.
+
+Tämä toimii **minkä tahansa** GTM Container ID:n kanssa — Sojern on vain yleinen esimerkki.
+</Aside>
+
+---
+
+## Mitä Wink tekee omalla puolellaan
+
+Läpinäkyvyyden vuoksi tässä on, mitä Wink konfiguroi tämän integraation toimimiseksi:
+
+- **GTM Container ID -kenttä** on saatavilla **Analytics & integrations** -osiossa mukautusasetuksissasi. Kun syötät Container ID:n, Wink tarkistaa muodon (`GTM-XXXXXXX`) ja tallentaa sen turvallisesti kiinteistöllesi.
+- **Jokaisella sivulla, jolla kiinteistösi on aktiivinen** Winkissä, säiliösi upotetaan suoraan sivulle — jakamalla Wink:n oma `window.dataLayer` — joten se ladataan yhdessä Wink:n oman säiliön kanssa ilman lisäkonfiguraatiota. Tämä tapahtuu automaattisesti, ilman erillistä työtä Wink-tiimiltä.
+- **Säiliösi ladataan asynkronisesti**, joten se ei vaikuta sivun latausnopeuteen vieraillesi.
+- **Wink:n oma seuranta ja säiliösi toimivat rinnakkain**, lukien samaa jaettua `dataLayer`-kerrosta. Jokainen Wink:n seuraama varaus tapahtuma on samanaikaisesti saatavilla säiliöllesi.
+- **Kun kiinteistöäsi ei katsota** — esimerkiksi kun vieras selaa toista hotellia Winkissä — säiliötäsi ei ladata, joten se saa vain kiinteistöäsi koskevat tiedot.
+- **Vahvistettu varaus (`purchase`) laukeaa selaimessa kiitos-sivulla.** GTM Container ID on musta laatikko — Wink ei voi olettaa, mitä tageja siinä on — joten Wink ei koskaan kutsu Googlea palvelimiltaan puolestasi. Sen sijaan mikä tahansa GA4- tai konversiotagi säiliössäsi vastaanottaa `purchase`-tapahtuman asiakaspuolella, aivan kuten muutkin varaus tapahtumat. Koska maksupalveluntarjoaja ohjaa vieraan selaimen pois ja takaisin, Wink yhdistää analytiikkasession uudelleen, jonka uudelleenohjaus keskeytti **ennen** `purchase`-tapahtuman laukaisua, joten myynti kohdistuu vieraan alkuperäiseen vierailuun eikä uuteen sessioon.
+
+---
+
+## DataLayer-viite
+
+Wink työntää GA4-yhteensopivia tapahtumia `dataLayer`-kerrokseen koko vieraan matkan ajan. GTM-säiliösi lukee tästä samasta jaetusta `dataLayer`-kerroksesta, joten kaikki määrittämäsi triggerit tai muuttujat pääsevät käsiksi alla kuvattuihin ominaisuuksiin.
+
+Jokainen tapahtuma noudattaa GA4 Enhanced Ecommerce -rakennetta: ylin `event`-merkkijono ja `ecommerce`-objekti. Ennen jokaista push-toimintoa Wink tyhjentää edellisen ecommerce-payloadin estääkseen vanhentuneiden tietojen leviämisen uusiin triggereihin.
+
+<Aside type="note">
+**dataLayerin nollausmalli**
+
+Wink nollaa ecommerce-objektin ennen jokaista tapahtuman pushausta:
+
+```js
+dataLayer.push({ ecommerce: null });   // tyhjennä edellinen tapahtuma
+dataLayer.push({ event: '...', ecommerce: { ... } });
+```
+
+Älä luota siihen, että ecommerce-ominaisuudet säilyvät tapahtumien välillä. Lue ne aina triggerin aikana saman tapahtuman sisällä.
+</Aside>
+
+---
+
+### Varausmatkan tapahtumat
+
+Nämä tapahtumat laukeavat automaattisesti, kun vieras etenee varausprosessissa. Määritä GTM-triggereiksi **Custom Event** -tyyppiset triggereitä, jotka vastaavat alla olevia tapahtumanimiä.
+
+| Vaihe | Tapahtuma | Milloin laukeaa |
+|-------|-----------|-----------------|
+| 1 | `view_item_list` | Hotellin varausnäkymä tai lista latautuu |
+| 2 | `view_item` | Vieras katsoo tiettyä kiinteistön sivua |
+| 3 | `add_to_cart` | Vieras lisää huoneen ostoskoriin |
+| 4 | `begin_checkout` | Kassalle/maksusivulle siirrytään |
+| 5 | `add_payment_info` | Vieras valitsee maksutavan |
+| 6 | `login` | Vieras kirjautuu SSO:n kautta |
+| 7 | `purchase` | Vahvistettu varaus |
+| 8 | `refund` | Varauksen peruutus |
+
+---
+
+#### `view_item_list`
+
+Laukeaa, kun hotellin varausnäkymä tai lista renderöidään.
+
+```json
+{
+  "event": "view_item_list",
+  "ecommerce": {
+    "item_list_id": "featured_hotels",
+    "item_list_name": "Featured Hotels",
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `view_item`
+
+Laukeaa, kun vieras katsoo tiettyä kiinteistöä.
+
+```json
+{
+  "event": "view_item",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `add_to_cart`
+
+Laukeaa, kun vieras lisää huoneen ostoskoriin.
+
+```json
+{
+  "event": "add_to_cart",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `begin_checkout`
+
+Laukeaa, kun kassalle/maksusivulle siirrytään.
+
+```json
+{
+  "event": "begin_checkout",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "items": [ ]
+  }
+}
+```
+
+`coupon` on mukana vain, jos alennuskoodi on käytössä.
+
+---
+
+#### `add_payment_info`
+
+Laukeaa, kun vieras valitsee tai vahvistaa maksutavan.
+
+```json
+{
+  "event": "add_payment_info",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "payment_type": "STRIPE",
+    "items": [ ]
+  }
+}
+```
+
+`payment_type` täytetään maksun hankkijan tyypillä. `coupon` on mukana vain, jos alennuskoodi on käytössä.
+
+---
+
+#### `login`
+
+Laukeaa, kun vieras kirjautuu sisään single sign-on -menetelmällä.
+
+```json
+{
+  "event": "login",
+  "ecommerce": {
+    "method": "IAM"
+  }
+}
+```
+
+---
+
+#### `purchase`
+
+Laukeaa, kun varaus vahvistetaan.
+
+```json
+{
+  "event": "purchase",
+  "ecommerce": {
+    "currency": "USD",
+    "transaction_id": "bc-a1b2c3d4",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "shipping": 0.00,
+    "tax": 0.00,
+    "items": [
+      {
+        "item_id": "rr-xyz789",
+        "item_name": "Deluxe Ocean Suite",
+        "item_brand": "Grand Resort",
+        "item_category": "GUEST_ROOM",
+        "price": 299.00,
+        "quantity": 1,
+        "property_id": "prop-abc123",
+        "property_name": "Grand Resort Maldives",
+        "property_brand": "Grand Collection",
+        "property_chain": "Luxury Hotels International",
+        "city_name": "Malé",
+        "country_code": "MV",
+        "start_date": "2026-06-01",
+        "end_date": "2026-06-05",
+        "num_adults": 2,
+        "num_children": 0,
+        "cancellation_policy": "Refundable",
+        "rate_plan_id": "rp-summer2026",
+        "room_rate_id": "rr-xyz789",
+        "room_rate_name": "Summer Escape — Bed & Breakfast",
+        "num_perks": 2,
+        "room_location": "Overwater",
+        "room_view": "Ocean",
+        "room_classification": "Suite"
+      }
+    ]
+  }
+}
+```
+
+`transaction_id` on varauksen yksilöllinen sopimusnumero. `coupon`, `shipping` ja `tax` ovat mukana vain, jos sovellettavissa.
+
+---
+
+#### `refund`
+
+Laukeaa, kun varaus peruutetaan.
+
+```json
+{
+  "event": "refund",
+  "ecommerce": {
+    "currency": "USD",
+    "transaction_id": "bc-a1b2c3d4",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "shipping": 0.00,
+    "tax": 0.00,
+    "items": [ ]
+  }
+}
+```
+
+`transaction_id` vastaa samaa `purchase`-tapahtumaa kyseiselle varaukselle. `coupon`, `shipping` ja `tax` ovat mukana vain, jos sovellettavissa.
+
+---
+
+### Tuoteominaisuudet
+
+Kaikilla tapahtumilla, jotka sisältävät `items`-taulukon, on sama tuoteskeema. Jokainen ominaisuus on valinnainen, ellei toisin mainita.
+
+#### GA4:n vakio-kentät
+
+Nämä kentät ovat GA4:n natiivisti ymmärtämiä ja näkyvät vakio-ecommerce-raporteissa ilman lisäkonfiguraatiota.
+
+| Ominaisuus | Tyyppi | Pakollinen | Kuvaus |
+|------------|--------|------------|--------|
+| `item_id` | string | Kyllä | Huoneen tai tuotteen yksilöllinen tunniste |
+| `item_name` | string | — | Huoneen tai tuotteen nimi |
+| `affiliation` | string | — | Kumppani- tai myyjän nimi |
+| `coupon` | string | — | Tuotteeseen sovellettu kuponkikoodi |
+| `currency` | string | — | ISO 4217 valuuttakoodi (esim. `USD`) |
+| `creative_name` | string | — | Kampanjan luova nimi |
+| `creative_slot` | string | — | Kampanjan luovan paikkatieto |
+| `discount` | number | — | Sovellettu alennusmäärä |
+| `index` | number | — | Sijainti listalla (1-pohjainen) |
+| `item_brand` | string | — | Hotelli tai tuotemerkki |
+| `item_category` | string | — | Tuotetyyppi — esim. `GUEST_ROOM`, `ACTIVITY`, `ATTRACTION`, `MEETING_ROOM`, `RESTAURANT`, `SPA` |
+| `item_list_id` | string | — | Listan tunniste, johon tuote kuuluu |
+| `item_list_name` | string | — | Listan näyttönimi |
+| `location_id` | string | — | Kiinteistön maantieteelliset koordinaatit |
+| `price` | number | — | Yksikköhinta |
+| `promotion_id` | string | — | Kampanjan tunniste |
+| `promotion_name` | string | — | Kampanjan näyttönimi |
+| `quantity` | number | — | Määrä (oletus `1`) |
+
+#### Wink-spesifiset item-tason parametrit
+
+Nämä parametrit sisältävät Wink-spesifin varauskontekstin. GA4 ei automaattisesti näytä niitä raporteissa — sinun tulee rekisteröidä jokainen **item-scoped custom dimension** GA4-omaisuuteesi ennen kuin ne näkyvät tutkimuksissa tai vakioraporteissa. Katso [Custom Dimensions in GA4](#custom-dimensions-in-ga4) alla asennusohjeet.
+
+| Ominaisuus | Tyyppi | Kuvaus |
+|------------|--------|--------|
+| `property_id` | string | Wink-kiinteistön tunniste |
+| `property_name` | string | Kiinteistön näyttönimi |
+| `property_brand` | string | Kiinteistön brändi |
+| `property_chain` | string | Kiinteistöketju |
+| `property_url_name` | string | Kiinteistön URL-ystävällinen tunniste |
+| `city_name` | string | Kiinteistön kaupunki |
+| `country_code` | string | ISO 3166-1 alpha-2 maatunnus |
+| `start_date` | string | Saapumispäivä muodossa `YYYY-MM-DD` |
+| `end_date` | string | Lähtöpäivä muodossa `YYYY-MM-DD` |
+| `num_adults` | number | Aikuisten määrä varauksessa |
+| `num_children` | number | Lasten määrä varauksessa |
+| `cancellation_policy` | string | Yksi seuraavista: `Refundable`, `Non-Refundable`, `Refundable-With-Restrictions`, `Non-Refundable-With-Restrictions` |
+| `rate_plan_id` | string | Hintasuunnitelman tunniste |
+| `room_rate_id` | string | Tietyn huonehinnan tunniste |
+| `room_rate_name` | string | Huonehinnan näyttönimi |
+| `num_perks` | number | Hintaan sisältyvien etujen määrä |
+| `room_location` | string | Huoneen sijaintikuvaus (esim. `Overwater`, `Garden`) |
+| `room_view` | string | Huoneen näkymäkuvaus (esim. `Ocean`, `City`) |
+| `room_classification` | string | Huoneen luokitus tai taso (esim. `Suite`, `Standard`) |
+| `bed_type` | string | Huoneen vuodejärjestely (esim. `King`, `Twin`) |
+
+---
+
+### Custom Dimensions GA4:ssa
+
+GA4 jättää huomiotta item-tason mukautetut parametrit raporteissa, kunnes rekisteröit ne nimenomaan item-scoped custom dimensioneiksi. Sinun tarvitsee rekisteröidä vain ne parametrit, joita aiot käyttää raporteissa — kaikkia 20 ei tarvitse rekisteröidä.
+
+<Steps>
+
+1. **Avaa Custom Definitions**
+
+   GA4:ssa siirry kohtaan **Admin** (vasen alakulman rataskuvake) → valitse oma omaisuus → **Data display** → **Custom definitions**.
+
+2. **Luo uusi custom dimension**
+
+   Klikkaa **Create custom dimensions**.
+
+3. **Täytä dimension tiedot**
+
+   - **Dimension name** — ihmisen luettava nimi, joka näkyy GA4-raporteissa (katso alla oleva taulukko)
+   - **Scope** — valitse **Item**
+   - **Event parameter** — tarkka parametri nimi, kuten dataLayerissa (katso alla oleva taulukko)
+   - **Description** — valinnainen mutta suositeltava
+
+4. **Tallenna ja toista**
+
+   Klikkaa **Save** ja toista jokaiselle seurattavalle parametrille.
+
+</Steps>
+
+<Aside type="note">
+Custom dimensionit voivat näkyä GA4-raporteissa jopa 24 tunnin viiveellä rekisteröinnin jälkeen. Historiallisia tietoja ei täydennetä jälkikäteen.
+
+GA4 sallii enintään 50 item-scoped custom dimensionia per omaisuus vakio-omaisuuksissa (360-omaisuuksissa enemmän).
+</Aside>
+
+Käytä alla olevaa taulukkoa viitteenä custom dimensionien luomisessa. **Event parameter** -arvon on oltava täsmälleen sama — GA4 on kirjainkoolla herkkä.
+
+| Dimensionin nimi | Event parameter | Tyyppi |
+|------------------|-----------------|--------|
+| Kiinteistön ID | `property_id` | Teksti |
+| Kiinteistön nimi | `property_name` | Teksti |
+| Kiinteistön brändi | `property_brand` | Teksti |
+| Kiinteistöketju | `property_chain` | Teksti |
+| Kiinteistön URL-nimi | `property_url_name` | Teksti |
+| Kaupungin nimi | `city_name` | Teksti |
+| Maatunnus | `country_code` | Teksti |
+| Saapumispäivä | `start_date` | Teksti |
+| Lähtöpäivä | `end_date` | Teksti |
+| Aikuisten määrä | `num_adults` | Numero |
+| Lasten määrä | `num_children` | Numero |
+| Peruutusehdot | `cancellation_policy` | Teksti |
+| Hintasuunnitelman ID | `rate_plan_id` | Teksti |
+| Huonehinnan ID | `room_rate_id` | Teksti |
+| Huonehinnan nimi | `room_rate_name` | Teksti |
+| Etujen määrä | `num_perks` | Numero |
+| Huoneen sijainti | `room_location` | Teksti |
+| Huoneen näkymä | `room_view` | Teksti |
+| Huoneen luokitus | `room_classification` | Teksti |
+| Vuodetyyppi | `bed_type` | Teksti |
+
+---
+
+### Lisätapahtumat
+
+Seuraavat tapahtumat ovat saatavilla Wink:n dataLayerissa, mutta ne eivät kuulu vakio-varausputkeen. Ne voivat laueta muista vuorovaikutuksista alustalla.
+
+#### `add_to_wishlist`
+
+```json
+{
+  "event": "add_to_wishlist",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+#### `remove_from_cart`
+
+```json
+{
+  "event": "remove_from_cart",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+#### `select_item`
+
+```json
+{
+  "event": "select_item",
+  "ecommerce": {
+    "item_list_id": "featured_hotels",
+    "item_list_name": "Featured Hotels",
+    "items": [ ]
+  }
+}
+```
+
+#### `view_cart`
+
+```json
+{
+  "event": "view_cart"
+}
+```
+
+Tässä tapahtumassa ei ole `ecommerce`-objektia.
+
+#### `view_promotion`
+
+```json
+{
+  "event": "view_promotion",
+  "ecommerce": {
+    "creative_name": "Summer Banner",
+    "creative_slot": "hero",
+    "promotion_id": "promo_001",
+    "promotion_name": "Summer Sale",
+    "items": [ ]
+  }
+}
+```
+
+#### `select_promotion`
+
+```json
+{
+  "event": "select_promotion",
+  "ecommerce": {
+    "creative_name": "Summer Banner",
+    "creative_slot": "hero",
+    "promotion_id": "promo_001",
+    "promotion_name": "Summer Sale",
+    "items": [ ]
+  }
+}
+```
+
+#### `search`
+
+```json
+{
+  "event": "search",
+  "ecommerce": {
+    "search_term": "beachfront resort"
+  }
+}
+```
+
+#### `select_content`
+
+```json
+{
+  "event": "select_content",
+  "ecommerce": {
+    "content_type": "hotel",
+    "content_id": "prop_12345"
+  }
+}
+```
+
+#### `share`
+
+```json
+{
+  "event": "share",
+  "ecommerce": {
+    "method": "copy_link",
+    "content_type": "hotel",
+    "item_id": "prop_12345"
+  }
+}
+```
+
+#### `sign_up`
+
+```json
+{
+  "event": "sign_up",
+  "ecommerce": {
+    "method": "email"
+  }
+}
+```
+
+#### `generate_lead`
+
+```json
+{
+  "event": "generate_lead",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 0.00
+  }
+}
+```
+
+#### `join_group`
+
+```json
+{
+  "event": "join_group",
+  "ecommerce": {
+    "group_id": "group_abc"
+  }
+}
+```
+
+#### `earn_virtual_currency`
+
+```json
+{
+  "event": "earn_virtual_currency",
+  "ecommerce": {
+    "virtual_currency_name": "WinkPoints",
+    "value": 100
+  }
+}
+```
+
+#### `spend_virtual_currency`
+
+```json
+{
+  "event": "spend_virtual_currency",
+  "ecommerce": {
+    "virtual_currency_name": "WinkPoints",
+    "value": 50,
+    "item_name": "Room Upgrade"
+  }
+}
+```
+
+#### `level_start`
+
+```json
+{
+  "event": "level_start",
+  "ecommerce": {
+    "level_name": "Gold"
+  }
+}
+```
+
+#### `level_end`
+
+```json
+{
+  "event": "level_end",
+  "ecommerce": {
+    "level_name": "Gold",
+    "success": true
+  }
+}
+```
+
+#### `level_up`
+
+```json
+{
+  "event": "level_up",
+  "ecommerce": {
+    "level": 2,
+    "character": "traveler"
+  }
+}
+```
+
+#### `post_score`
+
+```json
+{
+  "event": "post_score",
+  "ecommerce": {
+    "score": 980,
+    "level": 2,
+    "character": "traveler"
+  }
+}
+```
+
+#### `unlock_achievement`
+
+```json
+{
+  "event": "unlock_achievement",
+  "ecommerce": {
+    "achievement_id": "first_booking"
+  }
+}
+```
+
+#### `tutorial_begin`
+
+```json
+{
+  "event": "tutorial_begin",
+  "ecommerce": {}
+}
+```
+
+#### `tutorial_complete`
+
+```json
+{
+  "event": "tutorial_complete",
+  "ecommerce": {}
+}
+```
+
+---
+
+### `virtualPageView`
+
+Tämä on Wink-spesifinen tapahtuma — ei osa GA4:n vakiosettiä. Se pusketaan jokaisella sivunavigoinnilla ja sisältää laitteen ja session kontekstin. Se ei sisällä `ecommerce`-objektia.
+
+```json
+{
+  "event": "virtualPageView",
+  "device": "Desktop",
+  "deviceAgent": "Mozilla/5.0 ...",
+  "os": "MacOS",
+  "path": "/hotels/grand-resort",
+  "title": "Grand Resort — Wink",
+  "userId": "user_abc123",
+  "startDate": "2026-06-01",
+  "endDate": "2026-06-05",
+  "guests": "2",
+  "rooms": "1"
+}
+```
+
+| Ominaisuus | Kuvaus |
+|------------|--------|
+| `device` | Havaitun laitteen tyyppi — `Desktop`, `Android`, `iPhone`, `iPad` tai vastaava |
+| `deviceAgent` | Raaka user agent -merkkijono |
+| `os` | Havaittu käyttöjärjestelmä — `Windows`, `MacOS`, `Linux`, `UNIX` |
+| `path` | Nykyisen sivun polku |
+| `title` | Nykyisen sivun otsikko |
+| `userId` | Tunnistettu käyttäjätunniste (pois jätetty, jos ei kirjautunut) |
+| `startDate` | Saapumispäivä nykyisestä hakusessiosta |
+| `endDate` | Lähtöpäivä nykyisestä hakusessiosta |
+| `guests` | Vieraiden määrä nykyisessä hakusessiosta |
+| `rooms` | Huoneiden määrä nykyisessä hakusessiosta |

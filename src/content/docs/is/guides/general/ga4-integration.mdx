@@ -1,0 +1,163 @@
+---
+title: GA4 Greiningar Samþætting
+description: Hvernig á að tengja þinn eigin Google Analytics 4 eign við Wink svo þú getir fylgst með bókunum þínum, tekjum og ferðalagi gesta beint í þínum eigin GA4 mælaborði.
+sidebar:
+  label: GA4 Greiningar Samþætting
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+Með því að tengja Google Analytics 4 eign þína við Wink eru bókunaratburðir þínir — frá herbergisskoðunum til fullgertra bókana — sjálfkrafa sendir til þíns eigin GA4 mælaborðs ásamt eigin greiningum Wink. Engin kóðun, engin tæknileg uppsetning hjá þér.
+
+<Aside type="tip">
+Þú þarft eitt frá GA4: **Measurement ID** (`G-XXXXXXXXXX`). Wink hleður því í vafra gesta og streymir öllu bókunarferlinu þínu — þar með talið fullgertri bókun (`purchase`) — beint til GA4 eignar þinnar. Engin API leyndarmál þarf að búa til og ekkert þarf að setja upp á þinni eigin vefsíðu.
+</Aside>
+
+---
+
+## Hvernig Þetta Virkar
+
+```
+Þú slærð inn Measurement ID (G-XXXXXXXXXX) í Wink vefinn
+       ↓
+Wink hleður GA4 í vafra gesta og streymir bókunaratburðum
+(skoðanir, körfu, greiðslu) til GA4 eignar þinnar í rauntíma
+       ↓
+Á þakkarsíðunni fer fullgerða bókunin (purchase) af stað í vafranum —
+Wink tengir GA4 lotuna aftur sem greiðslumiðunin truflaði, svo
+sala telst enn til upprunalegrar heimsóknar gesta
+       ↓
+Þú skráir þig inn á analytics.google.com og sérð allt bókunarferlið þitt
+```
+
+---
+
+## Hvað Þú Þarf Að Gera
+
+<Steps>
+
+1. **Búðu til GA4 eign**
+
+   Farðu á [analytics.google.com](https://analytics.google.com): Stjórnandi → Búa til eign. Stilltu tímabelti og gjaldmiðil til að passa við markaðinn þinn.
+
+2. **Búðu til vefstraum gagna**
+
+   Stjórnandi → Gagnastraumar → Bæta við straumi → Vefur. Sláðu inn `wink.travel` sem slóð. Þetta býr til þitt **Measurement ID** (`G-XXXXXXXXXX`). Afritaðu það.
+
+3. **Sláðu inn Measurement ID í Wink vefinn**
+
+   Skráðu þig inn á [app.wink.travel](https://app.wink.travel), veldu reikninginn þinn og opnaðu sérsniðnar stillingar. Í kaflanum **Analytics & integrations** límdu Measurement ID í reitinn **GA4 Measurement ID** og vistaðu. Það er allt — GA4 samþættingin þín er virk.
+
+4. **Merkja `purchase` sem lykilatburð**
+
+   Farðu aftur í GA4 eign þína: Stjórnandi → Atburðir → finndu `purchase` → kveiktu á **Mark as key event**. Þetta gerir fullgerðar bókanir sýnilegar í skýrslu um umbreytingar.
+
+5. **Skoðaðu gögnin þín**
+
+   Skráðu þig inn á [analytics.google.com](https://analytics.google.com) og þú munt sjá bókanir, tekjur og ferðalag gesta — allt sjálfvirkt fylgst með í gegnum Wink.
+
+</Steps>
+
+<Aside type="note">
+Þú þarft ekki að setja upp neinn rekstrarkóða á þinni eigin vefsíðu fyrir þessa samþættingu. Wink sér um allt — Measurement ID þitt er einfaldlega áfangastaðurinn þar sem bókunargögnin þín eru send.
+</Aside>
+
+<Aside type="tip">
+**GA4 og GTM má nota saman.** Ef þú keyrir einnig Google Tag Manager ílát (t.d. Sojern ílát), getur þú stillt bæði samtímis — þau útiloka ekki hvort annað. Sjá [GTM Analytics Integration](/is/guides/general/gtm-integration).
+</Aside>
+
+---
+
+## Hvernig Wink Notar Measurement ID Þitt í Bókunarvél
+
+Allt gerist **í vafra gesta** — engin gagnasending milli netþjóna og engin API leyndarmál.
+
+- **GA4 þitt hleðst á bókunarsíðum þínum.** Þegar gestur skoðar eign þína í Wink bókunarvélinni hleður Wink Measurement ID þínu í vafra þeirra ásamt eigin greiningum Wink, sem lesa úr sama sameiginlega gagnasafni. Vafraatburðir — leitir, herbergisskoðanir, körfu, greiðslu — streymir til GA4 eignar þinnar í rauntíma.
+- **Fullgerða bókunin fer af stað á þakkarsíðunni.** Þegar gestur klárar greiðslu og lendir á staðfestingarsíðunni fer `purchase` atburðurinn af stað í vafranum, með fullu bókunargildi, gjaldmiðli og herbergisupplýsingum.
+- **Greiðslumiðunin tapar ekki lengur sölu.** Kortagreiðslur senda vafra gesta til greiðsluveitanda og aftur, sem myndi venjulega rjúfa GA4 lotu í vafranum og láta bókun líta út eins og nýja „Beint“ heimsókn. Til að koma í veg fyrir það flytur Wink GA4 lotuauðkenni þín með í endurkomuslóðina og **tengir upprunalegu lotuna aftur** á þakkarsíðunni *áður en* `purchase` fer af stað. Fullgerða bókunin er því rakin til sömu heimsóknar og gesturinn hóf — ekki talin sem ný lota.
+
+<Aside type="note">
+Wink kemur í veg fyrir tvítekningu á `purchase` fyrir hverja bókun, svo endurhlaða á síðu eða sjálfvirk endurvísun á bókunarupplýsingar tvöfaldar ekki sölu.
+</Aside>
+
+---
+
+## Hvað Þú Getur Fylgst Með
+
+Þegar tengt er fær GA4 eign þín fullan pakka af Enhanced E-commerce atburðum fyrir eign þína:
+
+### Uppgötvun
+
+| Atburður | Hvað Hann Þýðir |
+|---|---|
+| `view_item_list` | Gestur sá eign þína í leit eða flokkaskrá |
+| `select_item` | Gestur smellti á eign þína úr skrá |
+| `view_item` | Gestur skoðaði hóteldetaljasíðu þína |
+
+### Íhugun
+
+| Atburður | Hvað Hann Þýðir |
+|---|---|
+| `view_promotion` | Gestur sá kynningartilboð fyrir eign þína |
+| `select_promotion` | Gestur smellti á kynningartilboð |
+| `add_to_wishlist` | Gestur vistaði eign þína á óskalista |
+
+### Bókunarferli
+
+| Atburður | Hvað Hann Þýðir |
+|---|---|
+| `add_to_cart` | Gestur valdi herbergi eða pakka |
+| `view_cart` | Gestur skoðaði bókunaryfirlit sitt |
+| `remove_from_cart` | Gestur fjarlægði herbergi eða pakka |
+| `begin_checkout` | Gestur hóf greiðsluferlið |
+| `add_payment_info` | Gestur sló inn greiðsluupplýsingar sínar |
+| `add_shipping_info` | Gestur sló inn gestaupplýsingar sínar |
+| `purchase` | Gestur kláraði bókun |
+| `refund` | Bókun var felld niður og endurgreidd |
+
+Allir atburðir innihalda viðeigandi víddir eins og tekjur, gjaldmiðil, herbergistegund og bókunargildi — sem gefur þér fulla mynd af ferðalagi gesta frá fyrstu sýn til fullgertrar bókunar. Til að opna fleiri eignar- og herbergisvíddir eins og `city_name`, `cancellation_policy`, `bed_type` og fleira, sjá [Custom Dimensions in GA4](/is/guides/general/gtm-integration#custom-dimensions-in-ga4).
+
+---
+
+## Þverslóðafylgni (Ítarlegt)
+
+Venjuleg samþætting hér að ofan fylgist með öllu sem gerist innan Wink. En ef þú vilt fylgjast með gestum alla leið frá þinni eigin vefsíðu til bókunar á Wink — og rétt rekja upprunalegan umferðarkostnað (Google Ads, tölvupóstherferðir, lífræna leit o.s.frv.) — þarf eitt auka skref á hvorri hlið.
+
+<Aside type="caution">
+Þessi kafli á aðeins við ef þú ert með GA4 uppsett á þinni eigin vefsíðu. Ef þú keyrir ekki GA4 á síðunni þinni, þá er venjuleg samþætting hér að ofan allt sem þú þarft.
+</Aside>
+
+### Af hverju þetta skiptir máli
+
+Án þverslóðafylgni mun gestur sem heimsækir vefsíðuna þína fyrst og bókar svo á Wink birtast í GA4 sem **Bein** lota án tengingar við fyrri heimsókn. Allar Google Ads smellur, tölvupóstherferðir eða lífrænar leitir sem leiddu til bókunar fá enga viðurkenningu.
+
+Með þverslóðafylgni stillt sérðu fulla ferðalag gesta:
+
+```
+google.com (greidd auglýsing)
+       ↓
+þín vefsíða (gestur skoðar herbergi)
+       ↓
+wink.travel (gestur velur herbergi og bókar)
+       ↓
+kaup rakin rétt til upprunalegs Google Ads smells
+```
+
+### Aðgerð krafist: Þú
+
+Stilltu GA4 eign þína til að þekkja `wink.travel` sem hluta af þínu eigin léni, ekki sem ytri tilvísun. Þetta segir GA4 að sauma saman loturnar í eina samfellu ferðalag gesta.
+
+<Steps>
+1. GA4 Stjórnandi → Gagnastraumar → þinn straumur
+2. Stilltu merkjastillingar → **Stilltu lénið þitt**
+3. Bættu við `wink.travel` sem tengdu léni
+4. Vistaðu
+</Steps>
+
+### Aðgerð krafist: Wink
+
+Hafðu samband við [Wink Support](https://app.wink.travel) og gefðu upp lénið á vefsíðu þinni (t.d. `yourhotel.com`). Wink bætir léni þínu við lista yfir tilvísunareyðingu í Wink GA4 eigninni. Þetta kemur í veg fyrir að vefsíðan þín sé skráð sem tilvísun, sem annars myndi skrifa yfir upprunalega rökstuðning gesta og hefja nýja lotu.
+
+<Aside type="tip">
+Venjuleg samþætting hér að ofan dugar fyrir flestar eignir og gefur þér strax yfirsýn yfir bókanir og tekjur á Wink. Þverslóðafylgni er ítarlegri valkostur sem er þess virði að setja upp þegar þú ert öruggur með GA4 gögnin þín og vilt dýpri innsýn í rökstuðning.
+</Aside>

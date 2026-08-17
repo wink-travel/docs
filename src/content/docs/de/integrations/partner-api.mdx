@@ -1,0 +1,138 @@
+---
+title: Partner-API
+description: Preise, Ratenbegrenzungen und Service Level Agreement für die authentifizierte Wink Partner-API.
+sidebar:
+  order: 0
+---
+
+Die Wink **Partner-API** ist der authentifizierte, leistungsfähigere Weg für Integratoren, buchbare Reisebestände abzufragen – derselbe Bestand, der unsere einbettbaren Widgets und öffentlichen Browse-Endpunkte antreibt, als erstklassige programmatische Schnittstelle bereitgestellt. Während die kostenlosen Web Components und öffentlichen Browse-Endpunkte für leichte, benutzerorientierte Einbettungen gedacht sind, ist die Partner-API für Systeme gebaut, die in großem Umfang suchen, Preise ermitteln und buchen. Der Zugriff ist pro Integrator authentifiziert und wird nutzungsabhängig abgerechnet, sodass Sie nur für den tatsächlich gesendeten Traffic zahlen.
+
+## Pläne & Preise
+
+Ein API-Aufruf = eine Anfrage. Die nutzungsabhängige Abrechnung erfolgt pro 1.000 Anfragen.
+
+| | Kostenlos | Bezahlt | Enterprise |
+|---|---|---|---|
+| **Preis** | 0 $ | Nutzungsabhängig | Kontaktieren Sie uns |
+| **Am besten geeignet für** | Evaluierung & Integrationen mit geringem Volumen | Pay-as-you-go-Durchsatz in großem Maßstab | Individuelles Volumen & verhandelte Konditionen |
+| Anfragen pro Minute | 30 (60 Burst) | Unbegrenzt | Unbegrenzt |
+| Anfragen pro Monat | 10.000 | Unbegrenzt | Unbegrenzt |
+| API-Antwortzeit (P95) | — | Unter 500 ms | Unter 500 ms |
+| Preis pro 1.000 Anfragen | Kostenlos | 1,00 $ | Individuell |
+| Look-to-Book-Überschreitung (pro 1.000 überschüssige Suchen über 5.000:1) | — | 2,00 $ | Individuell |
+| Rate-Limit-Antwort | 429 (Pause / monatlicher Hard Stop) | Keine | Keine |
+| Service Level Agreement | — | ✓ | ✓ |
+| Priorisierter Support | — | ✓ | ✓ |
+| Dediziertes Onboarding | — | — | ✓ |
+
+[API-Schlüssel anfordern](https://app.wink.travel/account/applications) · [Metered Billing starten](https://app.wink.travel/account/applications) · [Vertrieb kontaktieren](https://cal.com/wink-ws36dy)
+
+## API-Referenz
+
+Zwei Oberflächen bedienen buchbare Bestände und entsprechen den beiden oben genannten Stufen:
+
+- **Kostenlos — Consumer / Booking Engine API** (REST, `/api/public/**`): anonym, browser- und widget-orientiert. [Booking Engine Referenz durchsuchen →](/de/api/booking-engine/)
+- **Bezahlt — Partner Integrator API** (**gRPC**, `wink.partner.v1`): authentifiziert, nutzungsabhängig, für serverseitige Integration in großem Maßstab gebaut. [Integrator Referenz durchsuchen →](/de/partner-api/partner/)
+
+Die Partner Integrator API ist gRPC, nicht REST. Sie rufen sie mit einem generierten Client über HTTP/2 bei
+`partner.wink.travel:443` auf und übergeben ein Bearer-Token sowie das Konto, für das Sie anfragen:
+
+```bash
+grpcurl -H "authorization: Bearer $WINK_TOKEN" partner.wink.travel:443 list
+```
+
+Die oben verlinkte Referenzseite dokumentiert jeden Service, jede Nachricht und jeden Fehlerstatus, und das Schema ist auch zur Laufzeit über Server-Reflection verfügbar, sodass `grpcurl`, Postman und Insomnia es ohne Download entdecken.
+
+## Wie Nutzung und Limits funktionieren
+
+### Kostenlose Stufe
+
+Die kostenlose Stufe ist so konzipiert, dass Sie bauen, testen und moderaten Produktionstraffic ohne Kosten betreiben können.
+
+- **Rate-Limit — 30 Anfragen pro Minute, mit einem Burst von 60 Anfragen.** Kurzzeitige Spitzen über die Dauerlast werden durch den Burst-Puffer abgefangen. Wenn Sie diesen überschreiten, antwortet die API mit **HTTP 429 (Too Many Requests)** und wendet eine **5-minütige Pause** an, bevor Ihr Schlüssel wieder Traffic bedienen kann. Warten Sie die Pause ab und versuchen Sie es danach erneut, anstatt den Endpunkt zu überlasten.
+- **Monatliches Kontingent — 10.000 Anfragen pro Kalendermonat.** Sobald Sie das monatliche Limit erreichen, gibt die API für den Rest des Monats **HTTP 429** zurück – ein harter Stopp – zusammen mit einer Nachricht, die Sie einlädt, auf die bezahlte Stufe umzusteigen, um weiterzumachen. Der Zähler wird zu Beginn des nächsten Kalendermonats zurückgesetzt.
+
+Die kostenlose Stufe beinhaltet kein Service Level Agreement oder priorisierten Support.
+
+### Bezahlte Stufe
+
+Die bezahlte Stufe entfernt das monatliche Limit und die Rate-Limit-Pausen und berechnet nur, was Sie tatsächlich nutzen.
+
+- **Abgerechnete Anfragen — 1,00 $ pro 1.000 Anfragen.** Es gibt keine monatliche Obergrenze und keine Drosselung bei normaler Nutzung; Sie zahlen nach tatsächlichem Volumen.
+- **Look-to-Book-Überschreitung — 2,00 $ pro 1.000 überschüssige Suchen.** Um den Bestand gesund zu halten, messen wir das Verhältnis von Suchanfragen ("Looks") zu bestätigten Buchungen. Sie haben Anspruch auf **5.000 Suchen pro Buchung**, bevor eine Überschreitung berechnet wird. Überschüssige Suchen werden berechnet als:
+
+  `excess = max(0, looks − bookings × 5.000)`
+
+  Die Überschreitung wird dann mit **2,00 $ pro 1.000 überschüssige Suchen** berechnet. Integrationen mit guter Conversion verursachen selten Überschreitungen; die Gebühr gilt nur für Traffic, der viel mehr sucht als bucht.
+
+Die bezahlte Stufe beinhaltet das unten beschriebene Service Level Agreement – eine Verfügbarkeitsgarantie von 99,9 % und ein P95-Antwortzeit-Ziel unter 500 ms – sowie priorisierten, nach Schweregrad gestaffelten Support.
+
+## Service Level Agreement
+
+_Gültig ab: 5. Juli 2026 · Version 1.0_
+
+Dieses Service Level Agreement (das "SLA") legt die Verfügbarkeitsverpflichtung, Servicegutschriften und Supportziele fest, die Wink ("Wink", "wir", "uns") einem Kunden ("Kunde", "Sie") für die authentifizierte Wink Partner-API (die "Partner-API" oder "Service") auf Stufen, für die ein SLA gilt, bietet. Dieses SLA ist Bestandteil und wird geregelt durch die Vereinbarung zwischen Ihnen und Wink, unter der Sie auf die Partner-API zugreifen (die "Vereinbarung"), und gilt so lange, wie Sie ein aktives, bezahltes Partner-API-Abonnement in gutem Stand halten. Großgeschriebene Begriffe, die hier nicht definiert sind, haben die Bedeutung, die ihnen in der Vereinbarung zugewiesen wird.
+
+### 1. Definitionen
+
+1. **"Verfügbarkeit"** bezeichnet die Zeiträume, in denen die Partner-API verfügbar ist, um ordnungsgemäß formatierte, authentifizierte Anfragen anzunehmen und erfolgreich zu beantworten.
+2. **"Ausfallzeit"** bezeichnet jeden Zeitraum, gemessen in Minuten, in dem die Partner-API nicht erfolgreich auf ordnungsgemäß formatierte, authentifizierte Anfragen antwortet, ausgenommen Zeiträume, die unter die Ausschlüsse in Abschnitt 4 fallen. Einzelne Fehler, die nur einen unbedeutenden Bruchteil der Anfragen betreffen, gelten nicht als Ausfallzeit.
+3. **"Monatlicher Verfügbarkeitsprozentsatz"** bezeichnet für einen Kalendermonat die Gesamtzahl der Minuten in diesem Monat minus der Ausfallzeit-Minuten, geteilt durch die Gesamtzahl der Minuten in diesem Monat, ausgedrückt als Prozentsatz.
+4. **"Geplante Wartung"** bezeichnet geplante Wartungsarbeiten am Service, für die Wink im Voraus gemäß Abschnitt 4 informiert hat.
+5. **"Servicegutschrift"** bezeichnet eine Gutschrift, berechnet als Prozentsatz der von Ihnen für die Partner-API im betroffenen Kalendermonat gezahlten oder zahlbaren Gebühren, die als einziges und ausschließliches Mittel für eine Nichterfüllung der Verfügbarkeitsverpflichtung auf zukünftige Partner-API-Gebühren angerechnet wird.
+6. **"Antwortzeit"** bezeichnet die verstrichene Zeit zwischen dem Eingang einer ordnungsgemäß formatierten, authentifizierten Anfrage an der Service-Grenze von Wink und dem Zeitpunkt, an dem Wink beginnt, die Antwort zurückzugeben, ohne Netzwerklatenz und jegliche clientseitige Zeit außerhalb von Winks Kontrolle.
+
+### 2. Verfügbarkeits- & Leistungsversprechen
+
+Wink wird sich nach kommerziell angemessenen Anstrengungen bemühen, die Partner-API mit einem **monatlichen Verfügbarkeitsprozentsatz von mindestens 99,9 %** während jedes Kalendermonats der Laufzeit bereitzustellen (das "Verfügbarkeitsversprechen"). Das Verfügbarkeitsversprechen wird an der Service-Grenze von Wink gemessen und schließt Faktoren aus, die außerhalb von Winks angemessener Kontrolle liegen, einschließlich der in Abschnitt 4 beschriebenen. Die Überwachungssysteme von Wink sind die maßgebliche Quelle zur Messung des monatlichen Verfügbarkeitsprozentsatzes und der Antwortzeit.
+
+Wink strebt außerdem eine **95. Perzentil (P95) Antwortzeit von unter 500 Millisekunden** für erfolgreiche, ordnungsgemäß formatierte, authentifizierte Anfragen an, gemessen an der Service-Grenze von Wink über jeden Kalendermonat (das "Leistungsziel"). Das Leistungsziel schließt die in Abschnitt 4 beschriebenen Faktoren, Anfragen, die Anwendungsfehler aufgrund der Anfrage selbst zurückgeben, sowie ungewöhnlich große oder komplexe Batch-Anfragen aus. Das Leistungsziel ist ein Serviceziel; die Servicegutschriften in Abschnitt 3 gelten für Nichterfüllungen des **Verfügbarkeitsversprechens** und sind das einzige und ausschließliche Mittel bei Verfügbarkeitsmängeln.
+
+### 3. Servicegutschriften
+
+Fällt der monatliche Verfügbarkeitsprozentsatz in einem Kalendermonat unter das Verfügbarkeitsversprechen, können Sie Anspruch auf eine Servicegutschrift haben, berechnet als Prozentsatz der von Ihnen für diesen Monat gezahlten oder zahlbaren Partner-API-Gebühren, gemäß folgender Staffelung:
+
+| Monatlicher Verfügbarkeitsprozentsatz | Servicegutschrift |
+|---|---|
+| Unter 99,9 % aber mindestens 99,0 % | 10 % |
+| Unter 99,0 % aber mindestens 95,0 % | 25 % |
+| Unter 95,0 % | 50 % |
+
+1. **Gutschrift beantragen.** Um eine Servicegutschrift zu erhalten, müssen Sie Wink innerhalb von **dreißig (30) Tagen** nach Ende des Kalendermonats, in dem der Mangel auftrat, eine schriftliche Forderung vorlegen. Die Forderung muss die Daten und Zeiten jedes Ausfallereignisses enthalten, für das Sie eine Gutschrift beantragen, sowie alle Ihnen vernünftigerweise verfügbaren unterstützenden Protokolle oder Nachweise. Nach Ablauf dieser Frist eingereichte Forderungen sind nicht berechtigt.
+2. **Form der Gutschrift.** Genehmigte Servicegutschriften werden auf zukünftige Partner-API-Gebühren angerechnet und haben keinen Barwert. Sie sind keine Rückerstattungen und werden nicht ausgezahlt, außer wenn dies gesetzlich vorgeschrieben ist.
+3. **Maximale Gutschrift.** Die insgesamt gewährten Servicegutschriften für einen einzelnen Kalendermonat überschreiten nicht 50 % der von Ihnen für diesen Monat gezahlten oder zahlbaren Partner-API-Gebühren.
+4. **Alleiniges und ausschließliches Mittel.** Servicegutschriften sind Ihr **alleiniges und ausschließliches Mittel** für jegliche Nichterfüllung des Verfügbarkeitsversprechens oder sonstige Verfügbarkeitsmängel der Partner-API.
+
+### 4. Ausschlüsse
+
+Das Verfügbarkeitsversprechen und daraus resultierende Servicegutschriften gelten nicht, und Ausfallzeiten schließen nicht ein, jegliche Nichtverfügbarkeit, Aussetzung, Verschlechterung oder Leistungsprobleme, die entstehen aus oder im Zusammenhang mit:
+
+1. **Geplanter Wartung**, für die Wink eine vorherige Ankündigung gemacht hat, sofern diese Ankündigung in angemessenem Zeitraum über einen Kanal erfolgt, den Wink üblicherweise zur Kundenkommunikation nutzt;
+2. **Höherer Gewalt** oder anderen Ursachen außerhalb der angemessenen Kontrolle von Wink, einschließlich Naturkatastrophen, Regierungsmaßnahmen, Netzwerk- oder Versorgungsunterbrechungen sowie Denial-of-Service- oder anderen böswilligen Angriffen;
+3. Problemen, die durch **Ihr** Verhalten oder Unterlassen, Ihre Ausrüstung, Software oder Ihr Netzwerk oder durch einen **Drittanbieter** verursacht werden, der nicht unter direkter Kontrolle von Wink steht;
+4. Ihrem **Missbrauch des Service** oder **Verstoß gegen die Vereinbarung**, dieses SLA, die Nutzungsbedingungen oder geltende Ratenbegrenzungen, einschließlich Traffic, den Wink vernünftigerweise als übermäßig, automatisierten Missbrauch oder betrügerisch einstuft; und
+5. jeglicher **Aussetzung oder Beendigung** Ihres Zugangs, die ordnungsgemäß gemäß der Vereinbarung erfolgt, einschließlich Aussetzung wegen Nichtzahlung.
+
+### 5. Support- & Reaktionsziele
+
+Wink bietet Support für die Partner-API während der regulären Geschäftszeiten, ausgenommen lokale Feiertage. Wink wird sich nach kommerziell angemessenen Anstrengungen bemühen, ordnungsgemäß eingereichte Supportanfragen innerhalb der folgenden Zielreaktionszeiten anzuerkennen, basierend auf der von Ihnen zugewiesenen und von Wink vernünftigerweise bestätigten Schwere:
+
+| Schweregrad | Beschreibung | Ziel für erste Antwort |
+|---|---|---|
+| **Sev 1 — Kritisch** | Partner-API ist in Produktion ausgefallen oder unbrauchbar ohne Workaround. | 4 Stunden |
+| **Sev 2 — Groß** | Wesentliche Funktion beeinträchtigt oder verschlechtert; Workaround vorhanden. | 1 Werktag |
+| **Sev 3 — Klein** | Allgemeine Fragen, kleinere Probleme oder Feature-Anfragen. | 2 Werktage |
+
+Zielreaktionszeiten beschreiben, wann Wink die **erste Kontaktaufnahme** anstrebt; sie sind keine Garantie für die Lösungszeit. Priorisierter Support und schweregradbasierte Ziele gelten für Stufen, bei denen sie enthalten sind.
+
+### 6. Daten & Sicherheit
+
+Wink unterhält kommerziell angemessene administrative, technische und organisatorische Maßnahmen zum Schutz der Vertraulichkeit, Integrität und Verfügbarkeit der über die Partner-API verarbeiteten Daten und überprüft diese Maßnahmen regelmäßig. Die Verarbeitung personenbezogener Daten durch Wink unterliegt der [Datenschutzerklärung](/de/privacy) und etwaigen Datenverarbeitungsbedingungen in der Vereinbarung. Sie sind verantwortlich für die Sicherung Ihrer eigenen API-Zugangsdaten, für die rechtmäßige Nutzung aller abgerufenen Daten und für die unverzügliche Benachrichtigung von Wink bei einem vermuteten Missbrauch der Zugangsdaten.
+
+### 7. Haftungsbeschränkung
+
+Servicegutschriften sind das **alleinige und ausschließliche Mittel** für jegliche Nichtverfügbarkeit oder Nichterfüllung des Verfügbarkeitsversprechens und werden anstelle jeglicher anderer Haftung für solche Mängel gewährt. Soweit gesetzlich zulässig, wird die Partner-API "wie verfügbar" bereitgestellt. Die Gesamthaftung von Wink im Zusammenhang mit dem Service ist auf die in der Vereinbarung festgelegten Grenzen beschränkt, und Wink haftet nicht für indirekte, beiläufige, besondere, Folgeschäden oder Strafschäden oder für entgangene Gewinne, Einnahmen, Daten oder Goodwill, selbst wenn auf die Möglichkeit solcher Schäden hingewiesen wurde.
+
+### 8. Laufzeit, Änderungen & Beendigung
+
+Dieses SLA gilt, solange Sie ein aktives Partner-API-Abonnement auf einer Stufe haben, für die das SLA gilt. Wink kann dieses SLA von Zeit zu Zeit aktualisieren; wesentliche Änderungen werden über einen Kanal kommuniziert, den Wink üblicherweise zur Kundenkommunikation nutzt, und die weitere Nutzung der Partner-API nach Inkrafttreten der Änderung gilt als Zustimmung zum aktualisierten SLA. Dieses SLA endet automatisch mit der Beendigung oder dem Ablauf der Vereinbarung oder Ihres Partner-API-Abonnements. Abschnitte, die ihrer Natur nach über die Beendigung hinaus gelten sollten – einschließlich angesammelter, aber nicht beanspruchter Servicegutschriften, Haftungsbeschränkungen und Definitionen – bleiben bestehen.

@@ -1,11 +1,11 @@
 ---
 title: Võrdlus
-description: Uuri, kuidas Wink võrreldes sarnaste veebipõhiste reisiettevõtetega paistab ning millised on Winkiga liitumise eelised.
+description: Õpi, kuidas Wink võrreldes sarnaste veebipõhiste reisiettevõtetega paistab ning millised on Winkiga liitumise eelised.
 sidebar:
   order: 5
 ---
 
-Uuri, kuidas Wink võrreldes teiste veebipõhiste reisisegmentidega turul paistab. Allpool on kiire ülevaade funktsioonidest, mida pidasime oluliseks võrrelda.
+Õpi, kuidas Wink võrreldes teiste veebipõhiste reisisegmentidega turul paistab. Allpool on kiire ülevaade funktsioonidest, mida pidasime oluliseks võrrelda.
 
 ## Funktsioonide maatriks
 
@@ -18,7 +18,7 @@ Uuri, kuidas Wink võrreldes teiste veebipõhiste reisisegmentidega turul paista
 | Tehisintellekti abiga levitamine ja turundus | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | Sotsiaalmeediasõbralikud tööriistad | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | Komisjonitasuta B2C kanal | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
-| Tasuta Google Hotelli lisamine | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Tasuta Google Hotelli kirje | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | Veebikomponent / SDK / API ligipääs | 🟢 | 🟢 | ⚫️ | 🟢 | 
 | Otsesuhted | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | Läbiräägitavad komisjonitasud müügikanali kohta | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
@@ -32,11 +32,10 @@ Uuri, kuidas Wink võrreldes teiste veebipõhiste reisisegmentidega turul paista
 
 ## Wink vs Interneti broneerimismootor (IBE)
 
-Mõned hotellid püüavad meid võrrelda oma interneti broneerimismootoriga, mis tuli nende kanalihalduriga komplektis, ja paluvad meil anda fikseeritud kuutasu põhine hinnapakkumine vastavalt nende objekti võtmete arvule.
+Mõned hotellid püüavad meid võrrelda oma interneti broneerimismootoriga, mis tuli nende kanalihalduriga komplektis, ja paluvad meil anda fikseeritud kuutasu nende objekti võtmete arvu põhjal.
 
-Me ei ole IBE ja loodetavasti aitab [Wink Academy](/et/) seda selgitada. Igal teenusel on omad plussid ja miinused. Kui sinu IBE sobib sinu objektile, jää sellega.
-
-Wink on loodud täitma mitmeid tühimikke reisitööstuses ja ühendama kõik ühte kohta.
+Me ei ole IBE ja loodetavasti aitab see selgitada erinevust. Igal teenusel on omad plussid ja miinused. Kui sinu IBE sobib sinu objektile, jää sellega.  
+Wink on loodud täitma mitmeid tühimikke reisitööstuses ja ühendama kõik ühte kohta. 
 
 :::tip
 Sul ei ole vaja oma olemasolevat IBE-d asendada. Soovitame siiski proovida meie sotsiaalmeediasõbralikku broneerimismootorit või linkide haldurit mõnel oma sotsiaalmeedia kontol, et näha, kuidas need konverteeruvad. Sa ei maksa midagi, kui broneeringuid ei tule – mida sa kaotada võid? 😉

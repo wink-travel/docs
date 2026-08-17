@@ -5,11 +5,11 @@ sidebar:
   order: 0
 ---
 
-Naše rešenje za registrovane turističke agente je [Wink Agent](https://agent.wink.travel). To je portal za samostalno korišćenje koji agenti mogu koristiti da pretražuju i rezervišu u ime svojih klijenata i zarade proviziju za svaku rezervaciju.
+Naše rešenje za registrovane turističke agente je [Wink Agent](https://agent.wink.travel). To je portal za samostalnu upotrebu koji agenti mogu koristiti za pretragu i rezervaciju u ime svojih klijenata i zaradu provizije za svaku rezervaciju.
 
 Napredniji turistički agenti mogu izabrati integraciju na API nivou radi upravljanja plaćanjima i isplatama van Wink platforme.
 
-Turistički agenti imaju podskup istih funkcija portala kao i [Wink Studio](/sr/portal/studio/what-is-studio), pa ih ovde nećemo ponovo obrađivati.
+Turistički agenti imaju podskup istih funkcija portala kao i [Studio](/sr/portal/studio/what-is-studio), pa ih ovde nećemo ponovo obrađivati.
 
 ## Pretraga
 

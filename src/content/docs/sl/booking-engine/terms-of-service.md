@@ -2,7 +2,7 @@
 title: Pogoji storitve
 description: Enostavno dostopni in ažurni pogoji za vse naše uporabnike popotnike.
 sidebar:
-  order: 4
+  order: 8
 ---
   
 <iframe 

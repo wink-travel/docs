@@ -1,39 +1,39 @@
 ---
 title: Mga Tuntunin at Kundisyon
-description: Mga Tuntunin at Kundisyon para sa lahat ng mga gumagamit at entidad ng Wink.
+description: Mga Tuntunin at Kundisyon para sa lahat ng gumagamit at entidad ng Wink.
 ---
 
-Maaaring may iba't ibang mga tuntunin at kundisyon ang bawat portal. Mangyaring pumunta sa seksyon sa ibaba na naaangkop sa iyo at hanapin ang sub-seksyon na tinatawag na Terms of Service at Payment Terms.
+Iba't ibang bahagi ng Wink ay may kanya-kanyang tuntunin. Hanapin ang seksyon na naaangkop sa iyo sa ibaba — bawat isa ay may sariling Mga Tuntunin ng Serbisyo, at ang mga seksyon na humahawak ng pera ay may Mga Tuntunin sa Pagbabayad din.
 
-## Affiliate portal
+## Mga Ari-arian
 
-Para sa mga affiliate na nais matutunan kung paano kumita ng passive income sa pamamagitan ng pag-monetize ng iyong mga social account gamit ang Wink.  
-Ang [Wink Studio](https://studio.wink.travel) ay may lahat ng mga kasangkapang kailangan mo upang magbenta tulad ng isang propesyonal.
+Para sa mga hotel, chain, brand, at mga kumpanya ng pamamahala na nagbebenta ng imbentaryo sa Wink.
 
-<LinkButton href="/tl/portal/studio/what-is-studio">
-Matuto nang higit pa tungkol sa Wink Studio
-</LinkButton>
+- [Mga Tuntunin ng Serbisyo](/tl/portal/extranet/terms-of-service)
+- [Mga Tuntunin sa Pagbabayad](/tl/portal/extranet/payment-terms)
+
+## Mga Kaakibat
+
+Para sa mga creator, influencer, at mga kaakibat na nagpo-promote ng imbentaryo sa paglalakbay at kumikita ng komisyon.
+
+- [Mga Tuntunin ng Serbisyo](/tl/portal/studio/terms-of-service)
+- [Mga Tuntunin sa Pagbabayad](/tl/portal/studio/payment-terms)
+
+## Mga Ahente ng Paglalakbay
+
+Para sa mga rehistradong ahente ng paglalakbay na naghahanap, nagbu-book, at kumikita para sa kanilang mga kliyente.
+
+- [Mga Tuntunin ng Serbisyo](/tl/portal/travel-agent/terms-of-service)
+- [Mga Tuntunin sa Pagbabayad](/tl/portal/travel-agent/payment-terms)
 
 ## Booking engine
 
-Lahat ng daan ay patungo sa aming booking engine! Alamin kung ano ang maaari mong gawin gamit ang pinaka-customizable, travel-focused, booking engine sa merkado.
+Para sa lahat ng nagbu-book ng paglalakbay sa pamamagitan ng Wink.
 
-<LinkButton href="/tl/booking-engine/in-a-nutshell">
-Matuto nang higit pa tungkol sa aming booking engine
-</LinkButton>
+- [Mga Tuntunin ng Serbisyo](/tl/booking-engine/terms-of-service)
 
-## Property portal
+## Lahat
 
-Para sa mga property na nais magsimulang magbenta sa Wink. Gamitin ang aming mga kasangkapan upang epektibong magbenta at mag-market ng iyong sarili online at magkaroon ng isang hukbo ng mga affiliate mula sa buong mundo upang tulungan kang makakuha ng mga customer at booking.
-
-<LinkButton href="/tl/portal/extranet/what-is-extranet">
-Matuto nang higit pa tungkol sa Wink Extranet
-</LinkButton>
-
-## Travel agent portal
-
-Para sa mga travel agent na nais malaman kung ano ang maiaalok ng Wink sa kanila sa mga bespoke na rate, deal, at imbentaryo, direkta mula sa mga supplier.
-
-<LinkButton href="/tl/portal/travel-agent/what-is-agent">
-Matuto nang higit pa tungkol sa Wink Agent
-</LinkButton>
+- [Patakaran sa Privacy](/tl/privacy)
+- [Pagpepresyo](/tl/getting-started/pricing) — ano ang libre, magkano ang gastos ng booking, at paano gumagana ang pay-as-you-go na mga bayad sa paggamit.
+- [Hiling sa pagtanggal ng data](/tl/getting-started/data-deletion-request)

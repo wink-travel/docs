@@ -2,7 +2,7 @@
 title: Mga Tuntunin ng Serbisyo
 description: Madaling ma-access at napapanahong mga tuntunin para sa lahat ng aming mga gumagamit na manlalakbay.
 sidebar:
-  order: 4
+  order: 8
 ---
   
 <iframe 

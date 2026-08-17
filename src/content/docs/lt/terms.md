@@ -3,37 +3,37 @@ title: Sąlygos ir nuostatos
 description: Sąlygos ir nuostatos visiems Wink vartotojams ir subjektams.
 ---
 
-Kiekvienas portalas gali turėti skirtingas sąlygas ir nuostatas. Prašome eiti į žemiau pateiktą skyrių, kuris taikomas jums, ir ieškoti poskyrio pavadinimu Paslaugų teikimo sąlygos ir Mokėjimo sąlygos.
+Skirtingos Wink dalys taiko skirtingas sąlygas. Raskite žemiau skyrių, kuris taikomas jums — kiekvienas turi savo Paslaugų teikimo sąlygas, o skyriai, susiję su pinigais, taip pat turi Mokėjimo sąlygas.
 
-## Partnerių portalas
+## Nuosavybė
 
-Partneriams, kurie nori sužinoti, kaip uždirbti pasyvias pajamas monetizuodami savo socialinius paskyras su Wink.
-[Wink Studio](https://studio.wink.travel) turi visus įrankius, kurių reikia profesionaliam pardavimui.
+Skirta viešbučiams, tinklams, prekės ženklams ir valdymo įmonėms, parduodančioms inventorių per Wink.
 
-<LinkButton href="/lt/portal/studio/what-is-studio">
-Sužinokite daugiau apie Wink Studio
-</LinkButton>
+- [Paslaugų teikimo sąlygos](/lt/portal/extranet/terms-of-service)
+- [Mokėjimo sąlygos](/lt/portal/extranet/payment-terms)
 
-## Rezervavimo sistema
+## Partneriai
 
-Visi keliai veda į mūsų rezervavimo sistemą! Sužinokite, ką galite daryti su labiausiai pritaikoma, kelionėms skirta rezervavimo sistema rinkoje.
+Skirta kūrėjams, influenceriams ir partneriams, reklamuojantiems kelionių inventorių ir uždirbantiems komisinius.
 
-<LinkButton href="/lt/booking-engine/in-a-nutshell">
-Sužinokite daugiau apie mūsų rezervavimo sistemą
-</LinkButton>
+- [Paslaugų teikimo sąlygos](/lt/portal/studio/terms-of-service)
+- [Mokėjimo sąlygos](/lt/portal/studio/payment-terms)
 
-## Nekilnojamojo turto portalas
+## Kelionių agentai
 
-Nekilnojamojo turto savininkams, kurie nori pradėti pardavinėti per Wink. Naudokite mūsų įrankius efektyviai parduoti ir reklamuotis internete bei pritraukti partnerių armiją iš viso pasaulio, kurie padės jums gauti klientų ir rezervacijų.
+Skirta registruotiems kelionių agentams, ieškantiems, užsakantiems ir uždirbantiems savo klientų vardu.
 
-<LinkButton href="/lt/portal/extranet/what-is-extranet">
-Sužinokite daugiau apie Wink Extranet
-</LinkButton>
+- [Paslaugų teikimo sąlygos](/lt/portal/travel-agent/terms-of-service)
+- [Mokėjimo sąlygos](/lt/portal/travel-agent/payment-terms)
 
-## Kelionių agentų portalas
+## Užsakymų sistema
 
-Kelionių agentams, kurie nori sužinoti, ką Wink gali jiems pasiūlyti pagal užsakymą sudarytas kainas, pasiūlymus ir inventorių tiesiogiai iš tiekėjų.
+Skirta visiems, užsakantiems keliones per Wink.
 
-<LinkButton href="/lt/portal/travel-agent/what-is-agent">
-Sužinokite daugiau apie Wink Agent
-</LinkButton>
+- [Paslaugų teikimo sąlygos](/lt/booking-engine/terms-of-service)
+
+## Visi
+
+- [Privatumo politika](/lt/privacy)
+- [Kainodara](/lt/getting-started/pricing) — kas nemokama, kiek kainuoja užsakymas ir kaip veikia mokėjimas už naudojimąsi.
+- [Duomenų ištrynimo užklausa](/lt/getting-started/data-deletion-request)

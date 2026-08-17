@@ -2,7 +2,7 @@
 title: شروط الخدمة
 description: شروط سهلة الوصول ومُحدّثة لجميع مستخدمي المسافرين لدينا.
 sidebar:
-  order: 4
+  order: 8
 ---
   
 <iframe 

@@ -14,12 +14,12 @@ Saznajte kako se Wink uspoređuje s drugim segmentima online putovanja na trži�
 | Internet booking engine | 🟢 | 🟢 | 🟢 | ⚫️ | 
 | Link-in-bio trgovina | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | B2B affiliate mreža | 🟢 | 🟢 | ⚫️ | 🟢 | 
-| Podrška putničkim agentima | 🟢 | 🟢 | ⚫️ | 🟢 | 
+| Podrška turističkim agentima | 🟢 | 🟢 | ⚫️ | 🟢 | 
 | Distribucija i marketing uz pomoć AI | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | Alati prilagođeni društvenim mrežama | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | B2C kanal bez provizije | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | Besplatni Google Hotel listing | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
-| Pristup Web Component / SDK / API | 🟢 | 🟢 | ⚫️ | 🟢 | 
+| Web komponenta / SDK / API pristup | 🟢 | 🟢 | ⚫️ | 🟢 | 
 | Izravni odnosi | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | Pregovarajuće provizije po prodajnom kanalu | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | Povezivost s channel managerom i PMS-om | 🟢 | 🟢 | 🟢 | 🟢 | 
@@ -32,9 +32,9 @@ Saznajte kako se Wink uspoređuje s drugim segmentima online putovanja na trži�
 
 ## Wink vs Internet Booking Engine (IBE)
 
-Neki hoteli pokušavaju usporediti nas s njihovim internet booking engineom koji dolazi u paketu s njihovim channel managerom i traže od nas da im ponudimo fiksnu, mjesečnu cijenu temeljenu na broju soba njihove nekretnine.
+Neki hoteli pokušavaju usporediti nas s njihovim internet booking engineom koji je došao u paketu s njihovim channel managerom i traže od nas da im damo fiksnu mjesečnu cijenu temeljenu na broju soba njihove nekretnine.
 
-Mi nismo IBE i nadamo se da [Wink Academy](/hr/) pomaže razjasniti to. Svaka usluga ima svoje prednosti i nedostatke. Ako vaš IBE odgovara vašoj nekretnini, ostanite pri tome.  
+Mi nismo IBE i nadamo se da ovo pomaže razjasniti razliku. Svaka usluga ima svoje prednosti i nedostatke. Ako vaš IBE odgovara vašoj nekretnini, ostanite pri tome.  
 Wink postoji da popuni nekoliko praznina u turističkoj industriji i sve to objedini na jednom mjestu.
 
 :::tip

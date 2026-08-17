@@ -1,331 +1,49 @@
 ---
 title: Katalog Webhook Događaja
-description: Kompletan referentni spisak svih tipova webhook događaja dostupnih na Wink platformi, organizovanih po kategorijama.
+description: Svaka vrsta webhook događaja na Wink platformi, generisana iz kataloga događaja platforme — kome se isporučuju i gde je dokumentovan sadržaj.
 sidebar:
-  order: 3
+  order: 3.5
 ---
 
-import { LinkButton } from '@astrojs/starlight/components';
+import webhooks from '../../../../schemas/webhooks.json';
+import WebhookEventTypes from '@/components/webhooks/event-types.astro';
 
-Ova stranica prikazuje sve webhook događaje na koje se možete pretplatiti na Wink-u. Za uputstva o podešavanju, pogledajte [Webhook Integration Guide](/sr/guides/developers/webhook-integration) ili [Webhooks management page](/sr/portal/settings/webhooks).
+Ova stranica prikazuje sve webhook događaje na koje se možete pretplatiti na Wink-u. Za uputstva o podešavanju, pogledajte [Vodič za integraciju webhook-a](/sr/developers/webhook-integration) ili [stranicu za upravljanje webhook-ovima](/sr/portal/settings/webhooks).
 
 ## Kako se pretplatiti
 
 1. Idite na **Applications > Webhooks** u vašem portalu.
-2. Kreirajte webhook i izaberite događaje koje želite da primate.
-3. Wink šalje HTTP POST na vaš endpoint svaki put kada se dogodi događaj.
-
-Za kompletne korake podešavanja i najbolje prakse, pogledajte [Webhook Integration](/sr/guides/developers/webhook-integration).
-
----
-
-## Događaji upravljanja entitetima
-
-Događaji za upravljanje entitetima (objekti, filijale, kompanije) i njihovu administraciju.
-
-### Životni ciklus
-
-| Događaj | Ključ | Opis |
-|---|---|---|
-| Entitet kreiran | `managing_entity.created` | Novi entitet za upravljanje je kreiran. |
-| Entitet obrisan | `managing_entity.deleted` | Entitet za upravljanje je obrisan. |
-| Status ažuriran | `managing_entity.status.updated` | Status entiteta je promenjen. |
-| Na pregledu | `account.under_review` | Nalog entiteta je na pregledu. |
-
-### Pretplata
-
-| Događaj | Ključ | Opis |
-|---|---|---|
-| Pretplata obezbeđena | `managing_entity.subscription.provisioned` | Nova pretplata je obezbeđena. |
-| Pretplata promenjena | `managing_entity.subscription.changed` | Plan pretplate je promenjen. |
-| Faktura pretplate promenjena | `managing_entity.subscription.invoice.changed` | Faktura pretplate je ažurirana. |
-
-### Životni ciklus menadžera
-
-| Događaj | Ključ | Opis |
-|---|---|---|
-| Menadžer dodat | `managing_entity.manager.added` | Novi menadžer je dodat. |
-| Menadžer pozvan | `managing_entity.manager.invited` | Pozivnica za menadžera je poslata. |
-| Menadžer uklonjen | `managing_entity.manager.removed` | Menadžer je uklonjen. |
-| Menadžer prihvaćen | `managing_entity.manager.accepted` | Pozivnica menadžera je prihvaćena. |
-| Menadžer odbijen | `managing_entity.manager.rejected` | Pozivnica menadžera je odbijena. |
-| Vlasnik postavljen | `managing_entity.manager.owner.set` | Vlasništvo entiteta je preneto. |
-| Menadžeri ažurirani | `account.managers.update` | Lista menadžera je promenjena. |
-
-### Informacije o entitetu
-
-| Događaj | Ključ | Opis |
-|---|---|---|
-| Informacije ažurirane | `managing_entity.information.updated` | Informacije o entitetu su ažurirane. |
-| Adresa ažurirana | `managing_entity.city.updated` | Adresa/grad entiteta je promenjen. |
-| Ime ažurirano | `managing_entity.name.updated` | Ime entiteta je promenjeno. |
-| URL ime ažurirano | `managing_entity.url_name.updated` | Vanity URL entiteta je promenjen. |
-| Jedinstveni ID ažuriran | `managing_entity.unique_id.updated` | Jedinstveni identifikator entiteta je promenjen. |
-| Ažuriran nadređeni entitet | `managing_entity.managed_by.updated` | Odnos entiteta sa nadređenim je promenjen. |
-| Place ID ažuriran | `managing_entity.place_id.updated` | Google Place ID entiteta je promenjen. |
-| Predstavnik naloga ažuriran | `managing_entity.account_representative.updated` | Predstavnik naloga je promenjen. |
-| Profilna slika ažurirana | `managing_entity.profile_picture.updated` | Profilna slika entiteta je ažurirana. |
-| Logo ažuriran | `managing_entity.logo.updated` | Logo entiteta je ažuriran. |
-| Detalji ažurirani | `account.details.updated` | Polja detalja naloga su promenjena. |
-| Agent ažuriran | `managing_entity.agent.updated` | Agent entiteta je izmenjen. |
-
-### Obaveštenja
-
-| Događaj | Ključ | Opis |
-|---|---|---|
-| Email obaveštenje agentu | `managing_entity.agent.email.notification` | Email obaveštenje je poslato agentu. |
-| Email obaveštenje menadžeru | `managing_entity.manager.email.notification` | Email obaveštenje je poslato menadžeru. |
-
-### Zadaci naloga
-
-| Događaj | Ključ | Opis |
-|---|---|---|
-| Zadatak kreiran | `account.task.create` | Novi zadatak je dodat nalogu. |
-| Zadatak ažuriran | `account.task.update` | Zadatak naloga je izmenjen. |
-| Zadatak uklonjen | `account.task.remove` | Zadatak naloga je uklonjen. |
-| Zadatak završen | `account.task.complete` | Zadatak naloga je završen. |
-| Zadatak verifikacije poreskog ID-a završen | `account.task.tax_id.complete` | Zadatak verifikacije poreskog ID-a je završen. |
-
----
-
-## Događaji rezervacija
-
-Događaji za životni ciklus rezervacije na Wink-u, od kreiranja do refundacija i isplata.
-
-### Osnovna rezervacija
-
-| Događaj | Ključ | Opis |
-|---|---|---|
-| Rezervacija kreirana | `booking.create` | Nova rezervacija je kreirana. |
-| Rezervacija otkazana | `booking.cancelled` | Rezervacija je otkazana. |
-| Rezervacija neuspešna | `booking.failed` | Pokušaj rezervacije nije uspeo. |
-| Obrada rezervacije | `booking.processing` | Plaćanje rezervacije se obrađuje. |
-| Inicijalizacija zatražena | `booking.initialize.request` | Zatražena je inicijalizacija rezervacije. |
-| Inicijalizacija završena | `booking.initialize.complete` | Inicijalizacija rezervacije je završena. |
-
-### Refundacije
-
-| Događaj | Ključ | Opis |
-|---|---|---|
-| Zahtev za refundaciju | `booking.refund.request` | Podnet je zahtev za refundaciju. |
-| Greška pri refundaciji | `booking.refund.error` | Došlo je do greške prilikom obrade refundacije. |
-| Delimična refundacija | `booking.refund.partial` | Izdata je delimična refundacija. |
-| Potpuna refundacija | `booking.refund.full` | Izdata je potpuna refundacija. |
-
-### Isplate
-
-| Događaj | Ključ | Opis |
-|---|---|---|
-| Isplata kreirana | `booking.payout.create` | Isplata za rezervaciju je kreirana. |
-| Isplata završena | `booking.payout.complete` | Isplata je uspešno završena. |
-| Sredstva dostupna | `booking.funds.available` | Sredstva rezervacije su dostupna za poravnanje. |
-| Sredstva evidentirana | `booking.funds.ledgered` | Sredstva rezervacije su evidentirana u knjigovodstvu. |
-
-### Recenzije
-
-| Događaj | Ključ | Opis |
-|---|---|---|
-| Recenzija poslata | `booking.review.created` | Gost je poslao recenziju za rezervaciju. |
-| Odgovor na recenziju | `booking.review.responded` | Objekat je odgovorio na recenziju rezervacije. |
-
----
-
-## Događaji objekata
-
-Događaji za profile i sadržaj objekata, prosleđeni pretplatnicima na webhook objekta.
-
-| Događaj | Ključ | Opis |
-|---|---|---|
-| Objekat kreiran | `property.created` | Novi objekat je kreiran. |
-| Objekat ažuriran | `property.updated` | Detalji objekta su ažurirani. |
-| Objekat obrisan | `property.deleted` | Objekat je uklonjen. |
-| Objekat registrovan | `property.registered` | Objekat je završio registraciju. |
-| Status ažuriran | `property.status.updated` | Spoljni status objekta je promenjen. |
-| Ime ažurirano | `property.name.updated` | Ime objekta je promenjeno. |
-| Adresa ažurirana | `property.address.updated` | Adresa objekta je ažurirana. |
-| Geolokacija ažurirana | `property.geolocation.updated` | Geolokacija objekta je ažurirana. |
-| Profil ažuriran | `property.profile.updated` | Sadržaj profila objekta je promenjen. |
-| Usluge ažurirane | `property.services.updated` | Lista usluga/ameniteta objekta je promenjena. |
-| Dobrodošlica ažurirana | `property.welcome_text.updated` | Poruka dobrodošlice objekta je promenjena. |
-| Pravila kreirana | `property.policy.created` | Nova pravila objekta su kreirana. |
-| Pravila ažurirana | `property.policy.updated` | Pravila objekta su ažurirana. |
-
----
-
-## Događaji inventara
-
-Događaji za stavke inventara unutar objekta, prosleđeni pretplatnicima webhooka tog objekta.
-
-### Tipovi soba
-
-| Događaj | Ključ | Opis |
-|---|---|---|
-| Tip sobe kreiran | `room_type.created` | Novi tip sobe je dodat. |
-| Tip sobe ažuriran | `room_type.updated` | Tip sobe je izmenjen. |
-| Tip sobe obrisan | `room_type.deleted` | Tip sobe je uklonjen. |
-
-### Planovi cena
-
-| Događaj | Ključ | Opis |
-|---|---|---|
-| Plan cena kreiran | `rate_plan.created` | Novi plan cena je kreiran. |
-| Plan cena ažuriran | `rate_plan.updated` | Plan cena je izmenjen. |
-| Plan cena obrisan | `rate_plan.deleted` | Plan cena je uklonjen. |
-
-### Glavne cene
-
-| Događaj | Ključ | Opis |
-|---|---|---|
-| Glavna cena kreirana | `master_rate.created` | Nova glavna cena je kreirana. |
-| Glavna cena ažurirana | `master_rate.updated` | Glavna cena je izmenjena. |
-| Glavna cena obrisana | `master_rate.deleted` | Glavna cena je uklonjena. |
-
-### Dodaci
-
-| Događaj | Ključ | Opis |
-|---|---|---|
-| Dodatak kreiran | `add_on.created` | Novi dodatak je kreiran. |
-| Dodatak ažuriran | `add_on.updated` | Dodatak je izmenjen. |
-| Dodatak obrisan | `add_on.deleted` | Dodatak je uklonjen. |
-
-### Sale za sastanke
-
-| Događaj | Ključ | Opis |
-|---|---|---|
-| Sala za sastanke kreirana | `meeting_room.created` | Nova sala za sastanke je dodata. |
-| Sala za sastanke ažurirana | `meeting_room.updated` | Sala za sastanke je izmenjena. |
-| Sala za sastanke obrisana | `meeting_room.deleted` | Sala za sastanke je uklonjena. |
-
-### Restorani
-
-| Događaj | Ključ | Opis |
-|---|---|---|
-| Restoran kreiran | `restaurant.created` | Novi restoran je dodat. |
-| Restoran ažuriran | `restaurant.updated` | Restoran je izmenjen. |
-| Restoran obrisan | `restaurant.deleted` | Restoran je uklonjen. |
-
-### Spa centri
-
-| Događaj | Ključ | Opis |
-|---|---|---|
-| Spa kreiran | `spa.created` | Novi spa centar je dodat. |
-| Spa ažuriran | `spa.updated` | Spa centar je izmenjen. |
-| Spa obrisan | `spa.deleted` | Spa centar je uklonjen. |
-
-### Aktivnosti
-
-| Događaj | Ključ | Opis |
-|---|---|---|
-| Aktivnost kreirana | `activity.created` | Nova aktivnost je dodata. |
-| Aktivnost ažurirana | `activity.updated` | Aktivnost je izmenjena. |
-| Aktivnost obrisana | `activity.deleted` | Aktivnost je uklonjena. |
-
----
-
-## Događaji prodajnih kanala
-
-Događaji za distribucione kanale koji povezuju dobavljače i filijale. Prosleđeni su i dobavljaču i pretplatnicima filijale.
-
-| Događaj | Ključ | Opis |
-|---|---|---|
-| Prodajni kanal kreiran | `sales_channel.created` | Novi prodajni kanal je kreiran. |
-| Prodajni kanal ažuriran | `sales_channel.updated` | Prodajni kanal je izmenjen. |
-| Prodajni kanal obrisan | `sales_channel.deleted` | Prodajni kanal je uklonjen. |
-
----
-
-## Događaji specijalnih cena
-
-Događaji za promotivne i dogovorene cene na objektu.
-
-| Događaj | Ključ | Opis |
-|---|---|---|
-| Specijalna cena kreirana | `special_rate.created` | Nova specijalna cena je kreirana. |
-| Specijalna cena ažurirana | `special_rate.updated` | Specijalna cena je izmenjena. |
-| Specijalna cena obrisana | `special_rate.deleted` | Specijalna cena je uklonjena. |
-| Modifikator cena ažuriran | `rate_modifier.updated` | Modifikator cena je ažuriran. |
-
----
-
-## Događaji primaoca isplate
-
-Događaji vezani za upravljanje primaocima isplata.
-
-| Događaj | Ključ | Opis |
-|---|---|---|
-| Primalac isplate kreiran | `payee.create` | Novi primalac isplate je uspešno kreiran. |
-| Kreiranje primaoca isplate nije uspelo | `payee.create.failure` | Kreiranje primaoca isplate nije uspelo. |
-| Primalac isplate ažuriran | `payee.update` | Primalac isplate je ažuriran. |
-| Ažuriranje primaoca isplate nije uspelo | `payee.update.failure` | Ažuriranje primaoca isplate nije uspelo. |
-
----
-
-## Događaji plaćanja
-
-Interni događaji obrade plaćanja iz TripPay sistema.
-
-| Događaj | Ključ | Opis |
-|---|---|---|
-| Plaćanje uspešno | `internal.payment.succeeded` | Plaćanje je uspešno obrađeno. |
-| Obrada plaćanja u toku | `internal.payment.processing` | Plaćanje se trenutno obrađuje. |
-| Plaćanje nije uspelo | `internal.payment.failed` | Obrada plaćanja nije uspela. |
-
----
-
-## Događaji channel managera
-
-Događaji vezani za slanje ažuriranja cena i dostupnosti od channel managera.
-
-| Događaj | Ključ | Opis |
-|---|---|---|
-| Ažuriranje cena | `channel-manager.update.rate` | Channel manager je poslao ažuriranje cena. |
-| Ažuriranje dostupnosti | `channel-manager.update.availability` | Channel manager je poslao ažuriranje dostupnosti. |
-| Opšte ažuriranje | `channel-manager.update` | Opšte ažuriranje channel managera. |
-
----
-
-## Događaji knjigovodstva
-
-Događaji vezani za finansijske unose u knjigovodstvu.
-
-| Događaj | Ključ | Opis |
-|---|---|---|
-| Unos u knjigovodstvo kreiran | `ledger.entry.create` | Novi unos u knjigovodstvo je evidentiran. |
-
----
-
-## Događaji emaila
-
-| Događaj | Ključ | Opis |
-|---|---|---|
-| Email korespondencija | `email.correspondence` | Poslat je odlazni email. |
-
----
-
-## Pregled broja događaja
-
-| Kategorija | Broj |
-|---|---|
-| Događaji upravljanja entitetima | 33 |
-| Događaji rezervacija | 16 |
-| Događaji objekata | 13 |
-| Događaji inventara (tipovi soba, planovi cena, glavne cene, dodaci, sadržaji) | 24 |
-| Događaji prodajnih kanala | 3 |
-| Događaji specijalnih cena | 4 |
-| Događaji primaoca isplate | 4 |
-| Događaji plaćanja | 3 |
-| Događaji channel managera | 3 |
-| Događaji knjigovodstva | 1 |
-| Događaji emaila | 1 |
-| **Ukupno** | **105** |
+2. Kreirajte webhook i izaberite događaje koje želite da primate — ili ostavite listu praznom da biste primali sve događaje.
+3. Wink šalje potpisani HTTP POST na vaš endpoint svaki put kada se dogodi događaj. Pogledajte [Webhook integraciju](/sr/developers/webhook-integration) za informacije o omotu, zaglavljima, verifikaciji potpisa i ponovnim pokušajima.
+
+## Sve vrste događaja
+
+Ova tabela je generisana iz kataloga događaja platforme u vreme izgradnje, tako da uvek odgovara API-ju.
+Vrste događaja označene kao isporučene povezuju se sa njihovom referentnom stranicom u [Webhooks API](/sr/api/webhooks/), koja
+dokumentuje tačan JSON sadržaj (`WebhookEnvelope` sa događajem-specifičnim `object`), `Wink-*` zaglavlja i
+politiku ponovnih pokušaja. Vrste događaja koje nisu isporučene postoje interno (uplata, knjigovodstvo, sinhronizacija sa channel-manager-om, …) ali trenutno se ne šalju pretplatnicima webhook-a.
+
+**Primaoci** označavaju ko prima događaj: `SUPPLIER` (hotel), `AFFILIATE` (preprodavac sa aktivnim prodajnim kanalom ka hotelu), `AGENT` (putnička agencija koja je napravila rezervaciju) ili `SELF` (entitet koji upravlja događajem). Svaki primalac prima isti oblik sadržaja; detalji specifični za ulogu nalaze se iza URL-a `links.self` u sadržaju.
+
+<WebhookEventTypes
+  types={webhooks['x-wink-event-types']}
+  referenceBase="/api/webhooks"
+  eventHeader="Događaj"
+  descriptionHeader="Opis"
+  deliveredHeader="Isporučeno"
+  recipientsHeader="Primaoci"
+  deliveredLabel="isporučeno"
+  notDeliveredLabel="nije isporučeno"
+  noRecipientsLabel="—"
+/>
 
 :::tip
-Počnite sa pretplatom na sve događaje tokom razvoja. Kada shvatite koje podatke vaš sistem treba, suzite pretplate da biste smanjili šum.
+Počnite tako što ćete se pretplatiti na sve događaje tokom razvoja. Kada shvatite koji su vam sadržaji potrebni, suzite pretplate da biste smanjili buku. Pošaljite sebi test događaj iz **Applications > Webhooks** (ili `POST …/webhook/{id}/test`) da potvrdite vaš endpoint i proveru potpisa pre nego što krenete u produkciju.
 :::
 
 ## Dalje čitanje
 
-- [Webhook Integration Guide](/sr/guides/developers/webhook-integration) — Koraci podešavanja i najbolje prakse.
-- [Webhooks](/sr/portal/settings/webhooks) — Upravljajte svojim webhook pretplatama.
-- [Applications](/sr/portal/settings/applications) — Upravljajte API akreditivima.
-- [Build on Wink](/sr/developers/build-on-wink) — Pregled platforme za developere.
+- [Vodič za integraciju webhook-a](/sr/developers/webhook-integration) — Koraci podešavanja i najbolje prakse.
+- [Webhook-ovi](/sr/portal/settings/webhooks) — Upravljanje vašim pretplatama na webhook.
+- [Applications](/sr/account/applications) — Upravljanje API akreditivima.
+- [Build on Wink](/sr/developers/build-on-wink) — Pregled platforme za programere.

@@ -5,7 +5,7 @@ sidebar:
   order: 8
 ---
 
-Winkillä ylläpidämme jatkuvasti kahta ympäristöä kaikkeen toimintaamme:
+Winkillä meillä on aina käytössä 2 ympäristöä kaikkeen toimintaamme:
 
 - Production on vakaa ympäristömme.
 - Staging on sertifiointi- ja testausympäristömme.
@@ -13,12 +13,12 @@ Winkillä ylläpidämme jatkuvasti kahta ympäristöä kaikkeen toimintaamme:
 Jos olet integraattori, hotelli tai matkatoimisto, joka haluaa valmistautua sertifiointiin tai testata Wink-alustaa, luo tili staging-ympäristössämme aloittaaksesi.
 
 :::note
-Staging-ympäristö on saatavilla pyynnöstä. Tämä tarkoittaa, että se menee lepotilaan, jos sitä ei käytetä, ja käynnistyy uudelleen käytön alkaessa. Ole kärsivällinen, kun herätät sitä. Kaikkien palvelimien käynnistäminen kestää noin minuutin, kun yhdistät ensimmäisen kerran johonkin palvelimistamme tai sovelluksistamme.
+Staging-ympäristö on saatavilla pyynnöstä. Tämä tarkoittaa, että se menee lepotilaan, jos sitä ei käytetä, ja käynnistyy uudelleen, kun käyttöä on. Ole kärsivällinen, kun herätät sitä. Kaikkien palvelimien käynnistäminen kestää noin minuutin sen jälkeen, kun olet ensimmäistä kertaa yhdistänyt johonkin palvelimistamme tai sovelluksistamme.
 :::
 
 ## Palvelimet
 
-Alla on taulukko, joka sisältää palvelimiemme nimet ja niiden käyttötarkoitukset.
+Alla on matriisi, joka sisältää palvelimiemme nimet ja niiden käyttötarkoitukset.
 
 | Ominaisuus | Staging | Production
 | ------- | ------- | ---------- |
@@ -33,10 +33,6 @@ Myös sovelluksillamme on testaus- ja tuotantoympäristöt asiakkaillemme.
 
 | Sovellus | Staging | Production
 | ------- | ------- | ---------- |
-| Agent | https://staging-agent.wink.travel | https://agent.wink.travel | 
-| Booking engine | https://staging-ota.wink.travel | https://ota.wink.travel | 
-| Extranet | https://staging-extranet.wink.travel | https://extranet.wink.travel | 
-| My Account | https://staging-app.wink.travel | https://app.wink.travel | 
-| Payment | https://staging-pay.wink.travel | https://pay.wink.travel | 
-| Studio | https://staging-studio.wink.travel | https://studio.wink.travel | 
-| WinkLinks | https://staging-i.trvl.as | https://i.trvl.as |
+| Portal | https://staging-app.wink.travel | https://app.wink.travel | 
+| Booking engine | https://staging-book.wink.travel | https://book.wink.travel | 
+| Link Manager | https://staging-i.trvl.as | https://i.trvl.as |

@@ -2,7 +2,7 @@
 title: Uvjeti korištenja
 description: Jednostavno dostupni i ažurirani uvjeti za sve naše korisnike putnike.
 sidebar:
-  order: 4
+  order: 8
 ---
   
 <iframe 

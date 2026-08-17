@@ -3,37 +3,37 @@ title: Termes i Condicions
 description: Termes i Condicions per a tots els usuaris i entitats de Wink.
 ---
 
-Cada portal pot tenir diferents termes i condicions. Si us plau, ves a la secció següent que t'aplica i busca la subsecció anomenada Termes de Servei i Condicions de Pagament.
+Diferents parts de Wink tenen diferents termes. Troba la secció que t'aplica a continuació — cada una té els seus propis Termes de Servei, i les seccions que gestionen diners també tenen Termes de Pagament.
 
-## Portal d'afiliats
+## Propietats
 
-Per a afiliats que volen aprendre com guanyar un ingrés passiu monetitzant els teus comptes socials amb Wink.  
-[Wink Studio](https://studio.wink.travel) té totes les eines que necessites per vendre com un professional.
+Per a hotels, cadenes, marques i empreses de gestió que venen inventari a Wink.
 
-<LinkButton href="/ca/portal/studio/what-is-studio">
-Aprèn més sobre Wink Studio
-</LinkButton>
+- [Termes de Servei](/ca/portal/extranet/terms-of-service)
+- [Termes de Pagament](/ca/portal/extranet/payment-terms)
+
+## Afiliats
+
+Per a creadors, influencers i afiliats que promocionen inventari de viatges i guanyen comissions.
+
+- [Termes de Servei](/ca/portal/studio/terms-of-service)
+- [Termes de Pagament](/ca/portal/studio/payment-terms)
+
+## Agents de viatge
+
+Per a agents de viatge registrats que cerquen, reserven i guanyen en nom dels seus clients.
+
+- [Termes de Servei](/ca/portal/travel-agent/terms-of-service)
+- [Termes de Pagament](/ca/portal/travel-agent/payment-terms)
 
 ## Motor de reserves
 
-Tots els camins porten al nostre motor de reserves! Descobreix què pots fer amb el motor de reserves més personalitzable i enfocat en viatges del mercat.
+Per a tothom que reserva viatges a través de Wink.
 
-<LinkButton href="/ca/booking-engine/in-a-nutshell">
-Aprèn més sobre el nostre motor de reserves
-</LinkButton>
+- [Termes de Servei](/ca/booking-engine/terms-of-service)
 
-## Portal de propietats
+## Tothom
 
-Per a propietats que volen començar a vendre a Wink. Utilitza les nostres eines per vendre i promocionar-te eficaçment en línia i aconsegueix un exèrcit d’afiliats d’arreu del món que t’ajudin a obtenir clients i reserves.
-
-<LinkButton href="/ca/portal/extranet/what-is-extranet">
-Aprèn més sobre Wink Extranet
-</LinkButton>
-
-## Portal d’agents de viatge
-
-Per a agents de viatge que volen descobrir què els pot oferir Wink en termes de tarifes personalitzades, ofertes i inventari, directament dels proveïdors.
-
-<LinkButton href="/ca/portal/travel-agent/what-is-agent">
-Aprèn més sobre Wink Agent
-</LinkButton>
+- [Política de Privacitat](/ca/privacy)
+- [Preus](/ca/getting-started/pricing) — què és gratuït, quant costa una reserva i com funcionen les tarifes d'ús de pagament per ús.
+- [Sol·licitud d'eliminació de dades](/ca/getting-started/data-deletion-request)

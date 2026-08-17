@@ -34,7 +34,7 @@ Sužinokite, kaip Wink lyginamas su kitais internetinių kelionių segmentais ri
 
 Kai kurie viešbučiai bando lyginti mus su jų internetine užsakymų sistema, kuri buvo įtraukta į jų kanalų valdymo sistemą, ir prašo pateikti fiksuotą mėnesinį mokestį, pagrįstą jų turto kambarių skaičiumi.
 
-Mes nesame IBE ir tikimės, kad [Wink Academy](/lt/) padės tai paaiškinti. Kiekviena paslauga turi savo privalumų ir trūkumų. Jei jūsų IBE tinka jūsų turtui, naudokitės juo.
+Mes nesame IBE ir tikimės, kad tai padės išaiškinti skirtumą. Kiekviena paslauga turi savo privalumų ir trūkumų. Jei jūsų IBE tinka jūsų turtui, naudokitės juo.
 Wink egzistuoja tam, kad užpildytų kelias spragas kelionių pramonėje ir sujungtų viską vienoje vietoje.
 
 :::tip

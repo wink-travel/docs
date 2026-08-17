@@ -1,0 +1,397 @@
+---
+title: เพิ่ม Channel Manager ของคุณ
+description: คู่มือทีละขั้นตอนสำหรับนักพัฒนา channel manager และ PMS ที่รวมระบบกับแพลตฟอร์ม Wink
+sidebar:
+  order: 1
+---
+
+import { Steps, LinkButton } from '@astrojs/starlight/components';
+
+คู่มือนี้จะนำทางนักพัฒนา channel manager และ PMS ผ่านกระบวนการรวมระบบกับ Wink อย่างครบถ้วน — ตั้งแต่การสร้างบัญชีของคุณไปจนถึงการแมปสินค้าคงคลังและการทดสอบแบบ end-to-end ครั้งแรก
+
+## สภาพแวดล้อม
+
+Channel Manager (Integrations) API มีให้ใช้งานในสองสภาพแวดล้อม ใช้ staging สำหรับการพัฒนาและการรับรองทั้งหมด; สลับไปใช้ production เมื่อพร้อมใช้งานจริงเท่านั้น
+
+| สภาพแวดล้อม | URL พื้นฐาน |
+| ----------- | -------- |
+| Production  | https://integrations.wink.travel |
+| Staging     | https://staging-integrations.wink.travel |
+
+## เอกสารอ้างอิง API
+
+Channel Manager API ปฏิบัติตามมาตรฐานโปรโตคอล OTA (SOAP/XML) เพื่อความเข้ากันได้กับระบบโรงแรมที่มีอยู่ เริ่มต้นด้วยการตรวจสอบเอกสารจุดเชื่อมต่อของพาร์ทเนอร์:
+
+<LinkButton href="/th/partner-api/partner/">
+  Channel Manager API — จุดเชื่อมต่อพาร์ทเนอร์
+</LinkButton>
+
+## ขั้นตอนการรวมระบบ
+
+<Steps>
+1. **สร้างบัญชีผู้ใช้ Wink**
+
+   ลงทะเบียนที่ [staging-app.wink.travel](https://staging-app.wink.travel) ทุกขั้นตอนด้านล่างใช้ staging — คุณจะต้องทำซ้ำกระบวนการทั้งหมดใน production ก่อนเปิดใช้งานจริง
+
+2. **สร้างบัญชี Affiliate / Channel Manager ของคุณ**
+
+   ภายใต้ผู้ใช้ใหม่ของคุณ สร้างบัญชีและเลือกประเภทบัญชี **Affiliate / Channel Manager** นี่คือบัญชีที่การรวมระบบของคุณจะใช้สำหรับการยืนยันตัวตน
+
+3. **ลงทะเบียนแอปพลิเคชันและสร้างโทเค็นแรกของคุณ**
+
+   สร้าง [Application](/th/account/applications) และผูกกับบัญชี channel manager จากขั้นตอนที่ 2 เลือกประเภทไคลเอนต์เป็น **MACHINE_2_MACHINE** — นี่คือการรวมระบบแบบเซิร์ฟเวอร์ต่อเซิร์ฟเวอร์โดยไม่มีผู้ใช้ปลายทางให้เปลี่ยนเส้นทาง คัดลอก **Client ID** และ **Secret Key** ทันที; รหัสลับจะแสดงเพียงครั้งเดียวและไม่สามารถเรียกคืนได้อีก
+
+   แอปพลิเคชันนี้จะสร้าง bearer token ที่ทุกการเรียกในคู่มือนี้ใช้เป็น `Authorization: Bearer <access_token>` แลกเปลี่ยนข้อมูลรับรองของคุณเพื่อรับโทเค็นโดยใช้ `client_credentials` grant กับ `https://staging-iam.wink.travel/oauth2/token` โดยร้องขอ scope `integrations.read integrations.write` ทำขั้นตอนนี้ก่อนดำเนินการต่อ — คุณไม่สามารถค้นหารหัสบัญชีหรือเข้าถึงจุดเชื่อมต่อ Channel Manager ใด ๆ ได้หากไม่มีโทเค็น ดู [Authentication](/th/developers/authentication) สำหรับกระบวนการเต็มรูปแบบ โฮสต์ production และรายการ scope ทั้งหมด
+
+4. **สร้างบัญชีโรงแรม**
+
+   ภายใต้ผู้ใช้เดียวกัน สร้างบัญชีที่สองและเลือกประเภทบัญชี **Hotel** ซึ่งจะให้ทรัพย์สินที่คุณสามารถใช้สำหรับการทดสอบโดยไม่ต้องใช้โรงแรมจริง
+
+5. **ยืนยันว่าทั้งสองบัญชีได้รับการอนุมัติ**
+
+   ไม่มีบัญชีใดที่สามารถใช้งานได้จนกว่าจะได้รับการอนุมัติ: บัญชี channel manager ที่ไม่ได้รับการอนุมัติจะไม่ปรากฏในรายการ channel manager ของโรงแรมใด ๆ และโรงแรมที่ไม่ได้รับการอนุมัติจะไม่ถูกส่งคืนโดย API
+
+   - **Staging** — การอนุมัติเป็นอัตโนมัติ ทั้งสองบัญชีใช้งานได้ทันทีที่สร้าง และไม่ต้องร้องขออะไรเพิ่มเติม
+   - **Production** — การอนุมัติเป็นแบบแมนนวล ส่งชื่อของทั้งสองบัญชีและผู้ใช้ที่อยู่ภายใต้ไปยังผู้ติดต่อการรวมระบบ Wink แล้วรอการยืนยันก่อนดำเนินการต่อ
+
+6. **เชื่อมต่อสองบัญชีเข้าด้วยกัน**
+
+   เข้าสู่ระบบบัญชีโรงแรมและไปที่ **Extranet → Distribution → Channel Manager** เลือกบัญชี channel manager ของคุณจากรายการ — นี่จะเชื่อมโยงทรัพย์สินกับการรวมระบบของคุณ หากบัญชีของคุณไม่อยู่ในรายการ แสดงว่ายังไม่ได้รับการอนุมัติ; ดูขั้นตอนที่ 5
+
+7. **สร้างประเภทห้องและแผนราคาเบื้องต้น**
+
+   ภายในบัญชีโรงแรม สร้างประเภทห้องอย่างน้อยหนึ่งประเภทและแผนราคาอย่างน้อยหนึ่งแผน ซึ่งจำเป็นก่อนที่การรวมระบบของคุณจะสามารถส่งอัปเดตราคาและความพร้อมใช้งานหรือดึงการจองได้
+
+8. **แมปและทดสอบ**
+
+   ในระบบของคุณเอง แมปตัวระบุประเภทห้องและแผนราคาที่ส่งคืนโดย API ส่งอัปเดตราคาและอัปเดตความพร้อมใช้งาน จากนั้นทำการจองทดสอบและตรวจสอบว่าจุดเชื่อมต่อดึงการจองส่งคืนข้อมูลถูกต้อง
+</Steps>
+
+:::note
+ทำซ้ำทุกขั้นตอนข้างต้นใน production ก่อนเปิดใช้งานจริง รวมถึงการลงทะเบียนแอปพลิเคชัน production แยกต่างหาก — ข้อมูลรับรอง staging จะไม่ทำงานกับ production จัดสรรเวลาให้ Wink ตรวจสอบในขั้นตอนที่ 5 — ต่างจาก staging บัญชี production จะไม่ได้รับการอนุมัติอัตโนมัติ ทีม Wink จะย้ายโรงแรมใด ๆ ที่ใช้ channel manager ของคุณไปยังบัญชี production ใหม่ของคุณ
+:::
+
+## การค้นหาตัวระบุบัญชีของคุณ
+
+ทุกเส้นทาง API ของ Channel Manager จะถูกจำกัดให้กับบัญชีของคุณเอง:
+
+```
+/api/managing-entity/{managingEntityIdentifier}/channel-manager/...
+```
+
+`{managingEntityIdentifier}` คือรหัสบัญชี (UUID) ของ **บัญชี channel manager ของคุณ** — ไม่ใช่ของโรงแรม ดึงข้อมูลนี้พร้อมกับ ID และสถานะปัจจุบันของบัญชีอื่น ๆ ที่ผู้ใช้ของคุณเป็นเจ้าของทั้งหมดจาก Platform API:
+
+```bash
+curl -s -X GET \
+  "https://staging-api.wink.travel/api/managing-entity/list" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+การตอบกลับเป็นอาร์เรย์ของบัญชีที่คุณเป็นเจ้าของ:
+
+```json
+[
+  {
+    "id": "3f1c8e42-7b90-4d55-a1e2-6c8d09b4f731",
+    "type": "CHANNEL_MANAGER",
+    "name": "Your Channel Manager",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "d5b8a3c2-9e6f-4a1b-8d34-7c2e1f0a5b69",
+    "type": "HOTEL",
+    "name": "Your Test Property",
+    "urlName": "your-test-property",
+    "status": "ACTIVE"
+  }
+]
+```
+
+- `id` ของรายการ channel manager คือ **`{managingEntityIdentifier}`** ของคุณ
+- `id` ของรายการ `HOTEL` คือ **`{propertyIdentifier}`** ของคุณ
+- `status` คือที่ที่คุณยืนยันว่าบัญชีแต่ละบัญชีได้รับการอนุมัติ — มีประโยชน์มากใน production ที่การอนุมัติเป็นแบบแมนนวล **โรงแรม** ต้องแสดงสถานะ `ACTIVE` ก่อนที่จะสามารถจองหรือมองเห็นได้ใน Channel Manager API บัญชี **channel manager** ของคุณจะยังคงแสดง `PENDING_APPROVAL` จนกว่าคุณจะผ่าน [Certification](#certification); นี่เป็นเรื่องปกติและไม่ขัดขวางการพัฒนา
+
+:::caution
+การค้นหานี้ทำงานกับ **Platform API** (`https://staging-api.wink.travel` บน staging,
+`https://api.wink.travel` ใน production) ไม่ใช่โฮสต์ Channel Manager API ที่ระบุใน
+[สภาพแวดล้อม](#environments) ใช้โทเค็นการเข้าถึงเดียวกัน — ออกให้ต่อผู้ใช้ ไม่ใช่ต่อ API
+:::
+
+## การรับรอง
+
+การรับรองคือวิธีที่คุณพิสูจน์ — และ Wink ยืนยัน — ว่าการรวมระบบของคุณแมปสินค้าคงคลังอย่างถูกต้อง ส่งอัปเดตราคาและความพร้อมใช้งาน และรับการจองแบบ end-to-end ได้ถูกต้อง ออกแบบมาให้บริการตนเอง: คุณดำเนินการทุกขั้นตอนจากระบบของคุณเอง และส่งชุดหลักฐานเพียงชุดเดียวเมื่อเสร็จสิ้น Wink จะตรวจสอบชุดหลักฐานและเมื่อผ่าน จะเปลี่ยนสถานะบัญชี Affiliate / Channel Manager ของคุณจาก **PENDING_APPROVAL** เป็น **ACTIVE**
+
+การรับรองทำงานทั้งหมดบนสภาพแวดล้อม staging
+(`https://staging-integrations.wink.travel`) ไม่มีส่วนใดในส่วนนี้ที่เกี่ยวข้องกับ production
+
+### สิ่งที่คุณจะพิสูจน์
+
+<Steps>
+1. **การยืนยันตัวตน** ไคลเอนต์ OAuth2 ของคุณสามารถรับโทเค็นการเข้าถึงและเรียกจุดเชื่อมต่อ `/ping` กับบัญชี Affiliate / Channel Manager ของคุณได้สำเร็จ
+
+2. **การแมปสินค้าคงคลัง** คุณสามารถแสดงรายการโรงแรมที่เชื่อมต่อกับบัญชีของคุณ ดึง master rate (ประเภทห้อง × แผนราคา) ที่คุณตั้งค่าไว้ และระบุ `masterRateIdentifier` ที่ระบบของคุณจะใช้เป้าหมายได้อย่างถูกต้อง
+
+3. **การส่งอัปเดตราคาและความพร้อมใช้งาน** คุณสามารถอัปเดตเจ็ดวันของสัปดาห์การรับรองได้อย่างอิสระ — ด้วยการผสมผสานของจำนวนเงิน ปริมาณ ธงปิดรับเช็คอิน/เช็คเอาต์ และข้อจำกัดความยาวการเข้าพักขั้นต่ำ/สูงสุดในแต่ละวัน — และอ่านค่าที่ถูกต้องกลับจาก Wink
+
+4. **การดึงการจอง** คุณสามารถดึงการจองจริงใน staging ที่ทำกับทรัพย์สินทดสอบของคุณ แสดงใน UI PMS/CM ของคุณด้วยข้อมูลห้องพัก แขก และยอดรวมที่ถูกต้อง จากนั้นสะท้อนการยกเลิกเมื่อ Wink ทำเครื่องหมายการจองว่าได้ยกเลิกแล้ว
+</Steps>
+
+### ข้อกำหนดเบื้องต้น
+
+ก่อนเริ่มการรับรอง ให้ทำขั้นตอน 1–7 ของ [Integration steps](#integration-steps) ให้เสร็จสิ้น เพื่อให้คุณมี:
+
+- ผู้ใช้ Wink บน staging ที่มีบัญชี **Affiliate / Channel Manager** และบัญชี **Hotel** ที่เชื่อมต่อกัน (Extranet → Distribution → Channel Manager) บัญชี staging ได้รับการอนุมัติอัตโนมัติ จึงไม่ต้องร้องขออะไรเพิ่มเติม
+- อย่างน้อยหนึ่ง **ประเภทห้อง** และหนึ่ง **แผนราคา** ที่สร้างในบัญชีโรงแรม เผยแพร่โรงแรมเพื่อให้จองได้ที่ `https://staging-book.wink.travel/hotel/<your-slug>`
+- แอปพลิเคชันที่ลงทะเบียนภายใต้บัญชี Affiliate / Channel Manager ของคุณที่มี **Client ID**,
+  **Secret Key** และ scope `integrations.read integrations.write`
+  (ดู [Authentication](/th/developers/authentication))
+- **`managingEntityIdentifier`** ของบัญชี Affiliate / Channel Manager และ
+  **`propertyIdentifier`** ของบัญชีโรงแรมของคุณ (ทั้งคู่เป็น UUID — ดู
+  [การค้นหาตัวระบุบัญชีของคุณ](#finding-your-account-identifiers))
+
+### ข้อตกลงการร้องขอทั่วไป
+
+ทุกคำขอในส่วนนี้ใช้ header เหล่านี้:
+
+```http
+Authorization: Bearer <access_token>
+Wink-Version: 2.0
+Accept: application/json
+```
+
+- `<access_token>` มาจาก `client_credentials` grant กับ
+  `https://staging-iam.wink.travel/oauth2/token` — ดู [Authentication](/th/developers/authentication#staging)
+- header `Wink-Version` จำเป็นต้องมี; หากไม่ใส่จะไม่เส้นทางไปยัง v2 JSON API
+- `Content-Type: application/json` จะถูกเพิ่มในคำขอ `PUT` ที่มีเนื้อหา
+
+ตลอดตัวอย่างด้านล่าง ตัวแปรแทนค่าจะถูกแมปกับค่าที่คุณรวบรวมใน
+[ข้อกำหนดเบื้องต้น](#prerequisites):
+
+| ตัวแปรแทนค่า | ความหมาย |
+|---|---|
+| `{managingEntityIdentifier}` | รหัสบัญชี Affiliate / Channel Manager ของคุณ (UUID) — ดู [การค้นหาตัวระบุบัญชีของคุณ](#finding-your-account-identifiers) |
+| `{propertyIdentifier}`       | รหัสบัญชีโรงแรม (ทรัพย์สิน) ที่คุณเชื่อมต่อกับบัญชี CM |
+| `{masterRateIdentifier}`     | master rate (ประเภทห้อง × แผนราคา) ที่คุณจะรับรอง |
+| `{bookingIdentifier}`        | รหัสการจอง staging ที่ส่งคืนโดยการเรียกรายการการจอง |
+
+### ขั้นตอน A — Ping
+
+ยืนยันข้อมูลรับรองของคุณชี้ไปยังบัญชี Affiliate / Channel Manager ที่คุณคาดหวัง
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/ping" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+การตอบกลับที่คาดหวัง:
+
+```json
+{
+  "apiVersion": "2.0",
+  "name": "Your Channel Manager Account Name",
+  "status": "PENDING_APPROVAL"
+}
+```
+
+การตอบกลับ **200** พร้อม `name` ที่ตรงกันเป็นสัญญาณว่าการยืนยันตัวตนและการแก้ไขบัญชีถูกต้อง `status` จะแสดง `PENDING_APPROVAL` จนกว่า Wink จะรับรองคุณ
+
+### ขั้นตอน B — แสดงรายการทรัพย์สิน
+
+ดึงรายการโรงแรมที่เชื่อมต่อกับบัญชีของคุณแบบแบ่งหน้าและยืนยันว่าทรัพย์สินทดสอบของคุณปรากฏอยู่
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/list?page=0&size=25" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+การตอบกลับเป็น Spring `Page` ของรายการ `ChannelManagerProperty` ค้นหารายการที่ `identifier` ตรงกับ `{propertyIdentifier}` ของคุณและบันทึก `currencyCode` — คุณจะต้องใช้สำหรับการตีความอัปเดตราคาใน [ขั้นตอน D](#step-d--load-the-certification-week)
+
+:::caution
+รายการว่างเปล่าเป็นสัญญาณการตั้งค่า ไม่ใช่คำขอที่ผิดรูป โรงแรมจะถูกส่งคืนที่นี่ก็ต่อเมื่อเป็น **`ACTIVE`** *และ* ได้รับมอบหมายให้กับบัญชี channel manager ของคุณภายใต้ Extranet → Distribution → Channel Manager ตรวจสอบทั้งสองอย่างด้วย `GET /api/managing-entity/list` (ดู [การค้นหาตัวระบุบัญชีของคุณ](#finding-your-account-identifiers)) ก่อนแก้ไขปัญหาเพิ่มเติม ใน production เพิ่มสาเหตุที่สาม: โรงแรมจะมองไม่เห็นที่นี่จนกว่า Wink จะอนุมัติ
+:::
+
+### ขั้นตอน C — ดึง master rates
+
+ดึงทรัพย์สินพร้อมกับ master rate ทั้งหมด (การผสมประเภทห้อง × แผนราคา) ที่เผยแพร่ เลือกอันที่คุณตั้งใจจะรับรองและบันทึก `identifier` เป็น `{masterRateIdentifier}` ของคุณ
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+ซองการตอบกลับคือ `PropertyWithRoomRateList`: บล็อก `property` พร้อมกับอาร์เรย์ `rooms` ของรายการ `PropertyRoomRate` แต่ละรายการแสดงประเภทห้อง แผนราคา ขีดจำกัดจำนวนผู้เข้าพัก ราคาฐาน และตัวปรับราคา ที่คุณจะเก็บไว้เมื่อส่งอัปเดตราคาประจำวัน
+
+:::caution
+รับรองเพียง master rate เดียวสำหรับการรับรองทั้งหมด การแมปประเภทห้องและแผนราคาเพิ่มเติมเป็นเรื่องปกติใน production แต่ชุดหลักฐานต้องแสดงเพียง master rate เดียวที่ใช้งานแบบ end-to-end
+:::
+
+### ขั้นตอน D — โหลดสัปดาห์การรับรอง
+
+โหลด **ปฏิทินราคาสำหรับเจ็ดวัน** ครอบคลุมเจ็ดวันแรกของเดือน **ถัดไป** จากเดือนที่คุณเริ่มรับรอง เช่น หากเริ่มรับรองวันที่ 21 สิงหาคม ให้ตั้งเป้าหมาย 1 กันยายน ถึง 7 กันยายน
+
+คุณจะส่ง **คำขอ `PUT` แยกเจ็ดครั้ง** — ครั้งละวัน — โดยที่ `startDate == endDate` แต่ละวันมีการผสมผสานของจำนวนเงิน ปริมาณ ธงปิดรับเช็คอิน/เช็คเอาต์ และข้อจำกัดความยาวการเข้าพักที่แตกต่างกันเพื่อให้ทุกฟิลด์ที่เขียนได้ถูกใช้งานอย่างน้อยหนึ่งครั้ง ค่าทั้งหมดเป็นสกุลเงินของทรัพย์สิน (บันทึกในขั้นตอน B); หากไม่ระบุ `currencyCode` จะตั้งค่าเริ่มต้นอย่างถูกต้อง
+
+| วัน | จำนวนเงิน | ปริมาณ | closedOnArrival | closedOnDeparture | minLengthOfStay | maxLengthOfStay | สิ่งที่พิสูจน์ |
+|-----|-----------|---------|-----------------|-------------------|-----------------|-----------------|----------------|
+| 1   | 100.00    | 5       | false           | false             | 1               | 30              | วันฐาน |
+| 2   | 125.00    | 4       | false           | false             | 1               | 14              | เปลี่ยนจำนวนเงิน + ปริมาณ + `maxLengthOfStay` |
+| 3   | 150.00    | 3       | **true**        | false             | 1               | 30              | สลับ `closedOnArrival` |
+| 4   | 175.00    | 2       | false           | **true**          | 2               | 7               | สลับ `closedOnDeparture` + หน้าต่าง LOS แคบลง |
+| 5   | 200.00    | **0**   | false           | false             | 1               | 30              | ปริมาณขายหมด |
+| 6   | 225.00    | 5       | false           | false             | **3**           | **5**           | หน้าต่าง LOS จำกัด |
+| 7   | 250.00    | 1       | false           | false             | 1               | 30              | ความพร้อมใช้งานห้องสุดท้าย |
+
+ตัวอย่างเนื้อหาคำขอสำหรับวันแรกเป็นดังนี้ ทำซ้ำโดยปรับ `startDate` / `endDate` / ค่าตามตารางสำหรับวัน 2 ถึง 7
+
+```bash
+curl -s -X PUT \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/master-rate/{masterRateIdentifier}" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json" \
+  -d '{
+        "startDate": "2026-09-01",
+        "endDate":   "2026-09-01",
+        "amount":    100.00,
+        "master":    true,
+        "closedOnArrival":   false,
+        "closedOnDeparture": false,
+        "quantity":          5,
+        "minLengthOfStay":   1,
+        "maxLengthOfStay":   30
+      }'
+```
+
+แต่ละคำขอ `PUT` จะตอบกลับ `200` พร้อมอาร์เรย์ของรายการ `PropertyRate` ที่อัปเดตสำหรับช่วงเวลาที่ส่ง (หนึ่งรายการเมื่อ `startDate == endDate`) จับการตอบกลับนั้นไว้ — จะเป็นส่วนหนึ่งของหลักฐานของคุณ
+
+:::note
+`master` ควรเป็น `true` ในทุกคำขอของสัปดาห์การรับรอง นี่บอก Wink ว่าการอัปเดตของคุณเป็นอัตราแม่แบบ ไม่ใช่การแทนที่ต่อการจอง
+:::
+
+### ขั้นตอน E — อ่านข้อมูลสัปดาห์การรับรองกลับ
+
+ดึงข้อมูลทั้งสัปดาห์ในคำขอเดียวและยืนยันว่าค่าที่เก็บไว้ในแต่ละวันตรงกับแถวที่คุณส่งในขั้นตอน D — รวมถึงธงบูลีนและหน้าต่างความยาวการเข้าพัก
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/master-rate/{masterRateIdentifier}?startDate=2026-09-01&endDate=2026-09-07" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+การตอบกลับเป็น `PropertyRoomRateWithRateList` อาร์เรย์ `rates` ต้องมี **เจ็ด** รายการ หนึ่งรายการต่อวัน แต่ละรายการมี `amount`, `quantity`, `closedOnArrival`, `closedOnDeparture`, `minLengthOfStay` และ `maxLengthOfStay` ที่คุณโหลด หากมีความไม่ตรงกันในฟิลด์ใด ๆ หมายความว่าคำขอ `PUT` ในขั้นตอน D ไม่สำเร็จตามคาด — แก้ไขและตรวจสอบใหม่ก่อนดำเนินการต่อ
+
+### ขั้นตอน F — ทำการจองทดสอบ
+
+เปิด URL ต่อไปนี้ในเบราว์เซอร์ โดยแทนที่ `<your-slug>` ด้วย slug ของบัญชีโรงแรมที่คุณเผยแพร่ในข้อกำหนดเบื้องต้น:
+
+```
+https://staging-book.wink.travel/hotel/<your-slug>
+```
+
+เลือกวันที่เช็คอินและเช็คเอาต์ที่อยู่ภายในสัปดาห์การรับรองทั้งหมด เลือกประเภทห้อง + แผนราคาที่คุณรับรอง และทำการจอง Staging ใช้เส้นทางชำระเงินทดสอบ — ไม่มีการเรียกเก็บบัตรจริง
+
+เมื่อหน้าแสดงการยืนยันโหลดขึ้น ให้บันทึก **รหัสการจอง** (รูปแบบ `WNKxxxxx`) ที่แสดงแก่ผู้เข้าพัก
+
+### ขั้นตอน G — ดึงการจอง
+
+ดึงการจองทั้งหมดที่สร้างสำหรับทรัพย์สินทดสอบของคุณในช่วงเวลาที่ครอบคลุมเวลาการจอง
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/booking/list?startDate=2026-09-01T00:00:00&endDate=2026-09-08T00:00:00" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+ค้นหารายการที่ `bookingCode` ตรงกับรหัสที่คุณบันทึกในขั้นตอน F บันทึก `bookingIdentifier` จากนั้นดึงการจองนั้นเพียงรายการเดียว:
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/booking/{bookingIdentifier}" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+การตอบกลับเป็น `PropertyBooking` นำเข้าข้อมูลนี้ใน UI PMS / channel-manager ของคุณและยืนยันว่าทุกข้อมูลต่อไปนี้แสดงผลถูกต้องสำหรับผู้ปฏิบัติงาน:
+
+- `bookingCode`, `bookingIdentifier`, `createdDate`
+- แขก: `firstName`, `lastName`, `email`
+- `totalAmount` + `currencyCode` (ยอดสุทธิที่โรงแรมได้รับจากทุกห้อง)
+- `paymentMethodType`, `paymentMethodStatus`, `salesChannelName`
+- ทุกรายการใน `roomStays`: `guestRoomName`, `ratePlanName`, `adults`, `children`, `startDate`,
+  `endDate` และ `amount` ต่อห้อง
+
+ถ่ายภาพหน้าจอการจองใน UI ของคุณ — ภาพนี้เป็นหนึ่งในหลักฐานที่ต้องใช้
+
+### ขั้นตอน H — ยกเลิกการจองและตรวจสอบ
+
+ขอให้ทีม Wink ยกเลิกการจองรับรองแทนคุณ (หรือยกเลิกเองจาก Extranet ของบัญชีโรงแรมหากคุณมีสิทธิ์) จากนั้นดึงการจองเดิมอีกครั้งด้วยคำขอในขั้นตอน G
+
+ยืนยันว่าการตอบกลับแสดง:
+
+- `cancelled: true`
+- มีค่า timestamp ใน `cancelDate`
+- `paymentMethodStatus` สะท้อนสถานะวงจรการยกเลิก (`CANCELLED`, `PARTIALLY_REFUNDED`,
+  หรือ `FULLY_REFUNDED` ขึ้นอยู่กับนโยบายคืนเงิน)
+
+นำเข้าการจองที่อัปเดตนี้ใน UI ของคุณและยืนยันว่าการยกเลิกแสดงให้ผู้ปฏิบัติงานเห็น — สถานะ วันที่ยกเลิก และตัวบ่งชี้การคืนเงินใด ๆ ที่ UI ของคุณรองรับ ถ่ายภาพหน้าจอที่สองของการจองที่ถูกยกเลิกใน UI ของคุณ นี่คือหลักฐานสุดท้าย
+
+### ขั้นตอน I — ส่งชุดหลักฐานของคุณ
+
+จัดชุดต่อไปนี้เป็นไฟล์เก็บเดียว (`.zip`) ชื่อ
+`wink-cert-<your-channel-manager-name>-<yyyy-mm-dd>.zip`:
+
+<Steps>
+1. **บันทึกการสนทนา API** สำหรับทุกคำขอที่คุณส่งในขั้นตอน A ถึง H จับภาพคำขอ HTTP เต็มรูปแบบ (วิธีการ URL header คำขอโดยไม่แสดงค่า `Authorization` และ JSON body สำหรับคำขอ `PUT`) และการตอบกลับ HTTP เต็มรูปแบบ (รหัสสถานะ header และ JSON body) จัดโครงสร้างบันทึกให้แต่ละคู่คำขอ/ตอบกลับระบุชัดเจนกับขั้นตอนที่เกี่ยวข้อง (`step-a-ping.json`, `step-d-day-3-put.json`, `step-g-list-bookings.json` เป็นต้น) ไฟล์ `.http` แบบข้อความธรรมดาหรือไฟล์ `.har` เดียวก็ใช้ได้
+
+2. **ภาพหน้าจอ UI: การจองที่ใช้งาน** ภาพหน้าจอจากขั้นตอน G ที่แสดงการจองรับรองใน UI PMS / channel-manager ของคุณ พร้อมข้อมูลแขก วันที่ ประเภทห้อง แผนราคา และยอดรวมที่อ่านง่าย
+
+3. **ภาพหน้าจอ UI: การจองที่ถูกยกเลิก** ภาพหน้าจอจากขั้นตอน H ที่แสดงการจองเดียวกันใน UI ของคุณหลังการยกเลิก พร้อมสถานะยกเลิกและวันที่ที่อ่านง่าย
+
+4. **สรุปการรับรอง** ไฟล์ `README.md` สั้น ๆ ภายในไฟล์เก็บที่ระบุ:
+   - ชื่อและเวอร์ชันของ channel manager / PMS ของคุณ
+   - `managingEntityIdentifier`, `propertyIdentifier`, `masterRateIdentifier` และ
+     `bookingIdentifier` ที่คุณใช้
+   - slug โรงแรม staging (คือ `<your-slug>` ใน `https://staging-book.wink.travel/hotel/<your-slug>`)
+   - ช่วงวันที่ของสัปดาห์การรับรอง (วัน 1 → วัน 7 ในรูปแบบ ISO-8601)
+   - ชื่อและอีเมลของวิศวกรที่ทำการรับรอง
+</Steps>
+
+ส่งไฟล์เก็บนี้ไปยังผู้ติดต่อการรวมระบบ Wink Wink จะตรวจสอบ ติดตามข้อผิดพลาดใด ๆ และ — เมื่อผ่าน — เปลี่ยนสถานะบัญชี Affiliate / Channel Manager ของคุณจาก `PENDING_APPROVAL` เป็น `ACTIVE` จากนั้นการรวมระบบของคุณจะมีสิทธิ์เข้าสู่การเปิดใช้งาน production
+
+:::tip
+อัตโนมัติการจับบันทึกการสนทนา คำขอ `PUT` เจ็ดครั้งในขั้นตอน D และการอ่านกลับในขั้นตอน E เป็นสาเหตุหลักของความล้มเหลวในการรับรอง — ไคลเอนต์ HTTP แบบโต้ตอบที่บันทึกคำขอและการตอบกลับทุกครั้งจะช่วยให้คุณไม่ต้องทำซ้ำทั้งหมดหากค่าผิดเพี้ยนเพียงเล็กน้อย
+:::
+
+## การแจ้งเตือน Webhook
+
+คุณสามารถสมัครรับเหตุการณ์ webhook ของ channel manager เพื่อรับการแจ้งเตือนแบบเรียลไทม์:
+
+- `channel-manager.update.rate` — รับอัปเดตราคา
+- `channel-manager.update.availability` — รับอัปเดตความพร้อมใช้งาน
+- `channel-manager.update` — อัปเดตทั่วไปของ channel manager
+
+ดู [Webhook Events Catalog](/th/developers/webhook-events#channel-manager-events) สำหรับรายละเอียด
+
+## การอ่านเพิ่มเติม
+
+- [Channel Manager API](/th/partner-api/partner/) — เอกสารจุดเชื่อมต่อ API ฉบับเต็ม
+- [Rate Providers](/th/portal/extranet/rate-providers) — การจัดการผู้ให้บริการราคาใน Extranet
+- [Webhook Events Catalog](/th/developers/webhook-events) — เหตุการณ์ที่สามารถสมัครรับทั้งหมด
+- [Build on Wink](/th/developers/build-on-wink) — ภาพรวมแพลตฟอร์มสำหรับนักพัฒนา

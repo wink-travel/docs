@@ -16,6 +16,8 @@ import OpenAI from "openai";
 
 import { createHash } from "crypto";
 
+import { loadEnv } from "./load-env.js";
+
 const HASH_ALGO = "sha256";
 const HASH_FILE_NAME = ".file.hashes.json";
 
@@ -100,6 +102,40 @@ const fixFrontmatterSpecialStartChars = (content: string): string => {
   return content.replace(fullFm, `${open}${fixedBody}${close}`);
 };
 
+// Module specifiers in import statements are file paths, not prose: a model that
+// translates '/src/components/photos-and-videos-text.mdx' into a target language
+// (e.g. Dutch '.../photos-en-videos-text.mdx') breaks the build with an unresolved
+// import. Restore every specifier positionally from the English source.
+const IMPORT_SPECIFIER_REGEX = /^(\s*import\b[^\n]*?\bfrom\s+(['"]))([^'"\n]+)(\2)/gm;
+const collectImportSpecifiers = (content: string): Array<string> =>
+  [...content.matchAll(IMPORT_SPECIFIER_REGEX)].map((m) => m[3]);
+
+const restoreImportSpecifiers = (
+  source: string,
+  translated: string,
+  label: string
+): string => {
+  const original = collectImportSpecifiers(source);
+  const current = collectImportSpecifiers(translated);
+  if (original.length === 0) return translated;
+  if (original.length !== current.length) {
+    console.warn(
+      `⚠️ ${label}: import count changed during translation (${original.length} → ${current.length}); leaving specifiers untouched.`
+    );
+    return translated;
+  }
+
+  const knownSpecifiers = new Set(original);
+  let index = 0;
+  return translated.replace(IMPORT_SPECIFIER_REGEX, (full, pre, _quote, specifier, post) => {
+    const expected = original[index++];
+    // A specifier that still exists in the source was reordered, not translated.
+    if (specifier === expected || knownSpecifiers.has(specifier)) return full;
+    console.log(`🔧 ${label}: restoring import path '${specifier}' → '${expected}'`);
+    return `${pre}${expected}${post}`;
+  });
+};
+
 // Minimal link rewriter for docs content (md/mdx):
 // - Markdown links only: [text](/path) -> [text](/<lang>/path)
 // Skips if already has any locale prefix (/xx/ or /xx-YY/)
@@ -167,10 +203,11 @@ const rewriteCommonHrefPrefixes = (content: string, lang: string): string => {
 
 // Helper filesystem utilities
 const createDirectory = (filePath: string): void => mkdirSync(filePath);
+const isTranslatableFile = (fileName: string): boolean =>
+  (fileName.endsWith(".md") || fileName.endsWith(".mdx")) &&
+  !fileName.startsWith(".");
 const readFiles = (filePath: string): Array<string> =>
-  readdirSync(filePath).filter(
-    (f) => (f.endsWith(".md") || f.endsWith(".mdx")) && !f.startsWith(".")
-  );
+  readdirSync(filePath).filter(isTranslatableFile);
 const readFile = (filePath: string): string => {
   if (!existsSync(filePath)) {
     throw new Error(`Unable to find file ${filePath}`);
@@ -198,30 +235,20 @@ const loadHashMap = (langDirectory: string): HashMap => {
   return {};
 };
 
-// Source directories to walk for translation. After the docs reorg, portal
-// docs live under app/, IAM docs under account/, managed services under
-// services/, and guides are split by audience.
-const directories = [
-  "portal",
-  "portal/corporate",
-  "portal/extranet",
-  "portal/link-manager",
-  "portal/payment",
-  "portal/settings",
-  "portal/social",
-  "portal/studio",
-  "portal/travel-agent",
-  "account",
-  "account/profile",
-  "booking-engine",
-  "developers",
-  "getting-started",
-  "integrations",
-  "guides/affiliates",
-  "guides/developers",
-  "guides/general",
-  "guides/hoteliers",
-  "webinars",
+// Top-level directories under src/content/docs that are never machine-translated.
+// `api` and `changelog` are generated from upstream sources, and `blog` is owned
+// by the starlightBlog plugin. Everything else is discovered automatically by
+// discoverSourceDirectories() below — do not maintain a list of what to include.
+const UNTRANSLATED_DIRECTORIES = new Set(["api", "blog", "changelog"]);
+
+// Root-level pages, translated alongside the discovered directories.
+const rootFiles = [
+  "index.mdx",
+  "team.mdx",
+  "contact.mdx",
+  "privacy.md",
+  "terms.md",
+  "jobs.mdx",
 ];
 
 // some environment variables
@@ -230,6 +257,7 @@ const __dirname = dirname(__filename);
 const rootDir = resolve(__dirname, "..");
 const docsBaseDir = join(rootDir, "src", "content", "docs");
 
+loadEnv();
 
 const OPENAI_TRANSLATION_MODEL =
   process.env.OPENAI_TRANSLATION_MODEL ?? "gpt-4.1-mini-2025-04-14";
@@ -237,7 +265,9 @@ const DOMAIN_CONTEXT =
   "Online travel platform: booking flows, inventory management, agency/extranet tools. Keep product names and key travel terms consistent.";
 
 if (!process.env.OPENAI_API_KEY) {
-  throw new Error("OPENAI_API_KEY is required for translations");
+  throw new Error(
+    "OPENAI_API_KEY is required for translations. Set it in .env.local at the repo root; that value wins over any export in your shell profile."
+  );
 }
 
 const openai = new OpenAI({
@@ -294,6 +324,55 @@ const targetLanguages = [
 // Optional narrowing via environment variables for quicker tests
 const ONLY_LANG = process.env.ONLY_LANG?.trim();
 const ONLY_DIR = process.env.ONLY_DIR?.trim();
+
+// Locale output directories sit alongside the English sources, so they must
+// never be treated as translation input.
+const localeDirectories = new Set(targetLanguages.map((l) => l.id));
+
+/**
+ * Walk src/content/docs and return every directory holding translatable source
+ * files, relative to the docs root.
+ *
+ * Discovery is recursive and opt-out (see UNTRANSLATED_DIRECTORIES) rather than
+ * opt-in. A hand-maintained include list used to live here, and a docs section
+ * missing from it was skipped silently — no error, no warning, just untranslated
+ * pages nobody noticed.
+ */
+const discoverSourceDirectories = (): Array<string> => {
+  const discovered: Array<string> = [];
+
+  const walk = (relativeDirectory: string): void => {
+    const entries = readdirSync(join(docsBaseDir, relativeDirectory), {
+      withFileTypes: true,
+    });
+
+    // Root-level files are handled separately via rootFiles.
+    if (
+      relativeDirectory &&
+      entries.some((e) => e.isFile() && isTranslatableFile(e.name))
+    ) {
+      discovered.push(relativeDirectory);
+    }
+
+    for (const entry of entries) {
+      if (!entry.isDirectory() || entry.name.startsWith(".")) continue;
+      const isTopLevel = !relativeDirectory;
+      if (
+        isTopLevel &&
+        (localeDirectories.has(entry.name) ||
+          UNTRANSLATED_DIRECTORIES.has(entry.name))
+      ) {
+        continue;
+      }
+      walk(join(relativeDirectory, entry.name));
+    }
+  };
+
+  walk("");
+  return discovered.sort();
+};
+
+const directories = discoverSourceDirectories();
 
 // Whole-file translation: send entire MDX including frontmatter and body
 async function translateWholeFile(
@@ -426,6 +505,7 @@ async function translateFile(
   // Post-process all doc files: add locale prefixes to root-relative links
   const outExt = extname(relativePath).toLowerCase();
   if (outExt === ".md" || outExt === ".mdx") {
+    output = restoreImportSpecifiers(rawContent, output, `${targetLang}/${relativePath}`);
     output = rewriteLinksOnContent(output, targetLang);
     if (relativePath === "index.mdx") {
       output = rewriteCommonHrefPrefixes(output, targetLang);
@@ -479,8 +559,11 @@ async function translateDocs() {
     ? targetLanguages.filter((l) => l.id === ONLY_LANG)
     : targetLanguages;
 
-  const rootFileCount = 6;
-  let totalFiles = rootFileCount * langList.length;
+  console.log(
+    `📁 ${dirList.length} source directories: ${dirList.join(", ")}`
+  );
+
+  let totalFiles = rootFiles.length * langList.length;
   for (const directory of dirList) {
     const sourceDirectory = join(docsBaseDir, directory);
     const files = readFiles(sourceDirectory);
@@ -504,14 +587,6 @@ async function translateDocs() {
     // ✅ Load hash map for this language
     const langHashMap = loadHashMap(languageDirectory);
 
-    const rootFiles = [
-      "index.mdx",
-      "team.mdx",
-      "contact.mdx",
-      "privacy.md",
-      "terms.md",
-      "jobs.mdx",
-    ];
     for (const rootFile of rootFiles) {
       const sourceFile = join(docsBaseDir, rootFile);
       const targetFile = join(languageDirectory, rootFile);

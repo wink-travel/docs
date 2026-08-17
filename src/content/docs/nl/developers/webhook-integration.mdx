@@ -1,0 +1,168 @@
+---
+title: Webhook-integratie
+description: Deze gids laat ontwikkelaars zien hoe ze webhooks kunnen instellen om realtime meldingen te ontvangen voor boekingen, betalingen en andere gebeurtenissen.
+sidebar:
+  order: 3
+---
+
+import { Steps, LinkButton } from '@astrojs/starlight/components';
+
+Webhooks laten je systemen realtime meldingen ontvangen wanneer er gebeurtenissen plaatsvinden op je Wink-account — nieuwe boekingen, annuleringen, betalingsupdates en meer. Deze gids begeleidt je bij de setup en beste praktijken.
+
+## Doelgroep
+
+Deze gids is bedoeld voor ontwikkelaars die Wink integreren met externe systemen zoals property management systemen (PMS), channel managers, CRM's of aangepaste dashboards.
+
+## Hoe webhooks werken
+
+1. Je registreert een webhook-URL op Wink.
+2. Wanneer een gebeurtenis plaatsvindt (bijv. een nieuwe boeking), stuurt Wink een HTTP POST naar jouw URL.
+3. Je server verwerkt de payload en reageert met een `200 OK`.
+
+## Een webhook instellen
+
+<Steps>
+1. Log in op je account (Extranet, Studio of TripPay — allemaal ondersteunen webhooks).
+2. Ga naar `Applications` en vervolgens `Webhooks`. Zie [Webhooks](/nl/portal/settings/webhooks).
+3. Klik op `Create webhook`.
+4. Voer een **naam** in (bijv. "PMS Booking Sync").
+5. Voer je **webhook-URL** in — het HTTPS-eindpunt op je server.
+6. **Selecteer gebeurtenissen** — Kies specifieke gebeurtenissen om op te abonneren, of laat leeg om alle gebeurtenissen te ontvangen.
+7. Zet **Enabled** aan.
+8. Klik op `Save` — de respons toont je **signing secret één keer**; sla deze nu op.
+</Steps>
+
+## Gebeurtenistypen
+
+Wink publiceert momenteel 70 webhook-gebeurtenistypen verspreid over boekingen, accommodaties, accounts (beheerentiteiten) en inventaris (kamertypes, tariefplannen, mastertarieven, add-ons, faciliteiten, verkoopkanalen, promoties). Veelvoorkomende:
+
+| Categorie | Voorbeelden |
+|---|---|
+| **Boeking** | `booking.create`, `booking.cancelled`, `booking.refund.partial`, `booking.refund.full`, `booking.review.created` |
+| **Accommodatie** | `property.created`, `property.status.updated`, `property.policy.updated` |
+| **Inventaris** | `room_type.updated`, `rate_plan.created`, `master_rate.updated`, `special_rate.created`, `sales_channel.created` |
+| **Account** | `managing_entity.created`, `managing_entity.status.updated`, `managing_entity.manager.added` |
+
+De volledige, gegenereerde lijst — met een beschrijving, wie het ontvangt, en een link naar de referentiepagina van elke gebeurtenis — is de **Webhook Events Catalog**. De referentiepagina voor elke gebeurtenis (JSON-body, headers, retrybeleid) staat in de [Webhooks API](/nl/api/webhooks/).
+
+<LinkButton href="/nl/developers/webhook-events">
+  Bekijk elk gebeurtenistype
+</LinkButton>
+
+## Wat je ontvangt
+
+Elke levering is een HTTP `POST` naar je webhook-URL met `Content-Type: application/json` en deze envelop:
+
+```json
+{
+  "id": "0198a4f2-6b0e-7c1d-9a3e-2f4b8c6d1e0a",
+  "type": "booking.create",
+  "occurredAt": "2026-08-15T09:30:00Z",
+  "ownerIdentifier": "3c6b1a5d-8e2f-4a0b-9c7d-6e4f0a8b2c51",
+  "recipientRole": "SUPPLIER",
+  "schemaVersion": 2,
+  "object": { "...": "event-specific payload, e.g. BookingWebhookPayload" }
+}
+```
+
+- `id` — de gebeurtenisidentificatie; identiek voor elk eindpunt van je account dat deze gebeurtenis ontvangt en voor elke retry. Gebruik het als je **idempotentie-sleutel**.
+- `type` — de gebeurtenistype-sleutel (ook verzonden als de `Wink-Event-Type` header). Vertak op `type` en `schemaVersion` om `object` te parsen.
+- `object` — een samengestelde samenvatting van de resource waar de gebeurtenis over gaat (identificaties, status, de velden waarop je actie onderneemt) plus `links.self`, de leverancier-kant canonieke REST-URL van de volledige resource. Haal deze op met je eigen API-gegevens wanneer je meer nodig hebt dan de samenvatting; als je de gebeurtenis ontvangt als reseller of reisagent, gebruik dan het overeenkomstige resource-eindpunt van je eigen API-oppervlak voor dezelfde identificatie.
+
+Elke payloadschema is per gebeurtenis gedocumenteerd in de [Webhooks API](/nl/api/webhooks/) referentie.
+
+### Headers
+
+| Header | Betekenis |
+|---|---|
+| `Wink-Version` | Versie van het wire-contract, `2.0`. |
+| `Wink-Event-Id` | Zelfde als `id` in de body — je idempotentie-sleutel. |
+| `Wink-Delivery-Id` | Uniek per eindpunt per gebeurtenis; verandert alleen bij herlevering. |
+| `Wink-Event-Type` | Zelfde als `type` in de body. |
+| `Wink-Delivery-Attempt` | 1-gebaseerd pogingnummer voor deze levering. |
+| `Wink-Signature` | HMAC-handtekening — zie hieronder. |
+
+## Handtekeningen verifiëren
+
+Elke webhook heeft een **signing secret** (`whsec_…`) die Wink **één keer** toont, wanneer je de webhook aanmaakt of het geheim roteert. Bewaar het als een wachtwoord. Elke levering draagt
+
+```
+Wink-Signature: t=1755250200,v1=5d41402abc4b2a76b9719d911017c592…
+```
+
+waarbij `t` een Unix-timestamp is (seconden) en `v1` de kleine letters hex **HMAC-SHA256** is van de string
+`t + "." + rawBody`, gehasht met je geheim, en `rawBody` is de exacte request body bytes zoals ontvangen — serialiseer de JSON niet opnieuw voordat je verifieert. Gedurende 24 uur na een geheimrotatie bevat de header een tweede `v1=` waarde ondertekend met het vorige geheim; accepteer de levering als **één van de** `v1` overeenkomt.
+
+Verifieer in vier stappen: parseer `t` en elke `v1`; herbereken de HMAC over `t.rawBody` met je geheim; vergelijk met een constant-time vergelijking; verwerp als `|nu − t|` je tolerantie overschrijdt (5 minuten aanbevolen).
+
+```js
+// Node.js (Express-stijl; zorg dat je de RAW body hebt, niet een geparseerd object)
+import { createHmac, timingSafeEqual } from 'node:crypto';
+
+export function verifyWinkSignature(header, rawBody, secret, toleranceSeconds = 300) {
+  const parts = Object.fromEntries(header.split(',').map((p) => p.split('=').map((s) => s.trim())));
+  const t = Number(parts.t);
+  if (!Number.isFinite(t) || Math.abs(Date.now() / 1000 - t) > toleranceSeconds) return false;
+  const expected = createHmac('sha256', secret).update(`${t}.${rawBody}`).digest('hex');
+  return header
+    .split(',')
+    .filter((p) => p.trim().startsWith('v1='))
+    .map((p) => p.trim().slice(3))
+    .some((v1) => v1.length === expected.length && timingSafeEqual(Buffer.from(v1, 'utf8'), Buffer.from(expected, 'utf8')));
+}
+```
+
+```java
+// Java
+static boolean verify(String header, String rawBody, String secret, long nowSeconds, long toleranceSeconds) throws Exception {
+    long t = Long.MIN_VALUE;
+    List<String> signatures = new ArrayList<>();
+    for (String part : header.split(",")) {
+        String[] kv = part.trim().split("=", 2);
+        if (kv[0].equals("t")) t = Long.parseLong(kv[1]);
+        else if (kv[0].equals("v1")) signatures.add(kv[1]);
+    }
+    if (t == Long.MIN_VALUE || Math.abs(nowSeconds - t) > toleranceSeconds) return false;
+    Mac mac = Mac.getInstance("HmacSHA256");
+    mac.init(new SecretKeySpec(secret.getBytes(StandardCharsets.UTF_8), "HmacSHA256"));
+    byte[] expected = HexFormat.of().formatHex(mac.doFinal((t + "." + rawBody).getBytes(StandardCharsets.UTF_8))).getBytes(StandardCharsets.US_ASCII);
+    return signatures.stream().anyMatch(v1 -> MessageDigest.isEqual(expected, v1.toLowerCase().getBytes(StandardCharsets.US_ASCII)));
+}
+```
+
+Roteer het geheim vanuit het portaal of met `POST /api/managing-entity/{id}/webhook/{webhookId}/rotate-secret`; de respons toont het nieuwe geheim één keer, en het oude blijft 24 uur geldig terwijl je het uitrolt.
+
+## Herhalingen en herlevering
+
+- Reageer binnen 10 seconden met een `2xx` om te bevestigen. Doe zware verwerking asynchroon.
+- Een `5xx`, timeout, `408` of `429` wordt met backoff opnieuw geprobeerd: na 1 minuut, 5 minuten, 30 minuten, 2 uur, 6 uur, 12 uur, daarna dagelijks — 10 pogingen over ongeveer 3 dagen — waarna de levering als **dead** wordt gemarkeerd.
+- Elke andere `4xx` wordt behandeld als "je hebt deze levering geweigerd" en wordt **niet** opnieuw geprobeerd.
+- Elke gebeurtenis, levering en poging (status, responsfragment) is zichtbaar onder **Applications > Webhooks** en via de API (`…/webhook/event/grid`, `…/webhook/delivery/grid`). Je kunt elke levering **herleveren** (`POST …/webhook/delivery/{deliveryId}/redeliver`, wat een nieuwe retry-reeks start), alle dead leveringen van een webhook tegelijk herleveren (`POST …/webhook/{webhookId}/redeliver-dead`), of een levering annuleren.
+- Leveringen worden 30 dagen bewaard.
+
+## Testgebeurtenissen
+
+Stuur jezelf een synthetische `webhook.test` gebeurtenis vanuit het portaal of met
+`POST /api/managing-entity/{id}/webhook/{webhookId}/test`. Deze is ondertekend en wordt exact als een echte gebeurtenis geleverd, zodat je je eindpunt, je handtekeningcontrole en je idempotentie-afhandeling kunt verifiëren voordat je je abonneert op live gebeurtenissen.
+
+## Beste praktijken
+
+- **Gebruik HTTPS** — Wink stuurt payloads alleen naar HTTPS-eindpunten.
+- **Reageer snel** — Geef zo snel mogelijk een `200 OK` terug zodra je de payload ontvangt. Doe zware verwerking asynchroon.
+- **Idempotentie** — Je handler moet idempotent zijn; dedupliceer op `Wink-Event-Id`. Wink probeert opnieuw als het geen `2xx` respons ontvangt.
+- **Valideer de bron** — Verifieer de `Wink-Signature` header (zie [Handtekeningen verifiëren](#verifying-signatures)) voordat je verwerkt; verwerp alles wat faalt.
+- **Logging** — Log elke webhook-payload die je ontvangt. Dit maakt het debuggen van integratieproblemen veel eenvoudiger.
+
+## Pauzeren en verwijderen
+
+Je kunt een webhook **uitschakelen** zonder deze te verwijderen. Dit pauzeert de levering zodat je kunt troubleshooten zonder je configuratie te verliezen. Wanneer je klaar bent, zet je hem weer aan.
+
+Het verwijderen van een webhook verwijdert deze permanent. Elke integratie die op die webhook vertrouwt, ontvangt dan geen meldingen meer.
+
+## Verdere lectuur
+
+- [Webhook Events Catalog](/nl/developers/webhook-events) — Elk gebeurtenistype, gegenereerd uit de catalogus van het platform.
+- [Webhooks API reference](/nl/api/webhooks/) — Per gebeurtenis payloadschema's, headers en de endpoints voor abonnement- en leveringsbeheer.
+- [Webhooks](/nl/portal/settings/webhooks) — Volledige referentie voor webhookbeheer.
+- [Applications](/nl/account/applications) — Beheer je API-gegevens.
+- [Developers > APIs](/nl/api) — Volledige API-documentatie.

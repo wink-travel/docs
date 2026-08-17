@@ -5,7 +5,7 @@ sidebar:
   order: 5
 ---
 
-Uzziniet, kā Wink salīdzinās ar citiem tiešsaistes ceļojumu segmentiem tirgū. Zemāk ir ātrs funkciju pārskats, kuras mēs uzskatījām par svarīgām salīdzināšanai.
+Uzziniet, kā Wink salīdzinās ar citiem tiešsaistes ceļojumu segmentiem tirgū. Zemāk ir ātrs svarīgo funkciju pārskats, kuras mēs uzskatījām par būtiskām salīdzināšanai.
 
 ## Funkciju matrica
 
@@ -17,24 +17,24 @@ Uzziniet, kā Wink salīdzinās ar citiem tiešsaistes ceļojumu segmentiem tirg
 | Ceļojumu aģentu atbalsts | 🟢 | 🟢 | ⚫️ | 🟢 | 
 | Mākslīgā intelekta atbalstīta izplatīšana un mārketings | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | Sociālajiem tīkliem draudzīgi rīki | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
-| Komisijas bezmaksas B2C kanāls | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Komisijas maksa bez B2C kanāla | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | Bezmaksas Google viesnīcu saraksts | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
-| Web komponents / SDK / API piekļuve | 🟢 | 🟢 | ⚫️ | 🟢 | 
+| Web komponentes / SDK / API piekļuve | 🟢 | 🟢 | ⚫️ | 🟢 | 
 | Tiešas attiecības | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
-| Pārrunājamas komisijas katram pārdošanas kanālam | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Pārrunājamas komisijas par pārdošanas kanālu | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | Kanālu pārvaldnieks un PMS savienojamība | 🟢 | 🟢 | 🟢 | 🟢 | 
 | Piegādātājs pieder Klients | 🟢 | ⚫️ | 🟢 | 🟢 | 
 | ROI izsekošana | 🟢 | 🟢 | ⚫️ | ⚫️ | 
-| Maksā par veiktspēju | 🟢 | 🟢 | ⚫️ | 🟢 | 
+| Maksājums par veiktspēju | 🟢 | 🟢 | ⚫️ | 🟢 | 
 | Integrēta maksājumu vārteja | 🟢 | 🟢 | 🟢 | ⚫️ | 
 | Izmaksas ar Wise | 🟢 | 🟢 | ⚫️ | ⚫️ | 
 
 
 ## Wink pret Interneta rezervēšanas dzinēju (IBE)
 
-Dažas viesnīcas mēģina salīdzināt mūs ar viņu interneta rezervēšanas dzinēju, kas nāk komplektā ar viņu kanālu pārvaldnieku, un lūdz mums piedāvāt fiksētu, mēneša cenu, balstoties uz viņu īpašuma atslēgu skaitu.
+Dažas viesnīcas mēģina salīdzināt mūs ar viņu interneta rezervēšanas dzinēju, kas nāk komplektā ar viņu kanālu pārvaldnieku, un lūdz mums sniegt fiksētu, mēneša cenu, pamatojoties uz viņu īpašuma atslēgu skaitu.
 
-Mēs neesam IBE, un cerams, ka [Wink Academy](/lv/) palīdz to noskaidrot. Katrā pakalpojumā ir plusi un mīnusi. Ja jūsu IBE darbojas jūsu īpašumam, turpiniet to izmantot.  
+Mēs neesam IBE, un cerams, ka tas palīdz skaidrot atšķirību. Katrā pakalpojumā ir plusi un mīnusi. Ja jūsu IBE darbojas jūsu īpašumam, turpiniet to izmantot.  
 Wink pastāv, lai aizpildītu vairākas ceļojumu nozares nepilnības un apvienotu to visu vienuviet.
 
 :::tip

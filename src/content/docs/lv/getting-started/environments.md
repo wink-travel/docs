@@ -5,7 +5,7 @@ sidebar:
   order: 8
 ---
 
-Wink platformā mēs vienmēr darbojam divas vides visam, ko darām:
+Wink mēs vienmēr darbojam 2 vides visam, ko darām:
 
 - Ražošana ir mūsu stabilā vide.
 - Staging ir mūsu sertifikācijas un testēšanas vide.
@@ -13,7 +13,7 @@ Wink platformā mēs vienmēr darbojam divas vides visam, ko darām:
 Ja esat integrators, viesnīca vai ceļojumu aģents, kas vēlas sagatavoties sertifikācijai vai testēt Wink platformu, izveidojiet kontu mūsu staging vidē, lai sāktu darbu.
 
 :::note
-Staging vide ir pieejama pēc pieprasījuma. Tas nozīmē, ka tā iemieg, ja netiek izmantota, un pati atkal ieslēdzas, kad tiek izmantota. Lūdzu, esiet pacietīgi, ja to pamodināt. Pēc pirmās savienojuma izveides ar kādu no mūsu serveriem vai lietotnēm visu serveru startēšana aizņem apmēram minūti.
+Staging vide ir pieejama pēc pieprasījuma. Tas nozīmē, ka tā aizmigs, ja netiek izmantota, un pati atkal ieslēgsies, kad tā tiks izmantota. Lūdzu, esiet pacietīgi, ja to pamodināt. Pēc pirmās savienojuma izveides ar kādu no mūsu serveriem vai lietotnēm visu serveru startēšana aizņem apmēram minūti.
 :::
 
 ## Serveri
@@ -33,10 +33,6 @@ Mūsu lietotnēm arī ir testēšanas un ražošanas vides mūsu klientiem.
 
 | Lietotne | Staging | Ražošana
 | ------- | ------- | ---------- |
-| Agent | https://staging-agent.wink.travel | https://agent.wink.travel | 
-| Booking engine | https://staging-ota.wink.travel | https://ota.wink.travel | 
-| Extranet | https://staging-extranet.wink.travel | https://extranet.wink.travel | 
-| My Account | https://staging-app.wink.travel | https://app.wink.travel | 
-| Payment | https://staging-pay.wink.travel | https://pay.wink.travel | 
-| Studio | https://staging-studio.wink.travel | https://studio.wink.travel | 
-| WinkLinks | https://staging-i.trvl.as | https://i.trvl.as |
+| Portāls | https://staging-app.wink.travel | https://app.wink.travel | 
+| Rezervēšanas dzinējs | https://staging-book.wink.travel | https://book.wink.travel | 
+| Link Manager | https://staging-i.trvl.as | https://i.trvl.as |

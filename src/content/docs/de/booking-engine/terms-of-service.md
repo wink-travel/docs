@@ -2,7 +2,7 @@
 title: Nutzungsbedingungen
 description: Einfach zugängliche und stets aktuelle Bedingungen für alle unsere Reisenden.
 sidebar:
-  order: 4
+  order: 8
 ---
   
 <iframe 

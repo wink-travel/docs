@@ -3,37 +3,37 @@ title: Terma dan Syarat
 description: Terma dan Syarat untuk semua pengguna dan entiti Wink.
 ---
 
-Setiap portal mungkin mempunyai terma dan syarat yang berbeza. Sila pergi ke bahagian di bawah yang berkaitan dengan anda dan cari sub-bahagian yang dipanggil Terma Perkhidmatan dan Terma Pembayaran.
+Bahagian berbeza Wink mempunyai terma yang berbeza. Cari bahagian yang sesuai untuk anda di bawah — setiap satu mempunyai Terma Perkhidmatan tersendiri, dan bahagian yang mengendalikan wang juga mempunyai Terma Pembayaran.
 
-## Portal affiliate
+## Hartanah
 
-Untuk affiliate yang ingin belajar bagaimana untuk menjana pendapatan pasif dengan memonetkan akaun sosial anda menggunakan Wink.  
-[Wink Studio](https://studio.wink.travel) mempunyai semua alat yang anda perlukan untuk menjual seperti seorang profesional.
+Untuk hotel, rangkaian, jenama dan syarikat pengurusan yang menjual inventori di Wink.
 
-<LinkButton href="/ms/portal/studio/what-is-studio">
-Ketahui lebih lanjut tentang Wink Studio
-</LinkButton>
+- [Terma Perkhidmatan](/ms/portal/extranet/terms-of-service)
+- [Terma Pembayaran](/ms/portal/extranet/payment-terms)
+
+## Afiliasi
+
+Untuk pencipta, influencer dan afiliasi yang mempromosikan inventori perjalanan dan memperoleh komisen.
+
+- [Terma Perkhidmatan](/ms/portal/studio/terms-of-service)
+- [Terma Pembayaran](/ms/portal/studio/payment-terms)
+
+## Ejen pelancongan
+
+Untuk ejen pelancongan berdaftar yang mencari, menempah dan memperoleh bagi pihak pelanggan mereka.
+
+- [Terma Perkhidmatan](/ms/portal/travel-agent/terms-of-service)
+- [Terma Pembayaran](/ms/portal/travel-agent/payment-terms)
 
 ## Enjin tempahan
 
-Semua jalan menuju ke enjin tempahan kami! Ketahui apa yang anda boleh lakukan dengan enjin tempahan yang paling boleh disesuaikan dan fokus kepada perjalanan di pasaran.
+Untuk semua orang yang menempah perjalanan melalui Wink.
 
-<LinkButton href="/ms/booking-engine/in-a-nutshell">
-Ketahui lebih lanjut tentang enjin tempahan kami
-</LinkButton>
+- [Terma Perkhidmatan](/ms/booking-engine/terms-of-service)
 
-## Portal hartanah
+## Semua orang
 
-Untuk hartanah yang ingin mula menjual di Wink. Gunakan alat kami untuk menjual dan memasarkan diri anda secara berkesan dalam talian dan dapatkan tentera affiliate dari seluruh dunia untuk membantu anda mendapatkan pelanggan dan tempahan.
-
-<LinkButton href="/ms/portal/extranet/what-is-extranet">
-Ketahui lebih lanjut tentang Wink Extranet
-</LinkButton>
-
-## Portal ejen pelancongan
-
-Untuk ejen pelancongan yang ingin mengetahui apa yang Wink boleh tawarkan dari segi kadar khas, tawaran dan inventori, terus dari pembekal.
-
-<LinkButton href="/ms/portal/travel-agent/what-is-agent">
-Ketahui lebih lanjut tentang Wink Agent
-</LinkButton>
+- [Dasar Privasi](/ms/privacy)
+- [Harga](/ms/getting-started/pricing) — apa yang percuma, berapa kos tempahan, dan bagaimana yuran penggunaan bayar-semasa-anda-guna berfungsi.
+- [Permintaan pemadaman data](/ms/getting-started/data-deletion-request)

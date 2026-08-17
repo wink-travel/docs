@@ -25,24 +25,32 @@ Gjestfrihetsforvaltningsselskaper og destinasjonsforvaltningsselskaper kan admin
 
 ## Influencere
 
-Influencere bruker Wink for å tjene bedre på sitt publikum. De gjør dette ved å samarbeide med hoteller, lage skreddersydde tilbud, og utnytte Winks sosiale verktøy og kraftige analyser for å spore hvilke produkter som selger best​.
+Influencere bruker Wink for å tjene bedre på sitt publikum. De gjør dette ved å samarbeide med hoteller, lage skreddersydde tilbud og utnytte Winks sosiale verktøy og kraftige analyser for å spore hvilke produkter som selger best​.
+
+## Talentbyråer
+
+Talentbyråer er for skapere det forvaltningsselskaper er for hoteller. Hvis du representerer en gruppe influencere, innholdsskapere eller reiseprofiler, kan du administrere alle deres Wink-kontoer fra ett sted — finne inventar, forhandle avtaler med eiendommer, bygge og publisere innhold, og spore ytelse på tvers av hele stallen i stedet for én skaper om gangen.
+
+Du forhandler et byråhonorar med hver av dine talenter og tjener dette honoraret på hver booking de genererer. Det utbetales automatisk som en del av bookingen, så det er ingen fakturering til dine talenter eller jakt på provisjoner i etterkant. Talentene dine beholder kontrollen hele veien — de eier sin konto, er de som legger til det avtalte honoraret, og de kan legge til utløpsregler eller avslutte avtalen når de vil.
+
+Se [Agency representation](/no/portal/settings/agency-representation) for hvordan det settes opp.
 
 ## Reisebyråer
 
-Reisebyråer får tilgang til reiseinventar over hele verden til gode priser gjennom vår dedikerte [reisebyråportal](https://agent.wink.travel). De kan gjøre bookinger via portalen vår, gjennom API-et vårt eller ved å la sine brukere booke selv på reisebyråets nettside som bruker våre teknologier.
+Reisebyråer får tilgang til reiseinventar over hele verden til gode priser gjennom vår dedikerte [reisebyråportal](https://agent.wink.travel). De kan gjøre bookinger via portalen vår, gjennom API-et vårt eller ved å la sine brukere booke selv på reisebyrånettstedet som bruker våre teknologier.
 
 ## Bedrifter
 
 Bedrifter krever mer av en reiseplattform:
 
-- De krever godt organiserte reiseruter som støtter fleksibilitet og endringer i siste liten.
+- De krever godt organiserte reiseruter som støtter fleksibilitet og siste-liten-endringer.
 - De krever pålitelige kommunikasjonsverktøy, som internett.
 - De har leverandørpreferanser med medlemskap.
-- De har ofte bedriftskredittkort og setter utgiftsgrenser.
-- De krever integrasjon for utgiftsstyring og rapportering.
+- De har ofte et firmakredittkort og setter utgiftsgrenser.
+- De krever utgiftsstyring og integrasjon for rapportering.
 - De trenger concierge-støtte, samt MICE-tjenester ved arrangementer.
 
-Forretningsreisende kan administrere sine egne kontoer på vår [bedriftsportal](/no/portal/corporate/what-is-group) eller bruke vår offisielt støttede [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration)-plugin og [Concur](https://www.concur.com/) integrasjon.
+Forretningsreisende kan administrere sine egne kontoer på vår bedriftsportal eller bruke vår offisielt støttede [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration)-plugin og [Concur](https://www.concur.com/) integrasjon.
 
 ## Utviklere
 
@@ -50,4 +58,4 @@ Selv om vi bygde denne plattformen av og for hotelleiere... Hver linje med kode 
 
 ## Andre
 
-Alle som ønsker å finne og selge reiseinventar kan dra nytte av å bruke Wink. Gjør din lidenskap for gjestfrihet om til handling ved å tjene en god provisjon på hver booking.
+Alle som ønsker å finne og selge reiseinventar kan ha nytte av å bruke Wink. Gjør din lidenskap for gjestfrihet om til handling ved å tjene en god provisjon på hver booking.

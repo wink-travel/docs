@@ -9,11 +9,11 @@ Nossa solução para agentes de viagem registrados é o [Wink Agent](https://age
 
 Agentes de viagem mais avançados podem optar por integrar no nível da API para fins de gerenciamento de pagamento e repasses fora da plataforma Wink.
 
-Agentes de viagem têm um subconjunto dos mesmos recursos do portal que o [Wink Studio](/pt-BR/portal/studio/what-is-studio), então não os abordaremos novamente aqui.
+Agentes de viagem têm um subconjunto dos mesmos recursos do portal que o [Studio](/pt-BR/portal/studio/what-is-studio), então não os abordaremos novamente aqui.
 
 ## Pesquisa
 
-Vá para [Search](/pt-BR/portal/studio/search) para aprender como pesquisar e reservar hotéis.
+Acesse [Search](/pt-BR/portal/studio/search) para aprender como pesquisar e reservar hotéis.
 
 Caso contrário, continue para a próxima seção.
 

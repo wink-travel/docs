@@ -1,0 +1,384 @@
+---
+title: 新增您的 Channel Manager
+description: Channel manager 和 PMS 開發者整合 Wink 平台的逐步指南。
+sidebar:
+  order: 1
+---
+
+import { Steps, LinkButton } from '@astrojs/starlight/components';
+
+本指南引導 channel manager 和 PMS 開發者完成與 Wink 整合的完整流程 — 從建立帳號到映射庫存，再到執行首次端對端測試。
+
+## 環境
+
+Channel Manager (Integrations) API 提供兩個環境。所有開發與認證請使用 staging，僅在正式上線時切換至 production。
+
+| 環境       | 基本 URL                              |
+| ----------- | ----------------------------------- |
+| Production  | https://integrations.wink.travel    |
+| Staging     | https://staging-integrations.wink.travel |
+
+## API 參考
+
+Channel Manager API 遵循 OTA 協議標準（SOAP/XML），以確保與現有飯店系統的相容性。請先閱讀合作夥伴端點文件：
+
+<LinkButton href="/zh-TW/partner-api/partner/">
+  Channel Manager API — 合作夥伴端點
+</LinkButton>
+
+## 整合步驟
+
+<Steps>
+1. **建立 Wink 使用者帳號**
+
+   在 [staging-app.wink.travel](https://staging-app.wink.travel) 註冊。以下所有步驟均使用 staging，您將在正式上線前重複整個流程於 production。
+
+2. **建立您的 Affiliate / Channel Manager 帳號**
+
+   在新使用者下建立帳號，並選擇 **Affiliate / Channel Manager** 帳號類型。此帳號將作為您的整合認證身份。
+
+3. **註冊應用程式並產生第一個 Token**
+
+   建立一個 [Application](/zh-TW/account/applications)，並綁定至步驟 2 的 channel manager 帳號。選擇 **MACHINE_2_MACHINE** 作為客戶端類型 — 這是伺服器對伺服器的整合，無需重定向終端使用者。請立即複製 **Client ID** 和 **Secret Key**；Secret Key 僅顯示一次，無法再次取得。
+
+   應用程式會產生本指南中每次呼叫所帶的 `Authorization: Bearer <access_token>` 的 bearer token。使用 `client_credentials` 授權向 `https://staging-iam.wink.travel/oauth2/token` 交換憑證，請求 `integrations.read integrations.write` 權限。請先完成此步驟 — 沒有 token 無法查詢帳號識別碼或存取任何 Channel Manager 端點。完整流程、正式環境主機與權限清單請參考 [Authentication](/zh-TW/developers/authentication)。
+
+4. **建立飯店帳號**
+
+   在同一使用者下建立第二個帳號，選擇 **Hotel** 帳號類型。這會提供一個可用於測試的物業，無需涉及真實飯店。
+
+5. **確認兩個帳號皆已核准**
+
+   未核准的帳號無法使用：未核准的 channel manager 帳號不會出現在任何飯店的 channel manager 清單中，未核准的飯店也不會被 API 回傳。
+
+   - **Staging** — 核准自動完成。帳號建立後即可使用，無需申請。
+   - **Production** — 核准需人工處理。請將兩個帳號名稱及所屬使用者寄給您的 Wink 整合聯絡人，待確認後再繼續。
+
+6. **連結兩個帳號**
+
+   登入飯店帳號，前往 **Extranet → Distribution → Channel Manager**。從清單中選擇您的 channel manager 帳號，將物業連結至您的整合。若帳號不在清單中，表示尚未核准；請參考步驟 5。
+
+7. **建立基本房型與房價方案**
+
+   在飯店帳號內建立至少一個房型與一個房價方案。這是推送價格與庫存、拉取訂單前的必要條件。
+
+8. **映射並測試**
+
+   在您的系統中映射 API 回傳的房型與房價方案識別碼。推送價格更新與庫存更新，接著進行測試訂單，並確認訂單查詢端點能正確回傳。
+</Steps>
+
+:::note
+正式上線前請在 production 重複上述所有步驟，包括註冊獨立的 production 應用程式 — staging 憑證無法用於 production。請預留 Wink 在步驟 5 的審核時間 — 與 staging 不同，production 帳號不會自動核准。Wink 團隊會將已使用您 channel manager 的飯店遷移至您的新 production 帳號。
+:::
+
+## 查找您的帳號識別碼
+
+每個 Channel Manager API 路徑均以您的帳號範圍為基礎：
+
+```
+/api/managing-entity/{managingEntityIdentifier}/channel-manager/...
+```
+
+`{managingEntityIdentifier}` 是 **您的 channel manager 帳號** 的帳號 ID（UUID），非飯店的。請從 Platform API 取得它，以及您使用者擁有的其他帳號 ID 與當前狀態：
+
+```bash
+curl -s -X GET \
+  "https://staging-api.wink.travel/api/managing-entity/list" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+回應為您擁有帳號的陣列：
+
+```json
+[
+  {
+    "id": "3f1c8e42-7b90-4d55-a1e2-6c8d09b4f731",
+    "type": "CHANNEL_MANAGER",
+    "name": "Your Channel Manager",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "d5b8a3c2-9e6f-4a1b-8d34-7c2e1f0a5b69",
+    "type": "HOTEL",
+    "name": "Your Test Property",
+    "urlName": "your-test-property",
+    "status": "ACTIVE"
+  }
+]
+```
+
+- channel manager 項目的 `id` 是您的 **`{managingEntityIdentifier}`**。
+- `HOTEL` 項目的 `id` 是您的 **`{propertyIdentifier}`**。
+- `status` 用來確認帳號是否核准 — 在 production 尤其重要，因為核准需人工。**飯店** 必須是 `ACTIVE` 才能被訂購或被 Channel Manager API 查詢。您的 **channel manager** 帳號在通過 [Certification](#certification) 前會顯示 `PENDING_APPROVAL`，這是正常且不會阻礙開發。
+
+:::caution
+此查詢針對 **Platform API** (`https://staging-api.wink.travel` 在 staging，`https://api.wink.travel` 在 production)，非 [環境](#環境) 中列出的 Channel Manager API 主機。請使用相同的 access token — 它是以使用者為單位發行，而非 API。
+:::
+
+## 認證
+
+認證是您證明 — 以及 Wink 確認 — 您的整合能正確映射庫存、推送價格與庫存、並端對端接收訂單的方式。設計為自助式：您從自己的系統操作每個步驟，最後提交一份證明資料包。Wink 審核通過後，會將您的 Affiliate / Channel Manager 帳號從 **PENDING_APPROVAL** 轉為 **ACTIVE**。
+
+認證全程在 staging 環境執行（`https://staging-integrations.wink.travel`），本節內容不涉及 production。
+
+### 您將證明的項目
+
+<Steps>
+1. **認證。** 您的 OAuth2 客戶端能取得 access token，並成功呼叫 `/ping` 端點，針對您的 Affiliate / Channel Manager 帳號。
+
+2. **庫存映射。** 您能列出連結至您帳號的飯店，取得您設定的主價格（房型 × 房價方案），並正確識別系統將使用的 `masterRateIdentifier`。
+
+3. **價格與庫存推送。** 您能獨立更新認證週的七天價格 — 每天有不同的金額、數量、抵達/離店封閉標記，以及最短/最長入住天數限制 — 並從 Wink 讀回完全相符的值。
+
+4. **訂單拉取。** 您能取得針對測試物業在 staging 下的真實訂單，於您自己的 PMS/CM UI 顯示正確的房間住宿、旅客與總價，並在 Wink 標記訂單取消後反映取消狀態。
+</Steps>
+
+### 前置條件
+
+開始認證前，請完成 [整合步驟](#integration-steps) 的 1–7 步驟，確保您有：
+
+- 一個 staging Wink 使用者，擁有一個 **Affiliate / Channel Manager** 帳號與一個連結的 **Hotel** 帳號（Extranet → Distribution → Channel Manager）。staging 帳號自動核准，無需申請。
+- 飯店帳號內至少建立一個 **房型** 與一個 **房價方案**。將飯店發佈，使其可在 `https://staging-book.wink.travel/hotel/<your-slug>` 訂購。
+- 在您的 Affiliate / Channel Manager 帳號下註冊的應用程式，擁有 **Client ID**、**Secret Key**，以及 `integrations.read integrations.write` 權限（參考 [Authentication](/zh-TW/developers/authentication)）。
+- 您的 Affiliate / Channel Manager 帳號的 **`managingEntityIdentifier`** 與飯店帳號的 **`propertyIdentifier`**（皆為 UUID，詳見 [查找您的帳號識別碼](#finding-your-account-identifiers)）。
+
+### 常用請求慣例
+
+本節所有請求均使用以下標頭：
+
+```http
+Authorization: Bearer <access_token>
+Wink-Version: 2.0
+Accept: application/json
+```
+
+- `<access_token>` 來自 `client_credentials` 授權，向 `https://staging-iam.wink.travel/oauth2/token` 取得 — 參考 [Authentication](/zh-TW/developers/authentication#staging)。
+- `Wink-Version` 標頭為必填，缺少將無法路由至 v2 JSON API。
+- `Content-Type: application/json` 會在帶有主體的 `PUT` 請求中加入。
+
+以下範例中，佔位符對應您在 [前置條件](#prerequisites) 收集的值：
+
+| 佔位符                     | 含義                                                         |
+|----------------------------|--------------------------------------------------------------|
+| `{managingEntityIdentifier}` | 您的 Affiliate / Channel Manager 帳號 ID（UUID） — 參見 [查找您的帳號識別碼](#finding-your-account-identifiers)。 |
+| `{propertyIdentifier}`       | 您連結至 CM 帳號的飯店帳號（物業）ID。                       |
+| `{masterRateIdentifier}`     | 您將認證的主價格（房型 × 房價方案）。                         |
+| `{bookingIdentifier}`        | 訂單列表呼叫回傳的 staging 訂單 ID。                         |
+
+### 步驟 A — Ping
+
+確認您的憑證能解析至預期的 Affiliate / Channel Manager 帳號。
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/ping" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+預期回應：
+
+```json
+{
+  "apiVersion": "2.0",
+  "name": "Your Channel Manager Account Name",
+  "status": "PENDING_APPROVAL"
+}
+```
+
+若回傳 **200** 且 `name` 符合，表示認證與帳號解析正確。`status` 在 Wink 認證前會顯示 `PENDING_APPROVAL`。
+
+### 步驟 B — 列出物業
+
+取得連結至您帳號的飯店分頁清單，確認您的測試物業存在。
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/list?page=0&size=25" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+回應為 Spring `Page` 的 `ChannelManagerProperty` 項目。找到 `identifier` 與您的 `{propertyIdentifier}` 相符的項目，並記錄其 `currencyCode` — 您在 [步驟 D](#step-d--load-the-certification-week) 會用到它來解讀價格更新。
+
+:::caution
+空清單表示設定問題，非請求錯誤。飯店只有在 **`ACTIVE`** 且已在 Extranet → Distribution → Channel Manager 指派給您的 channel manager 帳號後才會回傳。請先用 `GET /api/managing-entity/list`（參考 [查找您的帳號識別碼](#finding-your-account-identifiers)）確認。正式環境還有第三種原因：飯店尚未被 Wink 核准，故不可見。
+:::
+
+### 步驟 C — 取得主價格
+
+取得物業及其所有主價格（房型 × 房價方案組合）。選擇您將認證的主價格，並記錄其 `identifier` 作為您的 `{masterRateIdentifier}`。
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+回應為 `PropertyWithRoomRateList`：包含 `property` 區塊與 `rooms` 陣列（`PropertyRoomRate` 項目）。每項目揭露房型、房價方案、入住限制、基礎價格及您推送每日價格時需保留的價格修正項。
+
+:::caution
+整個認證流程請只針對單一主價格。正式環境會映射更多房型與房價方案，但證明資料包只需展示一個主價格的端對端操作。
+:::
+
+### 步驟 D — 載入認證週
+
+載入一個 **七天價格日曆**，涵蓋您開始認證月份的下一個月的前七個日曆日。例如，若您在 8 月 21 日開始認證，目標為 9 月 1 日至 9 月 7 日。
+
+您將發送 **七個獨立的 `PUT` 呼叫** — 每天一個，`startDate == endDate`。每天帶有刻意不同的金額、數量、抵達/離店封閉標記及最短/最長入住天數限制，確保每個可寫欄位至少被測試一次。數值以物業貨幣（步驟 B 記錄）為單位；省略 `currencyCode` 會自動正確預設。
+
+| 天數 | 金額    | 數量 | 抵達封閉 | 離店封閉 | 最短入住天數 | 最長入住天數 | 證明內容               |
+|------|---------|------|----------|----------|--------------|--------------|------------------------|
+| 1    | 100.00  | 5    | false    | false    | 1            | 30           | 基準日                 |
+| 2    | 125.00  | 4    | false    | false    | 1            | 14           | 金額 + 數量 + `maxLengthOfStay` 變更 |
+| 3    | 150.00  | 3    | **true** | false    | 1            | 30           | `closedOnArrival` 反轉 |
+| 4    | 175.00  | 2    | false    | **true** | 2            | 7            | `closedOnDeparture` 反轉 + 更嚴格入住限制 |
+| 5    | 200.00  | **0**| false    | false    | 1            | 30           | 售罄數量               |
+| 6    | 225.00  | 5    | false    | false    | **3**        | **5**        | 限制性入住限制         |
+| 7    | 250.00  | 1    | false    | false    | 1            | 30           | 最後一間房可訂         |
+
+第 1 天的請求主體範例如下。請依表格調整 `startDate` / `endDate` / 數值，重複執行第 2 至 7 天。
+
+```bash
+curl -s -X PUT \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/master-rate/{masterRateIdentifier}" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json" \
+  -d '{
+        "startDate": "2026-09-01",
+        "endDate":   "2026-09-01",
+        "amount":    100.00,
+        "master":    true,
+        "closedOnArrival":   false,
+        "closedOnDeparture": false,
+        "quantity":          5,
+        "minLengthOfStay":   1,
+        "maxLengthOfStay":   30
+      }'
+```
+
+每個 `PUT` 會回傳 `200`，並帶有您更新區間的 `PropertyRate` 陣列（`startDate == endDate` 時為單一項目）。請保存該回應，作為證明資料之一。
+
+:::note
+`master` 在認證週的每次呼叫中都應為 `true`。這告訴 Wink 您的更新是範本價格，而非每筆訂單的覆寫。
+:::
+
+### 步驟 E — 讀回認證週
+
+一次取得整週資料，確認每一天的儲存值與您在步驟 D 發送的資料完全相符 — 包含布林標記與入住限制。
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/master-rate/{masterRateIdentifier}?startDate=2026-09-01&endDate=2026-09-07" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+回應為 `PropertyRoomRateWithRateList`。其 `rates` 陣列必須包含 **七** 筆資料，每筆對應一天，且 `amount`、`quantity`、`closedOnArrival`、`closedOnDeparture`、`minLengthOfStay`、`maxLengthOfStay` 均與您載入的值相符。任一欄位不符表示步驟 D 的對應 `PUT` 未成功，請修正並重新驗證。
+
+### 步驟 F — 進行測試訂單
+
+在瀏覽器開啟以下網址，將 `<your-slug>` 替換為您在前置條件中發佈的飯店 slug：
+
+```
+https://staging-book.wink.travel/hotel/<your-slug>
+```
+
+選擇一組完全落在認證週內的抵達與離店日期，選擇您認證的房型 + 房價方案組合，完成訂單。staging 使用測試付款流程，不會扣款。
+
+確認訂單完成頁面顯示後，記錄顧客看到的 **訂單代碼**（格式為 `WNKxxxxx`）。
+
+### 步驟 G — 拉取訂單
+
+取得您測試物業在訂單時間範圍內的所有訂單。
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/booking/list?startDate=2026-09-01T00:00:00&endDate=2026-09-08T00:00:00" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+找到 `bookingCode` 與您在步驟 F 記錄的代碼相符的項目，記錄其 `bookingIdentifier`。接著取得該單筆訂單：
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/booking/{bookingIdentifier}" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+回應為 `PropertyBooking`。將其匯入您自己的 PMS / channel-manager UI，確認以下資訊均正確呈現給操作人員：
+
+- `bookingCode`、`bookingIdentifier`、`createdDate`
+- 旅客：`firstName`、`lastName`、`email`
+- `totalAmount` + `currencyCode`（飯店實際收到的淨額，涵蓋所有房間）
+- `paymentMethodType`、`paymentMethodStatus`、`salesChannelName`
+- `roomStays` 中每筆：`guestRoomName`、`ratePlanName`、`adults`、`children`、`startDate`、`endDate` 及每房 `amount`
+
+請截圖您 UI 中訂單的呈現畫面 — 該截圖為必須的證明資料。
+
+### 步驟 H — 取消訂單並驗證
+
+請 Wink 團隊代為取消認證訂單（或若您有權限，從飯店帳號的 Extranet 自行取消）。然後使用步驟 G 的呼叫重新取得同一訂單。
+
+確認回應顯示：
+
+- `cancelled: true`
+- 有填寫的 `cancelDate` 時間戳
+- 反映取消流程的 `paymentMethodStatus`（依退款政策可能為 `CANCELLED`、`PARTIALLY_REFUNDED` 或 `FULLY_REFUNDED`）
+
+將更新後的訂單匯入您 UI，確認取消狀態、取消時間戳及任何退款指示均可見於操作人員介面。請截取取消後訂單的第二張截圖，作為最後的證明資料。
+
+### 步驟 I — 提交證明資料包
+
+將以下內容打包成一個名為 `wink-cert-<your-channel-manager-name>-<yyyy-mm-dd>.zip` 的壓縮檔：
+
+<Steps>
+1. **API 記錄。** 對步驟 A 至 H 所有請求，擷取完整 HTTP 請求（方法、URL、請求標頭，`Authorization` 欄位遮蔽，`PUT` 請求的 JSON 主體）與完整 HTTP 回應（狀態碼、回應標頭、JSON 主體）。請將記錄依步驟清楚標示（如 `step-a-ping.json`、`step-d-day-3-put.json`、`step-g-list-bookings.json` 等）。純文字 `.http` 檔或單一 `.har` 匯出皆可。
+
+2. **UI 截圖：有效訂單。** 步驟 G 中顯示認證訂單的截圖，包含旅客、日期、房型、房價方案與總價，清晰可辨。
+
+3. **UI 截圖：取消訂單。** 步驟 H 中取消後訂單的截圖，包含取消狀態與時間戳，清晰可辨。
+
+4. **認證摘要。** 壓縮檔內附簡短 `README.md`，列出：
+   - 您的 channel manager / PMS 名稱與版本。
+   - 使用的 `managingEntityIdentifier`、`propertyIdentifier`、`masterRateIdentifier` 與 `bookingIdentifier`。
+   - staging 飯店 slug（`https://staging-book.wink.travel/hotel/<your-slug>` 中的 `<your-slug>`）。
+   - 認證週日期範圍（Day 1 → Day 7，ISO-8601 格式）。
+   - 執行認證工程師的姓名與電子郵件。
+</Steps>
+
+將壓縮檔寄給您的 Wink 整合聯絡人。Wink 將審核、針對任何差異進行追蹤，通過後會將您的 Affiliate / Channel Manager 帳號狀態由 `PENDING_APPROVAL` 轉為 `ACTIVE`。您的整合即可進入正式環境上線流程。
+
+:::tip
+建議自動化記錄擷取。步驟 D 的七個 `PUT` 呼叫與步驟 E 的讀回是認證失敗最常見的原因 — 使用可持續保存每次請求與回應的互動式 HTTP 用戶端，能避免因小數點誤差而重跑整個流程。
+:::
+
+## Webhook 通知
+
+您可以訂閱 channel manager webhook 事件，接收即時通知：
+
+- `channel-manager.update.rate` — 收到價格更新。
+- `channel-manager.update.availability` — 收到庫存更新。
+- `channel-manager.update` — 一般 channel manager 更新。
+
+詳情請參考 [Webhook 事件目錄](/zh-TW/developers/webhook-events#channel-manager-events)。
+
+## 延伸閱讀
+
+- [Channel Manager API](/zh-TW/partner-api/partner/) — 完整 API 端點文件。
+- [Rate Providers](/zh-TW/portal/extranet/rate-providers) — Extranet 中的價格供應商管理。
+- [Webhook Events Catalog](/zh-TW/developers/webhook-events) — 所有可訂閱事件。
+- [Build on Wink](/zh-TW/developers/build-on-wink) — 開發者平台概覽。

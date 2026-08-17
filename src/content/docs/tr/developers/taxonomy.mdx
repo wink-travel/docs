@@ -1,0 +1,63 @@
+---
+title: Taksonomi
+description: Wink platformunun kullandığı kontrollü sözlükler — olanaklar, yatak tipleri, oda manzaraları ve daha fazlası için OTA kodları, ayrıca desteklenen tüm diller ve para birimleri.
+sidebar:
+  order: 12
+---
+
+import taxonomy from '@/data/taxonomy.json';
+import OtaCategories from '@/components/taxonomy/ota-categories.astro';
+import CodeTable from '@/components/taxonomy/code-table.astro';
+
+Wink, envanteri kontrollü sözlükler kullanarak tanımlar — üzerinde anlaşılmış anlamlara sahip sabit kod setleri. Bir otel olanakları için `"5"` gönderdiğinizde, platform bunu *Klima* olarak okur ve bu veriyi kullanan herkes de aynı şekilde anlar.
+
+Bu sayfa, üç sözlüğün yayımlanmış referansıdır:
+
+- **OTA kodları** — {taxonomy.ota.codeCount} kod, {taxonomy.ota.categoryCount} kategori kapsamında; olanaklar, yatak tipleri, oda manzaraları, erişilebilirlik özellikleri, mutfak ve daha fazlasını kapsar.
+- **Diller** — içeriğin oluşturulup sunulabileceği {taxonomy.languages.list.length} dil.
+- **Para birimleri** — fiyatların belirtilebileceği ve ödemelerin yapılabileceği {taxonomy.currencies.list.length} para birimi.
+
+Kodlar sabittir. İsimler açıklık için yeniden ifade edilebilir, bu yüzden eşleştirmeyi **koda** göre yapın, isimlere göre değil.
+
+## OTA kodları
+
+Wink, [OpenTravel Alliance](https://opentravel.org/) kod listelerini takip eder. Her kategorinin üç harfli bir tanımlayıcısı vardır — otel olanakları için `HAC`, yatak tipleri için `BED` — ve her kategori içindeki kodlar benzersizdir. Aynı sayısal değer farklı kategorilerde farklı anlamlara gelir, bu yüzden bir kod yalnızca ait olduğu kategori ile birlikte anlamlıdır: `BED` `1` *Çift Kişilik / Full* iken, `HAC` `1` *24 saat resepsiyon* anlamına gelir.
+
+Kodlarını görmek için bir kategori seçin.
+
+<OtaCategories
+  categories={taxonomy.ota.categories}
+  categoryHeader="Kategori"
+  descriptionHeader="Açıklama"
+  countHeader="Kodlar"
+  codeHeader="Kod"
+  nameHeader="İsim"
+/>
+
+## Diller
+
+İçerik — mülk açıklamaları, oda isimleri, politikalar — bu dillerden herhangi birinde oluşturulabilir. Kodlar [IETF BCP 47](https://www.rfc-editor.org/info/bcp47) etiketleridir: iki harfli [ISO 639-1](https://www.iso.org/iso-639-language-code) dili, isteğe bağlı olarak platformun bölgesel varyantları ayırt ettiği bir [ISO 3166-1](https://www.iso.org/iso-3166-country-codes.html) bölgesi takip eder — `pt-BR` ve `pt-PT` ayrı ayrı taşınır, tıpkı `es`, `es-AR` ve `es-MX` gibi.
+
+Platformun varsayılanı `{taxonomy.languages.default}`’dir; bu, bir istek dil belirtmediğinde ve çeviri mevcut olmadığında kullanılır.
+
+<CodeTable
+  rows={taxonomy.languages.list}
+  codeHeader="Kod"
+  nameHeader="Dil"
+  unnamedLabel="Standart isim yok"
+/>
+
+## Para Birimleri
+
+Fiyatlar bu para birimlerinden herhangi birinde belirtilebilir ve ödemeler bu birimlerde yapılabilir. Kodlar [ISO 4217](https://www.iso.org/iso-4217-currency-codes.html) üç harfli tanımlayıcılardır.
+
+Platformun varsayılanı `{taxonomy.currencies.default}`’dir. Bu, gösterim için yedek para birimi ve platform düzeyindeki rakamların normalize edildiği birimdir; **rezervasyonun ödeme yaptığı para birimi değildir** — oteller kendi para birimlerinde ödeme alır, bu yüzden bir para biriminde belirtilen fiyat başka bir para biriminde ödenirken döviz farkı oluşur.
+
+Bazı girdiler ulusal para birimi değildir: `XAU` ve `XAG` altın ve gümüş, `XDR` IMF’nin Özel Çekme Hakkı, `BTC` ise Bitcoin’dir. Bunlar değerleme ve raporlama için taşınır, genellikle ödeme para birimi olarak kullanılamazlar.
+
+<CodeTable
+  rows={taxonomy.currencies.list}
+  codeHeader="Kod"
+  nameHeader="Para Birimi"
+  unnamedLabel="Standart isim yok"
+/>

@@ -13,7 +13,7 @@ sidebar:
 Якщо ви інтегратор, готель або туристичний агент, який хоче підготуватися до сертифікації або протестувати платформу Wink, створіть обліковий запис у нашому staging-середовищі, щоб почати.
 
 :::note
-Середовище staging доступне за запитом. Це означає, що воно переходить у режим сну, якщо ним не користуються, і автоматично вмикається, коли з’являється активність. Будь ласка, будьте терплячі, якщо ви його пробуджуєте. Запуск усіх серверів після першого підключення до одного з наших серверів або додатків займає близько хвилини.
+Середовище staging доступне за запитом. Це означає, що воно переходить у сплячий режим, якщо ним не користуються, і автоматично вмикається, коли з’являється активність. Будь ласка, будьте терплячі, якщо ви його пробуджуєте. Запуск усіх серверів після першого підключення до одного з наших серверів або додатків займає близько хвилини.
 :::
 
 ## Сервери
@@ -33,10 +33,6 @@ sidebar:
 
 | Додаток | Staging | Production
 | ------- | ------- | ---------- |
-| Agent | https://staging-agent.wink.travel | https://agent.wink.travel | 
-| Booking engine | https://staging-ota.wink.travel | https://ota.wink.travel | 
-| Extranet | https://staging-extranet.wink.travel | https://extranet.wink.travel | 
-| My Account | https://staging-app.wink.travel | https://app.wink.travel | 
-| Payment | https://staging-pay.wink.travel | https://pay.wink.travel | 
-| Studio | https://staging-studio.wink.travel | https://studio.wink.travel | 
-| WinkLinks | https://staging-i.trvl.as | https://i.trvl.as |
+| Portal | https://staging-app.wink.travel | https://app.wink.travel | 
+| Booking engine | https://staging-book.wink.travel | https://book.wink.travel | 
+| Link Manager | https://staging-i.trvl.as | https://i.trvl.as |

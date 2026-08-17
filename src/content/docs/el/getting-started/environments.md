@@ -8,12 +8,12 @@ sidebar:
 Στην Wink, λειτουργούμε 2 περιβάλλοντα για όλα όσα κάνουμε ανά πάσα στιγμή:
 
 - Το Production είναι το σταθερό μας περιβάλλον.
-- Το Staging είναι το περιβάλλον πιστοποίησης και δοκιμών μας.
+- Το Staging είναι το περιβάλλον πιστοποίησης και δοκιμών.
 
 Αν είστε ενσωματωτής, ξενοδοχείο ή ταξιδιωτικός πράκτορας που επιθυμεί να προετοιμαστεί για πιστοποίηση ή να δοκιμάσει την πλατφόρμα Wink, δημιουργήστε έναν λογαριασμό στο περιβάλλον staging για να ξεκινήσετε.
 
 :::note
-Το περιβάλλον staging είναι διαθέσιμο κατόπιν αιτήματος. Αυτό σημαίνει ότι θα μπει σε κατάσταση αδράνειας αν δεν υπάρχει χρήση και θα ενεργοποιηθεί ξανά όταν υπάρξει. Παρακαλούμε να έχετε υπομονή αν το ξυπνάτε. Χρειάζεται περίπου ένα λεπτό για να ξεκινήσουν όλοι οι διακομιστές μετά την πρώτη σύνδεσή σας με έναν από τους διακομιστές ή τις εφαρμογές μας.
+Το περιβάλλον staging είναι διαθέσιμο κατόπιν αιτήματος. Αυτό σημαίνει ότι θα μπει σε κατάσταση αναμονής αν δεν υπάρχει χρήση και θα ενεργοποιηθεί ξανά όταν υπάρξει. Παρακαλούμε να έχετε υπομονή αν το ξυπνάτε. Χρειάζεται περίπου ένα λεπτό για να ξεκινήσουν όλοι οι διακομιστές μετά την πρώτη σύνδεσή σας με έναν από τους διακομιστές ή τις εφαρμογές μας.
 :::
 
 ## Διακομιστές
@@ -29,14 +29,10 @@ sidebar:
 
 ## Εφαρμογές
 
-Οι εφαρμογές μας διαθέτουν επίσης περιβάλλοντα δοκιμών και παραγωγής για τους πελάτες μας.
+Οι εφαρμογές μας έχουν επίσης περιβάλλοντα δοκιμών και παραγωγής για τους πελάτες μας.
 
 | Application | Staging | Production
 | ------- | ------- | ---------- |
-| Agent | https://staging-agent.wink.travel | https://agent.wink.travel | 
-| Booking engine | https://staging-ota.wink.travel | https://ota.wink.travel | 
-| Extranet | https://staging-extranet.wink.travel | https://extranet.wink.travel | 
-| My Account | https://staging-app.wink.travel | https://app.wink.travel | 
-| Payment | https://staging-pay.wink.travel | https://pay.wink.travel | 
-| Studio | https://staging-studio.wink.travel | https://studio.wink.travel | 
-| WinkLinks | https://staging-i.trvl.as | https://i.trvl.as |
+| Portal | https://staging-app.wink.travel | https://app.wink.travel | 
+| Booking engine | https://staging-book.wink.travel | https://book.wink.travel | 
+| Link Manager | https://staging-i.trvl.as | https://i.trvl.as |

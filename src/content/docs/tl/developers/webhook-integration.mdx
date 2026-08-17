@@ -1,0 +1,187 @@
+---
+title: Integrasyon ng Webhook
+description: Ipinapakita ng gabay na ito sa mga developer kung paano mag-set up ng mga webhook upang makatanggap ng real-time na mga notification para sa mga booking, bayad, at iba pang mga kaganapan.
+sidebar:
+  order: 3
+---
+
+import { Steps, LinkButton } from '@astrojs/starlight/components';
+
+Pinapayagan ng mga Webhook ang iyong mga sistema na makatanggap ng real-time na mga notification kapag may mga kaganapan sa iyong Wink account — mga bagong booking, pagkansela, mga update sa bayad, at iba pa. Ginagabayan ka ng gabay na ito sa pag-setup at mga pinakamahusay na kasanayan.
+
+## Audience
+
+Ang gabay na ito ay para sa mga developer na nag-iintegrate ng Wink sa mga panlabas na sistema tulad ng mga property management system (PMS), channel managers, CRM, o mga custom na dashboard.
+
+## Paano gumagana ang mga webhook
+
+1. Magrehistro ka ng webhook URL sa Wink.
+2. Kapag may nangyaring kaganapan (hal., bagong booking), magpapadala ang Wink ng HTTP POST sa iyong URL.
+3. Pinoproseso ng iyong server ang payload at sumasagot ng `200 OK`.
+
+## Pag-set up ng webhook
+
+<Steps>
+1. Mag-log in sa iyong account (Extranet, Studio, o TripPay — lahat ay sumusuporta sa mga webhook).
+2. Pumunta sa `Applications` at pagkatapos ay `Webhooks`. Tingnan ang [Webhooks](/tl/portal/settings/webhooks).
+3. I-click ang `Create webhook`.
+4. Ilagay ang isang **pangalan** (hal., "PMS Booking Sync").
+5. Ilagay ang iyong **webhook URL** — ang HTTPS endpoint sa iyong server.
+6. **Piliin ang mga kaganapan** — Pumili ng mga partikular na kaganapan na nais mong subaybayan, o iwanang walang laman upang makatanggap ng lahat ng kaganapan.
+7. I-toggle ang **Enabled** sa on.
+8. I-click ang `Save` — ipapakita ang iyong **signing secret isang beses**; itago ito ngayon.
+</Steps>
+
+## Mga uri ng kaganapan
+
+Naglalathala ang Wink ng 70 uri ng webhook event ngayon sa mga booking, properties, accounts (mga managing entity)
+at inventory (mga uri ng kuwarto, mga rate plan, master rates, add-ons, pasilidad, sales channel, promosyon).
+Mga karaniwan:
+
+| Kategorya | Mga Halimbawa |
+|---|---|
+| **Booking** | `booking.create`, `booking.cancelled`, `booking.refund.partial`, `booking.refund.full`, `booking.review.created` |
+| **Property** | `property.created`, `property.status.updated`, `property.policy.updated` |
+| **Inventory** | `room_type.updated`, `rate_plan.created`, `master_rate.updated`, `special_rate.created`, `sales_channel.created` |
+| **Account** | `managing_entity.created`, `managing_entity.status.updated`, `managing_entity.manager.added` |
+
+Ang kumpleto, na-generate na listahan — na may paglalarawan, sino ang tumatanggap nito, at isang link sa bawat pahina ng reference ng kaganapan — ay ang **Webhook Events Catalog**. Ang pahina ng reference para sa bawat kaganapan (JSON body, headers, retry policy)
+ay matatagpuan sa [Webhooks API](/tl/api/webhooks/).
+
+<LinkButton href="/tl/developers/webhook-events">
+  Tingnan ang bawat uri ng kaganapan
+</LinkButton>
+
+## Ano ang iyong matatanggap
+
+Bawat delivery ay isang HTTP `POST` sa iyong webhook URL na may `Content-Type: application/json` at ang envelope na ito:
+
+```json
+{
+  "id": "0198a4f2-6b0e-7c1d-9a3e-2f4b8c6d1e0a",
+  "type": "booking.create",
+  "occurredAt": "2026-08-15T09:30:00Z",
+  "ownerIdentifier": "3c6b1a5d-8e2f-4a0b-9c7d-6e4f0a8b2c51",
+  "recipientRole": "SUPPLIER",
+  "schemaVersion": 2,
+  "object": { "...": "event-specific payload, e.g. BookingWebhookPayload" }
+}
+```
+
+- `id` — ang identifier ng kaganapan; pareho para sa bawat endpoint ng iyong account na tumatanggap ng kaganapang ito at para sa
+  bawat retry. Gamitin ito bilang iyong **idempotency key**.
+- `type` — ang key ng uri ng kaganapan (ipinapadala rin bilang `Wink-Event-Type` header). Mag-branch base sa `type` at `schemaVersion`
+  upang i-parse ang `object`.
+- `object` — isang piniling buod ng resource na tungkol sa kaganapan (mga identifier, status, mga field na iyong pinoproseso)
+  kasama ang `links.self`, ang supplier-side canonical REST URL ng buong resource. Kunin ito gamit ang iyong sariling API
+  credentials kapag kailangan mo ng higit pa sa buod; kung natanggap mo ang kaganapan bilang reseller o travel agent, gamitin
+  ang katumbas na resource endpoint ng iyong sariling API surface para sa parehong identifier.
+
+Ang bawat schema ng payload ay dokumentado bawat kaganapan sa [Webhooks API](/tl/api/webhooks/) na reference.
+
+### Mga Header
+
+| Header | Kahulugan |
+|---|---|
+| `Wink-Version` | Bersyon ng wire contract, `2.0`. |
+| `Wink-Event-Id` | Pareho ng `id` sa body — ang iyong idempotency key. |
+| `Wink-Delivery-Id` | Natatangi bawat endpoint bawat kaganapan; nagbabago lamang kung mag-redeliver ka. |
+| `Wink-Event-Type` | Pareho ng `type` sa body. |
+| `Wink-Delivery-Attempt` | 1-based na bilang ng pagtatangka para sa delivery na ito. |
+| `Wink-Signature` | HMAC signature — tingnan sa ibaba. |
+
+## Pag-verify ng mga signature
+
+Bawat webhook ay may **signing secret** (`whsec_…`) na ipinapakita ng Wink **isang beses lang**, kapag ginawa mo ang webhook o
+ni-rotate ang secret nito. Itago ito tulad ng password. Bawat delivery ay may
+
+```
+Wink-Signature: t=1755250200,v1=5d41402abc4b2a76b9719d911017c592…
+```
+
+kung saan ang `t` ay isang Unix timestamp (segundo) at ang `v1` ay ang lower-case hex na **HMAC-SHA256** ng string
+`t + "." + rawBody`, na naka-key gamit ang iyong secret, at ang `rawBody` ay ang eksaktong request body bytes na natanggap —
+huwag i-re-serialize ang JSON bago mag-verify. Sa loob ng 24 na oras pagkatapos ng rotation ng secret, ang header ay may
+ikalawang `v1=` na value na naka-sign gamit ang dating secret; tanggapin ang delivery kung **anumang** `v1` ay tumutugma.
+
+I-verify sa apat na hakbang: i-parse ang `t` at bawat `v1`; i-recompute ang HMAC sa `t.rawBody` gamit ang iyong secret;
+ikumpara gamit ang constant-time comparison; tanggihan kung ang `|now − t|` ay lumampas sa iyong tolerance (inirerekomenda ang 5 minuto).
+
+```js
+// Node.js (Express-style; siguraduhing mayroon kang RAW body, hindi parsed object)
+import { createHmac, timingSafeEqual } from 'node:crypto';
+
+export function verifyWinkSignature(header, rawBody, secret, toleranceSeconds = 300) {
+  const parts = Object.fromEntries(header.split(',').map((p) => p.split('=').map((s) => s.trim())));
+  const t = Number(parts.t);
+  if (!Number.isFinite(t) || Math.abs(Date.now() / 1000 - t) > toleranceSeconds) return false;
+  const expected = createHmac('sha256', secret).update(`${t}.${rawBody}`).digest('hex');
+  return header
+    .split(',')
+    .filter((p) => p.trim().startsWith('v1='))
+    .map((p) => p.trim().slice(3))
+    .some((v1) => v1.length === expected.length && timingSafeEqual(Buffer.from(v1, 'utf8'), Buffer.from(expected, 'utf8')));
+}
+```
+
+```java
+// Java
+static boolean verify(String header, String rawBody, String secret, long nowSeconds, long toleranceSeconds) throws Exception {
+    long t = Long.MIN_VALUE;
+    List<String> signatures = new ArrayList<>();
+    for (String part : header.split(",")) {
+        String[] kv = part.trim().split("=", 2);
+        if (kv[0].equals("t")) t = Long.parseLong(kv[1]);
+        else if (kv[0].equals("v1")) signatures.add(kv[1]);
+    }
+    if (t == Long.MIN_VALUE || Math.abs(nowSeconds - t) > toleranceSeconds) return false;
+    Mac mac = Mac.getInstance("HmacSHA256");
+    mac.init(new SecretKeySpec(secret.getBytes(StandardCharsets.UTF_8), "HmacSHA256"));
+    byte[] expected = HexFormat.of().formatHex(mac.doFinal((t + "." + rawBody).getBytes(StandardCharsets.UTF_8))).getBytes(StandardCharsets.US_ASCII);
+    return signatures.stream().anyMatch(v1 -> MessageDigest.isEqual(expected, v1.toLowerCase().getBytes(StandardCharsets.US_ASCII)));
+}
+```
+
+I-rotate ang secret mula sa portal o gamit ang `POST /api/managing-entity/{id}/webhook/{webhookId}/rotate-secret`;
+ipapakita ang bagong secret isang beses, at ang luma ay patuloy na magve-verify sa loob ng 24 na oras habang inilalabas mo ito.
+
+## Mga retry at redelivery
+
+- Sumagot ng anumang `2xx` sa loob ng 10 segundo upang kilalanin. Gawin ang mabibigat na gawain nang asynchronous.
+- Ang `5xx`, timeout, `408` o `429` ay nire-retry na may backoff: pagkatapos ng 1 minuto, 5 minuto, 30 minuto, 2 oras,
+  6 na oras, 12 oras, pagkatapos araw-araw — 10 pagtatangka sa loob ng halos 3 araw — pagkatapos nito ay minamarkahan ang delivery bilang **dead**.
+- Anumang ibang `4xx` ay itinuturing na "tinanggihan mo ang delivery na ito" at **hindi** nire-retry.
+- Bawat kaganapan, delivery at pagtatangka (status, snippet ng tugon) ay makikita sa ilalim ng **Applications > Webhooks**
+  at sa pamamagitan ng API (`…/webhook/event/grid`, `…/webhook/delivery/grid`). Maaari kang **mag-redeliver** ng anumang delivery
+  (`POST …/webhook/delivery/{deliveryId}/redeliver`, na nagsisimula ng bagong retry series), mag-redeliver ng lahat ng dead
+  delivery ng isang webhook nang sabay-sabay (`POST …/webhook/{webhookId}/redeliver-dead`), o kanselahin ang isa.
+- Ang mga delivery ay iniimbak ng 30 araw.
+
+## Mga test event
+
+Magpadala sa iyong sarili ng synthetic na `webhook.test` event mula sa portal o gamit ang
+`POST /api/managing-entity/{id}/webhook/{webhookId}/test`. Ito ay naka-sign at naide-deliver nang eksakto tulad ng totoong
+kaganapan, kaya maaari mong i-verify ang iyong endpoint, ang iyong signature check at ang iyong idempotency handling bago mag-subscribe
+sa live na mga kaganapan.
+
+## Mga pinakamahusay na kasanayan
+
+- **Gumamit ng HTTPS** — Nagpapadala ang Wink ng mga payload sa HTTPS endpoints lamang.
+- **Mabilis na tumugon** — Ibalik ang `200 OK` agad pag natanggap ang payload. Gawin ang mabibigat na pagproseso nang asynchronous.
+- **Idempotency** — Dapat idempotent ang iyong handler; i-deduplicate gamit ang `Wink-Event-Id`. Nagre-retry ang Wink kapag hindi nakatanggap ng `2xx` na tugon.
+- **I-validate ang pinagmulan** — I-verify ang `Wink-Signature` header (tingnan ang [Pag-verify ng mga signature](#verifying-signatures)) bago magproseso; tanggihan ang anumang pumalya.
+- **Pag-log** — I-log ang bawat webhook payload na iyong natatanggap. Pinapadali nito ang pag-debug ng mga isyu sa integrasyon.
+
+## Pag-pause at pagtanggal
+
+Maaari mong **i-disable** ang isang webhook nang hindi ito tinatanggal. Pinapahinto nito ang delivery upang makapag-troubleshoot ka nang hindi nawawala ang iyong configuration. Kapag handa ka na, i-toggle mo lang pabalik sa on.
+
+Ang pagtanggal ng webhook ay permanenteng nag-aalis nito. Anumang integrasyon na umaasa sa webhook na iyon ay titigil sa pagtanggap ng mga notification.
+
+## Karagdagang babasahin
+
+- [Webhook Events Catalog](/tl/developers/webhook-events) — Bawat uri ng kaganapan, na-generate mula sa katalogo ng platform.
+- [Webhooks API reference](/tl/api/webhooks/) — Mga schema ng payload bawat kaganapan, mga header, at mga endpoint para sa subscription/delivery management.
+- [Webhooks](/tl/portal/settings/webhooks) — Kumpletong reference para sa pamamahala ng webhook.
+- [Applications](/tl/account/applications) — Pamahalaan ang iyong mga API credentials.
+- [Developers > APIs](/tl/api) — Kumpletong dokumentasyon ng API.

@@ -5,12 +5,12 @@ sidebar:
   order: 4
 ---
 
-Para administrar las configuraciones de WinkLinks, navega a `WinkLinks` en la barra de navegación principal y haz clic en la pestaña `Configuraciones`.
+Para administrar las configuraciones de WinkLinks, navega a `WinkLinks` en la barra de navegación principal y haz clic en la pestaña `Diseño`.
 
-Aquí están las formas en que puedes configurar el comportamiento de WinkLinks con `Configuraciones`:
+Aquí están las formas en que puedes configurar el comportamiento de WinkLinks con `Diseño`:
 
-- **Inteligente** Al habilitar la inteligencia, intentamos obtener el contenido `enriquecido` disponible de sitios como, `Wink`, `Spotify`, `Instagram`, `Facebook`, `YouTube`, `X (antes Twitter)` y otros. *por ejemplo, si compartís una publicación de IG en WinkLinks, la publicación se mostrará tal como la ves en IG, con likes, comentarios y una forma de interactuar con la publicación.*
-- **Visualización inicial** Controlá cómo tu audiencia interactúa primero con tu sitio y ve tu contenido. Tenés tres opciones disponibles:
+- **Inteligente** Al habilitar la inteligencia, intentamos obtener el contenido `enriquecido` disponible de sitios como `Wink`, `Spotify`, `Instagram`, `Facebook`, `YouTube`, `X (antes Twitter)` y otros. *Por ejemplo, si compartís una publicación de IG en WinkLinks, la publicación se mostrará tal como la ves en IG, con likes, comentarios y una forma de interactuar con la publicación.*
+- **Visualización inicial** Controlá cómo tu audiencia interactúa por primera vez con tu sitio y ve tu contenido. Tenés tres opciones disponibles:
     - Diseño `basado en columnas`. Este es nuestro diseño preferido y si no mostrás demasiado contenido, se verá genial en tu página. Sin embargo, puede volverse `pesado` si compartís mucho contenido enriquecido.
     - Diseño `basado en filas`. Esta es una forma de hacer que tu contenido sea un poco menos pesado para que los navegadores lo consuman, pero recomendamos que tu contenido tenga una cantidad similar de texto para que las tarjetas se alineen mejor.
     - Diseño `basado en lista`. La mayoría de los otros gestores de enlaces muestran una lista simple con una URL y contenido mínimo. Elegí esta forma de mostrar tu contenido si tenés mucho contenido y querés mostrarlo lo más rápido posible.

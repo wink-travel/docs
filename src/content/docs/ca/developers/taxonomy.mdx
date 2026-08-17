@@ -1,0 +1,77 @@
+---
+title: Taxonomia
+description: Els vocabularis controlats que utilitza la plataforma Wink — codis OTA per a serveis, tipus de llit, vistes d’habitació i més, a més de tots els idiomes i monedes compatibles.
+sidebar:
+  order: 12
+---
+
+import taxonomy from '@/data/taxonomy.json';
+import OtaCategories from '@/components/taxonomy/ota-categories.astro';
+import CodeTable from '@/components/taxonomy/code-table.astro';
+
+Wink descriu l’inventari utilitzant vocabularis controlats — conjunts fixos de codis amb significats acordats. Quan
+envies `"5"` com a servei d’un hotel, la plataforma ho interpreta com a *Aire condicionat*, i tots els consumidors
+d’aquests dades també.
+
+Aquesta pàgina és la referència publicada per als tres vocabularis:
+
+- **Codis OTA** — {taxonomy.ota.codeCount} codis distribuïts en {taxonomy.ota.categoryCount} categories, que cobreixen
+  serveis, tipus de llit, vistes d’habitació, característiques d’accessibilitat, cuina i més.
+- **Idiomes** — els {taxonomy.languages.list.length} idiomes en què es pot redactar i oferir contingut.
+- **Monedes** — les {taxonomy.currencies.list.length} monedes en què es poden cotitzar i liquidar tarifes.
+
+Els codis són estables. Els noms poden ser reformulats per claredat, així que coincideix sempre amb el **codi**, mai amb el nom.
+
+## Codis OTA
+
+Wink segueix les llistes de codis de la [OpenTravel Alliance](https://opentravel.org/). Cada categoria té un
+identificador de tres lletres — `HAC` per a serveis d’hotel, `BED` per a tipus de llit — i cada codi dins d’una
+categoria és únic per a aquesta. El mateix valor numèric significa coses diferents en categories diferents, així que un
+codi només té sentit juntament amb la categoria a la qual pertany: `BED` `1` és *Matrimonial / Gran*, mentre que `HAC`
+`1` és *Recepció 24 hores*.
+
+Selecciona una categoria per veure els seus codis.
+
+<OtaCategories
+  categories={taxonomy.ota.categories}
+  categoryHeader="Categoria"
+  descriptionHeader="Descripció"
+  countHeader="Codis"
+  codeHeader="Codi"
+  nameHeader="Nom"
+/>
+
+## Idiomes
+
+El contingut — descripcions de propietats, noms d’habitacions, polítiques — es pot redactar en qualsevol d’aquests idiomes.
+Els codis són etiquetes [IETF BCP 47](https://www.rfc-editor.org/info/bcp47): un idioma de dues lletres
+[ISO 639-1](https://www.iso.org/iso-639-language-code), opcionalment seguit d’una regió
+[ISO 3166-1](https://www.iso.org/iso-3166-country-codes.html) on la plataforma distingeix variants regionals — `pt-BR` i `pt-PT` es gestionen per separat, igual que `es`, `es-AR` i `es-MX`.
+
+La configuració predeterminada de la plataforma és `{taxonomy.languages.default}`, que s’utilitza quan una sol·licitud no especifica idioma i
+quan no hi ha disponible una traducció.
+
+<CodeTable
+  rows={taxonomy.languages.list}
+  codeHeader="Codi"
+  nameHeader="Idioma"
+  unnamedLabel="Sense nom estàndard"
+/>
+
+## Monedes
+
+Les tarifes es poden cotitzar i liquidar en qualsevol d’aquestes monedes. Els codis són
+identificadors de tres lletres [ISO 4217](https://www.iso.org/iso-4217-currency-codes.html).
+
+La configuració predeterminada de la plataforma és `{taxonomy.currencies.default}`. És la moneda de visualització per defecte i la
+unitat a la qual es normalitzen les xifres a nivell de plataforma; **no** és la moneda en què es liquida una reserva — els hotels
+liquiden en la seva pròpia moneda, així que una tarifa cotitzada en una moneda i pagada en una altra comporta un diferencial de canvi.
+
+Algunes entrades no són monedes nacionals: `XAU` i `XAG` són or i plata, `XDR` és el Dret Especial de Giro del FMI, i `BTC` és Bitcoin. Aquestes es gestionen per a valoració i informes, i generalment no es poden utilitzar com a moneda de liquidació.
+
+<CodeTable
+  rows={taxonomy.currencies.list}
+  codeHeader="Codi"
+  nameHeader="Moneda"
+  unnamedLabel="Sense nom estàndard"
+/>

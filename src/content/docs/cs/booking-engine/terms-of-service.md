@@ -2,7 +2,7 @@
 title: Podmínky služby
 description: Snadno dostupné a aktuální podmínky pro všechny naše uživatele cestovatelů.
 sidebar:
-  order: 4
+  order: 8
 ---
   
 <iframe 

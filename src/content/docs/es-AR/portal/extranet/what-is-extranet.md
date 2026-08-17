@@ -5,20 +5,22 @@ sidebar:
   order: 0
 ---
 
-[Wink Extranet](https://extranet.wink.travel) es nuestro portal para propiedades. Está pensado para hoteles, cadenas, marcas y empresas de gestión hotelera para crear y administrar el perfil digital de sus propiedades en la plataforma Wink.
+Extranet es el lado de la propiedad de [Portal](/es-AR/portal/overview), nuestra aplicación única en [app.wink.travel](https://app.wink.travel). Está pensado para hoteles, cadenas, marcas y empresas de gestión hotelera para crear y administrar el perfil digital de sus propiedades en la plataforma Wink.
 
-Nuestro Extranet ha sido diseñado cuidadosamente para ser lo más simple posible, pero aún así soportar todas las funciones que los usuarios avanzados esperan de un portal de propiedades avanzado. Para darte un par de ejemplos:
+No hay nada separado para registrarse ni otro lugar para iniciar sesión: selecciona una cuenta de propiedad en Portal y las funciones de Extranet descritas en esta sección están ahí mismo.
 
-1. Simplicidad: Usa nuestro flujo de incorporación inteligente para registrar tu propiedad y estar EN VIVO en menos de una hora.
+Extranet ha sido diseñado cuidadosamente para ser lo más simple posible, pero para seguir soportando todas las funciones que los usuarios avanzados esperan de un portal de propiedad avanzado. Para darte un par de ejemplos:
+
+1. Simplicidad: Usa nuestro flujo de incorporación inteligente para incorporar tu propiedad y estar EN VIVO en menos de una hora.
 2. Avanzado: Wink soporta 8500 variaciones diferentes de políticas de cancelación.
 3. Genial: Dale a una sola persona en el planeta un 10% de descuento sin que el usuario tenga que iniciar sesión o ingresar un código promocional.
 
-Deja que nuestros asistentes te guíen durante todo el proceso. Cuando te sientas lo suficientemente cómodo... hazlo solo.
+Deja que nuestros magos te guíen durante todo el proceso. Cuando te sientas lo suficientemente cómodo... hazlo solo.
 
-Wink es un sistema avanzado de gestión de contenido para propiedades y proveedores de experiencias. Todo lo que puedes hacer en una de nuestras apps, puedes hacerlo vía API. Esto te permite hacer una integración profunda con Wink hasta el punto de que puedes vender a través de Wink sin tener que iniciar sesión en ninguna de nuestras apps.
+Wink es un sistema avanzado de gestión de contenido para propiedades y proveedores de experiencias. Todo lo que puedes hacer en Portal, puedes hacerlo vía API. Esto te permite hacer una integración profunda con Wink hasta tal punto que puedes vender a través de Wink sin tener que iniciar sesión nunca.
 
 :::tip[Consejo Profesional]
 ¿Estás pagando por un hosting costoso de activos multimedia a través de Leonardo International? Puedes hacer exactamente lo mismo a través de Wink Y además obtienes muchas más opciones para manipular y ajustar finamente tus imágenes y videos.
 :::
 
-Todas estas funciones no tienen costo para ti. Solo cobramos una pequeña comisión cuando realizas una reserva. No hay nada que perder - Todo por ganar.
+Todas estas funciones no tienen costo para ti. Solo cuando haces una reserva cobramos una pequeña comisión. Nada que perder - Todo por ganar.

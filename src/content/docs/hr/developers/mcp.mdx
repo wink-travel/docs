@@ -1,33 +1,126 @@
 ---
 title: MCP poslužitelji
-description: Povežite AI agente s Wink platformom putem Model Context Protocol-a. Autentificirani MCP poslužitelji daju vašem agentu izravan pristup inventaru, rezervacijama, integracijama channel managera i još mnogo toga — zaštićeno interaktivnim OAuth2 prijavom.
+description: Povežite AI agente s Wink platformom putem Model Context Protocol-a. Wink objavljuje svoje alate kao fokusirane, zadatkom oblikovane krajnje točke tako da vaš agent učitava samo ono što vaš posao treba — osigurano interaktivnim OAuth2 prijavom.
 sidebar:
   order: 10
 ---
 
 import { Steps, LinkButton, Aside, Tabs, TabItem } from '@astrojs/starlight/components';
 
-Wink izlaže dva autentificirana MCP poslužitelja. Oba koriste **interaktivnu OAuth2 prijavu** (PKCE authorization code flow) — vaš AI agent otvara karticu preglednika kako biste se prijavili sa svojim Wink računom. Nema potrebe za upravljanjem klijentskim tajnama.
+Winkovi MCP alati objavljeni su kao **skupovi alata** — fokusirane krajnje točke, svaka pokriva jedan zadatak. Povezujete svoj AI klijent s jednom ili dvije koje odgovaraju vašem poslu, a ne sa svim.
 
-| Poslužitelj | URL | Što radi |
-|-------------|-----|----------|
-| **Inventory API** | `https://api.wink.travel/mcp` | Inventar, rezervacije, cijene, prodajni kanali, analitika i sve platformske operacije |
-| **Integrations** | `https://integrations.wink.travel/mcp` | Integracije channel managera — sinkronizacija objekata, cijena i dostupnosti s OTA-ima |
+Svaka krajnja točka koristi **interaktivnu OAuth2 prijavu** (PKCE autorizacijski kodni tok): vaš AI agent otvara karticu preglednika, prijavljujete se sa svojim Wink računom i to je to. Nema potrebe za upravljanjem klijentskim tajnama.
+
+```bash title="Integrator channel managera povezuje se na jednu krajnju točku"
+claude mcp add wink-channel-manager https://integrations.wink.travel/mcp/channel-manager --transport http
+```
+
+```bash title="Hotelijer koji upravlja vlastitim cijenama povezuje se na drugu"
+claude mcp add wink-rates https://api.wink.travel/mcp/extranet/rates --transport http
+```
 
 ---
 
-## Kako funkcionira autentifikacija
+## Zašto su alati podijeljeni po krajnjim točkama
 
-Wink MCP poslužitelji koriste **OAuth2 Authorization Code + PKCE** protokol i podržavaju **Dynamic Client Registration (RFC 7591)**. Evo što se događa kada se prvi put povežete:
+Wink izlaže oko 500 alata. Davanje svih njih agentu odjednom tehnički je moguće — ali loša ideja.
 
-1. Vaš AI klijent otkriva authorization server iz MCP endpointa `/.well-known/oauth-protected-resource` metapodataka.
-2. Klijent se samoregistrira putem **Dynamic Client Registration** — nije potrebna ručna konfiguracija aplikacije.
-3. Klijent otvara **karticu preglednika** na `https://iam.wink.travel`. Prijavite se sa svojim Wink računom i odobrite tražene dozvole na zaslonu za suglasnost.
-4. Wink izdaje **access token** vezan uz vaš račun i povezanu identitet.
-5. AI klijent prilaže token svakom MCP zahtjevu. Svi rezultati alata automatski su ograničeni na vašu upravljačku jedinicu.
-6. Tokeni istječu nakon 3 sata. Vaš AI klijent ih tiho osvježava u pozadini bez ponovnog zahtjeva za prijavom.
+**Definicije alata troše kontekst.** Svaki alat koji MCP poslužitelj oglašava učitava se u kontekstni prozor modela prije nego što obavi bilo kakav posao, zajedno s njegovim opisom i potpunom shemom parametara. Petsto takvih alata troši velik dio budžeta koji vaš stvarni zadatak treba, pri svakom zahtjevu.
 
-Svaki poziv alata izvršava se **pod vašim identitetom** — ista ACL pravila koja štite web portal vrijede i za AI agenta.
+**Kvaliteta izbora opada kako lista raste.** Agent koji bira između 500 sličnih alata donosi lošije odluke nego onaj koji bira između 40. Ako integrirate channel manager, otprilike dvadeset alata je relevantno za vas; ostalih 480 je buka koja otežava pronalazak pravog alata.
+
+**Posao je stvarno razdvojiv.** Netko tko sinkronizira dostupnost iz PMS-a i netko tko uređuje affiliate landing stranice gotovo da ne dijele alate. Podjela po zadatku znači da svaka veza nosi vokabular jednog zadatka.
+
+<Aside type="caution" title="Skupovi alata nisu dozvole">
+Odabir uskog skupa alata **ne** ograničava što vaš račun može raditi, a odabir širokog ne daje ništa dodatno. Svaki alat provodi iste dozvole računa kao i web portal, pod vašim prijavljenim identitetom. Ako vaš račun ne može otkazati rezervaciju u Wink Portalu, agent također ne može — bez obzira na to na koju je krajnju točku povezan.
+
+Birajte skupove alata za **fokus**, a ne za sigurnost.
+</Aside>
+
+---
+
+## Direktorij krajnjih točaka
+
+Dva domaćina služe skupove alata. Broj alata je približan i raste s vremenom.
+
+### `https://api.wink.travel` — platforma
+
+| Krajnja točka | Alati | Što pokriva |
+|---|---:|---|
+| `/mcp/extranet/facilities` | ~64 | Rezervabilni i na licu mjesta inventar: sobe za goste i tipovi soba, spa centri, restorani, sobe za sastanke, aktivnosti, atrakcije, mjesta, ostale prodajne stavke |
+| `/mcp/extranet/property` | ~62 | Zapis o objektu i njegovi komercijalni uvjeti: profil i sadržaj, dodaci, politike otkazivanja, pogodnosti, obavijesti |
+| `/mcp/settings` | ~60 | Administracija računa: profil i brendiranje upravljačkog subjekta, upravitelji i njihova prava, prilagodbe, webhooks, postavke obavijesti |
+| `/mcp/studio/embeds` | ~48 | Objavljivanje kuriranog inventara: widgeti, mreže i rangirane mreže, kartice, karte, duboke poveznice na inventar i stranice dobavljača |
+| `/mcp/extranet/rates` | ~44 | Cijene i dostupnost: razdoblja i kvote inventara, planovi cijena, glavne cijene, posebne i promotivne cijene |
+| `/mcp/extranet/operations` | ~39 | Upravljanje aktivnim objektom: rezervacije i njihov životni ciklus, recenzije gostiju i odgovori, kalendarski feedovi, zakazani zadaci |
+| `/mcp/extranet/distribution` | ~37 | Gdje se inventar prodaje: prodajni kanali i modifikatori cijena, zahtjevi za affiliate i dobavljačke odnose, registracija, prikupljanje leadova |
+| `/mcp/studio/curation` | ~35 | Izgradnja kolekcija za prodaju: statične i dinamičke liste, rangirane liste, spremljene pretrage, agregati objekata |
+| `/mcp/link-manager` | ~28 | Sindicirane kolekcije poveznica, njihov dizajn, kategorije i oznake, plus skraćene URL-ove |
+| `/mcp/reference` | ~24 | Podaci samo za čitanje: zemlje, valute i tečajevi, jezici, vremenske zone, geo pretrage, IP geolokacija |
+| `/mcp/analytics` | ~18 | Analitika rezervacija i prihoda: pregledi, linijski grafikoni, ljestvice, performanse affiliatea, metričke dijeljenja |
+| `/mcp/payment` | ~18 | Financijske operacije: knjiga računa, isplate i procjene naknada, agregati sredstava za rezervacije |
+| `/mcp/booking-engine` | ~17 | Put kupovine za putnike: pretraživanje i pronalaženje, košarica i naplata, liste želja, prilagodba kampanja |
+| `/mcp/social` | ~17 | Povezani društveni računi, objavljivanje i zakazivanje postova, čitanje uvida u postove |
+| `/mcp/travel-agent` | ~8 | Rezervacije koje agent obavlja u ime putnika i izvještaji agenata |
+
+### `https://integrations.wink.travel` — integracije channel managera
+
+Jedna krajnja točka, jer ovaj domaćin postoji za jedan zadatak.
+
+| Krajnja točka | Alati | Što pokriva |
+|---|---:|---|
+| `/mcp/channel-manager` | ~9 | Povezivanje i verifikacija integracije channel managera, PMS-a ili CRS-a |
+
+<Aside type="note" title="Integracija channel managera vs. upravljanje vlastitim cijenama">
+To su različiti poslovi za različite ljude i ne dijele istu krajnju točku.
+
+**Prodavač channel managera, PMS-a ili CRS-a** integrira se jednom putem `integrations.wink.travel/mcp/channel-manager`, i od tada razmjenjuje podatke o objektima, cijenama, dostupnosti i rezervacijama preko te integracije. Ta jedna krajnja točka je cijela površina.
+
+**Hotelijer koji ručno mijenja vlastite cijene** koristi extranet skupove alata na `api.wink.travel` — `/mcp/extranet/rates` i slične. Oni nisu dio integracije channel managera i integrator nema razloga povezivati se na njih.
+
+Administracija računa također je na `api.wink.travel`, na `/mcp/settings`. Na domaćinu za integracije nema `/mcp/settings`.
+</Aside>
+
+Svaka krajnja točka također nosi alat `ping`, tako da možete potvrditi da je veza živa prije nego što zatražite stvarni posao.
+
+---
+
+## Koje skupove alata trebam?
+
+| Ako ste… | Povežite se na |
+|---|---|
+| **Integrirate channel manager, PMS ili CRS** | `integrations.wink.travel/mcp/channel-manager` — samo ovu |
+| **Upravljate sadržajem objekta** | `/mcp/extranet/property` + `/mcp/extranet/facilities` |
+| **Upravljate sobama i tipovima soba** | `/mcp/extranet/facilities` |
+| **Upravljate cijenama i dostupnošću** | `/mcp/extranet/rates` |
+| **Vodite dnevne rezervacije** | `/mcp/extranet/operations` |
+| **Razvijate distribuciju** | `/mcp/extranet/distribution` + `/mcp/analytics` |
+| **Gradite affiliate stranice** | `/mcp/studio/curation` + `/mcp/studio/embeds` |
+| **Vodite link-in-bio stranice** | `/mcp/link-manager` + `/mcp/social` |
+| **Rezervirate u ime putnika** | `/mcp/travel-agent` |
+| **Usuglašavate novac** | `/mcp/payment` |
+| **Gradite iskustvo rezervacije** | `/mcp/booking-engine` + `/mcp/reference` |
+
+Počnite s jednim. Dodajte drugi kad vam zatreba nešto što prvi ne može — svaka veza je neovisna i dodavanje jednog nikad ne utječe na druge.
+
+<Aside type="tip" title="Još uvijek želite sve?">
+`https://api.wink.travel/mcp` i `https://integrations.wink.travel/mcp` ostaju dostupni i služe **svaki** alat na svom domaćinu. Korisni su za istraživanje što postoji, ali ih ne preporučujemo za svakodnevni rad: lista alata je dovoljno velika da zasjeni vaš zadatak i pogorša izbor alata agenta. Preferirajte gore navedene skupove alata.
+</Aside>
+
+---
+
+## Kako funkcionira autentikacija
+
+Wink MCP poslužitelji koriste **OAuth2 Authorization Code + PKCE** tok i podržavaju **Dynamic Client Registration (RFC 7591)**. Evo što se događa kad se prvi put povežete:
+
+1. Vaš AI klijent otkriva autorizacijski poslužitelj iz MCP krajnje točke `/.well-known/oauth-protected-resource` metapodataka.
+2. Klijent se sam registrira putem **Dynamic Client Registration** — nije potrebna ručna konfiguracija aplikacije.
+3. Klijent otvara **karticu preglednika** na `https://iam.wink.travel`. Prijavljujete se sa svojim Wink računom i odobravate tražene dozvole na zaslonu za suglasnost.
+4. Wink izdaje **access token** vezan za vaš račun i identitet.
+5. AI klijent prilaže token svakom MCP zahtjevu. Svi rezultati alata automatski su ograničeni na vaš upravljački subjekt.
+6. Tokeni istječu nakon 3 sata. Vaš AI klijent tiho osvježava token u pozadini bez ponovnog traženja prijave.
+
+Svaki poziv alata radi **pod vašim identitetom** — ista pravila ACL-a koja štite web portal vrijede i za AI agenta.
 
 ---
 
@@ -37,30 +130,33 @@ Svaki poziv alata izvršava se **pod vašim identitetom** — ista ACL pravila k
   <TabItem label="Claude Code">
 
 <Steps>
-1. Provjerite je li Claude Code ažuriran:
+1. Provjerite da je Claude Code ažuriran:
    ```bash
    npm install -g @anthropic-ai/claude-code
    ```
 
-2. Dodajte Wink Inventory MCP poslužitelj:
+2. Odaberite skup alata iz [direktorija gore](#endpoint-directory) i dodajte ga. Na primjer, cijene i dostupnost:
    ```bash
-   claude mcp add wink-inventory https://api.wink.travel/mcp --transport http
+   claude mcp add wink-rates https://api.wink.travel/mcp/extranet/rates --transport http
    ```
 
-3. Claude Code kontaktira poslužitelj, otkriva authorization server i otvara vaš zadani preglednik.
+3. Claude Code kontaktira poslužitelj, otkriva autorizacijski poslužitelj i otvara vaš zadani preglednik.
 
-4. **Prijavite se u Wink** i odobrite zahtjev za dozvolama na zaslonu za suglasnost.
+4. **Prijavite se u Wink** i odobrite zahtjev za dozvolu na zaslonu za suglasnost.
 
-5. Claude Code potvrđuje vezu. Upisom `/mcp` provjerite pojavljuje li se poslužitelj i jesu li alati učitani.
+5. Claude Code potvrđuje vezu. Upisom `/mcp` provjerite pojavljuje li se poslužitelj i jesu li njegovi alati učitani.
 </Steps>
 
-Za dodavanje i Integrations poslužitelja:
+Dodajte onoliko skupova alata koliko vaš posao treba — svaki je zaseban unos poslužitelja s vlastitim imenom:
 ```bash
-claude mcp add wink-integrations https://integrations.wink.travel/mcp --transport http
+claude mcp add wink-operations https://api.wink.travel/mcp/extranet/operations --transport http
+claude mcp add wink-analytics  https://api.wink.travel/mcp/analytics           --transport http
 ```
 
+Prijavljujete se samo jednom. Nakon prve odobrene prijave u pregledniku, Claude Code ponovno koristi vašu Wink sesiju za dodatne Wink krajnje točke.
+
 :::tip[Podijelite s timom]
-Dodajte `--scope project` uz `claude mcp add` i Claude Code će zapisati URL poslužitelja u `.mcp.json` u korijenu repozitorija. Pošaljite tu datoteku u repozitorij — svaki član tima će prvi put prilikom povezivanja dovršiti vlastitu prijavu u pregledniku.
+Dodajte `--scope project` uz `claude mcp add` i Claude Code zapisuje URL poslužitelja u `.mcp.json` u korijenu repozitorija. Komitirajte tu datoteku — svaki član tima dobiva iste skupove alata, a svaki obavlja vlastitu prijavu u preglednik prvi put kad se poveže.
 :::
 
   </TabItem>
@@ -77,13 +173,13 @@ Dodajte `--scope project` uz `claude mcp add` i Claude Code će zapisati URL pos
    ```json title="claude_desktop_config.json"
    {
      "mcpServers": {
-       "wink-inventory": {
+       "wink-extranet-rates": {
          "type": "http",
-         "url": "https://api.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/rates"
        },
-       "wink-integrations": {
+       "wink-extranet-operations": {
          "type": "http",
-         "url": "https://integrations.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/operations"
        }
      }
    }
@@ -105,28 +201,28 @@ Dodajte `--scope project` uz `claude mcp add` i Claude Code će zapisati URL pos
    npm install -g @openai/codex
    ```
 
-2. Otvorite (ili kreirajte) konfiguracijsku datoteku Codexa:
+2. Otvorite (ili kreirajte) Codex konfiguracijsku datoteku:
    - **macOS / Linux:** `~/.codex/config.json`
    - **Windows:** `%USERPROFILE%\.codex\config.json`
 
-3. Dodajte unose Wink MCP poslužitelja:
+3. Dodajte Wink MCP unose:
 
    ```json title="~/.codex/config.json"
    {
      "mcpServers": {
-       "wink-inventory": {
+       "wink-extranet-rates": {
          "type": "http",
-         "url": "https://api.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/rates"
        },
-       "wink-integrations": {
+       "wink-extranet-operations": {
          "type": "http",
-         "url": "https://integrations.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/operations"
        }
      }
    }
    ```
 
-4. Pokrenite Codex. Prilikom prvog korištenja Codex otvara karticu preglednika na `https://iam.wink.travel`.
+4. Pokrenite Codex. Prvi put Codex otvara karticu preglednika na `https://iam.wink.travel`.
 
 5. **Prijavite se u Wink** i odobrite tražene dozvole.
 
@@ -143,26 +239,26 @@ Podrška za MCP u Codex CLI zahtijeva verziju **1.0** ili noviju. Pokrenite `cod
 Podrška za MCP poslužitelje dostupna je u **ChatGPT desktop aplikaciji** za Plus, Pro, Team i Enterprise pretplatnike.
 
 <Steps>
-1. Preuzmite i instalirajte [ChatGPT desktop aplikaciju](https://openai.com/chatgpt/download/) ako je već nemate.
+1. Preuzmite i instalirajte [ChatGPT desktop aplikaciju](https://openai.com/chatgpt/download/) ako već niste.
 
-2. Otvorite aplikaciju i kliknite **ikonu svog profila** u gornjem desnom kutu, zatim odaberite **Settings**.
+2. Otvorite aplikaciju i kliknite **ikonu svog profila** u gornjem desnom kutu, zatim odaberite **Postavke**.
 
 3. Idite na **Connectors** (ili **MCP Servers** ovisno o verziji aplikacije) i kliknite **Add**.
 
-4. Unesite URL Wink Inventory poslužitelja:
+4. Unesite URL skupa alata iz [direktorija gore](#endpoint-directory), na primjer:
    ```
-   https://api.wink.travel/mcp
+   https://api.wink.travel/mcp/extranet/rates
    ```
    Zatim kliknite **Connect**.
 
 5. ChatGPT otvara karticu preglednika na `https://iam.wink.travel`. **Prijavite se u Wink** i odobrite dozvole.
 
-6. Ponovite korake 4–5 za Integrations poslužitelj:
+6. Ponovite korake 4–5 za bilo koji drugi skup alata koji vam treba, na primjer:
    ```
-   https://integrations.wink.travel/mcp
+   https://api.wink.travel/mcp/extranet/operations
    ```
 
-7. Oba poslužitelja pojavljuju se na vašem popisu Connectors. Pokrenite novi chat — Wink alati su automatski dostupni.
+7. Svaki skup alata pojavljuje se na vašem popisu Connectors. Započnite novi chat — Wink alati su automatski dostupni.
 </Steps>
 
 :::note[Ograničenje web aplikacije]
@@ -177,24 +273,24 @@ MCP poslužitelji se mogu konfigurirati samo u **desktop aplikaciji**. Web suče
    - **macOS / Linux:** `~/.cursor/mcp.json`
    - **Windows:** `%USERPROFILE%\.cursor\mcp.json`
 
-2. Dodajte unose Wink MCP poslužitelja:
+2. Dodajte Wink MCP unose:
 
    ```json title="~/.cursor/mcp.json"
    {
      "mcpServers": {
-       "wink-inventory": {
+       "wink-extranet-rates": {
          "type": "http",
-         "url": "https://api.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/rates"
        },
-       "wink-integrations": {
+       "wink-extranet-operations": {
          "type": "http",
-         "url": "https://integrations.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/operations"
        }
      }
    }
    ```
 
-3. Otvorite Cursor. Idite na **Settings → Cursor Settings → MCP** i provjerite pojavljuju li se oba poslužitelja sa zelenim indikatorom statusa. Ako su crveni, kliknite **Refresh**.
+3. Otvorite Cursor. Idite na **Settings → Cursor Settings → MCP** i provjerite jesu li oba poslužitelja prikazana sa zelenim indikatorom statusa. Ako su crveni, kliknite **Refresh**.
 
 4. Cursor otvara karticu preglednika na `https://iam.wink.travel`. **Prijavite se u Wink** i odobrite dozvole.
 
@@ -202,7 +298,7 @@ MCP poslužitelji se mogu konfigurirati samo u **desktop aplikaciji**. Web suče
 </Steps>
 
 :::tip[Konfiguracija ograničena na projekt]
-Također možete staviti `mcp.json` datoteku u korijen svog projekta umjesto u `~/.cursor/`. Konfiguracija na razini projekta ima prednost i omogućuje pristup poslužiteljima svakom članu tima koji otvori projekt u Cursoru.
+Također možete staviti `mcp.json` datoteku u korijen svog projekta umjesto u `~/.cursor/`. Konfiguracija na razini projekta ima prednost i čini poslužitelje dostupnima svakom članu tima koji otvori projekt u Cursoru.
 :::
 
   </TabItem>
@@ -213,18 +309,18 @@ Također možete staviti `mcp.json` datoteku u korijen svog projekta umjesto u `
    - **macOS / Linux:** `~/.codeium/windsurf/mcp_config.json`
    - **Windows:** `%USERPROFILE%\.codeium\windsurf\mcp_config.json`
 
-2. Dodajte unose Wink MCP poslužitelja:
+2. Dodajte Wink MCP unose:
 
    ```json title="~/.codeium/windsurf/mcp_config.json"
    {
      "mcpServers": {
-       "wink-inventory": {
+       "wink-extranet-rates": {
          "type": "http",
-         "url": "https://api.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/rates"
        },
-       "wink-integrations": {
+       "wink-extranet-operations": {
          "type": "http",
-         "url": "https://integrations.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/operations"
        }
      }
    }
@@ -234,17 +330,17 @@ Također možete staviti `mcp.json` datoteku u korijen svog projekta umjesto u `
 
 4. Idite na **Settings → MCP Servers** i provjerite jesu li oba poslužitelja prikazana kao povezana. Windsurf otvara karticu preglednika na `https://iam.wink.travel` pri prvom korištenju.
 
-5. **Prijavite se u Wink** i odobrite dozvole. Poslužitelji postaju zeleni u postavkama nakon autentifikacije.
+5. **Prijavite se u Wink** i odobrite dozvole. Poslužitelji postaju zeleni u postavkama nakon autentikacije.
 </Steps>
 
 :::note
-Podrška za Windsurf MCP zahtijeva verziju **1.4** ili noviju. Provjerite putem **Help → About Windsurf** i po potrebi ažurirajte s Windsurf web stranice.
+Podrška za Windsurf MCP zahtijeva verziju **1.4** ili noviju. Provjerite putem **Help → About Windsurf** i ažurirajte s Windsurf web stranice ako je potrebno.
 :::
 
   </TabItem>
   <TabItem label="Cline (VS Code)">
 
-Cline je VS Code ekstenzija s ugrađenim upraviteljem MCP poslužitelja. Nije potrebna ručna izmjena JSON datoteka.
+Cline je VS Code ekstenzija s ugrađenim MCP upraviteljem poslužitelja. Nije potrebno ručno uređivanje JSON-a.
 
 <Steps>
 1. Instalirajte Cline iz VS Code Marketplace:
@@ -260,13 +356,13 @@ Cline je VS Code ekstenzija s ugrađenim upraviteljem MCP poslužitelja. Nije po
    ```json title="cline_mcp_settings.json"
    {
      "mcpServers": {
-       "wink-inventory": {
+       "wink-extranet-rates": {
          "type": "http",
-         "url": "https://api.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/rates"
        },
-       "wink-integrations": {
+       "wink-extranet-operations": {
          "type": "http",
-         "url": "https://integrations.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/operations"
        }
      }
    }
@@ -278,7 +374,7 @@ Cline je VS Code ekstenzija s ugrađenim upraviteljem MCP poslužitelja. Nije po
 </Steps>
 
 :::tip[Alternativa: dodajte putem URL-a]
-U MCP Servers panelu kliknite **Add Server** i zalijepite `https://api.wink.travel/mcp` izravno. Cline automatski popunjava konfiguraciju i upravlja autentifikacijom bez ručne izmjene JSON-a.
+U MCP Servers panelu kliknite **Add Server** i zalijepite URL skupa alata poput `https://api.wink.travel/mcp/extranet/rates` izravno. Cline automatski popunjava konfiguraciju i upravlja autentikacijom bez ručnog uređivanja JSON-a.
 :::
 
   </TabItem>
@@ -286,19 +382,24 @@ U MCP Servers panelu kliknite **Add Server** i zalijepite `https://api.wink.trav
 
 ---
 
-## Opsezi (Scopes)
+## Opsezi
 
-Kada odobrite zaslon za suglasnost, vidjet ćete detaljan prikaz što agent traži. MCP
+Kad odobrite zaslon za suglasnost, vidjet ćete razradu što agent traži. MCP
 klijenti koriste isti vokabular dozvola kao i ostatak platforme — pogledajte puni
-[referentni popis opsega na stranici Autentifikacije](/hr/developers/authentication#scopes).
+[referentni opseg na stranici Autentikacije](/hr/developers/authentication#scopes).
 
 Dva su specifična za MCP:
 
-- **Opsezi `mcp.read`, `mcp.write` i `mcp.remove` su dodatno potrebni** za otvaranje MCP
-  transporta. Klijent koji ima `mcp.*` opseg ima pristup `/mcp`, ali svaki alat koji pozove
-  i dalje provjerava opseg sekcije endpointa koji obuhvaća (npr. `booking.read`).
+- **Opsezi `mcp.read`, `mcp.write` i `mcp.remove` dodatno su potrebni** za otvaranje MCP
+  transporta. Klijent koji ima `mcp.*` opseg ima pristup bilo kojoj Wink MCP krajnjoj točki, ali svaki
+  alat koji pozove i dalje provodi opseg sekcije krajnje točke koju obuhvaća (npr. `booking.read`).
 - **AI klijent traži samo opsege koje treba.** Možete odbiti pojedinačne dozvole na
-  zaslonu za suglasnost — alati koji zahtijevaju odbijeni opseg vratit će grešku pri pozivu.
+  zaslonu za suglasnost — alati koji zahtijevaju odbijeni opseg vratit će pogrešku pri pozivu.
+
+**Skupovi alata ne mijenjaju ništa od ovoga.** Krajnja točka na koju se povežete odlučuje koji su alati *navedeni*,
+a ne što im je *dozvoljeno*. Povezivanje na `/mcp/payment` ne daje nikakvu financijsku dozvolu koju
+već nemate, a povezivanje na `/mcp/reference` ne sprječava alat da provodi
+svoj vlastiti opseg. Autorizacija se odlučuje po pozivu alata, na temelju vašeg tokena i prava vašeg računa.
 
 ---
 
@@ -306,7 +407,7 @@ Dva su specifična za MCP:
 
 **Kartica preglednika se ne otvara**
 
-Vaš AI klijent možda još ne podržava interaktivni PKCE protokol. Provjerite koristite li najnoviju verziju:
+Vaš AI klijent možda još ne podržava interaktivni PKCE tok. Provjerite koristite li najnoviju verziju:
 - **Claude Code:** `npm install -g @anthropic-ai/claude-code`
 - **Codex CLI:** `npm install -g @openai/codex`
 - **Claude Desktop / ChatGPT desktop:** ažurirajte putem ugrađenog updatera aplikacije
@@ -317,43 +418,55 @@ Vaš spremljeni token može biti zastario. Uklonite i ponovno dodajte poslužite
 
 ```bash
 # Claude Code
-claude mcp remove wink-inventory
-claude mcp add wink-inventory https://api.wink.travel/mcp --transport http
+claude mcp remove wink-rates
+claude mcp add wink-rates https://api.wink.travel/mcp/extranet/rates --transport http
 ```
 
 Za Claude Desktop i ChatGPT uklonite unos poslužitelja iz postavki, ponovno pokrenite aplikaciju i dodajte ga ponovno.
 
 **`403 Forbidden` pri pozivu određenog alata**
 
-Alat zahtijeva opseg koji niste odobrili na zaslonu za suglasnost. Ponovno povežite poslužitelj — zaslon za suglasnost će se ponovno pojaviti i moći ćete odobriti nedostajuću dozvolu.
+Alat zahtijeva opseg koji niste odobrili na zaslonu za suglasnost ili dozvolu koju vaš račun nema. Ponovno povežite poslužitelj — zaslon za suglasnost će se ponovno pojaviti i možete odobriti nedostajuću dozvolu. Ako i dalje ne uspijeva, alat treba dozvolu računa koju nemate; povezivanje na drugi skup alata neće pomoći jer skupovi alata ne daju dozvole.
+
+**Alat koji trebam nije na popisu**
+
+Vjerojatno ste povezani na skup alata koji ne pokriva taj zadatak. Provjerite [direktorij krajnjih točaka](#endpoint-directory) i dodajte skup alata koji ga pokriva — veze su neovisne, pa dodavanje jednog ne mijenja druge. Ako niste sigurni koji ga ima, privremeno se povežite na `https://api.wink.travel/mcp`, pronađite alat, zatim provjerite koji ga skup alata navodi.
+
+**`404 Not Found` na krajnjoj točki skupa alata**
+
+Pažljivo provjerite put — ugniježđeni skupovi alata imaju dva segmenta (`/mcp/extranet/rates`, ne `/mcp/extranet-rates`), a ravni jedan (`/mcp/link-manager`). Napomena: *neautentificirani* zahtjev na bilo koji put ispod `/mcp` vraća `401`, ne `404`, pa sam `401` ne govori postoji li krajnja točka.
+
+**Povezao sam se na `api.wink.travel/mcp/channel-manager` i ništa nisam dobio**
+
+Ta krajnja točka ne postoji. Integracija channel managera se služi samo s `https://integrations.wink.travel/mcp/channel-manager`. Ako također trebate ručno čitati ili pisati vlastite cijene objekta, to je zaseban zadatak na zasebnoj krajnjoj točki — vidi `/mcp/extranet/rates`.
 
 **Poslužitelj se pojavljuje, ali pozivi alata vraćaju "account not found"**
 
-Prijavljeni ste u Wink račun koji nema upravljačku jedinicu. Posjetite [Wink Portal](https://app.wink.travel) i provjerite je li vaš račun pravilno postavljen prije korištenja MCP poslužitelja.
+Prijavljeni ste u Wink račun koji nema upravljački subjekt. Idite na [Wink Portal](https://app.wink.travel) i osigurajte da je vaš račun postavljen prije korištenja MCP poslužitelja.
 
 **Token istječe tijekom sesije**
 
-Tokeni vrijede 3 sata. Claude Code i Claude Desktop tiho osvježavaju tokene bez prekida sesije. Ako vidite greške autentifikacije nakon dužeg mirovanja, pošaljite novu poruku — klijent će se automatski ponovno autentificirati.
+Tokeni vrijede 3 sata. Claude Code i Claude Desktop tiho osvježavaju tokene bez prekida sesije. Ako vidite pogreške autentikacije nakon dužeg mirovanja, upišite novu poruku — klijent će se automatski ponovno autentificirati.
 
 **Codex CLI prikazuje "MCP server unreachable"**
 
 Provjerite je li vaš `~/.codex/config.json` valjani JSON (bez zarez na kraju) i da je `"type": "http"` postavljeno. Codex zahtijeva HTTP transport za udaljene poslužitelje; stdio transport je samo za lokalne binarne datoteke.
 
-**ChatGPT meni "Connectors" nedostaje**
+**ChatGPT izbornik "Connectors" nedostaje**
 
-Podrška za MCP zahtijeva verziju ChatGPT desktop aplikacije **1.2024.352** ili noviju i aktivnu Plus, Pro, Team ili Enterprise pretplatu. Ažurirajte aplikaciju i provjerite svoj plan u Settings → Account.
+Podrška za MCP zahtijeva verziju ChatGPT desktop aplikacije **1.2024.352** ili noviju i aktivnu Plus, Pro, Team ili Enterprise pretplatu. Ažurirajte aplikaciju i provjerite svoj plan u Postavkama → Račun.
 
 **Cursor poslužitelj pokazuje crveno / "Failed to connect"**
 
-Provjerite je li vaš `~/.cursor/mcp.json` valjani JSON i sadrži `"type": "http"`. Zatim idite na **Settings → Cursor Settings → MCP** i kliknite **Refresh**. Ako greška ostane, potpuno ponovno pokrenite Cursor — promjene konfiguracije se ne preuzimaju uvijek bez ponovnog pokretanja.
+Provjerite je li vaš `~/.cursor/mcp.json` valjani JSON i sadrži `"type": "http"`. Zatim idite na **Settings → Cursor Settings → MCP** i kliknite **Refresh**. Ako pogreška ostaje, potpuno ponovno pokrenite Cursor — promjene konfiguracije se ne preuzimaju uvijek bez ponovnog pokretanja.
 
-**Windsurf MCP poslužitelji nisu prikazani u postavkama**
+**Windsurf MCP poslužitelji nisu na popisu u postavkama**
 
-Windsurf zahtijeva potpuno ponovno pokretanje (ne samo ponovno učitavanje prozora) da prepozna promjene u `mcp_config.json`. Koristite **File → Quit** i ponovno pokrenite. Ako poslužitelji i dalje nisu vidljivi, provjerite koristite li Windsurf **1.4+** putem **Help → About Windsurf**.
+Windsurf zahtijeva potpuno ponovno pokretanje (ne samo ponovno učitavanje prozora) da prepozna promjene u `mcp_config.json`. Koristite **File → Quit** i ponovno pokrenite. Ako poslužitelji i dalje nisu vidljivi, provjerite jeste li na Windsurf verziji **1.4+** putem **Help → About Windsurf**.
 
 **Opcija "Add Server" u Cline nije vidljiva**
 
-Upravitelj MCP poslužitelja zahtijeva Cline **2.0** ili noviji. Otvorite VS Code Extensions panel, pronađite Cline i kliknite **Update** ako je dostupna nadogradnja. Nakon ažuriranja ponovno učitajte VS Code (`Ctrl+Shift+P` → "Developer: Reload Window").
+Upravitelj MCP poslužitelja zahtijeva Cline verziju **2.0** ili noviju. Otvorite VS Code Extensions panel, pronađite Cline i kliknite **Update** ako je dostupna nadogradnja. Nakon nadogradnje ponovno učitajte VS Code (`Ctrl+Shift+P` → "Developer: Reload Window").
 
 ---
 

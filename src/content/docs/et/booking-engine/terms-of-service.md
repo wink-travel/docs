@@ -2,7 +2,7 @@
 title: Teenusetingimused
 description: Lihtsalt ligipääsetavad ja ajakohased tingimused kõigile meie reisikasutajatele.
 sidebar:
-  order: 4
+  order: 8
 ---
   
 <iframe 

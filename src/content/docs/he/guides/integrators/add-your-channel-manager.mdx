@@ -1,0 +1,388 @@
+---
+title: הוסף את מנהל הערוצים שלך
+description: מדריך שלב אחר שלב למפתחי מנהל ערוצים ו-PMS המשתלבים עם פלטפורמת Wink.
+sidebar:
+  order: 1
+---
+
+import { Steps, LinkButton } from '@astrojs/starlight/components';
+
+מדריך זה מלווה מפתחי מנהל ערוצים ו-PMS בתהליך המלא של אינטגרציה עם Wink — מהקמת החשבונות ועד מיפוי המלאי והרצת מבחן מקצה לקצה ראשון.
+
+## סביבות
+
+API של מנהל הערוצים (אינטגרציות) זמין בשתי סביבות. השתמשו בסביבת staging לכל הפיתוח והאישור; עברו לייצור רק בעת ההשקה.
+
+| סביבה      | כתובת בסיסית              |
+| ----------- | ------------------------- |
+| ייצור      | https://integrations.wink.travel |
+| Staging    | https://staging-integrations.wink.travel |
+
+## הפניה ל-API
+
+API של מנהל הערוצים פועל לפי תקני פרוטוקול OTA (SOAP/XML) להתאמה למערכות אירוח קיימות. התחילו בסקירת תיעוד נקודות הקצה לשותפים:
+
+<LinkButton href="/he/partner-api/partner/">
+  API של מנהל הערוצים — נקודות קצה לשותפים
+</LinkButton>
+
+## שלבי האינטגרציה
+
+<Steps>
+1. **צור חשבון משתמש ב-Wink**
+
+   הירשם ב-[staging-app.wink.travel](https://staging-app.wink.travel). כל השלבים הבאים משתמשים ב-staging — תחזור על התהליך המלא בייצור לפני ההשקה.
+
+2. **צור את חשבון השותף / מנהל הערוצים שלך**
+
+   תחת המשתמש החדש שלך, צור חשבון ובחר את סוג החשבון **שותף / מנהל ערוצים**. זהו החשבון שבו האינטגרציה שלך תתבצע.
+
+3. **רשום אפליקציה וקבל את הטוקן הראשון שלך**
+
+   צור [אפליקציה](/he/account/applications) וקשר אותה לחשבון מנהל הערוצים מהשלב הקודם. בחר ב-**MACHINE_2_MACHINE** כסוג הלקוח — זוהי אינטגרציה שרת-לשרת ללא משתמש קצה להפניה. העתק את **Client ID** ו-**Secret Key** מיד; מפתח הסוד מוצג פעם אחת בלבד ואינו ניתן לשחזור.
+
+   האפליקציה היא זו שמנפיקה את טוקן ההרשאה שכל קריאה במדריך זה נושאת כ-`Authorization: Bearer <access_token>`. החלף את האישורים שלך בטוקן באמצעות `client_credentials` מול `https://staging-iam.wink.travel/oauth2/token`, ובקש את ההרשאות `integrations.read integrations.write`. עשה זאת לפני ההמשך — לא תוכל לאתר מזהי חשבון או לגשת לנקודת קצה של מנהל הערוצים ללא טוקן. ראה [Authentication](/he/developers/authentication) לקבלת התהליך המלא, השרת בייצור, וקטלוג ההרשאות המלא.
+
+4. **צור חשבון מלון**
+
+   תחת אותו משתמש, צור חשבון שני ובחר את סוג החשבון **מלון**. זה נותן לך נכס שניתן להשתמש בו למבחנים ללא מעורבות של מלון אמיתי.
+
+5. **אשר ששני החשבונות מאושרים**
+
+   אף חשבון לא יכול לשמש עד שהוא מאושר: חשבון מנהל ערוצים לא מאושר לא יופיע ברשימת מנהלי הערוצים של אף מלון, ומלון לא מאושר לא יוחזר על ידי ה-API.
+
+   - **Staging** — האישור אוטומטי. שני החשבונות זמינים לשימוש מיד עם יצירתם, ואין צורך בבקשה.
+   - **ייצור** — האישור ידני. שלח למנהל האינטגרציות של Wink את שמות שני החשבונות והמשתמש שלהם, והמתן לאישור לפני ההמשך.
+
+6. **קשר בין שני החשבונות**
+
+   היכנס לחשבון המלון ונווט ל-**Extranet → Distribution → Channel Manager**. בחר את חשבון מנהל הערוצים שלך מהרשימה — זה מקשר את הנכס לאינטגרציה שלך. אם החשבון שלך לא מופיע ברשימה, הוא עדיין לא אושר; ראה שלב 5.
+
+7. **צור סוג חדר בסיסי ותכנית תעריפים**
+
+   בתוך חשבון המלון, צור לפחות סוג חדר אחד ותכנית תעריפים אחת. אלו דרושים לפני שהאינטגרציה שלך תוכל לדחוף תעריפים וזמינות או למשוך הזמנות.
+
+8. **מפה ובדוק**
+
+   במערכת שלך, מפה את מזהי סוג החדר ותכנית התעריפים שהוחזרו על ידי ה-API. דחוף עדכון תעריף ועדכון זמינות, ואז בצע הזמנה למבחן ואמת שנקודת הקצה למשיכת הזמנות מחזירה אותה כראוי.
+</Steps>
+
+:::note
+חזור על כל השלבים שלמעלה בייצור לפני ההשקה, כולל רישום אפליקציה נפרדת לייצור — אישורי staging אינם תקפים בייצור. קח בחשבון את בדיקת Wink בשלב 5 — בניגוד ל-staging, חשבונות בייצור אינם מאושרים אוטומטית. צוות Wink יעביר כל מלון שכבר משתמש במנהל הערוצים שלך לחשבון הייצור החדש שלך.
+:::
+
+## מציאת מזהי החשבון שלך
+
+כל נתיב API של מנהל הערוצים מוגבל לחשבון שלך:
+
+```
+/api/managing-entity/{managingEntityIdentifier}/channel-manager/...
+```
+
+`{managingEntityIdentifier}` הוא מזהה החשבון (UUID) של **חשבון מנהל הערוצים שלך** — לא של המלון. שלוף אותו, יחד עם מזהה ומצב נוכחי של כל חשבון אחר שבבעלות המשתמש שלך, מ-Platform API:
+
+```bash
+curl -s -X GET \
+  "https://staging-api.wink.travel/api/managing-entity/list" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+התשובה היא מערך של החשבונות שבבעלותך:
+
+```json
+[
+  {
+    "id": "3f1c8e42-7b90-4d55-a1e2-6c8d09b4f731",
+    "type": "CHANNEL_MANAGER",
+    "name": "מנהל הערוצים שלך",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "d5b8a3c2-9e6f-4a1b-8d34-7c2e1f0a5b69",
+    "type": "HOTEL",
+    "name": "נכס המבחן שלך",
+    "urlName": "your-test-property",
+    "status": "ACTIVE"
+  }
+]
+```
+
+- ה-`id` של רשומת מנהל הערוצים הוא ה-**`{managingEntityIdentifier}`** שלך.
+- ה-`id` של רשומת ה-`HOTEL` הוא ה-**`{propertyIdentifier}`** שלך.
+- `status` הוא המקום שבו תאשר שכל חשבון מאושר — שימושי במיוחד בייצור, שבו האישור ידני. ה-**מלון** חייב לקרוא `ACTIVE` לפני שניתן להזמין אותו או שהוא נראה ב-API של מנהל הערוצים. חשבון **מנהל הערוצים** שלך ימשיך לקרוא `PENDING_APPROVAL` עד שתעבור [אישור](#certification); זה צפוי ואינו חוסם פיתוח.
+
+:::caution
+שאילתה זו מתבצעת מול **Platform API** (`https://staging-api.wink.travel` ב-staging, `https://api.wink.travel` בייצור), לא מול שרתי ה-Channel Manager API המפורטים תחת [סביבות](#environments). השתמש באותו טוקן גישה — הוא מונפק למשתמש, לא ל-API ספציפי.
+:::
+
+## אישור
+
+האישור הוא הדרך שבה אתה מוכיח — וכיצד Wink מאשר — שהאינטגרציה שלך ממפה נכון את המלאי, דוחפת תעריפים וזמינות, ומקבלת הזמנות מקצה לקצה. הוא מתוכנן להיות שירות עצמי: אתה מנהל כל שלב מהמערכת שלך, ומגיש חבילת ראיות אחת בסוף. Wink בוחנת את החבילה, ובמקרה של מעבר, מקדמת את חשבון השותף / מנהל הערוצים שלך מ-**PENDING_APPROVAL** ל-**ACTIVE**.
+
+האישור מתבצע כולו בסביבת staging
+(`https://staging-integrations.wink.travel`). אין כאן מגע עם ייצור.
+
+### מה תוכל להוכיח
+
+<Steps>
+1. **אימות.** לקוח OAuth2 שלך יכול לקבל טוקן גישה ולהצליח לקרוא את נקודת הקצה `/ping` מול חשבון השותף / מנהל הערוצים שלך.
+
+2. **מיפוי מלאי.** תוכל לרשום את המלון/ים המקושרים לחשבונך, לשלוף את התעריף הראשי (סוג חדר × תכנית תעריפים) שהגדרת, ולזהות נכון את ה-`masterRateIdentifier` שהמערכת שלך תכוון אליו.
+
+3. **דחיפת תעריף וזמינות.** תוכל לעדכן כל אחד משבעת ימי שבוע האישור בנפרד — שילוב שונה של סכום, כמות, דגלי סגירה בהגעה / עזיבה, ומגבלות אורך שהייה מינימלי/מקסימלי בכל יום — ולקרוא את הערכים המדויקים חזרה מ-Wink.
+
+4. **משיכת הזמנה.** תוכל למשוך הזמנה אמיתית מ-staging שנעשתה נגד נכס המבחן שלך, להציג אותה בממשק PMS/CM שלך עם פרטי החדר, האורח והסכום הכולל הנכונים, ואז לשקף ביטול ברגע ש-Wink מסמן את ההזמנה כמבוטלת.
+</Steps>
+
+### דרישות מוקדמות
+
+לפני שתתחיל באישור, השלם את השלבים 1–7 של [שלבי האינטגרציה](#integration-steps) כך שיהיו לך:
+
+- משתמש Wink ב-staging עם חשבון **שותף / מנהל ערוצים** וחשבון **מלון** מקושר אליו (Extranet → Distribution → Channel Manager). חשבונות ב-staging מאושרים אוטומטית, כך שאין צורך בבקשה.
+- לפחות סוג חדר אחד ותכנית תעריפים אחת שנוצרו בתוך חשבון המלון. פרסם את המלון כך שיהיה ניתן להזמין ב-`https://staging-book.wink.travel/hotel/<your-slug>`.
+- אפליקציה רשומה תחת חשבון השותף / מנהל הערוצים שלך עם **Client ID**, **Secret Key**, והרשאות `integrations.read integrations.write` (ראה [Authentication](/he/developers/authentication)).
+- ה-**`managingEntityIdentifier`** של חשבון השותף / מנהל הערוצים שלך ו-**`propertyIdentifier`** של חשבון המלון שלך (שניהם UUID — ראה [מציאת מזהי החשבון שלך](#finding-your-account-identifiers)).
+
+### קונבנציות בקשות נפוצות
+
+כל בקשה בסעיף זה משתמשת בכותרות הבאות:
+
+```http
+Authorization: Bearer <access_token>
+Wink-Version: 2.0
+Accept: application/json
+```
+
+- `<access_token>` מגיע מהענקת `client_credentials` מול
+  `https://staging-iam.wink.travel/oauth2/token` — ראה [Authentication](/he/developers/authentication#staging).
+- כותרת `Wink-Version` נדרשת; השמטתה תגרום לכך שהקריאה לא תנותב ל-API JSON בגרסה 2.
+- `Content-Type: application/json` מתווספת בבקשות `PUT` הנושאות גוף.
+
+בכל הדוגמאות למטה, המילויים מתאימים לערכים שאספת ב-
+[דרישות מוקדמות](#prerequisites):
+
+| מילוי | משמעות |
+|---|---|
+| `{managingEntityIdentifier}` | מזהה חשבון השותף / מנהל הערוצים שלך (UUID) — ראה [מציאת מזהי החשבון שלך](#finding-your-account-identifiers). |
+| `{propertyIdentifier}`       | מזהה חשבון המלון (נכס) שקישרת לחשבון מנהל הערוצים. |
+| `{masterRateIdentifier}`     | התעריף הראשי (סוג חדר × תכנית תעריפים) שתאשר. |
+| `{bookingIdentifier}`        | מזהה ההזמנה ב-staging שהוחזרה ברשימת ההזמנות. |
+
+### שלב A — Ping
+
+אשר שהאישורים שלך מפנים לחשבון השותף / מנהל הערוצים הצפוי.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/ping" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+תגובה צפויה:
+
+```json
+{
+  "apiVersion": "2.0",
+  "name": "שם חשבון מנהל הערוצים שלך",
+  "status": "PENDING_APPROVAL"
+}
+```
+
+תגובה **200** עם `name` תואם היא האות לכך שהאימות ופתרון החשבון נכונים. `status` יקרא `PENDING_APPROVAL` עד ש-Wink יאשר אותך.
+
+### שלב B — רשימת נכסים
+
+שלוף את רשימת המלונות המקושרים לחשבונך ואשר שנכס המבחן שלך קיים.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/list?page=0&size=25" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+התשובה היא Spring `Page` של רשומות `ChannelManagerProperty`. אתר את הרשומה שה-`identifier` שלה תואם ל-`{propertyIdentifier}` שלך ורשום את `currencyCode` שלה — תזדקק לו לפרשנות עדכוני התעריפים ב-[שלב D](#step-d--load-the-certification-week).
+
+:::caution
+רשימה ריקה היא איתות תצורה, לא בקשה שגויה. מלון מוחזר כאן רק כשהוא **`ACTIVE`** *וגם* הוקצה לחשבון מנהל הערוצים שלך תחת Extranet → Distribution → Channel Manager. בדוק את שניהם עם `GET /api/managing-entity/list` (ראה [מציאת מזהי החשבון שלך](#finding-your-account-identifiers)) לפני שתמשיך לתיקון שגיאות. בייצור, הוסף סיבה שלישית: המלון אינו נראה כאן עד ש-Wink מאשר אותו.
+:::
+
+### שלב C — שלוף תעריפים ראשיים
+
+שלוף את הנכס יחד עם כל התעריפים הראשיים (שילוב סוג חדר × תכנית תעריפים) שהוא מפרסם. בחר את זה שאתה מתכוון לאשר נגדו ורשום את ה-`identifier` שלו כ-`{masterRateIdentifier}` שלך.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+המעטפה בתגובה היא `PropertyWithRoomRateList`: בלוק `property` יחד עם מערך `rooms` של רשומות `PropertyRoomRate`. כל רשומה מציגה את סוג החדר, תכנית התעריפים, מגבלות תפוסה, תעריף בסיסי, ומודיפיקציות התעריף שתשמור עליהן בעת דחיפת תעריפים יומיים.
+
+:::caution
+אשר נגד תעריף ראשי יחיד לכל ריצת האישור. מיפוי סוגי חדרים ותכניות תעריפים נוספים צפוי בייצור, אך חבילת הראיות צריכה להראות רק תעריף ראשי אחד שעבר מבחן מקצה לקצה.
+:::
+
+### שלב D — טען את שבוע האישור
+
+טען **לוח תעריפים לשבעה ימים** המכסה את שבעת ימי הלוח הראשונים של החודש **הבא** לחודש שבו אתה מתחיל את האישור. לדוגמה, אם אתה מתחיל ב-21 באוגוסט, כוון ל-1 בספטמבר עד 7 בספטמבר.
+
+תשלח **שבע קריאות `PUT` נפרדות** — אחת לכל יום — כאשר `startDate == endDate`. כל יום נושא שילוב שונה במכוון של סכום, כמות, דגלי סגירה בהגעה / עזיבה, ומגבלות אורך שהייה כך שכל שדה הניתן לכתיבה ייבדק לפחות פעם אחת. הערכים במטבע הנכס (שנרשם בשלב B); השמטת `currencyCode` תגרום לברירת מחדל נכונה.
+
+| יום | סכום   | כמות    | closedOnArrival | closedOnDeparture | minLengthOfStay | maxLengthOfStay | מה זה מוכיח |
+|-----|--------|----------|-----------------|-------------------|-----------------|-----------------|-------------|
+| 1   | 100.00 | 5        | false           | false             | 1               | 30              | יום בסיס. |
+| 2   | 125.00 | 4        | false           | false             | 1               | 14              | שינוי סכום + כמות + `maxLengthOfStay`. |
+| 3   | 150.00 | 3        | **true**        | false             | 1               | 30              | הפיכת `closedOnArrival`. |
+| 4   | 175.00 | 2        | false           | **true**          | 2               | 7               | הפיכת `closedOnDeparture` + חלון LOS מחמיר. |
+| 5   | 200.00 | **0**    | false           | false             | 1               | 30              | כמות אזל מהמלאי. |
+| 6   | 225.00 | 5        | false           | false             | **3**           | **5**           | חלון LOS מגביל. |
+| 7   | 250.00 | 1        | false           | false             | 1               | 30              | זמינות לחדר האחרון. |
+
+גוף הבקשה ליום 1 נראה כך. חזור, תוך התאמת `startDate` / `endDate` / ערכים לפי השורה, לימים 2 עד 7.
+
+```bash
+curl -s -X PUT \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/master-rate/{masterRateIdentifier}" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json" \
+  -d '{
+        "startDate": "2026-09-01",
+        "endDate":   "2026-09-01",
+        "amount":    100.00,
+        "master":    true,
+        "closedOnArrival":   false,
+        "closedOnDeparture": false,
+        "quantity":          5,
+        "minLengthOfStay":   1,
+        "maxLengthOfStay":   30
+      }'
+```
+
+כל `PUT` מחזיר `200` עם מערך רשומות `PropertyRate` מעודכנות לטווח ששלחת (רשומה אחת כאשר `startDate == endDate`). שמור תגובה זו — היא תהיה חלק מראיותיך.
+
+:::note
+`master` צריך להיות `true` בכל קריאות שבוע האישור. זה אומר ל-Wink שהעדכון שלך הוא תעריף תבנית, לא ביטול לפי הזמנה.
+:::
+
+### שלב E — קרא חזרה את שבוע האישור
+
+שלוף את כל השבוע בקריאה אחת ואשר שכל ערכי היום מאוחסנים תואמים לשורה ששלחת בשלב D — כולל דגלי הבוליאן וחלון אורך השהייה.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/master-rate/{masterRateIdentifier}?startDate=2026-09-01&endDate=2026-09-07" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+התשובה היא `PropertyRoomRateWithRateList`. מערך `rates` שלה חייב להכיל **שבע** רשומות, אחת לכל יום, כל אחת עם `amount`, `quantity`, `closedOnArrival`, `closedOnDeparture`, `minLengthOfStay`, ו-`maxLengthOfStay` שנטענו. אי התאמה בכל שדה פירושה שה-`PUT` המתאים בשלב D לא עבר כמצופה — תקן וודא שוב לפני ההמשך.
+
+### שלב F — בצע הזמנה למבחן
+
+פתח את הכתובת הבאה בדפדפן, החלף את `<your-slug>` ב-slug של חשבון המלון שפרסמת בדרישות המוקדמות:
+
+```
+https://staging-book.wink.travel/hotel/<your-slug>
+```
+
+בחר תאריכי הגעה ועזיבה שנמצאים כולו בתוך שבוע האישור שלך, בחר את שילוב סוג החדר + תכנית התעריפים שאישרת, והשלם את ההזמנה. ב-staging משתמשים בנתיב תשלום למבחן — לא מחויב כרטיס חי.
+
+כאשר דף האישור מוצג, רשום את **קוד ההזמנה** (בפורמט `WNKxxxxx`) שמוצג לאורח.
+
+### שלב G — משוך את ההזמנה
+
+שלוף את כל ההזמנות שנוצרו לנכס המבחן שלך בתוך חלון זמן המכסה את חותמת הזמן של ההזמנה.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/booking/list?startDate=2026-09-01T00:00:00&endDate=2026-09-08T00:00:00" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+מצא את הרשומה שה-`bookingCode` שלה תואם לקוד שרשמת בשלב F. רשום את ה-`bookingIdentifier` שלה. לאחר מכן שלוף את ההזמנה היחידה הזו:
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/booking/{bookingIdentifier}" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+התשובה היא `PropertyBooking`. יבא אותה לממשק PMS / מנהל הערוצים שלך ואשר שכל אחד מהפרטים הבאים מוצג כראוי למפעיל:
+
+- `bookingCode`, `bookingIdentifier`, `createdDate`
+- אורח: `firstName`, `lastName`, `email`
+- `totalAmount` + `currencyCode` (הסכום נטו שהמלון מקבל על כל החדרים)
+- `paymentMethodType`, `paymentMethodStatus`, `salesChannelName`
+- כל רשומה ב-`roomStays`: `guestRoomName`, `ratePlanName`, `adults`, `children`, `startDate`, `endDate`, ו-`amount` לכל חדר
+
+צלם צילום מסך של ההזמנה כפי שהיא מופיעה בממשק שלך — צילום מסך זה הוא אחד מראיות הנדרשות.
+
+### שלב H — בטל את ההזמנה ואמת
+
+בקש מצוות Wink לבטל את הזמנת האישור עבורך (או בטל אותה בעצמך מ-Extranet של חשבון המלון אם יש לך הרשאה לכך). לאחר מכן שלוף שוב את אותה הזמנה עם הקריאה משלב G.
+
+אשר שהתשובה מציגה כעת:
+
+- `cancelled: true`
+- חותמת זמן `cancelDate` מאוכלסת
+- `paymentMethodStatus` המשקף את מחזור חיי הביטול (`CANCELLED`, `PARTIALLY_REFUNDED`, או `FULLY_REFUNDED` בהתאם למדיניות ההחזר)
+
+ייבא את ההזמנה המעודכנת לממשק שלך ואשר שהביטול נראה למפעיל — סטטוס, חותמת זמן ביטול, וכל אינדיקטור החזר שהממשק שלך תומך בו. צלם צילום מסך שני של ההזמנה המבוטלת בממשק שלך. זהו הראיה הסופית.
+
+### שלב I — הגש את חבילת הראיות שלך
+
+ארוז את הדברים הבאים לארכיון יחיד (`.zip`) בשם
+`wink-cert-<your-channel-manager-name>-<yyyy-mm-dd>.zip`:
+
+<Steps>
+1. **תמלול API.** עבור כל בקשה שהוצאת בשלבים A עד H, תעד את בקשת ה-HTTP המלאה (שיטה, URL, כותרות בקשה עם ערך `Authorization` מוסתר, וגוף JSON עבור קריאות `PUT`) ואת תגובת ה-HTTP המלאה (קוד סטטוס, כותרות תגובה, וגוף JSON). סדר את התמלול כך שכל זוג בקשה/תגובה יהיה מתויג בבירור עם השלב אליו הוא שייך (`step-a-ping.json`, `step-d-day-3-put.json`, `step-g-list-bookings.json` וכו'). קבצי `.http` טקסטואליים או יצוא `.har` יחיד הם פורמטים מקובלים.
+
+2. **צילום מסך UI: הזמנה פעילה.** צילום המסך משלב G המציג את הזמנת האישור בממשק PMS / מנהל הערוצים שלך, עם פרטי האורח, התאריכים, סוג החדר, תכנית התעריפים, והסכום הכולל קריאים בבירור.
+
+3. **צילום מסך UI: הזמנה מבוטלת.** צילום המסך משלב H המציג את אותה הזמנה בממשק שלך לאחר הביטול, עם הסטטוס המבוטל וחותמת הזמן קריאים בבירור.
+
+4. **סיכום האישור.** קובץ `README.md` קצר בתוך הארכיון שמפרט:
+   - שם וגרסת מנהל הערוצים / PMS שלך.
+   - ה-`managingEntityIdentifier`, `propertyIdentifier`, `masterRateIdentifier`, ו-`bookingIdentifier` שבהם השתמשת.
+   - ה-slug של המלון ב-staging (ה-`<your-slug>` ב-`https://staging-book.wink.travel/hotel/<your-slug>`).
+   - טווח התאריכים של שבוע האישור (יום 1 → יום 7 בפורמט ISO-8601).
+   - שם ודוא"ל המהנדס שביצע את האישור.
+</Steps>
+
+שלח את הארכיון לנציג האינטגרציות של Wink. Wink תבדוק, תעקוב אחרי כל אי התאמה, ובמקרה של מעבר — תשנה את סטטוס חשבון השותף / מנהל הערוצים שלך מ-`PENDING_APPROVAL` ל-`ACTIVE`. האינטגרציה שלך תהיה כשירה לאונבורדינג בייצור.
+
+:::tip
+אוטומט את תיעוד התמלול. שבע קריאות ה-`PUT` בשלב D והקריאה החוזרת בשלב E הן המקור השכיח ביותר לכישלונות באישור — לקוח HTTP אינטראקטיבי ששומר כל בקשה ותגובה תוך כדי ריצה יחסוך לך ריצה מחודשת מלאה אם ערך כלשהו שגוי בעשרונית.
+:::
+
+## התראות Webhook
+
+ניתן להירשם לאירועי webhook של מנהל הערוצים לקבלת התראות בזמן אמת:
+
+- `channel-manager.update.rate` — התקבל עדכון תעריף.
+- `channel-manager.update.availability` — התקבל עדכון זמינות.
+- `channel-manager.update` — עדכון כללי של מנהל הערוצים.
+
+ראה את [קטלוג אירועי ה-Webhook](/he/developers/webhook-events#channel-manager-events) לפרטים.
+
+## קריאה נוספת
+
+- [API של מנהל הערוצים](/he/partner-api/partner/) — תיעוד מלא של נקודות הקצה.
+- [ספקי תעריפים](/he/portal/extranet/rate-providers) — ניהול ספקי תעריפים ב-Extranet.
+- [קטלוג אירועי ה-Webhook](/he/developers/webhook-events) — כל האירועים שניתן להירשם אליהם.
+- [בנה על Wink](/he/developers/build-on-wink) — סקירת הפלטפורמה למפתחים.

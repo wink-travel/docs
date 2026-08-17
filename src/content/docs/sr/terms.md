@@ -3,37 +3,37 @@ title: Uslovi korišćenja
 description: Uslovi korišćenja za sve Wink korisnike i entitete.
 ---
 
-Svaki portal može imati različite uslove korišćenja. Molimo vas da odete u odeljak ispod koji se odnosi na vas i potražite pododeljak pod nazivom Uslovi usluge i Uslovi plaćanja.
+Različiti delovi Wink-a imaju različite uslove. Pronađite odeljak koji se odnosi na vas ispod — svaki ima svoje Uslove korišćenja, a odeljci koji se bave novcem takođe imaju Uslove plaćanja.
 
-## Affiliate portal
+## Nekretnine
 
-Za afilijate koji žele da nauče kako da zarade pasivni prihod monetizujući svoje društvene naloge uz Wink.
-[Wink Studio](https://studio.wink.travel) ima sve alate koji su vam potrebni da prodajete kao profesionalac.
+Za hotele, lance, brendove i upravljačke kompanije koje prodaju inventar na Wink-u.
 
-<LinkButton href="/sr/portal/studio/what-is-studio">
-Saznajte više o Wink Studio
-</LinkButton>
+- [Uslovi korišćenja](/sr/portal/extranet/terms-of-service)
+- [Uslovi plaćanja](/sr/portal/extranet/payment-terms)
 
-## Booking engine
+## Partneri
 
-Svi putevi vode do našeg booking engine-a! Saznajte šta sve možete da radite sa najprilagodljivijim, na putovanja fokusiranim booking engine-om na tržištu.
+Za kreatore, influensere i partnere koji promovišu turistički inventar i zarađuju proviziju.
 
-<LinkButton href="/sr/booking-engine/in-a-nutshell">
-Saznajte više o našem booking engine-u
-</LinkButton>
+- [Uslovi korišćenja](/sr/portal/studio/terms-of-service)
+- [Uslovi plaćanja](/sr/portal/studio/payment-terms)
 
-## Property portal
+## Turistički agenti
 
-Za objekte koji žele da počnu da prodaju na Wink-u. Koristite naše alate da efikasno prodajete i promovišete sebe na mreži i dobijete armiju afilijata iz celog sveta koji će vam pomoći da dobijete goste i rezervacije.
+Za registrovane turističke agente koji pretražuju, rezervišu i zarađuju u ime svojih klijenata.
 
-<LinkButton href="/sr/portal/extranet/what-is-extranet">
-Saznajte više o Wink Extranet
-</LinkButton>
+- [Uslovi korišćenja](/sr/portal/travel-agent/terms-of-service)
+- [Uslovi plaćanja](/sr/portal/travel-agent/payment-terms)
 
-## Travel agent portal
+## Rezervacioni sistem
 
-Za turističke agente koji žele da saznaju šta im Wink može ponuditi u pogledu prilagođenih cena, ponuda i inventara, direktno od dobavljača.
+Za sve koji rezervišu putovanja preko Wink-a.
 
-<LinkButton href="/sr/portal/travel-agent/what-is-agent">
-Saznajte više o Wink Agent
-</LinkButton>
+- [Uslovi korišćenja](/sr/booking-engine/terms-of-service)
+
+## Svi
+
+- [Politika privatnosti](/sr/privacy)
+- [Cenovnik](/sr/getting-started/pricing) — šta je besplatno, koliko košta rezervacija i kako funkcionišu naknade po korišćenju.
+- [Zahtev za brisanje podataka](/sr/getting-started/data-deletion-request)

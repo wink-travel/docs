@@ -1,0 +1,163 @@
+---
+title: Integració d'Analytics GA4
+description: Com connectar la teva pròpia propietat de Google Analytics 4 a Wink per poder fer el seguiment de les teves reserves, ingressos i el recorregut dels clients directament al teu propi tauler GA4.
+sidebar:
+  label: Integració d'Analytics GA4
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+En connectar la teva propietat de Google Analytics 4 a Wink, els esdeveniments de reserva — des de les visualitzacions d'habitacions fins a les reserves completades — es reenvien automàticament al teu propi tauler GA4 juntament amb les analítiques pròpies de Wink. Sense codi, sense configuració tècnica per part teva.
+
+<Aside type="tip">
+Necessites una cosa de GA4: un **ID de mesurament** (`G-XXXXXXXXXX`). Wink el carrega al navegador del client i transmet tot el teu embut de reserva — inclosa la reserva completada (`purchase`) — directament a la teva propietat GA4. No cal crear cap secret d'API ni instal·lar res al teu propi lloc web.
+</Aside>
+
+---
+
+## Com Funciona
+
+```
+Introduïu el vostre ID de mesurament (G-XXXXXXXXXX) al portal de Wink
+       ↓
+Wink carrega el vostre GA4 al navegador del client i transmet els esdeveniments de reserva
+(visualitzacions, carret, pagament) a la vostra propietat GA4 en temps real
+       ↓
+A la pàgina de gràcies, l'esdeveniment de reserva completada (purchase) es dispara al navegador —
+Wink reconnecta la sessió GA4 que la redirecció de pagament va interrompre, així que la
+venda encara es compta com a part de la visita original del client
+       ↓
+Inicieu sessió a analytics.google.com i veieu tot l'embut de reserva
+```
+
+---
+
+## Què Has de Fer
+
+<Steps>
+
+1. **Crea una propietat GA4**
+
+   Ves a [analytics.google.com](https://analytics.google.com): Administrador → Crear propietat. Configura la teva zona horària i moneda per coincidir amb el teu mercat.
+
+2. **Crea un flux de dades web**
+
+   Administrador → Fluxos de dades → Afegeix flux → Web. Introdueix `wink.travel` com a URL. Això genera el teu **ID de mesurament** (`G-XXXXXXXXXX`). Copia'l.
+
+3. **Introdueix el teu ID de mesurament al portal de Wink**
+
+   Inicia sessió a [app.wink.travel](https://app.wink.travel), selecciona el teu compte i obre la configuració de personalització. A la secció **Analytics & integrations**, enganxa el teu ID de mesurament al camp **GA4 Measurement ID** i desa. Això és tot — la teva integració GA4 ja està activa.
+
+4. **Marca `purchase` com a esdeveniment clau**
+
+   Torna a la teva propietat GA4: Administrador → Esdeveniments → busca `purchase` → activa **Marca com a esdeveniment clau**. Això fa que les reserves completades apareguin al teu informe de conversions.
+
+5. **Consulta les teves dades**
+
+   Inicia sessió a [analytics.google.com](https://analytics.google.com) i veuràs les teves reserves, ingressos i l'embut del client — tot seguit automàticament a través de Wink.
+
+</Steps>
+
+<Aside type="note">
+No cal que instal·lis cap codi de seguiment al teu propi lloc web per a aquesta integració. Wink s'encarrega de tot — el teu ID de mesurament és simplement la destinació on s'envien les dades de reserva.
+</Aside>
+
+<Aside type="tip">
+**GA4 i GTM es poden utilitzar conjuntament.** Si també utilitzes un contenidor de Google Tag Manager (per exemple, un contenidor Sojern), pots configurar ambdós al mateix temps — no són excloents. Consulta [Integració GTM Analytics](/ca/guides/general/gtm-integration).
+</Aside>
+
+---
+
+## Com Utilitza Wink el Teu ID de Mesurament a l'Enginy de Reserves
+
+Tot passa **al navegador del client** — no hi ha exportació de dades servidor a servidor ni cap secret d'API implicat.
+
+- **El teu GA4 es carrega a les pàgines de reserva.** Sempre que un client està veient la teva propietat a l'enginy de reserves de Wink, Wink carrega el teu ID de mesurament al seu navegador juntament amb les analítiques pròpies de Wink, llegint de les mateixes dades compartides. Els esdeveniments de navegació — cerques, visualitzacions d'habitacions, carret, pagament — es transmeten a la teva propietat GA4 en temps real.
+- **La reserva completada es dispara a la pàgina de gràcies.** Quan un client acaba de pagar i arriba a la pàgina de confirmació, l'esdeveniment `purchase` es dispara al client, portant el valor complet de la reserva, la moneda i els detalls de l'habitació.
+- **La redirecció de pagament ja no perd la venda.** Els pagaments amb targeta envien el navegador del client al proveïdor de pagament i després el retornen, cosa que normalment trencaria la sessió GA4 al navegador i faria que la reserva semblés una visita "Directa" nova. Per evitar-ho, Wink transporta els identificadors de sessió GA4 a través de la URL de retorn i **reconnecta la sessió original** a la pàgina de gràcies *abans* que es dispari el `purchase`. Per tant, la reserva completada s'atribueix a la mateixa visita amb què el client va començar — no es compta com una sessió separada.
+
+<Aside type="note">
+Wink evita duplicar el `purchase` per reserva, així que un refresc de pàgina o la redirecció automàtica als detalls de la reserva no compten la venda dues vegades.
+</Aside>
+
+---
+
+## Què Pots Fer Seguiment
+
+Un cop connectada, la teva propietat GA4 rep tota la suite d'esdeveniments d'Enhanced E-commerce per a la teva propietat:
+
+### Descobriment
+
+| Esdeveniment | Què Vol Dir |
+|---|---|
+| `view_item_list` | Un client va veure la teva propietat en una cerca o llistat de categories |
+| `select_item` | Un client va clicar la teva propietat des d'un llistat |
+| `view_item` | Un client va veure la pàgina de detall de l'hotel |
+
+### Consideració
+
+| Esdeveniment | Què Vol Dir |
+|---|---|
+| `view_promotion` | Un client va veure una oferta promocional per a la teva propietat |
+| `select_promotion` | Un client va clicar una oferta promocional |
+| `add_to_wishlist` | Un client va desar la teva propietat a la seva llista de desitjos |
+
+### Embut de Reserva
+
+| Esdeveniment | Què Vol Dir |
+|---|---|
+| `add_to_cart` | Un client va seleccionar una habitació o paquet |
+| `view_cart` | Un client va veure el resum de la seva reserva |
+| `remove_from_cart` | Un client va eliminar una habitació o paquet |
+| `begin_checkout` | Un client va començar el procés de pagament |
+| `add_payment_info` | Un client va introduir les seves dades de pagament |
+| `add_shipping_info` | Un client va introduir les seves dades de client |
+| `purchase` | Un client va completar una reserva |
+| `refund` | Una reserva va ser cancel·lada i reemborsada |
+
+Tots els esdeveniments inclouen dimensions rellevants com ingressos, moneda, tipus d'habitació i valor de la reserva — proporcionant-te una visió completa del recorregut del client des de la primera impressió fins a la reserva completada. Per desbloquejar dimensions addicionals a nivell de propietat i habitació com `city_name`, `cancellation_policy`, `bed_type` i més, consulta [Dimensions personalitzades a GA4](/ca/guides/general/gtm-integration#custom-dimensions-in-ga4).
+
+---
+
+## Seguiment Cross-Domain (Avançat)
+
+La integració estàndard anterior fa el seguiment de tot el que passa dins de Wink. No obstant això, si vols fer el seguiment dels clients des del teu propi lloc web fins a la finalització de la reserva a Wink — i atribuir correctament la font original de trànsit (Google Ads, campanyes de correu electrònic, cerca orgànica, etc.) — cal un pas addicional a cada costat.
+
+<Aside type="caution">
+Aquesta secció només s'aplica si tens GA4 instal·lat al teu propi lloc web. Si no utilitzes GA4 al teu lloc, la integració estàndard anterior és tot el que necessites.
+</Aside>
+
+### Per què és Important
+
+Sense seguiment cross-domain, un client que visita primer el teu lloc web i després reserva a Wink apareixerà a GA4 com una sessió **Directa** sense connexió amb la seva visita anterior. Qualsevol clic de Google Ads, campanyes de correu o visites de cerca orgànica que van conduir a la reserva no rebran crèdit.
+
+Amb el seguiment cross-domain configurat, veus el recorregut complet del client:
+
+```
+google.com (anunci pagat)
+       ↓
+el teu lloc web (el client navega per habitacions)
+       ↓
+wink.travel (el client selecciona habitació i reserva)
+       ↓
+la compra s'atribueix correctament al clic original de Google Ads
+```
+
+### Acció Requerida: Tu
+
+Configura la teva propietat GA4 per reconèixer `wink.travel` com a part del teu propi domini, no com a referència externa. Això indica a GA4 que uneixi les dues sessions en un únic recorregut continu del client.
+
+<Steps>
+1. GA4 Administrador → Fluxos de dades → el teu flux
+2. Configura la configuració de l'etiqueta → **Configura els teus dominis**
+3. Afegeix `wink.travel` com a domini vinculat
+4. Desa
+</Steps>
+
+### Acció Requerida: Wink
+
+Contacta amb [Wink Support](https://app.wink.travel) i proporciona el domini del teu lloc web (per exemple, `yourhotel.com`). Wink afegirà el teu domini a la llista d'exclusió de referències a la propietat GA4 de Wink. Això evita que el teu lloc web es registri com a font de referència, cosa que d'altra manera sobreescriuria l'atribució original del client i iniciaria una nova sessió.
+
+<Aside type="tip">
+La integració estàndard anterior és suficient per a la majoria de propietats i et proporciona visibilitat immediata sobre reserves i ingressos a Wink. El seguiment cross-domain és una opció avançada que val la pena configurar un cop estiguis còmode amb les teves dades GA4 i vulguis una visió més profunda de l'atribució.
+</Aside>

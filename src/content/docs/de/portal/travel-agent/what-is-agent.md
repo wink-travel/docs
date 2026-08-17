@@ -9,7 +9,7 @@ Unsere Lösung für registrierte Reisebüros ist [Wink Agent](https://agent.wink
 
 Fortgeschrittene Reisebüros können sich auf API-Ebene integrieren, um Zahlungen und Auszahlungen außerhalb der Wink-Plattform abzuwickeln.
 
-Reisebüros haben einen Teil der gleichen Portal-Funktionen wie [Wink Studio](/de/portal/studio/what-is-studio), daher werden wir diese hier nicht erneut behandeln.
+Reisebüros haben einen Teil der gleichen Portal-Funktionen wie [Studio](/de/portal/studio/what-is-studio), daher werden wir diese hier nicht erneut behandeln.
 
 ## Suche
 

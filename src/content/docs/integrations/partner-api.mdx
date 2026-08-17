@@ -1,0 +1,140 @@
+---
+title: Partner API
+description: Pricing, rate limits and Service Level Agreement for the authenticated Wink Partner API.
+sidebar:
+  order: 0
+---
+
+The Wink **Partner API** is the authenticated, higher-throughput way for integrators to query bookable travel inventory — the same supply that powers our embeddable widgets and public browse endpoints, exposed as a first-class programmatic interface. Where the free Web Components and public browse endpoints are meant for lightweight, human-facing embedding, the Partner API is built for systems that search, price, and book at scale. Access is authenticated per integrator and billed per usage, so you only pay for the traffic you actually send.
+
+## Plans & pricing
+
+One API call = one request. Metered usage is billed per 1,000 requests.
+
+| | Free | Paid | Enterprise |
+|---|---|---|---|
+| **Price** | $0 | Usage-based | Contact us |
+| **Best for** | Evaluation & low-volume integrations | Pay-as-you-go throughput at scale | Custom volume & negotiated terms |
+| Requests per minute | 30 (60 burst) | Unlimited | Unlimited |
+| Requests per month | 10,000 | Unlimited | Unlimited |
+| API response time (P95) | — | Under 500 ms | Under 500 ms |
+| Price per 1,000 requests | Free | $1.00 | Custom |
+| Look-to-book overage (per 1,000 excess looks beyond 5,000:1) | — | $2.00 | Custom |
+| Rate-limit response | 429 (pause / monthly hard stop) | None | None |
+| Service Level Agreement | — | ✓ | ✓ |
+| Priority support | — | ✓ | ✓ |
+| Dedicated onboarding | — | — | ✓ |
+
+[Get an API key](https://app.wink.travel/account/applications) · [Start metered billing](https://app.wink.travel/account/applications) · [Contact sales](https://cal.com/wink-ws36dy)
+
+## API reference
+
+Two surfaces serve bookable inventory, and they map to the two tiers above:
+
+- **Free — Consumer / Booking Engine API** (REST, `/api/public/**`): anonymous, browser- and widget-facing. [Browse the Booking Engine reference →](/api/booking-engine/)
+- **Paid — Partner Integrator API** (**gRPC**, `wink.partner.v1`): authenticated, usage-metered, built for server-to-server integration at scale. [Browse the Integrator reference →](/partner-api/partner/)
+
+The Partner Integrator API is gRPC, not REST. You call it with a generated client over HTTP/2 at
+`partner.wink.travel:443`, passing a bearer token and the account you are calling for:
+
+```bash
+grpcurl -H "authorization: Bearer $WINK_TOKEN" partner.wink.travel:443 list
+```
+
+The reference page above documents every service, message and error status, and the schema is also
+available at runtime through server reflection, so `grpcurl`, Postman and Insomnia discover it with
+nothing to download.
+
+## How usage and limits work
+
+### Free tier
+
+The Free tier is designed to let you build, test, and run modest production traffic at no cost.
+
+- **Rate limit — 30 requests per minute, with a 60-request burst.** Short spikes above the sustained rate are absorbed by the burst allowance. If you exceed it, the API responds with **HTTP 429 (Too Many Requests)** and applies a **5-minute pause** before your key resumes serving traffic. Back off and retry after the pause window rather than hammering the endpoint.
+- **Monthly quota — 10,000 requests per calendar month.** Once you reach the monthly ceiling, the API returns **HTTP 429 for the remainder of the month** — a hard stop — together with a message inviting you to subscribe to the Paid tier to continue. The counter resets at the start of the next calendar month.
+
+The Free tier does not include a Service Level Agreement or priority support.
+
+### Paid tier
+
+The Paid tier removes the monthly ceiling and the rate-limit pauses, and bills you only for what you use.
+
+- **Metered requests — $1.00 per 1,000 requests.** There is no monthly request cap and no rate-limit throttling under normal use; you are billed on actual volume.
+- **Look-to-book overage — $2.00 per 1,000 excess looks.** To keep supply healthy, we meter the ratio of searches ("looks") to confirmed bookings. You are entitled to **5,000 looks per booking** before overage applies. Excess looks are calculated as:
+
+  `excess = max(0, looks − bookings × 5,000)`
+
+  Overage is then billed at **$2.00 per 1,000 excess looks**. Integrations that convert well rarely incur any overage; the charge only applies to traffic that searches far more than it books.
+
+The Paid tier includes the Service Level Agreement described below — a 99.9% uptime commitment and a P95 response-time target under 500 ms — and priority, severity-based support.
+
+## Service Level Agreement
+
+_Effective date: 5 July 2026 · Version 1.0_
+
+This Service Level Agreement (the "SLA") sets out the availability commitment, service credits, and support targets that Wink ("Wink", "we", "us") provides to a customer ("Customer", "you") for the authenticated Wink Partner API (the "Partner API" or "Service") on tiers where an SLA is stated to apply. This SLA is incorporated into and governed by the agreement between you and Wink under which you access the Partner API (the "Agreement"), and applies for so long as you maintain an active, paid Partner API subscription in good standing. Capitalized terms not defined here have the meaning given to them in the Agreement.
+
+### 1. Definitions
+
+1. **"Uptime"** means the periods during which the Partner API is available to accept and successfully respond to properly formed, authenticated requests.
+2. **"Downtime"** means any period, measured in minutes, during which the Partner API fails to respond successfully to properly formed, authenticated requests, excluding any period falling within the Exclusions set out in Section 4. Isolated errors affecting an immaterial fraction of requests are not, by themselves, Downtime.
+3. **"Monthly Uptime Percentage"** means, for a given calendar month, the total number of minutes in that month minus total Downtime minutes, divided by the total number of minutes in that month, expressed as a percentage.
+4. **"Scheduled Maintenance"** means planned maintenance of the Service for which Wink has provided advance notice in accordance with Section 4.
+5. **"Service Credit"** means a credit, calculated as a percentage of the fees paid or payable by you for the Partner API in the affected calendar month, that is applied against future Partner API fees as the sole and exclusive remedy for a failure to meet the Uptime Commitment.
+6. **"Response Time"** means the elapsed time between Wink's receipt of a properly formed, authenticated request at Wink's service boundary and the point at which Wink begins returning the response, excluding network transit and any client-side time outside Wink's control.
+
+### 2. Availability & Performance Commitment
+
+Wink will use commercially reasonable efforts to make the Partner API available at a **Monthly Uptime Percentage of at least 99.9%** during each calendar month of the term (the "Uptime Commitment"). The Uptime Commitment is measured at Wink's service boundary and excludes any factors outside Wink's reasonable control, including those described in Section 4. Wink's monitoring systems are the authoritative source of record for measuring the Monthly Uptime Percentage and Response Time.
+
+Wink further targets a **95th-percentile (P95) Response Time of under 500 milliseconds** for successful, properly formed, authenticated requests, measured at Wink's service boundary over each calendar month (the "Performance Target"). The Performance Target excludes the factors described in Section 4, requests that return application-level errors caused by the request itself, and unusually large or complex batch requests. The Performance Target is a service objective; the Service Credits in Section 3 apply to failures to meet the **Uptime Commitment** and are the sole and exclusive remedy for availability shortfalls.
+
+### 3. Service Credits
+
+If the Monthly Uptime Percentage falls below the Uptime Commitment in any calendar month, you may be eligible for a Service Credit calculated as a percentage of the Partner API fees paid or payable by you for that month, according to the following ladder:
+
+| Monthly Uptime Percentage | Service Credit |
+|---|---|
+| Below 99.9% but at or above 99.0% | 10% |
+| Below 99.0% but at or above 95.0% | 25% |
+| Below 95.0% | 50% |
+
+1. **Claiming a credit.** To receive a Service Credit you must submit a written claim to Wink within **thirty (30) days** of the end of the calendar month in which the shortfall occurred. The claim must include the dates and times of each Downtime incident you are claiming and any supporting logs or evidence reasonably available to you. Claims submitted after this window are not eligible.
+2. **Form of credit.** Approved Service Credits are applied against future Partner API fees and have no cash value. They are not refunds and will not be paid out except where required by applicable law.
+3. **Maximum credit.** The total Service Credits awarded for any single calendar month will not exceed 50% of the Partner API fees paid or payable by you for that month.
+4. **Sole and exclusive remedy.** Service Credits are your **sole and exclusive remedy** for any failure by Wink to meet the Uptime Commitment or any other availability shortfall of the Partner API.
+
+### 4. Exclusions
+
+The Uptime Commitment and any resulting Service Credits do not apply to, and Downtime does not include, any unavailability, suspension, degradation, or performance issue that arises from or relates to:
+
+1. **Scheduled Maintenance** for which Wink has given prior notice, provided such notice is given a reasonable period in advance through a channel Wink normally uses to communicate with customers;
+2. **Force majeure** events or other causes beyond Wink's reasonable control, including natural disasters, acts of government, network or utility failures, and denial-of-service or other malicious attacks;
+3. issues caused by **your** acts or omissions, your equipment, software, or network, or by any **third-party** service, product, or provider not under Wink's direct control;
+4. your **abuse of the Service** or **violation of the Agreement**, this SLA, the acceptable-use terms, or applicable rate limits, including traffic that Wink reasonably determines to be excessive, automated abuse, or fraudulent; and
+5. any **suspension or termination** of your access properly effected under the Agreement, including suspension for non-payment.
+
+### 5. Support & Response Targets
+
+Wink provides support for the Partner API during standard business hours, excluding local public holidays. Wink will use commercially reasonable efforts to acknowledge properly submitted support requests within the following target response times, based on the severity you assign and Wink reasonably confirms:
+
+| Severity | Description | Target initial response |
+|---|---|---|
+| **Sev 1 — Critical** | Partner API is down or unusable in production with no workaround. | 4 hours |
+| **Sev 2 — Major** | Significant feature impaired or degraded; a workaround exists. | 1 business day |
+| **Sev 3 — Minor** | General questions, minor issues, or feature requests. | 2 business days |
+
+Target response times describe when Wink aims to make **initial contact**; they are not guarantees of resolution time. Priority support and severity-based targets apply on tiers where they are stated to be included.
+
+### 6. Data & Security
+
+Wink maintains commercially reasonable administrative, technical, and organizational measures designed to protect the confidentiality, integrity, and availability of data processed through the Partner API, and reviews those measures periodically. Wink's processing of personal data is governed by the [Privacy Policy](/privacy) and any data-processing terms in the Agreement. You remain responsible for securing your own API credentials, for the lawful use of any data you retrieve, and for promptly notifying Wink of any suspected credential compromise.
+
+### 7. Limitation of Liability
+
+Service Credits are the **sole and exclusive remedy** for any unavailability or failure to meet the Uptime Commitment, and are provided in lieu of any other liability arising from such failure. Except as expressly stated in this SLA, the Partner API is provided on an "as available" basis. To the maximum extent permitted by applicable law, Wink's aggregate liability arising out of or relating to the Service is limited as set out in the Agreement, and Wink is not liable for any indirect, incidental, special, consequential, or punitive damages, or for lost profits, revenue, data, or goodwill, even if advised of the possibility of such damages.
+
+### 8. Term, Changes & Termination
+
+This SLA applies for as long as you have an active Partner API subscription on a tier where the SLA is stated to apply. Wink may update this SLA from time to time; material changes will be communicated through a channel Wink normally uses to reach customers, and continued use of the Partner API after an update takes effect constitutes acceptance of the updated SLA. This SLA terminates automatically upon termination or expiry of the Agreement or of your Partner API subscription. Sections that by their nature should survive termination — including accrued but unclaimed Service Credit eligibility, limitation of liability, and definitions — survive.

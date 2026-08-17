@@ -1,331 +1,50 @@
 ---
 title: Katalog Acara Webhook
-description: Rujukan lengkap semua jenis acara webhook yang tersedia di platform Wink, disusun mengikut kategori.
+description: Setiap jenis acara webhook di platform Wink, dijana dari katalog acara platform — yang dihantar, kepada siapa, dan di mana payload didokumentasikan.
 sidebar:
-  order: 3
+  order: 3.5
 ---
 
-import { LinkButton } from '@astrojs/starlight/components';
+import webhooks from '../../../../schemas/webhooks.json';
+import WebhookEventTypes from '@/components/webhooks/event-types.astro';
 
-Halaman ini menyenaraikan setiap acara webhook yang anda boleh langgani di Wink. Untuk arahan penyediaan, lihat [Panduan Integrasi Webhook](/ms/guides/developers/webhook-integration) atau [halaman pengurusan Webhooks](/ms/portal/settings/webhooks).
+Halaman ini menyenaraikan setiap acara webhook yang anda boleh langgani di Wink. Untuk arahan penyediaan, lihat [Panduan Integrasi Webhook](/ms/developers/webhook-integration) atau [halaman pengurusan Webhooks](/ms/portal/settings/webhooks).
 
 ## Cara melanggan
 
 1. Navigasi ke **Applications > Webhooks** dalam portal anda.
-2. Cipta webhook dan pilih acara yang anda ingin terima.
-3. Wink akan menghantar HTTP POST ke titik akhir anda setiap kali acara berlaku.
-
-Untuk langkah penyediaan penuh dan amalan terbaik, lihat [Integrasi Webhook](/ms/guides/developers/webhook-integration).
-
----
-
-## Mengurus acara entiti
-
-Acara untuk mengurus entiti (harta, afiliasi, syarikat) dan pentadbirannya.
-
-### Kitaran hayat
-
-| Acara | Kekunci | Penerangan |
-|---|---|---|
-| Entiti dicipta | `managing_entity.created` | Entiti pengurusan baru telah dicipta. |
-| Entiti dipadam | `managing_entity.deleted` | Entiti pengurusan telah dipadam. |
-| Status dikemas kini | `managing_entity.status.updated` | Status entiti telah berubah. |
-| Dalam semakan | `account.under_review` | Akaun entiti sedang menunggu semakan. |
-
-### Langganan
-
-| Acara | Kekunci | Penerangan |
-|---|---|---|
-| Langganan disediakan | `managing_entity.subscription.provisioned` | Langganan baru telah disediakan. |
-| Langganan diubah | `managing_entity.subscription.changed` | Pelan langganan telah diubah. |
-| Invois langganan diubah | `managing_entity.subscription.invoice.changed` | Invois langganan telah dikemas kini. |
-
-### Kitaran hayat pengurus
-
-| Acara | Kekunci | Penerangan |
-|---|---|---|
-| Pengurus ditambah | `managing_entity.manager.added` | Pengurus baru telah ditambah. |
-| Pengurus dijemput | `managing_entity.manager.invited` | Jemputan pengurus telah dihantar. |
-| Pengurus dialih keluar | `managing_entity.manager.removed` | Pengurus telah dialih keluar. |
-| Pengurus diterima | `managing_entity.manager.accepted` | Jemputan pengurus telah diterima. |
-| Pengurus ditolak | `managing_entity.manager.rejected` | Jemputan pengurus telah ditolak. |
-| Pemilik ditetapkan | `managing_entity.manager.owner.set` | Pemilikan entiti telah dipindahkan. |
-| Pengurus dikemas kini | `account.managers.update` | Senarai pengurus telah berubah. |
-
-### Maklumat entiti
-
-| Acara | Kekunci | Penerangan |
-|---|---|---|
-| Maklumat dikemas kini | `managing_entity.information.updated` | Maklumat entiti telah dikemas kini. |
-| Alamat dikemas kini | `managing_entity.city.updated` | Alamat/bandar entiti telah diubah. |
-| Nama dikemas kini | `managing_entity.name.updated` | Nama entiti telah diubah. |
-| Nama URL dikemas kini | `managing_entity.url_name.updated` | URL vanity entiti telah berubah. |
-| ID unik dikemas kini | `managing_entity.unique_id.updated` | Pengenal unik entiti telah berubah. |
-| Dikendalikan oleh dikemas kini | `managing_entity.managed_by.updated` | Hubungan induk/dikendalikan oleh entiti telah berubah. |
-| ID tempat dikemas kini | `managing_entity.place_id.updated` | ID Tempat Google entiti telah berubah. |
-| Wakil akaun dikemas kini | `managing_entity.account_representative.updated` | Wakil akaun telah diubah. |
-| Gambar profil dikemas kini | `managing_entity.profile_picture.updated` | Gambar profil entiti telah dikemas kini. |
-| Logo dikemas kini | `managing_entity.logo.updated` | Logo entiti telah dikemas kini. |
-| Butiran dikemas kini | `account.details.updated` | Medan butiran akaun telah berubah. |
-| Ejen dikemas kini | `managing_entity.agent.updated` | Ejen entiti telah diubah. |
-
-### Pemberitahuan
-
-| Acara | Kekunci | Penerangan |
-|---|---|---|
-| Pemberitahuan e-mel ejen | `managing_entity.agent.email.notification` | Pemberitahuan e-mel telah dihantar kepada ejen. |
-| Pemberitahuan e-mel pengurus | `managing_entity.manager.email.notification` | Pemberitahuan e-mel telah dihantar kepada pengurus. |
-
-### Tugasan akaun
-
-| Acara | Kekunci | Penerangan |
-|---|---|---|
-| Tugasan dicipta | `account.task.create` | Tugasan baru telah ditambah ke akaun. |
-| Tugasan dikemas kini | `account.task.update` | Tugasan akaun telah diubah. |
-| Tugasan dialih keluar | `account.task.remove` | Tugasan akaun telah dialih keluar. |
-| Tugasan diselesaikan | `account.task.complete` | Tugasan akaun telah diselesaikan. |
-| Tugasan pengesahan ID cukai selesai | `account.task.tax_id.complete` | Tugasan pengesahan ID cukai telah diselesaikan. |
-
----
-
-## Acara tempahan
-
-Acara untuk kitaran hayat tempahan Wink, dari penciptaan hingga bayaran balik dan pembayaran.
-
-### Tempahan teras
-
-| Acara | Kekunci | Penerangan |
-|---|---|---|
-| Tempahan dicipta | `booking.create` | Tempahan baru telah dicipta. |
-| Tempahan dibatalkan | `booking.cancelled` | Tempahan telah dibatalkan. |
-| Tempahan gagal | `booking.failed` | Cubaan tempahan gagal. |
-| Pemprosesan tempahan | `booking.processing` | Pembayaran tempahan sedang diproses. |
-| Permintaan inisialisasi | `booking.initialize.request` | Permintaan inisialisasi tempahan telah dibuat. |
-| Inisialisasi selesai | `booking.initialize.complete` | Inisialisasi tempahan telah selesai. |
-
-### Bayaran balik
-
-| Acara | Kekunci | Penerangan |
-|---|---|---|
-| Permintaan bayaran balik | `booking.refund.request` | Permintaan bayaran balik telah dihantar. |
-| Ralat bayaran balik | `booking.refund.error` | Ralat berlaku semasa memproses bayaran balik. |
-| Bayaran balik separa | `booking.refund.partial` | Bayaran balik separa telah dikeluarkan. |
-| Bayaran balik penuh | `booking.refund.full` | Bayaran balik penuh telah dikeluarkan. |
-
-### Pembayaran
-
-| Acara | Kekunci | Penerangan |
-|---|---|---|
-| Pembayaran dicipta | `booking.payout.create` | Pembayaran telah dicipta untuk tempahan. |
-| Pembayaran selesai | `booking.payout.complete` | Pembayaran telah berjaya diselesaikan. |
-| Dana tersedia | `booking.funds.available` | Dana tempahan tersedia untuk penyelesaian. |
-| Dana direkodkan | `booking.funds.ledgered` | Dana tempahan telah direkodkan dalam lejar. |
-
-### Ulasan
-
-| Acara | Kekunci | Penerangan |
-|---|---|---|
-| Ulasan dihantar | `booking.review.created` | Ulasan tetamu telah dihantar untuk tempahan. |
-| Ulasan dibalas | `booking.review.responded` | Harta telah membalas ulasan tempahan. |
-
----
-
-## Acara harta
-
-Acara untuk profil dan kandungan harta, dihantar kepada pelanggan webhook harta tersebut.
-
-| Acara | Kekunci | Penerangan |
-|---|---|---|
-| Harta dicipta | `property.created` | Harta baru telah dicipta. |
-| Harta dikemas kini | `property.updated` | Butiran harta telah dikemas kini. |
-| Harta dipadam | `property.deleted` | Harta telah dialih keluar. |
-| Harta didaftarkan | `property.registered` | Harta telah melengkapkan pendaftaran. |
-| Status dikemas kini | `property.status.updated` | Status luaran harta telah berubah. |
-| Nama dikemas kini | `property.name.updated` | Nama harta telah berubah. |
-| Alamat dikemas kini | `property.address.updated` | Alamat harta telah dikemas kini. |
-| Geolokasi dikemas kini | `property.geolocation.updated` | Geolokasi harta telah dikemas kini. |
-| Profil dikemas kini | `property.profile.updated` | Kandungan profil harta telah berubah. |
-| Perkhidmatan dikemas kini | `property.services.updated` | Senarai perkhidmatan/kemudahan harta telah berubah. |
-| Teks sambutan dikemas kini | `property.welcome_text.updated` | Mesej sambutan harta telah berubah. |
-| Polisi dicipta | `property.policy.created` | Polisi harta baru telah dicipta. |
-| Polisi dikemas kini | `property.policy.updated` | Polisi harta telah dikemas kini. |
-
----
-
-## Acara inventori
-
-Acara untuk item inventori dalam harta, dihantar kepada pelanggan webhook harta tersebut.
-
-### Jenis bilik
-
-| Acara | Kekunci | Penerangan |
-|---|---|---|
-| Jenis bilik dicipta | `room_type.created` | Jenis bilik baru telah ditambah. |
-| Jenis bilik dikemas kini | `room_type.updated` | Jenis bilik telah diubah. |
-| Jenis bilik dipadam | `room_type.deleted` | Jenis bilik telah dialih keluar. |
-
-### Pelan kadar
-
-| Acara | Kekunci | Penerangan |
-|---|---|---|
-| Pelan kadar dicipta | `rate_plan.created` | Pelan kadar baru telah dicipta. |
-| Pelan kadar dikemas kini | `rate_plan.updated` | Pelan kadar telah diubah. |
-| Pelan kadar dipadam | `rate_plan.deleted` | Pelan kadar telah dialih keluar. |
-
-### Kadar induk
-
-| Acara | Kekunci | Penerangan |
-|---|---|---|
-| Kadar induk dicipta | `master_rate.created` | Kadar induk baru telah dicipta. |
-| Kadar induk dikemas kini | `master_rate.updated` | Kadar induk telah diubah. |
-| Kadar induk dipadam | `master_rate.deleted` | Kadar induk telah dialih keluar. |
-
-### Tambahan
-
-| Acara | Kekunci | Penerangan |
-|---|---|---|
-| Tambahan dicipta | `add_on.created` | Tambahan baru telah dicipta. |
-| Tambahan dikemas kini | `add_on.updated` | Tambahan telah diubah. |
-| Tambahan dipadam | `add_on.deleted` | Tambahan telah dialih keluar. |
-
-### Bilik mesyuarat
-
-| Acara | Kekunci | Penerangan |
-|---|---|---|
-| Bilik mesyuarat dicipta | `meeting_room.created` | Bilik mesyuarat baru telah ditambah. |
-| Bilik mesyuarat dikemas kini | `meeting_room.updated` | Bilik mesyuarat telah diubah. |
-| Bilik mesyuarat dipadam | `meeting_room.deleted` | Bilik mesyuarat telah dialih keluar. |
-
-### Restoran
-
-| Acara | Kekunci | Penerangan |
-|---|---|---|
-| Restoran dicipta | `restaurant.created` | Restoran baru telah ditambah. |
-| Restoran dikemas kini | `restaurant.updated` | Restoran telah diubah. |
-| Restoran dipadam | `restaurant.deleted` | Restoran telah dialih keluar. |
-
-### Spa
-
-| Acara | Kekunci | Penerangan |
-|---|---|---|
-| Spa dicipta | `spa.created` | Spa baru telah ditambah. |
-| Spa dikemas kini | `spa.updated` | Spa telah diubah. |
-| Spa dipadam | `spa.deleted` | Spa telah dialih keluar. |
-
-### Aktiviti
-
-| Acara | Kekunci | Penerangan |
-|---|---|---|
-| Aktiviti dicipta | `activity.created` | Aktiviti baru telah ditambah. |
-| Aktiviti dikemas kini | `activity.updated` | Aktiviti telah diubah. |
-| Aktiviti dipadam | `activity.deleted` | Aktiviti telah dialih keluar. |
-
----
-
-## Acara saluran jualan
-
-Acara untuk saluran pengedaran yang menghubungkan pembekal dan afiliasi. Dihantar kepada pelanggan webhook pembekal dan afiliasi.
-
-| Acara | Kekunci | Penerangan |
-|---|---|---|
-| Saluran jualan dicipta | `sales_channel.created` | Saluran jualan baru telah dicipta. |
-| Saluran jualan dikemas kini | `sales_channel.updated` | Saluran jualan telah diubah. |
-| Saluran jualan dipadam | `sales_channel.deleted` | Saluran jualan telah dialih keluar. |
-
----
-
-## Acara kadar khas
-
-Acara untuk kadar promosi dan rundingan pada harta.
-
-| Acara | Kekunci | Penerangan |
-|---|---|---|
-| Kadar khas dicipta | `special_rate.created` | Kadar khas baru telah dicipta. |
-| Kadar khas dikemas kini | `special_rate.updated` | Kadar khas telah diubah. |
-| Kadar khas dipadam | `special_rate.deleted` | Kadar khas telah dialih keluar. |
-| Pengubah kadar dikemas kini | `rate_modifier.updated` | Pengubah kadar telah dikemas kini. |
-
----
-
-## Acara penerima bayaran
-
-Acara berkaitan pengurusan penerima bayaran (penerima pembayaran).
-
-| Acara | Kekunci | Penerangan |
-|---|---|---|
-| Penerima bayaran dicipta | `payee.create` | Penerima bayaran baru telah berjaya dicipta. |
-| Penciptaan penerima bayaran gagal | `payee.create.failure` | Penciptaan penerima bayaran gagal. |
-| Penerima bayaran dikemas kini | `payee.update` | Penerima bayaran telah dikemas kini. |
-| Kemas kini penerima bayaran gagal | `payee.update.failure` | Kemas kini penerima bayaran gagal. |
-
----
-
-## Acara pembayaran
-
-Acara pemprosesan pembayaran dalaman dari TripPay.
-
-| Acara | Kekunci | Penerangan |
-|---|---|---|
-| Pembayaran berjaya | `internal.payment.succeeded` | Pembayaran telah berjaya diproses. |
-| Pembayaran diproses | `internal.payment.processing` | Pembayaran sedang diproses. |
-| Pembayaran gagal | `internal.payment.failed` | Pemprosesan pembayaran gagal. |
-
----
-
-## Acara pengurus saluran
-
-Acara berkaitan tolak kadar dan ketersediaan pengurus saluran.
-
-| Acara | Kekunci | Penerangan |
-|---|---|---|
-| Kemas kini kadar | `channel-manager.update.rate` | Pengurus saluran telah menolak kemas kini kadar. |
-| Kemas kini ketersediaan | `channel-manager.update.availability` | Pengurus saluran telah menolak kemas kini ketersediaan. |
-| Kemas kini umum | `channel-manager.update` | Kemas kini umum pengurus saluran. |
-
----
-
-## Acara lejar
-
-Acara berkaitan entri lejar kewangan.
-
-| Acara | Kekunci | Penerangan |
-|---|---|---|
-| Entri lejar dicipta | `ledger.entry.create` | Entri lejar baru telah direkodkan. |
-
----
-
-## Acara e-mel
-
-| Acara | Kekunci | Penerangan |
-|---|---|---|
-| Surat-menyurat e-mel | `email.correspondence` | E-mel keluar telah dihantar. |
-
----
-
-## Ringkasan kiraan acara
-
-| Kategori | Kiraan |
-|---|---|
-| Acara entiti pengurusan | 33 |
-| Acara tempahan | 16 |
-| Acara harta | 13 |
-| Acara inventori (jenis bilik, pelan kadar, kadar induk, tambahan, kemudahan) | 24 |
-| Acara saluran jualan | 3 |
-| Acara kadar khas | 4 |
-| Acara penerima bayaran | 4 |
-| Acara pembayaran | 3 |
-| Acara pengurus saluran | 3 |
-| Acara lejar | 1 |
-| Acara e-mel | 1 |
-| **Jumlah** | **105** |
+2. Cipta webhook dan pilih acara yang anda ingin terima — atau biarkan senarai kosong untuk menerima setiap acara.
+3. Wink menghantar HTTP POST yang ditandatangani ke titik akhir anda setiap kali acara berlaku. Lihat [Integrasi Webhook](/ms/developers/webhook-integration) untuk sampul surat, pengepala, pengesahan tandatangan dan cubaan semula.
+
+## Setiap jenis acara
+
+Jadual ini dijana dari katalog acara platform semasa binaan, jadi ia sentiasa sepadan dengan API.
+Jenis acara yang ditandakan sebagai dihantar pautan ke halaman rujukan mereka dalam [Webhooks API](/ms/api/webhooks/), yang
+mendokumentasikan badan JSON tepat (`WebhookEnvelope` dengan `object` khusus acara), pengepala `Wink-*` dan
+dasar cubaan semula. Jenis acara yang tidak dihantar wujud secara dalaman (pembayaran, lejar, penyegerakan pengurus saluran,
+…) tetapi tidak dihantar kepada pelanggan webhook buat masa ini.
+
+**Penerima** menunjukkan siapa yang menerima acara: `SUPPLIER` (hotel), `AFFILIATE` (penjual semula dengan saluran jualan aktif ke hotel), `AGENT` (agensi pelancongan yang membuat tempahan) atau `SELF` (entiti pengurusan yang berkaitan dengan acara). Setiap penerima menerima bentuk payload yang sama; butiran khusus peranan berada di belakang URL `links.self` dalam payload.
+
+<WebhookEventTypes
+  types={webhooks['x-wink-event-types']}
+  referenceBase="/api/webhooks"
+  eventHeader="Acara"
+  descriptionHeader="Penerangan"
+  deliveredHeader="Dihantar"
+  recipientsHeader="Penerima"
+  deliveredLabel="dihantar"
+  notDeliveredLabel="tidak dihantar"
+  noRecipientsLabel="—"
+/>
 
 :::tip
-Mulakan dengan melanggan semua acara semasa pembangunan. Setelah anda memahami payload yang diperlukan sistem anda, kurangkan langganan untuk mengurangkan gangguan.
+Mulakan dengan melanggan semua acara semasa pembangunan. Setelah anda faham payload yang sistem anda perlukan, sempitkan langganan anda untuk mengurangkan gangguan. Hantar acara ujian kepada diri sendiri dari **Applications > Webhooks** (atau `POST …/webhook/{id}/test`) untuk mengesahkan titik akhir dan pemeriksaan tandatangan sebelum siaran langsung.
 :::
 
 ## Bacaan lanjut
 
-- [Panduan Integrasi Webhook](/ms/guides/developers/webhook-integration) — Langkah penyediaan dan amalan terbaik.
+- [Panduan Integrasi Webhook](/ms/developers/webhook-integration) — Langkah penyediaan dan amalan terbaik.
 - [Webhooks](/ms/portal/settings/webhooks) — Urus langganan webhook anda.
-- [Applications](/ms/portal/settings/applications) — Urus kelayakan API.
+- [Applications](/ms/account/applications) — Urus kelayakan API.
 - [Build on Wink](/ms/developers/build-on-wink) — Gambaran platform untuk pembangun.

@@ -22,10 +22,12 @@ const mapping = JSON.parse(
 
 // Redirect targets for deleted docs.
 const deleteTargets = {
+  "booking-engine/in-a-nutshell": "/booking-engine/features",
+  "guides/developers/integrating-with-trip-pay": "/",
   "my-account/activity-stream": "/",
   "my-account/loyalty-points": "/",
   "my-account/notifications": "/",
-  "my-account/reporting": "/portal/analytics",
+  "my-account/reporting": "/account/analytics",
   "payment/dashboard": "/portal/payment/withdraw-funds",
   "payment/receipts": "/portal/payment/withdraw-funds",
   "payment/bookings": "/portal/payment/withdraw-funds",
@@ -34,6 +36,7 @@ const deleteTargets = {
   "payment/mapping": "/",
   "payment/verification": "/",
   "payment/tax-id": "/",
+  "getting-started/ai-content": "/guides/hoteliers/ai-assisted-registration",
 };
 
 const walkMdx = (startDir) => {

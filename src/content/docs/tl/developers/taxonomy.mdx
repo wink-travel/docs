@@ -1,0 +1,62 @@
+---
+title: Taksonomiya
+description: Ang mga kontroladong bokabularyo na ginagamit ng Wink platform — mga OTA code para sa mga amenity, uri ng kama, tanawin ng kuwarto at iba pa, pati na rin ang bawat suportadong wika at pera.
+sidebar:
+  order: 12
+---
+
+import taxonomy from '@/data/taxonomy.json';
+import OtaCategories from '@/components/taxonomy/ota-categories.astro';
+import CodeTable from '@/components/taxonomy/code-table.astro';
+
+Inilalarawan ng Wink ang imbentaryo gamit ang mga kontroladong bokabularyo — mga nakatakdang set ng mga code na may pinagkasunduang kahulugan. Kapag ipinadala mo ang `"5"` bilang amenity ng hotel, binabasa ito ng platform bilang *Air conditioning*, at ganoon din ang bawat gumagamit ng datos na iyon.
+
+Ang pahinang ito ang inilathalang sanggunian para sa lahat ng tatlong bokabularyo:
+
+- **OTA codes** — {taxonomy.ota.codeCount} na mga code sa {taxonomy.ota.categoryCount} kategorya, na sumasaklaw sa mga amenity, uri ng kama, tanawin ng kuwarto, mga tampok sa accessibility, lutuin, at iba pa.
+- **Mga Wika** — ang {taxonomy.languages.list.length} mga wika kung saan maaaring likhain at ihain ang nilalaman.
+- **Mga Pera** — ang {taxonomy.currencies.list.length} mga pera kung saan maaaring i-quote at ayusin ang mga rate.
+
+Matatag ang mga code. Maaring baguhin ang mga pangalan para sa kalinawan, kaya tumugma sa **code**, hindi sa pangalan.
+
+## OTA codes
+
+Sinusunod ng Wink ang mga listahan ng code ng [OpenTravel Alliance](https://opentravel.org/). Bawat kategorya ay may tatlong-titik na identifier — `HAC` para sa mga amenity ng hotel, `BED` para sa mga uri ng kama — at bawat code sa loob ng isang kategorya ay natatangi dito. Ang parehong numerong halaga ay may iba't ibang kahulugan sa iba't ibang kategorya, kaya ang isang code ay may kahulugan lamang kasabay ng kategoryang kinabibilangan nito: ang `BED` `1` ay *Double / Full*, habang ang `HAC` `1` ay *24-hour front desk*.
+
+Pumili ng kategorya upang makita ang mga code nito.
+
+<OtaCategories
+  categories={taxonomy.ota.categories}
+  categoryHeader="Kategorya"
+  descriptionHeader="Paglalarawan"
+  countHeader="Mga Code"
+  codeHeader="Code"
+  nameHeader="Pangalan"
+/>
+
+## Mga Wika
+
+Ang nilalaman — mga paglalarawan ng property, mga pangalan ng kuwarto, mga patakaran — ay maaaring likhain sa alinman sa mga wikang ito. Ang mga code ay mga tag na [IETF BCP 47](https://www.rfc-editor.org/info/bcp47): isang dalawang-titik na [ISO 639-1](https://www.iso.org/iso-639-language-code) na wika, na maaaring sundan ng isang [ISO 3166-1](https://www.iso.org/iso-3166-country-codes.html) na rehiyon kung saan pinag-iiba ng platform ang mga rehiyonal na bersyon — ang `pt-BR` at `pt-PT` ay hiwalay na nilalakad, gayundin ang `es`, `es-AR`, at `es-MX`.
+
+Ang default ng platform ay `{taxonomy.languages.default}`, na ginagamit kapag walang tinukoy na wika sa isang kahilingan at kapag walang magagamit na pagsasalin.
+
+<CodeTable
+  rows={taxonomy.languages.list}
+  codeHeader="Code"
+  nameHeader="Wika"
+  unnamedLabel="Walang karaniwang pangalan"
+/>
+
+## Mga Pera
+
+Maaaring i-quote at ayusin ang mga rate sa alinman sa mga perang ito. Ang mga code ay mga tatlong-titik na identifier ng [ISO 4217](https://www.iso.org/iso-4217-currency-codes.html).
+
+Ang default ng platform ay `{taxonomy.currencies.default}`. Ito ang fallback na pera sa pagpapakita at ang yunit kung saan normalisado ang mga figure sa antas ng platform; **hindi** ito ang perang ginagamit sa pag-aayos ng booking — ang mga hotel ay nag-aayos sa kanilang sariling pera, kaya ang rate na na-quote sa isang pera at binayaran sa iba ay may kasamang palitan ng pera.
+
+Ilan sa mga entry ay hindi pambansang pera: ang `XAU` at `XAG` ay ginto at pilak, ang `XDR` ay ang Special Drawing Right ng IMF, at ang `BTC` ay Bitcoin. Ito ay ginagamit para sa pagtataya at pag-uulat, at karaniwang hindi magagamit bilang pera sa pag-aayos.
+
+<CodeTable
+  rows={taxonomy.currencies.list}
+  codeHeader="Code"
+  nameHeader="Pera"
+/>

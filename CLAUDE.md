@@ -33,7 +33,8 @@ npm run build
 # Preview production build
 npm preview
 
-# Refresh OpenAPI schema snapshots from prod (writes to ./schemas/)
+# Refresh OpenAPI schema snapshots from monorepo-java's build output (writes to ./schemas/)
+# Requires the monorepo to have been built first -- see schemas/README.md
 npm run schemas:sync
 
 # Translate all documentation to all languages
@@ -87,6 +88,17 @@ The `scripts/translate-i18n.ts` script:
 4. Automatically rewrites internal links to add locale prefixes (e.g., `/path` → `/fr/path`)
 5. Never translates product names (Wink, WinkLinks, Wink Studio, etc.)
 
+**Source discovery:** `discoverSourceDirectories()` walks `src/content/docs/` recursively and
+translates every directory containing `.md`/`.mdx`, so a new docs section is picked up with no
+script change. Exclusions are opt-out, not opt-in: locale directories are skipped via the
+`targetLanguages` ids, and `UNTRANSLATED_DIRECTORIES` skips `api`, `blog`, and `changelog`. Add a
+directory there if it should never be translated. Root-level pages (`index.mdx`, `team.mdx`,
+`contact.mdx`, `privacy.md`, `terms.md`, `jobs.mdx`) are listed explicitly in `rootFiles` — a new
+root-level page **does** need to be added there.
+
+Dry-run the file discovery without spending OpenAI calls by forcing an empty language list:
+`ONLY_LANG=__dry_run__ npx tsx ./scripts/translate-i18n.ts` prints the directories it would visit.
+
 **Environment variables required:**
 - `OPENAI_API_KEY` - For translation service
 - `OPENAI_TRANSLATION_MODEL` - Optional, defaults to gpt-4.1-mini-2025-04-14
@@ -117,10 +129,44 @@ TypeScript path aliases defined in `tsconfig.json`:
 The site uses these Starlight plugins (see `astro.config.mjs`):
 - `starlightBlog` - Blog functionality
 - `starlightChangelogs` - GitHub-synced changelogs
-- `starlightOpenAPI` - Renders API reference pages from OpenAPI snapshots in the top-level `schemas/` directory. Two schemas wired up: `schemas/api.json` (route `/api/`, sidebar label "Platform") and `schemas/integrations.json` (route `/integrations-api/`, sidebar label "Channel Manager"). Both schemas nest under a single "API" sidebar group via `createOpenAPISidebarGroup()` — see the `apiSidebarGroup` constant in `astro.config.mjs`. Refresh snapshots via `npm run schemas:sync` (see `scripts/sync-schemas.ts`); the script preserves last-good snapshots when upstream returns non-2xx. `schemas/api.json` may currently be a stub if `https://api.wink.travel/v3/api-docs` was unreachable at last sync — see `schemas/README.md`.
+- `starlightOpenAPI` - Renders API reference pages from the OpenAPI snapshots in the top-level `schemas/`
+  directory: twelve documents, one per audience, nested under a single "API" sidebar group via
+  `createOpenAPISidebarGroup()` — see the `apiSidebarGroup` constant in `astro.config.mjs`. The snapshots
+  are BUILD ARTIFACTS of monorepo-java, not fetched from any deployment, so they cannot be pointed at the
+  wrong environment; refresh with `npm run schemas:sync` after building the monorepo (see
+  `schemas/README.md` for the exact commands and why the sync rejects a placeholder version).
 - `starlightDocSearch` is installed but currently commented out in `astro.config.mjs`.
 
 Sidebar is explicitly listed in `astro.config.mjs` (not fully auto-generated): each top-level group is `autogenerate`'d from a directory under `src/content/docs/`, and a single "API" group (containing the `apiSidebarGroup` placeholder) appears immediately after Developers. Adding a new top-level docs section requires editing the `sidebar` array.
+
+### Taxonomy (Developers > Taxonomy)
+
+`src/data/taxonomy.json` holds the platform's three controlled vocabularies — OTA codes (25 categories,
+1,475 codes), supported languages (44), supported currencies (164) — rendered by
+`src/content/docs/developers/taxonomy.mdx` via the components in `src/components/taxonomy/`.
+
+**The values are HARDCODED here on purpose, and this repo is becoming their published home.** They are
+not synced from monorepo-java and there is no `taxonomy:sync` script, because the backend endpoints that
+used to serve them (`/reference-data/ota/list`, `/reference-data/ota/{category}`,
+`/reference-data/language/list`, `/reference-data/currency/list`) are being retired now that this page
+exists. A sync script would point the dependency back at the thing being removed.
+
+Their original upstreams, for the record — useful when reconciling a change, not as a build input:
+
+| vocabulary | was |
+|---|---|
+| OTA codes | `reference/reference-domain/src/main/resources/ota/*.json` (still used at runtime for code→label resolution in booking emails, PDFs, lead suggestions, embeddings — those stay) |
+| languages | `platform.supported-languages` in `apps/inventory-app/src/main/resources/application.properties` |
+| currencies | `platform.supported-currencies`, same file |
+
+`taxonomy.json` carries **no timestamp**, so regenerating it produces a diff only when a value actually
+changed — a "nothing moved" commit is indistinguishable from a real contract change otherwise.
+
+Component chrome (table headers, the "No standard name" placeholder) is passed in as **props from the
+MDX**, never hardcoded in the `.astro` files. `translate-i18n.ts` translates whole MDX files and never
+opens a component, so a header written inside `code-table.astro` would stay English in all 40+ locales
+with nothing to flag it. The code values themselves are deliberately outside the MDX so translation
+cannot touch them — a translated OTA code is a broken one.
 
 ## Important Patterns
 

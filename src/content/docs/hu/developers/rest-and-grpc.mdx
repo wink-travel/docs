@@ -1,0 +1,75 @@
+---
+title: REST és gRPC
+description: Hogyan integrálódj a Wink Platformhoz REST vagy gRPC használatával, generálj klienst a sémáinkból, és használd az MCP szerverünket, hogy az integrációs kódot az esetedhez igazítsd.
+sidebar:
+  order: 7
+---
+
+import { LinkButton, Aside } from '@astrojs/starlight/components';
+
+A Wink két átviteli módot kínál. Az, hogy melyiket használod, attól függ, melyik API-val integrálódsz.
+
+| | Átviteli mód | Séma | Dokumentáció |
+| --- | --- | --- | --- |
+| A legtöbb Wink API | REST HTTPS-en keresztül | OpenAPI 3 | Bármelyik csoport az **API** alatt az oldalsávban |
+| Partner Integrátor API | gRPC HTTP/2-n keresztül | Protocol Buffers | [Partner](/hu/partner-api/partner/) |
+
+<Aside type="note" title="Már nem publikálunk nyelvi SDK-kat">
+  A kézzel karbantartott SDK-k lemaradtak az általuk lefedett API-któl, és sosem tartalmazták azt a nyelvet, amire ténylegesen szükséged volt. Generálj inkább klienst a sémából — az mindig naprakész — vagy hagyd, hogy az MCP szerverünk az esetedhez igazított integrációs kódot írjon.
+</Aside>
+
+## REST kliens generálása
+
+Minden API csoport publikál egy OpenAPI 3 dokumentumot. Mutass rá bármely OpenAPI generátorra, és kapsz egy típusos klienst a választott nyelveden.
+
+```bash
+# Egy csoport specifikációja a referencia oldal mellett érhető el.
+curl -o wink-extranet.json https://api.wink.travel/v3/api-docs/extranet
+
+npx @openapitools/openapi-generator-cli generate \
+  -i wink-extranet.json -g typescript-fetch -o ./wink-client
+```
+
+<LinkButton href="https://openapi-generator.tech/docs/generators" variant="secondary" icon="external">
+  OpenAPI generátorok nyelvek szerint
+</LinkButton>
+
+## gRPC kliens generálása
+
+A Partner Integrátor API gRPC alapú. A klienst a `.proto` sémából generálod, amelyet a Wink két módon tesz elérhetővé:
+
+- **Szerver reflektálás** — a szerver önmagát írja le, így olyan eszközök, mint a `grpcurl`, Postman és Insomnia futásidőben felfedezhetik a sémát fájlok letöltése nélkül. A reflektáláshoz ugyanaz a bearer token szükséges, mint bármely más híváshoz.
+- **A `.proto` fájlok**, ha inkább előre szeretnéd beszerezni a sémát és generálni.
+
+```bash
+# A séma felfedezése egy futó szerverről (hitelesített).
+grpcurl -H "authorization: Bearer $WINK_TOKEN" \
+  partner.wink.travel:443 list
+
+# Ezután generálj klienst — itt Go nyelven; minden támogatott nyelv hasonlóan működik.
+protoc --go_out=. --go-grpc_out=. partner_lookup.proto
+```
+
+A hívások a bearer tokenedet az `authorization` metaadat fejlécben viszik, ugyanúgy, ahogy a REST az `Authorization` fejlécben. A hibák gRPC státuszkódként érkeznek a válasz végén, nem HTTP státuszkódként — a [Partner referencia](/hu/partner-api/partner/) felsorolja a várható státuszokat.
+
+<LinkButton href="https://grpc.io/docs/languages/" variant="secondary" icon="external">
+  gRPC gyors kezdők nyelvek szerint
+</LinkButton>
+
+<LinkButton href="https://grpc.io/docs/what-is-grpc/introduction/" variant="secondary" icon="external">
+  Mi az a gRPC?
+</LinkButton>
+
+## Vagy hagyd, hogy az MCP szerver írja meg
+
+Ha AI kódoló asszisztenst használsz, az MCP szerverünk a leggyorsabb út. A Wink API-it eszközként teszi elérhetővé, amelyeket az asszisztensed hívhat és értelmezhet, így ahelyett, hogy egész klienst generálnál és magad keresnéd meg a végpontokat, leírod, mit építesz, és kapsz az esetedhez igazított integrációs kódot.
+
+<LinkButton href="/hu/developers/mcp/" variant="primary">
+  Állítsd be a Wink MCP szervert
+</LinkButton>
+
+## További olvasnivaló
+
+- [Beállítás](/hu/developers/setup/) — fiókok, környezetek és hitelesítő adatok
+- [Hitelesítés](/hu/developers/authentication/) — tokenek beszerzése és frissítése
+- [Webhook integráció](/hu/developers/webhook-integration/) — események fogadása lekérdezés helyett

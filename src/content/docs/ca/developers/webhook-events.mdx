@@ -1,331 +1,49 @@
 ---
-title: Catàleg d'esdeveniments Webhook
-description: Referència completa de tots els tipus d'esdeveniments webhook disponibles a la plataforma Wink, organitzats per categoria.
+title: Catàleg d'Esdeveniments Webhook
+description: Cada tipus d'esdeveniment webhook a la plataforma Wink, generat a partir del catàleg d'esdeveniments de la plataforma — qui els rep i on es documenta la càrrega útil.
 sidebar:
-  order: 3
+  order: 3.5
 ---
 
-import { LinkButton } from '@astrojs/starlight/components';
+import webhooks from '../../../../schemas/webhooks.json';
+import WebhookEventTypes from '@/components/webhooks/event-types.astro';
 
-Aquesta pàgina llista tots els esdeveniments webhook als quals pots subscriure't a Wink. Per a instruccions de configuració, consulta la [Guia d'integració Webhook](/ca/guides/developers/webhook-integration) o la [pàgina de gestió de Webhooks](/ca/portal/settings/webhooks).
+Aquesta pàgina llista cada esdeveniment webhook al qual et pots subscriure a Wink. Per a instruccions de configuració, consulta la [Guia d'Integració Webhook](/ca/developers/webhook-integration) o la [pàgina de gestió de Webhooks](/ca/portal/settings/webhooks).
 
 ## Com subscriure's
 
 1. Navega a **Aplicacions > Webhooks** al teu portal.
-2. Crea un webhook i selecciona els esdeveniments que vols rebre.
-3. Wink envia un HTTP POST al teu endpoint cada vegada que l'esdeveniment ocorre.
-
-Per a passos complets de configuració i bones pràctiques, consulta [Integració Webhook](/ca/guides/developers/webhook-integration).
-
----
-
-## Gestió d'esdeveniments d'entitats
-
-Esdeveniments per a la gestió d'entitats (propietats, afiliats, empreses) i la seva administració.
-
-### Cicle de vida
-
-| Esdeveniment | Clau | Descripció |
-|---|---|---|
-| Entitat creada | `managing_entity.created` | S'ha creat una nova entitat gestora. |
-| Entitat eliminada | `managing_entity.deleted` | S'ha eliminat una entitat gestora. |
-| Estat actualitzat | `managing_entity.status.updated` | L'estat de l'entitat ha canviat. |
-| En revisió | `account.under_review` | El compte de l'entitat està pendent de revisió. |
-
-### Subscripció
-
-| Esdeveniment | Clau | Descripció |
-|---|---|---|
-| Subscripció aprovisionada | `managing_entity.subscription.provisioned` | S'ha aprovisionat una nova subscripció. |
-| Subscripció canviada | `managing_entity.subscription.changed` | El pla de subscripció ha canviat. |
-| Factura de subscripció canviada | `managing_entity.subscription.invoice.changed` | S'ha actualitzat la factura de la subscripció. |
-
-### Cicle de vida del gestor
-
-| Esdeveniment | Clau | Descripció |
-|---|---|---|
-| Gestor afegit | `managing_entity.manager.added` | S'ha afegit un nou gestor. |
-| Gestor convidat | `managing_entity.manager.invited` | S'ha enviat una invitació a un gestor. |
-| Gestor eliminat | `managing_entity.manager.removed` | S'ha eliminat un gestor. |
-| Gestor acceptat | `managing_entity.manager.accepted` | S'ha acceptat una invitació de gestor. |
-| Gestor rebutjat | `managing_entity.manager.rejected` | S'ha rebutjat una invitació de gestor. |
-| Propietari establert | `managing_entity.manager.owner.set` | S'ha transferit la propietat de l'entitat. |
-| Gestors actualitzats | `account.managers.update` | La llista de gestors ha canviat. |
-
-### Informació de l'entitat
-
-| Esdeveniment | Clau | Descripció |
-|---|---|---|
-| Informació actualitzada | `managing_entity.information.updated` | S'ha actualitzat la informació de l'entitat. |
-| Adreça actualitzada | `managing_entity.city.updated` | S'ha canviat l'adreça/ciutat de l'entitat. |
-| Nom actualitzat | `managing_entity.name.updated` | S'ha canviat el nom de l'entitat. |
-| Nom URL actualitzat | `managing_entity.url_name.updated` | S'ha canviat la URL personalitzada de l'entitat. |
-| ID únic actualitzat | `managing_entity.unique_id.updated` | S'ha canviat l'identificador únic de l'entitat. |
-| Gestionat per actualitzat | `managing_entity.managed_by.updated` | Ha canviat la relació de gestió/parent de l'entitat. |
-| Place ID actualitzat | `managing_entity.place_id.updated` | Ha canviat el Google Place ID de l'entitat. |
-| Representant del compte actualitzat | `managing_entity.account_representative.updated` | S'ha canviat el representant del compte. |
-| Foto de perfil actualitzada | `managing_entity.profile_picture.updated` | S'ha actualitzat la foto de perfil de l'entitat. |
-| Logo actualitzat | `managing_entity.logo.updated` | S'ha actualitzat el logo de l'entitat. |
-| Detalls actualitzats | `account.details.updated` | Han canviat els camps de detalls del compte. |
-| Agent actualitzat | `managing_entity.agent.updated` | S'ha modificat l'agent de l'entitat. |
-
-### Notificacions
-
-| Esdeveniment | Clau | Descripció |
-|---|---|---|
-| Notificació per correu a l'agent | `managing_entity.agent.email.notification` | S'ha enviat una notificació per correu a l'agent. |
-| Notificació per correu al gestor | `managing_entity.manager.email.notification` | S'ha enviat una notificació per correu a un gestor. |
-
-### Tasques del compte
-
-| Esdeveniment | Clau | Descripció |
-|---|---|---|
-| Tasca creada | `account.task.create` | S'ha afegit una nova tasca al compte. |
-| Tasca actualitzada | `account.task.update` | S'ha modificat una tasca del compte. |
-| Tasca eliminada | `account.task.remove` | S'ha eliminat una tasca del compte. |
-| Tasca completada | `account.task.complete` | S'ha completat una tasca del compte. |
-| Tasca de verificació d'ID fiscal completada | `account.task.tax_id.complete` | S'ha completat la tasca de verificació d'ID fiscal. |
-
----
-
-## Esdeveniments de reserves
-
-Esdeveniments del cicle de vida de la reserva a Wink, des de la creació fins a reemborsaments i pagaments.
-
-### Reserva bàsica
-
-| Esdeveniment | Clau | Descripció |
-|---|---|---|
-| Reserva creada | `booking.create` | S'ha creat una nova reserva. |
-| Reserva cancel·lada | `booking.cancelled` | S'ha cancel·lat una reserva. |
-| Reserva fallida | `booking.failed` | Ha fallat un intent de reserva. |
-| Reserva en procés | `booking.processing` | S'està processant el pagament de la reserva. |
-| Inicialització sol·licitada | `booking.initialize.request` | S'ha sol·licitat la inicialització d'una reserva. |
-| Inicialització completada | `booking.initialize.complete` | S'ha completat la inicialització de la reserva. |
-
-### Reemborsaments
-
-| Esdeveniment | Clau | Descripció |
-|---|---|---|
-| Reemborsament sol·licitat | `booking.refund.request` | S'ha enviat una sol·licitud de reemborsament. |
-| Error de reemborsament | `booking.refund.error` | S'ha produït un error en processar un reemborsament. |
-| Reemborsament parcial | `booking.refund.partial` | S'ha emès un reemborsament parcial. |
-| Reemborsament complet | `booking.refund.full` | S'ha emès un reemborsament complet. |
-
-### Pagaments
-
-| Esdeveniment | Clau | Descripció |
-|---|---|---|
-| Pagament creat | `booking.payout.create` | S'ha creat un pagament per a la reserva. |
-| Pagament completat | `booking.payout.complete` | S'ha completat amb èxit un pagament. |
-| Fons disponibles | `booking.funds.available` | Els fons de la reserva estan disponibles per a liquidació. |
-| Fons registrats | `booking.funds.ledgered` | Els fons de la reserva s'han registrat al llibre comptable. |
-
-### Ressenyes
-
-| Esdeveniment | Clau | Descripció |
-|---|---|---|
-| Ressenya enviada | `booking.review.created` | S'ha enviat una ressenya d'un hoste per a una reserva. |
-| Ressenya contestada | `booking.review.responded` | Una propietat ha respost a una ressenya de reserva. |
-
----
-
-## Esdeveniments de propietats
-
-Esdeveniments per a perfils i contingut de propietats, enviats als subscriptors webhook de la propietat.
-
-| Esdeveniment | Clau | Descripció |
-|---|---|---|
-| Propietat creada | `property.created` | S'ha creat una nova propietat. |
-| Propietat actualitzada | `property.updated` | S'han actualitzat els detalls de la propietat. |
-| Propietat eliminada | `property.deleted` | S'ha eliminat una propietat. |
-| Propietat registrada | `property.registered` | S'ha completat el registre d'una propietat. |
-| Estat actualitzat | `property.status.updated` | Ha canviat l'estat extern de la propietat. |
-| Nom actualitzat | `property.name.updated` | Ha canviat el nom de la propietat. |
-| Adreça actualitzada | `property.address.updated` | S'ha actualitzat l'adreça de la propietat. |
-| Geolocalització actualitzada | `property.geolocation.updated` | S'ha actualitzat la geolocalització de la propietat. |
-| Perfil actualitzat | `property.profile.updated` | Ha canviat el contingut del perfil de la propietat. |
-| Serveis actualitzats | `property.services.updated` | Ha canviat la llista de serveis/instal·lacions de la propietat. |
-| Text de benvinguda actualitzat | `property.welcome_text.updated` | Ha canviat el missatge de benvinguda de la propietat. |
-| Política creada | `property.policy.created` | S'ha creat una nova política de propietat. |
-| Política actualitzada | `property.policy.updated` | S'ha actualitzat una política de propietat. |
-
----
-
-## Esdeveniments d'inventari
-
-Esdeveniments per a elements d'inventari dins d'una propietat, enviats als subscriptors webhook d'aquesta propietat.
-
-### Tipus d'habitació
-
-| Esdeveniment | Clau | Descripció |
-|---|---|---|
-| Tipus d'habitació creat | `room_type.created` | S'ha afegit un nou tipus d'habitació. |
-| Tipus d'habitació actualitzat | `room_type.updated` | S'ha modificat un tipus d'habitació. |
-| Tipus d'habitació eliminat | `room_type.deleted` | S'ha eliminat un tipus d'habitació. |
-
-### Plans tarifaris
-
-| Esdeveniment | Clau | Descripció |
-|---|---|---|
-| Pla tarifari creat | `rate_plan.created` | S'ha creat un nou pla tarifari. |
-| Pla tarifari actualitzat | `rate_plan.updated` | S'ha modificat un pla tarifari. |
-| Pla tarifari eliminat | `rate_plan.deleted` | S'ha eliminat un pla tarifari. |
-
-### Tarifes mestres
-
-| Esdeveniment | Clau | Descripció |
-|---|---|---|
-| Tarifa mestra creada | `master_rate.created` | S'ha creat una nova tarifa mestra. |
-| Tarifa mestra actualitzada | `master_rate.updated` | S'ha modificat una tarifa mestra. |
-| Tarifa mestra eliminada | `master_rate.deleted` | S'ha eliminat una tarifa mestra. |
-
-### Addicionals
-
-| Esdeveniment | Clau | Descripció |
-|---|---|---|
-| Addicional creat | `add_on.created` | S'ha creat un nou addicional. |
-| Addicional actualitzat | `add_on.updated` | S'ha modificat un addicional. |
-| Addicional eliminat | `add_on.deleted` | S'ha eliminat un addicional. |
-
-### Sales de reunions
-
-| Esdeveniment | Clau | Descripció |
-|---|---|---|
-| Sala de reunions creada | `meeting_room.created` | S'ha afegit una nova sala de reunions. |
-| Sala de reunions actualitzada | `meeting_room.updated` | S'ha modificat una sala de reunions. |
-| Sala de reunions eliminada | `meeting_room.deleted` | S'ha eliminat una sala de reunions. |
-
-### Restaurants
-
-| Esdeveniment | Clau | Descripció |
-|---|---|---|
-| Restaurant creat | `restaurant.created` | S'ha afegit un nou restaurant. |
-| Restaurant actualitzat | `restaurant.updated` | S'ha modificat un restaurant. |
-| Restaurant eliminat | `restaurant.deleted` | S'ha eliminat un restaurant. |
-
-### Spas
-
-| Esdeveniment | Clau | Descripció |
-|---|---|---|
-| Spa creat | `spa.created` | S'ha afegit un nou spa. |
-| Spa actualitzat | `spa.updated` | S'ha modificat un spa. |
-| Spa eliminat | `spa.deleted` | S'ha eliminat un spa. |
-
-### Activitats
-
-| Esdeveniment | Clau | Descripció |
-|---|---|---|
-| Activitat creada | `activity.created` | S'ha afegit una nova activitat. |
-| Activitat actualitzada | `activity.updated` | S'ha modificat una activitat. |
-| Activitat eliminada | `activity.deleted` | S'ha eliminat una activitat. |
-
----
-
-## Esdeveniments de canals de venda
-
-Esdeveniments per a canals de distribució que enllacen proveïdors i afiliats. Enviats tant als subscriptors webhook del proveïdor com de l'afiliat.
-
-| Esdeveniment | Clau | Descripció |
-|---|---|---|
-| Canal de venda creat | `sales_channel.created` | S'ha creat un nou canal de venda. |
-| Canal de venda actualitzat | `sales_channel.updated` | S'ha modificat un canal de venda. |
-| Canal de venda eliminat | `sales_channel.deleted` | S'ha eliminat un canal de venda. |
-
----
-
-## Esdeveniments de tarifes especials
-
-Esdeveniments per a tarifes promocionals i negociades en una propietat.
-
-| Esdeveniment | Clau | Descripció |
-|---|---|---|
-| Tarifa especial creada | `special_rate.created` | S'ha creat una nova tarifa especial. |
-| Tarifa especial actualitzada | `special_rate.updated` | S'ha modificat una tarifa especial. |
-| Tarifa especial eliminada | `special_rate.deleted` | S'ha eliminat una tarifa especial. |
-| Modificador de tarifa actualitzat | `rate_modifier.updated` | S'ha actualitzat un modificador de tarifa. |
-
----
-
-## Esdeveniments de beneficiaris
-
-Esdeveniments relacionats amb la gestió de beneficiaris (destinataris de pagaments).
-
-| Esdeveniment | Clau | Descripció |
-|---|---|---|
-| Beneficiari creat | `payee.create` | S'ha creat amb èxit un nou beneficiari. |
-| Fallada la creació del beneficiari | `payee.create.failure` | Ha fallat la creació del beneficiari. |
-| Beneficiari actualitzat | `payee.update` | S'ha actualitzat un beneficiari. |
-| Fallada l'actualització del beneficiari | `payee.update.failure` | Ha fallat l'actualització del beneficiari. |
-
----
-
-## Esdeveniments de pagament
-
-Esdeveniments interns de processament de pagaments de TripPay.
-
-| Esdeveniment | Clau | Descripció |
-|---|---|---|
-| Pagament reeixit | `internal.payment.succeeded` | El pagament s'ha processat amb èxit. |
-| Pagament en procés | `internal.payment.processing` | El pagament s'està processant actualment. |
-| Pagament fallit | `internal.payment.failed` | Ha fallat el processament del pagament. |
-
----
-
-## Esdeveniments de gestors de canals
-
-Esdeveniments relacionats amb les actualitzacions de tarifes i disponibilitat dels gestors de canals.
-
-| Esdeveniment | Clau | Descripció |
-|---|---|---|
-| Actualització de tarifa | `channel-manager.update.rate` | El gestor de canals ha enviat una actualització de tarifa. |
-| Actualització de disponibilitat | `channel-manager.update.availability` | El gestor de canals ha enviat una actualització de disponibilitat. |
-| Actualització general | `channel-manager.update` | Actualització general del gestor de canals. |
-
----
-
-## Esdeveniments de llibre comptable
-
-Esdeveniments relacionats amb les entrades del llibre comptable financer.
-
-| Esdeveniment | Clau | Descripció |
-|---|---|---|
-| Entrada de llibre comptable creada | `ledger.entry.create` | S'ha registrat una nova entrada al llibre comptable. |
-
----
-
-## Esdeveniments de correu electrònic
-
-| Esdeveniment | Clau | Descripció |
-|---|---|---|
-| Correspondència per correu electrònic | `email.correspondence` | S'ha enviat un correu electrònic sortint. |
-
----
-
-## Resum del recompte d'esdeveniments
-
-| Categoria | Comptatge |
-|---|---|
-| Esdeveniments d'entitats gestores | 33 |
-| Esdeveniments de reserves | 16 |
-| Esdeveniments de propietats | 13 |
-| Esdeveniments d'inventari (tipus d'habitació, plans tarifaris, tarifes mestres, addicionals, instal·lacions) | 24 |
-| Esdeveniments de canals de venda | 3 |
-| Esdeveniments de tarifes especials | 4 |
-| Esdeveniments de beneficiaris | 4 |
-| Esdeveniments de pagament | 3 |
-| Esdeveniments de gestors de canals | 3 |
-| Esdeveniments de llibre comptable | 1 |
-| Esdeveniments de correu electrònic | 1 |
-| **Total** | **105** |
+2. Crea un webhook i selecciona els esdeveniments que vols rebre — o deixa la llista buida per rebre tots els esdeveniments.
+3. Wink envia un HTTP POST signat al teu endpoint cada vegada que l'esdeveniment ocorre. Consulta [Integració Webhook](/ca/developers/webhook-integration) per a l'estructura, capçaleres, verificació de signatura i reintents.
+
+## Cada tipus d'esdeveniment
+
+Aquesta taula es genera a partir del catàleg d'esdeveniments de la plataforma en temps de compilació, així que sempre coincideix amb l'API.
+Els tipus d'esdeveniments marcats com a entregats enllacen a la seva pàgina de referència a la [API de Webhooks](/ca/api/webhooks/), que
+documenta el cos JSON exacte (`WebhookEnvelope` amb un `objecte` específic de l'esdeveniment), les capçaleres `Wink-*` i
+la política de reintents. Els tipus d'esdeveniments que no s'entreguen existeixen internament (pagaments, llibre major, sincronització del gestor de canals, …) però actualment no s'envien als subscriptors webhook.
+
+**Destinataris** indica qui rep un esdeveniment: `SUPPLIER` (l'hotel), `AFFILIATE` (un revenedor amb un canal de vendes actiu amb l'hotel), `AGENT` (l'agència de viatges que va fer la reserva) o `SELF` (l'entitat gestora sobre la qual tracta l'esdeveniment). Cada destinatari rep la mateixa forma de càrrega útil; el detall específic per rol està darrere de l'URL `links.self` de la càrrega útil.
+
+<WebhookEventTypes
+  types={webhooks['x-wink-event-types']}
+  referenceBase="/api/webhooks"
+  eventHeader="Esdeveniment"
+  descriptionHeader="Descripció"
+  deliveredHeader="Entregat"
+  recipientsHeader="Destinataris"
+  deliveredLabel="entregat"
+  notDeliveredLabel="no entregat"
+  noRecipientsLabel="—"
+/>
 
 :::tip
-Comença subscrivint-te a tots els esdeveniments durant el desenvolupament. Un cop entenguis quins payloads necessita el teu sistema, restringeix les teves subscripcions per reduir el soroll.
+Comença subscrivint-te a tots els esdeveniments durant el desenvolupament. Un cop entenguis quines càrregues útils necessita el teu sistema, restringeix les teves subscripcions per reduir el soroll. Envia't un esdeveniment de prova des de **Aplicacions > Webhooks** (o `POST …/webhook/{id}/test`) per confirmar el teu endpoint i la verificació de signatura abans d'anar a producció.
 :::
 
 ## Lectures addicionals
 
-- [Guia d'integració Webhook](/ca/guides/developers/webhook-integration) — Passos de configuració i bones pràctiques.
+- [Guia d'Integració Webhook](/ca/developers/webhook-integration) — Passos de configuració i millors pràctiques.
 - [Webhooks](/ca/portal/settings/webhooks) — Gestiona les teves subscripcions webhook.
-- [Aplicacions](/ca/portal/settings/applications) — Gestiona les credencials API.
+- [Aplicacions](/ca/account/applications) — Gestiona les credencials API.
 - [Desenvolupa a Wink](/ca/developers/build-on-wink) — Visió general de la plataforma per a desenvolupadors.

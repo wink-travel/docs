@@ -3,37 +3,37 @@ title: 利用規約
 description: すべてのWinkユーザーおよび関連団体向けの利用規約。
 ---
 
-各ポータルには異なる利用規約が存在する場合があります。ご自身に該当するセクションに移動し、「利用規約および支払い条件」というサブセクションをお探しください。
+Winkの各部門には異なる規約があります。以下から該当するセクションを見つけてください — 各セクションには独自の利用規約があり、金銭を扱うセクションには支払い条件も含まれています。
 
-## アフィリエイトポータル
+## 物件
 
-Winkを使ってソーシャルアカウントを収益化し、パッシブインカムを得る方法を知りたいアフィリエイト向けです。  
-[Wink Studio](https://studio.wink.travel)には、プロのように販売するためのすべてのツールが揃っています。
+Winkで在庫を販売するホテル、チェーン、ブランド、管理会社向け。
 
-<LinkButton href="/ja/portal/studio/what-is-studio">
-Wink Studioについて詳しく知る
-</LinkButton>
+- [利用規約](/ja/portal/extranet/terms-of-service)
+- [支払い条件](/ja/portal/extranet/payment-terms)
+
+## アフィリエイト
+
+旅行在庫を宣伝し、コミッションを得るクリエイター、インフルエンサー、アフィリエイト向け。
+
+- [利用規約](/ja/portal/studio/terms-of-service)
+- [支払い条件](/ja/portal/studio/payment-terms)
+
+## 旅行代理店
+
+登録済みの旅行代理店で、クライアントのために検索、予約、収益を得る方向け。
+
+- [利用規約](/ja/portal/travel-agent/terms-of-service)
+- [支払い条件](/ja/portal/travel-agent/payment-terms)
 
 ## 予約エンジン
 
-すべての道は当社の予約エンジンに通じます！市場で最もカスタマイズ可能で旅行に特化した予約エンジンでできることを学びましょう。
+Winkを通じて旅行を予約するすべての方へ。
 
-<LinkButton href="/ja/booking-engine/in-a-nutshell">
-当社の予約エンジンについて詳しく知る
-</LinkButton>
+- [利用規約](/ja/booking-engine/terms-of-service)
 
-## 物件ポータル
+## すべての方へ
 
-Winkでの販売を始めたい物件向けです。オンラインで効果的に販売・マーケティングを行い、世界中のアフィリエイトの力を借りて顧客と予約を獲得しましょう。
-
-<LinkButton href="/ja/portal/extranet/what-is-extranet">
-Wink Extranetについて詳しく知る
-</LinkButton>
-
-## 旅行代理店ポータル
-
-Winkが提供する、仕入先から直接得られる特別料金、取引、在庫について知りたい旅行代理店向けです。
-
-<LinkButton href="/ja/portal/travel-agent/what-is-agent">
-Wink Agentについて詳しく知る
-</LinkButton>
+- [プライバシーポリシー](/ja/privacy)
+- [料金](/ja/getting-started/pricing) — 無料の内容、予約にかかる費用、従量課金の仕組みについて。
+- [データ削除リクエスト](/ja/getting-started/data-deletion-request)

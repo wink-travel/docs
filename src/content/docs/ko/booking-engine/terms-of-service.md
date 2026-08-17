@@ -2,7 +2,7 @@
 title: 서비스 약관
 description: 모든 여행자 사용자를 위한 쉽게 접근 가능하고 최신의 약관입니다.
 sidebar:
-  order: 4
+  order: 8
 ---
   
 <iframe 

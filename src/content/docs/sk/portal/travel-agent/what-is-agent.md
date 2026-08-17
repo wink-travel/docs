@@ -9,7 +9,7 @@ Naše riešenie pre registrovaných cestovných agentov je [Wink Agent](https://
 
 Pokročilejší cestovní agenti si môžu zvoliť integráciu na úrovni API za účelom správy platieb a výplat mimo platformy Wink.
 
-Cestovní agenti majú podmnožinu rovnakých funkcií portálu ako [Wink Studio](/sk/portal/studio/what-is-studio), preto ich tu nebudeme znova rozoberať.
+Cestovní agenti majú podmnožinu rovnakých funkcií portálu ako [Studio](/sk/portal/studio/what-is-studio), preto ich tu nebudeme znova rozoberať.
 
 ## Vyhľadávanie
 

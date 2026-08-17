@@ -1,0 +1,75 @@
+---
+title: REST ja gRPC
+description: Kuinka integroit Wink Platformiin RESTin tai gRPC:n kautta, generoit asiakkaan skeemojemme pohjalta ja käytät MCP-palvelintamme luomaan integraatiokoodin käyttötapaustasi varten.
+sidebar:
+  order: 7
+---
+
+import { LinkButton, Aside } from '@astrojs/starlight/components';
+
+Wink tarjoaa kahta siirtotapaa. Kumpaa käytät, riippuu siitä, minkä API:n kanssa integroidut.
+
+| | Siirtotapa | Skeema | Dokumentaatio |
+| --- | --- | --- | --- |
+| Useimmat Wink API:t | REST HTTPS:n yli | OpenAPI 3 | Mikä tahansa ryhmä **API**-kohdan alla sivupalkissa |
+| Partner Integrator API | gRPC HTTP/2:n yli | Protocol Buffers | [Partner](/fi/partner-api/partner/) |
+
+<Aside type="note" title="Emme enää julkaise kielikohtaisia SDK:ita">
+  Käsin ylläpidetyt SDK:t jäivät jälkeen niiden API:iden kehityksestä, joita ne käärittivät, eivätkä koskaan kattaneet juuri tarvitsemaasi kieltä. Generoi asiakas skeemasta sen sijaan — se on aina ajan tasalla — tai anna MCP-palvelimemme kirjoittaa integraatiokoodi käyttötapauksesi mukaan.
+</Aside>
+
+## Generoi REST-asiakas
+
+Jokainen API-ryhmä julkaisee OpenAPI 3 -dokumentin. Suuntaa mikä tahansa OpenAPI-generaattori siihen, niin saat tyypitetyn asiakkaan omalla kielelläsi.
+
+```bash
+# Ryhmän spesifikaatio on saatavilla sen referenssisivun vierestä.
+curl -o wink-extranet.json https://api.wink.travel/v3/api-docs/extranet
+
+npx @openapitools/openapi-generator-cli generate \
+  -i wink-extranet.json -g typescript-fetch -o ./wink-client
+```
+
+<LinkButton href="https://openapi-generator.tech/docs/generators" variant="secondary" icon="external">
+  OpenAPI-generaattorit kielittäin
+</LinkButton>
+
+## Generoi gRPC-asiakas
+
+Partner Integrator API on gRPC. Generoit asiakkaan `.proto`-skeemasta, jonka Wink julkaisee kahdella tavalla:
+
+- **Palvelimen reflektio** — palvelin kuvaa itsensä, joten työkalut kuten `grpcurl`, Postman ja Insomnia voivat löytää skeeman ajonaikaisesti ilman tiedostojen lataamista. Reflektio vaatii saman bearer-tokenin kuin muutkin kutsut.
+- **`.proto`-tiedostot**, jos haluat mieluummin hallita skeemaa itse ja generoida etukäteen.
+
+```bash
+# Löydä skeema käynnissä olevalta palvelimelta (autentikoitu).
+grpcurl -H "authorization: Bearer $WINK_TOKEN" \
+  partner.wink.travel:443 list
+
+# Sitten generoi asiakas — tässä Go; kaikki tuetut kielet toimivat samalla tavalla.
+protoc --go_out=. --go-grpc_out=. partner_lookup.proto
+```
+
+Kutsut kuljettavat bearer-tokenisi `authorization`-metadataotsikossa, aivan kuten REST kuljettaa sen `Authorization`-otsikossa. Virheet tulevat gRPC-tilakoodina vastauksen trailer-osassa HTTP-tilakoodin sijaan — [Partnerin referenssi](/fi/partner-api/partner/) listaa odotettavat tilakoodit.
+
+<LinkButton href="https://grpc.io/docs/languages/" variant="secondary" icon="external">
+  gRPC pika-aloitukset kielittäin
+</LinkButton>
+
+<LinkButton href="https://grpc.io/docs/what-is-grpc/introduction/" variant="secondary" icon="external">
+  Mikä on gRPC?
+</LinkButton>
+
+## Tai anna MCP-palvelimen kirjoittaa se
+
+Jos käytät tekoälypohjaista koodausavustajaa, MCP-palvelimemme on nopein reitti. Se tarjoaa Wink API:t työkaluina, joita avustajasi voi kutsua ja joiden perusteella se voi tehdä päätelmiä, joten sen sijaan, että generoit koko asiakkaan ja etsit päätepisteet itse, kuvailet mitä rakennat ja saat integraatiokoodin käyttötapauksesi mukaan.
+
+<LinkButton href="/fi/developers/mcp/" variant="primary">
+  Ota Wink MCP -palvelin käyttöön
+</LinkButton>
+
+## Lisälukemista
+
+- [Aloitus](/fi/developers/setup/) — tilit, ympäristöt ja tunnistetiedot
+- [Autentikointi](/fi/developers/authentication/) — tokenien hankinta ja uusiminen
+- [Webhook-integraatio](/fi/developers/webhook-integration/) — tapahtumien vastaanotto kyselyn sijaan

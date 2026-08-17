@@ -25,11 +25,19 @@ Companiile de management în ospitalitate și cele de management al destinațiil
 
 ## Influenceri
 
-Influencerii folosesc Wink pentru a-și monetiza mai bine audiența. Fac acest lucru prin parteneriate cu hoteluri, crearea de oferte personalizate și valorificarea instrumentelor sociale prietenoase și a analiticelor puternice oferite de Wink pentru a urmări care produse se vând cel mai bine​.
+Influencerii folosesc Wink pentru a-și monetiza mai bine audiența. Ei fac acest lucru prin parteneriate cu hoteluri, crearea de oferte personalizate și folosirea instrumentelor sociale prietenoase și a analiticelor puternice Wink pentru a urmări care produse se vând cel mai bine​.
+
+## Agenții de talente
+
+Agențiile de talente sunt pentru creatori ceea ce companiile de management sunt pentru hoteluri. Dacă reprezinți un grup de influenceri, creatori de conținut sau personalități din domeniul călătoriilor, poți gestiona toate conturile lor Wink dintr-un singur loc — găsind inventar, negociind oferte cu proprietățile, construind și publicând conținut și urmărind performanța întregului portofoliu, nu doar a unui singur creator.
+
+Negociezi o taxă de agenție cu fiecare talent și câștigi acea taxă la fiecare rezervare pe care o generează. Este plătită automat ca parte a rezervării, deci nu trebuie să emiți facturi către talentele tale și nici să urmărești comisioanele ulterior. Talentul tău rămâne în control pe tot parcursul — deține contul, aplică taxa agreată și poate adăuga reguli de expirare sau poate încheia colaborarea oricând dorește.
+
+Vezi [Reprezentarea agenției](/ro/portal/settings/agency-representation) pentru cum este configurat.
 
 ## Agenți de turism
 
-Agenții de turism au acces la inventar de călătorie la nivel mondial, la prețuri excelente, prin intermediul portalului nostru dedicat pentru [agenți de turism](https://agent.wink.travel). Ei pot face rezervări prin portalul nostru, prin API-ul nostru sau lăsând utilizatorii să-și facă singuri rezervările pe site-ul agenției de turism care folosește tehnologiile noastre.
+Agenții de turism au acces la inventar de călătorii la nivel mondial la prețuri excelente prin portalul nostru dedicat [pentru agenți de turism](https://agent.wink.travel). Ei pot face rezervări prin portalul nostru, prin API-ul nostru sau lăsând utilizatorii să-și facă singuri rezervările pe site-ul agenției de turism care folosește tehnologiile noastre.
 
 ## Companii
 
@@ -38,15 +46,15 @@ Companiile au nevoie de o platformă de călătorii mai complexă:
 - Au nevoie de itinerarii bine organizate care să susțină flexibilitatea și modificările de ultim moment.
 - Au nevoie de instrumente de comunicare fiabile, cum ar fi internetul.
 - Au preferințe pentru furnizori cu abonamente.
-- Adesea au carduri de credit corporative și limite de cheltuieli stabilite.
+- Adesea au un card de credit corporativ și limite de cheltuieli stabilite.
 - Au nevoie de gestionarea cheltuielilor și integrare pentru raportare.
-- Au nevoie de suport concierge, precum și de servicii MICE la evenimente.
+- Au nevoie de suport concierge, precum și servicii MICE la evenimente.
 
-Călătorii corporativi își pot gestiona propriile conturi pe portalul nostru [corporativ](/ro/portal/corporate/what-is-group) sau pot folosi pluginul oficial suportat [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) și integrarea [Concur](https://www.concur.com/).
+Călătorii corporativi își pot gestiona propriile conturi pe portalul corporativ sau pot folosi pluginul oficial [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) și integrarea [Concur](https://www.concur.com/).
 
 ## Dezvoltatori
 
-Deși am construit această platformă de și pentru hotelieri... Fiecare linie de cod a fost creată cu scopul specific de a fi reutilizabilă. Echipa noastră de dezvoltatori a construit Wink cu speranța că următoarea aplicație 🦄 de călătorii va fi construită pe baza codului nostru. Accesează pagina [Developer](/ro/developers/build-on-wink) pentru a vedea cum te poate susține Wink în următorul tău proiect.
+Deși am construit această platformă de și pentru hotelieri... Fiecare linie de cod a fost creată cu scopul specific de reutilizare. Echipa noastră de dezvoltatori a construit Wink în speranța că următoarea aplicație 🦄 de călătorii va fi construită pe baza codului nostru. Accesează pagina [Dezvoltatori](/ro/developers/build-on-wink) pentru a vedea cum te poate susține Wink în următorul tău proiect.
 
 ## Alții
 

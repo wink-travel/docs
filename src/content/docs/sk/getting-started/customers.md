@@ -9,7 +9,7 @@ Tento článok vysvetľuje typy zákazníkov, ktorým slúžime, a ako im vieme 
 
 ## Nehnuteľnosti
 
-Wink začal s onboardovaním hotelov pred desiatimi rokmi. Hotely používajú Wink na efektívne riadenie svojho inventára naprieč tisíckami predajných kanálov, vrátane ich vlastnej brand.com stránky, a na zarábanie viac s každou rezerváciou, pričom podporujú priame kanály pomocou našich nástrojov zameraných na pohostinnosť, ktoré zlepšujú identitu značky a ziskovosť​.
+Wink začal onboarding hotelov pred desiatimi rokmi. Hotely používajú Wink na efektívne riadenie svojho inventára naprieč tisíckami predajných kanálov, vrátane ich vlastnej brand.com stránky, a na zarábanie viac s každou rezerváciou, pričom podporujú priame kanály pomocou našich nástrojov zameraných na pohostinnosť, ktoré zlepšujú identitu značky a ziskovosť​.
 
 ## Značky a reťazce
 
@@ -25,7 +25,15 @@ Spoločnosti zaoberajúce sa správou pohostinnosti a destinácií môžu spravo
 
 ## Influenceri
 
-Influenceri používajú Wink na lepšiu monetizáciu svojho publika. Robia to prostredníctvom partnerstiev s hotelmi, vytváraním vlastných ponúk a využívaním Wink nástrojov priateľských k sociálnym sieťam a výkonných analytík na sledovanie, ktoré produkty sa predávajú najlepšie​.
+Influenceri používajú Wink na lepšiu monetizáciu svojho publika. Robia to prostredníctvom partnerstiev s hotelmi, vytváraním vlastných ponúk a využívaním Winkových nástrojov priateľských k sociálnym sieťam a výkonných analytík na sledovanie, ktoré produkty sa predávajú najlepšie​.
+
+## Talentové agentúry
+
+Talentové agentúry sú pre tvorcov to, čo sú správcovské spoločnosti pre hotely. Ak zastupujete skupinu influencerov, tvorcov obsahu alebo cestovateľských osobností, môžete spravovať všetky ich Wink účty z jedného miesta — nájsť inventár, vyjednávať dohody s nehnuteľnosťami, vytvárať a publikovať obsah a sledovať výkonnosť celej vašej zostavy namiesto jedného tvorcu naraz.
+
+Vyjednávate agentúrny poplatok s každým zo svojich talentov a zarábate tento poplatok z každej rezervácie, ktorú vygenerujú. Poplatok sa vypláca automaticky ako súčasť rezervácie, takže nie je potrebné fakturovať vlastných talentov ani naháňať provízie dodatočne. Vaši talenti zostávajú počas celého procesu v kontrole — vlastnia svoj účet, oni aplikujú dohodnutý poplatok a môžu kedykoľvek pridať pravidlá vypršania alebo ukončiť dohodu.
+
+Pozrite si [Agentúrne zastúpenie](/sk/portal/settings/agency-representation), ako je to nastavené.
 
 ## Cestovné kancelárie
 
@@ -42,11 +50,11 @@ Korporácie vyžadujú viac od cestovnej platformy:
 - Vyžadujú správu výdavkov a integráciu reportovania.
 - Potrebujú concierge podporu, ako aj MICE služby na podujatiach.
 
-Korporátni cestujúci môžu spravovať svoje účty na našom [korporátnom portáli](/sk/portal/corporate/what-is-group) alebo používať náš oficiálne podporovaný [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) plugin a integráciu [Concur](https://www.concur.com/).
+Korporátni cestujúci môžu spravovať svoje vlastné účty na našom korporátnom portáli alebo používať náš oficiálne podporovaný [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) plugin a integráciu [Concur](https://www.concur.com/).
 
 ## Vývojári
 
-Hoci sme túto platformu vytvorili pre hotelierov a hoteliérov... Každý riadok kódu bol vytvorený s cieľom opätovnej použiteľnosti. Náš tím vývojárov vytvoril Wink v nádeji, že ďalšia 🦄 cestovná aplikácia bude postavená na našej kódovej báze. Prejdite na stránku [Developer](/sk/developers/build-on-wink), aby ste videli, ako vám Wink môže pomôcť vo vašom ďalšom projekte.
+Hoci sme túto platformu vytvorili pre hotelierov... Každý riadok kódu bol vytvorený s cieľom opätovnej použiteľnosti. Náš tím vývojárov vytvoril Wink v nádeji, že ďalšia 🦄 cestovná aplikácia bude postavená na našej kódovej báze. Prejdite na stránku [Developer](/sk/developers/build-on-wink), aby ste videli, ako vám Wink môže pomôcť vo vašom ďalšom projekte.
 
 ## Iné
 

@@ -2,7 +2,7 @@
 title: Điều khoản Dịch vụ
 description: Điều khoản dễ tiếp cận và cập nhật cho tất cả người dùng khách du lịch của chúng tôi.
 sidebar:
-  order: 4
+  order: 8
 ---
   
 <iframe 

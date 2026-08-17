@@ -1,0 +1,78 @@
+---
+title: Tassonomia
+description: I vocabolari controllati utilizzati dalla piattaforma Wink — codici OTA per servizi, tipi di letto, viste delle camere e altro, oltre a tutte le lingue e valute supportate.
+sidebar:
+  order: 12
+---
+
+import taxonomy from '@/data/taxonomy.json';
+import OtaCategories from '@/components/taxonomy/ota-categories.astro';
+import CodeTable from '@/components/taxonomy/code-table.astro';
+
+Wink descrive l'inventario utilizzando vocabolari controllati — insiemi fissi di codici con significati concordati. Quando
+inviate `"5"` come servizio dell'hotel, la piattaforma lo interpreta come *Aria condizionata*, e così fa ogni fruitore
+di quei dati.
+
+Questa pagina è il riferimento pubblicato per tutti e tre i vocabolari:
+
+- **Codici OTA** — {taxonomy.ota.codeCount} codici distribuiti in {taxonomy.ota.categoryCount} categorie, che coprono
+  servizi, tipi di letto, viste delle camere, caratteristiche di accessibilità, cucina e altro.
+- **Lingue** — le {taxonomy.languages.list.length} lingue in cui i contenuti possono essere creati e serviti.
+- **Valute** — le {taxonomy.currencies.list.length} valute in cui i prezzi possono essere quotati e regolati.
+
+I codici sono stabili. I nomi possono essere riformulati per chiarezza, quindi fate corrispondere il **codice**, mai il nome.
+
+## Codici OTA
+
+Wink segue le liste di codici della [OpenTravel Alliance](https://opentravel.org/). Ogni categoria ha un
+identificatore di tre lettere — `HAC` per i servizi dell'hotel, `BED` per i tipi di letto — e ogni codice all'interno di una
+categoria è unico per essa. Lo stesso valore numerico significa cose diverse in categorie diverse, quindi un
+codice ha senso solo insieme alla categoria a cui appartiene: `BED` `1` è *Doppio / Matrimoniale*, mentre `HAC`
+`1` è *Reception 24 ore*.
+
+Seleziona una categoria per vedere i suoi codici.
+
+<OtaCategories
+  categories={taxonomy.ota.categories}
+  categoryHeader="Categoria"
+  descriptionHeader="Descrizione"
+  countHeader="Codici"
+  codeHeader="Codice"
+  nameHeader="Nome"
+/>
+
+## Lingue
+
+I contenuti — descrizioni della struttura, nomi delle camere, politiche — possono essere creati in una qualsiasi di queste lingue.
+I codici sono tag [IETF BCP 47](https://www.rfc-editor.org/info/bcp47): una lingua a due lettere
+[ISO 639-1](https://www.iso.org/iso-639-language-code), seguita opzionalmente da una
+[ISO 3166-1](https://www.iso.org/iso-3166-country-codes.html) regione dove la piattaforma distingue
+varianti regionali — `pt-BR` e `pt-PT` sono trattati separatamente, così come `es`, `es-AR` e `es-MX`.
+
+Il default della piattaforma è `{taxonomy.languages.default}`, usato quando una richiesta non specifica la lingua e
+quando una traduzione non è disponibile.
+
+<CodeTable
+  rows={taxonomy.languages.list}
+  codeHeader="Codice"
+  nameHeader="Lingua"
+  unnamedLabel="Nessun nome standard"
+/>
+
+## Valute
+
+I prezzi possono essere quotati e regolati in una qualsiasi di queste valute. I codici sono
+identificatori di tre lettere [ISO 4217](https://www.iso.org/iso-4217-currency-codes.html).
+
+Il default della piattaforma è `{taxonomy.currencies.default}`. È la valuta di visualizzazione di riserva e
+l'unità a cui sono normalizzati i valori a livello di piattaforma; **non** è la valuta in cui si regola una prenotazione — gli hotel
+regolano nella propria valuta, quindi un prezzo quotato in una valuta e pagato in un'altra comporta uno spread di cambio.
+
+Alcune voci non sono valute nazionali: `XAU` e `XAG` sono oro e argento, `XDR` è il diritto speciale di prelievo del FMI, e `BTC` è Bitcoin. Queste sono incluse per valutazione e reportistica, e generalmente non sono utilizzabili come valuta di regolamento.
+
+<CodeTable
+  rows={taxonomy.currencies.list}
+  codeHeader="Codice"
+  nameHeader="Valuta"
+  unnamedLabel="Nessun nome standard"
+/>

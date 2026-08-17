@@ -1,331 +1,53 @@
 ---
 title: Katalog över webhook-händelser
-description: Komplett referens över alla typer av webhook-händelser som finns tillgängliga på Wink-plattformen, organiserade efter kategori.
+description: Varje typ av webhook-händelse på Wink-plattformen, genererad från plattformens händelsekatalog — vilka som levereras, till vem och var payloaden dokumenteras.
 sidebar:
-  order: 3
+  order: 3.5
 ---
 
-import { LinkButton } from '@astrojs/starlight/components';
+import webhooks from '../../../../schemas/webhooks.json';
+import WebhookEventTypes from '@/components/webhooks/event-types.astro';
 
-Den här sidan listar alla webhook-händelser du kan prenumerera på i Wink. För installationsinstruktioner, se [Webhook Integration Guide](/sv/guides/developers/webhook-integration) eller [Webhooks management page](/sv/portal/settings/webhooks).
+Denna sida listar varje webhook-händelse du kan prenumerera på i Wink. För installationsinstruktioner, se [Webhook Integration Guide](/sv/developers/webhook-integration) eller [Webhooks management page](/sv/portal/settings/webhooks).
 
 ## Hur man prenumererar
 
 1. Navigera till **Applications > Webhooks** i din portal.
-2. Skapa en webhook och välj de händelser du vill ta emot.
-3. Wink skickar en HTTP POST till din endpoint varje gång händelsen inträffar.
-
-För fullständiga installationssteg och bästa praxis, se [Webhook Integration](/sv/guides/developers/webhook-integration).
-
----
-
-## Hantering av enhetshändelser
-
-Händelser för hantering av enheter (fastigheter, affiliates, företag) och deras administration.
-
-### Livscykel
-
-| Event | Key | Description |
-|---|---|---|
-| Entity created | `managing_entity.created` | En ny hanterande enhet har skapats. |
-| Entity deleted | `managing_entity.deleted` | En hanterande enhet har tagits bort. |
-| Status updated | `managing_entity.status.updated` | Enhetens status har ändrats. |
-| Under review | `account.under_review` | Enhetens konto är under granskning. |
-
-### Prenumeration
-
-| Event | Key | Description |
-|---|---|---|
-| Subscription provisioned | `managing_entity.subscription.provisioned` | En ny prenumeration har tilldelats. |
-| Subscription changed | `managing_entity.subscription.changed` | Prenumerationsplanen har ändrats. |
-| Subscription invoice changed | `managing_entity.subscription.invoice.changed` | Prenumerationsfakturan har uppdaterats. |
-
-### Chefens livscykel
-
-| Event | Key | Description |
-|---|---|---|
-| Manager added | `managing_entity.manager.added` | En ny chef har lagts till. |
-| Manager invited | `managing_entity.manager.invited` | En chef har bjudits in. |
-| Manager removed | `managing_entity.manager.removed` | En chef har tagits bort. |
-| Manager accepted | `managing_entity.manager.accepted` | En chef har accepterat inbjudan. |
-| Manager rejected | `managing_entity.manager.rejected` | En chef har avvisat inbjudan. |
-| Owner set | `managing_entity.manager.owner.set` | Ägarskapet för enheten har överförts. |
-| Managers updated | `account.managers.update` | Listan över chefer har ändrats. |
-
-### Enhetsinformation
-
-| Event | Key | Description |
-|---|---|---|
-| Information updated | `managing_entity.information.updated` | Enhetsinformationen har uppdaterats. |
-| Address updated | `managing_entity.city.updated` | Enhetens adress/stad har ändrats. |
-| Name updated | `managing_entity.name.updated` | Enhetens namn har ändrats. |
-| URL name updated | `managing_entity.url_name.updated` | Enhetens vanity-URL har ändrats. |
-| Unique ID updated | `managing_entity.unique_id.updated` | Enhetens unika identifierare har ändrats. |
-| Managed-by updated | `managing_entity.managed_by.updated` | Enhetens föräldra-/hanteringsrelation har ändrats. |
-| Place ID updated | `managing_entity.place_id.updated` | Enhetens Google Place ID har ändrats. |
-| Account representative updated | `managing_entity.account_representative.updated` | Kontots representant har ändrats. |
-| Profile picture updated | `managing_entity.profile_picture.updated` | Enhetens profilbild har uppdaterats. |
-| Logo updated | `managing_entity.logo.updated` | Enhetens logotyp har uppdaterats. |
-| Details updated | `account.details.updated` | Kontots detaljfält har ändrats. |
-| Agent updated | `managing_entity.agent.updated` | Enhetens agent har ändrats. |
-
-### Notifikationer
-
-| Event | Key | Description |
-|---|---|---|
-| Agent email notification | `managing_entity.agent.email.notification` | Ett e-postmeddelande har skickats till agenten. |
-| Manager email notification | `managing_entity.manager.email.notification` | Ett e-postmeddelande har skickats till en chef. |
-
-### Kontouppgifter
-
-| Event | Key | Description |
-|---|---|---|
-| Task created | `account.task.create` | En ny uppgift har lagts till i kontot. |
-| Task updated | `account.task.update` | En kontouppgift har ändrats. |
-| Task removed | `account.task.remove` | En kontouppgift har tagits bort. |
-| Task completed | `account.task.complete` | En kontouppgift har slutförts. |
-| Tax ID task completed | `account.task.tax_id.complete` | Uppgift för skatte-ID-verifiering har slutförts. |
-
----
-
-## Bokningshändelser
-
-Händelser för Wink-bokningens livscykel, från skapande till återbetalningar och utbetalningar.
-
-### Kärnbokning
-
-| Event | Key | Description |
-|---|---|---|
-| Booking created | `booking.create` | En ny bokning har skapats. |
-| Booking cancelled | `booking.cancelled` | En bokning har avbokats. |
-| Booking failed | `booking.failed` | Ett bokningsförsök misslyckades. |
-| Booking processing | `booking.processing` | Bokningsbetalningen behandlas. |
-| Initialization requested | `booking.initialize.request` | En initiering av bokning har begärts. |
-| Initialization complete | `booking.initialize.complete` | Bokningsinitieringen är slutförd. |
-
-### Återbetalningar
-
-| Event | Key | Description |
-|---|---|---|
-| Refund requested | `booking.refund.request` | En begäran om återbetalning har skickats in. |
-| Refund error | `booking.refund.error` | Ett fel uppstod vid behandling av återbetalning. |
-| Partial refund | `booking.refund.partial` | En delåterbetalning har utfärdats. |
-| Full refund | `booking.refund.full` | En full återbetalning har utfärdats. |
-
-### Utbetalningar
-
-| Event | Key | Description |
-|---|---|---|
-| Payout created | `booking.payout.create` | En utbetalning har skapats för bokningen. |
-| Payout completed | `booking.payout.complete` | En utbetalning har slutförts framgångsrikt. |
-| Funds available | `booking.funds.available` | Bokningsmedel är tillgängliga för avräkning. |
-| Funds ledgered | `booking.funds.ledgered` | Bokningsmedel har bokförts i huvudboken. |
-
-### Recensioner
-
-| Event | Key | Description |
-|---|---|---|
-| Review submitted | `booking.review.created` | En gästrecension har skickats in för en bokning. |
-| Review responded | `booking.review.responded` | En fastighet har svarat på en bokningsrecension. |
-
----
-
-## Fastighetshändelser
-
-Händelser för fastighetsprofiler och innehåll, skickas till fastighetens egna webhook-prenumeranter.
-
-| Event | Key | Description |
-|---|---|---|
-| Property created | `property.created` | En ny fastighet har skapats. |
-| Property updated | `property.updated` | Fastighetsuppgifter har uppdaterats. |
-| Property deleted | `property.deleted` | En fastighet har tagits bort. |
-| Property registered | `property.registered` | En fastighet har slutfört registrering. |
-| Status updated | `property.status.updated` | Fastighetens externa status har ändrats. |
-| Name updated | `property.name.updated` | Fastighetens namn har ändrats. |
-| Address updated | `property.address.updated` | Fastighetens adress har uppdaterats. |
-| Geolocation updated | `property.geolocation.updated` | Fastighetens geolokalisering har uppdaterats. |
-| Profile updated | `property.profile.updated` | Fastighetsprofilens innehåll har ändrats. |
-| Services updated | `property.services.updated` | Fastighetens tjänster/utbud har ändrats. |
-| Welcome text updated | `property.welcome_text.updated` | Fastighetens välkomstmeddelande har ändrats. |
-| Policy created | `property.policy.created` | En ny fastighetspolicy har skapats. |
-| Policy updated | `property.policy.updated` | En fastighetspolicy har uppdaterats. |
-
----
-
-## Lagerhändelser
-
-Händelser för lagerobjekt inom en fastighet, skickas till fastighetens webhook-prenumeranter.
-
-### Rumstyper
-
-| Event | Key | Description |
-|---|---|---|
-| Room type created | `room_type.created` | En ny rumstyp har lagts till. |
-| Room type updated | `room_type.updated` | En rumstyp har ändrats. |
-| Room type deleted | `room_type.deleted` | En rumstyp har tagits bort. |
-
-### Prisplaner
-
-| Event | Key | Description |
-|---|---|---|
-| Rate plan created | `rate_plan.created` | En ny prisplan har skapats. |
-| Rate plan updated | `rate_plan.updated` | En prisplan har ändrats. |
-| Rate plan deleted | `rate_plan.deleted` | En prisplan har tagits bort. |
-
-### Huvudpriser
-
-| Event | Key | Description |
-|---|---|---|
-| Master rate created | `master_rate.created` | Ett nytt huvudpris har skapats. |
-| Master rate updated | `master_rate.updated` | Ett huvudpris har ändrats. |
-| Master rate deleted | `master_rate.deleted` | Ett huvudpris har tagits bort. |
-
-### Tillägg
-
-| Event | Key | Description |
-|---|---|---|
-| Add-on created | `add_on.created` | Ett nytt tillägg har skapats. |
-| Add-on updated | `add_on.updated` | Ett tillägg har ändrats. |
-| Add-on deleted | `add_on.deleted` | Ett tillägg har tagits bort. |
-
-### Mötesrum
-
-| Event | Key | Description |
-|---|---|---|
-| Meeting room created | `meeting_room.created` | Ett nytt mötesrum har lagts till. |
-| Meeting room updated | `meeting_room.updated` | Ett mötesrum har ändrats. |
-| Meeting room deleted | `meeting_room.deleted` | Ett mötesrum har tagits bort. |
-
-### Restauranger
-
-| Event | Key | Description |
-|---|---|---|
-| Restaurant created | `restaurant.created` | En ny restaurang har lagts till. |
-| Restaurant updated | `restaurant.updated` | En restaurang har ändrats. |
-| Restaurant deleted | `restaurant.deleted` | En restaurang har tagits bort. |
-
-### Spa
-
-| Event | Key | Description |
-|---|---|---|
-| Spa created | `spa.created` | Ett nytt spa har lagts till. |
-| Spa updated | `spa.updated` | Ett spa har ändrats. |
-| Spa deleted | `spa.deleted` | Ett spa har tagits bort. |
-
-### Aktiviteter
-
-| Event | Key | Description |
-|---|---|---|
-| Activity created | `activity.created` | En ny aktivitet har lagts till. |
-| Activity updated | `activity.updated` | En aktivitet har ändrats. |
-| Activity deleted | `activity.deleted` | En aktivitet har tagits bort. |
-
----
-
-## Försäljningskanalshändelser
-
-Händelser för distributionskanaler som kopplar leverantörer och affiliates. Skickas till både leverantörens och affiliatens webhook-prenumeranter.
-
-| Event | Key | Description |
-|---|---|---|
-| Sales channel created | `sales_channel.created` | En ny försäljningskanal har skapats. |
-| Sales channel updated | `sales_channel.updated` | En försäljningskanal har ändrats. |
-| Sales channel deleted | `sales_channel.deleted` | En försäljningskanal har tagits bort. |
-
----
-
-## Specialpris-händelser
-
-Händelser för kampanj- och förhandlade priser på en fastighet.
-
-| Event | Key | Description |
-|---|---|---|
-| Special rate created | `special_rate.created` | Ett nytt specialpris har skapats. |
-| Special rate updated | `special_rate.updated` | Ett specialpris har ändrats. |
-| Special rate deleted | `special_rate.deleted` | Ett specialpris har tagits bort. |
-| Rate modifier updated | `rate_modifier.updated` | En prismodifierare har uppdaterats. |
-
----
-
-## Mottagarhändelser
-
-Händelser relaterade till mottagare (betalningsmottagare) hantering.
-
-| Event | Key | Description |
-|---|---|---|
-| Payee created | `payee.create` | En ny mottagare har skapats framgångsrikt. |
-| Payee creation failed | `payee.create.failure` | Skapande av mottagare misslyckades. |
-| Payee updated | `payee.update` | En mottagare har uppdaterats. |
-| Payee update failed | `payee.update.failure` | Uppdatering av mottagare misslyckades. |
-
----
-
-## Betalningshändelser
-
-Interna betalningsbehandlingshändelser från TripPay.
-
-| Event | Key | Description |
-|---|---|---|
-| Payment succeeded | `internal.payment.succeeded` | Betalningen har behandlats framgångsrikt. |
-| Payment processing | `internal.payment.processing` | Betalningen behandlas för närvarande. |
-| Payment failed | `internal.payment.failed` | Betalningsbehandlingen misslyckades. |
-
----
-
-## Channel manager-händelser
-
-Händelser relaterade till channel manager-pris- och tillgänglighetsuppdateringar.
-
-| Event | Key | Description |
-|---|---|---|
-| Rate update | `channel-manager.update.rate` | Channel manager har skickat en prisuppdatering. |
-| Availability update | `channel-manager.update.availability` | Channel manager har skickat en tillgänglighetsuppdatering. |
-| General update | `channel-manager.update` | Allmän channel manager-uppdatering. |
-
----
-
-## Bokföringshändelser
-
-Händelser relaterade till finansiella bokföringsposter.
-
-| Event | Key | Description |
-|---|---|---|
-| Ledger entry created | `ledger.entry.create` | En ny bokföringspost har registrerats. |
-
----
-
-## E-posthändelser
-
-| Event | Key | Description |
-|---|---|---|
-| Email correspondence | `email.correspondence` | Ett utgående e-postmeddelande har skickats. |
-
----
-
-## Sammanfattning av händelseantal
-
-| Category | Count |
-|---|---|
-| Managing entity events | 33 |
-| Booking events | 16 |
-| Property events | 13 |
-| Inventory events (room types, rate plans, master rates, add-ons, facilities) | 24 |
-| Sales channel events | 3 |
-| Special rate events | 4 |
-| Payee events | 4 |
-| Payment events | 3 |
-| Channel manager events | 3 |
-| Ledger events | 1 |
-| Email events | 1 |
-| **Total** | **105** |
+2. Skapa en webhook och välj de händelser du vill ta emot — eller lämna listan tom för att ta emot alla händelser.
+3. Wink skickar en signerad HTTP POST till din endpoint varje gång händelsen inträffar. Se [Webhook Integration](/sv/developers/webhook-integration) för information om kuvert, headers, signaturverifiering och omförsök.
+
+## Varje händelsetyp
+
+Denna tabell genereras från plattformens händelsekatalog vid byggtid, så den matchar alltid API:et.
+Händelsetyper markerade som levererade länkar till deras referenssida i [Webhooks API](/sv/api/webhooks/), som
+dokumenterar den exakta JSON-kroppen (`WebhookEnvelope` med ett händelsespecifikt `object`), `Wink-*` headers och
+omförsökspolicyn. Händelsetyper som inte levereras finns internt (betalningar, bokföring, kanalhanterarsynk,
+…) men skickas för närvarande inte till webhook-prenumeranter.
+
+**Mottagare** anger vem som tar emot en händelse: `SUPPLIER` (hotellet), `AFFILIATE` (en återförsäljare med en aktiv
+försäljningskanal till hotellet), `AGENT` (resebyrån som gjorde bokningen) eller `SELF` (den hanterande enheten
+som händelsen gäller). Varje mottagare får samma payload-format; rollspecifik information finns bakom
+payloadens `links.self` URL.
+
+<WebhookEventTypes
+  types={webhooks['x-wink-event-types']}
+  referenceBase="/api/webhooks"
+  eventHeader="Händelse"
+  descriptionHeader="Beskrivning"
+  deliveredHeader="Levererad"
+  recipientsHeader="Mottagare"
+  deliveredLabel="levererad"
+  notDeliveredLabel="inte levererad"
+  noRecipientsLabel="—"
+/>
 
 :::tip
-Börja med att prenumerera på alla händelser under utvecklingen. När du förstår vilka payloads ditt system behöver, begränsa dina prenumerationer för att minska brus.
+Börja med att prenumerera på alla händelser under utvecklingen. När du förstår vilka payloads ditt system behöver, begränsa dina prenumerationer för att minska brus. Skicka en testhändelse till dig själv från **Applications > Webhooks** (eller `POST …/webhook/{id}/test`) för att bekräfta din endpoint och signaturkontroll innan du går live.
 :::
 
 ## Vidare läsning
 
-- [Webhook Integration Guide](/sv/guides/developers/webhook-integration) — Installationssteg och bästa praxis.
+- [Webhook Integration Guide](/sv/developers/webhook-integration) — Installationssteg och bästa praxis.
 - [Webhooks](/sv/portal/settings/webhooks) — Hantera dina webhook-prenumerationer.
-- [Applications](/sv/portal/settings/applications) — Hantera API-referenser.
+- [Applications](/sv/account/applications) — Hantera API-uppgifter.
 - [Build on Wink](/sv/developers/build-on-wink) — Plattformöversikt för utvecklare.

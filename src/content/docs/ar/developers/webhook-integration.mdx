@@ -1,0 +1,180 @@
+---
+title: تكامل Webhook
+description: يوضح هذا الدليل للمطورين كيفية إعداد webhooks لتلقي الإشعارات في الوقت الفعلي للحجوزات والمدفوعات والأحداث الأخرى.
+sidebar:
+  order: 3
+---
+
+import { Steps, LinkButton } from '@astrojs/starlight/components';
+
+تتيح لك Webhooks لأنظمتك تلقي إشعارات في الوقت الفعلي عند حدوث أحداث في حساب Wink الخاص بك — حجوزات جديدة، إلغاءات، تحديثات المدفوعات، والمزيد. يوجهك هذا الدليل خلال الإعداد وأفضل الممارسات.
+
+## الجمهور
+
+هذا الدليل موجه للمطورين الذين يدمجون Wink مع أنظمة خارجية مثل أنظمة إدارة العقارات (PMS)، مديري القنوات، أنظمة إدارة علاقات العملاء (CRM)، أو لوحات تحكم مخصصة.
+
+## كيف تعمل webhooks
+
+1. تقوم بتسجيل عنوان URL الخاص بالويب هوك على Wink.
+2. عند حدوث حدث (مثل حجز جديد)، يرسل Wink طلب HTTP POST إلى عنوان URL الخاص بك.
+3. يعالج خادمك الحمولة ويرد بـ `200 OK`.
+
+## إعداد webhook
+
+<Steps>
+1. سجّل الدخول إلى حسابك (Extranet، Studio، أو TripPay — جميعها تدعم webhooks).
+2. انتقل إلى `Applications` ثم `Webhooks`. راجع [Webhooks](/ar/portal/settings/webhooks).
+3. انقر على `Create webhook`.
+4. أدخل **اسمًا** (مثل "مزامنة حجز PMS").
+5. أدخل **عنوان URL الخاص بالويب هوك** — نقطة النهاية HTTPS على خادمك.
+6. **اختر الأحداث** — اختر أحداثًا محددة للاشتراك بها، أو اتركها فارغة لتلقي جميع الأحداث.
+7. فعّل خيار **Enabled**.
+8. انقر على `Save` — ستظهر لك الاستجابة **سر التوقيع مرة واحدة**؛ خزّنه الآن.
+</Steps>
+
+## أنواع الأحداث
+
+ينشر Wink اليوم 70 نوعًا من أحداث الويب هوك عبر الحجوزات، العقارات، الحسابات (الكيانات المديرة)
+والمخزون (أنواع الغرف، خطط الأسعار، الأسعار الرئيسية، الإضافات، المرافق، قنوات المبيعات، العروض الترويجية).
+الأكثر شيوعًا:
+
+| الفئة | أمثلة |
+|---|---|
+| **الحجز** | `booking.create`, `booking.cancelled`, `booking.refund.partial`, `booking.refund.full`, `booking.review.created` |
+| **العقار** | `property.created`, `property.status.updated`, `property.policy.updated` |
+| **المخزون** | `room_type.updated`, `rate_plan.created`, `master_rate.updated`, `special_rate.created`, `sales_channel.created` |
+| **الحساب** | `managing_entity.created`, `managing_entity.status.updated`, `managing_entity.manager.added` |
+
+القائمة الكاملة المولدة — مع وصف، من يستلمها، ورابط إلى صفحة مرجعية لكل حدث — هي **كتالوج أحداث Webhook**. صفحة المرجع لكل حدث (جسم JSON، الرؤوس، سياسة إعادة المحاولة)
+موجودة في [Webhooks API](/ar/api/webhooks/).
+
+<LinkButton href="/ar/developers/webhook-events">
+  عرض كل نوع حدث
+</LinkButton>
+
+## ما تستلمه
+
+كل تسليم هو طلب HTTP `POST` إلى عنوان URL الخاص بالويب هوك مع `Content-Type: application/json` وهذه الحزمة:
+
+```json
+{
+  "id": "0198a4f2-6b0e-7c1d-9a3e-2f4b8c6d1e0a",
+  "type": "booking.create",
+  "occurredAt": "2026-08-15T09:30:00Z",
+  "ownerIdentifier": "3c6b1a5d-8e2f-4a0b-9c7d-6e4f0a8b2c51",
+  "recipientRole": "SUPPLIER",
+  "schemaVersion": 2,
+  "object": { "...": "event-specific payload, e.g. BookingWebhookPayload" }
+}
+```
+
+- `id` — معرف الحدث؛ متماثل لكل نقطة نهاية في حسابك تستلم هذا الحدث ولكل محاولة إعادة. استخدمه كمفتاح **عدم التكرار**.
+- `type` — مفتاح نوع الحدث (يُرسل أيضًا كرأس `Wink-Event-Type`). استند إلى `type` و `schemaVersion`
+  لتحليل `object`.
+- `object` — ملخص منسق للموارد التي يدور حولها الحدث (المعرفات، الحالة، الحقول التي تتعامل معها)
+  بالإضافة إلى `links.self`، وهو عنوان REST الرسمي للموارد من جانب المورد. استرجعه باستخدام بيانات اعتماد API الخاصة بك عند الحاجة إلى أكثر من الملخص؛ إذا استلمت الحدث كبائع أو وكيل سفر، استخدم نقطة النهاية المقابلة في واجهة برمجة التطبيقات الخاصة بك لنفس المعرف.
+
+كل مخطط حمولة موثق لكل حدث في مرجع [Webhooks API](/ar/api/webhooks/).
+
+### الرؤوس
+
+| الرأس | المعنى |
+|---|---|
+| `Wink-Version` | نسخة عقد الاتصال، `2.0`. |
+| `Wink-Event-Id` | نفس `id` في الجسم — مفتاح عدم التكرار الخاص بك. |
+| `Wink-Delivery-Id` | فريد لكل نقطة نهاية لكل حدث؛ يتغير فقط إذا قمت بإعادة التسليم. |
+| `Wink-Event-Type` | نفس `type` في الجسم. |
+| `Wink-Delivery-Attempt` | رقم المحاولة (مبني على 1) لهذا التسليم. |
+| `Wink-Signature` | توقيع HMAC — انظر أدناه. |
+
+## التحقق من التواقيع
+
+كل webhook له **سر توقيع** (`whsec_…`) يعرضه Wink **مرة واحدة** عند إنشاء الويب هوك أو تدوير سره. خزّنه ككلمة مرور. كل تسليم يحمل
+
+```
+Wink-Signature: t=1755250200,v1=5d41402abc4b2a76b9719d911017c592…
+```
+
+حيث `t` هو طابع زمني يونكس (بالثواني) و `v1` هو **HMAC-SHA256** بالصيغة السداسية الصغيرة للسلسلة
+`t + "." + rawBody`، باستخدام السر الخاص بك، و`rawBody` هو بالضبط بايتات جسم الطلب كما استلمت —
+لا تعيد تسلسل JSON قبل التحقق. لمدة 24 ساعة بعد تدوير السر، يحمل الرأس قيمة `v1=` ثانية موقعة بالسر السابق؛ اقبل التسليم إذا تطابق **أي** `v1`.
+
+تحقق في أربع خطوات: حلل `t` وكل `v1`؛ أعد حساب HMAC على `t.rawBody` باستخدام السر الخاص بك؛
+قارن باستخدام مقارنة آمنة زمنياً؛ ارفض إذا تجاوز `|now − t|` حد التسامح (يوصى بـ 5 دقائق).
+
+```js
+// Node.js (نمط Express؛ تأكد من أن لديك الجسم RAW، وليس كائنًا محللًا)
+import { createHmac, timingSafeEqual } from 'node:crypto';
+
+export function verifyWinkSignature(header, rawBody, secret, toleranceSeconds = 300) {
+  const parts = Object.fromEntries(header.split(',').map((p) => p.split('=').map((s) => s.trim())));
+  const t = Number(parts.t);
+  if (!Number.isFinite(t) || Math.abs(Date.now() / 1000 - t) > toleranceSeconds) return false;
+  const expected = createHmac('sha256', secret).update(`${t}.${rawBody}`).digest('hex');
+  return header
+    .split(',')
+    .filter((p) => p.trim().startsWith('v1='))
+    .map((p) => p.trim().slice(3))
+    .some((v1) => v1.length === expected.length && timingSafeEqual(Buffer.from(v1, 'utf8'), Buffer.from(expected, 'utf8')));
+}
+```
+
+```java
+// Java
+static boolean verify(String header, String rawBody, String secret, long nowSeconds, long toleranceSeconds) throws Exception {
+    long t = Long.MIN_VALUE;
+    List<String> signatures = new ArrayList<>();
+    for (String part : header.split(",")) {
+        String[] kv = part.trim().split("=", 2);
+        if (kv[0].equals("t")) t = Long.parseLong(kv[1]);
+        else if (kv[0].equals("v1")) signatures.add(kv[1]);
+    }
+    if (t == Long.MIN_VALUE || Math.abs(nowSeconds - t) > toleranceSeconds) return false;
+    Mac mac = Mac.getInstance("HmacSHA256");
+    mac.init(new SecretKeySpec(secret.getBytes(StandardCharsets.UTF_8), "HmacSHA256"));
+    byte[] expected = HexFormat.of().formatHex(mac.doFinal((t + "." + rawBody).getBytes(StandardCharsets.UTF_8))).getBytes(StandardCharsets.US_ASCII);
+    return signatures.stream().anyMatch(v1 -> MessageDigest.isEqual(expected, v1.toLowerCase().getBytes(StandardCharsets.US_ASCII)));
+}
+```
+
+قم بتدوير السر من البوابة أو باستخدام `POST /api/managing-entity/{id}/webhook/{webhookId}/rotate-secret`;
+تعرض الاستجابة السر الجديد مرة واحدة، ويستمر القديم في التحقق لمدة 24 ساعة أثناء نشره.
+
+## إعادة المحاولة وإعادة التسليم
+
+- رد بأي `2xx` خلال 10 ثوانٍ للاعتراف. قم بالعمل الثقيل بشكل غير متزامن.
+- يتم إعادة المحاولة عند `5xx`، انتهاء المهلة، `408` أو `429` مع تراجع: بعد دقيقة، 5 دقائق، 30 دقيقة، ساعتين،
+  6 ساعات، 12 ساعة، ثم يوميًا — 10 محاولات خلال حوالي 3 أيام — بعدها يتم وسم التسليم كـ **ميت**.
+- أي `4xx` آخر يُعتبر "رفضت هذا التسليم" ولا يُعاد المحاولة.
+- كل حدث، تسليم ومحاولة (الحالة، مقتطف الاستجابة) مرئية تحت **Applications > Webhooks**
+  ومن خلال API (`…/webhook/event/grid`, `…/webhook/delivery/grid`). يمكنك **إعادة تسليم** أي تسليم
+  (`POST …/webhook/delivery/{deliveryId}/redeliver`، الذي يبدأ سلسلة محاولات جديدة)، إعادة تسليم كل التسليمات الميتة لويب هوك دفعة واحدة (`POST …/webhook/{webhookId}/redeliver-dead`)، أو إلغاء واحد.
+- يتم الاحتفاظ بالتسليمات لمدة 30 يومًا.
+
+## أحداث الاختبار
+
+أرسل لنفسك حدثًا اصطناعيًا `webhook.test` من البوابة أو باستخدام
+`POST /api/managing-entity/{id}/webhook/{webhookId}/test`. يتم توقيعه وتسليمه تمامًا مثل الحدث الحقيقي،
+حتى تتمكن من التحقق من نقطة النهاية الخاصة بك، وفحص التوقيع، وتعامل عدم التكرار قبل الاشتراك في الأحداث الحية.
+
+## أفضل الممارسات
+
+- **استخدم HTTPS** — يرسل Wink الحمولة إلى نقاط نهاية HTTPS فقط.
+- **استجب بسرعة** — أعد `200 OK` بمجرد استلام الحمولة. قم بأي معالجة ثقيلة بشكل غير متزامن.
+- **عدم التكرار** — يجب أن يكون المعالج الخاص بك غير متكرر؛ قم بإزالة التكرار بناءً على `Wink-Event-Id`. يعيد Wink المحاولة إذا لم يتلقَ رد `2xx`.
+- **تحقق من المصدر** — تحقق من رأس `Wink-Signature` (انظر [التحقق من التواقيع](#verifying-signatures)) قبل المعالجة؛ ارفض أي شيء يفشل.
+- **التسجيل** — سجّل كل حمولة webhook تستلمها. هذا يسهل كثيرًا من تصحيح مشكلات التكامل.
+
+## الإيقاف المؤقت والحذف
+
+يمكنك **تعطيل** webhook دون حذفه. هذا يوقف التسليم حتى تتمكن من استكشاف الأخطاء دون فقدان التكوين. عندما تكون جاهزًا، فعّله مرة أخرى.
+
+حذف webhook يزيله نهائيًا. أي تكامل يعتمد على هذا الويب هوك سيتوقف عن تلقي الإشعارات.
+
+## قراءة إضافية
+
+- [كتالوج أحداث Webhook](/ar/developers/webhook-events) — كل نوع حدث، مولد من كتالوج المنصة.
+- [مرجع Webhooks API](/ar/api/webhooks/) — مخططات الحمولة لكل حدث، الرؤوس، ونقاط إدارة الاشتراك/التسليم.
+- [Webhooks](/ar/portal/settings/webhooks) — المرجع الكامل لإدارة webhooks.
+- [Applications](/ar/account/applications) — إدارة بيانات اعتماد API الخاصة بك.
+- [Developers > APIs](/ar/api) — التوثيق الكامل لواجهة برمجة التطبيقات.

@@ -5,19 +5,19 @@ sidebar:
   order: 4
 ---
 
-För att hantera dina WinkLinks-inställningar, gå till `WinkLinks` i huvudnavigeringsfältet och klicka på fliken `Inställningar`.
+För att hantera dina WinkLinks-inställningar, gå till `WinkLinks` i huvudnavigeringsfältet och klicka på fliken `Design`.
 
-Här är de sätt du kan konfigurera ditt WinkLinks-beteende med `Inställningar`:
+Här är de sätt du kan konfigurera ditt WinkLinks-beteende med `Design`:
 
-- **Intelligent** Genom att aktivera intelligens försöker vi hämta det `rika` innehåll som finns tillgängligt från sajter som `Wink`, `Spotify`, `Instagram`, `Facebook`, `YouTube`, `X (tidigare Twitter)` och andra. *t.ex. Om du delar ett IG-inlägg på WinkLinks, visas inlägget som du ser det på IG, med likes, kommentarer och möjlighet att interagera med inlägget.*
+- **Intelligent** Genom att aktivera intelligens försöker vi hämta det `rika` innehåll som finns tillgängligt från sajter som `Wink`, `Spotify`, `Instagram`, `Facebook`, `YouTube`, `X (tidigare Twitter)` och andra. *t.ex. Om du delar ett IG-inlägg på WinkLinks visas inlägget som du ser det på IG, med likes, kommentarer och möjlighet att interagera med inlägget.*
 - **Initial visning** Kontrollera hur din publik först interagerar med din sida och ser ditt innehåll. Det finns tre alternativ tillgängliga för dig:
     - `Kolumnbaserad` design. Detta är vår föredragna design och om du inte visar för mycket innehåll kommer det att se bra ut på din sida. Det kan dock bli `tungt` om du delar mycket rikt innehåll.
-    - `Radbaserad` design. Detta är ett sätt att göra ditt innehåll lite mindre tungt för webbläsare att hantera, men vi rekommenderar att ditt innehåll har ungefär lika mycket text för att korten ska linjera bättre.
+    - `Radbaserad` design. Detta är ett sätt att göra ditt innehåll lite mindre tungt för webbläsare att hantera, men vi rekommenderar att ditt innehåll har ungefär samma mängd text för att korten ska linjera bättre.
     - `Listbaserad` design. De flesta andra länkhanterare visar en enkel lista med en URL och minimalt innehåll. Välj detta sätt att visa ditt innehåll om du har mycket innehåll och vill visa det så snabbt som möjligt.
 - **Profilbild** Överst på varje WinkLinks-sida finns din kontoprofilbild tillsammans med din kontobeskrivning. Du kan visa din profilbild på två sätt:
     - `Cirkel` Vi rekommenderar att använda en cirkulär stil om din bild är på dig själv eller något annat som passar i en rund behållare.
-    - `Rektangel` Vi rekommenderar att använda en rektangulär stil om din företagslogotyp är din profilbild eftersom de flesta företagslogotyper är rektangulära till sin natur.
-- **Anpassning** Personifiera utseendet och känslan på din WinkLinks-sida. Du kan anpassa din färgpalett efter eget tycke för att perfekt matcha ditt varumärke. Denna inställning påverkar också hur Wink-inventariekort, kartor och rutnät visas.  
+    - `Rektangel` Vi rekommenderar att använda en rektangulär stil om din företagslogotyp är din profilbild eftersom de flesta företagslogotyper är rektangulära till sin form.
+- **Anpassning** Personifiera utseendet och känslan på din WinkLinks-sida. Du kan anpassa din färgpalett precis som du vill för att perfekt matcha ditt varumärke. Denna inställning påverkar också hur Wink-inventariekort, kartor och rutnät visas.  
   
 Ytterligare kontroller inkluderar:  
 

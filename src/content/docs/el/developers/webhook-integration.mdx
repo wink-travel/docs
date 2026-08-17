@@ -1,0 +1,168 @@
+---
+title: Ενσωμάτωση Webhook
+description: Αυτός ο οδηγός δείχνει στους προγραμματιστές πώς να ρυθμίσουν webhooks για να λαμβάνουν ειδοποιήσεις σε πραγματικό χρόνο για κρατήσεις, πληρωμές και άλλα γεγονότα.
+sidebar:
+  order: 3
+---
+
+import { Steps, LinkButton } from '@astrojs/starlight/components';
+
+Τα Webhooks επιτρέπουν στα συστήματά σας να λαμβάνουν ειδοποιήσεις σε πραγματικό χρόνο όταν συμβαίνουν γεγονότα στον λογαριασμό σας Wink — νέες κρατήσεις, ακυρώσεις, ενημερώσεις πληρωμών και άλλα. Αυτός ο οδηγός σας καθοδηγεί στη ρύθμιση και τις βέλτιστες πρακτικές.
+
+## Κοινό
+
+Αυτός ο οδηγός απευθύνεται σε προγραμματιστές που ενσωματώνουν το Wink με εξωτερικά συστήματα όπως συστήματα διαχείρισης ακινήτων (PMS), διαχειριστές καναλιών, CRM ή προσαρμοσμένους πίνακες ελέγχου.
+
+## Πώς λειτουργούν τα webhooks
+
+1. Καταχωρείτε ένα URL webhook στο Wink.
+2. Όταν συμβαίνει ένα γεγονός (π.χ. νέα κράτηση), το Wink στέλνει ένα HTTP POST στο URL σας.
+3. Ο διακομιστής σας επεξεργάζεται το payload και απαντά με `200 OK`.
+
+## Ρύθμιση webhook
+
+<Steps>
+1. Συνδεθείτε στον λογαριασμό σας (Extranet, Studio ή TripPay — όλα υποστηρίζουν webhooks).
+2. Μεταβείτε στο `Applications` και μετά στο `Webhooks`. Δείτε [Webhooks](/el/portal/settings/webhooks).
+3. Κάντε κλικ στο `Create webhook`.
+4. Εισάγετε ένα **όνομα** (π.χ. "PMS Booking Sync").
+5. Εισάγετε το **URL webhook** σας — το HTTPS endpoint στον διακομιστή σας.
+6. **Επιλέξτε γεγονότα** — Επιλέξτε συγκεκριμένα γεγονότα για εγγραφή ή αφήστε κενό για να λαμβάνετε όλα τα γεγονότα.
+7. Ενεργοποιήστε το **Enabled**.
+8. Κάντε κλικ στο `Save` — η απάντηση εμφανίζει το **signing secret** σας μία φορά· αποθηκεύστε το τώρα.
+</Steps>
+
+## Τύποι γεγονότων
+
+Το Wink δημοσιεύει σήμερα 70 τύπους γεγονότων webhook σε κρατήσεις, ακίνητα, λογαριασμούς (διαχειριζόμενες οντότητες) και αποθέματα (τύποι δωματίων, τιμοκαταλόγους, βασικές τιμές, πρόσθετα, εγκαταστάσεις, κανάλια πωλήσεων, προσφορές). Κοινά:
+
+| Κατηγορία | Παραδείγματα |
+|---|---|
+| **Κράτηση** | `booking.create`, `booking.cancelled`, `booking.refund.partial`, `booking.refund.full`, `booking.review.created` |
+| **Ακίνητο** | `property.created`, `property.status.updated`, `property.policy.updated` |
+| **Απόθεμα** | `room_type.updated`, `rate_plan.created`, `master_rate.updated`, `special_rate.created`, `sales_channel.created` |
+| **Λογαριασμός** | `managing_entity.created`, `managing_entity.status.updated`, `managing_entity.manager.added` |
+
+Η πλήρης, παραγόμενη λίστα — με περιγραφή, ποιος το λαμβάνει και σύνδεσμο στη σελίδα αναφοράς κάθε γεγονότος — είναι ο **Κατάλογος Γεγονότων Webhook**. Η σελίδα αναφοράς για κάθε γεγονός (JSON σώμα, headers, πολιτική επανάληψης) βρίσκεται στο [Webhooks API](/el/api/webhooks/).
+
+<LinkButton href="/el/developers/webhook-events">
+  Δείτε κάθε τύπο γεγονότος
+</LinkButton>
+
+## Τι λαμβάνετε
+
+Κάθε παράδοση είναι ένα HTTP `POST` στο URL webhook σας με `Content-Type: application/json` και αυτό το φάκελο:
+
+```json
+{
+  "id": "0198a4f2-6b0e-7c1d-9a3e-2f4b8c6d1e0a",
+  "type": "booking.create",
+  "occurredAt": "2026-08-15T09:30:00Z",
+  "ownerIdentifier": "3c6b1a5d-8e2f-4a0b-9c7d-6e4f0a8b2c51",
+  "recipientRole": "SUPPLIER",
+  "schemaVersion": 2,
+  "object": { "...": "event-specific payload, e.g. BookingWebhookPayload" }
+}
+```
+
+- `id` — ο αναγνωριστικός κωδικός του γεγονότος· ίδιος για κάθε endpoint του λογαριασμού σας που λαμβάνει αυτό το γεγονός και για κάθε επανάληψη. Χρησιμοποιήστε το ως **κλειδί αδιαίρετης εκτέλεσης**.
+- `type` — το κλειδί τύπου γεγονότος (αποστέλλεται επίσης ως header `Wink-Event-Type`). Κάντε διακλάδωση με βάση το `type` και το `schemaVersion` για να αναλύσετε το `object`.
+- `object` — μια επιμελημένη περίληψη του πόρου για τον οποίο αφορά το γεγονός (αναγνωριστικά, κατάσταση, τα πεδία που επεξεργάζεστε) συν το `links.self`, το κανονικό REST URL του προμηθευτή για τον πλήρη πόρο. Ανακτήστε το με τα δικά σας API credentials όταν χρειάζεστε περισσότερα από την περίληψη· αν λαμβάνετε το γεγονός ως μεταπωλητής ή ταξιδιωτικός πράκτορας, χρησιμοποιήστε το αντίστοιχο endpoint του δικού σας API για τον ίδιο αναγνωριστικό.
+
+Κάθε σχήμα payload τεκμηριώνεται ανά γεγονός στην αναφορά του [Webhooks API](/el/api/webhooks/).
+
+### Headers
+
+| Header | Σημασία |
+|---|---|
+| `Wink-Version` | Έκδοση σύμβασης, `2.0`. |
+| `Wink-Event-Id` | Ίδιο με το `id` στο σώμα — το κλειδί αδιαίρετης εκτέλεσής σας. |
+| `Wink-Delivery-Id` | Μοναδικό ανά endpoint ανά γεγονός· αλλάζει μόνο αν γίνει επαναπαράδοση. |
+| `Wink-Event-Type` | Ίδιο με το `type` στο σώμα. |
+| `Wink-Delivery-Attempt` | Αριθμός προσπάθειας παράδοσης, ξεκινώντας από 1. |
+| `Wink-Signature` | Υπογραφή HMAC — δείτε παρακάτω. |
+
+## Επαλήθευση υπογραφών
+
+Κάθε webhook έχει ένα **signing secret** (`whsec_…`) που το Wink εμφανίζει **μία φορά**, όταν δημιουργείτε το webhook ή αλλάζετε το μυστικό του. Αποθηκεύστε το σαν κωδικό πρόσβασης. Κάθε παράδοση φέρει
+
+```
+Wink-Signature: t=1755250200,v1=5d41402abc4b2a76b9719d911017c592…
+```
+
+όπου `t` είναι χρονική σήμανση Unix (δευτερόλεπτα) και `v1` είναι το πεζό hex **HMAC-SHA256** της συμβολοσειράς
+`t + "." + rawBody`, με κλειδί το μυστικό σας, και το `rawBody` είναι τα ακριβή bytes του σώματος του αιτήματος όπως λήφθηκαν — μην επανα-σειριοποιείτε το JSON πριν την επαλήθευση. Για 24 ώρες μετά από αλλαγή μυστικού, το header φέρει δεύτερη τιμή `v1=` υπογεγραμμένη με το προηγούμενο μυστικό· αποδεχτείτε την παράδοση αν **κάποιο** `v1` ταιριάζει.
+
+Επαληθεύστε σε τέσσερα βήματα: αναλύστε το `t` και κάθε `v1`; υπολογίστε ξανά το HMAC πάνω στο `t.rawBody` με το μυστικό σας; συγκρίνετε με σύγκριση σταθερού χρόνου; απορρίψτε αν `|now − t|` υπερβαίνει το όριο (συνιστώνται 5 λεπτά).
+
+```js
+// Node.js (Express-style; βεβαιωθείτε ότι έχετε το RAW σώμα, όχι ένα αναλυμένο αντικείμενο)
+import { createHmac, timingSafeEqual } from 'node:crypto';
+
+export function verifyWinkSignature(header, rawBody, secret, toleranceSeconds = 300) {
+  const parts = Object.fromEntries(header.split(',').map((p) => p.split('=').map((s) => s.trim())));
+  const t = Number(parts.t);
+  if (!Number.isFinite(t) || Math.abs(Date.now() / 1000 - t) > toleranceSeconds) return false;
+  const expected = createHmac('sha256', secret).update(`${t}.${rawBody}`).digest('hex');
+  return header
+    .split(',')
+    .filter((p) => p.trim().startsWith('v1='))
+    .map((p) => p.trim().slice(3))
+    .some((v1) => v1.length === expected.length && timingSafeEqual(Buffer.from(v1, 'utf8'), Buffer.from(expected, 'utf8')));
+}
+```
+
+```java
+// Java
+static boolean verify(String header, String rawBody, String secret, long nowSeconds, long toleranceSeconds) throws Exception {
+    long t = Long.MIN_VALUE;
+    List<String> signatures = new ArrayList<>();
+    for (String part : header.split(",")) {
+        String[] kv = part.trim().split("=", 2);
+        if (kv[0].equals("t")) t = Long.parseLong(kv[1]);
+        else if (kv[0].equals("v1")) signatures.add(kv[1]);
+    }
+    if (t == Long.MIN_VALUE || Math.abs(nowSeconds - t) > toleranceSeconds) return false;
+    Mac mac = Mac.getInstance("HmacSHA256");
+    mac.init(new SecretKeySpec(secret.getBytes(StandardCharsets.UTF_8), "HmacSHA256"));
+    byte[] expected = HexFormat.of().formatHex(mac.doFinal((t + "." + rawBody).getBytes(StandardCharsets.UTF_8))).getBytes(StandardCharsets.US_ASCII);
+    return signatures.stream().anyMatch(v1 -> MessageDigest.isEqual(expected, v1.toLowerCase().getBytes(StandardCharsets.US_ASCII)));
+}
+```
+
+Αλλάξτε το μυστικό από το portal ή με `POST /api/managing-entity/{id}/webhook/{webhookId}/rotate-secret`· η απάντηση εμφανίζει το νέο μυστικό μία φορά, και το παλιό συνεχίζει να επαληθεύεται για 24 ώρες όσο το εφαρμόζετε.
+
+## Επαναλήψεις και επαναπαραδόσεις
+
+- Απαντήστε με οποιοδήποτε `2xx` εντός 10 δευτερολέπτων για επιβεβαίωση. Κάντε την βαριά επεξεργασία ασύγχρονα.
+- Ένα `5xx`, timeout, `408` ή `429` επαναλαμβάνεται με αυξανόμενη καθυστέρηση: μετά από 1 λεπτό, 5 λεπτά, 30 λεπτά, 2 ώρες, 6 ώρες, 12 ώρες, μετά καθημερινά — 10 προσπάθειες σε περίπου 3 ημέρες — μετά από τις οποίες η παράδοση χαρακτηρίζεται **dead**.
+- Οποιοδήποτε άλλο `4xx` θεωρείται ως "απορρίψατε αυτή την παράδοση" και **δεν** επαναλαμβάνεται.
+- Κάθε γεγονός, παράδοση και προσπάθεια (κατάσταση, απόσπασμα απάντησης) είναι ορατά κάτω από **Applications > Webhooks** και μέσω του API (`…/webhook/event/grid`, `…/webhook/delivery/grid`). Μπορείτε να **επαναπαραδώσετε** οποιαδήποτε παράδοση (`POST …/webhook/delivery/{deliveryId}/redeliver`, που ξεκινά νέα σειρά επαναλήψεων), να επαναπαραδώσετε όλες τις νεκρές παραδόσεις ενός webhook ταυτόχρονα (`POST …/webhook/{webhookId}/redeliver-dead`), ή να ακυρώσετε μία.
+- Οι παραδόσεις διατηρούνται για 30 ημέρες.
+
+## Δοκιμαστικά γεγονότα
+
+Στείλτε στον εαυτό σας ένα συνθετικό γεγονός `webhook.test` από το portal ή με
+`POST /api/managing-entity/{id}/webhook/{webhookId}/test`. Είναι υπογεγραμμένο και παραδίδεται ακριβώς όπως ένα πραγματικό γεγονός, ώστε να μπορείτε να επαληθεύσετε το endpoint σας, τον έλεγχο υπογραφής και τη διαχείριση αδιαίρετης εκτέλεσης πριν εγγραφείτε σε ζωντανά γεγονότα.
+
+## Βέλτιστες πρακτικές
+
+- **Χρησιμοποιήστε HTTPS** — Το Wink στέλνει payloads μόνο σε HTTPS endpoints.
+- **Απαντήστε γρήγορα** — Επιστρέψτε `200 OK` μόλις λάβετε το payload. Κάντε την βαριά επεξεργασία ασύγχρονα.
+- **Αδιαίρετη εκτέλεση** — Ο χειριστής σας πρέπει να είναι αδιαίρετος· αποφύγετε διπλοεγγραφές με βάση το `Wink-Event-Id`. Το Wink επαναλαμβάνει αν δεν λάβει απάντηση `2xx`.
+- **Επαληθεύστε την πηγή** — Επαληθεύστε το header `Wink-Signature` (βλ. [Επαλήθευση υπογραφών](#verifying-signatures)) πριν την επεξεργασία· απορρίψτε οτιδήποτε αποτυγχάνει.
+- **Καταγραφή** — Καταγράψτε κάθε payload webhook που λαμβάνετε. Αυτό διευκολύνει πολύ τον εντοπισμό σφαλμάτων στην ενσωμάτωση.
+
+## Παύση και διαγραφή
+
+Μπορείτε να **απενεργοποιήσετε** ένα webhook χωρίς να το διαγράψετε. Αυτό παύει την παράδοση ώστε να μπορείτε να επιλύσετε προβλήματα χωρίς να χάσετε τη ρύθμισή σας. Όταν είστε έτοιμοι, ενεργοποιήστε το ξανά.
+
+Η διαγραφή ενός webhook το αφαιρεί οριστικά. Οποιαδήποτε ενσωμάτωση βασίζεται σε αυτό το webhook θα σταματήσει να λαμβάνει ειδοποιήσεις.
+
+## Επιπλέον ανάγνωση
+
+- [Κατάλογος Γεγονότων Webhook](/el/developers/webhook-events) — Κάθε τύπος γεγονότος, παραγόμενος από τον κατάλογο της πλατφόρμας.
+- [Αναφορά Webhooks API](/el/api/webhooks/) — Σχήματα payload ανά γεγονός, headers και endpoints διαχείρισης εγγραφών/παραδόσεων.
+- [Webhooks](/el/portal/settings/webhooks) — Πλήρης αναφορά για τη διαχείριση webhooks.
+- [Applications](/el/account/applications) — Διαχείριση των API credentials σας.
+- [Developers > APIs](/el/api) — Πλήρης τεκμηρίωση API.

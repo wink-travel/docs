@@ -1,0 +1,63 @@
+---
+title: Phân loại
+description: Các từ vựng được kiểm soát mà nền tảng Wink sử dụng — mã OTA cho tiện nghi, loại giường, tầm nhìn phòng và nhiều hơn nữa, cùng với mọi ngôn ngữ và tiền tệ được hỗ trợ.
+sidebar:
+  order: 12
+---
+
+import taxonomy from '@/data/taxonomy.json';
+import OtaCategories from '@/components/taxonomy/ota-categories.astro';
+import CodeTable from '@/components/taxonomy/code-table.astro';
+
+Wink mô tả kho hàng bằng cách sử dụng các từ vựng được kiểm soát — các bộ mã cố định với ý nghĩa đã được thống nhất. Khi bạn gửi `"5"` như một tiện nghi khách sạn, nền tảng sẽ hiểu đó là *Điều hòa không khí*, và mọi người dùng dữ liệu đó cũng vậy.
+
+Trang này là tài liệu tham khảo công khai cho cả ba bộ từ vựng:
+
+- **Mã OTA** — {taxonomy.ota.codeCount} mã trong {taxonomy.ota.categoryCount} danh mục, bao gồm tiện nghi, loại giường, tầm nhìn phòng, tính năng tiếp cận, ẩm thực và nhiều hơn nữa.
+- **Ngôn ngữ** — {taxonomy.languages.list.length} ngôn ngữ mà nội dung có thể được soạn thảo và phục vụ.
+- **Tiền tệ** — {taxonomy.currencies.list.length} loại tiền tệ mà tỷ giá có thể được báo giá và thanh toán.
+
+Mã là ổn định. Tên có thể được chỉnh sửa để rõ ràng hơn, vì vậy hãy đối chiếu theo **mã**, không phải theo tên.
+
+## Mã OTA
+
+Wink tuân theo danh sách mã của [OpenTravel Alliance](https://opentravel.org/). Mỗi danh mục có một mã định danh ba chữ cái — `HAC` cho tiện nghi khách sạn, `BED` cho loại giường — và mỗi mã trong một danh mục là duy nhất cho danh mục đó. Cùng một giá trị số có thể mang ý nghĩa khác nhau trong các danh mục khác nhau, vì vậy một mã chỉ có ý nghĩa khi đi kèm với danh mục nó thuộc về: `BED` `1` là *Giường đôi / Full*, trong khi `HAC` `1` là *Lễ tân 24 giờ*.
+
+Chọn một danh mục để xem các mã của nó.
+
+<OtaCategories
+  categories={taxonomy.ota.categories}
+  categoryHeader="Danh mục"
+  descriptionHeader="Mô tả"
+  countHeader="Mã"
+  codeHeader="Mã"
+  nameHeader="Tên"
+/>
+
+## Ngôn ngữ
+
+Nội dung — mô tả tài sản, tên phòng, chính sách — có thể được soạn thảo bằng bất kỳ ngôn ngữ nào trong số này. Mã là các thẻ [IETF BCP 47](https://www.rfc-editor.org/info/bcp47): một mã ngôn ngữ hai chữ cái [ISO 639-1](https://www.iso.org/iso-639-language-code), tùy chọn theo sau bởi một vùng [ISO 3166-1](https://www.iso.org/iso-3166-country-codes.html) nơi nền tảng phân biệt các biến thể vùng miền — `pt-BR` và `pt-PT` được xử lý riêng, cũng như `es`, `es-AR`, và `es-MX`.
+
+Mặc định của nền tảng là `{taxonomy.languages.default}`, được sử dụng khi yêu cầu không chỉ định ngôn ngữ và khi bản dịch không có sẵn.
+
+<CodeTable
+  rows={taxonomy.languages.list}
+  codeHeader="Mã"
+  nameHeader="Ngôn ngữ"
+  unnamedLabel="Không có tên chuẩn"
+/>
+
+## Tiền tệ
+
+Tỷ giá có thể được báo giá và thanh toán bằng bất kỳ loại tiền tệ nào trong số này. Mã là các định danh ba chữ cái theo [ISO 4217](https://www.iso.org/iso-4217-currency-codes.html).
+
+Mặc định của nền tảng là `{taxonomy.currencies.default}`. Đây là tiền tệ hiển thị dự phòng và đơn vị mà các số liệu cấp nền tảng được chuẩn hóa; nó **không phải** là tiền tệ mà một đặt phòng được thanh toán — khách sạn thanh toán bằng tiền tệ riêng của họ, vì vậy một tỷ giá được báo bằng một loại tiền tệ và thanh toán bằng loại tiền tệ khác sẽ có chênh lệch tỷ giá.
+
+Một vài mục không phải là tiền tệ quốc gia: `XAU` và `XAG` là vàng và bạc, `XDR` là Quyền rút vốn đặc biệt của IMF, và `BTC` là Bitcoin. Những mục này được dùng cho định giá và báo cáo, và thường không dùng làm tiền tệ thanh toán.
+
+<CodeTable
+  rows={taxonomy.currencies.list}
+  codeHeader="Mã"
+  nameHeader="Tiền tệ"
+  unnamedLabel="Không có tên chuẩn"
+/>

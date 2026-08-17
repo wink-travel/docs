@@ -2,6 +2,32 @@
 
 Changelog of docs.
 
+## v0.1.12 (2026-07-31)
+
+## v0.1.11 (2026-07-28)
+
+## v0.1.10 (2026-07-26)
+
+## v0.1.9 (2026-07-21)
+
+### Bug Fixes
+
+-  **schemas**  fetch from all three apps — inventory, integrations, partner ([1693f](https://github.com/wink-travel/docs/commit/1693fe7eae5f3ba) Bjorn Harvold)  
+-  **schemas**  fetch partner-app's "integrator" group for the partner audience ([641be](https://github.com/wink-travel/docs/commit/641be4923a8fdd7) Bjorn Harvold)  
+-  **schemas**  source the partner OpenAPI group from partner-app, not integrations-app ([6abdc](https://github.com/wink-travel/docs/commit/6abdc80ed89cbf3) Bjorn Harvold)  
+
+## v0.1.8 (2026-07-05)
+
+### Bug Fixes
+
+-  **starwind**  remove unused parentHandler field and isShort param ([7aa7a](https://github.com/wink-travel/docs/commit/7aa7a3e7c2ba299) Bjorn Harvold)  
+
+## v0.1.7 (2026-07-02)
+
+## v0.1.6 (2026-06-30)
+
+## v0.1.5 (2026-06-22)
+
 ## v0.1.4 (2026-06-21)
 
 ## v0.1.3 (2026-06-16)

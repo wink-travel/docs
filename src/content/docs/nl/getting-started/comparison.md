@@ -32,9 +32,9 @@ Leer hoe Wink zich verhoudt tot andere online reissegmenten op de markt. Hierond
 
 ## Wink vs Internet Booking Engine (IBE)
 
-Sommige hotels proberen ons te vergelijken met hun internet booking engine die werd meegeleverd met hun channel manager en vragen ons om een vaste, maandelijkse prijs te geven op basis van het aantal kamers van hun accommodatie.
+Sommige hotels proberen ons te vergelijken met hun internet booking engine die bij hun channel manager werd geleverd en vragen ons om een vaste, maandelijkse prijs te geven op basis van het aantal kamers van hun accommodatie.
 
-Wij zijn geen IBE en hopelijk helpt [Wink Academy](/nl/) dit te verduidelijken. Er zijn voor- en nadelen aan elke dienst. Als jouw IBE werkt voor jouw accommodatie, blijf daar dan bij.  
+Wij zijn geen IBE en hopelijk helpt dit om het verschil te verduidelijken. Er zijn voor- en nadelen aan elke dienst. Als jouw IBE werkt voor jouw accommodatie, blijf daar dan bij.  
 Wink bestaat om verschillende leemtes in de reisindustrie te vullen en alles samen te brengen op één plek.
 
 :::tip

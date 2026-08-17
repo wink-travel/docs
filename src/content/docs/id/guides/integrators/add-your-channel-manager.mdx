@@ -1,0 +1,464 @@
+---
+title: Tambahkan Channel Manager Anda
+description: Panduan langkah demi langkah untuk pengembang channel manager dan PMS yang mengintegrasikan dengan platform Wink.
+sidebar:
+  order: 1
+---
+
+import { Steps, LinkButton } from '@astrojs/starlight/components';
+
+Panduan ini membimbing pengembang channel manager dan PMS melalui proses lengkap integrasi dengan Wink — mulai dari membuat akun Anda hingga memetakan inventaris dan menjalankan pengujian end-to-end pertama Anda.
+
+## Lingkungan
+
+API Channel Manager (Integrations) tersedia dalam dua lingkungan. Gunakan staging untuk semua pengembangan dan sertifikasi; beralih ke produksi hanya saat go-live.
+
+| Lingkungan | URL Dasar |
+| ----------- | -------- |
+| Produksi   | https://integrations.wink.travel |
+| Staging    | https://staging-integrations.wink.travel |
+
+## Referensi API
+
+API Channel Manager mengikuti standar protokol OTA (SOAP/XML) untuk kompatibilitas dengan sistem perhotelan yang ada. Mulailah dengan meninjau dokumentasi endpoint partner:
+
+<LinkButton href="/id/partner-api/partner/">
+  Channel Manager API — Endpoint partner
+</LinkButton>
+
+## Langkah integrasi
+
+<Steps>
+1. **Buat akun pengguna Wink**
+
+   Daftar di [staging-app.wink.travel](https://staging-app.wink.travel). Semua langkah di bawah menggunakan staging — Anda akan mengulangi proses lengkap di produksi sebelum go-live.
+
+2. **Buat akun Affiliate / Channel Manager Anda**
+
+   Di bawah pengguna baru Anda, buat akun dan pilih tipe akun **Affiliate / Channel Manager**. Ini adalah akun yang akan digunakan integrasi Anda untuk otentikasi.
+
+3. **Daftarkan aplikasi dan buat token pertama Anda**
+
+   Buat [Application](/id/account/applications) dan kaitkan dengan akun channel manager dari langkah 2. Pilih **MACHINE_2_MACHINE** sebagai tipe klien — ini adalah integrasi server-ke-server tanpa pengguna akhir untuk diarahkan. Salin **Client ID** dan **Secret Key** segera; secret key hanya ditampilkan sekali dan tidak dapat diambil kembali.
+
+   Aplikasi ini yang membuat token bearer yang dibawa setiap panggilan dalam panduan ini sebagai `Authorization: Bearer <access_token>`. Tukarkan kredensial Anda untuk token menggunakan grant `client_credentials` ke `https://staging-iam.wink.travel/oauth2/token`, dengan permintaan scope `integrations.read integrations.write`. Lakukan ini sebelum melanjutkan — Anda tidak dapat mencari pengenal akun atau mengakses endpoint Channel Manager tanpa token. Lihat [Authentication](/id/developers/authentication) untuk alur lengkap, host produksi, dan katalog scope lengkap.
+
+4. **Buat akun Hotel**
+
+   Di bawah pengguna yang sama, buat akun kedua dan pilih tipe akun **Hotel**. Ini memberi Anda properti yang dapat digunakan untuk pengujian tanpa melibatkan hotel nyata.
+
+5. **Konfirmasi kedua akun disetujui**
+
+   Tidak ada akun yang dapat digunakan sampai disetujui: akun channel manager yang belum disetujui tidak muncul di daftar channel manager hotel mana pun, dan hotel yang belum disetujui tidak dikembalikan oleh API.
+
+   - **Staging** — persetujuan otomatis. Kedua akun dapat digunakan segera setelah dibuat, dan tidak perlu permintaan apa pun.
+   - **Produksi** — persetujuan manual. Kirimkan nama kedua akun dan pengguna yang menaunginya ke kontak integrasi Wink Anda, lalu tunggu konfirmasi sebelum melanjutkan.
+
+6. **Hubungkan kedua akun**
+
+   Masuk ke akun Hotel dan navigasikan ke **Extranet → Distribution → Channel Manager**. Pilih akun channel manager Anda dari daftar — ini menghubungkan properti ke integrasi Anda. Jika akun Anda tidak ada dalam daftar, berarti belum disetujui; lihat langkah 5.
+
+7. **Buat tipe kamar dan rencana tarif dasar**
+
+   Di dalam akun Hotel, buat setidaknya satu tipe kamar dan satu rencana tarif. Ini diperlukan sebelum integrasi Anda dapat mendorong tarif dan ketersediaan atau menarik pemesanan.
+
+8. **Pemetaan dan pengujian**
+
+   Di sistem Anda sendiri, petakan pengenal tipe kamar dan rencana tarif yang dikembalikan oleh API. Dorong pembaruan tarif dan pembaruan ketersediaan, lalu buat pemesanan uji dan verifikasi endpoint pengambilan pemesanan mengembalikannya dengan benar.
+</Steps>
+
+:::note
+Ulangi semua langkah di atas di produksi sebelum go-live, termasuk mendaftarkan aplikasi produksi terpisah — kredensial staging tidak berlaku di produksi. Perhitungkan waktu untuk tinjauan Wink pada langkah 5 — tidak seperti staging, akun produksi tidak disetujui secara otomatis. Tim Wink akan memigrasi hotel yang sudah menggunakan channel manager Anda ke akun produksi baru Anda.
+:::
+
+## Menemukan pengenal akun Anda
+
+Setiap jalur API Channel Manager dibatasi pada akun Anda sendiri:
+
+```
+/api/managing-entity/{managingEntityIdentifier}/channel-manager/...
+```
+
+`{managingEntityIdentifier}` adalah ID akun (UUID) dari **akun channel manager Anda** — bukan
+hotel. Ambil bersama dengan ID dan status terkini dari setiap akun lain yang dimiliki pengguna Anda
+dari Platform API:
+
+```bash
+curl -s -X GET \
+  "https://staging-api.wink.travel/api/managing-entity/list" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Responsnya adalah array akun yang Anda miliki:
+
+```json
+[
+  {
+    "id": "3f1c8e42-7b90-4d55-a1e2-6c8d09b4f731",
+    "type": "CHANNEL_MANAGER",
+    "name": "Channel Manager Anda",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "d5b8a3c2-9e6f-4a1b-8d34-7c2e1f0a5b69",
+    "type": "HOTEL",
+    "name": "Properti Uji Anda",
+    "urlName": "your-test-property",
+    "status": "ACTIVE"
+  }
+]
+```
+
+- `id` dari entri channel manager adalah **`{managingEntityIdentifier}`** Anda.
+- `id` dari entri `HOTEL` adalah **`{propertyIdentifier}`** Anda.
+- `status` adalah tempat Anda mengonfirmasi setiap akun disetujui — paling berguna di produksi, di mana
+  persetujuan manual. **Hotel** harus berstatus `ACTIVE` sebelum dapat dipesan atau terlihat oleh
+  API Channel Manager. Akun **channel manager** Anda akan tetap berstatus `PENDING_APPROVAL` sampai
+  Anda lulus [Sertifikasi](#certification); ini normal dan tidak menghalangi pengembangan.
+
+:::caution
+Pencarian ini dijalankan terhadap **Platform API** (`https://staging-api.wink.travel` di staging,
+`https://api.wink.travel` di produksi), bukan host API Channel Manager yang tercantum di
+[Environments](#environments). Gunakan token akses yang sama — token ini diterbitkan per pengguna, bukan per API.
+:::
+
+## Sertifikasi
+
+Sertifikasi adalah cara Anda membuktikan — dan Wink mengonfirmasi — bahwa integrasi Anda memetakan
+inventaris dengan benar, mendorong tarif dan ketersediaan, serta menerima pemesanan secara end-to-end.
+Ini dirancang untuk layanan mandiri: Anda menjalankan setiap langkah dari sistem Anda sendiri, dan
+mengirimkan satu bundel bukti di akhir. Wink meninjau bundel dan, jika lulus, mengubah status akun
+Affiliate / Channel Manager Anda dari **PENDING_APPROVAL** menjadi **ACTIVE**.
+
+Sertifikasi dijalankan sepenuhnya di lingkungan staging
+(`https://staging-integrations.wink.travel`). Tidak ada bagian dalam seksi ini yang menyentuh produksi.
+
+### Apa yang akan Anda buktikan
+
+<Steps>
+1. **Otentikasi.** Klien OAuth2 Anda dapat memperoleh token akses dan berhasil memanggil
+   endpoint `/ping` terhadap akun Affiliate / Channel Manager Anda.
+
+2. **Pemetaan inventaris.** Anda dapat mendaftar hotel yang terhubung ke akun Anda, mengambil master
+   rate (kombinasi tipe kamar × rencana tarif) yang Anda konfigurasi, dan mengidentifikasi dengan benar
+   `masterRateIdentifier` yang akan ditargetkan sistem Anda.
+
+3. **Dorongan tarif & ketersediaan.** Anda dapat memperbarui ketujuh hari dalam minggu sertifikasi
+   secara independen — kombinasi berbeda dari jumlah, kuantitas, flag close-on-arrival / close-on-departure,
+   dan batas panjang tinggal minimum/maksimum pada setiap hari — dan membaca kembali nilai tepat dari Wink.
+
+4. **Tarik pemesanan.** Anda dapat mengambil pemesanan staging nyata yang dibuat untuk properti uji Anda,
+   menampilkannya di UI PMS/CM Anda dengan kamar, tamu, dan total yang benar, lalu mencerminkan pembatalan
+   setelah Wink menandai pemesanan dibatalkan.
+</Steps>
+
+### Prasyarat
+
+Sebelum memulai sertifikasi, selesaikan langkah 1–7 dari [Langkah integrasi](#integration-steps) sehingga Anda memiliki:
+
+- Pengguna Wink di staging dengan akun **Affiliate / Channel Manager** dan akun **Hotel**
+  yang terhubung (Extranet → Distribution → Channel Manager). Akun staging disetujui otomatis,
+  jadi tidak perlu permintaan di sini.
+- Setidaknya satu **tipe kamar** dan satu **rencana tarif** dibuat di dalam akun Hotel. Publikasikan
+  hotel agar dapat dipesan di `https://staging-book.wink.travel/hotel/<your-slug>`.
+- Aplikasi terdaftar di bawah akun Affiliate / Channel Manager Anda dengan **Client ID**,
+  **Secret Key**, dan scope `integrations.read integrations.write`
+  (lihat [Authentication](/id/developers/authentication)).
+- **`managingEntityIdentifier`** dari akun Affiliate / Channel Manager Anda dan
+  **`propertyIdentifier`** dari akun Hotel Anda (keduanya UUID — lihat
+  [Menemukan pengenal akun Anda](#finding-your-account-identifiers)).
+
+### Konvensi permintaan umum
+
+Setiap permintaan dalam seksi ini menggunakan header berikut:
+
+```http
+Authorization: Bearer <access_token>
+Wink-Version: 2.0
+Accept: application/json
+```
+
+- `<access_token>` berasal dari grant `client_credentials` ke
+  `https://staging-iam.wink.travel/oauth2/token` — lihat [Authentication](/id/developers/authentication#staging).
+- Header `Wink-Version` wajib; tanpa ini tidak akan diarahkan ke API JSON v2.
+- `Content-Type: application/json` ditambahkan pada permintaan `PUT` yang membawa body.
+
+Di seluruh contoh di bawah, placeholder dipetakan ke nilai yang Anda kumpulkan di
+[Prasyarat](#prerequisites):
+
+| Placeholder | Arti |
+|---|---|
+| `{managingEntityIdentifier}` | ID akun Affiliate / Channel Manager Anda (UUID) — lihat [Menemukan pengenal akun Anda](#finding-your-account-identifiers). |
+| `{propertyIdentifier}`       | ID akun Hotel (properti) yang Anda hubungkan ke akun CM. |
+| `{masterRateIdentifier}`     | Master rate (kombinasi tipe kamar × rencana tarif) yang akan Anda sertifikasi. |
+| `{bookingIdentifier}`        | ID pemesanan staging yang dikembalikan oleh panggilan daftar pemesanan. |
+
+### Langkah A — Ping
+
+Konfirmasi kredensial Anda mengarah ke akun Affiliate / Channel Manager yang Anda harapkan.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/ping" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Respons yang diharapkan:
+
+```json
+{
+  "apiVersion": "2.0",
+  "name": "Nama Akun Channel Manager Anda",
+  "status": "PENDING_APPROVAL"
+}
+```
+
+Respons **200** dengan `name` yang cocok adalah sinyal bahwa otentikasi dan resolusi akun benar.
+`status` akan membaca `PENDING_APPROVAL` sampai Wink menyertifikasi Anda.
+
+### Langkah B — Daftar properti
+
+Ambil daftar hotel yang dipaginasi yang terhubung ke akun Anda dan konfirmasi properti uji Anda ada.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/list?page=0&size=25" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Respons adalah `Page` Spring dari entri `ChannelManagerProperty`. Temukan entri yang `identifier`-nya
+cocok dengan `{propertyIdentifier}` Anda dan catat `currencyCode` — Anda akan membutuhkannya untuk
+interpretasi pembaruan tarif di [Langkah D](#step-d--load-the-certification-week).
+
+:::caution
+Daftar kosong adalah sinyal konfigurasi, bukan permintaan yang salah format. Hotel hanya dikembalikan
+di sini setelah berstatus **`ACTIVE`** *dan* telah ditugaskan ke akun channel manager Anda di
+Extranet → Distribution → Channel Manager. Periksa keduanya dengan `GET /api/managing-entity/list` (lihat
+[Menemukan pengenal akun Anda](#finding-your-account-identifiers)) sebelum melakukan debug lebih lanjut.
+Di produksi, tambahkan penyebab ketiga: hotel tidak terlihat di sini sampai Wink menyetujuinya.
+:::
+
+### Langkah C — Ambil master rates
+
+Ambil properti bersama dengan setiap master rate (kombinasi tipe kamar × rencana tarif) yang dipublikasikannya.
+Pilih yang akan Anda sertifikasi dan catat `identifier`-nya sebagai `{masterRateIdentifier}` Anda.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Amplop respons adalah `PropertyWithRoomRateList`: blok `property` plus array `rooms` dari entri
+`PropertyRoomRate`. Setiap entri menampilkan tipe kamar, rencana tarif, batas okupansi, tarif dasar,
+dan modifikator tarif yang akan Anda pertahankan saat mendorong tarif harian.
+
+:::caution
+Sertifikasi hanya terhadap satu master rate untuk seluruh proses sertifikasi. Pemetaan tipe kamar
+dan rencana tarif tambahan diharapkan di produksi, tetapi bundel bukti hanya perlu menunjukkan
+satu master rate yang diuji end-to-end.
+:::
+
+### Langkah D — Muat minggu sertifikasi
+
+Muat **kalender tarif tujuh hari** yang mencakup tujuh hari kalender pertama bulan **setelah**
+bulan Anda mulai sertifikasi. Misalnya, jika Anda mulai sertifikasi pada 21 Agustus,
+targetkan 1 September sampai 7 September.
+
+Anda akan mengirim **tujuh panggilan `PUT` terpisah** — satu per hari — dengan `startDate == endDate`.
+Setiap hari membawa kombinasi berbeda dari jumlah, kuantitas, flag penutupan saat kedatangan / keberangkatan,
+dan batas panjang tinggal sehingga setiap bidang yang dapat ditulis diuji setidaknya sekali. Nilai dalam
+mata uang properti (dicatat di Langkah B); hilangkan `currencyCode` dan akan default dengan benar.
+
+| Hari | Jumlah | Kuantitas | closedOnArrival | closedOnDeparture | minLengthOfStay | maxLengthOfStay | Apa yang dibuktikan |
+|-----|--------|----------|-----------------|-------------------|-----------------|-----------------|--------------------|
+| 1   | 100.00 | 5        | false           | false             | 1               | 30              | Hari dasar. |
+| 2   | 125.00 | 4        | false           | false             | 1               | 14              | Perubahan jumlah + kuantitas + `maxLengthOfStay`. |
+| 3   | 150.00 | 3        | **true**        | false             | 1               | 30              | Perubahan `closedOnArrival`. |
+| 4   | 175.00 | 2        | false           | **true**          | 2               | 7               | Perubahan `closedOnDeparture` + jendela LOS lebih ketat. |
+| 5   | 200.00 | **0**    | false           | false             | 1               | 30              | Kuantitas habis terjual. |
+| 6   | 225.00 | 5        | false           | false             | **3**           | **5**           | Jendela LOS yang membatasi. |
+| 7   | 250.00 | 1        | false           | false             | 1               | 30              | Ketersediaan kamar terakhir. |
+
+Body permintaan untuk Hari 1 terlihat seperti ini. Ulangi, sesuaikan `startDate` / `endDate` / nilai
+sesuai baris, untuk Hari 2 sampai 7.
+
+```bash
+curl -s -X PUT \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/master-rate/{masterRateIdentifier}" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json" \
+  -d '{
+        "startDate": "2026-09-01",
+        "endDate":   "2026-09-01",
+        "amount":    100.00,
+        "master":    true,
+        "closedOnArrival":   false,
+        "closedOnDeparture": false,
+        "quantity":          5,
+        "minLengthOfStay":   1,
+        "maxLengthOfStay":   30
+      }'
+```
+
+Setiap `PUT` merespons `200` dengan array entri `PropertyRate` yang diperbarui untuk rentang yang Anda kirim
+(satu entri saat `startDate == endDate`). Simpan respons itu — akan menjadi bagian dari bukti Anda.
+
+:::note
+`master` harus `true` pada setiap panggilan minggu sertifikasi. Ini memberi tahu Wink bahwa pembaruan Anda
+adalah tarif template, bukan override per pemesanan.
+:::
+
+### Langkah E — Baca kembali minggu sertifikasi
+
+Ambil seluruh minggu dalam satu panggilan dan konfirmasi bahwa nilai yang disimpan setiap hari cocok
+dengan baris yang Anda kirim di Langkah D — termasuk flag boolean dan jendela panjang tinggal.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/master-rate/{masterRateIdentifier}?startDate=2026-09-01&endDate=2026-09-07" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Respons adalah `PropertyRoomRateWithRateList`. Array `rates` harus berisi **tujuh** entri,
+satu per hari, masing-masing dengan `amount`, `quantity`, `closedOnArrival`, `closedOnDeparture`,
+`minLengthOfStay`, dan `maxLengthOfStay` yang Anda muat. Ketidaksesuaian pada bidang apa pun berarti
+`PUT` terkait di Langkah D tidak berhasil — perbaiki dan verifikasi ulang sebelum melanjutkan.
+
+### Langkah F — Buat pemesanan uji
+
+Buka URL berikut di browser, ganti `<your-slug>` dengan slug akun Hotel yang Anda publikasikan di Prasyarat:
+
+```
+https://staging-book.wink.travel/hotel/<your-slug>
+```
+
+Pilih tanggal kedatangan dan keberangkatan yang sepenuhnya berada dalam minggu sertifikasi Anda,
+pilih kombinasi tipe kamar + rencana tarif yang Anda sertifikasi, dan selesaikan pemesanan. Staging
+menggunakan jalur pembayaran uji — tidak ada kartu nyata yang dikenakan biaya.
+
+Setelah halaman konfirmasi muncul, catat **kode pemesanan** (format `WNKxxxxx`) yang ditampilkan
+kepada tamu.
+
+### Langkah G — Tarik pemesanan
+
+Ambil setiap pemesanan yang dibuat untuk properti uji Anda dalam jendela waktu yang mencakup
+timestamp pemesanan.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/booking/list?startDate=2026-09-01T00:00:00&endDate=2026-09-08T00:00:00" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Temukan entri yang `bookingCode`-nya cocok dengan kode yang Anda catat di Langkah F. Catat
+`bookingIdentifier`-nya. Kemudian ambil pemesanan tunggal itu:
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/booking/{bookingIdentifier}" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Respons adalah `PropertyBooking`. Impor ke dalam UI PMS / channel-manager Anda sendiri dan konfirmasi
+bahwa setiap item berikut ditampilkan dengan benar kepada operator:
+
+- `bookingCode`, `bookingIdentifier`, `createdDate`
+- Tamu: `firstName`, `lastName`, `email`
+- `totalAmount` + `currencyCode` (jumlah bersih yang diterima hotel untuk semua kamar)
+- `paymentMethodType`, `paymentMethodStatus`, `salesChannelName`
+- Setiap entri di `roomStays`: `guestRoomName`, `ratePlanName`, `adults`, `children`, `startDate`,
+  `endDate`, dan per-kamar `amount`
+
+Ambil tangkapan layar pemesanan seperti yang muncul di UI Anda — tangkapan layar ini adalah salah satu
+bukti yang diperlukan.
+
+### Langkah H — Batalkan pemesanan dan verifikasi
+
+Minta tim Wink membatalkan pemesanan sertifikasi atas nama Anda (atau batalkan sendiri dari Extranet
+akun Hotel jika Anda memiliki izin tersebut). Kemudian ambil kembali pemesanan yang sama dengan panggilan
+dari Langkah G.
+
+Konfirmasi respons sekarang menunjukkan:
+
+- `cancelled: true`
+- Timestamp `cancelDate` terisi
+- `paymentMethodStatus` yang mencerminkan siklus pembatalan (`CANCELLED`, `PARTIALLY_REFUNDED`,
+  atau `FULLY_REFUNDED` tergantung kebijakan pengembalian dana)
+
+Impor pemesanan yang diperbarui itu ke UI Anda dan konfirmasi pembatalan terlihat oleh operator —
+status, timestamp pembatalan, dan indikator pengembalian dana yang didukung UI Anda. Ambil tangkapan
+layar kedua dari pemesanan yang dibatalkan di UI Anda. Ini adalah bukti terakhir.
+
+### Langkah I — Kirim bundel bukti Anda
+
+Kemas hal berikut ke dalam satu arsip (`.zip`) bernama
+`wink-cert-<nama-channel-manager-anda>-<yyyy-mm-dd>.zip`:
+
+<Steps>
+1. **Transkrip API.** Untuk setiap permintaan yang Anda buat di Langkah A sampai H, tangkap permintaan HTTP lengkap
+   (metode, URL, header permintaan dengan nilai `Authorization` disamarkan, dan body JSON untuk panggilan `PUT`)
+   dan respons HTTP lengkap (kode status, header respons, dan body JSON). Struktur transkrip agar setiap pasangan
+   permintaan/respons diberi label jelas dengan langkahnya (`step-a-ping.json`, `step-d-day-3-put.json`,
+   `step-g-list-bookings.json`, dan seterusnya). File `.http` teks biasa atau ekspor `.har` tunggal keduanya
+   format yang diterima.
+
+2. **Tangkapan layar UI: pemesanan aktif.** Tangkapan layar dari Langkah G yang menunjukkan pemesanan sertifikasi
+   ditampilkan di UI PMS / channel-manager Anda sendiri, dengan tamu, tanggal, tipe kamar, rencana tarif,
+   dan total yang jelas terbaca.
+
+3. **Tangkapan layar UI: pemesanan dibatalkan.** Tangkapan layar dari Langkah H yang menunjukkan pemesanan yang sama
+   di UI Anda setelah pembatalan, dengan status dibatalkan dan timestamp yang jelas terbaca.
+
+4. **Ringkasan sertifikasi.** `README.md` singkat di dalam arsip yang mencantumkan:
+   - Nama dan versi channel manager / PMS Anda.
+   - `managingEntityIdentifier`, `propertyIdentifier`, `masterRateIdentifier`, dan
+     `bookingIdentifier` yang Anda gunakan.
+   - Slug hotel staging (yang `<your-slug>` di `https://staging-book.wink.travel/hotel/<your-slug>`).
+   - Rentang tanggal minggu sertifikasi (Hari 1 → Hari 7 dalam format ISO-8601).
+   - Nama dan email engineer yang menjalankan sertifikasi.
+</Steps>
+
+Kirim arsip ke kontak integrasi Wink Anda. Wink akan meninjau, menindaklanjuti jika ada
+ketidaksesuaian, dan — jika lulus — mengubah status akun Affiliate / Channel Manager Anda dari
+`PENDING_APPROVAL` menjadi `ACTIVE`. Integrasi Anda kemudian memenuhi syarat untuk onboarding produksi.
+
+:::tip
+Otomatiskan penangkapan transkrip. Tujuh panggilan `PUT` di Langkah D dan pembacaan kembali di Langkah E
+adalah sumber kegagalan sertifikasi yang paling umum — klien HTTP interaktif yang menyimpan setiap
+permintaan dan respons saat berjalan akan menghemat Anda pengulangan penuh jika ada nilai yang
+melenceng sedikit.
+:::
+
+## Notifikasi webhook
+
+Anda dapat berlangganan event webhook channel manager untuk menerima notifikasi real-time:
+
+- `channel-manager.update.rate` — Pembaruan tarif diterima.
+- `channel-manager.update.availability` — Pembaruan ketersediaan diterima.
+- `channel-manager.update` — Pembaruan channel manager umum.
+
+Lihat [Katalog Event Webhook](/id/developers/webhook-events#channel-manager-events) untuk detail.
+
+## Bacaan lebih lanjut
+
+- [Channel Manager API](/id/partner-api/partner/) — Dokumentasi endpoint API lengkap.
+- [Rate Providers](/id/portal/extranet/rate-providers) — Mengelola penyedia tarif di Extranet.
+- [Webhook Events Catalog](/id/developers/webhook-events) — Semua event yang dapat dilanggan.
+- [Build on Wink](/id/developers/build-on-wink) — Gambaran platform untuk pengembang.

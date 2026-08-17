@@ -1,0 +1,166 @@
+---
+title: 웹훅 통합
+description: 이 가이드는 개발자가 예약, 결제 및 기타 이벤트에 대한 실시간 알림을 받기 위해 웹훅을 설정하는 방법을 보여줍니다.
+sidebar:
+  order: 3
+---
+
+import { Steps, LinkButton } from '@astrojs/starlight/components';
+
+웹훅은 Wink 계정에서 이벤트가 발생할 때 실시간 알림을 받을 수 있도록 시스템에 전달합니다 — 신규 예약, 취소, 결제 업데이트 등. 이 가이드는 설정과 모범 사례를 안내합니다.
+
+## 대상
+
+이 가이드는 Wink를 부동산 관리 시스템(PMS), 채널 관리자, CRM 또는 맞춤 대시보드와 같은 외부 시스템과 통합하는 개발자를 위한 것입니다.
+
+## 웹훅 작동 방식
+
+1. Wink에 웹훅 URL을 등록합니다.
+2. 이벤트가 발생하면(예: 신규 예약) Wink가 HTTP POST를 해당 URL로 전송합니다.
+3. 서버가 페이로드를 처리하고 `200 OK`로 응답합니다.
+
+## 웹훅 설정하기
+
+<Steps>
+1. 계정에 로그인합니다 (Extranet, Studio 또는 TripPay — 모두 웹훅을 지원합니다).
+2. `Applications`에서 `Webhooks`로 이동합니다. [Webhooks](/ko/portal/settings/webhooks)를 참조하세요.
+3. `Create webhook`을 클릭합니다.
+4. **이름**을 입력합니다 (예: "PMS 예약 동기화").
+5. **웹훅 URL**을 입력합니다 — 서버의 HTTPS 엔드포인트입니다.
+6. **이벤트 선택** — 구독할 특정 이벤트를 선택하거나 모두 받으려면 비워 둡니다.
+7. **Enabled**를 켭니다.
+8. `Save`를 클릭합니다 — 응답에 **서명 비밀키**가 한 번 표시되니 지금 저장하세요.
+</Steps>
+
+## 이벤트 유형
+
+Wink는 현재 예약, 부동산, 계정(관리 주체) 및 인벤토리(객실 유형, 요금제, 마스터 요금, 추가 옵션, 시설, 판매 채널, 프로모션) 전반에 걸쳐 70개의 웹훅 이벤트 유형을 발행합니다. 주요 이벤트:
+
+| 카테고리 | 예시 |
+|---|---|
+| **예약** | `booking.create`, `booking.cancelled`, `booking.refund.partial`, `booking.refund.full`, `booking.review.created` |
+| **부동산** | `property.created`, `property.status.updated`, `property.policy.updated` |
+| **인벤토리** | `room_type.updated`, `rate_plan.created`, `master_rate.updated`, `special_rate.created`, `sales_channel.created` |
+| **계정** | `managing_entity.created`, `managing_entity.status.updated`, `managing_entity.manager.added` |
+
+설명, 수신자, 각 이벤트 참조 페이지 링크가 포함된 전체 생성 목록은 **Webhook Events Catalog**입니다. 모든 이벤트의 참조 페이지(JSON 본문, 헤더, 재시도 정책)는 [Webhooks API](/ko/api/webhooks/)에 있습니다.
+
+<LinkButton href="/ko/developers/webhook-events">
+  모든 이벤트 유형 보기
+</LinkButton>
+
+## 수신 내용
+
+모든 전달은 `Content-Type: application/json` 헤더와 함께 웹훅 URL로 HTTP `POST` 요청이 오며, 다음과 같은 봉투 구조입니다:
+
+```json
+{
+  "id": "0198a4f2-6b0e-7c1d-9a3e-2f4b8c6d1e0a",
+  "type": "booking.create",
+  "occurredAt": "2026-08-15T09:30:00Z",
+  "ownerIdentifier": "3c6b1a5d-8e2f-4a0b-9c7d-6e4f0a8b2c51",
+  "recipientRole": "SUPPLIER",
+  "schemaVersion": 2,
+  "object": { "...": "event-specific payload, e.g. BookingWebhookPayload" }
+}
+```
+
+- `id` — 이벤트 식별자; 이 이벤트를 받는 계정의 모든 엔드포인트와 모든 재시도에 대해 동일합니다. **멱등성 키**로 사용하세요.
+- `type` — 이벤트 유형 키 (`Wink-Event-Type` 헤더에도 전송됨). `type`과 `schemaVersion`에 따라 `object`를 파싱합니다.
+- `object` — 이벤트 대상 리소스의 요약(식별자, 상태, 처리할 필드)과 `links.self`(공급자 측 정식 REST URL)를 포함합니다. 요약 이상의 정보가 필요하면 자체 API 자격 증명으로 해당 URL을 호출하세요. 리셀러나 여행사로 이벤트를 받는 경우 동일 식별자의 자체 API 엔드포인트를 사용하세요.
+
+각 페이로드 스키마는 [Webhooks API](/ko/api/webhooks/) 참조에서 이벤트별로 문서화되어 있습니다.
+
+### 헤더
+
+| 헤더 | 의미 |
+|---|---|
+| `Wink-Version` | 와이어 계약 버전, `2.0`. |
+| `Wink-Event-Id` | 본문 `id`와 동일 — 멱등성 키. |
+| `Wink-Delivery-Id` | 엔드포인트별 이벤트 고유 ID; 재전송 시 변경됨. |
+| `Wink-Event-Type` | 본문 `type`과 동일. |
+| `Wink-Delivery-Attempt` | 이 전달의 1부터 시작하는 시도 횟수. |
+| `Wink-Signature` | HMAC 서명 — 아래 참조. |
+
+## 서명 검증
+
+모든 웹훅에는 Wink가 **한 번만** 보여주는 **서명 비밀키**(`whsec_…`)가 있습니다. 비밀번호처럼 안전하게 보관하세요. 각 전달에는 다음과 같은 헤더가 포함됩니다:
+
+```
+Wink-Signature: t=1755250200,v1=5d41402abc4b2a76b9719d911017c592…
+```
+
+`t`는 유닉스 타임스탬프(초), `v1`은 비밀키로 키를 생성한 문자열 `t + "." + rawBody`의 소문자 16진수 **HMAC-SHA256**입니다. `rawBody`는 수신한 요청 본문의 정확한 바이트이며, 검증 전에 JSON을 다시 직렬화하지 마세요. 비밀키 교체 후 24시간 동안은 이전 비밀키로 서명한 두 번째 `v1=` 값도 포함되며, **어느 하나라도** 일치하면 전달을 허용합니다.
+
+검증 절차는 네 단계입니다: `t`와 모든 `v1`을 파싱; 비밀키로 `t.rawBody`에 대한 HMAC 재계산; 상수 시간 비교; `|now − t|`가 허용 오차(권장 5분)를 초과하면 거부.
+
+```js
+// Node.js (Express 스타일; RAW 본문이 있어야 하며, 파싱된 객체가 아님)
+import { createHmac, timingSafeEqual } from 'node:crypto';
+
+export function verifyWinkSignature(header, rawBody, secret, toleranceSeconds = 300) {
+  const parts = Object.fromEntries(header.split(',').map((p) => p.split('=').map((s) => s.trim())));
+  const t = Number(parts.t);
+  if (!Number.isFinite(t) || Math.abs(Date.now() / 1000 - t) > toleranceSeconds) return false;
+  const expected = createHmac('sha256', secret).update(`${t}.${rawBody}`).digest('hex');
+  return header
+    .split(',')
+    .filter((p) => p.trim().startsWith('v1='))
+    .map((p) => p.trim().slice(3))
+    .some((v1) => v1.length === expected.length && timingSafeEqual(Buffer.from(v1, 'utf8'), Buffer.from(expected, 'utf8')));
+}
+```
+
+```java
+// Java
+static boolean verify(String header, String rawBody, String secret, long nowSeconds, long toleranceSeconds) throws Exception {
+    long t = Long.MIN_VALUE;
+    List<String> signatures = new ArrayList<>();
+    for (String part : header.split(",")) {
+        String[] kv = part.trim().split("=", 2);
+        if (kv[0].equals("t")) t = Long.parseLong(kv[1]);
+        else if (kv[0].equals("v1")) signatures.add(kv[1]);
+    }
+    if (t == Long.MIN_VALUE || Math.abs(nowSeconds - t) > toleranceSeconds) return false;
+    Mac mac = Mac.getInstance("HmacSHA256");
+    mac.init(new SecretKeySpec(secret.getBytes(StandardCharsets.UTF_8), "HmacSHA256"));
+    byte[] expected = HexFormat.of().formatHex(mac.doFinal((t + "." + rawBody).getBytes(StandardCharsets.UTF_8))).getBytes(StandardCharsets.US_ASCII);
+    return signatures.stream().anyMatch(v1 -> MessageDigest.isEqual(expected, v1.toLowerCase().getBytes(StandardCharsets.US_ASCII)));
+}
+```
+
+포털에서 또는 `POST /api/managing-entity/{id}/webhook/{webhookId}/rotate-secret`로 비밀키를 교체할 수 있습니다; 응답에 새 비밀키가 한 번 표시되며, 이전 키는 24시간 동안 유효하여 점진적 교체가 가능합니다.
+
+## 재시도 및 재전송
+
+- 10초 이내에 모든 `2xx` 응답으로 수신 확인하세요. 무거운 작업은 비동기로 처리하세요.
+- `5xx`, 타임아웃, `408` 또는 `429`는 백오프로 재시도됩니다: 1분, 5분, 30분, 2시간, 6시간, 12시간, 이후 매일 — 약 3일간 10회 시도 후 **죽음(dead)** 상태로 표시됩니다.
+- 기타 `4xx`는 "전달 거부"로 간주되어 재시도하지 않습니다.
+- 모든 이벤트, 전달 및 시도(상태, 응답 일부)는 **Applications > Webhooks** 및 API(`…/webhook/event/grid`, `…/webhook/delivery/grid`)에서 확인할 수 있습니다. 개별 전달을 **재전송**(`POST …/webhook/delivery/{deliveryId}/redeliver`), 모든 죽은 전달을 한 번에 재전송(`POST …/webhook/{webhookId}/redeliver-dead`), 또는 취소할 수 있습니다.
+- 전달 기록은 30일간 보관됩니다.
+
+## 테스트 이벤트
+
+포털에서 또는 `POST /api/managing-entity/{id}/webhook/{webhookId}/test`로 합성 `webhook.test` 이벤트를 보내세요. 실제 이벤트처럼 서명되고 전달되어 엔드포인트, 서명 검증, 멱등성 처리를 라이브 이벤트 구독 전에 확인할 수 있습니다.
+
+## 모범 사례
+
+- **HTTPS 사용** — Wink는 HTTPS 엔드포인트에만 페이로드를 전송합니다.
+- **빠른 응답** — 페이로드 수신 즉시 `200 OK`를 반환하세요. 무거운 처리는 비동기로 수행하세요.
+- **멱등성** — 핸들러는 멱등성을 가져야 하며, `Wink-Event-Id`로 중복을 제거하세요. Wink는 `2xx` 응답을 받지 못하면 재시도합니다.
+- **출처 검증** — 처리 전에 `Wink-Signature` 헤더를 검증하세요 ([서명 검증](#verifying-signatures) 참조). 실패 시 거부하세요.
+- **로깅** — 수신하는 모든 웹훅 페이로드를 기록하세요. 통합 문제 디버깅에 매우 유용합니다.
+
+## 일시 중지 및 삭제
+
+웹훅을 삭제하지 않고 **비활성화**할 수 있습니다. 이렇게 하면 구성은 유지하면서 전달만 일시 중지하여 문제를 해결할 수 있습니다. 준비가 되면 다시 활성화하세요.
+
+웹훅을 삭제하면 영구적으로 제거됩니다. 해당 웹훅에 의존하는 통합은 알림 수신이 중단됩니다.
+
+## 추가 자료
+
+- [Webhook Events Catalog](/ko/developers/webhook-events) — 플랫폼 카탈로그에서 생성된 모든 이벤트 유형.
+- [Webhooks API reference](/ko/api/webhooks/) — 이벤트별 페이로드 스키마, 헤더, 구독 및 전달 관리 엔드포인트.
+- [Webhooks](/ko/portal/settings/webhooks) — 웹훅 관리 전체 참조.
+- [Applications](/ko/account/applications) — API 자격 증명 관리.
+- [Developers > APIs](/ko/api) — 전체 API 문서.

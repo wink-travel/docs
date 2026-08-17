@@ -1,331 +1,49 @@
 ---
 title: Katalog Event Webhook
-description: Referensi lengkap semua jenis event webhook yang tersedia di platform Wink, diorganisir berdasarkan kategori.
+description: Setiap jenis event webhook di platform Wink, dihasilkan dari katalog event platform — yang dikirimkan, kepada siapa, dan di mana payload didokumentasikan.
 sidebar:
-  order: 3
+  order: 3.5
 ---
 
-import { LinkButton } from '@astrojs/starlight/components';
+import webhooks from '../../../../schemas/webhooks.json';
+import WebhookEventTypes from '@/components/webhooks/event-types.astro';
 
-Halaman ini mencantumkan setiap event webhook yang dapat Anda langgani di Wink. Untuk instruksi pengaturan, lihat [Panduan Integrasi Webhook](/id/guides/developers/webhook-integration) atau [halaman pengelolaan Webhooks](/id/portal/settings/webhooks).
+Halaman ini mencantumkan setiap event webhook yang dapat Anda langgani di Wink. Untuk petunjuk pengaturan, lihat [Panduan Integrasi Webhook](/id/developers/webhook-integration) atau [halaman pengelolaan Webhooks](/id/portal/settings/webhooks).
 
 ## Cara berlangganan
 
-1. Navigasikan ke **Applications > Webhooks** di portal Anda.
-2. Buat webhook dan pilih event yang ingin Anda terima.
-3. Wink mengirim HTTP POST ke endpoint Anda setiap kali event terjadi.
-
-Untuk langkah pengaturan lengkap dan praktik terbaik, lihat [Integrasi Webhook](/id/guides/developers/webhook-integration).
-
----
-
-## Mengelola event entitas
-
-Event untuk mengelola entitas (properti, afiliasi, perusahaan) dan administrasinya.
-
-### Siklus hidup
-
-| Event | Key | Deskripsi |
-|---|---|---|
-| Entitas dibuat | `managing_entity.created` | Entitas pengelola baru telah dibuat. |
-| Entitas dihapus | `managing_entity.deleted` | Entitas pengelola telah dihapus. |
-| Status diperbarui | `managing_entity.status.updated` | Status entitas telah berubah. |
-| Dalam peninjauan | `account.under_review` | Akun entitas sedang dalam peninjauan. |
-
-### Langganan
-
-| Event | Key | Deskripsi |
-|---|---|---|
-| Langganan disediakan | `managing_entity.subscription.provisioned` | Langganan baru telah disediakan. |
-| Langganan diubah | `managing_entity.subscription.changed` | Paket langganan telah diubah. |
-| Faktur langganan diubah | `managing_entity.subscription.invoice.changed` | Faktur langganan telah diperbarui. |
-
-### Siklus hidup manajer
-
-| Event | Key | Deskripsi |
-|---|---|---|
-| Manajer ditambahkan | `managing_entity.manager.added` | Manajer baru telah ditambahkan. |
-| Manajer diundang | `managing_entity.manager.invited` | Undangan manajer telah dikirim. |
-| Manajer dihapus | `managing_entity.manager.removed` | Manajer telah dihapus. |
-| Manajer menerima | `managing_entity.manager.accepted` | Undangan manajer telah diterima. |
-| Manajer menolak | `managing_entity.manager.rejected` | Undangan manajer telah ditolak. |
-| Pemilik ditetapkan | `managing_entity.manager.owner.set` | Kepemilikan entitas telah dipindahkan. |
-| Manajer diperbarui | `account.managers.update` | Daftar manajer telah berubah. |
-
-### Informasi entitas
-
-| Event | Key | Deskripsi |
-|---|---|---|
-| Informasi diperbarui | `managing_entity.information.updated` | Informasi entitas telah diperbarui. |
-| Alamat diperbarui | `managing_entity.city.updated` | Alamat/kota entitas telah diubah. |
-| Nama diperbarui | `managing_entity.name.updated` | Nama entitas telah diubah. |
-| Nama URL diperbarui | `managing_entity.url_name.updated` | URL vanity entitas telah berubah. |
-| ID unik diperbarui | `managing_entity.unique_id.updated` | Identifier unik entitas telah berubah. |
-| Managed-by diperbarui | `managing_entity.managed_by.updated` | Hubungan induk/managed-by entitas telah berubah. |
-| Place ID diperbarui | `managing_entity.place_id.updated` | Google Place ID entitas telah berubah. |
-| Perwakilan akun diperbarui | `managing_entity.account_representative.updated` | Perwakilan akun telah diubah. |
-| Foto profil diperbarui | `managing_entity.profile_picture.updated` | Foto profil entitas telah diperbarui. |
-| Logo diperbarui | `managing_entity.logo.updated` | Logo entitas telah diperbarui. |
-| Detail diperbarui | `account.details.updated` | Kolom detail akun telah berubah. |
-| Agen diperbarui | `managing_entity.agent.updated` | Agen entitas telah dimodifikasi. |
-
-### Notifikasi
-
-| Event | Key | Deskripsi |
-|---|---|---|
-| Notifikasi email agen | `managing_entity.agent.email.notification` | Notifikasi email telah dikirim ke agen. |
-| Notifikasi email manajer | `managing_entity.manager.email.notification` | Notifikasi email telah dikirim ke manajer. |
-
-### Tugas akun
-
-| Event | Key | Deskripsi |
-|---|---|---|
-| Tugas dibuat | `account.task.create` | Tugas baru telah ditambahkan ke akun. |
-| Tugas diperbarui | `account.task.update` | Tugas akun telah dimodifikasi. |
-| Tugas dihapus | `account.task.remove` | Tugas akun telah dihapus. |
-| Tugas selesai | `account.task.complete` | Tugas akun telah diselesaikan. |
-| Tugas verifikasi ID pajak selesai | `account.task.tax_id.complete` | Tugas verifikasi ID pajak telah selesai. |
-
----
-
-## Event pemesanan
-
-Event untuk siklus hidup pemesanan Wink, dari pembuatan hingga pengembalian dana dan pembayaran.
-
-### Pemesanan inti
-
-| Event | Key | Deskripsi |
-|---|---|---|
-| Pemesanan dibuat | `booking.create` | Pemesanan baru telah dibuat. |
-| Pemesanan dibatalkan | `booking.cancelled` | Pemesanan telah dibatalkan. |
-| Pemesanan gagal | `booking.failed` | Upaya pemesanan gagal. |
-| Pemesanan diproses | `booking.processing` | Pembayaran pemesanan sedang diproses. |
-| Inisialisasi diminta | `booking.initialize.request` | Permintaan inisialisasi pemesanan telah diajukan. |
-| Inisialisasi selesai | `booking.initialize.complete` | Inisialisasi pemesanan telah selesai. |
-
-### Pengembalian dana
-
-| Event | Key | Deskripsi |
-|---|---|---|
-| Permintaan pengembalian dana | `booking.refund.request` | Permintaan pengembalian dana telah diajukan. |
-| Kesalahan pengembalian dana | `booking.refund.error` | Terjadi kesalahan saat memproses pengembalian dana. |
-| Pengembalian dana parsial | `booking.refund.partial` | Pengembalian dana parsial telah diterbitkan. |
-| Pengembalian dana penuh | `booking.refund.full` | Pengembalian dana penuh telah diterbitkan. |
-
-### Pembayaran keluar
-
-| Event | Key | Deskripsi |
-|---|---|---|
-| Pembayaran keluar dibuat | `booking.payout.create` | Pembayaran keluar telah dibuat untuk pemesanan. |
-| Pembayaran keluar selesai | `booking.payout.complete` | Pembayaran keluar telah berhasil diselesaikan. |
-| Dana tersedia | `booking.funds.available` | Dana pemesanan tersedia untuk penyelesaian. |
-| Dana dicatat | `booking.funds.ledgered` | Dana pemesanan telah dicatat di buku besar. |
-
-### Ulasan
-
-| Event | Key | Deskripsi |
-|---|---|---|
-| Ulasan dikirim | `booking.review.created` | Ulasan tamu telah dikirim untuk pemesanan. |
-| Ulasan ditanggapi | `booking.review.responded` | Properti telah menanggapi ulasan pemesanan. |
-
----
-
-## Event properti
-
-Event untuk profil dan konten properti, dikirim ke pelanggan webhook properti tersebut.
-
-| Event | Key | Deskripsi |
-|---|---|---|
-| Properti dibuat | `property.created` | Properti baru telah dibuat. |
-| Properti diperbarui | `property.updated` | Detail properti telah diperbarui. |
-| Properti dihapus | `property.deleted` | Properti telah dihapus. |
-| Properti terdaftar | `property.registered` | Properti telah menyelesaikan pendaftaran. |
-| Status diperbarui | `property.status.updated` | Status eksternal properti telah berubah. |
-| Nama diperbarui | `property.name.updated` | Nama properti telah berubah. |
-| Alamat diperbarui | `property.address.updated` | Alamat properti telah diperbarui. |
-| Geolokasi diperbarui | `property.geolocation.updated` | Geolokasi properti telah diperbarui. |
-| Profil diperbarui | `property.profile.updated` | Konten profil properti telah berubah. |
-| Layanan diperbarui | `property.services.updated` | Daftar layanan/fasilitas properti telah berubah. |
-| Teks sambutan diperbarui | `property.welcome_text.updated` | Pesan sambutan properti telah berubah. |
-| Kebijakan dibuat | `property.policy.created` | Kebijakan properti baru telah dibuat. |
-| Kebijakan diperbarui | `property.policy.updated` | Kebijakan properti telah diperbarui. |
-
----
-
-## Event inventaris
-
-Event untuk item inventaris dalam properti, dikirim ke pelanggan webhook properti tersebut.
-
-### Jenis kamar
-
-| Event | Key | Deskripsi |
-|---|---|---|
-| Jenis kamar dibuat | `room_type.created` | Jenis kamar baru telah ditambahkan. |
-| Jenis kamar diperbarui | `room_type.updated` | Jenis kamar telah dimodifikasi. |
-| Jenis kamar dihapus | `room_type.deleted` | Jenis kamar telah dihapus. |
-
-### Paket tarif
-
-| Event | Key | Deskripsi |
-|---|---|---|
-| Paket tarif dibuat | `rate_plan.created` | Paket tarif baru telah dibuat. |
-| Paket tarif diperbarui | `rate_plan.updated` | Paket tarif telah dimodifikasi. |
-| Paket tarif dihapus | `rate_plan.deleted` | Paket tarif telah dihapus. |
-
-### Tarif utama
-
-| Event | Key | Deskripsi |
-|---|---|---|
-| Tarif utama dibuat | `master_rate.created` | Tarif utama baru telah dibuat. |
-| Tarif utama diperbarui | `master_rate.updated` | Tarif utama telah dimodifikasi. |
-| Tarif utama dihapus | `master_rate.deleted` | Tarif utama telah dihapus. |
-
-### Tambahan
-
-| Event | Key | Deskripsi |
-|---|---|---|
-| Tambahan dibuat | `add_on.created` | Tambahan baru telah dibuat. |
-| Tambahan diperbarui | `add_on.updated` | Tambahan telah dimodifikasi. |
-| Tambahan dihapus | `add_on.deleted` | Tambahan telah dihapus. |
-
-### Ruang rapat
-
-| Event | Key | Deskripsi |
-|---|---|---|
-| Ruang rapat dibuat | `meeting_room.created` | Ruang rapat baru telah ditambahkan. |
-| Ruang rapat diperbarui | `meeting_room.updated` | Ruang rapat telah dimodifikasi. |
-| Ruang rapat dihapus | `meeting_room.deleted` | Ruang rapat telah dihapus. |
-
-### Restoran
-
-| Event | Key | Deskripsi |
-|---|---|---|
-| Restoran dibuat | `restaurant.created` | Restoran baru telah ditambahkan. |
-| Restoran diperbarui | `restaurant.updated` | Restoran telah dimodifikasi. |
-| Restoran dihapus | `restaurant.deleted` | Restoran telah dihapus. |
-
-### Spa
-
-| Event | Key | Deskripsi |
-|---|---|---|
-| Spa dibuat | `spa.created` | Spa baru telah ditambahkan. |
-| Spa diperbarui | `spa.updated` | Spa telah dimodifikasi. |
-| Spa dihapus | `spa.deleted` | Spa telah dihapus. |
-
-### Aktivitas
-
-| Event | Key | Deskripsi |
-|---|---|---|
-| Aktivitas dibuat | `activity.created` | Aktivitas baru telah ditambahkan. |
-| Aktivitas diperbarui | `activity.updated` | Aktivitas telah dimodifikasi. |
-| Aktivitas dihapus | `activity.deleted` | Aktivitas telah dihapus. |
-
----
-
-## Event saluran penjualan
-
-Event untuk saluran distribusi yang menghubungkan pemasok dan afiliasi. Dikirim ke pelanggan webhook pemasok dan afiliasi.
-
-| Event | Key | Deskripsi |
-|---|---|---|
-| Saluran penjualan dibuat | `sales_channel.created` | Saluran penjualan baru telah dibuat. |
-| Saluran penjualan diperbarui | `sales_channel.updated` | Saluran penjualan telah dimodifikasi. |
-| Saluran penjualan dihapus | `sales_channel.deleted` | Saluran penjualan telah dihapus. |
-
----
-
-## Event tarif khusus
-
-Event untuk tarif promosi dan negosiasi pada properti.
-
-| Event | Key | Deskripsi |
-|---|---|---|
-| Tarif khusus dibuat | `special_rate.created` | Tarif khusus baru telah dibuat. |
-| Tarif khusus diperbarui | `special_rate.updated` | Tarif khusus telah dimodifikasi. |
-| Tarif khusus dihapus | `special_rate.deleted` | Tarif khusus telah dihapus. |
-| Modifikator tarif diperbarui | `rate_modifier.updated` | Modifikator tarif telah diperbarui. |
-
----
-
-## Event penerima pembayaran
-
-Event terkait pengelolaan penerima pembayaran.
-
-| Event | Key | Deskripsi |
-|---|---|---|
-| Penerima pembayaran dibuat | `payee.create` | Penerima pembayaran baru telah berhasil dibuat. |
-| Pembuatan penerima pembayaran gagal | `payee.create.failure` | Pembuatan penerima pembayaran gagal. |
-| Penerima pembayaran diperbarui | `payee.update` | Penerima pembayaran telah diperbarui. |
-| Pembaruan penerima pembayaran gagal | `payee.update.failure` | Pembaruan penerima pembayaran gagal. |
-
----
-
-## Event pembayaran
-
-Event internal pemrosesan pembayaran dari TripPay.
-
-| Event | Key | Deskripsi |
-|---|---|---|
-| Pembayaran berhasil | `internal.payment.succeeded` | Pembayaran telah berhasil diproses. |
-| Pembayaran diproses | `internal.payment.processing` | Pembayaran sedang diproses. |
-| Pembayaran gagal | `internal.payment.failed` | Pemrosesan pembayaran gagal. |
-
----
-
-## Event manajer saluran
-
-Event terkait dorongan tarif dan ketersediaan dari manajer saluran.
-
-| Event | Key | Deskripsi |
-|---|---|---|
-| Pembaruan tarif | `channel-manager.update.rate` | Manajer saluran telah mendorong pembaruan tarif. |
-| Pembaruan ketersediaan | `channel-manager.update.availability` | Manajer saluran telah mendorong pembaruan ketersediaan. |
-| Pembaruan umum | `channel-manager.update` | Pembaruan umum manajer saluran. |
-
----
-
-## Event buku besar
-
-Event terkait entri buku besar keuangan.
-
-| Event | Key | Deskripsi |
-|---|---|---|
-| Entri buku besar dibuat | `ledger.entry.create` | Entri buku besar baru telah dicatat. |
-
----
-
-## Event email
-
-| Event | Key | Deskripsi |
-|---|---|---|
-| Surat elektronik terkirim | `email.correspondence` | Email keluar telah dikirim. |
-
----
-
-## Ringkasan jumlah event
-
-| Kategori | Jumlah |
-|---|---|
-| Event entitas pengelola | 33 |
-| Event pemesanan | 16 |
-| Event properti | 13 |
-| Event inventaris (jenis kamar, paket tarif, tarif utama, tambahan, fasilitas) | 24 |
-| Event saluran penjualan | 3 |
-| Event tarif khusus | 4 |
-| Event penerima pembayaran | 4 |
-| Event pembayaran | 3 |
-| Event manajer saluran | 3 |
-| Event buku besar | 1 |
-| Event email | 1 |
-| **Total** | **105** |
+1. Buka **Applications > Webhooks** di portal Anda.
+2. Buat webhook dan pilih event yang ingin Anda terima — atau biarkan daftar kosong untuk menerima semua event.
+3. Wink mengirimkan HTTP POST yang ditandatangani ke endpoint Anda setiap kali event terjadi. Lihat [Integrasi Webhook](/id/developers/webhook-integration) untuk informasi tentang amplop, header, verifikasi tanda tangan, dan pengulangan.
+
+## Setiap jenis event
+
+Tabel ini dihasilkan dari katalog event platform saat build, sehingga selalu sesuai dengan API.
+Jenis event yang ditandai sebagai delivered terhubung ke halaman referensinya di [Webhooks API](/id/api/webhooks/), yang
+mendokumentasikan body JSON tepatnya (`WebhookEnvelope` dengan `object` spesifik event), header `Wink-*` dan
+kebijakan pengulangan. Jenis event yang tidak dikirim ada secara internal (pembayaran, ledger, sinkronisasi channel-manager, …) tetapi saat ini tidak dikirim ke pelanggan webhook.
+
+**Penerima** menunjukkan siapa yang menerima event: `SUPPLIER` (hotel), `AFFILIATE` (reseller dengan saluran penjualan aktif ke hotel), `AGENT` (agen perjalanan yang membuat pemesanan) atau `SELF` (entitas pengelola yang menjadi subjek event). Setiap penerima menerima bentuk payload yang sama; detail spesifik per peran ada di URL `links.self` payload.
+
+<WebhookEventTypes
+  types={webhooks['x-wink-event-types']}
+  referenceBase="/api/webhooks"
+  eventHeader="Event"
+  descriptionHeader="Deskripsi"
+  deliveredHeader="Dikirim"
+  recipientsHeader="Penerima"
+  deliveredLabel="dikirim"
+  notDeliveredLabel="tidak dikirim"
+  noRecipientsLabel="—"
+/>
 
 :::tip
-Mulailah dengan berlangganan semua event selama pengembangan. Setelah Anda memahami payload yang dibutuhkan sistem Anda, batasi langganan untuk mengurangi kebisingan.
+Mulailah dengan berlangganan semua event selama pengembangan. Setelah Anda memahami payload mana yang dibutuhkan sistem Anda, batasi langganan untuk mengurangi kebisingan. Kirimkan event uji dari **Applications > Webhooks** (atau `POST …/webhook/{id}/test`) untuk memastikan endpoint dan pemeriksaan tanda tangan Anda sebelum live.
 :::
 
-## Bacaan lebih lanjut
+## Bacaan lanjutan
 
-- [Panduan Integrasi Webhook](/id/guides/developers/webhook-integration) — Langkah pengaturan dan praktik terbaik.
+- [Panduan Integrasi Webhook](/id/developers/webhook-integration) — Langkah pengaturan dan praktik terbaik.
 - [Webhooks](/id/portal/settings/webhooks) — Kelola langganan webhook Anda.
-- [Applications](/id/portal/settings/applications) — Kelola kredensial API.
+- [Applications](/id/account/applications) — Kelola kredensial API.
 - [Build on Wink](/id/developers/build-on-wink) — Gambaran platform untuk pengembang.

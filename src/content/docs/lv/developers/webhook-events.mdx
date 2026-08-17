@@ -1,331 +1,53 @@
 ---
 title: Webhook notikumu katalogs
-description: Pilnīga visu webhook notikumu veidu atsauce, kas pieejami Wink platformā, sakārtoti pēc kategorijām.
+description: Katrs webhook notikumu veids Wink platformā, ģenerēts no platformas notikumu kataloga — kam tie tiek piegādāti un kur ir dokumentēts to saturs.
 sidebar:
-  order: 3
+  order: 3.5
 ---
 
-import { LinkButton } from '@astrojs/starlight/components';
+import webhooks from '../../../../schemas/webhooks.json';
+import WebhookEventTypes from '@/components/webhooks/event-types.astro';
 
-Šajā lapā ir uzskaitīti visi webhook notikumi, kuriem varat abonēt Wink. Lai iegūtu iestatīšanas norādījumus, skatiet [Webhook integrācijas ceļvedi](/lv/guides/developers/webhook-integration) vai [Webhook pārvaldības lapu](/lv/portal/settings/webhooks).
+Šajā lapā ir uzskaitīti visi webhook notikumi, kuriem var abonēt Wink. Lai uzzinātu iestatīšanas instrukcijas, skatiet [Webhook integrācijas ceļvedi](/lv/developers/webhook-integration) vai [Webhook pārvaldības lapu](/lv/portal/settings/webhooks).
 
 ## Kā abonēt
 
 1. Dodieties uz **Applications > Webhooks** savā portālā.
-2. Izveidojiet webhook un izvēlieties notikumus, kurus vēlaties saņemt.
-3. Wink katru reizi, kad notikums notiek, nosūta HTTP POST uz jūsu galapunktu.
-
-Pilnīgai iestatīšanas procedūrai un labākajām praksēm skatiet [Webhook integrāciju](/lv/guides/developers/webhook-integration).
-
----
-
-## Pārvaldības vienību notikumi
-
-Notikumi, kas saistīti ar vienību (īpašumu, filiāļu, uzņēmumu) pārvaldību un to administrēšanu.
-
-### Dzīves cikls
-
-| Notikums | Atslēga | Apraksts |
-|---|---|---|
-| Vienība izveidota | `managing_entity.created` | Izveidota jauna pārvaldības vienība. |
-| Vienība dzēsta | `managing_entity.deleted` | Pārvaldības vienība ir dzēsta. |
-| Statuss atjaunināts | `managing_entity.status.updated` | Vienības statuss ir mainījies. |
-| Pārskatē | `account.under_review` | Vienības konts ir pārskatīšanas procesā. |
-
-### Abonēšana
-
-| Notikums | Atslēga | Apraksts |
-|---|---|---|
-| Abonēšana nodrošināta | `managing_entity.subscription.provisioned` | Nodrošināta jauna abonēšana. |
-| Abonēšana mainīta | `managing_entity.subscription.changed` | Abonēšanas plāns ir mainīts. |
-| Abonēšanas rēķins mainīts | `managing_entity.subscription.invoice.changed` | Abonēšanas rēķins ir atjaunināts. |
-
-### Pārvaldnieka dzīves cikls
-
-| Notikums | Atslēga | Apraksts |
-|---|---|---|
-| Pārvaldnieks pievienots | `managing_entity.manager.added` | Pievienots jauns pārvaldnieks. |
-| Pārvaldnieks uzaicināts | `managing_entity.manager.invited` | Nosūtīts pārvaldnieka ielūgums. |
-| Pārvaldnieks noņemts | `managing_entity.manager.removed` | Pārvaldnieks ir noņemts. |
-| Pārvaldnieks pieņēmis | `managing_entity.manager.accepted` | Pārvaldnieka ielūgums ir pieņemts. |
-| Pārvaldnieks noraidīts | `managing_entity.manager.rejected` | Pārvaldnieka ielūgums ir noraidīts. |
-| Īpašnieks iestatīts | `managing_entity.manager.owner.set` | Vienības īpašumtiesības ir nodotas. |
-| Pārvaldnieki atjaunināti | `account.managers.update` | Pārvaldnieku saraksts ir mainīts. |
-
-### Vienības informācija
-
-| Notikums | Atslēga | Apraksts |
-|---|---|---|
-| Informācija atjaunināta | `managing_entity.information.updated` | Vienības informācija ir atjaunināta. |
-| Adrese atjaunināta | `managing_entity.city.updated` | Vienības adrese/pilsēta ir mainīta. |
-| Nosaukums atjaunināts | `managing_entity.name.updated` | Vienības nosaukums ir mainīts. |
-| URL nosaukums atjaunināts | `managing_entity.url_name.updated` | Vienības URL ir mainīts. |
-| Unikālais ID atjaunināts | `managing_entity.unique_id.updated` | Vienības unikālais identifikators ir mainīts. |
-| Pārvaldītājs atjaunināts | `managing_entity.managed_by.updated` | Vienības vecāka/pārvaldītāja attiecības ir mainījušās. |
-| Vietas ID atjaunināts | `managing_entity.place_id.updated` | Vienības Google vietas ID ir mainīts. |
-| Konta pārstāvis atjaunināts | `managing_entity.account_representative.updated` | Konta pārstāvis ir mainīts. |
-| Profila bilde atjaunināta | `managing_entity.profile_picture.updated` | Vienības profila bilde ir atjaunināta. |
-| Logotips atjaunināts | `managing_entity.logo.updated` | Vienības logotips ir atjaunināts. |
-| Detaļas atjauninātas | `account.details.updated` | Konta detaļu lauki ir mainīti. |
-| Aģents atjaunināts | `managing_entity.agent.updated` | Vienības aģents ir modificēts. |
-
-### Paziņojumi
-
-| Notikums | Atslēga | Apraksts |
-|---|---|---|
-| Aģenta e-pasta paziņojums | `managing_entity.agent.email.notification` | Aģentam nosūtīts e-pasta paziņojums. |
-| Pārvaldnieka e-pasta paziņojums | `managing_entity.manager.email.notification` | Pārvaldniekam nosūtīts e-pasta paziņojums. |
-
-### Konta uzdevumi
-
-| Notikums | Atslēga | Apraksts |
-|---|---|---|
-| Uzdevums izveidots | `account.task.create` | Kontā pievienots jauns uzdevums. |
-| Uzdevums atjaunināts | `account.task.update` | Konta uzdevums ir modificēts. |
-| Uzdevums noņemts | `account.task.remove` | Konta uzdevums ir noņemts. |
-| Uzdevums pabeigts | `account.task.complete` | Konta uzdevums ir pabeigts. |
-| Nodokļu ID uzdevums pabeigts | `account.task.tax_id.complete` | Nodokļu ID pārbaudes uzdevums ir pabeigts. |
-
----
-
-## Rezervāciju notikumi
-
-Notikumi Wink rezervāciju dzīves ciklā, no izveides līdz atmaksām un izmaksām.
-
-### Pamatrezervācija
-
-| Notikums | Atslēga | Apraksts |
-|---|---|---|
-| Rezervācija izveidota | `booking.create` | Izveidota jauna rezervācija. |
-| Rezervācija atcelta | `booking.cancelled` | Rezervācija ir atcelta. |
-| Rezervācija neizdevās | `booking.failed` | Rezervācijas mēģinājums neizdevās. |
-| Rezervācija apstrādājas | `booking.processing` | Rezervācijas maksājums tiek apstrādāts. |
-| Inicializācija pieprasīta | `booking.initialize.request` | Pieprasīta rezervācijas inicializācija. |
-| Inicializācija pabeigta | `booking.initialize.complete` | Rezervācijas inicializācija ir pabeigta. |
-
-### Atmaksas
-
-| Notikums | Atslēga | Apraksts |
-|---|---|---|
-| Atmaksa pieprasīta | `booking.refund.request` | Iesniegts atmaksas pieprasījums. |
-| Atmaksas kļūda | `booking.refund.error` | Radās kļūda atmaksas apstrādē. |
-| Daļēja atmaksa | `booking.refund.partial` | Izsniegta daļēja atmaksa. |
-| Pilna atmaksa | `booking.refund.full` | Izsniegta pilna atmaksa. |
-
-### Izmaksas
-
-| Notikums | Atslēga | Apraksts |
-|---|---|---|
-| Izmaksa izveidota | `booking.payout.create` | Rezervācijai izveidota izmaksu transakcija. |
-| Izmaksa pabeigta | `booking.payout.complete` | Izmaksa veiksmīgi pabeigta. |
-| Līdzekļi pieejami | `booking.funds.available` | Rezervācijas līdzekļi ir pieejami norēķiniem. |
-| Līdzekļi uzskaitīti | `booking.funds.ledgered` | Rezervācijas līdzekļi ir ierakstīti grāmatvedībā. |
-
-### Atsauksmes
-
-| Notikums | Atslēga | Apraksts |
-|---|---|---|
-| Atsauksme iesniegta | `booking.review.created` | Viesu atsauksme par rezervāciju ir iesniegta. |
-| Atsauksme atbildēta | `booking.review.responded` | Īpašums ir atbildējis uz rezervācijas atsauksmi. |
-
----
-
-## Īpašuma notikumi
-
-Notikumi, kas saistīti ar īpašuma profiliem un saturu, nosūtīti īpašuma webhook abonentiem.
-
-| Notikums | Atslēga | Apraksts |
-|---|---|---|
-| Īpašums izveidots | `property.created` | Izveidots jauns īpašums. |
-| Īpašums atjaunināts | `property.updated` | Īpašuma dati ir atjaunināti. |
-| Īpašums dzēsts | `property.deleted` | Īpašums ir noņemts. |
-| Īpašums reģistrēts | `property.registered` | Īpašums ir pabeidzis reģistrāciju. |
-| Statuss atjaunināts | `property.status.updated` | Īpašuma ārējais statuss ir mainījies. |
-| Nosaukums atjaunināts | `property.name.updated` | Īpašuma nosaukums ir mainīts. |
-| Adrese atjaunināta | `property.address.updated` | Īpašuma adrese ir atjaunināta. |
-| Ģeolokācija atjaunināta | `property.geolocation.updated` | Īpašuma ģeolokācija ir atjaunināta. |
-| Profils atjaunināts | `property.profile.updated` | Īpašuma profila saturs ir mainījies. |
-| Pakalpojumi atjaunināti | `property.services.updated` | Īpašuma pakalpojumu/ērtību saraksts ir mainījies. |
-| Sveiciena teksts atjaunināts | `property.welcome_text.updated` | Īpašuma sveiciena ziņojums ir mainījies. |
-| Politika izveidota | `property.policy.created` | Izveidota jauna īpašuma politika. |
-| Politika atjaunināta | `property.policy.updated` | Īpašuma politika ir atjaunināta. |
-
----
-
-## Inventāra notikumi
-
-Notikumi, kas saistīti ar inventāra vienībām īpašumā, nosūtīti attiecīgā īpašuma webhook abonentiem.
-
-### Istabu veidi
-
-| Notikums | Atslēga | Apraksts |
-|---|---|---|
-| Istabu veids izveidots | `room_type.created` | Pievienots jauns istabu veids. |
-| Istabu veids atjaunināts | `room_type.updated` | Istabu veids ir modificēts. |
-| Istabu veids dzēsts | `room_type.deleted` | Istabu veids ir noņemts. |
-
-### Tarifu plāni
-
-| Notikums | Atslēga | Apraksts |
-|---|---|---|
-| Tarifu plāns izveidots | `rate_plan.created` | Izveidots jauns tarifu plāns. |
-| Tarifu plāns atjaunināts | `rate_plan.updated` | Tarifu plāns ir modificēts. |
-| Tarifu plāns dzēsts | `rate_plan.deleted` | Tarifu plāns ir noņemts. |
-
-### Galvenie tarifi
-
-| Notikums | Atslēga | Apraksts |
-|---|---|---|
-| Galvenais tarifs izveidots | `master_rate.created` | Izveidots jauns galvenais tarifs. |
-| Galvenais tarifs atjaunināts | `master_rate.updated` | Galvenais tarifs ir modificēts. |
-| Galvenais tarifs dzēsts | `master_rate.deleted` | Galvenais tarifs ir noņemts. |
-
-### Pielikumi
-
-| Notikums | Atslēga | Apraksts |
-|---|---|---|
-| Pielikums izveidots | `add_on.created` | Izveidots jauns pielikums. |
-| Pielikums atjaunināts | `add_on.updated` | Pielikums ir modificēts. |
-| Pielikums dzēsts | `add_on.deleted` | Pielikums ir noņemts. |
-
-### Sapulču telpas
-
-| Notikums | Atslēga | Apraksts |
-|---|---|---|
-| Sapulču telpa izveidota | `meeting_room.created` | Pievienota jauna sapulču telpa. |
-| Sapulču telpa atjaunināta | `meeting_room.updated` | Sapulču telpa ir modificēta. |
-| Sapulču telpa dzēsta | `meeting_room.deleted` | Sapulču telpa ir noņemta. |
-
-### Restorāni
-
-| Notikums | Atslēga | Apraksts |
-|---|---|---|
-| Restorāns izveidots | `restaurant.created` | Pievienots jauns restorāns. |
-| Restorāns atjaunināts | `restaurant.updated` | Restorāns ir modificēts. |
-| Restorāns dzēsts | `restaurant.deleted` | Restorāns ir noņemts. |
-
-### Spa
-
-| Notikums | Atslēga | Apraksts |
-|---|---|---|
-| Spa izveidots | `spa.created` | Pievienots jauns spa. |
-| Spa atjaunināts | `spa.updated` | Spa ir modificēts. |
-| Spa dzēsts | `spa.deleted` | Spa ir noņemts. |
-
-### Aktivitātes
-
-| Notikums | Atslēga | Apraksts |
-|---|---|---|
-| Aktivitāte izveidota | `activity.created` | Pievienota jauna aktivitāte. |
-| Aktivitāte atjaunināta | `activity.updated` | Aktivitāte ir modificēta. |
-| Aktivitāte dzēsta | `activity.deleted` | Aktivitāte ir noņemta. |
-
----
-
-## Pārdošanas kanālu notikumi
-
-Notikumi, kas saistīti ar izplatīšanas kanāliem, kas savieno piegādātājus un filiāles. Nosūtīti gan piegādātāja, gan filiāles webhook abonentiem.
-
-| Notikums | Atslēga | Apraksts |
-|---|---|---|
-| Pārdošanas kanāls izveidots | `sales_channel.created` | Izveidots jauns pārdošanas kanāls. |
-| Pārdošanas kanāls atjaunināts | `sales_channel.updated` | Pārdošanas kanāls ir modificēts. |
-| Pārdošanas kanāls dzēsts | `sales_channel.deleted` | Pārdošanas kanāls ir noņemts. |
-
----
-
-## Īpašo tarifu notikumi
-
-Notikumi, kas saistīti ar īpašiem un sarunātiem tarifiem īpašumā.
-
-| Notikums | Atslēga | Apraksts |
-|---|---|---|
-| Īpašais tarifs izveidots | `special_rate.created` | Izveidots jauns īpašais tarifs. |
-| Īpašais tarifs atjaunināts | `special_rate.updated` | Īpašais tarifs ir modificēts. |
-| Īpašais tarifs dzēsts | `special_rate.deleted` | Īpašais tarifs ir noņemts. |
-| Tarifa modifikators atjaunināts | `rate_modifier.updated` | Tarifa modifikators ir atjaunināts. |
-
----
-
-## Saņēmēja notikumi
-
-Notikumi, kas saistīti ar maksājuma saņēmēja pārvaldību.
-
-| Notikums | Atslēga | Apraksts |
-|---|---|---|
-| Saņēmējs izveidots | `payee.create` | Jauns maksājuma saņēmējs ir veiksmīgi izveidots. |
-| Saņēmēja izveide neizdevās | `payee.create.failure` | Maksājuma saņēmēja izveide neizdevās. |
-| Saņēmējs atjaunināts | `payee.update` | Maksājuma saņēmējs ir atjaunināts. |
-| Saņēmēja atjaunināšana neizdevās | `payee.update.failure` | Maksājuma saņēmēja atjaunināšana neizdevās. |
-
----
-
-## Maksājumu notikumi
-
-Iekšējie maksājumu apstrādes notikumi no TripPay.
-
-| Notikums | Atslēga | Apraksts |
-|---|---|---|
-| Maksājums veiksmīgs | `internal.payment.succeeded` | Maksājums ir veiksmīgi apstrādāts. |
-| Maksājums apstrādājas | `internal.payment.processing` | Maksājums pašlaik tiek apstrādāts. |
-| Maksājums neizdevās | `internal.payment.failed` | Maksājuma apstrāde neizdevās. |
-
----
-
-## Kanālu pārvaldnieka notikumi
-
-Notikumi, kas saistīti ar kanālu pārvaldnieka tarifu un pieejamības atjauninājumiem.
-
-| Notikums | Atslēga | Apraksts |
-|---|---|---|
-| Tarifa atjauninājums | `channel-manager.update.rate` | Kanālu pārvaldnieks ir nosūtījis tarifa atjauninājumu. |
-| Pieejamības atjauninājums | `channel-manager.update.availability` | Kanālu pārvaldnieks ir nosūtījis pieejamības atjauninājumu. |
-| Vispārīgs atjauninājums | `channel-manager.update` | Vispārīgs kanālu pārvaldnieka atjauninājums. |
-
----
-
-## Grāmatvedības notikumi
-
-Notikumi, kas saistīti ar finanšu grāmatvedības ierakstiem.
-
-| Notikums | Atslēga | Apraksts |
-|---|---|---|
-| Grāmatvedības ieraksts izveidots | `ledger.entry.create` | Ierakstīts jauns grāmatvedības ieraksts. |
-
----
-
-## E-pasta notikumi
-
-| Notikums | Atslēga | Apraksts |
-|---|---|---|
-| E-pasta korespondence | `email.correspondence` | Nosūtīts izejošs e-pasts. |
-
----
-
-## Notikumu skaita kopsavilkums
-
-| Kategorija | Skaits |
-|---|---|
-| Pārvaldības vienību notikumi | 33 |
-| Rezervāciju notikumi | 16 |
-| Īpašuma notikumi | 13 |
-| Inventāra notikumi (istabu veidi, tarifu plāni, galvenie tarifi, pielikumi, ērtības) | 24 |
-| Pārdošanas kanālu notikumi | 3 |
-| Īpašo tarifu notikumi | 4 |
-| Saņēmēja notikumi | 4 |
-| Maksājumu notikumi | 3 |
-| Kanālu pārvaldnieka notikumi | 3 |
-| Grāmatvedības notikumi | 1 |
-| E-pasta notikumi | 1 |
-| **Kopā** | **105** |
+2. Izveidojiet webhook un izvēlieties notikumus, kurus vēlaties saņemt — vai atstājiet sarakstu tukšu, lai saņemtu visus notikumus.
+3. Katru reizi, kad notikums notiek, Wink nosūta parakstītu HTTP POST uz jūsu galapunktu. Skatiet [Webhook integrāciju](/lv/developers/webhook-integration) par aploksni, galvenēm, paraksta pārbaudi un atkārtotām mēģinājumiem.
+
+## Katrs notikumu veids
+
+Šī tabula tiek ģenerēta no platformas notikumu kataloga būvēšanas laikā, tāpēc tā vienmēr atbilst API.
+Notikumu veidi, kas atzīmēti kā piegādāti, ir saistīti ar to atsauces lapu [Webhooks API](/lv/api/webhooks/), kas
+dokumentē precīzu JSON ķermeni (`WebhookEnvelope` ar notikumam specifisku `object`), `Wink-*` galvenes un
+atkārtotas piegādes politiku. Notikumu veidi, kas netiek piegādāti, pastāv iekšēji (maksājumi, virsgrāmata, kanālu pārvaldnieka
+sinhronizācija utt.), bet pašlaik netiek sūtīti webhook abonentiem.
+
+**Saņēmēji** norāda, kas saņem notikumu: `SUPPLIER` (viesnīca), `AFFILIATE` (pārdevējs ar aktīvu
+pārdošanas kanālu uz viesnīcu), `AGENT` (ceļojumu aģentūra, kas veica rezervāciju) vai `SELF` (pārvaldības vienība,
+par kuru notikums ir). Katrs saņēmējs saņem vienādu datu formu; lomas specifiskā informācija ir aiz
+datu `links.self` URL.
+
+<WebhookEventTypes
+  types={webhooks['x-wink-event-types']}
+  referenceBase="/api/webhooks"
+  eventHeader="Notikums"
+  descriptionHeader="Apraksts"
+  deliveredHeader="Piegādāts"
+  recipientsHeader="Saņēmēji"
+  deliveredLabel="piegādāts"
+  notDeliveredLabel="nav piegādāts"
+  noRecipientsLabel="—"
+/>
 
 :::tip
-Sākumā abonējiet visus notikumus izstrādes laikā. Kad sapratīsiet, kuri dati jūsu sistēmai ir nepieciešami, sašauriniet abonementus, lai samazinātu troksni.
+Sāciet ar abonēšanu visiem notikumiem izstrādes laikā. Kad sapratīsiet, kādi dati jūsu sistēmai ir nepieciešami, sašauriniet abonementus, lai samazinātu troksni. Nosūtiet sev testa notikumu no **Applications > Webhooks** (vai `POST …/webhook/{id}/test`), lai pirms darbības uzsākšanas pārbaudītu savu galapunktu un paraksta pārbaudi.
 :::
 
 ## Papildu lasāmviela
 
-- [Webhook integrācijas ceļvedis](/lv/guides/developers/webhook-integration) — Iestatīšanas soļi un labākās prakses.
+- [Webhook integrācijas ceļvedis](/lv/developers/webhook-integration) — Iestatīšanas soļi un labākās prakses.
 - [Webhooks](/lv/portal/settings/webhooks) — Pārvaldiet savus webhook abonementus.
-- [Applications](/lv/portal/settings/applications) — Pārvaldiet API akreditācijas datus.
+- [Applications](/lv/account/applications) — Pārvaldiet API akreditācijas datus.
 - [Build on Wink](/lv/developers/build-on-wink) — Platformas pārskats izstrādātājiem.

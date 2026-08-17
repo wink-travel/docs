@@ -1,0 +1,72 @@
+---
+title: Taksonomija
+description: Kontroliuojamos žodynų reikšmės, kurias naudoja Wink platforma — OTA kodai patogumams, lovų tipams, kambarių vaizdams ir daugiau, taip pat visos palaikomos kalbos ir valiutos.
+sidebar:
+  order: 12
+---
+
+import taxonomy from '@/data/taxonomy.json';
+import OtaCategories from '@/components/taxonomy/ota-categories.astro';
+import CodeTable from '@/components/taxonomy/code-table.astro';
+
+Wink aprašo inventorių naudodama kontroliuojamus žodynus — fiksuotus kodų rinkinius su sutartomis reikšmėmis. Kai
+jūs siunčiate `"5"` kaip viešbučio patogumą, platforma tai interpretuoja kaip *Oro kondicionavimas*, ir visi šios
+informacijos vartotojai taip pat.
+
+Šis puslapis yra paskelbtas nuorodų šaltinis visiems trims žodynams:
+
+- **OTA kodai** — {taxonomy.ota.codeCount} kodų {taxonomy.ota.categoryCount} kategorijose, apimančiose
+  patogumus, lovų tipus, kambarių vaizdus, prieinamumo funkcijas, virtuvę ir daugiau.
+- **Kalbos** — {taxonomy.languages.list.length} kalbų, kuriomis gali būti kuriamas ir pateikiamas turinys.
+- **Valiutos** — {taxonomy.currencies.list.length} valiutų, kuriomis gali būti nurodomos ir atsiskaitoma už kainas.
+
+Kodai yra stabilūs. Pavadinimai gali būti perrašomi aiškumo tikslais, todėl atitikite pagal **kodą**, niekada ne pagal pavadinimą.
+
+## OTA kodai
+
+Wink laikosi [OpenTravel Alliance](https://opentravel.org/) kodų sąrašų. Kiekviena kategorija turi
+trijų raidžių identifikatorių — `HAC` viešbučio patogumams, `BED` lovų tipams — ir kiekvienas kodas kategorijoje yra unikalus. Tas pats skaitmeninis kodas skirtingose kategorijose reiškia skirtingus dalykus, todėl kodas yra prasmingas tik kartu su kategorija, kuriai jis priklauso: `BED` `1` yra *Dvivietė / Pilna*, o `HAC`
+`1` yra *24 valandų registratūra*.
+
+Pasirinkite kategoriją, kad pamatytumėte jos kodus.
+
+<OtaCategories
+  categories={taxonomy.ota.categories}
+  categoryHeader="Kategorija"
+  descriptionHeader="Aprašymas"
+  countHeader="Kodai"
+  codeHeader="Kodas"
+  nameHeader="Pavadinimas"
+/>
+
+## Kalbos
+
+Turinys — objekto aprašymai, kambarių pavadinimai, taisyklės — gali būti kuriamas bet kuria iš šių kalbų.
+Kodai yra [IETF BCP 47](https://www.rfc-editor.org/info/bcp47) žymos: dvi raidės
+[ISO 639-1](https://www.iso.org/iso-639-language-code) kalbos kodas, papildomai galimas
+[ISO 3166-1](https://www.iso.org/iso-3166-country-codes.html) regiono kodas, kai platforma skiria regioninius variantus — `pt-BR` ir `pt-PT` yra atskirai, kaip ir `es`, `es-AR` bei `es-MX`.
+
+Platformos numatytasis yra `{taxonomy.languages.default}`, naudojamas, kai užklausoje nenurodyta kalba arba kai vertimas nėra prieinamas.
+
+<CodeTable
+  rows={taxonomy.languages.list}
+  codeHeader="Kodas"
+  nameHeader="Kalba"
+  unnamedLabel="Nėra standartinio pavadinimo"
+/>
+
+## Valiutos
+
+Kainos gali būti nurodomos ir atsiskaitoma bet kuria iš šių valiutų. Kodai yra
+[ISO 4217](https://www.iso.org/iso-4217-currency-codes.html) trijų raidžių identifikatoriai.
+
+Platformos numatytasis yra `{taxonomy.currencies.default}`. Tai yra numatytoji rodymo valiuta ir vienetas, į kurį normalizuojami platformos lygmens skaičiai; tai **nėra** valiuta, kuria atsiskaitoma už rezervaciją — viešbučiai atsiskaito savo valiuta, todėl kaina, nurodyta vienoje valiutoje ir sumokėta kitoje, apima valiutos keitimo skirtumą.
+
+Keletas įrašų nėra nacionalinės valiutos: `XAU` ir `XAG` yra auksas ir sidabras, `XDR` yra IMF specialioji skolinimosi teisė, o `BTC` yra Bitcoin. Šios valiutos naudojamos vertinimui ir ataskaitoms, bet paprastai nėra naudojamos kaip atsiskaitymo valiuta.
+
+<CodeTable
+  rows={taxonomy.currencies.list}
+  codeHeader="Kodas"
+  nameHeader="Valiuta"
+  unnamedLabel="Nėra standartinio pavadinimo"
+/>

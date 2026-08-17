@@ -5,7 +5,7 @@ sidebar:
   order: 5
 ---
 
-Zjistěte, jak se Wink srovnává s ostatními segmenty online cestovního ruchu na trhu. Níže je rychlý přehled funkcí, které jsme považovali za důležité porovnat.
+Zjistěte, jak se Wink srovnává s ostatními segmenty online cestovního ruchu na trhu. Níže je rychlý přehled funkcí, které jsme považovali za důležité k porovnání.
 
 ## Matice funkcí
 
@@ -15,9 +15,9 @@ Zjistěte, jak se Wink srovnává s ostatními segmenty online cestovního ruchu
 | Link-in-bio prodejna | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | B2B affiliate síť | 🟢 | 🟢 | ⚫️ | 🟢 | 
 | Podpora cestovních agentů | 🟢 | 🟢 | ⚫️ | 🟢 | 
-| Distribuce a marketing s podporou AI | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Distribuce a marketing s asistencí AI | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | Nástroje přátelské k sociálním sítím | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
-| B2C kanál bez provize | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| B2C kanál bez provizí | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | Zdarma Google Hotel listing | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | Přístup k Web Component / SDK / API | 🟢 | 🟢 | ⚫️ | 🟢 | 
 | Přímé vztahy | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
@@ -32,9 +32,9 @@ Zjistěte, jak se Wink srovnává s ostatními segmenty online cestovního ruchu
 
 ## Wink vs Internet Booking Engine (IBE)
 
-Některé hotely se nás snaží srovnávat s jejich internetovým rezervačním enginem, který je součástí jejich channel managera, a žádají nás o pevnou měsíční cenu založenou na počtu pokojů jejich objektu.
+Některé hotely se nás snaží srovnávat s jejich internetovým rezervačním enginem, který je součástí jejich channel managera, a žádají nás o pevnou měsíční cenu založenou na počtu pokojů jejich zařízení.
 
-Nejsme IBE a doufejme, že [Wink Academy](/cs/) pomůže toto objasnit. Každá služba má své výhody a nevýhody. Pokud vám váš IBE vyhovuje, zůstaňte u něj.  
+Nejsme IBE a doufáme, že toto pomůže objasnit rozdíl. Každá služba má své výhody a nevýhody. Pokud vám váš IBE vyhovuje, zůstaňte u něj.  
 Wink existuje, aby vyplnil několik mezer v cestovním průmyslu a spojil vše na jednom místě.
 
 :::tip

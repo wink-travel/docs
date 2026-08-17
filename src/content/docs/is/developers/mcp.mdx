@@ -1,33 +1,126 @@
 ---
 title: MCP þjónar
-description: Tengdu AI-umboðsmenn við Wink vettvanginn í gegnum Model Context Protocol. Auðkenndir MCP þjónar gefa umboðsmanni þínum beinan aðgang að birgðum, bókunum, samþættingum við rásarstjóra og fleira — öruggt með gagnvirkri OAuth2 innskráningu.
+description: Tengdu AI-umboðsmenn við Wink vettvanginn í gegnum Model Context Protocol. Wink birtir verkfærin sín sem sérhæfð, verkefnamiðuð endapunkta svo umboðsmaður þinn hleður aðeins það sem vinnan þín þarf — öruggt með gagnvirkri OAuth2 innskráningu.
 sidebar:
   order: 10
 ---
 
 import { Steps, LinkButton, Aside, Tabs, TabItem } from '@astrojs/starlight/components';
 
-Wink býður upp á tvo auðkennda MCP þjónar. Báðir nota **gagnvirka OAuth2 innskráningu** (PKCE heimildarkóðaflæði) — AI-umboðsmaður þinn opnar vafraglugga svo þú skráir þig inn með Wink reikningnum þínum. Engar viðskiptavinleyndarmál til að stjórna.
+MCP verkfæri Wink eru birt sem **verkfærasett** — sérhæfðir endapunktar, hver og einn fyrir eitt verkefni. Þú tengir AI viðskiptavininn þinn við einn eða tvo sem passa við vinnuna þína, ekki alla.
 
-| Þjónn | URL | Hvað hann gerir |
-|--------|-----|--------------|
-| **Inventory API** | `https://api.wink.travel/mcp` | Birgðir, bókanir, verð, sölurásir, greiningar og allar aðgerðir á vettvangi |
-| **Integrations** | `https://integrations.wink.travel/mcp` | Samþættingar rásarstjóra — samstilltu eignir, verð og framboð með OTA-kerfum |
+Hver endapunktur notar **gagnvirka OAuth2 innskráningu** (PKCE heimildarkóðaferli): AI-umboðsmaðurinn þinn opnar vafraglugga, þú skráir þig inn með Wink reikningnum þínum, og það er það. Engar viðskiptaleyndarmál til að stjórna.
+
+```bash title="A channel manager integrator connects to one endpoint"
+claude mcp add wink-channel-manager https://integrations.wink.travel/mcp/channel-manager --transport http
+```
+
+```bash title="A hotelier managing their own rates connects to another"
+claude mcp add wink-rates https://api.wink.travel/mcp/extranet/rates --transport http
+```
+
+---
+
+## Af hverju verkfærin eru skipt á milli endapunkta
+
+Wink býður um 500 verkfæri. Að gefa öllum þeim til umboðsmanns í einu er tæknilega mögulegt — en slæm hugmynd.
+
+**Verkfæra skilgreiningar kosta samhengi.** Hvert verkfæri sem MCP þjónn auglýsir er hlaðið inn í samhengi líkanins áður en það vinnur, ásamt lýsingu og fullri breytuskipan. Fimm hundruð þeirra taka stóran hluta af fjárhagsáætlun sem raunverulegt verkefni þitt þarf, í hverri beiðni.
+
+**Gæði valkosta minnka þegar listinn stækkar.** Umboðsmaður sem velur úr 500 svipuðum verkfærum gerir verri val en sá sem velur úr 40. Ef þú samþættir channel manager eru um það bil tuttugu verkfæri viðeigandi fyrir þig; hin 480 eru hávaði sem gerir rétt verkfæri erfiðara að finna.
+
+**Verkefnið er raunverulega aðskiljanlegt.** Sá sem samstillir framboð úr PMS og sá sem sér um samstarfsaðila lendingssíður deila næstum engum verkfærum. Að skipta eftir verkefni þýðir að hver tenging ber orðaforða eins verkefnis.
+
+<Aside type="caution" title="Verkfærasett eru ekki aðgangsheimildir">
+Að velja þröngt verkfærasett takmarkar **ekki** hvað reikningurinn þinn getur gert, og að velja vítt setti veitir ekki neitt aukalega. Hvert verkfæri framfylgir sömu aðgangsheimildum og vefsvæðið, undir þinni innskráðu auðkenni. Ef reikningurinn þinn getur ekki hætt við bókun í Wink Portal, getur umboðsmaðurinn það ekki heldur — óháð því hvaða endapunktur er tengdur.
+
+Veldu verkfærasett fyrir **einbeitingu**, ekki öryggi.
+</Aside>
+
+---
+
+## Endapunkta skrá
+
+Tveir hýsingarþjónar þjónusta verkfærasett. Fjöldi verkfæra er áætlaður og vex með tímanum.
+
+### `https://api.wink.travel` — vettvangurinn
+
+| Endapunktur | Verkfæri | Hvað það nær yfir |
+|---|---:|---|
+| `/mcp/extranet/facilities` | ~64 | Bókanlegt og staðbundið birgðasafn: gestaherbergi og herbergistegundir, heilsulindir, veitingastaðir, fundarherbergi, afþreying, aðdráttarafl, staðir, önnur seljanleg atriði |
+| `/mcp/extranet/property` | ~62 | Skrá eignar og viðskiptaskilmálar: prófíll og efni, viðbætur, afpöntunarstefnur, fríðindi, tilkynningar |
+| `/mcp/settings` | ~60 | Reikningsstjórnun: prófíll og vörumerki stjórnunareiningar, stjórnendur og heimildir þeirra, sérsnið, vefkrokar, tilkynningastillingar |
+| `/mcp/studio/embeds` | ~48 | Birting valinna birgða: búnaður, grindur og raðaðar grindur, spil, kort, djúplenkir á birgðir og síður birgja |
+| `/mcp/extranet/rates` | ~44 | Verð og framboð: verðtímabil og úthlutanir, verðáætlanir, aðalverð, sér- og kynningarverð |
+| `/mcp/extranet/operations` | ~39 | Rekstur lifandi eignar: bókanir og lífsferill þeirra, gestagagnrýni og svör, dagatalsstraumar, skipulagðar aðgerðir |
+| `/mcp/extranet/distribution` | ~37 | Hvar birgðir eru seldar: sölurásir og verðbreytur, beiðnir um samstarf og birgja, skráning, leiðtogaöflun |
+| `/mcp/studio/curation` | ~35 | Uppbygging söluhæfra safna: föst og breytileg listi, raðaðar listi, vistaðar leitir, eignasafn |
+| `/mcp/link-manager` | ~28 | Samnýtt tenglasöfn, hönnun þeirra, flokka og merki, auk styttingar á slóðum |
+| `/mcp/reference` | ~24 | Lesaðgangsgögn: lönd, gjaldmiðlar og gengisvísar, tungumál, tímabelti, landfræðilegar leitir, IP staðsetning |
+| `/mcp/analytics` | ~18 | Bókunar- og tekjugreining: yfirlit, línurit, stigatöflur, frammistaða samstarfsaðila, hlutdeildarmælingar |
+| `/mcp/payment` | ~18 | Fjármálarekstur: bókhald, úttektir og kostnaðaráætlanir, safn bókunarfjármuna |
+| `/mcp/booking-engine` | ~17 | Kaupferli ferðalanga: leit og uppfletting, innkaupakarfa og greiðsla, óskalistar, herferðarstillingar |
+| `/mcp/social` | ~17 | Tengdir samfélagsreikningar, birting og tímasetning pósta, lestur innsýna í pósta |
+| `/mcp/travel-agent` | ~8 | Bókanir gerðar af umboðsmönnum fyrir ferðalanga, og skýrslur umboðsmanna |
+
+### `https://integrations.wink.travel` — samþættingar channel manager
+
+Einn endapunktur, því þessi hýsing er fyrir eitt verkefni.
+
+| Endapunktur | Verkfæri | Hvað það nær yfir |
+|---|---:|---|
+| `/mcp/channel-manager` | ~9 | Tenging og staðfesting channel manager, PMS eða CRS samþættingar |
+
+<Aside type="note" title="Samþætting channel manager vs. stjórnun eigin verðs">
+Þetta eru mismunandi verkefni fyrir mismunandi aðila, og þau deila ekki endapunkti.
+
+**Channel manager, PMS eða CRS söluaðili** samþættir einu sinni í gegnum `integrations.wink.travel/mcp/channel-manager`, og síðan skiptast eignir, verð, framboð og bókanir yfir þá samþættingu. Sá eini endapunktur er allt yfirborðið.
+
+**Hótelstjóri sem breytir eigin verði handvirkt** notar extranet verkfærasettin á `api.wink.travel` — `/mcp/extranet/rates` og vinir. Þau eru ekki hluti af channel manager samþættingu og samþættari hefur enga ástæðu til að tengjast þeim.
+
+Reikningsstjórnun er einnig á `api.wink.travel`, á `/mcp/settings`. Það er enginn `/mcp/settings` á samþættingarhýsingunni.
+</Aside>
+
+Hver endapunktur ber einnig með sér `ping` verkfæri, svo þú getir staðfest að tenging sé virk áður en þú biður um raunverulega vinnu.
+
+---
+
+## Hvaða verkfærasett þarf ég?
+
+| Ef þú ert… | Tengdu við |
+|---|---|
+| **Samþættir channel manager, PMS eða CRS** | `integrations.wink.travel/mcp/channel-manager` — bara þennan |
+| **Stjórnar innihaldi eignar** | `/mcp/extranet/property` + `/mcp/extranet/facilities` |
+| **Stjórnar herbergjum og herbergistegundum** | `/mcp/extranet/facilities` |
+| **Stjórnar verði og framboði** | `/mcp/extranet/rates` |
+| **Rekur daglegar bókanir** | `/mcp/extranet/operations` |
+| **Eykur dreifingu** | `/mcp/extranet/distribution` + `/mcp/analytics` |
+| **Byggir samstarfsaðila síður** | `/mcp/studio/curation` + `/mcp/studio/embeds` |
+| **Rekur link-in-bio síður** | `/mcp/link-manager` + `/mcp/social` |
+| **Bókar fyrir hönd ferðalanga** | `/mcp/travel-agent` |
+| **Samræmir fjármál** | `/mcp/payment` |
+| **Byggir bókunarupplifun** | `/mcp/booking-engine` + `/mcp/reference` |
+
+Byrjaðu á einu. Bættu við öðru þegar þú finnur þig biðja um eitthvað sem það getur ekki gert — hver tenging er sjálfstæð og að bæta við einni hefur aldrei áhrif á aðrar.
+
+<Aside type="tip" title="Viltu samt allt?">
+`https://api.wink.travel/mcp` og `https://integrations.wink.travel/mcp` eru enn aðgengileg og þjónusta **öll** verkfæri á sínum hýsli. Þau eru gagnleg til að kanna hvað er til, en við mælum ekki með þeim fyrir daglega vinnu: verkfæralistinn er nógu stór til að trufla verkefnið þitt og rýra val umboðsmannsins. Veldu frekar verkfærasettin hér að ofan.
+</Aside>
 
 ---
 
 ## Hvernig auðkenning virkar
 
-Wink MCP þjónar nota **OAuth2 Heimildarkóða + PKCE** flæði og styðja **Dynamic Client Registration (RFC 7591)**. Þetta gerist þegar þú tengir í fyrsta sinn:
+Wink MCP þjónar nota **OAuth2 heimildarkóða + PKCE** ferlið og styðja **Dynamic Client Registration (RFC 7591)**. Þetta gerist þegar þú tengir í fyrsta sinn:
 
-1. AI viðskiptavinurinn finnur auðkenningarþjóninn úr `/.well-known/oauth-protected-resource` metadata MCP endapunktsins.
+1. AI viðskiptavinurinn þinn finnur heimildarþjóninn úr MCP endapunktinum `/.well-known/oauth-protected-resource` metadata.
 2. Viðskiptavinurinn skráir sig sjálfur með **Dynamic Client Registration** — engin handvirk umsóknaruppsetning nauðsynleg.
 3. Viðskiptavinurinn opnar **vafraglugga** á `https://iam.wink.travel`. Þú skráir þig inn með Wink reikningnum þínum og samþykkir beiðnar heimildir á samþykkisskjánum.
-4. Wink gefur út **aðgangstákn** sem er bundið við reikninginn þinn og auðkenni.
-5. AI viðskiptavinurinn festir táknið við hverja MCP beiðni. Öll niðurstaða tækja er sjálfkrafa bundin við þitt stjórnunareiningu.
-6. Táknum rennur út eftir 3 klukkustundir. AI viðskiptavinurinn endurnýjar táknin hljóðlega í bakgrunni án frekari fyrirspurna.
+4. Wink gefur út **aðgangslykil** bundinn við reikninginn þinn og auðkenni.
+5. AI viðskiptavinurinn festir lykilinn við hverja MCP beiðni. Öll verkfæri eru sjálfkrafa bundin við stjórnunareiningu þína.
+6. Lyklar renna út eftir 3 klukkustundir. AI viðskiptavinurinn endurnýjar þá hljóðlaust í bakgrunni án frekari beiðna.
 
-Allar tækjakall keyra **undir þínu auðkenni** — sömu ACL reglur sem vernda vefsvæðið gilda um AI umboðsmanninn.
+Hver verkfæra kalla keyrir **undir þínu auðkenni** — sömu aðgangsreglur og verja vefsvæðið gilda um AI umboðsmanninn.
 
 ---
 
@@ -42,25 +135,28 @@ Allar tækjakall keyra **undir þínu auðkenni** — sömu ACL reglur sem vernd
    npm install -g @anthropic-ai/claude-code
    ```
 
-2. Bættu við Wink Inventory MCP þjóninum:
+2. Veldu verkfærasett úr [skránni hér að ofan](#endpoint-directory) og bættu því við. Til dæmis verð og framboð:
    ```bash
-   claude mcp add wink-inventory https://api.wink.travel/mcp --transport http
+   claude mcp add wink-rates https://api.wink.travel/mcp/extranet/rates --transport http
    ```
 
-3. Claude Code tengist þjóninum, finnur auðkenningarþjóninn og opnar sjálfgefinn vafra.
+3. Claude Code tengist þjóninum, finnur heimildarþjóninn og opnar sjálfgefinn vafra.
 
 4. **Skráðu þig inn í Wink** og samþykktu beiðnina um heimildir á samþykkisskjánum.
 
-5. Claude Code staðfestir tenginguna. Sláðu inn `/mcp` til að staðfesta að þjónninn birtist og tól hafi hlaðist.
+5. Claude Code staðfestir tenginguna. Sláðu inn `/mcp` til að staðfesta að þjónninn birtist og verkfærin hafi hlaðist.
 </Steps>
 
-Til að bæta við Integrations þjóninum líka:
+Bættu við eins mörgum verkfærasettum og vinnan þín þarf — hvert er sér þjónn með eigin nafni:
 ```bash
-claude mcp add wink-integrations https://integrations.wink.travel/mcp --transport http
+claude mcp add wink-operations https://api.wink.travel/mcp/extranet/operations --transport http
+claude mcp add wink-analytics  https://api.wink.travel/mcp/analytics           --transport http
 ```
 
+Þú skráir þig aðeins inn einu sinni. Eftir fyrstu samþykkt í vafra endurnýtir Claude Code Wink lotuna þína fyrir fleiri Wink endapunkta.
+
 :::tip[Deildu með teyminu þínu]
-Bættu við `--scope project` í `claude mcp add` og Claude Code skrifar þjóns-URL í `.mcp.json` í rót verkefnisins. Skráðu það inn — hver liðsfélagi klárar eigin vafra-innskráningu í fyrsta sinn sem hann tengist.
+Bættu við `--scope project` við `claude mcp add` og Claude Code skrifar þjónslóðina í `.mcp.json` í rót verkefnisins. Skráðu þá skrá — allir í teyminu fá sömu verkfærasett og hver og einn klárar sína eigin innskráningu í vafra í fyrsta sinn sem þeir tengjast.
 :::
 
   </TabItem>
@@ -77,23 +173,23 @@ Bættu við `--scope project` í `claude mcp add` og Claude Code skrifar þjóns
    ```json title="claude_desktop_config.json"
    {
      "mcpServers": {
-       "wink-inventory": {
+       "wink-extranet-rates": {
          "type": "http",
-         "url": "https://api.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/rates"
        },
-       "wink-integrations": {
+       "wink-extranet-operations": {
          "type": "http",
-         "url": "https://integrations.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/operations"
        }
      }
    }
    ```
 
-3. **Lokaðu alveg og ræstu Claude Desktop aftur** (notaðu Quit úr valmyndastikunni — að loka glugga er ekki nóg).
+3. **Lokaðu alveg og ræstu Claude Desktop aftur** (notaðu Quit úr valmyndastikunni — að loka glugga dugar ekki).
 
 4. Claude Desktop opnar vafraglugga fyrir hvern nýjan þjón. Skráðu þig inn í Wink og samþykktu heimildir.
 
-5. Tengi-tákn í neðri tækjastikunni sýnir báða þjónana sem tengda.
+5. Tengi-tákn í neðri tólstikunni sýnir báða þjónana sem tengda.
 </Steps>
 
   </TabItem>
@@ -114,13 +210,13 @@ Bættu við `--scope project` í `claude mcp add` og Claude Code skrifar þjóns
    ```json title="~/.codex/config.json"
    {
      "mcpServers": {
-       "wink-inventory": {
+       "wink-extranet-rates": {
          "type": "http",
-         "url": "https://api.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/rates"
        },
-       "wink-integrations": {
+       "wink-extranet-operations": {
          "type": "http",
-         "url": "https://integrations.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/operations"
        }
      }
    }
@@ -130,7 +226,7 @@ Bættu við `--scope project` í `claude mcp add` og Claude Code skrifar þjóns
 
 5. **Skráðu þig inn í Wink** og samþykktu beiðnar heimildir.
 
-6. Codex staðfestir tenginguna. Keyrðu `codex` og biððu um lista yfir tiltæk tól til að staðfesta að Wink þjónarnir séu virkir.
+6. Codex staðfestir tenginguna. Keyrðu `codex` og biððu um lista yfir tiltæk verkfæri til að staðfesta að Wink þjónarnir séu virkir.
 </Steps>
 
 :::note
@@ -140,7 +236,7 @@ Codex CLI MCP stuðningur krefst útgáfu **1.0** eða nýrri. Keyrðu `codex --
   </TabItem>
   <TabItem label="ChatGPT">
 
-Stuðningur við MCP þjónustu er í boði í **ChatGPT skjáborðsforritinu** fyrir Plus, Pro, Team og Enterprise áskrifendur.
+Stuðningur við MCP þjónar er í boði í **ChatGPT skjáborðsforritinu** fyrir Plus, Pro, Team og Enterprise áskrifendur.
 
 <Steps>
 1. Sæktu og settu upp [ChatGPT skjáborðsforritið](https://openai.com/chatgpt/download/) ef þú hefur ekki gert það.
@@ -149,20 +245,20 @@ Stuðningur við MCP þjónustu er í boði í **ChatGPT skjáborðsforritinu** 
 
 3. Farðu í **Tengla** (eða **MCP Servers** eftir útgáfu) og smelltu á **Bæta við**.
 
-4. Sláðu inn URL fyrir Wink Inventory þjóninn:
+4. Sláðu inn slóð verkfærasets úr [skránni hér að ofan](#endpoint-directory), til dæmis:
    ```
-   https://api.wink.travel/mcp
+   https://api.wink.travel/mcp/extranet/rates
    ```
    Smelltu svo á **Tengja**.
 
 5. ChatGPT opnar vafraglugga á `https://iam.wink.travel`. **Skráðu þig inn í Wink** og samþykktu heimildir.
 
-6. Endurtaktu skref 4–5 fyrir Integrations þjóninn:
+6. Endurtaktu skref 4–5 fyrir önnur verkfærasett sem vinnan þín þarf, til dæmis:
    ```
-   https://integrations.wink.travel/mcp
+   https://api.wink.travel/mcp/extranet/operations
    ```
 
-7. Báðir þjónar birtast í tenglalistanum þínum. Byrjaðu nýtt spjall — Wink tól eru sjálfkrafa tiltæk.
+7. Hvert verkfærasett birtist í tenglalistanum þínum. Byrjaðu nýtt spjall — Wink verkfæri eru sjálfkrafa tiltæk.
 </Steps>
 
 :::note[Takmörkun vefforrits]
@@ -182,27 +278,27 @@ MCP þjónar eru aðeins stillanlegir í **skjáborðsforriti**. ChatGPT vefvið
    ```json title="~/.cursor/mcp.json"
    {
      "mcpServers": {
-       "wink-inventory": {
+       "wink-extranet-rates": {
          "type": "http",
-         "url": "https://api.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/rates"
        },
-       "wink-integrations": {
+       "wink-extranet-operations": {
          "type": "http",
-         "url": "https://integrations.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/operations"
        }
      }
    }
    ```
 
-3. Opnaðu Cursor. Farðu í **Stillingar → Cursor Stillingar → MCP** og staðfestu að báðir þjónar birtist með grænum stöðutákni. Ef þeir eru rauðir, smelltu á **Endurnýja**.
+3. Opnaðu Cursor. Farðu í **Stillingar → Cursor Stillingar → MCP** og staðfestu að báðir þjónar birtist með grænu stöðutákni. Ef þeir sýna rautt, smelltu á **Endurnýja**.
 
 4. Cursor opnar vafraglugga á `https://iam.wink.travel`. **Skráðu þig inn í Wink** og samþykktu heimildir.
 
-5. Opnaðu spjall (`Ctrl+L` / `Cmd+L`) og biððu Cursor um að sýna tiltæk Wink tól til að staðfesta tenginguna.
+5. Opnaðu spjall (`Ctrl+L` / `Cmd+L`) og biððu Cursor um að lista tiltæk Wink verkfæri til að staðfesta tenginguna.
 </Steps>
 
-:::tip[Verkefnastilling]
-Þú getur líka sett `mcp.json` skrá í rót verkefnisins í staðinn fyrir í `~/.cursor/`. Verkefnastilling hefur forgang og gerir þjónana aðgengilega fyrir alla liðsmenn sem opna verkefnið í Cursor.
+:::tip[Verkefnismiðuð stilling]
+Þú getur líka sett `mcp.json` skrá í rót verkefnisins í staðinn fyrir í `~/.cursor/`. Verkefnismiðuð stilling hefur forgang og gerir þjónana aðgengilega fyrir alla í teyminu sem opna verkefnið í Cursor.
 :::
 
   </TabItem>
@@ -218,13 +314,13 @@ MCP þjónar eru aðeins stillanlegir í **skjáborðsforriti**. ChatGPT vefvið
    ```json title="~/.codeium/windsurf/mcp_config.json"
    {
      "mcpServers": {
-       "wink-inventory": {
+       "wink-extranet-rates": {
          "type": "http",
-         "url": "https://api.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/rates"
        },
-       "wink-integrations": {
+       "wink-extranet-operations": {
          "type": "http",
-         "url": "https://integrations.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/operations"
        }
      }
    }
@@ -234,7 +330,7 @@ MCP þjónar eru aðeins stillanlegir í **skjáborðsforriti**. ChatGPT vefvið
 
 4. Farðu í **Stillingar → MCP Servers** og staðfestu að báðir þjónar sýni sem tengdir. Windsurf opnar vafraglugga á `https://iam.wink.travel` í fyrsta skipti.
 
-5. **Skráðu þig inn í Wink** og samþykktu heimildir. Þjónarnir verða grænir í stillingum þegar auðkenning er staðfest.
+5. **Skráðu þig inn í Wink** og samþykktu heimildir. Þjónarnir verða grænir í stillingum þegar innskráning er staðfest.
 </Steps>
 
 :::note
@@ -249,24 +345,24 @@ Cline er VS Code viðbót með innbyggðum MCP þjónastjóra. Engin handvirk JS
 <Steps>
 1. Settu upp Cline úr VS Code Marketplace:
    - Opnaðu VS Code og ýttu á `Ctrl+Shift+X` / `Cmd+Shift+X`
-   - Leitaðu að **Cline** og smelltu á **Setja upp**
+   - Leitaðu að **Cline** og smelltu á **Install**
 
 2. Smelltu á **Cline táknið** í Activity Bar (vinstri hliðarstiku) til að opna Cline gluggann.
 
-3. Smelltu á **MCP Servers** táknið (tengi-tákn) í Cline tækjastikunni, veldu svo **Breyta MCP Stillingum**.
+3. Smelltu á **MCP Servers** táknið (tengi tákn) í Cline tólstikunni, veldu svo **Edit MCP Settings**.
 
 4. VS Code opnar `cline_mcp_settings.json`. Bættu við Wink færslunum:
 
    ```json title="cline_mcp_settings.json"
    {
      "mcpServers": {
-       "wink-inventory": {
+       "wink-extranet-rates": {
          "type": "http",
-         "url": "https://api.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/rates"
        },
-       "wink-integrations": {
+       "wink-extranet-operations": {
          "type": "http",
-         "url": "https://integrations.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/operations"
        }
      }
    }
@@ -277,8 +373,8 @@ Cline er VS Code viðbót með innbyggðum MCP þjónastjóra. Engin handvirk JS
 6. **Skráðu þig inn í Wink** og samþykktu heimildir. Báðir þjónar birtast sem virkir í MCP Servers glugganum.
 </Steps>
 
-:::tip[Annað: bættu við með URL]
-Í MCP Servers glugganum, smelltu á **Bæta við þjón** og límdu `https://api.wink.travel/mcp` beint inn. Cline fyllir sjálfkrafa út stillingarnar og sér um auðkenningu án handvirkrar JSON breytingar.
+:::tip[Annað: bættu við með slóð]
+Í MCP Servers glugganum, smelltu á **Add Server** og límdu inn verkfærasett slóð eins og `https://api.wink.travel/mcp/extranet/rates` beint. Cline fyllir sjálfkrafa út stillingarnar og sér um auðkenningu án handvirkrar JSON breytingar.
 :::
 
   </TabItem>
@@ -288,17 +384,21 @@ Cline er VS Code viðbót með innbyggðum MCP þjónastjóra. Engin handvirk JS
 
 ## Heimildir
 
-Þegar þú samþykkir samþykkisskjáinn sérðu sundurliðun á því sem umboðsmaðurinn biður um. MCP
+Þegar þú samþykkir á samþykkisskjánum sérðu sundurliðun á því sem umboðsmaðurinn biður um. MCP
 viðskiptavinir nota sama heimildamál og restin af vettvangnum — sjá fulla
 [heimildaskráningu á Auðkenningarsíðu](/is/developers/authentication#scopes).
 
 Tveir hlutir eru sértækir fyrir MCP:
 
 - **`mcp.read` `mcp.write` `mcp.remove` heimildir eru aukalega nauðsynlegar** til að opna MCP
-  flutninginn. Viðskiptavinur með `mcp.*` heimild fær aðgang að `/mcp`, en hvert tól sem hann kallar
-  krefst samt viðeigandi hlutaheimildar endapunktsins sem það umlykur (t.d. `booking.read`).
+  flutningsrásina. Viðskiptavinur með `mcp.*` heimild fær aðgang að hvaða Wink MCP endapunkti sem er, en hvert
+  verkfæri sem hann kallar fram framfylgir samt heimildum endapunktsins sem það umlykur (t.d. `booking.read`).
 - **AI viðskiptavinurinn biður aðeins um þær heimildir sem hann þarf.** Þú getur neitað einstökum heimildum á
-  samþykkisskjánum — tól sem krefjast neitaðrar heimildar skila villu þegar þau eru kölluð.
+  samþykkisskjánum — verkfæri sem krefjast neitaðrar heimildar skila villu þegar þau eru kölluð.
+
+**Verkfærasett breyta engu af þessu.** Endapunkturinn sem þú tengir við ákveður hvaða verkfæri eru *skráð*,
+ekki hvað þeim er *heimilt að gera*. Að tengjast `/mcp/payment` veitir engar fjármálaheimildir sem þú hafðir ekki fyrir,
+og að tengjast `/mcp/reference` hindrar ekki verkfæri þar í að framfylgja eigin heimildum. Heimildastýring er ákvörðuð fyrir hvert verkfæri út frá lykli þínum og heimildum reikningsins.
 
 ---
 
@@ -306,34 +406,46 @@ Tveir hlutir eru sértækir fyrir MCP:
 
 **Vafragluggi opnast ekki**
 
-AI viðskiptavinurinn þinn styður kannski ekki enn gagnvirka PKCE flæðið. Staðfestu að þú sért með nýjustu útgáfu:
+AI viðskiptavinurinn þinn styður kannski ekki gagnvirka PKCE ferlið ennþá. Gakktu úr skugga um að þú sért með nýjustu útgáfu:
 - **Claude Code:** `npm install -g @anthropic-ai/claude-code`
 - **Codex CLI:** `npm install -g @openai/codex`
 - **Claude Desktop / ChatGPT skjáborð:** uppfærðu með innbyggðum uppfærslutæki appsins
 
 **`401 Unauthorized` eftir innskráningu**
 
-Gæti verið að vistað tákn sé úrelt. Fjarlægðu og bættu þjóninum aftur til að kveikja á nýrri innskráningu:
+Geymdur lykill þinn gæti verið úreltur. Fjarlægðu og bættu þjóninum aftur til að kveikja á nýrri innskráningu:
 
 ```bash
 # Claude Code
-claude mcp remove wink-inventory
-claude mcp add wink-inventory https://api.wink.travel/mcp --transport http
+claude mcp remove wink-rates
+claude mcp add wink-rates https://api.wink.travel/mcp/extranet/rates --transport http
 ```
 
-Fyrir Claude Desktop og ChatGPT, fjarlægðu þjónninn úr stillingum, ræstu forritið aftur og bættu honum svo við.
+Fyrir Claude Desktop og ChatGPT, fjarlægðu þjóninn úr stillingum, ræstu forritið aftur og bættu honum við á ný.
 
-**`403 Forbidden` þegar kallað er á ákveðið tól**
+**`403 Forbidden` þegar kallað er á ákveðið verkfæri**
 
-Tólið krefst heimildar sem þú hafðir ekki samþykkt á samþykkisskjánum. Tengdu þjóninn aftur — samþykkisskjárinn birtist á ný og þú getur samþykkt vantar heimild.
+Verkfærið krefst heimildar sem þú hafðir ekki samþykkt á samþykkisskjánum, eða heimildar sem reikningurinn þinn hefur ekki. Tengdu þjóninn aftur — samþykkisskjárinn birtist á ný og þú getur samþykkt vantar heimild. Ef það bilar enn, þarf verkfærið reikningsheimild sem þú hefur ekki; að tengjast öðru verkfærasetti hjálpar ekki, því verkfærasett veita ekki heimildir.
 
-**Þjónninn birtist en tól skila "account not found"**
+**Verkfærið sem ég þarf er ekki á listanum**
+
+Þú ert líklega tengdur við verkfærasett sem nær ekki yfir það verkefni. Skoðaðu [endapunkta skrána](#endpoint-directory) og bættu við verkfærasetti sem nær yfir það — tengingar eru sjálfstæðar, svo að bæta við einu breytir engu um hin. Ef þú ert óviss um hvaða setti hefur það, tengdu tímabundið við `https://api.wink.travel/mcp`, finndu verkfærið og athugaðu hvaða verkfærasett skráir það.
+
+**`404 Not Found` á endapunkti verkfærasets**
+
+Athugaðu slóðina vel — innbyggðu verkfærasettin hafa tvö stig (`/mcp/extranet/rates`, ekki `/mcp/extranet-rates`), og þau einföldu hafa eitt (`/mcp/link-manager`). Athugaðu að *óauðkennd* beiðni á hvaða slóð undir `/mcp` sem er skilar `401`, ekki `404`, svo `401` segir ekki hvort endapunkturinn sé til.
+
+**Ég tengdist `api.wink.travel/mcp/channel-manager` og fékk ekkert**
+
+Sá endapunktur er ekki til. Channel manager samþætting er aðeins í boði á `https://integrations.wink.travel/mcp/channel-manager`. Ef þú þarft líka að lesa eða breyta eigin verðskrá handvirkt, er það annað verkefni á öðrum endapunkti — sjá `/mcp/extranet/rates`.
+
+**Þjónninn birtist en verkfæri skila "account not found"**
 
 Þú ert skráður inn með Wink reikningi sem hefur enga stjórnunareiningu. Farðu á [Wink Portal](https://app.wink.travel) og tryggðu að reikningurinn þinn sé rétt stilltur áður en þú notar MCP þjóninn.
 
-**Táknið rennur út miðja lotu**
+**Lykill rennur út á miðju tímabili**
 
-Táknum gilda í 3 klukkustundir. Claude Code og Claude Desktop endurnýja tákn hljóðlega án truflunar. Ef þú færð auðkennisvillur eftir langa bið, sláðu inn nýja skilaboð — viðskiptavinurinn auðkennir sig sjálfkrafa aftur.
+Lyklar gilda í 3 klukkustundir. Claude Code og Claude Desktop endurnýja lykla hljóðlaust án truflunar. Ef þú sérð auðkennisvillur eftir langa kyrrsetu, sláðu inn nýja skilaboð — viðskiptavinurinn auðkennir sig sjálfkrafa aftur.
 
 **Codex CLI sýnir "MCP server unreachable"**
 
@@ -341,19 +453,19 @@ Athugaðu að `~/.codex/config.json` sé gilt JSON (engin aukakomma) og að `"ty
 
 **ChatGPT "Connectors" valmynd vantar**
 
-MCP stuðningur krefst ChatGPT skjáborðsforrits útgáfu **1.2024.352** eða nýrri og virks Plus, Pro, Team eða Enterprise áskriftar. Uppfærðu forritið og staðfestu áætlun í Stillingar → Reikningur.
+MCP stuðningur krefst ChatGPT skjáborðsforrits útgáfu **1.2024.352** eða nýrri og virks Plus, Pro, Team eða Enterprise áskriftar. Uppfærðu forritið og staðfestu áskrift í Stillingar → Reikningur.
 
-**Cursor þjónn sýnir rauðan / "Failed to connect"**
+**Cursor þjónn sýnir rautt / "Failed to connect"**
 
-Staðfestu að `~/.cursor/mcp.json` sé gilt JSON og innihaldi `"type": "http"`. Farðu svo í **Stillingar → Cursor Stillingar → MCP** og smelltu á **Endurnýja**. Ef villan heldur áfram, endurræstu Cursor alveg — breytingar á stillingum ná ekki alltaf fram án endurræsingar.
+Staðfestu að `~/.cursor/mcp.json` sé gilt JSON og innihaldi `"type": "http"`. Farðu svo í **Stillingar → Cursor Stillingar → MCP** og smelltu á **Endurnýja**. Ef villan heldur áfram, endurræstu Cursor alveg — stillingabreytingar eru ekki alltaf sóttar án endurræsingar.
 
 **Windsurf MCP þjónar birtast ekki í stillingum**
 
-Windsurf krefst fullrar endurræsingar (ekki bara gluggahleðslu) til að taka breytingar á `mcp_config.json` gildar. Notaðu **Skrá → Hætta** og ræstu aftur. Ef þjónar birtast ekki, staðfestu að þú sért með Windsurf **1.4+** í **Hjálp → Um Windsurf**.
+Windsurf krefst fullrar endurræsingar (ekki bara gluggahleðslu) til að taka breytingar á `mcp_config.json` upp. Notaðu **Skrá → Hætta** og ræstu aftur. Ef þjónar birtast ekki, staðfestu að þú sért með Windsurf **1.4+** í **Hjálp → Um Windsurf**.
 
-**Cline "Add Server" valkostur er ekki sýnilegur**
+**Cline "Add Server" valkostur sést ekki**
 
-MCP þjónastjóri krefst Cline **2.0** eða nýrri. Opnaðu VS Code Extensions gluggann, finndu Cline og smelltu á **Uppfæra** ef uppfærsla er í boði. Eftir uppfærslu, endurhlaða VS Code (`Ctrl+Shift+P` → "Developer: Reload Window").
+MCP þjónastjóri krefst Cline **2.0** eða nýrri. Opnaðu VS Code Extensions gluggann, finndu Cline og smelltu á **Update** ef uppfærsla er í boði. Eftir uppfærslu, endurhleðslu VS Code (`Ctrl+Shift+P` → "Developer: Reload Window").
 
 ---
 

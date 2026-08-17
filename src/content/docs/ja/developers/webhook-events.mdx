@@ -1,331 +1,46 @@
 ---
 title: Webhookイベントカタログ
-description: Winkプラットフォームで利用可能なすべてのWebhookイベントタイプの完全リファレンスをカテゴリ別に整理しています。
+description: Winkプラットフォーム上のすべてのWebhookイベントタイプ。プラットフォームのイベントカタログから生成され、誰に配信され、ペイロードのドキュメントがどこにあるかを示します。
 sidebar:
-  order: 3
+  order: 3.5
 ---
 
-import { LinkButton } from '@astrojs/starlight/components';
+import webhooks from '../../../../schemas/webhooks.json';
+import WebhookEventTypes from '@/components/webhooks/event-types.astro';
 
-このページでは、Winkで購読可能なすべてのWebhookイベントを一覧で紹介しています。設定手順については、[Webhook統合ガイド](/ja/guides/developers/webhook-integration) または [Webhook管理ページ](/ja/portal/settings/webhooks) をご覧ください。
+このページでは、Winkで購読可能なすべてのWebhookイベントを一覧表示しています。設定手順については、[Webhook統合ガイド](/ja/developers/webhook-integration) または [Webhook管理ページ](/ja/portal/settings/webhooks) をご覧ください。
 
 ## 購読方法
 
 1. ポータルの **Applications > Webhooks** に移動します。
-2. Webhookを作成し、受信したいイベントを選択します。
-3. イベントが発生するたびに、WinkがHTTP POSTをエンドポイントに送信します。
-
-完全な設定手順とベストプラクティスについては、[Webhook統合](/ja/guides/developers/webhook-integration) をご覧ください。
-
----
-
-## 管理エンティティイベント
-
-エンティティ（物件、アフィリエイト、会社）およびその管理に関するイベント。
-
-### ライフサイクル
-
-| イベント | キー | 説明 |
-|---|---|---|
-| エンティティ作成 | `managing_entity.created` | 新しい管理エンティティが作成されました。 |
-| エンティティ削除 | `managing_entity.deleted` | 管理エンティティが削除されました。 |
-| ステータス更新 | `managing_entity.status.updated` | エンティティのステータスが変更されました。 |
-| 審査中 | `account.under_review` | エンティティアカウントが審査待ちです。 |
-
-### サブスクリプション
-
-| イベント | キー | 説明 |
-|---|---|---|
-| サブスクリプション提供済み | `managing_entity.subscription.provisioned` | 新しいサブスクリプションが提供されました。 |
-| サブスクリプション変更 | `managing_entity.subscription.changed` | サブスクリプションプランが変更されました。 |
-| サブスクリプション請求書変更 | `managing_entity.subscription.invoice.changed` | サブスクリプション請求書が更新されました。 |
-
-### マネージャーのライフサイクル
-
-| イベント | キー | 説明 |
-|---|---|---|
-| マネージャー追加 | `managing_entity.manager.added` | 新しいマネージャーが追加されました。 |
-| マネージャー招待 | `managing_entity.manager.invited` | マネージャー招待が送信されました。 |
-| マネージャー削除 | `managing_entity.manager.removed` | マネージャーが削除されました。 |
-| マネージャー承認 | `managing_entity.manager.accepted` | マネージャー招待が承認されました。 |
-| マネージャー拒否 | `managing_entity.manager.rejected` | マネージャー招待が拒否されました。 |
-| オーナー設定 | `managing_entity.manager.owner.set` | エンティティの所有権が移転されました。 |
-| マネージャー更新 | `account.managers.update` | マネージャーリストが変更されました。 |
-
-### エンティティ情報
-
-| イベント | キー | 説明 |
-|---|---|---|
-| 情報更新 | `managing_entity.information.updated` | エンティティ情報が更新されました。 |
-| 住所更新 | `managing_entity.city.updated` | エンティティの住所/市区町村が変更されました。 |
-| 名前更新 | `managing_entity.name.updated` | エンティティ名が変更されました。 |
-| URL名更新 | `managing_entity.url_name.updated` | エンティティのバニティURLが変更されました。 |
-| ユニークID更新 | `managing_entity.unique_id.updated` | エンティティのユニークIDが変更されました。 |
-| 管理元更新 | `managing_entity.managed_by.updated` | エンティティの親/管理元関係が変更されました。 |
-| プレイスID更新 | `managing_entity.place_id.updated` | エンティティのGoogleプレイスIDが変更されました。 |
-| アカウント担当者更新 | `managing_entity.account_representative.updated` | アカウント担当者が変更されました。 |
-| プロフィール画像更新 | `managing_entity.profile_picture.updated` | エンティティのプロフィール画像が更新されました。 |
-| ロゴ更新 | `managing_entity.logo.updated` | エンティティのロゴが更新されました。 |
-| 詳細更新 | `account.details.updated` | アカウントの詳細フィールドが変更されました。 |
-| エージェント更新 | `managing_entity.agent.updated` | エンティティのエージェントが変更されました。 |
-
-### 通知
-
-| イベント | キー | 説明 |
-|---|---|---|
-| エージェントメール通知 | `managing_entity.agent.email.notification` | エージェントにメール通知が送信されました。 |
-| マネージャーメール通知 | `managing_entity.manager.email.notification` | マネージャーにメール通知が送信されました。 |
-
-### アカウントタスク
-
-| イベント | キー | 説明 |
-|---|---|---|
-| タスク作成 | `account.task.create` | 新しいタスクがアカウントに追加されました。 |
-| タスク更新 | `account.task.update` | アカウントのタスクが変更されました。 |
-| タスク削除 | `account.task.remove` | アカウントのタスクが削除されました。 |
-| タスク完了 | `account.task.complete` | アカウントのタスクが完了しました。 |
-| 税IDタスク完了 | `account.task.tax_id.complete` | 税ID確認タスクが完了しました。 |
-
----
-
-## 予約イベント
-
-予約の作成から返金、支払いまでのWink予約ライフサイクルに関するイベント。
-
-### コア予約
-
-| イベント | キー | 説明 |
-|---|---|---|
-| 予約作成 | `booking.create` | 新しい予約が作成されました。 |
-| 予約キャンセル | `booking.cancelled` | 予約がキャンセルされました。 |
-| 予約失敗 | `booking.failed` | 予約試行が失敗しました。 |
-| 予約処理中 | `booking.processing` | 予約の支払いが処理中です。 |
-| 初期化要求 | `booking.initialize.request` | 予約の初期化が要求されました。 |
-| 初期化完了 | `booking.initialize.complete` | 予約の初期化が完了しました。 |
-
-### 返金
-
-| イベント | キー | 説明 |
-|---|---|---|
-| 返金要求 | `booking.refund.request` | 返金要求が提出されました。 |
-| 返金エラー | `booking.refund.error` | 返金処理中にエラーが発生しました。 |
-| 部分返金 | `booking.refund.partial` | 部分返金が行われました。 |
-| 全額返金 | `booking.refund.full` | 全額返金が行われました。 |
-
-### 支払い
-
-| イベント | キー | 説明 |
-|---|---|---|
-| 支払い作成 | `booking.payout.create` | 予約の支払いが作成されました。 |
-| 支払い完了 | `booking.payout.complete` | 支払いが正常に完了しました。 |
-| 資金利用可能 | `booking.funds.available` | 予約資金が決済可能です。 |
-| 資金記録済み | `booking.funds.ledgered` | 予約資金が台帳に記録されました。 |
-
-### レビュー
-
-| イベント | キー | 説明 |
-|---|---|---|
-| レビュー投稿 | `booking.review.created` | ゲストのレビューが予約に対して投稿されました。 |
-| レビュー返信 | `booking.review.responded` | 物件が予約レビューに返信しました。 |
-
----
-
-## 物件イベント
-
-物件プロフィールおよびコンテンツに関するイベントで、物件自身のWebhook購読者に送信されます。
-
-| イベント | キー | 説明 |
-|---|---|---|
-| 物件作成 | `property.created` | 新しい物件が作成されました。 |
-| 物件更新 | `property.updated` | 物件の詳細が更新されました。 |
-| 物件削除 | `property.deleted` | 物件が削除されました。 |
-| 物件登録完了 | `property.registered` | 物件の登録が完了しました。 |
-| ステータス更新 | `property.status.updated` | 物件の外部ステータスが変更されました。 |
-| 名前更新 | `property.name.updated` | 物件名が変更されました。 |
-| 住所更新 | `property.address.updated` | 物件の住所が更新されました。 |
-| 位置情報更新 | `property.geolocation.updated` | 物件の位置情報が更新されました。 |
-| プロフィール更新 | `property.profile.updated` | 物件プロフィールの内容が変更されました。 |
-| サービス更新 | `property.services.updated` | 物件のサービス/アメニティリストが変更されました。 |
-| ウェルカムテキスト更新 | `property.welcome_text.updated` | 物件のウェルカムメッセージが変更されました。 |
-| ポリシー作成 | `property.policy.created` | 新しい物件ポリシーが作成されました。 |
-| ポリシー更新 | `property.policy.updated` | 物件ポリシーが更新されました。 |
-
----
-
-## 在庫イベント
-
-物件内の在庫アイテムに関するイベントで、その物件のWebhook購読者に送信されます。
-
-### ルームタイプ
-
-| イベント | キー | 説明 |
-|---|---|---|
-| ルームタイプ作成 | `room_type.created` | 新しいルームタイプが追加されました。 |
-| ルームタイプ更新 | `room_type.updated` | ルームタイプが変更されました。 |
-| ルームタイプ削除 | `room_type.deleted` | ルームタイプが削除されました。 |
-
-### レートプラン
-
-| イベント | キー | 説明 |
-|---|---|---|
-| レートプラン作成 | `rate_plan.created` | 新しいレートプランが作成されました。 |
-| レートプラン更新 | `rate_plan.updated` | レートプランが変更されました。 |
-| レートプラン削除 | `rate_plan.deleted` | レートプランが削除されました。 |
-
-### マスターレート
-
-| イベント | キー | 説明 |
-|---|---|---|
-| マスターレート作成 | `master_rate.created` | 新しいマスターレートが作成されました。 |
-| マスターレート更新 | `master_rate.updated` | マスターレートが変更されました。 |
-| マスターレート削除 | `master_rate.deleted` | マスターレートが削除されました。 |
-
-### アドオン
-
-| イベント | キー | 説明 |
-|---|---|---|
-| アドオン作成 | `add_on.created` | 新しいアドオンが作成されました。 |
-| アドオン更新 | `add_on.updated` | アドオンが変更されました。 |
-| アドオン削除 | `add_on.deleted` | アドオンが削除されました。 |
-
-### 会議室
-
-| イベント | キー | 説明 |
-|---|---|---|
-| 会議室作成 | `meeting_room.created` | 新しい会議室が追加されました。 |
-| 会議室更新 | `meeting_room.updated` | 会議室が変更されました。 |
-| 会議室削除 | `meeting_room.deleted` | 会議室が削除されました。 |
-
-### レストラン
-
-| イベント | キー | 説明 |
-|---|---|---|
-| レストラン作成 | `restaurant.created` | 新しいレストランが追加されました。 |
-| レストラン更新 | `restaurant.updated` | レストランが変更されました。 |
-| レストラン削除 | `restaurant.deleted` | レストランが削除されました。 |
-
-### スパ
-
-| イベント | キー | 説明 |
-|---|---|---|
-| スパ作成 | `spa.created` | 新しいスパが追加されました。 |
-| スパ更新 | `spa.updated` | スパが変更されました。 |
-| スパ削除 | `spa.deleted` | スパが削除されました。 |
-
-### アクティビティ
-
-| イベント | キー | 説明 |
-|---|---|---|
-| アクティビティ作成 | `activity.created` | 新しいアクティビティが追加されました。 |
-| アクティビティ更新 | `activity.updated` | アクティビティが変更されました。 |
-| アクティビティ削除 | `activity.deleted` | アクティビティが削除されました。 |
-
----
-
-## 販売チャネルイベント
-
-サプライヤーとアフィリエイトをつなぐ流通チャネルに関するイベント。サプライヤーとアフィリエイト両方のWebhook購読者に送信されます。
-
-| イベント | キー | 説明 |
-|---|---|---|
-| 販売チャネル作成 | `sales_channel.created` | 新しい販売チャネルが作成されました。 |
-| 販売チャネル更新 | `sales_channel.updated` | 販売チャネルが変更されました。 |
-| 販売チャネル削除 | `sales_channel.deleted` | 販売チャネルが削除されました。 |
-
----
-
-## 特別料金イベント
-
-物件のプロモーションおよび交渉料金に関するイベント。
-
-| イベント | キー | 説明 |
-|---|---|---|
-| 特別料金作成 | `special_rate.created` | 新しい特別料金が作成されました。 |
-| 特別料金更新 | `special_rate.updated` | 特別料金が変更されました。 |
-| 特別料金削除 | `special_rate.deleted` | 特別料金が削除されました。 |
-| 料金修正更新 | `rate_modifier.updated` | 料金修正が更新されました。 |
-
----
-
-## 支払先イベント
-
-支払先（支払い受取人）管理に関するイベント。
-
-| イベント | キー | 説明 |
-|---|---|---|
-| 支払先作成 | `payee.create` | 新しい支払先が正常に作成されました。 |
-| 支払先作成失敗 | `payee.create.failure` | 支払先の作成に失敗しました。 |
-| 支払先更新 | `payee.update` | 支払先が更新されました。 |
-| 支払先更新失敗 | `payee.update.failure` | 支払先の更新に失敗しました。 |
-
----
-
-## 支払いイベント
-
-TripPayからの内部支払い処理イベント。
-
-| イベント | キー | 説明 |
-|---|---|---|
-| 支払い成功 | `internal.payment.succeeded` | 支払いが正常に処理されました。 |
-| 支払い処理中 | `internal.payment.processing` | 支払いが現在処理中です。 |
-| 支払い失敗 | `internal.payment.failed` | 支払い処理が失敗しました。 |
-
----
-
-## チャンネルマネージャーイベント
-
-チャンネルマネージャーの料金および空室状況のプッシュに関するイベント。
-
-| イベント | キー | 説明 |
-|---|---|---|
-| 料金更新 | `channel-manager.update.rate` | チャンネルマネージャーが料金更新をプッシュしました。 |
-| 空室状況更新 | `channel-manager.update.availability` | チャンネルマネージャーが空室状況更新をプッシュしました。 |
-| 一般更新 | `channel-manager.update` | 一般的なチャンネルマネージャーの更新。 |
-
----
-
-## 台帳イベント
-
-財務台帳エントリに関するイベント。
-
-| イベント | キー | 説明 |
-|---|---|---|
-| 台帳エントリ作成 | `ledger.entry.create` | 新しい台帳エントリが記録されました。 |
-
----
-
-## メールイベント
-
-| イベント | キー | 説明 |
-|---|---|---|
-| メール送信 | `email.correspondence` | 送信メールが送られました。 |
-
----
-
-## イベント数の概要
-
-| カテゴリ | 件数 |
-|---|---|
-| 管理エンティティイベント | 33 |
-| 予約イベント | 16 |
-| 物件イベント | 13 |
-| 在庫イベント（ルームタイプ、レートプラン、マスターレート、アドオン、施設） | 24 |
-| 販売チャネルイベント | 3 |
-| 特別料金イベント | 4 |
-| 支払先イベント | 4 |
-| 支払いイベント | 3 |
-| チャンネルマネージャーイベント | 3 |
-| 台帳イベント | 1 |
-| メールイベント | 1 |
-| **合計** | **105** |
+2. Webhookを作成し、受信したいイベントを選択します。すべてのイベントを受信したい場合はリストを空のままにしてください。
+3. イベントが発生するたびに、Winkは署名付きのHTTP POSTをあなたのエンドポイントに送信します。エンベロープ、ヘッダー、署名検証、リトライについては [Webhook統合](/ja/developers/webhook-integration) を参照してください。
+
+## すべてのイベントタイプ
+
+この表はビルド時にプラットフォームのイベントカタログから生成されるため、常にAPIと一致しています。配信済みとマークされたイベントタイプは、[Webhooks API](/ja/api/webhooks/) のリファレンスページにリンクしており、正確なJSONボディ（イベント固有の `object` を含む `WebhookEnvelope`）、`Wink-*` ヘッダー、リトライポリシーが記載されています。配信されていないイベントタイプは内部的に存在します（支払い、元帳、チャネルマネージャー同期など）が、現在Webhook購読者には送信されていません。
+
+**Recipients** はイベントを受け取る対象を示します：`SUPPLIER`（ホテル）、`AFFILIATE`（ホテルへの有効な販売チャネルを持つリセラー）、`AGENT`（予約を行った旅行代理店）、または `SELF`（イベントの対象となる管理主体）。すべての受信者は同じペイロード形式を受け取ります。役割固有の詳細はペイロードの `links.self` URLの先にあります。
+
+<WebhookEventTypes
+  types={webhooks['x-wink-event-types']}
+  referenceBase="/api/webhooks"
+  eventHeader="イベント"
+  descriptionHeader="説明"
+  deliveredHeader="配信済み"
+  recipientsHeader="受信者"
+  deliveredLabel="配信済み"
+  notDeliveredLabel="未配信"
+  noRecipientsLabel="—"
+/>
 
 :::tip
-開発中はすべてのイベントを購読することから始めましょう。システムに必要なペイロードが把握できたら、ノイズを減らすために購読を絞り込みましょう。
+開発中はすべてのイベントを購読することから始めましょう。システムに必要なペイロードがわかったら、購読を絞り込みノイズを減らしてください。**Applications > Webhooks** から（または `POST …/webhook/{id}/test`）テストイベントを送信し、エンドポイントと署名検証が正しく動作することを確認してから本番運用に移行しましょう。
 :::
 
-## さらなる参考資料
+## さらに読む
 
-- [Webhook統合ガイド](/ja/guides/developers/webhook-integration) — 設定手順とベストプラクティス。
-- [Webhook](/ja/portal/settings/webhooks) — Webhook購読の管理。
-- [Applications](/ja/portal/settings/applications) — API認証情報の管理。
+- [Webhook統合ガイド](/ja/developers/webhook-integration) — 設定手順とベストプラクティス。
+- [Webhooks](/ja/portal/settings/webhooks) — Webhook購読の管理。
+- [Applications](/ja/account/applications) — API認証情報の管理。
 - [Build on Wink](/ja/developers/build-on-wink) — 開発者向けプラットフォーム概要。

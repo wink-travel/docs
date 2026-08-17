@@ -1,0 +1,75 @@
+---
+title: REST ו-gRPC
+description: כיצד לשלב עם פלטפורמת Wink דרך REST או gRPC, ליצור לקוח מהסכמות שלנו, ולהשתמש בשרת MCP שלנו ליצירת קוד אינטגרציה למקרה השימוש שלך.
+sidebar:
+  order: 7
+---
+
+import { LinkButton, Aside } from '@astrojs/starlight/components';
+
+Wink מציגה שני פרוטוקולי תקשורת. איזה מהם תשתמש תלוי באיזו API אתה משתלב.
+
+| | פרוטוקול תקשורת | סכימה | תיעוד |
+| --- | --- | --- | --- |
+| רוב ה-APIs של Wink | REST על HTTPS | OpenAPI 3 | כל קבוצה תחת **API** בסרגל הצדדי |
+| Partner Integrator API | gRPC על HTTP/2 | Protocol Buffers | [Partner](/he/partner-api/partner/) |
+
+<Aside type="note" title="איננו מפרסמים יותר SDKs לשפות">
+  SDKs שנוהלו ידנית התעדכנו באיחור ביחס ל-APIs שהם עטפו, ולעולם לא כללו את השפה שהייתה לך באמת צורך בה. במקום זאת, צור לקוח מהסכימה — היא תמיד עדכנית — או תן לשרת MCP שלנו לכתוב קוד אינטגרציה המותאם למקרה השימוש שלך.
+</Aside>
+
+## יצירת לקוח REST
+
+כל קבוצת API מפרסמת מסמך OpenAPI 3. הפנה כל מחולל OpenAPI אליו ותקבל לקוח טיפוסי בשפה שלך.
+
+```bash
+# המפרט עבור קבוצה מוגש לצד דף ההפניה שלה.
+curl -o wink-extranet.json https://api.wink.travel/v3/api-docs/extranet
+
+npx @openapitools/openapi-generator-cli generate \
+  -i wink-extranet.json -g typescript-fetch -o ./wink-client
+```
+
+<LinkButton href="https://openapi-generator.tech/docs/generators" variant="secondary" icon="external">
+  מחוללי OpenAPI לפי שפה
+</LinkButton>
+
+## יצירת לקוח gRPC
+
+Partner Integrator API הוא gRPC. אתה יוצר לקוח מהסכימה `.proto`, ש-Wink מפרסמת בשתי דרכים:
+
+- **Server reflection** — השרת מתאר את עצמו, כך שכלים כמו `grpcurl`, Postman ו-Insomnia יכולים לגלות את הסכימה בזמן ריצה ללא צורך בקבצים להורדה. Reflection דורש את אותו טוקן bearer כמו כל קריאה אחרת.
+- **קבצי `.proto`**, אם אתה מעדיף לשלב את הסכימה מראש וליצור את הלקוח מראש.
+
+```bash
+# גלה את הסכימה משרת פעיל (מאומת).
+grpcurl -H "authorization: Bearer $WINK_TOKEN" \
+  partner.wink.travel:443 list
+
+# לאחר מכן צור לקוח — כאן Go; כל שפה נתמכת פועלת באותו אופן.
+protoc --go_out=. --go-grpc_out=. partner_lookup.proto
+```
+
+הקריאות נושאות את טוקן ה-bearer שלך בכותרת המטא-דאטה `authorization`, בדיוק כמו ש-REST נושא אותו בכותרת `Authorization`. שגיאות מגיעות כקוד סטטוס gRPC בטריילרים של התגובה במקום כקוד סטטוס HTTP — ה-[הפניה ל-Partner](/he/partner-api/partner/) מפרטת את הקודים שעליך לצפות להם.
+
+<LinkButton href="https://grpc.io/docs/languages/" variant="secondary" icon="external">
+  התחלות מהירות ב-gRPC לפי שפה
+</LinkButton>
+
+<LinkButton href="https://grpc.io/docs/what-is-grpc/introduction/" variant="secondary" icon="external">
+  מה זה gRPC?
+</LinkButton>
+
+## או תן לשרת MCP לכתוב את זה
+
+אם אתה משתמש בעוזר קידוד מבוסס AI, שרת MCP שלנו הוא הדרך המהירה ביותר. הוא מציג את APIs של Wink ככלים שהעוזר שלך יכול לקרוא ולהבין, כך שבמקום ליצור לקוח שלם ולמצוא את נקודות הקצה בעצמך, אתה מתאר מה אתה בונה ומקבל קוד אינטגרציה המותאם לכך.
+
+<LinkButton href="/he/developers/mcp/" variant="primary">
+  הגדר את שרת MCP של Wink
+</LinkButton>
+
+## קריאה נוספת
+
+- [הגדרה](/he/developers/setup/) — חשבונות, סביבות ואישורים
+- [אימות](/he/developers/authentication/) — קבלת וטענת טוקנים
+- [אינטגרציית Webhook](/he/developers/webhook-integration/) — קבלת אירועים במקום סקרינג

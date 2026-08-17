@@ -1,0 +1,75 @@
+---
+title: REST และ gRPC
+description: วิธีการรวมกับ Wink Platform ผ่าน REST หรือ gRPC สร้างไคลเอนต์จากสคีมา และใช้เซิร์ฟเวอร์ MCP ของเราเพื่อสร้างโค้ดการรวมสำหรับกรณีการใช้งานของคุณ
+sidebar:
+  order: 7
+---
+
+import { LinkButton, Aside } from '@astrojs/starlight/components';
+
+Wink มีการเชื่อมต่อสองแบบ ขึ้นอยู่กับว่าคุณกำลังรวมกับ API ใด
+
+| | การเชื่อมต่อ | สคีมา | เอกสาร |
+| --- | --- | --- | --- |
+| API ส่วนใหญ่ของ Wink | REST ผ่าน HTTPS | OpenAPI 3 | กลุ่มใดก็ได้ภายใต้ **API** ในแถบด้านข้าง |
+| Partner Integrator API | gRPC ผ่าน HTTP/2 | Protocol Buffers | [Partner](/th/partner-api/partner/) |
+
+<Aside type="note" title="เราไม่เผยแพร่ SDK สำหรับภาษาอีกต่อไป">
+  SDK ที่ดูแลด้วยมือมักล้าหลัง API ที่ห่อหุ้ม และไม่เคยครอบคลุมภาษาที่คุณต้องการจริงๆ สร้างไคลเอนต์จากสคีมาแทน — ซึ่งจะเป็นปัจจุบันเสมอ — หรือให้เซิร์ฟเวอร์ MCP ของเราเขียนโค้ดการรวมที่เหมาะกับกรณีการใช้งานของคุณ
+</Aside>
+
+## สร้างไคลเอนต์ REST
+
+แต่ละกลุ่ม API จะเผยแพร่เอกสาร OpenAPI 3 ชี้ OpenAPI generator ใดก็ได้ไปที่เอกสารนั้น แล้วคุณจะได้ไคลเอนต์ที่มีการพิมพ์ชนิดในภาษาของคุณ
+
+```bash
+# สเปกสำหรับกลุ่มจะให้บริการข้างหน้าหน้าการอ้างอิงของมัน
+curl -o wink-extranet.json https://api.wink.travel/v3/api-docs/extranet
+
+npx @openapitools/openapi-generator-cli generate \
+  -i wink-extranet.json -g typescript-fetch -o ./wink-client
+```
+
+<LinkButton href="https://openapi-generator.tech/docs/generators" variant="secondary" icon="external">
+  OpenAPI generators ตามภาษา
+</LinkButton>
+
+## สร้างไคลเอนต์ gRPC
+
+Partner Integrator API ใช้ gRPC คุณสร้างไคลเอนต์จากสคีมา `.proto` ซึ่ง Wink เผยแพร่สองวิธี:
+
+- **Server reflection** — เซิร์ฟเวอร์อธิบายตัวเอง ดังนั้นเครื่องมืออย่าง `grpcurl`, Postman และ Insomnia สามารถค้นหาสคีมาในขณะรันไทม์โดยไม่ต้องดาวน์โหลดไฟล์ Reflection ต้องใช้โทเค็น bearer เดียวกับการเรียกอื่นๆ
+- **ไฟล์ `.proto`** หากคุณต้องการเก็บสคีมาไว้เองและสร้างล่วงหน้า
+
+```bash
+# ค้นหาสคีมาจากเซิร์ฟเวอร์ที่กำลังทำงาน (ต้องยืนยันตัวตน)
+grpcurl -H "authorization: Bearer $WINK_TOKEN" \
+  partner.wink.travel:443 list
+
+# จากนั้นสร้างไคลเอนต์ — ตัวอย่างนี้เป็น Go; ทุกภาษาที่รองรับทำงานเหมือนกัน
+protoc --go_out=. --go-grpc_out=. partner_lookup.proto
+```
+
+การเรียกจะส่งโทเค็น bearer ของคุณในส่วนหัว metadata `authorization` เหมือนกับที่ REST ส่งในส่วนหัว `Authorization` ข้อผิดพลาดจะมาพร้อมรหัสสถานะ gRPC ใน response trailers แทนที่จะเป็นรหัสสถานะ HTTP — [เอกสารอ้างอิง Partner](/th/partner-api/partner/) ระบุรหัสสถานะที่คุณควรคาดหวัง
+
+<LinkButton href="https://grpc.io/docs/languages/" variant="secondary" icon="external">
+  เริ่มต้นใช้งาน gRPC ตามภาษา
+</LinkButton>
+
+<LinkButton href="https://grpc.io/docs/what-is-grpc/introduction/" variant="secondary" icon="external">
+  gRPC คืออะไร?
+</LinkButton>
+
+## หรือให้เซิร์ฟเวอร์ MCP เขียนโค้ดให้
+
+ถ้าคุณใช้ผู้ช่วยเขียนโค้ด AI เซิร์ฟเวอร์ MCP ของเราเป็นเส้นทางที่เร็วที่สุด มันเปิดเผย API ของ Wink เป็นเครื่องมือที่ผู้ช่วยของคุณสามารถเรียกและวิเคราะห์ได้ ดังนั้นแทนที่จะสร้างไคลเอนต์ทั้งหมดและค้นหา endpoint เอง คุณแค่บอกว่ากำลังสร้างอะไร แล้วจะได้โค้ดการรวมที่เหมาะกับสิ่งนั้น
+
+<LinkButton href="/th/developers/mcp/" variant="primary">
+  ตั้งค่าเซิร์ฟเวอร์ Wink MCP
+</LinkButton>
+
+## อ่านเพิ่มเติม
+
+- [การตั้งค่า](/th/developers/setup/) — บัญชี, สภาพแวดล้อม และข้อมูลรับรอง
+- [การยืนยันตัวตน](/th/developers/authentication/) — การขอและรีเฟรชโทเค็น
+- [การรวม Webhook](/th/developers/webhook-integration/) — รับเหตุการณ์แทนการดึงข้อมูลซ้ำๆ

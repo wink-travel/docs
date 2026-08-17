@@ -1,0 +1,138 @@
+---
+title: API-ul Partner
+description: Prețuri, limite de rată și Acordul de Nivel de Serviciu pentru API-ul Partner Wink autentificat.
+sidebar:
+  order: 0
+---
+
+API-ul Wink **Partner** este modalitatea autentificată, cu debit mai mare, prin care integratorii pot interoga inventarul de călătorii rezervabil — aceeași ofertă care alimentează widget-urile noastre încorporabile și punctele finale publice de navigare, expusă ca o interfață programatică de primă clasă. În timp ce componentele Web gratuite și punctele finale publice de navigare sunt destinate încorporării ușoare, orientate către utilizatorul final, API-ul Partner este construit pentru sisteme care caută, evaluează prețuri și rezervă la scară largă. Accesul este autentificat per integrator și facturat în funcție de utilizare, astfel încât plătiți doar pentru traficul pe care îl trimiteți efectiv.
+
+## Planuri și prețuri
+
+Un apel API = o cerere. Utilizarea măsurată se facturează la fiecare 1.000 de cereri.
+
+| | Gratuit | Plătit | Enterprise |
+|---|---|---|---|
+| **Preț** | 0 $ | Pe bază de utilizare | Contactați-ne |
+| **Cel mai potrivit pentru** | Evaluare și integrări cu volum redus | Debit plătit pe măsură ce folosiți, la scară largă | Volum personalizat și termeni negociați |
+| Cereri pe minut | 30 (vârf de 60) | Nelimitat | Nelimitat |
+| Cereri pe lună | 10.000 | Nelimitat | Nelimitat |
+| Timp de răspuns API (P95) | — | Sub 500 ms | Sub 500 ms |
+| Preț per 1.000 cereri | Gratuit | 1,00 $ | Personalizat |
+| Suprataxă look-to-book (per 1.000 de căutări în exces peste 5.000:1) | — | 2,00 $ | Personalizat |
+| Răspuns la limitarea ratei | 429 (pauză / oprire lunară) | Niciunul | Niciunul |
+| Acord de Nivel de Serviciu | — | ✓ | ✓ |
+| Suport prioritar | — | ✓ | ✓ |
+| Onboarding dedicat | — | — | ✓ |
+
+[Obțineți o cheie API](https://app.wink.travel/account/applications) · [Începeți facturarea pe bază de utilizare](https://app.wink.travel/account/applications) · [Contactați vânzările](https://cal.com/wink-ws36dy)
+
+## Referință API
+
+Două suprafețe deservesc inventarul rezervabil și corespund celor două niveluri de mai sus:
+
+- **Gratuit — API Consumator / Motor de Rezervări** (REST, `/api/public/**`): anonim, orientat către browser și widget. [Răsfoiți referința Motorului de Rezervări →](/ro/api/booking-engine/)
+- **Plătit — API Integrator Partener** (**gRPC**, `wink.partner.v1`): autentificat, cu utilizare măsurată, construit pentru integrare server-la-server la scară largă. [Răsfoiți referința Integratorului →](/ro/partner-api/partner/)
+
+API-ul Integrator Partener este gRPC, nu REST. Apelați-l cu un client generat peste HTTP/2 la
+`partner.wink.travel:443`, trecând un token bearer și contul pentru care apelați:
+
+```bash
+grpcurl -H "authorization: Bearer $WINK_TOKEN" partner.wink.travel:443 list
+```
+
+Pagina de referință de mai sus documentează fiecare serviciu, mesaj și cod de eroare, iar schema este disponibilă și la rulare prin reflexia serverului, astfel încât `grpcurl`, Postman și Insomnia o descoperă fără nimic de descărcat.
+
+## Cum funcționează utilizarea și limitele
+
+### Nivel gratuit
+
+Nivelul Gratuit este conceput pentru a vă permite să construiți, testați și să rulați un trafic de producție modest fără costuri.
+
+- **Limită de rată — 30 de cereri pe minut, cu un vârf de 60 de cereri.** Vârfurile scurte peste rata susținută sunt absorbite de alocarea pentru vârf. Dacă o depășiți, API-ul răspunde cu **HTTP 429 (Prea multe cereri)** și aplică o **pauză de 5 minute** înainte ca cheia dvs. să reia servirea traficului. Reduceți ritmul și încercați din nou după fereastra de pauză, în loc să bombardați punctul final.
+- **Cotă lunară — 10.000 de cereri pe lună calendaristică.** Odată ce atingeți plafonul lunar, API-ul returnează **HTTP 429 pentru restul lunii** — o oprire fermă — împreună cu un mesaj care vă invită să vă abonați la nivelul Plătit pentru a continua. Contorul se resetează la începutul lunii calendaristice următoare.
+
+Nivelul Gratuit nu include Acordul de Nivel de Serviciu sau suport prioritar.
+
+### Nivel plătit
+
+Nivelul Plătit elimină plafonul lunar și pauzele de limitare a ratei și vă facturează doar pentru ceea ce utilizați.
+
+- **Cereri măsurate — 1,00 $ per 1.000 de cereri.** Nu există plafon lunar de cereri și nici throttling normal al limitării ratei; vi se facturează pe volumul efectiv.
+- **Suprataxă look-to-book — 2,00 $ per 1.000 de căutări în exces.** Pentru a menține sănătatea ofertei, măsurăm raportul dintre căutări ("looks") și rezervările confirmate. Aveți dreptul la **5.000 de căutări per rezervare** înainte de aplicarea suprataxei. Căutările în exces se calculează astfel:
+
+  `excess = max(0, looks − bookings × 5,000)`
+
+  Suprataxa se facturează apoi cu **2,00 $ per 1.000 de căutări în exces**. Integrările cu conversie bună rareori generează suprataxe; taxa se aplică doar traficului care caută mult mai mult decât rezervă.
+
+Nivelul Plătit include Acordul de Nivel de Serviciu descris mai jos — un angajament de disponibilitate de 99,9% și un obiectiv de timp de răspuns P95 sub 500 ms — și suport prioritar, bazat pe severitate.
+
+## Acord de Nivel de Serviciu
+
+_Data intrării în vigoare: 5 iulie 2026 · Versiunea 1.0_
+
+Acest Acord de Nivel de Serviciu (denumit „SLA”) stabilește angajamentul de disponibilitate, creditele de serviciu și țintele de suport pe care Wink („Wink”, „noi”, „nouă”) le oferă unui client („Client”, „dumneavoastră”) pentru API-ul Partner Wink autentificat (denumit „API Partner” sau „Serviciu”) pe nivelurile pentru care se specifică aplicarea unui SLA. Acest SLA este încorporat și guvernat de acordul dintre dumneavoastră și Wink prin care accesați API-ul Partner (denumit „Acordul”) și se aplică atât timp cât mențineți un abonament activ, plătit, la API-ul Partner în stare bună. Termenii cu majuscule nedefiniți aici au sensul dat în Acord.
+
+### 1. Definiții
+
+1. **„Disponibilitate”** înseamnă perioadele în care API-ul Partner este disponibil pentru a accepta și a răspunde cu succes la cereri autentificate și corect formate.
+2. **„Indisponibilitate”** înseamnă orice perioadă, măsurată în minute, în care API-ul Partner nu răspunde cu succes la cereri autentificate și corect formate, excluzând orice perioadă care intră în excluderile prevăzute la Secțiunea 4. Erorile izolate care afectează o fracțiune neînsemnată de cereri nu constituie, prin ele însele, Indisponibilitate.
+3. **„Procentajul lunar de disponibilitate”** înseamnă, pentru o lună calendaristică dată, numărul total de minute din acea lună minus numărul total de minute de Indisponibilitate, împărțit la numărul total de minute din acea lună, exprimat ca procent.
+4. **„Mentenanță programată”** înseamnă mentenanța planificată a Serviciului pentru care Wink a oferit un preaviz în conformitate cu Secțiunea 4.
+5. **„Credit de serviciu”** înseamnă un credit, calculat ca procent din taxele plătite sau de plată de către dumneavoastră pentru API-ul Partner în luna calendaristică afectată, care se aplică la taxele viitoare pentru API-ul Partner ca singura și exclusivă remediere pentru neîndeplinirea angajamentului de disponibilitate.
+6. **„Timp de răspuns”** înseamnă timpul scurs între primirea de către Wink a unei cereri autentificate și corect formate la limita serviciului Wink și momentul în care Wink începe să returneze răspunsul, excluzând timpul de tranzit în rețea și orice timp pe partea clientului în afara controlului Wink.
+
+### 2. Angajamentul de disponibilitate și performanță
+
+Wink va depune eforturi comerciale rezonabile pentru a face API-ul Partner disponibil cu un **procentaj lunar de disponibilitate de cel puțin 99,9%** în fiecare lună calendaristică a perioadei (denumit „Angajamentul de disponibilitate”). Angajamentul de disponibilitate este măsurat la limita serviciului Wink și exclude orice factori în afara controlului rezonabil al Wink, inclusiv cei descriși la Secțiunea 4. Sistemele de monitorizare Wink sunt sursa autoritară pentru măsurarea procentajului lunar de disponibilitate și a timpului de răspuns.
+
+Wink mai țintește un **timp de răspuns la percentila 95 (P95) sub 500 milisecunde** pentru cererile autentificate, corect formate și cu succes, măsurat la limita serviciului Wink pe fiecare lună calendaristică (denumit „Ținta de performanță”). Ținta de performanță exclude factorii descriși la Secțiunea 4, cererile care returnează erori la nivel de aplicație cauzate de cererea însăși și cererile batch neobișnuit de mari sau complexe. Ținta de performanță este un obiectiv de serviciu; creditele de serviciu din Secțiunea 3 se aplică pentru neîndeplinirea **Angajamentului de disponibilitate** și sunt singura și exclusivă remediere pentru lipsa disponibilității.
+
+### 3. Credite de serviciu
+
+Dacă procentajul lunar de disponibilitate scade sub Angajamentul de disponibilitate în orice lună calendaristică, puteți fi eligibil pentru un Credit de serviciu calculat ca procent din taxele API Partner plătite sau de plată de către dumneavoastră pentru acea lună, conform următorului tabel:
+
+| Procentaj lunar de disponibilitate | Credit de serviciu |
+|---|---|
+| Sub 99,9% dar cel puțin 99,0% | 10% |
+| Sub 99,0% dar cel puțin 95,0% | 25% |
+| Sub 95,0% | 50% |
+
+1. **Solicitarea unui credit.** Pentru a primi un Credit de serviciu trebuie să trimiteți o cerere scrisă către Wink în termen de **treizeci (30) de zile** de la sfârșitul lunii calendaristice în care a avut loc deficitul. Cererea trebuie să includă datele și orele fiecărui incident de Indisponibilitate pentru care solicitați creditul și orice jurnale sau dovezi suport disponibile rezonabil. Cererile depuse după această perioadă nu sunt eligibile.
+2. **Forma creditului.** Creditele de serviciu aprobate se aplică la taxele viitoare pentru API-ul Partner și nu au valoare în numerar. Nu sunt rambursări și nu vor fi plătite decât dacă legea aplicabilă impune altfel.
+3. **Credit maxim.** Totalul creditelor de serviciu acordate pentru o singură lună calendaristică nu va depăși 50% din taxele API Partner plătite sau de plată de către dumneavoastră pentru acea lună.
+4. **Remediere unică și exclusivă.** Creditele de serviciu sunt **singura și exclusivă remediere** pentru orice eșec al Wink de a îndeplini Angajamentul de disponibilitate sau orice alt deficit de disponibilitate al API-ului Partner.
+
+### 4. Excluderi
+
+Angajamentul de disponibilitate și orice credite de serviciu rezultate nu se aplică, iar Indisponibilitatea nu include, nicio indisponibilitate, suspendare, degradare sau problemă de performanță care rezultă din sau este legată de:
+
+1. **Mentenanța programată** pentru care Wink a oferit un preaviz, cu condiția ca acest preaviz să fie dat cu o perioadă rezonabilă înainte printr-un canal pe care Wink îl folosește în mod normal pentru a comunica cu clienții;
+2. evenimente de **forță majoră** sau alte cauze în afara controlului rezonabil al Wink, inclusiv dezastre naturale, acte guvernamentale, defecțiuni de rețea sau utilități și atacuri de tip denial-of-service sau alte atacuri malițioase;
+3. probleme cauzate de **actele sau omisiunile dumneavoastră**, echipamentul, software-ul sau rețeaua dumneavoastră, sau de orice serviciu, produs sau furnizor **terț** care nu este sub controlul direct al Wink;
+4. **abuzul dumneavoastră al Serviciului** sau **încălcarea Acordului**, acestui SLA, termenilor de utilizare acceptabilă sau limitelor de rată aplicabile, inclusiv traficul pe care Wink îl consideră rezonabil excesiv, abuz automatizat sau fraudulos; și
+5. orice **suspendare sau încetare** a accesului dumneavoastră efectuată în mod corespunzător conform Acordului, inclusiv suspendarea pentru neplată.
+
+### 5. Suport și ținte de răspuns
+
+Wink oferă suport pentru API-ul Partner în timpul orelor standard de lucru, excluzând sărbătorile locale legale. Wink va depune eforturi comerciale rezonabile pentru a recunoaște cererile de suport corect trimise în următoarele ținte de timp de răspuns, bazate pe severitatea pe care o atribuiți și pe care Wink o confirmă rezonabil:
+
+| Severitate | Descriere | Ținta răspuns inițial |
+|---|---|---|
+| **Sev 1 — Critic** | API-ul Partner este oprit sau inutilizabil în producție fără soluție alternativă. | 4 ore |
+| **Sev 2 — Major** | Funcționalitate semnificativ afectată sau degradată; există o soluție alternativă. | 1 zi lucrătoare |
+| **Sev 3 — Minor** | Întrebări generale, probleme minore sau cereri de funcționalități. | 2 zile lucrătoare |
+
+Țintele de răspuns descriu momentul în care Wink intenționează să ia **contactul inițial**; nu sunt garanții privind timpul de rezolvare. Suportul prioritar și țintele bazate pe severitate se aplică pe nivelurile pentru care se specifică includerea lor.
+
+### 6. Date și securitate
+
+Wink menține măsuri administrative, tehnice și organizatorice comercial rezonabile, concepute pentru a proteja confidențialitatea, integritatea și disponibilitatea datelor procesate prin API-ul Partner și revizuiește periodic aceste măsuri. Procesarea datelor personale de către Wink este guvernată de [Politica de confidențialitate](/ro/privacy) și orice termeni de procesare a datelor din Acord. Rămâneți responsabil pentru securizarea propriilor acreditări API, pentru utilizarea legală a oricăror date pe care le extrageți și pentru notificarea promptă a Wink în cazul oricărei suspiciuni de compromitere a acreditărilor.
+
+### 7. Limitarea răspunderii
+
+Creditele de serviciu sunt **singura și exclusivă remediere** pentru orice indisponibilitate sau eșec în îndeplinirea Angajamentului de disponibilitate și sunt oferite în locul oricărei alte răspunderi care decurge din acest eșec. Cu excepția celor prevăzute expres în acest SLA, API-ul Partner este furnizat „așa cum este disponibil”. În măsura maximă permisă de legea aplicabilă, răspunderea totală a Wink care decurge din sau este legată de Serviciu este limitată conform Acordului, iar Wink nu este răspunzător pentru daune indirecte, incidentale, speciale, consecințe sau punitive, sau pentru pierderi de profituri, venituri, date sau bunăvoință, chiar dacă a fost avertizat despre posibilitatea unor astfel de daune.
+
+### 8. Durata, modificările și încetarea
+
+Acest SLA se aplică atât timp cât aveți un abonament activ la API-ul Partner pe un nivel pentru care se specifică aplicarea SLA-ului. Wink poate actualiza acest SLA periodic; modificările substanțiale vor fi comunicate printr-un canal pe care Wink îl folosește în mod normal pentru a ajunge la clienți, iar utilizarea continuă a API-ului Partner după intrarea în vigoare a actualizării constituie acceptarea SLA-ului actualizat. Acest SLA încetează automat la încetarea sau expirarea Acordului sau a abonamentului dumneavoastră la API-ul Partner. Secțiunile care prin natura lor trebuie să supraviețuiască încetării — inclusiv eligibilitatea pentru credite de serviciu acumulate dar necerute, limitarea răspunderii și definițiile — supraviețuiesc.

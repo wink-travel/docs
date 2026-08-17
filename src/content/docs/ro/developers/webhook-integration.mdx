@@ -1,0 +1,166 @@
+---
+title: Integrare Webhook
+description: Acest ghid arată dezvoltatorilor cum să configureze webhook-uri pentru a primi notificări în timp real pentru rezervări, plăți și alte evenimente.
+sidebar:
+  order: 3
+---
+
+import { Steps, LinkButton } from '@astrojs/starlight/components';
+
+Webhook-urile permit sistemelor tale să primească notificări în timp real când apar evenimente în contul tău Wink — rezervări noi, anulări, actualizări de plată și altele. Acest ghid te ghidează prin configurare și bune practici.
+
+## Public țintă
+
+Acest ghid este destinat dezvoltatorilor care integrează Wink cu sisteme externe precum sisteme de management al proprietăților (PMS), manageri de canale, CRM-uri sau panouri personalizate.
+
+## Cum funcționează webhook-urile
+
+1. Înregistrezi o adresă URL webhook pe Wink.
+2. Când apare un eveniment (de exemplu, o rezervare nouă), Wink trimite un HTTP POST către URL-ul tău.
+3. Serverul tău procesează payload-ul și răspunde cu un `200 OK`.
+
+## Configurarea unui webhook
+
+<Steps>
+1. Autentifică-te în contul tău (Extranet, Studio sau TripPay — toate suportă webhook-uri).
+2. Navighează la `Applications` și apoi `Webhooks`. Vezi [Webhooks](/ro/portal/settings/webhooks).
+3. Apasă pe `Create webhook`.
+4. Introdu un **nume** (de exemplu, "Sincronizare rezervări PMS").
+5. Introdu **URL-ul webhook-ului** — endpoint-ul HTTPS de pe serverul tău.
+6. **Selectează evenimentele** — Alege evenimente specifice la care să te abonezi sau lasă gol pentru a primi toate evenimentele.
+7. Activează comutatorul **Enabled**.
+8. Apasă `Save` — răspunsul afișează **secretul de semnare o singură dată**; salvează-l acum.
+</Steps>
+
+## Tipuri de evenimente
+
+Wink publică în prezent 70 de tipuri de evenimente webhook pentru rezervări, proprietăți, conturi (entități de management) și inventar (tipuri de camere, planuri tarifare, tarife master, suplimente, facilități, canale de vânzare, promoții). Cele comune:
+
+| Categorie | Exemple |
+|---|---|
+| **Rezervare** | `booking.create`, `booking.cancelled`, `booking.refund.partial`, `booking.refund.full`, `booking.review.created` |
+| **Proprietate** | `property.created`, `property.status.updated`, `property.policy.updated` |
+| **Inventar** | `room_type.updated`, `rate_plan.created`, `master_rate.updated`, `special_rate.created`, `sales_channel.created` |
+| **Cont** | `managing_entity.created`, `managing_entity.status.updated`, `managing_entity.manager.added` |
+
+Lista completă, generată — cu descriere, cine o primește și un link către pagina de referință a fiecărui eveniment — este **Catalogul Evenimentelor Webhook**. Pagina de referință pentru fiecare eveniment (corp JSON, headere, politică de retry) se găsește în [Webhooks API](/ro/api/webhooks/).
+
+<LinkButton href="/ro/developers/webhook-events">
+  Vezi toate tipurile de evenimente
+</LinkButton>
+
+## Ce primești
+
+Fiecare livrare este un HTTP `POST` către URL-ul webhook-ului tău cu `Content-Type: application/json` și acest plic:
+
+```json
+{
+  "id": "0198a4f2-6b0e-7c1d-9a3e-2f4b8c6d1e0a",
+  "type": "booking.create",
+  "occurredAt": "2026-08-15T09:30:00Z",
+  "ownerIdentifier": "3c6b1a5d-8e2f-4a0b-9c7d-6e4f0a8b2c51",
+  "recipientRole": "SUPPLIER",
+  "schemaVersion": 2,
+  "object": { "...": "payload specific evenimentului, ex. BookingWebhookPayload" }
+}
+```
+
+- `id` — identificatorul evenimentului; identic pentru fiecare endpoint al contului tău care primește acest eveniment și pentru fiecare retry. Folosește-l ca **cheie de idempotentă**.
+- `type` — cheia tipului de eveniment (de asemenea trimisă ca header `Wink-Event-Type`). Ramifică pe `type` și `schemaVersion` pentru a parsa `object`.
+- `object` — un rezumat selectat al resursei despre care este evenimentul (identificatori, status, câmpurile pe care acționezi) plus `links.self`, URL-ul REST canonic pe partea furnizorului al resursei complete. Preia-l cu propriile tale credențiale API când ai nevoie de mai mult decât rezumatul; dacă primești evenimentul ca reseller sau agent de turism, folosește endpoint-ul corespunzător al suprafeței tale API pentru același identificator.
+
+Fiecare schemă de payload este documentată per eveniment în referința [Webhooks API](/ro/api/webhooks/).
+
+### Headere
+
+| Header | Semnificație |
+|---|---|
+| `Wink-Version` | Versiunea contractului de rețea, `2.0`. |
+| `Wink-Event-Id` | Același cu `id` din corp — cheia ta de idempotentă. |
+| `Wink-Delivery-Id` | Unic per endpoint per eveniment; se schimbă doar dacă redelivrezi. |
+| `Wink-Event-Type` | Același cu `type` din corp. |
+| `Wink-Delivery-Attempt` | Numărul încercării pentru această livrare, începând de la 1. |
+| `Wink-Signature` | Semnătura HMAC — vezi mai jos. |
+
+## Verificarea semnăturilor
+
+Fiecare webhook are un **secret de semnare** (`whsec_…`) pe care Wink îl afișează **o singură dată**, când creezi webhook-ul sau rotești secretul. Salvează-l ca pe o parolă. Fiecare livrare poartă
+
+```
+Wink-Signature: t=1755250200,v1=5d41402abc4b2a76b9719d911017c592…
+```
+
+unde `t` este un timestamp Unix (secunde) iar `v1` este hexazecimalul mic al **HMAC-SHA256** al șirului `t + "." + rawBody`, semnat cu secretul tău, iar `rawBody` este exact corpul cererii în octeți așa cum a fost primit — nu re-serializa JSON-ul înainte de verificare. Pentru 24 de ore după rotația secretului, header-ul poartă o a doua valoare `v1=` semnată cu secretul anterior; acceptă livrarea dacă **orice** `v1` se potrivește.
+
+Verifică în patru pași: parsează `t` și fiecare `v1`; recalculează HMAC peste `t.rawBody` cu secretul tău; compară cu o comparație în timp constant; respinge dacă `|now − t|` depășește toleranța ta (recomandat 5 minute).
+
+```js
+// Node.js (stil Express; asigură-te că ai corpul RAW, nu un obiect parsificat)
+import { createHmac, timingSafeEqual } from 'node:crypto';
+
+export function verifyWinkSignature(header, rawBody, secret, toleranceSeconds = 300) {
+  const parts = Object.fromEntries(header.split(',').map((p) => p.split('=').map((s) => s.trim())));
+  const t = Number(parts.t);
+  if (!Number.isFinite(t) || Math.abs(Date.now() / 1000 - t) > toleranceSeconds) return false;
+  const expected = createHmac('sha256', secret).update(`${t}.${rawBody}`).digest('hex');
+  return header
+    .split(',')
+    .filter((p) => p.trim().startsWith('v1='))
+    .map((p) => p.trim().slice(3))
+    .some((v1) => v1.length === expected.length && timingSafeEqual(Buffer.from(v1, 'utf8'), Buffer.from(expected, 'utf8')));
+}
+```
+
+```java
+// Java
+static boolean verify(String header, String rawBody, String secret, long nowSeconds, long toleranceSeconds) throws Exception {
+    long t = Long.MIN_VALUE;
+    List<String> signatures = new ArrayList<>();
+    for (String part : header.split(",")) {
+        String[] kv = part.trim().split("=", 2);
+        if (kv[0].equals("t")) t = Long.parseLong(kv[1]);
+        else if (kv[0].equals("v1")) signatures.add(kv[1]);
+    }
+    if (t == Long.MIN_VALUE || Math.abs(nowSeconds - t) > toleranceSeconds) return false;
+    Mac mac = Mac.getInstance("HmacSHA256");
+    mac.init(new SecretKeySpec(secret.getBytes(StandardCharsets.UTF_8), "HmacSHA256"));
+    byte[] expected = HexFormat.of().formatHex(mac.doFinal((t + "." + rawBody).getBytes(StandardCharsets.UTF_8))).getBytes(StandardCharsets.US_ASCII);
+    return signatures.stream().anyMatch(v1 -> MessageDigest.isEqual(expected, v1.toLowerCase().getBytes(StandardCharsets.US_ASCII)));
+}
+```
+
+Rotește secretul din portal sau cu `POST /api/managing-entity/{id}/webhook/{webhookId}/rotate-secret`; răspunsul afișează noul secret o singură dată, iar cel vechi continuă să fie valid timp de 24 de ore în timp ce îl implementezi.
+
+## Reîncercări și redlivrări
+
+- Răspunde cu orice `2xx` în 10 secunde pentru a confirma primirea. Fă procesarea grea asincron.
+- Un `5xx`, timeout, `408` sau `429` se reîncearcă cu backoff: după 1 minut, 5 minute, 30 minute, 2 ore, 6 ore, 12 ore, apoi zilnic — 10 încercări în aproximativ 3 zile — după care livrarea este marcată **dead**.
+- Orice alt `4xx` este tratat ca "ai respins această livrare" și **nu** se reîncearcă.
+- Fiecare eveniment, livrare și încercare (status, fragment de răspuns) este vizibil sub **Applications > Webhooks** și prin API (`…/webhook/event/grid`, `…/webhook/delivery/grid`). Poți **redelivra** orice livrare (`POST …/webhook/delivery/{deliveryId}/redeliver`, care începe o nouă serie de încercări), redelivra toate livrările dead ale unui webhook odată (`POST …/webhook/{webhookId}/redeliver-dead`), sau anula una.
+- Livrările sunt păstrate 30 de zile.
+
+## Evenimente de test
+
+Trimite-ți un eveniment sintetic `webhook.test` din portal sau cu `POST /api/managing-entity/{id}/webhook/{webhookId}/test`. Este semnat și livrat exact ca un eveniment real, astfel poți verifica endpoint-ul, verificarea semnăturii și gestionarea idempotentă înainte de a te abona la evenimente live.
+
+## Bune practici
+
+- **Folosește HTTPS** — Wink trimite payload-uri doar către endpoint-uri HTTPS.
+- **Răspunde rapid** — Returnează un `200 OK` imediat ce primești payload-ul. Fă procesarea grea asincron.
+- **Idempotentă** — Handler-ul tău trebuie să fie idempotent; deduplicatează după `Wink-Event-Id`. Wink reîncearcă dacă nu primește un răspuns `2xx`.
+- **Validează sursa** — Verifică header-ul `Wink-Signature` (vezi [Verificarea semnăturilor](#verificarea-semnaturilor)) înainte de procesare; respinge orice eșuează.
+- **Logare** — Înregistrează fiecare payload webhook primit. Acest lucru face debugging-ul mult mai ușor.
+
+## Pauză și ștergere
+
+Poți **dezactiva** un webhook fără să-l ștergi. Aceasta oprește livrarea pentru a putea depana fără să pierzi configurația. Când ești gata, activează-l din nou.
+
+Ștergerea unui webhook îl elimină definitiv. Orice integrare care depinde de acel webhook va înceta să mai primească notificări.
+
+## Lecturi suplimentare
+
+- [Catalogul Evenimentelor Webhook](/ro/developers/webhook-events) — Toate tipurile de evenimente, generate din catalogul platformei.
+- [Referința Webhooks API](/ro/api/webhooks/) — Schemele de payload per eveniment, headere și endpoint-urile de gestionare a abonamentelor/livrărilor.
+- [Webhooks](/ro/portal/settings/webhooks) — Referință completă pentru gestionarea webhook-urilor.
+- [Applications](/ro/account/applications) — Gestionează-ți credențialele API.
+- [Developers > APIs](/ro/api) — Documentație completă API.

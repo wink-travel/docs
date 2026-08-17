@@ -1,0 +1,166 @@
+---
+title: Webhook連携
+description: このガイドでは、開発者が予約、支払い、その他のイベントのリアルタイム通知を受け取るためにWebhookを設定する方法を説明します。
+sidebar:
+  order: 3
+---
+
+import { Steps, LinkButton } from '@astrojs/starlight/components';
+
+Webhookは、Winkアカウントでイベントが発生した際に、予約の新規作成、キャンセル、支払いの更新などのリアルタイム通知をシステムに受け取らせることができます。このガイドでは、設定方法とベストプラクティスを説明します。
+
+## 対象読者
+
+このガイドは、Winkを物件管理システム（PMS）、チャネルマネージャー、CRM、カスタムダッシュボードなどの外部システムと連携する開発者向けです。
+
+## Webhookの仕組み
+
+1. WinkにWebhook URLを登録します。
+2. イベントが発生すると（例：新しい予約）、WinkがあなたのURLにHTTP POSTを送信します。
+3. あなたのサーバーがペイロードを処理し、`200 OK`で応答します。
+
+## Webhookの設定
+
+<Steps>
+1. アカウントにログインします（Extranet、Studio、TripPayのいずれもWebhookをサポートしています）。
+2. `Applications` に移動し、次に `Webhooks` を選択します。[Webhooks](/ja/portal/settings/webhooks)を参照してください。
+3. `Create webhook` をクリックします。
+4. **名前** を入力します（例：「PMS予約同期」）。
+5. **Webhook URL** を入力します — あなたのサーバーのHTTPSエンドポイントです。
+6. **イベントを選択** — 購読する特定のイベントを選択するか、すべてのイベントを受け取る場合は空欄のままにします。
+7. **有効** をオンに切り替えます。
+8. `Save` をクリックします — 応答に**署名シークレットが一度だけ表示**されるので、今すぐ保存してください。
+</Steps>
+
+## イベントタイプ
+
+Winkは現在、予約、物件、アカウント（管理主体）、在庫（部屋タイプ、料金プラン、マスターレート、アドオン、施設、販売チャネル、プロモーション）にわたる70種類のWebhookイベントタイプを公開しています。主なものは以下の通りです：
+
+| カテゴリ | 例 |
+|---|---|
+| **予約** | `booking.create`, `booking.cancelled`, `booking.refund.partial`, `booking.refund.full`, `booking.review.created` |
+| **物件** | `property.created`, `property.status.updated`, `property.policy.updated` |
+| **在庫** | `room_type.updated`, `rate_plan.created`, `master_rate.updated`, `special_rate.created`, `sales_channel.created` |
+| **アカウント** | `managing_entity.created`, `managing_entity.status.updated`, `managing_entity.manager.added` |
+
+完全な生成リスト（説明、受信者、各イベントのリファレンスページへのリンク付き）は**Webhookイベントカタログ**です。すべてのイベントのリファレンスページ（JSONボディ、ヘッダー、再試行ポリシー）は[Webhooks API](/ja/api/webhooks/)にあります。
+
+<LinkButton href="/ja/developers/webhook-events">
+  すべてのイベントタイプを見る
+</LinkButton>
+
+## 受け取る内容
+
+すべての配信は、`Content-Type: application/json`のHTTP `POST`でWebhook URLに送信され、以下のようなエンベロープで届きます：
+
+```json
+{
+  "id": "0198a4f2-6b0e-7c1d-9a3e-2f4b8c6d1e0a",
+  "type": "booking.create",
+  "occurredAt": "2026-08-15T09:30:00Z",
+  "ownerIdentifier": "3c6b1a5d-8e2f-4a0b-9c7d-6e4f0a8b2c51",
+  "recipientRole": "SUPPLIER",
+  "schemaVersion": 2,
+  "object": { "...": "event-specific payload, e.g. BookingWebhookPayload" }
+}
+```
+
+- `id` — イベント識別子。アカウントのすべてのエンドポイントで同一で、再試行時も同じです。**冪等性キー**として使用してください。
+- `type` — イベントタイプキー（`Wink-Event-Type`ヘッダーにも送信されます）。`type`と`schemaVersion`で`object`を分岐して解析します。
+- `object` — イベント対象リソースの要約（識別子、ステータス、操作対象フィールド）と`supplier`側の完全リソースのREST URLである`links.self`を含みます。要約以上の情報が必要な場合は、自身のAPI資格情報で取得してください。リセラーや旅行代理店としてイベントを受け取る場合は、同じ識別子の自身のAPIエンドポイントを使用してください。
+
+各ペイロードスキーマは[Webhooks API](/ja/api/webhooks/)のイベントごとにドキュメント化されています。
+
+### ヘッダー
+
+| ヘッダー | 意味 |
+|---|---|
+| `Wink-Version` | ワイヤー契約バージョン、`2.0`。 |
+| `Wink-Event-Id` | ボディの`id`と同じ — 冪等性キー。 |
+| `Wink-Delivery-Id` | イベントごとにエンドポイント固有の一意ID。再配信時にのみ変わる。 |
+| `Wink-Event-Type` | ボディの`type`と同じ。 |
+| `Wink-Delivery-Attempt` | この配信の1始まりの試行回数。 |
+| `Wink-Signature` | HMAC署名 — 以下参照。 |
+
+## 署名の検証
+
+すべてのWebhookには**署名シークレット**（`whsec_…`）があり、Webhook作成時またはシークレットローテーション時に**一度だけ**Winkが表示します。パスワードのように保管してください。各配信には以下が含まれます：
+
+```
+Wink-Signature: t=1755250200,v1=5d41402abc4b2a76b9719d911017c592…
+```
+
+ここで`t`はUnixタイムスタンプ（秒）、`v1`は小文字の16進数で表現された**HMAC-SHA256**で、文字列`t + "." + rawBody`をシークレットでキー化したものです。`rawBody`は受信したリクエストボディの正確なバイト列であり、検証前にJSONを再シリアライズしてはいけません。シークレットローテーション後24時間は、前のシークレットで署名された2つ目の`v1=`値もヘッダーに含まれます。**いずれかの`v1`が一致すれば配信を受け入れてください。**
+
+検証は4ステップです：`t`とすべての`v1`を解析し、シークレットで`t.rawBody`のHMACを再計算し、定数時間比較で比較し、`|now − t|`が許容範囲（推奨5分）を超えていれば拒否します。
+
+```js
+// Node.js (Expressスタイル; RAWボディが必要、解析済みオブジェクトではないことに注意)
+import { createHmac, timingSafeEqual } from 'node:crypto';
+
+export function verifyWinkSignature(header, rawBody, secret, toleranceSeconds = 300) {
+  const parts = Object.fromEntries(header.split(',').map((p) => p.split('=').map((s) => s.trim())));
+  const t = Number(parts.t);
+  if (!Number.isFinite(t) || Math.abs(Date.now() / 1000 - t) > toleranceSeconds) return false;
+  const expected = createHmac('sha256', secret).update(`${t}.${rawBody}`).digest('hex');
+  return header
+    .split(',')
+    .filter((p) => p.trim().startsWith('v1='))
+    .map((p) => p.trim().slice(3))
+    .some((v1) => v1.length === expected.length && timingSafeEqual(Buffer.from(v1, 'utf8'), Buffer.from(expected, 'utf8')));
+}
+```
+
+```java
+// Java
+static boolean verify(String header, String rawBody, String secret, long nowSeconds, long toleranceSeconds) throws Exception {
+    long t = Long.MIN_VALUE;
+    List<String> signatures = new ArrayList<>();
+    for (String part : header.split(",")) {
+        String[] kv = part.trim().split("=", 2);
+        if (kv[0].equals("t")) t = Long.parseLong(kv[1]);
+        else if (kv[0].equals("v1")) signatures.add(kv[1]);
+    }
+    if (t == Long.MIN_VALUE || Math.abs(nowSeconds - t) > toleranceSeconds) return false;
+    Mac mac = Mac.getInstance("HmacSHA256");
+    mac.init(new SecretKeySpec(secret.getBytes(StandardCharsets.UTF_8), "HmacSHA256"));
+    byte[] expected = HexFormat.of().formatHex(mac.doFinal((t + "." + rawBody).getBytes(StandardCharsets.UTF_8))).getBytes(StandardCharsets.US_ASCII);
+    return signatures.stream().anyMatch(v1 -> MessageDigest.isEqual(expected, v1.toLowerCase().getBytes(StandardCharsets.US_ASCII)));
+}
+```
+
+ポータルまたは`POST /api/managing-entity/{id}/webhook/{webhookId}/rotate-secret`でシークレットをローテーションできます。応答に新しいシークレットが一度だけ表示され、古いシークレットはロールアウト中の24時間は引き続き検証に使えます。
+
+## 再試行と再配信
+
+- 10秒以内に任意の`2xx`で応答して受領を認めてください。重い処理は非同期で行いましょう。
+- `5xx`、タイムアウト、`408`または`429`はバックオフ付きで再試行されます：1分後、5分後、30分後、2時間後、6時間後、12時間後、その後は毎日 — 約3日間で10回試行し、その後配信は**デッド**とマークされます。
+- その他の`4xx`は「配信拒否」とみなされ、再試行されません。
+- すべてのイベント、配信、試行（ステータス、応答スニペット）は**Applications > Webhooks**およびAPI（`…/webhook/event/grid`、`…/webhook/delivery/grid`）で確認できます。任意の配信を**再配信**（`POST …/webhook/delivery/{deliveryId}/redeliver`で新しい再試行シリーズ開始）、Webhookのすべてのデッド配信を一括再配信（`POST …/webhook/{webhookId}/redeliver-dead`）、またはキャンセルも可能です。
+- 配信は30日間保持されます。
+
+## テストイベント
+
+ポータルまたは`POST /api/managing-entity/{id}/webhook/{webhookId}/test`で合成の`webhook.test`イベントを自分に送信できます。実際のイベントと同様に署名され配信されるため、エンドポイント、署名検証、冪等性処理をライブイベント購読前に検証できます。
+
+## ベストプラクティス
+
+- **HTTPSを使用する** — WinkはHTTPSエンドポイントにのみペイロードを送信します。
+- **迅速に応答する** — ペイロード受信後すぐに`200 OK`を返してください。重い処理は非同期で行いましょう。
+- **冪等性** — ハンドラーは冪等であるべきです。`Wink-Event-Id`で重複排除してください。Winkは`2xx`応答がない場合に再試行します。
+- **送信元の検証** — 処理前に`Wink-Signature`ヘッダーを検証してください（[署名の検証](#verifying-signatures)参照）。失敗したものは拒否してください。
+- **ログ記録** — 受信したWebhookペイロードはすべてログに記録してください。統合の問題解決が格段に容易になります。
+
+## 一時停止と削除
+
+Webhookは削除せずに**無効化**できます。これにより配信が一時停止し、設定を失うことなくトラブルシューティングが可能です。準備ができたら再度有効に切り替えてください。
+
+Webhookを削除すると完全に削除されます。そのWebhookに依存する統合は通知を受け取れなくなります。
+
+## 参考資料
+
+- [Webhookイベントカタログ](/ja/developers/webhook-events) — プラットフォームのカタログから生成されたすべてのイベントタイプ。
+- [Webhooks APIリファレンス](/ja/api/webhooks/) — イベントごとのペイロードスキーマ、ヘッダー、購読・配信管理エンドポイント。
+- [Webhooks](/ja/portal/settings/webhooks) — Webhook管理の完全リファレンス。
+- [Applications](/ja/account/applications) — API資格情報の管理。
+- [Developers > APIs](/ja/api) — APIの完全ドキュメント。

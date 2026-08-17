@@ -1,6 +1,6 @@
 ---
 title: 環境
-description: 本文包含測試人員和開發人員如何取得我們不同伺服器環境存取權的資訊。
+description: 本文包含測試人員和開發人員如何取得我們不同伺服器環境存取權的相關資訊。
 sidebar:
   order: 8
 ---
@@ -18,7 +18,7 @@ staging 環境是依需求提供。這表示如果沒有使用，它會進入休
 
 ## 伺服器
 
-以下為我們伺服器名稱及其用途的矩陣。
+以下為我們伺服器名稱及其用途的對照表。
 
 | 功能 | Staging | Production
 | ------- | ------- | ---------- |
@@ -29,14 +29,10 @@ staging 環境是依需求提供。這表示如果沒有使用，它會進入休
 
 ## 應用程式
 
-我們的應用程式也為客戶提供測試與生產環境。
+我們的應用程式也為客戶提供測試與正式環境。
 
 | 應用程式 | Staging | Production
 | ------- | ------- | ---------- |
-| Agent | https://staging-agent.wink.travel | https://agent.wink.travel | 
-| Booking engine | https://staging-ota.wink.travel | https://ota.wink.travel | 
-| Extranet | https://staging-extranet.wink.travel | https://extranet.wink.travel | 
-| My Account | https://staging-app.wink.travel | https://app.wink.travel | 
-| Payment | https://staging-pay.wink.travel | https://pay.wink.travel | 
-| Studio | https://staging-studio.wink.travel | https://studio.wink.travel | 
-| WinkLinks | https://staging-i.trvl.as | https://i.trvl.as |
+| Portal | https://staging-app.wink.travel | https://app.wink.travel | 
+| Booking engine | https://staging-book.wink.travel | https://book.wink.travel | 
+| Link Manager | https://staging-i.trvl.as | https://i.trvl.as |

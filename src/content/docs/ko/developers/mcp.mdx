@@ -1,33 +1,126 @@
 ---
 title: MCP 서버
-description: Model Context Protocol을 통해 AI 에이전트를 Wink 플랫폼에 연결하세요. 인증된 MCP 서버는 에이전트가 인벤토리, 예약, 채널 관리자 통합 등 다양한 기능에 직접 액세스할 수 있도록 하며, 인터랙티브 OAuth2 로그인을 통해 보안이 유지됩니다.
+description: Model Context Protocol을 통해 AI 에이전트를 Wink 플랫폼에 연결하세요. Wink는 작업에 필요한 도구만 로드하도록 집중된 작업별 엔드포인트로 도구를 제공하며, 대화형 OAuth2 로그인으로 보안이 유지됩니다.
 sidebar:
   order: 10
 ---
 
 import { Steps, LinkButton, Aside, Tabs, TabItem } from '@astrojs/starlight/components';
 
-Wink는 두 개의 인증된 MCP 서버를 제공합니다. 두 서버 모두 **인터랙티브 OAuth2 로그인**(PKCE 권한 코드 흐름)을 사용하며, AI 에이전트가 브라우저 탭을 열어 Wink 계정으로 로그인합니다. 클라이언트 시크릿을 관리할 필요가 없습니다.
+Wink의 MCP 도구는 **툴셋**으로 제공됩니다 — 각 엔드포인트는 하나의 작업을 다루는 집중된 엔드포인트입니다. AI 클라이언트는 작업에 맞는 한두 개의 엔드포인트에만 연결하며, 모든 엔드포인트에 연결하지 않습니다.
 
-| 서버 | URL | 기능 |
-|--------|-----|--------------|
-| **Inventory API** | `https://api.wink.travel/mcp` | 인벤토리, 예약, 요금, 판매 채널, 분석 및 모든 플랫폼 운영 |
-| **Integrations** | `https://integrations.wink.travel/mcp` | 채널 관리자 통합 — OTA와 숙소, 요금, 가용성 동기화 |
+모든 엔드포인트는 **대화형 OAuth2 로그인**(PKCE 권한 코드 흐름)을 사용합니다: AI 에이전트가 브라우저 탭을 열고, Wink 계정으로 로그인하면 끝입니다. 클라이언트 시크릿을 관리할 필요가 없습니다.
+
+```bash title="채널 매니저 통합자가 한 엔드포인트에 연결하는 예"
+claude mcp add wink-channel-manager https://integrations.wink.travel/mcp/channel-manager --transport http
+```
+
+```bash title="자체 요금을 관리하는 호텔리어가 다른 엔드포인트에 연결하는 예"
+claude mcp add wink-rates https://api.wink.travel/mcp/extranet/rates --transport http
+```
+
+---
+
+## 도구가 여러 엔드포인트로 분리된 이유
+
+Wink는 약 500개의 도구를 제공합니다. 한 번에 모두 에이전트에 제공하는 것은 기술적으로 가능하지만, 좋은 방법이 아닙니다.
+
+**도구 정의는 컨텍스트 비용이 듭니다.** MCP 서버가 광고하는 모든 도구는 작업을 수행하기 전에 모델의 컨텍스트 창에 도구 설명과 전체 매개변수 스키마와 함께 로드됩니다. 500개 도구는 실제 작업에 필요한 예산의 큰 부분을 차지합니다, 매 요청마다.
+
+**목록이 길어질수록 선택 품질이 떨어집니다.** 500개의 비슷한 이름 도구 중에서 선택하는 에이전트는 40개 중에서 선택하는 에이전트보다 더 나쁜 선택을 합니다. 채널 매니저를 통합한다면 약 20개의 도구가 관련 있고, 나머지 480개는 올바른 도구를 찾기 어렵게 만드는 잡음입니다.
+
+**작업은 실제로 분리 가능합니다.** PMS에서 가용성을 동기화하는 사람과 제휴 랜딩 페이지를 큐레이션하는 사람은 거의 도구를 공유하지 않습니다. 작업별로 분리하면 각 연결이 하나의 작업 어휘를 담습니다.
+
+<Aside type="caution" title="툴셋은 권한이 아닙니다">
+좁은 툴셋을 선택해도 **계정 권한이 제한되지 않으며**, 넓은 툴셋을 선택해도 추가 권한이 부여되지 않습니다. 모든 도구는 로그인한 사용자 신원 하에서 웹 포털과 동일한 계정 권한을 적용합니다. Wink 포털에서 예약 취소 권한이 없으면, 에이전트도 해당 엔드포인트에 연결되었더라도 예약을 취소할 수 없습니다.
+
+툴셋은 **집중을 위해** 선택하세요, 보안을 위해서가 아닙니다.
+</Aside>
+
+---
+
+## 엔드포인트 디렉터리
+
+두 개의 호스트가 툴셋을 제공합니다. 도구 수는 대략적이며 시간이 지남에 따라 증가합니다.
+
+### `https://api.wink.travel` — 플랫폼
+
+| 엔드포인트 | 도구 수 | 다루는 내용 |
+|---|---:|---|
+| `/mcp/extranet/facilities` | 약 64 | 예약 가능 및 현장 재고: 객실 및 객실 유형, 스파, 레스토랑, 회의실, 액티비티, 명소, 장소, 기타 판매 가능한 항목 |
+| `/mcp/extranet/property` | 약 62 | 숙소 기록 및 상업 조건: 프로필 및 콘텐츠, 추가 옵션, 취소 정책, 혜택, 공지사항 |
+| `/mcp/settings` | 약 60 | 계정 관리: 관리 단체 프로필 및 브랜딩, 관리자 및 권한, 맞춤 설정, 웹훅, 알림 설정 |
+| `/mcp/studio/embeds` | 약 48 | 큐레이션된 재고 게시: 위젯, 그리드 및 순위 그리드, 카드, 지도, 재고 및 공급자 페이지로의 딥링크 |
+| `/mcp/extranet/rates` | 약 44 | 가격 및 가용성: 재고 요금 기간 및 할당량, 요금제, 마스터 요금, 특별 및 프로모션 요금 |
+| `/mcp/extranet/operations` | 약 39 | 라이브 숙소 운영: 예약 및 수명 주기, 고객 리뷰 및 응답, 캘린더 피드, 예약된 작업 |
+| `/mcp/extranet/distribution` | 약 37 | 재고 판매 채널: 판매 채널 및 요금 조정자, 제휴 및 공급자 관계 요청, 등록, 리드 캡처 |
+| `/mcp/studio/curation` | 약 35 | 판매 가능한 컬렉션 구축: 정적 및 동적 목록, 순위 목록, 저장된 검색, 숙소 집계 |
+| `/mcp/link-manager` | 약 28 | 신디케이트 링크 컬렉션, 디자인, 카테고리 및 태그, 단축 URL |
+| `/mcp/reference` | 약 24 | 읽기 전용 조회 데이터: 국가, 통화 및 환율, 언어, 시간대, 지리 조회, IP 지리 위치 |
+| `/mcp/analytics` | 약 18 | 예약 및 수익 분석: 개요, 선형 차트, 리더보드, 제휴 성과, 공유 지표 |
+| `/mcp/payment` | 약 18 | 금융 운영: 원장, 출금 및 수수료 추정, 예약 자금 집계 |
+| `/mcp/booking-engine` | 약 17 | 여행자 대상 쇼핑 경로: 검색 및 조회, 쇼핑 카트 및 체크아웃, 버킷 리스트, 캠페인 맞춤 설정 |
+| `/mcp/social` | 약 17 | 연결된 소셜 계정, 게시 및 예약, 게시물 인사이트 읽기 |
+| `/mcp/travel-agent` | 약 8 | 여행자를 대신한 에이전트 예약 및 에이전트 보고서 |
+
+### `https://integrations.wink.travel` — 채널 매니저 통합
+
+한 개 엔드포인트, 이 호스트는 한 가지 작업을 위해 존재합니다.
+
+| 엔드포인트 | 도구 수 | 다루는 내용 |
+|---|---:|---|
+| `/mcp/channel-manager` | 약 9 | 채널 매니저, PMS 또는 CRS 통합 연결 및 검증 |
+
+<Aside type="note" title="채널 매니저 통합과 자체 요금 관리">
+이들은 서로 다른 작업이며, 서로 다른 사람이 수행하며, 엔드포인트를 공유하지 않습니다.
+
+**채널 매니저, PMS 또는 CRS 공급자**는 `integrations.wink.travel/mcp/channel-manager`를 통해 한 번 통합하며, 이후 속성, 요금, 가용성 및 예약을 해당 통합을 통해 교환합니다. 이 단일 엔드포인트가 전체 인터페이스입니다.
+
+**호텔리어가 직접 요금을 변경하는 경우**는 `api.wink.travel`의 외부망 툴셋 — `/mcp/extranet/rates` 등 — 을 사용합니다. 이들은 채널 매니저 통합의 일부가 아니며, 통합자는 이 엔드포인트에 연결할 이유가 없습니다.
+
+계정 관리는 `api.wink.travel`의 `/mcp/settings`에 있습니다. 통합 호스트에는 `/mcp/settings`가 없습니다.
+</Aside>
+
+모든 엔드포인트는 `ping` 도구도 포함하여, 실제 작업을 요청하기 전에 연결이 활성 상태인지 확인할 수 있습니다.
+
+---
+
+## 어떤 툴셋이 필요한가요?
+
+| 상황 | 연결할 엔드포인트 |
+|---|---|
+| **채널 매니저, PMS 또는 CRS 통합 중** | `integrations.wink.travel/mcp/channel-manager` — 이 하나만 |
+| **숙소 콘텐츠 관리 중** | `/mcp/extranet/property` + `/mcp/extranet/facilities` |
+| **객실 및 객실 유형 관리 중** | `/mcp/extranet/facilities` |
+| **가격 및 가용성 관리 중** | `/mcp/extranet/rates` |
+| **일상 예약 운영 중** | `/mcp/extranet/operations` |
+| **유통 확대 중** | `/mcp/extranet/distribution` + `/mcp/analytics` |
+| **제휴 페이지 구축 중** | `/mcp/studio/curation` + `/mcp/studio/embeds` |
+| **링크인바이오 페이지 운영 중** | `/mcp/link-manager` + `/mcp/social` |
+| **여행자 대신 예약 중** | `/mcp/travel-agent` |
+| **금융 정산 중** | `/mcp/payment` |
+| **예약 경험 구축 중** | `/mcp/booking-engine` + `/mcp/reference` |
+
+한 개부터 시작하세요. 필요할 때마다 다른 툴셋을 추가하세요 — 각 연결은 독립적이며, 추가해도 다른 연결에 영향을 주지 않습니다.
+
+<Aside type="tip" title="모든 도구를 원하나요?">
+`https://api.wink.travel/mcp`와 `https://integrations.wink.travel/mcp`는 해당 호스트의 **모든** 도구를 제공합니다. 존재하는 도구를 탐색할 때 유용하지만, 일상 작업에는 권장하지 않습니다: 도구 목록이 너무 많아 작업을 방해하고 에이전트의 도구 선택 품질을 저하시킵니다. 위 툴셋을 우선 사용하세요.
+</Aside>
 
 ---
 
 ## 인증 작동 방식
 
-Wink MCP 서버는 **OAuth2 권한 코드 + PKCE** 흐름을 사용하며 **동적 클라이언트 등록(RFC 7591)**을 지원합니다. 처음 연결할 때 다음과 같은 과정이 진행됩니다:
+Wink MCP 서버는 **OAuth2 권한 코드 + PKCE** 흐름을 사용하며 **동적 클라이언트 등록(RFC 7591)**을 지원합니다. 처음 연결할 때 다음이 발생합니다:
 
 1. AI 클라이언트가 MCP 엔드포인트의 `/.well-known/oauth-protected-resource` 메타데이터에서 권한 서버를 발견합니다.
-2. 클라이언트가 **동적 클라이언트 등록**을 통해 자체 등록하며, 수동 애플리케이션 설정이 필요 없습니다.
+2. 클라이언트가 **동적 클라이언트 등록**을 통해 자체 등록합니다 — 수동 애플리케이션 설정 불필요.
 3. 클라이언트가 `https://iam.wink.travel`로 **브라우저 탭**을 열고, Wink 계정으로 로그인 후 동의 화면에서 권한을 승인합니다.
-4. Wink가 계정에 범위가 지정되고 신원에 연결된 **액세스 토큰**을 발급합니다.
-5. AI 클라이언트는 모든 MCP 요청에 토큰을 첨부하며, 모든 도구 결과는 자동으로 관리 엔터티 범위 내에서 처리됩니다.
-6. 토큰은 3시간 후 만료되며, AI 클라이언트는 백그라운드에서 조용히 토큰을 갱신합니다.
+4. Wink가 계정에 연결된 범위가 지정된 **액세스 토큰**을 발급합니다.
+5. AI 클라이언트가 모든 MCP 요청에 토큰을 첨부합니다. 모든 도구 결과는 자동으로 관리 단체 범위 내에서 처리됩니다.
+6. 토큰은 3시간 후 만료됩니다. AI 클라이언트는 백그라운드에서 조용히 토큰을 갱신합니다.
 
-모든 도구 호출은 **귀하의 신원으로 실행**되며, 웹 포털을 보호하는 동일한 ACL 규칙이 AI 에이전트에도 적용됩니다.
+모든 도구 호출은 **사용자 신원 하에서** 실행됩니다 — 웹 포털을 보호하는 동일한 ACL 규칙이 AI 에이전트에도 적용됩니다.
 
 ---
 
@@ -42,25 +135,28 @@ Wink MCP 서버는 **OAuth2 권한 코드 + PKCE** 흐름을 사용하며 **동�
    npm install -g @anthropic-ai/claude-code
    ```
 
-2. Wink Inventory MCP 서버를 추가하세요:
+2. 위 [디렉터리](#endpoint-directory)에서 툴셋을 선택해 추가하세요. 예를 들어 가격 및 가용성:
    ```bash
-   claude mcp add wink-inventory https://api.wink.travel/mcp --transport http
+   claude mcp add wink-rates https://api.wink.travel/mcp/extranet/rates --transport http
    ```
 
-3. Claude Code가 서버에 접속하여 권한 서버를 발견하고 기본 브라우저를 엽니다.
+3. Claude Code가 서버에 연락해 권한 서버를 발견하고 기본 브라우저를 엽니다.
 
 4. **Wink에 로그인**하고 동의 화면에서 권한 요청을 승인하세요.
 
-5. Claude Code가 연결을 확인합니다. `/mcp`를 입력하여 서버가 나타나고 도구가 로드되었는지 확인하세요.
+5. Claude Code가 연결을 확인합니다. `/mcp`를 입력해 서버가 나타나고 도구가 로드되었는지 확인하세요.
 </Steps>
 
-Integrations 서버도 추가하려면:
+필요한 만큼 툴셋을 추가하세요 — 각 툴셋은 고유 이름의 별도 서버 항목입니다:
 ```bash
-claude mcp add wink-integrations https://integrations.wink.travel/mcp --transport http
+claude mcp add wink-operations https://api.wink.travel/mcp/extranet/operations --transport http
+claude mcp add wink-analytics  https://api.wink.travel/mcp/analytics           --transport http
 ```
 
+로그인은 한 번만 하면 됩니다. 첫 브라우저 승인 후 Claude Code는 추가 Wink 엔드포인트에 대해 Wink 세션을 재사용합니다.
+
 :::tip[팀과 공유하기]
-`claude mcp add` 명령에 `--scope project`를 추가하면 Claude Code가 서버 URL을 저장소 루트의 `.mcp.json`에 기록합니다. 해당 파일을 커밋하면 각 팀원이 처음 연결 시 자신의 브라우저에서 로그인 절차를 완료할 수 있습니다.
+`claude mcp add`에 `--scope project`를 추가하면 Claude Code가 서버 URL을 저장소 루트의 `.mcp.json`에 기록합니다. 이 파일을 커밋하면 모든 팀원이 동일한 툴셋을 사용하며, 각자 처음 연결 시 브라우저 로그인을 완료합니다.
 :::
 
   </TabItem>
@@ -77,19 +173,19 @@ claude mcp add wink-integrations https://integrations.wink.travel/mcp --transpor
    ```json title="claude_desktop_config.json"
    {
      "mcpServers": {
-       "wink-inventory": {
+       "wink-extranet-rates": {
          "type": "http",
-         "url": "https://api.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/rates"
        },
-       "wink-integrations": {
+       "wink-extranet-operations": {
          "type": "http",
-         "url": "https://integrations.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/operations"
        }
      }
    }
    ```
 
-3. Claude Desktop을 **완전히 종료 후 재시작**하세요 (메뉴 바에서 종료 사용 — 창 닫기만으로는 충분하지 않습니다).
+3. Claude Desktop을 **완전히 종료 후 재시작**하세요 (메뉴 바에서 종료 사용 — 창 닫기만으로는 부족).
 
 4. Claude Desktop이 새 서버마다 브라우저 탭을 엽니다. Wink에 로그인하고 권한을 승인하세요.
 
@@ -114,55 +210,55 @@ claude mcp add wink-integrations https://integrations.wink.travel/mcp --transpor
    ```json title="~/.codex/config.json"
    {
      "mcpServers": {
-       "wink-inventory": {
+       "wink-extranet-rates": {
          "type": "http",
-         "url": "https://api.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/rates"
        },
-       "wink-integrations": {
+       "wink-extranet-operations": {
          "type": "http",
-         "url": "https://integrations.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/operations"
        }
      }
    }
    ```
 
-4. Codex를 시작하세요. 첫 사용 시 Codex가 `https://iam.wink.travel`로 브라우저 탭을 엽니다.
+4. Codex를 시작하세요. 첫 사용 시 `https://iam.wink.travel`로 브라우저 탭이 열립니다.
 
-5. **Wink에 로그인**하고 요청된 권한을 승인하세요.
+5. **Wink에 로그인**하고 권한을 승인하세요.
 
-6. Codex가 연결을 확인합니다. `codex`를 실행하고 사용 가능한 도구 목록을 요청하여 Wink 서버가 활성 상태인지 확인하세요.
+6. Codex가 연결을 확인합니다. `codex`를 실행하고 사용 가능한 도구 목록을 요청해 Wink 서버가 활성 상태인지 확인하세요.
 </Steps>
 
 :::note
-Codex CLI의 MCP 지원은 버전 **1.0** 이상이 필요합니다. `codex --version`으로 버전을 확인하고, `npm install -g @openai/codex`로 업그레이드하세요.
+Codex CLI MCP 지원은 버전 **1.0** 이상이 필요합니다. `codex --version`으로 확인하고, `npm install -g @openai/codex`로 업그레이드하세요.
 :::
 
   </TabItem>
   <TabItem label="ChatGPT">
 
-MCP 서버 지원은 Plus, Pro, Team, Enterprise 구독자를 위한 **ChatGPT 데스크톱 앱**에서 제공됩니다.
+MCP 서버 지원은 Plus, Pro, Team, Enterprise 구독자의 **ChatGPT 데스크톱 앱**에서 사용할 수 있습니다.
 
 <Steps>
 1. 아직 설치하지 않았다면 [ChatGPT 데스크톱 앱](https://openai.com/chatgpt/download/)을 다운로드 및 설치하세요.
 
-2. 앱을 열고 오른쪽 상단의 **프로필 아이콘**을 클릭한 후 **설정**을 선택하세요.
+2. 앱을 열고 우측 상단의 **프로필 아이콘**을 클릭한 후 **설정**을 선택하세요.
 
-3. **커넥터**(또는 앱 버전에 따라 **MCP 서버**)로 이동하여 **추가**를 클릭하세요.
+3. **커넥터**(또는 앱 버전에 따라 **MCP 서버**)로 이동해 **추가**를 클릭하세요.
 
-4. Wink Inventory 서버 URL을 입력하세요:
+4. 위 [디렉터리](#endpoint-directory)에서 툴셋 URL을 입력하세요. 예:
    ```
-   https://api.wink.travel/mcp
+   https://api.wink.travel/mcp/extranet/rates
    ```
    그리고 **연결**을 클릭하세요.
 
-5. ChatGPT가 `https://iam.wink.travel`로 브라우저 탭을 열고, **Wink에 로그인**하여 권한을 승인하세요.
+5. ChatGPT가 `https://iam.wink.travel`로 브라우저 탭을 열고, **Wink에 로그인** 후 권한을 승인하세요.
 
-6. Integrations 서버도 4~5단계를 반복하세요:
+6. 작업에 필요한 다른 툴셋도 4~5단계를 반복하세요. 예:
    ```
-   https://integrations.wink.travel/mcp
+   https://api.wink.travel/mcp/extranet/operations
    ```
 
-7. 두 서버가 커넥터 목록에 나타납니다. 새 채팅을 시작하면 Wink 도구가 자동으로 사용 가능합니다.
+7. 각 툴셋이 커넥터 목록에 나타납니다. 새 채팅을 시작하면 Wink 도구가 자동으로 사용 가능합니다.
 </Steps>
 
 :::note[웹 앱 제한 사항]
@@ -182,27 +278,27 @@ MCP 서버는 **데스크톱 앱**에서만 구성할 수 있습니다. chatgpt.
    ```json title="~/.cursor/mcp.json"
    {
      "mcpServers": {
-       "wink-inventory": {
+       "wink-extranet-rates": {
          "type": "http",
-         "url": "https://api.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/rates"
        },
-       "wink-integrations": {
+       "wink-extranet-operations": {
          "type": "http",
-         "url": "https://integrations.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/operations"
        }
      }
    }
    ```
 
-3. Cursor를 열고 **설정 → Cursor 설정 → MCP**로 이동하여 두 서버가 녹색 상태 표시와 함께 나타나는지 확인하세요. 빨간색이면 **새로고침**을 클릭하세요.
+3. Cursor를 열고 **설정 → Cursor 설정 → MCP**로 이동해 두 서버가 녹색 상태로 표시되는지 확인하세요. 빨간색이면 **새로 고침**을 클릭하세요.
 
-4. Cursor가 `https://iam.wink.travel`로 브라우저 탭을 열고, **Wink에 로그인**하여 권한을 승인하세요.
+4. Cursor가 `https://iam.wink.travel`로 브라우저 탭을 엽니다. **Wink에 로그인**하고 권한을 승인하세요.
 
-5. 채팅을 열고(`Ctrl+L` / `Cmd+L`) Cursor에게 사용 가능한 Wink 도구 목록을 요청하여 연결을 확인하세요.
+5. 채팅을 열고 (`Ctrl+L` / `Cmd+L`) Cursor에게 사용 가능한 Wink 도구 목록을 요청해 연결을 확인하세요.
 </Steps>
 
-:::tip[프로젝트 범위 설정]
-`~/.cursor/` 대신 프로젝트 루트에 `mcp.json` 파일을 배치할 수도 있습니다. 프로젝트 수준 설정이 우선 적용되며, 프로젝트를 여는 모든 팀원이 서버를 사용할 수 있습니다.
+:::tip[프로젝트 범위 설정 구성]
+`~/.cursor/` 대신 프로젝트 루트에 `mcp.json` 파일을 배치할 수도 있습니다. 프로젝트 수준 구성이 우선 적용되어, 프로젝트를 여는 모든 팀원이 서버를 사용할 수 있습니다.
 :::
 
   </TabItem>
@@ -218,67 +314,67 @@ MCP 서버는 **데스크톱 앱**에서만 구성할 수 있습니다. chatgpt.
    ```json title="~/.codeium/windsurf/mcp_config.json"
    {
      "mcpServers": {
-       "wink-inventory": {
+       "wink-extranet-rates": {
          "type": "http",
-         "url": "https://api.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/rates"
        },
-       "wink-integrations": {
+       "wink-extranet-operations": {
          "type": "http",
-         "url": "https://integrations.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/operations"
        }
      }
    }
    ```
 
-3. Windsurf를 **완전히 재시작**하세요 (파일 → 종료 후 다시 열기).
+3. **Windsurf를 완전히 재시작**하세요 (파일 → 종료 후 재실행).
 
-4. **설정 → MCP 서버**로 이동하여 두 서버가 연결됨을 확인하세요. 첫 사용 시 Windsurf가 `https://iam.wink.travel`로 브라우저 탭을 엽니다.
+4. **설정 → MCP 서버**로 이동해 두 서버가 연결됨을 확인하세요. 첫 사용 시 Windsurf가 `https://iam.wink.travel`로 브라우저 탭을 엽니다.
 
 5. **Wink에 로그인**하고 권한을 승인하세요. 인증되면 설정 패널에서 서버가 녹색으로 표시됩니다.
 </Steps>
 
 :::note
-Windsurf MCP 지원은 버전 **1.4** 이상이 필요합니다. **도움말 → Windsurf 정보**에서 버전을 확인하고, 필요 시 Windsurf 웹사이트에서 업데이트하세요.
+Windsurf MCP 지원은 버전 **1.4** 이상이 필요합니다. **도움말 → Windsurf 정보**에서 확인하고, 필요 시 Windsurf 웹사이트에서 업데이트하세요.
 :::
 
   </TabItem>
   <TabItem label="Cline (VS Code)">
 
-Cline은 MCP 서버 관리자가 내장된 VS Code 확장입니다. JSON을 수동으로 편집할 필요가 없습니다.
+Cline은 MCP 서버 관리자가 내장된 VS Code 확장입니다. 수동 JSON 편집이 필요 없습니다.
 
 <Steps>
 1. VS Code 마켓플레이스에서 Cline을 설치하세요:
    - VS Code를 열고 `Ctrl+Shift+X` / `Cmd+Shift+X`를 누르세요
    - **Cline**을 검색하고 **설치**를 클릭하세요
 
-2. 활동 표시줄(왼쪽 사이드바)에서 **Cline 아이콘**을 클릭하여 Cline 패널을 엽니다.
+2. 활동 표시줄(왼쪽 사이드바)에서 **Cline 아이콘**을 클릭해 Cline 패널을 엽니다.
 
-3. Cline 툴바에서 **MCP 서버** 아이콘(플러그 아이콘)을 클릭한 후 **MCP 설정 편집**을 선택하세요.
+3. Cline 툴바에서 **MCP 서버 아이콘**(플러그 아이콘)을 클릭한 후 **MCP 설정 편집**을 선택하세요.
 
-4. VS Code가 `cline_mcp_settings.json`을 열면 Wink 항목을 추가하세요:
+4. VS Code가 `cline_mcp_settings.json`을 엽니다. Wink 항목을 추가하세요:
 
    ```json title="cline_mcp_settings.json"
    {
      "mcpServers": {
-       "wink-inventory": {
+       "wink-extranet-rates": {
          "type": "http",
-         "url": "https://api.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/rates"
        },
-       "wink-integrations": {
+       "wink-extranet-operations": {
          "type": "http",
-         "url": "https://integrations.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/operations"
        }
      }
    }
    ```
 
-5. **파일을 저장**하세요. Cline이 자동으로 다시 로드되고 `https://iam.wink.travel`로 브라우저 탭을 엽니다.
+5. **파일을 저장하세요.** Cline이 자동으로 다시 로드되고 `https://iam.wink.travel`로 브라우저 탭을 엽니다.
 
 6. **Wink에 로그인**하고 권한을 승인하세요. MCP 서버 패널에 두 서버가 활성 상태로 표시됩니다.
 </Steps>
 
-:::tip[대안: URL로 추가]
-MCP 서버 패널에서 **서버 추가**를 클릭하고 `https://api.wink.travel/mcp`를 직접 붙여넣으세요. Cline이 자동으로 설정을 채우고 JSON 편집 없이 인증을 처리합니다.
+:::tip[대안: URL로 추가하기]
+MCP 서버 패널에서 **서버 추가**를 클릭하고 `https://api.wink.travel/mcp/extranet/rates` 같은 툴셋 URL을 직접 붙여넣으세요. Cline이 자동으로 구성하고 인증을 처리해 수동 JSON 편집이 필요 없습니다.
 :::
 
   </TabItem>
@@ -288,12 +384,14 @@ MCP 서버 패널에서 **서버 추가**를 클릭하고 `https://api.wink.trav
 
 ## 권한 범위(Scopes)
 
-동의 화면에서 에이전트가 요청하는 권한 내역을 확인할 수 있습니다. MCP 클라이언트는 플랫폼의 다른 부분과 동일한 권한 어휘를 사용합니다 — 전체 내용은 [인증 페이지의 권한 범위 참조](/ko/developers/authentication#scopes)를 참조하세요.
+동의 화면에서 에이전트가 요청하는 권한 내역을 확인할 수 있습니다. MCP 클라이언트는 플랫폼의 다른 부분과 동일한 권한 어휘를 사용합니다 — 전체 내용은 [인증 페이지의 권한 범위 참조](/ko/developers/authentication#scopes)를 참고하세요.
 
-MCP에만 해당하는 두 가지 사항:
+MCP에 특화된 두 가지 사항:
 
-- **`mcp.read`, `mcp.write`, `mcp.remove` 권한 범위가 추가로 필요**하여 MCP 전송을 엽니다. `mcp.*` 권한을 가진 클라이언트는 `/mcp`에 접근할 수 있지만, 호출하는 각 도구는 여전히 해당 엔드포인트의 섹션 권한(예: `booking.read`)을 적용합니다.
-- **AI 클라이언트는 필요한 권한만 요청**합니다. 동의 화면에서 개별 권한을 거부할 수 있으며, 거부된 권한이 필요한 도구는 호출 시 오류를 반환합니다.
+- **`mcp.read`, `mcp.write`, `mcp.remove` 권한 범위가 추가로 필요**합니다. 이 권한이 있어야 MCP 전송을 열 수 있습니다. `mcp.*` 권한을 가진 클라이언트는 모든 Wink MCP 엔드포인트에 접근할 수 있지만, 호출하는 각 도구는 여전히 해당 엔드포인트의 섹션 권한(예: `booking.read`)을 적용합니다.
+- **AI 클라이언트는 필요한 권한만 요청합니다.** 동의 화면에서 개별 권한을 거부할 수 있으며, 거부된 권한이 필요한 도구는 호출 시 오류를 반환합니다.
+
+**툴셋은 이 내용을 변경하지 않습니다.** 연결하는 엔드포인트가 *나열되는* 도구를 결정할 뿐, *허용하는* 도구를 결정하지 않습니다. `/mcp/payment`에 연결해도 이미 없는 금융 권한이 부여되지 않으며, `/mcp/reference`에 연결해도 도구가 자체 권한을 적용하는 것을 막지 않습니다. 권한 부여는 토큰과 계정 권한에 따라 도구 호출별로 결정됩니다.
 
 ---
 
@@ -301,54 +399,66 @@ MCP에만 해당하는 두 가지 사항:
 
 **브라우저 탭이 열리지 않음**
 
-AI 클라이언트가 아직 인터랙티브 PKCE 흐름을 지원하지 않을 수 있습니다. 최신 버전을 사용 중인지 확인하세요:
+AI 클라이언트가 대화형 PKCE 흐름을 아직 지원하지 않을 수 있습니다. 최신 버전을 사용 중인지 확인하세요:
 - **Claude Code:** `npm install -g @anthropic-ai/claude-code`
 - **Codex CLI:** `npm install -g @openai/codex`
-- **Claude Desktop / ChatGPT 데스크톱:** 앱 내장 업데이트 기능으로 업데이트
+- **Claude Desktop / ChatGPT 데스크톱:** 앱 내장 업데이트로 최신화
 
 **로그인 후 `401 Unauthorized` 오류**
 
-캐시된 토큰이 만료되었을 수 있습니다. 서버를 제거 후 다시 추가하여 새 로그인 절차를 트리거하세요:
+캐시된 토큰이 만료되었을 수 있습니다. 서버를 제거 후 다시 추가해 새 로그인을 유도하세요:
 
 ```bash
 # Claude Code
-claude mcp remove wink-inventory
-claude mcp add wink-inventory https://api.wink.travel/mcp --transport http
+claude mcp remove wink-rates
+claude mcp add wink-rates https://api.wink.travel/mcp/extranet/rates --transport http
 ```
 
 Claude Desktop과 ChatGPT는 설정에서 서버 항목을 제거하고 앱을 재시작한 후 다시 추가하세요.
 
-**특정 도구 호출 시 `403 Forbidden` 오류**
+**특정 도구 호출 시 `403 Forbidden`**
 
-도구가 동의 화면에서 승인하지 않은 권한을 요구합니다. 서버를 다시 연결하면 동의 화면이 다시 나타나며 누락된 권한을 승인할 수 있습니다.
+도구가 동의 화면에서 승인하지 않은 권한 범위를 요구하거나, 계정에 권한이 없을 수 있습니다. 서버를 다시 연결하면 동의 화면이 다시 나타나며 누락된 권한을 승인할 수 있습니다. 계속 실패하면 도구가 계정 권한을 요구하는 것이므로, 다른 툴셋에 연결해도 권한이 부여되지 않습니다.
 
-**서버는 나타나지만 도구 호출 시 "account not found" 오류**
+**필요한 도구가 목록에 없음**
 
-관리 엔터티가 없는 Wink 계정으로 로그인한 상태입니다. [Wink 포털](https://app.wink.travel)에서 계정 설정을 확인한 후 MCP 서버를 사용하세요.
+아마도 해당 작업을 다루지 않는 툴셋에 연결되어 있을 가능성이 큽니다. [엔드포인트 디렉터리](#endpoint-directory)를 확인하고 해당 작업을 다루는 툴셋을 추가하세요 — 연결은 독립적이므로 추가해도 다른 연결에 영향이 없습니다. 어떤 툴셋에 있는지 모르면 임시로 `https://api.wink.travel/mcp`에 연결해 도구를 찾고, 어떤 툴셋에 포함되어 있는지 확인하세요.
+
+**툴셋 엔드포인트에서 `404 Not Found`**
+
+경로를 정확히 확인하세요 — 중첩된 툴셋은 두 개 세그먼트(`/mcp/extranet/rates`), 평면 툴셋은 한 개 세그먼트(`/mcp/link-manager`)입니다. 인증되지 않은 `/mcp` 하위 경로 요청은 `401`을 반환하므로, `401`만으로 엔드포인트 존재 여부를 판단할 수 없습니다.
+
+**`api.wink.travel/mcp/channel-manager`에 연결했는데 아무것도 없음**
+
+해당 엔드포인트는 존재하지 않습니다. 채널 매니저 통합은 `https://integrations.wink.travel/mcp/channel-manager`에서만 제공됩니다. 숙소의 자체 요금을 직접 읽거나 쓰려면 별도의 작업이며, 별도의 엔드포인트(`/mcp/extranet/rates`)를 사용하세요.
+
+**서버는 나타나지만 도구 호출 시 "account not found"**
+
+관리 단체가 없는 Wink 계정으로 로그인한 것입니다. [Wink Portal](https://app.wink.travel)에서 계정 설정을 완료한 후 MCP 서버를 사용하세요.
 
 **세션 중 토큰 만료**
 
-토큰은 3시간 동안 유효합니다. Claude Code와 Claude Desktop은 세션을 방해하지 않고 조용히 토큰을 갱신합니다. 장시간 유휴 후 인증 오류가 발생하면 새 메시지를 입력하면 클라이언트가 자동으로 재인증합니다.
+토큰은 3시간 동안 유효합니다. Claude Code와 Claude Desktop은 조용히 토큰을 갱신해 세션을 방해하지 않습니다. 장시간 유휴 후 인증 오류가 발생하면 새 메시지를 입력하세요 — 클라이언트가 자동으로 재인증합니다.
 
-**Codex CLI에서 "MCP server unreachable" 오류**
+**Codex CLI가 "MCP server unreachable" 표시**
 
-`~/.codex/config.json`이 올바른 JSON인지(후행 쉼표 없음)와 `"type": "http"`가 설정되어 있는지 확인하세요. Codex는 원격 서버에 HTTP 전송을 요구하며, stdio 전송은 로컬 바이너리에만 사용됩니다.
+`~/.codex/config.json`이 유효한 JSON인지(후행 쉼표 없음)와 `"type": "http"`가 설정되어 있는지 확인하세요. Codex는 원격 서버에 HTTP 전송을 요구하며, stdio 전송은 로컬 바이너리에만 사용됩니다.
 
-**ChatGPT에서 "Connectors" 메뉴가 없음**
+**ChatGPT "Connectors" 메뉴가 없음**
 
-MCP 지원은 ChatGPT 데스크톱 앱 버전 **1.2024.352** 이상과 Plus, Pro, Team, Enterprise 구독이 필요합니다. 앱을 업데이트하고 설정 → 계정에서 구독 상태를 확인하세요.
+MCP 지원은 ChatGPT 데스크톱 앱 버전 **1.2024.352** 이상과 Plus, Pro, Team, Enterprise 구독이 필요합니다. 앱을 업데이트하고 설정 → 계정에서 플랜을 확인하세요.
 
-**Cursor 서버가 빨간색 / "연결 실패" 표시**
+**Cursor 서버가 빨간색 / "Failed to connect"**
 
-`~/.cursor/mcp.json`이 올바른 JSON이고 `"type": "http"`가 포함되어 있는지 확인하세요. 그런 다음 **설정 → Cursor 설정 → MCP**에서 **새로고침**을 클릭하세요. 오류가 계속되면 Cursor를 완전히 재시작하세요 — 설정 변경 사항이 재시작 없이는 반영되지 않을 수 있습니다.
+`~/.cursor/mcp.json`이 유효한 JSON이고 `"type": "http"`가 포함되어 있는지 확인하세요. 그런 다음 **설정 → Cursor 설정 → MCP**에서 **새로 고침**을 클릭하세요. 오류가 계속되면 Cursor를 완전히 재시작하세요 — 구성 변경이 재시작 없이는 반영되지 않을 수 있습니다.
 
 **Windsurf MCP 서버가 설정에 표시되지 않음**
 
-Windsurf는 `mcp_config.json` 변경 사항을 반영하려면 완전한 재시작이 필요합니다(창 새로고침만으로는 안 됨). **파일 → 종료** 후 재실행하세요. 여전히 서버가 나타나지 않으면 **도움말 → Windsurf 정보**에서 버전이 **1.4 이상**인지 확인하세요.
+Windsurf는 `mcp_config.json` 변경 사항을 인식하려면 완전한 재시작이 필요합니다 (창 새로 고침만으로는 부족). **파일 → 종료** 후 재실행하세요. 여전히 표시되지 않으면 **도움말 → Windsurf 정보**에서 버전이 **1.4 이상**인지 확인하세요.
 
 **Cline에서 "서버 추가" 옵션이 보이지 않음**
 
-MCP 서버 관리자는 Cline **2.0** 이상이 필요합니다. VS Code 확장 패널에서 Cline을 찾아 업데이트가 있으면 **업데이트**를 클릭하세요. 업데이트 후 VS Code를 다시 로드하세요(`Ctrl+Shift+P` → "Developer: Reload Window").
+MCP 서버 관리자는 Cline **2.0** 이상이 필요합니다. VS Code 확장 패널에서 Cline을 찾아 업데이트가 있으면 설치하세요. 업데이트 후 VS Code를 다시 로드하세요 (`Ctrl+Shift+P` → "Developer: Reload Window").
 
 ---
 

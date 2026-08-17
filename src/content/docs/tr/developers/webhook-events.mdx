@@ -1,331 +1,50 @@
 ---
 title: Webhook Olayları Kataloğu
-description: Wink platformunda mevcut olan tüm webhook olay türlerinin kategori bazında düzenlenmiş tam referansı.
+description: Wink platformundaki her webhook olay türü, platformun olay kataloğundan oluşturulmuştur — kimlere teslim edilir ve yükün nerede belgelenmiş olduğu.
 sidebar:
-  order: 3
+  order: 3.5
 ---
 
-import { LinkButton } from '@astrojs/starlight/components';
+import webhooks from '../../../../schemas/webhooks.json';
+import WebhookEventTypes from '@/components/webhooks/event-types.astro';
 
-Bu sayfa, Wink'te abone olabileceğiniz tüm webhook olaylarını listeler. Kurulum talimatları için [Webhook Entegrasyon Kılavuzu](/tr/guides/developers/webhook-integration) veya [Webhook yönetim sayfası](/tr/portal/settings/webhooks) sayfasına bakınız.
+Bu sayfa, Wink'te abone olabileceğiniz tüm webhook olaylarını listeler. Kurulum talimatları için [Webhook Entegrasyon Kılavuzu](/tr/developers/webhook-integration) veya [Webhook yönetim sayfası](/tr/portal/settings/webhooks) sayfalarına bakın.
 
 ## Nasıl abone olunur
 
 1. Portalınızda **Applications > Webhooks** bölümüne gidin.
-2. Bir webhook oluşturun ve almak istediğiniz olayları seçin.
-3. Olay gerçekleştiğinde Wink, uç noktanıza bir HTTP POST gönderir.
-
-Tam kurulum adımları ve en iyi uygulamalar için [Webhook Entegrasyonu](/tr/guides/developers/webhook-integration) sayfasına bakınız.
-
----
-
-## Yönetici varlık olayları
-
-Varlıkların (mülkler, bağlı kuruluşlar, şirketler) ve bunların yönetiminin olayları.
-
-### Yaşam döngüsü
-
-| Olay | Anahtar | Açıklama |
-|---|---|---|
-| Varlık oluşturuldu | `managing_entity.created` | Yeni bir yönetici varlık oluşturuldu. |
-| Varlık silindi | `managing_entity.deleted` | Bir yönetici varlık silindi. |
-| Durum güncellendi | `managing_entity.status.updated` | Varlık durumu değişti. |
-| İncelemede | `account.under_review` | Varlık hesabı inceleme aşamasında. |
-
-### Abonelik
-
-| Olay | Anahtar | Açıklama |
-|---|---|---|
-| Abonelik sağlandı | `managing_entity.subscription.provisioned` | Yeni bir abonelik sağlandı. |
-| Abonelik değişti | `managing_entity.subscription.changed` | Abonelik planı değiştirildi. |
-| Abonelik faturası değişti | `managing_entity.subscription.invoice.changed` | Abonelik faturası güncellendi. |
-
-### Yönetici yaşam döngüsü
-
-| Olay | Anahtar | Açıklama |
-|---|---|---|
-| Yönetici eklendi | `managing_entity.manager.added` | Yeni bir yönetici eklendi. |
-| Yönetici davet edildi | `managing_entity.manager.invited` | Yönetici daveti gönderildi. |
-| Yönetici kaldırıldı | `managing_entity.manager.removed` | Bir yönetici kaldırıldı. |
-| Yönetici daveti kabul edildi | `managing_entity.manager.accepted` | Yönetici daveti kabul edildi. |
-| Yönetici daveti reddedildi | `managing_entity.manager.rejected` | Yönetici daveti reddedildi. |
-| Sahip atandı | `managing_entity.manager.owner.set` | Varlık sahipliği devredildi. |
-| Yöneticiler güncellendi | `account.managers.update` | Yönetici listesi değişti. |
-
-### Varlık bilgileri
-
-| Olay | Anahtar | Açıklama |
-|---|---|---|
-| Bilgiler güncellendi | `managing_entity.information.updated` | Varlık bilgileri güncellendi. |
-| Adres güncellendi | `managing_entity.city.updated` | Varlık adresi/şehri değiştirildi. |
-| İsim güncellendi | `managing_entity.name.updated` | Varlık adı değiştirildi. |
-| URL adı güncellendi | `managing_entity.url_name.updated` | Varlık özel URL'si değiştirildi. |
-| Benzersiz ID güncellendi | `managing_entity.unique_id.updated` | Varlığın benzersiz kimliği değiştirildi. |
-| Yönetici bilgisi güncellendi | `managing_entity.managed_by.updated` | Varlığın üst yönetici ilişkisi değiştirildi. |
-| Yer ID güncellendi | `managing_entity.place_id.updated` | Varlığın Google Yer ID'si değiştirildi. |
-| Hesap temsilcisi güncellendi | `managing_entity.account_representative.updated` | Hesap temsilcisi değiştirildi. |
-| Profil fotoğrafı güncellendi | `managing_entity.profile_picture.updated` | Varlık profil fotoğrafı güncellendi. |
-| Logo güncellendi | `managing_entity.logo.updated` | Varlık logosu güncellendi. |
-| Detaylar güncellendi | `account.details.updated` | Hesap detay alanları değiştirildi. |
-| Ajan güncellendi | `managing_entity.agent.updated` | Varlık ajanı değiştirildi. |
-
-### Bildirimler
-
-| Olay | Anahtar | Açıklama |
-|---|---|---|
-| Ajan e-posta bildirimi | `managing_entity.agent.email.notification` | Ajan için e-posta bildirimi gönderildi. |
-| Yönetici e-posta bildirimi | `managing_entity.manager.email.notification` | Yönetici için e-posta bildirimi gönderildi. |
-
-### Hesap görevleri
-
-| Olay | Anahtar | Açıklama |
-|---|---|---|
-| Görev oluşturuldu | `account.task.create` | Hesaba yeni bir görev eklendi. |
-| Görev güncellendi | `account.task.update` | Hesap görevi değiştirildi. |
-| Görev kaldırıldı | `account.task.remove` | Hesap görevi kaldırıldı. |
-| Görev tamamlandı | `account.task.complete` | Hesap görevi tamamlandı. |
-| Vergi kimlik numarası görevi tamamlandı | `account.task.tax_id.complete` | Vergi kimlik numarası doğrulama görevi tamamlandı. |
-
----
-
-## Rezervasyon olayları
-
-Wink rezervasyon yaşam döngüsüne ait olaylar, oluşturulmadan iade ve ödemelere kadar.
-
-### Temel rezervasyon
-
-| Olay | Anahtar | Açıklama |
-|---|---|---|
-| Rezervasyon oluşturuldu | `booking.create` | Yeni bir rezervasyon oluşturuldu. |
-| Rezervasyon iptal edildi | `booking.cancelled` | Bir rezervasyon iptal edildi. |
-| Rezervasyon başarısız oldu | `booking.failed` | Rezervasyon denemesi başarısız oldu. |
-| Rezervasyon işleniyor | `booking.processing` | Rezervasyon ödemesi işleniyor. |
-| Başlatma istendi | `booking.initialize.request` | Rezervasyon başlatma talebi yapıldı. |
-| Başlatma tamamlandı | `booking.initialize.complete` | Rezervasyon başlatma tamamlandı. |
-
-### İadeler
-
-| Olay | Anahtar | Açıklama |
-|---|---|---|
-| İade talebi yapıldı | `booking.refund.request` | İade talebi gönderildi. |
-| İade hatası | `booking.refund.error` | İade işlenirken hata oluştu. |
-| Kısmi iade | `booking.refund.partial` | Kısmi iade yapıldı. |
-| Tam iade | `booking.refund.full` | Tam iade yapıldı. |
-
-### Ödemeler
-
-| Olay | Anahtar | Açıklama |
-|---|---|---|
-| Ödeme oluşturuldu | `booking.payout.create` | Rezervasyon için ödeme oluşturuldu. |
-| Ödeme tamamlandı | `booking.payout.complete` | Ödeme başarıyla tamamlandı. |
-| Fonlar kullanılabilir | `booking.funds.available` | Rezervasyon fonları tahsilat için hazır. |
-| Fonlar kaydedildi | `booking.funds.ledgered` | Rezervasyon fonları deftere kaydedildi. |
-
-### Yorumlar
-
-| Olay | Anahtar | Açıklama |
-|---|---|---|
-| Yorum gönderildi | `booking.review.created` | Konuk yorumu gönderildi. |
-| Yorum yanıtlandı | `booking.review.responded` | Mülk rezervasyon yorumuna yanıt verdi. |
-
----
-
-## Mülk olayları
-
-Mülk profilleri ve içeriklerine ait olaylar, mülkün kendi webhook abonelerine gönderilir.
-
-| Olay | Anahtar | Açıklama |
-|---|---|---|
-| Mülk oluşturuldu | `property.created` | Yeni bir mülk oluşturuldu. |
-| Mülk güncellendi | `property.updated` | Mülk detayları güncellendi. |
-| Mülk silindi | `property.deleted` | Bir mülk kaldırıldı. |
-| Mülk kaydedildi | `property.registered` | Mülk kaydı tamamlandı. |
-| Durum güncellendi | `property.status.updated` | Mülkün dış durumu değişti. |
-| İsim güncellendi | `property.name.updated` | Mülk adı değişti. |
-| Adres güncellendi | `property.address.updated` | Mülk adresi güncellendi. |
-| Coğrafi konum güncellendi | `property.geolocation.updated` | Mülkün coğrafi konumu güncellendi. |
-| Profil güncellendi | `property.profile.updated` | Mülk profil içeriği değişti. |
-| Hizmetler güncellendi | `property.services.updated` | Mülk hizmetleri/olanaklar listesi değişti. |
-| Hoşgeldin metni güncellendi | `property.welcome_text.updated` | Mülk karşılama mesajı değişti. |
-| Politika oluşturuldu | `property.policy.created` | Yeni bir mülk politikası oluşturuldu. |
-| Politika güncellendi | `property.policy.updated` | Mülk politikası güncellendi. |
-
----
-
-## Envanter olayları
-
-Bir mülk içindeki envanter öğelerine ait olaylar, ilgili mülkün webhook abonelerine gönderilir.
-
-### Oda tipleri
-
-| Olay | Anahtar | Açıklama |
-|---|---|---|
-| Oda tipi oluşturuldu | `room_type.created` | Yeni bir oda tipi eklendi. |
-| Oda tipi güncellendi | `room_type.updated` | Oda tipi değiştirildi. |
-| Oda tipi silindi | `room_type.deleted` | Oda tipi kaldırıldı. |
-
-### Fiyat planları
-
-| Olay | Anahtar | Açıklama |
-|---|---|---|
-| Fiyat planı oluşturuldu | `rate_plan.created` | Yeni bir fiyat planı oluşturuldu. |
-| Fiyat planı güncellendi | `rate_plan.updated` | Fiyat planı değiştirildi. |
-| Fiyat planı silindi | `rate_plan.deleted` | Fiyat planı kaldırıldı. |
-
-### Ana fiyatlar
-
-| Olay | Anahtar | Açıklama |
-|---|---|---|
-| Ana fiyat oluşturuldu | `master_rate.created` | Yeni bir ana fiyat oluşturuldu. |
-| Ana fiyat güncellendi | `master_rate.updated` | Ana fiyat değiştirildi. |
-| Ana fiyat silindi | `master_rate.deleted` | Ana fiyat kaldırıldı. |
-
-### Ek hizmetler
-
-| Olay | Anahtar | Açıklama |
-|---|---|---|
-| Ek hizmet oluşturuldu | `add_on.created` | Yeni bir ek hizmet oluşturuldu. |
-| Ek hizmet güncellendi | `add_on.updated` | Ek hizmet değiştirildi. |
-| Ek hizmet silindi | `add_on.deleted` | Ek hizmet kaldırıldı. |
-
-### Toplantı odaları
-
-| Olay | Anahtar | Açıklama |
-|---|---|---|
-| Toplantı odası oluşturuldu | `meeting_room.created` | Yeni bir toplantı odası eklendi. |
-| Toplantı odası güncellendi | `meeting_room.updated` | Toplantı odası değiştirildi. |
-| Toplantı odası silindi | `meeting_room.deleted` | Toplantı odası kaldırıldı. |
-
-### Restoranlar
-
-| Olay | Anahtar | Açıklama |
-|---|---|---|
-| Restoran oluşturuldu | `restaurant.created` | Yeni bir restoran eklendi. |
-| Restoran güncellendi | `restaurant.updated` | Restoran değiştirildi. |
-| Restoran silindi | `restaurant.deleted` | Restoran kaldırıldı. |
-
-### Spa merkezleri
-
-| Olay | Anahtar | Açıklama |
-|---|---|---|
-| Spa oluşturuldu | `spa.created` | Yeni bir spa eklendi. |
-| Spa güncellendi | `spa.updated` | Spa değiştirildi. |
-| Spa silindi | `spa.deleted` | Spa kaldırıldı. |
-
-### Aktiviteler
-
-| Olay | Anahtar | Açıklama |
-|---|---|---|
-| Aktivite oluşturuldu | `activity.created` | Yeni bir aktivite eklendi. |
-| Aktivite güncellendi | `activity.updated` | Aktivite değiştirildi. |
-| Aktivite silindi | `activity.deleted` | Aktivite kaldırıldı. |
-
----
-
-## Satış kanalı olayları
-
-Tedarikçiler ve bağlı kuruluşları birbirine bağlayan dağıtım kanallarına ait olaylar. Hem tedarikçi hem de bağlı kuruluşun webhook abonelerine gönderilir.
-
-| Olay | Anahtar | Açıklama |
-|---|---|---|
-| Satış kanalı oluşturuldu | `sales_channel.created` | Yeni bir satış kanalı oluşturuldu. |
-| Satış kanalı güncellendi | `sales_channel.updated` | Satış kanalı değiştirildi. |
-| Satış kanalı silindi | `sales_channel.deleted` | Satış kanalı kaldırıldı. |
-
----
-
-## Özel fiyat olayları
-
-Bir mülkteki promosyon ve pazarlıklı fiyatlara ait olaylar.
-
-| Olay | Anahtar | Açıklama |
-|---|---|---|
-| Özel fiyat oluşturuldu | `special_rate.created` | Yeni bir özel fiyat oluşturuldu. |
-| Özel fiyat güncellendi | `special_rate.updated` | Özel fiyat değiştirildi. |
-| Özel fiyat silindi | `special_rate.deleted` | Özel fiyat kaldırıldı. |
-| Fiyat değiştirici güncellendi | `rate_modifier.updated` | Fiyat değiştirici güncellendi. |
-
----
-
-## Ödeme alıcı olayları
-
-Ödeme alıcısı (payee) yönetimi ile ilgili olaylar.
-
-| Olay | Anahtar | Açıklama |
-|---|---|---|
-| Ödeme alıcısı oluşturuldu | `payee.create` | Yeni bir ödeme alıcısı başarıyla oluşturuldu. |
-| Ödeme alıcısı oluşturma başarısız oldu | `payee.create.failure` | Ödeme alıcısı oluşturma başarısız oldu. |
-| Ödeme alıcısı güncellendi | `payee.update` | Ödeme alıcısı güncellendi. |
-| Ödeme alıcısı güncelleme başarısız oldu | `payee.update.failure` | Ödeme alıcısı güncelleme başarısız oldu. |
-
----
-
-## Ödeme olayları
-
-TripPay tarafından gerçekleştirilen dahili ödeme işleme olayları.
-
-| Olay | Anahtar | Açıklama |
-|---|---|---|
-| Ödeme başarılı | `internal.payment.succeeded` | Ödeme başarıyla işlendi. |
-| Ödeme işleniyor | `internal.payment.processing` | Ödeme işleniyor. |
-| Ödeme başarısız oldu | `internal.payment.failed` | Ödeme işleme başarısız oldu. |
-
----
-
-## Kanal yöneticisi olayları
-
-Kanal yöneticisi fiyat ve müsaitlik güncellemeleri ile ilgili olaylar.
-
-| Olay | Anahtar | Açıklama |
-|---|---|---|
-| Fiyat güncellemesi | `channel-manager.update.rate` | Kanal yöneticisi fiyat güncellemesi gönderdi. |
-| Müsaitlik güncellemesi | `channel-manager.update.availability` | Kanal yöneticisi müsaitlik güncellemesi gönderdi. |
-| Genel güncelleme | `channel-manager.update` | Genel kanal yöneticisi güncellemesi. |
-
----
-
-## Defter olayları
-
-Mali defter kayıtları ile ilgili olaylar.
-
-| Olay | Anahtar | Açıklama |
-|---|---|---|
-| Defter kaydı oluşturuldu | `ledger.entry.create` | Yeni bir defter kaydı oluşturuldu. |
-
----
-
-## E-posta olayları
-
-| Olay | Anahtar | Açıklama |
-|---|---|---|
-| E-posta yazışması | `email.correspondence` | Giden bir e-posta gönderildi. |
-
----
-
-## Olay sayısı özeti
-
-| Kategori | Sayı |
-|---|---|
-| Yönetici varlık olayları | 33 |
-| Rezervasyon olayları | 16 |
-| Mülk olayları | 13 |
-| Envanter olayları (oda tipleri, fiyat planları, ana fiyatlar, ek hizmetler, tesisler) | 24 |
-| Satış kanalı olayları | 3 |
-| Özel fiyat olayları | 4 |
-| Ödeme alıcı olayları | 4 |
-| Ödeme olayları | 3 |
-| Kanal yöneticisi olayları | 3 |
-| Defter olayları | 1 |
-| E-posta olayları | 1 |
-| **Toplam** | **105** |
+2. Bir webhook oluşturun ve almak istediğiniz olayları seçin — veya tüm olayları almak için listeyi boş bırakın.
+3. Olay gerçekleştiğinde Wink, uç noktanıza imzalı bir HTTP POST gönderir. Zarf, başlıklar, imza doğrulama ve yeniden denemeler için [Webhook Entegrasyonu](/tr/developers/webhook-integration) sayfasına bakın.
+
+## Her olay türü
+
+Bu tablo, platformun olay kataloğundan derleme zamanında oluşturulur, bu yüzden her zaman API ile uyumludur.
+Teslim edilen olay türleri, [Webhooks API](/tr/api/webhooks/) içindeki referans sayfasına bağlantı verir; burada
+tam JSON gövdesi (`WebhookEnvelope` içinde olay-spesifik `object`), `Wink-*` başlıkları ve
+yeniden deneme politikası belgelenmiştir. Teslim edilmeyen olay türleri dahili olarak vardır (ödeme, defter, kanal yöneticisi
+senkronizasyonu, …) ancak şu anda webhook abonelerine gönderilmez.
+
+**Alıcılar**, bir olayı kimin aldığı bilgisini verir: `SUPPLIER` (otel), `AFFILIATE` (otele aktif satış kanalı olan bir bayi), `AGENT` (rezervasyonu yapan seyahat acentesi) veya `SELF` (olayın konusu olan yönetici varlık). Her alıcı aynı yük biçimini alır; rol-spesifik detay yükün `links.self` URL'sinin arkasındadır.
+
+<WebhookEventTypes
+  types={webhooks['x-wink-event-types']}
+  referenceBase="/api/webhooks"
+  eventHeader="Olay"
+  descriptionHeader="Açıklama"
+  deliveredHeader="Teslim Edildi"
+  recipientsHeader="Alıcılar"
+  deliveredLabel="teslim edildi"
+  notDeliveredLabel="teslim edilmedi"
+  noRecipientsLabel="—"
+/>
 
 :::tip
-Geliştirme sırasında tüm olaylara abone olarak başlayın. Sisteminizin hangi yüklerin gerektiğini anladıktan sonra, gürültüyü azaltmak için aboneliklerinizi daraltın.
+Geliştirme sırasında tüm olaylara abone olarak başlayın. Sisteminizin hangi yükleri ihtiyaç duyduğunu anladıktan sonra, gürültüyü azaltmak için aboneliklerinizi daraltın. Canlıya geçmeden önce uç noktanızı ve imza kontrolünüzü doğrulamak için **Applications > Webhooks** üzerinden (veya `POST …/webhook/{id}/test`) kendinize bir test olayı gönderin.
 :::
 
 ## Daha fazla okuma
 
-- [Webhook Entegrasyon Kılavuzu](/tr/guides/developers/webhook-integration) — Kurulum adımları ve en iyi uygulamalar.
-- [Webhooklar](/tr/portal/settings/webhooks) — Webhook aboneliklerinizi yönetin.
-- [Applications](/tr/portal/settings/applications) — API kimlik bilgilerini yönetin.
-- [Wink üzerinde geliştirin](/tr/developers/build-on-wink) — Geliştiriciler için platform genel bakışı.
+- [Webhook Entegrasyon Kılavuzu](/tr/developers/webhook-integration) — Kurulum adımları ve en iyi uygulamalar.
+- [Webhooks](/tr/portal/settings/webhooks) — Webhook aboneliklerinizi yönetin.
+- [Applications](/tr/account/applications) — API kimlik bilgilerinizi yönetin.
+- [Build on Wink](/tr/developers/build-on-wink) — Geliştiriciler için platform genel bakışı.

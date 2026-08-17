@@ -1,0 +1,176 @@
+---
+title: Integracja Webhooków
+description: Ten przewodnik pokazuje programistom, jak skonfigurować webhooki, aby otrzymywać powiadomienia w czasie rzeczywistym o rezerwacjach, płatnościach i innych zdarzeniach.
+sidebar:
+  order: 3
+---
+
+import { Steps, LinkButton } from '@astrojs/starlight/components';
+
+Webhooki pozwalają Twoim systemom otrzymywać powiadomienia w czasie rzeczywistym, gdy na Twoim koncie Wink zachodzą zdarzenia — nowe rezerwacje, anulacje, aktualizacje płatności i inne. Ten przewodnik przeprowadzi Cię przez konfigurację i najlepsze praktyki.
+
+## Odbiorcy
+
+Ten przewodnik jest przeznaczony dla programistów integrujących Wink z systemami zewnętrznymi, takimi jak systemy zarządzania nieruchomościami (PMS), channel managerowie, CRM-y lub niestandardowe pulpity.
+
+## Jak działają webhooki
+
+1. Rejestrujesz URL webhooka w Wink.
+2. Gdy wystąpi zdarzenie (np. nowa rezerwacja), Wink wysyła HTTP POST na Twój URL.
+3. Twój serwer przetwarza payload i odpowiada `200 OK`.
+
+## Konfiguracja webhooka
+
+<Steps>
+1. Zaloguj się na swoje konto (Extranet, Studio lub TripPay — wszystkie obsługują webhooki).
+2. Przejdź do `Applications`, a następnie `Webhooks`. Zobacz [Webhooki](/pl/portal/settings/webhooks).
+3. Kliknij `Create webhook`.
+4. Wprowadź **nazwę** (np. "Synchronizacja rezerwacji PMS").
+5. Wprowadź swój **URL webhooka** — punkt końcowy HTTPS na Twoim serwerze.
+6. **Wybierz zdarzenia** — Wybierz konkretne zdarzenia do subskrypcji lub pozostaw puste, aby otrzymywać wszystkie zdarzenia.
+7. Przełącz **Enabled** na włączone.
+8. Kliknij `Save` — odpowiedź pokaże Twój **sekret podpisu tylko raz**; zapisz go teraz.
+</Steps>
+
+## Typy zdarzeń
+
+Wink publikuje obecnie 70 typów zdarzeń webhooków dotyczących rezerwacji, nieruchomości, kont (jednostek zarządzających) oraz inwentarza (typy pokoi, plany taryfowe, stawki główne, dodatki, udogodnienia, kanały sprzedaży, promocje).
+Najczęstsze:
+
+| Kategoria | Przykłady |
+|---|---|
+| **Rezerwacja** | `booking.create`, `booking.cancelled`, `booking.refund.partial`, `booking.refund.full`, `booking.review.created` |
+| **Nieruchomość** | `property.created`, `property.status.updated`, `property.policy.updated` |
+| **Inwentarz** | `room_type.updated`, `rate_plan.created`, `master_rate.updated`, `special_rate.created`, `sales_channel.created` |
+| **Konto** | `managing_entity.created`, `managing_entity.status.updated`, `managing_entity.manager.added` |
+
+Pełna, generowana lista — z opisem, odbiorcą i linkiem do strony referencyjnej każdego zdarzenia — to **Katalog Zdarzeń Webhook**. Strona referencyjna dla każdego zdarzenia (ciało JSON, nagłówki, polityka ponawiania) znajduje się w [Webhooks API](/pl/api/webhooks/).
+
+<LinkButton href="/pl/developers/webhook-events">
+  Zobacz wszystkie typy zdarzeń
+</LinkButton>
+
+## Co otrzymujesz
+
+Każda dostawa to HTTP `POST` na Twój URL webhooka z `Content-Type: application/json` i następującą kopertą:
+
+```json
+{
+  "id": "0198a4f2-6b0e-7c1d-9a3e-2f4b8c6d1e0a",
+  "type": "booking.create",
+  "occurredAt": "2026-08-15T09:30:00Z",
+  "ownerIdentifier": "3c6b1a5d-8e2f-4a0b-9c7d-6e4f0a8b2c51",
+  "recipientRole": "SUPPLIER",
+  "schemaVersion": 2,
+  "object": { "...": "event-specific payload, e.g. BookingWebhookPayload" }
+}
+```
+
+- `id` — identyfikator zdarzenia; taki sam dla każdego punktu końcowego Twojego konta, który otrzymuje to zdarzenie, oraz dla każdej próby ponownej wysyłki. Używaj go jako **klucza idempotencji**.
+- `type` — klucz typu zdarzenia (wysyłany również jako nagłówek `Wink-Event-Type`). Rozgałęziając po `type` i `schemaVersion` parsuj `object`.
+- `object` — wyselekcjonowane podsumowanie zasobu, którego dotyczy zdarzenie (identyfikatory, status, pola, na których działasz) oraz `links.self`, kanoniczny URL REST po stronie dostawcy pełnego zasobu. Pobierz go za pomocą własnych poświadczeń API, gdy potrzebujesz więcej niż podsumowanie; jeśli otrzymujesz zdarzenie jako reseller lub agent turystyczny, użyj odpowiedniego punktu końcowego swojego API dla tego samego identyfikatora.
+
+Każdy schemat payload jest dokumentowany dla zdarzenia w referencji [Webhooks API](/pl/api/webhooks/).
+
+### Nagłówki
+
+| Nagłówek | Znaczenie |
+|---|---|
+| `Wink-Version` | Wersja kontraktu sieciowego, `2.0`. |
+| `Wink-Event-Id` | To samo co `id` w ciele — Twój klucz idempotencji. |
+| `Wink-Delivery-Id` | Unikalny dla punktu końcowego i zdarzenia; zmienia się tylko przy ponownej wysyłce. |
+| `Wink-Event-Type` | To samo co `type` w ciele. |
+| `Wink-Delivery-Attempt` | Numer próby dostawy, zaczynając od 1. |
+| `Wink-Signature` | Podpis HMAC — patrz poniżej. |
+
+## Weryfikacja podpisów
+
+Każdy webhook ma **sekret podpisu** (`whsec_…`), który Wink pokazuje **raz**, podczas tworzenia webhooka lub rotacji sekretu. Przechowuj go jak hasło. Każda dostawa zawiera
+
+```
+Wink-Signature: t=1755250200,v1=5d41402abc4b2a76b9719d911017c592…
+```
+
+gdzie `t` to znacznik czasu Unix (sekundy), a `v1` to małe litery hex **HMAC-SHA256** ciągu
+`t + "." + rawBody`, kluczowanego Twoim sekretem, a `rawBody` to dokładne bajty ciała żądania, jakie otrzymałeś — nie serializuj ponownie JSON przed weryfikacją. Przez 24 godziny po rotacji sekretu nagłówek zawiera drugi podpis `v1=` podpisany poprzednim sekretem; zaakceptuj dostawę, jeśli **którykolwiek** `v1` pasuje.
+
+Weryfikuj w czterech krokach: sparsuj `t` i każdy `v1`; przelicz HMAC dla `t.rawBody` z Twoim sekretem; porównaj w czasie stałym; odrzuć, jeśli `|teraz − t|` przekracza tolerancję (zalecane 5 minut).
+
+```js
+// Node.js (Express-style; upewnij się, że masz surowe ciało, a nie sparsowany obiekt)
+import { createHmac, timingSafeEqual } from 'node:crypto';
+
+export function verifyWinkSignature(header, rawBody, secret, toleranceSeconds = 300) {
+  const parts = Object.fromEntries(header.split(',').map((p) => p.split('=').map((s) => s.trim())));
+  const t = Number(parts.t);
+  if (!Number.isFinite(t) || Math.abs(Date.now() / 1000 - t) > toleranceSeconds) return false;
+  const expected = createHmac('sha256', secret).update(`${t}.${rawBody}`).digest('hex');
+  return header
+    .split(',')
+    .filter((p) => p.trim().startsWith('v1='))
+    .map((p) => p.trim().slice(3))
+    .some((v1) => v1.length === expected.length && timingSafeEqual(Buffer.from(v1, 'utf8'), Buffer.from(expected, 'utf8')));
+}
+```
+
+```java
+// Java
+static boolean verify(String header, String rawBody, String secret, long nowSeconds, long toleranceSeconds) throws Exception {
+    long t = Long.MIN_VALUE;
+    List<String> signatures = new ArrayList<>();
+    for (String part : header.split(",")) {
+        String[] kv = part.trim().split("=", 2);
+        if (kv[0].equals("t")) t = Long.parseLong(kv[1]);
+        else if (kv[0].equals("v1")) signatures.add(kv[1]);
+    }
+    if (t == Long.MIN_VALUE || Math.abs(nowSeconds - t) > toleranceSeconds) return false;
+    Mac mac = Mac.getInstance("HmacSHA256");
+    mac.init(new SecretKeySpec(secret.getBytes(StandardCharsets.UTF_8), "HmacSHA256"));
+    byte[] expected = HexFormat.of().formatHex(mac.doFinal((t + "." + rawBody).getBytes(StandardCharsets.UTF_8))).getBytes(StandardCharsets.US_ASCII);
+    return signatures.stream().anyMatch(v1 -> MessageDigest.isEqual(expected, v1.toLowerCase().getBytes(StandardCharsets.US_ASCII)));
+}
+```
+
+Rotuj sekret z poziomu portalu lub za pomocą `POST /api/managing-entity/{id}/webhook/{webhookId}/rotate-secret`;
+odpowiedź pokaże nowy sekret raz, a stary będzie ważny przez 24 godziny, abyś mógł go wdrożyć.
+
+## Ponawianie i ponowna dostawa
+
+- Odpowiedz dowolnym `2xx` w ciągu 10 sekund, aby potwierdzić odbiór. Ciężkie operacje wykonuj asynchronicznie.
+- `5xx`, timeout, `408` lub `429` są ponawiane z opóźnieniem: po 1 minucie, 5 minutach, 30 minutach, 2 godzinach,
+  6 godzinach, 12 godzinach, a potem codziennie — 10 prób przez około 3 dni — po czym dostawa jest oznaczana jako **martwa**.
+- Każdy inny `4xx` traktowany jest jako "odrzuciłeś tę dostawę" i **nie** jest ponawiany.
+- Każde zdarzenie, dostawa i próba (status, fragment odpowiedzi) jest widoczna w **Applications > Webhooks**
+  oraz przez API (`…/webhook/event/grid`, `…/webhook/delivery/grid`). Możesz **ponownie dostarczyć** dowolną dostawę
+  (`POST …/webhook/delivery/{deliveryId}/redeliver`, co rozpoczyna nową serię prób), ponownie dostarczyć wszystkie martwe
+  dostawy webhooka naraz (`POST …/webhook/{webhookId}/redeliver-dead`), lub anulować jedną.
+- Dostawy są przechowywane przez 30 dni.
+
+## Testowe zdarzenia
+
+Wyślij sobie syntetyczne zdarzenie `webhook.test` z portalu lub za pomocą
+`POST /api/managing-entity/{id}/webhook/{webhookId}/test`. Jest podpisane i dostarczane dokładnie jak prawdziwe
+zdarzenie, więc możesz zweryfikować swój punkt końcowy, sprawdzenie podpisu i obsługę idempotencji przed subskrypcją
+na zdarzenia na żywo.
+
+## Najlepsze praktyki
+
+- **Używaj HTTPS** — Wink wysyła payloady tylko do punktów końcowych HTTPS.
+- **Odpowiadaj szybko** — Zwróć `200 OK` zaraz po otrzymaniu payloadu. Ciężkie przetwarzanie wykonuj asynchronicznie.
+- **Idempotencja** — Twój handler powinien być idempotentny; deduplikuj po `Wink-Event-Id`. Wink ponawia próby, gdy nie otrzyma `2xx`.
+- **Weryfikuj źródło** — Sprawdzaj nagłówek `Wink-Signature` (patrz [Weryfikacja podpisów](#verifying-signatures)) przed przetwarzaniem; odrzucaj wszystko, co nie przejdzie.
+- **Logowanie** — Loguj każdy otrzymany payload webhooka. Ułatwia to debugowanie problemów z integracją.
+
+## Wstrzymywanie i usuwanie
+
+Możesz **wyłączyć** webhook bez usuwania go. To wstrzymuje dostarczanie, abyś mógł rozwiązać problemy bez utraty konfiguracji. Gdy będziesz gotowy, włącz go ponownie.
+
+Usunięcie webhooka usuwa go na stałe. Każda integracja korzystająca z tego webhooka przestanie otrzymywać powiadomienia.
+
+## Dalsza lektura
+
+- [Katalog Zdarzeń Webhook](/pl/developers/webhook-events) — Wszystkie typy zdarzeń, generowane z katalogu platformy.
+- [Referencja Webhooks API](/pl/api/webhooks/) — Schematy payloadów, nagłówki i punkty końcowe zarządzania subskrypcjami/dostawami.
+- [Webhooki](/pl/portal/settings/webhooks) — Pełna referencja zarządzania webhookami.
+- [Applications](/pl/account/applications) — Zarządzaj swoimi poświadczeniami API.
+- [Developers > APIs](/pl/api) — Pełna dokumentacja API.

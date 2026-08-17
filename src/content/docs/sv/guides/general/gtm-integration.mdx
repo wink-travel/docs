@@ -1,0 +1,681 @@
+---
+title: GTM Analytics-integration
+description: Hur du ansluter vilken Google Tag Manager-behållare som helst (t.ex. en Sojern-behållare) till Wink så att den kan spåra dina gästers bokningsresa och driva dina retargeting- och reklamkampanjer.
+sidebar:
+  label: GTM Analytics-integration
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+Du kan ansluta **vilken** Google Tag Manager (GTM)-behållare som helst till Wink genom att ange dess **GTM Container ID** i Wink-portalen. När den är ansluten laddas din behållare automatiskt för din fastighet och läser Wink:s bokningsevenemang direkt — vilket täcker hela gästreseflödet från sökning till slutförd bokning. Ett vanligt användningsfall är en **Sojern**-behållare för retargeting och reklam, men vilken GTM-behållare som helst fungerar på samma sätt.
+
+<Aside type="tip">
+Detta förutsätter att du redan har ett GTM Container ID (format `GTM-XXXXXXX`). Om din behållare kommer från en partner som Sojern, be din kontohanterare om **GTM Container ID** specifikt — det skiljer sig från en pixel- eller tagg-ID. Ny på Sojern? Besök [sojern.com/contact](https://www.sojern.com/contact) för att komma igång.
+</Aside>
+
+---
+
+## Vad du behöver göra
+
+<Steps>
+
+1. **Skaffa ditt GTM Container ID**
+
+   Skaffa ditt **GTM Container ID** (format `GTM-XXXXXXX`). Om det kommer från en partner som Sojern, begär GTM Container ID specifikt — det skiljer sig från en pixel- eller tagg-ID.
+
+2. **Ange det i Wink-portalen**
+
+   Logga in på [app.wink.travel](https://app.wink.travel), välj ditt konto och öppna dina anpassningsinställningar. I avsnittet **Analytics & integrations** klistrar du in ditt GTM Container ID i fältet **GTM Container ID** och sparar. Din integration är nu aktiv.
+
+3. **Bekräfta med din leverantör**
+
+   Om din behållare kommer från en partner som Sojern, meddela din kontohanterare att integrationen är aktiv. De kan verifiera från sin sida att taggarna avfyras korrekt på `wink.travel` för din fastighet och att data flödar in i ditt konto.
+
+</Steps>
+
+<Aside type="note">
+Du behöver inte placera någon pixelkod på din egen webbplats för denna integration. Wink laddar din GTM-behållare automatiskt på alla sidor där din fastighet är aktiv.
+
+Detta fungerar för **vilket** GTM Container ID som helst — Sojern är bara ett vanligt exempel.
+</Aside>
+
+---
+
+## Vad Wink gör på vår sida
+
+För transparens, här är vad Wink konfigurerar för att få denna integration att fungera:
+
+- **Ett GTM Container ID-fält** finns i avsnittet **Analytics & integrations** i dina anpassningsinställningar. När du anger ditt Container ID validerar Wink formatet (`GTM-XXXXXXX`) och lagrar det säkert kopplat till din fastighet.
+- **På varje sida där din fastighet är aktiv** på Wink injiceras din behållare direkt i sidan — den delar Wink:s egen `window.dataLayer` — så den laddas parallellt med Winks egen behållare utan beroende av någon extra konfiguration. Detta sker automatiskt, utan arbete per fastighet från Wink-teamet.
+- **Din behållare laddas asynkront**, så den påverkar inte sidladdningsprestandan för dina gäster.
+- **Winks egen spårning och din behållare körs parallellt**, och läser från samma delade `dataLayer`. Varje bokningsevenemang som Wink spårar är samtidigt tillgängligt för din behållare.
+- **När din fastighet inte visas** — till exempel när en gäst tittar på ett annat hotell på Wink — laddas inte din behållare, så den får bara data som är relevant för din fastighet.
+- **Den slutförda bokningen (`purchase`) avfyras i webbläsaren på tack-sidan.** Ett GTM Container ID är en svart låda — Wink kan inte anta vilka taggar som finns inuti — så Wink anropar aldrig Google på dina vägnar från sina servrar. Istället tar vilken GA4- eller konverteringstagg som helst i din behållare emot `purchase` klient-sidigt, precis som alla andra bokningsevenemang. Eftersom betalningsleverantören omdirigerar gästens webbläsare bort och tillbaka, återansluter Wink den analys-session som omdirigeringen avbröt **innan** `purchase` avfyras, så försäljningen tillskrivs gästens ursprungliga besök istället för att räknas som en ny session.
+
+---
+
+## DataLayer-referens
+
+Wink skickar GA4-kompatibla händelser till `dataLayer` under hela gästreseflödet. Din GTM-behållare läser från samma delade `dataLayer`, så varje trigger eller variabel du konfigurerar har tillgång till alla egenskaper som beskrivs nedan.
+
+Varje händelse följer den standardiserade GA4 Enhanced Ecommerce-strukturen: en överordnad `event`-sträng och ett `ecommerce`-objekt. Innan varje push rensar Wink den tidigare ecommerce-payloaden för att förhindra att gammal data läcker in i nya triggers.
+
+<Aside type="note">
+**dataLayer-resetmönster**
+
+Wink återställer ecommerce-objektet före varje event-push:
+
+```js
+dataLayer.push({ ecommerce: null });   // rensa tidigare event
+dataLayer.push({ event: '...', ecommerce: { ... } });
+```
+
+Lita inte på att ecommerce-egenskaper kvarstår mellan händelser. Läs alltid dem vid trigger-tid inom samma event.
+</Aside>
+
+---
+
+### Bokningsresa-händelser
+
+Dessa händelser avfyras automatiskt när en gäst rör sig genom bokningstratten. Konfigurera dina GTM-triggers som **Custom Event**-triggers som matchar händelsenamnen nedan.
+
+| Steg | Händelse | När den avfyras |
+|------|----------|-----------------|
+| 1 | `view_item_list` | Hotellinventariets rutnät eller lista laddas |
+| 2 | `view_item` | Gäst tittar på en specifik fastighetssida |
+| 3 | `add_to_cart` | Gäst lägger till ett rum i kundvagnen |
+| 4 | `begin_checkout` | Kassasidan / betalningssidan laddas |
+| 5 | `add_payment_info` | Gäst väljer betalningsmetod |
+| 6 | `login` | Gäst autentiserar via SSO |
+| 7 | `purchase` | Bokning bekräftas |
+| 8 | `refund` | Bokning avbokas |
+
+---
+
+#### `view_item_list`
+
+Avfyras när ett hotellinventarierutnät eller lista renderas.
+
+```json
+{
+  "event": "view_item_list",
+  "ecommerce": {
+    "item_list_id": "featured_hotels",
+    "item_list_name": "Featured Hotels",
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `view_item`
+
+Avfyras när en gäst tittar på en specifik fastighet.
+
+```json
+{
+  "event": "view_item",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `add_to_cart`
+
+Avfyras när en gäst lägger till ett rum i sin kundvagn.
+
+```json
+{
+  "event": "add_to_cart",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `begin_checkout`
+
+Avfyras när kassasidan / betalningssidan laddas.
+
+```json
+{
+  "event": "begin_checkout",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "items": [ ]
+  }
+}
+```
+
+`coupon` finns endast när en rabattkod har använts.
+
+---
+
+#### `add_payment_info`
+
+Avfyras när gästen väljer eller bekräftar en betalningsmetod.
+
+```json
+{
+  "event": "add_payment_info",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "payment_type": "STRIPE",
+    "items": [ ]
+  }
+}
+```
+
+`payment_type` fylls i från betalningsförmedlarens typ. `coupon` finns endast när en rabattkod har använts.
+
+---
+
+#### `login`
+
+Avfyras när en gäst autentiserar via single sign-on.
+
+```json
+{
+  "event": "login",
+  "ecommerce": {
+    "method": "IAM"
+  }
+}
+```
+
+---
+
+#### `purchase`
+
+Avfyras när en bokning bekräftas.
+
+```json
+{
+  "event": "purchase",
+  "ecommerce": {
+    "currency": "USD",
+    "transaction_id": "bc-a1b2c3d4",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "shipping": 0.00,
+    "tax": 0.00,
+    "items": [
+      {
+        "item_id": "rr-xyz789",
+        "item_name": "Deluxe Ocean Suite",
+        "item_brand": "Grand Resort",
+        "item_category": "GUEST_ROOM",
+        "price": 299.00,
+        "quantity": 1,
+        "property_id": "prop-abc123",
+        "property_name": "Grand Resort Maldives",
+        "property_brand": "Grand Collection",
+        "property_chain": "Luxury Hotels International",
+        "city_name": "Malé",
+        "country_code": "MV",
+        "start_date": "2026-06-01",
+        "end_date": "2026-06-05",
+        "num_adults": 2,
+        "num_children": 0,
+        "cancellation_policy": "Refundable",
+        "rate_plan_id": "rp-summer2026",
+        "room_rate_id": "rr-xyz789",
+        "room_rate_name": "Summer Escape — Bed & Breakfast",
+        "num_perks": 2,
+        "room_location": "Overwater",
+        "room_view": "Ocean",
+        "room_classification": "Suite"
+      }
+    ]
+  }
+}
+```
+
+`transaction_id` är det unika bokningskontrakts-ID:t. `coupon`, `shipping` och `tax` finns endast när tillämpligt.
+
+---
+
+#### `refund`
+
+Avfyras när en bokning avbokas.
+
+```json
+{
+  "event": "refund",
+  "ecommerce": {
+    "currency": "USD",
+    "transaction_id": "bc-a1b2c3d4",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "shipping": 0.00,
+    "tax": 0.00,
+    "items": [ ]
+  }
+}
+```
+
+`transaction_id` matchar `purchase`-händelsen för samma bokning. `coupon`, `shipping` och `tax` finns endast när tillämpligt.
+
+---
+
+### Egenskaper för objekt
+
+Alla händelser som inkluderar en `items`-array delar samma objektschema. Varje egenskap är valfri om inte annat anges.
+
+#### Standard GA4-fält
+
+Dessa fält förstås inbyggt av GA4 och visas i standardrapporter för e-handel utan ytterligare konfiguration.
+
+| Egenskap | Typ | Obligatorisk | Beskrivning |
+|----------|-----|--------------|-------------|
+| `item_id` | string | Ja | Unikt ID för rummet eller produkten |
+| `item_name` | string | — | Namn på rummet eller produkten |
+| `affiliation` | string | — | Affiliate- eller säljarnamn |
+| `coupon` | string | — | Rabattkod som tillämpats på objektet |
+| `currency` | string | — | ISO 4217 valutakod (t.ex. `USD`) |
+| `creative_name` | string | — | Kreativt namn som används i en kampanj |
+| `creative_slot` | string | — | Slot-position för kampanjkreativet |
+| `discount` | number | — | Rabattsumma som tillämpats |
+| `index` | number | — | Position i listan (1-baserad) |
+| `item_brand` | string | — | Hotell- eller varumärkesnamn |
+| `item_category` | string | — | Produkttyp — t.ex. `GUEST_ROOM`, `ACTIVITY`, `ATTRACTION`, `MEETING_ROOM`, `RESTAURANT`, `SPA` |
+| `item_list_id` | string | — | Identifierare för listan som objektet tillhör |
+| `item_list_name` | string | — | Visningsnamn för listan |
+| `location_id` | string | — | Geokoordinater för fastigheten |
+| `price` | number | — | Enhetspris |
+| `promotion_id` | string | — | Identifierare för kampanjen |
+| `promotion_name` | string | — | Visningsnamn för kampanjen |
+| `quantity` | number | — | Kvantitet (standard är `1`) |
+
+#### Anpassade objektparametrar
+
+Dessa parametrar bär Wink-specifik bokningskontext. GA4 visar dem inte automatiskt i rapporter — du måste registrera varje som en **anpassad dimension med objektomfång** i din GA4-egendom innan de visas i utforskningar eller standardrapporter. Se [Anpassade dimensioner i GA4](#custom-dimensions-in-ga4) nedan för installationsinstruktioner.
+
+| Egenskap | Typ | Beskrivning |
+|----------|-----|-------------|
+| `property_id` | string | Wink-fastighetsidentifierare |
+| `property_name` | string | Visningsnamn för fastigheten |
+| `property_brand` | string | Varumärket fastigheten tillhör |
+| `property_chain` | string | Kedjan fastigheten tillhör |
+| `property_url_name` | string | URL-vänlig slug för fastigheten |
+| `city_name` | string | Stad där fastigheten ligger |
+| `country_code` | string | ISO 3166-1 alpha-2 landskod |
+| `start_date` | string | Incheckningsdatum i formatet `ÅÅÅÅ-MM-DD` |
+| `end_date` | string | Utcheckningsdatum i formatet `ÅÅÅÅ-MM-DD` |
+| `num_adults` | number | Antal vuxna i bokningen |
+| `num_children` | number | Antal barn i bokningen |
+| `cancellation_policy` | string | En av: `Refundable`, `Non-Refundable`, `Refundable-With-Restrictions`, `Non-Refundable-With-Restrictions` |
+| `rate_plan_id` | string | Identifierare för prisplanen |
+| `room_rate_id` | string | Identifierare för det specifika rumspriset |
+| `room_rate_name` | string | Visningsnamn för rumspriset |
+| `num_perks` | number | Antal förmåner som ingår i priset |
+| `room_location` | string | Platsbeskrivning för rummet (t.ex. `Overwater`, `Garden`) |
+| `room_view` | string | Utsiktsbeskrivning för rummet (t.ex. `Ocean`, `City`) |
+| `room_classification` | string | Rumsklassificering eller nivå (t.ex. `Suite`, `Standard`) |
+| `bed_type` | string | Sängkonfiguration för rummet (t.ex. `King`, `Twin`) |
+
+---
+
+### Anpassade dimensioner i GA4
+
+GA4 ignorerar anpassade objektparametrar i rapporter tills du explicit registrerar dem som anpassade dimensioner med objektomfång. Du behöver bara registrera de parametrar du tänker använda i rapporter — du behöver inte registrera alla 20.
+
+<Steps>
+
+1. **Öppna Anpassade definitioner**
+
+   I GA4, gå till **Admin** (kugghjulsikonen nere till vänster) → välj din egendom → **Data display** → **Custom definitions**.
+
+2. **Skapa en ny anpassad dimension**
+
+   Klicka på **Create custom dimensions**.
+
+3. **Fyll i dimensionens detaljer**
+
+   - **Dimension name** — den läsbara etiketten som visas i GA4-rapporter (se tabellen nedan)
+   - **Scope** — välj **Item**
+   - **Event parameter** — det exakta parameternamnet som det visas i dataLayer (se tabellen nedan)
+   - **Description** — valfritt men rekommenderas
+
+4. **Spara och upprepa**
+
+   Klicka på **Save**, och upprepa för varje parameter du vill spåra.
+
+</Steps>
+
+<Aside type="note">
+Anpassade dimensioner kan ta upp till 24 timmar innan de börjar visas i GA4-rapporter efter registrering. Historisk data som samlats in före registrering fylls inte i i efterhand.
+
+GA4 tillåter upp till 50 anpassade dimensioner med objektomfång per egendom på standardegendomar (360-egendomar tillåter fler).
+</Aside>
+
+Använd följande tabell som referens när du skapar anpassade dimensioner. Värdet för **Event parameter** måste matcha exakt — GA4 är skiftlägeskänsligt.
+
+| Dimensionens namn | Event parameter | Typ |
+|-------------------|-----------------|-----|
+| Property ID | `property_id` | Text |
+| Property name | `property_name` | Text |
+| Property brand | `property_brand` | Text |
+| Property chain | `property_chain` | Text |
+| Property URL name | `property_url_name` | Text |
+| City name | `city_name` | Text |
+| Country code | `country_code` | Text |
+| Check-in date | `start_date` | Text |
+| Check-out date | `end_date` | Text |
+| Number of adults | `num_adults` | Number |
+| Number of children | `num_children` | Number |
+| Cancellation policy | `cancellation_policy` | Text |
+| Rate plan ID | `rate_plan_id` | Text |
+| Room rate ID | `room_rate_id` | Text |
+| Room rate name | `room_rate_name` | Text |
+| Number of perks | `num_perks` | Number |
+| Room location | `room_location` | Text |
+| Room view | `room_view` | Text |
+| Room classification | `room_classification` | Text |
+| Bed type | `bed_type` | Text |
+
+---
+
+### Ytterligare tillgängliga händelser
+
+Följande händelser finns i Wink dataLayer men är inte en del av standardbokningstratten. De kan avfyras av andra interaktioner på plattformen.
+
+#### `add_to_wishlist`
+
+```json
+{
+  "event": "add_to_wishlist",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+#### `remove_from_cart`
+
+```json
+{
+  "event": "remove_from_cart",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+#### `select_item`
+
+```json
+{
+  "event": "select_item",
+  "ecommerce": {
+    "item_list_id": "featured_hotels",
+    "item_list_name": "Featured Hotels",
+    "items": [ ]
+  }
+}
+```
+
+#### `view_cart`
+
+```json
+{
+  "event": "view_cart"
+}
+```
+
+Ingen `ecommerce`-payload ingår med denna händelse.
+
+#### `view_promotion`
+
+```json
+{
+  "event": "view_promotion",
+  "ecommerce": {
+    "creative_name": "Summer Banner",
+    "creative_slot": "hero",
+    "promotion_id": "promo_001",
+    "promotion_name": "Summer Sale",
+    "items": [ ]
+  }
+}
+```
+
+#### `select_promotion`
+
+```json
+{
+  "event": "select_promotion",
+  "ecommerce": {
+    "creative_name": "Summer Banner",
+    "creative_slot": "hero",
+    "promotion_id": "promo_001",
+    "promotion_name": "Summer Sale",
+    "items": [ ]
+  }
+}
+```
+
+#### `search`
+
+```json
+{
+  "event": "search",
+  "ecommerce": {
+    "search_term": "beachfront resort"
+  }
+}
+```
+
+#### `select_content`
+
+```json
+{
+  "event": "select_content",
+  "ecommerce": {
+    "content_type": "hotel",
+    "content_id": "prop_12345"
+  }
+}
+```
+
+#### `share`
+
+```json
+{
+  "event": "share",
+  "ecommerce": {
+    "method": "copy_link",
+    "content_type": "hotel",
+    "item_id": "prop_12345"
+  }
+}
+```
+
+#### `sign_up`
+
+```json
+{
+  "event": "sign_up",
+  "ecommerce": {
+    "method": "email"
+  }
+}
+```
+
+#### `generate_lead`
+
+```json
+{
+  "event": "generate_lead",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 0.00
+  }
+}
+```
+
+#### `join_group`
+
+```json
+{
+  "event": "join_group",
+  "ecommerce": {
+    "group_id": "group_abc"
+  }
+}
+```
+
+#### `earn_virtual_currency`
+
+```json
+{
+  "event": "earn_virtual_currency",
+  "ecommerce": {
+    "virtual_currency_name": "WinkPoints",
+    "value": 100
+  }
+}
+```
+
+#### `spend_virtual_currency`
+
+```json
+{
+  "event": "spend_virtual_currency",
+  "ecommerce": {
+    "virtual_currency_name": "WinkPoints",
+    "value": 50,
+    "item_name": "Room Upgrade"
+  }
+}
+```
+
+#### `level_start`
+
+```json
+{
+  "event": "level_start",
+  "ecommerce": {
+    "level_name": "Gold"
+  }
+}
+```
+
+#### `level_end`
+
+```json
+{
+  "event": "level_end",
+  "ecommerce": {
+    "level_name": "Gold",
+    "success": true
+  }
+}
+```
+
+#### `level_up`
+
+```json
+{
+  "event": "level_up",
+  "ecommerce": {
+    "level": 2,
+    "character": "traveler"
+  }
+}
+```
+
+#### `post_score`
+
+```json
+{
+  "event": "post_score",
+  "ecommerce": {
+    "score": 980,
+    "level": 2,
+    "character": "traveler"
+  }
+}
+```
+
+#### `unlock_achievement`
+
+```json
+{
+  "event": "unlock_achievement",
+  "ecommerce": {
+    "achievement_id": "first_booking"
+  }
+}
+```
+
+#### `tutorial_begin`
+
+```json
+{
+  "event": "tutorial_begin",
+  "ecommerce": {}
+}
+```
+
+#### `tutorial_complete`
+
+```json
+{
+  "event": "tutorial_complete",
+  "ecommerce": {}
+}
+```
+
+---
+
+### `virtualPageView`
+
+Detta är en anpassad Wink-händelse — inte en del av standard GA4-händelseuppsättningen. Den skickas vid varje sidnavigering och bär enhets- och sessionskontext. Den inkluderar inte ett `ecommerce`-objekt.
+
+```json
+{
+  "event": "virtualPageView",
+  "device": "Desktop",
+  "deviceAgent": "Mozilla/5.0 ...",
+  "os": "MacOS",
+  "path": "/hotels/grand-resort",
+  "title": "Grand Resort — Wink",
+  "userId": "user_abc123",
+  "startDate": "2026-06-01",
+  "endDate": "2026-06-05",
+  "guests": "2",
+  "rooms": "1"
+}
+```
+
+| Egenskap | Beskrivning |
+|----------|-------------|
+| `device` | Upptäckt enhetstyp — `Desktop`, `Android`, `iPhone`, `iPad` eller liknande |
+| `deviceAgent` | Rå användaragentsträng |
+| `os` | Upptäckt operativsystem — `Windows`, `MacOS`, `Linux`, `UNIX` |
+| `path` | Aktuell sidväg |
+| `title` | Aktuell sidtitel |
+| `userId` | Identifierare för autentiserad användare (utesluts när ej inloggad) |
+| `startDate` | Incheckningsdatum från aktuell sökningssession |
+| `endDate` | Utcheckningsdatum från aktuell sökningssession |
+| `guests` | Antal gäster från aktuell sökningssession |
+| `rooms` | Antal rum från aktuell sökningssession |

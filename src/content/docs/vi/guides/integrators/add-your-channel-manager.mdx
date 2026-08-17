@@ -1,0 +1,426 @@
+---
+title: Thêm Kênh Quản Lý Của Bạn
+description: Hướng dẫn từng bước cho nhà phát triển channel manager và PMS tích hợp với nền tảng Wink.
+sidebar:
+  order: 1
+---
+
+import { Steps, LinkButton } from '@astrojs/starlight/components';
+
+Hướng dẫn này giúp các nhà phát triển channel manager và PMS thực hiện toàn bộ quy trình tích hợp với Wink — từ việc tạo tài khoản đến ánh xạ tồn kho và chạy bài kiểm tra đầu-cuối đầu tiên.
+
+## Môi trường
+
+API Channel Manager (Integrations) có sẵn trong hai môi trường. Sử dụng staging cho tất cả phát triển và chứng nhận; chỉ chuyển sang production khi ra mắt.
+
+| Môi trường | URL cơ sở |
+| ----------- | -------- |
+| Production  | https://integrations.wink.travel |
+| Staging     | https://staging-integrations.wink.travel |
+
+## Tham khảo API
+
+API Channel Manager tuân theo tiêu chuẩn giao thức OTA (SOAP/XML) để tương thích với các hệ thống khách sạn hiện có. Bắt đầu bằng cách xem tài liệu điểm cuối đối tác:
+
+<LinkButton href="/vi/partner-api/partner/">
+  Channel Manager API — Điểm cuối đối tác
+</LinkButton>
+
+## Các bước tích hợp
+
+<Steps>
+1. **Tạo tài khoản người dùng Wink**
+
+   Đăng ký tại [staging-app.wink.travel](https://staging-app.wink.travel). Tất cả các bước dưới đây sử dụng môi trường staging — bạn sẽ lặp lại toàn bộ quy trình trong production trước khi ra mắt.
+
+2. **Tạo tài khoản Affiliate / Channel Manager của bạn**
+
+   Dưới tài khoản người dùng mới, tạo một tài khoản và chọn loại tài khoản **Affiliate / Channel Manager**. Đây là tài khoản mà tích hợp của bạn sẽ xác thực.
+
+3. **Đăng ký ứng dụng và tạo token đầu tiên**
+
+   Tạo một [Application](/vi/account/applications) và liên kết nó với tài khoản channel manager từ bước 2. Chọn **MACHINE_2_MACHINE** làm loại client — đây là tích hợp server-to-server không có người dùng cuối để chuyển hướng. Sao chép **Client ID** và **Secret Key** ngay lập tức; khóa bí mật chỉ hiển thị một lần và không thể lấy lại.
+
+   Ứng dụng này tạo token bearer mà mọi cuộc gọi trong hướng dẫn này sử dụng dưới dạng `Authorization: Bearer <access_token>`. Đổi thông tin xác thực của bạn lấy token bằng cách sử dụng grant `client_credentials` với `https://staging-iam.wink.travel/oauth2/token`, yêu cầu phạm vi `integrations.read integrations.write`. Thực hiện bước này trước khi tiếp tục — bạn không thể tra cứu định danh tài khoản hoặc truy cập bất kỳ điểm cuối Channel Manager nào nếu không có token. Xem [Authentication](/vi/developers/authentication) để biết quy trình đầy đủ, host production và danh mục phạm vi hoàn chỉnh.
+
+4. **Tạo tài khoản Khách sạn**
+
+   Dưới cùng một người dùng, tạo tài khoản thứ hai và chọn loại tài khoản **Hotel**. Điều này cung cấp cho bạn một cơ sở để thử nghiệm mà không cần liên quan đến khách sạn thật.
+
+5. **Xác nhận cả hai tài khoản đã được phê duyệt**
+
+   Không tài khoản nào có thể sử dụng được nếu chưa được phê duyệt: tài khoản channel manager chưa được phê duyệt sẽ không xuất hiện trong danh sách channel manager của bất kỳ khách sạn nào, và khách sạn chưa được phê duyệt sẽ không được trả về bởi API.
+
+   - **Staging** — phê duyệt tự động. Cả hai tài khoản có thể sử dụng ngay khi tạo, không cần yêu cầu gì thêm.
+   - **Production** — phê duyệt thủ công. Gửi tên cả hai tài khoản và người dùng sở hữu chúng cho liên hệ tích hợp Wink, sau đó chờ xác nhận trước khi tiếp tục.
+
+6. **Kết nối hai tài khoản**
+
+   Đăng nhập vào tài khoản Khách sạn và điều hướng đến **Extranet → Distribution → Channel Manager**. Chọn tài khoản channel manager của bạn trong danh sách — điều này liên kết cơ sở với tích hợp của bạn. Nếu tài khoản của bạn không có trong danh sách, nghĩa là chưa được phê duyệt; xem bước 5.
+
+7. **Tạo loại phòng và kế hoạch giá cơ bản**
+
+   Trong tài khoản Khách sạn, tạo ít nhất một loại phòng và một kế hoạch giá. Đây là yêu cầu trước khi tích hợp của bạn có thể đẩy giá và tồn kho hoặc lấy đặt phòng.
+
+8. **Ánh xạ và kiểm tra**
+
+   Trong hệ thống của bạn, ánh xạ các định danh loại phòng và kế hoạch giá trả về từ API. Đẩy cập nhật giá và tồn kho, sau đó thực hiện một đặt phòng thử và xác nhận điểm cuối lấy đặt phòng trả về đúng.
+</Steps>
+
+:::note
+Lặp lại tất cả các bước trên trong production trước khi ra mắt, bao gồm đăng ký một ứng dụng production riêng biệt — thông tin đăng nhập staging không hoạt động với production. Dự trù thời gian cho việc Wink xem xét ở bước 5 — không giống như staging, tài khoản production không được phê duyệt tự động. Đội ngũ Wink sẽ di chuyển bất kỳ khách sạn nào đang sử dụng channel manager của bạn sang tài khoản production mới.
+:::
+
+## Tìm định danh tài khoản của bạn
+
+Mỗi đường dẫn API Channel Manager được giới hạn trong tài khoản của bạn:
+
+```
+/api/managing-entity/{managingEntityIdentifier}/channel-manager/...
+```
+
+`{managingEntityIdentifier}` là ID tài khoản (UUID) của **tài khoản channel manager của bạn** — không phải
+khách sạn. Lấy nó cùng với ID và trạng thái hiện tại của mọi tài khoản khác mà người dùng của bạn sở hữu từ Platform API:
+
+```bash
+curl -s -X GET \
+  "https://staging-api.wink.travel/api/managing-entity/list" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Phản hồi là một mảng các tài khoản bạn sở hữu:
+
+```json
+[
+  {
+    "id": "3f1c8e42-7b90-4d55-a1e2-6c8d09b4f731",
+    "type": "CHANNEL_MANAGER",
+    "name": "Channel Manager Của Bạn",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "d5b8a3c2-9e6f-4a1b-8d34-7c2e1f0a5b69",
+    "type": "HOTEL",
+    "name": "Cơ Sở Thử Nghiệm Của Bạn",
+    "urlName": "your-test-property",
+    "status": "ACTIVE"
+  }
+]
+```
+
+- `id` của mục channel manager là **`{managingEntityIdentifier}`** của bạn.
+- `id` của mục `HOTEL` là **`{propertyIdentifier}`** của bạn.
+- `status` là nơi bạn xác nhận mỗi tài khoản đã được phê duyệt — hữu ích nhất trong production, nơi
+  phê duyệt là thủ công. **Khách sạn** phải có trạng thái `ACTIVE` trước khi có thể đặt phòng hoặc hiển thị với
+  API Channel Manager. Tài khoản **channel manager** của bạn sẽ tiếp tục có trạng thái `PENDING_APPROVAL` cho đến khi
+  bạn vượt qua [Chứng nhận](#certification); điều này là bình thường và không cản trở phát triển.
+
+:::caution
+Việc tra cứu này chạy trên **Platform API** (`https://staging-api.wink.travel` trên staging,
+`https://api.wink.travel` trong production), không phải các host Channel Manager API được liệt kê trong
+[Môi trường](#environments). Sử dụng cùng một token truy cập — token được cấp theo người dùng, không theo API.
+:::
+
+## Chứng nhận
+
+Chứng nhận là cách bạn chứng minh — và Wink xác nhận — tích hợp của bạn ánh xạ tồn kho chính xác,
+đẩy giá và tồn kho, và nhận đặt phòng đầu-cuối. Nó được thiết kế để tự phục vụ: bạn điều khiển mọi bước từ hệ thống của mình, và bạn gửi một gói bằng chứng duy nhất vào cuối. Wink xem xét gói và, nếu đạt, sẽ chuyển trạng thái tài khoản Affiliate / Channel Manager của bạn từ **PENDING_APPROVAL** sang **ACTIVE**.
+
+Chứng nhận hoàn toàn chạy trên môi trường staging
+(`https://staging-integrations.wink.travel`). Không có gì trong phần này chạm đến production.
+
+### Những gì bạn sẽ chứng minh
+
+<Steps>
+1. **Xác thực.** Client OAuth2 của bạn có thể lấy token truy cập và gọi thành công điểm cuối
+   `/ping` với tài khoản Affiliate / Channel Manager của bạn.
+
+2. **Ánh xạ tồn kho.** Bạn có thể liệt kê khách sạn được kết nối với tài khoản, lấy master
+   rate (loại phòng × kế hoạch giá) bạn đã cấu hình, và xác định chính xác `masterRateIdentifier`
+   mà hệ thống của bạn sẽ nhắm tới.
+
+3. **Đẩy giá & tồn kho.** Bạn có thể cập nhật độc lập tất cả bảy ngày của tuần chứng nhận
+   — với các kết hợp khác nhau về số tiền, số lượng, cờ đóng khi đến / đóng khi đi,
+   và giới hạn độ dài lưu trú tối thiểu/tối đa trên mỗi ngày — và đọc lại chính xác các giá trị từ Wink.
+
+4. **Lấy đặt phòng.** Bạn có thể lấy một đặt phòng staging thực tế được tạo cho cơ sở thử nghiệm của bạn,
+   hiển thị nó trong giao diện PMS/CM của bạn với phòng lưu trú, khách và tổng tiền chính xác,
+   sau đó phản ánh việc hủy khi Wink đánh dấu đặt phòng đã hủy.
+</Steps>
+
+### Điều kiện tiên quyết
+
+Trước khi bắt đầu chứng nhận, hoàn thành các bước 1–7 của [Các bước tích hợp](#integration-steps) để
+bạn có:
+
+- Một người dùng Wink trên staging với tài khoản **Affiliate / Channel Manager** và tài khoản **Hotel**
+  được kết nối với nhau (Extranet → Distribution → Channel Manager). Tài khoản staging được phê duyệt
+  tự động, nên không cần yêu cầu gì thêm.
+- Ít nhất một **loại phòng** và một **kế hoạch giá** được tạo trong tài khoản Khách sạn. Xuất bản
+  khách sạn để có thể đặt trên `https://staging-book.wink.travel/hotel/<your-slug>`.
+- Một ứng dụng đã đăng ký dưới tài khoản Affiliate / Channel Manager của bạn với **Client ID**,
+  **Secret Key**, và phạm vi `integrations.read integrations.write`
+  (xem [Authentication](/vi/developers/authentication)).
+- **`managingEntityIdentifier`** của tài khoản Affiliate / Channel Manager và
+  **`propertyIdentifier`** của tài khoản Khách sạn (cả hai đều là UUID — xem
+  [Tìm định danh tài khoản của bạn](#finding-your-account-identifiers)).
+
+### Quy ước yêu cầu chung
+
+Mỗi yêu cầu trong phần này sử dụng các header sau:
+
+```http
+Authorization: Bearer <access_token>
+Wink-Version: 2.0
+Accept: application/json
+```
+
+- `<access_token>` lấy từ grant `client_credentials` với
+  `https://staging-iam.wink.travel/oauth2/token` — xem [Authentication](/vi/developers/authentication#staging).
+- Header `Wink-Version` là bắt buộc; nếu bỏ qua sẽ không chuyển đến API JSON v2.
+- `Content-Type: application/json` được thêm vào các yêu cầu `PUT` có body.
+
+Trong các ví dụ dưới đây, các placeholder ánh xạ đến giá trị bạn đã thu thập trong
+[Điều kiện tiên quyết](#prerequisites):
+
+| Placeholder | Ý nghĩa |
+|---|---|
+| `{managingEntityIdentifier}` | ID tài khoản Affiliate / Channel Manager của bạn (UUID) — xem [Tìm định danh tài khoản của bạn](#finding-your-account-identifiers). |
+| `{propertyIdentifier}`       | ID tài khoản Khách sạn (cơ sở) bạn đã kết nối với tài khoản CM. |
+| `{masterRateIdentifier}`     | Master rate (loại phòng × kế hoạch giá) bạn sẽ chứng nhận. |
+| `{bookingIdentifier}`        | ID đặt phòng staging trả về từ cuộc gọi danh sách đặt phòng. |
+
+### Bước A — Ping
+
+Xác nhận thông tin xác thực của bạn trỏ đến tài khoản Affiliate / Channel Manager bạn mong đợi.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/ping" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Phản hồi mong đợi:
+
+```json
+{
+  "apiVersion": "2.0",
+  "name": "Tên Tài Khoản Channel Manager Của Bạn",
+  "status": "PENDING_APPROVAL"
+}
+```
+
+Phản hồi **200** với `name` khớp là tín hiệu xác thực và phân giải tài khoản đúng. `status` sẽ là `PENDING_APPROVAL` cho đến khi Wink chứng nhận bạn.
+
+### Bước B — Liệt kê cơ sở
+
+Lấy danh sách phân trang các khách sạn liên kết với tài khoản và xác nhận cơ sở thử nghiệm của bạn có trong đó.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/list?page=0&size=25" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Phản hồi là một trang Spring `Page` của các mục `ChannelManagerProperty`. Tìm mục có `identifier` khớp với `{propertyIdentifier}` của bạn và ghi lại `currencyCode` — bạn sẽ cần nó để hiểu các cập nhật giá trong [Bước D](#step-d--load-the-certification-week).
+
+:::caution
+Danh sách rỗng là tín hiệu cấu hình, không phải yêu cầu sai. Một khách sạn chỉ được trả về ở đây
+khi nó **`ACTIVE`** *và* đã được gán cho tài khoản channel manager của bạn trong
+Extranet → Distribution → Channel Manager. Kiểm tra cả hai với `GET /api/managing-entity/list` (xem
+[Tìm định danh tài khoản của bạn](#finding-your-account-identifiers)) trước khi gỡ lỗi thêm.
+Trong production, thêm nguyên nhân thứ ba: khách sạn không hiển thị ở đây cho đến khi Wink phê duyệt.
+:::
+
+### Bước C — Lấy master rates
+
+Lấy cơ sở cùng với mọi master rate (kết hợp loại phòng × kế hoạch giá) mà nó công bố. Chọn một master rate bạn định chứng nhận và ghi lại `identifier` của nó làm `{masterRateIdentifier}`.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Phản hồi là `PropertyWithRoomRateList`: một khối `property` cùng mảng `rooms` gồm các mục `PropertyRoomRate`. Mỗi mục hiển thị loại phòng, kế hoạch giá, giới hạn công suất, giá cơ bản, và các bộ điều chỉnh giá bạn sẽ giữ khi đẩy giá hàng ngày.
+
+:::caution
+Chứng nhận chỉ với một master rate duy nhất cho toàn bộ quá trình chứng nhận. Việc ánh xạ thêm loại phòng và kế hoạch giá được mong đợi trong production, nhưng gói bằng chứng chỉ cần thể hiện một master rate được sử dụng đầu-cuối.
+:::
+
+### Bước D — Tải tuần chứng nhận
+
+Tải **lịch giá bảy ngày** bao phủ bảy ngày đầu tiên của tháng **sau** tháng bạn bắt đầu chứng nhận. Ví dụ, nếu bạn bắt đầu chứng nhận vào ngày 21 tháng 8, hãy chọn từ 1 đến 7 tháng 9.
+
+Bạn sẽ gửi **bảy cuộc gọi `PUT` riêng biệt** — mỗi ngày một cuộc gọi — với `startDate == endDate`. Mỗi ngày có một tổ hợp khác biệt về số tiền, số lượng, cờ đóng khi đến / đóng khi đi, và giới hạn độ dài lưu trú để mọi trường có thể ghi được đều được thử ít nhất một lần. Giá trị tính theo đơn vị tiền tệ của cơ sở (ghi nhận ở Bước B); bỏ qua `currencyCode` sẽ mặc định đúng.
+
+| Ngày | Số tiền | Số lượng | closedOnArrival | closedOnDeparture | minLengthOfStay | maxLengthOfStay | Ý nghĩa |
+|-----|--------|----------|-----------------|-------------------|-----------------|-----------------|---------|
+| 1   | 100.00 | 5        | false           | false             | 1               | 30              | Ngày cơ bản. |
+| 2   | 125.00 | 4        | false           | false             | 1               | 14              | Thay đổi số tiền + số lượng + `maxLengthOfStay`. |
+| 3   | 150.00 | 3        | **true**        | false             | 1               | 30              | Đảo cờ `closedOnArrival`. |
+| 4   | 175.00 | 2        | false           | **true**          | 2               | 7               | Đảo cờ `closedOnDeparture` + giới hạn LOS chặt hơn. |
+| 5   | 200.00 | **0**    | false           | false             | 1               | 30              | Số lượng đã bán hết. |
+| 6   | 225.00 | 5        | false           | false             | **3**           | **5**           | Giới hạn LOS nghiêm ngặt. |
+| 7   | 250.00 | 1        | false           | false             | 1               | 30              | Còn phòng cuối cùng. |
+
+Body yêu cầu cho Ngày 1 như sau. Lặp lại, điều chỉnh `startDate` / `endDate` / giá trị theo bảng, cho các Ngày 2 đến 7.
+
+```bash
+curl -s -X PUT \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/master-rate/{masterRateIdentifier}" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json" \
+  -d '{
+        "startDate": "2026-09-01",
+        "endDate":   "2026-09-01",
+        "amount":    100.00,
+        "master":    true,
+        "closedOnArrival":   false,
+        "closedOnDeparture": false,
+        "quantity":          5,
+        "minLengthOfStay":   1,
+        "maxLengthOfStay":   30
+      }'
+```
+
+Mỗi `PUT` trả về `200` cùng mảng các mục `PropertyRate` đã cập nhật cho phạm vi bạn gửi (một mục khi `startDate == endDate`). Lưu lại phản hồi này — nó sẽ là một phần bằng chứng của bạn.
+
+:::note
+`master` nên là `true` trong mọi cuộc gọi tuần chứng nhận. Điều này báo cho Wink biết cập nhật của bạn là giá mẫu, không phải ghi đè theo đặt phòng.
+:::
+
+### Bước E — Đọc lại tuần chứng nhận
+
+Lấy toàn bộ tuần trong một cuộc gọi duy nhất và xác nhận các giá trị lưu trữ của mỗi ngày khớp với bảng bạn gửi ở Bước D — bao gồm các cờ boolean và giới hạn độ dài lưu trú.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/master-rate/{masterRateIdentifier}?startDate=2026-09-01&endDate=2026-09-07" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Phản hồi là `PropertyRoomRateWithRateList`. Mảng `rates` phải chứa **bảy** mục, mỗi ngày một mục, với các trường `amount`, `quantity`, `closedOnArrival`, `closedOnDeparture`, `minLengthOfStay`, và `maxLengthOfStay` bạn đã tải lên. Nếu có sai lệch ở bất kỳ trường nào nghĩa là cuộc gọi `PUT` tương ứng ở Bước D chưa thành công — sửa và kiểm tra lại trước khi tiếp tục.
+
+### Bước F — Thực hiện đặt phòng thử
+
+Mở URL sau trong trình duyệt, thay `<your-slug>` bằng slug của tài khoản Khách sạn bạn đã xuất bản trong Điều kiện tiên quyết:
+
+```
+https://staging-book.wink.travel/hotel/<your-slug>
+```
+
+Chọn ngày đến và ngày đi nằm hoàn toàn trong tuần chứng nhận, chọn kết hợp loại phòng + kế hoạch giá bạn đã chứng nhận, và hoàn tất đặt phòng. Staging sử dụng đường thanh toán thử nghiệm — không trừ thẻ thật.
+
+Khi trang xác nhận hiển thị, ghi lại **mã đặt phòng** (định dạng `WNKxxxxx`) hiển thị cho khách.
+
+### Bước G — Lấy đặt phòng
+
+Lấy tất cả đặt phòng được tạo cho cơ sở thử nghiệm của bạn trong khoảng thời gian bao phủ thời điểm đặt phòng.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/booking/list?startDate=2026-09-01T00:00:00&endDate=2026-09-08T00:00:00" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Tìm mục có `bookingCode` khớp với mã bạn đã ghi ở Bước F. Ghi lại `bookingIdentifier` của nó. Sau đó lấy đặt phòng đó:
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/booking/{bookingIdentifier}" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Phản hồi là `PropertyBooking`. Nhập nó vào giao diện PMS / channel-manager của bạn và xác nhận mọi thông tin sau hiển thị đúng với người vận hành:
+
+- `bookingCode`, `bookingIdentifier`, `createdDate`
+- Khách: `firstName`, `lastName`, `email`
+- `totalAmount` + `currencyCode` (số tiền ròng khách sạn nhận được trên tất cả phòng)
+- `paymentMethodType`, `paymentMethodStatus`, `salesChannelName`
+- Mỗi mục trong `roomStays`: `guestRoomName`, `ratePlanName`, `adults`, `children`, `startDate`,
+  `endDate`, và `amount` theo phòng
+
+Chụp ảnh màn hình đặt phòng trong giao diện của bạn — ảnh này là một trong các bằng chứng cần thiết.
+
+### Bước H — Hủy đặt phòng và xác nhận
+
+Yêu cầu đội ngũ Wink hủy đặt phòng chứng nhận thay bạn (hoặc tự hủy từ Extranet tài khoản Khách sạn nếu bạn có quyền). Sau đó lấy lại đặt phòng với cuộc gọi ở Bước G.
+
+Xác nhận phản hồi hiện có:
+
+- `cancelled: true`
+- Thời gian `cancelDate` được điền
+- `paymentMethodStatus` phản ánh vòng đời hủy (`CANCELLED`, `PARTIALLY_REFUNDED`,
+  hoặc `FULLY_REFUNDED` tùy chính sách hoàn tiền)
+
+Nhập đặt phòng đã cập nhật vào giao diện của bạn và xác nhận việc hủy hiển thị với người vận hành — trạng thái, thời gian hủy, và bất kỳ chỉ báo hoàn tiền nào giao diện hỗ trợ. Chụp ảnh màn hình thứ hai của đặt phòng đã hủy trong giao diện của bạn. Đây là bằng chứng cuối cùng.
+
+### Bước I — Gửi gói bằng chứng của bạn
+
+Đóng gói các mục sau thành một file lưu trữ duy nhất (`.zip`) đặt tên
+`wink-cert-<your-channel-manager-name>-<yyyy-mm-dd>.zip`:
+
+<Steps>
+1. **Bản ghi API.** Với mỗi yêu cầu bạn gửi trong các Bước A đến H, lưu lại toàn bộ
+   yêu cầu HTTP (phương thức, URL, header yêu cầu với giá trị `Authorization` được ẩn, và
+   body JSON cho các cuộc gọi `PUT`) và toàn bộ phản hồi HTTP (mã trạng thái, header phản hồi, và
+   body JSON). Cấu trúc bản ghi sao cho mỗi cặp yêu cầu/phản hồi được gán nhãn rõ ràng với bước tương ứng (`step-a-ping.json`, `step-d-day-3-put.json`, `step-g-list-bookings.json`,
+   v.v.). Các file `.http` dạng văn bản thuần hoặc một file xuất `.har` đều chấp nhận được.
+
+2. **Ảnh chụp giao diện: đặt phòng đang hoạt động.** Ảnh chụp từ Bước G hiển thị đặt phòng chứng nhận
+   trong giao diện PMS / channel-manager của bạn, với khách, ngày tháng, loại phòng, kế hoạch giá, và tổng tiền rõ ràng.
+
+3. **Ảnh chụp giao diện: đặt phòng đã hủy.** Ảnh chụp từ Bước H hiển thị cùng đặt phòng trong
+   giao diện của bạn sau khi hủy, với trạng thái hủy và thời gian rõ ràng.
+
+4. **Tóm tắt chứng nhận.** Một file `README.md` ngắn trong lưu trữ liệt kê:
+   - Tên và phiên bản channel manager / PMS của bạn.
+   - `managingEntityIdentifier`, `propertyIdentifier`, `masterRateIdentifier`, và
+     `bookingIdentifier` bạn đã sử dụng.
+   - Slug khách sạn staging (phần `<your-slug>` trong `https://staging-book.wink.travel/hotel/<your-slug>`).
+   - Khoảng ngày tuần chứng nhận (Ngày 1 → Ngày 7 theo ISO-8601).
+   - Tên và email kỹ sư thực hiện chứng nhận.
+</Steps>
+
+Gửi lưu trữ cho liên hệ tích hợp Wink của bạn. Wink sẽ xem xét, theo dõi nếu có sai lệch, và — nếu đạt — chuyển trạng thái tài khoản Affiliate / Channel Manager của bạn từ
+`PENDING_APPROVAL` sang `ACTIVE`. Tích hợp của bạn sau đó đủ điều kiện để onboarding production.
+
+:::tip
+Tự động hóa việc ghi lại bản ghi. Bảy cuộc gọi `PUT` ở Bước D và việc đọc lại ở Bước E là
+nguồn phổ biến nhất gây lỗi chứng nhận — một client HTTP tương tác lưu lại mọi
+yêu cầu và phản hồi khi chạy sẽ giúp bạn không phải chạy lại toàn bộ nếu có sai số nhỏ.
+:::
+
+## Thông báo webhook
+
+Bạn có thể đăng ký sự kiện webhook channel manager để nhận thông báo thời gian thực:
+
+- `channel-manager.update.rate` — Nhận cập nhật giá.
+- `channel-manager.update.availability` — Nhận cập nhật tồn kho.
+- `channel-manager.update` — Cập nhật chung channel manager.
+
+Xem [Danh mục Sự kiện Webhook](/vi/developers/webhook-events#channel-manager-events) để biết chi tiết.
+
+## Đọc thêm
+
+- [Channel Manager API](/vi/partner-api/partner/) — Tài liệu điểm cuối API đầy đủ.
+- [Rate Providers](/vi/portal/extranet/rate-providers) — Quản lý nhà cung cấp giá trong Extranet.
+- [Danh mục Sự kiện Webhook](/vi/developers/webhook-events) — Tất cả sự kiện có thể đăng ký.
+- [Xây dựng trên Wink](/vi/developers/build-on-wink) — Tổng quan nền tảng cho nhà phát triển.
