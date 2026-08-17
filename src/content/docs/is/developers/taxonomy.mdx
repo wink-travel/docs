@@ -1,0 +1,63 @@
+---
+title: Flokkunarkerfi
+description: Stýrt orðasafn sem Wink pallurinn notar — OTA kóðar fyrir þægindi, tegundir rúma, útsýni herbergja og fleira, auk allra studdra tungumála og gjaldmiðla.
+sidebar:
+  order: 12
+---
+
+import taxonomy from '@/data/taxonomy.json';
+import OtaCategories from '@/components/taxonomy/ota-categories.astro';
+import CodeTable from '@/components/taxonomy/code-table.astro';
+
+Wink lýsir birgðum með stýrt orðasafn — föstum kóðasettum með samkomulagsmerkingu. Þegar þú sendir `"5"` sem hótelþægindi, les pallurinn það sem *Loftkælingu*, og allir notendur þess gagna gera það líka.
+
+Þessi síða er birt heimild fyrir öll þrjú orðasöfnin:
+
+- **OTA kóðar** — {taxonomy.ota.codeCount} kóðar yfir {taxonomy.ota.categoryCount} flokka, sem ná yfir þægindi, rúmategundir, útsýni herbergja, aðgengiseiginleika, matargerð og fleira.
+- **Tungumál** — {taxonomy.languages.list.length} tungumál sem efni getur verið skrifað og birt á.
+- **Gjaldmiðlar** — {taxonomy.currencies.list.length} gjaldmiðlar sem verð geta verið tilgreind og gerð upp í.
+
+Kóðar eru stöðugir. Nöfn geta verið endurskoðuð til skýrleika, svo berðu saman á **kóðanum**, aldrei á nafninu.
+
+## OTA kóðar
+
+Wink fylgir kóðalista [OpenTravel Alliance](https://opentravel.org/). Hver flokkur hefur þriggja stafa auðkenni — `HAC` fyrir hótelþægindi, `BED` fyrir rúmategundir — og hver kóði innan flokks er einstakur fyrir hann. Sama tölugildi þýðir mismunandi hluti í mismunandi flokkum, svo kóði er aðeins merkingarbær ásamt flokknum sem hann tilheyrir: `BED` `1` er *Tvöfalt / Fullt*, á meðan `HAC` `1` er *24 klst. móttaka*.
+
+Veldu flokk til að sjá kóðana hans.
+
+<OtaCategories
+  categories={taxonomy.ota.categories}
+  categoryHeader="Flokkur"
+  descriptionHeader="Lýsing"
+  countHeader="Kóðar"
+  codeHeader="Kóði"
+  nameHeader="Nafn"
+/>
+
+## Tungumál
+
+Efni — lýsingar á eignum, nöfn herbergja, reglur — getur verið skrifað á einhverju af þessum tungumálum. Kóðar eru [IETF BCP 47](https://www.rfc-editor.org/info/bcp47) merkimiðar: tveggja stafa [ISO 639-1](https://www.iso.org/iso-639-language-code) tungumál, valkvætt fylgt eftir með [ISO 3166-1](https://www.iso.org/iso-3166-country-codes.html) svæði þar sem pallurinn greinir svæðisbundnar afbrigði — `pt-BR` og `pt-PT` eru meðhöndluð sér, eins og `es`, `es-AR` og `es-MX`.
+
+Sjálfgefna tungumál pallsins er `{taxonomy.languages.default}`, notað þegar beiðni tilgreinir ekki tungumál og þegar þýðing er ekki til.
+
+<CodeTable
+  rows={taxonomy.languages.list}
+  codeHeader="Kóði"
+  nameHeader="Tungumál"
+  unnamedLabel="Engin staðlað nafn"
+/>
+
+## Gjaldmiðlar
+
+Verð geta verið tilgreind og gerð upp í einhverjum af þessum gjaldmiðlum. Kóðar eru [ISO 4217](https://www.iso.org/iso-4217-currency-codes.html) þriggja stafa auðkenni.
+
+Sjálfgefni gjaldmiðill pallsins er `{taxonomy.currencies.default}`. Hann er varagjaldmiðill fyrir sýningu og eining sem tölur á palli eru normalíseraðar að; hann er **ekki** gjaldmiðill sem bókun er gerð upp í — hótel gera upp í sínum eigin gjaldmiðli, svo verð sem tilgreint er í einum gjaldmiðli og greitt í öðrum ber með sér gengismun.
+
+Nokkur atriði eru ekki þjóðlegir gjaldmiðlar: `XAU` og `XAG` eru gull og silfur, `XDR` er sérstakur úttektarréttur Alþjóðagjaldeyrissjóðsins, og `BTC` er Bitcoin. Þessir eru til staðar fyrir verðmat og skýrslugerð, og eru almennt ekki nothæfir sem gjaldmiðill fyrir uppgjör.
+
+<CodeTable
+  rows={taxonomy.currencies.list}
+  codeHeader="Kóði"
+  nameHeader="Gjaldmiðill"
+  unnamedLabel="Engin staðlað nafn"
+/>

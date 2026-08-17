@@ -1,331 +1,49 @@
 ---
 title: Danh mục Sự kiện Webhook
-description: Tham khảo đầy đủ tất cả các loại sự kiện webhook có trên nền tảng Wink, được tổ chức theo danh mục.
+description: Mọi loại sự kiện webhook trên nền tảng Wink, được tạo từ danh mục sự kiện của nền tảng — được gửi đến ai và nơi tài liệu payload được ghi lại.
 sidebar:
   order: 3.5
 ---
 
-import { LinkButton } from '@astrojs/starlight/components';
+import webhooks from '../../../../schemas/webhooks.json';
+import WebhookEventTypes from '@/components/webhooks/event-types.astro';
 
-Trang này liệt kê mọi sự kiện webhook mà bạn có thể đăng ký trên Wink. Để biết hướng dẫn thiết lập, xem [Hướng dẫn Tích hợp Webhook](/vi/developers/webhook-integration) hoặc [Trang quản lý Webhooks](/vi/portal/settings/webhooks).
+Trang này liệt kê mọi sự kiện webhook bạn có thể đăng ký trên Wink. Để biết hướng dẫn thiết lập, xem [Hướng dẫn Tích hợp Webhook](/vi/developers/webhook-integration) hoặc [Trang quản lý Webhooks](/vi/portal/settings/webhooks).
 
 ## Cách đăng ký
 
 1. Điều hướng đến **Applications > Webhooks** trong cổng thông tin của bạn.
-2. Tạo một webhook và chọn các sự kiện bạn muốn nhận.
-3. Wink sẽ gửi một HTTP POST đến điểm cuối của bạn mỗi khi sự kiện xảy ra.
-
-Để biết các bước thiết lập đầy đủ và các thực hành tốt nhất, xem [Tích hợp Webhook](/vi/developers/webhook-integration).
-
----
-
-## Quản lý sự kiện thực thể
-
-Các sự kiện liên quan đến quản lý thực thể (bất động sản, chi nhánh, công ty) và việc quản trị của chúng.
-
-### Vòng đời
-
-| Sự kiện | Khóa | Mô tả |
-|---|---|---|
-| Thực thể được tạo | `managing_entity.created` | Một thực thể quản lý mới đã được tạo. |
-| Thực thể bị xóa | `managing_entity.deleted` | Một thực thể quản lý đã bị xóa. |
-| Trạng thái được cập nhật | `managing_entity.status.updated` | Trạng thái thực thể đã thay đổi. |
-| Đang xem xét | `account.under_review` | Tài khoản thực thể đang chờ xem xét. |
-
-### Đăng ký
-
-| Sự kiện | Khóa | Mô tả |
-|---|---|---|
-| Đăng ký được cấp phát | `managing_entity.subscription.provisioned` | Một đăng ký mới đã được cấp phát. |
-| Đăng ký thay đổi | `managing_entity.subscription.changed` | Gói đăng ký đã được thay đổi. |
-| Hóa đơn đăng ký thay đổi | `managing_entity.subscription.invoice.changed` | Hóa đơn đăng ký đã được cập nhật. |
-
-### Vòng đời quản lý
-
-| Sự kiện | Khóa | Mô tả |
-|---|---|---|
-| Quản lý được thêm | `managing_entity.manager.added` | Một quản lý mới đã được thêm. |
-| Quản lý được mời | `managing_entity.manager.invited` | Lời mời quản lý đã được gửi. |
-| Quản lý bị xóa | `managing_entity.manager.removed` | Một quản lý đã bị xóa. |
-| Quản lý chấp nhận | `managing_entity.manager.accepted` | Lời mời quản lý đã được chấp nhận. |
-| Quản lý từ chối | `managing_entity.manager.rejected` | Lời mời quản lý đã bị từ chối. |
-| Chủ sở hữu được đặt | `managing_entity.manager.owner.set` | Quyền sở hữu thực thể đã được chuyển giao. |
-| Danh sách quản lý được cập nhật | `account.managers.update` | Danh sách quản lý đã thay đổi. |
-
-### Thông tin thực thể
-
-| Sự kiện | Khóa | Mô tả |
-|---|---|---|
-| Thông tin được cập nhật | `managing_entity.information.updated` | Thông tin thực thể đã được cập nhật. |
-| Địa chỉ được cập nhật | `managing_entity.city.updated` | Địa chỉ/thành phố thực thể đã thay đổi. |
-| Tên được cập nhật | `managing_entity.name.updated` | Tên thực thể đã thay đổi. |
-| Tên URL được cập nhật | `managing_entity.url_name.updated` | URL tùy chỉnh của thực thể đã thay đổi. |
-| ID duy nhất được cập nhật | `managing_entity.unique_id.updated` | Mã định danh duy nhất của thực thể đã thay đổi. |
-| Quản lý bởi được cập nhật | `managing_entity.managed_by.updated` | Mối quan hệ cha/quản lý của thực thể đã thay đổi. |
-| Place ID được cập nhật | `managing_entity.place_id.updated` | Google Place ID của thực thể đã thay đổi. |
-| Đại diện tài khoản được cập nhật | `managing_entity.account_representative.updated` | Đại diện tài khoản đã được thay đổi. |
-| Ảnh hồ sơ được cập nhật | `managing_entity.profile_picture.updated` | Ảnh hồ sơ thực thể đã được cập nhật. |
-| Logo được cập nhật | `managing_entity.logo.updated` | Logo thực thể đã được cập nhật. |
-| Chi tiết được cập nhật | `account.details.updated` | Các trường chi tiết tài khoản đã thay đổi. |
-| Đại lý được cập nhật | `managing_entity.agent.updated` | Đại lý của thực thể đã được sửa đổi. |
-
-### Thông báo
-
-| Sự kiện | Khóa | Mô tả |
-|---|---|---|
-| Thông báo email đại lý | `managing_entity.agent.email.notification` | Một thông báo email đã được gửi đến đại lý. |
-| Thông báo email quản lý | `managing_entity.manager.email.notification` | Một thông báo email đã được gửi đến quản lý. |
-
-### Nhiệm vụ tài khoản
-
-| Sự kiện | Khóa | Mô tả |
-|---|---|---|
-| Nhiệm vụ được tạo | `account.task.create` | Một nhiệm vụ mới đã được thêm vào tài khoản. |
-| Nhiệm vụ được cập nhật | `account.task.update` | Một nhiệm vụ tài khoản đã được sửa đổi. |
-| Nhiệm vụ bị xóa | `account.task.remove` | Một nhiệm vụ tài khoản đã bị xóa. |
-| Nhiệm vụ hoàn thành | `account.task.complete` | Một nhiệm vụ tài khoản đã được hoàn thành. |
-| Nhiệm vụ xác minh mã số thuế hoàn thành | `account.task.tax_id.complete` | Nhiệm vụ xác minh mã số thuế đã được hoàn thành. |
-
----
-
-## Sự kiện đặt phòng
-
-Các sự kiện trong vòng đời đặt phòng trên Wink, từ tạo đến hoàn tiền và thanh toán.
-
-### Đặt phòng cốt lõi
-
-| Sự kiện | Khóa | Mô tả |
-|---|---|---|
-| Đặt phòng được tạo | `booking.create` | Một đặt phòng mới đã được tạo. |
-| Đặt phòng bị hủy | `booking.cancelled` | Một đặt phòng đã bị hủy. |
-| Đặt phòng thất bại | `booking.failed` | Nỗ lực đặt phòng đã thất bại. |
-| Đang xử lý đặt phòng | `booking.processing` | Thanh toán đặt phòng đang được xử lý. |
-| Yêu cầu khởi tạo | `booking.initialize.request` | Yêu cầu khởi tạo đặt phòng đã được gửi. |
-| Khởi tạo hoàn tất | `booking.initialize.complete` | Khởi tạo đặt phòng đã hoàn tất. |
-
-### Hoàn tiền
-
-| Sự kiện | Khóa | Mô tả |
-|---|---|---|
-| Yêu cầu hoàn tiền | `booking.refund.request` | Yêu cầu hoàn tiền đã được gửi. |
-| Lỗi hoàn tiền | `booking.refund.error` | Đã xảy ra lỗi khi xử lý hoàn tiền. |
-| Hoàn tiền một phần | `booking.refund.partial` | Hoàn tiền một phần đã được thực hiện. |
-| Hoàn tiền toàn bộ | `booking.refund.full` | Hoàn tiền toàn bộ đã được thực hiện. |
-
-### Thanh toán
-
-| Sự kiện | Khóa | Mô tả |
-|---|---|---|
-| Thanh toán được tạo | `booking.payout.create` | Một khoản thanh toán đã được tạo cho đặt phòng. |
-| Thanh toán hoàn tất | `booking.payout.complete` | Thanh toán đã được hoàn tất thành công. |
-| Quỹ có sẵn | `booking.funds.available` | Quỹ đặt phòng có sẵn để thanh toán. |
-| Quỹ đã ghi sổ | `booking.funds.ledgered` | Quỹ đặt phòng đã được ghi nhận trên sổ cái. |
-
-### Đánh giá
-
-| Sự kiện | Khóa | Mô tả |
-|---|---|---|
-| Đánh giá được gửi | `booking.review.created` | Một đánh giá của khách đã được gửi cho đặt phòng. |
-| Đánh giá được phản hồi | `booking.review.responded` | Bất động sản đã phản hồi đánh giá đặt phòng. |
-
----
-
-## Sự kiện bất động sản
-
-Các sự kiện liên quan đến hồ sơ và nội dung bất động sản, gửi đến các người đăng ký webhook của bất động sản đó.
-
-| Sự kiện | Khóa | Mô tả |
-|---|---|---|
-| Bất động sản được tạo | `property.created` | Một bất động sản mới đã được tạo. |
-| Bất động sản được cập nhật | `property.updated` | Chi tiết bất động sản đã được cập nhật. |
-| Bất động sản bị xóa | `property.deleted` | Một bất động sản đã bị xóa. |
-| Bất động sản đã đăng ký | `property.registered` | Một bất động sản đã hoàn tất đăng ký. |
-| Trạng thái được cập nhật | `property.status.updated` | Trạng thái bên ngoài của bất động sản đã thay đổi. |
-| Tên được cập nhật | `property.name.updated` | Tên bất động sản đã thay đổi. |
-| Địa chỉ được cập nhật | `property.address.updated` | Địa chỉ bất động sản đã được cập nhật. |
-| Vị trí địa lý được cập nhật | `property.geolocation.updated` | Vị trí địa lý bất động sản đã được cập nhật. |
-| Hồ sơ được cập nhật | `property.profile.updated` | Nội dung hồ sơ bất động sản đã thay đổi. |
-| Dịch vụ được cập nhật | `property.services.updated` | Danh sách dịch vụ/tiện nghi của bất động sản đã thay đổi. |
-| Văn bản chào mừng được cập nhật | `property.welcome_text.updated` | Thông điệp chào mừng của bất động sản đã thay đổi. |
-| Chính sách được tạo | `property.policy.created` | Một chính sách bất động sản mới đã được tạo. |
-| Chính sách được cập nhật | `property.policy.updated` | Một chính sách bất động sản đã được cập nhật. |
-
----
-
-## Sự kiện tồn kho
-
-Các sự kiện liên quan đến các mục tồn kho trong một bất động sản, gửi đến các người đăng ký webhook của bất động sản đó.
-
-### Loại phòng
-
-| Sự kiện | Khóa | Mô tả |
-|---|---|---|
-| Loại phòng được tạo | `room_type.created` | Một loại phòng mới đã được thêm. |
-| Loại phòng được cập nhật | `room_type.updated` | Một loại phòng đã được sửa đổi. |
-| Loại phòng bị xóa | `room_type.deleted` | Một loại phòng đã bị xóa. |
-
-### Kế hoạch giá
-
-| Sự kiện | Khóa | Mô tả |
-|---|---|---|
-| Kế hoạch giá được tạo | `rate_plan.created` | Một kế hoạch giá mới đã được tạo. |
-| Kế hoạch giá được cập nhật | `rate_plan.updated` | Một kế hoạch giá đã được sửa đổi. |
-| Kế hoạch giá bị xóa | `rate_plan.deleted` | Một kế hoạch giá đã bị xóa. |
-
-### Giá chính
-
-| Sự kiện | Khóa | Mô tả |
-|---|---|---|
-| Giá chính được tạo | `master_rate.created` | Một giá chính mới đã được tạo. |
-| Giá chính được cập nhật | `master_rate.updated` | Một giá chính đã được sửa đổi. |
-| Giá chính bị xóa | `master_rate.deleted` | Một giá chính đã bị xóa. |
-
-### Phụ kiện
-
-| Sự kiện | Khóa | Mô tả |
-|---|---|---|
-| Phụ kiện được tạo | `add_on.created` | Một phụ kiện mới đã được tạo. |
-| Phụ kiện được cập nhật | `add_on.updated` | Một phụ kiện đã được sửa đổi. |
-| Phụ kiện bị xóa | `add_on.deleted` | Một phụ kiện đã bị xóa. |
-
-### Phòng họp
-
-| Sự kiện | Khóa | Mô tả |
-|---|---|---|
-| Phòng họp được tạo | `meeting_room.created` | Một phòng họp mới đã được thêm. |
-| Phòng họp được cập nhật | `meeting_room.updated` | Một phòng họp đã được sửa đổi. |
-| Phòng họp bị xóa | `meeting_room.deleted` | Một phòng họp đã bị xóa. |
-
-### Nhà hàng
-
-| Sự kiện | Khóa | Mô tả |
-|---|---|---|
-| Nhà hàng được tạo | `restaurant.created` | Một nhà hàng mới đã được thêm. |
-| Nhà hàng được cập nhật | `restaurant.updated` | Một nhà hàng đã được sửa đổi. |
-| Nhà hàng bị xóa | `restaurant.deleted` | Một nhà hàng đã bị xóa. |
-
-### Spa
-
-| Sự kiện | Khóa | Mô tả |
-|---|---|---|
-| Spa được tạo | `spa.created` | Một spa mới đã được thêm. |
-| Spa được cập nhật | `spa.updated` | Một spa đã được sửa đổi. |
-| Spa bị xóa | `spa.deleted` | Một spa đã bị xóa. |
-
-### Hoạt động
-
-| Sự kiện | Khóa | Mô tả |
-|---|---|---|
-| Hoạt động được tạo | `activity.created` | Một hoạt động mới đã được thêm. |
-| Hoạt động được cập nhật | `activity.updated` | Một hoạt động đã được sửa đổi. |
-| Hoạt động bị xóa | `activity.deleted` | Một hoạt động đã bị xóa. |
-
----
-
-## Sự kiện kênh bán hàng
-
-Các sự kiện cho các kênh phân phối liên kết nhà cung cấp và chi nhánh. Gửi đến cả người đăng ký webhook của nhà cung cấp và chi nhánh.
-
-| Sự kiện | Khóa | Mô tả |
-|---|---|---|
-| Kênh bán hàng được tạo | `sales_channel.created` | Một kênh bán hàng mới đã được tạo. |
-| Kênh bán hàng được cập nhật | `sales_channel.updated` | Một kênh bán hàng đã được sửa đổi. |
-| Kênh bán hàng bị xóa | `sales_channel.deleted` | Một kênh bán hàng đã bị xóa. |
-
----
-
-## Sự kiện giá đặc biệt
-
-Các sự kiện cho các mức giá khuyến mãi và thương lượng trên một bất động sản.
-
-| Sự kiện | Khóa | Mô tả |
-|---|---|---|
-| Giá đặc biệt được tạo | `special_rate.created` | Một mức giá đặc biệt mới đã được tạo. |
-| Giá đặc biệt được cập nhật | `special_rate.updated` | Một mức giá đặc biệt đã được sửa đổi. |
-| Giá đặc biệt bị xóa | `special_rate.deleted` | Một mức giá đặc biệt đã bị xóa. |
-| Bộ điều chỉnh giá được cập nhật | `rate_modifier.updated` | Bộ điều chỉnh giá đã được cập nhật. |
-
----
-
-## Sự kiện người nhận thanh toán
-
-Các sự kiện liên quan đến quản lý người nhận thanh toán.
-
-| Sự kiện | Khóa | Mô tả |
-|---|---|---|
-| Người nhận thanh toán được tạo | `payee.create` | Một người nhận thanh toán mới đã được tạo thành công. |
-| Tạo người nhận thanh toán thất bại | `payee.create.failure` | Tạo người nhận thanh toán thất bại. |
-| Người nhận thanh toán được cập nhật | `payee.update` | Một người nhận thanh toán đã được cập nhật. |
-| Cập nhật người nhận thanh toán thất bại | `payee.update.failure` | Cập nhật người nhận thanh toán thất bại. |
-
----
-
-## Sự kiện thanh toán
-
-Các sự kiện xử lý thanh toán nội bộ từ TripPay.
-
-| Sự kiện | Khóa | Mô tả |
-|---|---|---|
-| Thanh toán thành công | `internal.payment.succeeded` | Thanh toán đã được xử lý thành công. |
-| Đang xử lý thanh toán | `internal.payment.processing` | Thanh toán đang được xử lý. |
-| Thanh toán thất bại | `internal.payment.failed` | Xử lý thanh toán đã thất bại. |
-
----
-
-## Sự kiện quản lý kênh
-
-Các sự kiện liên quan đến việc đẩy cập nhật giá và tình trạng phòng của quản lý kênh.
-
-| Sự kiện | Khóa | Mô tả |
-|---|---|---|
-| Cập nhật giá | `channel-manager.update.rate` | Quản lý kênh đã đẩy cập nhật giá. |
-| Cập nhật tình trạng phòng | `channel-manager.update.availability` | Quản lý kênh đã đẩy cập nhật tình trạng phòng. |
-| Cập nhật chung | `channel-manager.update` | Cập nhật chung của quản lý kênh. |
-
----
-
-## Sự kiện sổ cái
-
-Các sự kiện liên quan đến các mục ghi sổ tài chính.
-
-| Sự kiện | Khóa | Mô tả |
-|---|---|---|
-| Mục ghi sổ được tạo | `ledger.entry.create` | Một mục ghi sổ mới đã được ghi nhận. |
-
----
-
-## Sự kiện email
-
-| Sự kiện | Khóa | Mô tả |
-|---|---|---|
-| Thư điện tử gửi đi | `email.correspondence` | Một email gửi đi đã được gửi. |
-
----
-
-## Tóm tắt số lượng sự kiện
-
-| Danh mục | Số lượng |
-|---|---|
-| Sự kiện quản lý thực thể | 33 |
-| Sự kiện đặt phòng | 16 |
-| Sự kiện bất động sản | 13 |
-| Sự kiện tồn kho (loại phòng, kế hoạch giá, giá chính, phụ kiện, tiện ích) | 24 |
-| Sự kiện kênh bán hàng | 3 |
-| Sự kiện giá đặc biệt | 4 |
-| Sự kiện người nhận thanh toán | 4 |
-| Sự kiện thanh toán | 3 |
-| Sự kiện quản lý kênh | 3 |
-| Sự kiện sổ cái | 1 |
-| Sự kiện email | 1 |
-| **Tổng cộng** | **105** |
+2. Tạo một webhook và chọn các sự kiện bạn muốn nhận — hoặc để trống danh sách để nhận mọi sự kiện.
+3. Wink gửi một HTTP POST có chữ ký đến điểm cuối của bạn mỗi khi sự kiện xảy ra. Xem [Tích hợp Webhook](/vi/developers/webhook-integration) để biết về phong bì, tiêu đề, xác minh chữ ký và thử lại.
+
+## Mọi loại sự kiện
+
+Bảng này được tạo từ danh mục sự kiện của nền tảng vào thời điểm xây dựng, vì vậy luôn khớp với API.
+Các loại sự kiện được đánh dấu là đã gửi liên kết đến trang tham khảo của chúng trong [Webhooks API](/vi/api/webhooks/), nơi
+tài liệu về chính xác phần thân JSON (`WebhookEnvelope` với `object` đặc thù cho sự kiện), các tiêu đề `Wink-*` và
+chính sách thử lại được ghi lại. Các loại sự kiện không được gửi tồn tại nội bộ (thanh toán, sổ cái, đồng bộ kênh quản lý, …) nhưng hiện không được gửi đến người đăng ký webhook.
+
+**Người nhận** cho biết ai nhận sự kiện: `SUPPLIER` (khách sạn), `AFFILIATE` (đại lý bán lại có kênh bán hàng hoạt động với khách sạn), `AGENT` (đại lý du lịch đã đặt phòng) hoặc `SELF` (thực thể quản lý mà sự kiện liên quan). Mỗi người nhận nhận cùng một dạng payload; chi tiết theo vai trò nằm sau URL `links.self` trong payload.
+
+<WebhookEventTypes
+  types={webhooks['x-wink-event-types']}
+  referenceBase="/api/webhooks"
+  eventHeader="Sự kiện"
+  descriptionHeader="Mô tả"
+  deliveredHeader="Đã gửi"
+  recipientsHeader="Người nhận"
+  deliveredLabel="đã gửi"
+  notDeliveredLabel="chưa gửi"
+  noRecipientsLabel="—"
+/>
 
 :::tip
-Bắt đầu bằng cách đăng ký tất cả các sự kiện trong quá trình phát triển. Khi bạn hiểu được các payload mà hệ thống của bạn cần, hãy thu hẹp các đăng ký để giảm thiểu nhiễu.
+Bắt đầu bằng cách đăng ký tất cả các sự kiện trong quá trình phát triển. Khi bạn hiểu được payload nào hệ thống của bạn cần, hãy thu hẹp đăng ký để giảm nhiễu. Gửi cho mình một sự kiện thử từ **Applications > Webhooks** (hoặc `POST …/webhook/{id}/test`) để xác nhận điểm cuối và kiểm tra chữ ký trước khi hoạt động chính thức.
 :::
 
 ## Đọc thêm
 
 - [Hướng dẫn Tích hợp Webhook](/vi/developers/webhook-integration) — Các bước thiết lập và thực hành tốt nhất.
-- [Webhooks](/vi/portal/settings/webhooks) — Quản lý các đăng ký webhook của bạn.
+- [Webhooks](/vi/portal/settings/webhooks) — Quản lý đăng ký webhook của bạn.
 - [Applications](/vi/account/applications) — Quản lý thông tin xác thực API.
 - [Phát triển trên Wink](/vi/developers/build-on-wink) — Tổng quan nền tảng dành cho nhà phát triển.

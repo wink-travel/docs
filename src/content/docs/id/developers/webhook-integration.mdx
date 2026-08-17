@@ -16,62 +16,172 @@ Panduan ini ditujukan untuk pengembang yang mengintegrasikan Wink dengan sistem 
 ## Cara kerja webhook
 
 1. Anda mendaftarkan URL webhook di Wink.
-2. Saat sebuah peristiwa terjadi (misalnya, pemesanan baru), Wink mengirimkan HTTP POST ke URL Anda.
+2. Saat sebuah peristiwa terjadi (misalnya, pemesanan baru), Wink mengirim HTTP POST ke URL Anda.
 3. Server Anda memproses payload dan merespons dengan `200 OK`.
 
 ## Mengatur webhook
 
 <Steps>
 1. Masuk ke akun Anda (Extranet, Studio, atau TripPay — semuanya mendukung webhook).
-2. Arahkan ke `Applications` lalu `Webhooks`. Lihat [Webhooks](/id/portal/settings/webhooks).
+2. Navigasikan ke `Applications` lalu `Webhooks`. Lihat [Webhooks](/id/portal/settings/webhooks).
 3. Klik `Create webhook`.
 4. Masukkan **nama** (misalnya, "Sinkronisasi Pemesanan PMS").
 5. Masukkan **URL webhook** Anda — endpoint HTTPS di server Anda.
-6. **Pilih acara** — Pilih acara spesifik untuk berlangganan, atau biarkan kosong untuk menerima semua acara.
+6. **Pilih acara** — Pilih acara spesifik untuk berlangganan, atau kosongkan untuk menerima semua acara.
 7. Aktifkan toggle **Enabled**.
-8. Klik `Save`.
+8. Klik `Save` — respons akan menampilkan **signing secret** Anda sekali; simpan sekarang.
 </Steps>
 
 ## Jenis acara
 
-Wink mendukung **lebih dari 64 jenis acara webhook** di berbagai kategori termasuk manajemen akun, kontrak pemesanan, pembayaran, pembaruan manajer saluran, dan pengelolaan administrasi entitas. Acara umum meliputi:
+Wink menerbitkan 70 jenis acara webhook hari ini di berbagai kategori pemesanan, properti, akun (entitas pengelola)
+dan inventaris (tipe kamar, rencana tarif, tarif utama, tambahan, fasilitas, saluran penjualan, promosi).
+Yang umum:
 
 | Kategori | Contoh |
 |---|---|
-| **Pemesanan** | `booking.create`, `booking.cancelled` |
-| **Kontrak pemesanan** | `booking.contract.created`, `booking.contract.processing`, `booking.contract.cancelled` |
-| **Pembayaran** | `internal.payment.succeeded`, `internal.payment.failed` |
-| **Pengembalian dana** | `booking.contract.refund.partial`, `booking.contract.refund.full` |
-| **Manajer saluran** | `channel-manager.update.rate`, `channel-manager.update.availability` |
-| **Akun** | `account.create`, `account.status.updated` |
+| **Pemesanan** | `booking.create`, `booking.cancelled`, `booking.refund.partial`, `booking.refund.full`, `booking.review.created` |
+| **Properti** | `property.created`, `property.status.updated`, `property.policy.updated` |
+| **Inventaris** | `room_type.updated`, `rate_plan.created`, `master_rate.updated`, `special_rate.created`, `sales_channel.created` |
+| **Akun** | `managing_entity.created`, `managing_entity.status.updated`, `managing_entity.manager.added` |
 
-Untuk daftar lengkap setiap jenis acara beserta deskripsinya, lihat **Katalog Acara Webhook**.
+Daftar lengkap yang dihasilkan — dengan deskripsi, penerima, dan tautan ke halaman referensi setiap acara — adalah **Katalog Acara Webhook**. Halaman referensi untuk setiap acara (badan JSON, header, kebijakan pengulangan)
+tersedia di [Webhooks API](/id/api/webhooks/).
 
 <LinkButton href="/id/developers/webhook-events">
-  Lihat semua lebih dari 64 jenis acara
+  Lihat semua jenis acara
 </LinkButton>
 
-:::tip
-Mulailah dengan berlangganan semua acara selama pengembangan. Setelah Anda memahami payload, batasi hanya ke acara yang dibutuhkan sistem Anda.
-:::
+## Apa yang Anda terima
+
+Setiap pengiriman adalah HTTP `POST` ke URL webhook Anda dengan `Content-Type: application/json` dan amplop ini:
+
+```json
+{
+  "id": "0198a4f2-6b0e-7c1d-9a3e-2f4b8c6d1e0a",
+  "type": "booking.create",
+  "occurredAt": "2026-08-15T09:30:00Z",
+  "ownerIdentifier": "3c6b1a5d-8e2f-4a0b-9c7d-6e4f0a8b2c51",
+  "recipientRole": "SUPPLIER",
+  "schemaVersion": 2,
+  "object": { "...": "payload spesifik acara, misal BookingWebhookPayload" }
+}
+```
+
+- `id` — pengenal acara; identik untuk setiap endpoint akun Anda yang menerima acara ini dan untuk
+  setiap pengulangan. Gunakan sebagai **kunci idempoten** Anda.
+- `type` — kunci jenis acara (juga dikirim sebagai header `Wink-Event-Type`). Cabang berdasarkan `type` dan `schemaVersion`
+  untuk mengurai `object`.
+- `object` — ringkasan terkurasi dari sumber daya yang menjadi subjek acara (pengidentifikasi, status, bidang yang Anda proses)
+  plus `links.self`, URL REST kanonik sisi pemasok dari sumber daya lengkap. Ambil dengan kredensial API Anda sendiri
+  saat Anda membutuhkan lebih dari ringkasan; jika Anda menerima acara sebagai reseller atau agen perjalanan, gunakan
+  endpoint sumber daya yang sesuai dari permukaan API Anda sendiri untuk pengenal yang sama.
+
+Setiap skema payload didokumentasikan per acara di referensi [Webhooks API](/id/api/webhooks/).
+
+### Header
+
+| Header | Arti |
+|---|---|
+| `Wink-Version` | Versi kontrak wire, `2.0`. |
+| `Wink-Event-Id` | Sama dengan `id` di badan — kunci idempoten Anda. |
+| `Wink-Delivery-Id` | Unik per endpoint per acara; berubah hanya jika Anda mengirim ulang. |
+| `Wink-Event-Type` | Sama dengan `type` di badan. |
+| `Wink-Delivery-Attempt` | Nomor percobaan berbasis 1 untuk pengiriman ini. |
+| `Wink-Signature` | Tanda tangan HMAC — lihat di bawah. |
+
+## Memverifikasi tanda tangan
+
+Setiap webhook memiliki **signing secret** (`whsec_…`) yang Wink tunjukkan **sekali**, saat Anda membuat webhook atau
+memutar rahasianya. Simpan seperti kata sandi. Setiap pengiriman membawa
+
+```
+Wink-Signature: t=1755250200,v1=5d41402abc4b2a76b9719d911017c592…
+```
+
+di mana `t` adalah timestamp Unix (detik) dan `v1` adalah hex huruf kecil **HMAC-SHA256** dari string
+`t + "." + rawBody`, dengan kunci rahasia Anda, dan `rawBody` adalah byte badan permintaan persis seperti diterima —
+jangan serialisasi ulang JSON sebelum memverifikasi. Selama 24 jam setelah rotasi rahasia, header membawa
+nilai `v1=` kedua yang ditandatangani dengan rahasia sebelumnya; terima pengiriman jika **ada** `v1` yang cocok.
+
+Verifikasi dalam empat langkah: uraikan `t` dan setiap `v1`; hitung ulang HMAC atas `t.rawBody` dengan rahasia Anda;
+bandingkan dengan perbandingan waktu-konstan; tolak jika `|now − t|` melebihi toleransi Anda (disarankan 5 menit).
+
+```js
+// Node.js (Gaya Express; pastikan Anda memiliki badan RAW, bukan objek yang sudah diurai)
+import { createHmac, timingSafeEqual } from 'node:crypto';
+
+export function verifyWinkSignature(header, rawBody, secret, toleranceSeconds = 300) {
+  const parts = Object.fromEntries(header.split(',').map((p) => p.split('=').map((s) => s.trim())));
+  const t = Number(parts.t);
+  if (!Number.isFinite(t) || Math.abs(Date.now() / 1000 - t) > toleranceSeconds) return false;
+  const expected = createHmac('sha256', secret).update(`${t}.${rawBody}`).digest('hex');
+  return header
+    .split(',')
+    .filter((p) => p.trim().startsWith('v1='))
+    .map((p) => p.trim().slice(3))
+    .some((v1) => v1.length === expected.length && timingSafeEqual(Buffer.from(v1, 'utf8'), Buffer.from(expected, 'utf8')));
+}
+```
+
+```java
+// Java
+static boolean verify(String header, String rawBody, String secret, long nowSeconds, long toleranceSeconds) throws Exception {
+    long t = Long.MIN_VALUE;
+    List<String> signatures = new ArrayList<>();
+    for (String part : header.split(",")) {
+        String[] kv = part.trim().split("=", 2);
+        if (kv[0].equals("t")) t = Long.parseLong(kv[1]);
+        else if (kv[0].equals("v1")) signatures.add(kv[1]);
+    }
+    if (t == Long.MIN_VALUE || Math.abs(nowSeconds - t) > toleranceSeconds) return false;
+    Mac mac = Mac.getInstance("HmacSHA256");
+    mac.init(new SecretKeySpec(secret.getBytes(StandardCharsets.UTF_8), "HmacSHA256"));
+    byte[] expected = HexFormat.of().formatHex(mac.doFinal((t + "." + rawBody).getBytes(StandardCharsets.UTF_8))).getBytes(StandardCharsets.US_ASCII);
+    return signatures.stream().anyMatch(v1 -> MessageDigest.isEqual(expected, v1.toLowerCase().getBytes(StandardCharsets.US_ASCII)));
+}
+```
+
+Putar rahasia dari portal atau dengan `POST /api/managing-entity/{id}/webhook/{webhookId}/rotate-secret`;
+respons menampilkan rahasia baru sekali, dan yang lama tetap dapat diverifikasi selama 24 jam saat Anda menggantinya.
+
+## Pengulangan dan pengiriman ulang
+
+- Balas dengan `2xx` dalam 10 detik untuk mengakui. Lakukan pekerjaan berat secara asinkron.
+- `5xx`, timeout, `408` atau `429` akan dicoba ulang dengan jeda: setelah 1 menit, 5 menit, 30 menit, 2 jam,
+  6 jam, 12 jam, lalu harian — 10 percobaan selama sekitar 3 hari — setelah itu pengiriman ditandai **mati**.
+- `4xx` lain dianggap sebagai "Anda menolak pengiriman ini" dan **tidak** dicoba ulang.
+- Setiap acara, pengiriman, dan percobaan (status, cuplikan respons) terlihat di **Applications > Webhooks**
+  dan melalui API (`…/webhook/event/grid`, `…/webhook/delivery/grid`). Anda dapat **mengirim ulang** pengiriman
+  apa pun (`POST …/webhook/delivery/{deliveryId}/redeliver`, yang memulai seri percobaan baru), mengirim ulang semua pengiriman mati
+  dari webhook sekaligus (`POST …/webhook/{webhookId}/redeliver-dead`), atau membatalkan satu.
+- Pengiriman disimpan selama 30 hari.
+
+## Acara uji
+
+Kirimkan acara sintetis `webhook.test` dari portal atau dengan
+`POST /api/managing-entity/{id}/webhook/{webhookId}/test`. Acara ini ditandatangani dan dikirim persis seperti acara nyata,
+sehingga Anda dapat memverifikasi endpoint, pemeriksaan tanda tangan, dan penanganan idempoten sebelum berlangganan
+acara langsung.
 
 ## Praktik terbaik
 
 - **Gunakan HTTPS** — Wink hanya mengirim payload ke endpoint HTTPS.
 - **Respon cepat** — Kembalikan `200 OK` segera setelah menerima payload. Lakukan pemrosesan berat secara asinkron.
-- **Idempoten** — Handler Anda harus idempoten. Wink mungkin mencoba ulang pengiriman jika tidak menerima respons `200`.
-- **Validasi sumber** — Verifikasi bahwa permintaan masuk berasal dari Wink sebelum memproses.
+- **Idempoten** — Penangan Anda harus idempoten; deduplikasi berdasarkan `Wink-Event-Id`. Wink mencoba ulang jika tidak menerima respons `2xx`.
+- **Validasi sumber** — Verifikasi header `Wink-Signature` (lihat [Memverifikasi tanda tangan](#memverifikasi-tanda-tangan)) sebelum memproses; tolak apa pun yang gagal.
 - **Logging** — Catat setiap payload webhook yang Anda terima. Ini memudahkan debugging masalah integrasi.
 
 ## Menjeda dan menghapus
 
 Anda dapat **menonaktifkan** webhook tanpa menghapusnya. Ini menjeda pengiriman sehingga Anda dapat memecahkan masalah tanpa kehilangan konfigurasi. Saat siap, aktifkan kembali.
 
-Menghapus webhook akan menghapusnya secara permanen. Integrasi yang bergantung pada webhook tersebut akan berhenti menerima notifikasi.
+Menghapus webhook menghapusnya secara permanen. Integrasi apa pun yang bergantung pada webhook tersebut akan berhenti menerima notifikasi.
 
 ## Bacaan lanjutan
 
-- [Katalog Acara Webhook](/id/developers/webhook-events) — Daftar lengkap semua lebih dari 64 jenis acara.
-- [Webhooks](/id/portal/settings/webhooks) — Referensi lengkap untuk pengelolaan webhook.
+- [Katalog Acara Webhook](/id/developers/webhook-events) — Setiap jenis acara, dihasilkan dari katalog platform.
+- [Referensi API Webhooks](/id/api/webhooks/) — Skema payload per acara, header, dan endpoint manajemen langganan/pengiriman.
+- [Webhooks](/id/portal/settings/webhooks) — Referensi lengkap untuk manajemen webhook.
 - [Applications](/id/account/applications) — Kelola kredensial API Anda.
 - [Developers > APIs](/id/api) — Dokumentasi API lengkap.

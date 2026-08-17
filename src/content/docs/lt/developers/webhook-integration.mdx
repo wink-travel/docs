@@ -16,7 +16,7 @@ Webhook'ai leidžia jūsų sistemoms gauti realaus laiko pranešimus, kai jūsų
 ## Kaip veikia webhook'ai
 
 1. Užregistruojate webhook URL Wink sistemoje.
-2. Kai įvyksta įvykis (pvz., naujas užsakymas), Wink siunčia HTTP POST užklausą į jūsų URL.
+2. Kai įvyksta įvykis (pvz., naujas užsakymas), Wink siunčia HTTP POST į jūsų URL.
 3. Jūsų serveris apdoroja duomenis ir atsako su `200 OK`.
 
 ## Webhook'o nustatymas
@@ -29,49 +29,138 @@ Webhook'ai leidžia jūsų sistemoms gauti realaus laiko pranešimus, kai jūsų
 5. Įveskite savo **webhook URL** — HTTPS galinį tašką jūsų serveryje.
 6. **Pasirinkite įvykius** — Pasirinkite konkrečius įvykius, kuriuos norite prenumeruoti, arba palikite tuščią, kad gautumėte visus įvykius.
 7. Įjunkite **Enabled**.
-8. Spustelėkite `Save`.
+8. Spustelėkite `Save` — atsakyme bus parodytas jūsų **pasirašymo slaptasis raktas vieną kartą**; išsaugokite jį dabar.
 </Steps>
 
 ## Įvykių tipai
 
-Wink palaiko **daugiau nei 64 webhook įvykių tipus** įvairiose kategorijose, įskaitant paskyros valdymą, užsakymų sutartis, mokėjimus, kanalų valdytojų atnaujinimus ir subjektų administravimą. Dažniausi įvykiai:
+Šiandien Wink skelbia 70 webhook įvykių tipų, susijusių su užsakymais, turtais, paskyromis (valdančiomis įmonėmis) ir inventoriaus valdymu (kambarių tipai, kainų planai, pagrindinės kainos, papildiniai, patalpos, pardavimo kanalai, akcijos). Dažniausi:
 
 | Kategorija | Pavyzdžiai |
 |---|---|
-| **Užsakymas** | `booking.create`, `booking.cancelled` |
-| **Užsakymo sutartis** | `booking.contract.created`, `booking.contract.processing`, `booking.contract.cancelled` |
-| **Mokėjimas** | `internal.payment.succeeded`, `internal.payment.failed` |
-| **Grąžinimai** | `booking.contract.refund.partial`, `booking.contract.refund.full` |
-| **Kanalų valdytojas** | `channel-manager.update.rate`, `channel-manager.update.availability` |
-| **Paskyra** | `account.create`, `account.status.updated` |
+| **Užsakymas** | `booking.create`, `booking.cancelled`, `booking.refund.partial`, `booking.refund.full`, `booking.review.created` |
+| **Turtas** | `property.created`, `property.status.updated`, `property.policy.updated` |
+| **Inventorius** | `room_type.updated`, `rate_plan.created`, `master_rate.updated`, `special_rate.created`, `sales_channel.created` |
+| **Paskyra** | `managing_entity.created`, `managing_entity.status.updated`, `managing_entity.manager.added` |
 
-Visą įvykių tipų sąrašą su aprašymais rasite **Webhook įvykių kataloge**.
+Pilnas, sugeneruotas sąrašas — su aprašymu, kas jį gauna ir nuoroda į kiekvieno įvykio aprašymo puslapį — yra **Webhook įvykių katalogas**. Kiekvieno įvykio aprašymo puslapis (JSON turinys, antraštės, pakartotinio siuntimo politika) yra [Webhooks API](/lt/api/webhooks/) dokumentacijoje.
 
 <LinkButton href="/lt/developers/webhook-events">
-  Peržiūrėti visus daugiau nei 64 įvykių tipus
+  Peržiūrėti visus įvykių tipus
 </LinkButton>
 
-:::tip
-Pradėkite nuo prenumeratos visų įvykių kūrimo metu. Kai suprasite duomenų struktūrą, susiaurinkite prenumeratą tik iki tų įvykių, kurių jūsų sistema tikrai reikia.
-:::
+## Ką gaunate
+
+Kiekvienas pranešimas yra HTTP `POST` į jūsų webhook URL su `Content-Type: application/json` ir šiuo apvalkalu:
+
+```json
+{
+  "id": "0198a4f2-6b0e-7c1d-9a3e-2f4b8c6d1e0a",
+  "type": "booking.create",
+  "occurredAt": "2026-08-15T09:30:00Z",
+  "ownerIdentifier": "3c6b1a5d-8e2f-4a0b-9c7d-6e4f0a8b2c51",
+  "recipientRole": "SUPPLIER",
+  "schemaVersion": 2,
+  "object": { "...": "įvykio specifinė informacija, pvz., BookingWebhookPayload" }
+}
+```
+
+- `id` — įvykio identifikatorius; tas pats visiems jūsų paskyros galiniams taškams, kurie gauna šį įvykį, ir kiekvienam pakartotiniam siuntimui. Naudokite kaip **idempotencijos raktą**.
+- `type` — įvykio tipo raktas (taip pat siunčiamas kaip `Wink-Event-Type` antraštė). Remkitės `type` ir `schemaVersion`, kad išanalizuotumėte `object`.
+- `object` — atrinkta išteklių santrauka, apie kurią yra įvykis (identifikatoriai, būsena, laukai, su kuriais dirbate), taip pat `links.self` — tiekėjo pusės kanoninis REST URL pilnam ištekliui. Jei reikia daugiau nei santrauka, gaukite jį su savo API kredencialais; jei gaunate įvykį kaip perpardavėjas ar kelionių agentas, naudokite atitinkamą savo API išteklių galinį tašką su tuo pačiu identifikatoriumi.
+
+Kiekvieno duomenų formato aprašymas yra dokumentuotas kiekvienam įvykiui [Webhooks API](/lt/api/webhooks/) dokumentacijoje.
+
+### Antraštės
+
+| Antraštė | Reikšmė |
+|---|---|
+| `Wink-Version` | Ryšio sutarties versija, `2.0`. |
+| `Wink-Event-Id` | Tas pats kaip `id` kūne — jūsų idempotencijos raktas. |
+| `Wink-Delivery-Id` | Unikalus kiekvienam galiniam taškui ir įvykiui; keičiasi tik jei siunčiate iš naujo. |
+| `Wink-Event-Type` | Tas pats kaip `type` kūne. |
+| `Wink-Delivery-Attempt` | Bandymo numeris, pradedant nuo 1, šiam siuntimui. |
+| `Wink-Signature` | HMAC parašas — žr. žemiau. |
+
+## Parašų tikrinimas
+
+Kiekvienas webhook'as turi **pasirašymo slaptą raktą** (`whsec_…`), kurį Wink parodo **vieną kartą**, kai sukuriate webhook'ą arba pakeičiate jo raktą. Išsaugokite jį kaip slaptažodį. Kiekvienas siuntimas turi
+
+```
+Wink-Signature: t=1755250200,v1=5d41402abc4b2a76b9719d911017c592…
+```
+
+čia `t` yra Unix laiko žyma (sekundėmis), o `v1` yra mažosiomis raidėmis užkoduotas heksadecimalus **HMAC-SHA256** iš eilutės `t + "." + rawBody`, pasirašytas jūsų slaptuoju raktu, o `rawBody` yra tikslūs gauti užklausos kūno baitai — nepradėkite JSON iš naujo serializuoti prieš tikrinimą. 24 valandas po rakto pakeitimo antraštėje yra antras `v1=` parašas, pasirašytas su ankstesniu raktu; priimkite siuntimą, jei **bet kuris** `v1` sutampa.
+
+Patikrinkite keturiais žingsniais: išanalizuokite `t` ir kiekvieną `v1`; perskaičiuokite HMAC per `t.rawBody` su savo raktu; palyginkite naudojant laiko saugų palyginimą; atminkite, jei `|dabar − t|` viršija jūsų toleranciją (rekomenduojama 5 minutės).
+
+```js
+// Node.js (Express stilius; įsitikinkite, kad turite RAW kūną, o ne išanalizuotą objektą)
+import { createHmac, timingSafeEqual } from 'node:crypto';
+
+export function verifyWinkSignature(header, rawBody, secret, toleranceSeconds = 300) {
+  const parts = Object.fromEntries(header.split(',').map((p) => p.split('=').map((s) => s.trim())));
+  const t = Number(parts.t);
+  if (!Number.isFinite(t) || Math.abs(Date.now() / 1000 - t) > toleranceSeconds) return false;
+  const expected = createHmac('sha256', secret).update(`${t}.${rawBody}`).digest('hex');
+  return header
+    .split(',')
+    .filter((p) => p.trim().startsWith('v1='))
+    .map((p) => p.trim().slice(3))
+    .some((v1) => v1.length === expected.length && timingSafeEqual(Buffer.from(v1, 'utf8'), Buffer.from(expected, 'utf8')));
+}
+```
+
+```java
+// Java
+static boolean verify(String header, String rawBody, String secret, long nowSeconds, long toleranceSeconds) throws Exception {
+    long t = Long.MIN_VALUE;
+    List<String> signatures = new ArrayList<>();
+    for (String part : header.split(",")) {
+        String[] kv = part.trim().split("=", 2);
+        if (kv[0].equals("t")) t = Long.parseLong(kv[1]);
+        else if (kv[0].equals("v1")) signatures.add(kv[1]);
+    }
+    if (t == Long.MIN_VALUE || Math.abs(nowSeconds - t) > toleranceSeconds) return false;
+    Mac mac = Mac.getInstance("HmacSHA256");
+    mac.init(new SecretKeySpec(secret.getBytes(StandardCharsets.UTF_8), "HmacSHA256"));
+    byte[] expected = HexFormat.of().formatHex(mac.doFinal((t + "." + rawBody).getBytes(StandardCharsets.UTF_8))).getBytes(StandardCharsets.US_ASCII);
+    return signatures.stream().anyMatch(v1 -> MessageDigest.isEqual(expected, v1.toLowerCase().getBytes(StandardCharsets.US_ASCII)));
+}
+```
+
+Pakeiskite raktą portale arba naudodami `POST /api/managing-entity/{id}/webhook/{webhookId}/rotate-secret`; atsakyme bus parodytas naujas raktas vieną kartą, o senasis galios dar 24 valandas, kol jį išplatinsite.
+
+## Pakartotiniai bandymai ir persiuntimas
+
+- Atsakykite bet kuriuo `2xx` per 10 sekundžių, kad patvirtintumėte gavimą. Sunkų darbą atlikite asinchroniškai.
+- `5xx`, laiko išeiga, `408` arba `429` bus bandomi pakartotinai su atidėjimu: po 1 minutės, 5 minučių, 30 minučių, 2 valandų, 6 valandų, 12 valandų, tada kasdien — 10 bandymų per maždaug 3 dienas — po to siuntimas pažymimas kaip **miręs**.
+- Bet kuris kitas `4xx` laikomas, kad jūs atmetėte šį siuntimą, ir **nebebus** bandomas pakartotinai.
+- Kiekvienas įvykis, siuntimas ir bandymas (būsena, atsakymo fragmentas) matomas skiltyje **Applications > Webhooks** ir per API (`…/webhook/event/grid`, `…/webhook/delivery/grid`). Galite **persiųsti** bet kurį siuntimą (`POST …/webhook/delivery/{deliveryId}/redeliver`, kuris pradeda naują bandymų seriją), persiųsti visus mirusius webhook'o siuntimus vienu metu (`POST …/webhook/{webhookId}/redeliver-dead`), arba atšaukti vieną.
+- Siuntimai saugomi 30 dienų.
+
+## Testiniai įvykiai
+
+Išsiųskite sau sintetinius `webhook.test` įvykius iš portalo arba naudodami `POST /api/managing-entity/{id}/webhook/{webhookId}/test`. Jie pasirašyti ir pristatomi taip pat kaip tikri įvykiai, todėl galite patikrinti savo galinį tašką, parašo tikrinimą ir idempotencijos valdymą prieš prenumeruodami gyvus įvykius.
 
 ## Geriausios praktikos
 
 - **Naudokite HTTPS** — Wink siunčia duomenis tik į HTTPS galinius taškus.
-- **Atsakykite greitai** — Grąžinkite `200 OK` iškart gavę duomenis. Sunkų apdorojimą atlikite asinchroniškai.
-- **Idempotentiškumas** — Jūsų apdorojimo funkcija turėtų būti idempotentiška. Wink gali bandyti pakartotinai pristatyti, jei negauna `200` atsakymo.
-- **Patikrinkite šaltinį** — Patikrinkite, ar gaunami užklausimai tikrai iš Wink prieš juos apdorojant.
-- **Registravimas** — Fiksuokite kiekvieną gautą webhook duomenų paketą. Tai labai palengvina integracijos klaidų paiešką.
+- **Atsakykite greitai** — Grąžinkite `200 OK` iš karto gavę duomenis. Sunkų apdorojimą atlikite asinchroniškai.
+- **Idempotencija** — Jūsų apdorojimo funkcija turi būti idempotentiška; deduplikacija pagal `Wink-Event-Id`. Wink bando pakartotinai, jei negauna `2xx` atsakymo.
+- **Patikrinkite šaltinį** — Patikrinkite `Wink-Signature` antraštę (žr. [Parašų tikrinimas](#verifying-signatures)) prieš apdorojimą; atminkite viską, kas nepraeina.
+- **Registravimas** — Registruokite kiekvieną gautą webhook duomenų paketą. Tai labai palengvina integracijos klaidų taisymą.
 
 ## Sustabdymas ir ištrynimas
 
-Galite **išjungti** webhook'ą, jo neištrindami. Tai sustabdo duomenų pristatymą, kad galėtumėte spręsti problemas neprarandant nustatymų. Kai būsite pasiruošę, vėl įjunkite.
+Galite **išjungti** webhook'ą, jo neištrindami. Tai sustabdo siuntimą, kad galėtumėte spręsti problemas neprarandant konfigūracijos. Kai būsite pasiruošę, vėl įjunkite.
 
-Ištrynus webhook'ą, jis pašalinamas visam laikui. Bet kokia integracija, priklausanti nuo to webhook'o, nustos gauti pranešimus.
+Webhook'o ištrynimas jį pašalina visam laikui. Bet kuri integracija, priklausanti nuo to webhook'o, nustos gauti pranešimus.
 
-## Papildoma informacija
+## Tolimesnė literatūra
 
-- [Webhook įvykių katalogas](/lt/developers/webhook-events) — Pilnas daugiau nei 64 įvykių tipų sąrašas.
+- [Webhook įvykių katalogas](/lt/developers/webhook-events) — Kiekvieno įvykio tipas, sugeneruotas iš platformos katalogo.
+- [Webhooks API dokumentacija](/lt/api/webhooks/) — Kiekvieno įvykio duomenų formatai, antraštės ir prenumeratos/siuntimo valdymo galiniai taškai.
 - [Webhook'ai](/lt/portal/settings/webhooks) — Pilnas webhook valdymo vadovas.
 - [Applications](/lt/account/applications) — Valdykite savo API kredencialus.
-- [Kūrėjams > API](/lt/api) — Pilna API dokumentacija.
+- [Kūrėjai > API](/lt/api) — Pilna API dokumentacija.

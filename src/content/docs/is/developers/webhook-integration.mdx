@@ -7,11 +7,11 @@ sidebar:
 
 import { Steps, LinkButton } from '@astrojs/starlight/components';
 
-Vefkrokar láta kerfin þín fá rauntímatilkynningar þegar atvik eiga sér stað á Wink reikningnum þínum — nýjar bókanir, afbókanir, uppfærslur á greiðslum og fleira. Þessi leiðarvísir leiðir þig í gegnum uppsetningu og bestu vinnubrögð.
+Vefkrokar leyfa kerfum þínum að fá rauntímatilkynningar þegar atvik eiga sér stað á Wink reikningnum þínum — nýjar bókanir, afbókanir, uppfærslur á greiðslum og fleira. Þessi leiðarvísir leiðir þig í gegnum uppsetningu og bestu vinnubrögð.
 
 ## Áhorfendur
 
-Þessi leiðarvísir er fyrir forritara sem samþætta Wink við ytri kerfi eins og eignastýringarkerfi (PMS), rásastjóra, CRM-kerfi eða sérsniðnar mælaborð.
+Þessi leiðarvísir er fyrir forritara sem samþætta Wink við ytri kerfi eins og eignastýringarkerfi (PMS), rásastjóra, CRM kerfi eða sérsniðin mælaborð.
 
 ## Hvernig vefkrokar virka
 
@@ -26,52 +26,162 @@ Vefkrokar láta kerfin þín fá rauntímatilkynningar þegar atvik eiga sér st
 2. Farðu í `Applications` og síðan `Webhooks`. Sjá [Webhooks](/is/portal/settings/webhooks).
 3. Smelltu á `Create webhook`.
 4. Sláðu inn **nafn** (t.d. "PMS Booking Sync").
-5. Sláðu inn þína **vefkroka slóð** — HTTPS endapunkt á netþjóninum þínum.
+5. Sláðu inn **vefkroka slóðina þína** — HTTPS endapunkt á netþjóninum þínum.
 6. **Veldu atvik** — Veldu tiltekna atburði til að gerast áskrifandi að, eða skildu tómt til að fá öll atvik.
 7. Kveiktu á **Enabled**.
-8. Smelltu á `Save`.
+8. Smelltu á `Save` — svar sýnir þér **undirritunarlykilinn einu sinni**; geymdu hann núna.
 </Steps>
 
 ## Tegundir atvika
 
-Wink styður **64+ tegundir vefkroka atvika** í flokkum eins og reikningsstjórnun, bókunarsamningum, greiðslum, uppfærslum rásastjóra og stjórnun á aðilum. Algeng atvik eru:
+Wink birtir í dag 70 tegundir vefkroka atvika yfir bókanir, eignir, reikninga (stjórnunaraðilar)
+og birgðir (herbergistegundir, verðáætlanir, aðalverð, aukahlutir, aðstaða, sölurásir, kynningar).
+Algeng dæmi:
 
 | Flokkur | Dæmi |
 |---|---|
-| **Bókun** | `booking.create`, `booking.cancelled` |
-| **Bókunarsamningur** | `booking.contract.created`, `booking.contract.processing`, `booking.contract.cancelled` |
-| **Greiðsla** | `internal.payment.succeeded`, `internal.payment.failed` |
-| **Endurgreiðslur** | `booking.contract.refund.partial`, `booking.contract.refund.full` |
-| **Rásastjóri** | `channel-manager.update.rate`, `channel-manager.update.availability` |
-| **Reikningur** | `account.create`, `account.status.updated` |
+| **Bókun** | `booking.create`, `booking.cancelled`, `booking.refund.partial`, `booking.refund.full`, `booking.review.created` |
+| **Eign** | `property.created`, `property.status.updated`, `property.policy.updated` |
+| **Birgðir** | `room_type.updated`, `rate_plan.created`, `master_rate.updated`, `special_rate.created`, `sales_channel.created` |
+| **Reikningur** | `managing_entity.created`, `managing_entity.status.updated`, `managing_entity.manager.added` |
 
-Fyrir fullkominn lista yfir allar tegundir atvika með lýsingum, sjá **Webhook Events Catalog**.
+Heildarlistinn — með lýsingu, hver fær það, og tengil á hverja atburðasíðu — er **Webhook Events Catalog**. Tilvísunarsíða fyrir hvert atvik (JSON líkami, hausar, endurtekningarstefna)
+er í [Webhooks API](/is/api/webhooks/).
 
 <LinkButton href="/is/developers/webhook-events">
-  Skoða allar 64+ tegundir atvika
+  Skoða allar tegundir atvika
 </LinkButton>
 
-:::tip
-Byrjaðu á að gerast áskrifandi að öllum atvikum á þróunartíma. Þegar þú skilur gögnin, þrengdu áskriftina að þeim atvikum sem kerfið þitt þarf.
-:::
+## Hvað þú færð
+
+Hver sending er HTTP `POST` á vefkroka slóðina þína með `Content-Type: application/json` og þessari umbúð:
+
+```json
+{
+  "id": "0198a4f2-6b0e-7c1d-9a3e-2f4b8c6d1e0a",
+  "type": "booking.create",
+  "occurredAt": "2026-08-15T09:30:00Z",
+  "ownerIdentifier": "3c6b1a5d-8e2f-4a0b-9c7d-6e4f0a8b2c51",
+  "recipientRole": "SUPPLIER",
+  "schemaVersion": 2,
+  "object": { "...": "event-specific payload, e.g. BookingWebhookPayload" }
+}
+```
+
+- `id` — auðkenni atviksins; eins fyrir alla endapunkta reikningsins sem fá þetta atvik og fyrir
+  allar endurtilraunir. Notaðu það sem þinn **idempotency lykil**.
+- `type` — lykill atvikategundar (sendur einnig sem `Wink-Event-Type` haus). Greindu á `type` og `schemaVersion`
+  til að vinna úr `object`.
+- `object` — valin samantekt á auðlindinni sem atvikið snýst um (auðkenni, staða, þau svæði sem þú vinnur með)
+  auk `links.self`, canonical REST slóð birgjahliðsins á fullri auðlind. Sækja með þínum eigin API
+  auðkennum þegar þú þarft meira en samantektina; ef þú færð atvikið sem endursöluaðili eða ferðaskrifstofa, notaðu
+  samsvarandi auðlindarendapunkt á þínu eigin API yfirborði fyrir sama auðkenni.
+
+Hver gagnaskema er skjalfest fyrir hvert atvik í [Webhooks API](/is/api/webhooks/) tilvísun.
+
+### Hausar
+
+| Haus | Merking |
+|---|---|
+| `Wink-Version` | Þráðsamningsútgáfa, `2.0`. |
+| `Wink-Event-Id` | Eins og `id` í líkamanum — þinn idempotency lykill. |
+| `Wink-Delivery-Id` | Einstakt fyrir hvern endapunkt fyrir hvert atvik; breytist aðeins ef þú sendir aftur. |
+| `Wink-Event-Type` | Eins og `type` í líkamanum. |
+| `Wink-Delivery-Attempt` | Tilraunarnúmer fyrir þessa sending, byrjar á 1. |
+| `Wink-Signature` | HMAC undirskrift — sjá hér að neðan. |
+
+## Staðfesting undirskrifta
+
+Hver vefkroki hefur **undirritunarlykil** (`whsec_…`) sem Wink sýnir **einungis einu sinni**, þegar þú býrð til vefkrokann eða
+endurnýjar lykilinn. Geymdu hann eins og lykilorð. Hver sending ber með sér
+
+```
+Wink-Signature: t=1755250200,v1=5d41402abc4b2a76b9719d911017c592…
+```
+
+þar sem `t` er Unix tímastimpill (sekúndur) og `v1` er lágstafað hex **HMAC-SHA256** af strengnum
+`t + "." + rawBody`, undirritaður með þínum lykli, og `rawBody` er nákvæm beiðnalíkamsbitar eins og þeir komu —
+ekki endurraða JSON áður en staðfesting fer fram. Í 24 klukkustundir eftir lykilendurnýjun ber hausinn
+annað `v1=` gildi undirritað með fyrri lykli; samþykktu sendinguna ef **eitthvert** `v1` passar.
+
+Staðfestu í fjórum skrefum: greindu `t` og öll `v1`; reiknaðu HMAC yfir `t.rawBody` með þínum lykli;
+berðu saman með tímasamkvæmni; hafnaðu ef `|now − t|` fer yfir þolmarka (mælt með 5 mínútum).
+
+```js
+// Node.js (Express-stíll; vertu viss um að hafa RAW líkama, ekki greindan hlut)
+import { createHmac, timingSafeEqual } from 'node:crypto';
+
+export function verifyWinkSignature(header, rawBody, secret, toleranceSeconds = 300) {
+  const parts = Object.fromEntries(header.split(',').map((p) => p.split('=').map((s) => s.trim())));
+  const t = Number(parts.t);
+  if (!Number.isFinite(t) || Math.abs(Date.now() / 1000 - t) > toleranceSeconds) return false;
+  const expected = createHmac('sha256', secret).update(`${t}.${rawBody}`).digest('hex');
+  return header
+    .split(',')
+    .filter((p) => p.trim().startsWith('v1='))
+    .map((p) => p.trim().slice(3))
+    .some((v1) => v1.length === expected.length && timingSafeEqual(Buffer.from(v1, 'utf8'), Buffer.from(expected, 'utf8')));
+}
+```
+
+```java
+// Java
+static boolean verify(String header, String rawBody, String secret, long nowSeconds, long toleranceSeconds) throws Exception {
+    long t = Long.MIN_VALUE;
+    List<String> signatures = new ArrayList<>();
+    for (String part : header.split(",")) {
+        String[] kv = part.trim().split("=", 2);
+        if (kv[0].equals("t")) t = Long.parseLong(kv[1]);
+        else if (kv[0].equals("v1")) signatures.add(kv[1]);
+    }
+    if (t == Long.MIN_VALUE || Math.abs(nowSeconds - t) > toleranceSeconds) return false;
+    Mac mac = Mac.getInstance("HmacSHA256");
+    mac.init(new SecretKeySpec(secret.getBytes(StandardCharsets.UTF_8), "HmacSHA256"));
+    byte[] expected = HexFormat.of().formatHex(mac.doFinal((t + "." + rawBody).getBytes(StandardCharsets.UTF_8))).getBytes(StandardCharsets.US_ASCII);
+    return signatures.stream().anyMatch(v1 -> MessageDigest.isEqual(expected, v1.toLowerCase().getBytes(StandardCharsets.US_ASCII)));
+}
+```
+
+Endurnýjaðu lykilinn úr vefstjórnborðinu eða með `POST /api/managing-entity/{id}/webhook/{webhookId}/rotate-secret`;
+svarið sýnir nýja lykilinn einu sinni, og sá gamli heldur áfram að staðfesta í 24 klukkustundir meðan þú dreifir honum.
+
+## Endurtilraunir og endursendingar
+
+- Svaraðu með hvaða `2xx` innan 10 sekúndna til að staðfesta móttöku. Gerðu þung vinnsla í bakgrunni.
+- `5xx`, tímamörk, `408` eða `429` eru endurtilraunað með vaxandi bið: eftir 1 mínútu, 5 mínútur, 30 mínútur, 2 klukkustundir,
+  6 klukkustundir, 12 klukkustundir, svo daglega — 10 tilraunir yfir um 3 daga — eftir það er sendingin merkt sem **dauð**.
+- Önnur `4xx` er meðhöndluð sem "þú hafnaðir þessari sendingu" og er **ekki** endurtilraunað.
+- Hvert atvik, sending og tilraun (staða, svarbrot) er sýnilegt undir **Applications > Webhooks**
+  og í gegnum API (`…/webhook/event/grid`, `…/webhook/delivery/grid`). Þú getur **endur sent** hvaða sendingu sem er
+  (`POST …/webhook/delivery/{deliveryId}/redeliver`, sem byrjar nýja tilraunarröð), endursent allar dauðar
+  sendingar vefkroka í einu (`POST …/webhook/{webhookId}/redeliver-dead`), eða hætt við eina.
+- Sendingar eru varðveittar í 30 daga.
+
+## Prufuatvik
+
+Sendu þér gervi `webhook.test` atvik úr vefstjórnborðinu eða með
+`POST /api/managing-entity/{id}/webhook/{webhookId}/test`. Það er undirritað og sent nákvæmlega eins og raunverulegt
+atvik, svo þú getur staðfest endapunktinn þinn, undirritunarskoðun og meðhöndlun idempotency áður en þú gerist áskrifandi
+að lifandi atvikum.
 
 ## Bestu vinnubrögð
 
 - **Notaðu HTTPS** — Wink sendir gögn aðeins á HTTPS endapunkta.
-- **Svaraðu fljótt** — Skilaðu `200 OK` um leið og þú færð gögnin. Gerðu þung vinnsla í bakgrunni.
-- **Endurtekning** — Meðhöndlun þín ætti að vera endurtekningarhæf. Wink gæti reynt að senda aftur ef það fær ekki `200` svar.
-- **Staðfestu uppruna** — Staðfestu að beiðnir séu frá Wink áður en þú vinnur úr þeim.
-- **Skráning** — Skráðu öll gögn sem þú færð í vefkroka. Þetta auðveldar bilanaleit.
+- **Svaraðu hratt** — Skilaðu `200 OK` um leið og þú færð gögnin. Gerðu þunga vinnslu í bakgrunni.
+- **Idempotency** — Meðhöndlarinn þinn ætti að vera idempotent; fjarlægðu tvítekningu með `Wink-Event-Id`. Wink endurtilraunir ef ekki fæst `2xx` svar.
+- **Staðfestu uppruna** — Staðfestu `Wink-Signature` hausinn (sjá [Staðfesting undirskrifta](#verifying-signatures)) áður en þú vinnur úr; hafnaðu öllu sem mistekst.
+- **Skráning** — Skráðu hvert vefkroka gagnapakka sem þú færð. Þetta auðveldar bilanaleit verulega.
 
 ## Stöðvun og eyðing
 
-Þú getur **slökkt á** vefkroka án þess að eyða honum. Þetta stöðvar sendingar svo þú getir leyst úr vandamálum án þess að tapa stillingum. Þegar þú ert tilbúinn, kveiktu aftur á honum.
+Þú getur **slökkt á** vefkroka án þess að eyða honum. Þetta stöðvar sendingar svo þú getir greint villur án þess að tapa stillingum. Þegar þú ert tilbúinn, kveiktu aftur á honum.
 
 Eyðing vefkroka fjarlægir hann varanlega. Öll samþætting sem byggir á þeim mun hætta að fá tilkynningar.
 
 ## Frekari lesning
 
-- [Webhook Events Catalog](/is/developers/webhook-events) — Fullur listi yfir allar 64+ tegundir atvika.
-- [Webhooks](/is/portal/settings/webhooks) — Fullt yfirlit yfir stjórnun vefkroka.
+- [Webhook Events Catalog](/is/developers/webhook-events) — Allar tegundir atvika, myndaðar úr skráningarkerfi vettvangsins.
+- [Webhooks API reference](/is/api/webhooks/) — Gagnaskemur fyrir hvert atvik, hausar og endaprentunarstjórnun.
+- [Webhooks](/is/portal/settings/webhooks) — Fullkomin tilvísun fyrir vefkroka stjórnun.
 - [Applications](/is/account/applications) — Stjórnaðu API auðkennum þínum.
-- [Developers > APIs](/is/api) — Full skjölun API.
+- [Developers > APIs](/is/api) — Full API skjöl.

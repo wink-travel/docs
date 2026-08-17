@@ -1,0 +1,76 @@
+---
+title: Taksonomija
+description: Nadzorovani slovarji, ki jih uporablja platforma Wink — OTA kode za storitve, vrste postelj, poglede iz sob in več, ter vse podprte jezike in valute.
+sidebar:
+  order: 12
+---
+
+import taxonomy from '@/data/taxonomy.json';
+import OtaCategories from '@/components/taxonomy/ota-categories.astro';
+import CodeTable from '@/components/taxonomy/code-table.astro';
+
+Wink opisuje inventar z uporabo nadzorovanih slovarjev — fiksnih nizov kod z dogovorjenimi pomeni. Ko
+pošljete `"5"` kot hotelsko storitev, platforma to prebere kot *Klimatska naprava*, prav tako pa vsi uporabniki
+teh podatkov.
+
+Ta stran je objavljen referenčni vir za vse tri slovarje:
+
+- **OTA kode** — {taxonomy.ota.codeCount} kod v {taxonomy.ota.categoryCount} kategorijah, ki zajemajo
+  storitve, vrste postelj, poglede iz sob, dostopnost, kulinariko in več.
+- **Jeziki** — {taxonomy.languages.list.length} jezikov, v katerih je mogoče ustvarjati in prikazovati vsebine.
+- **Valute** — {taxonomy.currencies.list.length} valut, v katerih je mogoče navajati in poravnavati cene.
+
+Kode so stabilne. Imena se lahko spremenijo za jasnost, zato se ujemajte na **kodo**, nikoli na ime.
+
+## OTA kode
+
+Wink sledi seznamom kod [OpenTravel Alliance](https://opentravel.org/). Vsaka kategorija ima
+trimestno oznako — `HAC` za hotelske storitve, `BED` za vrste postelj — in vsaka koda znotraj
+kategorije je znotraj nje edinstvena. Enaka številčna vrednost pomeni različne stvari v različnih kategorijah, zato je
+koda smiselna le skupaj s kategorijo, kateri pripada: `BED` `1` je *Dvojna / Polna postelja*, medtem ko je `HAC`
+`1` *24-urna recepcija*.
+
+Izberite kategorijo, da vidite njene kode.
+
+<OtaCategories
+  categories={taxonomy.ota.categories}
+  categoryHeader="Kategorija"
+  descriptionHeader="Opis"
+  countHeader="Kode"
+  codeHeader="Koda"
+  nameHeader="Ime"
+/>
+
+## Jeziki
+
+Vsebina — opisi nastanitve, imena sob, pravila — je lahko ustvarjena v katerem koli od teh jezikov.
+Kode so oznake [IETF BCP 47](https://www.rfc-editor.org/info/bcp47): dvočrkovni
+[ISO 639-1](https://www.iso.org/iso-639-language-code) jezik, po želji z dodatkom
+[ISO 3166-1](https://www.iso.org/iso-3166-country-codes.html) regije, kjer platforma razlikuje
+regionalne različice — `pt-BR` in `pt-PT` se obravnavata ločeno, prav tako `es`, `es-AR` in `es-MX`.
+
+Privzeti jezik platforme je `{taxonomy.languages.default}`, ki se uporabi, kadar zahteva ne določa jezika
+in kadar prevod ni na voljo.
+
+<CodeTable
+  rows={taxonomy.languages.list}
+  codeHeader="Koda"
+  nameHeader="Jezik"
+  unnamedLabel="Brez standardnega imena"
+/>
+
+## Valute
+
+Cene je mogoče navajati in poravnavati v katerikoli od teh valut. Kode so
+[ISO 4217](https://www.iso.org/iso-4217-currency-codes.html) trimestne oznake.
+
+Privzeta valuta platforme je `{taxonomy.currencies.default}`. To je privzeta valuta za prikaz in enota, na katero so normalizirane platformne številke; **ni** valuta, v kateri se poravnava rezervacija — hoteli poravnavajo v svoji valuti, zato cena, navedena v eni valuti in plačana v drugi, vključuje menjalni tečaj.
+
+Nekateri vnosi niso nacionalne valute: `XAU` in `XAG` sta zlato in srebro, `XDR` je poseben pravico do črpanja Mednarodnega denarnega sklada, `BTC` pa je Bitcoin. Ti se uporabljajo za vrednotenje in poročanje, običajno pa niso uporabni kot valuta za poravnavo.
+
+<CodeTable
+  rows={taxonomy.currencies.list}
+  codeHeader="Koda"
+  nameHeader="Valuta"
+  unnamedLabel="Brez standardnega imena"
+/>

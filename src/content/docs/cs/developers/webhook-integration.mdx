@@ -11,7 +11,7 @@ Webhooky umožňují vašim systémům přijímat oznámení v reálném čase, 
 
 ## Publikum
 
-Tento průvodce je určen vývojářům integrujícím Wink s externími systémy, jako jsou systémy pro správu nemovitostí (PMS), channel manageři, CRM nebo vlastní dashboardy.
+Tento průvodce je určen vývojářům integrujícím Wink s externími systémy, jako jsou systémy pro správu nemovitostí (PMS), správci kanálů, CRM nebo vlastní dashboardy.
 
 ## Jak webhooky fungují
 
@@ -22,56 +22,147 @@ Tento průvodce je určen vývojářům integrujícím Wink s externími systém
 ## Nastavení webhooku
 
 <Steps>
-1. Přihlaste se do svého účtu (Extranet, Studio nebo TripPay — všechny podporují webhooky).
-2. Přejděte do `Applications` a poté `Webhooks`. Viz [Webhooks](/cs/portal/settings/webhooks).
+1. Přihlaste se ke svému účtu (Extranet, Studio nebo TripPay — všechny podporují webhooky).
+2. Přejděte do `Applications` a poté `Webhooks`. Viz [Webhooky](/cs/portal/settings/webhooks).
 3. Klikněte na `Create webhook`.
-4. Zadejte **název** (např. "PMS synchronizace rezervací").
+4. Zadejte **název** (např. "PMS Synchronizace rezervací").
 5. Zadejte svou **webhook URL** — HTTPS endpoint na vašem serveru.
-6. **Vyberte události** — Zvolte konkrétní události, na které se chcete přihlásit, nebo nechte prázdné pro příjem všech událostí.
+6. **Vyberte události** — Vyberte konkrétní události, na které se chcete přihlásit, nebo nechte prázdné pro příjem všech událostí.
 7. Přepněte **Enabled** na zapnuto.
-8. Klikněte na `Save`.
+8. Klikněte na `Save` — odpověď zobrazí váš **signing secret pouze jednou**; uložte si ho nyní.
 </Steps>
 
 ## Typy událostí
 
-Wink podporuje **64+ typů webhook událostí** v kategoriích jako správa účtu, smlouvy o rezervaci, platby, aktualizace channel managera a správa entit. Běžné události zahrnují:
+Wink dnes publikuje 70 typů webhook událostí napříč rezervacemi, nemovitostmi, účty (správní entity) a inventářem (typy pokojů, sazební plány, hlavní sazby, doplňky, zařízení, prodejní kanály, promo akce). Mezi běžné patří:
 
 | Kategorie | Příklady |
 |---|---|
-| **Rezervace** | `booking.create`, `booking.cancelled` |
-| **Smlouva o rezervaci** | `booking.contract.created`, `booking.contract.processing`, `booking.contract.cancelled` |
-| **Platba** | `internal.payment.succeeded`, `internal.payment.failed` |
-| **Vrácení peněz** | `booking.contract.refund.partial`, `booking.contract.refund.full` |
-| **Channel manager** | `channel-manager.update.rate`, `channel-manager.update.availability` |
-| **Účet** | `account.create`, `account.status.updated` |
+| **Rezervace** | `booking.create`, `booking.cancelled`, `booking.refund.partial`, `booking.refund.full`, `booking.review.created` |
+| **Nemovitost** | `property.created`, `property.status.updated`, `property.policy.updated` |
+| **Inventář** | `room_type.updated`, `rate_plan.created`, `master_rate.updated`, `special_rate.created`, `sales_channel.created` |
+| **Účet** | `managing_entity.created`, `managing_entity.status.updated`, `managing_entity.manager.added` |
 
-Pro úplný seznam všech typů událostí s popisy viz **Katalog webhook událostí**.
+Kompletní generovaný seznam — s popisem, kdo jej přijímá, a odkazem na referenční stránku každé události — je **Katalog webhook událostí**. Referenční stránka pro každou událost (JSON tělo, hlavičky, retry politika) je v [Webhooks API](/cs/api/webhooks/).
 
 <LinkButton href="/cs/developers/webhook-events">
-  Zobrazit všech 64+ typů událostí
+  Zobrazit všechny typy událostí
 </LinkButton>
 
-:::tip
-Začněte během vývoje přihlašováním na všechny události. Jakmile pochopíte payloady, zúžte výběr pouze na události, které váš systém skutečně potřebuje.
-:::
+## Co obdržíte
+
+Každé doručení je HTTP `POST` na vaši webhook URL s `Content-Type: application/json` a tímto obalem:
+
+```json
+{
+  "id": "0198a4f2-6b0e-7c1d-9a3e-2f4b8c6d1e0a",
+  "type": "booking.create",
+  "occurredAt": "2026-08-15T09:30:00Z",
+  "ownerIdentifier": "3c6b1a5d-8e2f-4a0b-9c7d-6e4f0a8b2c51",
+  "recipientRole": "SUPPLIER",
+  "schemaVersion": 2,
+  "object": { "...": "event-specific payload, e.g. BookingWebhookPayload" }
+}
+```
+
+- `id` — identifikátor události; stejný pro každý endpoint vašeho účtu, který tuto událost přijímá, a pro každý retry. Použijte ho jako svůj **idempotentní klíč**.
+- `type` — klíč typu události (také odesílaný jako hlavička `Wink-Event-Type`). Rozlišujte podle `type` a `schemaVersion` pro parsování `object`.
+- `object` — vybraný souhrn zdroje, o kterém událost je (identifikátory, stav, pole, na která reagujete) plus `links.self`, kanonická REST URL na straně dodavatele k plnému zdroji. Stáhněte si ji s vlastními API přihlašovacími údaji, pokud potřebujete víc než souhrn; pokud událost přijímáte jako reseller nebo cestovní agent, použijte odpovídající endpoint svého API pro stejný identifikátor.
+
+Každé schéma payloadu je dokumentováno pro každou událost v referenci [Webhooks API](/cs/api/webhooks/).
+
+### Hlavičky
+
+| Hlavička | Význam |
+|---|---|
+| `Wink-Version` | Verze wire kontraktu, `2.0`. |
+| `Wink-Event-Id` | Stejné jako `id` v těle — váš idempotentní klíč. |
+| `Wink-Delivery-Id` | Unikátní pro endpoint a událost; mění se pouze při opětovném doručení. |
+| `Wink-Event-Type` | Stejné jako `type` v těle. |
+| `Wink-Delivery-Attempt` | Číslo pokusu o doručení, začíná na 1. |
+| `Wink-Signature` | HMAC podpis — viz níže. |
+
+## Ověřování podpisů
+
+Každý webhook má **signing secret** (`whsec_…`), který Wink zobrazí **pouze jednou**, při vytvoření webhooku nebo při rotaci jeho tajemství. Uložte si ho jako heslo. Každé doručení nese
+
+```
+Wink-Signature: t=1755250200,v1=5d41402abc4b2a76b9719d911017c592…
+```
+
+kde `t` je Unixový timestamp (v sekundách) a `v1` je hexadecimální **HMAC-SHA256** malými písmeny řetězce
+`t + "." + rawBody`, podepsaný vaším tajemstvím, a `rawBody` je přesný obsah těla požadavku, jak byl přijat — JSON před ověřením nepřepisujte. Po dobu 24 hodin po rotaci tajemství hlavička nese druhou hodnotu `v1=` podepsanou předchozím tajemstvím; doručení přijměte, pokud **nějaký** `v1` sedí.
+
+Ověřte ve čtyřech krocích: rozparsujte `t` a všechny `v1`; přepočítejte HMAC přes `t.rawBody` s vaším tajemstvím; porovnejte konstantním časem; odmítněte, pokud `|now − t|` překročí vaši toleranci (doporučeno 5 minut).
+
+```js
+// Node.js (Express-style; ujistěte se, že máte RAW tělo, ne parsovaný objekt)
+import { createHmac, timingSafeEqual } from 'node:crypto';
+
+export function verifyWinkSignature(header, rawBody, secret, toleranceSeconds = 300) {
+  const parts = Object.fromEntries(header.split(',').map((p) => p.split('=').map((s) => s.trim())));
+  const t = Number(parts.t);
+  if (!Number.isFinite(t) || Math.abs(Date.now() / 1000 - t) > toleranceSeconds) return false;
+  const expected = createHmac('sha256', secret).update(`${t}.${rawBody}`).digest('hex');
+  return header
+    .split(',')
+    .filter((p) => p.trim().startsWith('v1='))
+    .map((p) => p.trim().slice(3))
+    .some((v1) => v1.length === expected.length && timingSafeEqual(Buffer.from(v1, 'utf8'), Buffer.from(expected, 'utf8')));
+}
+```
+
+```java
+// Java
+static boolean verify(String header, String rawBody, String secret, long nowSeconds, long toleranceSeconds) throws Exception {
+    long t = Long.MIN_VALUE;
+    List<String> signatures = new ArrayList<>();
+    for (String part : header.split(",")) {
+        String[] kv = part.trim().split("=", 2);
+        if (kv[0].equals("t")) t = Long.parseLong(kv[1]);
+        else if (kv[0].equals("v1")) signatures.add(kv[1]);
+    }
+    if (t == Long.MIN_VALUE || Math.abs(nowSeconds - t) > toleranceSeconds) return false;
+    Mac mac = Mac.getInstance("HmacSHA256");
+    mac.init(new SecretKeySpec(secret.getBytes(StandardCharsets.UTF_8), "HmacSHA256"));
+    byte[] expected = HexFormat.of().formatHex(mac.doFinal((t + "." + rawBody).getBytes(StandardCharsets.UTF_8))).getBytes(StandardCharsets.US_ASCII);
+    return signatures.stream().anyMatch(v1 -> MessageDigest.isEqual(expected, v1.toLowerCase().getBytes(StandardCharsets.US_ASCII)));
+}
+```
+
+Rotujte tajemství z portálu nebo pomocí `POST /api/managing-entity/{id}/webhook/{webhookId}/rotate-secret`; odpověď zobrazí nové tajemství jednou a staré zůstává platné 24 hodin, dokud jej nezavádíte.
+
+## Opakování a opětovné doručení
+
+- Odpovězte jakýmkoli `2xx` do 10 sekund pro potvrzení. Náročné zpracování provádějte asynchronně.
+- `5xx`, timeout, `408` nebo `429` se opakují s postupným prodlevami: po 1 minutě, 5 minutách, 30 minutách, 2 hodinách, 6 hodinách, 12 hodinách, pak denně — 10 pokusů během cca 3 dnů — poté je doručení označeno jako **mrtvé**.
+- Jakýkoli jiný `4xx` se považuje za "odmítnutí doručení" a **neopakuje se**.
+- Každá událost, doručení a pokus (stav, úryvek odpovědi) je viditelný v **Applications > Webhooks** a přes API (`…/webhook/event/grid`, `…/webhook/delivery/grid`). Můžete **znovu doručit** jakékoli doručení (`POST …/webhook/delivery/{deliveryId}/redeliver`, což spustí novou sérii pokusů), znovu doručit všechny mrtvé doručení webhooku najednou (`POST …/webhook/{webhookId}/redeliver-dead`) nebo jedno zrušit.
+- Doručení se uchovávají 30 dní.
+
+## Testovací události
+
+Pošlete si syntetickou událost `webhook.test` z portálu nebo pomocí
+`POST /api/managing-entity/{id}/webhook/{webhookId}/test`. Je podepsaná a doručovaná stejně jako skutečná událost, takže můžete ověřit svůj endpoint, kontrolu podpisu a zpracování idempotence před přihlášením k živým událostem.
 
 ## Nejlepší postupy
 
 - **Používejte HTTPS** — Wink odesílá payloady pouze na HTTPS endpointy.
 - **Odpovídejte rychle** — Vraťte `200 OK` hned po přijetí payloadu. Náročné zpracování provádějte asynchronně.
-- **Idempotentnost** — Váš handler by měl být idempotentní. Wink může opakovat doručení, pokud neobdrží odpověď `200`.
-- **Ověřte zdroj** — Před zpracováním ověřte, že příchozí požadavky jsou od Wink.
-- **Logování** — Logujte každý přijatý webhook payload. To výrazně usnadní ladění integrace.
+- **Idempotence** — Váš handler by měl být idempotentní; deduplikujte podle `Wink-Event-Id`. Wink opakuje, pokud nedostane `2xx` odpověď.
+- **Ověřujte zdroj** — Ověřte hlavičku `Wink-Signature` (viz [Ověřování podpisů](#ověřování-podpisů)) před zpracováním; odmítněte cokoli, co neprojde.
+- **Logování** — Logujte každý přijatý webhook payload. Usnadní to ladění integrace.
 
-## Pozastavení a smazání
+## Pozastavení a mazání
 
-Webhook můžete **zakázat** bez jeho smazání. Tím pozastavíte doručování, abyste mohli řešit problémy, aniž byste přišli o konfiguraci. Až budete připraveni, opět jej zapněte.
+Webhook můžete **zakázat** bez jeho smazání. Tím pozastavíte doručování, abyste mohli řešit problémy, aniž byste přišli o konfiguraci. Až budete připraveni, znovu jej zapněte.
 
 Smazání webhooku jej trvale odstraní. Jakákoli integrace, která na tento webhook spoléhá, přestane přijímat oznámení.
 
 ## Další čtení
 
-- [Katalog webhook událostí](/cs/developers/webhook-events) — Kompletní seznam všech 64+ typů událostí.
-- [Webhooks](/cs/portal/settings/webhooks) — Kompletní reference pro správu webhooků.
-- [Applications](/cs/account/applications) — Správa vašich API přístupů.
+- [Katalog webhook událostí](/cs/developers/webhook-events) — Každý typ události, generovaný z katalogu platformy.
+- [Reference Webhooks API](/cs/api/webhooks/) — Schémata payloadů, hlavičky a endpointy pro správu odběrů/doručení.
+- [Webhooky](/cs/portal/settings/webhooks) — Kompletní reference pro správu webhooků.
+- [Applications](/cs/account/applications) — Správa vašich API přihlašovacích údajů.
 - [Developers > APIs](/cs/api) — Kompletní dokumentace API.

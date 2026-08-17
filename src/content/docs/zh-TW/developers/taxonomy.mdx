@@ -1,0 +1,63 @@
+---
+title: 分類法
+description: Wink 平台使用的受控詞彙表 — 住宿設施、床型、房間景觀等的 OTA 代碼，以及所有支援的語言和貨幣。
+sidebar:
+  order: 12
+---
+
+import taxonomy from '@/data/taxonomy.json';
+import OtaCategories from '@/components/taxonomy/ota-categories.astro';
+import CodeTable from '@/components/taxonomy/code-table.astro';
+
+Wink 使用受控詞彙表來描述庫存 — 一組具有共識意義的固定代碼集合。當您傳送 `"5"` 作為飯店設施時，平台會將其解讀為*空調*，所有該資料的使用者也都會如此解讀。
+
+本頁面是三種詞彙表的公開參考：
+
+- **OTA 代碼** — {taxonomy.ota.codeCount} 個代碼，涵蓋 {taxonomy.ota.categoryCount} 個類別，包括設施、床型、房間景觀、無障礙設施、料理等。
+- **語言** — 內容可撰寫及提供的 {taxonomy.languages.list.length} 種語言。
+- **貨幣** — 可報價及結算的 {taxonomy.currencies.list.length} 種貨幣。
+
+代碼是穩定的。名稱可能會為了清晰度而重新表述，因此請以**代碼**為準，切勿以名稱匹配。
+
+## OTA 代碼
+
+Wink 遵循 [OpenTravel Alliance](https://opentravel.org/) 的代碼列表。每個類別都有一個三字母識別碼 — 例如飯店設施為 `HAC`，床型為 `BED` — 且每個類別內的代碼皆唯一。相同的數字在不同類別中代表不同意義，因此代碼必須與其所屬類別一起使用才有意義：`BED` `1` 是*雙人床 / 全尺寸床*，而 `HAC` `1` 是*24 小時櫃檯*。
+
+選擇一個類別以查看其代碼。
+
+<OtaCategories
+  categories={taxonomy.ota.categories}
+  categoryHeader="類別"
+  descriptionHeader="說明"
+  countHeader="代碼數"
+  codeHeader="代碼"
+  nameHeader="名稱"
+/>
+
+## 語言
+
+內容 — 物業描述、房型名稱、政策 — 可用以下任一語言撰寫。代碼為 [IETF BCP 47](https://www.rfc-editor.org/info/bcp47) 標籤：兩字母的 [ISO 639-1](https://www.iso.org/iso-639-language-code) 語言代碼，後面可選擇加上 [ISO 3166-1](https://www.iso.org/iso-3166-country-codes.html) 區域代碼，平台會區分區域變體 — 例如 `pt-BR` 與 `pt-PT` 分別處理，`es`、`es-AR` 與 `es-MX` 亦然。
+
+平台預設語言為 `{taxonomy.languages.default}`，當請求未指定語言或無法取得翻譯時使用。
+
+<CodeTable
+  rows={taxonomy.languages.list}
+  codeHeader="代碼"
+  nameHeader="語言"
+  unnamedLabel="無標準名稱"
+/>
+
+## 貨幣
+
+價格可用以下任一貨幣報價及結算。代碼為 [ISO 4217](https://www.iso.org/iso-4217-currency-codes.html) 三字母識別碼。
+
+平台預設貨幣為 `{taxonomy.currencies.default}`。此為顯示的備用貨幣，且平台層級數據會以此為單位標準化；但它**不是**訂單結算貨幣 — 飯店會以自身貨幣結算，因此以一種貨幣報價卻以另一種貨幣付款時，會產生匯率差價。
+
+部分條目非國家貨幣：`XAU` 與 `XAG` 分別為黃金與白銀，`XDR` 是國際貨幣基金組織的特別提款權，`BTC` 是比特幣。這些用於估值與報告，通常無法作為結算貨幣使用。
+
+<CodeTable
+  rows={taxonomy.currencies.list}
+  codeHeader="代碼"
+  nameHeader="貨幣"
+  unnamedLabel="無標準名稱"
+/>

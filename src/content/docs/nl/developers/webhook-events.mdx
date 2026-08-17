@@ -1,331 +1,53 @@
 ---
 title: Catalogus van Webhook Events
-description: Volledige referentie van alle beschikbare webhook eventtypes op het Wink-platform, georganiseerd per categorie.
+description: Elk type webhook event op het Wink-platform, gegenereerd vanuit de eventcatalogus van het platform — welke worden geleverd, aan wie, en waar de payload wordt gedocumenteerd.
 sidebar:
   order: 3.5
 ---
 
-import { LinkButton } from '@astrojs/starlight/components';
+import webhooks from '../../../../schemas/webhooks.json';
+import WebhookEventTypes from '@/components/webhooks/event-types.astro';
 
-Deze pagina toont elk webhook event waarop je je kunt abonneren op Wink. Voor installatie-instructies, zie de [Webhook Integratie Gids](/nl/developers/webhook-integration) of de [Webhook beheerpagina](/nl/portal/settings/webhooks).
+Deze pagina toont elk webhook event waarop je je kunt abonneren op Wink. Voor installatie-instructies, zie de [Webhook Integration Guide](/nl/developers/webhook-integration) of de [Webhooks management page](/nl/portal/settings/webhooks).
 
 ## Hoe te abonneren
 
-1. Navigeer naar **Applicaties > Webhooks** in je portal.
-2. Maak een webhook aan en selecteer de events die je wilt ontvangen.
-3. Wink stuurt een HTTP POST naar je endpoint telkens wanneer het event plaatsvindt.
-
-Voor volledige installatie-stappen en best practices, zie [Webhook Integratie](/nl/developers/webhook-integration).
-
----
-
-## Beheer van entiteit events
-
-Events voor het beheren van entiteiten (eigenschappen, affiliates, bedrijven) en hun administratie.
-
-### Levenscyclus
-
-| Event | Key | Beschrijving |
-|---|---|---|
-| Entiteit aangemaakt | `managing_entity.created` | Er is een nieuwe beheersentiteit aangemaakt. |
-| Entiteit verwijderd | `managing_entity.deleted` | Een beheersentiteit is verwijderd. |
-| Status bijgewerkt | `managing_entity.status.updated` | De status van de entiteit is gewijzigd. |
-| In beoordeling | `account.under_review` | Entiteitaccount is in afwachting van beoordeling. |
-
-### Abonnement
-
-| Event | Key | Beschrijving |
-|---|---|---|
-| Abonnement geactiveerd | `managing_entity.subscription.provisioned` | Er is een nieuw abonnement geactiveerd. |
-| Abonnement gewijzigd | `managing_entity.subscription.changed` | Het abonnementsplan is gewijzigd. |
-| Abonnementsfactuur gewijzigd | `managing_entity.subscription.invoice.changed` | De abonnementsfactuur is bijgewerkt. |
-
-### Manager levenscyclus
-
-| Event | Key | Beschrijving |
-|---|---|---|
-| Manager toegevoegd | `managing_entity.manager.added` | Er is een nieuwe manager toegevoegd. |
-| Manager uitgenodigd | `managing_entity.manager.invited` | Een uitnodiging voor een manager is verzonden. |
-| Manager verwijderd | `managing_entity.manager.removed` | Een manager is verwijderd. |
-| Manager geaccepteerd | `managing_entity.manager.accepted` | Een manageruitnodiging is geaccepteerd. |
-| Manager geweigerd | `managing_entity.manager.rejected` | Een manageruitnodiging is geweigerd. |
-| Eigenaar ingesteld | `managing_entity.manager.owner.set` | Eigendom van de entiteit is overgedragen. |
-| Managers bijgewerkt | `account.managers.update` | De lijst met managers is gewijzigd. |
-
-### Entiteitsinformatie
-
-| Event | Key | Beschrijving |
-|---|---|---|
-| Informatie bijgewerkt | `managing_entity.information.updated` | Entiteitsinformatie is bijgewerkt. |
-| Adres bijgewerkt | `managing_entity.city.updated` | Adres/stad van de entiteit is gewijzigd. |
-| Naam bijgewerkt | `managing_entity.name.updated` | Naam van de entiteit is gewijzigd. |
-| URL-naam bijgewerkt | `managing_entity.url_name.updated` | De vanity URL van de entiteit is gewijzigd. |
-| Unieke ID bijgewerkt | `managing_entity.unique_id.updated` | Unieke identificatie van de entiteit is gewijzigd. |
-| Beheerd door bijgewerkt | `managing_entity.managed_by.updated` | De parent/beheerd-door relatie van de entiteit is gewijzigd. |
-| Plaats-ID bijgewerkt | `managing_entity.place_id.updated` | De Google Place ID van de entiteit is gewijzigd. |
-| Accountvertegenwoordiger bijgewerkt | `managing_entity.account_representative.updated` | Accountvertegenwoordiger is gewijzigd. |
-| Profielfoto bijgewerkt | `managing_entity.profile_picture.updated` | Profielfoto van de entiteit is bijgewerkt. |
-| Logo bijgewerkt | `managing_entity.logo.updated` | Logo van de entiteit is bijgewerkt. |
-| Details bijgewerkt | `account.details.updated` | Account detailvelden zijn gewijzigd. |
-| Agent bijgewerkt | `managing_entity.agent.updated` | Agent van de entiteit is aangepast. |
-
-### Meldingen
-
-| Event | Key | Beschrijving |
-|---|---|---|
-| Agent e-mailmelding | `managing_entity.agent.email.notification` | Er is een e-mailmelding naar de agent gestuurd. |
-| Manager e-mailmelding | `managing_entity.manager.email.notification` | Er is een e-mailmelding naar een manager gestuurd. |
-
-### Accounttaken
-
-| Event | Key | Beschrijving |
-|---|---|---|
-| Taak aangemaakt | `account.task.create` | Er is een nieuwe taak toegevoegd aan het account. |
-| Taak bijgewerkt | `account.task.update` | Een accounttaak is aangepast. |
-| Taak verwijderd | `account.task.remove` | Een accounttaak is verwijderd. |
-| Taak voltooid | `account.task.complete` | Een accounttaak is voltooid. |
-| Taak belasting-ID voltooid | `account.task.tax_id.complete` | Taak voor verificatie van belasting-ID is voltooid. |
-
----
-
-## Boekingsgebeurtenissen
-
-Events voor de Wink boekingslevenscyclus, van aanmaak tot terugbetalingen en uitbetalingen.
-
-### Kernboeking
-
-| Event | Key | Beschrijving |
-|---|---|---|
-| Boeking aangemaakt | `booking.create` | Er is een nieuwe boeking aangemaakt. |
-| Boeking geannuleerd | `booking.cancelled` | Een boeking is geannuleerd. |
-| Boeking mislukt | `booking.failed` | Een poging tot boeken is mislukt. |
-| Boeking in verwerking | `booking.processing` | Betaling van de boeking wordt verwerkt. |
-| Initialisatie aangevraagd | `booking.initialize.request` | Initialisatie van een boeking is aangevraagd. |
-| Initialisatie voltooid | `booking.initialize.complete` | Initialisatie van de boeking is voltooid. |
-
-### Terugbetalingen
-
-| Event | Key | Beschrijving |
-|---|---|---|
-| Terugbetaling aangevraagd | `booking.refund.request` | Er is een verzoek tot terugbetaling ingediend. |
-| Terugbetalingsfout | `booking.refund.error` | Er is een fout opgetreden bij het verwerken van een terugbetaling. |
-| Gedeeltelijke terugbetaling | `booking.refund.partial` | Er is een gedeeltelijke terugbetaling uitgevoerd. |
-| Volledige terugbetaling | `booking.refund.full` | Er is een volledige terugbetaling uitgevoerd. |
-
-### Uitbetalingen
-
-| Event | Key | Beschrijving |
-|---|---|---|
-| Uitbetaling aangemaakt | `booking.payout.create` | Er is een uitbetaling aangemaakt voor de boeking. |
-| Uitbetaling voltooid | `booking.payout.complete` | Een uitbetaling is succesvol afgerond. |
-| Fondsen beschikbaar | `booking.funds.available` | Fondsen van de boeking zijn beschikbaar voor afwikkeling. |
-| Fondsen geboekt | `booking.funds.ledgered` | Fondsen van de boeking zijn geregistreerd in het grootboek. |
-
-### Beoordelingen
-
-| Event | Key | Beschrijving |
-|---|---|---|
-| Beoordeling ingediend | `booking.review.created` | Een gastbeoordeling is ingediend voor een boeking. |
-| Beoordeling beantwoord | `booking.review.responded` | Een accommodatie heeft gereageerd op een boekingsbeoordeling. |
-
----
-
-## Eigendomsgebeurtenissen
-
-Events voor eigendomsprofielen en inhoud, verzonden naar de webhook-abonnees van de eigendom zelf.
-
-| Event | Key | Beschrijving |
-|---|---|---|
-| Eigendom aangemaakt | `property.created` | Er is een nieuwe eigendom aangemaakt. |
-| Eigendom bijgewerkt | `property.updated` | Eigendomsgegevens zijn bijgewerkt. |
-| Eigendom verwijderd | `property.deleted` | Een eigendom is verwijderd. |
-| Eigendom geregistreerd | `property.registered` | Een eigendom heeft registratie voltooid. |
-| Status bijgewerkt | `property.status.updated` | Externe status van de eigendom is gewijzigd. |
-| Naam bijgewerkt | `property.name.updated` | Naam van de eigendom is gewijzigd. |
-| Adres bijgewerkt | `property.address.updated` | Adres van de eigendom is bijgewerkt. |
-| Geolocatie bijgewerkt | `property.geolocation.updated` | Geolocatie van de eigendom is bijgewerkt. |
-| Profiel bijgewerkt | `property.profile.updated` | Inhoud van het eigendomsprofiel is gewijzigd. |
-| Diensten bijgewerkt | `property.services.updated` | Lijst met diensten/faciliteiten van de eigendom is gewijzigd. |
-| Welkomsttekst bijgewerkt | `property.welcome_text.updated` | Welkomstbericht van de eigendom is gewijzigd. |
-| Beleid aangemaakt | `property.policy.created` | Er is een nieuw eigendomsbeleid aangemaakt. |
-| Beleid bijgewerkt | `property.policy.updated` | Een eigendomsbeleid is bijgewerkt. |
-
----
-
-## Inventarisgebeurtenissen
-
-Events voor inventarisitems binnen een eigendom, verzonden naar de webhook-abonnees van die eigendom.
-
-### Kamertypes
-
-| Event | Key | Beschrijving |
-|---|---|---|
-| Kamertype aangemaakt | `room_type.created` | Er is een nieuw kamertype toegevoegd. |
-| Kamertype bijgewerkt | `room_type.updated` | Een kamertype is aangepast. |
-| Kamertype verwijderd | `room_type.deleted` | Een kamertype is verwijderd. |
-
-### Tariefplannen
-
-| Event | Key | Beschrijving |
-|---|---|---|
-| Tariefplan aangemaakt | `rate_plan.created` | Er is een nieuw tariefplan aangemaakt. |
-| Tariefplan bijgewerkt | `rate_plan.updated` | Een tariefplan is aangepast. |
-| Tariefplan verwijderd | `rate_plan.deleted` | Een tariefplan is verwijderd. |
-
-### Mastertarieven
-
-| Event | Key | Beschrijving |
-|---|---|---|
-| Mastertarief aangemaakt | `master_rate.created` | Er is een nieuw mastertarief aangemaakt. |
-| Mastertarief bijgewerkt | `master_rate.updated` | Een mastertarief is aangepast. |
-| Mastertarief verwijderd | `master_rate.deleted` | Een mastertarief is verwijderd. |
-
-### Extra's
-
-| Event | Key | Beschrijving |
-|---|---|---|
-| Extra aangemaakt | `add_on.created` | Er is een nieuwe extra aangemaakt. |
-| Extra bijgewerkt | `add_on.updated` | Een extra is aangepast. |
-| Extra verwijderd | `add_on.deleted` | Een extra is verwijderd. |
-
-### Vergaderruimtes
-
-| Event | Key | Beschrijving |
-|---|---|---|
-| Vergaderruimte aangemaakt | `meeting_room.created` | Er is een nieuwe vergaderruimte toegevoegd. |
-| Vergaderruimte bijgewerkt | `meeting_room.updated` | Een vergaderruimte is aangepast. |
-| Vergaderruimte verwijderd | `meeting_room.deleted` | Een vergaderruimte is verwijderd. |
-
-### Restaurants
-
-| Event | Key | Beschrijving |
-|---|---|---|
-| Restaurant aangemaakt | `restaurant.created` | Er is een nieuw restaurant toegevoegd. |
-| Restaurant bijgewerkt | `restaurant.updated` | Een restaurant is aangepast. |
-| Restaurant verwijderd | `restaurant.deleted` | Een restaurant is verwijderd. |
-
-### Spa's
-
-| Event | Key | Beschrijving |
-|---|---|---|
-| Spa aangemaakt | `spa.created` | Er is een nieuwe spa toegevoegd. |
-| Spa bijgewerkt | `spa.updated` | Een spa is aangepast. |
-| Spa verwijderd | `spa.deleted` | Een spa is verwijderd. |
-
-### Activiteiten
-
-| Event | Key | Beschrijving |
-|---|---|---|
-| Activiteit aangemaakt | `activity.created` | Er is een nieuwe activiteit toegevoegd. |
-| Activiteit bijgewerkt | `activity.updated` | Een activiteit is aangepast. |
-| Activiteit verwijderd | `activity.deleted` | Een activiteit is verwijderd. |
-
----
-
-## Verkoopkanaalgebeurtenissen
-
-Events voor distributiekanalen die leveranciers en affiliates verbinden. Verzonden naar zowel de leverancier als de webhook-abonnees van de affiliate.
-
-| Event | Key | Beschrijving |
-|---|---|---|
-| Verkoopkanaal aangemaakt | `sales_channel.created` | Er is een nieuw verkoopkanaal aangemaakt. |
-| Verkoopkanaal bijgewerkt | `sales_channel.updated` | Een verkoopkanaal is aangepast. |
-| Verkoopkanaal verwijderd | `sales_channel.deleted` | Een verkoopkanaal is verwijderd. |
-
----
-
-## Speciale tariefgebeurtenissen
-
-Events voor promotionele en onderhandelde tarieven op een eigendom.
-
-| Event | Key | Beschrijving |
-|---|---|---|
-| Speciaal tarief aangemaakt | `special_rate.created` | Er is een nieuw speciaal tarief aangemaakt. |
-| Speciaal tarief bijgewerkt | `special_rate.updated` | Een speciaal tarief is aangepast. |
-| Speciaal tarief verwijderd | `special_rate.deleted` | Een speciaal tarief is verwijderd. |
-| Tariefmodifier bijgewerkt | `rate_modifier.updated` | Een tariefmodifier is bijgewerkt. |
-
----
-
-## Ontvangergebeurtenissen
-
-Events gerelateerd aan ontvanger (betalingsontvanger) beheer.
-
-| Event | Key | Beschrijving |
-|---|---|---|
-| Ontvanger aangemaakt | `payee.create` | Er is een nieuwe ontvanger succesvol aangemaakt. |
-| Ontvanger aanmaak mislukt | `payee.create.failure` | Het aanmaken van de ontvanger is mislukt. |
-| Ontvanger bijgewerkt | `payee.update` | Een ontvanger is bijgewerkt. |
-| Ontvanger update mislukt | `payee.update.failure` | Het bijwerken van de ontvanger is mislukt. |
-
----
-
-## Betalingsgebeurtenissen
-
-Interne betalingsverwerking events van TripPay.
-
-| Event | Key | Beschrijving |
-|---|---|---|
-| Betaling geslaagd | `internal.payment.succeeded` | Betaling is succesvol verwerkt. |
-| Betaling in verwerking | `internal.payment.processing` | Betaling wordt momenteel verwerkt. |
-| Betaling mislukt | `internal.payment.failed` | Betalingsverwerking is mislukt. |
-
----
-
-## Channel manager events
-
-Events gerelateerd aan channel manager tarief- en beschikbaarheidspushes.
-
-| Event | Key | Beschrijving |
-|---|---|---|
-| Tariefupdate | `channel-manager.update.rate` | Channel manager heeft een tariefupdate gepusht. |
-| Beschikbaarheidsupdate | `channel-manager.update.availability` | Channel manager heeft een beschikbaarheidsupdate gepusht. |
-| Algemene update | `channel-manager.update` | Algemene channel manager update. |
-
----
-
-## Grootboekgebeurtenissen
-
-Events gerelateerd aan financiële grootboekboekingen.
-
-| Event | Key | Beschrijving |
-|---|---|---|
-| Grootboekboeking aangemaakt | `ledger.entry.create` | Er is een nieuwe grootboekboeking geregistreerd. |
-
----
-
-## E-mailgebeurtenissen
-
-| Event | Key | Beschrijving |
-|---|---|---|
-| E-mailcorrespondentie | `email.correspondence` | Er is een uitgaande e-mail verzonden. |
-
----
-
-## Samenvatting van eventaantallen
-
-| Categorie | Aantal |
-|---|---|
-| Beheer van entiteit events | 33 |
-| Boekingsgebeurtenissen | 16 |
-| Eigendomsgebeurtenissen | 13 |
-| Inventarisgebeurtenissen (kamertypes, tariefplannen, mastertarieven, extra's, faciliteiten) | 24 |
-| Verkoopkanaalgebeurtenissen | 3 |
-| Speciale tariefgebeurtenissen | 4 |
-| Ontvangergebeurtenissen | 4 |
-| Betalingsgebeurtenissen | 3 |
-| Channel manager events | 3 |
-| Grootboekgebeurtenissen | 1 |
-| E-mailgebeurtenissen | 1 |
-| **Totaal** | **105** |
+1. Navigeer naar **Applications > Webhooks** in je portal.
+2. Maak een webhook aan en selecteer de events die je wilt ontvangen — of laat de lijst leeg om elk event te ontvangen.
+3. Wink stuurt een ondertekende HTTP POST naar je endpoint telkens wanneer het event plaatsvindt. Zie [Webhook Integration](/nl/developers/webhook-integration) voor de envelop, headers, handtekeningverificatie en herhalingen.
+
+## Elk eventtype
+
+Deze tabel wordt bij buildtijd gegenereerd vanuit de eventcatalogus van het platform, dus deze komt altijd overeen met de API.
+Eventtypes die als geleverd zijn gemarkeerd linken naar hun referentiepagina in de [Webhooks API](/nl/api/webhooks/), die
+de exacte JSON-body (`WebhookEnvelope` met een eventspecifiek `object`), de `Wink-*` headers en
+het retrybeleid documenteert. Eventtypes die niet worden geleverd bestaan intern (betalingen, grootboek, channel-manager
+sync, …) maar worden momenteel niet naar webhook-abonnees gestuurd.
+
+**Ontvangers** geeft aan wie een event ontvangt: `SUPPLIER` (het hotel), `AFFILIATE` (een wederverkoper met een actieve
+verkoopkanaal naar het hotel), `AGENT` (het reisbureau dat de boeking heeft gemaakt) of `SELF` (de beheerentiteit
+waar het event over gaat). Elke ontvanger ontvangt dezelfde payload-structuur; rol-specifieke details staan achter de
+payload's `links.self` URL.
+
+<WebhookEventTypes
+  types={webhooks['x-wink-event-types']}
+  referenceBase="/api/webhooks"
+  eventHeader="Event"
+  descriptionHeader="Beschrijving"
+  deliveredHeader="Geleverd"
+  recipientsHeader="Ontvangers"
+  deliveredLabel="geleverd"
+  notDeliveredLabel="niet geleverd"
+  noRecipientsLabel="—"
+/>
 
 :::tip
-Begin tijdens de ontwikkeling met het abonneren op alle events. Zodra je begrijpt welke payloads je systeem nodig heeft, beperk je je abonnementen om ruis te verminderen.
+Begin met je te abonneren op alle events tijdens de ontwikkeling. Zodra je begrijpt welke payloads je systeem nodig heeft, beperk je je abonnementen om ruis te verminderen. Stuur jezelf een testevent vanuit **Applications > Webhooks** (of `POST …/webhook/{id}/test`) om je endpoint en handtekeningcontrole te bevestigen voordat je live gaat.
 :::
 
 ## Verdere lectuur
 
-- [Webhook Integratie Gids](/nl/developers/webhook-integration) — Installatiestappen en best practices.
+- [Webhook Integration Guide](/nl/developers/webhook-integration) — Installatiestappen en best practices.
 - [Webhooks](/nl/portal/settings/webhooks) — Beheer je webhook-abonnementen.
-- [Applicaties](/nl/account/applications) — Beheer API-referenties.
-- [Bouwen op Wink](/nl/developers/build-on-wink) — Platformoverzicht voor ontwikkelaars.
+- [Applications](/nl/account/applications) — Beheer API-referenties.
+- [Build on Wink](/nl/developers/build-on-wink) — Platformoverzicht voor ontwikkelaars.

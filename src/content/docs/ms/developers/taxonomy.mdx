@@ -1,0 +1,63 @@
+---
+title: Taksonomi
+description: Kosa kata terkawal yang digunakan oleh platform Wink — kod OTA untuk kemudahan, jenis katil, pemandangan bilik dan banyak lagi, serta setiap bahasa dan mata wang yang disokong.
+sidebar:
+  order: 12
+---
+
+import taxonomy from '@/data/taxonomy.json';
+import OtaCategories from '@/components/taxonomy/ota-categories.astro';
+import CodeTable from '@/components/taxonomy/code-table.astro';
+
+Wink menerangkan inventori menggunakan kosa kata terkawal — set kod tetap dengan makna yang dipersetujui. Apabila anda menghantar `"5"` sebagai kemudahan hotel, platform membacanya sebagai *Penyaman udara*, dan setiap pengguna data itu juga berbuat demikian.
+
+Halaman ini adalah rujukan yang diterbitkan untuk ketiga-tiga kosa kata:
+
+- **Kod OTA** — {taxonomy.ota.codeCount} kod merentasi {taxonomy.ota.categoryCount} kategori, merangkumi kemudahan, jenis katil, pemandangan bilik, ciri aksesibiliti, masakan, dan banyak lagi.
+- **Bahasa** — {taxonomy.languages.list.length} bahasa yang kandungan boleh ditulis dan disampaikan dalamnya.
+- **Mata wang** — {taxonomy.currencies.list.length} mata wang yang kadar boleh dikutip dan diselesaikan dalamnya.
+
+Kod adalah stabil. Nama mungkin diubah suai untuk kejelasan, jadi padankan pada **kod**, bukan pada nama.
+
+## Kod OTA
+
+Wink mengikuti senarai kod [OpenTravel Alliance](https://opentravel.org/). Setiap kategori mempunyai pengecam tiga huruf — `HAC` untuk kemudahan hotel, `BED` untuk jenis katil — dan setiap kod dalam kategori adalah unik kepadanya. Nilai nombor yang sama bermaksud perkara yang berbeza dalam kategori yang berbeza, jadi kod hanya bermakna bersama kategori yang dimilikinya: `BED` `1` adalah *Double / Full*, manakala `HAC` `1` adalah *Kaunter hadapan 24 jam*.
+
+Pilih kategori untuk melihat kodnya.
+
+<OtaCategories
+  categories={taxonomy.ota.categories}
+  categoryHeader="Kategori"
+  descriptionHeader="Penerangan"
+  countHeader="Kod"
+  codeHeader="Kod"
+  nameHeader="Nama"
+/>
+
+## Bahasa
+
+Kandungan — penerangan hartanah, nama bilik, polisi — boleh ditulis dalam mana-mana bahasa ini. Kod adalah tag [IETF BCP 47](https://www.rfc-editor.org/info/bcp47): bahasa dua huruf [ISO 639-1](https://www.iso.org/iso-639-language-code), diikuti secara pilihan oleh wilayah [ISO 3166-1](https://www.iso.org/iso-3166-country-codes.html) di mana platform membezakan varian serantau — `pt-BR` dan `pt-PT` dibawa secara berasingan, begitu juga `es`, `es-AR`, dan `es-MX`.
+
+Default platform adalah `{taxonomy.languages.default}`, digunakan apabila permintaan tidak menyatakan bahasa dan apabila terjemahan tidak tersedia.
+
+<CodeTable
+  rows={taxonomy.languages.list}
+  codeHeader="Kod"
+  nameHeader="Bahasa"
+  unnamedLabel="Tiada nama standard"
+/>
+
+## Mata wang
+
+Kadar boleh dikutip dan diselesaikan dalam mana-mana mata wang ini. Kod adalah pengecam tiga huruf [ISO 4217](https://www.iso.org/iso-4217-currency-codes.html).
+
+Default platform adalah `{taxonomy.currencies.default}`. Ia adalah mata wang paparan sandaran dan unit yang angka peringkat platform dinormalisasi kepada; ia **bukan** mata wang yang tempahan diselesaikan — hotel menyelesaikan dalam mata wang mereka sendiri, jadi kadar yang dikutip dalam satu mata wang dan dibayar dalam mata wang lain membawa spread pertukaran.
+
+Beberapa entri bukan mata wang negara: `XAU` dan `XAG` adalah emas dan perak, `XDR` adalah Hak Pengeluaran Khas IMF, dan `BTC` adalah Bitcoin. Ini dibawa untuk penilaian dan pelaporan, dan biasanya tidak boleh digunakan sebagai mata wang penyelesaian.
+
+<CodeTable
+  rows={taxonomy.currencies.list}
+  codeHeader="Kod"
+  nameHeader="Mata wang"
+  unnamedLabel="Tiada nama standard"
+/>

@@ -1,326 +1,45 @@
 ---
 title: Webhook 事件目录
-description: Wink 平台上所有可用 webhook 事件类型的完整参考，按类别组织。
+description: Wink 平台上的每种 webhook 事件类型，来源于平台的事件目录 — 事件的发送对象及其负载文档位置。
 sidebar:
   order: 3.5
 ---
 
-import { LinkButton } from '@astrojs/starlight/components';
+import webhooks from '../../../../schemas/webhooks.json';
+import WebhookEventTypes from '@/components/webhooks/event-types.astro';
 
-本页列出了您可以在 Wink 上订阅的所有 webhook 事件。有关设置说明，请参见[Webhook 集成指南](/zh-CN/developers/webhook-integration)或[Webhook 管理页面](/zh-CN/portal/settings/webhooks)。
+本页列出了您可以在 Wink 上订阅的所有 webhook 事件。有关设置说明，请参阅[Webhook 集成指南](/zh-CN/developers/webhook-integration)或[Webhook 管理页面](/zh-CN/portal/settings/webhooks)。
 
 ## 如何订阅
 
 1. 在您的门户中导航至 **应用 > Webhooks**。
-2. 创建一个 webhook 并选择您想接收的事件。
-3. 每当事件发生时，Wink 会向您的端点发送 HTTP POST 请求。
-
-有关完整的设置步骤和最佳实践，请参见[Webhook 集成](/zh-CN/developers/webhook-integration)。
-
----
-
-## 管理实体事件
-
-管理实体（物业、附属机构、公司）及其管理的事件。
-
-### 生命周期
-
-| 事件 | 键 | 描述 |
-|---|---|---|
-| 实体已创建 | `managing_entity.created` | 新的管理实体已创建。 |
-| 实体已删除 | `managing_entity.deleted` | 管理实体已被删除。 |
-| 状态已更新 | `managing_entity.status.updated` | 实体状态已更改。 |
-| 审核中 | `account.under_review` | 实体账户正在审核中。 |
-
-### 订阅
-
-| 事件 | 键 | 描述 |
-|---|---|---|
-| 订阅已配置 | `managing_entity.subscription.provisioned` | 新订阅已配置。 |
-| 订阅已更改 | `managing_entity.subscription.changed` | 订阅计划已更改。 |
-| 订阅发票已更改 | `managing_entity.subscription.invoice.changed` | 订阅发票已更新。 |
-
-### 管理者生命周期
-
-| 事件 | 键 | 描述 |
-|---|---|---|
-| 管理者已添加 | `managing_entity.manager.added` | 新管理者已添加。 |
-| 管理者已邀请 | `managing_entity.manager.invited` | 管理者邀请已发送。 |
-| 管理者已移除 | `managing_entity.manager.removed` | 管理者已被移除。 |
-| 管理者已接受 | `managing_entity.manager.accepted` | 管理者邀请已被接受。 |
-| 管理者已拒绝 | `managing_entity.manager.rejected` | 管理者邀请已被拒绝。 |
-| 所有者已设置 | `managing_entity.manager.owner.set` | 实体所有权已转移。 |
-| 管理者已更新 | `account.managers.update` | 管理者列表已更改。 |
-
-### 实体信息
-
-| 事件 | 键 | 描述 |
-|---|---|---|
-| 信息已更新 | `managing_entity.information.updated` | 实体信息已更新。 |
-| 地址已更新 | `managing_entity.city.updated` | 实体地址/城市已更改。 |
-| 名称已更新 | `managing_entity.name.updated` | 实体名称已更改。 |
-| URL 名称已更新 | `managing_entity.url_name.updated` | 实体自定义 URL 已更改。 |
-| 唯一 ID 已更新 | `managing_entity.unique_id.updated` | 实体唯一标识符已更改。 |
-| 管理关系已更新 | `managing_entity.managed_by.updated` | 实体的上级/管理关系已更改。 |
-| 地点 ID 已更新 | `managing_entity.place_id.updated` | 实体的 Google 地点 ID 已更改。 |
-| 账户代表已更新 | `managing_entity.account_representative.updated` | 账户代表已更改。 |
-| 头像已更新 | `managing_entity.profile_picture.updated` | 实体头像已更新。 |
-| 标志已更新 | `managing_entity.logo.updated` | 实体标志已更新。 |
-| 详情已更新 | `account.details.updated` | 账户详细字段已更改。 |
-| 代理已更新 | `managing_entity.agent.updated` | 实体代理已修改。 |
-
-### 通知
-
-| 事件 | 键 | 描述 |
-|---|---|---|
-| 代理邮件通知 | `managing_entity.agent.email.notification` | 已向代理发送邮件通知。 |
-| 管理者邮件通知 | `managing_entity.manager.email.notification` | 已向管理者发送邮件通知。 |
-
-### 账户任务
-
-| 事件 | 键 | 描述 |
-|---|---|---|
-| 任务已创建 | `account.task.create` | 新任务已添加到账户。 |
-| 任务已更新 | `account.task.update` | 账户任务已修改。 |
-| 任务已移除 | `account.task.remove` | 账户任务已被移除。 |
-| 任务已完成 | `account.task.complete` | 账户任务已完成。 |
-| 税号任务已完成 | `account.task.tax_id.complete` | 税号验证任务已完成。 |
-
----
-
-## 预订事件
-
-Wink 预订生命周期的事件，从创建到退款和支付。
-
-### 核心预订
-
-| 事件 | 键 | 描述 |
-|---|---|---|
-| 预订已创建 | `booking.create` | 新预订已创建。 |
-| 预订已取消 | `booking.cancelled` | 预订已取消。 |
-| 预订失败 | `booking.failed` | 预订尝试失败。 |
-| 预订处理中 | `booking.processing` | 预订付款正在处理中。 |
-| 初始化请求 | `booking.initialize.request` | 已请求预订初始化。 |
-| 初始化完成 | `booking.initialize.complete` | 预订初始化已完成。 |
-
-### 退款
-
-| 事件 | 键 | 描述 |
-|---|---|---|
-| 退款请求 | `booking.refund.request` | 已提交退款请求。 |
-| 退款错误 | `booking.refund.error` | 退款处理时发生错误。 |
-| 部分退款 | `booking.refund.partial` | 已发放部分退款。 |
-| 全额退款 | `booking.refund.full` | 已发放全额退款。 |
-
-### 支付
-
-| 事件 | 键 | 描述 |
-|---|---|---|
-| 支付创建 | `booking.payout.create` | 已为预订创建支付。 |
-| 支付完成 | `booking.payout.complete` | 支付已成功完成。 |
-| 资金可用 | `booking.funds.available` | 预订资金可用于结算。 |
-| 资金已入账 | `booking.funds.ledgered` | 预订资金已记录到账本。 |
-
-### 评价
-
-| 事件 | 键 | 描述 |
-|---|---|---|
-| 评价已提交 | `booking.review.created` | 客人已提交预订评价。 |
-| 评价已回复 | `booking.review.responded` | 物业已回复预订评价。 |
-
----
-
-## 物业事件
-
-物业档案和内容的事件，发送给该物业的 webhook 订阅者。
-
-| 事件 | 键 | 描述 |
-|---|---|---|
-| 物业已创建 | `property.created` | 新物业已创建。 |
-| 物业已更新 | `property.updated` | 物业详情已更新。 |
-| 物业已删除 | `property.deleted` | 物业已被移除。 |
-| 物业已注册 | `property.registered` | 物业已完成注册。 |
-| 状态已更新 | `property.status.updated` | 物业外部状态已更改。 |
-| 名称已更新 | `property.name.updated` | 物业名称已更改。 |
-| 地址已更新 | `property.address.updated` | 物业地址已更新。 |
-| 地理位置已更新 | `property.geolocation.updated` | 物业地理位置已更新。 |
-| 资料已更新 | `property.profile.updated` | 物业资料内容已更改。 |
-| 服务已更新 | `property.services.updated` | 物业服务/设施列表已更改。 |
-| 欢迎语已更新 | `property.welcome_text.updated` | 物业欢迎信息已更改。 |
-| 政策已创建 | `property.policy.created` | 新物业政策已创建。 |
-| 政策已更新 | `property.policy.updated` | 物业政策已更新。 |
-
----
-
-## 库存事件
-
-物业内库存项目的事件，发送给该物业的 webhook 订阅者。
-
-### 房型
-
-| 事件 | 键 | 描述 |
-|---|---|---|
-| 房型已创建 | `room_type.created` | 新房型已添加。 |
-| 房型已更新 | `room_type.updated` | 房型已修改。 |
-| 房型已删除 | `room_type.deleted` | 房型已被移除。 |
-
-### 价格计划
-
-| 事件 | 键 | 描述 |
-|---|---|---|
-| 价格计划已创建 | `rate_plan.created` | 新价格计划已创建。 |
-| 价格计划已更新 | `rate_plan.updated` | 价格计划已修改。 |
-| 价格计划已删除 | `rate_plan.deleted` | 价格计划已被移除。 |
-
-### 主价格
-
-| 事件 | 键 | 描述 |
-|---|---|---|
-| 主价格已创建 | `master_rate.created` | 新主价格已创建。 |
-| 主价格已更新 | `master_rate.updated` | 主价格已修改。 |
-| 主价格已删除 | `master_rate.deleted` | 主价格已被移除。 |
-
-### 附加项
-
-| 事件 | 键 | 描述 |
-|---|---|---|
-| 附加项已创建 | `add_on.created` | 新附加项已创建。 |
-| 附加项已更新 | `add_on.updated` | 附加项已修改。 |
-| 附加项已删除 | `add_on.deleted` | 附加项已被移除。 |
-
-### 会议室
-
-| 事件 | 键 | 描述 |
-|---|---|---|
-| 会议室已创建 | `meeting_room.created` | 新会议室已添加。 |
-| 会议室已更新 | `meeting_room.updated` | 会议室已修改。 |
-| 会议室已删除 | `meeting_room.deleted` | 会议室已被移除。 |
-
-### 餐厅
-
-| 事件 | 键 | 描述 |
-|---|---|---|
-| 餐厅已创建 | `restaurant.created` | 新餐厅已添加。 |
-| 餐厅已更新 | `restaurant.updated` | 餐厅已修改。 |
-| 餐厅已删除 | `restaurant.deleted` | 餐厅已被移除。 |
-
-### 水疗中心
-
-| 事件 | 键 | 描述 |
-|---|---|---|
-| 水疗中心已创建 | `spa.created` | 新水疗中心已添加。 |
-| 水疗中心已更新 | `spa.updated` | 水疗中心已修改。 |
-| 水疗中心已删除 | `spa.deleted` | 水疗中心已被移除。 |
-
-### 活动
-
-| 事件 | 键 | 描述 |
-|---|---|---|
-| 活动已创建 | `activity.created` | 新活动已添加。 |
-| 活动已更新 | `activity.updated` | 活动已修改。 |
-| 活动已删除 | `activity.deleted` | 活动已被移除。 |
-
----
-
-## 销售渠道事件
-
-连接供应商和附属机构的分销渠道事件。发送给供应商和附属机构的 webhook 订阅者。
-
-| 事件 | 键 | 描述 |
-|---|---|---|
-| 销售渠道已创建 | `sales_channel.created` | 新销售渠道已创建。 |
-| 销售渠道已更新 | `sales_channel.updated` | 销售渠道已修改。 |
-| 销售渠道已删除 | `sales_channel.deleted` | 销售渠道已被移除。 |
-
----
-
-## 特殊价格事件
-
-物业的促销和协商价格事件。
-
-| 事件 | 键 | 描述 |
-|---|---|---|
-| 特殊价格已创建 | `special_rate.created` | 新特殊价格已创建。 |
-| 特殊价格已更新 | `special_rate.updated` | 特殊价格已修改。 |
-| 特殊价格已删除 | `special_rate.deleted` | 特殊价格已被移除。 |
-| 价格修正已更新 | `rate_modifier.updated` | 价格修正已更新。 |
-
----
-
-## 收款人事件
-
-与收款人（付款接收方）管理相关的事件。
-
-| 事件 | 键 | 描述 |
-|---|---|---|
-| 收款人已创建 | `payee.create` | 新收款人已成功创建。 |
-| 收款人创建失败 | `payee.create.failure` | 收款人创建失败。 |
-| 收款人已更新 | `payee.update` | 收款人已更新。 |
-| 收款人更新失败 | `payee.update.failure` | 收款人更新失败。 |
-
----
-
-## 付款事件
-
-来自 TripPay 的内部付款处理事件。
-
-| 事件 | 键 | 描述 |
-|---|---|---|
-| 付款成功 | `internal.payment.succeeded` | 付款已成功处理。 |
-| 付款处理中 | `internal.payment.processing` | 付款正在处理中。 |
-| 付款失败 | `internal.payment.failed` | 付款处理失败。 |
-
----
-
-## 渠道管理器事件
-
-与渠道管理器的价格和可用性推送相关的事件。
-
-| 事件 | 键 | 描述 |
-|---|---|---|
-| 价格更新 | `channel-manager.update.rate` | 渠道管理器已推送价格更新。 |
-| 可用性更新 | `channel-manager.update.availability` | 渠道管理器已推送可用性更新。 |
-| 通用更新 | `channel-manager.update` | 渠道管理器通用更新。 |
-
----
-
-## 账本事件
-
-与财务账本条目相关的事件。
-
-| 事件 | 键 | 描述 |
-|---|---|---|
-| 账本条目已创建 | `ledger.entry.create` | 新账本条目已记录。 |
-
----
-
-## 邮件事件
-
-| 事件 | 键 | 描述 |
-|---|---|---|
-| 邮件通信 | `email.correspondence` | 已发送外发邮件。 |
-
----
-
-## 事件数量汇总
-
-| 类别 | 数量 |
-|---|---|
-| 管理实体事件 | 33 |
-| 预订事件 | 16 |
-| 物业事件 | 13 |
-| 库存事件（房型、价格计划、主价格、附加项、设施） | 24 |
-| 销售渠道事件 | 3 |
-| 特殊价格事件 | 4 |
-| 收款人事件 | 4 |
-| 付款事件 | 3 |
-| 渠道管理器事件 | 3 |
-| 账本事件 | 1 |
-| 邮件事件 | 1 |
-| **总计** | **105** |
+2. 创建一个 webhook 并选择您想接收的事件 — 或留空以接收所有事件。
+3. 每当事件发生时，Wink 会向您的端点发送带签名的 HTTP POST。有关信封、头信息、签名验证和重试，请参阅[Webhook 集成](/zh-CN/developers/webhook-integration)。
+
+## 所有事件类型
+
+此表格由平台事件目录在构建时生成，因此始终与 API 保持一致。
+标记为已发送的事件类型链接到其在[Webhooks API](/zh-CN/api/webhooks/)中的参考页面，
+该页面记录了精确的 JSON 正文（`WebhookEnvelope`，包含事件特定的 `object`）、`Wink-*` 头信息和重试策略。
+未发送的事件类型存在于内部（支付、账本、渠道管理同步等），但当前不会发送给 webhook 订阅者。
+
+**接收者** 表示谁会收到事件：`SUPPLIER`（酒店）、`AFFILIATE`（与酒店有活跃销售渠道的转售商）、`AGENT`（完成预订的旅行社）或 `SELF`（事件所涉及的管理实体）。
+每个接收者收到的负载格式相同；角色特定的详细信息位于负载的 `links.self` URL 后。
+
+<WebhookEventTypes
+  types={webhooks['x-wink-event-types']}
+  referenceBase="/api/webhooks"
+  eventHeader="事件"
+  descriptionHeader="描述"
+  deliveredHeader="已发送"
+  recipientsHeader="接收者"
+  deliveredLabel="已发送"
+  notDeliveredLabel="未发送"
+  noRecipientsLabel="—"
+/>
 
 :::tip
-开发期间建议先订阅所有事件。了解系统所需的有效载荷后，再缩小订阅范围以减少噪音。
+开发阶段建议先订阅所有事件。了解系统所需的负载后，再缩小订阅范围以减少噪音。您可以从 **应用 > Webhooks** 发送测试事件（或 `POST …/webhook/{id}/test`）以确认端点和签名校验无误后再上线。
 :::
 
 ## 进一步阅读
@@ -328,4 +47,4 @@ Wink 预订生命周期的事件，从创建到退款和支付。
 - [Webhook 集成指南](/zh-CN/developers/webhook-integration) — 设置步骤和最佳实践。
 - [Webhooks](/zh-CN/portal/settings/webhooks) — 管理您的 webhook 订阅。
 - [应用](/zh-CN/account/applications) — 管理 API 凭证。
-- [在 Wink 上构建](/zh-CN/developers/build-on-wink) — 开发者平台概览。
+- [在 Wink 上构建](/zh-CN/developers/build-on-wink) — 面向开发者的平台概览。

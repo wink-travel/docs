@@ -1,326 +1,46 @@
 ---
 title: 웹훅 이벤트 카탈로그
-description: Wink 플랫폼에서 제공하는 모든 웹훅 이벤트 유형을 카테고리별로 정리한 완전한 참조 문서입니다.
+description: Wink 플랫폼의 모든 웹훅 이벤트 유형, 플랫폼의 이벤트 카탈로그에서 생성됨 — 누가 수신하는지, 어디에 페이로드가 문서화되어 있는지.
 sidebar:
   order: 3.5
 ---
 
-import { LinkButton } from '@astrojs/starlight/components';
+import webhooks from '../../../../schemas/webhooks.json';
+import WebhookEventTypes from '@/components/webhooks/event-types.astro';
 
 이 페이지는 Wink에서 구독할 수 있는 모든 웹훅 이벤트를 나열합니다. 설정 방법은 [Webhook Integration Guide](/ko/developers/webhook-integration) 또는 [Webhooks 관리 페이지](/ko/portal/settings/webhooks)를 참조하세요.
 
 ## 구독 방법
 
 1. 포털에서 **Applications > Webhooks**로 이동합니다.
-2. 웹훅을 생성하고 수신할 이벤트를 선택합니다.
-3. 이벤트가 발생할 때마다 Wink가 HTTP POST를 귀하의 엔드포인트로 전송합니다.
-
-전체 설정 단계와 모범 사례는 [Webhook Integration](/ko/developers/webhook-integration)을 참조하세요.
-
----
-
-## 관리 엔터티 이벤트
-
-엔터티(숙소, 제휴사, 회사) 및 그 관리에 관한 이벤트입니다.
-
-### 라이프사이클
-
-| 이벤트 | 키 | 설명 |
-|---|---|---|
-| 엔터티 생성됨 | `managing_entity.created` | 새로운 관리 엔터티가 생성되었습니다. |
-| 엔터티 삭제됨 | `managing_entity.deleted` | 관리 엔터티가 삭제되었습니다. |
-| 상태 업데이트됨 | `managing_entity.status.updated` | 엔터티 상태가 변경되었습니다. |
-| 검토 중 | `account.under_review` | 엔터티 계정이 검토 대기 중입니다. |
-
-### 구독
-
-| 이벤트 | 키 | 설명 |
-|---|---|---|
-| 구독 제공됨 | `managing_entity.subscription.provisioned` | 새로운 구독이 제공되었습니다. |
-| 구독 변경됨 | `managing_entity.subscription.changed` | 구독 플랜이 변경되었습니다. |
-| 구독 청구서 변경됨 | `managing_entity.subscription.invoice.changed` | 구독 청구서가 업데이트되었습니다. |
-
-### 관리자 라이프사이클
-
-| 이벤트 | 키 | 설명 |
-|---|---|---|
-| 관리자 추가됨 | `managing_entity.manager.added` | 새로운 관리자가 추가되었습니다. |
-| 관리자 초대됨 | `managing_entity.manager.invited` | 관리자 초대장이 발송되었습니다. |
-| 관리자 제거됨 | `managing_entity.manager.removed` | 관리자가 제거되었습니다. |
-| 관리자 수락됨 | `managing_entity.manager.accepted` | 관리자 초대가 수락되었습니다. |
-| 관리자 거절됨 | `managing_entity.manager.rejected` | 관리자 초대가 거절되었습니다. |
-| 소유자 설정됨 | `managing_entity.manager.owner.set` | 엔터티 소유권이 이전되었습니다. |
-| 관리자 목록 업데이트됨 | `account.managers.update` | 관리자 목록이 변경되었습니다. |
-
-### 엔터티 정보
-
-| 이벤트 | 키 | 설명 |
-|---|---|---|
-| 정보 업데이트됨 | `managing_entity.information.updated` | 엔터티 정보가 업데이트되었습니다. |
-| 주소 업데이트됨 | `managing_entity.city.updated` | 엔터티 주소/도시가 변경되었습니다. |
-| 이름 업데이트됨 | `managing_entity.name.updated` | 엔터티 이름이 변경되었습니다. |
-| URL 이름 업데이트됨 | `managing_entity.url_name.updated` | 엔터티의 맞춤 URL이 변경되었습니다. |
-| 고유 ID 업데이트됨 | `managing_entity.unique_id.updated` | 엔터티 고유 식별자가 변경되었습니다. |
-| 관리 주체 업데이트됨 | `managing_entity.managed_by.updated` | 엔터티의 상위/관리 주체 관계가 변경되었습니다. |
-| 장소 ID 업데이트됨 | `managing_entity.place_id.updated` | 엔터티의 Google 장소 ID가 변경되었습니다. |
-| 계정 담당자 업데이트됨 | `managing_entity.account_representative.updated` | 계정 담당자가 변경되었습니다. |
-| 프로필 사진 업데이트됨 | `managing_entity.profile_picture.updated` | 엔터티 프로필 사진이 업데이트되었습니다. |
-| 로고 업데이트됨 | `managing_entity.logo.updated` | 엔터티 로고가 업데이트되었습니다. |
-| 세부 정보 업데이트됨 | `account.details.updated` | 계정 세부 정보 필드가 변경되었습니다. |
-| 에이전트 업데이트됨 | `managing_entity.agent.updated` | 엔터티 에이전트가 수정되었습니다. |
-
-### 알림
-
-| 이벤트 | 키 | 설명 |
-|---|---|---|
-| 에이전트 이메일 알림 | `managing_entity.agent.email.notification` | 에이전트에게 이메일 알림이 발송되었습니다. |
-| 관리자 이메일 알림 | `managing_entity.manager.email.notification` | 관리자에게 이메일 알림이 발송되었습니다. |
-
-### 계정 작업
-
-| 이벤트 | 키 | 설명 |
-|---|---|---|
-| 작업 생성됨 | `account.task.create` | 계정에 새로운 작업이 추가되었습니다. |
-| 작업 업데이트됨 | `account.task.update` | 계정 작업이 수정되었습니다. |
-| 작업 제거됨 | `account.task.remove` | 계정 작업이 제거되었습니다. |
-| 작업 완료됨 | `account.task.complete` | 계정 작업이 완료되었습니다. |
-| 세금 ID 작업 완료됨 | `account.task.tax_id.complete` | 세금 ID 확인 작업이 완료되었습니다. |
-
----
-
-## 예약 이벤트
-
-예약 생성부터 환불 및 지급까지 Wink 예약 라이프사이클 관련 이벤트입니다.
-
-### 핵심 예약
-
-| 이벤트 | 키 | 설명 |
-|---|---|---|
-| 예약 생성됨 | `booking.create` | 새로운 예약이 생성되었습니다. |
-| 예약 취소됨 | `booking.cancelled` | 예약이 취소되었습니다. |
-| 예약 실패 | `booking.failed` | 예약 시도가 실패했습니다. |
-| 예약 처리 중 | `booking.processing` | 예약 결제가 처리 중입니다. |
-| 초기화 요청됨 | `booking.initialize.request` | 예약 초기화가 요청되었습니다. |
-| 초기화 완료됨 | `booking.initialize.complete` | 예약 초기화가 완료되었습니다. |
-
-### 환불
-
-| 이벤트 | 키 | 설명 |
-|---|---|---|
-| 환불 요청됨 | `booking.refund.request` | 환불 요청이 제출되었습니다. |
-| 환불 오류 | `booking.refund.error` | 환불 처리 중 오류가 발생했습니다. |
-| 부분 환불 | `booking.refund.partial` | 부분 환불이 발행되었습니다. |
-| 전액 환불 | `booking.refund.full` | 전액 환불이 발행되었습니다. |
-
-### 지급
-
-| 이벤트 | 키 | 설명 |
-|---|---|---|
-| 지급 생성됨 | `booking.payout.create` | 예약에 대한 지급이 생성되었습니다. |
-| 지급 완료됨 | `booking.payout.complete` | 지급이 성공적으로 완료되었습니다. |
-| 자금 사용 가능 | `booking.funds.available` | 예약 자금이 정산을 위해 사용 가능합니다. |
-| 자금 원장 기록됨 | `booking.funds.ledgered` | 예약 자금이 원장에 기록되었습니다. |
-
-### 리뷰
-
-| 이벤트 | 키 | 설명 |
-|---|---|---|
-| 리뷰 제출됨 | `booking.review.created` | 게스트 리뷰가 예약에 대해 제출되었습니다. |
-| 리뷰에 응답됨 | `booking.review.responded` | 숙소가 예약 리뷰에 응답했습니다. |
-
----
-
-## 숙소 이벤트
-
-숙소 프로필 및 콘텐츠 관련 이벤트로, 해당 숙소의 웹훅 구독자에게 전송됩니다.
-
-| 이벤트 | 키 | 설명 |
-|---|---|---|
-| 숙소 생성됨 | `property.created` | 새로운 숙소가 생성되었습니다. |
-| 숙소 업데이트됨 | `property.updated` | 숙소 세부 정보가 업데이트되었습니다. |
-| 숙소 삭제됨 | `property.deleted` | 숙소가 삭제되었습니다. |
-| 숙소 등록됨 | `property.registered` | 숙소 등록이 완료되었습니다. |
-| 상태 업데이트됨 | `property.status.updated` | 숙소 외부 상태가 변경되었습니다. |
-| 이름 업데이트됨 | `property.name.updated` | 숙소 이름이 변경되었습니다. |
-| 주소 업데이트됨 | `property.address.updated` | 숙소 주소가 업데이트되었습니다. |
-| 지리 위치 업데이트됨 | `property.geolocation.updated` | 숙소 지리 위치가 업데이트되었습니다. |
-| 프로필 업데이트됨 | `property.profile.updated` | 숙소 프로필 콘텐츠가 변경되었습니다. |
-| 서비스 업데이트됨 | `property.services.updated` | 숙소 서비스/편의 시설 목록이 변경되었습니다. |
-| 환영 문구 업데이트됨 | `property.welcome_text.updated` | 숙소 환영 메시지가 변경되었습니다. |
-| 정책 생성됨 | `property.policy.created` | 새로운 숙소 정책이 생성되었습니다. |
-| 정책 업데이트됨 | `property.policy.updated` | 숙소 정책이 업데이트되었습니다. |
-
----
-
-## 인벤토리 이벤트
-
-숙소 내 인벤토리 항목 관련 이벤트로, 해당 숙소의 웹훅 구독자에게 전송됩니다.
-
-### 객실 유형
-
-| 이벤트 | 키 | 설명 |
-|---|---|---|
-| 객실 유형 생성됨 | `room_type.created` | 새로운 객실 유형이 추가되었습니다. |
-| 객실 유형 업데이트됨 | `room_type.updated` | 객실 유형이 수정되었습니다. |
-| 객실 유형 삭제됨 | `room_type.deleted` | 객실 유형이 제거되었습니다. |
-
-### 요금제
-
-| 이벤트 | 키 | 설명 |
-|---|---|---|
-| 요금제 생성됨 | `rate_plan.created` | 새로운 요금제가 생성되었습니다. |
-| 요금제 업데이트됨 | `rate_plan.updated` | 요금제가 수정되었습니다. |
-| 요금제 삭제됨 | `rate_plan.deleted` | 요금제가 제거되었습니다. |
-
-### 마스터 요금
-
-| 이벤트 | 키 | 설명 |
-|---|---|---|
-| 마스터 요금 생성됨 | `master_rate.created` | 새로운 마스터 요금이 생성되었습니다. |
-| 마스터 요금 업데이트됨 | `master_rate.updated` | 마스터 요금이 수정되었습니다. |
-| 마스터 요금 삭제됨 | `master_rate.deleted` | 마스터 요금이 제거되었습니다. |
-
-### 추가 상품
-
-| 이벤트 | 키 | 설명 |
-|---|---|---|
-| 추가 상품 생성됨 | `add_on.created` | 새로운 추가 상품이 생성되었습니다. |
-| 추가 상품 업데이트됨 | `add_on.updated` | 추가 상품이 수정되었습니다. |
-| 추가 상품 삭제됨 | `add_on.deleted` | 추가 상품이 제거되었습니다. |
-
-### 회의실
-
-| 이벤트 | 키 | 설명 |
-|---|---|---|
-| 회의실 생성됨 | `meeting_room.created` | 새로운 회의실이 추가되었습니다. |
-| 회의실 업데이트됨 | `meeting_room.updated` | 회의실이 수정되었습니다. |
-| 회의실 삭제됨 | `meeting_room.deleted` | 회의실이 제거되었습니다. |
-
-### 레스토랑
-
-| 이벤트 | 키 | 설명 |
-|---|---|---|
-| 레스토랑 생성됨 | `restaurant.created` | 새로운 레스토랑이 추가되었습니다. |
-| 레스토랑 업데이트됨 | `restaurant.updated` | 레스토랑이 수정되었습니다. |
-| 레스토랑 삭제됨 | `restaurant.deleted` | 레스토랑이 제거되었습니다. |
-
-### 스파
-
-| 이벤트 | 키 | 설명 |
-|---|---|---|
-| 스파 생성됨 | `spa.created` | 새로운 스파가 추가되었습니다. |
-| 스파 업데이트됨 | `spa.updated` | 스파가 수정되었습니다. |
-| 스파 삭제됨 | `spa.deleted` | 스파가 제거되었습니다. |
-
-### 액티비티
-
-| 이벤트 | 키 | 설명 |
-|---|---|---|
-| 액티비티 생성됨 | `activity.created` | 새로운 액티비티가 추가되었습니다. |
-| 액티비티 업데이트됨 | `activity.updated` | 액티비티가 수정되었습니다. |
-| 액티비티 삭제됨 | `activity.deleted` | 액티비티가 제거되었습니다. |
-
----
-
-## 판매 채널 이벤트
-
-공급자와 제휴사를 연결하는 유통 채널 관련 이벤트로, 공급자와 제휴사 웹훅 구독자 모두에게 전송됩니다.
-
-| 이벤트 | 키 | 설명 |
-|---|---|---|
-| 판매 채널 생성됨 | `sales_channel.created` | 새로운 판매 채널이 생성되었습니다. |
-| 판매 채널 업데이트됨 | `sales_channel.updated` | 판매 채널이 수정되었습니다. |
-| 판매 채널 삭제됨 | `sales_channel.deleted` | 판매 채널이 제거되었습니다. |
-
----
-
-## 특별 요금 이벤트
-
-숙소의 프로모션 및 협상 요금 관련 이벤트입니다.
-
-| 이벤트 | 키 | 설명 |
-|---|---|---|
-| 특별 요금 생성됨 | `special_rate.created` | 새로운 특별 요금이 생성되었습니다. |
-| 특별 요금 업데이트됨 | `special_rate.updated` | 특별 요금이 수정되었습니다. |
-| 특별 요금 삭제됨 | `special_rate.deleted` | 특별 요금이 제거되었습니다. |
-| 요금 수정자 업데이트됨 | `rate_modifier.updated` | 요금 수정자가 업데이트되었습니다. |
-
----
-
-## 수취인 이벤트
-
-수취인(지급 대상자) 관리 관련 이벤트입니다.
-
-| 이벤트 | 키 | 설명 |
-|---|---|---|
-| 수취인 생성됨 | `payee.create` | 새로운 수취인이 성공적으로 생성되었습니다. |
-| 수취인 생성 실패 | `payee.create.failure` | 수취인 생성에 실패했습니다. |
-| 수취인 업데이트됨 | `payee.update` | 수취인이 업데이트되었습니다. |
-| 수취인 업데이트 실패 | `payee.update.failure` | 수취인 업데이트에 실패했습니다. |
-
----
-
-## 결제 이벤트
-
-TripPay의 내부 결제 처리 이벤트입니다.
-
-| 이벤트 | 키 | 설명 |
-|---|---|---|
-| 결제 성공 | `internal.payment.succeeded` | 결제가 성공적으로 처리되었습니다. |
-| 결제 처리 중 | `internal.payment.processing` | 결제가 현재 처리 중입니다. |
-| 결제 실패 | `internal.payment.failed` | 결제 처리에 실패했습니다. |
-
----
-
-## 채널 매니저 이벤트
-
-채널 매니저의 요금 및 가용성 푸시 관련 이벤트입니다.
-
-| 이벤트 | 키 | 설명 |
-|---|---|---|
-| 요금 업데이트 | `channel-manager.update.rate` | 채널 매니저가 요금 업데이트를 푸시했습니다. |
-| 가용성 업데이트 | `channel-manager.update.availability` | 채널 매니저가 가용성 업데이트를 푸시했습니다. |
-| 일반 업데이트 | `channel-manager.update` | 일반 채널 매니저 업데이트입니다. |
-
----
-
-## 원장 이벤트
-
-재무 원장 항목 관련 이벤트입니다.
-
-| 이벤트 | 키 | 설명 |
-|---|---|---|
-| 원장 항목 생성됨 | `ledger.entry.create` | 새로운 원장 항목이 기록되었습니다. |
-
----
-
-## 이메일 이벤트
-
-| 이벤트 | 키 | 설명 |
-|---|---|---|
-| 이메일 발송 | `email.correspondence` | 발신 이메일이 전송되었습니다. |
-
----
-
-## 이벤트 개수 요약
-
-| 카테고리 | 개수 |
-|---|---|
-| 관리 엔터티 이벤트 | 33 |
-| 예약 이벤트 | 16 |
-| 숙소 이벤트 | 13 |
-| 인벤토리 이벤트 (객실 유형, 요금제, 마스터 요금, 추가 상품, 시설) | 24 |
-| 판매 채널 이벤트 | 3 |
-| 특별 요금 이벤트 | 4 |
-| 수취인 이벤트 | 4 |
-| 결제 이벤트 | 3 |
-| 채널 매니저 이벤트 | 3 |
-| 원장 이벤트 | 1 |
-| 이메일 이벤트 | 1 |
-| **총합** | **105** |
+2. 웹훅을 생성하고 수신할 이벤트를 선택하세요 — 또는 모든 이벤트를 수신하려면 목록을 비워두세요.
+3. 이벤트가 발생할 때마다 Wink가 서명된 HTTP POST를 귀하의 엔드포인트로 전송합니다. 봉투, 헤더, 서명 검증 및 재시도에 대해서는 [Webhook Integration](/ko/developers/webhook-integration)을 참조하세요.
+
+## 모든 이벤트 유형
+
+이 표는 빌드 시 플랫폼의 이벤트 카탈로그에서 생성되므로 항상 API와 일치합니다.
+전달된 것으로 표시된 이벤트 유형은 [Webhooks API](/ko/api/webhooks/)의 참조 페이지에 링크되어 있으며,
+정확한 JSON 본문(`WebhookEnvelope`과 이벤트별 `object`), `Wink-*` 헤더 및
+재시도 정책을 문서화합니다. 전달되지 않는 이벤트 유형은 내부적으로 존재하지만(결제, 원장, 채널 관리자
+동기화 등) 현재 웹훅 구독자에게 전송되지 않습니다.
+
+**수신자**는 이벤트를 받는 대상을 나타냅니다: `SUPPLIER` (호텔), `AFFILIATE` (호텔에 활성 판매 채널이 있는 리셀러), `AGENT` (예약을 한 여행사) 또는 `SELF` (이벤트 대상 관리 주체). 모든 수신자는 동일한 페이로드 형식을 받으며, 역할별 세부 정보는
+페이로드의 `links.self` URL 뒤에 있습니다.
+
+<WebhookEventTypes
+  types={webhooks['x-wink-event-types']}
+  referenceBase="/api/webhooks"
+  eventHeader="이벤트"
+  descriptionHeader="설명"
+  deliveredHeader="전달됨"
+  recipientsHeader="수신자"
+  deliveredLabel="전달됨"
+  notDeliveredLabel="전달되지 않음"
+  noRecipientsLabel="—"
+/>
 
 :::tip
-개발 중에는 모든 이벤트를 구독하는 것부터 시작하세요. 시스템에 필요한 페이로드를 파악한 후에는 구독을 좁혀 노이즈를 줄이세요.
+개발 중에는 모든 이벤트를 구독하는 것부터 시작하세요. 시스템에 필요한 페이로드를 이해한 후에는 구독을 좁혀 노이즈를 줄이세요. **Applications > Webhooks**에서 테스트 이벤트를 보내거나 (`POST …/webhook/{id}/test`) 엔드포인트와 서명 검증을 확인한 후 라이브로 전환하세요.
 :::
 
 ## 추가 자료

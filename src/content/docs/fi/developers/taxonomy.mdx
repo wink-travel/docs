@@ -1,0 +1,63 @@
+---
+title: Taksonomia
+description: Hallitut sanastot, joita Wink-alusta käyttää — OTA-koodit mukavuuksille, vuode- ja huonetyypeille, näkymille ja muille, sekä kaikki tuetut kielet ja valuutat.
+sidebar:
+  order: 12
+---
+
+import taxonomy from '@/data/taxonomy.json';
+import OtaCategories from '@/components/taxonomy/ota-categories.astro';
+import CodeTable from '@/components/taxonomy/code-table.astro';
+
+Wink kuvaa varastoa hallituilla sanastoilla — kiinteillä koodisarjoilla, joilla on sovitut merkitykset. Kun lähetät `"5"` hotellin mukavuudeksi, alusta tulkitsee sen *Ilmastoinniksi*, ja kaikki tämän tiedon käyttäjät tekevät samoin.
+
+Tämä sivu on julkaistu viite kaikille kolmelle sanastolle:
+
+- **OTA-koodit** — {taxonomy.ota.codeCount} koodia {taxonomy.ota.categoryCount} kategoriassa, kattaen mukavuudet, vuodetyypit, huonenäkymät, esteettömyysominaisuudet, keittiöt ja muuta.
+- **Kielet** — {taxonomy.languages.list.length} kieltä, joilla sisältöä voidaan laatia ja tarjota.
+- **Valuutat** — {taxonomy.currencies.list.length} valuuttaa, joissa hintoja voidaan ilmoittaa ja maksaa.
+
+Koodit ovat pysyviä. Nimiä voidaan muokata selkeyden vuoksi, joten vertaa aina **koodiin**, älä nimeen.
+
+## OTA-koodit
+
+Wink noudattaa [OpenTravel Alliance](https://opentravel.org/) koodilistoja. Jokaisella kategoriolla on kolmen kirjaimen tunniste — `HAC` hotellin mukavuuksille, `BED` vuodetyypeille — ja jokainen koodi kategoriassa on yksilöllinen. Sama numeerinen arvo tarkoittaa eri asioita eri kategorioissa, joten koodi on merkityksellinen vain yhdessä siihen kuuluvan kategorian kanssa: `BED` `1` on *Parivuode / Täysikokoinen*, kun taas `HAC` `1` on *24h vastaanotto*.
+
+Valitse kategoria nähdäksesi sen koodit.
+
+<OtaCategories
+  categories={taxonomy.ota.categories}
+  categoryHeader="Kategoria"
+  descriptionHeader="Kuvaus"
+  countHeader="Koodit"
+  codeHeader="Koodi"
+  nameHeader="Nimi"
+/>
+
+## Kielet
+
+Sisältö — kiinteistön kuvaukset, huoneiden nimet, säännöt — voidaan laatia millä tahansa näistä kielistä. Koodit ovat [IETF BCP 47](https://www.rfc-editor.org/info/bcp47) tunnisteita: kaksikirjaiminen [ISO 639-1](https://www.iso.org/iso-639-language-code) kielikoodi, jota voi seurata [ISO 3166-1](https://www.iso.org/iso-3166-country-codes.html) aluekoodi, kun alusta erottaa alueelliset variantit — `pt-BR` ja `pt-PT` käsitellään erikseen, samoin `es`, `es-AR` ja `es-MX`.
+
+Alustan oletuskieli on `{taxonomy.languages.default}`, jota käytetään, kun pyyntö ei määritä kieltä tai käännöstä ei ole saatavilla.
+
+<CodeTable
+  rows={taxonomy.languages.list}
+  codeHeader="Koodi"
+  nameHeader="Kieli"
+  unnamedLabel="Ei vakiintunutta nimeä"
+/>
+
+## Valuutat
+
+Hintoja voidaan ilmoittaa ja maksaa millä tahansa näistä valuutoista. Koodit ovat [ISO 4217](https://www.iso.org/iso-4217-currency-codes.html) kolmen kirjaimen tunnisteita.
+
+Alustan oletusvaluutta on `{taxonomy.currencies.default}`. Se on varavaluutta näytössä ja yksikkö, johon alustatason luvut normalisoidaan; se **ei** ole varauksen maksavaluutta — hotellit maksavat omassa valuutassaan, joten yhdessä valuutassa ilmoitettu ja toisessa maksettu hinta sisältää valuutanvaihtokulun.
+
+Muutama merkintä ei ole kansallinen valuutta: `XAU` ja `XAG` ovat kulta ja hopea, `XDR` on IMF:n erityisnosto-oikeus ja `BTC` on Bitcoin. Näitä käytetään arvonmääritykseen ja raportointiin, eivätkä ne yleensä ole käytettävissä maksavaluuttana.
+
+<CodeTable
+  rows={taxonomy.currencies.list}
+  codeHeader="Koodi"
+  nameHeader="Valuutta"
+  unnamedLabel="Ei vakiintunutta nimeä"
+/>

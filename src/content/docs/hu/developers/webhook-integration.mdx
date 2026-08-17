@@ -27,51 +27,141 @@ Ez az útmutató fejlesztőknek szól, akik a Wink-et külső rendszerekkel, pé
 3. Kattints a `Create webhook` gombra.
 4. Add meg a **nevet** (pl. "PMS Foglalás Szinkron").
 5. Írd be a **webhook URL-t** — a szervered HTTPS végpontját.
-6. **Válaszd ki az eseményeket** — Válassz ki konkrét eseményeket, vagy hagyd üresen, hogy az összes eseményt megkapd.
+6. **Válaszd ki az eseményeket** — Válassz ki konkrét eseményeket, vagy hagyd üresen, hogy minden eseményt megkapj.
 7. Kapcsold be az **Enabled** opciót.
-8. Kattints a `Save` gombra.
+8. Kattints a `Save` gombra — a válasz egyszer mutatja a **signing secret**-et; most tárold el.
 </Steps>
 
 ## Eseménytípusok
 
-A Wink **64+ webhook eseménytípust** támogat különböző kategóriákban, beleértve a fiókkezelést, foglalási szerződéseket, fizetéseket, csatornakezelő frissítéseket és entitáskezelést. Gyakori események:
+A Wink ma 70 webhook eseménytípust publikál foglalások, ingatlanok, fiókok (kezelő entitások) és készlet (szobatípusok, ártervek, főárak, kiegészítők, szolgáltatások, értékesítési csatornák, promóciók) területén.
+Gyakoriak:
 
 | Kategória | Példák |
 |---|---|
-| **Foglalás** | `booking.create`, `booking.cancelled` |
-| **Foglalási szerződés** | `booking.contract.created`, `booking.contract.processing`, `booking.contract.cancelled` |
-| **Fizetés** | `internal.payment.succeeded`, `internal.payment.failed` |
-| **Visszatérítések** | `booking.contract.refund.partial`, `booking.contract.refund.full` |
-| **Csatornakezelő** | `channel-manager.update.rate`, `channel-manager.update.availability` |
-| **Fiók** | `account.create`, `account.status.updated` |
+| **Foglalás** | `booking.create`, `booking.cancelled`, `booking.refund.partial`, `booking.refund.full`, `booking.review.created` |
+| **Ingatlan** | `property.created`, `property.status.updated`, `property.policy.updated` |
+| **Készlet** | `room_type.updated`, `rate_plan.created`, `master_rate.updated`, `special_rate.created`, `sales_channel.created` |
+| **Fiók** | `managing_entity.created`, `managing_entity.status.updated`, `managing_entity.manager.added` |
 
-A teljes eseménytípus-listát leírásokkal a **Webhook Események Katalógusában** találod.
+A teljes, generált lista — leírással, hogy ki kapja, és linkkel az esemény referencia oldalára — a **Webhook Események Katalógusa**. Minden esemény referencia oldala (JSON törzs, fejlécek, újrapróbálkozási szabályzat) megtalálható a [Webhooks API](/hu/api/webhooks/) oldalon.
 
 <LinkButton href="/hu/developers/webhook-events">
-  Az összes 64+ eseménytípus megtekintése
+  Minden eseménytípus megtekintése
 </LinkButton>
 
-:::tip
-Fejlesztés alatt érdemes az összes eseményre feliratkozni. Miután megértetted a payloadokat, szűkítsd le csak azokra az eseményekre, amelyekre a rendszerednek ténylegesen szüksége van.
-:::
+## Amit kapsz
+
+Minden kézbesítés egy HTTP `POST` a webhook URL-edre `Content-Type: application/json` fejléc mellett, az alábbi borítékkal:
+
+```json
+{
+  "id": "0198a4f2-6b0e-7c1d-9a3e-2f4b8c6d1e0a",
+  "type": "booking.create",
+  "occurredAt": "2026-08-15T09:30:00Z",
+  "ownerIdentifier": "3c6b1a5d-8e2f-4a0b-9c7d-6e4f0a8b2c51",
+  "recipientRole": "SUPPLIER",
+  "schemaVersion": 2,
+  "object": { "...": "esemény-specifikus payload, pl. BookingWebhookPayload" }
+}
+```
+
+- `id` — az esemény azonosítója; azonos minden végpontnál, amely megkapja ezt az eseményt, és minden újrapróbálkozásnál. Használd **idempotencia kulcsként**.
+- `type` — az eseménytípus kulcsa (a `Wink-Event-Type` fejlécben is elküldve). Ezen `type` és `schemaVersion` alapján dolgozd fel az `object`-et.
+- `object` — az eseményhez tartozó erőforrás válogatott összefoglalója (azonosítók, státusz, a kezelt mezők) plusz `links.self`, a szolgáltató oldali kanonikus REST URL a teljes erőforráshoz. Ha többre van szükséged, mint az összefoglaló, kérd le a saját API hitelesítő adataiddal; ha viszont viszonteladóként vagy utazási irodaként kapod az eseményt, a saját API felületed megfelelő erőforrás végpontját használd ugyanazzal az azonosítóval.
+
+Minden payload séma dokumentált eseményenként a [Webhooks API](/hu/api/webhooks/) referencia oldalán.
+
+### Fejlécek
+
+| Fejléc | Jelentés |
+|---|---|
+| `Wink-Version` | Vezetékes szerződés verziója, `2.0`. |
+| `Wink-Event-Id` | Ugyanaz, mint a törzsben az `id` — az idempotencia kulcsod. |
+| `Wink-Delivery-Id` | Egyedi végpontonként eseményenként; csak újraküldéskor változik. |
+| `Wink-Event-Type` | Ugyanaz, mint a törzsben a `type`. |
+| `Wink-Delivery-Attempt` | 1-től kezdődő próbálkozás száma ezen kézbesítéshez. |
+| `Wink-Signature` | HMAC aláírás — lásd lent. |
+
+## Aláírások ellenőrzése
+
+Minden webhooknak van egy **signing secret**-je (`whsec_…`), amelyet a Wink **egyszer** mutat meg, amikor létrehozod a webhookot vagy forgatod a titkot. Tárold úgy, mint egy jelszót. Minden kézbesítés tartalmazza
+
+```
+Wink-Signature: t=1755250200,v1=5d41402abc4b2a76b9719d911017c592…
+```
+
+ahol `t` egy Unix időbélyeg (másodpercben), és `v1` a kisbetűs hex formátumú **HMAC-SHA256** a `t + "." + rawBody` sztringről, a titkoddal kulcsolva, és a `rawBody` a pontos kérés törzs bájtjai, ahogy érkeztek — ne serializáld újra a JSON-t az ellenőrzés előtt. Titok forgatás után 24 órán át a fejléc tartalmaz egy második `v1=` értéket is, amely az előző titokkal van aláírva; fogadd el a kézbesítést, ha **bármelyik** `v1` egyezik.
+
+Négy lépésben ellenőrizd: dolgozd fel a `t` és minden `v1` értéket; számítsd újra a HMAC-ot a `t.rawBody`-ra a titkoddal; hasonlítsd össze konstans idő alatt; utasítsd el, ha `|most − t|` meghaladja a tűréshatárt (ajánlott 5 perc).
+
+```js
+// Node.js (Express-stílus; győződj meg róla, hogy a RAW törzs van, nem egy feldolgozott objektum)
+import { createHmac, timingSafeEqual } from 'node:crypto';
+
+export function verifyWinkSignature(header, rawBody, secret, toleranceSeconds = 300) {
+  const parts = Object.fromEntries(header.split(',').map((p) => p.split('=').map((s) => s.trim())));
+  const t = Number(parts.t);
+  if (!Number.isFinite(t) || Math.abs(Date.now() / 1000 - t) > toleranceSeconds) return false;
+  const expected = createHmac('sha256', secret).update(`${t}.${rawBody}`).digest('hex');
+  return header
+    .split(',')
+    .filter((p) => p.trim().startsWith('v1='))
+    .map((p) => p.trim().slice(3))
+    .some((v1) => v1.length === expected.length && timingSafeEqual(Buffer.from(v1, 'utf8'), Buffer.from(expected, 'utf8')));
+}
+```
+
+```java
+// Java
+static boolean verify(String header, String rawBody, String secret, long nowSeconds, long toleranceSeconds) throws Exception {
+    long t = Long.MIN_VALUE;
+    List<String> signatures = new ArrayList<>();
+    for (String part : header.split(",")) {
+        String[] kv = part.trim().split("=", 2);
+        if (kv[0].equals("t")) t = Long.parseLong(kv[1]);
+        else if (kv[0].equals("v1")) signatures.add(kv[1]);
+    }
+    if (t == Long.MIN_VALUE || Math.abs(nowSeconds - t) > toleranceSeconds) return false;
+    Mac mac = Mac.getInstance("HmacSHA256");
+    mac.init(new SecretKeySpec(secret.getBytes(StandardCharsets.UTF_8), "HmacSHA256"));
+    byte[] expected = HexFormat.of().formatHex(mac.doFinal((t + "." + rawBody).getBytes(StandardCharsets.UTF_8))).getBytes(StandardCharsets.US_ASCII);
+    return signatures.stream().anyMatch(v1 -> MessageDigest.isEqual(expected, v1.toLowerCase().getBytes(StandardCharsets.US_ASCII)));
+}
+```
+
+Forgasd a titkot a portálról vagy a `POST /api/managing-entity/{id}/webhook/{webhookId}/rotate-secret` végponton keresztül; a válasz egyszer mutatja az új titkot, és a régi 24 órán át még érvényes, amíg bevezetésre kerül.
+
+## Újrapróbálkozások és újrakézbesítés
+
+- Válaszolj bármilyen `2xx` státusszal 10 másodpercen belül az elismeréshez. A nehéz feldolgozást végezd aszinkron módon.
+- `5xx`, időtúllépés, `408` vagy `429` esetén visszaküldés történik visszavonással: 1 perc, 5 perc, 30 perc, 2 óra, 6 óra, 12 óra, majd naponta — összesen 10 próbálkozás kb. 3 nap alatt — ezután a kézbesítés **dead** státuszú lesz.
+- Bármilyen más `4xx` státusz úgy kezelendő, mintha elutasítottad volna a kézbesítést, és **nem** próbálkozik újra.
+- Minden esemény, kézbesítés és próbálkozás (státusz, válasz részlet) látható az **Applications > Webhooks** alatt és az API-n keresztül (`…/webhook/event/grid`, `…/webhook/delivery/grid`). Bármely kézbesítést **újraküldhetsz** (`POST …/webhook/delivery/{deliveryId}/redeliver`, ami új próbálkozási sorozatot indít), egyszerre újraküldheted egy webhook minden dead kézbesítését (`POST …/webhook/{webhookId}/redeliver-dead`), vagy törölhetsz egyet.
+- A kézbesítések 30 napig megőrződnek.
+
+## Tesztesemények
+
+Küldj magadnak egy szintetikus `webhook.test` eseményt a portálról vagy a `POST /api/managing-entity/{id}/webhook/{webhookId}/test` végponton keresztül. Ez aláírt és kézbesített ugyanúgy, mint egy valódi esemény, így ellenőrizheted a végpontodat, az aláírás ellenőrzést és az idempotencia kezelést, mielőtt élő eseményekre iratkozol fel.
 
 ## Legjobb gyakorlatok
 
 - **Használj HTTPS-t** — a Wink csak HTTPS végpontokra küldi a payloadokat.
-- **Válaszolj gyorsan** — küldj `200 OK` választ, amint megkaptad a payloadot. A nehéz feldolgozást végezd aszinkron módon.
-- **Idempotencia** — a kezelőd legyen idempotens. A Wink újrapróbálkozhat a kézbesítéssel, ha nem kap `200` választ.
-- **Forrás ellenőrzése** — ellenőrizd, hogy a bejövő kérések valóban a Wink-től érkeznek, mielőtt feldolgozod őket.
-- **Naplózás** — naplózz minden webhook payloadot, amit kapsz. Ez megkönnyíti az integrációs hibák hibakeresését.
+- **Válaszolj gyorsan** — Adj vissza `200 OK` választ, amint megkapod a payloadot. A nehéz feldolgozást végezd aszinkron módon.
+- **Idempotencia** — A kezelőd legyen idempotens; szűrd ki a duplikátumokat a `Wink-Event-Id` alapján. A Wink újrapróbálkozik, ha nem kap `2xx` választ.
+- **Forrás ellenőrzése** — Ellenőrizd a `Wink-Signature` fejlécet (lásd [Aláírások ellenőrzése](#verifying-signatures)) feldolgozás előtt; utasíts el bármit, ami nem felel meg.
+- **Naplózás** — Naplózz minden webhook payloadot, amit kapsz. Ez megkönnyíti az integrációs hibák hibakeresését.
 
 ## Szüneteltetés és törlés
 
-Egy webhookot **letilthatsz** anélkül, hogy törölnéd. Ez szünetelteti a kézbesítést, így hibakeresés közben nem veszíted el a beállításokat. Ha készen állsz, kapcsold vissza.
+Egy webhookot **letilthatsz** anélkül, hogy törölnéd. Ez szünetelteti a kézbesítést, így hibakeresés közben nem veszíted el a beállításaidat. Ha készen állsz, kapcsold vissza.
 
-A webhook törlése véglegesen eltávolítja azt. Az az integráció, amely erre a webhookra támaszkodik, nem fog több értesítést kapni.
+A webhook törlése véglegesen eltávolítja azt. Bármely integráció, amely erre a webhookra támaszkodik, leáll az értesítések fogadásával.
 
 ## További olvasnivaló
 
-- [Webhook Események Katalógusa](/hu/developers/webhook-events) — Az összes 64+ eseménytípus teljes listája.
-- [Webhooks](/hu/portal/settings/webhooks) — Teljes referencia a webhook kezeléséhez.
+- [Webhook Események Katalógusa](/hu/developers/webhook-events) — Minden eseménytípus, a platform katalógusából generálva.
+- [Webhooks API referencia](/hu/api/webhooks/) — Eseményenkénti payload sémák, fejlécek és a feliratkozás/kézbesítés kezelő végpontok.
+- [Webhooks](/hu/portal/settings/webhooks) — Teljes referencia a webhook kezeléshez.
 - [Applications](/hu/account/applications) — API hitelesítő adatok kezelése.
 - [Fejlesztők > API-k](/hu/api) — Teljes API dokumentáció.

@@ -1,0 +1,79 @@
+---
+title: Taxonomie
+description: Vocabulariile controlate pe care le folosește platforma Wink — coduri OTA pentru facilități, tipuri de paturi, priveliști ale camerelor și altele, plus toate limbile și monedele acceptate.
+sidebar:
+  order: 12
+---
+
+import taxonomy from '@/data/taxonomy.json';
+import OtaCategories from '@/components/taxonomy/ota-categories.astro';
+import CodeTable from '@/components/taxonomy/code-table.astro';
+
+Wink descrie inventarul folosind vocabularii controlate — seturi fixe de coduri cu înțelesuri agreate. Când
+trimiți `"5"` ca facilități ale hotelului, platforma îl interpretează ca *Aer condiționat*, iar toți consumatorii
+acelor date fac la fel.
+
+Această pagină este referința publicată pentru toate cele trei vocabularii:
+
+- **Coduri OTA** — {taxonomy.ota.codeCount} coduri în {taxonomy.ota.categoryCount} categorii, acoperind
+  facilități, tipuri de paturi, priveliști ale camerelor, facilități pentru accesibilitate, bucătării și altele.
+- **Limbi** — cele {taxonomy.languages.list.length} limbi în care conținutul poate fi creat și servit.
+- **Monede** — cele {taxonomy.currencies.list.length} monede în care pot fi cotate și decontate tarifele.
+
+Codurile sunt stabile. Denumirile pot fi reformulate pentru claritate, deci potriviți după **cod**, niciodată după nume.
+
+## Coduri OTA
+
+Wink urmează listele de coduri ale [OpenTravel Alliance](https://opentravel.org/). Fiecare categorie are un
+identificator format din trei litere — `HAC` pentru facilități hotel, `BED` pentru tipuri de paturi — iar fiecare cod dintr-o
+categorie este unic pentru aceasta. Aceeași valoare numerică înseamnă lucruri diferite în categorii diferite, așa că un
+cod are sens doar împreună cu categoria căreia îi aparține: `BED` `1` este *Pat dublu / matrimonial*, în timp ce `HAC`
+`1` este *Recepție 24 de ore*.
+
+Selectați o categorie pentru a vedea codurile sale.
+
+<OtaCategories
+  categories={taxonomy.ota.categories}
+  categoryHeader="Categorie"
+  descriptionHeader="Descriere"
+  countHeader="Coduri"
+  codeHeader="Cod"
+  nameHeader="Nume"
+/>
+
+## Limbi
+
+Conținutul — descrieri ale proprietății, nume de camere, politici — poate fi creat în oricare dintre aceste limbi.
+Codurile sunt etichete [IETF BCP 47](https://www.rfc-editor.org/info/bcp47): o limbă în două litere
+[ISO 639-1](https://www.iso.org/iso-639-language-code), opțional urmată de o regiune
+[ISO 3166-1](https://www.iso.org/iso-3166-country-codes.html) unde platforma face distincție între
+variante regionale — `pt-BR` și `pt-PT` sunt tratate separat, la fel ca `es`, `es-AR` și `es-MX`.
+
+Implicit, platforma folosește `{taxonomy.languages.default}`, utilizată când o cerere nu specifică o limbă și
+când o traducere nu este disponibilă.
+
+<CodeTable
+  rows={taxonomy.languages.list}
+  codeHeader="Cod"
+  nameHeader="Limbă"
+  unnamedLabel="Fără nume standard"
+/>
+
+## Monede
+
+Tarifele pot fi cotate și decontate în oricare dintre aceste monede. Codurile sunt
+identificatori format din trei litere [ISO 4217](https://www.iso.org/iso-4217-currency-codes.html).
+
+Implicit, platforma folosește `{taxonomy.currencies.default}`. Aceasta este moneda de afișare implicită și
+unitatea la care sunt normalizate cifrele la nivel de platformă; **nu** este moneda în care se face decontarea unei rezervări — hotelurile
+decontează în propria lor monedă, așa că un tarif cotat într-o monedă și plătit în alta implică un spread valutar.
+
+Câteva intrări nu sunt monede naționale: `XAU` și `XAG` sunt aur și argint, `XDR` este Dreptul Special de Tragere al FMI, iar `BTC` este Bitcoin. Acestea sunt incluse pentru evaluare și raportare și nu sunt
+în general utilizabile ca monedă de decontare.
+
+<CodeTable
+  rows={taxonomy.currencies.list}
+  codeHeader="Cod"
+  nameHeader="Monedă"
+  unnamedLabel="Fără nume standard"
+/>

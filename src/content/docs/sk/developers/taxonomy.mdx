@@ -1,0 +1,76 @@
+---
+title: Taxonómia
+description: Kontrolované slovníky, ktoré platforma Wink používa — OTA kódy pre vybavenie, typy postelí, výhľady z izieb a ďalšie, plus všetky podporované jazyky a meny.
+sidebar:
+  order: 12
+---
+
+import taxonomy from '@/data/taxonomy.json';
+import OtaCategories from '@/components/taxonomy/ota-categories.astro';
+import CodeTable from '@/components/taxonomy/code-table.astro';
+
+Wink popisuje inventár pomocou kontrolovaných slovníkov — pevných súborov kódov s dohodnutými významami. Keď
+odosielate `"5"` ako vybavenie hotela, platforma to číta ako *Klimatizácia* a každý príjemca týchto údajov to chápe rovnako.
+
+Táto stránka je zverejneným referenčným zdrojom pre všetky tri slovníky:
+
+- **OTA kódy** — {taxonomy.ota.codeCount} kódov v {taxonomy.ota.categoryCount} kategóriách, pokrývajúcich
+  vybavenie, typy postelí, výhľady z izieb, prístupové prvky, kuchyne a ďalšie.
+- **Jazyky** — {taxonomy.languages.list.length} jazykov, v ktorých môže byť obsah vytváraný a podávaný.
+- **Meny** — {taxonomy.currencies.list.length} mien, v ktorých môžu byť uvádzané a vyrovnávané sadzby.
+
+Kódy sú stabilné. Názvy môžu byť preformulované pre jasnosť, preto sa zhodujte podľa **kódu**, nikdy nie podľa názvu.
+
+## OTA kódy
+
+Wink nasleduje zoznamy kódov [OpenTravel Alliance](https://opentravel.org/). Každá kategória má
+trojpísmenový identifikátor — `HAC` pre vybavenie hotela, `BED` pre typy postelí — a každý kód v rámci
+kategórie je pre ňu jedinečný. Rovnaká číselná hodnota znamená rôzne veci v rôznych kategóriách, takže
+kód má význam len spolu s kategóriou, ku ktorej patrí: `BED` `1` je *Dvojlôžko / Plná veľkosť*, zatiaľ čo `HAC`
+`1` je *24-hodinová recepcia*.
+
+Vyberte kategóriu, aby ste videli jej kódy.
+
+<OtaCategories
+  categories={taxonomy.ota.categories}
+  categoryHeader="Kategória"
+  descriptionHeader="Popis"
+  countHeader="Kódy"
+  codeHeader="Kód"
+  nameHeader="Názov"
+/>
+
+## Jazyky
+
+Obsah — popisy nehnuteľností, názvy izieb, pravidlá — môže byť vytváraný v ktoromkoľvek z týchto jazykov.
+Kódy sú značky [IETF BCP 47](https://www.rfc-editor.org/info/bcp47): dvojpísmenový
+jazyk [ISO 639-1](https://www.iso.org/iso-639-language-code), voliteľne nasledovaný
+regiónom podľa [ISO 3166-1](https://www.iso.org/iso-3166-country-codes.html), kde platforma rozlišuje
+regionálne varianty — `pt-BR` a `pt-PT` sú vedené samostatne, rovnako ako `es`, `es-AR` a `es-MX`.
+
+Predvolený jazyk platformy je `{taxonomy.languages.default}`, používaný, keď požiadavka nešpecifikuje jazyk
+a keď preklad nie je dostupný.
+
+<CodeTable
+  rows={taxonomy.languages.list}
+  codeHeader="Kód"
+  nameHeader="Jazyk"
+  unnamedLabel="Bez štandardného názvu"
+/>
+
+## Meny
+
+Sadzby môžu byť uvádzané a vyrovnávané v ktoromkoľvek z týchto mien. Kódy sú
+trojpísmenové identifikátory podľa [ISO 4217](https://www.iso.org/iso-4217-currency-codes.html).
+
+Predvolená mena platformy je `{taxonomy.currencies.default}`. Je to záložná zobrazovacia mena a jednotka,
+na ktorú sú normalizované údaje na úrovni platformy; **nie** je to mena, v ktorej sa uskutočňuje vyrovnanie rezervácie — hotely vyrovnávajú vo svojej vlastnej mene, takže sadzba uvedená v jednej mene a zaplatená v inej nesie výmenný kurz.
+
+Niekoľko položiek nie sú národné meny: `XAU` a `XAG` sú zlato a striebro, `XDR` je špeciálne čerpacie právo MMF a `BTC` je Bitcoin. Tieto sú vedené pre oceňovanie a reportovanie, a zvyčajne nie sú použiteľné ako vyrovnávacia mena.
+
+<CodeTable
+  rows={taxonomy.currencies.list}
+  codeHeader="Kód"
+  nameHeader="Mena"
+  unnamedLabel="Bez štandardného názvu"
+/>

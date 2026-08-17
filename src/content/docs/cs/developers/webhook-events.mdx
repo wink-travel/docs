@@ -1,331 +1,53 @@
 ---
 title: Katalog webhook událostí
-description: Kompletní přehled všech typů webhook událostí dostupných na platformě Wink, uspořádaný podle kategorií.
+description: Každý typ webhook události na platformě Wink, generovaný z katalogu událostí platformy — komu jsou doručovány a kde je dokumentováno jejich payload.
 sidebar:
   order: 3.5
 ---
 
-import { LinkButton } from '@astrojs/starlight/components';
+import webhooks from '../../../../schemas/webhooks.json';
+import WebhookEventTypes from '@/components/webhooks/event-types.astro';
 
 Tato stránka uvádí všechny webhook události, na které se můžete na Wink přihlásit. Pro instrukce k nastavení si přečtěte [Průvodce integrací webhooků](/cs/developers/webhook-integration) nebo [stránku správy webhooků](/cs/portal/settings/webhooks).
 
 ## Jak se přihlásit k odběru
 
 1. Přejděte v portálu do **Aplikace > Webhooky**.
-2. Vytvořte webhook a vyberte události, které chcete přijímat.
-3. Wink pošle HTTP POST na váš endpoint pokaždé, když nastane daná událost.
-
-Pro kompletní postup nastavení a doporučené postupy si přečtěte [Integraci webhooků](/cs/developers/webhook-integration).
-
----
-
-## Události správy entit
-
-Události týkající se správy entit (nemovitosti, pobočky, společnosti) a jejich administrace.
-
-### Životní cyklus
-
-| Událost | Klíč | Popis |
-|---|---|---|
-| Entita vytvořena | `managing_entity.created` | Byla vytvořena nová spravovaná entita. |
-| Entita smazána | `managing_entity.deleted` | Spravovaná entita byla smazána. |
-| Stav aktualizován | `managing_entity.status.updated` | Stav entity se změnil. |
-| Ve schvalování | `account.under_review` | Účet entity čeká na schválení. |
-
-### Předplatné
-
-| Událost | Klíč | Popis |
-|---|---|---|
-| Předplatné zřízeno | `managing_entity.subscription.provisioned` | Bylo zřízeno nové předplatné. |
-| Předplatné změněno | `managing_entity.subscription.changed` | Plán předplatného byl změněn. |
-| Faktura předplatného změněna | `managing_entity.subscription.invoice.changed` | Faktura předplatného byla aktualizována. |
-
-### Životní cyklus manažera
-
-| Událost | Klíč | Popis |
-|---|---|---|
-| Manažer přidán | `managing_entity.manager.added` | Byl přidán nový manažer. |
-| Manažer pozván | `managing_entity.manager.invited` | Bylo odesláno pozvání manažerovi. |
-| Manažer odebrán | `managing_entity.manager.removed` | Manažer byl odebrán. |
-| Manažer přijal | `managing_entity.manager.accepted` | Manažer pozvání přijal. |
-| Manažer odmítnul | `managing_entity.manager.rejected` | Manažer pozvání odmítl. |
-| Vlastník nastaven | `managing_entity.manager.owner.set` | Vlastnictví entity bylo převedeno. |
-| Manažeři aktualizováni | `account.managers.update` | Seznam manažerů se změnil. |
-
-### Informace o entitě
-
-| Událost | Klíč | Popis |
-|---|---|---|
-| Informace aktualizovány | `managing_entity.information.updated` | Informace o entitě byly aktualizovány. |
-| Adresa aktualizována | `managing_entity.city.updated` | Adresa/město entity bylo změněno. |
-| Název aktualizován | `managing_entity.name.updated` | Název entity byl změněn. |
-| URL název aktualizován | `managing_entity.url_name.updated` | Vanity URL entity se změnilo. |
-| Unikátní ID aktualizováno | `managing_entity.unique_id.updated` | Unikátní identifikátor entity se změnil. |
-| Spravováno aktualizováno | `managing_entity.managed_by.updated` | Změnila se nadřízená/spravující entita. |
-| Place ID aktualizováno | `managing_entity.place_id.updated` | Google Place ID entity se změnilo. |
-| Zástupce účtu aktualizován | `managing_entity.account_representative.updated` | Zástupce účtu byl změněn. |
-| Profilová fotka aktualizována | `managing_entity.profile_picture.updated` | Profilová fotka entity byla aktualizována. |
-| Logo aktualizováno | `managing_entity.logo.updated` | Logo entity bylo aktualizováno. |
-| Detaily aktualizovány | `account.details.updated` | Pole detailů účtu se změnila. |
-| Agent aktualizován | `managing_entity.agent.updated` | Agent entity byl upraven. |
-
-### Notifikace
-
-| Událost | Klíč | Popis |
-|---|---|---|
-| Emailová notifikace agenta | `managing_entity.agent.email.notification` | Agent obdržel emailovou notifikaci. |
-| Emailová notifikace manažera | `managing_entity.manager.email.notification` | Manažer obdržel emailovou notifikaci. |
-
-### Úkoly účtu
-
-| Událost | Klíč | Popis |
-|---|---|---|
-| Úkol vytvořen | `account.task.create` | Byl přidán nový úkol k účtu. |
-| Úkol aktualizován | `account.task.update` | Úkol účtu byl upraven. |
-| Úkol odstraněn | `account.task.remove` | Úkol účtu byl odstraněn. |
-| Úkol dokončen | `account.task.complete` | Úkol účtu byl dokončen. |
-| Úkol ověření DIČ dokončen | `account.task.tax_id.complete` | Úkol ověření DIČ byl dokončen. |
-
----
-
-## Události rezervací
-
-Události životního cyklu rezervace na Wink, od vytvoření přes refundace až po výplaty.
-
-### Základní rezervace
-
-| Událost | Klíč | Popis |
-|---|---|---|
-| Rezervace vytvořena | `booking.create` | Byla vytvořena nová rezervace. |
-| Rezervace zrušena | `booking.cancelled` | Rezervace byla zrušena. |
-| Rezervace selhala | `booking.failed` | Pokus o rezervaci selhal. |
-| Zpracování rezervace | `booking.processing` | Platba za rezervaci se zpracovává. |
-| Inicializace požadována | `booking.initialize.request` | Byla požadována inicializace rezervace. |
-| Inicializace dokončena | `booking.initialize.complete` | Inicializace rezervace byla dokončena. |
-
-### Refundace
-
-| Událost | Klíč | Popis |
-|---|---|---|
-| Refundace požadována | `booking.refund.request` | Byl podán požadavek na refundaci. |
-| Chyba refundace | `booking.refund.error` | Při zpracování refundace došlo k chybě. |
-| Částečná refundace | `booking.refund.partial` | Byla provedena částečná refundace. |
-| Plná refundace | `booking.refund.full` | Byla provedena plná refundace. |
-
-### Výplaty
-
-| Událost | Klíč | Popis |
-|---|---|---|
-| Výplata vytvořena | `booking.payout.create` | Byla vytvořena výplata k rezervaci. |
-| Výplata dokončena | `booking.payout.complete` | Výplata byla úspěšně dokončena. |
-| Prostředky dostupné | `booking.funds.available` | Prostředky z rezervace jsou k dispozici k vyrovnání. |
-| Prostředky zaúčtovány | `booking.funds.ledgered` | Prostředky z rezervace byly zaúčtovány. |
-
-### Recenze
-
-| Událost | Klíč | Popis |
-|---|---|---|
-| Recenze odeslána | `booking.review.created` | Host odeslal recenzi k rezervaci. |
-| Recenze zodpovězena | `booking.review.responded` | Nemovitost odpověděla na recenzi rezervace. |
-
----
-
-## Události nemovitostí
-
-Události týkající se profilů a obsahu nemovitostí, zasílané odběratelům webhooků dané nemovitosti.
-
-| Událost | Klíč | Popis |
-|---|---|---|
-| Nemovitost vytvořena | `property.created` | Byla vytvořena nová nemovitost. |
-| Nemovitost aktualizována | `property.updated` | Detaily nemovitosti byly aktualizovány. |
-| Nemovitost smazána | `property.deleted` | Nemovitost byla odstraněna. |
-| Nemovitost registrována | `property.registered` | Nemovitost dokončila registraci. |
-| Stav aktualizován | `property.status.updated` | Externí stav nemovitosti se změnil. |
-| Název aktualizován | `property.name.updated` | Název nemovitosti se změnil. |
-| Adresa aktualizována | `property.address.updated` | Adresa nemovitosti byla aktualizována. |
-| Geolokace aktualizována | `property.geolocation.updated` | Geolokace nemovitosti byla aktualizována. |
-| Profil aktualizován | `property.profile.updated` | Obsah profilu nemovitosti se změnil. |
-| Služby aktualizovány | `property.services.updated` | Seznam služeb/vybavení nemovitosti se změnil. |
-| Uvítací text aktualizován | `property.welcome_text.updated` | Uvítací zpráva nemovitosti se změnila. |
-| Pravidlo vytvořeno | `property.policy.created` | Bylo vytvořeno nové pravidlo nemovitosti. |
-| Pravidlo aktualizováno | `property.policy.updated` | Pravidlo nemovitosti bylo aktualizováno. |
-
----
-
-## Události inventáře
-
-Události týkající se položek inventáře v rámci nemovitosti, zasílané odběratelům webhooků dané nemovitosti.
-
-### Typy pokojů
-
-| Událost | Klíč | Popis |
-|---|---|---|
-| Typ pokoje vytvořen | `room_type.created` | Byl přidán nový typ pokoje. |
-| Typ pokoje aktualizován | `room_type.updated` | Typ pokoje byl upraven. |
-| Typ pokoje smazán | `room_type.deleted` | Typ pokoje byl odstraněn. |
-
-### Cenové plány
-
-| Událost | Klíč | Popis |
-|---|---|---|
-| Cenový plán vytvořen | `rate_plan.created` | Byl vytvořen nový cenový plán. |
-| Cenový plán aktualizován | `rate_plan.updated` | Cenový plán byl upraven. |
-| Cenový plán smazán | `rate_plan.deleted` | Cenový plán byl odstraněn. |
-
-### Hlavní sazby
-
-| Událost | Klíč | Popis |
-|---|---|---|
-| Hlavní sazba vytvořena | `master_rate.created` | Byla vytvořena nová hlavní sazba. |
-| Hlavní sazba aktualizována | `master_rate.updated` | Hlavní sazba byla upravena. |
-| Hlavní sazba smazána | `master_rate.deleted` | Hlavní sazba byla odstraněna. |
-
-### Doplňky
-
-| Událost | Klíč | Popis |
-|---|---|---|
-| Doplněk vytvořen | `add_on.created` | Byl vytvořen nový doplněk. |
-| Doplněk aktualizován | `add_on.updated` | Doplněk byl upraven. |
-| Doplněk smazán | `add_on.deleted` | Doplněk byl odstraněn. |
-
-### Zasedací místnosti
-
-| Událost | Klíč | Popis |
-|---|---|---|
-| Zasedací místnost vytvořena | `meeting_room.created` | Byla přidána nová zasedací místnost. |
-| Zasedací místnost aktualizována | `meeting_room.updated` | Zasedací místnost byla upravena. |
-| Zasedací místnost smazána | `meeting_room.deleted` | Zasedací místnost byla odstraněna. |
-
-### Restaurace
-
-| Událost | Klíč | Popis |
-|---|---|---|
-| Restaurace vytvořena | `restaurant.created` | Byla přidána nová restaurace. |
-| Restaurace aktualizována | `restaurant.updated` | Restaurace byla upravena. |
-| Restaurace smazána | `restaurant.deleted` | Restaurace byla odstraněna. |
-
-### Lázně
-
-| Událost | Klíč | Popis |
-|---|---|---|
-| Lázně vytvořeny | `spa.created` | Byly přidány nové lázně. |
-| Lázně aktualizovány | `spa.updated` | Lázně byly upraveny. |
-| Lázně smazány | `spa.deleted` | Lázně byly odstraněny. |
-
-### Aktivity
-
-| Událost | Klíč | Popis |
-|---|---|---|
-| Aktivita vytvořena | `activity.created` | Byla přidána nová aktivita. |
-| Aktivita aktualizována | `activity.updated` | Aktivita byla upravena. |
-| Aktivita smazána | `activity.deleted` | Aktivita byla odstraněna. |
-
----
-
-## Události prodejních kanálů
-
-Události distribučních kanálů propojujících dodavatele a pobočky. Zasílány odběratelům webhooků dodavatele i pobočky.
-
-| Událost | Klíč | Popis |
-|---|---|---|
-| Prodejní kanál vytvořen | `sales_channel.created` | Byl vytvořen nový prodejní kanál. |
-| Prodejní kanál aktualizován | `sales_channel.updated` | Prodejní kanál byl upraven. |
-| Prodejní kanál smazán | `sales_channel.deleted` | Prodejní kanál byl odstraněn. |
-
----
-
-## Události speciálních sazeb
-
-Události týkající se promočních a dohodnutých sazeb na nemovitosti.
-
-| Událost | Klíč | Popis |
-|---|---|---|
-| Speciální sazba vytvořena | `special_rate.created` | Byla vytvořena nová speciální sazba. |
-| Speciální sazba aktualizována | `special_rate.updated` | Speciální sazba byla upravena. |
-| Speciální sazba smazána | `special_rate.deleted` | Speciální sazba byla odstraněna. |
-| Modifikátor sazby aktualizován | `rate_modifier.updated` | Modifikátor sazby byl aktualizován. |
-
----
-
-## Události příjemců plateb
-
-Události týkající se správy příjemců plateb.
-
-| Událost | Klíč | Popis |
-|---|---|---|
-| Příjemce vytvořen | `payee.create` | Nový příjemce plateb byl úspěšně vytvořen. |
-| Vytvoření příjemce selhalo | `payee.create.failure` | Vytvoření příjemce selhalo. |
-| Příjemce aktualizován | `payee.update` | Příjemce plateb byl aktualizován. |
-| Aktualizace příjemce selhala | `payee.update.failure` | Aktualizace příjemce selhala. |
-
----
-
-## Platební události
-
-Interní události zpracování plateb od TripPay.
-
-| Událost | Klíč | Popis |
-|---|---|---|
-| Platba úspěšná | `internal.payment.succeeded` | Platba byla úspěšně zpracována. |
-| Platba se zpracovává | `internal.payment.processing` | Platba se právě zpracovává. |
-| Platba selhala | `internal.payment.failed` | Zpracování platby selhalo. |
-
----
-
-## Události channel managera
-
-Události týkající se push aktualizací sazeb a dostupnosti channel managerem.
-
-| Událost | Klíč | Popis |
-|---|---|---|
-| Aktualizace sazby | `channel-manager.update.rate` | Channel manager odeslal aktualizaci sazby. |
-| Aktualizace dostupnosti | `channel-manager.update.availability` | Channel manager odeslal aktualizaci dostupnosti. |
-| Obecná aktualizace | `channel-manager.update` | Obecná aktualizace channel managera. |
-
----
-
-## Události účetní knihy
-
-Události týkající se záznamů v účetní knize.
-
-| Událost | Klíč | Popis |
-|---|---|---|
-| Záznam v účetní knize vytvořen | `ledger.entry.create` | Byl zaznamenán nový záznam v účetní knize. |
-
----
-
-## Emailové události
-
-| Událost | Klíč | Popis |
-|---|---|---|
-| Emailová korespondence | `email.correspondence` | Byl odeslán odchozí email. |
-
----
-
-## Souhrn počtu událostí
-
-| Kategorie | Počet |
-|---|---|
-| Události správy entit | 33 |
-| Události rezervací | 16 |
-| Události nemovitostí | 13 |
-| Události inventáře (typy pokojů, cenové plány, hlavní sazby, doplňky, zařízení) | 24 |
-| Události prodejních kanálů | 3 |
-| Události speciálních sazeb | 4 |
-| Události příjemců plateb | 4 |
-| Platební události | 3 |
-| Události channel managera | 3 |
-| Události účetní knihy | 1 |
-| Emailové události | 1 |
-| **Celkem** | **105** |
+2. Vytvořte webhook a vyberte události, které chcete přijímat — nebo nechte seznam prázdný, abyste přijímali všechny události.
+3. Wink pošle podepsaný HTTP POST na váš endpoint pokaždé, když nastane událost. Viz [Integrace webhooků](/cs/developers/webhook-integration) pro informace o obálce, hlavičkách, ověřování podpisu a opakování.
+
+## Všechny typy událostí
+
+Tato tabulka je generována z katalogu událostí platformy při sestavení, takže vždy odpovídá API.
+Typy událostí označené jako doručené odkazují na jejich referenční stránku v [Webhooks API](/cs/api/webhooks/), která
+dokumentuje přesné JSON tělo (`WebhookEnvelope` s událostí specifickým `object`), hlavičky `Wink-*` a
+politiku opakování. Typy událostí, které nejsou doručovány, existují interně (platby, účetnictví, synchronizace
+channel-manageru, …), ale momentálně nejsou zasílány odběratelům webhooků.
+
+**Příjemci** uvádí, kdo událost přijímá: `SUPPLIER` (hotel), `AFFILIATE` (reseller s aktivním
+prodejním kanálem do hotelu), `AGENT` (cestovní kancelář, která provedla rezervaci) nebo `SELF` (správce,
+kterého se událost týká). Každý příjemce dostává stejný tvar payloadu; role-specifické detaily jsou za
+URL `links.self` v payloadu.
+
+<WebhookEventTypes
+  types={webhooks['x-wink-event-types']}
+  referenceBase="/api/webhooks"
+  eventHeader="Událost"
+  descriptionHeader="Popis"
+  deliveredHeader="Doručeno"
+  recipientsHeader="Příjemci"
+  deliveredLabel="doručeno"
+  notDeliveredLabel="nedoručeno"
+  noRecipientsLabel="—"
+/>
 
 :::tip
-Začněte během vývoje přihlašováním ke všem událostem. Jakmile pochopíte, které payloady váš systém potřebuje, zúžte odběry, abyste snížili šum.
+Začněte během vývoje přihlašováním ke všem událostem. Jakmile pochopíte, které payloady váš systém potřebuje, zúžte odběry, abyste snížili šum. Pošlete si testovací událost z **Aplikace > Webhooky** (nebo `POST …/webhook/{id}/test`), abyste potvrdili svůj endpoint a kontrolu podpisu před spuštěním do ostrého provozu.
 :::
 
 ## Další čtení
 
-- [Průvodce integrací webhooků](/cs/developers/webhook-integration) — Postupy nastavení a doporučené postupy.
+- [Průvodce integrací webhooků](/cs/developers/webhook-integration) — Kroky nastavení a osvědčené postupy.
 - [Webhooky](/cs/portal/settings/webhooks) — Správa vašich odběrů webhooků.
 - [Aplikace](/cs/account/applications) — Správa API přístupových údajů.
-- [Build on Wink](/cs/developers/build-on-wink) — Přehled platformy pro vývojáře.
+- [Vývoj na Wink](/cs/developers/build-on-wink) — Přehled platformy pro vývojáře.

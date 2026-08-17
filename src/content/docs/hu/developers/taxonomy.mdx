@@ -1,0 +1,70 @@
+---
+title: Taxonómia
+description: A Wink platform által használt ellenőrzött szókincsek — OTA kódok a szolgáltatásokhoz, ágytípusokhoz, szobanézetekhez és még sok máshoz, valamint minden támogatott nyelv és valuta.
+sidebar:
+  order: 12
+---
+
+import taxonomy from '@/data/taxonomy.json';
+import OtaCategories from '@/components/taxonomy/ota-categories.astro';
+import CodeTable from '@/components/taxonomy/code-table.astro';
+
+A Wink az ellenőrzött szókincsek használatával írja le a készletet — rögzített kódkészletek, amelyekhez egyeztetett jelentések tartoznak. Amikor
+azt küldi, hogy `"5"` egy szállodai szolgáltatásként, a platform *Légkondicionálásként* értelmezi, és minden adatfelhasználó is így tesz.
+
+Ez az oldal a három szókincs közzétett hivatkozása:
+
+- **OTA kódok** — {taxonomy.ota.codeCount} kód {taxonomy.ota.categoryCount} kategóriában, lefedve
+  szolgáltatásokat, ágytípusokat, szobanézeteket, akadálymentességi jellemzőket, konyhákat és még sok mást.
+- **Nyelvek** — azok a {taxonomy.languages.list.length} nyelvek, amelyekben a tartalom létrehozható és szolgáltatható.
+- **Valuták** — azok a {taxonomy.currencies.list.length} valuták, amelyekben az árak megadhatók és elszámolhatók.
+
+A kódok stabilak. A nevek tisztázás céljából módosulhatnak, ezért mindig a **kódra** hivatkozzon, soha ne a névre.
+
+## OTA kódok
+
+A Wink követi az [OpenTravel Alliance](https://opentravel.org/) kódlisztáit. Minden kategóriának van egy
+hárombetűs azonosítója — `HAC` a szállodai szolgáltatásokhoz, `BED` az ágytípusokhoz — és minden kód egy adott kategórián belül egyedi. Ugyanaz a numerikus érték különböző dolgokat jelent különböző kategóriákban, ezért egy kód csak a hozzá tartozó kategóriával együtt értelmezhető: `BED` `1` a *Kétszemélyes / Teljes méretű*, míg `HAC` `1` a *24 órás recepció*.
+
+Válasszon ki egy kategóriát a kódok megtekintéséhez.
+
+<OtaCategories
+  categories={taxonomy.ota.categories}
+  categoryHeader="Kategória"
+  descriptionHeader="Leírás"
+  countHeader="Kódok"
+  codeHeader="Kód"
+  nameHeader="Név"
+/>
+
+## Nyelvek
+
+A tartalom — ingatlanleírások, szobanevek, szabályzatok — bármelyik alábbi nyelven létrehozható.
+A kódok [IETF BCP 47](https://www.rfc-editor.org/info/bcp47) címkék: kétbetűs
+[ISO 639-1](https://www.iso.org/iso-639-language-code) nyelvkód, opcionálisan egy
+[ISO 3166-1](https://www.iso.org/iso-3166-country-codes.html) régióval, ahol a platform megkülönbözteti a regionális változatokat — `pt-BR` és `pt-PT` külön kezelve, akárcsak `es`, `es-AR` és `es-MX`.
+
+A platform alapértelmezettje a `{taxonomy.languages.default}`, amely akkor használatos, ha a kérés nem határoz meg nyelvet, vagy ha nincs elérhető fordítás.
+
+<CodeTable
+  rows={taxonomy.languages.list}
+  codeHeader="Kód"
+  nameHeader="Nyelv"
+  unnamedLabel="Nincs szabványos név"
+/>
+
+## Valuták
+
+Az árak bármelyik alábbi valutában megadhatók és elszámolhatók. A kódok
+[ISO 4217](https://www.iso.org/iso-4217-currency-codes.html) hárombetűs azonosítók.
+
+A platform alapértelmezettje a `{taxonomy.currencies.default}`. Ez a visszaesési megjelenítési valuta és az az egység, amelyre a platform szintű adatok normalizálva vannak; **nem** az a valuta, amelyben a foglalás elszámolódik — a szállodák a saját valutájukban számolnak el, így egy adott valutában megadott és egy másik valutában kifizetett árfolyam különbözetet hordoz.
+
+Néhány tétel nem nemzeti valuta: az `XAU` és `XAG` arany és ezüst, az `XDR` az IMF különleges lehívási joga, a `BTC` pedig a Bitcoin. Ezek értékeléshez és jelentéshez vannak jelen, és általában nem használhatók elszámolási valutaként.
+
+<CodeTable
+  rows={taxonomy.currencies.list}
+  codeHeader="Kód"
+  nameHeader="Valuta"
+  unnamedLabel="Nincs szabványos név"
+/>

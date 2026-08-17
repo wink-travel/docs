@@ -1,331 +1,47 @@
 ---
-title: Webhook sündmuste kataloog
-description: Täielik viide kõigile Wink platvormil saadaval olevatele webhook sündmuste tüüpidele, korraldatud kategooriate kaupa.
+title: Webhooki sündmuste kataloog
+description: Iga webhooki sündmuse tüüp Wink platvormil, mis on genereeritud platvormi sündmuste kataloogist — kellele need edastatakse ja kus on koormus dokumenteeritud.
 sidebar:
   order: 3.5
 ---
 
-import { LinkButton } from '@astrojs/starlight/components';
+import webhooks from '../../../../schemas/webhooks.json';
+import WebhookEventTypes from '@/components/webhooks/event-types.astro';
 
-See leht loetleb kõik webhook sündmused, millele saate Winkis tellida. Seadistamise juhiste jaoks vaadake [Webhook Integration Guide](/et/developers/webhook-integration) või [Webhooks management page](/et/portal/settings/webhooks).
+See leht loetleb kõik webhooki sündmused, millele Winkis tellida saab. Seadistamise juhiste jaoks vaata [Webhooki integratsiooni juhendit](/et/developers/webhook-integration) või [Webhookide haldamise lehte](/et/portal/settings/webhooks).
 
 ## Kuidas tellida
 
-1. Minge oma portaalis **Applications > Webhooks**.
-2. Looge webhook ja valige sündmused, mida soovite vastu võtta.
-3. Wink saadab teie lõpp-punktile iga kord, kui sündmus toimub, HTTP POST päringu.
-
-Täielike seadistamisjuhiste ja parimate tavade jaoks vaadake [Webhook Integration](/et/developers/webhook-integration).
-
----
-
-## Halduse üksuse sündmused
-
-Sündmused haldusüksuste (kinnistud, sidusettevõtted, ettevõtted) ja nende halduse kohta.
-
-### Elutsükkel
-
-| Sündmus | Võti | Kirjeldus |
-|---|---|---|
-| Üksus loodud | `managing_entity.created` | Uus haldusüksus on loodud. |
-| Üksus kustutatud | `managing_entity.deleted` | Haldusüksus on kustutatud. |
-| Staatus uuendatud | `managing_entity.status.updated` | Üksuse staatus on muutunud. |
-| Läbivaatamisel | `account.under_review` | Üksuse konto on läbivaatamisel. |
-
-### Tellimus
-
-| Sündmus | Võti | Kirjeldus |
-|---|---|---|
-| Tellimus aktiveeritud | `managing_entity.subscription.provisioned` | Uus tellimus on aktiveeritud. |
-| Tellimus muudetud | `managing_entity.subscription.changed` | Tellimuse plaan on muudetud. |
-| Tellimuse arve muudetud | `managing_entity.subscription.invoice.changed` | Tellimuse arve on uuendatud. |
-
-### Juhi elutsükkel
-
-| Sündmus | Võti | Kirjeldus |
-|---|---|---|
-| Juht lisatud | `managing_entity.manager.added` | Uus juht on lisatud. |
-| Juht kutsutud | `managing_entity.manager.invited` | Juhi kutse on saadetud. |
-| Juht eemaldatud | `managing_entity.manager.removed` | Juht on eemaldatud. |
-| Juht aktsepteeritud | `managing_entity.manager.accepted` | Juhi kutse on aktsepteeritud. |
-| Juht tagasi lükatud | `managing_entity.manager.rejected` | Juhi kutse on tagasi lükatud. |
-| Omanik määratud | `managing_entity.manager.owner.set` | Üksuse omandiõigus on üle antud. |
-| Juhid uuendatud | `account.managers.update` | Juhtide nimekiri on muutunud. |
-
-### Üksuse info
-
-| Sündmus | Võti | Kirjeldus |
-|---|---|---|
-| Info uuendatud | `managing_entity.information.updated` | Üksuse info on uuendatud. |
-| Aadress uuendatud | `managing_entity.city.updated` | Üksuse aadress/linn on muudetud. |
-| Nimi uuendatud | `managing_entity.name.updated` | Üksuse nimi on muudetud. |
-| URL nimi uuendatud | `managing_entity.url_name.updated` | Üksuse kohandatud URL on muutunud. |
-| Unikaalne ID uuendatud | `managing_entity.unique_id.updated` | Üksuse unikaalne identifikaator on muutunud. |
-| Halduse all uuendatud | `managing_entity.managed_by.updated` | Üksuse vanema/halduse all olev suhe on muutunud. |
-| Koha ID uuendatud | `managing_entity.place_id.updated` | Üksuse Google Place ID on muutunud. |
-| Konto esindaja uuendatud | `managing_entity.account_representative.updated` | Konto esindaja on muudetud. |
-| Profiilipilt uuendatud | `managing_entity.profile_picture.updated` | Üksuse profiilipilt on uuendatud. |
-| Logo uuendatud | `managing_entity.logo.updated` | Üksuse logo on uuendatud. |
-| Detailid uuendatud | `account.details.updated` | Konto detailväljad on muutunud. |
-| Agent uuendatud | `managing_entity.agent.updated` | Üksuse agent on muudetud. |
-
-### Teavitused
-
-| Sündmus | Võti | Kirjeldus |
-|---|---|---|
-| Agendi e-posti teavitus | `managing_entity.agent.email.notification` | Agendile on saadetud e-posti teavitus. |
-| Juhi e-posti teavitus | `managing_entity.manager.email.notification` | Juhtidele on saadetud e-posti teavitus. |
-
-### Konto ülesanded
-
-| Sündmus | Võti | Kirjeldus |
-|---|---|---|
-| Ülesanne loodud | `account.task.create` | Konto jaoks on lisatud uus ülesanne. |
-| Ülesanne uuendatud | `account.task.update` | Konto ülesanne on muudetud. |
-| Ülesanne eemaldatud | `account.task.remove` | Konto ülesanne on eemaldatud. |
-| Ülesanne lõpetatud | `account.task.complete` | Konto ülesanne on lõpetatud. |
-| Maksu-ID ülesanne lõpetatud | `account.task.tax_id.complete` | Maksu-ID kontrolli ülesanne on lõpetatud. |
-
----
-
-## Broneeringu sündmused
-
-Sündmused Wink broneeringu elutsükli jooksul, alates loomisest kuni tagasimaksete ja väljamakseteni.
-
-### Põhibroneering
-
-| Sündmus | Võti | Kirjeldus |
-|---|---|---|
-| Broneering loodud | `booking.create` | Uus broneering on loodud. |
-| Broneering tühistatud | `booking.cancelled` | Broneering on tühistatud. |
-| Broneering ebaõnnestus | `booking.failed` | Broneeringu katse ebaõnnestus. |
-| Broneeringu töötlemine | `booking.processing` | Broneeringu makset töödeldakse. |
-| Algatamine nõutud | `booking.initialize.request` | Broneeringu algatamine on nõutud. |
-| Algatamine lõpetatud | `booking.initialize.complete` | Broneeringu algatamine on lõpetatud. |
-
-### Tagasimaksed
-
-| Sündmus | Võti | Kirjeldus |
-|---|---|---|
-| Tagasimakse nõutud | `booking.refund.request` | Tagasimakse taotlus on esitatud. |
-| Tagasimakse viga | `booking.refund.error` | Tagasimakse töötlemisel tekkis viga. |
-| Osaline tagasimakse | `booking.refund.partial` | On tehtud osaline tagasimakse. |
-| Täielik tagasimakse | `booking.refund.full` | On tehtud täielik tagasimakse. |
-
-### Väljamaksed
-
-| Sündmus | Võti | Kirjeldus |
-|---|---|---|
-| Väljamakse loodud | `booking.payout.create` | Broneeringu jaoks on loodud väljamakse. |
-| Väljamakse lõpetatud | `booking.payout.complete` | Väljamakse on edukalt lõpetatud. |
-| Vahendid saadaval | `booking.funds.available` | Broneeringu vahendid on tasaarvestuseks saadaval. |
-| Vahendid kantud | `booking.funds.ledgered` | Broneeringu vahendid on pearaamatusse kantud. |
-
-### Arvustused
-
-| Sündmus | Võti | Kirjeldus |
-|---|---|---|
-| Arvustus esitatud | `booking.review.created` | Külalise arvustus on broneeringu kohta esitatud. |
-| Arvustusele vastatud | `booking.review.responded` | Kinnistu on broneeringu arvustusele vastanud. |
-
----
-
-## Kinnistu sündmused
-
-Sündmused kinnistu profiilide ja sisu kohta, saadetakse kinnistu enda webhook tellijatele.
-
-| Sündmus | Võti | Kirjeldus |
-|---|---|---|
-| Kinnistu loodud | `property.created` | Uus kinnistu on loodud. |
-| Kinnistu uuendatud | `property.updated` | Kinnistu andmed on uuendatud. |
-| Kinnistu kustutatud | `property.deleted` | Kinnistu on eemaldatud. |
-| Kinnistu registreeritud | `property.registered` | Kinnistu registreerimine on lõpetatud. |
-| Staatus uuendatud | `property.status.updated` | Kinnistu väline staatus on muutunud. |
-| Nimi uuendatud | `property.name.updated` | Kinnistu nimi on muutunud. |
-| Aadress uuendatud | `property.address.updated` | Kinnistu aadress on uuendatud. |
-| Geolokatsioon uuendatud | `property.geolocation.updated` | Kinnistu geolokatsioon on uuendatud. |
-| Profiil uuendatud | `property.profile.updated` | Kinnistu profiili sisu on muutunud. |
-| Teenused uuendatud | `property.services.updated` | Kinnistu teenuste/mugavuste nimekiri on muutunud. |
-| Tervitustekst uuendatud | `property.welcome_text.updated` | Kinnistu tervitussõnum on muutunud. |
-| Poliitika loodud | `property.policy.created` | Uus kinnistu poliitika on loodud. |
-| Poliitika uuendatud | `property.policy.updated` | Kinnistu poliitika on uuendatud. |
-
----
-
-## Inventari sündmused
-
-Sündmused kinnistu inventari üksuste kohta, saadetakse selle kinnistu webhook tellijatele.
-
-### Toatüübid
-
-| Sündmus | Võti | Kirjeldus |
-|---|---|---|
-| Toatüüp loodud | `room_type.created` | Uus toatüüp on lisatud. |
-| Toatüüp uuendatud | `room_type.updated` | Toatüüpi on muudetud. |
-| Toatüüp kustutatud | `room_type.deleted` | Toatüüp on eemaldatud. |
-
-### Hinnaplaanid
-
-| Sündmus | Võti | Kirjeldus |
-|---|---|---|
-| Hinnaplaan loodud | `rate_plan.created` | Uus hinnaplaan on loodud. |
-| Hinnaplaan uuendatud | `rate_plan.updated` | Hinnaplaani on muudetud. |
-| Hinnaplaan kustutatud | `rate_plan.deleted` | Hinnaplaan on eemaldatud. |
-
-### Peamised hinnad
-
-| Sündmus | Võti | Kirjeldus |
-|---|---|---|
-| Peamine hind loodud | `master_rate.created` | Uus peamine hind on loodud. |
-| Peamine hind uuendatud | `master_rate.updated` | Peamist hinda on muudetud. |
-| Peamine hind kustutatud | `master_rate.deleted` | Peamine hind on eemaldatud. |
-
-### Lisateenused
-
-| Sündmus | Võti | Kirjeldus |
-|---|---|---|
-| Lisateenus loodud | `add_on.created` | Uus lisateenus on loodud. |
-| Lisateenus uuendatud | `add_on.updated` | Lisateenust on muudetud. |
-| Lisateenus kustutatud | `add_on.deleted` | Lisateenus on eemaldatud. |
-
-### Koosolekuruumid
-
-| Sündmus | Võti | Kirjeldus |
-|---|---|---|
-| Koosolekuruum loodud | `meeting_room.created` | Uus koosolekuruum on lisatud. |
-| Koosolekuruum uuendatud | `meeting_room.updated` | Koosolekuruumi on muudetud. |
-| Koosolekuruum kustutatud | `meeting_room.deleted` | Koosolekuruum on eemaldatud. |
-
-### Restoranid
-
-| Sündmus | Võti | Kirjeldus |
-|---|---|---|
-| Restoran loodud | `restaurant.created` | Uus restoran on lisatud. |
-| Restoran uuendatud | `restaurant.updated` | Restorani on muudetud. |
-| Restoran kustutatud | `restaurant.deleted` | Restoran on eemaldatud. |
-
-### Spad
-
-| Sündmus | Võti | Kirjeldus |
-|---|---|---|
-| Spa loodud | `spa.created` | Uus spa on lisatud. |
-| Spa uuendatud | `spa.updated` | Spa on muudetud. |
-| Spa kustutatud | `spa.deleted` | Spa on eemaldatud. |
-
-### Tegevused
-
-| Sündmus | Võti | Kirjeldus |
-|---|---|---|
-| Tegevus loodud | `activity.created` | Uus tegevus on lisatud. |
-| Tegevus uuendatud | `activity.updated` | Tegevust on muudetud. |
-| Tegevus kustutatud | `activity.deleted` | Tegevus on eemaldatud. |
-
----
-
-## Müügikanali sündmused
-
-Sündmused levitusk kanalite kohta, mis ühendavad tarnijaid ja sidusettevõtteid. Saadetakse nii tarnija kui sidusettevõtte webhook tellijatele.
-
-| Sündmus | Võti | Kirjeldus |
-|---|---|---|
-| Müügikanal loodud | `sales_channel.created` | Uus müügikanal on loodud. |
-| Müügikanal uuendatud | `sales_channel.updated` | Müügikanalit on muudetud. |
-| Müügikanal kustutatud | `sales_channel.deleted` | Müügikanal on eemaldatud. |
-
----
-
-## Eripakkumise sündmused
-
-Sündmused kinnistu soodushindade ja läbiräägitud hindade kohta.
-
-| Sündmus | Võti | Kirjeldus |
-|---|---|---|
-| Eripakkumine loodud | `special_rate.created` | Uus eripakkumine on loodud. |
-| Eripakkumine uuendatud | `special_rate.updated` | Eripakkumist on muudetud. |
-| Eripakkumine kustutatud | `special_rate.deleted` | Eripakkumine on eemaldatud. |
-| Hinnamuudatus uuendatud | `rate_modifier.updated` | Hinnamuudatus on uuendatud. |
-
----
-
-## Saaja sündmused
-
-Sündmused makse saaja (makse saaja) halduse kohta.
-
-| Sündmus | Võti | Kirjeldus |
-|---|---|---|
-| Saaja loodud | `payee.create` | Uus makse saaja on edukalt loodud. |
-| Saaja loomine ebaõnnestus | `payee.create.failure` | Makse saaja loomine ebaõnnestus. |
-| Saaja uuendatud | `payee.update` | Makse saaja on uuendatud. |
-| Saaja uuendamine ebaõnnestus | `payee.update.failure` | Makse saaja uuendamine ebaõnnestus. |
-
----
-
-## Maksete sündmused
-
-Sisemised maksete töötlemise sündmused TripPayst.
-
-| Sündmus | Võti | Kirjeldus |
-|---|---|---|
-| Makse õnnestus | `internal.payment.succeeded` | Makse on edukalt töödeldud. |
-| Makse töötlemine | `internal.payment.processing` | Makse töödeldakse praegu. |
-| Makse ebaõnnestus | `internal.payment.failed` | Makse töötlemine ebaõnnestus. |
-
----
-
-## Kanalihalduri sündmused
-
-Sündmused kanalihalduri hinna- ja saadavuse uuenduste kohta.
-
-| Sündmus | Võti | Kirjeldus |
-|---|---|---|
-| Hinna uuendus | `channel-manager.update.rate` | Kanalihaldur on saatnud hinna uuenduse. |
-| Saadavuse uuendus | `channel-manager.update.availability` | Kanalihaldur on saatnud saadavuse uuenduse. |
-| Üldine uuendus | `channel-manager.update` | Üldine kanalihalduri uuendus. |
-
----
-
-## Pearaamatu sündmused
-
-Sündmused finantsraamatupidamise kande kohta.
-
-| Sündmus | Võti | Kirjeldus |
-|---|---|---|
-| Pearaamatu kande loomine | `ledger.entry.create` | Uus pearaamatu kande on registreeritud. |
-
----
-
-## E-posti sündmused
-
-| Sündmus | Võti | Kirjeldus |
-|---|---|---|
-| E-posti kirjavahetus | `email.correspondence` | Väljaminev e-kiri on saadetud. |
-
----
-
-## Sündmuste kokkuvõte
-
-| Kategooria | Kogus |
-|---|---|
-| Halduse üksuse sündmused | 33 |
-| Broneeringu sündmused | 16 |
-| Kinnistu sündmused | 13 |
-| Inventari sündmused (toatüübid, hinnaplaanid, peamised hinnad, lisateenused, rajatised) | 24 |
-| Müügikanali sündmused | 3 |
-| Eripakkumise sündmused | 4 |
-| Saaja sündmused | 4 |
-| Maksete sündmused | 3 |
-| Kanalihalduri sündmused | 3 |
-| Pearaamatu sündmused | 1 |
-| E-posti sündmused | 1 |
-| **Kokku** | **105** |
+1. Liigu oma portaalis menüüsse **Applications > Webhooks**.
+2. Loo webhook ja vali sündmused, mida soovid vastu võtta — või jäta nimekiri tühjaks, et saada kõik sündmused.
+3. Wink saadab iga sündmuse toimumisel sinu lõpp-punktile allkirjastatud HTTP POST päringu. Vaata [Webhooki integratsiooni](/et/developers/webhook-integration) kohta, et saada infot ümbriku, päiste, allkirja kontrolli ja korduskatsete kohta.
+
+## Kõik sündmuste tüübid
+
+See tabel on genereeritud platvormi sündmuste kataloogist ehituse ajal, seega vastab see alati API-le.
+Sündmuste tüübid, mis on märgitud kui edastatud, lingivad nende viitele [Webhookide API-s](/et/api/webhooks/), kus on dokumenteeritud täpne JSON-keha (`WebhookEnvelope` koos sündmusele spetsiifilise `object`-iga), `Wink-*` päised ja korduskatsete poliitika. Sündmuste tüübid, mida ei edastata, eksisteerivad sisemiselt (maksed, pearaamat, kanalihalduri sünkroonimine jne), kuid neid ei saadeta hetkel webhooki tellijatele.
+
+**Saajad** näitab, kes sündmust saab: `SUPPLIER` (hotell), `AFFILIATE` (edasimüüja, kellel on aktiivne müügikanal hotelli jaoks), `AGENT` (reisibüroo, kes broneeringu tegi) või `SELF` (juhtiv üksus, kelle kohta sündmus on). Iga saaja saab sama koormuse kuju; rollipõhine detail on koormuse `links.self` URL-i taga.
+
+<WebhookEventTypes
+  types={webhooks['x-wink-event-types']}
+  referenceBase="/api/webhooks"
+  eventHeader="Sündmus"
+  descriptionHeader="Kirjeldus"
+  deliveredHeader="Edastatud"
+  recipientsHeader="Saajad"
+  deliveredLabel="edastatud"
+  notDeliveredLabel="ei ole edastatud"
+  noRecipientsLabel="—"
+/>
 
 :::tip
-Alustage arenduse ajal kõigi sündmuste tellimisest. Kui mõistate, milliseid andmeid teie süsteem vajab, kitsendage tellimusi müra vähendamiseks.
+Alusta arenduse ajal kõigi sündmuste tellimisest. Kui oled aru saanud, milliseid koormusi su süsteem vajab, kitsenda tellimusi müra vähendamiseks. Saada endale test-sündmus menüüst **Applications > Webhooks** (või `POST …/webhook/{id}/test`), et kinnitada oma lõpp-punkti ja allkirja kontrolli enne kasutuselevõttu.
 :::
 
 ## Täiendav lugemine
 
-- [Webhook Integration Guide](/et/developers/webhook-integration) — Seadistamise sammud ja parimad tavad.
-- [Webhooks](/et/portal/settings/webhooks) — Halda oma webhook tellimusi.
-- [Applications](/et/account/applications) — Halda API mandaate.
+- [Webhooki integratsiooni juhend](/et/developers/webhook-integration) — Seadistamise sammud ja parimad tavad.
+- [Webhookid](/et/portal/settings/webhooks) — Halda oma webhooki tellimusi.
+- [Applications](/et/account/applications) — Halda API volitusi.
 - [Build on Wink](/et/developers/build-on-wink) — Platvormi ülevaade arendajatele.

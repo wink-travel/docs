@@ -1,0 +1,80 @@
+---
+title: Taksonomi
+description: De kontrollerede ordlister, som Wink-platformen bruger — OTA-koder for faciliteter, sengetyper, værelsesudsigter og mere, plus alle understøttede sprog og valutaer.
+sidebar:
+  order: 12
+---
+
+import taxonomy from '@/data/taxonomy.json';
+import OtaCategories from '@/components/taxonomy/ota-categories.astro';
+import CodeTable from '@/components/taxonomy/code-table.astro';
+
+Wink beskriver inventar ved hjælp af kontrollerede ordlister — faste sæt af koder med aftalte betydninger. Når
+du sender `"5"` som en hotel-facilitet, læser platformen det som *Aircondition*, og alle forbrugere af
+den data gør det samme.
+
+Denne side er den offentliggjorte reference for alle tre ordlister:
+
+- **OTA-koder** — {taxonomy.ota.codeCount} koder fordelt på {taxonomy.ota.categoryCount} kategorier, der dækker
+  faciliteter, sengetyper, værelsesudsigter, tilgængelighedsfunktioner, køkkentyper og mere.
+- **Sprog** — de {taxonomy.languages.list.length} sprog, som indhold kan oprettes og leveres på.
+- **Valutaer** — de {taxonomy.currencies.list.length} valutaer, som priser kan angives og afregnes i.
+
+Koderne er stabile. Navne kan omformuleres for klarhed, så match altid på **koden**, aldrig på navnet.
+
+## OTA-koder
+
+Wink følger [OpenTravel Alliance](https://opentravel.org/)-kodelisterne. Hver kategori har en
+tre-bogstavs identifikator — `HAC` for hotel-faciliteter, `BED` for sengetyper — og hver kode inden for en
+kategori er unik for den. Den samme numeriske værdi betyder forskellige ting i forskellige kategorier, så en
+kode er kun meningsfuld sammen med den kategori, den tilhører: `BED` `1` er *Dobbelt / Full*, mens `HAC`
+`1` er *24-timers reception*.
+
+Vælg en kategori for at se dens koder.
+
+<OtaCategories
+  categories={taxonomy.ota.categories}
+  categoryHeader="Kategori"
+  descriptionHeader="Beskrivelse"
+  countHeader="Koder"
+  codeHeader="Kode"
+  nameHeader="Navn"
+/>
+
+## Sprog
+
+Indhold — ejendomsbeskrivelser, værelsesnavne, politikker — kan oprettes på et hvilket som helst af disse sprog.
+Koder er [IETF BCP 47](https://www.rfc-editor.org/info/bcp47)-tags: et tosproget
+[ISO 639-1](https://www.iso.org/iso-639-language-code) sprog, eventuelt efterfulgt af en
+[ISO 3166-1](https://www.iso.org/iso-3166-country-codes.html) region, hvor platformen skelner mellem
+regionale varianter — `pt-BR` og `pt-PT` behandles separat, ligesom `es`, `es-AR` og `es-MX`.
+
+Platformens standard er `{taxonomy.languages.default}`, som bruges, når en forespørgsel ikke angiver sprog, og
+når en oversættelse ikke er tilgængelig.
+
+<CodeTable
+  rows={taxonomy.languages.list}
+  codeHeader="Kode"
+  nameHeader="Sprog"
+  unnamedLabel="Intet standardnavn"
+/>
+
+## Valutaer
+
+Priser kan angives og afregnes i en hvilken som helst af disse valutaer. Koder er
+[ISO 4217](https://www.iso.org/iso-4217-currency-codes.html) tre-bogstavs identifikatorer.
+
+Platformens standard er `{taxonomy.currencies.default}`. Det er den fallback-visningsvaluta og den
+enhed, som platformens overordnede tal normaliseres til; det er **ikke** den valuta, en booking afregnes i — hoteller
+afregner i deres egen valuta, så en pris angivet i én valuta og betalt i en anden medfører et vekselgebyr.
+
+Nogle få poster er ikke nationale valutaer: `XAU` og `XAG` er guld og sølv, `XDR` er IMF’s
+Special Drawing Right, og `BTC` er Bitcoin. Disse medtages til værdiansættelse og rapportering, og kan normalt ikke
+bruges som afregningsvaluta.
+
+<CodeTable
+  rows={taxonomy.currencies.list}
+  codeHeader="Kode"
+  nameHeader="Valuta"
+  unnamedLabel="Intet standardnavn"
+/>

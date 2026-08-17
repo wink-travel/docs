@@ -1,331 +1,53 @@
 ---
 title: Webhook įvykių katalogas
-description: Išsamus visų webhook įvykių tipų, prieinamų Wink platformoje, sąrašas, suskirstytas pagal kategorijas.
+description: Kiekvieno webhook įvykio tipas Wink platformoje, sugeneruotas iš platformos įvykių katalogo — kam pristatomas ir kur dokumentuojamas duomenų paketas.
 sidebar:
   order: 3.5
 ---
 
-import { LinkButton } from '@astrojs/starlight/components';
+import webhooks from '../../../../schemas/webhooks.json';
+import WebhookEventTypes from '@/components/webhooks/event-types.astro';
 
-Šiame puslapyje pateikiami visi webhook įvykiai, kuriems galite užsiprenumeruoti Wink platformoje. Nustatymo instrukcijoms žr. [Webhook integracijos vadovą](/lt/developers/webhook-integration) arba [Webhook valdymo puslapį](/lt/portal/settings/webhooks).
+Šiame puslapyje pateikiami visi webhook įvykiai, kuriems galite užsiprenumeruoti Wink. Nustatymo instrukcijoms žr. [Webhook integracijos vadovą](/lt/developers/webhook-integration) arba [Webhook valdymo puslapį](/lt/portal/settings/webhooks).
 
 ## Kaip užsiprenumeruoti
 
 1. Eikite į **Applications > Webhooks** savo portale.
-2. Sukurkite webhook ir pasirinkite įvykius, kuriuos norite gauti.
-3. Kiekvieną kartą įvykus įvykiui, Wink siunčia HTTP POST užklausą į jūsų galinį tašką.
-
-Visiems nustatymo žingsniams ir geriausioms praktikoms žr. [Webhook integraciją](/lt/developers/webhook-integration).
-
----
-
-## Valdomų subjektų įvykiai
-
-Įvykiai, susiję su subjektais (nuosavybėmis, filialais, įmonėmis) ir jų administravimu.
-
-### Gyvavimo ciklas
-
-| Įvykis | Raktas | Aprašymas |
-|---|---|---|
-| Subjektas sukurtas | `managing_entity.created` | Sukurtas naujas valdomas subjektas. |
-| Subjektas ištrintas | `managing_entity.deleted` | Valdomas subjektas buvo ištrintas. |
-| Būsena atnaujinta | `managing_entity.status.updated` | Subjekto būsena pasikeitė. |
-| Peržiūrimas | `account.under_review` | Subjekto paskyra laukia peržiūros. |
-
-### Prenumerata
-
-| Įvykis | Raktas | Aprašymas |
-|---|---|---|
-| Prenumerata suteikta | `managing_entity.subscription.provisioned` | Nauja prenumerata buvo suteikta. |
-| Prenumerata pakeista | `managing_entity.subscription.changed` | Prenumeratos planas buvo pakeistas. |
-| Prenumeratos sąskaita pakeista | `managing_entity.subscription.invoice.changed` | Prenumeratos sąskaita buvo atnaujinta. |
-
-### Vadovo gyvavimo ciklas
-
-| Įvykis | Raktas | Aprašymas |
-|---|---|---|
-| Vadovas pridėtas | `managing_entity.manager.added` | Pridėtas naujas vadovas. |
-| Vadovas pakviestas | `managing_entity.manager.invited` | Išsiųstas kvietimas vadovui. |
-| Vadovas pašalintas | `managing_entity.manager.removed` | Vadovas buvo pašalintas. |
-| Vadovas priėmė | `managing_entity.manager.accepted` | Vadovo kvietimas buvo priimtas. |
-| Vadovas atmetė | `managing_entity.manager.rejected` | Vadovo kvietimas buvo atmestas. |
-| Savininkas nustatytas | `managing_entity.manager.owner.set` | Subjekto nuosavybė perduota. |
-| Vadovai atnaujinti | `account.managers.update` | Vadovų sąrašas pasikeitė. |
-
-### Subjekto informacija
-
-| Įvykis | Raktas | Aprašymas |
-|---|---|---|
-| Informacija atnaujinta | `managing_entity.information.updated` | Subjekto informacija buvo atnaujinta. |
-| Adresas atnaujintas | `managing_entity.city.updated` | Subjekto adresas/miestas pasikeitė. |
-| Pavadinimas atnaujintas | `managing_entity.name.updated` | Subjekto pavadinimas pasikeitė. |
-| URL pavadinimas atnaujintas | `managing_entity.url_name.updated` | Subjekto URL pasikeitė. |
-| Unikalus ID atnaujintas | `managing_entity.unique_id.updated` | Subjekto unikalus identifikatorius pasikeitė. |
-| Valdomas subjekto atnaujintas | `managing_entity.managed_by.updated` | Subjekto tėvinė/valdomo subjekto priklausomybė pasikeitė. |
-| Place ID atnaujintas | `managing_entity.place_id.updated` | Subjekto Google Place ID pasikeitė. |
-| Paskyros atstovas atnaujintas | `managing_entity.account_representative.updated` | Paskyros atstovas buvo pakeistas. |
-| Profilio nuotrauka atnaujinta | `managing_entity.profile_picture.updated` | Subjekto profilio nuotrauka buvo atnaujinta. |
-| Logotipas atnaujintas | `managing_entity.logo.updated` | Subjekto logotipas buvo atnaujintas. |
-| Duomenys atnaujinti | `account.details.updated` | Paskyros duomenų laukai pasikeitė. |
-| Agentas atnaujintas | `managing_entity.agent.updated` | Subjekto agentas buvo pakeistas. |
-
-### Pranešimai
-
-| Įvykis | Raktas | Aprašymas |
-|---|---|---|
-| Agentui el. pašto pranešimas | `managing_entity.agent.email.notification` | Agentui išsiųstas el. pašto pranešimas. |
-| Vadovui el. pašto pranešimas | `managing_entity.manager.email.notification` | Vadovui išsiųstas el. pašto pranešimas. |
-
-### Paskyros užduotys
-
-| Įvykis | Raktas | Aprašymas |
-|---|---|---|
-| Užduotis sukurta | `account.task.create` | Paskyroje pridėta nauja užduotis. |
-| Užduotis atnaujinta | `account.task.update` | Paskyros užduotis buvo pakeista. |
-| Užduotis pašalinta | `account.task.remove` | Paskyros užduotis buvo pašalinta. |
-| Užduotis užbaigta | `account.task.complete` | Paskyros užduotis buvo įvykdyta. |
-| Mokesčių ID užduotis užbaigta | `account.task.tax_id.complete` | Mokesčių ID patvirtinimo užduotis buvo įvykdyta. |
-
----
-
-## Užsakymų įvykiai
-
-Įvykiai, susiję su Wink užsakymų gyvavimo ciklu nuo sukūrimo iki grąžinimų ir išmokų.
-
-### Pagrindiniai užsakymai
-
-| Įvykis | Raktas | Aprašymas |
-|---|---|---|
-| Užsakymas sukurtas | `booking.create` | Sukurtas naujas užsakymas. |
-| Užsakymas atšauktas | `booking.cancelled` | Užsakymas buvo atšauktas. |
-| Užsakymas nepavyko | `booking.failed` | Nepavyko atlikti užsakymo. |
-| Užsakymas apdorojamas | `booking.processing` | Užsakymo mokėjimas apdorojamas. |
-| Inicializavimas prašytas | `booking.initialize.request` | Prašyta užsakymo inicializavimo. |
-| Inicializavimas baigtas | `booking.initialize.complete` | Užsakymo inicializavimas baigtas. |
-
-### Grąžinimai
-
-| Įvykis | Raktas | Aprašymas |
-|---|---|---|
-| Grąžinimas prašytas | `booking.refund.request` | Pateiktas grąžinimo prašymas. |
-| Grąžinimo klaida | `booking.refund.error` | Įvyko klaida apdorojant grąžinimą. |
-| Dalinis grąžinimas | `booking.refund.partial` | Išduotas dalinis grąžinimas. |
-| Pilnas grąžinimas | `booking.refund.full` | Išduotas pilnas grąžinimas. |
-
-### Išmokos
-
-| Įvykis | Raktas | Aprašymas |
-|---|---|---|
-| Išmoka sukurta | `booking.payout.create` | Užsakymui sukurta išmoka. |
-| Išmoka baigta | `booking.payout.complete` | Išmoka sėkmingai įvykdyta. |
-| Lėšos prieinamos | `booking.funds.available` | Užsakymo lėšos prieinamos atsiskaitymui. |
-| Lėšos įrašytos | `booking.funds.ledgered` | Užsakymo lėšos įrašytos į apskaitos žurnalą. |
-
-### Atsiliepimai
-
-| Įvykis | Raktas | Aprašymas |
-|---|---|---|
-| Atsiliepimas pateiktas | `booking.review.created` | Svečių atsiliepimas apie užsakymą pateiktas. |
-| Atsiliepimui atsakyta | `booking.review.responded` | Nuosavybė atsakė į užsakymo atsiliepimą. |
-
----
-
-## Nuosavybės įvykiai
-
-Įvykiai, susiję su nuosavybės profiliu ir turiniu, siunčiami nuosavybės webhook prenumeratoriams.
-
-| Įvykis | Raktas | Aprašymas |
-|---|---|---|
-| Nuosavybė sukurta | `property.created` | Sukurta nauja nuosavybė. |
-| Nuosavybė atnaujinta | `property.updated` | Nuosavybės duomenys atnaujinti. |
-| Nuosavybė ištrinta | `property.deleted` | Nuosavybė pašalinta. |
-| Nuosavybė užregistruota | `property.registered` | Nuosavybė užbaigė registraciją. |
-| Būsena atnaujinta | `property.status.updated` | Nuosavybės išorinė būsena pasikeitė. |
-| Pavadinimas atnaujintas | `property.name.updated` | Nuosavybės pavadinimas pasikeitė. |
-| Adresas atnaujintas | `property.address.updated` | Nuosavybės adresas atnaujintas. |
-| Geolokacija atnaujinta | `property.geolocation.updated` | Nuosavybės geolokacija atnaujinta. |
-| Profilis atnaujintas | `property.profile.updated` | Nuosavybės profilio turinys pasikeitė. |
-| Paslaugos atnaujintos | `property.services.updated` | Nuosavybės paslaugų/patogumų sąrašas pasikeitė. |
-| Sveikinimo tekstas atnaujintas | `property.welcome_text.updated` | Nuosavybės sveikinimo žinutė pasikeitė. |
-| Politika sukurta | `property.policy.created` | Sukurta nauja nuosavybės politika. |
-| Politika atnaujinta | `property.policy.updated` | Nuosavybės politika atnaujinta. |
-
----
-
-## Inventoriaus įvykiai
-
-Įvykiai, susiję su inventoriaus elementais nuosavybėje, siunčiami tos nuosavybės webhook prenumeratoriams.
-
-### Kambarių tipai
-
-| Įvykis | Raktas | Aprašymas |
-|---|---|---|
-| Kambario tipas sukurtas | `room_type.created` | Pridėtas naujas kambario tipas. |
-| Kambario tipas atnaujintas | `room_type.updated` | Kambario tipas pakeistas. |
-| Kambario tipas ištrintas | `room_type.deleted` | Kambario tipas pašalintas. |
-
-### Kainų planai
-
-| Įvykis | Raktas | Aprašymas |
-|---|---|---|
-| Kainų planas sukurtas | `rate_plan.created` | Sukurtas naujas kainų planas. |
-| Kainų planas atnaujintas | `rate_plan.updated` | Kainų planas pakeistas. |
-| Kainų planas ištrintas | `rate_plan.deleted` | Kainų planas pašalintas. |
-
-### Pagrindinės kainos
-
-| Įvykis | Raktas | Aprašymas |
-|---|---|---|
-| Pagrindinė kaina sukurta | `master_rate.created` | Sukurta nauja pagrindinė kaina. |
-| Pagrindinė kaina atnaujinta | `master_rate.updated` | Pagrindinė kaina pakeista. |
-| Pagrindinė kaina ištrinta | `master_rate.deleted` | Pagrindinė kaina pašalinta. |
-
-### Papildymai
-
-| Įvykis | Raktas | Aprašymas |
-|---|---|---|
-| Papildymas sukurtas | `add_on.created` | Sukurtas naujas papildymas. |
-| Papildymas atnaujintas | `add_on.updated` | Papildymas pakeistas. |
-| Papildymas ištrintas | `add_on.deleted` | Papildymas pašalintas. |
-
-### Susitikimų kambariai
-
-| Įvykis | Raktas | Aprašymas |
-|---|---|---|
-| Susitikimų kambarys sukurtas | `meeting_room.created` | Pridėtas naujas susitikimų kambarys. |
-| Susitikimų kambarys atnaujintas | `meeting_room.updated` | Susitikimų kambarys pakeistas. |
-| Susitikimų kambarys ištrintas | `meeting_room.deleted` | Susitikimų kambarys pašalintas. |
-
-### Restoranai
-
-| Įvykis | Raktas | Aprašymas |
-|---|---|---|
-| Restoranas sukurtas | `restaurant.created` | Pridėtas naujas restoranas. |
-| Restoranas atnaujintas | `restaurant.updated` | Restoranas pakeistas. |
-| Restoranas ištrintas | `restaurant.deleted` | Restoranas pašalintas. |
-
-### SPA centrai
-
-| Įvykis | Raktas | Aprašymas |
-|---|---|---|
-| SPA centras sukurtas | `spa.created` | Pridėtas naujas SPA centras. |
-| SPA centras atnaujintas | `spa.updated` | SPA centras pakeistas. |
-| SPA centras ištrintas | `spa.deleted` | SPA centras pašalintas. |
-
-### Veiklos
-
-| Įvykis | Raktas | Aprašymas |
-|---|---|---|
-| Veikla sukurta | `activity.created` | Pridėta nauja veikla. |
-| Veikla atnaujinta | `activity.updated` | Veikla pakeista. |
-| Veikla ištrinta | `activity.deleted` | Veikla pašalinta. |
-
----
-
-## Pardavimo kanalų įvykiai
-
-Įvykiai, susiję su tiekėjų ir filialų pardavimo kanalais. Siunčiami tiek tiekėjo, tiek filialo webhook prenumeratoriams.
-
-| Įvykis | Raktas | Aprašymas |
-|---|---|---|
-| Pardavimo kanalas sukurtas | `sales_channel.created` | Sukurtas naujas pardavimo kanalas. |
-| Pardavimo kanalas atnaujintas | `sales_channel.updated` | Pardavimo kanalas pakeistas. |
-| Pardavimo kanalas ištrintas | `sales_channel.deleted` | Pardavimo kanalas pašalintas. |
-
----
-
-## Specialių kainų įvykiai
-
-Įvykiai, susiję su nuosavybės reklaminėmis ir derintomis kainomis.
-
-| Įvykis | Raktas | Aprašymas |
-|---|---|---|
-| Speciali kaina sukurta | `special_rate.created` | Sukurta nauja speciali kaina. |
-| Speciali kaina atnaujinta | `special_rate.updated` | Speciali kaina pakeista. |
-| Speciali kaina ištrinta | `special_rate.deleted` | Speciali kaina pašalinta. |
-| Kainos modifikatorius atnaujintas | `rate_modifier.updated` | Kainos modifikatorius atnaujintas. |
-
----
-
-## Gavėjo įvykiai
-
-Įvykiai, susiję su mokėjimo gavėjo valdymu.
-
-| Įvykis | Raktas | Aprašymas |
-|---|---|---|
-| Gavėjas sukurtas | `payee.create` | Naujas gavėjas sėkmingai sukurtas. |
-| Gavėjo sukūrimas nepavyko | `payee.create.failure` | Nepavyko sukurti gavėjo. |
-| Gavėjas atnaujintas | `payee.update` | Gavėjas atnaujintas. |
-| Gavėjo atnaujinimas nepavyko | `payee.update.failure` | Nepavyko atnaujinti gavėjo. |
-
----
-
-## Mokėjimo įvykiai
-
-Vidiniai TripPay mokėjimų apdorojimo įvykiai.
-
-| Įvykis | Raktas | Aprašymas |
-|---|---|---|
-| Mokėjimas sėkmingas | `internal.payment.succeeded` | Mokėjimas sėkmingai apdorotas. |
-| Mokėjimas apdorojamas | `internal.payment.processing` | Mokėjimas šiuo metu apdorojamas. |
-| Mokėjimas nepavyko | `internal.payment.failed` | Nepavyko apdoroti mokėjimo. |
-
----
-
-## Kanalų valdytojo įvykiai
-
-Įvykiai, susiję su kanalų valdytojo kainų ir prieinamumo atnaujinimais.
-
-| Įvykis | Raktas | Aprašymas |
-|---|---|---|
-| Kainos atnaujinimas | `channel-manager.update.rate` | Kanalų valdytojas pateikė kainos atnaujinimą. |
-| Prieinamumo atnaujinimas | `channel-manager.update.availability` | Kanalų valdytojas pateikė prieinamumo atnaujinimą. |
-| Bendras atnaujinimas | `channel-manager.update` | Bendras kanalų valdytojo atnaujinimas. |
-
----
-
-## Apskaitos žurnalo įvykiai
-
-Įvykiai, susiję su finansiniais apskaitos žurnalo įrašais.
-
-| Įvykis | Raktas | Aprašymas |
-|---|---|---|
-| Žurnalo įrašas sukurtas | `ledger.entry.create` | Sukurtas naujas apskaitos žurnalo įrašas. |
-
----
-
-## El. pašto įvykiai
-
-| Įvykis | Raktas | Aprašymas |
-|---|---|---|
-| El. pašto korespondencija | `email.correspondence` | Išsiųstas išeinantis el. laiškas. |
-
----
-
-## Įvykių skaičiaus santrauka
-
-| Kategorija | Skaičius |
-|---|---|
-| Valdomų subjektų įvykiai | 33 |
-| Užsakymų įvykiai | 16 |
-| Nuosavybės įvykiai | 13 |
-| Inventoriaus įvykiai (kambarių tipai, kainų planai, pagrindinės kainos, papildymai, patalpos) | 24 |
-| Pardavimo kanalų įvykiai | 3 |
-| Specialių kainų įvykiai | 4 |
-| Gavėjo įvykiai | 4 |
-| Mokėjimo įvykiai | 3 |
-| Kanalų valdytojo įvykiai | 3 |
-| Apskaitos žurnalo įvykiai | 1 |
-| El. pašto įvykiai | 1 |
-| **Iš viso** | **105** |
+2. Sukurkite webhook ir pasirinkite įvykius, kuriuos norite gauti — arba palikite sąrašą tuščią, kad gautumėte visus įvykius.
+3. Wink kiekvieną kartą, kai įvykis įvyksta, siunčia pasirašytą HTTP POST į jūsų galinį tašką. Žr. [Webhook integraciją](/lt/developers/webhook-integration) dėl paketo, antraščių, parašo patikrinimo ir pakartojimų.
+
+## Visi įvykių tipai
+
+Ši lentelė sugeneruota iš platformos įvykių katalogo statymo metu, todėl visada atitinka API.
+Įvykių tipai, pažymėti kaip pristatomi, turi nuorodą į jų aprašymo puslapį [Webhooks API](/lt/api/webhooks/), kuriame
+dokumentuojamas tikslus JSON turinys (`WebhookEnvelope` su įvykiui specifiniu `object`), `Wink-*` antraštės ir
+pakartojimų politika. Įvykių tipai, kurie nėra pristatomi, egzistuoja viduje (mokėjimai, apskaita, kanalo valdytojo
+sinchronizacija ir kt.), bet šiuo metu nėra siunčiami webhook prenumeratoriams.
+
+**Gavėjai** nurodo, kas gauna įvykį: `SUPPLIER` (viešbutis), `AFFILIATE` (perpardavėjas su aktyviu
+pardavimo kanalu į viešbutį), `AGENT` (kelionių agentūra, kuri atliko užsakymą) arba `SELF` (valdymo subjektas,
+apie kurį yra įvykis). Kiekvienas gavėjas gauna tą patį duomenų paketo formatą; rolės specifinė informacija yra už
+paketo `links.self` URL.
+
+<WebhookEventTypes
+  types={webhooks['x-wink-event-types']}
+  referenceBase="/api/webhooks"
+  eventHeader="Įvykis"
+  descriptionHeader="Aprašymas"
+  deliveredHeader="Pristatyta"
+  recipientsHeader="Gavėjai"
+  deliveredLabel="pristatyta"
+  notDeliveredLabel="nepristatyta"
+  noRecipientsLabel="—"
+/>
 
 :::tip
-Pradėkite nuo visų įvykių prenumeratos kūrimo vystymo metu. Kai suprasite, kokių duomenų jūsų sistema reikalauja, susiaurinkite prenumeratas, kad sumažintumėte triukšmą.
+Pradėkite nuo visų įvykių prenumeratos kūrimo vystymo metu. Kai suprasite, kokių duomenų jūsų sistema reikalauja, susiaurinkite prenumeratas triukšmui sumažinti. Išsiųskite sau testinį įvykį iš **Applications > Webhooks** (arba `POST …/webhook/{id}/test`), kad patvirtintumėte savo galinį tašką ir parašo patikrinimą prieš paleidžiant gyvai.
 :::
 
 ## Tolimesnė literatūra
 
 - [Webhook integracijos vadovas](/lt/developers/webhook-integration) — Nustatymo žingsniai ir geriausios praktikos.
-- [Webhook](/lt/portal/settings/webhooks) — Valdykite savo webhook prenumeratas.
+- [Webhooks](/lt/portal/settings/webhooks) — Valdykite savo webhook prenumeratas.
 - [Applications](/lt/account/applications) — Valdykite API kredencialus.
 - [Build on Wink](/lt/developers/build-on-wink) — Platformos apžvalga kūrėjams.

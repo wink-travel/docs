@@ -11,13 +11,13 @@ Webhookit mahdollistavat järjestelmiesi vastaanottaa reaaliaikaisia ilmoituksia
 
 ## Kohdeyleisö
 
-Tämä opas on tarkoitettu kehittäjille, jotka integroivat Winkiä ulkoisiin järjestelmiin, kuten kiinteistöhallintajärjestelmiin (PMS), kanavahallintaan, CRM-järjestelmiin tai räätälöityihin hallintapaneeleihin.
+Tämä opas on tarkoitettu kehittäjille, jotka integroivat Winkia ulkoisiin järjestelmiin, kuten kiinteistöhallintajärjestelmiin (PMS), kanavahallintaan, CRM-järjestelmiin tai mukautettuihin hallintapaneeleihin.
 
 ## Miten webhookit toimivat
 
 1. Rekisteröit webhook-URL-osoitteen Winkissä.
 2. Kun tapahtuma tapahtuu (esim. uusi varaus), Wink lähettää HTTP POST -pyynnön URL-osoitteeseesi.
-3. Palvelimesi käsittelee tiedot ja vastaa `200 OK` -vastauksella.
+3. Palvelimesi käsittelee tiedot ja vastaa `200 OK`.
 
 ## Webhookin asennus
 
@@ -29,49 +29,138 @@ Tämä opas on tarkoitettu kehittäjille, jotka integroivat Winkiä ulkoisiin j�
 5. Syötä **webhook-URL** — HTTPS-päätepiste palvelimellasi.
 6. **Valitse tapahtumat** — Valitse tilattavat tapahtumat tai jätä tyhjäksi vastaanottaaksesi kaikki tapahtumat.
 7. Kytke **Enabled** päälle.
-8. Klikkaa `Save`.
+8. Klikkaa `Save` — vastaus näyttää **allekirjoitussalaisuuden kerran**; tallenna se nyt.
 </Steps>
 
 ## Tapahtumatyypit
 
-Wink tukee **yli 64 webhook-tapahtumatyyppiä** eri kategorioissa, kuten tilinhallinta, varaus-sopimukset, maksut, kanavahallinnan päivitykset ja hallintoyksikön hallinta. Yleisiä tapahtumia ovat:
+Wink julkaisee tänään 70 webhook-tapahtumatyyppiä varauksiin, kiinteistöihin, tileihin (hallinnoivat tahot) ja inventaarioon (huonetyypit, hintasuunnitelmat, päähinnat, lisäpalvelut, tilat, myyntikanavat, kampanjat) liittyen. Yleisiä:
 
 | Kategoria | Esimerkkejä |
 |---|---|
-| **Varaus** | `booking.create`, `booking.cancelled` |
-| **Varaussopimus** | `booking.contract.created`, `booking.contract.processing`, `booking.contract.cancelled` |
-| **Maksu** | `internal.payment.succeeded`, `internal.payment.failed` |
-| **Hyvitykset** | `booking.contract.refund.partial`, `booking.contract.refund.full` |
-| **Kanavahallinta** | `channel-manager.update.rate`, `channel-manager.update.availability` |
-| **Tili** | `account.create`, `account.status.updated` |
+| **Varaus** | `booking.create`, `booking.cancelled`, `booking.refund.partial`, `booking.refund.full`, `booking.review.created` |
+| **Kiinteistö** | `property.created`, `property.status.updated`, `property.policy.updated` |
+| **Inventaario** | `room_type.updated`, `rate_plan.created`, `master_rate.updated`, `special_rate.created`, `sales_channel.created` |
+| **Tili** | `managing_entity.created`, `managing_entity.status.updated`, `managing_entity.manager.added` |
 
-Täydellisen listan kaikista tapahtumatyypeistä ja niiden kuvauksista löydät **Webhook Events Catalog** -katalogista.
+Täydellinen, generoitu lista — kuvauksineen, vastaanottajineen ja linkkeineen kunkin tapahtuman viitesivulle — on **Webhook Events Catalog**. Jokaisen tapahtuman viitesivu (JSON-rakenne, otsikot, uudelleenyrityskäytäntö) löytyy [Webhooks API](/fi/api/webhooks/).
 
 <LinkButton href="/fi/developers/webhook-events">
-  Näytä kaikki yli 64 tapahtumatyyppiä
+  Näytä kaikki tapahtumatyypit
 </LinkButton>
 
-:::tip
-Aloita tilaamalla kaikki tapahtumat kehitysvaiheessa. Kun ymmärrät tiedot, rajaa tilaukset vain järjestelmäsi tarvitsemiin tapahtumiin.
-:::
+## Mitä vastaanotat
+
+Jokainen toimitus on HTTP `POST` webhook-URL-osoitteeseesi `Content-Type: application/json` -otsikolla ja seuraavalla kuorella:
+
+```json
+{
+  "id": "0198a4f2-6b0e-7c1d-9a3e-2f4b8c6d1e0a",
+  "type": "booking.create",
+  "occurredAt": "2026-08-15T09:30:00Z",
+  "ownerIdentifier": "3c6b1a5d-8e2f-4a0b-9c7d-6e4f0a8b2c51",
+  "recipientRole": "SUPPLIER",
+  "schemaVersion": 2,
+  "object": { "...": "tapahtumakohtainen data, esim. BookingWebhookPayload" }
+}
+```
+
+- `id` — tapahtuman tunniste; sama kaikille tilisi päätepisteille, jotka vastaanottavat tämän tapahtuman, ja kaikille uudelleenyrityksille. Käytä sitä **idempotenssiavaimena**.
+- `type` — tapahtumatyyppinäppäin (lähetetään myös `Wink-Event-Type`-otsikkona). Haarauta `type` ja `schemaVersion` perusteella `object`-kentän jäsentämiseen.
+- `object` — kuratoitu yhteenveto resurssista, johon tapahtuma liittyy (tunnisteet, tila, käsiteltävät kentät) sekä `links.self`, toimittajan puolen kanoninen REST-URL koko resurssille. Hae se omilla API-tunnuksillasi, kun tarvitset enemmän kuin yhteenvedon; jos saat tapahtuman jälleenmyyjänä tai matkatoimistona, käytä vastaavaa resurssipäätepistettä omassa API-pinnassasi saman tunnisteen perusteella.
+
+Jokaisen kuoren skeema on dokumentoitu tapahtumakohtaisesti [Webhooks API](/fi/api/webhooks/) -viitteessä.
+
+### Otsikot
+
+| Otsikko | Merkitys |
+|---|---|
+| `Wink-Version` | Rajapintasopimuksen versio, `2.0`. |
+| `Wink-Event-Id` | Sama kuin `id` rungossa — idempotenssiavain. |
+| `Wink-Delivery-Id` | Yksilöllinen päätepistettä kohden per tapahtuma; muuttuu vain uudelleenlähetyksessä. |
+| `Wink-Event-Type` | Sama kuin `type` rungossa. |
+| `Wink-Delivery-Attempt` | 1-pohjainen yrityskertojen numero tälle toimitukselle. |
+| `Wink-Signature` | HMAC-allekirjoitus — katso alla. |
+
+## Allekirjoitusten varmistaminen
+
+Jokaisella webhookilla on **allekirjoitussalaisuus** (`whsec_…`), jonka Wink näyttää **vain kerran**, kun luot webhookin tai kierrät sen salaisuuden. Tallenna se kuin salasana. Jokainen toimitus sisältää
+
+```
+Wink-Signature: t=1755250200,v1=5d41402abc4b2a76b9719d911017c592…
+```
+
+missä `t` on Unix-aikaleima (sekunteina) ja `v1` on pienaakkosilla kirjoitettu hex-muotoinen **HMAC-SHA256** merkkijonosta `t + "." + rawBody`, avaimena salaisuutesi, ja `rawBody` on tarkka pyyntörunko tavuina sellaisena kuin se vastaanotetaan — älä uudelleensarjoita JSON:ia ennen varmistusta. 24 tuntia salaisuuden kierron jälkeen otsikko sisältää toisen `v1=` arvon, joka on allekirjoitettu edellisellä salaisuudella; hyväksy toimitus, jos **jokin** `v1` vastaa.
+
+Varmista neljässä vaiheessa: jäsennä `t` ja kaikki `v1`; laske HMAC uudelleen `t.rawBody`-merkkijonolle salaisuudellasi; vertaa vakioaikaisella vertailulla; hylkää, jos `|nyt − t|` ylittää sallitun rajan (suositus 5 minuuttia).
+
+```js
+// Node.js (Express-tyylinen; varmista, että sinulla on RAW-runko, ei jäsennelty objekti)
+import { createHmac, timingSafeEqual } from 'node:crypto';
+
+export function verifyWinkSignature(header, rawBody, secret, toleranceSeconds = 300) {
+  const parts = Object.fromEntries(header.split(',').map((p) => p.split('=').map((s) => s.trim())));
+  const t = Number(parts.t);
+  if (!Number.isFinite(t) || Math.abs(Date.now() / 1000 - t) > toleranceSeconds) return false;
+  const expected = createHmac('sha256', secret).update(`${t}.${rawBody}`).digest('hex');
+  return header
+    .split(',')
+    .filter((p) => p.trim().startsWith('v1='))
+    .map((p) => p.trim().slice(3))
+    .some((v1) => v1.length === expected.length && timingSafeEqual(Buffer.from(v1, 'utf8'), Buffer.from(expected, 'utf8')));
+}
+```
+
+```java
+// Java
+static boolean verify(String header, String rawBody, String secret, long nowSeconds, long toleranceSeconds) throws Exception {
+    long t = Long.MIN_VALUE;
+    List<String> signatures = new ArrayList<>();
+    for (String part : header.split(",")) {
+        String[] kv = part.trim().split("=", 2);
+        if (kv[0].equals("t")) t = Long.parseLong(kv[1]);
+        else if (kv[0].equals("v1")) signatures.add(kv[1]);
+    }
+    if (t == Long.MIN_VALUE || Math.abs(nowSeconds - t) > toleranceSeconds) return false;
+    Mac mac = Mac.getInstance("HmacSHA256");
+    mac.init(new SecretKeySpec(secret.getBytes(StandardCharsets.UTF_8), "HmacSHA256"));
+    byte[] expected = HexFormat.of().formatHex(mac.doFinal((t + "." + rawBody).getBytes(StandardCharsets.UTF_8))).getBytes(StandardCharsets.US_ASCII);
+    return signatures.stream().anyMatch(v1 -> MessageDigest.isEqual(expected, v1.toLowerCase().getBytes(StandardCharsets.US_ASCII)));
+}
+```
+
+Kierrä salaisuus portaalista tai `POST /api/managing-entity/{id}/webhook/{webhookId}/rotate-secret` -kutsulla; vastaus näyttää uuden salaisuuden kerran, ja vanha toimii vielä 24 tuntia käyttöönoton aikana.
+
+## Uudelleenyritykset ja uudelleenlähetykset
+
+- Vastaa millä tahansa `2xx`-vastauksella 10 sekunnin sisällä kuittaaksesi. Tee raskas käsittely asynkronisesti.
+- `5xx`, aikakatkaisu, `408` tai `429` yritetään uudelleen viivein: 1 min, 5 min, 30 min, 2 h, 6 h, 12 h, sitten päivittäin — 10 yritystä noin 3 päivän aikana — jonka jälkeen toimitus merkitään **kuolleeksi**.
+- Muut `4xx`-vastaukset käsitellään "hylkäsit tämän toimituksen" -tapauksena, eikä niitä yritetä uudelleen.
+- Jokainen tapahtuma, toimitus ja yritys (tila, vastauskatkelma) näkyy **Applications > Webhooks** -kohdassa ja API:n kautta (`…/webhook/event/grid`, `…/webhook/delivery/grid`). Voit **uudelleenlähettää** minkä tahansa toimituksen (`POST …/webhook/delivery/{deliveryId}/redeliver`, joka aloittaa uuden yritysarjan), uudelleenlähettää kaikki kuolleet toimitukset yhdellä kertaa (`POST …/webhook/{webhookId}/redeliver-dead`) tai peruuttaa yhden.
+- Toimitukset säilytetään 30 päivää.
+
+## Testitapahtumat
+
+Lähetä itsellesi synteettinen `webhook.test` -tapahtuma portaalista tai `POST /api/managing-entity/{id}/webhook/{webhookId}/test` -kutsulla. Se on allekirjoitettu ja toimitetaan täsmälleen kuten oikea tapahtuma, joten voit varmistaa päätepisteesi, allekirjoituksen tarkistuksen ja idempotenssikäsittelyn ennen live-tapahtumiin tilaamista.
 
 ## Parhaat käytännöt
 
-- **Käytä HTTPS:ää** — Wink lähettää tiedot vain HTTPS-päätepisteisiin.
-- **Vastaa nopeasti** — Palauta `200 OK` heti, kun vastaanotat tiedot. Tee raskaat käsittelyt asynkronisesti.
-- **Idempotenssi** — Käsittelijäsi tulee olla idempotentti. Wink voi yrittää uudelleen, jos `200`-vastausta ei saada.
-- **Vahvista lähde** — Varmista, että saapuvat pyynnöt ovat Winkiltä ennen käsittelyä.
-- **Lokitus** — Kirjaa kaikki vastaanottamasi webhook-tiedot. Tämä helpottaa integrointiongelmien vianmääritystä.
+- **Käytä HTTPS:ää** — Wink lähettää kuoret vain HTTPS-päätepisteisiin.
+- **Vastaa nopeasti** — Palauta `200 OK` heti, kun saat kuoren. Tee raskas käsittely asynkronisesti.
+- **Idempotenssi** — Käsittelijäsi tulee olla idempotentti; poista duplikaatit `Wink-Event-Id`-kentän perusteella. Wink yrittää uudelleen, jos se ei saa `2xx`-vastausta.
+- **Varmista lähde** — Tarkista `Wink-Signature`-otsikko (katso [Allekirjoitusten varmistaminen](#verifying-signatures)) ennen käsittelyä; hylkää kaikki epäonnistuneet.
+- **Lokitus** — Kirjaa kaikki vastaanottamasi webhook-kuoret. Tämä helpottaa integrointiongelmien vianmääritystä.
 
 ## Tauko ja poisto
 
-Voit **poistaa käytöstä** webhookin ilman, että poistat sitä. Tämä keskeyttää toimituksen, jotta voit vianmäärityksen aikana säilyttää asetukset. Kun olet valmis, kytke se takaisin päälle.
+Voit **poistaa käytöstä** webhookin poistamatta sitä. Tämä keskeyttää toimitukset, jotta voit vianmäärityksen aikana säilyttää asetukset. Kun olet valmis, kytke se takaisin päälle.
 
 Webhookin poistaminen poistaa sen pysyvästi. Kaikki integraatiot, jotka käyttävät kyseistä webhookia, lakkaavat vastaanottamasta ilmoituksia.
 
 ## Lisälukemista
 
-- [Webhook Events Catalog](/fi/developers/webhook-events) — Täydellinen lista kaikista yli 64 tapahtumatyypistä.
-- [Webhooks](/fi/portal/settings/webhooks) — Täydellinen viite webhookien hallintaan.
-- [Applications](/fi/account/applications) — Hallinnoi API-tunnuksiasi.
+- [Webhook Events Catalog](/fi/developers/webhook-events) — Kaikki tapahtumatyypit, generoitu alustakatalogista.
+- [Webhooks API reference](/fi/api/webhooks/) — Tapahtumakohtaiset kuorimallit, otsikot ja tilaus/toimitushallinnan päätepisteet.
+- [Webhooks](/fi/portal/settings/webhooks) — Täydellinen webhook-hallinnan viite.
+- [Applications](/fi/account/applications) — Hallitse API-tunnuksiasi.
 - [Developers > APIs](/fi/api) — Täydellinen API-dokumentaatio.

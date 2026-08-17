@@ -1,331 +1,53 @@
 ---
 title: Katalogo ng Mga Kaganapan sa Webhook
-description: Kumpletong reperensiya ng lahat ng uri ng kaganapan sa webhook na available sa Wink platform, inayos ayon sa kategorya.
+description: Bawat uri ng kaganapan sa webhook sa platform ng Wink, na nilikha mula sa katalogo ng kaganapan ng platform — kung sino ang tumatanggap, at kung saan nakadokumento ang payload.
 sidebar:
   order: 3.5
 ---
 
-import { LinkButton } from '@astrojs/starlight/components';
+import webhooks from '../../../../schemas/webhooks.json';
+import WebhookEventTypes from '@/components/webhooks/event-types.astro';
 
 Ipinapakita ng pahinang ito ang bawat kaganapan sa webhook na maaari mong i-subscribe sa Wink. Para sa mga tagubilin sa pagsasaayos, tingnan ang [Webhook Integration Guide](/tl/developers/webhook-integration) o ang [Webhooks management page](/tl/portal/settings/webhooks).
 
 ## Paano mag-subscribe
 
 1. Pumunta sa **Applications > Webhooks** sa iyong portal.
-2. Gumawa ng webhook at piliin ang mga kaganapan na nais mong matanggap.
-3. Magpapadala ang Wink ng HTTP POST sa iyong endpoint sa tuwing magaganap ang kaganapan.
-
-Para sa buong mga hakbang sa pagsasaayos at mga pinakamahusay na kasanayan, tingnan ang [Webhook Integration](/tl/developers/webhook-integration).
-
----
-
-## Pamamahala ng mga kaganapan ng entity
-
-Mga kaganapan para sa pamamahala ng mga entity (mga ari-arian, mga affiliate, mga kumpanya) at ang kanilang administrasyon.
-
-### Lifecycle
-
-| Kaganapan | Key | Paglalarawan |
-|---|---|---|
-| Entity created | `managing_entity.created` | Isang bagong managing entity ang nalikha. |
-| Entity deleted | `managing_entity.deleted` | Isang managing entity ang natanggal. |
-| Status updated | `managing_entity.status.updated` | Nagbago ang status ng entity. |
-| Under review | `account.under_review` | Nakabinbing nire-review ang account ng entity. |
-
-### Subscription
-
-| Kaganapan | Key | Paglalarawan |
-|---|---|---|
-| Subscription provisioned | `managing_entity.subscription.provisioned` | Isang bagong subscription ang na-provision. |
-| Subscription changed | `managing_entity.subscription.changed` | Nagbago ang plano ng subscription. |
-| Subscription invoice changed | `managing_entity.subscription.invoice.changed` | Na-update ang invoice ng subscription. |
-
-### Manager lifecycle
-
-| Kaganapan | Key | Paglalarawan |
-|---|---|---|
-| Manager added | `managing_entity.manager.added` | Isang bagong manager ang naidagdag. |
-| Manager invited | `managing_entity.manager.invited` | Naipadala ang imbitasyon sa manager. |
-| Manager removed | `managing_entity.manager.removed` | Natanggal ang isang manager. |
-| Manager accepted | `managing_entity.manager.accepted` | Tinanggap ang imbitasyon ng manager. |
-| Manager rejected | `managing_entity.manager.rejected` | Tinanggihan ang imbitasyon ng manager. |
-| Owner set | `managing_entity.manager.owner.set` | Nailipat ang pagmamay-ari ng entity. |
-| Managers updated | `account.managers.update` | Nagbago ang listahan ng mga manager. |
-
-### Impormasyon ng entity
-
-| Kaganapan | Key | Paglalarawan |
-|---|---|---|
-| Information updated | `managing_entity.information.updated` | Na-update ang impormasyon ng entity. |
-| Address updated | `managing_entity.city.updated` | Nagbago ang address/lungsod ng entity. |
-| Name updated | `managing_entity.name.updated` | Nagbago ang pangalan ng entity. |
-| URL name updated | `managing_entity.url_name.updated` | Nagbago ang vanity URL ng entity. |
-| Unique ID updated | `managing_entity.unique_id.updated` | Nagbago ang natatanging identifier ng entity. |
-| Managed-by updated | `managing_entity.managed_by.updated` | Nagbago ang relasyon ng parent/managed-by ng entity. |
-| Place ID updated | `managing_entity.place_id.updated` | Nagbago ang Google Place ID ng entity. |
-| Account representative updated | `managing_entity.account_representative.updated` | Nagbago ang kinatawan ng account. |
-| Profile picture updated | `managing_entity.profile_picture.updated` | Na-update ang larawan ng profile ng entity. |
-| Logo updated | `managing_entity.logo.updated` | Na-update ang logo ng entity. |
-| Details updated | `account.details.updated` | Nagbago ang mga detalye ng account. |
-| Agent updated | `managing_entity.agent.updated` | Nabago ang agent ng entity. |
-
-### Mga notification
-
-| Kaganapan | Key | Paglalarawan |
-|---|---|---|
-| Agent email notification | `managing_entity.agent.email.notification` | Naipadala ang email notification sa agent. |
-| Manager email notification | `managing_entity.manager.email.notification` | Naipadala ang email notification sa isang manager. |
-
-### Mga gawain sa account
-
-| Kaganapan | Key | Paglalarawan |
-|---|---|---|
-| Task created | `account.task.create` | Isang bagong gawain ang naidagdag sa account. |
-| Task updated | `account.task.update` | Nabago ang isang gawain sa account. |
-| Task removed | `account.task.remove` | Natanggal ang isang gawain sa account. |
-| Task completed | `account.task.complete` | Natapos ang isang gawain sa account. |
-| Tax ID task completed | `account.task.tax_id.complete` | Natapos ang gawain sa beripikasyon ng Tax ID. |
-
----
-
-## Mga kaganapan sa booking
-
-Mga kaganapan para sa lifecycle ng booking sa Wink, mula sa paglikha hanggang sa mga refund at payout.
-
-### Core booking
-
-| Kaganapan | Key | Paglalarawan |
-|---|---|---|
-| Booking created | `booking.create` | Isang bagong booking ang nalikha. |
-| Booking cancelled | `booking.cancelled` | Nakansela ang isang booking. |
-| Booking failed | `booking.failed` | Nabigo ang pagtatangka sa booking. |
-| Booking processing | `booking.processing` | Pinoproseso ang bayad sa booking. |
-| Initialization requested | `booking.initialize.request` | Hiningi ang pagsisimula ng booking. |
-| Initialization complete | `booking.initialize.complete` | Natapos ang pagsisimula ng booking. |
-
-### Refunds
-
-| Kaganapan | Key | Paglalarawan |
-|---|---|---|
-| Refund requested | `booking.refund.request` | Isinumite ang kahilingan para sa refund. |
-| Refund error | `booking.refund.error` | Nagkaroon ng error habang pinoproseso ang refund. |
-| Partial refund | `booking.refund.partial` | Naibigay ang partial refund. |
-| Full refund | `booking.refund.full` | Naibigay ang buong refund. |
-
-### Payouts
-
-| Kaganapan | Key | Paglalarawan |
-|---|---|---|
-| Payout created | `booking.payout.create` | Nalikhang payout para sa booking. |
-| Payout completed | `booking.payout.complete` | Matagumpay na natapos ang payout. |
-| Funds available | `booking.funds.available` | Available ang pondo ng booking para sa settlement. |
-| Funds ledgered | `booking.funds.ledgered` | Naitala ang pondo ng booking sa ledger. |
-
-### Reviews
-
-| Kaganapan | Key | Paglalarawan |
-|---|---|---|
-| Review submitted | `booking.review.created` | Isinumite ang review ng guest para sa booking. |
-| Review responded | `booking.review.responded` | Tumugon ang property sa review ng booking. |
-
----
-
-## Mga kaganapan sa property
-
-Mga kaganapan para sa mga profile at nilalaman ng property, ipinapadala sa mga subscriber ng webhook ng property.
-
-| Kaganapan | Key | Paglalarawan |
-|---|---|---|
-| Property created | `property.created` | Isang bagong property ang nalikha. |
-| Property updated | `property.updated` | Na-update ang mga detalye ng property. |
-| Property deleted | `property.deleted` | Natanggal ang isang property. |
-| Property registered | `property.registered` | Nakumpleto ang pagrerehistro ng property. |
-| Status updated | `property.status.updated` | Nagbago ang external status ng property. |
-| Name updated | `property.name.updated` | Nagbago ang pangalan ng property. |
-| Address updated | `property.address.updated` | Na-update ang address ng property. |
-| Geolocation updated | `property.geolocation.updated` | Na-update ang geolocation ng property. |
-| Profile updated | `property.profile.updated` | Nagbago ang nilalaman ng profile ng property. |
-| Services updated | `property.services.updated` | Nagbago ang listahan ng mga serbisyo/amenities ng property. |
-| Welcome text updated | `property.welcome_text.updated` | Nagbago ang welcome message ng property. |
-| Policy created | `property.policy.created` | Isang bagong polisiya ng property ang nalikha. |
-| Policy updated | `property.policy.updated` | Na-update ang polisiya ng property. |
-
----
-
-## Mga kaganapan sa inventory
-
-Mga kaganapan para sa mga item ng inventory sa loob ng isang property, ipinapadala sa mga subscriber ng webhook ng property na iyon.
-
-### Mga uri ng kuwarto
-
-| Kaganapan | Key | Paglalarawan |
-|---|---|---|
-| Room type created | `room_type.created` | Isang bagong uri ng kuwarto ang naidagdag. |
-| Room type updated | `room_type.updated` | Nabago ang isang uri ng kuwarto. |
-| Room type deleted | `room_type.deleted` | Natanggal ang isang uri ng kuwarto. |
-
-### Mga plano ng rate
-
-| Kaganapan | Key | Paglalarawan |
-|---|---|---|
-| Rate plan created | `rate_plan.created` | Isang bagong plano ng rate ang nalikha. |
-| Rate plan updated | `rate_plan.updated` | Nabago ang isang plano ng rate. |
-| Rate plan deleted | `rate_plan.deleted` | Natanggal ang isang plano ng rate. |
-
-### Mga master rate
-
-| Kaganapan | Key | Paglalarawan |
-|---|---|---|
-| Master rate created | `master_rate.created` | Isang bagong master rate ang nalikha. |
-| Master rate updated | `master_rate.updated` | Nabago ang isang master rate. |
-| Master rate deleted | `master_rate.deleted` | Natanggal ang isang master rate. |
-
-### Mga add-on
-
-| Kaganapan | Key | Paglalarawan |
-|---|---|---|
-| Add-on created | `add_on.created` | Isang bagong add-on ang nalikha. |
-| Add-on updated | `add_on.updated` | Nabago ang isang add-on. |
-| Add-on deleted | `add_on.deleted` | Natanggal ang isang add-on. |
-
-### Mga meeting room
-
-| Kaganapan | Key | Paglalarawan |
-|---|---|---|
-| Meeting room created | `meeting_room.created` | Isang bagong meeting room ang naidagdag. |
-| Meeting room updated | `meeting_room.updated` | Nabago ang isang meeting room. |
-| Meeting room deleted | `meeting_room.deleted` | Natanggal ang isang meeting room. |
-
-### Mga restaurant
-
-| Kaganapan | Key | Paglalarawan |
-|---|---|---|
-| Restaurant created | `restaurant.created` | Isang bagong restaurant ang naidagdag. |
-| Restaurant updated | `restaurant.updated` | Nabago ang isang restaurant. |
-| Restaurant deleted | `restaurant.deleted` | Natanggal ang isang restaurant. |
-
-### Mga spa
-
-| Kaganapan | Key | Paglalarawan |
-|---|---|---|
-| Spa created | `spa.created` | Isang bagong spa ang naidagdag. |
-| Spa updated | `spa.updated` | Nabago ang isang spa. |
-| Spa deleted | `spa.deleted` | Natanggal ang isang spa. |
-
-### Mga aktibidad
-
-| Kaganapan | Key | Paglalarawan |
-|---|---|---|
-| Activity created | `activity.created` | Isang bagong aktibidad ang naidagdag. |
-| Activity updated | `activity.updated` | Nabago ang isang aktibidad. |
-| Activity deleted | `activity.deleted` | Natanggal ang isang aktibidad. |
-
----
-
-## Mga kaganapan sa sales channel
-
-Mga kaganapan para sa mga distribution channel na nag-uugnay sa mga supplier at affiliate. Ipinapadala sa parehong supplier at mga subscriber ng webhook ng affiliate.
-
-| Kaganapan | Key | Paglalarawan |
-|---|---|---|
-| Sales channel created | `sales_channel.created` | Isang bagong sales channel ang nalikha. |
-| Sales channel updated | `sales_channel.updated` | Nabago ang isang sales channel. |
-| Sales channel deleted | `sales_channel.deleted` | Natanggal ang isang sales channel. |
-
----
-
-## Mga kaganapan sa special rate
-
-Mga kaganapan para sa mga promotional at negotiated rate sa isang property.
-
-| Kaganapan | Key | Paglalarawan |
-|---|---|---|
-| Special rate created | `special_rate.created` | Isang bagong special rate ang nalikha. |
-| Special rate updated | `special_rate.updated` | Nabago ang isang special rate. |
-| Special rate deleted | `special_rate.deleted` | Natanggal ang isang special rate. |
-| Rate modifier updated | `rate_modifier.updated` | Na-update ang rate modifier. |
-
----
-
-## Mga kaganapan sa payee
-
-Mga kaganapan na may kaugnayan sa pamamahala ng payee (tatanggap ng bayad).
-
-| Kaganapan | Key | Paglalarawan |
-|---|---|---|
-| Payee created | `payee.create` | Matagumpay na nalikha ang isang bagong payee. |
-| Payee creation failed | `payee.create.failure` | Nabigo ang paglikha ng payee. |
-| Payee updated | `payee.update` | Na-update ang isang payee. |
-| Payee update failed | `payee.update.failure` | Nabigo ang pag-update ng payee. |
-
----
-
-## Mga kaganapan sa payment
-
-Mga internal na kaganapan sa pagproseso ng bayad mula sa TripPay.
-
-| Kaganapan | Key | Paglalarawan |
-|---|---|---|
-| Payment succeeded | `internal.payment.succeeded` | Matagumpay na naiproseso ang bayad. |
-| Payment processing | `internal.payment.processing` | Kasalukuyang pinoproseso ang bayad. |
-| Payment failed | `internal.payment.failed` | Nabigo ang pagproseso ng bayad. |
-
----
-
-## Mga kaganapan sa channel manager
-
-Mga kaganapan na may kaugnayan sa channel manager rate at availability pushes.
-
-| Kaganapan | Key | Paglalarawan |
-|---|---|---|
-| Rate update | `channel-manager.update.rate` | Nag-push ang channel manager ng update sa rate. |
-| Availability update | `channel-manager.update.availability` | Nag-push ang channel manager ng update sa availability. |
-| General update | `channel-manager.update` | Pangkalahatang update mula sa channel manager. |
-
----
-
-## Mga kaganapan sa ledger
-
-Mga kaganapan na may kaugnayan sa mga entry sa financial ledger.
-
-| Kaganapan | Key | Paglalarawan |
-|---|---|---|
-| Ledger entry created | `ledger.entry.create` | Naitala ang isang bagong entry sa ledger. |
-
----
-
-## Mga kaganapan sa email
-
-| Kaganapan | Key | Paglalarawan |
-|---|---|---|
-| Email correspondence | `email.correspondence` | Naipadala ang isang outbound email. |
-
----
-
-## Buod ng bilang ng mga kaganapan
-
-| Kategorya | Bilang |
-|---|---|
-| Mga kaganapan sa managing entity | 33 |
-| Mga kaganapan sa booking | 16 |
-| Mga kaganapan sa property | 13 |
-| Mga kaganapan sa inventory (mga uri ng kuwarto, plano ng rate, master rate, add-on, pasilidad) | 24 |
-| Mga kaganapan sa sales channel | 3 |
-| Mga kaganapan sa special rate | 4 |
-| Mga kaganapan sa payee | 4 |
-| Mga kaganapan sa payment | 3 |
-| Mga kaganapan sa channel manager | 3 |
-| Mga kaganapan sa ledger | 1 |
-| Mga kaganapan sa email | 1 |
-| **Kabuuan** | **105** |
+2. Gumawa ng webhook at piliin ang mga kaganapan na nais mong matanggap — o iwanang walang laman ang listahan upang matanggap ang lahat ng kaganapan.
+3. Magpapadala ang Wink ng isang naka-sign na HTTP POST sa iyong endpoint sa tuwing magaganap ang kaganapan. Tingnan ang [Webhook Integration](/tl/developers/webhook-integration) para sa envelope, mga header, beripikasyon ng pirma, at mga retry.
+
+## Bawat uri ng kaganapan
+
+Ang talahanayan na ito ay nilikha mula sa katalogo ng kaganapan ng platform sa oras ng build, kaya palaging tumutugma ito sa API.
+Ang mga uri ng kaganapan na may markang delivered ay may link sa kanilang pahina ng sanggunian sa [Webhooks API](/tl/api/webhooks/), na
+nagdodokumento ng eksaktong JSON body (`WebhookEnvelope` na may event-specific na `object`), ang mga `Wink-*` na header at
+ang retry policy. Ang mga uri ng kaganapan na hindi delivered ay umiiral lamang sa loob (mga bayad, ledger, channel-manager
+sync, …) ngunit hindi kasalukuyang ipinapadala sa mga subscriber ng webhook.
+
+Sinasabi ng **Recipients** kung sino ang tumatanggap ng isang kaganapan: `SUPPLIER` (ang hotel), `AFFILIATE` (isang reseller na may aktibong
+sales channel sa hotel), `AGENT` (ang travel agency na gumawa ng booking) o `SELF` (ang managing entity
+na tungkol sa kaganapan). Bawat recipient ay tumatanggap ng parehong anyo ng payload; ang detalye na nakabatay sa papel ay nasa likod ng
+`links.self` URL ng payload.
+
+<WebhookEventTypes
+  types={webhooks['x-wink-event-types']}
+  referenceBase="/api/webhooks"
+  eventHeader="Kaganapan"
+  descriptionHeader="Paglalarawan"
+  deliveredHeader="Naipadala"
+  recipientsHeader="Mga Tumanggap"
+  deliveredLabel="naipadala"
+  notDeliveredLabel="hindi naipadala"
+  noRecipientsLabel="—"
+/>
 
 :::tip
-Magsimula sa pag-subscribe sa lahat ng mga kaganapan habang nagde-develop. Kapag naunawaan mo na kung aling mga payload ang kailangan ng iyong sistema, paliitin ang iyong mga subscription upang mabawasan ang ingay.
+Magsimula sa pag-subscribe sa lahat ng kaganapan habang nasa development. Kapag naunawaan mo na kung aling mga payload ang kailangan ng iyong sistema, paliitin ang iyong mga subscription upang mabawasan ang ingay. Magpadala ng test event sa iyong sarili mula sa **Applications > Webhooks** (o `POST …/webhook/{id}/test`) upang kumpirmahin ang iyong endpoint at signature check bago mag-live.
 :::
 
 ## Karagdagang babasahin
 
-- [Webhook Integration Guide](/tl/developers/webhook-integration) — Mga hakbang sa pagsasaayos at pinakamahusay na kasanayan.
+- [Webhook Integration Guide](/tl/developers/webhook-integration) — Mga hakbang sa pagsasaayos at pinakamahusay na mga gawi.
 - [Webhooks](/tl/portal/settings/webhooks) — Pamahalaan ang iyong mga subscription sa webhook.
 - [Applications](/tl/account/applications) — Pamahalaan ang mga kredensyal ng API.
 - [Build on Wink](/tl/developers/build-on-wink) — Pangkalahatang-ideya ng platform para sa mga developer.

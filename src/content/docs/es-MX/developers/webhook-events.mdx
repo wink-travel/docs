@@ -1,326 +1,44 @@
 ---
 title: Catálogo de Eventos Webhook
-description: Referencia completa de todos los tipos de eventos webhook disponibles en la plataforma Wink, organizados por categoría.
+description: Cada tipo de evento webhook en la plataforma Wink, generado a partir del catálogo de eventos de la plataforma — a quiénes se entregan y dónde está documentado el payload.
 sidebar:
   order: 3.5
 ---
 
-import { LinkButton } from '@astrojs/starlight/components';
+import webhooks from '../../../../schemas/webhooks.json';
+import WebhookEventTypes from '@/components/webhooks/event-types.astro';
 
 Esta página lista todos los eventos webhook a los que puedes suscribirte en Wink. Para instrucciones de configuración, consulta la [Guía de Integración Webhook](/es-MX/developers/webhook-integration) o la [página de gestión de Webhooks](/es-MX/portal/settings/webhooks).
 
 ## Cómo suscribirse
 
 1. Navega a **Aplicaciones > Webhooks** en tu portal.
-2. Crea un webhook y selecciona los eventos que deseas recibir.
-3. Wink envía un HTTP POST a tu endpoint cada vez que ocurre el evento.
-
-Para pasos completos de configuración y mejores prácticas, consulta [Integración Webhook](/es-MX/developers/webhook-integration).
-
----
-
-## Gestión de eventos de entidad
-
-Eventos para la gestión de entidades (propiedades, afiliados, compañías) y su administración.
-
-### Ciclo de vida
-
-| Evento | Clave | Descripción |
-|---|---|---|
-| Entidad creada | `managing_entity.created` | Se ha creado una nueva entidad gestora. |
-| Entidad eliminada | `managing_entity.deleted` | Se ha eliminado una entidad gestora. |
-| Estado actualizado | `managing_entity.status.updated` | El estado de la entidad ha cambiado. |
-| En revisión | `account.under_review` | La cuenta de la entidad está pendiente de revisión. |
-
-### Suscripción
-
-| Evento | Clave | Descripción |
-|---|---|---|
-| Suscripción provisionada | `managing_entity.subscription.provisioned` | Se ha provisionado una nueva suscripción. |
-| Suscripción cambiada | `managing_entity.subscription.changed` | El plan de suscripción ha cambiado. |
-| Factura de suscripción cambiada | `managing_entity.subscription.invoice.changed` | La factura de suscripción ha sido actualizada. |
-
-### Ciclo de vida del administrador
-
-| Evento | Clave | Descripción |
-|---|---|---|
-| Administrador agregado | `managing_entity.manager.added` | Se ha agregado un nuevo administrador. |
-| Administrador invitado | `managing_entity.manager.invited` | Se ha enviado una invitación a un administrador. |
-| Administrador removido | `managing_entity.manager.removed` | Se ha removido un administrador. |
-| Administrador aceptado | `managing_entity.manager.accepted` | Se ha aceptado una invitación de administrador. |
-| Administrador rechazado | `managing_entity.manager.rejected` | Se ha rechazado una invitación de administrador. |
-| Propietario asignado | `managing_entity.manager.owner.set` | Se ha transferido la propiedad de la entidad. |
-| Administradores actualizados | `account.managers.update` | La lista de administradores ha cambiado. |
-
-### Información de la entidad
-
-| Evento | Clave | Descripción |
-|---|---|---|
-| Información actualizada | `managing_entity.information.updated` | La información de la entidad ha sido actualizada. |
-| Dirección actualizada | `managing_entity.city.updated` | La dirección/ciudad de la entidad ha cambiado. |
-| Nombre actualizado | `managing_entity.name.updated` | El nombre de la entidad ha cambiado. |
-| Nombre de URL actualizado | `managing_entity.url_name.updated` | La URL personalizada de la entidad ha cambiado. |
-| ID único actualizado | `managing_entity.unique_id.updated` | El identificador único de la entidad ha cambiado. |
-| Relación de gestión actualizada | `managing_entity.managed_by.updated` | La relación de gestión/parentesco de la entidad ha cambiado. |
-| Place ID actualizado | `managing_entity.place_id.updated` | El Google Place ID de la entidad ha cambiado. |
-| Representante de cuenta actualizado | `managing_entity.account_representative.updated` | El representante de la cuenta ha sido cambiado. |
-| Foto de perfil actualizada | `managing_entity.profile_picture.updated` | La foto de perfil de la entidad ha sido actualizada. |
-| Logo actualizado | `managing_entity.logo.updated` | El logo de la entidad ha sido actualizado. |
-| Detalles actualizados | `account.details.updated` | Los campos de detalles de la cuenta han cambiado. |
-| Agente actualizado | `managing_entity.agent.updated` | El agente de la entidad ha sido modificado. |
-
-### Notificaciones
-
-| Evento | Clave | Descripción |
-|---|---|---|
-| Notificación por correo al agente | `managing_entity.agent.email.notification` | Se ha enviado una notificación por correo al agente. |
-| Notificación por correo al administrador | `managing_entity.manager.email.notification` | Se ha enviado una notificación por correo a un administrador. |
-
-### Tareas de cuenta
-
-| Evento | Clave | Descripción |
-|---|---|---|
-| Tarea creada | `account.task.create` | Se ha agregado una nueva tarea a la cuenta. |
-| Tarea actualizada | `account.task.update` | Se ha modificado una tarea de la cuenta. |
-| Tarea eliminada | `account.task.remove` | Se ha eliminado una tarea de la cuenta. |
-| Tarea completada | `account.task.complete` | Se ha completado una tarea de la cuenta. |
-| Tarea de verificación de ID fiscal completada | `account.task.tax_id.complete` | Se ha completado la tarea de verificación de ID fiscal. |
-
----
-
-## Eventos de reserva
-
-Eventos para el ciclo de vida de la reserva en Wink, desde la creación hasta reembolsos y pagos.
-
-### Reserva principal
-
-| Evento | Clave | Descripción |
-|---|---|---|
-| Reserva creada | `booking.create` | Se ha creado una nueva reserva. |
-| Reserva cancelada | `booking.cancelled` | Se ha cancelado una reserva. |
-| Reserva fallida | `booking.failed` | Un intento de reserva falló. |
-| Reserva en proceso | `booking.processing` | El pago de la reserva está en proceso. |
-| Inicialización solicitada | `booking.initialize.request` | Se ha solicitado la inicialización de una reserva. |
-| Inicialización completada | `booking.initialize.complete` | La inicialización de la reserva ha finalizado. |
-
-### Reembolsos
-
-| Evento | Clave | Descripción |
-|---|---|---|
-| Solicitud de reembolso | `booking.refund.request` | Se ha enviado una solicitud de reembolso. |
-| Error de reembolso | `booking.refund.error` | Ocurrió un error al procesar un reembolso. |
-| Reembolso parcial | `booking.refund.partial` | Se ha emitido un reembolso parcial. |
-| Reembolso total | `booking.refund.full` | Se ha emitido un reembolso total. |
-
-### Pagos
-
-| Evento | Clave | Descripción |
-|---|---|---|
-| Pago creado | `booking.payout.create` | Se ha creado un pago para la reserva. |
-| Pago completado | `booking.payout.complete` | Un pago se ha completado exitosamente. |
-| Fondos disponibles | `booking.funds.available` | Los fondos de la reserva están disponibles para liquidación. |
-| Fondos registrados | `booking.funds.ledgered` | Los fondos de la reserva han sido registrados en el libro mayor. |
-
-### Reseñas
-
-| Evento | Clave | Descripción |
-|---|---|---|
-| Reseña enviada | `booking.review.created` | Un huésped ha enviado una reseña para una reserva. |
-| Reseña respondida | `booking.review.responded` | Una propiedad ha respondido a una reseña de reserva. |
-
----
-
-## Eventos de propiedad
-
-Eventos para perfiles y contenido de propiedades, enviados a los suscriptores webhook de la propiedad.
-
-| Evento | Clave | Descripción |
-|---|---|---|
-| Propiedad creada | `property.created` | Se ha creado una nueva propiedad. |
-| Propiedad actualizada | `property.updated` | Se han actualizado los detalles de la propiedad. |
-| Propiedad eliminada | `property.deleted` | Se ha eliminado una propiedad. |
-| Propiedad registrada | `property.registered` | Una propiedad ha completado su registro. |
-| Estado actualizado | `property.status.updated` | El estado externo de la propiedad ha cambiado. |
-| Nombre actualizado | `property.name.updated` | El nombre de la propiedad ha cambiado. |
-| Dirección actualizada | `property.address.updated` | La dirección de la propiedad ha sido actualizada. |
-| Geolocalización actualizada | `property.geolocation.updated` | La geolocalización de la propiedad ha sido actualizada. |
-| Perfil actualizado | `property.profile.updated` | El contenido del perfil de la propiedad ha cambiado. |
-| Servicios actualizados | `property.services.updated` | La lista de servicios/amenidades de la propiedad ha cambiado. |
-| Texto de bienvenida actualizado | `property.welcome_text.updated` | El mensaje de bienvenida de la propiedad ha cambiado. |
-| Política creada | `property.policy.created` | Se ha creado una nueva política de propiedad. |
-| Política actualizada | `property.policy.updated` | Se ha actualizado una política de propiedad. |
-
----
-
-## Eventos de inventario
-
-Eventos para ítems de inventario dentro de una propiedad, enviados a los suscriptores webhook de esa propiedad.
-
-### Tipos de habitación
-
-| Evento | Clave | Descripción |
-|---|---|---|
-| Tipo de habitación creado | `room_type.created` | Se ha agregado un nuevo tipo de habitación. |
-| Tipo de habitación actualizado | `room_type.updated` | Se ha modificado un tipo de habitación. |
-| Tipo de habitación eliminado | `room_type.deleted` | Se ha eliminado un tipo de habitación. |
-
-### Planes tarifarios
-
-| Evento | Clave | Descripción |
-|---|---|---|
-| Plan tarifario creado | `rate_plan.created` | Se ha creado un nuevo plan tarifario. |
-| Plan tarifario actualizado | `rate_plan.updated` | Se ha modificado un plan tarifario. |
-| Plan tarifario eliminado | `rate_plan.deleted` | Se ha eliminado un plan tarifario. |
-
-### Tarifas maestras
-
-| Evento | Clave | Descripción |
-|---|---|---|
-| Tarifa maestra creada | `master_rate.created` | Se ha creado una nueva tarifa maestra. |
-| Tarifa maestra actualizada | `master_rate.updated` | Se ha modificado una tarifa maestra. |
-| Tarifa maestra eliminada | `master_rate.deleted` | Se ha eliminado una tarifa maestra. |
-
-### Complementos
-
-| Evento | Clave | Descripción |
-|---|---|---|
-| Complemento creado | `add_on.created` | Se ha creado un nuevo complemento. |
-| Complemento actualizado | `add_on.updated` | Se ha modificado un complemento. |
-| Complemento eliminado | `add_on.deleted` | Se ha eliminado un complemento. |
-
-### Salas de reuniones
-
-| Evento | Clave | Descripción |
-|---|---|---|
-| Sala de reuniones creada | `meeting_room.created` | Se ha agregado una nueva sala de reuniones. |
-| Sala de reuniones actualizada | `meeting_room.updated` | Se ha modificado una sala de reuniones. |
-| Sala de reuniones eliminada | `meeting_room.deleted` | Se ha eliminado una sala de reuniones. |
-
-### Restaurantes
-
-| Evento | Clave | Descripción |
-|---|---|---|
-| Restaurante creado | `restaurant.created` | Se ha agregado un nuevo restaurante. |
-| Restaurante actualizado | `restaurant.updated` | Se ha modificado un restaurante. |
-| Restaurante eliminado | `restaurant.deleted` | Se ha eliminado un restaurante. |
-
-### Spas
-
-| Evento | Clave | Descripción |
-|---|---|---|
-| Spa creado | `spa.created` | Se ha agregado un nuevo spa. |
-| Spa actualizado | `spa.updated` | Se ha modificado un spa. |
-| Spa eliminado | `spa.deleted` | Se ha eliminado un spa. |
-
-### Actividades
-
-| Evento | Clave | Descripción |
-|---|---|---|
-| Actividad creada | `activity.created` | Se ha agregado una nueva actividad. |
-| Actividad actualizada | `activity.updated` | Se ha modificado una actividad. |
-| Actividad eliminada | `activity.deleted` | Se ha eliminado una actividad. |
-
----
-
-## Eventos de canal de ventas
-
-Eventos para canales de distribución que enlazan proveedores y afiliados. Enviados tanto a los suscriptores webhook del proveedor como del afiliado.
-
-| Evento | Clave | Descripción |
-|---|---|---|
-| Canal de ventas creado | `sales_channel.created` | Se ha creado un nuevo canal de ventas. |
-| Canal de ventas actualizado | `sales_channel.updated` | Se ha modificado un canal de ventas. |
-| Canal de ventas eliminado | `sales_channel.deleted` | Se ha eliminado un canal de ventas. |
-
----
-
-## Eventos de tarifa especial
-
-Eventos para tarifas promocionales y negociadas en una propiedad.
-
-| Evento | Clave | Descripción |
-|---|---|---|
-| Tarifa especial creada | `special_rate.created` | Se ha creado una nueva tarifa especial. |
-| Tarifa especial actualizada | `special_rate.updated` | Se ha modificado una tarifa especial. |
-| Tarifa especial eliminada | `special_rate.deleted` | Se ha eliminado una tarifa especial. |
-| Modificador de tarifa actualizado | `rate_modifier.updated` | Se ha actualizado un modificador de tarifa. |
-
----
-
-## Eventos de beneficiario
-
-Eventos relacionados con la gestión de beneficiarios (destinatarios de pago).
-
-| Evento | Clave | Descripción |
-|---|---|---|
-| Beneficiario creado | `payee.create` | Se ha creado un nuevo beneficiario exitosamente. |
-| Fallo en creación de beneficiario | `payee.create.failure` | Falló la creación del beneficiario. |
-| Beneficiario actualizado | `payee.update` | Se ha actualizado un beneficiario. |
-| Fallo en actualización de beneficiario | `payee.update.failure` | Falló la actualización del beneficiario. |
-
----
-
-## Eventos de pago
-
-Eventos internos de procesamiento de pagos de TripPay.
-
-| Evento | Clave | Descripción |
-|---|---|---|
-| Pago exitoso | `internal.payment.succeeded` | El pago se ha procesado exitosamente. |
-| Pago en proceso | `internal.payment.processing` | El pago está siendo procesado. |
-| Pago fallido | `internal.payment.failed` | El procesamiento del pago ha fallado. |
-
----
-
-## Eventos de channel manager
-
-Eventos relacionados con actualizaciones de tarifas y disponibilidad enviadas por channel manager.
-
-| Evento | Clave | Descripción |
-|---|---|---|
-| Actualización de tarifa | `channel-manager.update.rate` | El channel manager ha enviado una actualización de tarifa. |
-| Actualización de disponibilidad | `channel-manager.update.availability` | El channel manager ha enviado una actualización de disponibilidad. |
-| Actualización general | `channel-manager.update` | Actualización general del channel manager. |
-
----
-
-## Eventos de libro mayor
-
-Eventos relacionados con entradas en el libro mayor financiero.
-
-| Evento | Clave | Descripción |
-|---|---|---|
-| Entrada en libro mayor creada | `ledger.entry.create` | Se ha registrado una nueva entrada en el libro mayor. |
-
----
-
-## Eventos de correo electrónico
-
-| Evento | Clave | Descripción |
-|---|---|---|
-| Correspondencia por correo | `email.correspondence` | Se ha enviado un correo electrónico saliente. |
-
----
-
-## Resumen de conteo de eventos
-
-| Categoría | Conteo |
-|---|---|
-| Eventos de entidad gestora | 33 |
-| Eventos de reserva | 16 |
-| Eventos de propiedad | 13 |
-| Eventos de inventario (tipos de habitación, planes tarifarios, tarifas maestras, complementos, instalaciones) | 24 |
-| Eventos de canal de ventas | 3 |
-| Eventos de tarifa especial | 4 |
-| Eventos de beneficiario | 4 |
-| Eventos de pago | 3 |
-| Eventos de channel manager | 3 |
-| Eventos de libro mayor | 1 |
-| Eventos de correo electrónico | 1 |
-| **Total** | **105** |
+2. Crea un webhook y selecciona los eventos que deseas recibir — o deja la lista vacía para recibir todos los eventos.
+3. Wink envía un HTTP POST firmado a tu endpoint cada vez que ocurre el evento. Consulta [Integración Webhook](/es-MX/developers/webhook-integration) para ver el sobre, encabezados, verificación de firma y reintentos.
+
+## Todos los tipos de eventos
+
+Esta tabla se genera a partir del catálogo de eventos de la plataforma en tiempo de compilación, por lo que siempre coincide con la API.
+Los tipos de eventos marcados como entregados enlazan a su página de referencia en la [API de Webhooks](/es-MX/api/webhooks/), que
+documenta el cuerpo JSON exacto (`WebhookEnvelope` con un `object` específico del evento), los encabezados `Wink-*` y
+la política de reintentos. Los tipos de eventos que no se entregan existen internamente (pagos, libro mayor, sincronización de channel-manager, …) pero actualmente no se envían a los suscriptores webhook.
+
+**Destinatarios** indica quién recibe un evento: `SUPPLIER` (el hotel), `AFFILIATE` (un revendedor con un canal de ventas activo hacia el hotel), `AGENT` (la agencia de viajes que hizo la reserva) o `SELF` (la entidad gestora sobre la que trata el evento). Cada destinatario recibe la misma forma de payload; el detalle específico del rol está detrás de la URL `links.self` del payload.
+
+<WebhookEventTypes
+  types={webhooks['x-wink-event-types']}
+  referenceBase="/api/webhooks"
+  eventHeader="Evento"
+  descriptionHeader="Descripción"
+  deliveredHeader="Entregado"
+  recipientsHeader="Destinatarios"
+  deliveredLabel="entregado"
+  notDeliveredLabel="no entregado"
+  noRecipientsLabel="—"
+/>
 
 :::tip
-Comienza suscribiéndote a todos los eventos durante el desarrollo. Una vez que entiendas qué cargas útiles necesita tu sistema, reduce tus suscripciones para disminuir el ruido.
+Comienza suscribiéndote a todos los eventos durante el desarrollo. Una vez que entiendas qué payloads necesita tu sistema, reduce tus suscripciones para disminuir el ruido. Envíate un evento de prueba desde **Aplicaciones > Webhooks** (o `POST …/webhook/{id}/test`) para confirmar tu endpoint y la verificación de firma antes de entrar en producción.
 :::
 
 ## Lectura adicional
@@ -328,4 +46,4 @@ Comienza suscribiéndote a todos los eventos durante el desarrollo. Una vez que 
 - [Guía de Integración Webhook](/es-MX/developers/webhook-integration) — Pasos de configuración y mejores prácticas.
 - [Webhooks](/es-MX/portal/settings/webhooks) — Gestiona tus suscripciones webhook.
 - [Aplicaciones](/es-MX/account/applications) — Gestiona credenciales API.
-- [Construye sobre Wink](/es-MX/developers/build-on-wink) — Visión general de la plataforma para desarrolladores.
+- [Construye en Wink](/es-MX/developers/build-on-wink) — Visión general de la plataforma para desarrolladores.

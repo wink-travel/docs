@@ -1,0 +1,63 @@
+---
+title: タクソノミー
+description: Winkプラットフォームで使用される管理語彙 — アメニティ、ベッドタイプ、客室の眺望などのOTAコード、対応するすべての言語と通貨。
+sidebar:
+  order: 12
+---
+
+import taxonomy from '@/data/taxonomy.json';
+import OtaCategories from '@/components/taxonomy/ota-categories.astro';
+import CodeTable from '@/components/taxonomy/code-table.astro';
+
+Winkはインベントリを管理語彙で表現します — 意味が合意された固定のコードセットです。ホテルのアメニティとして `"5"` を送信すると、プラットフォームはそれを*エアコン*として読み取り、そのデータのすべての利用者も同様に解釈します。
+
+このページは3つの語彙すべての公開リファレンスです：
+
+- **OTAコード** — {taxonomy.ota.categoryCount}カテゴリにわたる{taxonomy.ota.codeCount}のコードで、アメニティ、ベッドタイプ、客室の眺望、アクセシビリティ機能、料理などをカバー。
+- **言語** — コンテンツが作成・提供可能な{taxonomy.languages.list.length}の言語。
+- **通貨** — レートの見積もりや決済に使用可能な{taxonomy.currencies.list.length}の通貨。
+
+コードは安定しています。名称は明確化のために変更されることがあるため、**コード**で照合し、名称で照合しないでください。
+
+## OTAコード
+
+Winkは[OpenTravel Alliance](https://opentravel.org/)のコードリストに従っています。各カテゴリには3文字の識別子があり — ホテルアメニティは`HAC`、ベッドタイプは`BED` — 各カテゴリ内のコードはそのカテゴリに固有です。同じ数値でもカテゴリが異なれば意味が異なるため、コードは所属するカテゴリとともに意味を持ちます：`BED`の`1`は*ダブル / フル*、`HAC`の`1`は*24時間対応フロント*です。
+
+カテゴリを選択してコードを表示してください。
+
+<OtaCategories
+  categories={taxonomy.ota.categories}
+  categoryHeader="カテゴリ"
+  descriptionHeader="説明"
+  countHeader="コード数"
+  codeHeader="コード"
+  nameHeader="名称"
+/>
+
+## 言語
+
+コンテンツ — 物件説明、部屋名、ポリシーなど — は以下のいずれかの言語で作成可能です。コードは[IETF BCP 47](https://www.rfc-editor.org/info/bcp47)タグで、2文字の[ISO 639-1](https://www.iso.org/iso-639-language-code)言語コードに、プラットフォームが地域差を区別する場合は[ISO 3166-1](https://www.iso.org/iso-3166-country-codes.html)地域コードが続きます — `pt-BR`と`pt-PT`は別々に扱われ、`es`、`es-AR`、`es-MX`も同様です。
+
+プラットフォームのデフォルトは`{taxonomy.languages.default}`で、言語指定がないリクエストや翻訳がない場合に使用されます。
+
+<CodeTable
+  rows={taxonomy.languages.list}
+  codeHeader="コード"
+  nameHeader="言語"
+  unnamedLabel="標準名称なし"
+/>
+
+## 通貨
+
+レートは以下の通貨で見積もりおよび決済が可能です。コードは[ISO 4217](https://www.iso.org/iso-4217-currency-codes.html)の3文字識別子です。
+
+プラットフォームのデフォルトは`{taxonomy.currencies.default}`です。これは表示用のフォールバック通貨であり、プラットフォームレベルの数値が正規化される単位です。**予約の決済通貨ではありません** — ホテルは自国通貨で決済するため、ある通貨で見積もられ別の通貨で支払われる場合は為替差が生じます。
+
+いくつかの項目は国の通貨ではありません：`XAU`と`XAG`は金と銀、`XDR`はIMFの特別引出権、`BTC`はビットコインです。これらは評価や報告のために含まれており、一般的に決済通貨としては使用されません。
+
+<CodeTable
+  rows={taxonomy.currencies.list}
+  codeHeader="コード"
+  nameHeader="通貨"
+  unnamedLabel="標準名称なし"
+/>

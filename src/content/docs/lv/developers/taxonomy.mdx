@@ -1,0 +1,63 @@
+---
+title: Taksonomija
+description: Kontrolētās vārdnīcas, ko izmanto Wink platforma — OTA kodi ērtībām, gultu veidiem, numuru skatiem un citiem, kā arī visas atbalstītās valodas un valūtas.
+sidebar:
+  order: 12
+---
+
+import taxonomy from '@/data/taxonomy.json';
+import OtaCategories from '@/components/taxonomy/ota-categories.astro';
+import CodeTable from '@/components/taxonomy/code-table.astro';
+
+Wink apraksta inventāru, izmantojot kontrolētas vārdnīcas — fiksētas kodu kopas ar vienošanos par nozīmi. Kad jūs nosūtāt `"5"` kā viesnīcas ērtību, platforma to lasa kā *Gaisa kondicionēšana*, un to pašu dara arī visi šos datus izmantojošie.
+
+Šī lapa ir publicēta atsauce visām trim vārdnīcām:
+
+- **OTA kodi** — {taxonomy.ota.codeCount} kodi {taxonomy.ota.categoryCount} kategorijās, aptverot ērtības, gultu tipus, numuru skatus, pieejamības funkcijas, virtuvi un vēl.
+- **Valodas** — {taxonomy.languages.list.length} valodas, kurās var veidot un piedāvāt saturu.
+- **Valūtas** — {taxonomy.currencies.list.length} valūtas, kurās var norādīt un norēķināt cenas.
+
+Kodi ir stabils. Nosaukumi var tikt pārfrāzēti skaidrības labad, tāpēc saskaņojiet pēc **koda**, nekad ne pēc nosaukuma.
+
+## OTA kodi
+
+Wink seko [OpenTravel Alliance](https://opentravel.org/) kodu sarakstiem. Katram kategorijai ir trīs burtu identifikators — `HAC` viesnīcas ērtībām, `BED` gultu veidiem — un katrs kods kategorijā ir unikāls. Tas pats skaitlis dažādās kategorijās nozīmē dažādas lietas, tāpēc kods ir jēgpilns tikai kopā ar kategoriju, kurai tas pieder: `BED` `1` ir *Divvietīga / Pilna izmēra gulta*, bet `HAC` `1` ir *24 stundu reģistratūra*.
+
+Izvēlieties kategoriju, lai redzētu tās kodus.
+
+<OtaCategories
+  categories={taxonomy.ota.categories}
+  categoryHeader="Kategorija"
+  descriptionHeader="Apraksts"
+  countHeader="Kodu skaits"
+  codeHeader="Kods"
+  nameHeader="Nosaukums"
+/>
+
+## Valodas
+
+Saturs — īpašuma apraksti, numuru nosaukumi, noteikumi — var tikt veidots jebkurā no šīm valodām. Kodi ir [IETF BCP 47](https://www.rfc-editor.org/info/bcp47) tagi: divu burtu [ISO 639-1](https://www.iso.org/iso-639-language-code) valoda, pēc izvēles seko [ISO 3166-1](https://www.iso.org/iso-3166-country-codes.html) reģions, kur platforma atšķir reģionālās variācijas — `pt-BR` un `pt-PT` tiek apstrādāti atsevišķi, tāpat kā `es`, `es-AR` un `es-MX`.
+
+Platformas noklusējums ir `{taxonomy.languages.default}`, ko izmanto, ja pieprasījumā nav norādīta valoda vai tulkojums nav pieejams.
+
+<CodeTable
+  rows={taxonomy.languages.list}
+  codeHeader="Kods"
+  nameHeader="Valoda"
+  unnamedLabel="Nav standarta nosaukuma"
+/>
+
+## Valūtas
+
+Cenas var norādīt un norēķināt jebkurā no šīm valūtām. Kodi ir [ISO 4217](https://www.iso.org/iso-4217-currency-codes.html) trīs burtu identifikatori.
+
+Platformas noklusējums ir `{taxonomy.currencies.default}`. Tā ir rezerves attēlošanas valūta un vienība, kurā tiek normalizēti platformas līmeņa skaitļi; tā **nav** valūta, kurā tiek veikts rezervējuma norēķins — viesnīcas norēķinās savā valūtā, tāpēc cena, kas norādīta vienā valūtā un samaksāta citā, ietver valūtas maiņas starpību.
+
+Dažas vienības nav valsts valūtas: `XAU` un `XAG` ir zelts un sudrabs, `XDR` ir IMF īpašais aizņēmuma tiesību vienības, un `BTC` ir Bitcoin. Tās tiek izmantotas vērtēšanai un atskaitēm, bet parasti nav izmantojamas kā norēķinu valūta.
+
+<CodeTable
+  rows={taxonomy.currencies.list}
+  codeHeader="Kods"
+  nameHeader="Valūta"
+  unnamedLabel="Nav standarta nosaukuma"
+/>

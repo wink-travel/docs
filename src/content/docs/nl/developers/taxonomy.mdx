@@ -1,0 +1,76 @@
+---
+title: Taxonomie
+description: De gecontroleerde vocabularia die het Wink-platform gebruikt — OTA-codes voor voorzieningen, bedtypes, kamervoorzieningen en meer, plus elke ondersteunde taal en valuta.
+sidebar:
+  order: 12
+---
+
+import taxonomy from '@/data/taxonomy.json';
+import OtaCategories from '@/components/taxonomy/ota-categories.astro';
+import CodeTable from '@/components/taxonomy/code-table.astro';
+
+Wink beschrijft inventaris met gecontroleerde vocabularia — vaste sets codes met afgesproken betekenissen. Wanneer
+je `"5"` als hotelvoorziening verstuurt, leest het platform dit als *Airconditioning*, en elke gebruiker van
+die data doet dat ook.
+
+Deze pagina is de gepubliceerde referentie voor alle drie vocabularia:
+
+- **OTA-codes** — {taxonomy.ota.codeCount} codes verdeeld over {taxonomy.ota.categoryCount} categorieën, die voorzieningen, bedtypes, kamervoorzieningen, toegankelijkheidskenmerken, keukenstijlen en meer omvatten.
+- **Talen** — de {taxonomy.languages.list.length} talen waarin content kan worden geschreven en aangeboden.
+- **Valuta** — de {taxonomy.currencies.list.length} valuta waarin tarieven kunnen worden opgegeven en verrekend.
+
+Codes zijn stabiel. Namen kunnen worden aangepast voor duidelijkheid, dus match altijd op de **code**, nooit op de naam.
+
+## OTA-codes
+
+Wink volgt de codelijsten van de [OpenTravel Alliance](https://opentravel.org/). Elke categorie heeft een
+drieletterige identificatie — `HAC` voor hotelvoorzieningen, `BED` voor bedtypes — en elke code binnen een
+categorie is uniek voor die categorie. Dezelfde numerieke waarde betekent iets anders in verschillende categorieën, dus een
+code is alleen betekenisvol in combinatie met de categorie waartoe deze behoort: `BED` `1` is *Tweepersoons / Full*, terwijl `HAC`
+`1` *24-uurs receptie* betekent.
+
+Selecteer een categorie om de codes te zien.
+
+<OtaCategories
+  categories={taxonomy.ota.categories}
+  categoryHeader="Categorie"
+  descriptionHeader="Beschrijving"
+  countHeader="Codes"
+  codeHeader="Code"
+  nameHeader="Naam"
+/>
+
+## Talen
+
+Content — eigenschapsbeschrijvingen, kamernamen, beleidsregels — kan worden geschreven in een van deze talen.
+Codes zijn [IETF BCP 47](https://www.rfc-editor.org/info/bcp47) tags: een tweeletterige
+[ISO 639-1](https://www.iso.org/iso-639-language-code) taalcode, optioneel gevolgd door een
+[ISO 3166-1](https://www.iso.org/iso-3166-country-codes.html) regio waar het platform regionale varianten onderscheidt — `pt-BR` en `pt-PT` worden apart behandeld, net als `es`, `es-AR` en `es-MX`.
+
+De platformstandaard is `{taxonomy.languages.default}`, gebruikt wanneer een verzoek geen taal specificeert en
+wanneer een vertaling niet beschikbaar is.
+
+<CodeTable
+  rows={taxonomy.languages.list}
+  codeHeader="Code"
+  nameHeader="Taal"
+  unnamedLabel="Geen standaardnaam"
+/>
+
+## Valuta
+
+Tarieven kunnen worden opgegeven en verrekend in een van deze valuta. Codes zijn
+[ISO 4217](https://www.iso.org/iso-4217-currency-codes.html) drieletterige identificaties.
+
+De platformstandaard is `{taxonomy.currencies.default}`. Dit is de fallback weergavevaluta en de
+eenheid waar platformniveau-cijfers naar worden genormaliseerd; het is **niet** de valuta waarin een boeking wordt verrekend — hotels
+verrekenen in hun eigen valuta, dus een tarief opgegeven in de ene valuta en betaald in een andere brengt een wisselkoersopslag met zich mee.
+
+Een paar vermeldingen zijn geen nationale valuta: `XAU` en `XAG` zijn goud en zilver, `XDR` is het Special Drawing Right van het IMF, en `BTC` is Bitcoin. Deze worden gebruikt voor waardering en rapportage, en zijn over het algemeen niet bruikbaar als verrekeningsvaluta.
+
+<CodeTable
+  rows={taxonomy.currencies.list}
+  codeHeader="Code"
+  nameHeader="Valuta"
+  unnamedLabel="Geen standaardnaam"
+/>

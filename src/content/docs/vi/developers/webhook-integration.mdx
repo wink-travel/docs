@@ -29,49 +29,138 @@ Hướng dẫn này dành cho các nhà phát triển tích hợp Wink với cá
 5. Nhập **URL webhook** của bạn — điểm cuối HTTPS trên máy chủ của bạn.
 6. **Chọn sự kiện** — Chọn các sự kiện cụ thể để đăng ký, hoặc để trống để nhận tất cả sự kiện.
 7. Bật **Enabled**.
-8. Nhấn `Save`.
+8. Nhấn `Save` — phản hồi sẽ hiển thị **mã bí mật ký** của bạn một lần; hãy lưu lại ngay.
 </Steps>
 
 ## Các loại sự kiện
 
-Wink hỗ trợ **hơn 64 loại sự kiện webhook** thuộc các danh mục bao gồm quản lý tài khoản, hợp đồng đặt phòng, thanh toán, cập nhật quản lý kênh và quản lý thực thể. Các sự kiện phổ biến bao gồm:
+Wink hiện cung cấp 70 loại sự kiện webhook trên các lĩnh vực đặt phòng, bất động sản, tài khoản (quản lý thực thể) và tồn kho (loại phòng, kế hoạch giá, giá chính, phụ phí, tiện nghi, kênh bán hàng, khuyến mãi). Các loại phổ biến:
 
 | Danh mục | Ví dụ |
 |---|---|
-| **Đặt phòng** | `booking.create`, `booking.cancelled` |
-| **Hợp đồng đặt phòng** | `booking.contract.created`, `booking.contract.processing`, `booking.contract.cancelled` |
-| **Thanh toán** | `internal.payment.succeeded`, `internal.payment.failed` |
-| **Hoàn tiền** | `booking.contract.refund.partial`, `booking.contract.refund.full` |
-| **Quản lý kênh** | `channel-manager.update.rate`, `channel-manager.update.availability` |
-| **Tài khoản** | `account.create`, `account.status.updated` |
+| **Đặt phòng** | `booking.create`, `booking.cancelled`, `booking.refund.partial`, `booking.refund.full`, `booking.review.created` |
+| **Bất động sản** | `property.created`, `property.status.updated`, `property.policy.updated` |
+| **Tồn kho** | `room_type.updated`, `rate_plan.created`, `master_rate.updated`, `special_rate.created`, `sales_channel.created` |
+| **Tài khoản** | `managing_entity.created`, `managing_entity.status.updated`, `managing_entity.manager.added` |
 
-Để xem danh sách đầy đủ các loại sự kiện kèm mô tả, xem **Danh mục Sự kiện Webhook**.
+Danh sách đầy đủ, được tạo tự động — kèm mô tả, người nhận và liên kết đến trang tham khảo từng sự kiện — là **Danh mục Sự kiện Webhook**. Trang tham khảo cho mỗi sự kiện (cấu trúc JSON, header, chính sách thử lại) nằm trong [Webhooks API](/vi/api/webhooks/).
 
 <LinkButton href="/vi/developers/webhook-events">
-  Xem tất cả hơn 64 loại sự kiện
+  Xem tất cả các loại sự kiện
 </LinkButton>
 
-:::tip
-Bắt đầu bằng cách đăng ký tất cả các sự kiện trong quá trình phát triển. Khi bạn hiểu payload, hãy thu hẹp lại chỉ những sự kiện hệ thống của bạn cần.
-:::
+## Những gì bạn nhận được
+
+Mỗi lần gửi là một HTTP `POST` đến URL webhook của bạn với `Content-Type: application/json` và bao bì như sau:
+
+```json
+{
+  "id": "0198a4f2-6b0e-7c1d-9a3e-2f4b8c6d1e0a",
+  "type": "booking.create",
+  "occurredAt": "2026-08-15T09:30:00Z",
+  "ownerIdentifier": "3c6b1a5d-8e2f-4a0b-9c7d-6e4f0a8b2c51",
+  "recipientRole": "SUPPLIER",
+  "schemaVersion": 2,
+  "object": { "...": "payload sự kiện cụ thể, ví dụ BookingWebhookPayload" }
+}
+```
+
+- `id` — định danh sự kiện; giống nhau cho mọi điểm cuối của tài khoản bạn nhận sự kiện này và cho mọi lần thử lại. Dùng làm **khóa idempotency**.
+- `type` — khóa loại sự kiện (cũng được gửi dưới dạng header `Wink-Event-Type`). Phân nhánh theo `type` và `schemaVersion` để phân tích `object`.
+- `object` — tóm tắt có chọn lọc về tài nguyên sự kiện liên quan (định danh, trạng thái, các trường bạn thao tác) cùng với `links.self`, URL REST chuẩn của nhà cung cấp cho tài nguyên đầy đủ. Lấy nó bằng API của bạn khi cần nhiều hơn tóm tắt; nếu bạn nhận sự kiện với vai trò đại lý hoặc nhà bán lại, hãy dùng điểm cuối tài nguyên tương ứng trong API của bạn cho cùng định danh.
+
+Mỗi cấu trúc payload được tài liệu hóa theo sự kiện trong tham khảo [Webhooks API](/vi/api/webhooks/).
+
+### Header
+
+| Header | Ý nghĩa |
+|---|---|
+| `Wink-Version` | Phiên bản hợp đồng giao tiếp, `2.0`. |
+| `Wink-Event-Id` | Giống `id` trong thân — khóa idempotency của bạn. |
+| `Wink-Delivery-Id` | Duy nhất cho mỗi điểm cuối mỗi sự kiện; chỉ thay đổi khi bạn gửi lại. |
+| `Wink-Event-Type` | Giống `type` trong thân. |
+| `Wink-Delivery-Attempt` | Số lần thử gửi, bắt đầu từ 1. |
+| `Wink-Signature` | Chữ ký HMAC — xem bên dưới. |
+
+## Xác thực chữ ký
+
+Mỗi webhook có một **mã bí mật ký** (`whsec_…`) mà Wink chỉ hiển thị **một lần**, khi bạn tạo webhook hoặc xoay mã bí mật. Hãy lưu nó như mật khẩu. Mỗi lần gửi kèm theo
+
+```
+Wink-Signature: t=1755250200,v1=5d41402abc4b2a76b9719d911017c592…
+```
+
+trong đó `t` là dấu thời gian Unix (giây) và `v1` là chữ ký **HMAC-SHA256** dạng hex chữ thường của chuỗi `t + "." + rawBody`, dùng mã bí mật của bạn làm khóa, và `rawBody` là chính xác phần thân yêu cầu nhận được — không được serialize lại JSON trước khi xác thực. Trong 24 giờ sau khi xoay mã bí mật, header có thể chứa thêm một giá trị `v1=` ký bằng mã bí mật cũ; chấp nhận nếu **bất kỳ** `v1` nào khớp.
+
+Xác thực gồm bốn bước: phân tích `t` và mọi `v1`; tính lại HMAC trên `t.rawBody` với mã bí mật; so sánh bằng phương pháp thời gian cố định; từ chối nếu `|now − t|` vượt quá ngưỡng cho phép (khuyến nghị 5 phút).
+
+```js
+// Node.js (kiểu Express; đảm bảo bạn có RAW body, không phải đối tượng đã phân tích)
+import { createHmac, timingSafeEqual } from 'node:crypto';
+
+export function verifyWinkSignature(header, rawBody, secret, toleranceSeconds = 300) {
+  const parts = Object.fromEntries(header.split(',').map((p) => p.split('=').map((s) => s.trim())));
+  const t = Number(parts.t);
+  if (!Number.isFinite(t) || Math.abs(Date.now() / 1000 - t) > toleranceSeconds) return false;
+  const expected = createHmac('sha256', secret).update(`${t}.${rawBody}`).digest('hex');
+  return header
+    .split(',')
+    .filter((p) => p.trim().startsWith('v1='))
+    .map((p) => p.trim().slice(3))
+    .some((v1) => v1.length === expected.length && timingSafeEqual(Buffer.from(v1, 'utf8'), Buffer.from(expected, 'utf8')));
+}
+```
+
+```java
+// Java
+static boolean verify(String header, String rawBody, String secret, long nowSeconds, long toleranceSeconds) throws Exception {
+    long t = Long.MIN_VALUE;
+    List<String> signatures = new ArrayList<>();
+    for (String part : header.split(",")) {
+        String[] kv = part.trim().split("=", 2);
+        if (kv[0].equals("t")) t = Long.parseLong(kv[1]);
+        else if (kv[0].equals("v1")) signatures.add(kv[1]);
+    }
+    if (t == Long.MIN_VALUE || Math.abs(nowSeconds - t) > toleranceSeconds) return false;
+    Mac mac = Mac.getInstance("HmacSHA256");
+    mac.init(new SecretKeySpec(secret.getBytes(StandardCharsets.UTF_8), "HmacSHA256"));
+    byte[] expected = HexFormat.of().formatHex(mac.doFinal((t + "." + rawBody).getBytes(StandardCharsets.UTF_8))).getBytes(StandardCharsets.US_ASCII);
+    return signatures.stream().anyMatch(v1 -> MessageDigest.isEqual(expected, v1.toLowerCase().getBytes(StandardCharsets.US_ASCII)));
+}
+```
+
+Xoay mã bí mật từ portal hoặc với `POST /api/managing-entity/{id}/webhook/{webhookId}/rotate-secret`; phản hồi sẽ hiển thị mã bí mật mới một lần, và mã cũ vẫn được xác thực trong 24 giờ trong khi bạn triển khai.
+
+## Thử lại và gửi lại
+
+- Phản hồi với bất kỳ mã `2xx` nào trong vòng 10 giây để xác nhận. Thực hiện công việc nặng một cách bất đồng bộ.
+- Mã `5xx`, timeout, `408` hoặc `429` sẽ được thử lại với khoảng cách tăng dần: sau 1 phút, 5 phút, 30 phút, 2 giờ, 6 giờ, 12 giờ, rồi hàng ngày — 10 lần thử trong khoảng 3 ngày — sau đó lần gửi được đánh dấu là **chết**.
+- Mã `4xx` khác được coi là "bạn từ chối lần gửi này" và **không** được thử lại.
+- Mỗi sự kiện, lần gửi và lần thử (trạng thái, đoạn phản hồi) đều hiển thị trong **Applications > Webhooks** và qua API (`…/webhook/event/grid`, `…/webhook/delivery/grid`). Bạn có thể **gửi lại** bất kỳ lần gửi nào (`POST …/webhook/delivery/{deliveryId}/redeliver`, bắt đầu chuỗi thử lại mới), gửi lại tất cả lần gửi chết của một webhook cùng lúc (`POST …/webhook/{webhookId}/redeliver-dead`), hoặc hủy một lần gửi.
+- Các lần gửi được lưu trữ trong 30 ngày.
+
+## Sự kiện thử nghiệm
+
+Gửi cho bạn một sự kiện tổng hợp `webhook.test` từ portal hoặc với `POST /api/managing-entity/{id}/webhook/{webhookId}/test`. Nó được ký và gửi giống hệt sự kiện thật, giúp bạn xác thực điểm cuối, kiểm tra chữ ký và xử lý idempotency trước khi đăng ký nhận sự kiện thực.
 
 ## Thực hành tốt nhất
 
-- **Sử dụng HTTPS** — Wink chỉ gửi payload đến các điểm cuối HTTPS.
-- **Phản hồi nhanh** — Trả về `200 OK` ngay khi nhận payload. Thực hiện các xử lý nặng một cách bất đồng bộ.
-- **Tính idempotent** — Bộ xử lý của bạn nên idempotent. Wink có thể thử gửi lại nếu không nhận được phản hồi `200`.
-- **Xác thực nguồn** — Xác minh các yêu cầu đến là từ Wink trước khi xử lý.
-- **Ghi nhật ký** — Ghi lại mọi payload webhook bạn nhận được. Điều này giúp việc gỡ lỗi tích hợp dễ dàng hơn nhiều.
+- **Dùng HTTPS** — Wink chỉ gửi payload đến các điểm cuối HTTPS.
+- **Phản hồi nhanh** — Trả về `200 OK` ngay khi nhận payload. Thực hiện xử lý nặng một cách bất đồng bộ.
+- **Idempotency** — Bộ xử lý của bạn nên idempotent; loại bỏ trùng lặp dựa trên `Wink-Event-Id`. Wink thử lại khi không nhận được phản hồi `2xx`.
+- **Xác thực nguồn** — Xác minh header `Wink-Signature` (xem [Xác thực chữ ký](#xác-thực-chữ-ký)) trước khi xử lý; từ chối mọi thứ không hợp lệ.
+- **Ghi log** — Ghi lại mọi payload webhook bạn nhận được. Điều này giúp dễ dàng gỡ lỗi khi tích hợp.
 
 ## Tạm dừng và xóa
 
-Bạn có thể **vô hiệu hóa** một webhook mà không xóa nó. Điều này tạm dừng việc gửi thông báo để bạn có thể khắc phục sự cố mà không mất cấu hình. Khi sẵn sàng, bật lại.
+Bạn có thể **vô hiệu hóa** một webhook mà không xóa nó. Điều này tạm dừng việc gửi để bạn có thể khắc phục sự cố mà không mất cấu hình. Khi sẵn sàng, bật lại.
 
-Xóa webhook sẽ xóa vĩnh viễn nó. Bất kỳ tích hợp nào dựa vào webhook đó sẽ ngừng nhận thông báo.
+Xóa webhook sẽ xóa vĩnh viễn. Bất kỳ tích hợp nào dựa vào webhook đó sẽ ngừng nhận thông báo.
 
 ## Đọc thêm
 
-- [Danh mục Sự kiện Webhook](/vi/developers/webhook-events) — Danh sách đầy đủ hơn 64 loại sự kiện.
+- [Danh mục Sự kiện Webhook](/vi/developers/webhook-events) — Mọi loại sự kiện, được tạo từ danh mục của nền tảng.
+- [Tham khảo Webhooks API](/vi/api/webhooks/) — Cấu trúc payload theo sự kiện, header và các điểm cuối quản lý đăng ký/gửi.
 - [Webhooks](/vi/portal/settings/webhooks) — Tham khảo đầy đủ về quản lý webhook.
-- [Applications](/vi/account/applications) — Quản lý thông tin API của bạn.
+- [Applications](/vi/account/applications) — Quản lý thông tin xác thực API của bạn.
 - [Developers > APIs](/vi/api) — Tài liệu API đầy đủ.

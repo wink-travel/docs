@@ -7,7 +7,7 @@ sidebar:
 
 import { Steps, LinkButton } from '@astrojs/starlight/components';
 
-Webhook'lar, Wink hesabınızda gerçekleşen yeni rezervasyonlar, iptaller, ödeme güncellemeleri ve daha fazlası gibi olaylar olduğunda sistemlerinizin gerçek zamanlı bildirim almasını sağlar. Bu rehber, kurulum ve en iyi uygulamalar konusunda sizi yönlendirir.
+Webhook'lar, Wink hesabınızda gerçekleşen olaylar — yeni rezervasyonlar, iptaller, ödeme güncellemeleri ve daha fazlası — için sistemlerinizin gerçek zamanlı bildirim almasını sağlar. Bu rehber, kurulum ve en iyi uygulamalar konusunda sizi yönlendirir.
 
 ## Hedef Kitle
 
@@ -22,56 +22,145 @@ Bu rehber, Wink'i mülk yönetim sistemleri (PMS), kanal yöneticileri, CRM'ler 
 ## Webhook kurulumu
 
 <Steps>
-1. Hesabınıza giriş yapın (Extranet, Studio veya TripPay — hepsi webhook'ları destekler).
-2. `Applications` bölümüne, ardından `Webhooks` sekmesine gidin. [Webhooks](/tr/portal/settings/webhooks) sayfasına bakın.
+1. Hesabınıza giriş yapın (Extranet, Studio veya TripPay — hepsi webhook desteği sunar).
+2. `Applications` bölümüne, ardından `Webhooks` sekmesine gidin. Bkz. [Webhooks](/tr/portal/settings/webhooks).
 3. `Create webhook` butonuna tıklayın.
 4. Bir **isim** girin (örneğin, "PMS Rezervasyon Senkronizasyonu").
 5. **Webhook URL'nizi** girin — sunucunuzdaki HTTPS uç noktası.
 6. **Olayları seçin** — Abone olmak istediğiniz belirli olayları seçin veya tüm olayları almak için boş bırakın.
 7. **Enabled** seçeneğini açın.
-8. `Save` butonuna tıklayın.
+8. `Save` butonuna tıklayın — yanıt, **imzalama gizli anahtarınızı** yalnızca bir kez gösterir; şimdi kaydedin.
 </Steps>
 
 ## Olay türleri
 
-Wink, hesap yönetimi, rezervasyon sözleşmeleri, ödemeler, kanal yöneticisi güncellemeleri ve yönetim varlıkları dahil olmak üzere kategorilerde **64+ webhook olay türü** destekler. Yaygın olaylar şunlardır:
+Wink bugün rezervasyonlar, mülkler, hesaplar (yönetim birimleri) ve envanter (oda tipleri, fiyat planları, ana fiyatlar, ek hizmetler, tesisler, satış kanalları, promosyonlar) genelinde 70 webhook olayı yayınlamaktadır. Yaygın olanlar:
 
 | Kategori | Örnekler |
 |---|---|
-| **Rezervasyon** | `booking.create`, `booking.cancelled` |
-| **Rezervasyon sözleşmesi** | `booking.contract.created`, `booking.contract.processing`, `booking.contract.cancelled` |
-| **Ödeme** | `internal.payment.succeeded`, `internal.payment.failed` |
-| **İadeler** | `booking.contract.refund.partial`, `booking.contract.refund.full` |
-| **Kanal yöneticisi** | `channel-manager.update.rate`, `channel-manager.update.availability` |
-| **Hesap** | `account.create`, `account.status.updated` |
+| **Rezervasyon** | `booking.create`, `booking.cancelled`, `booking.refund.partial`, `booking.refund.full`, `booking.review.created` |
+| **Mülk** | `property.created`, `property.status.updated`, `property.policy.updated` |
+| **Envanter** | `room_type.updated`, `rate_plan.created`, `master_rate.updated`, `special_rate.created`, `sales_channel.created` |
+| **Hesap** | `managing_entity.created`, `managing_entity.status.updated`, `managing_entity.manager.added` |
 
-Her olay türünün açıklamalarıyla tam listesi için **Webhook Olayları Kataloğu**na bakın.
+Tam, oluşturulmuş liste — açıklama, alıcı ve her olayın referans sayfasına bağlantı ile — **Webhook Olayları Kataloğu**dur. Her olayın referans sayfası (JSON gövdesi, başlıklar, yeniden deneme politikası) [Webhooks API](/tr/api/webhooks/) içinde bulunur.
 
 <LinkButton href="/tr/developers/webhook-events">
-  Tüm 64+ olay türünü görüntüle
+  Tüm olay türlerini görüntüle
 </LinkButton>
 
-:::tip
-Geliştirme sırasında tüm olaylara abone olarak başlayın. Yükleri anladıktan sonra, sisteminizin ihtiyaç duyduğu olaylarla sınırlandırın.
-:::
+## Aldıklarınız
+
+Her teslimat, webhook URL'nize `Content-Type: application/json` ile bir HTTP `POST` ve şu zarfla yapılır:
+
+```json
+{
+  "id": "0198a4f2-6b0e-7c1d-9a3e-2f4b8c6d1e0a",
+  "type": "booking.create",
+  "occurredAt": "2026-08-15T09:30:00Z",
+  "ownerIdentifier": "3c6b1a5d-8e2f-4a0b-9c7d-6e4f0a8b2c51",
+  "recipientRole": "SUPPLIER",
+  "schemaVersion": 2,
+  "object": { "...": "olaya özgü yük, örn. BookingWebhookPayload" }
+}
+```
+
+- `id` — olay tanımlayıcısı; bu olayı alan hesabınızdaki her uç nokta ve her yeniden deneme için aynıdır. Bunu **idempotency anahtarı** olarak kullanın.
+- `type` — olay türü anahtarı (aynı zamanda `Wink-Event-Type` başlığı olarak gönderilir). `type` ve `schemaVersion` değerlerine göre `object` ayrıştırılır.
+- `object` — olayın konusu olan kaynağın özetlenmiş hali (tanımlayıcılar, durum, işlem yaptığınız alanlar) ve `links.self`, tedarikçi tarafındaki tam kaynağın canonical REST URL'si. Özetin ötesinde bilgi gerektiğinde kendi API kimlik bilgilerinizle çekin; olayı bir bayi veya seyahat acentesi olarak alıyorsanız, aynı tanımlayıcı için kendi API yüzeyinizdeki ilgili kaynak uç noktasını kullanın.
+
+Her yük şeması, olay bazında [Webhooks API](/tr/api/webhooks/) referansında belgelenmiştir.
+
+### Başlıklar
+
+| Başlık | Anlamı |
+|---|---|
+| `Wink-Version` | Wire sözleşme sürümü, `2.0`. |
+| `Wink-Event-Id` | Gövdedeki `id` ile aynı — idempotency anahtarınız. |
+| `Wink-Delivery-Id` | Her uç nokta için olay başına benzersiz; yalnızca yeniden teslim ederseniz değişir. |
+| `Wink-Event-Type` | Gövdedeki `type` ile aynı. |
+| `Wink-Delivery-Attempt` | Bu teslimat için 1 tabanlı deneme sayısı. |
+| `Wink-Signature` | HMAC imzası — aşağıya bakınız. |
+
+## İmzaların doğrulanması
+
+Her webhook'un, oluşturduğunuzda veya gizli anahtarını döndürdüğünüzde Wink'in **bir kez** gösterdiği bir **imzalama gizli anahtarı** (`whsec_…`) vardır. Bunu bir şifre gibi saklayın. Her teslimat şu başlığı taşır:
+
+```
+Wink-Signature: t=1755250200,v1=5d41402abc4b2a76b9719d911017c592…
+```
+
+Burada `t` Unix zaman damgası (saniye) ve `v1` gizli anahtarınızla anahtarlanmış, küçük harfli hex formatında **HMAC-SHA256** imzasıdır; imzalanan veri `t + "." + rawBody` stringidir ve `rawBody` tam olarak alınan istek gövdesinin baytlarıdır — doğrulamadan önce JSON'u yeniden serileştirmeyin. Gizli anahtar döndürme işleminden sonraki 24 saat boyunca başlık, önceki gizli anahtarla imzalanmış ikinci bir `v1=` değeri taşır; **herhangi bir** `v1` eşleşirse teslimatı kabul edin.
+
+Dört adımda doğrulayın: `t` ve her `v1` değerini ayrıştırın; gizli anahtarınızla `t.rawBody` üzerinde HMAC'i yeniden hesaplayın; sabit zamanlı karşılaştırma yapın; `|şimdi − t|` toleransınızı aşarsa (önerilen 5 dakika) reddedin.
+
+```js
+// Node.js (Express tarzı; RAW gövdeye sahip olduğunuzdan emin olun, ayrıştırılmış nesne değil)
+import { createHmac, timingSafeEqual } from 'node:crypto';
+
+export function verifyWinkSignature(header, rawBody, secret, toleranceSeconds = 300) {
+  const parts = Object.fromEntries(header.split(',').map((p) => p.split('=').map((s) => s.trim())));
+  const t = Number(parts.t);
+  if (!Number.isFinite(t) || Math.abs(Date.now() / 1000 - t) > toleranceSeconds) return false;
+  const expected = createHmac('sha256', secret).update(`${t}.${rawBody}`).digest('hex');
+  return header
+    .split(',')
+    .filter((p) => p.trim().startsWith('v1='))
+    .map((p) => p.trim().slice(3))
+    .some((v1) => v1.length === expected.length && timingSafeEqual(Buffer.from(v1, 'utf8'), Buffer.from(expected, 'utf8')));
+}
+```
+
+```java
+// Java
+static boolean verify(String header, String rawBody, String secret, long nowSeconds, long toleranceSeconds) throws Exception {
+    long t = Long.MIN_VALUE;
+    List<String> signatures = new ArrayList<>();
+    for (String part : header.split(",")) {
+        String[] kv = part.trim().split("=", 2);
+        if (kv[0].equals("t")) t = Long.parseLong(kv[1]);
+        else if (kv[0].equals("v1")) signatures.add(kv[1]);
+    }
+    if (t == Long.MIN_VALUE || Math.abs(nowSeconds - t) > toleranceSeconds) return false;
+    Mac mac = Mac.getInstance("HmacSHA256");
+    mac.init(new SecretKeySpec(secret.getBytes(StandardCharsets.UTF_8), "HmacSHA256"));
+    byte[] expected = HexFormat.of().formatHex(mac.doFinal((t + "." + rawBody).getBytes(StandardCharsets.UTF_8))).getBytes(StandardCharsets.US_ASCII);
+    return signatures.stream().anyMatch(v1 -> MessageDigest.isEqual(expected, v1.toLowerCase().getBytes(StandardCharsets.US_ASCII)));
+}
+```
+
+Gizli anahtarı portalden veya `POST /api/managing-entity/{id}/webhook/{webhookId}/rotate-secret` ile döndürün; yanıt yeni gizli anahtarı bir kez gösterir ve eski anahtar 24 saat boyunca doğrulamaya devam ederken yayılım yapabilirsiniz.
+
+## Yeniden denemeler ve yeniden teslim
+
+- Onaylamak için 10 saniye içinde herhangi bir `2xx` ile yanıt verin. Ağır işleri asenkron yapın.
+- `5xx`, zaman aşımı, `408` veya `429` durumları geri çekmeli olarak yeniden denenir: 1 dakika, 5 dakika, 30 dakika, 2 saat, 6 saat, 12 saat, sonra günlük — yaklaşık 3 gün içinde 10 deneme — ardından teslimat **ölü** olarak işaretlenir.
+- Diğer tüm `4xx` durumları "bu teslimatı reddettiniz" olarak kabul edilir ve **yeniden denenmez**.
+- Her olay, teslimat ve deneme (durum, yanıt kesiti) **Applications > Webhooks** altında ve API üzerinden (`…/webhook/event/grid`, `…/webhook/delivery/grid`) görünür. Herhangi bir teslimatı **yeniden teslim edebilir** (`POST …/webhook/delivery/{deliveryId}/redeliver`, yeni bir deneme serisi başlatır), bir webhook'un tüm ölü teslimatlarını bir kerede yeniden teslim edebilir (`POST …/webhook/{webhookId}/redeliver-dead`) veya iptal edebilirsiniz.
+- Teslimatlar 30 gün saklanır.
+
+## Test olayları
+
+Portaldan veya `POST /api/managing-entity/{id}/webhook/{webhookId}/test` ile kendinize sentetik bir `webhook.test` olayı gönderin. Bu, gerçek bir olay gibi imzalanır ve teslim edilir; böylece uç noktanızı, imza kontrolünüzü ve idempotency işleminizi canlı olaylara abone olmadan önce doğrulayabilirsiniz.
 
 ## En iyi uygulamalar
 
-- **HTTPS kullanın** — Wink, yükleri yalnızca HTTPS uç noktalarına gönderir.
+- **HTTPS kullanın** — Wink yalnızca HTTPS uç noktalarına yük gönderir.
 - **Hızlı yanıt verin** — Yükü aldığınızda hemen `200 OK` döndürün. Ağır işlemleri asenkron yapın.
-- **İdempotentlik** — İşleyiciniz idempotent olmalıdır. Wink, `200` yanıtı alamazsa teslimatı yeniden deneyebilir.
-- **Kaynağı doğrulayın** — İşlem yapmadan önce gelen isteklerin Wink'ten geldiğini doğrulayın.
-- **Kayıt tutma** — Aldığınız her webhook yükünü kaydedin. Bu, entegrasyon sorunlarını çözmeyi kolaylaştırır.
+- **Idempotency** — İşleyiciniz idempotent olmalıdır; `Wink-Event-Id` ile çoğaltmayı önleyin. Wink, `2xx` yanıtı almazsa yeniden dener.
+- **Kaynağı doğrulayın** — İşlem yapmadan önce `Wink-Signature` başlığını doğrulayın (bkz. [İmzaların doğrulanması](#verifying-signatures)); başarısız olanları reddedin.
+- **Kayıt tutma** — Aldığınız her webhook yükünü kaydedin. Bu, entegrasyon sorunlarını çözmeyi çok kolaylaştırır.
 
 ## Duraklatma ve silme
 
-Bir webhook'u silmeden **devre dışı bırakabilirsiniz**. Bu, teslimatı duraklatır ve yapılandırmanızı kaybetmeden sorun gidermenize olanak tanır. Hazır olduğunuzda tekrar açabilirsiniz.
+Bir webhook'u silmeden **devre dışı bırakabilirsiniz**. Bu, teslimatı duraklatır, böylece yapılandırmanızı kaybetmeden sorun giderebilirsiniz. Hazır olduğunuzda tekrar açabilirsiniz.
 
-Webhook'u silmek, onu kalıcı olarak kaldırır. Bu webhook'a bağlı herhangi bir entegrasyon bildirim almamaya başlar.
+Webhook'u silmek kalıcı olarak kaldırır. Bu webhook'a bağlı tüm entegrasyonlar bildirim almaya devam edemez.
 
 ## Daha fazla okuma
 
-- [Webhook Olayları Kataloğu](/tr/developers/webhook-events) — Tüm 64+ olay türünün tam listesi.
+- [Webhook Olayları Kataloğu](/tr/developers/webhook-events) — Platform kataloğundan oluşturulmuş her olay türü.
+- [Webhooks API referansı](/tr/api/webhooks/) — Olay bazında yük şemaları, başlıklar ve abonelik/teslim yönetim uç noktaları.
 - [Webhooks](/tr/portal/settings/webhooks) — Webhook yönetimi için tam referans.
 - [Applications](/tr/account/applications) — API kimlik bilgilerinizi yönetin.
 - [Developers > APIs](/tr/api) — Tam API dokümantasyonu.

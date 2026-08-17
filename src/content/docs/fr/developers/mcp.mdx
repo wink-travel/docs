@@ -1,33 +1,126 @@
 ---
 title: Serveurs MCP
-description: Connectez des agents IA à la plateforme Wink via le Model Context Protocol. Les serveurs MCP authentifiés donnent à votre agent un accès direct à l'inventaire, aux réservations, aux intégrations de gestionnaire de canaux, et plus encore — sécurisé par une connexion OAuth2 interactive.
+description: Connectez des agents IA à la plateforme Wink via le Model Context Protocol. Wink publie ses outils sous forme de points de terminaison ciblés, adaptés à chaque tâche, pour que votre agent charge uniquement ce dont votre travail a besoin — sécurisé par une connexion OAuth2 interactive.
 sidebar:
   order: 10
 ---
 
 import { Steps, LinkButton, Aside, Tabs, TabItem } from '@astrojs/starlight/components';
 
-Wink expose deux serveurs MCP authentifiés. Les deux utilisent **une connexion OAuth2 interactive** (flux de code d'autorisation PKCE) — votre agent IA ouvre un onglet de navigateur pour que vous vous connectiez avec votre compte Wink. Aucun secret client à gérer.
+Les outils MCP de Wink sont publiés sous forme de **ensembles d’outils** — des points de terminaison ciblés, chacun couvrant un métier. Vous connectez votre client IA à un ou deux qui correspondent à votre travail, pas à tous.
 
-| Serveur | URL | Fonctionnalité |
-|--------|-----|--------------|
-| **Inventory API** | `https://api.wink.travel/mcp` | Inventaire, réservations, tarifs, canaux de vente, analyses et toutes les opérations de la plateforme |
-| **Integrations** | `https://integrations.wink.travel/mcp` | Intégrations de gestionnaire de canaux — synchronisation des propriétés, tarifs et disponibilités avec les OTA |
+Chaque point de terminaison utilise une **connexion OAuth2 interactive** (flux d’autorisation par code PKCE) : votre agent IA ouvre un onglet navigateur, vous vous connectez avec votre compte Wink, et c’est tout. Aucun secret client à gérer.
+
+```bash title="Un intégrateur de channel manager se connecte à un point de terminaison"
+claude mcp add wink-channel-manager https://integrations.wink.travel/mcp/channel-manager --transport http
+```
+
+```bash title="Un hôtelier gérant ses propres tarifs se connecte à un autre"
+claude mcp add wink-rates https://api.wink.travel/mcp/extranet/rates --transport http
+```
 
 ---
 
-## Comment fonctionne l'authentification
+## Pourquoi les outils sont répartis sur plusieurs points de terminaison
 
-Les serveurs MCP de Wink utilisent le flux **OAuth2 Authorization Code + PKCE** et supportent **l'enregistrement dynamique des clients (RFC 7591)**. Voici ce qui se passe lors de votre première connexion :
+Wink expose environ 500 outils. Les fournir tous à un agent en même temps est techniquement possible — mais une mauvaise idée.
 
-1. Votre client IA découvre le serveur d'autorisation à partir des métadonnées `/.well-known/oauth-protected-resource` du point d'accès MCP.
-2. Le client s'auto-enregistre via **l'enregistrement dynamique des clients** — aucune configuration manuelle de l'application requise.
-3. Le client ouvre un **onglet de navigateur** vers `https://iam.wink.travel`. Vous vous connectez avec votre compte Wink et approuvez les permissions demandées sur l'écran de consentement.
-4. Wink émet un **jeton d'accès** lié à votre compte et à votre identité.
-5. Le client IA joint ce jeton à chaque requête MCP. Tous les résultats des outils sont automatiquement limités à votre entité gestionnaire.
-6. Les jetons expirent après 3 heures. Votre client IA les renouvelle silencieusement en arrière-plan sans nouvelle demande d'authentification.
+**Les définitions d’outils consomment du contexte.** Chaque outil qu’un serveur MCP annonce est chargé dans la fenêtre de contexte du modèle avant qu’il ne fasse quoi que ce soit, avec sa description et son schéma complet de paramètres. Cinq cents de ces outils consomment une grande partie du budget dont votre tâche réelle a besoin, à chaque requête.
 
-Chaque appel d'outil s'exécute **sous votre identité** — les mêmes règles ACL qui protègent le portail web s'appliquent à l'agent IA.
+**La qualité du choix diminue avec la taille de la liste.** Un agent qui choisit parmi 500 outils aux noms similaires fait de moins bons choix qu’un agent qui choisit parmi 40. Si vous intégrez un channel manager, environ vingt outils vous concernent ; les 480 autres sont du bruit qui rend l’outil juste plus difficile à trouver.
+
+**Le travail est réellement séparable.** Quelqu’un qui synchronise la disponibilité depuis un PMS et quelqu’un qui crée des pages affiliées partagent presque aucun outil. La séparation par métier signifie que chaque connexion porte le vocabulaire d’un seul métier.
+
+<Aside type="caution" title="Les ensembles d’outils ne sont pas des permissions">
+Choisir un ensemble d’outils restreint **ne limite pas** ce que votre compte peut faire, et choisir un ensemble large ne donne rien de plus. Chaque outil applique les mêmes permissions de compte que le portail web, sous votre identité connectée. Si votre compte ne peut pas annuler une réservation dans Wink Portal, l’agent ne le peut pas non plus — quel que soit le point de terminaison auquel il est connecté.
+
+Choisissez les ensembles d’outils pour **la concentration**, pas pour la sécurité.
+</Aside>
+
+---
+
+## Annuaire des points de terminaison
+
+Deux hôtes servent des ensembles d’outils. Les nombres d’outils sont approximatifs et évoluent dans le temps.
+
+### `https://api.wink.travel` — la plateforme
+
+| Point de terminaison | Outils | Ce qu’il couvre |
+|---|---:|---|
+| `/mcp/extranet/facilities` | ~64 | L’inventaire réservable et sur site : chambres et types de chambres, spas, restaurants, salles de réunion, activités, attractions, lieux, autres articles vendables |
+| `/mcp/extranet/property` | ~62 | Le dossier de la propriété et ses conditions commerciales : profil et contenu, options, politiques d’annulation, avantages, annonces |
+| `/mcp/settings` | ~60 | Administration du compte : profil et image de l’entité gestionnaire, gestionnaires et leurs droits, personnalisation, webhooks, préférences de notification |
+| `/mcp/studio/embeds` | ~48 | Publication d’inventaire sélectionné : widgets, grilles et grilles classées, cartes, cartes, liens profonds vers l’inventaire et les pages fournisseurs |
+| `/mcp/extranet/rates` | ~44 | Tarifs et disponibilités : périodes et allotements de tarifs d’inventaire, plans tarifaires, tarifs maîtres, tarifs spéciaux et promotionnels |
+| `/mcp/extranet/operations` | ~39 | Gestion d’une propriété en activité : réservations et leur cycle de vie, avis clients et réponses, flux de calendrier, tâches planifiées |
+| `/mcp/extranet/distribution` | ~37 | Où l’inventaire est vendu : canaux de vente et modificateurs de tarifs, demandes de relations affiliées et fournisseurs, enregistrement, capture de leads |
+| `/mcp/studio/curation` | ~35 | Création de collections commercialisables : listes statiques et dynamiques, listes classées, recherches sauvegardées, agrégats de propriétés |
+| `/mcp/link-manager` | ~28 | Collections de liens syndiqués, leur design, catégories et tags, plus URLs raccourcies |
+| `/mcp/reference` | ~24 | Données de référence en lecture seule : pays, devises et taux de change, langues, fuseaux horaires, recherches géographiques, géolocalisation IP |
+| `/mcp/analytics` | ~18 | Analyses de réservations et de revenus : vues d’ensemble, graphiques, classements, performances affiliées, métriques de partage |
+| `/mcp/payment` | ~18 | Opérations financières : grand livre, retraits et estimations de frais, agrégats de fonds de réservation |
+| `/mcp/booking-engine` | ~17 | Parcours d’achat côté voyageur : recherche et consultation, panier et paiement, listes de souhaits, personnalisation de campagne |
+| `/mcp/social` | ~17 | Comptes sociaux connectés, publication et planification de posts, lecture des insights des posts |
+| `/mcp/travel-agent` | ~8 | Réservations facilitées par agent au nom des voyageurs, et rapports d’agent |
+
+### `https://integrations.wink.travel` — intégrations channel manager
+
+Un seul point de terminaison, car cet hôte existe pour un seul métier.
+
+| Point de terminaison | Outils | Ce qu’il couvre |
+|---|---:|---|
+| `/mcp/channel-manager` | ~9 | Connexion et vérification d’une intégration channel manager, PMS ou CRS |
+
+<Aside type="note" title="Intégrer un channel manager vs. gérer ses propres tarifs">
+Ce sont des métiers différents pour des personnes différentes, et ils ne partagent pas de point de terminaison.
+
+Un **fournisseur channel manager, PMS ou CRS** s’intègre une fois via `integrations.wink.travel/mcp/channel-manager`, et échange ensuite propriétés, tarifs, disponibilités et réservations via cette intégration. Ce point de terminaison unique est toute la surface.
+
+Un **hôtelier modifiant ses propres tarifs manuellement** utilise les ensembles d’outils extranet sur `api.wink.travel` — `/mcp/extranet/rates` et associés. Ceux-ci ne font pas partie d’une intégration channel manager et un intégrateur n’a aucune raison de s’y connecter.
+
+L’administration du compte est aussi sur `api.wink.travel`, à `/mcp/settings`. Il n’y a pas de `/mcp/settings` sur l’hôte des intégrations.
+</Aside>
+
+Chaque point de terminaison porte aussi un outil `ping`, pour confirmer qu’une connexion est active avant de lui demander un vrai travail.
+
+---
+
+## Quels ensembles d’outils me faut-il ?
+
+| Si vous êtes… | Connectez-vous à |
+|---|---|
+| **Intégrateur channel manager, PMS ou CRS** | `integrations.wink.travel/mcp/channel-manager` — uniquement celui-ci |
+| **Gestionnaire de contenu d’une propriété** | `/mcp/extranet/property` + `/mcp/extranet/facilities` |
+| **Gestionnaire de chambres et types de chambres** | `/mcp/extranet/facilities` |
+| **Gestionnaire de tarifs et disponibilités** | `/mcp/extranet/rates` |
+| **Gestionnaire des réservations au quotidien** | `/mcp/extranet/operations` |
+| **Développeur de la distribution** | `/mcp/extranet/distribution` + `/mcp/analytics` |
+| **Créateur de pages affiliées** | `/mcp/studio/curation` + `/mcp/studio/embeds` |
+| **Gestionnaire de pages link-in-bio** | `/mcp/link-manager` + `/mcp/social` |
+| **Réservations au nom des voyageurs** | `/mcp/travel-agent` |
+| **Rapprochement financier** | `/mcp/payment` |
+| **Création d’une expérience de réservation** | `/mcp/booking-engine` + `/mcp/reference` |
+
+Commencez par un seul. Ajoutez-en un autre quand vous vous rendez compte qu’il vous manque une fonctionnalité — chaque connexion est indépendante, et en ajouter une ne modifie jamais les autres.
+
+<Aside type="tip" title="Vous voulez tout avoir ?">
+`https://api.wink.travel/mcp` et `https://integrations.wink.travel/mcp` restent disponibles et servent **tous** les outils de leur hôte. Ils sont utiles pour explorer ce qui existe, mais nous ne les recommandons pas pour le travail quotidien : la liste d’outils est trop grande et masque votre tâche, dégradant la sélection d’outils de l’agent. Préférez les ensembles d’outils ci-dessus.
+</Aside>
+
+---
+
+## Comment fonctionne l’authentification
+
+Les serveurs MCP Wink utilisent le flux **OAuth2 Authorization Code + PKCE** et supportent **l’enregistrement dynamique de client (RFC 7591)**. Voici ce qui se passe lors de votre première connexion :
+
+1. Votre client IA découvre le serveur d’autorisation à partir des métadonnées `/.well-known/oauth-protected-resource` du point de terminaison MCP.
+2. Le client s’enregistre automatiquement via **l’enregistrement dynamique de client** — aucune configuration manuelle d’application requise.
+3. Le client ouvre un **onglet navigateur** vers `https://iam.wink.travel`. Vous vous connectez avec votre compte Wink et approuvez les permissions demandées sur l’écran de consentement.
+4. Wink émet un **jeton d’accès** lié à votre compte et à votre identité.
+5. Le client IA joint ce jeton à chaque requête MCP. Tous les résultats d’outils sont automatiquement limités à votre entité gestionnaire.
+6. Les jetons expirent au bout de 3 heures. Votre client IA les renouvelle silencieusement en arrière-plan sans nouvelle demande.
+
+Chaque appel d’outil s’exécute **sous votre identité** — les mêmes règles ACL qui protègent le portail web s’appliquent à l’agent IA.
 
 ---
 
@@ -42,25 +135,28 @@ Chaque appel d'outil s'exécute **sous votre identité** — les mêmes règles 
    npm install -g @anthropic-ai/claude-code
    ```
 
-2. Ajoutez le serveur MCP Inventory de Wink :
+2. Choisissez un ensemble d’outils dans le [répertoire ci-dessus](#endpoint-directory) et ajoutez-le. Par exemple, tarifs et disponibilités :
    ```bash
-   claude mcp add wink-inventory https://api.wink.travel/mcp --transport http
+   claude mcp add wink-rates https://api.wink.travel/mcp/extranet/rates --transport http
    ```
 
-3. Claude Code contacte le serveur, découvre le serveur d'autorisation, et ouvre votre navigateur par défaut.
+3. Claude Code contacte le serveur, découvre le serveur d’autorisation, et ouvre votre navigateur par défaut.
 
-4. **Connectez-vous à Wink** et approuvez la demande de permission sur l'écran de consentement.
+4. **Connectez-vous à Wink** et approuvez la demande de permission sur l’écran de consentement.
 
 5. Claude Code confirme la connexion. Tapez `/mcp` pour vérifier que le serveur apparaît et que ses outils sont chargés.
 </Steps>
 
-Pour ajouter également le serveur Integrations :
+Ajoutez autant d’ensembles d’outils que votre travail en a besoin — chacun est une entrée serveur distincte avec son propre nom :
 ```bash
-claude mcp add wink-integrations https://integrations.wink.travel/mcp --transport http
+claude mcp add wink-operations https://api.wink.travel/mcp/extranet/operations --transport http
+claude mcp add wink-analytics  https://api.wink.travel/mcp/analytics           --transport http
 ```
 
+Vous ne vous connectez qu’une seule fois. Après la première approbation dans le navigateur, Claude Code réutilise votre session Wink pour les autres points de terminaison Wink.
+
 :::tip[Partagez avec votre équipe]
-Ajoutez `--scope project` à `claude mcp add` et Claude Code écrit l'URL du serveur dans `.mcp.json` à la racine du dépôt. Commitez ce fichier — chaque membre de l'équipe complète sa propre connexion via navigateur lors de la première connexion.
+Ajoutez `--scope project` à `claude mcp add` et Claude Code écrit l’URL du serveur dans `.mcp.json` à la racine du dépôt. Commitez ce fichier — chaque membre de l’équipe obtient les mêmes ensembles d’outils, et chacun complète sa propre connexion navigateur la première fois qu’il se connecte.
 :::
 
   </TabItem>
@@ -77,13 +173,13 @@ Ajoutez `--scope project` à `claude mcp add` et Claude Code écrit l'URL du ser
    ```json title="claude_desktop_config.json"
    {
      "mcpServers": {
-       "wink-inventory": {
+       "wink-extranet-rates": {
          "type": "http",
-         "url": "https://api.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/rates"
        },
-       "wink-integrations": {
+       "wink-extranet-operations": {
          "type": "http",
-         "url": "https://integrations.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/operations"
        }
      }
    }
@@ -91,9 +187,9 @@ Ajoutez `--scope project` à `claude mcp add` et Claude Code écrit l'URL du ser
 
 3. **Quittez complètement et redémarrez** Claude Desktop (utilisez Quitter dans la barre de menu — fermer la fenêtre ne suffit pas).
 
-4. Claude Desktop ouvre un onglet de navigateur pour chaque nouveau serveur. Connectez-vous à Wink et approuvez les permissions.
+4. Claude Desktop ouvre un onglet navigateur pour chaque nouveau serveur. Connectez-vous à Wink et approuvez les permissions.
 
-5. L'icône de prise dans la barre d'outils inférieure affiche les deux serveurs comme connectés.
+5. L’icône de prise dans la barre d’outils en bas montre les deux serveurs comme connectés.
 </Steps>
 
   </TabItem>
@@ -109,28 +205,28 @@ Ajoutez `--scope project` à `claude mcp add` et Claude Code écrit l'URL du ser
    - **macOS / Linux :** `~/.codex/config.json`
    - **Windows :** `%USERPROFILE%\.codex\config.json`
 
-3. Ajoutez les entrées des serveurs MCP de Wink :
+3. Ajoutez les entrées des serveurs MCP Wink :
 
    ```json title="~/.codex/config.json"
    {
      "mcpServers": {
-       "wink-inventory": {
+       "wink-extranet-rates": {
          "type": "http",
-         "url": "https://api.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/rates"
        },
-       "wink-integrations": {
+       "wink-extranet-operations": {
          "type": "http",
-         "url": "https://integrations.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/operations"
        }
      }
    }
    ```
 
-4. Lancez Codex. Lors de la première utilisation, Codex ouvre un onglet de navigateur vers `https://iam.wink.travel`.
+4. Lancez Codex. À la première utilisation, Codex ouvre un onglet navigateur vers `https://iam.wink.travel`.
 
 5. **Connectez-vous à Wink** et approuvez les permissions demandées.
 
-6. Codex confirme la connexion. Exécutez `codex` et demandez la liste des outils disponibles pour vérifier que les serveurs Wink sont actifs.
+6. Codex confirme la connexion. Lancez `codex` et demandez la liste des outils disponibles pour vérifier que les serveurs Wink sont actifs.
 </Steps>
 
 :::note
@@ -140,91 +236,91 @@ Le support MCP de Codex CLI nécessite la version **1.0** ou ultérieure. Exécu
   </TabItem>
   <TabItem label="ChatGPT">
 
-Le support des serveurs MCP est disponible dans l'**application de bureau ChatGPT** pour les abonnés Plus, Pro, Team et Enterprise.
+Le support des serveurs MCP est disponible dans l’**application desktop ChatGPT** pour les abonnés Plus, Pro, Team et Enterprise.
 
 <Steps>
-1. Téléchargez et installez l'[application de bureau ChatGPT](https://openai.com/chatgpt/download/) si ce n'est pas déjà fait.
+1. Téléchargez et installez l’[application desktop ChatGPT](https://openai.com/chatgpt/download/) si ce n’est pas déjà fait.
 
-2. Ouvrez l'application et cliquez sur **votre icône de profil** en haut à droite, puis choisissez **Paramètres**.
+2. Ouvrez l’application et cliquez sur **votre icône de profil** en haut à droite, puis choisissez **Paramètres**.
 
-3. Allez dans **Connecteurs** (ou **Serveurs MCP** selon la version de votre application) et cliquez sur **Ajouter**.
+3. Allez dans **Connecteurs** (ou **Serveurs MCP** selon la version de votre app) et cliquez sur **Ajouter**.
 
-4. Entrez l'URL du serveur Inventory de Wink :
+4. Entrez l’URL d’un ensemble d’outils du [répertoire ci-dessus](#endpoint-directory), par exemple :
    ```
-   https://api.wink.travel/mcp
+   https://api.wink.travel/mcp/extranet/rates
    ```
    Puis cliquez sur **Connecter**.
 
-5. ChatGPT ouvre un onglet de navigateur vers `https://iam.wink.travel`. **Connectez-vous à Wink** et approuvez les permissions.
+5. ChatGPT ouvre un onglet navigateur vers `https://iam.wink.travel`. **Connectez-vous à Wink** et approuvez les permissions.
 
-6. Répétez les étapes 4–5 pour le serveur Integrations :
+6. Répétez les étapes 4–5 pour tout autre ensemble d’outils dont votre travail a besoin, par exemple :
    ```
-   https://integrations.wink.travel/mcp
+   https://api.wink.travel/mcp/extranet/operations
    ```
 
-7. Les deux serveurs apparaissent dans votre liste de Connecteurs. Lancez une nouvelle conversation — les outils Wink sont disponibles automatiquement.
+7. Chaque ensemble d’outils apparaît dans votre liste de Connecteurs. Commencez une nouvelle conversation — les outils Wink sont disponibles automatiquement.
 </Steps>
 
-:::note[Limitation de l'application web]
-Les serveurs MCP ne sont configurables que dans l'**application de bureau**. L'interface web ChatGPT sur chatgpt.com ne supporte pas les serveurs MCP personnalisés.
+:::note[Limitation de l’app web]
+Les serveurs MCP ne sont configurables que dans l’**application desktop**. L’interface web ChatGPT sur chatgpt.com ne supporte pas les serveurs MCP personnalisés.
 :::
 
   </TabItem>
   <TabItem label="Cursor">
 
 <Steps>
-1. Ouvrez (ou créez) le fichier de configuration MCP de Cursor :
+1. Ouvrez (ou créez) le fichier de configuration MCP Cursor :
    - **macOS / Linux :** `~/.cursor/mcp.json`
    - **Windows :** `%USERPROFILE%\.cursor\mcp.json`
 
-2. Ajoutez les entrées des serveurs MCP de Wink :
+2. Ajoutez les entrées des serveurs MCP Wink :
 
    ```json title="~/.cursor/mcp.json"
    {
      "mcpServers": {
-       "wink-inventory": {
+       "wink-extranet-rates": {
          "type": "http",
-         "url": "https://api.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/rates"
        },
-       "wink-integrations": {
+       "wink-extranet-operations": {
          "type": "http",
-         "url": "https://integrations.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/operations"
        }
      }
    }
    ```
 
-3. Ouvrez Cursor. Allez dans **Paramètres → Paramètres Cursor → MCP** et vérifiez que les deux serveurs apparaissent avec un indicateur de statut vert. S'ils sont rouges, cliquez sur **Actualiser**.
+3. Ouvrez Cursor. Allez dans **Paramètres → Paramètres Cursor → MCP** et vérifiez que les deux serveurs apparaissent avec un indicateur de statut vert. S’ils sont rouges, cliquez sur **Rafraîchir**.
 
-4. Cursor ouvre un onglet de navigateur vers `https://iam.wink.travel`. **Connectez-vous à Wink** et approuvez les permissions.
+4. Cursor ouvre un onglet navigateur vers `https://iam.wink.travel`. **Connectez-vous à Wink** et approuvez les permissions.
 
 5. Ouvrez une conversation (`Ctrl+L` / `Cmd+L`) et demandez à Cursor de lister les outils Wink disponibles pour confirmer la connexion.
 </Steps>
 
 :::tip[Configuration au niveau projet]
-Vous pouvez aussi placer un fichier `mcp.json` à la racine de votre projet au lieu de `~/.cursor/`. La configuration au niveau projet a la priorité et rend les serveurs disponibles à chaque membre de l'équipe qui ouvre le projet dans Cursor.
+Vous pouvez aussi placer un fichier `mcp.json` à la racine de votre projet au lieu de `~/.cursor/`. La configuration au niveau projet a la priorité et rend les serveurs disponibles à chaque membre de l’équipe qui ouvre le projet dans Cursor.
 :::
 
   </TabItem>
   <TabItem label="Windsurf">
 
 <Steps>
-1. Ouvrez (ou créez) le fichier de configuration MCP de Windsurf :
+1. Ouvrez (ou créez) le fichier de configuration MCP Windsurf :
    - **macOS / Linux :** `~/.codeium/windsurf/mcp_config.json`
    - **Windows :** `%USERPROFILE%\.codeium\windsurf\mcp_config.json`
 
-2. Ajoutez les entrées des serveurs MCP de Wink :
+2. Ajoutez les entrées des serveurs MCP Wink :
 
    ```json title="~/.codeium/windsurf/mcp_config.json"
    {
      "mcpServers": {
-       "wink-inventory": {
+       "wink-extranet-rates": {
          "type": "http",
-         "url": "https://api.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/rates"
        },
-       "wink-integrations": {
+       "wink-extranet-operations": {
          "type": "http",
-         "url": "https://integrations.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/operations"
        }
      }
    }
@@ -232,53 +328,53 @@ Vous pouvez aussi placer un fichier `mcp.json` à la racine de votre projet au l
 
 3. **Redémarrez complètement Windsurf** (Fichier → Quitter, puis rouvrez).
 
-4. Allez dans **Paramètres → Serveurs MCP** et vérifiez que les deux serveurs sont affichés comme connectés. Windsurf ouvre un onglet de navigateur vers `https://iam.wink.travel` lors de la première utilisation.
+4. Allez dans **Paramètres → Serveurs MCP** et vérifiez que les deux serveurs sont connectés. Windsurf ouvre un onglet navigateur vers `https://iam.wink.travel` à la première utilisation.
 
 5. **Connectez-vous à Wink** et approuvez les permissions. Les serveurs deviennent verts dans le panneau des paramètres une fois authentifiés.
 </Steps>
 
 :::note
-Le support MCP de Windsurf nécessite la version **1.4** ou ultérieure. Vérifiez via **Aide → À propos de Windsurf** et mettez à jour depuis le site Windsurf si nécessaire.
+Le support MCP Windsurf nécessite la version **1.4** ou ultérieure. Vérifiez via **Aide → À propos de Windsurf** et mettez à jour depuis le site Windsurf si besoin.
 :::
 
   </TabItem>
   <TabItem label="Cline (VS Code)">
 
-Cline est une extension VS Code avec un gestionnaire de serveurs MCP intégré. Aucune édition manuelle de JSON n'est requise.
+Cline est une extension VS Code avec un gestionnaire de serveurs MCP intégré. Aucune édition manuelle de JSON n’est requise.
 
 <Steps>
 1. Installez Cline depuis le Marketplace VS Code :
    - Ouvrez VS Code et appuyez sur `Ctrl+Shift+X` / `Cmd+Shift+X`
    - Recherchez **Cline** et cliquez sur **Installer**
 
-2. Cliquez sur l'**icône Cline** dans la barre d'activité (barre latérale gauche) pour ouvrir le panneau Cline.
+2. Cliquez sur l’**icône Cline** dans la barre d’activité (barre latérale gauche) pour ouvrir le panneau Cline.
 
-3. Cliquez sur l'icône **Serveurs MCP** (icône de prise) dans la barre d'outils Cline, puis choisissez **Modifier les paramètres MCP**.
+3. Cliquez sur l’**icône Serveurs MCP** (icône prise) dans la barre d’outils Cline, puis choisissez **Modifier les paramètres MCP**.
 
 4. VS Code ouvre `cline_mcp_settings.json`. Ajoutez les entrées Wink :
 
    ```json title="cline_mcp_settings.json"
    {
      "mcpServers": {
-       "wink-inventory": {
+       "wink-extranet-rates": {
          "type": "http",
-         "url": "https://api.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/rates"
        },
-       "wink-integrations": {
+       "wink-extranet-operations": {
          "type": "http",
-         "url": "https://integrations.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/operations"
        }
      }
    }
    ```
 
-5. **Enregistrez le fichier.** Cline recharge automatiquement et ouvre un onglet de navigateur vers `https://iam.wink.travel`.
+5. **Enregistrez le fichier.** Cline recharge automatiquement et ouvre un onglet navigateur vers `https://iam.wink.travel`.
 
 6. **Connectez-vous à Wink** et approuvez les permissions. Les deux serveurs apparaissent comme actifs dans le panneau Serveurs MCP.
 </Steps>
 
 :::tip[Alternative : ajout via URL]
-Dans le panneau Serveurs MCP, cliquez sur **Ajouter un serveur** et collez directement `https://api.wink.travel/mcp`. Cline remplit automatiquement la configuration et gère l'authentification sans édition manuelle du JSON.
+Dans le panneau Serveurs MCP, cliquez sur **Ajouter un serveur** et collez directement une URL d’ensemble d’outils comme `https://api.wink.travel/mcp/extranet/rates`. Cline remplit automatiquement la configuration et gère l’authentification sans édition manuelle de JSON.
 :::
 
   </TabItem>
@@ -288,66 +384,79 @@ Dans le panneau Serveurs MCP, cliquez sur **Ajouter un serveur** et collez direc
 
 ## Scopes
 
-Lorsque vous approuvez l'écran de consentement, vous verrez le détail des demandes de l'agent. Les clients MCP utilisent le même vocabulaire de permissions que le reste de la plateforme — consultez la référence complète des
-[scopes sur la page Authentification](/fr/developers/authentication#scopes).
+Lorsque vous approuvez l’écran de consentement, vous verrez le détail des demandes de l’agent. Les clients MCP utilisent le même vocabulaire de permissions que le reste de la plateforme — voir la référence complète des [scopes sur la page Authentification](/fr/developers/authentication#scopes).
 
 Deux points sont spécifiques à MCP :
 
-- **Les scopes `mcp.read`, `mcp.write` et `mcp.remove` sont également requis** pour ouvrir le transport MCP. Un client possédant un scope `mcp.*` est admis à `/mcp`, mais chaque outil qu'il invoque applique toujours le scope de section du point d'accès qu'il enveloppe (par exemple `booking.read`).
-- **Le client IA ne demande que les scopes dont il a besoin.** Vous pouvez refuser des permissions individuelles sur l'écran de consentement — les outils nécessitant un scope refusé retourneront une erreur lors de leur invocation.
+- **Les scopes `mcp.read`, `mcp.write` et `mcp.remove` sont également requis** pour ouvrir le transport MCP. Un client qui détient un scope `mcp.*` est admis sur n’importe quel point de terminaison MCP Wink, mais chaque outil qu’il invoque applique toujours le scope de section du point de terminaison qu’il enveloppe (ex. `booking.read`).
+- **Le client IA ne demande que les scopes dont il a besoin.** Vous pouvez refuser des permissions individuelles sur l’écran de consentement — les outils qui requièrent un scope refusé renverront une erreur lorsqu’ils seront invoqués.
+
+**Les ensembles d’outils ne changent rien à cela.** Le point de terminaison auquel vous vous connectez décide quels outils sont *listés*, pas ce qu’ils sont *autorisés à faire*. Se connecter à `/mcp/payment` ne donne aucune permission financière que vous n’aviez déjà, et se connecter à `/mcp/reference` n’empêche pas un outil d’appliquer son propre scope. L’autorisation est décidée à chaque appel d’outil, à partir de votre jeton et des droits de votre compte.
 
 ---
 
 ## Dépannage
 
-**L'onglet du navigateur ne s'ouvre pas**
+**L’onglet navigateur ne s’ouvre pas**
 
 Votre client IA ne supporte peut-être pas encore le flux PKCE interactif. Vérifiez que vous utilisez une version récente :
 - **Claude Code :** `npm install -g @anthropic-ai/claude-code`
 - **Codex CLI :** `npm install -g @openai/codex`
-- **Claude Desktop / ChatGPT desktop :** mettez à jour via le système de mise à jour intégré de l'application
+- **Claude Desktop / ChatGPT desktop :** mettez à jour via le système de mise à jour intégré de l’app
 
 **`401 Unauthorized` après connexion**
 
-Votre jeton mis en cache est peut-être périmé. Supprimez et réajoutez le serveur pour déclencher une nouvelle connexion :
+Votre jeton en cache est peut-être périmé. Supprimez et réajoutez le serveur pour forcer une nouvelle connexion :
 
 ```bash
 # Claude Code
-claude mcp remove wink-inventory
-claude mcp add wink-inventory https://api.wink.travel/mcp --transport http
+claude mcp remove wink-rates
+claude mcp add wink-rates https://api.wink.travel/mcp/extranet/rates --transport http
 ```
 
-Pour Claude Desktop et ChatGPT, supprimez l'entrée serveur dans les paramètres, redémarrez l'application, puis ajoutez-la à nouveau.
+Pour Claude Desktop et ChatGPT, supprimez l’entrée serveur dans les paramètres, redémarrez l’app, puis ajoutez-la à nouveau.
 
-**`403 Forbidden` lors de l'appel d'un outil spécifique**
+**`403 Forbidden` lors de l’appel d’un outil spécifique**
 
-L'outil requiert un scope que vous n'avez pas approuvé sur l'écran de consentement. Reconnectez le serveur — l'écran de consentement réapparaîtra et vous pourrez approuver la permission manquante.
+L’outil requiert un scope que vous n’avez pas approuvé sur l’écran de consentement, ou une permission que votre compte ne possède pas. Reconnectez le serveur — l’écran de consentement réapparaîtra et vous pourrez approuver la permission manquante. Si cela échoue encore, l’outil nécessite une permission de compte que vous n’avez pas ; changer d’ensemble d’outils ne servira à rien, car les ensembles d’outils ne donnent pas de permissions.
 
-**Le serveur apparaît mais les appels d'outil retournent "compte introuvable"**
+**L’outil dont j’ai besoin n’est pas dans la liste**
 
-Vous êtes connecté à un compte Wink sans entité gestionnaire. Rendez-vous sur [Wink Portal](https://app.wink.travel) et assurez-vous que votre compte est configuré avant d'utiliser le serveur MCP.
+Vous êtes probablement connecté à un ensemble d’outils qui ne couvre pas ce métier. Consultez le [répertoire des points de terminaison](#endpoint-directory) et ajoutez l’ensemble d’outils qui le couvre — les connexions sont indépendantes, donc en ajouter une ne change rien aux autres. Si vous ne savez pas lequel le contient, connectez-vous temporairement à `https://api.wink.travel/mcp`, trouvez l’outil, puis regardez quel ensemble d’outils le liste.
+
+**`404 Not Found` sur un point de terminaison d’ensemble d’outils**
+
+Vérifiez bien le chemin — les ensembles imbriqués ont deux segments (`/mcp/extranet/rates`, pas `/mcp/extranet-rates`), et les ensembles plats un seul (`/mcp/link-manager`). Notez qu’une requête *non authentifiée* vers n’importe quel chemin sous `/mcp` renvoie `401`, pas `404`, donc un `401` seul ne vous dit pas si le point de terminaison existe.
+
+**Je me suis connecté à `api.wink.travel/mcp/channel-manager` et je n’ai rien**
+
+Ce point de terminaison n’existe pas. L’intégration channel manager est servie uniquement depuis `https://integrations.wink.travel/mcp/channel-manager`. Si vous devez aussi lire ou écrire les tarifs propres d’une propriété manuellement, c’est un métier séparé sur un point de terminaison séparé — voir `/mcp/extranet/rates`.
+
+**Le serveur apparaît mais les appels d’outils renvoient "compte introuvable"**
+
+Vous êtes connecté à un compte Wink qui n’a pas d’entité gestionnaire. Allez sur [Wink Portal](https://app.wink.travel) et assurez-vous que votre compte est configuré avant d’utiliser le serveur MCP.
 
 **Le jeton expire en cours de session**
 
-Les jetons sont valides 3 heures. Claude Code et Claude Desktop renouvellent les jetons silencieusement sans interrompre votre session. Si vous voyez des erreurs d'authentification après une longue période d'inactivité, envoyez un nouveau message — le client se réauthentifiera automatiquement.
+Les jetons sont valides 3 heures. Claude Code et Claude Desktop renouvellent les jetons silencieusement sans interrompre votre session. Si vous voyez des erreurs d’authentification après une longue période d’inactivité, tapez un nouveau message — le client se réauthentifiera automatiquement.
 
 **Codex CLI affiche "MCP server unreachable"**
 
-Vérifiez que votre `~/.codex/config.json` est un JSON valide (pas de virgules finales) et que `"type": "http"` est bien défini. Codex nécessite un transport HTTP pour les serveurs distants ; le transport stdio est réservé aux binaires locaux uniquement.
+Vérifiez que votre `~/.codex/config.json` est un JSON valide (pas de virgules finales) et que `"type": "http"` est bien défini. Codex requiert le transport HTTP pour les serveurs distants ; le transport stdio est réservé aux binaires locaux.
 
 **Le menu "Connectors" de ChatGPT est manquant**
 
-Le support MCP nécessite la version **1.2024.352** ou ultérieure de l'application de bureau ChatGPT et un abonnement actif Plus, Pro, Team ou Enterprise. Mettez à jour l'application et vérifiez votre plan dans Paramètres → Compte.
+Le support MCP nécessite la version **1.2024.352** ou ultérieure de l’application desktop ChatGPT et un abonnement actif Plus, Pro, Team ou Enterprise. Mettez à jour l’app et vérifiez votre plan dans Paramètres → Compte.
 
 **Le serveur Cursor affiche rouge / "Échec de connexion"**
 
-Vérifiez que votre `~/.cursor/mcp.json` est un JSON valide et contient `"type": "http"`. Ensuite, allez dans **Paramètres → Paramètres Cursor → MCP** et cliquez sur **Actualiser**. Si l'erreur persiste, redémarrez complètement Cursor — les modifications de configuration ne sont pas toujours prises en compte sans redémarrage.
+Vérifiez que votre `~/.cursor/mcp.json` est un JSON valide et contient `"type": "http"`. Ensuite, allez dans **Paramètres → Paramètres Cursor → MCP** et cliquez sur **Rafraîchir**. Si l’erreur persiste, redémarrez complètement Cursor — les changements de config ne sont pas toujours pris en compte sans redémarrage.
 
-**Les serveurs MCP Windsurf ne s'affichent pas dans les paramètres**
+**Les serveurs MCP Windsurf ne s’affichent pas dans les paramètres**
 
-Windsurf nécessite un redémarrage complet (pas seulement un rechargement de fenêtre) pour prendre en compte les modifications de `mcp_config.json`. Utilisez **Fichier → Quitter** puis relancez. Si les serveurs n'apparaissent toujours pas, vérifiez que vous êtes sur Windsurf **1.4+** via **Aide → À propos de Windsurf**.
+Windsurf nécessite un redémarrage complet (pas seulement un rechargement de fenêtre) pour prendre en compte les modifications de `mcp_config.json`. Utilisez **Fichier → Quitter** puis relancez. Si les serveurs n’apparaissent toujours pas, vérifiez que vous êtes sur Windsurf **1.4+** via **Aide → À propos de Windsurf**.
 
-**L'option "Ajouter un serveur" dans Cline n'est pas visible**
+**L’option "Ajouter un serveur" dans Cline n’est pas visible**
 
 Le gestionnaire de serveurs MCP nécessite Cline **2.0** ou ultérieur. Ouvrez le panneau Extensions VS Code, trouvez Cline, et cliquez sur **Mettre à jour** si une mise à jour est disponible. Après mise à jour, rechargez VS Code (`Ctrl+Shift+P` → "Developer: Reload Window").
 

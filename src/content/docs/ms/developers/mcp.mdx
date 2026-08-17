@@ -1,18 +1,111 @@
 ---
 title: Pelayan MCP
-description: Sambungkan ejen AI ke platform Wink melalui Model Context Protocol. Pelayan MCP yang disahkan memberikan ejen anda akses langsung ke inventori, tempahan, integrasi pengurus saluran, dan banyak lagi — dilindungi oleh log masuk OAuth2 interaktif.
+description: Sambungkan ejen AI ke platform Wink melalui Model Context Protocol. Wink menerbitkan alatnya sebagai titik akhir berfokus, berbentuk tugasan supaya ejen anda hanya memuatkan apa yang diperlukan untuk kerja anda — dilindungi oleh log masuk OAuth2 interaktif.
 sidebar:
   order: 10
 ---
 
 import { Steps, LinkButton, Aside, Tabs, TabItem } from '@astrojs/starlight/components';
 
-Wink menyediakan dua pelayan MCP yang disahkan. Kedua-duanya menggunakan **log masuk OAuth2 interaktif** (aliran kod kebenaran PKCE) — ejen AI anda membuka tab pelayar supaya anda boleh log masuk dengan akaun Wink anda. Tiada rahsia klien untuk diuruskan.
+Alat MCP Wink diterbitkan sebagai **set alat** — titik akhir berfokus, setiap satu merangkumi satu tugasan. Anda menyambungkan klien AI anda ke satu atau dua yang sesuai dengan kerja anda, bukan ke semua.
 
-| Pelayan | URL | Fungsi |
-|--------|-----|--------------|
-| **Inventory API** | `https://api.wink.travel/mcp` | Inventori, tempahan, kadar, saluran jualan, analitik, dan semua operasi platform |
-| **Integrations** | `https://integrations.wink.travel/mcp` | Integrasi pengurus saluran — segerakkan hartanah, kadar, dan ketersediaan dengan OTA |
+Setiap titik akhir menggunakan **log masuk OAuth2 interaktif** (aliran kod kebenaran PKCE): ejen AI anda membuka tab pelayar, anda log masuk dengan akaun Wink anda, dan itu sahaja. Tiada rahsia klien untuk diuruskan.
+
+```bash title="Integrator pengurus saluran menyambung ke satu titik akhir"
+claude mcp add wink-channel-manager https://integrations.wink.travel/mcp/channel-manager --transport http
+```
+
+```bash title="Seorang pengurus hotel yang mengurus kadar mereka sendiri menyambung ke titik akhir lain"
+claude mcp add wink-rates https://api.wink.travel/mcp/extranet/rates --transport http
+```
+
+---
+
+## Kenapa alat dibahagikan merentasi titik akhir
+
+Wink mendedahkan kira-kira 500 alat. Memberi semua alat itu kepada ejen sekaligus secara teknikal boleh dilakukan — dan ia adalah idea yang buruk.
+
+**Definisi alat memerlukan konteks.** Setiap alat yang diiklankan oleh pelayan MCP dimuatkan ke dalam tetingkap konteks model sebelum ia melakukan sebarang kerja, bersama dengan penerangan dan skema parameter penuh. Lima ratus alat tersebut menggunakan sebahagian besar bajet yang diperlukan oleh tugasan sebenar anda, pada setiap permintaan.
+
+**Kualiti pilihan menurun apabila senarai bertambah.** Ejen yang memilih dari 500 alat dengan nama yang serupa membuat pilihan yang lebih buruk berbanding yang memilih dari 40. Jika anda mengintegrasi pengurus saluran, kira-kira dua puluh alat relevan untuk anda; baki 480 adalah gangguan yang menyukarkan pencarian alat yang betul.
+
+**Kerja itu benar-benar boleh dipisahkan.** Seseorang yang menyelaraskan ketersediaan dari PMS dan seseorang yang mengurus halaman pendaratan afiliasi hampir tidak berkongsi alat. Pembahagian mengikut tugasan bermakna setiap sambungan membawa kosa kata satu tugasan.
+
+<Aside type="caution" title="Set alat bukan kebenaran">
+Memilih set alat yang sempit **tidak** mengehadkan apa yang akaun anda boleh lakukan, dan memilih set yang luas tidak memberikan apa-apa tambahan. Setiap alat menguatkuasakan kebenaran akaun yang sama seperti portal web, di bawah identiti anda yang telah log masuk. Jika akaun anda tidak boleh membatalkan tempahan di Wink Portal, ejen juga tidak boleh — tanpa mengira titik akhir yang disambungkan.
+
+Pilih set alat untuk **fokus**, bukan untuk keselamatan.
+</Aside>
+
+---
+
+## Direktori titik akhir
+
+Dua hos menyediakan set alat. Bilangan alat adalah anggaran dan bertambah dari masa ke masa.
+
+### `https://api.wink.travel` — platform
+
+| Titik Akhir | Alat | Apa yang diliputi |
+|---|---:|---|
+| `/mcp/extranet/facilities` | ~64 | Inventori boleh ditempah dan di lokasi: bilik tetamu dan jenis bilik, spa, restoran, bilik mesyuarat, aktiviti, tarikan, tempat, barangan lain yang boleh dijual |
+| `/mcp/extranet/property` | ~62 | Rekod hartanah dan terma komersialnya: profil dan kandungan, tambahan, polisi pembatalan, keistimewaan, pengumuman |
+| `/mcp/settings` | ~60 | Pentadbiran akaun: profil dan penjenamaan entiti pengurusan, pengurus dan pemberian mereka, penyesuaian, webhook, keutamaan pemberitahuan |
+| `/mcp/studio/embeds` | ~48 | Menerbitkan inventori terpilih: widget, grid dan grid berperingkat, kad, peta, pautan mendalam ke inventori dan halaman pembekal |
+| `/mcp/extranet/rates` | ~44 | Harga dan ketersediaan: tempoh kadar inventori dan peruntukan, pelan kadar, kadar induk, kadar khas dan promosi |
+| `/mcp/extranet/operations` | ~39 | Mengendalikan hartanah secara langsung: tempahan dan kitar hayatnya, ulasan tetamu dan respons, suapan kalendar, tugasan berjadual |
+| `/mcp/extranet/distribution` | ~37 | Tempat inventori dijual: saluran jualan dan pengubah suai kadar, permintaan hubungan afiliasi dan pembekal, pendaftaran, tangkapan petunjuk |
+| `/mcp/studio/curation` | ~35 | Membina koleksi yang boleh dipasarkan: senarai statik dan dinamik, senarai berperingkat, carian tersimpan, agregat hartanah |
+| `/mcp/link-manager` | ~28 | Koleksi pautan sindiket, reka bentuknya, kategori dan tag, serta URL yang dipendekkan |
+| `/mcp/reference` | ~24 | Data rujukan baca sahaja: negara, mata wang dan kadar pertukaran, bahasa, zon waktu, rujukan geo, geolokasi IP |
+| `/mcp/analytics` | ~18 | Analitik tempahan dan hasil: gambaran keseluruhan, carta garis, papan pendahulu, prestasi afiliasi, metrik perkongsian |
+| `/mcp/payment` | ~18 | Operasi kewangan: lejar, pengeluaran dan anggaran yuran, agregat dana tempahan |
+| `/mcp/booking-engine` | ~17 | Laluan membeli-belah untuk pelancong: carian dan rujukan, troli beli-belah dan pembayaran, senarai bucket, penyesuaian kempen |
+| `/mcp/social` | ~17 | Akaun sosial yang disambungkan, penerbitan dan penjadualan pos, membaca wawasan pos |
+| `/mcp/travel-agent` | ~8 | Tempahan yang difasilitasi ejen bagi pihak pelancong, dan laporan ejen |
+
+### `https://integrations.wink.travel` — integrasi pengurus saluran
+
+Satu titik akhir, kerana hos ini wujud untuk satu tugasan.
+
+| Titik Akhir | Alat | Apa yang diliputi |
+|---|---:|---|
+| `/mcp/channel-manager` | ~9 | Menyambung dan mengesahkan integrasi pengurus saluran, PMS atau CRS |
+
+<Aside type="note" title="Mengintegrasi pengurus saluran vs. mengurus kadar sendiri">
+Ini adalah tugasan berbeza untuk orang yang berbeza, dan mereka tidak berkongsi titik akhir.
+
+**Vendor pengurus saluran, PMS atau CRS** mengintegrasi sekali melalui `integrations.wink.travel/mcp/channel-manager`, dan selepas itu bertukar hartanah, kadar, ketersediaan dan tempahan melalui integrasi itu. Titik akhir tunggal itu adalah keseluruhan permukaan.
+
+**Pengurus hotel yang mengubah kadar sendiri secara manual** menggunakan set alat extranet di `api.wink.travel` — `/mcp/extranet/rates` dan rakan-rakannya. Ini bukan sebahagian daripada integrasi pengurus saluran dan integrator tidak perlu menyambung ke situ.
+
+Pentadbiran akaun juga di `api.wink.travel`, di `/mcp/settings`. Tiada `/mcp/settings` di hos integrasi.
+</Aside>
+
+Setiap titik akhir juga membawa alat `ping`, supaya anda boleh mengesahkan sambungan hidup sebelum memintanya melakukan kerja sebenar.
+
+---
+
+## Set alat mana yang saya perlukan?
+
+| Jika anda… | Sambungkan ke |
+|---|---|
+| **Mengintegrasi pengurus saluran, PMS atau CRS** | `integrations.wink.travel/mcp/channel-manager` — hanya ini sahaja |
+| **Mengurus kandungan hartanah** | `/mcp/extranet/property` + `/mcp/extranet/facilities` |
+| **Mengurus bilik dan jenis bilik** | `/mcp/extranet/facilities` |
+| **Mengurus harga dan ketersediaan** | `/mcp/extranet/rates` |
+| **Mengendalikan tempahan harian** | `/mcp/extranet/operations` |
+| **Mengembangkan pengedaran** | `/mcp/extranet/distribution` + `/mcp/analytics` |
+| **Membina halaman afiliasi** | `/mcp/studio/curation` + `/mcp/studio/embeds` |
+| **Mengendalikan halaman pautan dalam bio** | `/mcp/link-manager` + `/mcp/social` |
+| **Menempah bagi pihak pelancong** | `/mcp/travel-agent` |
+| **Menyelaraskan wang** | `/mcp/payment` |
+| **Membina pengalaman tempahan** | `/mcp/booking-engine` + `/mcp/reference` |
+
+Mulakan dengan satu. Tambah satu lagi apabila anda mendapati sesuatu yang tidak boleh dilakukan — setiap sambungan adalah bebas, dan menambah satu tidak pernah menjejaskan yang lain.
+
+<Aside type="tip" title="Masih mahu semuanya?">
+`https://api.wink.travel/mcp` dan `https://integrations.wink.travel/mcp` kekal tersedia dan menyediakan **semua** alat di hos mereka. Ia berguna untuk meneroka apa yang wujud, tetapi kami tidak mengesyorkannya untuk kerja harian: senarai alat terlalu besar sehingga mengganggu tugasan anda dan menurunkan pemilihan alat ejen. Pilih set alat di atas.
+</Aside>
 
 ---
 
@@ -20,12 +113,12 @@ Wink menyediakan dua pelayan MCP yang disahkan. Kedua-duanya menggunakan **log m
 
 Pelayan MCP Wink menggunakan aliran **OAuth2 Authorization Code + PKCE** dan menyokong **Pendaftaran Klien Dinamik (RFC 7591)**. Berikut adalah apa yang berlaku apabila anda menyambung buat kali pertama:
 
-1. Klien AI anda menemui pelayan kebenaran dari metadata `/.well-known/oauth-protected-resource` titik akhir MCP.
+1. Klien AI anda menemui pelayan kebenaran dari metadata titik akhir MCP `/.well-known/oauth-protected-resource`.
 2. Klien mendaftar sendiri melalui **Pendaftaran Klien Dinamik** — tiada persediaan aplikasi manual diperlukan.
 3. Klien membuka **tab pelayar** ke `https://iam.wink.travel`. Anda log masuk dengan akaun Wink anda dan meluluskan kebenaran yang diminta pada skrin persetujuan.
 4. Wink mengeluarkan **token akses** yang dihadkan kepada akaun anda dan dipautkan kepada identiti anda.
-5. Klien AI melampirkan token pada setiap permintaan MCP. Semua hasil alat secara automatik dihadkan kepada entiti pengurusan anda.
-6. Token tamat tempoh selepas 3 jam. Klien AI anda menyegarkan secara senyap di latar belakang tanpa perlu meminta semula.
+5. Klien AI melampirkan token ke setiap permintaan MCP. Semua hasil alat secara automatik dihadkan kepada entiti pengurusan anda.
+6. Token tamat tempoh selepas 3 jam. Klien AI anda menyegarkan secara senyap di latar belakang tanpa perlu meminta lagi.
 
 Setiap panggilan alat dijalankan **di bawah identiti anda** — peraturan ACL yang sama yang melindungi portal web juga terpakai kepada ejen AI.
 
@@ -42,9 +135,9 @@ Setiap panggilan alat dijalankan **di bawah identiti anda** — peraturan ACL ya
    npm install -g @anthropic-ai/claude-code
    ```
 
-2. Tambah pelayan MCP Inventori Wink:
+2. Pilih set alat dari [direktori di atas](#endpoint-directory) dan tambahkannya. Contohnya, harga dan ketersediaan:
    ```bash
-   claude mcp add wink-inventory https://api.wink.travel/mcp --transport http
+   claude mcp add wink-rates https://api.wink.travel/mcp/extranet/rates --transport http
    ```
 
 3. Claude Code menghubungi pelayan, menemui pelayan kebenaran, dan membuka pelayar lalai anda.
@@ -54,13 +147,16 @@ Setiap panggilan alat dijalankan **di bawah identiti anda** — peraturan ACL ya
 5. Claude Code mengesahkan sambungan. Taip `/mcp` untuk mengesahkan pelayan muncul dan alatnya telah dimuatkan.
 </Steps>
 
-Untuk menambah pelayan Integrasi juga:
+Tambah sebanyak mana set alat yang diperlukan oleh kerja anda — setiap satu adalah entri pelayan berasingan dengan nama sendiri:
 ```bash
-claude mcp add wink-integrations https://integrations.wink.travel/mcp --transport http
+claude mcp add wink-operations https://api.wink.travel/mcp/extranet/operations --transport http
+claude mcp add wink-analytics  https://api.wink.travel/mcp/analytics           --transport http
 ```
 
+Anda hanya log masuk sekali. Selepas kelulusan pelayar pertama, Claude Code menggunakan semula sesi Wink anda untuk titik akhir Wink tambahan.
+
 :::tip[Kongsi dengan pasukan anda]
-Tambah `--scope project` pada `claude mcp add` dan Claude Code akan menulis URL pelayan ke `.mcp.json` di akar repositori. Komit fail itu — setiap ahli pasukan melengkapkan log masuk pelayar mereka sendiri kali pertama mereka menyambung.
+Tambah `--scope project` ke `claude mcp add` dan Claude Code menulis URL pelayan ke `.mcp.json` di akar repositori. Komit fail itu — setiap ahli pasukan mendapat set alat yang sama, dan masing-masing melengkapkan log masuk pelayar mereka sendiri kali pertama mereka menyambung.
 :::
 
   </TabItem>
@@ -77,13 +173,13 @@ Tambah `--scope project` pada `claude mcp add` dan Claude Code akan menulis URL 
    ```json title="claude_desktop_config.json"
    {
      "mcpServers": {
-       "wink-inventory": {
+       "wink-extranet-rates": {
          "type": "http",
-         "url": "https://api.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/rates"
        },
-       "wink-integrations": {
+       "wink-extranet-operations": {
          "type": "http",
-         "url": "https://integrations.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/operations"
        }
      }
    }
@@ -114,13 +210,13 @@ Tambah `--scope project` pada `claude mcp add` dan Claude Code akan menulis URL 
    ```json title="~/.codex/config.json"
    {
      "mcpServers": {
-       "wink-inventory": {
+       "wink-extranet-rates": {
          "type": "http",
-         "url": "https://api.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/rates"
        },
-       "wink-integrations": {
+       "wink-extranet-operations": {
          "type": "http",
-         "url": "https://integrations.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/operations"
        }
      }
    }
@@ -143,26 +239,26 @@ Sokongan MCP Codex CLI memerlukan versi **1.0** atau lebih baru. Jalankan `codex
 Sokongan pelayan MCP tersedia dalam **aplikasi desktop ChatGPT** untuk pelanggan Plus, Pro, Team, dan Enterprise.
 
 <Steps>
-1. Muat turun dan pasang [aplikasi desktop ChatGPT](https://openai.com/chatgpt/download/) jika anda belum berbuat demikian.
+1. Muat turun dan pasang [aplikasi desktop ChatGPT](https://openai.com/chatgpt/download/) jika belum ada.
 
 2. Buka aplikasi dan klik **ikon profil anda** di penjuru kanan atas, kemudian pilih **Settings**.
 
 3. Pergi ke **Connectors** (atau **MCP Servers** bergantung pada versi aplikasi anda) dan klik **Add**.
 
-4. Masukkan URL pelayan Inventori Wink:
+4. Masukkan URL set alat dari [direktori di atas](#endpoint-directory), contohnya:
    ```
-   https://api.wink.travel/mcp
+   https://api.wink.travel/mcp/extranet/rates
    ```
    Kemudian klik **Connect**.
 
 5. ChatGPT membuka tab pelayar ke `https://iam.wink.travel`. **Log masuk ke Wink** dan luluskan kebenaran.
 
-6. Ulang langkah 4–5 untuk pelayan Integrasi:
+6. Ulang langkah 4–5 untuk mana-mana set alat lain yang diperlukan oleh kerja anda, contohnya:
    ```
-   https://integrations.wink.travel/mcp
+   https://api.wink.travel/mcp/extranet/operations
    ```
 
-7. Kedua-dua pelayan muncul dalam senarai Connectors anda. Mulakan sembang baru — alat Wink tersedia secara automatik.
+7. Setiap set alat muncul dalam senarai Connectors anda. Mulakan sembang baru — alat Wink tersedia secara automatik.
 </Steps>
 
 :::note[Had aplikasi web]
@@ -182,19 +278,19 @@ Pelayan MCP hanya boleh dikonfigurasikan dalam **aplikasi desktop**. Antara muka
    ```json title="~/.cursor/mcp.json"
    {
      "mcpServers": {
-       "wink-inventory": {
+       "wink-extranet-rates": {
          "type": "http",
-         "url": "https://api.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/rates"
        },
-       "wink-integrations": {
+       "wink-extranet-operations": {
          "type": "http",
-         "url": "https://integrations.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/operations"
        }
      }
    }
    ```
 
-3. Buka Cursor. Pergi ke **Settings → Cursor Settings → MCP** dan sahkan kedua-dua pelayan muncul dengan penunjuk status hijau. Jika ia berwarna merah, klik **Refresh**.
+3. Buka Cursor. Pergi ke **Settings → Cursor Settings → MCP** dan sahkan kedua-dua pelayan muncul dengan penunjuk status hijau. Jika merah, klik **Refresh**.
 
 4. Cursor membuka tab pelayar ke `https://iam.wink.travel`. **Log masuk ke Wink** dan luluskan kebenaran.
 
@@ -202,7 +298,7 @@ Pelayan MCP hanya boleh dikonfigurasikan dalam **aplikasi desktop**. Antara muka
 </Steps>
 
 :::tip[Konfigurasi berfokus projek]
-Anda juga boleh meletakkan fail `mcp.json` di akar projek anda sebagai ganti di `~/.cursor/`. Konfigurasi peringkat projek diutamakan dan menjadikan pelayan tersedia kepada setiap ahli pasukan yang membuka projek dalam Cursor.
+Anda juga boleh letakkan fail `mcp.json` di akar projek anda sebagai ganti di `~/.cursor/`. Konfigurasi peringkat projek diutamakan dan menjadikan pelayan tersedia kepada setiap ahli pasukan yang membuka projek dalam Cursor.
 :::
 
   </TabItem>
@@ -218,13 +314,13 @@ Anda juga boleh meletakkan fail `mcp.json` di akar projek anda sebagai ganti di 
    ```json title="~/.codeium/windsurf/mcp_config.json"
    {
      "mcpServers": {
-       "wink-inventory": {
+       "wink-extranet-rates": {
          "type": "http",
-         "url": "https://api.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/rates"
        },
-       "wink-integrations": {
+       "wink-extranet-operations": {
          "type": "http",
-         "url": "https://integrations.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/operations"
        }
      }
    }
@@ -232,9 +328,9 @@ Anda juga boleh meletakkan fail `mcp.json` di akar projek anda sebagai ganti di 
 
 3. **Mulakan semula Windsurf sepenuhnya** (Fail → Quit, kemudian buka semula).
 
-4. Pergi ke **Settings → MCP Servers** dan sahkan kedua-dua pelayan menunjukkan status disambungkan. Windsurf membuka tab pelayar ke `https://iam.wink.travel` pada penggunaan pertama.
+4. Pergi ke **Settings → MCP Servers** dan sahkan kedua-dua pelayan menunjukkan sebagai disambungkan. Windsurf membuka tab pelayar ke `https://iam.wink.travel` pada penggunaan pertama.
 
-5. **Log masuk ke Wink** dan luluskan kebenaran. Pelayan bertukar hijau dalam panel tetapan setelah disahkan.
+5. **Log masuk ke Wink** dan luluskan kebenaran. Pelayan bertukar hijau dalam panel tetapan selepas pengesahan.
 </Steps>
 
 :::note
@@ -251,7 +347,7 @@ Cline adalah sambungan VS Code dengan pengurus pelayan MCP terbina dalam. Tiada 
    - Buka VS Code dan tekan `Ctrl+Shift+X` / `Cmd+Shift+X`
    - Cari **Cline** dan klik **Install**
 
-2. Klik **ikon Cline** di Bar Aktiviti (bar sisi kiri) untuk membuka panel Cline.
+2. Klik **ikon Cline** di Bar Aktiviti (bar sisi kiri) untuk buka panel Cline.
 
 3. Klik ikon **MCP Servers** (ikon palam) di bar alat Cline, kemudian pilih **Edit MCP Settings**.
 
@@ -260,13 +356,13 @@ Cline adalah sambungan VS Code dengan pengurus pelayan MCP terbina dalam. Tiada 
    ```json title="cline_mcp_settings.json"
    {
      "mcpServers": {
-       "wink-inventory": {
+       "wink-extranet-rates": {
          "type": "http",
-         "url": "https://api.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/rates"
        },
-       "wink-integrations": {
+       "wink-extranet-operations": {
          "type": "http",
-         "url": "https://integrations.wink.travel/mcp"
+         "url": "https://api.wink.travel/mcp/extranet/operations"
        }
      }
    }
@@ -278,7 +374,7 @@ Cline adalah sambungan VS Code dengan pengurus pelayan MCP terbina dalam. Tiada 
 </Steps>
 
 :::tip[Alternatif: tambah melalui URL]
-Dalam panel MCP Servers, klik **Add Server** dan tampal `https://api.wink.travel/mcp` secara langsung. Cline mengisi konfigurasi secara automatik dan mengendalikan pengesahan tanpa perlu sunting JSON secara manual.
+Dalam panel MCP Servers, klik **Add Server** dan tampal URL set alat seperti `https://api.wink.travel/mcp/extranet/rates` secara langsung. Cline mengisi konfigurasi secara automatik dan mengendalikan pengesahan tanpa penyuntingan JSON manual.
 :::
 
   </TabItem>
@@ -288,13 +384,14 @@ Dalam panel MCP Servers, klik **Add Server** dan tampal `https://api.wink.travel
 
 ## Skop
 
-Apabila anda meluluskan skrin persetujuan, anda akan melihat pecahan apa yang diminta oleh ejen. Klien MCP menggunakan kosa kata kebenaran yang sama seperti platform lain — lihat rujukan penuh
-[skop pada halaman Pengesahan](/ms/developers/authentication#scopes).
+Apabila anda meluluskan skrin persetujuan, anda akan melihat pecahan apa yang ejen minta. Klien MCP menggunakan kosa kata kebenaran yang sama seperti platform lain — lihat rujukan penuh [skop di halaman Pengesahan](/ms/developers/authentication#scopes).
 
 Dua perkara khusus untuk MCP:
 
-- **Skop `mcp.read` `mcp.write` `mcp.remove` juga diperlukan** untuk membuka pengangkutan MCP. Klien yang memegang skop `mcp.*` dibenarkan ke `/mcp`, tetapi setiap alat yang dipanggilnya masih menguatkuasakan skop seksyen titik akhir yang dibalutnya (contohnya `booking.read`).
+- **Skop `mcp.read` `mcp.write` `mcp.remove` juga diperlukan** untuk membuka pengangkutan MCP. Klien yang memegang skop `mcp.*` dibenarkan ke mana-mana titik akhir MCP Wink, tetapi setiap alat yang dipanggil masih menguatkuasakan skop bahagian titik akhir yang dibalutnya (contoh `booking.read`).
 - **Klien AI hanya meminta skop yang diperlukan.** Anda boleh menolak kebenaran individu pada skrin persetujuan — alat yang memerlukan skop yang ditolak akan mengembalikan ralat apabila dipanggil.
+
+**Set alat tidak mengubah apa-apa ini.** Titik akhir yang anda sambungkan menentukan alat mana yang *disenaraikan*, bukan apa yang *dibenarkan dilakukan*. Menyambung ke `/mcp/payment` tidak memberikan kebenaran kewangan yang anda tidak ada, dan menyambung ke `/mcp/reference` tidak menghalang alat di situ menguatkuasakan skopnya sendiri. Kebenaran ditentukan setiap panggilan alat, dari token anda dan pemberian akaun anda.
 
 ---
 
@@ -305,39 +402,51 @@ Dua perkara khusus untuk MCP:
 Klien AI anda mungkin belum menyokong aliran PKCE interaktif. Sahkan anda menjalankan versi terkini:
 - **Claude Code:** `npm install -g @anthropic-ai/claude-code`
 - **Codex CLI:** `npm install -g @openai/codex`
-- **Claude Desktop / ChatGPT desktop:** kemas kini dari pemuat naik terbina dalam aplikasi
+- **Claude Desktop / ChatGPT desktop:** kemas kini dari pengemas kini terbina dalam aplikasi
 
 **`401 Unauthorized` selepas log masuk**
 
-Token cache anda mungkin sudah lapuk. Alih keluar dan tambah semula pelayan untuk mencetuskan log masuk baru:
+Token cache anda mungkin sudah lapuk. Buang dan tambah semula pelayan untuk mencetuskan log masuk baru:
 
 ```bash
 # Claude Code
-claude mcp remove wink-inventory
-claude mcp add wink-inventory https://api.wink.travel/mcp --transport http
+claude mcp remove wink-rates
+claude mcp add wink-rates https://api.wink.travel/mcp/extranet/rates --transport http
 ```
 
-Untuk Claude Desktop dan ChatGPT, alih keluar entri pelayan dari tetapan, mulakan semula aplikasi, dan tambah semula.
+Untuk Claude Desktop dan ChatGPT, buang entri pelayan dari tetapan, mulakan semula aplikasi, dan tambah semula.
 
 **`403 Forbidden` apabila memanggil alat tertentu**
 
-Alat memerlukan skop yang anda tidak luluskan pada skrin persetujuan. Sambung semula pelayan — skrin persetujuan akan muncul semula dan anda boleh luluskan kebenaran yang hilang.
+Alat memerlukan skop yang anda tidak luluskan pada skrin persetujuan, atau kebenaran yang akaun anda tidak miliki. Sambung semula pelayan — skrin persetujuan akan muncul semula dan anda boleh luluskan kebenaran yang hilang. Jika masih gagal, alat memerlukan kebenaran akaun yang anda tidak ada; menyambung ke set alat lain tidak membantu, kerana set alat tidak memberikan kebenaran.
 
-**Pelayan muncul tetapi panggilan alat mengembalikan "akaun tidak dijumpai"**
+**Alat yang saya perlukan tiada dalam senarai**
+
+Anda mungkin disambungkan ke set alat yang tidak meliputi tugasan itu. Semak [direktori titik akhir](#endpoint-directory) dan tambah set alat yang meliputi — sambungan adalah bebas, jadi menambah satu tidak mengubah yang lain. Jika tidak pasti yang mana ada alat itu, sambung sementara ke `https://api.wink.travel/mcp`, cari alat, kemudian lihat set alat mana yang menyenaraikannya.
+
+**`404 Not Found` pada titik akhir set alat**
+
+Periksa laluan dengan teliti — set alat bertingkat mempunyai dua segmen (`/mcp/extranet/rates`, bukan `/mcp/extranet-rates`), dan yang rata satu segmen (`/mcp/link-manager`). Perhatikan bahawa permintaan *tidak diautentikasi* ke mana-mana laluan di bawah `/mcp` mengembalikan `401`, bukan `404`, jadi `401` sahaja tidak memberitahu sama ada titik akhir wujud.
+
+**Saya sambung ke `api.wink.travel/mcp/channel-manager` dan tiada apa**
+
+Titik akhir itu tidak wujud. Integrasi pengurus saluran hanya disediakan dari `https://integrations.wink.travel/mcp/channel-manager`. Jika anda juga perlu baca atau tulis kadar hartanah sendiri secara manual, itu tugasan berasingan pada titik akhir berasingan — lihat `/mcp/extranet/rates`.
+
+**Pelayan muncul tetapi panggilan alat mengembalikan "akaun tidak ditemui"**
 
 Anda log masuk ke akaun Wink yang tiada entiti pengurusan. Pergi ke [Wink Portal](https://app.wink.travel) dan pastikan akaun anda disediakan sebelum menggunakan pelayan MCP.
 
 **Token tamat tempoh semasa sesi**
 
-Token sah selama 3 jam. Claude Code dan Claude Desktop menyegarkan token secara senyap tanpa mengganggu sesi anda. Jika anda melihat ralat pengesahan selepas tempoh tidak aktif yang lama, taip mesej baru — klien akan mengesahkan semula secara automatik.
+Token sah selama 3 jam. Claude Code dan Claude Desktop menyegarkan token secara senyap tanpa mengganggu sesi anda. Jika anda lihat ralat pengesahan selepas tempoh tidak aktif lama, taip mesej baru — klien akan mengesahkan semula secara automatik.
 
-**Codex CLI menunjukkan "Pelayan MCP tidak dapat dicapai"**
+**Codex CLI menunjukkan "MCP server unreachable"**
 
-Periksa bahawa `~/.codex/config.json` adalah JSON sah (tiada koma bertindih) dan `"type": "http"` ditetapkan. Codex memerlukan pengangkutan HTTP untuk pelayan jauh; pengangkutan stdio hanya untuk binari tempatan.
+Periksa bahawa `~/.codex/config.json` adalah JSON sah (tiada koma bertindih) dan `"type": "http"` ditetapkan. Codex memerlukan pengangkutan HTTP untuk pelayan jauh; pengangkutan stdio untuk binari tempatan sahaja.
 
-**Menu "Connectors" ChatGPT hilang**
+**Menu "Connectors" ChatGPT tiada**
 
-Sokongan MCP memerlukan versi aplikasi desktop ChatGPT **1.2024.352** atau lebih baru dan langganan Plus, Pro, Team, atau Enterprise yang aktif. Kemas kini aplikasi dan sahkan pelan anda di Settings → Account.
+Sokongan MCP memerlukan versi aplikasi desktop ChatGPT **1.2024.352** atau lebih baru dan langganan Plus, Pro, Team, atau Enterprise aktif. Kemas kini aplikasi dan sahkan pelan anda di Settings → Account.
 
 **Pelayan Cursor menunjukkan merah / "Gagal sambung"**
 
@@ -349,9 +458,9 @@ Windsurf memerlukan mulakan semula penuh (bukan hanya muat semula tetingkap) unt
 
 **Pilihan "Add Server" Cline tidak kelihatan**
 
-Pengurus pelayan MCP memerlukan Cline **2.0** atau lebih baru. Buka panel Sambungan VS Code, cari Cline, dan klik **Update** jika kemas kini tersedia. Selepas kemas kini, muat semula VS Code (`Ctrl+Shift+P` → "Developer: Reload Window").
+Pengurus pelayan MCP memerlukan Cline **2.0** atau lebih baru. Buka panel Sambungan VS Code, cari Cline, dan klik **Update** jika ada kemas kini. Selepas kemas kini, muat semula VS Code (`Ctrl+Shift+P` → "Developer: Reload Window").
 
 ---
 
-<LinkButton href="https://app.wink.travel" variant="primary" icon="external">Buka Portal Wink</LinkButton>
+<LinkButton href="https://app.wink.travel" variant="primary" icon="external">Buka Wink Portal</LinkButton>
 <LinkButton href="https://github.com/wink-travel" variant="secondary" icon="external">Wink di GitHub</LinkButton>

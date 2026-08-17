@@ -1,331 +1,53 @@
 ---
-title: Webhook-tapahtumien luettelo
-description: Täydellinen viite kaikista Wink-alustalla saatavilla olevista webhook-tapahtumatyypeistä, järjestettynä kategorioittain.
+title: Webhook-tapahtumaluettelo
+description: Kaikki webhook-tapahtumatyypit Wink-alustalla, jotka on luotu alustan tapahtumaluettelosta — kenelle ne toimitetaan ja missä hyötykuorma on dokumentoitu.
 sidebar:
   order: 3.5
 ---
 
-import { LinkButton } from '@astrojs/starlight/components';
+import webhooks from '../../../../schemas/webhooks.json';
+import WebhookEventTypes from '@/components/webhooks/event-types.astro';
 
 Tällä sivulla on luettelo kaikista webhook-tapahtumista, joihin voit tilata Winkissä. Asennusohjeita varten katso [Webhook Integration Guide](/fi/developers/webhook-integration) tai [Webhooks management page](/fi/portal/settings/webhooks).
 
 ## Kuinka tilata
 
 1. Siirry portaalissasi kohtaan **Applications > Webhooks**.
-2. Luo webhook ja valitse vastaanotettavat tapahtumat.
-3. Wink lähettää HTTP POST -pyynnön päätepisteeseesi aina, kun tapahtuma tapahtuu.
-
-Täydelliset asennusohjeet ja parhaat käytännöt löytyvät kohdasta [Webhook Integration](/fi/developers/webhook-integration).
-
----
-
-## Hallintayksikön tapahtumat
-
-Tapahtumat hallintayksiköiden (kiinteistöt, tytäryhtiöt, yritykset) ja niiden hallinnan osalta.
-
-### Elinkaari
-
-| Tapahtuma | Avain | Kuvaus |
-|---|---|---|
-| Yksikkö luotu | `managing_entity.created` | Uusi hallintayksikkö on luotu. |
-| Yksikkö poistettu | `managing_entity.deleted` | Hallintayksikkö on poistettu. |
-| Tila päivitetty | `managing_entity.status.updated` | Yksikön tila on muuttunut. |
-| Tarkastelussa | `account.under_review` | Yksikön tili on tarkastettavana. |
-
-### Tilauksen hallinta
-
-| Tapahtuma | Avain | Kuvaus |
-|---|---|---|
-| Tilaus aktivoitu | `managing_entity.subscription.provisioned` | Uusi tilaus on aktivoitu. |
-| Tilaus muutettu | `managing_entity.subscription.changed` | Tilaussuunnitelmaa on muutettu. |
-| Tilauslasku päivitetty | `managing_entity.subscription.invoice.changed` | Tilauslasku on päivitetty. |
-
-### Hallinnoijan elinkaari
-
-| Tapahtuma | Avain | Kuvaus |
-|---|---|---|
-| Hallinnoija lisätty | `managing_entity.manager.added` | Uusi hallinnoija on lisätty. |
-| Hallinnoija kutsuttu | `managing_entity.manager.invited` | Hallinnoijakutsu on lähetetty. |
-| Hallinnoija poistettu | `managing_entity.manager.removed` | Hallinnoija on poistettu. |
-| Hallinnoija hyväksytty | `managing_entity.manager.accepted` | Hallinnoijakutsu on hyväksytty. |
-| Hallinnoija hylätty | `managing_entity.manager.rejected` | Hallinnoijakutsu on hylätty. |
-| Omistaja asetettu | `managing_entity.manager.owner.set` | Yksikön omistajuus on siirretty. |
-| Hallinnoijat päivitetty | `account.managers.update` | Hallinnoijalista on muuttunut. |
-
-### Yksikön tiedot
-
-| Tapahtuma | Avain | Kuvaus |
-|---|---|---|
-| Tiedot päivitetty | `managing_entity.information.updated` | Yksikön tiedot on päivitetty. |
-| Osoite päivitetty | `managing_entity.city.updated` | Yksikön osoite/kaupunki on muuttunut. |
-| Nimi päivitetty | `managing_entity.name.updated` | Yksikön nimi on muuttunut. |
-| URL-nimi päivitetty | `managing_entity.url_name.updated` | Yksikön näyttö-URL on muuttunut. |
-| Yksilöllinen tunniste päivitetty | `managing_entity.unique_id.updated` | Yksikön yksilöllinen tunniste on muuttunut. |
-| Hallinnoija päivitetty | `managing_entity.managed_by.updated` | Yksikön emoyhteys/hallinnoija on muuttunut. |
-| Paikkatunnus päivitetty | `managing_entity.place_id.updated` | Yksikön Google Place ID on muuttunut. |
-| Tiliedustaja päivitetty | `managing_entity.account_representative.updated` | Tiliedustaja on vaihdettu. |
-| Profiilikuva päivitetty | `managing_entity.profile_picture.updated` | Yksikön profiilikuva on päivitetty. |
-| Logo päivitetty | `managing_entity.logo.updated` | Yksikön logo on päivitetty. |
-| Tiedot päivitetty | `account.details.updated` | Tilin tiedot on päivitetty. |
-| Agentti päivitetty | `managing_entity.agent.updated` | Yksikön agenttia on muokattu. |
-
-### Ilmoitukset
-
-| Tapahtuma | Avain | Kuvaus |
-|---|---|---|
-| Agentin sähköposti-ilmoitus | `managing_entity.agent.email.notification` | Agentille on lähetetty sähköposti-ilmoitus. |
-| Hallinnoijan sähköposti-ilmoitus | `managing_entity.manager.email.notification` | Hallinnoijalle on lähetetty sähköposti-ilmoitus. |
-
-### Tilin tehtävät
-
-| Tapahtuma | Avain | Kuvaus |
-|---|---|---|
-| Tehtävä luotu | `account.task.create` | Uusi tehtävä on lisätty tilille. |
-| Tehtävä päivitetty | `account.task.update` | Tilin tehtävää on muokattu. |
-| Tehtävä poistettu | `account.task.remove` | Tilin tehtävä on poistettu. |
-| Tehtävä suoritettu | `account.task.complete` | Tilin tehtävä on suoritettu. |
-| Verotunnisteen tehtävä suoritettu | `account.task.tax_id.complete` | Verotunnisteen tarkistustehtävä on suoritettu. |
-
----
-
-## Varaustapahtumat
-
-Tapahtumat Wink-varauksen elinkaaren aikana, luomisesta hyvityksiin ja maksuihin.
-
-### Perusvaraus
-
-| Tapahtuma | Avain | Kuvaus |
-|---|---|---|
-| Varaus luotu | `booking.create` | Uusi varaus on luotu. |
-| Varaus peruutettu | `booking.cancelled` | Varaus on peruutettu. |
-| Varaus epäonnistui | `booking.failed` | Varausyritys epäonnistui. |
-| Varaus käsittelyssä | `booking.processing` | Varauksen maksu on käsittelyssä. |
-| Alustuspyyntö | `booking.initialize.request` | Varauksen alustus on pyydetty. |
-| Alustus valmis | `booking.initialize.complete` | Varauksen alustus on valmis. |
-
-### Hyvitykset
-
-| Tapahtuma | Avain | Kuvaus |
-|---|---|---|
-| Hyvityspyyntö | `booking.refund.request` | Hyvityspyyntö on lähetetty. |
-| Hyvitysvirhe | `booking.refund.error` | Virhe hyvityksen käsittelyssä. |
-| Osahyvitys | `booking.refund.partial` | Osahyvitys on myönnetty. |
-| Kokohyvytys | `booking.refund.full` | Kokohyvytys on myönnetty. |
-
-### Maksut
-
-| Tapahtuma | Avain | Kuvaus |
-|---|---|---|
-| Maksu luotu | `booking.payout.create` | Maksu on luotu varaukselle. |
-| Maksu valmis | `booking.payout.complete` | Maksu on onnistuneesti suoritettu. |
-| Varat saatavilla | `booking.funds.available` | Varauksen varat ovat saatavilla selvitystä varten. |
-| Varat kirjattu | `booking.funds.ledgered` | Varauksen varat on kirjattu tilikirjaan. |
-
-### Arvostelut
-
-| Tapahtuma | Avain | Kuvaus |
-|---|---|---|
-| Arvostelu lähetetty | `booking.review.created` | Asiakas on lähettänyt arvostelun varauksesta. |
-| Arvosteluun vastattu | `booking.review.responded` | Kiinteistö on vastannut arvosteluun. |
-
----
-
-## Kiinteistötapahtumat
-
-Tapahtumat kiinteistön profiileista ja sisällöstä, lähetetään kiinteistön omille webhook-tilaajille.
-
-| Tapahtuma | Avain | Kuvaus |
-|---|---|---|
-| Kiinteistö luotu | `property.created` | Uusi kiinteistö on luotu. |
-| Kiinteistö päivitetty | `property.updated` | Kiinteistön tiedot on päivitetty. |
-| Kiinteistö poistettu | `property.deleted` | Kiinteistö on poistettu. |
-| Kiinteistö rekisteröity | `property.registered` | Kiinteistö on rekisteröity. |
-| Tila päivitetty | `property.status.updated` | Kiinteistön ulkoinen tila on muuttunut. |
-| Nimi päivitetty | `property.name.updated` | Kiinteistön nimi on muuttunut. |
-| Osoite päivitetty | `property.address.updated` | Kiinteistön osoite on päivitetty. |
-| Sijainti päivitetty | `property.geolocation.updated` | Kiinteistön sijaintitiedot on päivitetty. |
-| Profiili päivitetty | `property.profile.updated` | Kiinteistön profiilin sisältö on muuttunut. |
-| Palvelut päivitetty | `property.services.updated` | Kiinteistön palvelu-/mukavuuslista on muuttunut. |
-| Tervetuloviesti päivitetty | `property.welcome_text.updated` | Kiinteistön tervetuloviesti on muuttunut. |
-| Käytäntö luotu | `property.policy.created` | Uusi kiinteistön käytäntö on luotu. |
-| Käytäntö päivitetty | `property.policy.updated` | Kiinteistön käytäntö on päivitetty. |
-
----
-
-## Inventaarion tapahtumat
-
-Tapahtumat kiinteistön inventaariokohteista, lähetetään kyseisen kiinteistön webhook-tilaajille.
-
-### Huonetyypit
-
-| Tapahtuma | Avain | Kuvaus |
-|---|---|---|
-| Huonetyyppi luotu | `room_type.created` | Uusi huonetyyppi on lisätty. |
-| Huonetyyppi päivitetty | `room_type.updated` | Huonetyyppiä on muokattu. |
-| Huonetyyppi poistettu | `room_type.deleted` | Huonetyyppi on poistettu. |
-
-### Hintasuunnitelmat
-
-| Tapahtuma | Avain | Kuvaus |
-|---|---|---|
-| Hintasuunnitelma luotu | `rate_plan.created` | Uusi hintasuunnitelma on luotu. |
-| Hintasuunnitelma päivitetty | `rate_plan.updated` | Hintasuunnitelmaa on muokattu. |
-| Hintasuunnitelma poistettu | `rate_plan.deleted` | Hintasuunnitelma on poistettu. |
-
-### Päähintatasot
-
-| Tapahtuma | Avain | Kuvaus |
-|---|---|---|
-| Päähintataso luotu | `master_rate.created` | Uusi päähintataso on luotu. |
-| Päähintataso päivitetty | `master_rate.updated` | Päähintatasoa on muokattu. |
-| Päähintataso poistettu | `master_rate.deleted` | Päähintataso on poistettu. |
-
-### Lisäpalvelut
-
-| Tapahtuma | Avain | Kuvaus |
-|---|---|---|
-| Lisäpalvelu luotu | `add_on.created` | Uusi lisäpalvelu on luotu. |
-| Lisäpalvelu päivitetty | `add_on.updated` | Lisäpalvelua on muokattu. |
-| Lisäpalvelu poistettu | `add_on.deleted` | Lisäpalvelu on poistettu. |
-
-### Kokoushuoneet
-
-| Tapahtuma | Avain | Kuvaus |
-|---|---|---|
-| Kokoushuone luotu | `meeting_room.created` | Uusi kokoushuone on lisätty. |
-| Kokoushuone päivitetty | `meeting_room.updated` | Kokoushuonetta on muokattu. |
-| Kokoushuone poistettu | `meeting_room.deleted` | Kokoushuone on poistettu. |
-
-### Ravintolat
-
-| Tapahtuma | Avain | Kuvaus |
-|---|---|---|
-| Ravintola luotu | `restaurant.created` | Uusi ravintola on lisätty. |
-| Ravintola päivitetty | `restaurant.updated` | Ravintolaa on muokattu. |
-| Ravintola poistettu | `restaurant.deleted` | Ravintola on poistettu. |
-
-### Kylpylät
-
-| Tapahtuma | Avain | Kuvaus |
-|---|---|---|
-| Kylpylä luotu | `spa.created` | Uusi kylpylä on lisätty. |
-| Kylpylä päivitetty | `spa.updated` | Kylpylää on muokattu. |
-| Kylpylä poistettu | `spa.deleted` | Kylpylä on poistettu. |
-
-### Aktiviteetit
-
-| Tapahtuma | Avain | Kuvaus |
-|---|---|---|
-| Aktiviteetti luotu | `activity.created` | Uusi aktiviteetti on lisätty. |
-| Aktiviteetti päivitetty | `activity.updated` | Aktiviteettia on muokattu. |
-| Aktiviteetti poistettu | `activity.deleted` | Aktiviteetti on poistettu. |
-
----
-
-## Myyntikanavatapahtumat
-
-Tapahtumat jakelukanavista, jotka yhdistävät toimittajat ja tytäryhtiöt. Lähetetään sekä toimittajan että tytäryhtiön webhook-tilaajille.
-
-| Tapahtuma | Avain | Kuvaus |
-|---|---|---|
-| Myyntikanava luotu | `sales_channel.created` | Uusi myyntikanava on luotu. |
-| Myyntikanava päivitetty | `sales_channel.updated` | Myyntikanavaa on muokattu. |
-| Myyntikanava poistettu | `sales_channel.deleted` | Myyntikanava on poistettu. |
-
----
-
-## Erikoishintatapahtumat
-
-Tapahtumat kiinteistön kampanja- ja neuvotelluista hinnoista.
-
-| Tapahtuma | Avain | Kuvaus |
-|---|---|---|
-| Erikoishinta luotu | `special_rate.created` | Uusi erikoishinta on luotu. |
-| Erikoishinta päivitetty | `special_rate.updated` | Erikoishintaa on muokattu. |
-| Erikoishinta poistettu | `special_rate.deleted` | Erikoishinta on poistettu. |
-| Hintamuokkaaja päivitetty | `rate_modifier.updated` | Hintamuokkaaja on päivitetty. |
-
----
-
-## Maksunsaajatapahtumat
-
-Tapahtumat maksunsaajien (maksun vastaanottajien) hallinnasta.
-
-| Tapahtuma | Avain | Kuvaus |
-|---|---|---|
-| Maksunsaaja luotu | `payee.create` | Uusi maksunsaaja on luotu onnistuneesti. |
-| Maksunsaajan luonti epäonnistui | `payee.create.failure` | Maksunsaajan luonti epäonnistui. |
-| Maksunsaaja päivitetty | `payee.update` | Maksunsaajaa on päivitetty. |
-| Maksunsaajan päivitys epäonnistui | `payee.update.failure` | Maksunsaajan päivitys epäonnistui. |
-
----
-
-## Maksutapahtumat
-
-Sisäiset maksujen käsittelytapahtumat TripPay:ltä.
-
-| Tapahtuma | Avain | Kuvaus |
-|---|---|---|
-| Maksu onnistui | `internal.payment.succeeded` | Maksu on käsitelty onnistuneesti. |
-| Maksu käsittelyssä | `internal.payment.processing` | Maksu on parhaillaan käsittelyssä. |
-| Maksu epäonnistui | `internal.payment.failed` | Maksun käsittely epäonnistui. |
-
----
-
-## Kanavahallintatapahtumat
-
-Tapahtumat kanavahallinnan hintojen ja saatavuuden päivityksistä.
-
-| Tapahtuma | Avain | Kuvaus |
-|---|---|---|
-| Hintapäivitys | `channel-manager.update.rate` | Kanavahallinta on lähettänyt hintapäivityksen. |
-| Saatavuuspäivitys | `channel-manager.update.availability` | Kanavahallinta on lähettänyt saatavuuspäivityksen. |
-| Yleinen päivitys | `channel-manager.update` | Yleinen kanavahallinnan päivitys. |
-
----
-
-## Kirjanpitotapahtumat
-
-Tapahtumat talouskirjanpidon merkinnöistä.
-
-| Tapahtuma | Avain | Kuvaus |
-|---|---|---|
-| Kirjanpitomerkintä luotu | `ledger.entry.create` | Uusi kirjanpitomerkintä on tehty. |
-
----
-
-## Sähköpostitapahtumat
-
-| Tapahtuma | Avain | Kuvaus |
-|---|---|---|
-| Sähköpostiviestintä | `email.correspondence` | Lähtöviesti on lähetetty. |
-
----
-
-## Tapahtumien yhteenveto
-
-| Kategoria | Määrä |
-|---|---|
-| Hallintayksikön tapahtumat | 33 |
-| Varaustapahtumat | 16 |
-| Kiinteistötapahtumat | 13 |
-| Inventaarion tapahtumat (huonetyypit, hintasuunnitelmat, päähintatasot, lisäpalvelut, tilat) | 24 |
-| Myyntikanavatapahtumat | 3 |
-| Erikoishintatapahtumat | 4 |
-| Maksunsaajatapahtumat | 4 |
-| Maksutapahtumat | 3 |
-| Kanavahallintatapahtumat | 3 |
-| Kirjanpitotapahtumat | 1 |
-| Sähköpostitapahtumat | 1 |
-| **Yhteensä** | **105** |
+2. Luo webhook ja valitse vastaanotettavat tapahtumat — tai jätä lista tyhjäksi vastaanottaaksesi kaikki tapahtumat.
+3. Wink lähettää allekirjoitetun HTTP POST -pyynnön päätepisteeseesi aina, kun tapahtuma tapahtuu. Katso [Webhook Integration](/fi/developers/webhook-integration) kuoresta, otsikoista, allekirjoituksen tarkistuksesta ja uudelleenyrityksistä.
+
+## Kaikki tapahtumatyypit
+
+Tämä taulukko on luotu alustan tapahtumaluettelosta rakennusvaiheessa, joten se vastaa aina API:a.
+Toimitetut tapahtumatyypit linkittävät niiden viitesivulle [Webhooks API:ssa](/fi/api/webhooks/), jossa
+on dokumentoitu tarkka JSON-rakenne (`WebhookEnvelope` tapahtumakohtaisella `object`-kentällä), `Wink-*`-otsikot ja
+uudelleenyrityskäytäntö. Toimittamattomat tapahtumatyypit ovat sisäisiä (maksut, kirjanpito, kanavahallinnan
+synkronointi, …), mutta niitä ei tällä hetkellä lähetetä webhook-tilaajille.
+
+**Vastaanottajat** kertoo, kuka tapahtuman saa: `SUPPLIER` (hotelli), `AFFILIATE` (jälleenmyyjä, jolla on aktiivinen
+myyntikanava hotellille), `AGENT` (matkatoimisto, joka teki varauksen) tai `SELF` (hallinnoiva taho,
+johon tapahtuma liittyy). Jokainen vastaanottaja saa saman hyötykuorman muodon; roolikohtaiset tiedot löytyvät
+hyötykuorman `links.self`-URL-osoitteesta.
+
+<WebhookEventTypes
+  types={webhooks['x-wink-event-types']}
+  referenceBase="/api/webhooks"
+  eventHeader="Tapahtuma"
+  descriptionHeader="Kuvaus"
+  deliveredHeader="Toimitettu"
+  recipientsHeader="Vastaanottajat"
+  deliveredLabel="toimitettu"
+  notDeliveredLabel="ei toimitettu"
+  noRecipientsLabel="—"
+/>
 
 :::tip
-Aloita tilaamalla kaikki tapahtumat kehityksen aikana. Kun ymmärrät, mitä tietoja järjestelmäsi tarvitsee, supista tilauksia vähentääksesi häiriöitä.
+Aloita tilaamalla kaikki tapahtumat kehitysvaiheessa. Kun ymmärrät, mitä hyötykuormia järjestelmäsi tarvitsee, rajaa tilauksiasi vähentääksesi häiriöitä. Lähetä itsellesi testitapahtuma kohdasta **Applications > Webhooks** (tai `POST …/webhook/{id}/test`) varmistaaksesi päätepisteesi ja allekirjoituksen tarkistuksen ennen tuotantoon siirtymistä.
 :::
 
 ## Lisälukemista
 
-- [Webhook Integration Guide](/fi/developers/webhook-integration) — Asennusohjeet ja parhaat käytännöt.
-- [Webhooks](/fi/portal/settings/webhooks) — Hallitse webhook-tilauksiasi.
-- [Applications](/fi/account/applications) — Hallitse API-tunnuksia.
+- [Webhook Integration Guide](/fi/developers/webhook-integration) — Asennusvaiheet ja parhaat käytännöt.
+- [Webhooks](/fi/portal/settings/webhooks) — Hallinnoi webhook-tilauksiasi.
+- [Applications](/fi/account/applications) — Hallinnoi API-tunnuksia.
 - [Build on Wink](/fi/developers/build-on-wink) — Alustan yleiskatsaus kehittäjille.

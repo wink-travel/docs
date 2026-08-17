@@ -1,13 +1,13 @@
 ---
 title: वेबहुक एकीकरण
-description: यह गाइड डेवलपर्स को दिखाता है कि कैसे वेबहुक सेटअप करें ताकि बुकिंग, भुगतान और अन्य घटनाओं के लिए रियल-टाइम सूचनाएं प्राप्त हो सकें।
+description: यह गाइड डेवलपर्स को वेबहुक सेटअप करने का तरीका दिखाती है ताकि बुकिंग, भुगतान और अन्य घटनाओं के लिए रियल-टाइम सूचनाएं प्राप्त हो सकें।
 sidebar:
   order: 3
 ---
 
 import { Steps, LinkButton } from '@astrojs/starlight/components';
 
-वेबहुक आपके सिस्टम को रियल-टाइम सूचनाएं प्राप्त करने देते हैं जब आपके Wink खाते पर घटनाएं होती हैं — नई बुकिंग, रद्दीकरण, भुगतान अपडेट, और भी बहुत कुछ। यह गाइड आपको सेटअप और सर्वोत्तम प्रथाओं के माध्यम से मार्गदर्शन करता है।
+वेबहुक आपके सिस्टम को आपके Wink खाते पर होने वाली घटनाओं — नई बुकिंग, रद्दीकरण, भुगतान अपडेट और अधिक — के लिए रियल-टाइम सूचनाएं प्राप्त करने देते हैं। यह गाइड आपको सेटअप और सर्वोत्तम प्रथाओं के माध्यम से मार्गदर्शन करता है।
 
 ## दर्शक
 
@@ -29,49 +29,139 @@ import { Steps, LinkButton } from '@astrojs/starlight/components';
 5. अपना **वेबहुक URL** दर्ज करें — आपके सर्वर पर HTTPS एंडपॉइंट।
 6. **इवेंट चुनें** — सदस्यता के लिए विशिष्ट घटनाएं चुनें, या सभी घटनाएं प्राप्त करने के लिए खाली छोड़ दें।
 7. **Enabled** को चालू करें।
-8. `Save` पर क्लिक करें।
+8. `Save` पर क्लिक करें — प्रतिक्रिया में आपका **signing secret एक बार** दिखेगा; इसे अभी सुरक्षित रखें।
 </Steps>
 
-## इवेंट प्रकार
+## घटना प्रकार
 
-Wink **64+ वेबहुक इवेंट प्रकार** का समर्थन करता है, जिनमें खाता प्रबंधन, बुकिंग कॉन्ट्रैक्ट, भुगतान, चैनल मैनेजर अपडेट, और प्रबंधन इकाई प्रशासन शामिल हैं। सामान्य घटनाओं में शामिल हैं:
+Wink आज बुकिंग, प्रॉपर्टीज़, खाते (प्रबंधित इकाइयां) और इन्वेंटरी (रूम टाइप, रेट प्लान, मास्टर रेट, ऐड-ऑन, सुविधाएं, बिक्री चैनल, प्रचार) में 70 वेबहुक घटना प्रकार प्रकाशित करता है। सामान्य प्रकार:
 
 | श्रेणी | उदाहरण |
 |---|---|
-| **बुकिंग** | `booking.create`, `booking.cancelled` |
-| **बुकिंग कॉन्ट्रैक्ट** | `booking.contract.created`, `booking.contract.processing`, `booking.contract.cancelled` |
-| **भुगतान** | `internal.payment.succeeded`, `internal.payment.failed` |
-| **रिफंड** | `booking.contract.refund.partial`, `booking.contract.refund.full` |
-| **चैनल मैनेजर** | `channel-manager.update.rate`, `channel-manager.update.availability` |
-| **खाता** | `account.create`, `account.status.updated` |
+| **बुकिंग** | `booking.create`, `booking.cancelled`, `booking.refund.partial`, `booking.refund.full`, `booking.review.created` |
+| **प्रॉपर्टी** | `property.created`, `property.status.updated`, `property.policy.updated` |
+| **इन्वेंटरी** | `room_type.updated`, `rate_plan.created`, `master_rate.updated`, `special_rate.created`, `sales_channel.created` |
+| **खाता** | `managing_entity.created`, `managing_entity.status.updated`, `managing_entity.manager.added` |
 
-हर इवेंट प्रकार के विवरण के साथ पूरी सूची के लिए, देखें **Webhook Events Catalog**।
+पूरा, उत्पन्न सूची — विवरण, प्राप्तकर्ता, और प्रत्येक घटना के संदर्भ पृष्ठ के लिंक के साथ — **Webhook Events Catalog** है। हर घटना के लिए संदर्भ पृष्ठ (JSON बॉडी, हेडर, पुनः प्रयास नीति) [Webhooks API](/hi/api/webhooks/) में उपलब्ध है।
 
 <LinkButton href="/hi/developers/webhook-events">
-  सभी 64+ इवेंट प्रकार देखें
+  हर घटना प्रकार देखें
 </LinkButton>
 
-:::tip
-डेवलपमेंट के दौरान सभी घटनाओं की सदस्यता लेकर शुरू करें। एक बार जब आप पेलोड समझ लें, तो केवल उन घटनाओं तक सीमित करें जिनकी आपके सिस्टम को आवश्यकता है।
-:::
+## आप क्या प्राप्त करते हैं
+
+हर डिलीवरी आपके वेबहुक URL पर HTTP `POST` होती है जिसमें `Content-Type: application/json` और यह लिफाफा होता है:
+
+```json
+{
+  "id": "0198a4f2-6b0e-7c1d-9a3e-2f4b8c6d1e0a",
+  "type": "booking.create",
+  "occurredAt": "2026-08-15T09:30:00Z",
+  "ownerIdentifier": "3c6b1a5d-8e2f-4a0b-9c7d-6e4f0a8b2c51",
+  "recipientRole": "SUPPLIER",
+  "schemaVersion": 2,
+  "object": { "...": "event-specific payload, e.g. BookingWebhookPayload" }
+}
+```
+
+- `id` — घटना पहचानकर्ता; आपके खाते के हर एंडपॉइंट के लिए जो इस घटना को प्राप्त करता है और हर पुनः प्रयास के लिए समान। इसे अपने **idempotency key** के रूप में उपयोग करें।
+- `type` — घटना प्रकार कुंजी (जो `Wink-Event-Type` हेडर के रूप में भी भेजी जाती है)। `type` और `schemaVersion` के आधार पर `object` को पार्स करें।
+- `object` — उस संसाधन का संक्षिप्त सारांश जिसके बारे में घटना है (पहचानकर्ता, स्थिति, जिन फ़ील्ड्स पर आप कार्रवाई करते हैं) साथ ही `links.self`, सप्लायर-साइड का पूर्ण संसाधन का कैनोनिकल REST URL। जब आपको सारांश से अधिक जानकारी चाहिए, तो इसे अपने API क्रेडेंशियल्स के साथ प्राप्त करें; यदि आप पुनर्विक्रेता या ट्रैवल एजेंट के रूप में घटना प्राप्त करते हैं, तो उसी पहचानकर्ता के लिए अपने API सतह के संबंधित संसाधन एंडपॉइंट का उपयोग करें।
+
+हर पेलोड स्कीमा [Webhooks API](/hi/api/webhooks/) संदर्भ में प्रति घटना दस्तावेजीकृत है।
+
+### हेडर
+
+| हेडर | अर्थ |
+|---|---|
+| `Wink-Version` | वायर कॉन्ट्रैक्ट संस्करण, `2.0`। |
+| `Wink-Event-Id` | बॉडी में `id` के समान — आपका idempotency key। |
+| `Wink-Delivery-Id` | प्रति एंडपॉइंट प्रति घटना अद्वितीय; केवल पुनः डिलीवरी पर बदलता है। |
+| `Wink-Event-Type` | बॉडी में `type` के समान। |
+| `Wink-Delivery-Attempt` | इस डिलीवरी के लिए 1-आधारित प्रयास संख्या। |
+| `Wink-Signature` | HMAC हस्ताक्षर — नीचे देखें। |
+
+## हस्ताक्षर सत्यापन
+
+हर वेबहुक का एक **signing secret** (`whsec_…`) होता है जिसे Wink आपको **एक बार** दिखाता है, जब आप वेबहुक बनाते हैं या इसका सीक्रेट रोटेट करते हैं। इसे पासवर्ड की तरह सुरक्षित रखें। हर डिलीवरी में होता है
+
+```
+Wink-Signature: t=1755250200,v1=5d41402abc4b2a76b9719d911017c592…
+```
+
+जहां `t` एक यूनिक्स टाइमस्टैम्प (सेकंड) है और `v1` स्ट्रिंग का लोअर-केस हेक्स **HMAC-SHA256** है
+`t + "." + rawBody` का, आपके सीक्रेट के साथ की किया गया, और `rawBody` वह सटीक अनुरोध बॉडी बाइट्स हैं जैसा प्राप्त हुआ — सत्यापन से पहले JSON को पुनः सीरियलाइज़ न करें। सीक्रेट रोटेशन के 24 घंटे बाद हेडर में एक दूसरा `v1=` मान होता है जो पिछले सीक्रेट से साइन किया गया होता है; डिलीवरी स्वीकार करें यदि **कोई भी** `v1` मेल खाता है।
+
+चार चरणों में सत्यापित करें: `t` और हर `v1` पार्स करें; अपने सीक्रेट के साथ `t.rawBody` पर HMAC पुनः गणना करें; स्थिर-समय तुलना करें; अस्वीकार करें यदि `|now − t|` आपकी सहिष्णुता से अधिक हो (5 मिनट की सिफारिश की जाती है)।
+
+```js
+// Node.js (Express-style; सुनिश्चित करें कि आपके पास RAW बॉडी है, पार्स्ड ऑब्जेक्ट नहीं)
+import { createHmac, timingSafeEqual } from 'node:crypto';
+
+export function verifyWinkSignature(header, rawBody, secret, toleranceSeconds = 300) {
+  const parts = Object.fromEntries(header.split(',').map((p) => p.split('=').map((s) => s.trim())));
+  const t = Number(parts.t);
+  if (!Number.isFinite(t) || Math.abs(Date.now() / 1000 - t) > toleranceSeconds) return false;
+  const expected = createHmac('sha256', secret).update(`${t}.${rawBody}`).digest('hex');
+  return header
+    .split(',')
+    .filter((p) => p.trim().startsWith('v1='))
+    .map((p) => p.trim().slice(3))
+    .some((v1) => v1.length === expected.length && timingSafeEqual(Buffer.from(v1, 'utf8'), Buffer.from(expected, 'utf8')));
+}
+```
+
+```java
+// Java
+static boolean verify(String header, String rawBody, String secret, long nowSeconds, long toleranceSeconds) throws Exception {
+    long t = Long.MIN_VALUE;
+    List<String> signatures = new ArrayList<>();
+    for (String part : header.split(",")) {
+        String[] kv = part.trim().split("=", 2);
+        if (kv[0].equals("t")) t = Long.parseLong(kv[1]);
+        else if (kv[0].equals("v1")) signatures.add(kv[1]);
+    }
+    if (t == Long.MIN_VALUE || Math.abs(nowSeconds - t) > toleranceSeconds) return false;
+    Mac mac = Mac.getInstance("HmacSHA256");
+    mac.init(new SecretKeySpec(secret.getBytes(StandardCharsets.UTF_8), "HmacSHA256"));
+    byte[] expected = HexFormat.of().formatHex(mac.doFinal((t + "." + rawBody).getBytes(StandardCharsets.UTF_8))).getBytes(StandardCharsets.US_ASCII);
+    return signatures.stream().anyMatch(v1 -> MessageDigest.isEqual(expected, v1.toLowerCase().getBytes(StandardCharsets.US_ASCII)));
+}
+```
+
+पोर्टल से या `POST /api/managing-entity/{id}/webhook/{webhookId}/rotate-secret` के साथ सीक्रेट रोटेट करें; प्रतिक्रिया में नया सीक्रेट एक बार दिखेगा, और पुराना 24 घंटे तक सत्यापित होता रहेगा जब तक आप इसे रोल आउट कर रहे हों।
+
+## पुनः प्रयास और पुनः डिलीवरी
+
+- किसी भी `2xx` के साथ 10 सेकंड के भीतर प्रतिक्रिया दें ताकि स्वीकार्यता हो। भारी कार्य असिंक्रोनस रूप से करें।
+- `5xx`, टाइमआउट, `408` या `429` को बैकऑफ के साथ पुनः प्रयास किया जाता है: 1 मिनट, 5 मिनट, 30 मिनट, 2 घंटे, 6 घंटे, 12 घंटे, फिर दैनिक — लगभग 3 दिनों में 10 प्रयास — जिसके बाद डिलीवरी को **dead** चिह्नित किया जाता है।
+- कोई भी अन्य `4xx` "आपने इस डिलीवरी को अस्वीकार कर दिया" माना जाता है और पुनः प्रयास नहीं किया जाता।
+- हर घटना, डिलीवरी और प्रयास (स्थिति, प्रतिक्रिया स्निपेट) **Applications > Webhooks** के अंतर्गत और API के माध्यम से (`…/webhook/event/grid`, `…/webhook/delivery/grid`) दिखाई देता है। आप किसी भी डिलीवरी को **पुनः डिलीवर** कर सकते हैं (`POST …/webhook/delivery/{deliveryId}/redeliver`, जो एक नया पुनः प्रयास श्रृंखला शुरू करता है), एक वेबहुक की सभी dead डिलीवरी को एक साथ पुनः डिलीवर कर सकते हैं (`POST …/webhook/{webhookId}/redeliver-dead`), या एक को रद्द कर सकते हैं।
+- डिलीवरी 30 दिनों तक रखी जाती हैं।
+
+## परीक्षण घटनाएं
+
+पोर्टल से या `POST /api/managing-entity/{id}/webhook/{webhookId}/test` के साथ अपने लिए एक सिंथेटिक `webhook.test` घटना भेजें। यह साइन की गई और वास्तविक घटना की तरह ही डिलीवर होती है, इसलिए आप अपने एंडपॉइंट, हस्ताक्षर जांच और idempotency हैंडलिंग को लाइव घटनाओं की सदस्यता लेने से पहले सत्यापित कर सकते हैं।
 
 ## सर्वोत्तम प्रथाएं
 
 - **HTTPS का उपयोग करें** — Wink केवल HTTPS एंडपॉइंट्स को पेलोड भेजता है।
 - **त्वरित प्रतिक्रिया दें** — पेलोड प्राप्त होते ही `200 OK` लौटाएं। कोई भी भारी प्रोसेसिंग असिंक्रोनस रूप से करें।
-- **इडेम्पोटेंसी** — आपका हैंडलर इडेम्पोटेंट होना चाहिए। यदि Wink को `200` प्रतिक्रिया नहीं मिलती है, तो वह पुनः प्रयास कर सकता है।
-- **स्रोत सत्यापित करें** — प्रोसेसिंग से पहले सुनिश्चित करें कि आने वाले अनुरोध Wink से हैं।
-- **लॉगिंग** — हर वेबहुक पेलोड को लॉग करें जो आप प्राप्त करते हैं। इससे एकीकरण समस्याओं का डिबग करना आसान हो जाता है।
+- **Idempotency** — आपका हैंडलर idempotent होना चाहिए; `Wink-Event-Id` पर डुप्लिकेट हटाएं। Wink तब पुनः प्रयास करता है जब उसे `2xx` प्रतिक्रिया नहीं मिलती।
+- **स्रोत सत्यापित करें** — प्रोसेसिंग से पहले `Wink-Signature` हेडर सत्यापित करें (देखें [हस्ताक्षर सत्यापन](#verifying-signatures)); जो भी असफल हो उसे अस्वीकार करें।
+- **लॉगिंग** — हर वेबहुक पेलोड को लॉग करें जो आप प्राप्त करते हैं। इससे एकीकरण समस्याओं का डिबगिंग आसान हो जाता है।
 
 ## रोकना और हटाना
 
-आप एक वेबहुक को **अक्षम** कर सकते हैं बिना उसे हटाए। यह डिलीवरी को रोकता है ताकि आप बिना कॉन्फ़िगरेशन खोए समस्या निवारण कर सकें। जब आप तैयार हों, तो इसे फिर से चालू करें।
+आप एक वेबहुक को **अक्षम** कर सकते हैं बिना उसे हटाए। यह डिलीवरी को रोक देता है ताकि आप बिना अपनी कॉन्फ़िगरेशन खोए समस्या निवारण कर सकें। जब आप तैयार हों, तो इसे फिर से चालू करें।
 
 वेबहुक हटाने से वह स्थायी रूप से हटा दिया जाता है। उस वेबहुक पर निर्भर कोई भी एकीकरण सूचनाएं प्राप्त करना बंद कर देगा।
 
 ## आगे पढ़ें
 
-- [Webhook Events Catalog](/hi/developers/webhook-events) — सभी 64+ इवेंट प्रकारों की पूरी सूची।
+- [Webhook Events Catalog](/hi/developers/webhook-events) — हर घटना प्रकार, प्लेटफ़ॉर्म के कैटलॉग से उत्पन्न।
+- [Webhooks API reference](/hi/api/webhooks/) — प्रति-घटना पेलोड स्कीमा, हेडर, और सदस्यता/डिलीवरी प्रबंधन एंडपॉइंट।
 - [Webhooks](/hi/portal/settings/webhooks) — वेबहुक प्रबंधन के लिए पूर्ण संदर्भ।
 - [Applications](/hi/account/applications) — अपने API क्रेडेंशियल्स प्रबंधित करें।
 - [Developers > APIs](/hi/api) — पूर्ण API दस्तावेज़।

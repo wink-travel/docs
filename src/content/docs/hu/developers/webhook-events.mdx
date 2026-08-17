@@ -1,331 +1,47 @@
 ---
-title: Webhook események katalógusa
-description: Teljes referencia az összes webhook eseménytípushoz, amely elérhető a Wink platformon, kategóriák szerint rendezve.
+title: Webhook Események Katalógusa
+description: Minden webhook eseménytípus a Wink platformon, a platform eseménykatalógusából generálva — kiknek küldik, és hol dokumentált a payload.
 sidebar:
   order: 3.5
 ---
 
-import { LinkButton } from '@astrojs/starlight/components';
+import webhooks from '../../../../schemas/webhooks.json';
+import WebhookEventTypes from '@/components/webhooks/event-types.astro';
 
-Ez az oldal felsorolja az összes webhook eseményt, amelyre feliratkozhatsz a Wink-en. A beállítási útmutatóért lásd a [Webhook integrációs útmutatót](/hu/developers/webhook-integration) vagy a [Webhook kezelőoldalt](/hu/portal/settings/webhooks).
+Ez az oldal felsorolja az összes webhook eseményt, amelyre feliratkozhatsz a Wink-en. A beállítási útmutatóért lásd a [Webhook Integrációs Útmutatót](/hu/developers/webhook-integration) vagy a [Webhook kezelőoldalt](/hu/portal/settings/webhooks).
 
 ## Hogyan iratkozz fel
 
-1. Navigálj a portálodon az **Alkalmazások > Webhookok** menüpontra.
-2. Hozz létre egy webhookot, és válaszd ki azokat az eseményeket, amelyeket fogadni szeretnél.
-3. A Wink minden esemény bekövetkeztekor HTTP POST kérést küld a végpontodra.
-
-A teljes beállítási lépésekért és legjobb gyakorlatokért lásd a [Webhook integráció](/hu/developers/webhook-integration) oldalt.
-
----
-
-## Kezelő entitás események
-
-Események entitások (ingatlanok, partnerek, cégek) kezeléséhez és adminisztrációjához.
-
-### Életciklus
-
-| Esemény | Kulcs | Leírás |
-|---|---|---|
-| Entitás létrehozva | `managing_entity.created` | Egy új kezelő entitás jött létre. |
-| Entitás törölve | `managing_entity.deleted` | Egy kezelő entitás törölve lett. |
-| Állapot frissítve | `managing_entity.status.updated` | Az entitás állapota megváltozott. |
-| Felülvizsgálat alatt | `account.under_review` | Az entitás fiókja felülvizsgálat alatt áll. |
-
-### Előfizetés
-
-| Esemény | Kulcs | Leírás |
-|---|---|---|
-| Előfizetés létrehozva | `managing_entity.subscription.provisioned` | Egy új előfizetés jött létre. |
-| Előfizetés módosítva | `managing_entity.subscription.changed` | Az előfizetési csomag megváltozott. |
-| Előfizetési számla módosítva | `managing_entity.subscription.invoice.changed` | Az előfizetési számla frissítve lett. |
-
-### Menedzser életciklus
-
-| Esemény | Kulcs | Leírás |
-|---|---|---|
-| Menedzser hozzáadva | `managing_entity.manager.added` | Egy új menedzser került hozzáadásra. |
-| Menedzser meghívva | `managing_entity.manager.invited` | Menedzser meghívó elküldve. |
-| Menedzser eltávolítva | `managing_entity.manager.removed` | Egy menedzser eltávolítva. |
-| Menedzser elfogadva | `managing_entity.manager.accepted` | Menedzser meghívó elfogadva. |
-| Menedzser elutasítva | `managing_entity.manager.rejected` | Menedzser meghívó elutasítva. |
-| Tulajdonos beállítva | `managing_entity.manager.owner.set` | Az entitás tulajdonjoga átruházva. |
-| Menedzserek frissítve | `account.managers.update` | A menedzserek listája megváltozott. |
-
-### Entitás információk
-
-| Esemény | Kulcs | Leírás |
-|---|---|---|
-| Információ frissítve | `managing_entity.information.updated` | Az entitás adatai frissítve lettek. |
-| Cím frissítve | `managing_entity.city.updated` | Az entitás címe/városa megváltozott. |
-| Név frissítve | `managing_entity.name.updated` | Az entitás neve megváltozott. |
-| URL név frissítve | `managing_entity.url_name.updated` | Az entitás egyedi URL-je megváltozott. |
-| Egyedi azonosító frissítve | `managing_entity.unique_id.updated` | Az entitás egyedi azonosítója megváltozott. |
-| Kezelő kapcsolata frissítve | `managing_entity.managed_by.updated` | Az entitás szülő/kezelő kapcsolata megváltozott. |
-| Hely azonosító frissítve | `managing_entity.place_id.updated` | Az entitás Google Hely azonosítója megváltozott. |
-| Fiók képviselő frissítve | `managing_entity.account_representative.updated` | A fiók képviselője megváltozott. |
-| Profilkép frissítve | `managing_entity.profile_picture.updated` | Az entitás profilképe frissítve lett. |
-| Logó frissítve | `managing_entity.logo.updated` | Az entitás logója frissítve lett. |
-| Részletek frissítve | `account.details.updated` | A fiók részletei megváltoztak. |
-| Ügynök frissítve | `managing_entity.agent.updated` | Az entitás ügynöke módosítva lett. |
-
-### Értesítések
-
-| Esemény | Kulcs | Leírás |
-|---|---|---|
-| Ügynök e-mail értesítés | `managing_entity.agent.email.notification` | E-mail értesítés küldve az ügynöknek. |
-| Menedzser e-mail értesítés | `managing_entity.manager.email.notification` | E-mail értesítés küldve egy menedzsernek. |
-
-### Fiók feladatok
-
-| Esemény | Kulcs | Leírás |
-|---|---|---|
-| Feladat létrehozva | `account.task.create` | Új feladat került hozzáadásra a fiókhoz. |
-| Feladat frissítve | `account.task.update` | Egy fiók feladat módosítva lett. |
-| Feladat eltávolítva | `account.task.remove` | Egy fiók feladat eltávolítva. |
-| Feladat teljesítve | `account.task.complete` | Egy fiók feladat befejeződött. |
-| Adóazonosító feladat teljesítve | `account.task.tax_id.complete` | Adóazonosító ellenőrzési feladat befejeződött. |
-
----
-
-## Foglalási események
-
-Események a Wink foglalási életciklusához, a létrehozástól a visszatérítésekig és kifizetésekig.
-
-### Alapfoglalás
-
-| Esemény | Kulcs | Leírás |
-|---|---|---|
-| Foglalás létrehozva | `booking.create` | Egy új foglalás jött létre. |
-| Foglalás törölve | `booking.cancelled` | Egy foglalás törölve lett. |
-| Foglalás sikertelen | `booking.failed` | Egy foglalási kísérlet sikertelen volt. |
-| Foglalás feldolgozás alatt | `booking.processing` | A foglalás fizetése feldolgozás alatt áll. |
-| Inicializálás kérése | `booking.initialize.request` | Foglalás inicializálás kérése történt. |
-| Inicializálás befejezve | `booking.initialize.complete` | A foglalás inicializálása befejeződött. |
-
-### Visszatérítések
-
-| Esemény | Kulcs | Leírás |
-|---|---|---|
-| Visszatérítés kérése | `booking.refund.request` | Visszatérítési kérelem benyújtva. |
-| Visszatérítési hiba | `booking.refund.error` | Hiba történt a visszatérítés feldolgozása közben. |
-| Részleges visszatérítés | `booking.refund.partial` | Részleges visszatérítés történt. |
-| Teljes visszatérítés | `booking.refund.full` | Teljes visszatérítés történt. |
-
-### Kifizetések
-
-| Esemény | Kulcs | Leírás |
-|---|---|---|
-| Kifizetés létrehozva | `booking.payout.create` | Kifizetés jött létre a foglaláshoz. |
-| Kifizetés befejezve | `booking.payout.complete` | Kifizetés sikeresen befejeződött. |
-| Alapok elérhetőek | `booking.funds.available` | A foglalási alapok elszámolásra elérhetőek. |
-| Alapok könyvelve | `booking.funds.ledgered` | A foglalási alapok könyvelve lettek. |
-
-### Vélemények
-
-| Esemény | Kulcs | Leírás |
-|---|---|---|
-| Vélemény beküldve | `booking.review.created` | Vendég vélemény került beküldésre egy foglaláshoz. |
-| Véleményre válaszolva | `booking.review.responded` | Egy ingatlan válaszolt egy foglalási véleményre. |
-
----
-
-## Ingatlan események
-
-Események ingatlan profilokhoz és tartalmakhoz, az ingatlan saját webhook előfizetőinek küldve.
-
-| Esemény | Kulcs | Leírás |
-|---|---|---|
-| Ingatlan létrehozva | `property.created` | Egy új ingatlan jött létre. |
-| Ingatlan frissítve | `property.updated` | Az ingatlan adatai frissítve lettek. |
-| Ingatlan törölve | `property.deleted` | Egy ingatlan eltávolítva. |
-| Ingatlan regisztrálva | `property.registered` | Egy ingatlan regisztrációja befejeződött. |
-| Állapot frissítve | `property.status.updated` | Az ingatlan külső állapota megváltozott. |
-| Név frissítve | `property.name.updated` | Az ingatlan neve megváltozott. |
-| Cím frissítve | `property.address.updated` | Az ingatlan címe frissítve lett. |
-| Földrajzi helyzet frissítve | `property.geolocation.updated` | Az ingatlan földrajzi helyzete frissítve lett. |
-| Profil frissítve | `property.profile.updated` | Az ingatlan profil tartalma megváltozott. |
-| Szolgáltatások frissítve | `property.services.updated` | Az ingatlan szolgáltatásainak/komfortjainak listája megváltozott. |
-| Üdvözlő szöveg frissítve | `property.welcome_text.updated` | Az ingatlan üdvözlő üzenete megváltozott. |
-| Szabályzat létrehozva | `property.policy.created` | Egy új ingatlan szabályzat jött létre. |
-| Szabályzat frissítve | `property.policy.updated` | Egy ingatlan szabályzat frissítve lett. |
-
----
-
-## Készlet események
-
-Események az ingatlan készlet tételeihez, az adott ingatlan webhook előfizetőinek küldve.
-
-### Szobatípusok
-
-| Esemény | Kulcs | Leírás |
-|---|---|---|
-| Szobatípus létrehozva | `room_type.created` | Egy új szobatípus került hozzáadásra. |
-| Szobatípus frissítve | `room_type.updated` | Egy szobatípus módosítva lett. |
-| Szobatípus törölve | `room_type.deleted` | Egy szobatípus eltávolítva. |
-
-### Árképzési tervek
-
-| Esemény | Kulcs | Leírás |
-|---|---|---|
-| Árképzési terv létrehozva | `rate_plan.created` | Egy új árképzési terv jött létre. |
-| Árképzési terv frissítve | `rate_plan.updated` | Egy árképzési terv módosítva lett. |
-| Árképzési terv törölve | `rate_plan.deleted` | Egy árképzési terv eltávolítva. |
-
-### Fő árak
-
-| Esemény | Kulcs | Leírás |
-|---|---|---|
-| Fő ár létrehozva | `master_rate.created` | Egy új fő ár jött létre. |
-| Fő ár frissítve | `master_rate.updated` | Egy fő ár módosítva lett. |
-| Fő ár törölve | `master_rate.deleted` | Egy fő ár eltávolítva. |
-
-### Kiegészítők
-
-| Esemény | Kulcs | Leírás |
-|---|---|---|
-| Kiegészítő létrehozva | `add_on.created` | Egy új kiegészítő jött létre. |
-| Kiegészítő frissítve | `add_on.updated` | Egy kiegészítő módosítva lett. |
-| Kiegészítő törölve | `add_on.deleted` | Egy kiegészítő eltávolítva. |
-
-### Tárgyalók
-
-| Esemény | Kulcs | Leírás |
-|---|---|---|
-| Tárgyaló létrehozva | `meeting_room.created` | Egy új tárgyaló került hozzáadásra. |
-| Tárgyaló frissítve | `meeting_room.updated` | Egy tárgyaló módosítva lett. |
-| Tárgyaló törölve | `meeting_room.deleted` | Egy tárgyaló eltávolítva. |
-
-### Éttermek
-
-| Esemény | Kulcs | Leírás |
-|---|---|---|
-| Étterem létrehozva | `restaurant.created` | Egy új étterem került hozzáadásra. |
-| Étterem frissítve | `restaurant.updated` | Egy étterem módosítva lett. |
-| Étterem törölve | `restaurant.deleted` | Egy étterem eltávolítva. |
-
-### Spa-k
-
-| Esemény | Kulcs | Leírás |
-|---|---|---|
-| Spa létrehozva | `spa.created` | Egy új spa került hozzáadásra. |
-| Spa frissítve | `spa.updated` | Egy spa módosítva lett. |
-| Spa törölve | `spa.deleted` | Egy spa eltávolítva. |
-
-### Tevékenységek
-
-| Esemény | Kulcs | Leírás |
-|---|---|---|
-| Tevékenység létrehozva | `activity.created` | Egy új tevékenység került hozzáadásra. |
-| Tevékenység frissítve | `activity.updated` | Egy tevékenység módosítva lett. |
-| Tevékenység törölve | `activity.deleted` | Egy tevékenység eltávolítva. |
-
----
-
-## Értékesítési csatorna események
-
-Események az értékesítési csatornákhoz, amelyek összekapcsolják a beszállítókat és partnereket. Mindkét fél webhook előfizetőinek küldve.
-
-| Esemény | Kulcs | Leírás |
-|---|---|---|
-| Értékesítési csatorna létrehozva | `sales_channel.created` | Egy új értékesítési csatorna jött létre. |
-| Értékesítési csatorna frissítve | `sales_channel.updated` | Egy értékesítési csatorna módosítva lett. |
-| Értékesítési csatorna törölve | `sales_channel.deleted` | Egy értékesítési csatorna eltávolítva. |
-
----
-
-## Különleges ár események
-
-Események promóciós és tárgyalásos árakhoz egy ingatlanon.
-
-| Esemény | Kulcs | Leírás |
-|---|---|---|
-| Különleges ár létrehozva | `special_rate.created` | Egy új különleges ár jött létre. |
-| Különleges ár frissítve | `special_rate.updated` | Egy különleges ár módosítva lett. |
-| Különleges ár törölve | `special_rate.deleted` | Egy különleges ár eltávolítva. |
-| Ár módosító frissítve | `rate_modifier.updated` | Egy ár módosító frissítve lett. |
-
----
-
-## Kedvezményezett események
-
-Események a kedvezményezett (fizetés címzettje) kezeléséhez.
-
-| Esemény | Kulcs | Leírás |
-|---|---|---|
-| Kedvezményezett létrehozva | `payee.create` | Egy új kedvezményezett sikeresen létrehozva. |
-| Kedvezményezett létrehozás sikertelen | `payee.create.failure` | A kedvezményezett létrehozása sikertelen volt. |
-| Kedvezményezett frissítve | `payee.update` | Egy kedvezményezett frissítve lett. |
-| Kedvezményezett frissítés sikertelen | `payee.update.failure` | A kedvezményezett frissítése sikertelen volt. |
-
----
-
-## Fizetési események
-
-Belső fizetésfeldolgozási események a TripPay-től.
-
-| Esemény | Kulcs | Leírás |
-|---|---|---|
-| Fizetés sikeres | `internal.payment.succeeded` | A fizetés sikeresen feldolgozásra került. |
-| Fizetés feldolgozás alatt | `internal.payment.processing` | A fizetés feldolgozása folyamatban van. |
-| Fizetés sikertelen | `internal.payment.failed` | A fizetés feldolgozása sikertelen volt. |
-
----
-
-## Csatorna menedzser események
-
-Események a csatorna menedzser ár- és elérhetőség frissítéseihez.
-
-| Esemény | Kulcs | Leírás |
-|---|---|---|
-| Ár frissítés | `channel-manager.update.rate` | A csatorna menedzser árfrissítést küldött. |
-| Elérhetőség frissítés | `channel-manager.update.availability` | A csatorna menedzser elérhetőség frissítést küldött. |
-| Általános frissítés | `channel-manager.update` | Általános csatorna menedzser frissítés. |
-
----
-
-## Főkönyvi események
-
-Események pénzügyi főkönyvi bejegyzésekhez.
-
-| Esemény | Kulcs | Leírás |
-|---|---|---|
-| Főkönyvi bejegyzés létrehozva | `ledger.entry.create` | Egy új főkönyvi bejegyzés rögzítve lett. |
-
----
-
-## E-mail események
-
-| Esemény | Kulcs | Leírás |
-|---|---|---|
-| E-mail levelezés | `email.correspondence` | Egy kimenő e-mail elküldve. |
-
----
-
-## Események összesítése
-
-| Kategória | Darabszám |
-|---|---|
-| Kezelő entitás események | 33 |
-| Foglalási események | 16 |
-| Ingatlan események | 13 |
-| Készlet események (szobatípusok, árképzési tervek, fő árak, kiegészítők, létesítmények) | 24 |
-| Értékesítési csatorna események | 3 |
-| Különleges ár események | 4 |
-| Kedvezményezett események | 4 |
-| Fizetési események | 3 |
-| Csatorna menedzser események | 3 |
-| Főkönyvi események | 1 |
-| E-mail események | 1 |
-| **Összesen** | **105** |
+1. Navigálj a portálodban az **Alkalmazások > Webhookok** menüpontra.
+2. Hozz létre egy webhookot, és válaszd ki azokat az eseményeket, amelyeket fogadni szeretnél — vagy hagyd üresen a listát, hogy minden eseményt megkapj.
+3. A Wink minden esemény bekövetkeztekor egy aláírt HTTP POST-ot küld a végpontodra. Lásd a [Webhook Integráció](/hu/developers/webhook-integration) részt a boríték, fejlécek, aláírás ellenőrzés és újrapróbálkozások részleteiért.
+
+## Minden eseménytípus
+
+Ez a táblázat a platform eseménykatalógusából épül fel build időben, így mindig megfelel az API-nak.
+Azok az eseménytípusok, amelyeknél megjelenik a kézbesítés, linkelnek a [Webhooks API](/hu/api/webhooks/) referenciaoldalára, amely dokumentálja a pontos JSON törzset (`WebhookEnvelope` esemény-specifikus `object`-tel), a `Wink-*` fejléceket és az újrapróbálkozási szabályzatot. Azok az eseménytípusok, amelyeket nem kézbesítenek, belsőleg léteznek (fizetések, főkönyv, csatorna-menedzser szinkronizáció, …), de jelenleg nem kerülnek kiküldésre webhook feliratkozóknak.
+
+**Címzettek** megmutatja, hogy ki kapja az eseményt: `SUPPLIER` (a szálloda), `AFFILIATE` (egy viszonteladó, akinek aktív értékesítési csatornája van a szállodához), `AGENT` (az utazási iroda, amely a foglalást létrehozta) vagy `SELF` (az esemény tárgyát képező kezelő entitás). Minden címzett ugyanazt a payload formátumot kapja; a szerepkör-specifikus részletek a payload `links.self` URL-je mögött találhatók.
+
+<WebhookEventTypes
+  types={webhooks['x-wink-event-types']}
+  referenceBase="/api/webhooks"
+  eventHeader="Esemény"
+  descriptionHeader="Leírás"
+  deliveredHeader="Kézbesítve"
+  recipientsHeader="Címzettek"
+  deliveredLabel="kézbesítve"
+  notDeliveredLabel="nem kézbesítve"
+  noRecipientsLabel="—"
+/>
 
 :::tip
-Fejlesztés közben érdemes minden eseményre feliratkozni. Amint megérted, mely payloadokra van szüksége a rendszerednek, szűkítsd a feliratkozásokat a zaj csökkentése érdekében.
+Fejlesztés alatt kezdj az összes eseményre való feliratkozással. Amint megérted, mely payloadokra van szüksége a rendszerednek, szűkítsd a feliratkozásokat a zaj csökkentése érdekében. Küldj magadnak egy teszt eseményt az **Alkalmazások > Webhookok** menüből (vagy `POST …/webhook/{id}/test`), hogy megerősítsd a végpontod és az aláírás ellenőrzését, mielőtt élesbe mész.
 :::
 
 ## További olvasnivaló
 
-- [Webhook integrációs útmutató](/hu/developers/webhook-integration) — Beállítási lépések és legjobb gyakorlatok.
-- [Webhookok](/hu/portal/settings/webhooks) — Webhook előfizetések kezelése.
-- [Alkalmazások](/hu/account/applications) — API hitelesítő adatok kezelése.
+- [Webhook Integrációs Útmutató](/hu/developers/webhook-integration) — Beállítási lépések és legjobb gyakorlatok.
+- [Webhookok](/hu/portal/settings/webhooks) — Kezeld webhook feliratkozásaidat.
+- [Alkalmazások](/hu/account/applications) — Kezeld az API hitelesítő adatokat.
 - [Fejlesztés Wink-en](/hu/developers/build-on-wink) — Platform áttekintés fejlesztőknek.
