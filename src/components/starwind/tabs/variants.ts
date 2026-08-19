@@ -1,6 +1,8 @@
 import { tv } from "tailwind-variants";
 
-export const tabs = tv({ base: "starwind-tabs" });
+export const tabs = tv({
+  base: "",
+});
 
 export const tabsContent = tv({
   base: "mt-2 focus-visible:outline-2 focus-visible:outline-offset-2",

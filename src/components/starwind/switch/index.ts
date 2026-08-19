@@ -1,13 +1,13 @@
 import Switch from "./Switch.astro";
-import type { SwitchChangeEvent } from "./SwitchTypes";
-import { switchButton, switchLabel, switchToggle } from "./variants";
+import { switchButton, switchLabel, switchToggle, switchWrapper } from "./variants";
 
 const SwitchVariants = {
   switchButton,
-  switchToggle,
   switchLabel,
+  switchToggle,
+  switchWrapper,
 };
 
-export { Switch, type SwitchChangeEvent, SwitchVariants };
+export { Switch, SwitchVariants };
 
 export default Switch;

@@ -1,10 +1,23 @@
 ---
-/**
- * This component is used to trigger the tooltip
- * All it does is require a slot
- */
+import TooltipPrimitive from "@starwind-ui/astro/tooltip";
+import type { HTMLAttributes } from "astro/types";
 
-type Props = { children: any };
+type Props = HTMLAttributes<"span"> & {
+  asChild?: boolean;
+  disabled?: boolean;
+};
+
+const { asChild = true, disabled = false, class: className, ...rest } = Astro.props;
+
+const triggerClassName = [asChild ? undefined : "inline-flex", className].filter(Boolean).join(" ");
 ---
 
-<slot />
+<TooltipPrimitive.Trigger
+  class={triggerClassName}
+  asChild={asChild}
+  disabled={disabled}
+  {...rest}
+  data-slot="tooltip-trigger"
+>
+  <slot />
+</TooltipPrimitive.Trigger>
