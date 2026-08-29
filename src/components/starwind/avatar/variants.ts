@@ -1,7 +1,7 @@
 import { tv } from "tailwind-variants";
 
 export const avatar = tv({
-  base: "text-foreground bg-muted relative overflow-hidden rounded-full border-2",
+  base: "text-foreground bg-muted relative inline-flex overflow-hidden rounded-full border-2",
   variants: {
     variant: {
       default: "border-border",
@@ -12,13 +12,22 @@ export const avatar = tv({
       warning: "border-warning",
       error: "border-error",
     },
-    size: { sm: "h-8 w-8 text-xs", md: "h-10 w-10 text-sm", lg: "h-12 w-12 text-base" },
+    size: {
+      sm: "h-8 w-8 text-xs",
+      md: "h-10 w-10 text-sm",
+      lg: "h-12 w-12 text-base",
+    },
   },
-  defaultVariants: { variant: "default", size: "md" },
+  defaultVariants: {
+    variant: "default",
+    size: "md",
+  },
 });
 
 export const avatarFallback = tv({
   base: "absolute inset-0.5 flex items-center justify-center rounded-full font-medium",
 });
 
-export const avatarImage = tv({ base: "relative z-1 h-full w-full object-cover" });
+export const avatarImage = tv({
+  base: "relative z-1 h-full w-full object-cover",
+});

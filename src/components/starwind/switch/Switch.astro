@@ -1,90 +1,76 @@
 ---
+import SwitchPrimitive from "@starwind-ui/astro/switch";
 import type { HTMLAttributes } from "astro/types";
+import type { VariantProps } from "tailwind-variants";
+import { switchButton, switchLabel, switchToggle, switchWrapper } from "./variants";
 
-import { switchButton, switchLabel, switchToggle } from "./variants";
-
-type Props = Omit<HTMLAttributes<"button">, "role" | "type" | "aria-checked"> & {
-  /**
-   * Unique identifier for the switch component.
-   */
-  id: string;
-  /**
-   * Optional text label to display alongside the switch.
-   */
-  label?: string;
-  /**
-   * Controls the checked state of the switch.
-   */
+type Props = Omit<HTMLAttributes<"button">, "aria-checked" | "defaultChecked" | "onChange" | "role" | "type"> & VariantProps<typeof switchButton> & VariantProps<typeof switchToggle> & {
   checked?: boolean;
-  /**
-   * Custom padding in pixels to apply around the switch.
-   */
+  defaultChecked?: boolean;
+  disabled?: boolean;
+  form?: string;
+  id: string;
+  label?: string;
+  name?: string;
   padding?: number;
-  /**
-   * Size variant of the switch component.
-   */
-  size?: "sm" | "md" | "lg";
-  /**
-   * Visual style variant of the switch.
-   * @default "default"
-   */
-  variant?: "default" | "primary" | "secondary" | "info" | "success" | "warning" | "error";
+  readOnly?: boolean;
+  required?: boolean;
+  uncheckedValue?: string;
+  value?: string;
 };
 
 const {
+  variant = "default",
+  size = "md",
+  checked,
+  defaultChecked,
+  disabled = false,
+  form,
   id,
   label,
-  checked = false,
+  name,
   padding,
-  size = "md",
-  variant = "default",
+  readOnly = false,
+  required = false,
+  uncheckedValue,
+  value,
   class: className,
   ...rest
 } = Astro.props;
 
-// if no specific padding is set, base it off of size
-let newPadding = padding;
-if (!padding) {
-  newPadding = size === "sm" ? 2.5 : size === "lg" ? 4 : 3;
-}
-
+const resolvedPadding = padding ?? (size === "sm" ? 2.5 : size === "lg" ? 4 : 3);
 const sizeMultiplier = size === "sm" ? 4 : size === "lg" ? 6 : 5;
-
-let ariaLabel;
-if (rest["aria-label"]) {
-  ariaLabel = rest["aria-label"];
-  delete rest["aria-label"];
-} else if (label) {
-  ariaLabel = label;
-} else {
-  ariaLabel = "switch";
-}
+const ariaLabel = rest["aria-label"] ?? label ?? "switch";
+const switchStyle = { "--padding": `${resolvedPadding}px`, "--height": `calc((var(--spacing) * ${sizeMultiplier}) + (var(--padding) * 2))`, "--width": `calc((var(--spacing) * ${sizeMultiplier} * 2) + (var(--padding) * 3))`, "--border-offset": "1px" };
+const thumbStyle = { "--translation": `calc((var(--spacing) * ${sizeMultiplier}) + (var(--padding) * 2) - var(--border-offset))` };
 ---
 
-<div class="starwind-switch flex items-center">
-  <button
-    type="button"
-    id={id}
-    role="switch"
-    aria-checked={checked ? "true" : "false"}
-    aria-label={ariaLabel}
+<div class={switchWrapper()} data-sw-switch-wrapper data-slot="switch-wrapper">
+  <SwitchPrimitive.Root
     class={switchButton({ variant, class: className })}
-    style={{
-      "--padding": `${newPadding}px`,
-      "--height": `calc((var(--spacing) * ${sizeMultiplier}) + (var(--padding) * 2))`,
-      "--width": `calc((var(--spacing) * ${sizeMultiplier} * 2) + (var(--padding) * 3))`,
-      "--border-offset": "1px",
-    }}
+    checked={checked}
+    defaultChecked={defaultChecked}
+    disabled={disabled}
+    form={form}
+    id={id}
+    name={name}
+    nativeButton
+    readOnly={readOnly}
+    required={required}
+    uncheckedValue={uncheckedValue}
+    value={value}
+    style={switchStyle}
     {...rest}
+    aria-label={ariaLabel}
     data-slot="switch-button"
   >
-    <span
+    <SwitchPrimitive.Thumb
       class={switchToggle({ size })}
+      style={thumbStyle}
       data-slot="switch-toggle"
-      style={{
-        "--translation": `calc((var(--spacing) * ${sizeMultiplier}) + (var(--padding) * 2) - var(--border-offset))`,
-      }}></span>
-  </button>
+    />
+  </SwitchPrimitive.Root>
+
   {
     label && (
       <label for={id} class={switchLabel({ size })} data-slot="switch-label">
@@ -93,65 +79,3 @@ if (rest["aria-label"]) {
     )
   }
 </div>
-
-<script>
-  import type { SwitchChangeEvent } from "./SwitchTypes";
-
-  class SwitchHandler {
-    private switchButton: HTMLButtonElement;
-
-    constructor(switchButton: HTMLButtonElement) {
-      this.switchButton = switchButton;
-      this.setupEventListeners();
-    }
-
-    private setupEventListeners(): void {
-      this.switchButton.addEventListener("click", () => this.handleStateChange());
-      this.switchButton.addEventListener("keydown", (event) => this.handleKeyDown(event));
-    }
-
-    private handleStateChange(): void {
-      if (this.switchButton.disabled) return;
-
-      const isChecked = this.switchButton.getAttribute("aria-checked") === "true";
-      const newState = !isChecked;
-
-      this.switchButton.setAttribute("aria-checked", newState.toString());
-
-      // Dispatch custom event with the new state
-      const event = new CustomEvent<SwitchChangeEvent["detail"]>("starwind-switch:change", {
-        detail: { checked: newState, switchId: this.switchButton.id },
-        bubbles: true,
-        cancelable: true,
-      });
-
-      this.switchButton.dispatchEvent(event);
-    }
-
-    private handleKeyDown(event: KeyboardEvent): void {
-      if (this.switchButton.disabled) return;
-
-      if (event.key === " " || event.key === "Enter") {
-        event.preventDefault();
-        this.handleStateChange();
-      }
-    }
-  }
-
-  // Store instances in a WeakMap to avoid memory leaks
-  const switchInstances = new WeakMap<HTMLButtonElement, SwitchHandler>();
-
-  const setupSwitches = () => {
-    document
-      .querySelectorAll<HTMLButtonElement>('.starwind-switch button[role="switch"]')
-      .forEach((switchButton) => {
-        if (!switchInstances.has(switchButton)) {
-          switchInstances.set(switchButton, new SwitchHandler(switchButton));
-        }
-      });
-  };
-
-  setupSwitches();
-  document.addEventListener("astro:after-swap", setupSwitches);
-  document.addEventListener("starwind:init", setupSwitches);
-</script>

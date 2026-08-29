@@ -1,48 +1,19 @@
 ---
+import AvatarPrimitive from "@starwind-ui/astro/avatar";
 import type { HTMLAttributes } from "astro/types";
-import { Image } from "astro:assets";
-
 import { avatarImage } from "./variants";
 
-type BaseProps = { alt: string; class?: string };
+type Props = Omit<HTMLAttributes<"img">, "children"> & {
+  alt: string;
+  src?: string;
+  image?: ImageMetadata;
+};
 
-type WithSrc = BaseProps & { src: string; image?: never };
-
-type WithImage = BaseProps & { src?: never; image: ImageMetadata };
-
-type Props = HTMLAttributes<"img"> & (WithSrc | WithImage);
-
-const { src, image, alt, class: className, width, height, ...rest } = Astro.props;
-
-if (!src && !image) {
-  throw new Error("Either 'src' or 'image' is required for an avatar image.");
-}
+const { class: className, ...rest } = Astro.props;
 ---
 
-{
-  src && (
-    // eslint-disable-next-line astro/jsx-a11y/no-noninteractive-element-interactions
-    <img
-      src={src}
-      alt={alt}
-      class={avatarImage({ class: className })}
-      width={64}
-      height={64}
-      onerror="this.style.display='none'"
-      {...rest}
-      data-slot="avatar-image"
-    />
-  )
-}
-{
-  image && (
-    <Image
-      src={image}
-      alt={alt}
-      class={avatarImage({ class: className })}
-      width={64}
-      {...rest}
-      data-slot="avatar-image"
-    />
-  )
-}
+<AvatarPrimitive.Image
+  class={avatarImage({ class: className })}
+  {...rest}
+  data-slot="avatar-image"
+/>
