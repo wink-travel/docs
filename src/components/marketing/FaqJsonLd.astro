@@ -4,17 +4,13 @@
  * Organization + WebSite already render site-wide via the footer, so this emits
  * just the FAQPage. Pass the same `faqs` array the page renders so the two match.
  */
-interface Faq { title: string; content: string }
+import { faqsToMainEntity, type Faq } from "@/lib/faq-schema";
 const { faqs = [] as Faq[] } = Astro.props;
 
 const data = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: faqs.map((f: Faq) => ({
-    "@type": "Question",
-    name: f.title,
-    acceptedAnswer: { "@type": "Answer", text: f.content },
-  })),
+  mainEntity: faqsToMainEntity(faqs),
 };
 ---
 <script type="application/ld+json" set:html={JSON.stringify(data)} is:inline />

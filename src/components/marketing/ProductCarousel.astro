@@ -5,7 +5,9 @@
  * page), with prev/next arrows + dots and a per-slide caption. Each slide renders
  * in the right DeviceFrame variant (browser / phone / plain), sized by a wrapper
  * so mixed source dimensions all fit the stage. All slides + captions stay in the
- * DOM (hidden, not removed) for crawlers/AEO. Reduced-motion-friendly (fades only).
+ * DOM (toggled via the `hidden` attribute, not removed) for crawlers/AEO, and
+ * off-screen slides are actually taken out of layout so their images stay
+ * `loading="lazy"` instead of all being force-loaded at once.
  */
 import DeviceFrame from "@/components/marketing/DeviceFrame.astro";
 import IconChevronLeft from "@tabler/icons/outline/chevron-left.svg";
@@ -56,14 +58,7 @@ const aspectByVariant: Record<string, string> = {
         {slides.map((s, i) => {
           const variant = s.variant ?? "browser";
           return (
-            <div
-              data-slide
-              data-i={i}
-              class:list={[
-                "absolute inset-0 flex items-center justify-center transition-opacity duration-300",
-                i !== 0 && "pointer-events-none opacity-0",
-              ]}
-            >
+            <div data-slide data-i={i} hidden={i !== 0} class="flex h-full items-center justify-center">
               <div class:list={["mx-auto", sizeByVariant[variant]]}>
                 <DeviceFrame
                   variant={variant}
@@ -140,9 +135,7 @@ const aspectByVariant: Record<string, string> = {
       const show = (n: number) => {
         current = (n + slides.length) % slides.length;
         slides.forEach((s, k) => {
-          const off = k !== current;
-          s.classList.toggle("opacity-0", off);
-          s.classList.toggle("pointer-events-none", off);
+          s.hidden = k !== current;
         });
         captions.forEach((c, k) => c.classList.toggle("hidden", k !== current));
         dots.forEach((d, k) => {

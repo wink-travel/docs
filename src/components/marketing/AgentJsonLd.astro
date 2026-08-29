@@ -1,26 +1,23 @@
 ---
 /**
  * Structured data for the Agentic AI page.
- * Emits a schema.org @graph (Organization + Service + WebAPI + FAQPage) so
- * search engines and answer engines can parse Wink's agent capabilities and
- * cite the page accurately. FAQ items are passed in from the page so the
- * machine-readable FAQ always matches the visible one.
+ * Emits a schema.org @graph (Service + WebAPI + FAQPage) so search engines
+ * and answer engines can parse Wink's agent capabilities and cite the page
+ * accurately. FAQ items are passed in from the page so the machine-readable
+ * FAQ always matches the visible one.
+ *
+ * Deliberately does NOT define an Organization node: every page that renders
+ * this also renders MarketingFooter, which already emits the canonical
+ * Organization under the same @id (https://wink.travel/#organization). A
+ * second, thinner node here would conflict with it. `provider` below just
+ * references that @id.
  */
-interface Faq { title: string; content: string }
+import { faqsToMainEntity, type Faq } from "@/lib/faq-schema";
 const { faqs = [] as Faq[] } = Astro.props;
 
 const graph = {
   "@context": "https://schema.org",
   "@graph": [
-    {
-      "@type": "Organization",
-      "@id": "https://wink.travel/#organization",
-      name: "Wink",
-      url: "https://wink.travel/",
-      description:
-        "Travel commerce infrastructure for hotels, partners, creators, developers and AI agents. Hotels control supply and sell direct; Booking Engine fulfills every route.",
-      sameAs: ["https://github.com/wink-travel", "https://www.linkedin.com/company/wink-travel"],
-    },
     {
       "@type": "Service",
       "@id": "https://wink.travel/agentic-ai/#service",
@@ -51,11 +48,7 @@ const graph = {
     {
       "@type": "FAQPage",
       "@id": "https://wink.travel/agentic-ai/#faq",
-      mainEntity: faqs.map((f: Faq) => ({
-        "@type": "Question",
-        name: f.title,
-        acceptedAnswer: { "@type": "Answer", text: f.content },
-      })),
+      mainEntity: faqsToMainEntity(faqs),
     },
   ],
 };

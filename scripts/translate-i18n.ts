@@ -244,11 +244,24 @@ const UNTRANSLATED_DIRECTORIES = new Set(["api", "blog", "changelog"]);
 // Root-level pages, translated alongside the discovered directories.
 const rootFiles = [
   "index.mdx",
-  "team.mdx",
+  "about.mdx",
+  "acceptable-use.mdx",
+  "agentic-ai.mdx",
   "contact.mdx",
-  "privacy.md",
-  "terms.md",
+  "cookies.mdx",
+  "dev.mdx",
+  "hotels.mdx",
   "jobs.mdx",
+  "partners.mdx",
+  "platforms.mdx",
+  "pricing.mdx",
+  "privacy.mdx",
+  "products.mdx",
+  "resources.mdx",
+  "solutions.mdx",
+  "team.mdx",
+  "terms.mdx",
+  "travel-content-creators.mdx",
 ];
 
 // some environment variables

@@ -1,12 +1,18 @@
 ---
 /**
  * Structured data for a Wink product page.
- * Emits a schema.org @graph (Organization + SoftwareApplication + FAQPage) so
- * search and answer engines can classify the product, its features and its
- * FAQs. Reusable across product pages — pass name, description, url, features
- * and the same FAQ array the page renders so the two never drift.
+ * Emits a schema.org @graph (SoftwareApplication + FAQPage) so search and
+ * answer engines can classify the product, its features and its FAQs.
+ * Reusable across product pages — pass name, description, url, features and
+ * the same FAQ array the page renders so the two never drift.
+ *
+ * Deliberately does NOT define an Organization node: every page that renders
+ * this also renders MarketingFooter, which already emits the canonical
+ * Organization under the same @id (https://wink.travel/#organization). A
+ * second, thinner node here would conflict with it. `provider` below just
+ * references that @id.
  */
-interface Faq { title: string; content: string }
+import { faqsToMainEntity, type Faq } from "@/lib/faq-schema";
 const {
   name,
   description,
@@ -47,26 +53,13 @@ const app: Record<string, unknown> = {
 const graph = {
   "@context": "https://schema.org",
   "@graph": [
-    {
-      "@type": "Organization",
-      "@id": "https://wink.travel/#organization",
-      name: "Wink",
-      url: "https://wink.travel/",
-      description:
-        "Travel commerce infrastructure for hotels, partners, creators, developers and AI agents. Hotels control supply and sell direct; Booking Engine fulfills every route.",
-      sameAs: ["https://github.com/wink-travel", "https://www.linkedin.com/company/wink-travel"],
-    },
     app,
     ...(faqs.length
       ? [
           {
             "@type": "FAQPage",
             "@id": `${url}#faq`,
-            mainEntity: faqs.map((f: Faq) => ({
-              "@type": "Question",
-              name: f.title,
-              acceptedAnswer: { "@type": "Answer", text: f.content },
-            })),
+            mainEntity: faqsToMainEntity(faqs),
           },
         ]
       : []),

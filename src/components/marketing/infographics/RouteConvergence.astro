@@ -25,6 +25,9 @@ interface Props {
 const { routes, outcomeTitle, outcomeNote } = Astro.props;
 // Unique gradient id per instance (avoids <defs> id collisions if ever two on a page).
 const gid = "spoke-" + Math.random().toString(36).slice(2, 8);
+// One spoke per route, evenly spaced down the 240-unit-tall viewBox so it always
+// lines up with the stacked route list regardless of how many routes are passed.
+const spokeYs = routes.map((_, i) => (i + 0.5) * (240 / routes.length));
 ---
 
 <div class="grid items-center gap-6 @lg:grid-cols-[0.85fr_1.15fr_0.85fr]">
@@ -47,7 +50,7 @@ const gid = "spoke-" + Math.random().toString(36).slice(2, 8);
           <stop offset="1" stop-color="#9333ea" stop-opacity="0.7" />
         </linearGradient>
       </defs>
-      {[24, 72, 120, 168, 216].map((y, i) => (
+      {spokeYs.map((y, i) => (
         <path class="wink-spoke-flow" d={`M0 ${y} C 110 ${y}, 150 120, 200 120`} stroke={`url(#${gid})`} stroke-width="1.5" stroke-linecap="round" style={`animation-delay:${i * 0.18}s`} />
       ))}
     </svg>
