@@ -17,6 +17,7 @@ import OpenAI from "openai";
 import { createHash } from "crypto";
 
 import { loadEnv } from "./load-env.js";
+import { targetLanguages, UNTRANSLATED_DIRECTORIES } from "../src/lib/i18n-config.js";
 
 const HASH_ALGO = "sha256";
 const HASH_FILE_NAME = ".file.hashes.json";
@@ -235,12 +236,6 @@ const loadHashMap = (langDirectory: string): HashMap => {
   return {};
 };
 
-// Top-level directories under src/content/docs that are never machine-translated.
-// `api` and `changelog` are generated from upstream sources, and `blog` is owned
-// by the starlightBlog plugin. Everything else is discovered automatically by
-// discoverSourceDirectories() below — do not maintain a list of what to include.
-const UNTRANSLATED_DIRECTORIES = new Set(["api", "blog", "changelog"]);
-
 // Root-level pages, translated alongside the discovered directories.
 const rootFiles = [
   "index.mdx",
@@ -286,53 +281,6 @@ if (!process.env.OPENAI_API_KEY) {
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
-
-// List of target languages to translate into
-const targetLanguages = [
-  { id: "id", label: "Bahasa Indonesia" },
-  { id: "ms", label: "Bahasa Malaysia" },
-  { id: "bg", label: "Български" },
-  { id: "ca", label: "Català" },
-  { id: "cs", label: "Čeština" },
-  { id: "da", label: "Dansk" },
-  { id: "de", label: "Deutsch" },
-  { id: "et", label: "Eesti" },
-  { id: "es", label: "Español" },
-  { id: "es-AR", label: "Español (AR)" },
-  { id: "es-MX", label: "Español (MX)" },
-  { id: "tl", label: "Filipino" },
-  { id: "fi", label: "Suomi" },
-  { id: "fr", label: "Français" },
-  { id: "el", label: "Ελληνικά" },
-  { id: "he", label: "עברית" },
-  { id: "hi", label: "हिन्दी" },
-  { id: "hr", label: "Hrvatski" },
-  { id: "hu", label: "Magyar" },
-  { id: "is", label: "Íslenska" },
-  { id: "it", label: "Italiano" },
-  { id: "ja", label: "日本語" },
-  { id: "ko", label: "한국어" },
-  { id: "lv", label: "Latviski" },
-  { id: "lt", label: "Lietuvių" },
-  { id: "nl", label: "Nederlands" },
-  { id: "no", label: "Norsk" },
-  { id: "pl", label: "Polski" },
-  { id: "pt-BR", label: "Português (BR)" },
-  { id: "pt-PT", label: "Português (PT)" },
-  { id: "ro", label: "Română" },
-  { id: "ru", label: "Русский" },
-  { id: "sk", label: "Slovenčina" },
-  { id: "sl", label: "Slovenščina" },
-  { id: "sr", label: "Srpski" },
-  { id: "sv", label: "Svenska" },
-  { id: "th", label: "ภาษาไทย" },
-  { id: "tr", label: "Türkçe" },
-  { id: "uk", label: "Українська" },
-  { id: "vi", label: "Tiếng Việt" },
-  { id: "ar", label: "العربية" },
-  { id: "zh-CN", label: "简体中文" },
-  { id: "zh-TW", label: "繁體中文" },
-];
 
 // Optional narrowing via environment variables for quicker tests
 const ONLY_LANG = process.env.ONLY_LANG?.trim();
