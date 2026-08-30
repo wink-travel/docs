@@ -166,6 +166,18 @@ export default defineConfig({
             // passed through as a literal URL, which only resolves in dev (Vite
             // serves /src/ directly there) and 404s once the site is built.
             picture: './src/assets/may.webp'
+          },
+          bjorn: {
+            name: 'Bjorn Harvold',
+            title: 'Co-founder & CTO',
+            url: 'https://www.linkedin.com/in/bjornharvold',
+            picture: './src/assets/bjorn.jpg'
+          },
+          yann: {
+            name: 'Yann Gouriou',
+            title: 'Co-founder & COO',
+            url: 'https://www.linkedin.com/in/yanng17',
+            picture: './src/assets/yann.jpg'
           }
         }
       }),
