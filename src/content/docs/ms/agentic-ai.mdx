@@ -1,0 +1,310 @@
+---
+title: Agentic AI — Infrastruktur Perdagangan Pelancongan untuk Ejen AI
+description: "Di Wink, ejen AI bukan sahaja mencadangkan hotel — mereka mencari bekalan hotel secara langsung, kemudian menempah dan membayar dalam satu aliran melalui REST API dan MCP yang dihoskan. Sedia digunakan hari ini."
+template: splash
+marketingNav: true
+---
+import '/src/styles/splash-page.css';
+import BreadcrumbJsonLd from "@/components/marketing/BreadcrumbJsonLd.astro";
+
+import FaqGrid from "@/components/marketing/FaqGrid.astro";
+import AgentJsonLd from "@/components/marketing/AgentJsonLd.astro";
+import AgentConversation from "@/components/marketing/infographics/AgentConversation.astro";
+import AgenticShiftFlow from "@/components/marketing/infographics/AgenticShiftFlow.astro";
+
+import IconPlug from "@tabler/icons/outline/plug-connected.svg";
+import IconMapSearch from "@tabler/icons/outline/map-search.svg";
+import IconCalendarStats from "@tabler/icons/outline/calendar-stats.svg";
+import IconCalendarCheck from "@tabler/icons/outline/calendar-check.svg";
+import IconCreditCard from "@tabler/icons/outline/credit-card.svg";
+import IconCoin from "@tabler/icons/outline/coin.svg";
+import IconWebhook from "@tabler/icons/outline/webhook.svg";
+import IconSparkles from "@tabler/icons/outline/sparkles.svg";
+import IconComponents from "@tabler/icons/outline/components.svg";
+import IconTool from "@tabler/icons/outline/tool.svg";
+import IconUser from "@tabler/icons/outline/user.svg";
+import IconBuildingStore from "@tabler/icons/outline/building-store.svg";
+import IconUsersGroup from "@tabler/icons/outline/users-group.svg";
+import IconCode from "@tabler/icons/outline/code.svg";
+import IconArrowRight from "@tabler/icons/outline/arrow-right.svg";
+import IconCheck from "@tabler/icons/outline/check.svg";
+import IconX from "@tabler/icons/outline/x.svg";
+
+export const faqs = [
+  { title: "Apa maksud \"dibina untuk Agentic AI\" di Wink?", content: "Wink adalah API-pertama: setiap ciri platform boleh dipanggil dari luar, dan pelayan MCP yang dihoskan mendedahkan kontrak API langsung kepada ejen AI. Ejen yang diluluskan boleh menemui bekalan hotel, membaca kadar dan ketersediaan secara langsung, mencipta dan menyelaraskan tempahan, mengambil pembayaran (Wink adalah pedagang rekod), mengekalkan atribusi, dan melanggan acara — menggunakan infrastruktur yang sama yang menggerakkan Wink itu sendiri." },
+  { title: "Bagaimana ejen AI menyambung ke Wink?", content: "Tunjuk klien MCP yang serasi ke pelayan yang dihoskan di https://docs.mcp.wink.travel/mcp (SSE fallback di /sse). Dari Claude Code: claude mcp add --transport http wink-docs https://docs.mcp.wink.travel/mcp. Ejen kemudian boleh menggunakan alat api_search dan docs_search untuk membaca operasi OpenAPI langsung, kontrak permintaan/respons dan resipi tugas." },
+  { title: "Apa yang ejen AI boleh lakukan di Wink hari ini?", content: "Hari ini, melalui REST API dan pelayan MCP: menemui platform, mencari inventori yang boleh ditempah (termasuk carian spatial geolokasi), membaca kadar dan ketersediaan secara langsung merentasi 11 pengurus saluran yang disambungkan, mencipta tempahan dan menyelaraskan kitaran hayatnya ke PMS/pengurus saluran, mengambil pembayaran (Wink adalah pedagang rekod), mengekalkan atribusi 6 bulan dan memperoleh melalui aliran rakan kongsi, melanggan lebih 64 acara webhook, menjana kandungan AI, dan menyematkan inventori yang boleh ditempah melalui Komponen Web." },
+  { title: "Bolehkah ejen AI melengkapkan tempahan hotel melalui Wink?", content: "Ya. Penciptaan tempahan adalah operasi REST API, dan Booking Engine melaksanakan transaksi — pembayaran, pengesahan dan penyelarasan tempahan. Ejen yang memanggil API tempahan bagi pihak pelancong boleh melengkapkan tempahan sebenar yang disahkan dengan konteks sumber yang dikekalkan." },
+  { title: "Bagaimana hotel menjadi boleh ditempah oleh ejen AI di Wink?", content: "Hanya dengan menyediakan profilnya di Wink. Setelah bekalan, kadar dan ketersediaan hotel tersedia secara langsung (melalui Extranet), ia secara automatik boleh ditemui dan ditempah oleh ejen AI yang diluluskan melalui REST API dan pelayan MCP yang dihoskan — tiada integrasi AI berasingan bagi setiap hotel. Ejen mencari inventori langsung hotel, mencipta tempahan dan menyelesaikan pembayaran melalui Booking Engine, dengan atribusi dikekalkan. Setiap hotel di Wink sedia untuk ejen secara lalai." },
+  { title: "Bagaimana tempahan hotel melalui Wink berbeza daripada ChatGPT dengan Expedia atau Booking.com?", content: "Integrasi pembantu seperti ChatGPT dengan Expedia atau Booking.com kuat dalam penemuan — harga langsung, foto dan peta dalam chat — tetapi pelancong biasanya diarahkan ke laman web atau aplikasi pembekal untuk menyelesaikan tempahan dan pembayaran. Di Wink, ejen bertransaksi terus dengan bekalan milik hotel secara langsung: ia membaca kadar dan ketersediaan sebenar, mencipta tempahan, dan menyelesaikan pembayaran melalui Booking Engine dalam satu aliran — dan boleh memperoleh komisen rakan kongsi hasilnya. Penemuan boleh berlaku di mana-mana; pelaksanaan berlaku di Wink." },
+  { title: "Adakah Wink satu-satunya platform yang membenarkan ejen AI menempah dan membayar hotel?", content: "Tidak — perdagangan hotel yang dikendalikan ejen adalah kategori yang sedang berkembang, dan beberapa pemain pelancongan dan pembayaran telah mengumumkan atau melancarkan tempahan agentic hujung-ke-hujung menjelang 2026. Apa yang membezakan Wink adalah gabungan: bekalan adalah milik hotel dan langsung (bukan penjualan semula GDS atau senarai web-scraped), ejen boleh mencari, menempah, membayar DAN memperoleh melalui satu lapisan perdagangan, dan ia boleh dipanggil secara langsung hari ini melalui REST API dan pelayan MCP yang dihoskan — bukan item peta jalan. Hotel mengekalkan kawalan pengedaran; ejen menjadi saluran yang diberi atribusi dan memperoleh." },
+  { title: "Apakah standard perdagangan agentic dan AI yang disokong oleh Wink?", content: "Wink adalah API-pertama dan menjalankan pelayan MCP (Model Context Protocol) yang dihoskan hari ini, jadi mana-mana ejen yang serasi MCP — Claude, Codex, Cursor dan lain-lain — boleh menemui dan memanggil kontrak OpenAPI langsungnya. Primitif tempahan dan pembayaran Wink direka untuk beroperasi dengan tumpukan perdagangan ejen yang sedang muncul — Agentic Commerce Protocol (ACP), Agent Payments Protocol (AP2) Google, Agent2Agent (A2A) dan pembayaran ejen gaya x402 — apabila standard tersebut diperkukuh, bukannya mengunci ejen ke laluan proprietari." },
+  { title: "Adakah terdapat Kemahiran AI untuk membina di Wink?", content: "Ya — wink-api-builder adalah kemahiran ejen mudah alih yang menggunakan pelayan MCP sebagai sumber kebenaran. Ia membimbing ejen melalui api_search ke kontrak permintaan/respons langsung ke pengesahan ke kod yang disahkan, dan menandakan ketidakpadanan antara kod sedia ada dan API semasa. Ia berfungsi dengan Claude Code, Codex, Cursor dan klien yang menyokong kemahiran lain." },
+  { title: "Bolehkah ejen AI memperoleh sebagai afiliasi atau rakan kongsi?", content: "Model rakan kongsi Wink mengekalkan atribusi sumber dan kempen selama 6 bulan setiap klik dan membayar komisen lalai 10% ke atas tempahan yang disahkan. Ejen yang mencipta permintaan yang layak dan mengarahkan tempahan boleh menjadi sumber yang diberi atribusi melalui infrastruktur rakan kongsi dan Booking Engine yang sama." },
+  { title: "Adakah Agentic AI menggantikan Booking Engine?", content: "Tidak. Agentic AI mencipta atau mengarahkan niat; Booking Engine kekal sebagai lapisan pelaksanaan untuk pembayaran, pengesahan dan penyelarasan tempahan. Setiap penyerahan ejen diselesaikan melalui Booking Engine di bawahnya." },
+  { title: "Di mana pembangun atau ejen harus bermula?", content: "Sambungkan ke pelayan MCP, kemudian baca dokumentasi Build on Wink, MCP Server dan AI Skills. Mohon akses API apabila kes penggunaan dan laluan komersial jelas." },
+];
+
+<div class="not-content mkt-page">
+
+<AgentJsonLd faqs={faqs} />
+
+<BreadcrumbJsonLd items={[{ name: "Home", url: "https://wink.travel/" }, { name: "Agentic AI" }]} />
+
+{/* Breadcrumb */}
+<nav aria-label="Breadcrumb" class="mx-auto w-full max-w-7xl px-4 pt-6 text-sm text-muted-foreground">
+  <a href="/" class="hover:text-foreground">Laman Utama</a>
+  <span class="px-1.5">/</span>
+  <span class="text-foreground">Agentic AI</span>
+</nav>
+
+{/* Hero — agent conversation */}
+<section class="@container relative mt-6 w-full overflow-hidden border-y border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white">
+  <div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+    <div class="absolute -left-24 -top-10 size-80 rounded-full bg-[#ff6b35]/20 blur-[100px]"></div>
+    <div class="absolute -bottom-16 -right-16 size-96 rounded-full bg-[#9333ea]/30 blur-[120px]"></div>
+  </div>
+  <div class="relative mx-auto grid w-full max-w-7xl items-center gap-12 px-4 py-20 @lg:grid-cols-[1fr_1.02fr] @lg:py-24">
+    {/* Left — copy */}
+    <div class="text-center @lg:text-left">
+      <p class="text-xs font-semibold uppercase tracking-wider text-[#ff8a5c]">Agentic AI</p>
+      <h1 class="font-heading mt-4 text-4xl font-semibold tracking-tight text-balance @lg:text-5xl @2xl:text-6xl">Dibina untuk <span class="wink-shimmer bg-gradient-to-r from-[#ff8a5c] via-[#ec4899] to-[#a855f7] bg-clip-text text-transparent">Agentic AI.</span></h1>
+      <p class="mx-auto mt-5 max-w-xl text-pretty text-lg text-white/75 @lg:mx-0 @lg:text-xl">Infrastruktur perdagangan pelancongan untuk ejen AI. Hotel mengawal bekalan, rakan kongsi memperoleh hasil penukaran, pembangun membina pada API — dan ejen menemui, menempah dan membayar melalui API langsung dan pelayan MCP.</p>
+      <div class="mt-9 flex flex-col items-center justify-center gap-3 @lg:justify-start sm:flex-row">
+        <a href="/developers/build-on-wink/" class="inline-flex h-13 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#ff6b35] to-[#ec4899] px-7 py-3.5 text-base font-bold text-white shadow-lg shadow-[#ec4899]/30 transition-transform hover:scale-[1.03]">Lihat dokumentasi <IconArrowRight class="size-5" /></a>
+        <a href="#agents" class="inline-flex h-13 items-center justify-center rounded-full bg-white/10 px-7 py-3.5 text-base font-bold text-white ring-1 ring-white/20 backdrop-blur transition-colors hover:bg-white/15">Sambungkan ejen</a>
+      </div>
+      <div class="mt-7 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 font-mono text-xs text-white/70"><span class="size-1.5 animate-pulse rounded-full bg-emerald-400"></span> Pelayan MCP sedia · docs.mcp.wink.travel/mcp</div>
+    </div>
+
+    {/* Right — agent conversation (swappable infographic) */}
+    <AgentConversation />
+  </div>
+</section>
+
+{/* Direct answer */}
+<section class="mx-auto w-full max-w-3xl px-4 pt-24 pb-24 text-center">
+  <p class="mkt-kicker text-primary">Apa maksud "dibina untuk Agentic AI"?</p>
+  <p class="mkt-sub text-muted-foreground mt-5">Wink adalah API-pertama: setiap ciri platform boleh dipanggil dari luar, dan pelayan MCP yang dihoskan mendedahkan kontrak API langsung kepada ejen AI. Daripada memaksa setiap pelancong melalui laman web, Wink memberi ejen yang diluluskan akses berstruktur kepada bekalan hotel, kadar, ketersediaan, tempahan, pembayaran, atribusi dan acara — infrastruktur yang sama yang menggerakkan Wink itu sendiri.</p>
+  <div class="mx-auto mt-7 max-w-2xl rounded-2xl border-2 border-primary/30 bg-primary/[0.04] px-6 py-5 text-pretty text-foreground/90"><strong class="text-foreground">Mana-mana hotel menjadi sedia ejen hanya dengan menyediakan profilnya di Wink.</strong> Setelah bekalan, kadar dan ketersediaannya tersedia secara langsung, ejen AI yang diluluskan boleh mencari, menempah dan membayar melalui API dan pelayan MCP — tiada integrasi AI berasingan bagi setiap hotel diperlukan.</div>
+</section>
+
+{/* For AI agents — start here (quickstart) */}
+<section id="agents" class="@container w-full border-y border-border bg-muted/30" style="scroll-margin-top:5rem">
+  <div class="mx-auto w-full max-w-5xl px-4 py-24">
+    <div class="mx-auto mb-12 max-w-2xl text-center">
+      <p class="mkt-kicker text-primary">Untuk ejen AI — mula di sini</p>
+      <h2 class="mkt-h2 font-heading mt-3">Sambungkan, kemudian baca kontrak langsung.</h2>
+      <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">Pelayan MCP yang dihoskan membolehkan ejen menemui API Wink dan membina integrasi berfungsi tanpa meneka titik akhir.</p>
+    </div>
+
+    <div class="grid gap-6 @lg:grid-cols-2">
+      {/* Connect */}
+      <div class="flex flex-col rounded-2xl border border-border bg-card p-6">
+        <span class="mb-4 flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-white"><IconPlug class="size-6" /></span>
+        <h3 class="font-heading text-lg font-semibold">1 · Sambungkan pelayan MCP</h3>
+        <p class="text-muted-foreground mt-2 text-sm">Titik akhir HTTP boleh alir (SSE fallback di <code class="rounded bg-muted px-1 py-0.5 text-xs">/sse</code>). Dari Claude Code:</p>
+        <pre class="mt-4 overflow-x-auto rounded-lg bg-[#1f0a40] p-4 font-mono text-xs leading-relaxed text-white/90"><code>claude mcp add --transport http \
+  wink-docs https://docs.mcp.wink.travel/mcp</code></pre>
+        <p class="text-muted-foreground mt-3 text-xs">Juga berfungsi dengan Codex, Cursor dan VS Code — lihat <a href="/developers/mcp/" class="text-primary underline underline-offset-2">dokumentasi MCP</a>.</p>
+      </div>
+
+      {/* Search */}
+      <div class="flex flex-col rounded-2xl border border-border bg-card p-6">
+        <span class="mb-4 flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-white"><IconSparkles class="size-6" /></span>
+        <h3 class="font-heading text-lg font-semibold">2 · Cari API langsung</h3>
+        <p class="text-muted-foreground mt-2 text-sm">Dua alat menyelesaikan niat kepada operasi sebenar dan dokumen konsep:</p>
+        <ul class="mt-4 space-y-2 text-sm">
+          <li class="flex items-start gap-2"><code class="mt-0.5 rounded bg-muted px-1.5 py-0.5 text-xs text-primary">api_search</code><span class="text-muted-foreground">cari operasi untuk dipanggil — contohnya "cari inventori", "cipta tempahan", "resit pembayaran"</span></li>
+          <li class="flex items-start gap-2"><code class="mt-0.5 rounded bg-muted px-1.5 py-0.5 text-xs text-primary">docs_search</code><span class="text-muted-foreground">cari konsep — "pengesahan", "webhook", "atribusi"</span></li>
+        </ul>
+        <p class="text-muted-foreground mt-3 text-xs">Setiap hasil mengembalikan URI <code class="rounded bg-muted px-1 py-0.5 text-xs">wink://</code> — buka operasi, skema permintaan/respons, atau <strong class="text-foreground/80">resipi</strong> tugasnya.</p>
+      </div>
+
+      {/* Build */}
+      <div class="flex flex-col rounded-2xl border border-border bg-card p-6">
+        <span class="mb-4 flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-white"><IconTool class="size-6" /></span>
+        <h3 class="font-heading text-lg font-semibold">3 · Bina dengan Kemahiran AI</h3>
+        <p class="text-muted-foreground mt-2 text-sm"><code class="rounded bg-muted px-1.5 py-0.5 text-xs">wink-api-builder</code> menggunakan pelayan MCP sebagai sumber kebenaran: api_search → kontrak langsung → pengesahan → kod yang disahkan, dan menandakan sebarang ketidakpadanan dengan API semasa.</p>
+        <p class="text-muted-foreground mt-3 text-xs">Berfungsi dengan Claude Code, Codex dan Cursor — lihat <a href="/developers/ai-skills/" class="text-primary underline underline-offset-2">Kemahiran AI</a>.</p>
+      </div>
+
+      {/* Fulfill */}
+      <div class="flex flex-col rounded-2xl border border-border bg-card p-6">
+        <span class="mb-4 flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-white"><IconCalendarCheck class="size-6" /></span>
+        <h3 class="font-heading text-lg font-semibold">4 · Serahkan kepada Booking Engine</h3>
+        <p class="text-muted-foreground mt-2 text-sm">Cipta tempahan melalui API dan Booking Engine melaksanakannya — pembayaran, pengesahan dan penyelarasan tempahan ke PMS atau pengurus saluran yang disambungkan, dengan konteks sumber dikekalkan.</p>
+        <p class="text-muted-foreground mt-3 text-xs">Langgan <code class="rounded bg-muted px-1 py-0.5 text-xs">booking.created</code> dan 63 acara lain untuk bertindak balas secara masa nyata.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* What an agent can do — capability map */}
+<section class="@container mx-auto w-full max-w-7xl px-4 pt-24">
+  <div class="mx-auto mb-14 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Peta keupayaan</p>
+    <h2 class="mkt-h2 font-heading mt-3">Apa yang ejen AI boleh lakukan di Wink.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">Setiap keupayaan di bawah tersedia hari ini melalui REST API dan pelayan MCP — berasaskan kontrak yang sama yang Wink gunakan.</p>
+  </div>
+  <div class="grid gap-5 @md:grid-cols-2 @2xl:grid-cols-3">
+    {[
+      { icon: IconMapSearch, title: "Cari inventori hotel", desc: "Cari bekalan yang boleh ditempah dengan carian spatial geolokasi — titik, bulatan, segi empat tepat atau poligon — serta pengesanan GeoIP." },
+      { icon: IconCalendarStats, title: "Baca kadar & ketersediaan langsung", desc: "Tarik kadar masa nyata, ketersediaan dan inventori merentasi 11 pengurus saluran yang disambungkan." },
+      { icon: IconCalendarCheck, title: "Cipta & selaraskan tempahan", desc: "Cipta tempahan melalui API; cipta / kemas kini / batal selaraskan ke PMS atau pengurus saluran yang disambungkan dengan penjejakan kitaran hayat penuh." },
+      { icon: IconCreditCard, title: "Ambil pembayaran", desc: "Wink mengendalikan pembayaran, logik polisi pembatalan dan pembayaran di belakang tempahan — Wink adalah pedagang rekod." },
+      { icon: IconCoin, title: "Kekalkan atribusi & peroleh", desc: "Konteks sumber dan kempen bertahan sepanjang perjalanan — atribusi 6 bulan per klik dan komisen lalai 10% ke atas tempahan yang disahkan." },
+      { icon: IconWebhook, title: "Bertindak balas kepada 64+ acara", desc: "Langgan acara webhook — tempahan, pembayaran, bayaran balik, kemas kini pengurus saluran — dan picu tindakan susulan." },
+      { icon: IconSparkles, title: "Jana kandungan", desc: "Kandungan AI merentasi 9 jenis inventori dan 12 nada suara; pendaftaran hartanah satu klik dari satu URL." },
+      { icon: IconComponents, title: "Sematkan inventori yang boleh ditempah", desc: "Letakkan inventori hotel yang boleh ditempah secara langsung ke mana-mana permukaan dengan Komponen Web dan kod minimum." },
+      { icon: IconCode, title: "Bina pada API penuh", desc: "Setiap ciri Wink boleh dipanggil dari luar melalui REST, dengan pengesahan OAuth2 dan SDK rasmi — integrasi seolah-olah sistem itu milik anda sendiri." },
+    ].map((c) => (
+      <div class="flex flex-col rounded-2xl border border-border bg-card p-6">
+        <span class="mb-4 flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-white"><c.icon class="size-6" /></span>
+        <h3 class="font-heading text-base font-semibold">{c.title}</h3>
+        <p class="text-muted-foreground mt-2 text-sm text-pretty">{c.desc}</p>
+        <span class="mt-4 inline-flex w-fit items-center gap-1.5 rounded-full bg-emerald-500/10 px-2.5 py-1 text-xs font-semibold text-emerald-600 dark:text-emerald-400"><span class="size-1.5 rounded-full bg-emerald-500"></span>Tersedia sekarang</span>
+      </div>
+    ))}
+  </div>
+</section>
+
+{/* The agentic shift — before/after flow */}
+<section class="@container mx-auto w-full max-w-5xl px-4 pt-24">
+  <div class="mx-auto mb-12 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Peralihan</p>
+    <h2 class="mkt-h2 font-heading mt-3">Dari pelancong-ke-laman web ke pelancong-ke-ejen.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">Dalam model lama, pelancong melakukan kerja. Dalam model agentic, ejen menjadi antara muka — dan Wink menjadi lapisan perdagangan di belakang jawapan.</p>
+  </div>
+  {/* Before/after flow — swappable infographic (infographics/AgenticShiftFlow.astro) */}
+  <AgenticShiftFlow />
+</section>
+
+{/* Why Wink — recommend vs transact */}
+<section class="@container mx-auto w-full max-w-5xl px-4 pt-24">
+  <div class="mx-auto mb-12 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Kenapa Wink</p>
+    <h2 class="mkt-h2 font-heading mt-3">Jawapan AI bukanlah tempahan.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">Cadangan memerlukan bekalan berstruktur, kadar langsung, pembayaran, pengesahan dan atribusi untuk menjadi perdagangan.</p>
+  </div>
+  <div class="grid gap-6 @md:grid-cols-2">
+    <div class="rounded-2xl border border-border bg-muted/30 p-7">
+      <h3 class="font-heading text-lg font-semibold text-muted-foreground">Ejen AI tanpa infrastruktur</h3>
+      <ul class="mt-5 space-y-3">
+        {["Bekalan web-scraped, sering lapuk", "Harga yang mungkin tidak boleh ditempah", "Mencadangkan, kemudian menyerahkan tempahan ke laman web atau OTA", "Tiada atribusi — dan tiada cara ejen memperoleh", "Hilang jejak selepas cadangan"].map((b) => (
+          <li class="flex items-start gap-2.5"><IconX class="mt-0.5 size-5 shrink-0 text-muted-foreground/60" /><span class="text-sm text-muted-foreground">{b}</span></li>
+        ))}
+      </ul>
+      <p class="mt-6 text-sm font-semibold text-muted-foreground">Boleh mencadangkan.</p>
+    </div>
+    <div class="rounded-2xl border-2 border-primary/30 bg-primary/[0.04] p-7">
+      <h3 class="font-heading text-lg font-semibold text-primary">Ejen AI di Wink</h3>
+      <ul class="mt-5 space-y-3">
+        {["Bekalan milik hotel secara langsung — bukan web-scraped atau dijual semula", "Kadar dan ketersediaan langsung melalui API", "Menempah DAN membayar dalam satu aliran — Wink menyelesaikannya", "Ejen boleh memperoleh — atribusi + komisen lalai 10%", "Disahkan, diselaraskan ke PMS, dengan webhook — sedia hari ini"].map((b) => (
+          <li class="flex items-start gap-2.5"><IconCheck class="mt-0.5 size-5 shrink-0 text-primary" /><span class="text-sm text-foreground/90">{b}</span></li>
+        ))}
+      </ul>
+      <p class="mt-6 text-sm font-semibold text-primary">Boleh bertransaksi.</p>
+    </div>
+  </div>
+</section>
+
+{/* AI agents for everyone */}
+<section class="@container mx-auto w-full max-w-7xl px-4 pt-24">
+  <div class="mx-auto mb-14 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Setiap peserta, seorang ejen</p>
+    <h2 class="mkt-h2 font-heading mt-3">Ejen untuk pelancong, hotel, rakan kongsi, dan pembina.</h2>
+  </div>
+  <div class="grid gap-6 @md:grid-cols-2">
+    {[
+      { icon: IconUser, who: "Untuk pelancong", title: "Cari, tempah, dan urus penginapan", desc: "Ejen bekerja dengan bekalan berstruktur, kadar dan polisi langsung — kemudian mencipta tempahan melalui Booking Engine.", prompt: "Cari hotel mewah untuk dewasa sahaja di Chiang Mai bulan depan dengan spa. Tempah." },
+      { icon: IconBuildingStore, who: "Untuk hotel", title: "Penyelia, bukan pengendali", desc: "Ejen membantu mencipta, mengemas kini dan menganalisis merentasi Extranet, Social dan Studio — hotel mengekalkan peraturan.", prompt: "Jana kandungan sosial bulan depan dan tandakan tarikh penghunian rendah untuk promosi." },
+      { icon: IconUsersGroup, who: "Untuk rakan kongsi & pencipta", title: "Automasi kempen dan peroleh", desc: "Temui hotel yang layak, bina aset dan kedai, terbitkan, dan kekalkan atribusi yang bersambung.", prompt: "Cipta kempen mempromosikan resort mewah di Maldives." },
+      { icon: IconCode, who: "Untuk pembangun", title: "Bina pengalaman pelancongan baru", desc: "Concierge AI, ejen bank dan kesetiaan pelancongan — dibina pada pelayan MCP, REST API dan Booking Engine.", prompt: "Sematkan tempahan hotel AI dalam aplikasi perbankan kami menggunakan API Wink." },
+    ].map((c) => (
+      <div class="flex flex-col rounded-2xl border border-border bg-card p-7">
+        <span class="mb-4 flex size-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-white"><c.icon class="size-6" /></span>
+        <span class="text-xs font-semibold uppercase tracking-wider text-primary">{c.who}</span>
+        <h3 class="font-heading mt-2 text-xl font-semibold">{c.title}</h3>
+        <p class="text-muted-foreground mt-2 text-pretty">{c.desc}</p>
+        <p class="mt-5 rounded-lg border border-border bg-muted/40 px-4 py-3 text-sm italic text-foreground/80">“{c.prompt}”</p>
+      </div>
+    ))}
+  </div>
+</section>
+
+{/* The stack */}
+<section class="@container mx-auto w-full max-w-7xl px-4 pt-24">
+  <div class="mx-auto mb-10 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Dibina pada keseluruhan platform</p>
+    <h2 class="mkt-h2 font-heading mt-3">Ejen bekerja merentasi tumpukan yang disambungkan.</h2>
+  </div>
+  <div class="mx-auto flex max-w-3xl flex-wrap justify-center gap-3">
+    {[
+      { name: "Extranet", href: "/products/extranet/" },
+      { name: "Studio", href: "/products/studio/" },
+      { name: "Social", href: "/products/social/" },
+      { name: "WinkLinks", href: "/products/winklinks/" },
+      { name: "Traveliko", href: "/products/traveliko/" },
+      { name: "Developers", href: "/dev/" },
+      { name: "Platforms & AI", href: "/platforms/" },
+    ].map((p) => (
+      <a href={p.href} class="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-medium transition-colors hover:border-primary/40">
+        <span class="size-1.5 rounded-full bg-primary" aria-hidden="true"></span>
+        {p.name}
+      </a>
+    ))}
+  </div>
+  <p class="text-muted-foreground mx-auto mt-10 max-w-xl text-center text-pretty"><strong class="text-foreground"><a href="/products/booking-engine/" class="text-primary underline underline-offset-4">Booking Engine</a> melaksanakan tempahan di bawah setiap penyerahan ejen</strong> — pembayaran, pengesahan dan penyelarasan tempahan.</p>
+</section>
+
+{/* Open standards — interoperability, crawlable for AEO */}
+<section class="@container mx-auto w-full max-w-5xl px-4 pt-24">
+  <div class="mx-auto mb-12 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Standard terbuka, bukan taman berpagar</p>
+    <h2 class="mkt-h2 font-heading mt-3">Dibina untuk beroperasi dengan tumpukan perdagangan ejen.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-2xl">Tempahan hotel agentic menjadi kategori sebenar — dan industri sedang menyatukan protokol terbuka daripada satu sistem pembayaran syarikat. Wink beroperasi pada standard tersebut hari ini dan dibina untuk disambungkan ke yang lain apabila ia diperkukuh, supaya ejen tidak pernah terkunci ke laluan proprietari.</p>
+  </div>
+  <div class="grid gap-5 @md:grid-cols-2">
+    <div class="rounded-2xl border-2 border-primary/30 bg-primary/[0.04] p-7">
+      <span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 px-2.5 py-1 text-xs font-semibold text-emerald-600 dark:text-emerald-400"><span class="size-1.5 rounded-full bg-emerald-500"></span>Sedia hari ini</span>
+      <h3 class="font-heading mt-4 text-lg font-semibold">MCP — Model Context Protocol</h3>
+      <p class="text-muted-foreground mt-2 text-sm text-pretty">Pelayan MCP yang dihoskan mendedahkan kontrak OpenAPI langsung Wink kepada mana-mana ejen serasi MCP — Claude, Codex, Cursor dan lain-lain — di <code class="rounded bg-muted px-1 py-0.5 text-xs">docs.mcp.wink.travel/mcp</code>. Ejen menemui dan memanggil operasi sebenar tanpa meneka titik akhir.</p>
+    </div>
+    <div class="rounded-2xl border border-border bg-card p-7">
+      <span class="inline-flex items-center gap-1.5 rounded-full border border-border bg-muted/40 px-2.5 py-1 text-xs font-semibold text-muted-foreground">Boleh beroperasi antara satu sama lain secara reka bentuk</span>
+      <h3 class="font-heading mt-4 text-lg font-semibold">ACP · AP2 · A2A · x402</h3>
+      <p class="text-muted-foreground mt-2 text-sm text-pretty">Primitif tempahan dan pembayaran Wink direka untuk beroperasi dengan tumpukan pembayaran ejen yang sedang muncul — Agentic Commerce Protocol (ACP), Agent Payments Protocol (AP2) Google, Agent2Agent (A2A) dan pembayaran ejen gaya x402 — apabila standard tersebut matang, dengan Booking Engine sebagai lapisan penyelesaian di bawah (Wink adalah pedagang rekod).</p>
+    </div>
+  </div>
+</section>
+
+{/* Where this is heading — roadmap, clearly labeled */}
+<section class="mx-auto w-full max-w-3xl px-4 pt-24">
+  <div class="rounded-2xl border border-dashed border-primary/30 bg-primary/[0.03] p-8">
+    <span class="inline-flex items-center gap-1.5 rounded-full border border-primary/30 bg-card px-3 py-1 text-xs font-semibold text-primary">Ke mana hala tuju ini</span>
+    <p class="text-muted-foreground mt-5 text-pretty">Keupayaan di atas sedia hari ini. Arahannya adalah perdagangan asli ejen yang lebih mendalam: primitif tempahan yang lebih kaya untuk ejen, identiti dan kebenaran ejen untuk bertransaksi bagi pihak pelancong, dan ejen yang mengambil bahagian sebagai sumber yang diberi atribusi dan memperoleh dalam rangkaian rakan kongsi. Penempatan strategik Wink — <strong class="text-foreground">infrastruktur perdagangan pelancongan untuk ejen AI</strong> — adalah garis panduan dari API hari ini ke masa depan tersebut.</p>
+  </div>
+</section>
+
+{/* FAQ */}
+<FaqGrid
+  heading="Soalan Lazim Agentic AI"
+  description="Apa maksudnya, cara menyambung, dan apa yang ejen boleh lakukan."
+  items={faqs}
+/>
+
+{/* Final CTA */}
+<section class="w-full border-y border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white">
+  <div class="mx-auto w-full max-w-7xl px-4 py-24 text-center">
+    <h2 class="mkt-h2 font-heading">Bersedia membina perdagangan pelancongan untuk ejen AI?</h2>
+    <p class="mx-auto mt-4 max-w-2xl text-pretty text-white/70 @lg:text-lg">Sambungkan pelayan MCP, baca kontrak langsung, dan biarkan Booking Engine melaksanakan tempahan. Atau berbincang dengan kami tentang akses ejen untuk produk anda.</p>
+    <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <a href="/developers/build-on-wink/" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-[#ff6b35] px-8 text-base font-semibold text-white hover:bg-[#e85b29] sm:w-auto">Lihat dokumentasi</a>
+      <a href="/developers/mcp/" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-white px-8 text-base font-semibold text-[#1f0a40] hover:bg-white/90 sm:w-auto">Sambungkan pelayan MCP</a>
+      <a href="https://cal.com/wink-ws36dy" class="inline-flex h-12 items-center justify-center px-4 text-sm font-medium text-white/80 underline underline-offset-4 hover:text-white">Minta demo</a>
+    </div>
+  </div>
+</section>
+
+</div>
