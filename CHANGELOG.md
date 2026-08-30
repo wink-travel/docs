@@ -2,6 +2,12 @@
 
 Changelog of docs.
 
+## v0.1.13 (2026-07-31)
+
+### Bug Fixes
+
+-  **i18n**  stop translating import paths in mdx ([0c173](https://github.com/wink-travel/docs/commit/0c173f00a67236e) Bjorn Harvold)  
+
 ## v0.1.12 (2026-07-31)
 
 ## v0.1.11 (2026-07-28)
