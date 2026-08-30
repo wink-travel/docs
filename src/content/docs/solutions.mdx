@@ -7,6 +7,7 @@ marketingNav: true
 import '/src/styles/splash-page.css';
 
 import SolutionsHero from "@/components/marketing/SolutionsHero.astro";
+import BreadcrumbJsonLd from "@/components/marketing/BreadcrumbJsonLd.astro";
 import FaqGrid from "@/components/marketing/FaqGrid.astro";
 import FaqJsonLd from "@/components/marketing/FaqJsonLd.astro";
 import ProductCarousel from "@/components/marketing/ProductCarousel.astro";
@@ -26,13 +27,25 @@ export const faqs = [
   { title: "Can a hotel also be a partner?", content: "A hotel controls supply through For Hotels. A partner creates demand through For Partners. The same organisation could technically use both routes, but the commercial contexts are different. Most hotels start with For Hotels; the partner workflow is for demand-creation roles." },
   { title: "What is the difference between Solutions and Products?", content: "Solutions is audience-led. It answers \"who is this for?\" Products is feature-led. It answers \"what does each product do?\" Solutions routes you to the right audience sub-page. Products routes you to the right product page." },
   { title: "Where do I find Pricing?", content: "Pricing lives at /pricing/. The core commercial model: 5.5% all-in on direct bookings; when a partner or creator drives the booking, a 10% default commission applies on top (taken after Wink's 5.5%) — the partner earns that 10%, with 6-month attribution per click; $0 setup, $0 monthly platform fee." },
-  { title: "Where do developers start?", content: "Developers should start at /dev/ and follow the Build on Wink documentation. Booking Engine and Agentic AI are the primary developer surfaces for checkout, fulfillment, and AI handoff." },
+  { title: "Where do developers start?", content: "Developers should start at /builders/ and follow the Build on Wink documentation. Booking Engine and Agentic AI are the primary developer surfaces for checkout, fulfillment, and AI handoff." },
   { title: "Is Agentic AI a solution or a product?", content: "Agentic AI is a platform capability, not a standalone product. It surfaces inside For Platforms & AI and For Developers as the AI-handoff route, and has a standalone capability page at /agentic-ai/. It is reached from the For Platforms & AI solution, the For Developers page, the homepage Platform overview, and the global footer." },
 ];
 
 <div class="not-content mkt-page">
 
-<SolutionsHero />
+<BreadcrumbJsonLd items={[{ name: "Home", url: "https://wink.travel/" }, { name: "Solutions" }]} />
+
+{/* The breadcrumb markup lives here rather than in SolutionsHero.astro so
+    translate-i18n.ts can reach every string — it translates whole MDX files and
+    never opens a component. The hero renders it inside the band via a named slot,
+    so it shares the hero's content column and lines up with the badge below. */}
+<SolutionsHero>
+  <nav slot="breadcrumb" aria-label="Breadcrumb" class="text-center text-sm text-white/60 lg:text-left">
+    <a href="/" class="transition-colors hover:text-white">Home</a>
+    <span class="px-1.5 text-white/55">/</span>
+    <span class="text-white">Solutions</span>
+  </nav>
+</SolutionsHero>
 
 {/* What solutions — Hotels (supply) featured + the four demand-side routes */}
 <section class="@container mx-auto w-full max-w-7xl px-4 pt-24 pb-24">
@@ -65,8 +78,8 @@ export const faqs = [
   <div class="grid gap-5 @sm:grid-cols-2 @4xl:grid-cols-4">
     {[
       { icon: IconUsersGroup, eyebrow: "For Partners", title: "Distribute & earn", desc: "Agencies, DMCs, tour operators and loyalty programs distribute supply — 10% default commission, 6-month attribution.", href: "/partners/", accent: "#ec4899" },
-      { icon: IconUserStar, eyebrow: "For Travel Creators", title: "Monetize your audience", desc: "Influencers and communities turn content into booking-ready storefronts and earn on every confirmed stay.", href: "/travel-content-creators/", accent: "#a855f7" },
-      { icon: IconCode, eyebrow: "For Developers", title: "Build on the API", desc: "Hotel search, booking, payment and webhooks — with Booking Engine as the checkout layer.", href: "/dev/", accent: "#22d3ee" },
+      { icon: IconUserStar, eyebrow: "For Travel Creators", title: "Monetize your audience", desc: "Influencers and communities turn content into booking-ready storefronts and earn on every confirmed stay.", href: "/travel-creators/", accent: "#a855f7" },
+      { icon: IconCode, eyebrow: "For Developers", title: "Build on the API", desc: "Hotel search, booking, payment and webhooks — with Booking Engine as the checkout layer.", href: "/builders/", accent: "#22d3ee" },
       { icon: IconRobot, eyebrow: "For Platforms & AI", title: "Plug in & book", desc: "Assistants, LLMs, banks and super apps book through one REST + hosted MCP integration.", href: "/platforms/", accent: "#6366f1" },
     ].map((c) => (
       <a href={c.href} class="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg" style={`border-top:3px solid ${c.accent}`}>
@@ -140,8 +153,8 @@ export const faqs = [
     <div class="mt-10 flex flex-col flex-wrap items-center justify-center gap-3 sm:flex-row">
       <a href="/hotels/" class="inline-flex h-12 w-full items-center justify-center rounded-full bg-white/10 px-7 text-base font-semibold text-white ring-1 ring-white/20 backdrop-blur transition-colors hover:bg-white/15 sm:w-auto">For Hotels</a>
       <a href="/partners/" class="inline-flex h-12 w-full items-center justify-center rounded-full bg-white/10 px-7 text-base font-semibold text-white ring-1 ring-white/20 backdrop-blur transition-colors hover:bg-white/15 sm:w-auto">For Partners</a>
-      <a href="/travel-content-creators/" class="inline-flex h-12 w-full items-center justify-center rounded-full bg-white/10 px-7 text-base font-semibold text-white ring-1 ring-white/20 backdrop-blur transition-colors hover:bg-white/15 sm:w-auto">For Travel Creators</a>
-      <a href="/dev/" class="inline-flex h-12 w-full items-center justify-center rounded-full bg-white/10 px-7 text-base font-semibold text-white ring-1 ring-white/20 backdrop-blur transition-colors hover:bg-white/15 sm:w-auto">For Developers</a>
+      <a href="/travel-creators/" class="inline-flex h-12 w-full items-center justify-center rounded-full bg-white/10 px-7 text-base font-semibold text-white ring-1 ring-white/20 backdrop-blur transition-colors hover:bg-white/15 sm:w-auto">For Travel Creators</a>
+      <a href="/builders/" class="inline-flex h-12 w-full items-center justify-center rounded-full bg-white/10 px-7 text-base font-semibold text-white ring-1 ring-white/20 backdrop-blur transition-colors hover:bg-white/15 sm:w-auto">For Developers</a>
       <a href="/platforms/" class="inline-flex h-12 w-full items-center justify-center rounded-full bg-white/10 px-7 text-base font-semibold text-white ring-1 ring-white/20 backdrop-blur transition-colors hover:bg-white/15 sm:w-auto">For Platforms &amp; AI</a>
     </div>
     <a href="https://cal.com/wink-ws36dy" class="mt-9 inline-flex h-12 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#ff6b35] to-[#ec4899] px-8 text-base font-extrabold text-white shadow-lg shadow-[#ec4899]/30 transition-transform hover:scale-[1.03]">Request a demo <IconArrowRight class="size-5" /></a>

@@ -29,12 +29,68 @@ body main > .content-panel:has(> .sl-container):not(:has(> .sl-container > *)) +
    and to .mkt-page so it only touches marketing pages. `border-width: 1px`
    unifies the partial border-y/border-b into a full edge for the rounded
    card. Applies on every page and every locale at once, and harmlessly
-   reinforces the homepage band components. */
-.mkt-page section[class~="w-full"][class~="bg-gradient-to-br"],
-.mkt-page section[class~="w-full"][class~="bg-muted/30"] {
+   reinforces the homepage band components. Bands that opt into `data-full-bleed`
+   are excluded — they run to the viewport edge, where a radius makes no sense. */
+.mkt-page section[class~="w-full"][class~="bg-gradient-to-br"]:not([data-full-bleed]),
+.mkt-page section[class~="w-full"][class~="bg-muted/30"]:not([data-full-bleed]) {
   border-radius: 1rem; /* rounded-2xl */
   border-width: 1px;
   overflow: hidden;
+}
+
+/* Full-bleed bands — opt in by putting `data-full-bleed` on the element (a hero
+   <section> in page MDX, the marketing <footer>). Starlight centres page content
+   in `.sl-container` (max-width 1080px) nested in a `.content-panel` with 24px
+   padding, so a `w-full` element only ever fills that column, not the viewport.
+   These rules break it back out to both viewport edges; its own inner wrapper
+   keeps whatever `mx-auto max-w-*` centring it already declares, so only the
+   BACKGROUND goes edge to edge — the copy stays in a readable column.
+
+   `overflow-x: clip` on the pane stops the 100vw width from producing a
+   horizontal scrollbar on platforms with classic space-consuming scrollbars,
+   where 100vw is wider than the document's client width. `clip` rather than
+   `hidden` because it creates no scroll container, so the fixed header and any
+   sticky descendants keep working. */
+[data-full-bleed] {
+  width: 100vw;
+  max-width: 100vw;
+  margin-inline: calc(50% - 50vw);
+  border-inline-width: 0;
+  border-radius: 0;
+}
+
+main:has([data-full-bleed]) {
+  overflow-x: clip;
+}
+
+/* The marketing footer closes the page and must run to the very bottom of the
+   document — no light strip beneath it. Starlight pads below the last panel in
+   two places (the content panel, then <main>), which together leave ~54px of
+   background showing under a full-bleed footer. Zero both, scoped with :has()
+   to pages that actually end in one, so ordinary docs pages keep their padding. */
+.content-panel:has(> .sl-container > footer[data-full-bleed]) {
+  padding-bottom: 0;
+}
+
+main:has(.content-panel > .sl-container > footer[data-full-bleed]) {
+  padding-bottom: 0;
+}
+
+/* A full-bleed band that OPENS the page sits flush under the fixed header, so
+   drop the content panel's top padding — otherwise a 24px light strip shows
+   between the nav and the band. Scoped with :has() to that exact case, so every
+   other splash page keeps its padding.
+
+   "Opens the page" can't be `:first-child`: pages carry JSON-LD components
+   (BreadcrumbJsonLd, FaqJsonLd, …) that render an inline <script> as an earlier
+   sibling. Those paint nothing, so the band is still visually first. The inner
+   `:not(script, style, link, meta) ~ *` matches a band preceded by any RENDERING
+   sibling; negating it leaves bands preceded only by metadata. */
+.content-panel:has(
+    > .sl-container > .sl-markdown-content > .mkt-page
+      > section[data-full-bleed]:not(:not(script, style, link, meta) ~ *)
+  ) {
+  padding-top: 0;
 }
 
 /* Scrolling marquee strip — used on creator-facing pages for a social-native,

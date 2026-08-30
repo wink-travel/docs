@@ -18,19 +18,35 @@
  */
 import IconArrowRight from "@tabler/icons/outline/arrow-right.svg";
 
+// Optional breadcrumb, rendered INSIDE the band so it shares the hero's content
+// column (see the note on the <section> below). It arrives as a named slot
+// rather than a prop or hardcoded markup on purpose: translate-i18n.ts
+// translates whole MDX files and never opens a .astro component, so a label or
+// aria-label written here would stay English in all 40+ locales with nothing to
+// flag it. Keeping the markup in the MDX keeps every string translatable.
+const hasBreadcrumb = Astro.slots.has("breadcrumb");
+
 // One swimlane per stakeholder: who they are → their distinct payoff. Each lane
 // carries its own accent so the five read as five genuinely different solutions.
 const solutions = [
   { emoji: "🏨", label: "Hotels", benefit: "Own & diversify your distribution", accent: "#ff6b35", href: "/hotels/" },
   { emoji: "🤝", label: "Partners", benefit: "Access hotels, sell with better tools, earn", accent: "#ec4899", href: "/partners/" },
-  { emoji: "🎬", label: "Creators", benefit: "Monetize your audience", accent: "#a855f7", href: "/travel-content-creators/" },
-  { emoji: "💻", label: "Developers", benefit: "Build on top-tier booking infrastructure", accent: "#22d3ee", href: "/dev/" },
+  { emoji: "🎬", label: "Creators", benefit: "Monetize your audience", accent: "#a855f7", href: "/travel-creators/" },
+  { emoji: "💻", label: "Developers", benefit: "Build on top-tier booking infrastructure", accent: "#22d3ee", href: "/builders/" },
   { emoji: "🤖", label: "Platforms & AI", benefit: "Plug hotel commerce into your platform", accent: "#6366f1", href: "/platforms/" },
 ];
 ---
 
+{/* `data-full-bleed` is the contract with tweaks.css: it breaks the band out of
+    Starlight's centred `.sl-container` to both viewport edges, opts it out of the
+    rounded-card treatment every other marketing band gets, and — because this band
+    opens the page — drops the content panel's top padding so the gradient starts
+    flush under the fixed header. Only the background goes edge to edge; the inner
+    wrapper keeps its own `mx-auto max-w-7xl`, so copy stays in a readable column
+    and the breadcrumb lines up with the badge and headline. */}
 <section
   data-solutions-hero
+  data-full-bleed
   class="@container relative w-full overflow-hidden border-b border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white"
 >
   <div data-parallax class="pointer-events-none absolute inset-0" aria-hidden="true">
@@ -39,9 +55,24 @@ const solutions = [
     <div class="blob blob-c absolute right-1/3 -top-10 size-80 rounded-full bg-[#22d3ee]/20 blur-[130px]"></div>
   </div>
 
-  <div class="relative mx-auto grid w-full max-w-7xl items-center gap-12 px-4 py-20 @xl:grid-cols-[1fr_1.05fr] @xl:py-24">
+  <div
+    class:list={[
+      "relative mx-auto w-full max-w-7xl px-4 pb-20 lg:pb-24",
+      /* With a breadcrumb the band opens on it, so the top padding shrinks and the
+         grid picks up the slack — the badge lands at roughly its original height.
+         Without one, keep the symmetric padding the hero had before. */
+      hasBreadcrumb ? "pt-8" : "pt-20 lg:pt-24",
+    ]}
+  >
+    <slot name="breadcrumb" />
+    <div
+      class:list={[
+        "grid w-full items-center gap-12 lg:grid-cols-[1fr_1.05fr]",
+        hasBreadcrumb && "mt-10 lg:mt-12",
+      ]}
+    >
     {/* Left — copy */}
-    <div class="text-center @xl:text-left">
+    <div class="text-center lg:text-left">
       <span class="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-xs font-extrabold uppercase tracking-wider text-[#ff8a5c] ring-1 ring-white/15 backdrop-blur">
         <span class="size-1.5 animate-pulse rounded-full bg-gradient-to-r from-[#ff6b35] to-[#ec4899]"></span>
         Solutions
@@ -49,12 +80,12 @@ const solutions = [
       <h1 class="font-heading mt-6 text-5xl font-extrabold leading-[1.02] tracking-tight text-balance @lg:text-6xl">
         One platform. <span class="wink-shimmer bg-gradient-to-r from-[#ff8a5c] via-[#ec4899] to-[#a855f7] bg-clip-text text-transparent">Every way to grow.</span>
       </h1>
-      <p class="mx-auto mt-6 max-w-xl text-pretty text-lg text-white/75 @xl:mx-0 @lg:text-xl">
+      <p class="mx-auto mt-6 max-w-xl text-pretty text-lg text-white/75 lg:mx-0 @lg:text-xl">
         Wink connects hotel supply to every demand route — for hotels, partners, travel creators,
         developers, and the platforms &amp; AI that book on their behalf. Same platform, different job.
         Choose the path that matches your role.
       </p>
-      <div class="mt-9 flex flex-col items-center justify-center gap-3 @xl:justify-start sm:flex-row">
+      <div class="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row lg:justify-start">
         <a href="https://cal.com/wink-ws36dy" class="inline-flex h-14 w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#ff6b35] to-[#ec4899] px-8 text-base font-extrabold text-white shadow-lg shadow-[#ec4899]/30 transition-transform hover:scale-[1.03] sm:w-auto">
           Request a demo <IconArrowRight class="size-5" />
         </a>
@@ -98,6 +129,7 @@ const solutions = [
           ))}
         </div>
       </div>
+    </div>
     </div>
   </div>
 </section>

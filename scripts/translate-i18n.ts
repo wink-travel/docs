@@ -244,7 +244,7 @@ const rootFiles = [
   "agentic-ai.mdx",
   "contact.mdx",
   "cookies.mdx",
-  "dev.mdx",
+  "builders.mdx",
   "hotels.mdx",
   "jobs.mdx",
   "partners.mdx",
@@ -256,7 +256,7 @@ const rootFiles = [
   "solutions.mdx",
   "team.mdx",
   "terms.mdx",
-  "travel-content-creators.mdx",
+  "travel-creators.mdx",
 ];
 
 // some environment variables
