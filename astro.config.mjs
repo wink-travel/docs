@@ -161,7 +161,11 @@ export default defineConfig({
             name: 'May Rawddon',
             title: 'Marketing & Media',
             url: 'https://i.trvl.as/starringmay',
-            picture: '/src/assets/may.webp'
+            // Must start with "." — starlight-blog only bundles the image (and
+            // hashes/optimizes it) for a relative path; a bare "/src/..." path is
+            // passed through as a literal URL, which only resolves in dev (Vite
+            // serves /src/ directly there) and 404s once the site is built.
+            picture: './src/assets/may.webp'
           }
         }
       }),
