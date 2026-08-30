@@ -91,11 +91,12 @@ const toApiSchema = ([audience, label, apiBase]) => ({
 import icon from 'astro-icon';
 
 import markdoc from '@astrojs/markdoc';
+import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://wink.travel',
-  redirects: { ...buildRedirects(), ...partnerApiRedirects },
+  redirects: { ...buildRedirects(), '/home-v2': '/', ...partnerApiRedirects },
   // Astro v7 defaults Markdown rendering to the native `satteri` processor, which does
   // not run remark/rehype plugins. Starlight registers its transforms for whichever
   // processor is configured, but `starlight-blog` still injects its excerpt remark plugin
@@ -109,13 +110,8 @@ export default defineConfig({
   },
   integrations: [starlight({
     head: [
-      {
-        tag: 'meta',
-        attrs: {
-          property: 'og:image',
-          content: 'https://res.cloudinary.com/traveliko/image/upload/v1653294291/wink/wink-social-card.png',
-        },
-      },
+      // og:image is set per-page in custom-head.astro (generated OG cards for
+      // marketing pages, global card fallback otherwise).
       {
         tag: 'script',
         attrs: {
@@ -165,7 +161,11 @@ export default defineConfig({
             name: 'May Rawddon',
             title: 'Marketing & Media',
             url: 'https://i.trvl.as/starringmay',
-            picture: '/src/assets/may.webp'
+            // Must start with "." — starlight-blog only bundles the image (and
+            // hashes/optimizes it) for a relative path; a bare "/src/..." path is
+            // passed through as a literal URL, which only resolves in dev (Vite
+            // serves /src/ directly there) and 404s once the site is built.
+            picture: './src/assets/may.webp'
           }
         }
       }),
@@ -173,8 +173,10 @@ export default defineConfig({
     ],
     components: {
       SocialIcons: './src/components/custom-social-icons.astro', // to remove the default RSS icon
+      Header: './src/components/custom-header.astro', // marketing navbar on pages with marketingNav: true
       Footer: './src/components/custom-footer.astro',
       PageTitle: './src/components/custom-page-title.astro',  // Removes Page title from splash screens
+      Head: './src/components/custom-head.astro', // per-page OG images for marketing pages
     },
     sidebar: [
       { label: 'Getting Started', items: [{ autogenerate: { directory: 'getting-started' } }] },
@@ -308,7 +310,7 @@ export default defineConfig({
       'zh-CN': { label: '简体中文', lang: 'zh-CN' },
       'zh-TW': { label: '繁體中文', lang: 'zh-TW' },
     },
-  }), icon(), markdoc()],
+  }), sitemap(), icon(), markdoc()],
   vite: {
     plugins: [tailwindcss()]
   }

@@ -1,0 +1,89 @@
+---
+import IconCheck from "@tabler/icons/outline/check.svg";
+import IconArrowRight from "@tabler/icons/outline/arrow-right.svg";
+import { Card, CardContent } from "@/components/starwind/card";
+import { Button } from "@/components/starwind/button";
+
+export interface AudienceCard {
+  eyebrow: string;
+  title: string;
+  valueProp: string;
+  bullets: string[];
+  ctaText: string;
+  ctaHref: string;
+  /** Optional hex accent — colours the top border, icon badge, eyebrow, checks and CTA. */
+  accent?: string;
+  /** Optional icon component (Tabler SVG) shown in a badge above the eyebrow. */
+  icon?: any;
+}
+
+interface Props {
+  heading?: string;
+  intro?: string;
+  cards?: AudienceCard[];
+  /** Wide-viewport column count. 3 (default) or 2 (renders a 2×2 grid). */
+  columns?: 2 | 3;
+}
+
+const { heading, intro, cards = [], columns = 3 } = Astro.props;
+const gridClass = columns === 2 ? "grid gap-8 @2xl:grid-cols-2" : "grid gap-8 @2xl:grid-cols-3";
+---
+
+<section class="@container mx-auto w-full max-w-7xl px-4 py-24">
+  {(heading || intro) && (
+    <div class="mx-auto mb-16 max-w-3xl text-center">
+      {heading && <h2 class="mkt-h2 font-heading" set:html={heading} />}
+      {intro && <p class="mkt-sub text-muted-foreground mt-4">{intro}</p>}
+    </div>
+  )}
+
+  <div class={gridClass}>
+    {cards.map((card) => {
+      const Icon = card.icon;
+      return (
+        <Card
+          class="h-full transition-colors hover:ring-primary/40"
+          style={card.accent ? `border-top:3px solid ${card.accent}` : undefined}
+        >
+          <CardContent class="flex h-full grow flex-col p-8">
+            {Icon && (
+              <span
+                class="mb-5 flex size-12 items-center justify-center rounded-2xl text-white shadow-sm"
+                style={`background:${card.accent ?? "var(--primary)"}`}
+              >
+                <Icon class="size-6" />
+              </span>
+            )}
+            <span
+              class:list={["text-xs font-semibold uppercase tracking-wider", !card.accent && "text-primary"]}
+              style={card.accent ? `color:${card.accent}` : undefined}
+            >{card.eyebrow}</span>
+            <h3 class="font-heading mt-3 text-2xl font-semibold">{card.title}</h3>
+            <p class="text-muted-foreground mt-3 text-pretty">{card.valueProp}</p>
+            <ul class="mt-6 mb-8 space-y-3">
+              {card.bullets.map((b) => (
+                <li class="flex items-start gap-2.5">
+                  <IconCheck
+                    class:list={["mt-0.5 size-5 shrink-0", !card.accent && "text-primary"]}
+                    style={card.accent ? `color:${card.accent}` : undefined}
+                    aria-hidden="true"
+                  />
+                  <span class="text-sm text-foreground/90">{b}</span>
+                </li>
+              ))}
+            </ul>
+            <Button
+              href={card.ctaHref}
+              variant="primary"
+              class:list={["mt-auto", card.accent && "text-white hover:opacity-90"]}
+              style={card.accent ? `background:${card.accent}` : undefined}
+            >
+              {card.ctaText}
+              <IconArrowRight class="size-4" />
+            </Button>
+          </CardContent>
+        </Card>
+      );
+    })}
+  </div>
+</section>

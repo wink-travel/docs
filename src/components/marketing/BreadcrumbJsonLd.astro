@@ -1,0 +1,22 @@
+---
+/**
+ * BreadcrumbList structured data for marketing pages.
+ * Mirrors the visual breadcrumb so search and answer engines understand the
+ * page's place in the site hierarchy. Pass the same trail the page renders.
+ * The final item is the current page and should omit `url`.
+ */
+interface Crumb { name: string; url?: string }
+const { items = [] as Crumb[] } = Astro.props;
+
+const data = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: items.map((c: Crumb, i: number) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: c.name,
+    ...(c.url ? { item: c.url } : {}),
+  })),
+};
+---
+<script type="application/ld+json" set:html={JSON.stringify(data)} is:inline />

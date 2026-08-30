@@ -1,0 +1,69 @@
+---
+/**
+ * Structured data for a Wink product page.
+ * Emits a schema.org @graph (SoftwareApplication + FAQPage) so search and
+ * answer engines can classify the product, its features and its FAQs.
+ * Reusable across product pages — pass name, description, url, features and
+ * the same FAQ array the page renders so the two never drift.
+ *
+ * Deliberately does NOT define an Organization node: every page that renders
+ * this also renders MarketingFooter, which already emits the canonical
+ * Organization under the same @id (https://wink.travel/#organization). A
+ * second, thinner node here would conflict with it. `provider` below just
+ * references that @id.
+ */
+import { faqsToMainEntity, type Faq } from "@/lib/faq-schema";
+const {
+  name,
+  description,
+  url,
+  applicationCategory = "BusinessApplication",
+  features = [] as string[],
+  offersFree = false,
+  offers = [] as { name: string; price: string }[],
+  faqs = [] as Faq[],
+} = Astro.props;
+
+const offerNodes = offers.length
+  ? {
+      offers: offers.map((o: { name: string; price: string }) => ({
+        "@type": "Offer",
+        name: o.name,
+        price: String(o.price).replace(/[^0-9.]/g, ""),
+        priceCurrency: "USD",
+      })),
+    }
+  : offersFree
+    ? { offers: { "@type": "Offer", price: "0", priceCurrency: "USD", description: "Free tier available" } }
+    : {};
+
+const app: Record<string, unknown> = {
+  "@type": "SoftwareApplication",
+  "@id": `${url}#software`,
+  name,
+  applicationCategory,
+  operatingSystem: "Web",
+  url,
+  description,
+  provider: { "@id": "https://wink.travel/#organization" },
+  ...(features.length ? { featureList: features } : {}),
+  ...offerNodes,
+};
+
+const graph = {
+  "@context": "https://schema.org",
+  "@graph": [
+    app,
+    ...(faqs.length
+      ? [
+          {
+            "@type": "FAQPage",
+            "@id": `${url}#faq`,
+            mainEntity: faqsToMainEntity(faqs),
+          },
+        ]
+      : []),
+  ],
+};
+---
+<script type="application/ld+json" set:html={JSON.stringify(graph)} is:inline />

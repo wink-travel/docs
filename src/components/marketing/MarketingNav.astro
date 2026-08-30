@@ -1,0 +1,320 @@
+---
+import IconChevronDown from "@tabler/icons/outline/chevron-down.svg";
+import IconMenu from "@tabler/icons/outline/menu-2.svg";
+import IconX from "@tabler/icons/outline/x.svg";
+
+import logo from "@/assets/logo.png";
+import { withLocalePrefix } from "@/lib/locale-links";
+
+const APP_URL = "https://app.wink.travel";
+
+// All the in-site hrefs below are authored as bare, default-locale paths and
+// must be run through this so a French visitor's nav actually points at
+// /fr/... — otherwise every locale falls back to the English pages.
+const withLocale = (href: string) => withLocalePrefix(href, Astro.locals.starlightRoute.locale);
+
+const pathname = Astro.url.pathname.replace(/\/+$/, "") || "/";
+const isActive = (href: string) => {
+  const target = withLocale(href).replace(/\/+$/, "") || "/";
+  if (target === "/") return pathname === "/";
+  return pathname === target || pathname.startsWith(target + "/");
+};
+
+const solutionsLinks = [
+  { label: "Hotels", href: "/hotels/", desc: "Control supply and convert direct across every route" },
+  { label: "Partners", href: "/partners/", desc: "Agencies, DMCs & resellers — distribute supply, earn commission" },
+  { label: "Travel Creators", href: "/travel-content-creators/", desc: "Influencers & communities — turn content into income" },
+  { label: "Developers", href: "/dev/", desc: "Build hotel commerce on open APIs" },
+  { label: "Platforms & AI", href: "/platforms/", desc: "AI assistants, LLMs, banks & super apps — the transaction layer you plug into" },
+];
+
+const productGroups = [
+  {
+    label: "Core platform",
+    items: [
+      { label: "Booking Engine", href: "/products/booking-engine/", desc: "Checkout, payment & confirmation" },
+      { label: "Extranet", href: "/products/extranet/", desc: "The hotel's control center" },
+    ],
+  },
+  {
+    label: "Create & distribute",
+    items: [
+      { label: "Studio", href: "/products/studio/", desc: "Find supply, build bookable assets" },
+      { label: "WinkLinks", href: "/products/winklinks/", desc: "Mobile-first booking storefronts" },
+      { label: "Social", href: "/products/social/", desc: "AI-generated, booking-ready posts" },
+      { label: "Traveliko", href: "/products/traveliko/", desc: "Consumer discovery channel" },
+    ],
+  },
+  {
+    label: "Developer",
+    items: [
+      { label: "API", href: "/api/overview", desc: "REST API for hotel commerce" },
+      { label: "MCP server", href: "/developers/mcp/", desc: "Hosted MCP for AI agents" },
+    ],
+  },
+];
+const productLinks = productGroups.flatMap((g) => g.items);
+
+const resourcesLinks = [
+  { label: "Resources hub", href: "/resources/", desc: "Guides and the direct-demand playbook" },
+  { label: "Getting Started", href: "/getting-started/key-features/", desc: "Onboard and launch a booking path" },
+  { label: "Blog", href: "/blog/", desc: "Latest from the Wink team" },
+];
+
+const solutionsActive = isActive("/solutions/") || solutionsLinks.some((l) => isActive(l.href));
+const productsActive = isActive("/products/") || productLinks.some((l) => isActive(l.href));
+const resourcesActive = resourcesLinks.some((l) => isActive(l.href));
+---
+
+<header class="marketing-nav relative h-full w-full border-b border-border bg-background/85 backdrop-blur-md">
+  <nav class="relative mx-auto flex h-full w-full max-w-7xl items-center justify-between gap-4 px-4 lg:px-6" aria-label="Primary">
+    <!-- Logo -->
+    <a href={withLocale("/")} class="flex shrink-0 items-center gap-2" aria-label="Wink home">
+      <img src={logo.src} alt="Wink" class="h-7 w-auto" width={logo.width} height={logo.height} />
+    </a>
+
+    <!-- Desktop nav (centered on page) -->
+    <ul class="absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 items-center gap-1 lg:flex">
+      <li>
+        <a
+          href={withLocale("/about/")}
+          class:list={["nav-link", isActive("/about/") && "nav-link-active"]}
+        >About</a>
+      </li>
+
+      <!-- Solutions dropdown -->
+      <li class="group relative">
+        <a
+          href={withLocale("/solutions/")}
+          class:list={["nav-link inline-flex items-center gap-1", solutionsActive && "nav-link-active"]}
+          aria-haspopup="true"
+        >
+          Solutions
+          <IconChevronDown class="size-4 transition-transform group-hover:rotate-180" />
+        </a>
+        <div
+          class="invisible absolute left-0 top-full z-50 w-80 pt-2 opacity-0 transition-all duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100"
+        >
+          <div class="overflow-hidden rounded-xl border border-border bg-popover p-2 shadow-lg">
+            {solutionsLinks.map((l) => (
+              <a href={withLocale(l.href)} class="block rounded-lg px-3 py-2.5 transition-colors hover:bg-muted">
+                <span class="block text-sm font-semibold text-foreground">{l.label}</span>
+                <span class="block text-xs text-muted-foreground">{l.desc}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </li>
+
+      <!-- Products dropdown -->
+      <li class="group relative">
+        <a
+          href={withLocale("/products/")}
+          class:list={["nav-link inline-flex items-center gap-1", productsActive && "nav-link-active"]}
+          aria-haspopup="true"
+        >
+          Products
+          <IconChevronDown class="size-4 transition-transform group-hover:rotate-180" />
+        </a>
+        <div
+          class="invisible absolute left-0 top-full z-50 w-80 pt-2 opacity-0 transition-all duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100"
+        >
+          <div class="overflow-hidden rounded-xl border border-border bg-popover p-2 shadow-lg">
+            {productGroups.map((grp) => (
+              <div class="px-1 pb-1">
+                <p class="px-2 pb-0.5 pt-2 text-[0.65rem] font-bold uppercase tracking-wider text-muted-foreground/60">{grp.label}</p>
+                {grp.items.map((l) => (
+                  <a href={withLocale(l.href)} class="block rounded-lg px-3 py-1.5 transition-colors hover:bg-muted">
+                    <span class="block text-sm font-semibold text-foreground">{l.label}</span>
+                    <span class="block text-xs text-muted-foreground">{l.desc}</span>
+                  </a>
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
+      </li>
+
+      <li>
+        <a
+          href={withLocale("/pricing/")}
+          class:list={["nav-link", isActive("/pricing/") && "nav-link-active"]}
+        >Pricing</a>
+      </li>
+
+      <!-- Resources dropdown -->
+      <li class="group relative">
+        <a
+          href={withLocale("/resources/")}
+          class:list={["nav-link inline-flex items-center gap-1", resourcesActive && "nav-link-active"]}
+          aria-haspopup="true"
+        >
+          Resources
+          <IconChevronDown class="size-4 transition-transform group-hover:rotate-180" />
+        </a>
+        <div
+          class="invisible absolute left-0 top-full z-50 w-80 pt-2 opacity-0 transition-all duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100"
+        >
+          <div class="overflow-hidden rounded-xl border border-border bg-popover p-2 shadow-lg">
+            {resourcesLinks.map((l) => (
+              <a href={withLocale(l.href)} class="block rounded-lg px-3 py-2.5 transition-colors hover:bg-muted">
+                <span class="block text-sm font-semibold text-foreground">{l.label}</span>
+                <span class="block text-xs text-muted-foreground">{l.desc}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </li>
+    </ul>
+
+    <!-- Desktop CTAs -->
+    <div class="hidden shrink-0 items-center gap-2 lg:flex">
+      <a
+        href={APP_URL}
+        class="inline-flex h-10 items-center rounded-md px-4 text-sm font-medium text-foreground transition-colors hover:bg-muted"
+      >Login</a>
+      <a
+        href={APP_URL}
+        class="inline-flex h-10 items-center rounded-md bg-[#FF6B35] px-4 text-sm font-semibold text-white transition-colors hover:bg-[#e85b29]"
+      >Sign up</a>
+    </div>
+
+    <!-- Mobile toggle -->
+    <button
+      type="button"
+      class="inline-flex size-10 items-center justify-center rounded-md text-foreground hover:bg-muted lg:hidden"
+      aria-label="Toggle menu"
+      aria-expanded="false"
+      data-mobile-toggle
+    >
+      <IconMenu class="size-6" data-icon-open />
+      <IconX class="hidden size-6" data-icon-close />
+    </button>
+  </nav>
+
+  <!-- Mobile panel -->
+  <div class="absolute left-0 right-0 top-full z-50 hidden border-y border-border bg-background shadow-lg lg:hidden" data-mobile-panel>
+    <div class="space-y-1 px-4 py-4">
+      <a href={withLocale("/about/")} class="mobile-link">About</a>
+
+      <a href={withLocale("/solutions/")} class:list={["mobile-link", solutionsActive && "nav-link-active"]}>Solutions</a>
+      <div class="mb-1 space-y-1 pl-3">
+        {solutionsLinks.map((l) => (
+          <a href={withLocale(l.href)} class="mobile-sublink">{l.label}</a>
+        ))}
+      </div>
+
+      <a href={withLocale("/products/")} class:list={["mobile-link", productsActive && "nav-link-active"]}>Products</a>
+      <div class="mb-1 space-y-1 pl-3">
+        {productGroups.map((grp) => (
+          <div>
+            <p class="px-3 pb-0.5 pt-2 text-[0.65rem] font-bold uppercase tracking-wider text-muted-foreground/60">{grp.label}</p>
+            {grp.items.map((l) => (
+              <a href={withLocale(l.href)} class="mobile-sublink">{l.label}</a>
+            ))}
+          </div>
+        ))}
+      </div>
+
+      <a href={withLocale("/pricing/")} class="mobile-link">Pricing</a>
+
+      <a href={withLocale("/resources/")} class:list={["mobile-link", resourcesActive && "nav-link-active"]}>Resources</a>
+      <div class="mb-1 space-y-1 pl-3">
+        {resourcesLinks.map((l) => (
+          <a href={withLocale(l.href)} class="mobile-sublink">{l.label}</a>
+        ))}
+      </div>
+
+      <div class="flex gap-2 pt-3">
+        <a href={APP_URL} class="inline-flex h-10 flex-1 items-center justify-center rounded-md border border-border text-sm font-medium">Login</a>
+        <a href={APP_URL} class="inline-flex h-10 flex-1 items-center justify-center rounded-md bg-[#FF6B35] text-sm font-semibold text-white">Sign up</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<style>
+  /* Starlight wraps this component in a fixed `<header class="header">` bar
+     (its own height, border, background). When that wrapper holds our nav,
+     strip its chrome so only the marketing nav shows — no double bar. The
+     wrapper keeps its fixed position + height (= --sl-nav-height), which the
+     page content is already offset for, so our nav fills it exactly. */
+  :global(.header:has(.marketing-nav)) {
+    padding: 0;
+    border-bottom: 0;
+    background-color: transparent;
+  }
+
+  .marketing-nav :global(.nav-link) {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--muted-foreground);
+    transition: color 150ms, background-color 150ms;
+  }
+  .marketing-nav :global(.nav-link:hover) {
+    color: var(--foreground);
+    background-color: var(--muted);
+  }
+  .marketing-nav :global(.nav-link-active) {
+    color: var(--primary);
+  }
+  .marketing-nav :global(.mobile-link) {
+    display: block;
+    border-radius: 0.5rem;
+    padding: 0.625rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--foreground);
+  }
+  .marketing-nav :global(.mobile-link:hover) {
+    background-color: var(--muted);
+  }
+  .marketing-nav :global(.mobile-sublink) {
+    display: block;
+    border-radius: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.9375rem;
+    color: var(--muted-foreground);
+  }
+  .marketing-nav :global(.mobile-sublink:hover) {
+    background-color: var(--muted);
+    color: var(--foreground);
+  }
+</style>
+
+<script>
+  function setupMarketingNav() {
+    const toggle = document.querySelector<HTMLButtonElement>("[data-mobile-toggle]");
+    const panel = document.querySelector<HTMLElement>("[data-mobile-panel]");
+    if (!toggle || !panel) return;
+
+    const iconOpen = toggle.querySelector<SVGElement>("[data-icon-open]");
+    const iconClose = toggle.querySelector<SVGElement>("[data-icon-close]");
+
+    const close = () => {
+      panel.classList.add("hidden");
+      toggle.setAttribute("aria-expanded", "false");
+      iconOpen?.classList.remove("hidden");
+      iconClose?.classList.add("hidden");
+    };
+
+    toggle.addEventListener("click", () => {
+      const isOpen = !panel.classList.contains("hidden");
+      if (isOpen) {
+        close();
+      } else {
+        panel.classList.remove("hidden");
+        toggle.setAttribute("aria-expanded", "true");
+        iconOpen?.classList.add("hidden");
+        iconClose?.classList.remove("hidden");
+      }
+    });
+  }
+
+  setupMarketingNav();
+  document.addEventListener("astro:after-swap", setupMarketingNav);
+</script>

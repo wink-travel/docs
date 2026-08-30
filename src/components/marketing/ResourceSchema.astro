@@ -1,0 +1,58 @@
+---
+/**
+ * Article + BreadcrumbList structured data for a Resources article.
+ * Organization + WebSite already render site-wide via the footer; this adds the
+ * per-article Article schema and the Home → Resources → <crumb> breadcrumb.
+ * Pair with `<FaqGrid emitJsonLd ... />` for the FAQPage.
+ */
+interface Props {
+  /** Article headline (the clean page title). */
+  title: string;
+  description: string;
+  /** Resource slug, e.g. "direct-hotel-distribution". */
+  slug: string;
+  /** Visible breadcrumb leaf name (short). Defaults to title. */
+  crumb?: string;
+  /** schema.org Article subtype — e.g. "Report" for the research report. */
+  articleType?: string;
+  /** ISO date (YYYY-MM-DD). Optional — omit when the real date is unknown. */
+  datePublished?: string;
+  dateModified?: string;
+}
+const { title, description, slug, crumb, articleType = "Article", datePublished, dateModified } = Astro.props;
+
+const url = `https://wink.travel/resources/${slug}/`;
+const image =
+  "https://res.cloudinary.com/traveliko/image/upload/v1653294291/wink/wink-social-card.png";
+
+const graph = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": articleType,
+      "@id": `${url}#article`,
+      headline: title,
+      description,
+      url,
+      mainEntityOfPage: url,
+      image,
+      inLanguage: "en",
+      ...(datePublished ? { datePublished } : {}),
+      ...(datePublished || dateModified ? { dateModified: dateModified ?? datePublished } : {}),
+      isPartOf: { "@id": "https://wink.travel/#website" },
+      author: { "@id": "https://wink.travel/#organization" },
+      publisher: { "@id": "https://wink.travel/#organization" },
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": `${url}#breadcrumb`,
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://wink.travel/" },
+        { "@type": "ListItem", position: 2, name: "Resources", item: "https://wink.travel/resources/" },
+        { "@type": "ListItem", position: 3, name: crumb ?? title },
+      ],
+    },
+  ],
+};
+---
+<script type="application/ld+json" set:html={JSON.stringify(graph)} is:inline />

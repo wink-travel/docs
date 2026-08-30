@@ -1,0 +1,156 @@
+---
+/**
+ * "See it in action" product carousel. One surface at a time on a fixed-height
+ * stage (so swapping a wide desktop shot for a tall phone shot never shifts the
+ * page), with prev/next arrows + dots and a per-slide caption. Each slide renders
+ * in the right DeviceFrame variant (browser / phone / plain), sized by a wrapper
+ * so mixed source dimensions all fit the stage. All slides + captions stay in the
+ * DOM (toggled via the `hidden` attribute, not removed) for crawlers/AEO, and
+ * off-screen slides are actually taken out of layout so their images stay
+ * `loading="lazy"` instead of all being force-loaded at once.
+ */
+import DeviceFrame from "@/components/marketing/DeviceFrame.astro";
+import IconChevronLeft from "@tabler/icons/outline/chevron-left.svg";
+import IconChevronRight from "@tabler/icons/outline/chevron-right.svg";
+
+export interface Slide {
+  label: string;
+  caption: string;
+  variant?: "browser" | "phone" | "plain";
+  src: string;
+  url?: string;
+  alt: string;
+  aspect?: string;
+}
+
+interface Props {
+  kicker?: string;
+  heading: string;
+  lead?: string;
+  slides: Slide[];
+}
+
+const { kicker = "See it in action", heading, lead, slides } = Astro.props;
+
+const sizeByVariant: Record<string, string> = {
+  browser: "w-full max-w-2xl",
+  phone: "w-[180px] @sm:w-[210px]",
+  plain: "w-full max-w-xl",
+};
+const aspectByVariant: Record<string, string> = {
+  browser: "16/10",
+  phone: "9/19.5",
+  plain: "16/10",
+};
+---
+
+<section class="@container mx-auto w-full max-w-7xl px-4 pt-24">
+  <div class="mx-auto mb-12 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">{kicker}</p>
+    <h2 class="mkt-h2 font-heading mt-3">{heading}</h2>
+    {lead && <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">{lead}</p>}
+  </div>
+
+  <div data-product-carousel class="mx-auto w-full max-w-4xl">
+    <div class="relative">
+      {/* Stage */}
+      <div class="relative mx-auto h-[26rem] w-full @sm:h-[30rem]">
+        {slides.map((s, i) => {
+          const variant = s.variant ?? "browser";
+          return (
+            <div data-slide data-i={i} hidden={i !== 0} class="flex h-full items-center justify-center">
+              <div class:list={["mx-auto", sizeByVariant[variant]]}>
+                <DeviceFrame
+                  variant={variant}
+                  url={s.url}
+                  src={s.src}
+                  alt={s.alt}
+                  aspect={s.aspect ?? aspectByVariant[variant]}
+                  class="w-full !max-w-none"
+                />
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Arrows */}
+      <button
+        type="button"
+        data-prev
+        aria-label="Previous product"
+        class="absolute -left-2 top-1/2 z-10 flex size-11 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-background/90 text-foreground shadow-md backdrop-blur transition-colors hover:bg-muted @lg:-left-5"
+      >
+        <IconChevronLeft class="size-5" />
+      </button>
+      <button
+        type="button"
+        data-next
+        aria-label="Next product"
+        class="absolute -right-2 top-1/2 z-10 flex size-11 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-background/90 text-foreground shadow-md backdrop-blur transition-colors hover:bg-muted @lg:-right-5"
+      >
+        <IconChevronRight class="size-5" />
+      </button>
+    </div>
+
+    {/* Caption */}
+    <div class="relative mt-6 min-h-[4rem] text-center">
+      {slides.map((s, i) => (
+        <div data-caption data-i={i} class:list={[i !== 0 && "hidden"]}>
+          <p class="font-heading text-lg font-semibold">{s.label}</p>
+          <p class="text-muted-foreground mx-auto mt-1 max-w-md text-sm text-pretty">{s.caption}</p>
+        </div>
+      ))}
+    </div>
+
+    {/* Dots */}
+    <div class="mt-5 flex items-center justify-center gap-2.5">
+      {slides.map((s, i) => (
+        <button
+          type="button"
+          data-dot
+          data-i={i}
+          aria-label={`Show ${s.label}`}
+          class:list={["size-2.5 rounded-full transition-colors", i === 0 ? "bg-primary" : "bg-border"]}
+        />
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  function initProductCarousels() {
+    document.querySelectorAll<HTMLElement>("[data-product-carousel]").forEach((root) => {
+      if (root.dataset.init) return;
+      root.dataset.init = "1";
+
+      const slides = [...root.querySelectorAll<HTMLElement>("[data-slide]")];
+      const captions = [...root.querySelectorAll<HTMLElement>("[data-caption]")];
+      const dots = [...root.querySelectorAll<HTMLElement>("[data-dot]")];
+      const prev = root.querySelector<HTMLButtonElement>("[data-prev]");
+      const next = root.querySelector<HTMLButtonElement>("[data-next]");
+      if (!slides.length) return;
+
+      let current = 0;
+      const show = (n: number) => {
+        current = (n + slides.length) % slides.length;
+        slides.forEach((s, k) => {
+          s.hidden = k !== current;
+        });
+        captions.forEach((c, k) => c.classList.toggle("hidden", k !== current));
+        dots.forEach((d, k) => {
+          d.classList.toggle("bg-primary", k === current);
+          d.classList.toggle("bg-border", k !== current);
+        });
+      };
+
+      prev?.addEventListener("click", () => show(current - 1));
+      next?.addEventListener("click", () => show(current + 1));
+      dots.forEach((d, k) => d.addEventListener("click", () => show(k)));
+      show(0);
+    });
+  }
+
+  initProductCarousels();
+  document.addEventListener("astro:after-swap", initProductCarousels);
+</script>

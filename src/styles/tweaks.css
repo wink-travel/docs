@@ -1,8 +1,115 @@
-/* Hide the page title and its full wrapper only on splash pages */
-body .content-panel:has(> .sl-container > h1[data-page-title]) {
+/* Hide the page-title ContentPanel wrapper on splash pages so it doesn't
+   render as a blank padded band + hairline divider above the hero.
+   Two shapes to catch:
+   - non-marketing splash: custom-page-title renders <h1 data-page-title>
+   - marketing pages: custom-page-title renders null, leaving an empty
+     .sl-container (whitespace only, so match on "no element children"). */
+body .content-panel:has(> .sl-container > h1[data-page-title]),
+body main > .content-panel:has(> .sl-container):not(:has(> .sl-container > *)) {
   display: none;
+}
+
+/* The hidden panel still counts as an adjacent sibling, so the next panel
+   keeps Starlight's `+ .content-panel` top border. Drop that hairline too. */
+body .content-panel:has(> .sl-container > h1[data-page-title]) + .content-panel,
+body main > .content-panel:has(> .sl-container):not(:has(> .sl-container > *)) + .content-panel {
+  border-top: 0;
 }
 
 .social-icons {
   display: none;
+}
+
+/* Round all full-width marketing "bands" — the gradient/solid <section>s
+   authored inline in the page MDX (hero feature bands, muted stat bands,
+   gradient CTA bands). Keyed on the band *background* (every gradient band
+   shares `bg-gradient-to-br`, every muted band shares `bg-muted/30`) rather
+   than the border, because top-of-page bands use `border-b` while the rest
+   use `border-y`. Scoped to `section` so it skips inner gradient tiles/cards,
+   and to .mkt-page so it only touches marketing pages. `border-width: 1px`
+   unifies the partial border-y/border-b into a full edge for the rounded
+   card. Applies on every page and every locale at once, and harmlessly
+   reinforces the homepage band components. */
+.mkt-page section[class~="w-full"][class~="bg-gradient-to-br"],
+.mkt-page section[class~="w-full"][class~="bg-muted/30"] {
+  border-radius: 1rem; /* rounded-2xl */
+  border-width: 1px;
+  overflow: hidden;
+}
+
+/* Scrolling marquee strip — used on creator-facing pages for a social-native,
+   "ticker" feel. Duplicate the track content twice and the -50% shift loops
+   seamlessly. Respects reduced-motion. */
+@keyframes wink-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.wink-marquee {
+  animation: wink-marquee 32s linear infinite;
+}
+.wink-marquee-fast {
+  animation: wink-marquee 22s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .wink-marquee,
+  .wink-marquee-fast { animation: none; }
+}
+
+/* Animated shimmer for gradient headline accents — matches the homepage hero.
+   Apply alongside a `bg-gradient-* bg-clip-text text-transparent` span. */
+.wink-shimmer {
+  background-size: 220% auto;
+  animation: wink-shimmer 6s linear infinite;
+}
+@keyframes wink-shimmer {
+  to { background-position: 220% center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wink-shimmer { animation: none; }
+}
+
+/* Flowing dashes along the "converges on Booking Engine" signature spokes.
+   Apply to each spoke <path> (a stroke); stagger via inline animation-delay.
+   Used on hotels / dev / partners / solutions so all four bands animate alike. */
+.wink-spoke-flow {
+  stroke-dasharray: 4 7;
+  animation: wink-spoke-flow 1.3s linear infinite;
+}
+@keyframes wink-spoke-flow {
+  to { stroke-dashoffset: -22; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wink-spoke-flow { animation: none; }
+}
+
+/* Bar-chart grow-in for data/report heroes (bars scale from 0 → full width). */
+@keyframes wink-bar-grow {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+.wink-bar {
+  transform-origin: left;
+  animation-name: wink-bar-grow;
+  animation-duration: 1s;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  animation-fill-mode: both;
+}
+.wink-bar-2 { animation-delay: 0.18s; }
+.wink-bar-3 { animation-delay: 0.36s; }
+@media (prefers-reduced-motion: reduce) {
+  .wink-bar { animation: none; }
+}
+
+/* Chat-message reveal for the Agentic AI hero — bubbles fade/slide up in sequence. */
+@keyframes wink-msg-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.wink-msg { animation: wink-msg-in 0.5s ease-out both; }
+.wink-msg-1 { animation-delay: 0.2s; }
+.wink-msg-2 { animation-delay: 0.9s; }
+.wink-msg-3 { animation-delay: 1.7s; }
+.wink-msg-4 { animation-delay: 2.5s; }
+@media (prefers-reduced-motion: reduce) {
+  .wink-msg { animation: none; }
 }

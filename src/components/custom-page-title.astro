@@ -2,6 +2,9 @@
 import DefaultPageTitle from "@astrojs/starlight/components/PageTitle.astro";
 const entry = Astro.locals.starlightRoute.entry;
 const isSplash = entry?.data.template === "splash";
+// Marketing pages render their own visible <h1> in content, so suppress the
+// template title to avoid a duplicate <h1> (SEO/a11y). Other splash pages keep it.
+const isMarketing = entry?.data.marketingNav === true;
 ---
 
-{!isSplash ? <DefaultPageTitle /> : <h1 data-page-title>{entry.data.title}</h1>}
+{isMarketing ? null : !isSplash ? <DefaultPageTitle /> : <h1 data-page-title>{entry.data.title}</h1>}

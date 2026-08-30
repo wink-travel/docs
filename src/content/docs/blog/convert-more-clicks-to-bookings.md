@@ -1,5 +1,6 @@
 ---
 title: Convert More Clicks to Bookings - Mastering Your Hotel Booking Engine
+description: How to master your hotel booking engine to lift direct-booking conversion — the on-site decisions that turn website clicks into confirmed reservations.
 date: 2025-09-15
 cover:
   alt: Cover image

@@ -74,12 +74,11 @@ A few features cost us money every single time they run — generative AI, third
 | -- | -- | -- | -- |
 | Social post — image | 1 | $1.50 | One published post |
 | Social post — AI-generated image | 0 | $2.50 | One published post |
-| Social post — video | 0 | $4.00 | One published post |
+| Social post — AI-enhanced video | 0 | $4.00 | One published post |
 | Social post — AI-generated video | 0 | $14.00 | One published post |
 | AI reply to a comment or DM | 5 | $0.05 | One reply |
 | Chatbot answer | 5 | $0.05 | One answer |
 | Partner API | 10,000 | $0.0001 | One hotel-day |
-| Partner Media API | 1,000 | $0.0005 | One hotel's media |
 
 Prices are in USD. The free allowance is granted **per account**, not per user, and resets on the 1st of every month (UTC).
 
@@ -97,32 +96,6 @@ Posts are priced by what's in them, because that's what they cost us to make. A 
 - **Publishing to WinkLinks is always free**, generated or not.
 - You're charged **on publish**, not per attempt. Regenerating a draft until you're happy with it doesn't add to your bill — you pay once for the post you actually ship. Attempts aren't unlimited, though: each post allows around 10 regenerations for images and 3 for video, which reflects what it costs us to produce them. You'll see how many you have left as you work.
 - On the Partner API, a **hotel-day** is one hotel priced for one night of stay — *not* one API call. A search that returns 20 hotels for a 3-night stay is 60 hotel-days from a single request. Lookup and autocomplete endpoints are free and never metered.
-- On the **Partner Media API**, the unit is one hotel whose media comes back to you, however many photos and videos that turns out to be. A batch request for 50 hotels is 50 units — and if some of those hotels have nothing you're entitled to see, you're only billed for the ones that actually returned media.
-
-### Example: an OTA caching 90 days of pricing
-
-Say you're an OTA, a metasearch site or a tour operator, and you want 90 days of forward pricing for **1,000 hotels**, each of which publishes **4 master rates**.
-
-**One full refresh of all of it is 90,000 hotel-days — $9.00.**
-
-That's 1,000 hotels × 90 days. The 4 master rates cost you nothing extra: a single request returns every rate plan a hotel publishes for that date range, so the number of rates a property carries is not a billing dimension. Neither is how you slice the request — a period request covers up to 30 days, so you'd make 3 requests per hotel, and 3 × 30 days bills exactly the same as one 90-day request would. You're billed for the pricing you asked for, not for the plumbing you asked it through.
-
-So what you pay per month comes down to one question: how often do you refresh?
-
-| Refresh cadence | Hotel-days / month | After the 10,000 free | Monthly cost |
-| -- | -- | -- | -- |
-| Once a month | 90,000 | 80,000 | **$8.00** |
-| Weekly | 360,000 | 350,000 | **$35.00** |
-| Daily | 2,700,000 | 2,690,000 | **$269.00** |
-| Twice a day | 5,400,000 | 5,390,000 | **$539.00** |
-
-Refreshing all 1,000 hotels every single day is 3,000 requests a day and works out to about $9.00 a day. The free allowance on its own — 10,000 hotel-days a month — is enough to price roughly 110 hotels for a full 90 days, or to build and test an entire integration without paying anything.
-
-#### What moves that number
-
-- **Asking for rate plans one at a time.** A period request returns the best price per room type across every rate plan at once. If you filter to one rate plan per request so you can see all four separately, you make four times the requests and pay four times as much.
-- **Extra occupancies, currencies or languages.** Pricing for 1 adult and pricing for 2 adults are two different questions, and each is billed. The same goes for a second display currency or language.
-- **Freshness you don't need.** Nothing says all 90 days deserve the same refresh rate. Refresh the next 14 days daily and days 15–90 weekly and the same 1,000 hotels cost **$71.40** a month instead of $269.00 — the near-term dates, where rates actually move, stay fresh.
 
 ### Turning it on
 
@@ -145,7 +118,7 @@ Nothing breaks and nothing is charged. You simply stop at the free allowance for
 | Suspended | An invoice went unpaid to the end. Billable actions are blocked until it's settled; free features carry on as normal. |
 
 :::tip[Live prices]
-Unit prices and free allowances are always shown in Portal, straight from our billing system, so you can check them before you commit to anything. See [Billing](/account/subscription) to enable pay-as-you-go, pick your accounts, and track month-to-date usage and invoices. See [Social](/portal/social/what-is-social) for how post volume affects what you spend.
+Unit prices and free allowances are always shown in Portal, straight from our billing system, so you can check them before you commit to anything. See [Billing](/portal/plan) to enable pay-as-you-go, pick your accounts, and track month-to-date usage and invoices. See [Social](/portal/social/what-is-social) for how post volume affects what you spend.
 :::
 
 ## Platform effect

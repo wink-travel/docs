@@ -1,0 +1,72 @@
+---
+export interface Pillar {
+  icon: any;
+  title: string;
+  desc: string;
+}
+
+interface Props {
+  variant?: "dark" | "light";
+  kicker?: string;
+  heading?: string;
+  lead?: string;
+  pillars?: Pillar[];
+  graphic?: boolean;
+}
+
+const { variant = "light", kicker, heading, lead, pillars = [], graphic = false } = Astro.props;
+const dark = variant === "dark";
+const cols = pillars.length === 3 ? "@3xl:grid-cols-3" : "@4xl:grid-cols-4";
+---
+
+<section
+  class:list={[
+    "@container relative w-full overflow-hidden",
+    dark && "rounded-2xl border border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white",
+  ]}
+>
+  {dark && graphic && (
+    <div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+      <div class="absolute -left-24 -top-10 size-80 rounded-full bg-[#ff6b35]/20 blur-[100px]"></div>
+      <div class="absolute -bottom-16 -right-16 size-96 rounded-full bg-[#9333ea]/30 blur-[120px]"></div>
+      <img src="/favicon.svg" alt="" class="absolute -right-6 top-6 size-40 rotate-6 opacity-[0.07]" />
+    </div>
+  )}
+
+  <div class:list={["relative mx-auto w-full max-w-7xl px-4", dark ? "py-24" : "pt-24"]}>
+    <div class="mx-auto mb-14 max-w-3xl text-center">
+      {kicker && (
+        <p class:list={["mkt-kicker", dark ? "text-[#ff8a5c]" : "text-primary"]}>{kicker}</p>
+      )}
+      {heading && <h2 class="mkt-h2 font-heading mt-3">{heading}</h2>}
+      {lead && (
+        <p class:list={["mkt-sub mx-auto mt-4 max-w-2xl", dark ? "text-white/70" : "text-muted-foreground"]}>
+          {lead}
+        </p>
+      )}
+    </div>
+
+    <div class:list={["grid gap-5 @md:grid-cols-2", cols]}>
+      {
+        pillars.map((p) => (
+          <div
+            class:list={[
+              "group relative flex flex-col rounded-2xl p-6 transition-colors",
+              dark
+                ? "border border-white/10 bg-white/[0.05] hover:border-white/25 hover:bg-white/[0.08]"
+                : "border border-border bg-card hover:border-primary/40",
+            ]}
+          >
+            <span class="mb-4 flex size-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-white shadow-lg shadow-black/20 ring-1 ring-white/10">
+              <p.icon class="size-6" />
+            </span>
+            <h3 class:list={["font-heading text-lg font-semibold", !dark && "text-foreground"]}>{p.title}</h3>
+            <p class:list={["mt-2 text-sm leading-snug", dark ? "text-white/65" : "text-muted-foreground"]}>
+              {p.desc}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

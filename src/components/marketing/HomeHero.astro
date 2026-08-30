@@ -1,0 +1,202 @@
+---
+/**
+ * Homepage hero. Two columns: headline + CTAs on the left, and an animated
+ * "supply hub" infographic on the right. The global picture: the HOTEL sits at
+ * the centre as the supply; the sellers around it (Direct — incl. the hotel's
+ * own website — Partners, Creators, API, AI agents) all connect to that supply,
+ * powered by Wink Booking Engine. Wink connects one supply to many sales
+ * channels, and everyone wins. Spokes pulse outward; a Booking Engine ring
+ * slowly rotates; nodes fade in. Reduced-motion respected.
+ *
+ * ── SWAPPABLE INFOGRAPHIC ─────────────────────────────────────────────
+ * The infographic is the right-hand column (the animated supply hub). To
+ * improve or replace it, edit that column — swap in a redesigned diagram, an
+ * inline <svg>, or an <img> — without touching the left headline/CTA column.
+ * ──────────────────────────────────────────────────────────────────────
+ */
+import IconArrowRight from "@tabler/icons/outline/arrow-right.svg";
+
+// Sellers arranged around the hotel hub. x/y are percentage positions of each
+// node's centre within the square hub; spoke endpoints derive from them (×3).
+const sellers = [
+  { emoji: "🔗", label: "Direct",    x: 50, y: 10 },
+  { emoji: "🤝", label: "Partners",  x: 88, y: 38 },
+  { emoji: "🤖", label: "AI agents", x: 74, y: 82 },
+  { emoji: "🔌", label: "API",       x: 26, y: 82 },
+  { emoji: "🎬", label: "Creators",  x: 12, y: 38 },
+];
+
+// Each seller gets two parallel, opposite-running streams between the hotel and
+// the seller: "out" = the hotel's supply flowing out (orange), "back" = bookings
+// + commission flowing back (emerald). Both are trimmed to start outside the
+// hotel node and stop before the seller node, so the moving dot always travels
+// through open space — Direct included. Geometry is in the 300×300 viewBox.
+const C = 150; // hub centre
+const startR = 54; // begin just outside the hotel node
+const endGap = 22; // stop short of the seller node
+const off = 4.5; // perpendicular gap between the two streams
+const f = (n: number) => n.toFixed(1);
+const spokes = sellers.map((s) => {
+  const dx = s.x * 3 - C;
+  const dy = s.y * 3 - C;
+  const len = Math.hypot(dx, dy);
+  const ux = dx / len;
+  const uy = dy / len;
+  const px = -uy * off; // perpendicular offset
+  const py = ux * off;
+  const ax = C + ux * startR;
+  const ay = C + uy * startR;
+  const bx = C + ux * (len - endGap);
+  const by = C + uy * (len - endGap);
+  return {
+    out: `M${f(ax + px)} ${f(ay + py)} L${f(bx + px)} ${f(by + py)}`,
+    back: `M${f(bx - px)} ${f(by - py)} L${f(ax - px)} ${f(ay - py)}`,
+  };
+});
+---
+
+<section
+  data-home-hero
+  class="@container relative my-6 w-full overflow-hidden border-y border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white"
+>
+  <div data-parallax class="pointer-events-none absolute inset-0" aria-hidden="true">
+    <div class="blob blob-a absolute -left-24 -top-20 size-[30rem] rounded-full bg-[#ff6b35]/30 blur-[120px]"></div>
+    <div class="blob blob-b absolute -bottom-24 right-0 size-[32rem] rounded-full bg-[#ec4899]/30 blur-[140px]"></div>
+    <div class="blob blob-c absolute right-1/3 -top-10 size-80 rounded-full bg-[#22d3ee]/20 blur-[130px]"></div>
+  </div>
+
+  <div class="relative mx-auto grid w-full max-w-7xl items-center gap-12 px-4 py-20 @xl:grid-cols-[1fr_1.05fr] @xl:py-24">
+    {/* Left — copy */}
+    <div class="text-center @xl:text-left">
+      <span class="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-xs font-extrabold uppercase tracking-wider text-[#ff8a5c] ring-1 ring-white/15 backdrop-blur">
+        <span class="size-1.5 animate-pulse rounded-full bg-gradient-to-r from-[#ff6b35] to-[#ec4899]"></span>
+        The commerce infrastructure for hospitality
+      </span>
+      <h1 class="font-heading mt-6 text-5xl font-extrabold leading-[1.02] tracking-tight text-balance @lg:text-6xl">
+        One hotel supply. <span class="wink-shimmer bg-gradient-to-r from-[#ff8a5c] via-[#ec4899] to-[#a855f7] bg-clip-text text-transparent">Every seller.</span>
+      </h1>
+      <p class="mx-auto mt-6 max-w-xl text-pretty text-lg text-white/75 @xl:mx-0 @lg:text-xl">
+        Wink connects a hotel's live inventory to every channel that can sell it — its own site, partners,
+        creators and AI agents — through one Booking Engine. Hotels keep control and the guest; every seller
+        gets paid to send them.
+      </p>
+      <div class="mt-9 flex flex-col items-center justify-center gap-3 @xl:justify-start sm:flex-row">
+        <a href="https://app.wink.travel" class="inline-flex h-14 w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#ff6b35] to-[#ec4899] px-8 text-base font-extrabold text-white shadow-lg shadow-[#ec4899]/30 transition-transform hover:scale-[1.03] sm:w-auto">
+          Get started <IconArrowRight class="size-5" />
+        </a>
+        <a href="https://cal.com/wink-ws36dy" class="inline-flex h-14 w-full items-center justify-center rounded-full bg-white/10 px-8 text-base font-bold text-white ring-1 ring-white/20 backdrop-blur transition-colors hover:bg-white/15 sm:w-auto">
+          Request a demo
+        </a>
+      </div>
+    </div>
+
+    {/* Right — supply hub: the hotel at the centre, sellers around it, powered by Booking Engine */}
+    <div class="relative mx-auto w-full max-w-md">
+      <div class="pointer-events-none absolute -inset-6 -z-10 rounded-[3rem] bg-gradient-to-br from-[#ff6b35]/20 to-[#a855f7]/20 blur-2xl" aria-hidden="true"></div>
+      <div class="rounded-3xl border border-white/10 bg-white/[0.04] p-6 shadow-2xl backdrop-blur @lg:p-7">
+        <p class="text-center text-xs font-extrabold uppercase tracking-wider text-white/40">One supply · every seller</p>
+
+        <div class="relative mt-4 aspect-square">
+          {/* Spokes from the hotel out to every seller + the Booking Engine ring */}
+          <svg viewBox="0 0 300 300" class="pointer-events-none absolute inset-0 size-full" aria-hidden="true">
+            <defs>
+              <linearGradient id="hubflow" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#ff8a5c" />
+                <stop offset="1" stop-color="#a855f7" />
+              </linearGradient>
+            </defs>
+            <g fill="none" stroke-width="2" stroke-linecap="round">
+              {spokes.map((sp, i) => (
+                <>
+                  <path class="ig-flow" d={sp.out} stroke="url(#hubflow)" style={`animation-delay:${i * 0.15}s`} />
+                  <path class="ig-flow" d={sp.back} stroke="#34d399" opacity="0.85" style={`animation-delay:${0.55 + i * 0.15}s`} />
+                </>
+              ))}
+            </g>
+            <circle class="hub-ring" cx="150" cy="150" r="86" fill="none" stroke="url(#hubflow)" stroke-width="1.5" stroke-dasharray="2 7" opacity="0.45" />
+          </svg>
+
+          {/* Sellers around the hub */}
+          {sellers.map((s, i) => (
+            <span
+              class="ig-chip absolute z-10 inline-flex -translate-x-1/2 -translate-y-1/2 items-center gap-1.5 rounded-full border border-white/10 bg-[#1f0a40]/80 px-3 py-1.5 text-xs font-bold text-white/90 backdrop-blur"
+              style={`left:${s.x}%;top:${s.y}%;animation-delay:${0.3 + i * 0.1}s`}
+            >
+              <span aria-hidden="true">{s.emoji}</span>{s.label}
+            </span>
+          ))}
+
+          {/* Hotel — the supply, at the centre */}
+          <div class="ig-node absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-1/2">
+            <div class="rounded-2xl bg-gradient-to-r from-[#ff6b35] to-[#ec4899] p-px shadow-lg shadow-[#ec4899]/30">
+              <div class="rounded-2xl bg-[#1f0a40] px-5 py-3 text-center">
+                <p class="text-[0.55rem] font-extrabold uppercase tracking-wider text-white/45">The supply</p>
+                <p class="mt-0.5 text-2xl leading-none">🏨</p>
+                <p class="font-heading mt-1 text-sm font-extrabold text-white">Your hotel</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Powered by + give↔get legend */}
+        <div class="mt-4 space-y-2">
+          <div class="ig-out mx-auto flex w-fit items-center gap-2 rounded-full border border-white/15 bg-white/[0.06] px-4 py-1.5 text-xs font-bold text-white/85">
+            <span class="size-1.5 animate-pulse rounded-full bg-gradient-to-r from-[#ff6b35] to-[#ec4899]"></span>
+            All powered by Wink Booking Engine
+          </div>
+          <div class="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-[0.7rem] font-semibold text-white/55">
+            <span class="inline-flex items-center gap-1.5"><span class="h-0.5 w-4 rounded bg-gradient-to-r from-[#ff8a5c] to-[#a855f7]"></span>Your supply out</span>
+            <span class="inline-flex items-center gap-1.5"><span class="h-0.5 w-4 rounded bg-emerald-400"></span>Bookings + commission back</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes hero-floaty {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(36px, -26px) scale(1.12); }
+    66% { transform: translate(-26px, 22px) scale(0.92); }
+  }
+  .blob-a { animation: hero-floaty 20s ease-in-out infinite; }
+  .blob-b { animation: hero-floaty 26s ease-in-out infinite reverse; }
+  .blob-c { animation: hero-floaty 30s ease-in-out infinite; }
+
+  @keyframes ig-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  .ig-chip { opacity: 0; animation: ig-in 0.5s ease-out forwards; }
+  .ig-node { opacity: 0; animation: ig-in 0.6s ease-out 0.95s forwards; }
+  .ig-arrow { opacity: 0; animation: ig-in 0.4s ease-out 1.3s forwards; }
+  .ig-out { opacity: 0; animation: ig-in 0.6s ease-out 1.5s forwards; }
+
+  @keyframes ig-flow-move { to { stroke-dashoffset: -28; } }
+  .ig-flow { stroke-dasharray: 5 7; animation: ig-flow-move 1.4s linear infinite; }
+
+  @keyframes hub-spin { to { transform: rotate(360deg); } }
+  .hub-ring { transform-origin: 150px 150px; animation: hub-spin 40s linear infinite; }
+
+  [data-parallax] { transition: transform 0.3s ease-out; will-change: transform; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .blob-a, .blob-b, .blob-c, .ig-flow, .hub-ring { animation: none; }
+    .ig-chip, .ig-node, .ig-arrow, .ig-out { opacity: 1; animation: none; }
+    [data-parallax] { transition: none; }
+  }
+</style>
+
+<script>
+  const root = document.querySelector<HTMLElement>("[data-home-hero]");
+  const parallax = root && root.querySelector<HTMLElement>("[data-parallax]");
+  if (root && parallax && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    root.addEventListener("mousemove", (e) => {
+      const r = root.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - 0.5;
+      const y = (e.clientY - r.top) / r.height - 0.5;
+      parallax.style.transform = `translate(${x * 26}px, ${y * 26}px)`;
+    });
+    root.addEventListener("mouseleave", () => {
+      parallax.style.transform = "";
+    });
+  }
+</script>

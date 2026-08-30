@@ -1,0 +1,73 @@
+---
+/**
+ * RouteConvergence — the "routes fan into Booking Engine → confirmed outcome" diagram.
+ * Demand routes on the left, animated SVG spokes converging on the Booking Engine
+ * node in the middle, and the confirmed-booking outcome on the right.
+ * The signature infographic shared across the audience/solutions pages.
+ * Used on: /solutions/, /hotels/, /partners/, /dev/ ("One engine, every route" band).
+ *
+ * ── SWAPPABLE INFOGRAPHIC ─────────────────────────────────────────────
+ * Drop-in slot. To improve or replace the visual, edit ONLY the body of this
+ * file — swap in a redesigned diagram, an inline <svg>, or an <img>. Keep the
+ * component name + props so all four pages update at once and stay in sync.
+ * Per-page copy comes from props (routes / outcomeTitle / outcomeNote); the
+ * section band + heading live on each page.
+ * ──────────────────────────────────────────────────────────────────────
+ */
+import IconArrowRight from "@tabler/icons/outline/arrow-right.svg";
+import IconCheck from "@tabler/icons/outline/check.svg";
+
+interface Props {
+  routes: string[];
+  outcomeTitle: string;
+  outcomeNote: string;
+}
+const { routes, outcomeTitle, outcomeNote } = Astro.props;
+// Unique gradient id per instance (avoids <defs> id collisions if ever two on a page).
+const gid = "spoke-" + Math.random().toString(36).slice(2, 8);
+// One spoke per route, evenly spaced down the 240-unit-tall viewBox so it always
+// lines up with the stacked route list regardless of how many routes are passed.
+const spokeYs = routes.map((_, i) => (i + 0.5) * (240 / routes.length));
+---
+
+<div class="grid items-center gap-6 @lg:grid-cols-[0.85fr_1.15fr_0.85fr]">
+  {/* Routes */}
+  <ul class="grid grid-cols-2 gap-2.5 @lg:grid-cols-1">
+    {routes.map((r) => (
+      <li class="flex items-center gap-2.5 rounded-xl border border-white/10 bg-white/[0.05] px-4 py-2.5 text-sm font-medium text-white/90 @lg:justify-end">
+        <span class="size-1.5 rounded-full bg-gradient-to-r from-[#ff6b35] to-[#9333ea] @lg:order-2"></span>
+        {r}
+      </li>
+    ))}
+  </ul>
+
+  {/* Engine + fan */}
+  <div class="relative flex min-h-[150px] items-center justify-center @lg:justify-end">
+    <svg class="pointer-events-none absolute inset-0 hidden size-full @lg:block" viewBox="0 0 200 240" preserveAspectRatio="none" fill="none" aria-hidden="true">
+      <defs>
+        <linearGradient id={gid} x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#ff6b35" stop-opacity="0.05" />
+          <stop offset="1" stop-color="#9333ea" stop-opacity="0.7" />
+        </linearGradient>
+      </defs>
+      {spokeYs.map((y, i) => (
+        <path class="wink-spoke-flow" d={`M0 ${y} C 110 ${y}, 150 120, 200 120`} stroke={`url(#${gid})`} stroke-width="1.5" stroke-linecap="round" style={`animation-delay:${i * 0.18}s`} />
+      ))}
+    </svg>
+    <div class="relative z-10 flex min-h-[9.5rem] w-full max-w-[13.5rem] flex-col items-center justify-center rounded-3xl border border-[#ff6b35]/30 bg-gradient-to-br from-[#ff6b35]/20 to-[#9333ea]/25 px-6 py-6 text-center shadow-2xl backdrop-blur-sm">
+      <img src="/favicon.svg" alt="" class="size-9" />
+      <p class="font-heading mt-3 text-base font-semibold text-white">Booking Engine</p>
+      <p class="mt-1.5 text-xs text-white/60">checkout · payment · confirmation</p>
+    </div>
+  </div>
+
+  {/* Outcome */}
+  <div class="flex items-center justify-center gap-3 @lg:justify-start">
+    <IconArrowRight class="size-7 shrink-0 rotate-90 text-[#ff8a5c] @lg:rotate-0" aria-hidden="true" />
+    <div class="flex min-h-[9.5rem] w-full max-w-[13.5rem] flex-col items-center justify-center rounded-3xl border border-emerald-400/25 bg-emerald-400/[0.06] px-6 py-6 text-center">
+      <span class="flex size-9 items-center justify-center rounded-full bg-emerald-500/15"><IconCheck class="size-5 text-emerald-400" /></span>
+      <p class="font-heading mt-3 text-base font-semibold text-white">{outcomeTitle}</p>
+      <p class="mt-1.5 text-xs leading-relaxed text-white/65">{outcomeNote}</p>
+    </div>
+  </div>
+</div>

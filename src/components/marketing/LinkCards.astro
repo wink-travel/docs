@@ -1,0 +1,47 @@
+---
+import IconArrowRight from "@tabler/icons/outline/arrow-right.svg";
+import { Card, CardContent } from "@/components/starwind/card";
+
+export interface LinkCard {
+  title: string;
+  description: string;
+  href: string;
+  cta?: string;
+}
+
+interface Props {
+  heading?: string;
+  intro?: string;
+  cards?: LinkCard[];
+}
+
+const { heading, intro, cards = [] } = Astro.props;
+---
+
+<section class="@container mx-auto w-full max-w-7xl px-4 pt-24">
+  {(heading || intro) && (
+    <div class="mb-12 max-w-3xl">
+      {heading && (
+        <h2 class="mkt-h2 font-heading">{heading}</h2>
+      )}
+      {intro && <p class="mkt-sub text-muted-foreground mt-4">{intro}</p>}
+    </div>
+  )}
+
+  <div class="grid gap-6 @md:grid-cols-2 @3xl:grid-cols-3">
+    {cards.map((card) => (
+      <a href={card.href} class="group block h-full">
+        <Card class="h-full transition-colors hover:ring-primary/40">
+          <CardContent class="flex h-full grow flex-col p-6">
+            <h3 class="font-heading text-lg font-semibold">{card.title}</h3>
+            <p class="text-muted-foreground mt-2 grow text-sm text-pretty">{card.description}</p>
+            <span class="text-primary mt-4 inline-flex items-center gap-1.5 text-sm font-medium">
+              {card.cta ?? "Read more"}
+              <IconArrowRight class="size-4 transition-transform group-hover:translate-x-0.5" />
+            </span>
+          </CardContent>
+        </Card>
+      </a>
+    ))}
+  </div>
+</section>

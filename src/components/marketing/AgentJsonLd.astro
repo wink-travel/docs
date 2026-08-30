@@ -1,0 +1,56 @@
+---
+/**
+ * Structured data for the Agentic AI page.
+ * Emits a schema.org @graph (Service + WebAPI + FAQPage) so search engines
+ * and answer engines can parse Wink's agent capabilities and cite the page
+ * accurately. FAQ items are passed in from the page so the machine-readable
+ * FAQ always matches the visible one.
+ *
+ * Deliberately does NOT define an Organization node: every page that renders
+ * this also renders MarketingFooter, which already emits the canonical
+ * Organization under the same @id (https://wink.travel/#organization). A
+ * second, thinner node here would conflict with it. `provider` below just
+ * references that @id.
+ */
+import { faqsToMainEntity, type Faq } from "@/lib/faq-schema";
+const { faqs = [] as Faq[] } = Astro.props;
+
+const graph = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://wink.travel/agentic-ai/#service",
+      name: "Wink Agentic AI",
+      serviceType: "Travel commerce infrastructure for AI agents",
+      url: "https://wink.travel/agentic-ai/",
+      provider: { "@id": "https://wink.travel/#organization" },
+      areaServed: "Worldwide",
+      audience: { "@type": "Audience", audienceType: "AI agents, developers, hotels, partners" },
+      description:
+        "Infrastructure that lets approved AI agents discover hotel supply, read live rates and availability, create and sync bookings, take payment, preserve attribution, and react to events through Wink's API, hosted MCP server and Booking Engine fulfillment.",
+    },
+    {
+      "@type": "WebAPI",
+      "@id": "https://wink.travel/agentic-ai/#api",
+      name: "Wink API",
+      description:
+        "REST API where every Wink feature is callable externally — inventory search, rates and availability, booking creation and sync, payments, partner attribution, 64+ webhook events, geolocation and AI content. A hosted MCP server exposes live OpenAPI contracts and task recipes to AI agents.",
+      documentation: "https://wink.travel/developers/build-on-wink/",
+      termsOfService: "https://wink.travel/terms/",
+      provider: { "@id": "https://wink.travel/#organization" },
+      potentialAction: {
+        "@type": "ConsumeAction",
+        target: "https://docs.mcp.wink.travel/mcp",
+        name: "Connect via the hosted Wink MCP server",
+      },
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://wink.travel/agentic-ai/#faq",
+      mainEntity: faqsToMainEntity(faqs),
+    },
+  ],
+};
+---
+<script type="application/ld+json" set:html={JSON.stringify(graph)} is:inline />
