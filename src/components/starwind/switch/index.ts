@@ -9,5 +9,6 @@ const SwitchVariants = {
 };
 
 export { Switch, SwitchVariants };
+export type { SwitchChangeEvent } from "./SwitchTypes";
 
 export default Switch;
