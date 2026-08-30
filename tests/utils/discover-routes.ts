@@ -38,13 +38,20 @@ const toId = (relativeFromDocsDir: string): string =>
 
 const idToPath = (id: string): string => (id === "" ? "/" : `/${id}/`);
 
+// Starlight's `draft: true` frontmatter flag excludes a page from production
+// builds entirely (it 404s), while still rendering it in dev — see
+// @astrojs/starlight/schema.ts. Route discovery must exclude these too, or
+// this suite reports a real page as a 404 that Starlight is deliberately not
+// building.
+const isDraft = (file: string): boolean => /^draft:\s*true\s*$/m.test(readFileSync(file, "utf8"));
+
 function collectContentFiles(dir: string, out: string[] = []): string[] {
   for (const entry of readdirSync(dir, { withFileTypes: true })) {
     if (entry.name.startsWith(".")) continue;
     const full = join(dir, entry.name);
     if (entry.isDirectory()) {
       collectContentFiles(full, out);
-    } else if (entry.isFile() && isContentFile(entry.name)) {
+    } else if (entry.isFile() && isContentFile(entry.name) && !isDraft(full)) {
       out.push(full);
     }
   }

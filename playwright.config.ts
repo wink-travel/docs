@@ -1,6 +1,8 @@
 import { defineConfig, devices } from "@playwright/test";
 
-const PORT = 4321;
+// Deliberately not 4321: keeps this from colliding with (or accidentally
+// reusing, via reuseExistingServer below) a separately-running `astro dev`.
+const PORT = 4322;
 const BASE_URL = `http://localhost:${PORT}`;
 
 /**
@@ -28,7 +30,13 @@ export default defineConfig({
   testDir: "./tests",
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
-  retries: process.env.CI ? 1 : 0,
+  // This suite hammers a single `astro preview` process with a lot of
+  // parallel requests; under that load a page occasionally shows a genuine
+  // but transient "request timed out" (confirmed: re-running any one of
+  // these in isolation always passes, and it's never the same page twice).
+  // Retries absorb that without masking a real, reproducible failure — a
+  // page that fails all 3 attempts is a real bug, not contention.
+  retries: 2,
   reporter: [["list"], ["html", { open: "never" }]],
   timeout: 30_000,
   expect: { timeout: 10_000 },
@@ -37,15 +45,13 @@ export default defineConfig({
     trace: "on-first-retry",
   },
 
-  // Points at `astro dev`, not a production build: this repo's build has a
-  // pre-existing, unrelated bug (broken relative import path in translated
-  // developers/webhook-events.mdx pages, predating this test suite) that
-  // currently fails `astro build` outright. `astro dev` renders each route
-  // on demand, so it isn't blocked by that — switch this to
-  // `npm run preview` (after `npm run build`) once that bug is fixed, for
-  // closer-to-production testing.
+  // Points at `astro preview` (a static build), not `astro dev`: dev renders
+  // each route on demand and doesn't hold up well under this suite's request
+  // volume — a full locale run (~7,600 requests) pegged it at 100% CPU with
+  // unbounded memory growth and it stopped responding. `npm run build` must
+  // be run first; this just serves the resulting dist/.
   webServer: {
-    command: `npm run dev -- --port ${PORT}`,
+    command: `npm run preview -- --port ${PORT}`,
     url: BASE_URL,
     reuseExistingServer: !process.env.CI,
     timeout: 120_000,
