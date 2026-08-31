@@ -10,9 +10,14 @@ const isDefaultLocale = !/^[a-z]{2}(-[a-z]+)?\//i.test(id);
 
 const fallback =
   "https://res.cloudinary.com/traveliko/image/upload/v1653294291/wink/wink-social-card.png";
+// Starlight normalizes the collection root's id from "index" to "" (see its
+// normalizeIndexSlug), but the /og/[...slug].ts route builds its pages from
+// the raw, unnormalized collection id, so the homepage's card is generated at
+// /og/index.png. Map "" back to "index" or the homepage card 404s.
+const ogSlug = id === "" ? "index" : id;
 const ogImage =
   isMarketing && isDefaultLocale
-    ? new URL(`/og/${id}.png`, Astro.site).href
+    ? new URL(`/og/${ogSlug}.png`, Astro.site).href
     : fallback;
 ---
 
