@@ -1,0 +1,280 @@
+---
+title: Agentic AI — Υποδομή Εμπορίου Ταξιδιών για Πράκτορες AI
+description: "Στο Wink, οι πράκτορες AI δεν προτείνουν απλώς ξενοδοχεία — αναζητούν ζωντανή προσφορά ξενοδοχείων, στη συνέχεια κάνουν κράτηση και πληρώνουν σε μία ροή μέσω REST API και φιλοξενούμενου MCP. Διαθέσιμο σήμερα."
+template: splash
+marketingNav: true
+---
+import '/src/styles/splash-page.css';
+import BreadcrumbJsonLd from "@/components/marketing/BreadcrumbJsonLd.astro";
+
+import FaqGrid from "@/components/marketing/FaqGrid.astro";
+import AgentJsonLd from "@/components/marketing/AgentJsonLd.astro";
+import AgentConversation from "@/components/marketing/infographics/AgentConversation.astro";
+import AgenticShiftFlow from "@/components/marketing/infographics/AgenticShiftFlow.astro";
+
+import IconMapSearch from "@tabler/icons/outline/map-search.svg";
+import IconCalendarCheck from "@tabler/icons/outline/calendar-check.svg";
+import IconSparkles from "@tabler/icons/outline/sparkles.svg";
+import IconCalendarStats from "@tabler/icons/outline/calendar-stats.svg";
+import IconCreditCard from "@tabler/icons/outline/credit-card.svg";
+import IconCoin from "@tabler/icons/outline/coin.svg";
+import IconWebhook from "@tabler/icons/outline/webhook.svg";
+import IconComponents from "@tabler/icons/outline/components.svg";
+import IconUser from "@tabler/icons/outline/user.svg";
+import IconBuildingStore from "@tabler/icons/outline/building-store.svg";
+import IconUsersGroup from "@tabler/icons/outline/users-group.svg";
+import IconCode from "@tabler/icons/outline/code.svg";
+import IconArrowRight from "@tabler/icons/outline/arrow-right.svg";
+import IconCheck from "@tabler/icons/outline/check.svg";
+import IconX from "@tabler/icons/outline/x.svg";
+
+export const faqs = [
+  { title: "Γιατί οι περισσότεροι πράκτορες AI δεν μπορούν να κάνουν κράτηση ξενοδοχείου και τι κάνει έναν ικανό;", content: "Η πρόταση ξενοδοχείου είναι πρόβλημα περιεχομένου — ένας πράκτορας χρειάζεται μόνο περιγραφές και τιμές. Η κράτηση είναι πρόβλημα εμπορίου: χρειάζεται ζωντανές τιμές και διαθεσιμότητα, αποθέματα που μπορεί πραγματικά να κρατήσει, μέθοδο πληρωμής, διακανονισμό με το ξενοδοχείο και εμπορική σχέση με το κατάλυμα. Οι περισσότεροι βοηθοί έχουν το πρώτο και κανένα από τα υπόλοιπα, οπότε παραπέμπουν τον ταξιδιώτη σε μια ιστοσελίδα για να ολοκληρώσει. Ένας πράκτορας μπορεί να ολοκληρώσει μια κράτηση όταν η υποδομή αποκαλύπτει όλα αυτά. Το Wink είναι API-first — κάθε λειτουργία πλατφόρμας είναι προσβάσιμη εξωτερικά, και ένας φιλοξενούμενος MCP server αποκαλύπτει τα ζωντανά API συμβόλαια — έτσι ένας εγκεκριμένος πράκτορας μπορεί να ανακαλύψει προσφορά ξενοδοχείων, να διαβάσει ζωντανές τιμές και διαθεσιμότητα, να δημιουργήσει και να συγχρονίσει κρατήσεις, να λάβει πληρωμή (το Wink είναι ο έμπορος καταγραφής), να διατηρήσει την απόδοση και να εγγραφεί σε γεγονότα." },
+  { title: "Πώς συνδέεται ένας πράκτορας AI με το Wink;", content: "Δείξτε έναν συμβατό πελάτη MCP στον φιλοξενούμενο server στο https://docs.mcp.wink.travel/mcp (εναλλακτική SSE στο /sse). Από το Claude Code: claude mcp add --transport http wink-docs https://docs.mcp.wink.travel/mcp. Ο πράκτορας μπορεί στη συνέχεια να χρησιμοποιήσει τα εργαλεία api_search και docs_search για να διαβάσει ζωντανές λειτουργίες OpenAPI, συμβόλαια αιτήσεων/απαντήσεων και συνταγές εργασιών." },
+  { title: "Τι μπορεί πραγματικά να κάνει ένας πράκτορας AI στο Wink σήμερα;", content: "Σήμερα, μέσω του REST API και του MCP server: ανακαλύπτει την πλατφόρμα, αναζητά διαθέσιμο απόθεμα (συμπεριλαμβανομένης της γεωγραφικής αναζήτησης), διαβάζει ζωντανές τιμές και διαθεσιμότητα σε 11 συνδεδεμένους διαχειριστές καναλιών, δημιουργεί κρατήσεις και συγχρονίζει τον κύκλο ζωής τους με το PMS/διαχειριστή καναλιών, λαμβάνει πληρωμή (το Wink είναι ο έμπορος καταγραφής), διατηρεί 6μηνη απόδοση και κερδίζει μέσω ροών συνεργατών, εγγράφεται σε 64+ γεγονότα webhook, δημιουργεί περιεχόμενο AI και ενσωματώνει διαθέσιμο απόθεμα μέσω Web Components." },
+  { title: "Μπορεί ένας πράκτορας AI να ολοκληρώσει μια κράτηση ξενοδοχείου μέσω Wink;", content: "Ναι. Η δημιουργία κράτησης είναι λειτουργία REST API, και το Booking Engine εκτελεί τη συναλλαγή — ολοκλήρωση αγοράς, πληρωμή, επιβεβαίωση και συγχρονισμός κράτησης. Ένας πράκτορας που καλεί το API κράτησης εκ μέρους του ταξιδιώτη μπορεί να ολοκληρώσει μια πραγματική, επιβεβαιωμένη κράτηση με διατηρημένο το πλαίσιο προέλευσης." },
+  { title: "Πώς γίνεται ένα ξενοδοχείο διαθέσιμο για κράτηση από έναν πράκτορα AI στο Wink;", content: "Απλώς ρυθμίζοντας το προφίλ του στο Wink. Μόλις η προσφορά, οι τιμές και η διαθεσιμότητα του ξενοδοχείου είναι ζωντανές (μέσω Extranet), είναι αυτόματα ανακαλύψιμο και διαθέσιμο για κράτηση από εγκεκριμένους πράκτορες AI μέσω του REST API και του φιλοξενούμενου MCP server — χωρίς ξεχωριστή, ανά ξενοδοχείο ενσωμάτωση AI. Ο πράκτορας αναζητά το ζωντανό απόθεμα του ξενοδοχείου, δημιουργεί την κράτηση και διακανονίζει την πληρωμή μέσω του Booking Engine, με διατηρημένη απόδοση. Κάθε ξενοδοχείο στο Wink είναι έτοιμο για πράκτορα από προεπιλογή." },
+  { title: "Πώς διαφέρει η κράτηση ξενοδοχείου μέσω Wink από το ChatGPT με Expedia ή Booking.com;", content: "Οι ενσωματώσεις βοηθών όπως το ChatGPT με Expedia ή Booking.com είναι ισχυρές στην ανακάλυψη — ζωντανές τιμές, φωτογραφίες και χάρτες μέσα στη συνομιλία — αλλά ο ταξιδιώτης συνήθως κατευθύνεται στην ιστοσελίδα ή την εφαρμογή του προμηθευτή για να ολοκληρώσει την κράτηση και την πληρωμή. Στο Wink, ο πράκτορας συναλλάσσεται απευθείας με ζωντανή, ξενοδοχειακή προσφορά: διαβάζει πραγματικές τιμές και διαθεσιμότητα, δημιουργεί την κράτηση και διακανονίζει την πληρωμή μέσω του Booking Engine σε μία ροή — και μπορεί να κερδίσει προμήθεια συνεργάτη από το αποτέλεσμα. Η ανακάλυψη μπορεί να γίνει οπουδήποτε· η εκπλήρωση γίνεται στο Wink." },
+  { title: "Είναι το Wink η μόνη πλατφόρμα που επιτρέπει σε πράκτορες AI να κάνουν κράτηση και να πληρώνουν για ξενοδοχεία;", content: "Όχι — το εμπόριο ξενοδοχείων με πράκτορες είναι μια αναδυόμενη κατηγορία, και αρκετοί παίκτες ταξιδιών και πληρωμών έχουν ανακοινώσει ή κυκλοφορήσει ολοκληρωμένες agentic κρατήσεις μέχρι το 2026. Το χαρακτηριστικό του Wink είναι ο συνδυασμός: η προσφορά είναι ξενοδοχειακή και άμεση (όχι μεταπώληση GDS ή καταχωρίσεις από web scraping), ο πράκτορας μπορεί να αναζητήσει, να κάνει κράτηση, να πληρώσει ΚΑΙ να κερδίσει μέσω ενός επιπέδου εμπορίου, και είναι διαθέσιμο ζωντανά σήμερα μέσω REST API και φιλοξενούμενου MCP server — όχι σε roadmap. Τα ξενοδοχεία διατηρούν τον έλεγχο της διανομής· ο πράκτορας γίνεται ένα αποδοτικό, αποδοσμένο κανάλι." },
+  { title: "Ποια πρότυπα agentic commerce και AI υποστηρίζει το Wink;", content: "Το Wink είναι API-first και τρέχει φιλοξενούμενο MCP (Model Context Protocol) server σήμερα, έτσι οποιοσδήποτε πράκτορας συμβατός με MCP — Claude, Codex, Cursor και άλλοι — μπορεί να ανακαλύψει και να καλέσει τα ζωντανά OpenAPI συμβόλαιά του. Οι βασικές λειτουργίες κράτησης και πληρωμής του Wink έχουν σχεδιαστεί να συνεργάζονται με το αναδυόμενο agent-commerce stack — το Agentic Commerce Protocol (ACP), το Agent Payments Protocol (AP2) της Google, το Agent2Agent (A2A) και agent payments τύπου x402 — καθώς αυτά τα πρότυπα ενοποιούνται, αντί να κλειδώνουν τους πράκτορες σε ιδιόκτητο μονοπάτι." },
+  { title: "Υπάρχει AI Skill για ανάπτυξη στο Wink;", content: "Ναι — το wink-api-builder είναι ένα φορητό skill πράκτορα που χρησιμοποιεί τον MCP server ως πηγή αλήθειας. Καθοδηγεί έναν πράκτορα μέσω api_search σε ζωντανά συμβόλαια αιτήσεων/απαντήσεων, αυθεντικοποίηση και επαληθευμένο κώδικα, και επισημαίνει ασυμφωνίες μεταξύ υπάρχοντος κώδικα και του τρέχοντος API. Λειτουργεί με Claude Code, Codex, Cursor και άλλους πελάτες με δυνατότητα skill." },
+  { title: "Μπορεί ένας πράκτορας AI να κερδίσει ως affiliate ή συνεργάτης;", content: "Το μοντέλο συνεργατών του Wink διατηρεί την απόδοση πηγής και καμπάνιας για 6 μήνες ανά κλικ και πληρώνει προμήθεια 10% επί των επιβεβαιωμένων κρατήσεων. Ένας πράκτορας που δημιουργεί ποιοτική ζήτηση και κατευθύνει μια κράτηση μπορεί να είναι αποδοσμένη πηγή μέσω της ίδιας υποδομής συνεργατών και Booking Engine." },
+  { title: "Αντικαθιστά το Agentic AI το Booking Engine;", content: "Όχι. Το Agentic AI δημιουργεί ή κατευθύνει την πρόθεση· το Booking Engine παραμένει το επίπεδο εκπλήρωσης για ολοκλήρωση αγοράς, πληρωμή, επιβεβαίωση και συγχρονισμό κράτησης. Κάθε παράδοση πράκτορα επιλύεται μέσω του Booking Engine από κάτω." },
+  { title: "Πού πρέπει να ξεκινήσει ένας προγραμματιστής ή πράκτορας;", content: "Συνδεθείτε με τον MCP server, στη συνέχεια διαβάστε την τεκμηρίωση Build on Wink, MCP Server και AI Skills. Ζητήστε πρόσβαση API όταν η περίπτωση χρήσης και η εμπορική διαδρομή είναι σαφείς." },
+];
+
+<div class="not-content mkt-page">
+
+<AgentJsonLd faqs={faqs} />
+
+<BreadcrumbJsonLd items={[{ name: "Αρχική", url: "https://wink.travel/" }, { name: "Agentic AI" }]} />
+
+{/* Hero — agent conversation. Full-bleed per the house `data-full-bleed` pattern,
+    with the breadcrumb inside the band so it lines up with the headline instead of
+    sitting in Starlight's narrower column above a full-width hero. */}
+<section data-full-bleed class="@container relative w-full overflow-hidden border-b border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white">
+  <div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+    <div class="absolute -left-24 -top-10 size-80 rounded-full bg-[#ff6b35]/20 blur-[100px]"></div>
+    <div class="absolute -bottom-16 -right-16 size-96 rounded-full bg-[#9333ea]/30 blur-[120px]"></div>
+  </div>
+  <div class="relative mx-auto w-full max-w-7xl px-4 pb-20 pt-8 lg:pb-24">
+    <nav aria-label="Breadcrumb" class="text-sm text-white/60">
+      <a href="/" class="transition-colors hover:text-white">Αρχική</a>
+      <span class="px-1.5 text-white/55">/</span>
+      <span class="text-white">Agentic AI</span>
+    </nav>
+    <div class="mt-10 grid items-center gap-12 lg:mt-12 lg:min-h-[33rem] @lg:grid-cols-[1fr_1.02fr]">
+    {/* Left — copy */}
+    <div class="text-center @lg:text-left">
+      <span class="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-xs font-extrabold uppercase tracking-wider text-[#ff8a5c] ring-1 ring-white/15 backdrop-blur @lg:mx-0"><span class="size-1.5 rounded-full bg-gradient-to-r from-[#ff6b35] to-[#ec4899]"></span> Agentic AI</span>
+      <h1 class="font-heading mt-6 text-4xl font-extrabold leading-[1.05] tracking-tight text-balance @lg:text-5xl @2xl:text-6xl">Οι πράκτορες AI μπορούν να σχεδιάσουν ένα ταξίδι. <span class="wink-shimmer bg-gradient-to-r from-[#ff8a5c] via-[#ec4899] to-[#a855f7] bg-clip-text text-transparent">Σχεδόν κανείς δεν μπορεί να το κλείσει.</span></h1>
+      <p class="mx-auto mt-5 max-w-xl text-pretty text-lg text-white/75 @lg:mx-0 @lg:text-xl">Η πρόταση ξενοδοχείου είναι πρόβλημα περιεχομένου. Η κράτηση είναι πρόβλημα εμπορίου — ζωντανές τιμές, κρατημένο απόθεμα, πληρωμή, διακανονισμός και σύμβαση με το ξενοδοχείο. Το Wink είναι η υποδομή που γεφυρώνει αυτό το κενό: οι πράκτορες ανακαλύπτουν, κλείνουν <em class="not-italic font-semibold text-white">και πληρώνουν</em> με βάση την προσφορά που ελέγχεται από το ξενοδοχείο, μέσω ζωντανού REST API και φιλοξενούμενου MCP server.</p>
+      <div class="mt-8 flex flex-col items-center justify-center gap-3 @lg:justify-start sm:flex-row">
+        <a href="/developers/build-on-wink/" class="inline-flex h-12 items-center justify-center rounded-md bg-[#ff6b35] px-7 text-base font-semibold text-white transition-colors hover:bg-[#e85b29]">Δείτε την τεκμηρίωση</a>
+        <a href="#agents" class="inline-flex h-12 items-center justify-center rounded-md bg-white/10 px-7 text-base font-medium text-white ring-1 ring-white/20 backdrop-blur transition-colors hover:bg-white/15">Συνδέστε έναν πράκτορα</a>
+      </div>
+      <div class="mt-7 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 font-mono text-xs text-white/70"><span class="size-1.5 animate-pulse rounded-full bg-emerald-400"></span> MCP server ζωντανά · docs.mcp.wink.travel/mcp</div>
+    </div>
+
+    {/* Right — agent conversation (swappable infographic) */}
+    <AgentConversation />
+    </div>
+  </div>
+</section>
+
+{/* Direct answer */}
+<section class="mx-auto w-full max-w-3xl px-4 pt-24 pb-24 text-center">
+  <p class="mkt-kicker text-primary">Γιατί οι περισσότεροι πράκτορες AI δεν μπορούν να κάνουν κράτηση ξενοδοχείου;</p>
+  <p class="mkt-sub text-muted-foreground mt-5">Το Wink είναι API-first: κάθε λειτουργία πλατφόρμας είναι προσβάσιμη εξωτερικά, και ένας φιλοξενούμενος MCP server αποκαλύπτει τα ζωντανά API συμβόλαια στους πράκτορες AI. Αντί να αναγκάζει κάθε ταξιδιώτη να περάσει από μια ιστοσελίδα, το Wink δίνει στους εγκεκριμένους πράκτορες δομημένη πρόσβαση στην προσφορά ξενοδοχείων, τιμές, διαθεσιμότητα, κράτηση, πληρωμή, απόδοση και γεγονότα — την ίδια υποδομή που τροφοδοτεί το ίδιο το Wink.</p>
+  <div class="mx-auto mt-7 max-w-2xl rounded-2xl border-2 border-primary/30 bg-primary/[0.04] px-6 py-5 text-pretty text-foreground/90"><strong class="text-foreground">Κάθε ξενοδοχείο γίνεται έτοιμο για πράκτορα απλώς ρυθμίζοντας το προφίλ του στο Wink.</strong> Μόλις η προσφορά, οι τιμές και η διαθεσιμότητα είναι ζωντανές, οι εγκεκριμένοι πράκτορες AI μπορούν να αναζητήσουν, να κλείσουν και να πληρώσουν μέσω του API και του MCP server — χωρίς ξεχωριστή, ανά ξενοδοχείο ενσωμάτωση AI.</div>
+</section>
+
+{/* Live proof — the argument above is shipped, not roadmap. Implementation
+    detail deliberately lives on /builders/ so this page stays the thesis. */}
+<section id="agents" class="@container w-full border-y border-border bg-muted/30" style="scroll-margin-top:5rem">
+  <div class="mx-auto w-full max-w-4xl px-4 py-24 text-center">
+    <p class="mkt-kicker text-primary">Διαθέσιμο σήμερα, όχι roadmap</p>
+    <h2 class="mkt-h2 font-heading mt-3">Τέσσερα βήματα από τον πράκτορα στην επιβεβαιωμένη, πληρωμένη κράτηση.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-2xl">Συνδέστε τον φιλοξενούμενο MCP server, επιλύστε την πρόθεση σε πραγματικές λειτουργίες μέσω του ζωντανού API, δημιουργήστε επαληθευμένο κώδικα, και στη συνέχεια παραδώστε στο Booking Engine για ολοκλήρωση αγοράς, πληρωμή, επιβεβαίωση και συγχρονισμό PMS.</p>
+    <ol class="mx-auto mt-10 grid gap-3 text-left @lg:grid-cols-4">
+      <li class="rounded-xl border border-border bg-card px-4 py-3 text-sm"><span class="font-mono text-xs text-primary">01</span><span class="mt-1 block font-semibold">Σύνδεση MCP</span></li>
+      <li class="rounded-xl border border-border bg-card px-4 py-3 text-sm"><span class="font-mono text-xs text-primary">02</span><span class="mt-1 block font-semibold">Αναζήτηση ζωντανού API</span></li>
+      <li class="rounded-xl border border-border bg-card px-4 py-3 text-sm"><span class="font-mono text-xs text-primary">03</span><span class="mt-1 block font-semibold">Δημιουργία επαληθευμένου κώδικα</span></li>
+      <li class="rounded-xl border border-border bg-card px-4 py-3 text-sm"><span class="font-mono text-xs text-primary">04</span><span class="mt-1 block font-semibold">Κράτηση &amp; πληρωμή</span></li>
+    </ol>
+    <div class="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <a href="/builders/#agent-quickstart" class="inline-flex h-12 items-center justify-center rounded-md bg-[#ff6b35] px-7 text-base font-semibold text-white transition-colors hover:bg-[#e85b29]">Δείτε τα βήματα ενσωμάτωσης</a>
+      <a href="/developers/mcp/" class="inline-flex h-12 items-center justify-center rounded-md border border-border px-7 text-base font-medium transition-colors hover:bg-muted">Τεκμηρίωση MCP server</a>
+    </div>
+    <p class="text-muted-foreground mt-5 inline-flex items-center gap-2 font-mono text-xs"><span class="size-1.5 animate-pulse rounded-full bg-emerald-500"></span> docs.mcp.wink.travel/mcp</p>
+  </div>
+</section>
+
+{/* What an agent can do — capability map */}
+<section class="@container mx-auto w-full max-w-7xl px-4 pt-24">
+  <div class="mx-auto mb-14 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Χάρτης δυνατοτήτων</p>
+    <h2 class="mkt-h2 font-heading mt-3">Τι μπορεί να κάνει ένας πράκτορας AI στο Wink.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">Κάθε δυνατότητα παρακάτω είναι διαθέσιμη σήμερα μέσω του REST API και του MCP server — βασισμένη στα ίδια συμβόλαια που τρέχει το Wink.</p>
+  </div>
+  <div class="grid gap-5 @md:grid-cols-2 @2xl:grid-cols-3">
+    {[
+      { icon: IconMapSearch, title: "Αναζήτηση αποθέματος ξενοδοχείου", desc: "Βρείτε διαθέσιμη προσφορά με γεωγραφική αναζήτηση — σημείο, κύκλος, ορθογώνιο ή πολύγωνο — συν ανίχνευση GeoIP." },
+      { icon: IconCalendarStats, title: "Ανάγνωση ζωντανών τιμών & διαθεσιμότητας", desc: "Λάβετε σε πραγματικό χρόνο τιμές, διαθεσιμότητα και απόθεμα σε 11 συνδεδεμένους διαχειριστές καναλιών." },
+      { icon: IconCalendarCheck, title: "Δημιουργία & συγχρονισμός κρατήσεων", desc: "Δημιουργήστε κρατήσεις μέσω API· δημιουργήστε / ενημερώστε / ακυρώστε συγχρονισμό με το συνδεδεμένο PMS ή διαχειριστή καναλιών με πλήρη παρακολούθηση κύκλου ζωής." },
+      { icon: IconCreditCard, title: "Λήψη πληρωμής", desc: "Το Wink διαχειρίζεται την ολοκλήρωση αγοράς, τη λογική πολιτικής ακύρωσης και την πληρωμή πίσω από την κράτηση — το Wink είναι ο έμπορος καταγραφής." },
+      { icon: IconCoin, title: "Διατήρηση απόδοσης & κέρδος", desc: "Το πλαίσιο πηγής και καμπάνιας διατηρείται για 6 μήνες ανά κλικ και υπάρχει προεπιλεγμένη προμήθεια 10% επί των επιβεβαιωμένων κρατήσεων." },
+      { icon: IconWebhook, title: "Αντίδραση σε 64+ γεγονότα", desc: "Εγγραφείτε σε γεγονότα webhook — κρατήσεις, πληρωμές, επιστροφές, ενημερώσεις διαχειριστή καναλιών — και ενεργοποιήστε ενέργειες παρακολούθησης." },
+      { icon: IconSparkles, title: "Δημιουργία περιεχομένου", desc: "Περιεχόμενο AI σε 9 τύπους αποθέματος και 12 τόνους φωνής· εγγραφή καταλύματος με ένα κλικ από ένα URL." },
+      { icon: IconComponents, title: "Ενσωμάτωση διαθέσιμου αποθέματος", desc: "Ενσωματώστε ζωντανό, διαθέσιμο απόθεμα ξενοδοχείου σε οποιαδήποτε επιφάνεια με Web Components και ελάχιστο κώδικα." },
+      { icon: IconCode, title: "Ανάπτυξη στο πλήρες API", desc: "Κάθε λειτουργία Wink είναι προσβάσιμη εξωτερικά μέσω REST, με αυθεντικοποίηση OAuth2 και επίσημα SDK — ενσωματώστε σαν να ήταν δικό σας σύστημα." },
+    ].map((c) => (
+      <div class="flex flex-col rounded-2xl border border-border bg-card p-6">
+        <span class="mb-4 flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-white"><c.icon class="size-6" /></span>
+        <h3 class="font-heading text-base font-semibold">{c.title}</h3>
+        <p class="text-muted-foreground mt-2 text-sm text-pretty">{c.desc}</p>
+        <span class="mt-4 inline-flex w-fit items-center gap-1.5 rounded-full bg-emerald-500/10 px-2.5 py-1 text-xs font-semibold text-emerald-600 dark:text-emerald-400"><span class="size-1.5 rounded-full bg-emerald-500"></span>Διαθέσιμο τώρα</span>
+      </div>
+    ))}
+  </div>
+</section>
+
+{/* The agentic shift — before/after flow */}
+<section class="@container mx-auto w-full max-w-5xl px-4 pt-24">
+  <div class="mx-auto mb-12 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Η αλλαγή</p>
+    <h2 class="mkt-h2 font-heading mt-3">Από ταξιδιώτης-σε-ιστοσελίδα σε ταξιδιώτης-σε-πράκτορα.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">Στο παλιό μοντέλο ο ταξιδιώτης έκανε τη δουλειά. Στο agentic μοντέλο ο πράκτορας γίνεται η διεπαφή — και το Wink γίνεται το επίπεδο εμπορίου πίσω από την απάντηση.</p>
+  </div>
+  {/* Before/after flow — swappable infographic (infographics/AgenticShiftFlow.astro) */}
+  <AgenticShiftFlow />
+</section>
+
+{/* Why Wink — recommend vs transact */}
+<section class="@container mx-auto w-full max-w-5xl px-4 pt-24">
+  <div class="mx-auto mb-12 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Γιατί Wink</p>
+    <h2 class="mkt-h2 font-heading mt-3">Μια απάντηση AI δεν είναι κράτηση.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">Μια πρόταση χρειάζεται δομημένη προσφορά, ζωντανές τιμές, ολοκλήρωση αγοράς, πληρωμή, επιβεβαίωση και απόδοση για να γίνει εμπόριο.</p>
+  </div>
+  <div class="grid gap-6 @md:grid-cols-2">
+    <div class="rounded-2xl border border-border bg-muted/30 p-7">
+      <h3 class="font-heading text-lg font-semibold text-muted-foreground">Πράκτορας AI χωρίς υποδομή</h3>
+      <ul class="mt-5 space-y-3">
+        {["Προσφορά από web scraping, συχνά παρωχημένη", "Τιμές που μπορεί να μην είναι διαθέσιμες για κράτηση", "Προτείνει, μετά παραπέμπει την κράτηση σε ιστοσελίδα ή OTA", "Χωρίς απόδοση — και χωρίς τρόπο να κερδίσει ο πράκτορας", "Χάνει το νήμα μετά την πρόταση"].map((b) => (
+          <li class="flex items-start gap-2.5"><IconX class="mt-0.5 size-5 shrink-0 text-muted-foreground/60" /><span class="text-sm text-muted-foreground">{b}</span></li>
+        ))}
+      </ul>
+      <p class="mt-6 text-sm font-semibold text-muted-foreground">Μπορεί να προτείνει.</p>
+    </div>
+    <div class="rounded-2xl border-2 border-primary/30 bg-primary/[0.04] p-7">
+      <h3 class="font-heading text-lg font-semibold text-primary">Πράκτορας AI στο Wink</h3>
+      <ul class="mt-5 space-y-3">
+        {["Ζωντανή, ξενοδοχειακή προσφορά — όχι από web scraping ή μεταπώληση", "Ζωντανές τιμές και διαθεσιμότητα μέσω API", "Κλείνει ΚΑΙ πληρώνει σε μία ροή — το Wink διακανονίζει", "Ο πράκτορας μπορεί να κερδίσει — απόδοση + 10% προεπιλεγμένη προμήθεια", "Επιβεβαιωμένη, συγχρονισμένη με PMS, με webhooks — διαθέσιμο σήμερα"].map((b) => (
+          <li class="flex items-start gap-2.5"><IconCheck class="mt-0.5 size-5 shrink-0 text-primary" /><span class="text-sm text-foreground/90">{b}</span></li>
+        ))}
+      </ul>
+      <p class="mt-6 text-sm font-semibold text-primary">Μπορεί να συναλλάσσεται.</p>
+    </div>
+  </div>
+</section>
+
+{/* AI agents for everyone */}
+<section class="@container mx-auto w-full max-w-7xl px-4 pt-24">
+  <div class="mx-auto mb-14 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Κάθε συμμετέχων, ένας πράκτορας</p>
+    <h2 class="mkt-h2 font-heading mt-3">Ένας πράκτορας για ταξιδιώτες, ξενοδοχεία, συνεργάτες και προγραμματιστές.</h2>
+  </div>
+  <div class="grid gap-6 @md:grid-cols-2">
+    {[
+      { icon: IconUser, who: "Για ταξιδιώτες", title: "Αναζήτηση, κράτηση και διαχείριση διαμονής", desc: "Ένας πράκτορας δουλεύει με δομημένη προσφορά, ζωντανές τιμές και πολιτικές — και στη συνέχεια δημιουργεί την κράτηση μέσω Booking Engine.", prompt: "Βρες ένα ξενοδοχείο μόνο για ενήλικες πολυτελείας στη Chiang Mai τον επόμενο μήνα με σπα. Κλείσε το." },
+      { icon: IconBuildingStore, who: "Για ξενοδοχεία", title: "Επόπτες, όχι χειριστές", desc: "Οι πράκτορες βοηθούν στη δημιουργία, ενημέρωση και ανάλυση μέσω Extranet, Social και Studio — το ξενοδοχείο κρατάει τους κανόνες.", prompt: "Δημιούργησε το κοινωνικό περιεχόμενο του επόμενου μήνα και σήμανε ημερομηνίες με χαμηλή πληρότητα για προώθηση." },
+      { icon: IconUsersGroup, who: "Για συνεργάτες & δημιουργούς", title: "Αυτοματισμός καμπανιών και κέρδος", desc: "Ανακάλυψε επιλέξιμα ξενοδοχεία, δημιούργησε περιουσιακά στοιχεία και βιτρίνες, δημοσίευσε και διατήρησε συνδεδεμένη απόδοση.", prompt: "Δημιούργησε μια καμπάνια που προωθεί πολυτελή θέρετρα στις Μαλδίβες." },
+      { icon: IconCode, who: "Για προγραμματιστές", title: "Δημιουργία νέων ταξιδιωτικών εμπειριών", desc: "AI κονσιέρζ, τραπεζικοί και loyalty πράκτορες ταξιδιών — βασισμένοι στον MCP server, REST API και Booking Engine.", prompt: "Ενσωμάτωσε κράτηση AI ξενοδοχείου στην τραπεζική μας εφαρμογή χρησιμοποιώντας το Wink API." },
+    ].map((c) => (
+      <div class="flex flex-col rounded-2xl border border-border bg-card p-7">
+        <span class="mb-4 flex size-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-white"><c.icon class="size-6" /></span>
+        <span class="text-xs font-semibold uppercase tracking-wider text-primary">{c.who}</span>
+        <h3 class="font-heading mt-2 text-xl font-semibold">{c.title}</h3>
+        <p class="text-muted-foreground mt-2 text-pretty">{c.desc}</p>
+        <p class="mt-5 rounded-lg border border-border bg-muted/40 px-4 py-3 text-sm italic text-foreground/80">“{c.prompt}”</p>
+      </div>
+    ))}
+  </div>
+</section>
+
+{/* The stack */}
+<section class="@container mx-auto w-full max-w-7xl px-4 pt-24">
+  <div class="mx-auto mb-10 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Βασισμένο σε ολόκληρη την πλατφόρμα</p>
+    <h2 class="mkt-h2 font-heading mt-3">Οι πράκτορες δουλεύουν σε όλο το συνδεδεμένο stack.</h2>
+  </div>
+  <div class="mx-auto flex max-w-3xl flex-wrap justify-center gap-3">
+    {[
+      { name: "Extranet", href: "/products/extranet/" },
+      { name: "Studio", href: "/products/studio/" },
+      { name: "Social", href: "/products/social/" },
+      { name: "WinkLinks", href: "/products/winklinks/" },
+      { name: "Traveliko", href: "/products/traveliko/" },
+      { name: "Developers", href: "/builders/" },
+      { name: "Platforms & AI", href: "/platforms/" },
+    ].map((p) => (
+      <a href={p.href} class="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-medium transition-colors hover:border-primary/40">
+        <span class="size-1.5 rounded-full bg-primary" aria-hidden="true"></span>
+        {p.name}
+      </a>
+    ))}
+  </div>
+  <p class="text-muted-foreground mx-auto mt-10 max-w-xl text-center text-pretty"><strong class="text-foreground"><a href="/products/booking-engine/" class="text-primary underline underline-offset-4">Το Booking Engine</a> εκπληρώνει την κράτηση κάτω από κάθε παράδοση πράκτορα</strong> — ολοκλήρωση αγοράς, πληρωμή, επιβεβαίωση και συγχρονισμός κράτησης.</p>
+</section>
+
+{/* Open standards — interoperability, crawlable for AEO */}
+<section class="@container mx-auto w-full max-w-5xl px-4 pt-24">
+  <div class="mx-auto mb-12 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Ανοιχτά πρότυπα, όχι κλειστό οικοσύστημα</p>
+    <h2 class="mkt-h2 font-heading mt-3">Κατασκευασμένο για διαλειτουργικότητα με το agent-commerce stack.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-2xl">Η agentic κράτηση ξενοδοχείων γίνεται πραγματική κατηγορία — και ο κλάδος συγκλίνει σε ανοιχτά πρωτόκολλα αντί για checkout μίας εταιρείας. Το Wink λειτουργεί με αυτά τα πρότυπα σήμερα και είναι σχεδιασμένο να συνδέεται με τα υπόλοιπα καθώς ενοποιούνται, ώστε οι πράκτορες να μην κλειδώνονται ποτέ σε ιδιόκτητο μονοπάτι.</p>
+  </div>
+  <div class="grid gap-5 @md:grid-cols-2">
+    <div class="rounded-2xl border-2 border-primary/30 bg-primary/[0.04] p-7">
+      <span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 px-2.5 py-1 text-xs font-semibold text-emerald-600 dark:text-emerald-400"><span class="size-1.5 rounded-full bg-emerald-500"></span>Διαθέσιμο σήμερα</span>
+      <h3 class="font-heading mt-4 text-lg font-semibold">MCP — Model Context Protocol</h3>
+      <p class="text-muted-foreground mt-2 text-sm text-pretty">Ένας φιλοξενούμενος MCP server αποκαλύπτει τα ζωντανά OpenAPI συμβόλαια του Wink σε οποιονδήποτε πράκτορα συμβατό με MCP — Claude, Codex, Cursor και άλλους — στο <code class="rounded bg-muted px-1 py-0.5 text-xs">docs.mcp.wink.travel/mcp</code>. Οι πράκτορες ανακαλύπτουν και καλούν πραγματικές λειτουργίες αντί να μαντεύουν τα endpoints.</p>
+    </div>
+    <div class="rounded-2xl border border-border bg-card p-7">
+      <span class="inline-flex items-center gap-1.5 rounded-full border border-border bg-muted/40 px-2.5 py-1 text-xs font-semibold text-muted-foreground">Διαλειτουργικότητα από σχεδιασμό</span>
+      <h3 class="font-heading mt-4 text-lg font-semibold">ACP · AP2 · A2A · x402</h3>
+      <p class="text-muted-foreground mt-2 text-sm text-pretty">Οι βασικές λειτουργίες κράτησης και πληρωμής του Wink έχουν σχεδιαστεί να συνεργάζονται με το αναδυόμενο agent-payment stack — το Agentic Commerce Protocol (ACP), το Agent Payments Protocol (AP2) της Google, το Agent2Agent (A2A) και agent payments τύπου x402 — καθώς αυτά τα πρότυπα ωριμάζουν, με το Booking Engine ως επίπεδο διακανονισμού από κάτω (το Wink είναι ο έμπορος καταγραφής).</p>
+    </div>
+  </div>
+</section>
+
+{/* Where this is heading — roadmap, clearly labeled */}
+<section class="mx-auto w-full max-w-3xl px-4 pt-24">
+  <div class="rounded-2xl border border-dashed border-primary/30 bg-primary/[0.03] p-8">
+    <span class="inline-flex items-center gap-1.5 rounded-full border border-primary/30 bg-card px-3 py-1 text-xs font-semibold text-primary">Προς τα πού κατευθύνεται</span>
+    <p class="text-muted-foreground mt-5 text-pretty">Οι παραπάνω δυνατότητες είναι διαθέσιμες σήμερα. Η κατεύθυνση είναι βαθύτερο agent-native εμπόριο: πλουσιότερα primitives κράτησης για πράκτορες, ταυτότητα και εξουσιοδότηση πράκτορα για συναλλαγές εκ μέρους ταξιδιώτη, και πράκτορες που συμμετέχουν ως αποδοσμένες, κερδοφόρες πηγές στο δίκτυο συνεργατών. Η στρατηγική τοποθέτηση του Wink — <strong class="text-foreground">υποδομή εμπορίου ταξιδιών για πράκτορες AI</strong> — είναι η κόκκινη κλωστή από το σημερινό API στο μέλλον αυτό.</p>
+  </div>
+</section>
+
+{/* FAQ */}
+<FaqGrid
+  heading="Συχνές Ερωτήσεις για Agentic AI"
+  description="Τι σημαίνει, πώς να συνδεθείτε και τι μπορούν να κάνουν οι πράκτορες."
+  items={faqs}
+/>
+
+{/* Final CTA */}
+<section class="w-full border-y border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white">
+  <div class="mx-auto w-full max-w-7xl px-4 py-24 text-center">
+    <h2 class="mkt-h2 font-heading">Έτοιμοι να δημιουργήσετε εμπόριο ταξιδιών για πράκτορες AI;</h2>
+    <p class="mx-auto mt-4 max-w-2xl text-pretty text-white/70 @lg:text-lg">Συνδέστε τον MCP server, διαβάστε τα ζωντανά συμβόλαια και αφήστε το Booking Engine να εκπληρώσει την κράτηση. Ή μιλήστε μαζί μας για πρόσβαση πράκτορα στο προϊόν σας.</p>
+    <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <a href="/developers/build-on-wink/" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-[#ff6b35] px-8 text-base font-semibold text-white hover:bg-[#e85b29] sm:w-auto">Δείτε την τεκμηρίωση</a>
+      <a href="/developers/mcp/" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-white px-8 text-base font-semibold text-[#1f0a40] hover:bg-white/90 sm:w-auto">Συνδέστε τον MCP server</a>
+      <a href="https://cal.com/wink-ws36dy" class="inline-flex h-12 items-center justify-center px-4 text-sm font-medium text-white/80 underline underline-offset-4 hover:text-white">Ζητήστε επίδειξη</a>
+    </div>
+  </div>
+</section>
+
+</div>

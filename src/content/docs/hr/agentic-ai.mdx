@@ -1,0 +1,280 @@
+---
+title: Agentic AI — Infrastruktura za putničku trgovinu za AI agente
+description: "Na Wink-u AI agenti ne samo da preporučuju hotele — oni pretražuju uživo zalihe u vlasništvu hotela, zatim rezerviraju i plaćaju u jednom toku putem REST API-ja i hostanog MCP-a. Dostupno danas."
+template: splash
+marketingNav: true
+---
+import '/src/styles/splash-page.css';
+import BreadcrumbJsonLd from "@/components/marketing/BreadcrumbJsonLd.astro";
+
+import FaqGrid from "@/components/marketing/FaqGrid.astro";
+import AgentJsonLd from "@/components/marketing/AgentJsonLd.astro";
+import AgentConversation from "@/components/marketing/infographics/AgentConversation.astro";
+import AgenticShiftFlow from "@/components/marketing/infographics/AgenticShiftFlow.astro";
+
+import IconMapSearch from "@tabler/icons/outline/map-search.svg";
+import IconCalendarCheck from "@tabler/icons/outline/calendar-check.svg";
+import IconSparkles from "@tabler/icons/outline/sparkles.svg";
+import IconCalendarStats from "@tabler/icons/outline/calendar-stats.svg";
+import IconCreditCard from "@tabler/icons/outline/credit-card.svg";
+import IconCoin from "@tabler/icons/outline/coin.svg";
+import IconWebhook from "@tabler/icons/outline/webhook.svg";
+import IconComponents from "@tabler/icons/outline/components.svg";
+import IconUser from "@tabler/icons/outline/user.svg";
+import IconBuildingStore from "@tabler/icons/outline/building-store.svg";
+import IconUsersGroup from "@tabler/icons/outline/users-group.svg";
+import IconCode from "@tabler/icons/outline/code.svg";
+import IconArrowRight from "@tabler/icons/outline/arrow-right.svg";
+import IconCheck from "@tabler/icons/outline/check.svg";
+import IconX from "@tabler/icons/outline/x.svg";
+
+export const faqs = [
+  { title: "Zašto većina AI agenata ne može rezervirati hotel i što omogućava jednom da to može?", content: "Preporučivanje hotela je problem sadržaja — agentu su potrebni samo opisi i cijene. Rezervacija je problem trgovine: potrebne su uživo cijene i dostupnost, inventar koji agent može stvarno držati, način plaćanja, poravnanje s hotelom i komercijalni odnos s objektom. Većina asistenata ima prvo, ali nema ostalo, pa putnika preusmjeravaju na web stranicu da završi proces. Agent može dovršiti rezervaciju kada infrastruktura ispod toga izloži sve te elemente. Wink je API-prvi — svaka značajka platforme može se pozivati izvana, a hostani MCP server izlaže ugovore uživo — tako da odobreni agent može otkriti hotelsku ponudu, čitati uživo cijene i dostupnost, stvarati i sinkronizirati rezervacije, primati plaćanje (Wink je trgovac zapisa), očuvati atribuciju i pretplatiti se na događaje." },
+  { title: "Kako se AI agent povezuje na Wink?", content: "Usmjerite kompatibilnog MCP klijenta na hostani server na https://docs.mcp.wink.travel/mcp (SSE fallback na /sse). Iz Claude Code: claude mcp add --transport http wink-docs https://docs.mcp.wink.travel/mcp. Agent tada može koristiti alate api_search i docs_search za čitanje uživo OpenAPI operacija, ugovora zahtjeva/odgovora i recepata zadataka." },
+  { title: "Što AI agent zapravo može danas na Wink-u?", content: "Danas, putem REST API-ja i MCP servera: otkriti platformu, pretraživati rezervabilni inventar (uključujući geolokacijsko prostorno pretraživanje), čitati uživo cijene i dostupnost preko 11 povezanih channel managera, stvarati rezervacije i sinkronizirati njihov životni ciklus s PMS/channel managerom, primati plaćanje (Wink je trgovac zapisa), očuvati 6-mjesečnu atribuciju i zarađivati putem partnerskih tokova, pretplatiti se na 64+ webhook događaja, generirati AI sadržaj i ugrađivati rezervabilni inventar putem Web Components." },
+  { title: "Može li AI agent dovršiti rezervaciju hotela putem Wink-a?", content: "Da. Kreiranje rezervacije je REST API operacija, a Booking Engine izvršava transakciju — naplatu, plaćanje, potvrdu i sinkronizaciju rezervacije. Agent koji poziva booking API u ime putnika može dovršiti stvarnu, potvrđenu rezervaciju s očuvanim kontekstom izvora." },
+  { title: "Kako hotel postaje rezervabilan od strane AI agenta na Wink-u?", content: "Jednostavno postavljanjem svog profila na Wink. Kada su hotelske zalihe, cijene i dostupnost uživo (putem Extraneta), automatski su otkrivene i rezervabilne od strane odobrenih AI agenata putem REST API-ja i hostanog MCP servera — bez zasebne AI integracije po hotelu. Agent pretražuje hotelski uživo inventar, stvara rezervaciju i poravnava plaćanje putem Booking Engine-a, s očuvanom atribucijom. Svaki hotel na Wink-u je po defaultu spreman za agente." },
+  { title: "Kako se rezervacija hotela putem Wink-a razlikuje od ChatGPT-a s Expedia ili Booking.com?", content: "Integracije asistenata poput ChatGPT-a s Expedia ili Booking.com snažne su u otkrivanju — uživo cijene, fotografije i karte unutar chata — ali putnik se obično preusmjerava na web stranicu ili aplikaciju dobavljača da završi rezervaciju i plati. Na Wink-u agent direktno posluje s uživo, hotelski kontroliranim zalihama: čita stvarne cijene i dostupnost, stvara rezervaciju i poravnava plaćanje putem Booking Engine-a u jednom toku — i može zaraditi partnersku proviziju na rezultat. Otkrivanje se može dogoditi bilo gdje; izvršenje se događa na Wink-u." },
+  { title: "Je li Wink jedina platforma koja omogućuje AI agentima rezervaciju i plaćanje hotela?", content: "Ne — agent-driven hotel commerce je nova kategorija, a nekoliko igrača u putovanjima i plaćanjima najavilo je ili isporučilo end-to-end agentic booking do 2026. Ono što je posebno kod Wink-a je kombinacija: ponuda je u vlasništvu hotela i direktna (ne GDS preprodaja ili web-scrapirani popisi), agent može pretraživati, rezervirati, plaćati I zarađivati kroz jedan sloj trgovine, i to je dostupno uživo danas preko REST API-ja i hostanog MCP servera — nije stavka na planu. Hoteli zadržavaju kontrolu distribucije; agent postaje atribuirani, zarađujući kanal." },
+  { title: "Koje agentic commerce i AI standarde Wink podržava?", content: "Wink je API-prvi i danas pokreće hostani MCP (Model Context Protocol) server, tako da bilo koji MCP-kompatibilni agent — Claude, Codex, Cursor i drugi — može otkriti i pozvati njegove uživo OpenAPI ugovore. Wink-ove booking i payment primitive dizajnirane su za interoperabilnost s novim agent-commerce stackom — Agentic Commerce Protocol (ACP), Googleov Agent Payments Protocol (AP2), Agent2Agent (A2A) i x402-style agent payments — kako se ti standardi konsolidiraju, umjesto da zaključavaju agente u vlasnički put." },
+  { title: "Postoji li AI Skill za razvoj na Wink-u?", content: "Da — wink-api-builder je prenosivi agent skill koji koristi MCP server kao izvor istine. Vodi agenta kroz api_search do uživo ugovora zahtjeva/odgovora do autentikacije do verificiranog koda, i označava neslaganja između postojećeg koda i trenutnog API-ja. Radi s Claude Code, Codex, Cursor i drugim klijentima koji podržavaju skill." },
+  { title: "Može li AI agent zarađivati kao affiliate ili partner?", content: "Wink-ov partnerski model očuvava izvor i atribuciju kampanje 6 mjeseci po kliku i plaća 10% osnovne provizije na potvrđene rezervacije. Agent koji stvara kvalificiranu potražnju i usmjerava rezervaciju može biti atribuirani izvor kroz istu partnersku i Booking Engine infrastrukturu." },
+  { title: "Zamjenjuje li Agentic AI Booking Engine?", content: "Ne. Agentic AI stvara ili usmjerava namjeru; Booking Engine ostaje sloj izvršenja za naplatu, plaćanje, potvrdu i sinkronizaciju rezervacije. Svaki prijenos agenta rješava se kroz Booking Engine ispod." },
+  { title: "Gdje bi developer ili agent trebao početi?", content: "Povežite se na MCP server, zatim pročitajte dokumentaciju Build on Wink, MCP Server i AI Skills. Zatražite pristup API-ju kada su slučaj upotrebe i komercijalni put jasni." },
+];
+
+<div class="not-content mkt-page">
+
+<AgentJsonLd faqs={faqs} />
+
+<BreadcrumbJsonLd items={[{ name: "Početna", url: "https://wink.travel/" }, { name: "Agentic AI" }]} />
+
+{/* Hero — agent conversation. Full-bleed per the house `data-full-bleed` pattern,
+    with the breadcrumb inside the band so it lines up with the headline instead of
+    sitting in Starlight's narrower column above a full-width hero. */}
+<section data-full-bleed class="@container relative w-full overflow-hidden border-b border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white">
+  <div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+    <div class="absolute -left-24 -top-10 size-80 rounded-full bg-[#ff6b35]/20 blur-[100px]"></div>
+    <div class="absolute -bottom-16 -right-16 size-96 rounded-full bg-[#9333ea]/30 blur-[120px]"></div>
+  </div>
+  <div class="relative mx-auto w-full max-w-7xl px-4 pb-20 pt-8 lg:pb-24">
+    <nav aria-label="Breadcrumb" class="text-sm text-white/60">
+      <a href="/" class="transition-colors hover:text-white">Početna</a>
+      <span class="px-1.5 text-white/55">/</span>
+      <span class="text-white">Agentic AI</span>
+    </nav>
+    <div class="mt-10 grid items-center gap-12 lg:mt-12 lg:min-h-[33rem] @lg:grid-cols-[1fr_1.02fr]">
+    {/* Left — copy */}
+    <div class="text-center @lg:text-left">
+      <span class="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-xs font-extrabold uppercase tracking-wider text-[#ff8a5c] ring-1 ring-white/15 backdrop-blur @lg:mx-0"><span class="size-1.5 rounded-full bg-gradient-to-r from-[#ff6b35] to-[#ec4899]"></span> Agentic AI</span>
+      <h1 class="font-heading mt-6 text-4xl font-extrabold leading-[1.05] tracking-tight text-balance @lg:text-5xl @2xl:text-6xl">AI agenti mogu planirati putovanje. <span class="wink-shimmer bg-gradient-to-r from-[#ff8a5c] via-[#ec4899] to-[#a855f7] bg-clip-text text-transparent">Gotovo nijedan ne može rezervirati.</span></h1>
+      <p class="mx-auto mt-5 max-w-xl text-pretty text-lg text-white/75 @lg:mx-0 @lg:text-xl">Preporučivanje hotela je problem sadržaja. Rezervacija je problem trgovine — uživo cijene, držani inventar, plaćanje, poravnanje i ugovor s hotelom. Wink je infrastruktura koja zatvara tu prazninu: agenti otkrivaju, rezerviraju <em class="not-italic font-semibold text-white">i plaćaju</em> prema hotelski kontroliranoj ponudi, putem uživo REST API-ja i hostanog MCP servera.</p>
+      <div class="mt-8 flex flex-col items-center justify-center gap-3 @lg:justify-start sm:flex-row">
+        <a href="/developers/build-on-wink/" class="inline-flex h-12 items-center justify-center rounded-md bg-[#ff6b35] px-7 text-base font-semibold text-white transition-colors hover:bg-[#e85b29]">Pogledajte dokumentaciju</a>
+        <a href="#agents" class="inline-flex h-12 items-center justify-center rounded-md bg-white/10 px-7 text-base font-medium text-white ring-1 ring-white/20 backdrop-blur transition-colors hover:bg-white/15">Povežite agenta</a>
+      </div>
+      <div class="mt-7 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 font-mono text-xs text-white/70"><span class="size-1.5 animate-pulse rounded-full bg-emerald-400"></span> MCP server uživo · docs.mcp.wink.travel/mcp</div>
+    </div>
+
+    {/* Right — agent conversation (swappable infographic) */}
+    <AgentConversation />
+    </div>
+  </div>
+</section>
+
+{/* Direct answer */}
+<section class="mx-auto w-full max-w-3xl px-4 pt-24 pb-24 text-center">
+  <p class="mkt-kicker text-primary">Zašto većina AI agenata ne može rezervirati hotel?</p>
+  <p class="mkt-sub text-muted-foreground mt-5">Wink je API-prvi: svaka značajka platforme može se pozivati izvana, a hostani MCP server izlaže uživo API ugovore AI agentima. Umjesto da prisiljava svakog putnika kroz web stranicu, Wink daje odobrenim agentima strukturirani pristup hotelskoj ponudi, cijenama, dostupnosti, rezervacijama, plaćanju, atribuciji i događajima — istoj infrastrukturi koja pokreće sam Wink.</p>
+  <div class="mx-auto mt-7 max-w-2xl rounded-2xl border-2 border-primary/30 bg-primary/[0.04] px-6 py-5 text-pretty text-foreground/90"><strong class="text-foreground">Svaki hotel postaje spreman za agente jednostavnim postavljanjem profila na Wink.</strong> Kada su njegove zalihe, cijene i dostupnost uživo, odobreni AI agenti mogu pretraživati, rezervirati i plaćati putem API-ja i MCP servera — bez potrebe za zasebnom AI integracijom po hotelu.</div>
+</section>
+
+{/* Live proof — the argument above is shipped, not roadmap. Implementation
+    detail deliberately lives on /builders/ so this page stays the thesis. */}
+<section id="agents" class="@container w-full border-y border-border bg-muted/30" style="scroll-margin-top:5rem">
+  <div class="mx-auto w-full max-w-4xl px-4 py-24 text-center">
+    <p class="mkt-kicker text-primary">Dostupno danas, ne na planu</p>
+    <h2 class="mkt-h2 font-heading mt-3">Četiri koraka od agenta do potvrđene, plaćene rezervacije.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-2xl">Povežite hostani MCP server, razriješite namjeru u stvarne operacije prema uživo API-ju, generirajte verificirani kod, zatim predajte Booking Engine-u za naplatu, plaćanje, potvrdu i sinkronizaciju PMS-a.</p>
+    <ol class="mx-auto mt-10 grid gap-3 text-left @lg:grid-cols-4">
+      <li class="rounded-xl border border-border bg-card px-4 py-3 text-sm"><span class="font-mono text-xs text-primary">01</span><span class="mt-1 block font-semibold">Poveži MCP</span></li>
+      <li class="rounded-xl border border-border bg-card px-4 py-3 text-sm"><span class="font-mono text-xs text-primary">02</span><span class="mt-1 block font-semibold">Pretraži uživo API</span></li>
+      <li class="rounded-xl border border-border bg-card px-4 py-3 text-sm"><span class="font-mono text-xs text-primary">03</span><span class="mt-1 block font-semibold">Izgradi verificirani kod</span></li>
+      <li class="rounded-xl border border-border bg-card px-4 py-3 text-sm"><span class="font-mono text-xs text-primary">04</span><span class="mt-1 block font-semibold">Rezerviraj i primi plaćanje</span></li>
+    </ol>
+    <div class="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <a href="/builders/#agent-quickstart" class="inline-flex h-12 items-center justify-center rounded-md bg-[#ff6b35] px-7 text-base font-semibold text-white transition-colors hover:bg-[#e85b29]">Pogledajte korake integracije</a>
+      <a href="/developers/mcp/" class="inline-flex h-12 items-center justify-center rounded-md border border-border px-7 text-base font-medium transition-colors hover:bg-muted">Dokumentacija MCP servera</a>
+    </div>
+    <p class="text-muted-foreground mt-5 inline-flex items-center gap-2 font-mono text-xs"><span class="size-1.5 animate-pulse rounded-full bg-emerald-500"></span> docs.mcp.wink.travel/mcp</p>
+  </div>
+</section>
+
+{/* What an agent can do — capability map */}
+<section class="@container mx-auto w-full max-w-7xl px-4 pt-24">
+  <div class="mx-auto mb-14 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Karta mogućnosti</p>
+    <h2 class="mkt-h2 font-heading mt-3">Što AI agent može na Wink-u.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">Svaka dolje navedena mogućnost dostupna je danas putem REST API-ja i MCP servera — utemeljena na istim ugovorima na kojima Wink radi.</p>
+  </div>
+  <div class="grid gap-5 @md:grid-cols-2 @2xl:grid-cols-3">
+    {[
+      { icon: IconMapSearch, title: "Pretraživanje hotelskog inventara", desc: "Pronađite rezervabilnu ponudu s geolokacijskim prostornim pretraživanjem — točka, krug, pravokutnik ili poligon — plus GeoIP detekcija." },
+      { icon: IconCalendarStats, title: "Čitanje uživo cijena i dostupnosti", desc: "Povucite stvarne cijene, dostupnost i inventar preko 11 povezanih channel managera." },
+      { icon: IconCalendarCheck, title: "Kreiranje i sinkronizacija rezervacija", desc: "Kreirajte rezervacije putem API-ja; kreirajte / ažurirajte / otkažite sinkronizaciju s povezanim PMS-om ili channel managerom s praćenjem punog životnog ciklusa." },
+      { icon: IconCreditCard, title: "Primanje plaćanja", desc: "Wink upravlja naplatom, logikom politike otkazivanja i plaćanjem iza rezervacije — Wink je trgovac zapisa." },
+      { icon: IconCoin, title: "Očuvanje atribucije i zarada", desc: "Kontekst izvora i kampanje preživljava putovanje — 6-mjesečna atribucija po kliku i 10% osnovna provizija na potvrđene rezervacije." },
+      { icon: IconWebhook, title: "Reagiranje na 64+ događaja", desc: "Pretplatite se na webhook događaje — rezervacije, plaćanja, povrate, ažuriranja channel managera — i pokrenite naknadne akcije." },
+      { icon: IconSparkles, title: "Generiranje sadržaja", desc: "AI sadržaj za 9 vrsta inventara i 12 tonova glasa; registracija objekta jednim klikom s jedne URL adrese." },
+      { icon: IconComponents, title: "Ugradnja rezervabilnog inventara", desc: "Ubacite uživo, rezervabilni hotelski inventar u bilo koju površinu pomoću Web Components i minimalnog koda." },
+      { icon: IconCode, title: "Izgradnja na cijelom API-ju", desc: "Svaka Wink značajka može se pozivati izvana preko REST-a, s OAuth2 autentikacijom i službenim SDK-ovima — integrirajte kao da je sustav vaš." },
+    ].map((c) => (
+      <div class="flex flex-col rounded-2xl border border-border bg-card p-6">
+        <span class="mb-4 flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-white"><c.icon class="size-6" /></span>
+        <h3 class="font-heading text-base font-semibold">{c.title}</h3>
+        <p class="text-muted-foreground mt-2 text-sm text-pretty">{c.desc}</p>
+        <span class="mt-4 inline-flex w-fit items-center gap-1.5 rounded-full bg-emerald-500/10 px-2.5 py-1 text-xs font-semibold text-emerald-600 dark:text-emerald-400"><span class="size-1.5 rounded-full bg-emerald-500"></span>Dostupno sada</span>
+      </div>
+    ))}
+  </div>
+</section>
+
+{/* The agentic shift — before/after flow */}
+<section class="@container mx-auto w-full max-w-5xl px-4 pt-24">
+  <div class="mx-auto mb-12 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Promjena</p>
+    <h2 class="mkt-h2 font-heading mt-3">Od putnika-prema-web stranici do putnika-prema-agentu.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">U starom modelu putnik je obavljao posao. U agentic modelu agent postaje sučelje — a Wink postaje sloj trgovine iza odgovora.</p>
+  </div>
+  {/* Before/after flow — swappable infographic (infographics/AgenticShiftFlow.astro) */}
+  <AgenticShiftFlow />
+</section>
+
+{/* Why Wink — recommend vs transact */}
+<section class="@container mx-auto w-full max-w-5xl px-4 pt-24">
+  <div class="mx-auto mb-12 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Zašto Wink</p>
+    <h2 class="mkt-h2 font-heading mt-3">AI odgovor nije rezervacija.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">Preporuka treba strukturiranu ponudu, uživo cijene, naplatu, plaćanje, potvrdu i atribuciju da postane trgovina.</p>
+  </div>
+  <div class="grid gap-6 @md:grid-cols-2">
+    <div class="rounded-2xl border border-border bg-muted/30 p-7">
+      <h3 class="font-heading text-lg font-semibold text-muted-foreground">AI agent bez infrastrukture</h3>
+      <ul class="mt-5 space-y-3">
+        {["Web-scrapirana, često zastarjela ponuda", "Cijene koje možda nisu rezervabilne", "Preporučuje, zatim prepušta rezervaciju web stranici ili OTA", "Nema atribucije — i nema načina da agent zaradi", "Gubi nit nakon prijedloga"].map((b) => (
+          <li class="flex items-start gap-2.5"><IconX class="mt-0.5 size-5 shrink-0 text-muted-foreground/60" /><span class="text-sm text-muted-foreground">{b}</span></li>
+        ))}
+      </ul>
+      <p class="mt-6 text-sm font-semibold text-muted-foreground">Može preporučiti.</p>
+    </div>
+    <div class="rounded-2xl border-2 border-primary/30 bg-primary/[0.04] p-7">
+      <h3 class="font-heading text-lg font-semibold text-primary">AI agent na Wink-u</h3>
+      <ul class="mt-5 space-y-3">
+        {["Uživo, u vlasništvu hotela — ne web-scrapirano ili preprodano", "Uživo cijene i dostupnost putem API-ja", "Rezervira I plaća u jednom toku — Wink poravnava", "Agent može zaraditi — atribucija + 10% osnovna provizija", "Potvrđeno, sinkronizirano s PMS-om, s webhookovima — dostupno danas"].map((b) => (
+          <li class="flex items-start gap-2.5"><IconCheck class="mt-0.5 size-5 shrink-0 text-primary" /><span class="text-sm text-foreground/90">{b}</span></li>
+        ))}
+      </ul>
+      <p class="mt-6 text-sm font-semibold text-primary">Može trgovati.</p>
+    </div>
+  </div>
+</section>
+
+{/* AI agents for everyone */}
+<section class="@container mx-auto w-full max-w-7xl px-4 pt-24">
+  <div class="mx-auto mb-14 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Svaki sudionik, agent</p>
+    <h2 class="mkt-h2 font-heading mt-3">Agent za putnike, hotele, partnere i developere.</h2>
+  </div>
+  <div class="grid gap-6 @md:grid-cols-2">
+    {[
+      { icon: IconUser, who: "Za putnike", title: "Pretražujte, rezervirajte i upravljajte boravkom", desc: "Agent radi sa strukturiranom ponudom, uživo cijenama i politikama — zatim stvara rezervaciju putem Booking Engine-a.", prompt: "Pronađi luksuzni hotel samo za odrasle u Chiang Maiu sljedeći mjesec sa spa centrom. Rezerviraj ga." },
+      { icon: IconBuildingStore, who: "Za hotele", title: "Nadzornici, ne operateri", desc: "Agenti pomažu u stvaranju, ažuriranju i analizi kroz Extranet, Social i Studio — hotel zadržava pravila.", prompt: "Generiraj društveni sadržaj za sljedeći mjesec i označi datume s niskom popunjenošću za promociju." },
+      { icon: IconUsersGroup, who: "Za partnere i kreatore", title: "Automatizirajte kampanje i zarađujte", desc: "Otkrijte podobne hotele, izgradite resurse i prodajne prostore, objavite i održavajte povezanu atribuciju.", prompt: "Kreiraj kampanju za promociju luksuznih odmarališta na Maldivima." },
+      { icon: IconCode, who: "Za developere", title: "Izgradite nova putnička iskustva", desc: "AI concierge, bankarski i loyalty travel agenti — izgrađeni na MCP serveru, REST API-ju i Booking Engine-u.", prompt: "Ugradi AI hotelsku rezervaciju unutar naše bankarske aplikacije koristeći Wink API." },
+    ].map((c) => (
+      <div class="flex flex-col rounded-2xl border border-border bg-card p-7">
+        <span class="mb-4 flex size-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-white"><c.icon class="size-6" /></span>
+        <span class="text-xs font-semibold uppercase tracking-wider text-primary">{c.who}</span>
+        <h3 class="font-heading mt-2 text-xl font-semibold">{c.title}</h3>
+        <p class="text-muted-foreground mt-2 text-pretty">{c.desc}</p>
+        <p class="mt-5 rounded-lg border border-border bg-muted/40 px-4 py-3 text-sm italic text-foreground/80">“{c.prompt}”</p>
+      </div>
+    ))}
+  </div>
+</section>
+
+{/* The stack */}
+<section class="@container mx-auto w-full max-w-7xl px-4 pt-24">
+  <div class="mx-auto mb-10 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Izgrađeno na cijeloj platformi</p>
+    <h2 class="mkt-h2 font-heading mt-3">Agenti rade kroz povezani stack.</h2>
+  </div>
+  <div class="mx-auto flex max-w-3xl flex-wrap justify-center gap-3">
+    {[
+      { name: "Extranet", href: "/products/extranet/" },
+      { name: "Studio", href: "/products/studio/" },
+      { name: "Social", href: "/products/social/" },
+      { name: "WinkLinks", href: "/products/winklinks/" },
+      { name: "Traveliko", href: "/products/traveliko/" },
+      { name: "Developers", href: "/builders/" },
+      { name: "Platforms & AI", href: "/platforms/" },
+    ].map((p) => (
+      <a href={p.href} class="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-medium transition-colors hover:border-primary/40">
+        <span class="size-1.5 rounded-full bg-primary" aria-hidden="true"></span>
+        {p.name}
+      </a>
+    ))}
+  </div>
+  <p class="text-muted-foreground mx-auto mt-10 max-w-xl text-center text-pretty"><strong class="text-foreground"><a href="/products/booking-engine/" class="text-primary underline underline-offset-4">Booking Engine</a> izvršava rezervaciju ispod svakog prijenosa agenta</strong> — naplata, plaćanje, potvrda i sinkronizacija rezervacije.</p>
+</section>
+
+{/* Open standards — interoperability, crawlable for AEO */}
+<section class="@container mx-auto w-full max-w-5xl px-4 pt-24">
+  <div class="mx-auto mb-12 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Otvoreni standardi, ne zatvoreni vrt</p>
+    <h2 class="mkt-h2 font-heading mt-3">Izgrađeno za interoperabilnost s agent-commerce stackom.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-2xl">Agentic hotelska rezervacija postaje stvarna kategorija — i industrija se konvergira na otvorene protokole umjesto na checkout jedne tvrtke. Wink danas radi na tim standardima i izgrađen je da se uključi u ostatak kako se konsolidiraju, tako da agenti nikada nisu zaključani u vlasnički put.</p>
+  </div>
+  <div class="grid gap-5 @md:grid-cols-2">
+    <div class="rounded-2xl border-2 border-primary/30 bg-primary/[0.04] p-7">
+      <span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 px-2.5 py-1 text-xs font-semibold text-emerald-600 dark:text-emerald-400"><span class="size-1.5 rounded-full bg-emerald-500"></span>Dostupno danas</span>
+      <h3 class="font-heading mt-4 text-lg font-semibold">MCP — Model Context Protocol</h3>
+      <p class="text-muted-foreground mt-2 text-sm text-pretty">Hostani MCP server izlaže Wink-ove uživo OpenAPI ugovore bilo kojem MCP-kompatibilnom agentu — Claude, Codex, Cursor i drugima — na <code class="rounded bg-muted px-1 py-0.5 text-xs">docs.mcp.wink.travel/mcp</code>. Agenti otkrivaju i pozivaju stvarne operacije umjesto da nagađaju krajnje točke.</p>
+    </div>
+    <div class="rounded-2xl border border-border bg-card p-7">
+      <span class="inline-flex items-center gap-1.5 rounded-full border border-border bg-muted/40 px-2.5 py-1 text-xs font-semibold text-muted-foreground">Interoperabilno po dizajnu</span>
+      <h3 class="font-heading mt-4 text-lg font-semibold">ACP · AP2 · A2A · x402</h3>
+      <p class="text-muted-foreground mt-2 text-sm text-pretty">Wink-ove booking i payment primitive dizajnirane su za interoperabilnost s novim agent-payment stackom — Agentic Commerce Protocol (ACP), Googleov Agent Payments Protocol (AP2), Agent2Agent (A2A) i x402-style agent payments — kako ti standardi sazrijevaju, s Booking Engine-om kao slojem poravnanja ispod (Wink je trgovac zapisa).</p>
+    </div>
+  </div>
+</section>
+
+{/* Where this is heading — roadmap, clearly labeled */}
+<section class="mx-auto w-full max-w-3xl px-4 pt-24">
+  <div class="rounded-2xl border border-dashed border-primary/30 bg-primary/[0.03] p-8">
+    <span class="inline-flex items-center gap-1.5 rounded-full border border-primary/30 bg-card px-3 py-1 text-xs font-semibold text-primary">Kamo ovo vodi</span>
+    <p class="text-muted-foreground mt-5 text-pretty">Gore navedene mogućnosti su dostupne danas. Smjer je dublja agent-native trgovina: bogatiji agent-facing booking primitivni, agent identitet i autorizacija za trgovanje u ime putnika, te agenti koji sudjeluju kao atribuirani, zarađujući izvori u partnerskoj mreži. Wink-ova strateška pozicija — <strong class="text-foreground"> infrastruktura za putničku trgovinu za AI agente</strong> — je nit vodilja od današnjeg API-ja do te budućnosti.</p>
+  </div>
+</section>
+
+{/* FAQ */}
+<FaqGrid
+  heading="Često postavljana pitanja o Agentic AI"
+  description="Što znači, kako se povezati i što agenti mogu učiniti."
+  items={faqs}
+/>
+
+{/* Final CTA */}
+<section class="w-full border-y border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white">
+  <div class="mx-auto w-full max-w-7xl px-4 py-24 text-center">
+    <h2 class="mkt-h2 font-heading">Spremni za izgradnju putničke trgovine za AI agente?</h2>
+    <p class="mx-auto mt-4 max-w-2xl text-pretty text-white/70 @lg:text-lg">Povežite MCP server, pročitajte uživo ugovore i dopustite Booking Engine-u da izvrši rezervaciju. Ili razgovarajte s nama o pristupu agentu za vaš proizvod.</p>
+    <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <a href="/developers/build-on-wink/" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-[#ff6b35] px-8 text-base font-semibold text-white hover:bg-[#e85b29] sm:w-auto">Pogledajte dokumentaciju</a>
+      <a href="/developers/mcp/" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-white px-8 text-base font-semibold text-[#1f0a40] hover:bg-white/90 sm:w-auto">Povežite MCP server</a>
+      <a href="https://cal.com/wink-ws36dy" class="inline-flex h-12 items-center justify-center px-4 text-sm font-medium text-white/80 underline underline-offset-4 hover:text-white">Zatražite demo</a>
+    </div>
+  </div>
+</section>
+
+</div>

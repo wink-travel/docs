@@ -1,0 +1,280 @@
+---
+title: Agentic AI — Imprastraktura ng Travel Commerce para sa mga AI Agent
+description: "Sa Wink, hindi lang nagrerekomenda ng mga hotel ang mga AI agent — naghahanap sila ng live na hotel-owned supply, pagkatapos ay nagbu-book at nagbabayad sa isang daloy gamit ang REST API at hosted MCP. Live na ngayon."
+template: splash
+marketingNav: true
+---
+import '/src/styles/splash-page.css';
+import BreadcrumbJsonLd from "@/components/marketing/BreadcrumbJsonLd.astro";
+
+import FaqGrid from "@/components/marketing/FaqGrid.astro";
+import AgentJsonLd from "@/components/marketing/AgentJsonLd.astro";
+import AgentConversation from "@/components/marketing/infographics/AgentConversation.astro";
+import AgenticShiftFlow from "@/components/marketing/infographics/AgenticShiftFlow.astro";
+
+import IconMapSearch from "@tabler/icons/outline/map-search.svg";
+import IconCalendarCheck from "@tabler/icons/outline/calendar-check.svg";
+import IconSparkles from "@tabler/icons/outline/sparkles.svg";
+import IconCalendarStats from "@tabler/icons/outline/calendar-stats.svg";
+import IconCreditCard from "@tabler/icons/outline/credit-card.svg";
+import IconCoin from "@tabler/icons/outline/coin.svg";
+import IconWebhook from "@tabler/icons/outline/webhook.svg";
+import IconComponents from "@tabler/icons/outline/components.svg";
+import IconUser from "@tabler/icons/outline/user.svg";
+import IconBuildingStore from "@tabler/icons/outline/building-store.svg";
+import IconUsersGroup from "@tabler/icons/outline/users-group.svg";
+import IconCode from "@tabler/icons/outline/code.svg";
+import IconArrowRight from "@tabler/icons/outline/arrow-right.svg";
+import IconCheck from "@tabler/icons/outline/check.svg";
+import IconX from "@tabler/icons/outline/x.svg";
+
+export const faqs = [
+  { title: "Bakit hindi makapag-book ng hotel ang karamihan sa mga AI agent, at ano ang nagpapagana sa isang agent na makagawa nito?", content: "Ang pagrerekomenda ng hotel ay isang problema sa nilalaman — kailangan lang ng agent ng mga paglalarawan at presyo. Ang pagbu-book naman ay isang problema sa kalakalan: kailangan nito ng live na mga rate at availability, inventory na maaari nitong hawakan, paraan ng pagbabayad, pagsasaayos sa hotel, at isang komersyal na ugnayan sa property. Karamihan sa mga assistant ay may una ngunit wala sa iba pa, kaya ipinapasa nila ang manlalakbay sa isang website para tapusin. Makakagawa ng booking ang isang agent kapag naipakita ng imprastraktura ang lahat ng ito. API-first ang Wink — bawat tampok ng platform ay maaaring tawagin mula sa labas, at isang hosted MCP server ang nagpapakita ng live API contracts — kaya ang isang aprubadong agent ay maaaring maghanap ng hotel supply, basahin ang live na mga rate at availability, gumawa at mag-sync ng mga booking, tumanggap ng bayad (ang Wink ang merchant of record), panatilihin ang attribution, at mag-subscribe sa mga kaganapan." },
+  { title: "Paano nakakonekta ang isang AI agent sa Wink?", content: "Ituro ang isang compatible na MCP client sa hosted server sa https://docs.mcp.wink.travel/mcp (SSE fallback sa /sse). Mula sa Claude Code: claude mcp add --transport http wink-docs https://docs.mcp.wink.travel/mcp. Maaari nang gamitin ng agent ang mga tool na api_search at docs_search para basahin ang live OpenAPI operations, request/response contracts at task recipes." },
+  { title: "Ano ang kayang gawin ng isang AI agent sa Wink ngayon?", content: "Ngayon, sa pamamagitan ng REST API at MCP server: tuklasin ang platform, maghanap ng bookable inventory (kasama ang geolocation spatial search), basahin ang live na mga rate at availability mula sa 11 konektadong channel manager, gumawa ng mga booking at i-sync ang lifecycle nito sa PMS/channel manager, tumanggap ng bayad (ang Wink ang merchant of record), panatilihin ang 6-buwang attribution at kumita sa pamamagitan ng partner flows, mag-subscribe sa 64+ webhook events, gumawa ng AI content, at mag-embed ng bookable inventory gamit ang Web Components." },
+  { title: "Makakagawa ba ng kumpletong hotel booking ang isang AI agent sa Wink?", content: "Oo. Ang paglikha ng booking ay isang REST API operation, at tinutupad ng Booking Engine ang transaksyon — checkout, pagbabayad, kumpirmasyon at booking sync. Ang isang agent na tumatawag sa booking API para sa isang manlalakbay ay makakagawa ng totoong kumpirmadong booking na may pinananatiling source context." },
+  { title: "Paano nagiging bookable ang isang hotel para sa AI agent sa Wink?", content: "Sa pamamagitan lamang ng pagsasaayos ng profile nito sa Wink. Kapag live na ang supply, mga rate at availability ng hotel (sa pamamagitan ng Extranet), awtomatiko itong natutuklasan at nabubook ng mga aprubadong AI agent sa pamamagitan ng REST API at hosted MCP server — walang hiwalay na AI integration para sa bawat hotel. Hinahanap ng agent ang live inventory ng hotel, ginagawa ang booking at nagsasaayos ng bayad sa pamamagitan ng Booking Engine, na may pinananatiling attribution. Bawat hotel sa Wink ay handa na para sa agent bilang default." },
+  { title: "Paano naiiba ang pagbu-book ng hotel sa Wink kumpara sa ChatGPT kasama ang Expedia o Booking.com?", content: "Malakas ang assistant integrations tulad ng ChatGPT kasama ang Expedia o Booking.com sa pagtuklas — live na presyo, mga larawan at mapa sa loob ng chat — ngunit karaniwang pinapunta ang manlalakbay sa sariling website o app ng supplier para tapusin ang booking at magbayad. Sa Wink, direktang nakikipagtransaksyon ang agent sa live, hotel-owned supply: binabasa nito ang totoong mga rate at availability, ginagawa ang booking, at nagsasaayos ng bayad sa pamamagitan ng Booking Engine sa isang daloy — at maaaring kumita ng partner commission mula sa resulta. Maaaring mangyari ang pagtuklas kahit saan; ang pagtupad ay nangyayari sa Wink." },
+  { title: "Sino lang ba ang platform na nagpapahintulot sa AI agents na mag-book at magbayad para sa mga hotel?", content: "Hindi — isang umuusbong na kategorya ang agent-driven hotel commerce, at ilang mga travel at payments player ang nag-anunsyo o naglunsad ng end-to-end agentic booking hanggang 2026. Ang kakaiba sa Wink ay ang kumbinasyon: ang supply ay hotel-owned at direktang mula sa hotel (hindi GDS resale o web-scraped listings), ang agent ay maaaring maghanap, mag-book, magbayad AT kumita sa isang commerce layer, at ito ay live na tawagin ngayon sa REST API at hosted MCP server — hindi isang roadmap item. Pinananatili ng mga hotel ang kontrol sa distribusyon; nagiging isang attributed, kumikitang channel ang agent." },
+  { title: "Anong mga agentic commerce at AI standards ang sinusuportahan ng Wink?", content: "API-first ang Wink at nagpapatakbo ng hosted MCP (Model Context Protocol) server ngayon, kaya anumang MCP-compatible agent — Claude, Codex, Cursor at iba pa — ay maaaring tuklasin at tawagin ang live OpenAPI contracts nito. Ang mga booking at payment primitives ng Wink ay dinisenyo upang makipag-interoperate sa umuusbong na agent-commerce stack — ang Agentic Commerce Protocol (ACP), Google's Agent Payments Protocol (AP2), Agent2Agent (A2A) at x402-style agent payments — habang pinagsasama-sama ang mga standard na ito, sa halip na i-lock ang mga agent sa isang proprietary na landas." },
+  { title: "May AI Skill ba para sa pagbuo sa Wink?", content: "Oo — ang wink-api-builder ay isang portable agent skill na gumagamit ng MCP server bilang source of truth. Ginagabayan nito ang agent mula sa api_search hanggang sa live request/response contracts, authentication, verified code, at nagbabantay ng mga hindi tugmang bahagi sa pagitan ng umiiral na code at kasalukuyang API. Gumagana ito sa Claude Code, Codex, Cursor at iba pang skill-capable clients." },
+  { title: "Makakakita ba ng kita ang isang AI agent bilang affiliate o partner?", content: "Pinananatili ng partner model ng Wink ang source at campaign attribution para sa 6 na buwan kada click at nagbabayad ng 10% default commission sa mga kumpirmadong booking. Ang isang agent na lumilikha ng kwalipikadong demand at nagruruta ng booking ay maaaring maging attributed source sa pamamagitan ng parehong partner at Booking Engine infrastructure." },
+  { title: "Papalitan ba ng Agentic AI ang Booking Engine?", content: "Hindi. Lumilikha o nagruruta ng intensyon ang Agentic AI; nananatiling fulfillment layer ang Booking Engine para sa checkout, pagbabayad, kumpirmasyon at booking sync. Lahat ng handoff ng agent ay nalulutas sa pamamagitan ng Booking Engine sa ilalim." },
+  { title: "Saan dapat magsimula ang isang developer o agent?", content: "Kumonekta sa MCP server, pagkatapos basahin ang Build on Wink, MCP Server at AI Skills na dokumentasyon. Humiling ng API access kapag malinaw na ang use case at commercial route." },
+];
+
+<div class="not-content mkt-page">
+
+<AgentJsonLd faqs={faqs} />
+
+<BreadcrumbJsonLd items={[{ name: "Home", url: "https://wink.travel/" }, { name: "Agentic AI" }]} />
+
+{/* Hero — agent conversation. Full-bleed per the house `data-full-bleed` pattern,
+    with the breadcrumb inside the band so it lines up with the headline instead of
+    sitting in Starlight's narrower column above a full-width hero. */}
+<section data-full-bleed class="@container relative w-full overflow-hidden border-b border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white">
+  <div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+    <div class="absolute -left-24 -top-10 size-80 rounded-full bg-[#ff6b35]/20 blur-[100px]"></div>
+    <div class="absolute -bottom-16 -right-16 size-96 rounded-full bg-[#9333ea]/30 blur-[120px]"></div>
+  </div>
+  <div class="relative mx-auto w-full max-w-7xl px-4 pb-20 pt-8 lg:pb-24">
+    <nav aria-label="Breadcrumb" class="text-sm text-white/60">
+      <a href="/" class="transition-colors hover:text-white">Home</a>
+      <span class="px-1.5 text-white/55">/</span>
+      <span class="text-white">Agentic AI</span>
+    </nav>
+    <div class="mt-10 grid items-center gap-12 lg:mt-12 lg:min-h-[33rem] @lg:grid-cols-[1fr_1.02fr]">
+    {/* Left — copy */}
+    <div class="text-center @lg:text-left">
+      <span class="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-xs font-extrabold uppercase tracking-wider text-[#ff8a5c] ring-1 ring-white/15 backdrop-blur @lg:mx-0"><span class="size-1.5 rounded-full bg-gradient-to-r from-[#ff6b35] to-[#ec4899]"></span> Agentic AI</span>
+      <h1 class="font-heading mt-6 text-4xl font-extrabold leading-[1.05] tracking-tight text-balance @lg:text-5xl @2xl:text-6xl">Kayang magplano ng biyahe ng mga AI agent. <span class="wink-shimmer bg-gradient-to-r from-[#ff8a5c] via-[#ec4899] to-[#a855f7] bg-clip-text text-transparent">Halos wala ang makakapag-book nito.</span></h1>
+      <p class="mx-auto mt-5 max-w-xl text-pretty text-lg text-white/75 @lg:mx-0 @lg:text-xl">Ang pagrerekomenda ng hotel ay isang problema sa nilalaman. Ang pagbu-book ay isang problema sa kalakalan — live na mga rate, hawak na inventory, pagbabayad, pagsasaayos at kontrata sa hotel. Ang Wink ang imprastraktura na nagsasara ng agwat na iyon: natutuklasan, nagbu-book <em class="not-italic font-semibold text-white">at nagbabayad</em> ang mga agent laban sa hotel-controlled supply, sa pamamagitan ng live REST API at hosted MCP server.</p>
+      <div class="mt-8 flex flex-col items-center justify-center gap-3 @lg:justify-start sm:flex-row">
+        <a href="/developers/build-on-wink/" class="inline-flex h-12 items-center justify-center rounded-md bg-[#ff6b35] px-7 text-base font-semibold text-white transition-colors hover:bg-[#e85b29]">Tingnan ang dokumentasyon</a>
+        <a href="#agents" class="inline-flex h-12 items-center justify-center rounded-md bg-white/10 px-7 text-base font-medium text-white ring-1 ring-white/20 backdrop-blur transition-colors hover:bg-white/15">Ikonekta ang isang agent</a>
+      </div>
+      <div class="mt-7 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 font-mono text-xs text-white/70"><span class="size-1.5 animate-pulse rounded-full bg-emerald-400"></span> MCP server live · docs.mcp.wink.travel/mcp</div>
+    </div>
+
+    {/* Right — agent conversation (swappable infographic) */}
+    <AgentConversation />
+    </div>
+  </div>
+</section>
+
+{/* Direct answer */}
+<section class="mx-auto w-full max-w-3xl px-4 pt-24 pb-24 text-center">
+  <p class="mkt-kicker text-primary">Bakit hindi makapag-book ng hotel ang karamihan sa mga AI agent?</p>
+  <p class="mkt-sub text-muted-foreground mt-5">API-first ang Wink: bawat tampok ng platform ay maaaring tawagin mula sa labas, at isang hosted MCP server ang nagpapakita ng live API contracts sa mga AI agent. Sa halip na pilitin ang bawat manlalakbay na dumaan sa isang website, binibigyan ng Wink ang mga aprubadong agent ng istrukturadong access sa hotel supply, mga rate, availability, booking, pagbabayad, attribution at mga kaganapan — ang parehong imprastraktura na nagpapatakbo sa Wink mismo.</p>
+  <div class="mx-auto mt-7 max-w-2xl rounded-2xl border-2 border-primary/30 bg-primary/[0.04] px-6 py-5 text-pretty text-foreground/90"><strong class="text-foreground">Nagiging handa para sa agent ang anumang hotel sa pamamagitan lamang ng pagsasaayos ng profile nito sa Wink.</strong> Kapag live na ang supply, mga rate at availability nito, maaaring maghanap, mag-book at magbayad ang mga aprubadong AI agent laban dito sa pamamagitan ng API at MCP server — walang hiwalay na AI integration para sa bawat hotel na kinakailangan.</div>
+</section>
+
+{/* Live proof — the argument above is shipped, not roadmap. Implementation
+    detail deliberately lives on /builders/ so this page stays the thesis. */}
+<section id="agents" class="@container w-full border-y border-border bg-muted/30" style="scroll-margin-top:5rem">
+  <div class="mx-auto w-full max-w-4xl px-4 py-24 text-center">
+    <p class="mkt-kicker text-primary">Live na ngayon, hindi roadmap</p>
+    <h2 class="mkt-h2 font-heading mt-3">Apat na hakbang mula agent hanggang kumpirmadong, bayad na booking.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-2xl">Ikonekta ang hosted MCP server, lutasin ang intensyon sa totoong operasyon laban sa live API, gumawa ng verified code, pagkatapos ay ipasa sa Booking Engine para sa checkout, pagbabayad, kumpirmasyon at PMS sync.</p>
+    <ol class="mx-auto mt-10 grid gap-3 text-left @lg:grid-cols-4">
+      <li class="rounded-xl border border-border bg-card px-4 py-3 text-sm"><span class="font-mono text-xs text-primary">01</span><span class="mt-1 block font-semibold">Ikonekta ang MCP</span></li>
+      <li class="rounded-xl border border-border bg-card px-4 py-3 text-sm"><span class="font-mono text-xs text-primary">02</span><span class="mt-1 block font-semibold">Maghanap sa live API</span></li>
+      <li class="rounded-xl border border-border bg-card px-4 py-3 text-sm"><span class="font-mono text-xs text-primary">03</span><span class="mt-1 block font-semibold">Gumawa ng verified code</span></li>
+      <li class="rounded-xl border border-border bg-card px-4 py-3 text-sm"><span class="font-mono text-xs text-primary">04</span><span class="mt-1 block font-semibold">Mag-book at tumanggap ng bayad</span></li>
+    </ol>
+    <div class="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <a href="/builders/#agent-quickstart" class="inline-flex h-12 items-center justify-center rounded-md bg-[#ff6b35] px-7 text-base font-semibold text-white transition-colors hover:bg-[#e85b29]">Tingnan ang mga hakbang ng integrasyon</a>
+      <a href="/developers/mcp/" class="inline-flex h-12 items-center justify-center rounded-md border border-border px-7 text-base font-medium transition-colors hover:bg-muted">Mga dokumento ng MCP server</a>
+    </div>
+    <p class="text-muted-foreground mt-5 inline-flex items-center gap-2 font-mono text-xs"><span class="size-1.5 animate-pulse rounded-full bg-emerald-500"></span> docs.mcp.wink.travel/mcp</p>
+  </div>
+</section>
+
+{/* What an agent can do — capability map */}
+<section class="@container mx-auto w-full max-w-7xl px-4 pt-24">
+  <div class="mx-auto mb-14 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Mapa ng kakayahan</p>
+    <h2 class="mkt-h2 font-heading mt-3">Ano ang kayang gawin ng isang AI agent sa Wink.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">Bawat kakayahan sa ibaba ay available ngayon sa pamamagitan ng REST API at MCP server — nakabatay sa parehong mga kontrata na pinapatakbo ng Wink.</p>
+  </div>
+  <div class="grid gap-5 @md:grid-cols-2 @2xl:grid-cols-3">
+    {[
+      { icon: IconMapSearch, title: "Maghanap ng hotel inventory", desc: "Maghanap ng bookable supply gamit ang geolocation spatial search — point, circle, rectangle o polygon — pati na rin GeoIP detection." },
+      { icon: IconCalendarStats, title: "Basahin ang live na mga rate at availability", desc: "Kunin ang real-time na mga rate, availability at inventory mula sa 11 konektadong channel manager." },
+      { icon: IconCalendarCheck, title: "Gumawa at mag-sync ng mga booking", desc: "Gumawa ng mga booking sa pamamagitan ng API; gumawa / i-update / kanselahin ang sync sa konektadong PMS o channel manager na may buong lifecycle tracking." },
+      { icon: IconCreditCard, title: "Tumanggap ng bayad", desc: "Pinangangasiwaan ng Wink ang checkout, cancellation-policy logic at pagbabayad sa likod ng booking — ang Wink ang merchant of record." },
+      { icon: IconCoin, title: "Panatilihin ang attribution at kumita", desc: "Ang source at campaign context ay nananatili sa buong paglalakbay — 6-buwang-per-click attribution at 10% default commission sa kumpirmadong booking." },
+      { icon: IconWebhook, title: "Tumugon sa 64+ na mga kaganapan", desc: "Mag-subscribe sa mga webhook event — booking, pagbabayad, refund, update ng channel manager — at mag-trigger ng mga follow-up na aksyon." },
+      { icon: IconSparkles, title: "Gumawa ng nilalaman", desc: "AI content sa 9 na uri ng inventory at 12 tono ng boses; isang click na pagrehistro ng property mula sa isang URL." },
+      { icon: IconComponents, title: "I-embed ang bookable inventory", desc: "I-drop ang live, bookable hotel inventory sa anumang surface gamit ang Web Components at minimal na code." },
+      { icon: IconCode, title: "Bumuo gamit ang buong API", desc: "Bawat tampok ng Wink ay maaaring tawagin mula sa labas gamit ang REST, na may OAuth2 auth at opisyal na SDK — i-integrate na parang sarili mong sistema." },
+    ].map((c) => (
+      <div class="flex flex-col rounded-2xl border border-border bg-card p-6">
+        <span class="mb-4 flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-white"><c.icon class="size-6" /></span>
+        <h3 class="font-heading text-base font-semibold">{c.title}</h3>
+        <p class="text-muted-foreground mt-2 text-sm text-pretty">{c.desc}</p>
+        <span class="mt-4 inline-flex w-fit items-center gap-1.5 rounded-full bg-emerald-500/10 px-2.5 py-1 text-xs font-semibold text-emerald-600 dark:text-emerald-400"><span class="size-1.5 rounded-full bg-emerald-500"></span>Available na ngayon</span>
+      </div>
+    ))}
+  </div>
+</section>
+
+{/* The agentic shift — before/after flow */}
+<section class="@container mx-auto w-full max-w-5xl px-4 pt-24">
+  <div class="mx-auto mb-12 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Ang pagbabago</p>
+    <h2 class="mkt-h2 font-heading mt-3">Mula sa traveler-to-website patungo sa traveler-to-agent.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">Sa lumang modelo, ang manlalakbay ang gumagawa ng trabaho. Sa agentic na modelo, ang agent ang nagiging interface — at ang Wink ang nagiging commerce layer sa likod ng sagot.</p>
+  </div>
+  {/* Before/after flow — swappable infographic (infographics/AgenticShiftFlow.astro) */}
+  <AgenticShiftFlow />
+</section>
+
+{/* Why Wink — recommend vs transact */}
+<section class="@container mx-auto w-full max-w-5xl px-4 pt-24">
+  <div class="mx-auto mb-12 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Bakit Wink</p>
+    <h2 class="mkt-h2 font-heading mt-3">Ang sagot ng AI ay hindi booking.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">Kailangan ng rekomendasyon ng istrukturadong supply, live na mga rate, checkout, pagbabayad, kumpirmasyon at attribution para maging kalakalan.</p>
+  </div>
+  <div class="grid gap-6 @md:grid-cols-2">
+    <div class="rounded-2xl border border-border bg-muted/30 p-7">
+      <h3 class="font-heading text-lg font-semibold text-muted-foreground">Isang AI agent na walang imprastraktura</h3>
+      <ul class="mt-5 space-y-3">
+        {["Web-scraped, madalas na luma na supply", "Mga presyo na maaaring hindi ma-book", "Nagrerekomenda, pagkatapos ay ipinapasa ang booking sa isang website o OTA", "Walang attribution — at walang paraan para kumita ang agent", "Nawawala ang daloy pagkatapos ng mungkahi"].map((b) => (
+          <li class="flex items-start gap-2.5"><IconX class="mt-0.5 size-5 shrink-0 text-muted-foreground/60" /><span class="text-sm text-muted-foreground">{b}</span></li>
+        ))}
+      </ul>
+      <p class="mt-6 text-sm font-semibold text-muted-foreground">Maaaring magrekomenda.</p>
+    </div>
+    <div class="rounded-2xl border-2 border-primary/30 bg-primary/[0.04] p-7">
+      <h3 class="font-heading text-lg font-semibold text-primary">Isang AI agent sa Wink</h3>
+      <ul class="mt-5 space-y-3">
+        {["Live, hotel-owned supply — hindi web-scraped o nire-resell", "Live na mga rate at availability sa pamamagitan ng API", "Nagbu-book AT nagbabayad sa isang daloy — inaayos ito ng Wink", "Maaaring kumita ang agent — attribution + 10% default commission", "Kumpirmado, naka-sync sa PMS, na may webhooks — live na ngayon"].map((b) => (
+          <li class="flex items-start gap-2.5"><IconCheck class="mt-0.5 size-5 shrink-0 text-primary" /><span class="text-sm text-foreground/90">{b}</span></li>
+        ))}
+      </ul>
+      <p class="mt-6 text-sm font-semibold text-primary">Maaaring mag-transact.</p>
+    </div>
+  </div>
+</section>
+
+{/* AI agents for everyone */}
+<section class="@container mx-auto w-full max-w-7xl px-4 pt-24">
+  <div class="mx-auto mb-14 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Bawat kalahok, isang agent</p>
+    <h2 class="mkt-h2 font-heading mt-3">Isang agent para sa mga manlalakbay, hotel, partner, at mga tagabuo.</h2>
+  </div>
+  <div class="grid gap-6 @md:grid-cols-2">
+    {[
+      { icon: IconUser, who: "Para sa mga manlalakbay", title: "Maghanap, mag-book, at pamahalaan ang pananatili", desc: "Gumagana ang agent gamit ang istrukturadong supply, live na mga rate at patakaran — pagkatapos ay ginagawa ang booking sa pamamagitan ng Booking Engine.", prompt: "Maghanap ng adults-only luxury hotel sa Chiang Mai sa susunod na buwan na may spa. I-book ito." },
+      { icon: IconBuildingStore, who: "Para sa mga hotel", title: "Mga superbisor, hindi operator", desc: "Tumutulong ang mga agent na gumawa, mag-update at mag-analisa sa Extranet, Social at Studio — pinananatili ng hotel ang mga patakaran.", prompt: "Gumawa ng social content para sa susunod na buwan at i-flag ang mga petsa na mababa ang occupancy para i-promote." },
+      { icon: IconUsersGroup, who: "Para sa mga partner at tagalikha", title: "I-automate ang mga kampanya at kumita", desc: "Tuklasin ang mga kwalipikadong hotel, bumuo ng mga asset at storefront, mag-publish, at panatilihing konektado ang attribution.", prompt: "Gumawa ng kampanya na nagpo-promote ng luxury resorts sa Maldives." },
+      { icon: IconCode, who: "Para sa mga developer", title: "Bumuo ng mga bagong karanasan sa paglalakbay", desc: "AI concierges, bank at loyalty travel agents — na binuo sa MCP server, REST API at Booking Engine.", prompt: "I-embed ang AI hotel booking sa loob ng aming banking app gamit ang Wink API." },
+    ].map((c) => (
+      <div class="flex flex-col rounded-2xl border border-border bg-card p-7">
+        <span class="mb-4 flex size-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-white"><c.icon class="size-6" /></span>
+        <span class="text-xs font-semibold uppercase tracking-wider text-primary">{c.who}</span>
+        <h3 class="font-heading mt-2 text-xl font-semibold">{c.title}</h3>
+        <p class="text-muted-foreground mt-2 text-pretty">{c.desc}</p>
+        <p class="mt-5 rounded-lg border border-border bg-muted/40 px-4 py-3 text-sm italic text-foreground/80">“{c.prompt}”</p>
+      </div>
+    ))}
+  </div>
+</section>
+
+{/* The stack */}
+<section class="@container mx-auto w-full max-w-7xl px-4 pt-24">
+  <div class="mx-auto mb-10 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Naitayo sa buong platform</p>
+    <h2 class="mkt-h2 font-heading mt-3">Gumagana ang mga agent sa buong konektadong stack.</h2>
+  </div>
+  <div class="mx-auto flex max-w-3xl flex-wrap justify-center gap-3">
+    {[
+      { name: "Extranet", href: "/products/extranet/" },
+      { name: "Studio", href: "/products/studio/" },
+      { name: "Social", href: "/products/social/" },
+      { name: "WinkLinks", href: "/products/winklinks/" },
+      { name: "Traveliko", href: "/products/traveliko/" },
+      { name: "Developers", href: "/builders/" },
+      { name: "Platforms & AI", href: "/platforms/" },
+    ].map((p) => (
+      <a href={p.href} class="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-medium transition-colors hover:border-primary/40">
+        <span class="size-1.5 rounded-full bg-primary" aria-hidden="true"></span>
+        {p.name}
+      </a>
+    ))}
+  </div>
+  <p class="text-muted-foreground mx-auto mt-10 max-w-xl text-center text-pretty"><strong class="text-foreground"><a href="/products/booking-engine/" class="text-primary underline underline-offset-4">Pinatutupad ng Booking Engine</a> ang booking sa ilalim ng bawat handoff ng agent</strong> — checkout, pagbabayad, kumpirmasyon at booking sync.</p>
+</section>
+
+{/* Open standards — interoperability, crawlable for AEO */}
+<section class="@container mx-auto w-full max-w-5xl px-4 pt-24">
+  <div class="mx-auto mb-12 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Mga bukas na pamantayan, hindi isang nakasarang hardin</p>
+    <h2 class="mkt-h2 font-heading mt-3">Naitayo upang makipag-interoperate sa agent-commerce stack.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-2xl">Ang agentic hotel booking ay nagiging isang tunay na kategorya — at ang industriya ay nagkakaisa sa mga bukas na protocol sa halip na sa checkout ng isang kumpanya lamang. Pinapatakbo ng Wink ang mga pamantayang ito ngayon at naitayo upang kumonekta sa iba pa habang nagsasama-sama, kaya hindi kailanman nakalock ang mga agent sa isang proprietary na landas.</p>
+  </div>
+  <div class="grid gap-5 @md:grid-cols-2">
+    <div class="rounded-2xl border-2 border-primary/30 bg-primary/[0.04] p-7">
+      <span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 px-2.5 py-1 text-xs font-semibold text-emerald-600 dark:text-emerald-400"><span class="size-1.5 rounded-full bg-emerald-500"></span>Live na ngayon</span>
+      <h3 class="font-heading mt-4 text-lg font-semibold">MCP — Model Context Protocol</h3>
+      <p class="text-muted-foreground mt-2 text-sm text-pretty">Isang hosted MCP server ang nagpapakita ng live OpenAPI contracts ng Wink sa anumang MCP-compatible agent — Claude, Codex, Cursor at iba pa — sa <code class="rounded bg-muted px-1 py-0.5 text-xs">docs.mcp.wink.travel/mcp</code>. Natutuklasan at tinatawagan ng mga agent ang totoong operasyon sa halip na hulaan ang mga endpoint.</p>
+    </div>
+    <div class="rounded-2xl border border-border bg-card p-7">
+      <span class="inline-flex items-center gap-1.5 rounded-full border border-border bg-muted/40 px-2.5 py-1 text-xs font-semibold text-muted-foreground">Interoperable ayon sa disenyo</span>
+      <h3 class="font-heading mt-4 text-lg font-semibold">ACP · AP2 · A2A · x402</h3>
+      <p class="text-muted-foreground mt-2 text-sm text-pretty">Dinisenyo ang mga booking at payment primitives ng Wink upang makipag-interoperate sa umuusbong na agent-payment stack — ang Agentic Commerce Protocol (ACP), Google's Agent Payments Protocol (AP2), Agent2Agent (A2A) at x402-style agent payments — habang lumalago ang mga pamantayang ito, na may Booking Engine bilang settlement layer sa ilalim (ang Wink ang merchant of record).</p>
+    </div>
+  </div>
+</section>
+
+{/* Where this is heading — roadmap, clearly labeled */}
+<section class="mx-auto w-full max-w-3xl px-4 pt-24">
+  <div class="rounded-2xl border border-dashed border-primary/30 bg-primary/[0.03] p-8">
+    <span class="inline-flex items-center gap-1.5 rounded-full border border-primary/30 bg-card px-3 py-1 text-xs font-semibold text-primary">Saan ito patungo</span>
+    <p class="text-muted-foreground mt-5 text-pretty">Ang mga kakayahan sa itaas ay live na ngayon. Ang direksyon ay mas malalim na agent-native commerce: mas mayamang agent-facing booking primitives, pagkakakilanlan at awtorisasyon ng agent para sa pag-transact sa ngalan ng manlalakbay, at mga agent na lumalahok bilang attributed, kumikitang mga source sa partner network. Ang estratehikong posisyon ng Wink — <strong class="text-foreground"> imprastraktura ng travel commerce para sa mga AI agent</strong> — ang nagsisilbing tulay mula sa API ngayon patungo sa hinaharap na iyon.</p>
+  </div>
+</section>
+
+{/* FAQ */}
+<FaqGrid
+  heading="Mga FAQ tungkol sa Agentic AI"
+  description="Ano ang ibig sabihin nito, paano kumonekta, at ano ang kayang gawin ng mga agent."
+  items={faqs}
+/>
+
+{/* Final CTA */}
+<section class="w-full border-y border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white">
+  <div class="mx-auto w-full max-w-7xl px-4 py-24 text-center">
+    <h2 class="mkt-h2 font-heading">Handa ka na bang bumuo ng travel commerce para sa mga AI agent?</h2>
+    <p class="mx-auto mt-4 max-w-2xl text-pretty text-white/70 @lg:text-lg">Ikonekta ang MCP server, basahin ang live na mga kontrata, at hayaang tuparin ng Booking Engine ang booking. O makipag-usap sa amin tungkol sa access ng agent para sa iyong produkto.</p>
+    <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <a href="/developers/build-on-wink/" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-[#ff6b35] px-8 text-base font-semibold text-white hover:bg-[#e85b29] sm:w-auto">Tingnan ang dokumentasyon</a>
+      <a href="/developers/mcp/" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-white px-8 text-base font-semibold text-[#1f0a40] hover:bg-white/90 sm:w-auto">Ikonekta ang MCP server</a>
+      <a href="https://cal.com/wink-ws36dy" class="inline-flex h-12 items-center justify-center px-4 text-sm font-medium text-white/80 underline underline-offset-4 hover:text-white">Humiling ng demo</a>
+    </div>
+  </div>
+</section>
+
+</div>

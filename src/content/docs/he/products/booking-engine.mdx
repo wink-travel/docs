@@ -1,0 +1,354 @@
+---
+title: מנוע הזמנות — מניע הזמנות בכל מקום באינטרנט
+description: מנוע ההזמנות של Wink מפעיל הזמנות ישירות באתר המלון שלך ומהווה את שכבת העסקאות מאחורי כל שותף, יוצר ונתיב AI — תשלום, סנכרון וייחוס מובנים.
+template: splash
+marketingNav: true
+---
+import '/src/styles/splash-page.css';
+import BreadcrumbJsonLd from "@/components/marketing/BreadcrumbJsonLd.astro";
+
+import DeviceFrame from "@/components/marketing/DeviceFrame.astro";
+import ShowcaseRow from "@/components/marketing/ShowcaseRow.astro";
+import FaqGrid from "@/components/marketing/FaqGrid.astro";
+import ProductJsonLd from "@/components/marketing/ProductJsonLd.astro";
+import MoneyFlow from "@/components/marketing/infographics/MoneyFlow.astro";
+
+import IconArrowRight from "@tabler/icons/outline/arrow-right.svg";
+import IconCheck from "@tabler/icons/outline/check.svg";
+
+export const faqs = [
+  { title: "מהו מנוע ההזמנות של Wink?", content: "מנוע ההזמנות של Wink הוא שני דברים בו זמנית. עבור האתר שלך, זהו מנוע הזמנות מלא — חדרים, מחירים, זמינות, תשלום ואישור באתר הממותג שלך. עבור הפלטפורמה שלך, זו שכבת העסקאות שגם ממירה ביקושים משותפי Wink, יוצרים, סוכני AI ואפליקציות מפתחים — כל הזמנה מתבצעת למלון, כשהמלון שולט." },
+  { title: "האם מנוע ההזמנות יכול למכור יותר מחדרים?", content: "כן. במקומות שהוגדרו, הוא מוכר את כל השהייה סביב החדר: תוכניות תעריפים, חבילות, תוספות, אוכל, ספא, חוויות, העברות, שדרוגים, צ'ק-אין מוקדם וצ'ק-אאוט מאוחר — לא רק את לילה בחדר." },
+  { title: "אילו נתיבים מנוע ההזמנות ממלא?", content: "אתר המלון שלך ועוד כל נתיב אחר של Wink: קישורים לשיתוף, קודי QR, רכיבי ווב, חנויות WinkLinks, פוסטים חברתיים, חנויות שותפים, Traveliko, העברות AI של Agentic ואפליקציות מפתחים. כולם מתממשקים לאותו מנוע." },
+  { title: "איך מתבצע התשלום?", content: "Wink הוא הסוחר הרשום ומטפל בתשלום מקצה לקצה. הוא מפעיל את ממשק התשלום, לוגיקת מדיניות הביטול, כרטיסים ממוכנים, 3DS, מטבעות מרובים ותשלומים מפוצלים. הוא גובה את מלוא סכום ההזמנה בשם המלון; הכספים משוחררים למלון בעת צ'ק-אין של האורח, לאחר דמי Wink. העלות הכוללת היא 5.5% על הזמנות ישירות מאושרות." },
+  { title: "איך מנוע ההזמנות מחובר ל-Extranet?", content: "Extranet הוא המקום שבו המלונות מנהלים תוכן, חדרים, מחירים, זמינות, מבצעים, מדיניות וכללי ערוצים. מנוע ההזמנות משתמש באספקה המאושרת הזו להצגת הצעות והשלמת התשלום — שתי שכבות מחוברות, אף פעם לא אותו ממשק, כך שהמלון נשאר בשליטה." },
+  { title: "האם מפתחים וסוכני AI יכולים ליצור הזמנות?", content: "כן. יצירת הזמנה היא פעולה ב-REST API, כל תכונה ניתנת לקריאה מבחוץ עם OAuth2, ושרת MCP מתארח מאפשר לסוכני AI לקרוא את החוזים החיים. ניתן להירשם לאירועי webhook של booking.created ועוד 64+, או להטמיע מלאי הזמנה עם רכיבי ווב. באינטגרציות API ישירות ניתן גם להיות הסוחר הרשום ולנהל תשלום בעצמך." },
+  { title: "האם מנוע ההזמנות מסנכרן הזמנות ל-PMS או מנהל ערוצים שלי?", content: "כן. כאשר הזמנות נוצרות, מתעדכנות או מבוטלות, הן מסונכרנות ל-PMS או מנהל הערוצים המחוברים עם מעקב מלא על מחזור החיים, והמלון, הנוסע ו(כאשר רלוונטי) השותף מקבלים אישור." },
+  { title: "האם מנוע ההזמנות זהה ל-OTA?", content: "לא. זו שכבת המימוש והעסקאות — הוא לעולם לא מחליף את המותג של המלון במותג OTA. הוא עוזר לאספקה הנשלטת על ידי המלון להמיר באתר שלך, שותפים, יוצרים, Traveliko, AI ונתיבי מפתחים, עם שמירת הייחוס." },
+];
+
+<div class="not-content mkt-page">
+
+<ProductJsonLd
+  name="Wink Booking Engine"
+  url="https://wink.travel/products/booking-engine/"
+  applicationCategory="BusinessApplication"
+  description="מנוע הזמנות מלא לאתר המלון עצמו ושכבת העסקאות מאחורי כל שותף, יוצר ונתיב AI — עם תשלום, סנכרון הזמנות וייחוס מובנים."
+  features={["מנוע הזמנות מלא באתר הממותג של המלון", "שכבת עסקאות לנתיבי שותפים, יוצרים, AI ומפתחים", "מוכר חדרים, תוכניות תעריפים, חבילות, תוספות, אוכל, ספא, חוויות והעברות", "תשלום מטופל על ידי Wink", "סוחר רשום זמין באינטגרציות API", "יצירת הזמנות דרך REST API עם OAuth2", "64+ אירועי webhook כולל booking.created", "סנכרון הזמנות ל-PMS / מנהל ערוצים", "שימור מקור וייחוס שותפים", "אישור לאורח, מלון ושותף"]}
+  faqs={faqs}
+/>
+
+<BreadcrumbJsonLd items={[{ name: "בית", url: "https://wink.travel/" }, { name: "מוצרים" }, { name: "מנוע הזמנות" }]} />
+
+{/* 1 — Hero (dark, full-bleed; see `data-full-bleed` in src/styles/tweaks.css).
+    The breadcrumb lives INSIDE the band so it shares the hero's content column
+    and lines up with the badge and headline. */}
+<section data-full-bleed class="relative w-full overflow-hidden border-b border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white">
+  <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+    <div class="absolute -left-24 -top-10 size-96 rounded-full bg-[#ff6b35]/20 blur-[120px]"></div>
+    <div class="absolute -bottom-16 -right-16 size-[34rem] rounded-full bg-[#9333ea]/25 blur-[140px]"></div>
+  </div>
+  <div class="@container relative mx-auto w-full max-w-7xl px-4 pb-20 pt-8 lg:pb-24">
+    <nav aria-label="Breadcrumb" class="text-sm text-white/60">
+      <a href="/" class="transition-colors hover:text-white">בית</a>
+      <span class="px-1.5 text-white/55">/</span>
+      <span>מוצרים</span>
+      <span class="px-1.5 text-white/55">/</span>
+      <span class="text-white">מנוע הזמנות</span>
+    </nav>
+    <div class="mt-10 grid items-center gap-12 lg:mt-12 lg:grid-cols-2 lg:gap-16">
+      <div>
+        <span class="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-xs font-extrabold uppercase tracking-wider text-[#ff8a5c] ring-1 ring-white/15 backdrop-blur"><span class="size-1.5 rounded-full bg-gradient-to-r from-[#ff6b35] to-[#ec4899]"></span> מנוע הזמנות</span>
+        <h1 class="font-heading mt-6 text-4xl font-extrabold leading-[1.05] tracking-tight text-balance @lg:text-5xl @2xl:text-[3.25rem]">
+          מניע הזמנות בכל מקום באינטרנט — <span class="bg-gradient-to-r from-[#ff8a5c] via-[#ec4899] to-[#a855f7] bg-clip-text text-transparent">האתר שלך, הפלטפורמה שלך.</span>
+        </h1>
+        <p class="mt-5 max-w-xl text-pretty text-lg text-white/75 @lg:text-xl">
+          מלונות שמים את מנוע ההזמנות של Wink באתר שלהם כדי להפוך ביקוש ישיר להזמנות מאושרות שמוכרות את כל השהייה. זה גם שכבת העסקאות שעליה פועלת כל פלטפורמת Wink — כך שכל נתיב אחר מתממשק לאותו תשלום. תשלום, אישור וייחוס כלולים.
+        </p>
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+          <a href="https://app.wink.travel" class="inline-flex h-12 items-center justify-center rounded-md bg-[#ff6b35] px-7 text-base font-semibold text-white transition-colors hover:bg-[#e85b29]">התחל עכשיו</a>
+          <a href="https://cal.com/wink-ws36dy" class="inline-flex h-12 items-center justify-center rounded-md bg-white/10 px-7 text-base font-medium text-white ring-1 ring-white/20 backdrop-blur transition-colors hover:bg-white/15">בקש הדגמה</a>
+        </div>
+        <div class="mt-7 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-white/65">
+          <span class="inline-flex items-center gap-1.5"><IconCheck class="size-4 text-[#ff8a5c]" /> האתר שלך</span>
+          <span class="inline-flex items-center gap-1.5"><IconCheck class="size-4 text-[#ff8a5c]" /> הפלטפורמה שלך</span>
+          <span class="inline-flex items-center gap-1.5"><IconCheck class="size-4 text-[#ff8a5c]" /> 5.5% כולל הכל</span>
+        </div>
+      </div>
+
+      <div class="relative">
+        <DeviceFrame
+          variant="browser"
+          url="book.wink.travel/checkout"
+          src="/mockups/booking-engine/checkout-page-booking-engine-desktop.webp"
+          alt="תשלום במנוע ההזמנות של Wink — חדר, תעריף, תוספות ותשלום בזרימה אחת"
+          aspect="16/10"
+        />
+        <div class="absolute -bottom-8 -right-1 w-[116px] @sm:w-[136px] @lg:w-[148px]">
+          <DeviceFrame
+            variant="phone"
+            src="/mockups/booking-engine/checkout-mobile.webp"
+            alt="תשלום במנוע ההזמנות במובייל"
+            aspect="9/19.5"
+            class="!max-w-none w-full"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* 2 — The two jobs (white) */}
+<section class="@container mx-auto w-full max-w-5xl px-4 pt-24 text-center">
+  <p class="mkt-kicker text-primary">מהו מנוע ההזמנות של Wink?</p>
+  <h2 class="mkt-h2 font-heading mt-3 text-balance">מנוע הזמנות מלא לאתר שלך — ושכבת העסקאות מאחורי כל שותף.</h2>
+  <p class="mkt-sub text-muted-foreground mx-auto mt-5 max-w-3xl">
+    עבור האתר שלך, זה כל מה שציפית ממנוע הזמנות SaaS: חדרים, מחירים, זמינות,
+    תשלום ואישור באתר הממותג שלך. עבור הפלטפורמה שלך, זו שכבת העסקאות שגם ממירה ביקושים משותפי Wink, יוצרים וסוכני AI — הכל מתבצע אליך,
+    כשהמלון שולט.
+  </p>
+  <div class="mt-12 grid gap-5 text-left @md:grid-cols-2">
+    <div class="flex flex-col rounded-2xl border border-border bg-card p-7">
+      <span class="inline-flex w-fit items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-primary">האתר שלך</span>
+      <h3 class="font-heading mt-4 text-xl font-semibold">מנוע הזמנות מלא, באתר שלך</h3>
+      <p class="text-muted-foreground mt-2 text-sm text-pretty">
+        כל מה שציפית ממנוע הזמנות סטנדרטי — המותג שלך, המחירים שלך, הזמנות ישירות שמוכרות את כל השהייה. אם ניהלת מנוע הזמנות בעבר, אין צורך ללמוד מחדש.
+      </p>
+      <ul class="mt-5 space-y-2.5">
+        {["תשלום ממותג מלון בדומיין שלך", "חדרים, מחירים, זמינות ומדיניות", "תשלום, אישור וסנכרון PMS/מנהל ערוצים"].map((p) => (
+          <li class="flex items-start gap-2.5"><IconCheck class="mt-0.5 size-5 shrink-0 text-primary" /><span class="text-sm text-foreground/90">{p}</span></li>
+        ))}
+      </ul>
+    </div>
+    <div class="flex flex-col rounded-2xl border border-border bg-card p-7">
+      <span class="inline-flex w-fit items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-primary">הפלטפורמה שלך</span>
+      <h3 class="font-heading mt-4 text-xl font-semibold">וגם שכבת העסקאות לכל נתיב שותף</h3>
+      <p class="text-muted-foreground mt-2 text-sm text-pretty">
+        אותו מנוע גם מפעיל הזמנות שמגיעות משותפי Wink, יוצרים, סוכני AI ואפליקציות מפתחים — ביקוש שמנוע הזמנות רגיל לא יכול להגיע אליו. כל הזמנה עדיין מתבצעת אליך: המחירים שלך,
+        המלאי שלך, המותג שלך, ייחוס מלא. אתה מקבל הפצה בלי לוותר על שליטה.
+      </p>
+      <div class="mt-5 flex flex-wrap gap-2">
+        {["שותפים", "יוצרים", "סוכני AI", "קישורים לשיתוף", "WinkLinks", "רשתות חברתיות", "Traveliko", "אפליקציות מפתחים"].map((r) => (
+          <span class="inline-flex items-center gap-1.5 rounded-full border border-border bg-background px-3 py-1 text-xs font-medium">
+            <span class="size-1.5 rounded-full bg-primary" aria-hidden="true"></span>{r}
+          </span>
+        ))}
+      </div>
+    </div>
+  </div>
+  <p class="text-muted-foreground mx-auto mt-8 max-w-2xl text-pretty text-sm">
+    האספקה זורמת מ- <a href="/products/extranet/" class="text-primary underline underline-offset-4">Extranet</a>; המחירים והייחוס שלך נשארים מחוברים לאורך כל התשלום.
+  </p>
+</section>
+
+{/* 3 — Sell the whole stay (white, image left) */}
+<section class="@container mx-auto w-full max-w-7xl px-4 pt-24">
+  <div class="grid items-center gap-12 @lg:grid-cols-2 @lg:gap-16">
+    <div class="@lg:order-2">
+      <p class="mkt-kicker text-primary">מכור את כל השהייה</p>
+      <h2 class="mkt-h2 font-heading mt-3">יותר מלילה בחדר.</h2>
+      <p class="text-muted-foreground mt-4 text-pretty @lg:text-lg">
+        רוב מנועי ההזמנות עוצרים בחדר. Wink משווק את כל השהייה באותה זרימה — כך שההזמנה הממוצעת שווה יותר והאורח מגיע עם הטיול כבר בנוי.
+      </p>
+      <div class="mt-6 flex flex-wrap gap-2.5">
+        {["חדרים", "תוכניות תעריפים", "חבילות", "תוספות", "אוכל", "ספא ובריאות", "חוויות", "העברות", "שדרוגים", "צ'ק-אין מוקדם", "צ'ק-אאוט מאוחר"].map((c) => (
+          <span class="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3.5 py-1.5 text-sm font-medium">
+            <span class="size-1.5 rounded-full bg-primary" aria-hidden="true"></span>{c}
+          </span>
+        ))}
+      </div>
+      <ul class="mt-7 space-y-2.5">
+        {["החדר, התעריף וההצעה המתאימים לנתיב שממנו האורח הגיע", "זמינות חיה וכללי מלאי מ-Extranet", "אפשרויות ביטול ומדיניות מוצגות מראש"].map((p) => (
+          <li class="flex items-start gap-2.5"><IconCheck class="mt-0.5 size-5 shrink-0 text-primary" /><span class="text-sm text-foreground/90">{p}</span></li>
+        ))}
+      </ul>
+    </div>
+    <div class="@lg:order-1">
+      <DeviceFrame
+        variant="browser"
+        url="book.wink.travel/rate-plan"
+        src="/mockups/booking-engine/rate-plan-add-on-desktop.webp"
+        alt="תוכנית תעריפים ותוספות במנוע ההזמנות — מכירת כל השהייה"
+        aspect="16/10"
+      />
+    </div>
+  </div>
+</section>
+
+{/* 4 — The booking flow (white) */}
+<section class="@container mx-auto w-full max-w-7xl px-4 pt-24 pb-24">
+  <div class="mx-auto mb-12 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">זרימת ההזמנה</p>
+    <h2 class="mkt-h2 font-heading mt-3">מכל נתיב להזמנה מאושרת.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">
+      אותם ארבעה שלבים פועלים מאחורי כל נתיב — האתר שלך או של שותף — נקי בדסקטופ, מותאם למובייל.
+    </p>
+  </div>
+
+  <div class="space-y-20">
+    <ShowcaseRow
+      step="שלב 01 · בחר חדר"
+      title="חדרים נטענים מאספקת המלון המאושרת"
+      desc="החדרים, התמונות והזמינות הנכונים נטענים ישירות מ-Extranet עבור הנתיב שממנו האורח הגיע."
+      points={["זמינות חיה וכללי מלאי", "תוכן ותמונות הנשלטים על ידי המלון", "תאריכים, אורחים ולוגיקת תפוסה"]}
+      image="/mockups/booking-engine/room-card-booking-engine-desktop.webp"
+      alt="בחירת חדר במנוע ההזמנות עם זמינות ותמחור"
+      url="book.wink.travel/rooms"
+    />
+    <ShowcaseRow
+      reverse
+      step="שלב 02 · תוכנית תעריף ותוספות"
+      title="בחר את התעריף, ואז הוסף לשהייה"
+      desc="תוכניות תעריפים, אפשרויות ביטול ותוספות מוגדרות — חבילות, אוכל, ספא, העברות — באותה זרימה."
+      points={["תוכניות ארוחות, מחירי חברים ומבצעים", "תוספות וחוויות במקומות שהוגדרו", "מדיניות ואפשרויות ביטול מוצגות מראש"]}
+      image="/mockups/booking-engine/rate-plan-page-booking-engine-desktop.webp"
+      alt="בחירת תוכנית תעריף ותוספות במנוע ההזמנות"
+      url="book.wink.travel/rate-plan"
+    />
+    <ShowcaseRow
+      step="שלב 03 · תשלום וסיום"
+      title="תשלום אחד, מטופל על ידי Wink"
+      desc="האורח בודק את השהייה ומשלם בתשלום ממותג מלון יחיד — התשלום מטופל על ידי Wink, הסוחר הרשום."
+      points={["תשלום ממותג מלון, מותאם למובייל", "תשלום מטופל על ידי Wink", "רשומת הזמנה קשורה למלון ולנתיב"]}
+      image="/mockups/booking-engine/checkout-page-booking-engine-desktop.webp"
+      alt="סיכום תשלום והזמנה במנוע ההזמנות"
+      url="book.wink.travel/checkout"
+    />
+    <ShowcaseRow
+      reverse
+      frame="plain"
+      step="שלב 04 · אישור"
+      title="אושר לאורח, למלון ולשותף"
+      desc="ההזמנה מאושרת ונשארת מחוברת לנתיב, לקמפיין, לערוץ או לשותף שיצר את הביקוש — ומסונכרנת ל-PMS או מנהל הערוצים המחוברים."
+      points={["אישור מיידי לאורח", "הודעה למלון ולשותף", "סנכרון ל-PMS / מנהל ערוצים, שמירת ייחוס"]}
+      image="/mockups/booking-engine/booking-confirmation.webp"
+      alt="מסך אישור במנוע ההזמנות עם הפניה להזמנה וסיכום השהייה"
+    />
+  </div>
+</section>
+
+{/* 5 — Payment & payout (muted band, money flow) */}
+<section class="@container w-full border-y border-border bg-muted/30">
+  <div class="mx-auto w-full max-w-7xl px-4 py-24">
+    <div class="grid items-center gap-12 @lg:grid-cols-2 @lg:gap-16">
+      <div>
+        <p class="mkt-kicker text-primary">איך מתבצע התשלום</p>
+        <h2 class="mkt-h2 font-heading mt-3">תשלום ופירעון, מטופלים על ידי Wink.</h2>
+        <p class="text-muted-foreground mt-4 text-pretty @lg:text-lg">
+          Wink הוא הסוחר הרשום ומטפל בתשלום מקצה לקצה. הוא מפעיל את התשלום, המדיניות והפירעון כך שהמלון אף פעם לא צריך לחבר מעבד תשלומים — וזה כלול במחיר כולל אחד.
+        </p>
+        <ul class="mt-6 space-y-3">
+          {[
+            "כרטיסים ממוכנים, 3DS ומטבעות מרובים",
+            "מדיניות ביטול, פיקדון ותוכנית תעריפים נאכפת בתשלום",
+            "פירעון מפוצל וייחוס שותפים מתבצע יחד",
+          ].map((p) => (
+            <li class="flex items-start gap-2.5"><IconCheck class="mt-0.5 size-5 shrink-0 text-primary" /><span class="text-sm text-foreground/90">{p}</span></li>
+          ))}
+        </ul>
+        <div class="mt-7 flex items-baseline gap-3 rounded-xl border border-border bg-card px-5 py-4">
+          <span class="font-heading text-3xl font-bold text-foreground">5.5%</span>
+          <span class="text-muted-foreground text-sm text-pretty">כולל הכל על הזמנות ישירות מאושרות — עיבוד כלול, ללא חוזה מעבד נפרד. <a href="/pricing/" class="text-primary underline underline-offset-4">ראה תמחור</a>.</span>
+        </div>
+      </div>
+      {/* Money flow — swappable infographic (infographics/MoneyFlow.astro) */}
+      <MoneyFlow />
+    </div>
+  </div>
+</section>
+
+{/* 6 — Mobile-first (white, uniform phones) */}
+<section class="@container mx-auto w-full max-w-7xl px-4 pt-24 pb-24">
+  <div class="mx-auto mb-12 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">מובייל קודם כל</p>
+    <h2 class="mkt-h2 font-heading mt-3">מעוצב לאופן שבו אורחים באמת מזמינים.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">
+      רוב הביקוש לנסיעות מתחיל בטלפון. כל שלב — גילוי, בחירה, הוספה, תשלום — בנוי עבורו.
+    </p>
+  </div>
+  <div class="grid grid-cols-2 justify-items-center gap-6 @md:grid-cols-4 @lg:gap-8">
+    {[
+      { src: "/mockups/booking-engine/hotel-card-mobile.webp", alt: "כרטיס מלון במובייל וזמינות", cap: "גלה" },
+      { src: "/mockups/booking-engine/room-details-mobile.webp", alt: "פרטי חדר במובייל", cap: "בחר" },
+      { src: "/mockups/booking-engine/moble-add-on.webp", alt: "תוספות וחוויות במובייל", cap: "הוסף לשהייה" },
+      { src: "/mockups/booking-engine/checkout-mobile.webp", alt: "תשלום ותשלום במובייל", cap: "שלם" },
+    ].map((m) => (
+      <div class="w-full max-w-[230px]">
+        <DeviceFrame variant="phone" src={m.src} alt={m.alt} aspect="9/19.5" />
+        <p class="mt-3 text-center text-sm font-medium text-muted-foreground">{m.cap}</p>
+      </div>
+    ))}
+  </div>
+</section>
+
+{/* 7 — Developers & AI (dark band) */}
+<section class="relative w-full overflow-hidden border-y border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white">
+  <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+    <div class="absolute -left-20 -top-12 size-96 rounded-full bg-[#ff6b35]/20 blur-[120px]"></div>
+    <div class="absolute -bottom-16 -right-16 size-[30rem] rounded-full bg-[#9333ea]/25 blur-[140px]"></div>
+  </div>
+  <div class="@container relative mx-auto w-full max-w-4xl px-4 py-24 text-center">
+    <p class="text-sm font-bold uppercase tracking-wider text-[#ff8a5c]">מפתחים וסוכני AI</p>
+    <h2 class="mkt-h2 font-heading mt-3">שכבת המימוש, <span class="bg-gradient-to-r from-[#ff8a5c] via-[#ec4899] to-[#a855f7] bg-clip-text text-transparent">זמינה תמיד.</span></h2>
+    <p class="mkt-sub mx-auto mt-4 max-w-2xl text-white/75">
+      כל העברת Agentic AI ואינטגרציית מפתחים מתבצעת במנוע ההזמנות — יצירת הזמנה דרך REST עם OAuth2, 64+ אירועי webhook, סנכרון PMS ומנהל ערוצים, רכיבי ווב, ושרת MCP מתארח שסוכנים יכולים לקרוא. השתמש ב-Wink לתשלום ופירעון, או — באינטגרציות API ישירות — היה הסוחר הרשום שלך והפעל תשלום בעצמך.
+    </p>
+    <div class="mx-auto mt-8 flex max-w-2xl flex-wrap justify-center gap-2.5">
+      {["יצירת הזמנות דרך REST", "OAuth2 + SDKs", "64+ אירועי webhook", "סנכרון הזמנות", "רכיבי ווב", "שרת MCP מתארח", "סוחר רשום (אינטגרציות API)"].map((r) => (
+        <span class="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white/90 ring-1 ring-white/15 backdrop-blur">
+          <span class="size-1.5 rounded-full bg-[#ff8a5c]" aria-hidden="true"></span>{r}
+        </span>
+      ))}
+    </div>
+    <div class="mt-9 flex flex-wrap justify-center gap-3">
+      <a href="/developers/build-on-wink/" class="inline-flex items-center gap-1.5 rounded-md bg-[#ff6b35] px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#e85b29]">בנה על Wink <IconArrowRight class="size-4" /></a>
+      <a href="/developers/mcp/" class="inline-flex items-center gap-1.5 rounded-md bg-white/10 px-5 py-2.5 text-sm font-medium text-white ring-1 ring-white/20 backdrop-blur transition-colors hover:bg-white/15">שרת MCP</a>
+      <a href="/agentic-ai/" class="inline-flex items-center gap-1.5 rounded-md bg-white/10 px-5 py-2.5 text-sm font-medium text-white ring-1 ring-white/20 backdrop-blur transition-colors hover:bg-white/15">Agentic AI</a>
+    </div>
+  </div>
+</section>
+
+{/* 8 — Who it's for (white, accent cards) */}
+<section class="@container mx-auto w-full max-w-7xl px-4 pt-24">
+  <div class="mx-auto mb-12 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">למי זה מיועד</p>
+    <h2 class="mkt-h2 font-heading mt-3">מנוע אחד, שלוש דרכים להשתמש בו.</h2>
+  </div>
+  <div class="grid gap-5 @md:grid-cols-3">
+    {[
+      { eyebrow: "למלונות", title: "המר ביקוש ישיר שלך", desc: "הפעל הזמנות באתר שלך, בקישורים, בקודי QR, ברכיבי ווב, ב-WinkLinks וב-Traveliko — מכור את כל השהייה ושמור על האורח.", href: "/hotels/", cta: "גלה למלונות", accent: "#ff6b35" },
+      { eyebrow: "לשותפים", title: "מלא את הביקוש שאתה יוצר", desc: "שלח אורחים מהקישורים, החנויות והקמפיינים שלך לתשלום אמיתי — עם ייחוס שמצורף דרך האישור והתשלום.", href: "/partners/", cta: "גלה לשותפים", accent: "#ec4899" },
+      { eyebrow: "למפתחים", title: "בנה על מסחר מלונות", desc: "השתמש במנוע ההזמנות כשכבת המימוש מאחורי חיפוש, הזמנה, תשלום ואישור — כולל סוחר רשום באינטגרציות API.", href: "/builders/", cta: "ראה תיעוד", accent: "#22d3ee" },
+    ].map((c) => (
+      <a href={c.href} class="group flex flex-col rounded-2xl border border-border bg-card p-7 shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg" style={`border-top:3px solid ${c.accent}`}>
+        <span class="text-xs font-bold uppercase tracking-wider" style={`color:${c.accent}`}>{c.eyebrow}</span>
+        <h3 class="font-heading mt-2 text-lg font-semibold">{c.title}</h3>
+        <p class="text-muted-foreground mt-2 flex-1 text-sm text-pretty">{c.desc}</p>
+        <span class="mt-4 inline-flex items-center gap-1 text-sm font-semibold" style={`color:${c.accent}`}>{c.cta} <IconArrowRight class="size-4 transition-transform group-hover:translate-x-0.5" /></span>
+      </a>
+    ))}
+  </div>
+</section>
+
+{/* 9 — FAQ */}
+<FaqGrid
+  heading="שאלות נפוצות על מנוע ההזמנות"
+  description="שני התפקידים, הנתיבים, התשלום ואיך לבנות עליו."
+  items={faqs}
+/>
+
+{/* 10 — Final CTA (dark) */}
+<section class="w-full border-y border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white">
+  <div class="mx-auto w-full max-w-7xl px-4 py-24 text-center">
+    <h2 class="mkt-h2 font-heading">מנוע אחד לאתר שלך ולפלטפורמה שלך.</h2>
+    <p class="mx-auto mt-4 max-w-2xl text-pretty text-white/70 @lg:text-lg">
+      הפוך ביקוש להזמנות מאושרות באתר שלך — ובכל נתיב שותף, יוצר, AI ומפתח — עם תשלום, אישור וייחוס מובנים.
+    </p>
+    <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <a href="https://app.wink.travel" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-[#ff6b35] px-8 text-base font-semibold text-white hover:bg-[#e85b29] sm:w-auto">התחל עכשיו</a>
+      <a href="https://cal.com/wink-ws36dy" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-white px-8 text-base font-semibold text-[#1f0a40] hover:bg-white/90 sm:w-auto">בקש הדגמה</a>
+    </div>
+  </div>
+</section>
+
+</div>

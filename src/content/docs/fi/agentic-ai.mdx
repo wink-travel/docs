@@ -1,0 +1,280 @@
+---
+title: Agentic AI — Matkakaupan infrastruktuuri AI-agentteja varten
+description: "Winkissä AI-agentit eivät pelkästään suosittele hotelleja — ne hakevat reaaliaikaista hotellin omistamaa tarjontaa, varaavat ja maksavat yhdellä prosessilla REST API:n ja isännöidyn MCP:n kautta. Käytössä jo tänään."
+template: splash
+marketingNav: true
+---
+import '/src/styles/splash-page.css';
+import BreadcrumbJsonLd from "@/components/marketing/BreadcrumbJsonLd.astro";
+
+import FaqGrid from "@/components/marketing/FaqGrid.astro";
+import AgentJsonLd from "@/components/marketing/AgentJsonLd.astro";
+import AgentConversation from "@/components/marketing/infographics/AgentConversation.astro";
+import AgenticShiftFlow from "@/components/marketing/infographics/AgenticShiftFlow.astro";
+
+import IconMapSearch from "@tabler/icons/outline/map-search.svg";
+import IconCalendarCheck from "@tabler/icons/outline/calendar-check.svg";
+import IconSparkles from "@tabler/icons/outline/sparkles.svg";
+import IconCalendarStats from "@tabler/icons/outline/calendar-stats.svg";
+import IconCreditCard from "@tabler/icons/outline/credit-card.svg";
+import IconCoin from "@tabler/icons/outline/coin.svg";
+import IconWebhook from "@tabler/icons/outline/webhook.svg";
+import IconComponents from "@tabler/icons/outline/components.svg";
+import IconUser from "@tabler/icons/outline/user.svg";
+import IconBuildingStore from "@tabler/icons/outline/building-store.svg";
+import IconUsersGroup from "@tabler/icons/outline/users-group.svg";
+import IconCode from "@tabler/icons/outline/code.svg";
+import IconArrowRight from "@tabler/icons/outline/arrow-right.svg";
+import IconCheck from "@tabler/icons/outline/check.svg";
+import IconX from "@tabler/icons/outline/x.svg";
+
+export const faqs = [
+  { title: "Miksi useimmat AI-agentit eivät voi varata hotellia, ja mikä tekee siitä mahdollisen?", content: "Hotellin suosittelu on sisällöllinen ongelma — agentti tarvitsee vain kuvaukset ja hinnat. Varaaminen on kaupankäyntiongelma: se vaatii reaaliaikaiset hinnat ja saatavuuden, varaston, jota se voi hallita, maksutien, hotellille suorituksen ja kaupallisen suhteen kiinteistöön. Useimmilla avustajilla on ensimmäinen, mutta ei muita, joten ne ohjaavat matkustajan verkkosivustolle viimeistelyä varten. Agentti voi suorittaa varauksen, kun infrastruktuuri paljastaa kaiken tämän. Wink on API-ensimmäinen — jokainen alustan ominaisuus on kutsuttavissa ulkoisesti, ja isännöity MCP-palvelin paljastaa reaaliaikaiset API-sopimukset — joten hyväksytty agentti voi löytää hotellitarjonnan, lukea reaaliaikaiset hinnat ja saatavuuden, luoda ja synkronoida varauksia, vastaanottaa maksun (Wink on kauppias), säilyttää attribuution ja tilata tapahtumia." },
+  { title: "Miten AI-agentti yhdistyy Winkiä varten?", content: "Ohjaa yhteensopiva MCP-asiakas isännöityyn palvelimeen osoitteessa https://docs.mcp.wink.travel/mcp (SSE-varayhteys /sse). Claude Codesta: claude mcp add --transport http wink-docs https://docs.mcp.wink.travel/mcp. Agentti voi sitten käyttää api_search- ja docs_search-työkaluja lukeakseen reaaliaikaisia OpenAPI-toimintoja, pyyntö-/vastaussopimuksia ja tehtäväreseptejä." },
+  { title: "Mitä AI-agentti voi oikeasti tehdä Winkiä käyttäen tänään?", content: "Tänään REST API:n ja MCP-palvelimen kautta: löytää alustan, hakea varattavissa olevaa tarjontaa (mukaan lukien maantieteellinen tilahaku), lukea reaaliaikaiset hinnat ja saatavuuden 11 yhdistetyn kanavahallinnan kautta, luoda varauksia ja synkronoida niiden elinkaari PMS:n/kanavahallinnan kanssa, vastaanottaa maksu (Wink on kauppias), säilyttää 6 kuukauden attribuutio ja ansaita kumppanivirtojen kautta, tilata yli 64 webhook-tapahtumaa, luoda AI-sisältöä ja upottaa varattavissa oleva tarjonta Web Components -komponenttien avulla." },
+  { title: "Voiko AI-agentti suorittaa hotellivarauksen Winkin kautta?", content: "Kyllä. Varausten luominen on REST API -toiminto, ja Booking Engine hoitaa tapahtuman — kassalle siirtymisen, maksun, vahvistuksen ja varauksen synkronoinnin. Agentti, joka kutsuu varaus-API:a matkustajan puolesta, voi suorittaa todellisen, vahvistetun varauksen lähdetiedot säilyttäen." },
+  { title: "Miten hotelli tulee varattavaksi AI-agentin kautta Winkin kautta?", content: "Yksinkertaisesti asettamalla profiilinsa Winkiin. Kun hotellin tarjonta, hinnat ja saatavuus ovat reaaliaikaisia (Extranetin kautta), se on automaattisesti löydettävissä ja varattavissa hyväksyttyjen AI-agenttien kautta REST API:n ja isännöidyn MCP-palvelimen kautta — ei erillistä, hotellikohtaista AI-integraatiota. Agentti hakee hotellin reaaliaikaisen varaston, luo varauksen ja suorittaa maksun Booking Enginen kautta, säilyttäen attribuution. Jokainen Winkissä oleva hotelli on oletuksena agenttivalmis." },
+  { title: "Miten hotellin varaaminen Winkin kautta eroaa ChatGPT:stä yhdessä Expedian tai Booking.comin kanssa?", content: "Avustajaintegraatiot kuten ChatGPT yhdessä Expedian tai Booking.comin kanssa ovat vahvoja löytämisessä — reaaliaikaiset hinnat, kuvat ja kartat chatin sisällä — mutta matkustaja ohjataan tyypillisesti toimittajan omaan verkkosivustoon tai sovellukseen viimeistelyä ja maksua varten. Winkissä agentti tekee kaupan suoraan hotellin omistamaa, reaaliaikaista tarjontaa vastaan: se lukee todelliset hinnat ja saatavuuden, luo varauksen ja suorittaa maksun Booking Enginen kautta yhdellä prosessilla — ja voi ansaita kumppanipalkkion tuloksesta. Löytäminen voi tapahtua missä tahansa; toteutus tapahtuu Winkissä." },
+  { title: "Onko Wink ainoa alusta, joka antaa AI-agenttien varata ja maksaa hotelleista?", content: "Ei — agenttivetoisesta hotellikaupasta on tulossa uusi kategoria, ja useat matkailu- ja maksutoimijat ovat ilmoittaneet tai julkaisseet kokonaisvaltaisen agenttivarauksen vuoteen 2026 mennessä. Winkin erottava piirre on yhdistelmä: tarjonta on hotellin omistamaa ja suoraa (ei GDS-jälleenmyyntiä tai verkkohakua), agentti voi hakea, varata, maksaa JA ansaita yhdellä kaupankäyntikerroksella, ja se on kutsuttavissa reaaliajassa REST API:n ja isännöidyn MCP-palvelimen kautta — ei tulevaisuuden suunnitelma. Hotellit säilyttävät jakelun hallinnan; agentista tulee attribuoitu, ansaitseva kanava." },
+  { title: "Mitkä agenttikaupan ja AI-standardit Wink tukee?", content: "Wink on API-ensimmäinen ja pyörittää isännöityä MCP (Model Context Protocol) -palvelinta tänään, joten mikä tahansa MCP-yhteensopiva agentti — Claude, Codex, Cursor ja muut — voi löytää ja kutsua sen reaaliaikaisia OpenAPI-sopimuksia. Winkin varaus- ja maksuelementit on suunniteltu toimimaan yhdessä kehittyvän agenttikaupan pinon kanssa — Agentic Commerce Protocol (ACP), Googlen Agent Payments Protocol (AP2), Agent2Agent (A2A) ja x402-tyyliset agenttimaksut — kun nämä standardit vakiintuvat, sen sijaan että lukitsisivat agentit omistettuun polkuun." },
+  { title: "Onko olemassa AI-taitoa rakentamiseen Winkissä?", content: "Kyllä — wink-api-builder on siirrettävä agenttitaito, joka käyttää MCP-palvelinta totuuden lähteenä. Se ohjaa agentin api_searchin kautta reaaliaikaisiin pyyntö-/vastaussopimuksiin, autentikointiin ja varmennettuun koodiin, ja merkitsee ristiriidat olemassa olevan koodin ja nykyisen API:n välillä. Se toimii Claude Coden, Codexin, Cursorin ja muiden taitokelpoisten asiakkaiden kanssa." },
+  { title: "Voiko AI-agentti ansaita affiliate- tai kumppanina?", content: "Winkin kumppanimalli säilyttää lähde- ja kampanjaattribuution 6 kuukauden ajan klikkausta kohden ja maksaa 10 % oletuspalkkion vahvistetuista varauksista. Agentti, joka luo pätevää kysyntää ja ohjaa varauksen, voi olla attribuoitu lähde saman kumppanin ja Booking Enginen infrastruktuurin kautta." },
+  { title: "Korvaako Agentic AI Booking Enginen?", content: "Ei. Agentic AI luo tai ohjaa intentiä; Booking Engine pysyy toteutuskerroksena kassalle, maksulle, vahvistukselle ja varauksen synkronoinnille. Jokainen agentin siirto ratkaistaan Booking Enginen kautta taustalla." },
+  { title: "Mistä kehittäjän tai agentin tulisi aloittaa?", content: "Yhdistä MCP-palvelimeen, lue Build on Wink, MCP Server ja AI Skills -dokumentaatio. Pyydä API-käyttöoikeutta, kun käyttötapaus ja kaupallinen reitti ovat selkeät." },
+];
+
+<div class="not-content mkt-page">
+
+<AgentJsonLd faqs={faqs} />
+
+<BreadcrumbJsonLd items={[{ name: "Etusivu", url: "https://wink.travel/" }, { name: "Agentic AI" }]} />
+
+{/* Hero — agent conversation. Full-bleed per the house `data-full-bleed` pattern,
+    with the breadcrumb inside the band so it lines up with the headline instead of
+    sitting in Starlight's narrower column above a full-width hero. */}
+<section data-full-bleed class="@container relative w-full overflow-hidden border-b border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white">
+  <div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+    <div class="absolute -left-24 -top-10 size-80 rounded-full bg-[#ff6b35]/20 blur-[100px]"></div>
+    <div class="absolute -bottom-16 -right-16 size-96 rounded-full bg-[#9333ea]/30 blur-[120px]"></div>
+  </div>
+  <div class="relative mx-auto w-full max-w-7xl px-4 pb-20 pt-8 lg:pb-24">
+    <nav aria-label="Breadcrumb" class="text-sm text-white/60">
+      <a href="/" class="transition-colors hover:text-white">Etusivu</a>
+      <span class="px-1.5 text-white/55">/</span>
+      <span class="text-white">Agentic AI</span>
+    </nav>
+    <div class="mt-10 grid items-center gap-12 lg:mt-12 lg:min-h-[33rem] @lg:grid-cols-[1fr_1.02fr]">
+    {/* Left — copy */}
+    <div class="text-center @lg:text-left">
+      <span class="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-xs font-extrabold uppercase tracking-wider text-[#ff8a5c] ring-1 ring-white/15 backdrop-blur @lg:mx-0"><span class="size-1.5 rounded-full bg-gradient-to-r from-[#ff6b35] to-[#ec4899]"></span> Agentic AI</span>
+      <h1 class="font-heading mt-6 text-4xl font-extrabold leading-[1.05] tracking-tight text-balance @lg:text-5xl @2xl:text-6xl">AI-agentit voivat suunnitella matkan. <span class="wink-shimmer bg-gradient-to-r from-[#ff8a5c] via-[#ec4899] to-[#a855f7] bg-clip-text text-transparent">Lähes kukaan ei voi varata sitä.</span></h1>
+      <p class="mx-auto mt-5 max-w-xl text-pretty text-lg text-white/75 @lg:mx-0 @lg:text-xl">Hotellin suosittelu on sisällöllinen ongelma. Varaaminen on kaupankäyntiongelma — reaaliaikaiset hinnat, hallittu varasto, maksu, suoritus ja sopimus hotellin kanssa. Wink on infrastruktuuri, joka sulkee tämän kuilun: agentit löytävät, varaavat <em class="not-italic font-semibold text-white">ja maksavat</em> hotellin hallitsemasta tarjonnasta reaaliaikaisen REST API:n ja isännöidyn MCP-palvelimen kautta.</p>
+      <div class="mt-8 flex flex-col items-center justify-center gap-3 @lg:justify-start sm:flex-row">
+        <a href="/developers/build-on-wink/" class="inline-flex h-12 items-center justify-center rounded-md bg-[#ff6b35] px-7 text-base font-semibold text-white transition-colors hover:bg-[#e85b29]">Katso dokumentaatio</a>
+        <a href="#agents" class="inline-flex h-12 items-center justify-center rounded-md bg-white/10 px-7 text-base font-medium text-white ring-1 ring-white/20 backdrop-blur transition-colors hover:bg-white/15">Yhdistä agentti</a>
+      </div>
+      <div class="mt-7 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 font-mono text-xs text-white/70"><span class="size-1.5 animate-pulse rounded-full bg-emerald-400"></span> MCP-palvelin käytössä · docs.mcp.wink.travel/mcp</div>
+    </div>
+
+    {/* Right — agent conversation (swappable infographic) */}
+    <AgentConversation />
+    </div>
+  </div>
+</section>
+
+{/* Direct answer */}
+<section class="mx-auto w-full max-w-3xl px-4 pt-24 pb-24 text-center">
+  <p class="mkt-kicker text-primary">Miksi useimmat AI-agentit eivät voi varata hotellia?</p>
+  <p class="mkt-sub text-muted-foreground mt-5">Wink on API-ensimmäinen: jokainen alustan ominaisuus on kutsuttavissa ulkoisesti, ja isännöity MCP-palvelin paljastaa reaaliaikaiset API-sopimukset AI-agenteille. Sen sijaan, että pakotettaisiin jokainen matkustaja verkkosivuston kautta, Wink antaa hyväksytyille agenteille rakenteellisen pääsyn hotellitarjontaan, hintoihin, saatavuuteen, varauksiin, maksuihin, attribuutioon ja tapahtumiin — sama infrastruktuuri, joka pyörittää Winkia itseään.</p>
+  <div class="mx-auto mt-7 max-w-2xl rounded-2xl border-2 border-primary/30 bg-primary/[0.04] px-6 py-5 text-pretty text-foreground/90"><strong class="text-foreground">Jokainen hotelli tulee agenttivalmiiksi yksinkertaisesti asettamalla profiilinsa Winkiin.</strong> Kun sen tarjonta, hinnat ja saatavuus ovat reaaliaikaisia, hyväksytyt AI-agentit voivat hakea, varata ja maksaa sitä vastaan API:n ja MCP-palvelimen kautta — ei erillistä, hotellikohtaista AI-integraatiota vaadita.</div>
+</section>
+
+{/* Live proof — the argument above is shipped, not roadmap. Implementation
+    detail deliberately lives on /builders/ so this page stays the thesis. */}
+<section id="agents" class="@container w-full border-y border-border bg-muted/30" style="scroll-margin-top:5rem">
+  <div class="mx-auto w-full max-w-4xl px-4 py-24 text-center">
+    <p class="mkt-kicker text-primary">Käytössä jo tänään, ei tulevaisuuden suunnitelma</p>
+    <h2 class="mkt-h2 font-heading mt-3">Neljän vaiheen matka agentista vahvistettuun, maksettuun varaukseen.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-2xl">Yhdistä isännöity MCP-palvelin, ratkaise intentti todellisiksi toiminnoiksi reaaliaikaisen API:n kautta, luo varmennettua koodia ja anna sitten Booking Enginen hoitaa kassalle siirtyminen, maksu, vahvistus ja PMS-synkronointi.</p>
+    <ol class="mx-auto mt-10 grid gap-3 text-left @lg:grid-cols-4">
+      <li class="rounded-xl border border-border bg-card px-4 py-3 text-sm"><span class="font-mono text-xs text-primary">01</span><span class="mt-1 block font-semibold">Yhdistä MCP</span></li>
+      <li class="rounded-xl border border-border bg-card px-4 py-3 text-sm"><span class="font-mono text-xs text-primary">02</span><span class="mt-1 block font-semibold">Hae reaaliaikaista API:a</span></li>
+      <li class="rounded-xl border border-border bg-card px-4 py-3 text-sm"><span class="font-mono text-xs text-primary">03</span><span class="mt-1 block font-semibold">Rakenna varmennettua koodia</span></li>
+      <li class="rounded-xl border border-border bg-card px-4 py-3 text-sm"><span class="font-mono text-xs text-primary">04</span><span class="mt-1 block font-semibold">Varaa &amp; saa maksu</span></li>
+    </ol>
+    <div class="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <a href="/builders/#agent-quickstart" class="inline-flex h-12 items-center justify-center rounded-md bg-[#ff6b35] px-7 text-base font-semibold text-white transition-colors hover:bg-[#e85b29]">Katso integraatiovaiheet</a>
+      <a href="/developers/mcp/" class="inline-flex h-12 items-center justify-center rounded-md border border-border px-7 text-base font-medium transition-colors hover:bg-muted">MCP-palvelimen dokumentaatio</a>
+    </div>
+    <p class="text-muted-foreground mt-5 inline-flex items-center gap-2 font-mono text-xs"><span class="size-1.5 animate-pulse rounded-full bg-emerald-500"></span> docs.mcp.wink.travel/mcp</p>
+  </div>
+</section>
+
+{/* What an agent can do — capability map */}
+<section class="@container mx-auto w-full max-w-7xl px-4 pt-24">
+  <div class="mx-auto mb-14 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Ominaisuuskartta</p>
+    <h2 class="mkt-h2 font-heading mt-3">Mitä AI-agentti voi tehdä Winkin kautta.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">Jokainen alla oleva ominaisuus on käytettävissä tänään REST API:n ja MCP-palvelimen kautta — perustuen samoihin sopimuksiin, joilla Wink toimii.</p>
+  </div>
+  <div class="grid gap-5 @md:grid-cols-2 @2xl:grid-cols-3">
+    {[
+      { icon: IconMapSearch, title: "Hae hotellivarastoa", desc: "Löydä varattavissa oleva tarjonta maantieteellisen tilahaun avulla — piste, ympyrä, suorakulmio tai monikulmio — sekä GeoIP-tunnistus." },
+      { icon: IconCalendarStats, title: "Lue reaaliaikaiset hinnat & saatavuus", desc: "Hae reaaliaikaiset hinnat, saatavuus ja varasto 11 yhdistetyn kanavahallinnan kautta." },
+      { icon: IconCalendarCheck, title: "Luo & synkronoi varauksia", desc: "Luo varauksia API:n kautta; luo / päivitä / peruuta synkronointi yhdistettyyn PMS:ään tai kanavahallintaan täydellä elinkaaren seurannalla." },
+      { icon: IconCreditCard, title: "Vastaanota maksu", desc: "Wink hoitaa kassalle siirtymisen, peruutusehtojen logiikan ja maksun varauksen takana — Wink on kauppias." },
+      { icon: IconCoin, title: "Säilytä attribuutio & ansaitse", desc: "Lähde- ja kampanjakonteksti säilyy matkan ajan — 6 kuukauden klikkauskohtainen attribuutio ja 10 % oletuspalkkio vahvistetuista varauksista." },
+      { icon: IconWebhook, title: "Reagoi yli 64 tapahtumaan", desc: "Tilaa webhook-tapahtumia — varaukset, maksut, hyvitykset, kanavahallinnan päivitykset — ja käynnistä jatkotoimet." },
+      { icon: IconSparkles, title: "Luo sisältöä", desc: "AI-sisältöä 9 varastotyypille ja 12 äänensävyllä; yhden URL-osoitteen kautta kiinteistön rekisteröinti." },
+      { icon: IconComponents, title: "Upota varattavissa oleva tarjonta", desc: "Lisää reaaliaikainen, varattavissa oleva hotellitarjonta mihin tahansa pintaan Web Components -komponenttien ja minimaalisen koodin avulla." },
+      { icon: IconCode, title: "Rakenna koko API:lla", desc: "Jokainen Wink-ominaisuus on kutsuttavissa ulkoisesti RESTin kautta, OAuth2-todennuksella ja virallisilla SDK:illa — integroi kuin järjestelmä olisi oma." },
+    ].map((c) => (
+      <div class="flex flex-col rounded-2xl border border-border bg-card p-6">
+        <span class="mb-4 flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-white"><c.icon class="size-6" /></span>
+        <h3 class="font-heading text-base font-semibold">{c.title}</h3>
+        <p class="text-muted-foreground mt-2 text-sm text-pretty">{c.desc}</p>
+        <span class="mt-4 inline-flex w-fit items-center gap-1.5 rounded-full bg-emerald-500/10 px-2.5 py-1 text-xs font-semibold text-emerald-600 dark:text-emerald-400"><span class="size-1.5 rounded-full bg-emerald-500"></span>Käytettävissä nyt</span>
+      </div>
+    ))}
+  </div>
+</section>
+
+{/* The agentic shift — before/after flow */}
+<section class="@container mx-auto w-full max-w-5xl px-4 pt-24">
+  <div class="mx-auto mb-12 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Muutos</p>
+    <h2 class="mkt-h2 font-heading mt-3">Matkustajasta verkkosivustolle matkustajasta agentille.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">Vanhan mallin mukaan matkustaja teki työn. Agenttisessa mallissa agentti tulee käyttöliittymäksi — ja Wink kaupankäyntikerrokseksi vastauksen takana.</p>
+  </div>
+  {/* Before/after flow — swappable infographic (infographics/AgenticShiftFlow.astro) */}
+  <AgenticShiftFlow />
+</section>
+
+{/* Why Wink — recommend vs transact */}
+<section class="@container mx-auto w-full max-w-5xl px-4 pt-24">
+  <div class="mx-auto mb-12 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Miksi Wink</p>
+    <h2 class="mkt-h2 font-heading mt-3">AI-vastaus ei ole varaus.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">Suositus tarvitsee rakenteellisen tarjonnan, reaaliaikaiset hinnat, kassalle siirtymisen, maksun, vahvistuksen ja attribuution tullakseen kaupankäynniksi.</p>
+  </div>
+  <div class="grid gap-6 @md:grid-cols-2">
+    <div class="rounded-2xl border border-border bg-muted/30 p-7">
+      <h3 class="font-heading text-lg font-semibold text-muted-foreground">AI-agentti ilman infrastruktuuria</h3>
+      <ul class="mt-5 space-y-3">
+        {["Verkkohakua, usein vanhentunutta tarjontaa", "Hinnat, joita ei välttämättä voi varata", "Suosittelee, sitten ohjaa varauksen verkkosivustolle tai OTA:lle", "Ei attribuutiota — eikä tapaa ansaita agentille", "Menettää langan ehdotuksen jälkeen"].map((b) => (
+          <li class="flex items-start gap-2.5"><IconX class="mt-0.5 size-5 shrink-0 text-muted-foreground/60" /><span class="text-sm text-muted-foreground">{b}</span></li>
+        ))}
+      </ul>
+      <p class="mt-6 text-sm font-semibold text-muted-foreground">Voi suositella.</p>
+    </div>
+    <div class="rounded-2xl border-2 border-primary/30 bg-primary/[0.04] p-7">
+      <h3 class="font-heading text-lg font-semibold text-primary">AI-agentti Winkissä</h3>
+      <ul class="mt-5 space-y-3">
+        {["Reaaliaikainen, hotellin omistama tarjonta — ei verkkohakua tai jälleenmyyntiä", "Reaaliaikaiset hinnat ja saatavuus API:n kautta", "Varaa JA maksa yhdellä prosessilla — Wink hoitaa maksun", "Agentti voi ansaita — attribuutio + 10 % oletuspalkkio", "Vahvistettu, synkronoitu PMS:ään, webhookit — käytössä jo tänään"].map((b) => (
+          <li class="flex items-start gap-2.5"><IconCheck class="mt-0.5 size-5 shrink-0 text-primary" /><span class="text-sm text-foreground/90">{b}</span></li>
+        ))}
+      </ul>
+      <p class="mt-6 text-sm font-semibold text-primary">Voi tehdä kauppaa.</p>
+    </div>
+  </div>
+</section>
+
+{/* AI agents for everyone */}
+<section class="@container mx-auto w-full max-w-7xl px-4 pt-24">
+  <div class="mx-auto mb-14 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Jokainen osallistuja agenttina</p>
+    <h2 class="mkt-h2 font-heading mt-3">Agentti matkustajille, hotelleille, kumppaneille ja rakentajille.</h2>
+  </div>
+  <div class="grid gap-6 @md:grid-cols-2">
+    {[
+      { icon: IconUser, who: "Matkustajille", title: "Hae, varaa ja hallinnoi majoitusta", desc: "Agentti toimii rakenteellisen tarjonnan, reaaliaikaisten hintojen ja ehtojen kanssa — ja luo varauksen Booking Enginen kautta.", prompt: "Löydä aikuisten ylellinen hotelli Chiang Maissa ensi kuussa kylpylällä. Varaa se." },
+      { icon: IconBuildingStore, who: "Hotelleille", title: "Valvojat, ei operaattorit", desc: "Agentit auttavat luomaan, päivittämään ja analysoimaan Extranetin, Socialin ja Studion kautta — hotelli säilyttää säännöt.", prompt: "Luo ensi kuun sosiaalisen median sisältö ja merkitse vähäisen käyttöasteen päivät mainostamista varten." },
+      { icon: IconUsersGroup, who: "Kumppaneille & tekijöille", title: "Automatisoi kampanjat ja ansaitse", desc: "Löydä kelvolliset hotellit, rakenna aineistoja ja myymälöitä, julkaise ja pidä attribuutio yhteydessä.", prompt: "Luo kampanja, joka mainostaa luksuslomakohteita Malediiveilla." },
+      { icon: IconCode, who: "Kehittäjille", title: "Rakenna uusia matkailukokemuksia", desc: "AI-konsergit, pankki- ja kanta-asiakasagentit — rakennettu MCP-palvelimen, REST API:n ja Booking Enginen päälle.", prompt: "Upota AI-hotellivaraus pankkisovellukseemme Wink API:n avulla." },
+    ].map((c) => (
+      <div class="flex flex-col rounded-2xl border border-border bg-card p-7">
+        <span class="mb-4 flex size-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-white"><c.icon class="size-6" /></span>
+        <span class="text-xs font-semibold uppercase tracking-wider text-primary">{c.who}</span>
+        <h3 class="font-heading mt-2 text-xl font-semibold">{c.title}</h3>
+        <p class="text-muted-foreground mt-2 text-pretty">{c.desc}</p>
+        <p class="mt-5 rounded-lg border border-border bg-muted/40 px-4 py-3 text-sm italic text-foreground/80">“{c.prompt}”</p>
+      </div>
+    ))}
+  </div>
+</section>
+
+{/* The stack */}
+<section class="@container mx-auto w-full max-w-7xl px-4 pt-24">
+  <div class="mx-auto mb-10 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Rakennettu koko alustalle</p>
+    <h2 class="mkt-h2 font-heading mt-3">Agentit toimivat yhdistetyssä pinossa.</h2>
+  </div>
+  <div class="mx-auto flex max-w-3xl flex-wrap justify-center gap-3">
+    {[
+      { name: "Extranet", href: "/products/extranet/" },
+      { name: "Studio", href: "/products/studio/" },
+      { name: "Social", href: "/products/social/" },
+      { name: "WinkLinks", href: "/products/winklinks/" },
+      { name: "Traveliko", href: "/products/traveliko/" },
+      { name: "Developers", href: "/builders/" },
+      { name: "Platforms & AI", href: "/platforms/" },
+    ].map((p) => (
+      <a href={p.href} class="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-medium transition-colors hover:border-primary/40">
+        <span class="size-1.5 rounded-full bg-primary" aria-hidden="true"></span>
+        {p.name}
+      </a>
+    ))}
+  </div>
+  <p class="text-muted-foreground mx-auto mt-10 max-w-xl text-center text-pretty"><strong class="text-foreground"><a href="/products/booking-engine/" class="text-primary underline underline-offset-4">Booking Engine</a> hoitaa varauksen toteutuksen jokaisen agentin siirron alla</strong> — kassalle siirtyminen, maksu, vahvistus ja varauksen synkronointi.</p>
+</section>
+
+{/* Open standards — interoperability, crawlable for AEO */}
+<section class="@container mx-auto w-full max-w-5xl px-4 pt-24">
+  <div class="mx-auto mb-12 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Avoimet standardit, ei aidattu puutarha</p>
+    <h2 class="mkt-h2 font-heading mt-3">Rakennettu toimimaan yhdessä agenttikaupan pinon kanssa.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-2xl">Agenttivetoisesta hotellivarauksesta on tulossa todellinen kategoria — ja ala yhtenäistyy avoimiin protokolliin yhden yrityksen kassalle siirtymisen sijaan. Wink toimii näillä standardeilla jo tänään ja on rakennettu liitettäväksi muihin, kun ne vakiintuvat, joten agentit eivät koskaan lukitu omistettuun polkuun.</p>
+  </div>
+  <div class="grid gap-5 @md:grid-cols-2">
+    <div class="rounded-2xl border-2 border-primary/30 bg-primary/[0.04] p-7">
+      <span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 px-2.5 py-1 text-xs font-semibold text-emerald-600 dark:text-emerald-400"><span class="size-1.5 rounded-full bg-emerald-500"></span>Käytössä jo tänään</span>
+      <h3 class="font-heading mt-4 text-lg font-semibold">MCP — Model Context Protocol</h3>
+      <p class="text-muted-foreground mt-2 text-sm text-pretty">Isännöity MCP-palvelin paljastaa Winkin reaaliaikaiset OpenAPI-sopimukset mille tahansa MCP-yhteensopivalle agentille — Claude, Codex, Cursor ja muut — osoitteessa <code class="rounded bg-muted px-1 py-0.5 text-xs">docs.mcp.wink.travel/mcp</code>. Agentit löytävät ja kutsuvat todellisia toimintoja arvaamisen sijaan.</p>
+    </div>
+    <div class="rounded-2xl border border-border bg-card p-7">
+      <span class="inline-flex items-center gap-1.5 rounded-full border border-border bg-muted/40 px-2.5 py-1 text-xs font-semibold text-muted-foreground">Suunnittelultaan yhteensopiva</span>
+      <h3 class="font-heading mt-4 text-lg font-semibold">ACP · AP2 · A2A · x402</h3>
+      <p class="text-muted-foreground mt-2 text-sm text-pretty">Winkin varaus- ja maksuelementit on suunniteltu toimimaan yhdessä kehittyvän agenttimaksupinon kanssa — Agentic Commerce Protocol (ACP), Googlen Agent Payments Protocol (AP2), Agent2Agent (A2A) ja x402-tyyliset agenttimaksut — kun nämä standardit kypsyvät, Booking Engine toimii suorituskerroksena taustalla (Wink on kauppias).</p>
+    </div>
+  </div>
+</section>
+
+{/* Where this is heading — roadmap, clearly labeled */}
+<section class="mx-auto w-full max-w-3xl px-4 pt-24">
+  <div class="rounded-2xl border border-dashed border-primary/30 bg-primary/[0.03] p-8">
+    <span class="inline-flex items-center gap-1.5 rounded-full border border-primary/30 bg-card px-3 py-1 text-xs font-semibold text-primary">Mihin tämä on menossa</span>
+    <p class="text-muted-foreground mt-5 text-pretty">Yllä olevat ominaisuudet ovat käytössä jo tänään. Suunta on syvempään agenttikohtaiseen kaupankäyntiin: rikkaammat agentin varaustoiminnot, agentin identiteetti ja valtuutus toimia matkustajan puolesta sekä agenttien osallistuminen attribuoituina, ansaitsevina lähteinä kumppaniverkostossa. Winkin strateginen asema — <strong class="text-foreground">matkakaupan infrastruktuuri AI-agenteille</strong> — on punainen lanka tämän päivän API:sta tulevaisuuteen.</p>
+  </div>
+</section>
+
+{/* FAQ */}
+<FaqGrid
+  heading="Agentic AI Usein Kysytyt Kysymykset"
+  description="Mitä se tarkoittaa, miten yhdistää ja mitä agentit voivat tehdä."
+  items={faqs}
+/>
+
+{/* Final CTA */}
+<section class="w-full border-y border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white">
+  <div class="mx-auto w-full max-w-7xl px-4 py-24 text-center">
+    <h2 class="mkt-h2 font-heading">Valmis rakentamaan matkakauppaa AI-agenteille?</h2>
+    <p class="mx-auto mt-4 max-w-2xl text-pretty text-white/70 @lg:text-lg">Yhdistä MCP-palvelimeen, lue reaaliaikaiset sopimukset ja anna Booking Enginen hoitaa varaus. Tai ota yhteyttä meihin agentin pääsystä tuotteeseesi.</p>
+    <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <a href="/developers/build-on-wink/" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-[#ff6b35] px-8 text-base font-semibold text-white hover:bg-[#e85b29] sm:w-auto">Katso dokumentaatio</a>
+      <a href="/developers/mcp/" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-white px-8 text-base font-semibold text-[#1f0a40] hover:bg-white/90 sm:w-auto">Yhdistä MCP-palvelin</a>
+      <a href="https://cal.com/wink-ws36dy" class="inline-flex h-12 items-center justify-center px-4 text-sm font-medium text-white/80 underline underline-offset-4 hover:text-white">Pyydä demo</a>
+    </div>
+  </div>
+</section>
+
+</div>

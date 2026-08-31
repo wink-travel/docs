@@ -1,0 +1,359 @@
+---
+title: למפתחים — גישה ל-API למסחר במלונות
+description: "בנו מסחר במלונות עם גישת מפתחים של Wink: חיפוש, הזמנה, תשלום, webhooks, MCP, העברת AI ומימוש Booking Engine."
+template: splash
+marketingNav: true
+---
+import '/src/styles/splash-page.css';
+import BreadcrumbJsonLd from "@/components/marketing/BreadcrumbJsonLd.astro";
+
+import DeviceFrame from "@/components/marketing/DeviceFrame.astro";
+import FaqGrid from "@/components/marketing/FaqGrid.astro";
+import FaqJsonLd from "@/components/marketing/FaqJsonLd.astro";
+
+import IconBox from "@tabler/icons/outline/box.svg";
+import IconCpu from "@tabler/icons/outline/cpu.svg";
+import IconDeviceMobile from "@tabler/icons/outline/device-mobile.svg";
+import IconRefresh from "@tabler/icons/outline/refresh.svg";
+import IconRobot from "@tabler/icons/outline/robot.svg";
+import IconCode from "@tabler/icons/outline/code.svg";
+import IconComponents from "@tabler/icons/outline/components.svg";
+import IconBolt from "@tabler/icons/outline/bolt.svg";
+import IconSearch from "@tabler/icons/outline/search.svg";
+import IconAffiliate from "@tabler/icons/outline/affiliate.svg";
+import IconCheck from "@tabler/icons/outline/check.svg";
+import IconX from "@tabler/icons/outline/x.svg";
+import IconArrowRight from "@tabler/icons/outline/arrow-right.svg";
+import IconPlug from "@tabler/icons/outline/plug-connected.svg";
+import IconSparkles from "@tabler/icons/outline/sparkles.svg";
+import IconTool from "@tabler/icons/outline/tool.svg";
+import IconCalendarCheck from "@tabler/icons/outline/calendar-check.svg";
+import RouteConvergence from "@/components/marketing/infographics/RouteConvergence.astro";
+import DevTerminal from "@/components/marketing/infographics/DevTerminal.astro";
+
+export const faqs = [
+  { title: "האם יש דף מוצר נפרד לגישה ל-API?", content: "לא. הגישה ל-API מנוהלת דרך דף Builders ותיעוד Build on Wink, ולא דרך דף מוצר שיווקי עצמאי." },
+  { title: "האם הגישה ל-API מחליפה את Booking Engine?", content: "לא. הגישה ל-API מנתבת דרישה ולוגיקת אינטגרציה. Booking Engine נשאר השכבה למימוש תהליך התשלום, האישור וההשלמה הספציפיים למלון." },
+  { title: "האם עוזרי AI יכולים להשתמש ב-Wink?", content: "כן. שרת MCP מתארח מאפשר לסוכני AI לקרוא את חוזי ה-API החיים כדי שיוכלו לחפש מלאי מלונות בזמן אמת, ליצור הזמנות ולקבל תשלום דרך Booking Engine — להשלים הזמנה בזרימה אחת, לא רק להפנות את המשתמש לאתר. כל מלון מוכן לסוכן ברגע שהפרופיל שלו חי ב-Wink." },
+  { title: "האם אפשר להטמיע כרטיסי מלון או מפות בלי אינטגרציה מלאה של API?", content: "כן. Studio יכול ליצור Web Components כמו כרטיסי מלון, מפות, רשתות ונכסים מוטמעים אחרים כאשר מסלול קל יותר מספיק — Booking Engine מממש את ההזמנה מתחת." },
+  { title: "האם קבוצות מלונות יכולות להשתמש בגישת מפתחים?", content: "כן. קבוצות מלונות ומפעילים טכניים יכולים להשתמש בגישת מפתחים כאשר מאושרת לחבר את מלאי Wink, זרימות הזמנה ודיווח עם מערכות פנימיות." },
+  { title: "מאיפה כדאי למפתחים להתחיל?", content: "התחברו לשרת MCP, קראו את תיעוד Build on Wink, ואז בקשו גישה ל-API כאשר מקרה השימוש, היקף הטכני והמסלול המסחרי ברורים." },
+  { title: "האם הגישה למפתחים פתוחה לכולם?", content: "הגישה למפתחים צריכה להיות מבוקרת. תיעוד ציבורי ושרת MCP יכולים לתמוך בהערכה, אך אישורי API ושימוש בייצור צריכים להתאים למוצר ולאישור המסחרי." },
+];
+
+<div class="not-content mkt-page">
+
+<FaqJsonLd faqs={faqs} />
+
+<BreadcrumbJsonLd items={[{ name: "בית", url: "https://wink.travel/" }, { name: "פתרונות", url: "https://wink.travel/solutions/" }, { name: "Builders" }]} />
+
+{/* Hero — dark, full-bleed (see `data-full-bleed` in src/styles/tweaks.css).
+    The breadcrumb lives INSIDE the band: it shares the hero's content column, so
+    it lines up with the badge and headline instead of sitting in Starlight's
+    narrower default column above a full-width band. */}
+<section data-full-bleed class="relative w-full overflow-hidden border-b border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white">
+  <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+    <div class="absolute -left-24 -top-10 size-96 rounded-full bg-[#ff6b35]/20 blur-[120px]"></div>
+    <div class="absolute -bottom-16 -right-16 size-[34rem] rounded-full bg-[#9333ea]/25 blur-[140px]"></div>
+  </div>
+  <div class="@container relative mx-auto w-full max-w-7xl px-4 pb-20 pt-8 lg:pb-24">
+    <nav aria-label="Breadcrumb" class="text-sm text-white/60">
+      <a href="/" class="transition-colors hover:text-white">בית</a>
+      <span class="px-1.5 text-white/55">/</span>
+      <a href="/solutions/" class="transition-colors hover:text-white">פתרונות</a>
+      <span class="px-1.5 text-white/55">/</span>
+      <span class="text-white">Builders</span>
+    </nav>
+    <div class="mt-10 grid items-center gap-12 lg:mt-12 lg:min-h-[33rem] lg:grid-cols-2 lg:gap-16">
+      <div>
+        <span class="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-xs font-extrabold uppercase tracking-wider text-[#ff8a5c] ring-1 ring-white/15 backdrop-blur"><span class="size-1.5 rounded-full bg-gradient-to-r from-[#ff6b35] to-[#ec4899]"></span> למפתחים</span>
+        <h1 class="font-heading mt-6 text-4xl font-extrabold leading-[1.05] tracking-tight text-balance @lg:text-5xl @2xl:text-[3.25rem]">
+          בנו מסחר במלונות <span class="bg-gradient-to-r from-[#ff8a5c] via-[#ec4899] to-[#a855f7] bg-clip-text text-transparent">בתוך המוצר שלכם.</span>
+        </h1>
+        <p class="mt-5 max-w-xl text-pretty text-lg text-white/75 @lg:text-xl">
+          מסחר במלונות עם API-ראשון: חיפוש, הזמנה, תשלום, 64+ webhooks, שיוך והעברת AI — עם
+          שרת MCP מתארח כך שסוכנים קוראים את החוזים החיים, ו-Booking Engine מממש מתחת.
+        </p>
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+          <a href="/developers/build-on-wink/" class="inline-flex h-12 items-center justify-center rounded-md bg-[#ff6b35] px-7 text-base font-semibold text-white transition-colors hover:bg-[#e85b29]">צפו בתיעוד</a>
+          <a href="https://app.wink.travel" class="inline-flex h-12 items-center justify-center rounded-md bg-white/10 px-7 text-base font-medium text-white ring-1 ring-white/20 backdrop-blur transition-colors hover:bg-white/15">בקש גישה ל-API</a>
+        </div>
+        <div class="mt-7 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-white/65">
+          <span class="inline-flex items-center gap-1.5"><IconCheck class="size-4 text-[#ff8a5c]" /> REST + OAuth2 + SDKs</span>
+          <span class="inline-flex items-center gap-1.5"><IconCheck class="size-4 text-[#ff8a5c]" /> שרת MCP מתארח</span>
+          <span class="inline-flex items-center gap-1.5"><IconCheck class="size-4 text-[#ff8a5c]" /> 64+ אירועי webhook</span>
+        </div>
+      </div>
+      {/* Terminal visual — swappable infographic (infographics/DevTerminal.astro) */}
+      <DevTerminal />
+  </div>
+</div>
+</section>
+
+{/* Direct answer */}
+<section class="mx-auto w-full max-w-3xl px-4 pt-24 pb-24 text-center">
+  <p class="mkt-kicker text-primary">מה מפתחים יכולים לבנות עם Wink?</p>
+  <p class="mkt-sub text-muted-foreground mt-5">
+    מפתחים יכולים לבנות חיפוש מלונות, הזמנה, תשלום, webhook, שיוך, דיווח, העברת AI וזרימות מסחר מוטמעות במוצרים מאושרים. גישת המפתחים של Wink עובדת עם מלאי מבוקר מלונות מ-Extranet, הקשר שותפים מהרשת התשתיתית, העברת AI דרך Agentic AI, ומימוש Booking Engine לתשלום, אישור והשלמת הזמנה ספציפית למלון.
+  </p>
+</section>
+
+{/* Who it's for */}
+<section class="@container w-full border-y border-border bg-muted/30">
+  <div class="mx-auto w-full max-w-7xl px-4 py-24">
+    <div class="mx-auto mb-14 max-w-2xl text-center">
+      <p class="mkt-kicker text-primary">למי זה מיועד</p>
+      <h2 class="mkt-h2 font-heading mt-3">לצוותים הבונים מסחר במלונות, לא רק קוראים תיעוד.</h2>
+      <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">
+        גישת מפתחים מתאימה לצוותי מוצר, הנדסה, AI, פלטפורמה ותפעול. מעריכים אינטגרציה למוצר AI, בנק או סופר אפליקציה? ראו <a href="/platforms/" class="text-primary underline underline-offset-2">לפלטפורמות ו-AI</a>.
+      </p>
+    </div>
+    <div class="mx-auto grid max-w-4xl gap-5 @md:grid-cols-2">
+      {[
+        { icon: IconBox, title: "צוותי מוצר", desc: "הוסיפו מסחר במלונות לאפליקציה או פלטפורמה קיימת דרך גישת מפתחים + Booking Engine." },
+        { icon: IconCpu, title: "צוותי מוצר AI", desc: "נתבו כוונת מלון בהובלת עוזר לזרימות הזמנה מבוקרות עם Agentic AI ושרת MCP." },
+        { icon: IconAffiliate, title: "סוכנויות ו-DMC", desc: "בנו חנויות מותאמות, זרימות הזמנה או מוצרי מסלול עם Web Components." },
+        { icon: IconRefresh, title: "מנהל ערוץ / PMS", desc: "תאם זמינות, מחירים, הזמנות וזרימות אירועים קשורות." },
+      ].map((c) => (
+        <div class="flex flex-col rounded-2xl border border-border bg-card p-6">
+          <span class="mb-4 flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-white"><c.icon class="size-6" /></span>
+          <h3 class="font-heading text-base font-semibold">{c.title}</h3>
+          <p class="text-muted-foreground mt-2 text-sm text-pretty">{c.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+{/* The problem — dark before/after */}
+<section class="relative w-full overflow-hidden border-y border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white">
+  <div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+    <div class="absolute -left-24 -top-10 size-80 rounded-full bg-[#ff6b35]/20 blur-[100px]"></div>
+    <div class="absolute -bottom-16 -right-16 size-96 rounded-full bg-[#9333ea]/30 blur-[120px]"></div>
+    <img src="/favicon.svg" alt="" class="absolute -right-8 top-8 size-44 rotate-6 opacity-[0.06]" />
+  </div>
+  <div class="@container relative mx-auto w-full max-w-5xl px-4 py-24">
+    <div class="mx-auto mb-12 max-w-2xl text-center">
+      <p class="mkt-kicker text-[#ff8a5c]">למה לבנות עליו</p>
+      <h2 class="mkt-h2 font-heading mt-3">כרטיס מלון זה קל. מערכת הזמנות למלונות זה לא.</h2>
+      <p class="mkt-sub mx-auto mt-4 max-w-xl text-white/70">
+        מסחר במלונות דורש כללי מלאי, זמינות, מחירים, הצעות, מדיניות, תשלום, אישור, שיוך ודיווח. בנו על השכבות האלה במקום לבנות אותן מחדש.
+      </p>
+    </div>
+    <div class="grid gap-6 @md:grid-cols-2">
+      <div class="rounded-2xl border border-white/10 bg-white/[0.04] p-7">
+        <h3 class="font-heading text-lg font-semibold text-white/60">בנו את זה בעצמכם</h3>
+        <ul class="mt-5 space-y-3">
+          {[
+            "בנו מחדש כללי מלאי, מחירים ומדיניות",
+            "חברו תשלום לנתונים ספציפיים למלון",
+            "קשרו שיוך בין סשנים",
+            "ניהול תשלומים, החזרים ופיוס",
+            "הגבלת AI שלא ימציא זמינות",
+            "תחזוקה שוטפת עם שינויי מלונות יומיים",
+          ].map((b) => (
+            <li class="flex items-start gap-2.5"><IconX class="mt-0.5 size-5 shrink-0 text-white/30" /><span class="text-sm text-white/60">{b}</span></li>
+          ))}
+        </ul>
+      </div>
+      <div class="rounded-2xl border border-[#ff6b35]/30 bg-[#ff6b35]/[0.08] p-7">
+        <h3 class="font-heading text-lg font-semibold text-[#ff8a5c]">בנו על Wink</h3>
+        <ul class="mt-5 space-y-3">
+          {[
+            "אינטגרציה עם מלאי מאושר מ-Extranet",
+            "Booking Engine מטפל בתשלום, אישור ותשלום",
+            "שיוך לשישה חודשים נשמר לכל קליק",
+            "מנוי ל-64+ אירועי webhook",
+            "העברת AI מובנית דרך MCP + Agentic AI",
+            "5.5% כולל הכל — Booking Engine בכל העברה",
+          ].map((b) => (
+            <li class="flex items-start gap-2.5"><IconCheck class="mt-0.5 size-5 shrink-0 text-[#ff8a5c]" /><span class="text-sm text-white/90">{b}</span></li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* The model — how it works numbered cards */}
+<section class="@container mx-auto w-full max-w-7xl px-4 pt-24 pb-24">
+  <div class="mx-auto mb-14 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">המודל</p>
+    <h2 class="mkt-h2 font-heading mt-3">מהשיחה הראשונה להזמנה מאושרת.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">
+      מסלול אינטגרציה אחד מהחיבור למימוש.
+    </p>
+  </div>
+  <ol class="grid gap-5 md:grid-cols-3 xl:grid-cols-5">
+    {[
+      { t: "התחבר", d: "הוסף את שרת MCP המתארח או בקש גישה ל-API עם OAuth2 כדי להתחיל מול חוזים חיים." },
+      { t: "קרא חוזים חיים", d: "חפש פעולות וקרא סכמות בקשה/תגובה עדכניות — בלי ניחושים, בלי תיעוד מיושן." },
+      { t: "בנה את הזרימה", d: "חבר חיפוש, זמינות, הזמנה, תשלום ודיווח למוצר שלך." },
+      { t: "הירשם לאירועים", d: "הגיב ל-64+ אירועי webhook: סטטוס הזמנה, תשלומים, החזרים, ביטולים ושינויים בערוצים." },
+      { t: "ממש ב-Booking Engine", d: "כל קריאה מתממשת ב-Booking Engine לתשלום, אישור והשלמת הזמנה ספציפית למלון." },
+    ].map((s, i) => (
+      <li class="rounded-2xl border border-border bg-card p-6">
+        <span class="flex size-9 items-center justify-center rounded-full bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-sm font-bold text-white shadow-sm">{i + 1}</span>
+        <h3 class="font-heading mt-4 text-lg font-semibold">{s.t}</h3>
+        <p class="text-muted-foreground mt-2 text-sm text-pretty">{s.d}</p>
+      </li>
+    ))}
+  </ol>
+</section>
+
+{/* Agent quickstart — moved here from /agentic-ai/ so the thesis page argues
+    the case and this page carries the implementation. Linked from /agentic-ai/#agents. */}
+<section id="agent-quickstart" class="@container w-full border-y border-border bg-muted/30" style="scroll-margin-top:5rem">
+  <div class="mx-auto w-full max-w-5xl px-4 py-24">
+    <div class="mx-auto mb-12 max-w-2xl text-center">
+      <p class="mkt-kicker text-primary">לסוכני AI — התחילו כאן</p>
+      <h2 class="mkt-h2 font-heading mt-3">התחברו, ואז קראו את החוזים החיים.</h2>
+      <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">שרת MCP מתארח מאפשר לסוכן לגלות את ה-APIs של Wink ולבנות אינטגרציה עובדת בלי לנחש נקודות קצה.</p>
+    </div>
+
+    <div class="grid gap-6 @lg:grid-cols-2">
+      {/* Connect */}
+      <div class="flex flex-col rounded-2xl border border-border bg-card p-6">
+        <span class="mb-4 flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-white"><IconPlug class="size-6" /></span>
+        <h3 class="font-heading text-lg font-semibold">1 · התחבר לשרת MCP</h3>
+        <p class="text-muted-foreground mt-2 text-sm">נקודת קצה HTTP סטרימבלית (SSE fallback ב-<code class="rounded bg-muted px-1 py-0.5 text-xs">/sse</code>). מקוד קלוד:</p>
+        <pre class="mt-4 overflow-x-auto rounded-lg bg-[#1f0a40] p-4 font-mono text-xs leading-relaxed text-white/90"><code>claude mcp add --transport http \
+  wink-docs https://docs.mcp.wink.travel/mcp</code></pre>
+        <p class="text-muted-foreground mt-3 text-xs">עובד גם עם Codex, Cursor ו-VS Code — ראו את <a href="/developers/mcp/" class="text-primary underline underline-offset-2">תיעוד MCP</a>.</p>
+      </div>
+
+      {/* Search */}
+      <div class="flex flex-col rounded-2xl border border-border bg-card p-6">
+        <span class="mb-4 flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-white"><IconSparkles class="size-6" /></span>
+        <h3 class="font-heading text-lg font-semibold">2 · חפש ב-API החי</h3>
+        <p class="text-muted-foreground mt-2 text-sm">שני כלים ממירים כוונה לפעולות אמיתיות ותיעוד מושגים:</p>
+        <ul class="mt-4 space-y-2 text-sm">
+          <li class="flex items-start gap-2"><code class="mt-0.5 rounded bg-muted px-1.5 py-0.5 text-xs text-primary">api_search</code><span class="text-muted-foreground">מצא את הפעולה לקריאה — לדוגמה "חפש מלאי", "צור הזמנה", "קבל קבלה לתשלום"</span></li>
+          <li class="flex items-start gap-2"><code class="mt-0.5 rounded bg-muted px-1.5 py-0.5 text-xs text-primary">docs_search</code><span class="text-muted-foreground">מצא מושגים — "אימות", "webhooks", "שיוך"</span></li>
+        </ul>
+        <p class="text-muted-foreground mt-3 text-xs">כל תוצאה מחזירה URI <code class="rounded bg-muted px-1 py-0.5 text-xs">wink://</code> — פתח את הפעולה, סכמת בקשה/תגובה שלה, או <strong class="text-foreground/80">מתכון</strong> למשימה.</p>
+      </div>
+
+      {/* Build */}
+      <div class="flex flex-col rounded-2xl border border-border bg-card p-6">
+        <span class="mb-4 flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-white"><IconTool class="size-6" /></span>
+        <h3 class="font-heading text-lg font-semibold">3 · בנה עם מיומנות ה-AI</h3>
+        <p class="text-muted-foreground mt-2 text-sm"><code class="rounded bg-muted px-1.5 py-0.5 text-xs">wink-api-builder</code> משתמש בשרת MCP כמקור אמת: api_search → חוזים חיים → אימות → קוד מאומת, ומדווח על כל אי התאמה עם ה-API הנוכחי.</p>
+        <p class="text-muted-foreground mt-3 text-xs">עובד עם Claude Code, Codex ו-Cursor — ראו <a href="/developers/ai-skills/" class="text-primary underline underline-offset-2">מיומנויות AI</a>.</p>
+      </div>
+
+      {/* Fulfill */}
+      <div class="flex flex-col rounded-2xl border border-border bg-card p-6">
+        <span class="mb-4 flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-white"><IconCalendarCheck class="size-6" /></span>
+        <h3 class="font-heading text-lg font-semibold">4 · העבר ל-Booking Engine</h3>
+        <p class="text-muted-foreground mt-2 text-sm">צור את ההזמנה דרך ה-API ו-Booking Engine מממש אותה — תשלום, אישור וסנכרון הזמנה ל-PMS או מנהל ערוץ מחוברים, עם שמירת הקשר המקורי.</p>
+        <p class="text-muted-foreground mt-3 text-xs">הירשם ל-<code class="rounded bg-muted px-1 py-0.5 text-xs">booking.created</code> ועוד 63 אירועים כדי להגיב בזמן אמת.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{/* Signature feature — integrations converge on Booking Engine */}
+<section class="relative w-full overflow-hidden border-y border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white">
+  <div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+    <div class="absolute left-1/2 top-1/2 size-[28rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#9333ea]/25 blur-[130px]"></div>
+    <div class="absolute -left-20 top-0 size-72 rounded-full bg-[#ff6b35]/15 blur-[110px]"></div>
+  </div>
+  <div class="@container relative mx-auto w-full max-w-6xl px-4 py-24">
+    <div class="mx-auto mb-12 max-w-2xl text-center">
+      <p class="mkt-kicker text-[#ff8a5c]">מנוע אחד, כל אינטגרציה</p>
+      <h2 class="mkt-h2 font-heading mt-3">כל אינטגרציה מתכנסת ל-Booking Engine.</h2>
+      <p class="mkt-sub mx-auto mt-4 max-w-xl text-white/70">
+        לא משנה איך המוצר שלך שולח דרישה — API, סוכן, רכיב או קישור — ההזמנה מתממשת במקום אחד שאתה שולט בו.
+      </p>
+    </div>
+
+    {/* Signature infographic — swappable (infographics/RouteConvergence.astro) */}
+    <RouteConvergence
+      routes={["REST API", "MCP / agents", "Web Components", "WinkLinks", "Studio + network", "Partner apps"]}
+      outcomeTitle="הזמנה מאושרת"
+      outcomeNote="תשלום התקבל, האורח אושר, שיוך והקשר מקור נשמר."
+    />
+  </div>
+</section>
+
+{/* Choose the surface — gradient badges, aligned CTAs */}
+<section class="@container w-full border-y border-border bg-muted/30">
+  <div class="mx-auto w-full max-w-7xl px-4 py-24">
+    <div class="mx-auto mb-14 max-w-2xl text-center">
+      <p class="mkt-kicker text-primary">בחר את הממשק</p>
+      <h2 class="mkt-h2 font-heading mt-3">בחר את הממשק הנכון לפני שתבנה יותר מדי.</h2>
+      <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">
+        מאינטגרציה מותאמת מלאה ועד מסלול מוטמע קל יותר.
+      </p>
+    </div>
+    <div class="grid gap-5 @md:grid-cols-2 @2xl:grid-cols-3">
+      {[
+        { icon: IconCode, title: "API ו-MCP", desc: "בנה זרימות חיפוש, הזמנה, תשלום, webhook, שיוך ודיווח על REST + OAuth2 — עם שרת MCP לחוזים חיים.", href: "/api/overview" },
+        { icon: IconRobot, title: "Agentic AI", desc: "אפשר לסוכני AI לחפש, להזמין ולשלם מול מלאי מלונות חי — להשלים את ההזמנה, לא רק להפנות משתמשים לאתר.", href: "/agentic-ai/" },
+        { icon: IconBolt, title: "Booking Engine", desc: "טוען נתונים ספציפיים למלון ומטפל בתשלום, אישור והשלמת הזמנה.", href: "/products/booking-engine/" },
+        { icon: IconComponents, title: "Web Components", desc: "הוסף כרטיסים, מפות, רשתות, כפתורים ומודולים של מלונות לאתר או ממשק מוצר.", href: "/developers/build-on-wink/" },
+        { icon: IconDeviceMobile, title: "WinkLinks", desc: "פרסם רשומות מלונות שנבחרו תחת קישור ציבורי מובייל-ראשון.", href: "/products/winklinks/" },
+        { icon: IconSearch, title: "Studio + רשת", desc: "נהל גישת שותפים, ערוצי מכירה והקשר שיוך לדרישה בהובלת שותפים.", href: "/products/studio/" },
+      ].map((c) => (
+        <a href={c.href} class="group flex h-full flex-col rounded-2xl border border-border bg-card p-6 transition-colors hover:border-primary/40">
+          <span class="mb-4 flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-white"><c.icon class="size-6" /></span>
+          <h3 class="font-heading text-base font-semibold">{c.title}</h3>
+          <p class="text-muted-foreground mt-2 text-sm text-pretty">{c.desc}</p>
+          <span class="text-primary mt-auto inline-flex items-center gap-1.5 pt-5 text-sm font-semibold">לחקור <IconArrowRight class="size-4 transition-transform group-hover:translate-x-0.5" /></span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+{/* Web component showcase — the payoff */}
+<section class="@container mx-auto w-full max-w-7xl px-4 pt-24">
+  <div class="grid items-center gap-12 @lg:grid-cols-2 @lg:gap-16">
+    <div class="@lg:order-2">
+      <p class="mkt-kicker text-primary">המגוון המלא</p>
+      <h2 class="mkt-h2 font-heading mt-3">מאינטגרציית API מלאה ועד רכיב שניתן להטמעה.</h2>
+      <p class="text-muted-foreground mt-4 text-pretty @lg:text-lg">
+        עבור אינטגרציה מלאה של REST + MCP — או, כשזה יותר מדי, השתמש ברכיב Web של Studio: כרטיסי מלון, מפות, רשתות ומודולי הזמנה. בכל מקרה, Booking Engine מממש את ההזמנה מתחת.
+      </p>
+      <ul class="mt-6 space-y-2.5">
+        {["API מלא של REST + OAuth2, שרת MCP מתארח ו-SDKs", "או Web Components להזמנה — כרטיסים, מפות ורשתות", "64+ אירועי webhook לפיוס בזמן אמת", "מימוש Booking Engine מתחת לכל ממשק"].map((p) => (
+          <li class="flex items-start gap-2.5"><IconCheck class="mt-0.5 size-5 shrink-0 text-primary" /><span class="text-sm text-foreground/90">{p}</span></li>
+        ))}
+      </ul>
+      <a href="/developers/build-on-wink/" class="mt-7 inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline">צפו בתיעוד Build on Wink <IconArrowRight class="size-4" /></a>
+    </div>
+    <div class="@lg:order-1">
+      <DeviceFrame variant="plain" src="/mockups/studio/web-component/embedable-hotel-card.webp" alt="רכיב Web של Wink לכרטיס מלון שניתן להטמעה" class="mx-auto max-w-[300px]" />
+    </div>
+  </div>
+</section>
+
+{/* FAQ */}
+<FaqGrid
+  heading="שאלות נפוצות למפתחים"
+  description="מה צוותים טכניים ומוצר שואלים קודם."
+  items={faqs}
+/>
+
+{/* Final CTA */}
+<section class="relative w-full overflow-hidden border-y border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white">
+  <div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+    <div class="absolute -left-20 -bottom-16 size-80 rounded-full bg-[#ff6b35]/20 blur-[110px]"></div>
+    <div class="absolute -right-16 -top-10 size-80 rounded-full bg-[#9333ea]/25 blur-[120px]"></div>
+  </div>
+  <div class="relative mx-auto w-full max-w-7xl px-4 py-24 text-center">
+    <h2 class="mkt-h2 font-heading">מוכנים לבנות מסחר במלונות בתוך המוצר שלכם?</h2>
+    <p class="mx-auto mt-4 max-w-2xl text-pretty text-white/70 @lg:text-lg">
+      התחברו לשרת MCP, קראו את התיעוד, בחרו את ממשק האינטגרציה הנכון, ובקשו גישה כשהמוצר שלכם מוכן לחבר דרישת מלונות מאושרת למימוש ב-Booking Engine.
+    </p>
+    <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <a href="/developers/build-on-wink/" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-[#ff6b35] px-8 text-base font-semibold text-white hover:bg-[#e85b29] sm:w-auto">צפו בתיעוד</a>
+      <a href="https://app.wink.travel" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-white px-8 text-base font-semibold text-[#1f0a40] hover:bg-white/90 sm:w-auto">בקש גישה ל-API</a>
+      <a href="/contact/" class="inline-flex h-12 items-center justify-center px-4 text-sm font-medium text-white/80 underline underline-offset-4 hover:text-white">שוחחו עם צוות הפלטפורמה</a>
+    </div>
+  </div>
+</section>
+
+</div>
