@@ -73,5 +73,15 @@ export default defineConfig({
       testMatch: /locale(s|-links)\.spec\.ts/,
       use: { ...devices["Desktop Chrome"], colorScheme: "light" },
     },
+    // Mobile hamburger menu: interaction/layout mechanics, not a visual
+    // regression sweep, so one real mobile device is enough — see
+    // tests/mobile-nav.spec.ts. Needs an actual mobile viewport (the
+    // hamburger only renders below the `lg` breakpoint), unlike the
+    // "locales" project above.
+    {
+      name: "mobile-nav",
+      testMatch: /mobile-nav\.spec\.ts/,
+      use: { ...devices["Pixel 7"], colorScheme: "light" },
+    },
   ],
 });
