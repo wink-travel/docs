@@ -1,0 +1,351 @@
+---
+title: Booking Engine — 어디서나 온라인 예약을 지원합니다
+description: Wink Booking Engine은 호텔 웹사이트에서 직접 예약을 가능하게 하며, 모든 파트너, 크리에이터, AI 경로 뒤에 있는 거래 계층으로 결제, 동기화 및 귀속 기능이 내장되어 있습니다.
+template: splash
+marketingNav: true
+---
+import '/src/styles/splash-page.css';
+import BreadcrumbJsonLd from "@/components/marketing/BreadcrumbJsonLd.astro";
+
+import DeviceFrame from "@/components/marketing/DeviceFrame.astro";
+import ShowcaseRow from "@/components/marketing/ShowcaseRow.astro";
+import FaqGrid from "@/components/marketing/FaqGrid.astro";
+import ProductJsonLd from "@/components/marketing/ProductJsonLd.astro";
+import MoneyFlow from "@/components/marketing/infographics/MoneyFlow.astro";
+
+import IconArrowRight from "@tabler/icons/outline/arrow-right.svg";
+import IconCheck from "@tabler/icons/outline/check.svg";
+
+export const faqs = [
+  { title: "Wink Booking Engine이란 무엇인가요?", content: "Wink Booking Engine은 두 가지 역할을 동시에 합니다. 귀하의 웹사이트에서는 완전한 예약 엔진으로서 객실, 요금, 가용성, 체크아웃, 결제 및 확인을 귀하의 브랜드 사이트에서 제공합니다. 귀하의 플랫폼에서는 Wink의 파트너, 크리에이터, AI 에이전트 및 개발자 앱에서 발생하는 수요를 변환하는 거래 계층으로, 모든 예약이 호텔로 귀속되며 호텔이 통제권을 가집니다." },
+  { title: "Booking Engine이 객실 외에 다른 것도 판매할 수 있나요?", content: "네. 설정된 경우 객실 주변의 전체 숙박을 판매합니다: 요금제, 패키지, 추가 서비스, 식사, 스파, 체험, 교통편, 업그레이드, 조기 체크인 및 늦은 체크아웃 등 객실 숙박만이 아닙니다." },
+  { title: "Booking Engine은 어떤 경로를 지원하나요?", content: "귀하의 호텔 웹사이트뿐만 아니라 모든 Wink 경로: 공유 가능한 링크, QR 코드, 웹 컴포넌트, WinkLinks 스토어프론트, 소셜 게시물, 파트너 스토어프론트, Traveliko, Agentic AI 전달 및 개발자 앱 등 모두 동일한 엔진으로 연결됩니다." },
+  { title: "결제는 어떻게 이루어지나요?", content: "Wink가 상점 기록자(merchant of record)로서 결제를 끝까지 처리합니다. 체크아웃 UI, 취소 정책 로직, 토큰화된 카드, 3DS, 다중 통화 및 분할 지급을 운영합니다. 호텔을 대신해 전체 예약 금액을 수집하며, Wink 수수료를 제외한 금액이 투숙객 체크인 시 호텔에 지급됩니다. 확정된 직접 예약에 대한 총 비용은 5.5%입니다." },
+  { title: "Booking Engine은 Extranet과 어떻게 연결되나요?", content: "Extranet은 호텔이 콘텐츠, 객실, 요금, 가용성, 프로모션, 정책 및 채널 규칙을 관리하는 곳입니다. Booking Engine은 승인된 공급을 사용해 오퍼를 표시하고 체크아웃을 완료합니다 — 두 개의 연결된 계층으로 동일한 표면이 아니므로 호텔이 통제권을 유지합니다." },
+  { title: "개발자와 AI 에이전트도 예약을 생성할 수 있나요?", content: "네. 예약 생성은 REST API 작업이며, 모든 기능은 OAuth2로 외부 호출이 가능하고, 호스팅된 MCP 서버를 통해 AI 에이전트가 실시간 계약을 읽을 수 있습니다. booking.created 및 64개 이상의 웹훅 이벤트를 구독하거나 웹 컴포넌트로 예약 가능한 재고를 임베드할 수 있습니다. 직접 API 통합 시에는 상점 기록자가 되어 결제를 직접 처리할 수도 있습니다." },
+  { title: "Booking Engine이 내 PMS 또는 채널 매니저와 예약을 동기화하나요?", content: "네. 예약이 생성, 업데이트 또는 취소될 때 연결된 PMS 또는 채널 매니저와 전체 라이프사이클 추적을 포함해 동기화되며, 호텔, 여행자 및 (해당 시) 파트너가 확인을 받습니다." },
+  { title: "Booking Engine은 OTA와 같은가요?", content: "아니요. 이는 이행 및 거래 계층으로, 호텔 브랜드를 OTA 브랜드로 대체하지 않습니다. 호텔이 통제하는 공급이 귀하의 웹사이트, 파트너, 크리에이터, Traveliko, AI 및 개발자 경로 전반에서 전환되도록 돕고, 귀속이 보존됩니다." },
+];
+
+<div class="not-content mkt-page">
+
+<ProductJsonLd
+  name="Wink Booking Engine"
+  url="https://wink.travel/products/booking-engine/"
+  applicationCategory="BusinessApplication"
+  description="호텔 자체 웹사이트를 위한 완전한 예약 엔진이자 모든 파트너, 크리에이터, AI 경로 뒤에 있는 거래 계층 — 결제, 예약 동기화 및 귀속 기능 내장."
+  features={["호텔 자체 브랜드 웹사이트에서 완전한 예약 엔진", "파트너, 크리에이터, AI 및 개발자 경로를 위한 거래 계층", "객실, 요금제, 패키지, 추가 서비스, 식사, 스파, 체험 및 교통편 판매", "Wink가 처리하는 결제", "API 통합 시 상점 기록자 가능", "OAuth2를 통한 REST API 예약 생성", "booking.created 포함 64개 이상의 웹훅 이벤트", "PMS / 채널 매니저로 예약 동기화", "출처 및 파트너 귀속 보존", "투숙객, 호텔 및 파트너 확인"]}
+  faqs={faqs}
+/>
+
+<BreadcrumbJsonLd items={[{ name: "홈", url: "https://wink.travel/" }, { name: "제품" }, { name: "Booking Engine" }]} />
+
+{/* 1 — Hero (dark, full-bleed; see `data-full-bleed` in src/styles/tweaks.css).
+    The breadcrumb lives INSIDE the band so it shares the hero's content column
+    and lines up with the badge and headline. */}
+<section data-full-bleed class="relative w-full overflow-hidden border-b border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white">
+  <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+    <div class="absolute -left-24 -top-10 size-96 rounded-full bg-[#ff6b35]/20 blur-[120px]"></div>
+    <div class="absolute -bottom-16 -right-16 size-[34rem] rounded-full bg-[#9333ea]/25 blur-[140px]"></div>
+  </div>
+  <div class="@container relative mx-auto w-full max-w-7xl px-4 pb-20 pt-8 lg:pb-24">
+    <nav aria-label="Breadcrumb" class="text-sm text-white/60">
+      <a href="/" class="transition-colors hover:text-white">홈</a>
+      <span class="px-1.5 text-white/55">/</span>
+      <span>제품</span>
+      <span class="px-1.5 text-white/55">/</span>
+      <span class="text-white">Booking Engine</span>
+    </nav>
+    <div class="mt-10 grid items-center gap-12 lg:mt-12 lg:grid-cols-2 lg:gap-16">
+      <div>
+        <span class="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-xs font-extrabold uppercase tracking-wider text-[#ff8a5c] ring-1 ring-white/15 backdrop-blur"><span class="size-1.5 rounded-full bg-gradient-to-r from-[#ff6b35] to-[#ec4899]"></span> Booking Engine</span>
+        <h1 class="font-heading mt-6 text-4xl font-extrabold leading-[1.05] tracking-tight text-balance @lg:text-5xl @2xl:text-[3.25rem]">
+          어디서나 온라인 예약을 지원합니다 — <span class="bg-gradient-to-r from-[#ff8a5c] via-[#ec4899] to-[#a855f7] bg-clip-text text-transparent">귀하의 웹사이트, 귀하의 플랫폼.</span>
+        </h1>
+        <p class="mt-5 max-w-xl text-pretty text-lg text-white/75 @lg:text-xl">
+          호텔은 Wink Booking Engine을 자체 웹사이트에 설치하여 직접 수요를 확정 예약으로 전환하고 전체 숙박을 판매합니다. 또한 Wink 플랫폼 전체가 작동하는 거래 계층이기도 하여 모든 다른 경로가 동일한 체크아웃으로 연결됩니다. 결제, 확인 및 귀속이 포함되어 있습니다.
+        </p>
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+          <a href="https://app.wink.travel" class="inline-flex h-12 items-center justify-center rounded-md bg-[#ff6b35] px-7 text-base font-semibold text-white transition-colors hover:bg-[#e85b29]">시작하기</a>
+          <a href="https://cal.com/wink-ws36dy" class="inline-flex h-12 items-center justify-center rounded-md bg-white/10 px-7 text-base font-medium text-white ring-1 ring-white/20 backdrop-blur transition-colors hover:bg-white/15">데모 요청</a>
+        </div>
+        <div class="mt-7 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-white/65">
+          <span class="inline-flex items-center gap-1.5"><IconCheck class="size-4 text-[#ff8a5c]" /> 귀하의 웹사이트</span>
+          <span class="inline-flex items-center gap-1.5"><IconCheck class="size-4 text-[#ff8a5c]" /> 귀하의 플랫폼</span>
+          <span class="inline-flex items-center gap-1.5"><IconCheck class="size-4 text-[#ff8a5c]" /> 5.5% 총 비용</span>
+        </div>
+      </div>
+
+      <div class="relative">
+        <DeviceFrame
+          variant="browser"
+          url="book.wink.travel/checkout"
+          src="/mockups/booking-engine/checkout-page-booking-engine-desktop.webp"
+          alt="Wink Booking Engine 체크아웃 — 객실, 요금, 추가 서비스 및 결제가 하나의 흐름으로"
+          aspect="16/10"
+        />
+        <div class="absolute -bottom-8 -right-1 w-[116px] @sm:w-[136px] @lg:w-[148px]">
+          <DeviceFrame
+            variant="phone"
+            src="/mockups/booking-engine/checkout-mobile.webp"
+            alt="Booking Engine 모바일 체크아웃"
+            aspect="9/19.5"
+            class="!max-w-none w-full"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* 2 — The two jobs (white) */}
+<section class="@container mx-auto w-full max-w-5xl px-4 pt-24 text-center">
+  <p class="mkt-kicker text-primary">Wink Booking Engine이란?</p>
+  <h2 class="mkt-h2 font-heading mt-3 text-balance">귀하의 사이트를 위한 완전한 예약 엔진 — 그리고 모든 파트너 뒤의 거래 계층.</h2>
+  <p class="mkt-sub text-muted-foreground mx-auto mt-5 max-w-3xl">
+    귀하의 웹사이트에서는 SaaS 예약 엔진에서 기대하는 모든 기능을 제공합니다: 객실, 요금, 가용성, 체크아웃, 결제 및 확인을 귀하의 브랜드 사이트에서 제공합니다. 귀하의 플랫폼에서는 Wink의 파트너, 크리에이터 및 AI 에이전트에서 발생하는 수요를 변환하는 거래 계층으로, 모든 예약이 귀하에게 귀속되며 호텔이 통제권을 가집니다.
+  </p>
+  <div class="mt-12 grid gap-5 text-left @md:grid-cols-2">
+    <div class="flex flex-col rounded-2xl border border-border bg-card p-7">
+      <span class="inline-flex w-fit items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-primary">귀하의 웹사이트</span>
+      <h3 class="font-heading mt-4 text-xl font-semibold">귀하의 사이트에서 완전한 예약 엔진</h3>
+      <p class="text-muted-foreground mt-2 text-sm text-pretty">
+        표준 예약 엔진에서 기대하는 모든 것 — 귀하의 브랜드, 귀하의 요금, 전체 숙박을 판매하는 직접 예약. 이전에 예약 엔진을 운영해본 적이 있다면 새로 배울 것이 없습니다.
+      </p>
+      <ul class="mt-5 space-y-2.5">
+        {["호텔 브랜드 체크아웃을 귀하의 도메인에서 제공", "객실, 요금, 가용성 및 정책", "결제, 확인 및 PMS/채널 동기화"].map((p) => (
+          <li class="flex items-start gap-2.5"><IconCheck class="mt-0.5 size-5 shrink-0 text-primary" /><span class="text-sm text-foreground/90">{p}</span></li>
+        ))}
+      </ul>
+    </div>
+    <div class="flex flex-col rounded-2xl border border-border bg-card p-7">
+      <span class="inline-flex w-fit items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-primary">귀하의 플랫폼</span>
+      <h3 class="font-heading mt-4 text-xl font-semibold">모든 파트너 경로를 위한 거래 계층 포함</h3>
+      <p class="text-muted-foreground mt-2 text-sm text-pretty">
+        동일한 엔진이 Wink의 파트너, 크리에이터, AI 에이전트 및 개발자 앱에서 오는 예약을 지원합니다 — 일반 예약 엔진이 도달할 수 없는 수요입니다. 모든 예약은 여전히 귀하에게 귀속됩니다: 귀하의 요금, 재고, 브랜드, 완전한 귀속. 통제권을 포기하지 않고 유통을 확보합니다.
+      </p>
+      <div class="mt-5 flex flex-wrap gap-2">
+        {["파트너", "크리에이터", "AI 에이전트", "공유 가능한 링크", "WinkLinks", "소셜", "Traveliko", "개발자 앱"].map((r) => (
+          <span class="inline-flex items-center gap-1.5 rounded-full border border-border bg-background px-3 py-1 text-xs font-medium">
+            <span class="size-1.5 rounded-full bg-primary" aria-hidden="true"></span>{r}
+          </span>
+        ))}
+      </div>
+    </div>
+  </div>
+  <p class="text-muted-foreground mx-auto mt-8 max-w-2xl text-pretty text-sm">
+    공급은 <a href="/products/extranet/" class="text-primary underline underline-offset-4">Extranet</a>에서 흐르며, 귀하의 요금과 귀속은 체크아웃 전 과정에 걸쳐 유지됩니다.
+  </p>
+</section>
+
+{/* 3 — Sell the whole stay (white, image left) */}
+<section class="@container mx-auto w-full max-w-7xl px-4 pt-24">
+  <div class="grid items-center gap-12 @lg:grid-cols-2 @lg:gap-16">
+    <div class="@lg:order-2">
+      <p class="mkt-kicker text-primary">전체 숙박 판매</p>
+      <h2 class="mkt-h2 font-heading mt-3">객실 1박 이상을 판매합니다.</h2>
+      <p class="text-muted-foreground mt-4 text-pretty @lg:text-lg">
+        대부분의 예약 엔진은 객실에서 멈춥니다. Wink는 동일한 흐름에서 전체 숙박을 상품화하여 평균 예약 가치가 높아지고 투숙객이 이미 여행을 완성한 상태로 도착하도록 합니다.
+      </p>
+      <div class="mt-6 flex flex-wrap gap-2.5">
+        {["객실", "요금제", "패키지", "추가 서비스", "식사", "스파 및 웰니스", "체험", "교통편", "업그레이드", "조기 체크인", "늦은 체크아웃"].map((c) => (
+          <span class="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3.5 py-1.5 text-sm font-medium">
+            <span class="size-1.5 rounded-full bg-primary" aria-hidden="true"></span>{c}
+          </span>
+        ))}
+      </div>
+      <ul class="mt-7 space-y-2.5">
+        {["투숙객이 도착한 경로에 맞는 적절한 객실, 요금 및 오퍼", "Extranet에서 제공하는 실시간 가용성 및 재고 규칙", "사전에 표시되는 취소 및 정책 옵션"].map((p) => (
+          <li class="flex items-start gap-2.5"><IconCheck class="mt-0.5 size-5 shrink-0 text-primary" /><span class="text-sm text-foreground/90">{p}</span></li>
+        ))}
+      </ul>
+    </div>
+    <div class="@lg:order-1">
+      <DeviceFrame
+        variant="browser"
+        url="book.wink.travel/rate-plan"
+        src="/mockups/booking-engine/rate-plan-add-on-desktop.webp"
+        alt="Booking Engine 요금제 및 추가 서비스 — 전체 숙박 판매"
+        aspect="16/10"
+      />
+    </div>
+  </div>
+</section>
+
+{/* 4 — The booking flow (white) */}
+<section class="@container mx-auto w-full max-w-7xl px-4 pt-24 pb-24">
+  <div class="mx-auto mb-12 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">예약 흐름</p>
+    <h2 class="mkt-h2 font-heading mt-3">어떤 경로에서든 확정 예약으로.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">
+      동일한 네 단계가 모든 경로 뒤에서 작동합니다 — 귀하의 웹사이트든 파트너의 웹사이트든 — 데스크톱에 최적화되고 모바일에 맞게 설계되었습니다.
+    </p>
+  </div>
+
+  <div class="space-y-20">
+    <ShowcaseRow
+      step="1단계 · 객실 선택"
+      title="호텔 승인 공급에서 불러온 객실"
+      desc="투숙객이 도착한 경로에 맞는 적절한 객실, 사진 및 가용성이 Extranet에서 바로 불러와집니다."
+      points={["실시간 가용성 및 재고 규칙", "호텔이 통제하는 콘텐츠 및 이미지", "날짜, 투숙객 및 점유 논리"]}
+      image="/mockups/booking-engine/room-card-booking-engine-desktop.webp"
+      alt="Booking Engine 객실 선택 화면과 가용성 및 가격 표시"
+      url="book.wink.travel/rooms"
+    />
+    <ShowcaseRow
+      reverse
+      step="2단계 · 요금제 및 추가 서비스"
+      title="요금 선택 후 숙박에 추가"
+      desc="요금제, 취소 옵션 및 설정된 추가 서비스 — 패키지, 식사, 스파, 교통편 — 모두 동일한 흐름에서 제공합니다."
+      points={["식사 계획, 회원 요금 및 프로모션", "설정된 경우 추가 서비스 및 체험", "사전에 표시되는 정책 및 취소 옵션"]}
+      image="/mockups/booking-engine/rate-plan-page-booking-engine-desktop.webp"
+      alt="Booking Engine 요금제 선택과 추가 서비스"
+      url="book.wink.travel/rate-plan"
+    />
+    <ShowcaseRow
+      step="3단계 · 체크아웃 및 결제"
+      title="하나의 체크아웃, Wink가 처리하는 결제"
+      desc="투숙객이 숙박을 검토하고 호텔 브랜드가 적용된 단일 체크아웃에서 결제합니다 — 결제는 상점 기록자인 Wink가 처리합니다."
+      points={["호텔 브랜드, 모바일 우선 체크아웃", "Wink가 처리하는 결제", "호텔 및 경로에 연결된 예약 기록"]}
+      image="/mockups/booking-engine/checkout-page-booking-engine-desktop.webp"
+      alt="Booking Engine 체크아웃 및 결제 요약"
+      url="book.wink.travel/checkout"
+    />
+    <ShowcaseRow
+      reverse
+      frame="plain"
+      step="4단계 · 확인"
+      title="투숙객, 호텔 및 파트너에게 확정 통보"
+      desc="예약이 확정되고 수요를 생성한 경로, 캠페인, 채널 또는 파트너와 연결된 상태를 유지하며, 연결된 PMS 또는 채널 매니저와 동기화됩니다."
+      points={["즉시 투숙객 확인", "호텔 및 파트너에게 통보", "PMS / 채널 매니저와 동기화, 귀속 보존"]}
+      image="/mockups/booking-engine/booking-confirmation.webp"
+      alt="Booking Engine 확인 화면과 예약 참조 및 숙박 요약"
+    />
+  </div>
+</section>
+
+{/* 5 — Payment & payout (muted band, money flow) */}
+<section class="@container w-full border-y border-border bg-muted/30">
+  <div class="mx-auto w-full max-w-7xl px-4 py-24">
+    <div class="grid items-center gap-12 @lg:grid-cols-2 @lg:gap-16">
+      <div>
+        <p class="mkt-kicker text-primary">결제 방식</p>
+        <h2 class="mkt-h2 font-heading mt-3">Wink가 처리하는 결제 및 지급.</h2>
+        <p class="text-muted-foreground mt-4 text-pretty @lg:text-lg">
+          Wink가 상점 기록자로서 결제를 끝까지 처리합니다. 호텔이 별도의 결제 프로세서를 연결할 필요 없이 체크아웃, 정책 및 정산을 운영하며, 모든 것이 하나의 총액 요금에 포함되어 있습니다.
+        </p>
+        <ul class="mt-6 space-y-3">
+          {[
+            "토큰화된 카드, 3DS 및 다중 통화 지원",
+            "체크아웃 시 취소, 보증금 및 요금제 정책 적용",
+            "분할 지급 및 파트너 귀속을 함께 정산",
+          ].map((p) => (
+            <li class="flex items-start gap-2.5"><IconCheck class="mt-0.5 size-5 shrink-0 text-primary" /><span class="text-sm text-foreground/90">{p}</span></li>
+          ))}
+        </ul>
+        <div class="mt-7 flex items-baseline gap-3 rounded-xl border border-border bg-card px-5 py-4">
+          <span class="font-heading text-3xl font-bold text-foreground">5.5%</span>
+          <span class="text-muted-foreground text-sm text-pretty">확정된 직접 예약에 대한 총 비용 — 처리 수수료 포함, 별도의 프로세서 계약 불필요. <a href="/pricing/" class="text-primary underline underline-offset-4">가격 보기</a>.</span>
+        </div>
+      </div>
+      {/* Money flow — swappable infographic (infographics/MoneyFlow.astro) */}
+      <MoneyFlow />
+    </div>
+  </div>
+</section>
+
+{/* 6 — Mobile-first (white, uniform phones) */}
+<section class="@container mx-auto w-full max-w-7xl px-4 pt-24 pb-24">
+  <div class="mx-auto mb-12 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">모바일 우선</p>
+    <h2 class="mkt-h2 font-heading mt-3">투숙객이 실제로 예약하는 방식을 위해 설계되었습니다.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">
+      대부분의 여행 수요는 휴대폰에서 시작됩니다. 모든 단계 — 탐색, 선택, 추가, 결제 — 가 모바일에 최적화되어 있습니다.
+    </p>
+  </div>
+  <div class="grid grid-cols-2 justify-items-center gap-6 @md:grid-cols-4 @lg:gap-8">
+    {[
+      { src: "/mockups/booking-engine/hotel-card-mobile.webp", alt: "모바일 호텔 카드 및 가용성", cap: "탐색" },
+      { src: "/mockups/booking-engine/room-details-mobile.webp", alt: "모바일 객실 상세", cap: "선택" },
+      { src: "/mockups/booking-engine/moble-add-on.webp", alt: "모바일 추가 서비스 및 옵션", cap: "숙박에 추가" },
+      { src: "/mockups/booking-engine/checkout-mobile.webp", alt: "모바일 체크아웃 및 결제", cap: "결제" },
+    ].map((m) => (
+      <div class="w-full max-w-[230px]">
+        <DeviceFrame variant="phone" src={m.src} alt={m.alt} aspect="9/19.5" />
+        <p class="mt-3 text-center text-sm font-medium text-muted-foreground">{m.cap}</p>
+      </div>
+    ))}
+  </div>
+</section>
+
+{/* 7 — Developers & AI (dark band) */}
+<section class="relative w-full overflow-hidden border-y border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white">
+  <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+    <div class="absolute -left-20 -top-12 size-96 rounded-full bg-[#ff6b35]/20 blur-[120px]"></div>
+    <div class="absolute -bottom-16 -right-16 size-[30rem] rounded-full bg-[#9333ea]/25 blur-[140px]"></div>
+  </div>
+  <div class="@container relative mx-auto w-full max-w-4xl px-4 py-24 text-center">
+    <p class="text-sm font-bold uppercase tracking-wider text-[#ff8a5c]">개발자 및 AI 에이전트</p>
+    <h2 class="mkt-h2 font-heading mt-3">언제든 사용할 수 있는 <span class="bg-gradient-to-r from-[#ff8a5c] via-[#ec4899] to-[#a855f7] bg-clip-text text-transparent">이행 계층.</span></h2>
+    <p class="mkt-sub mx-auto mt-4 max-w-2xl text-white/75">
+      모든 Agentic AI 전달 및 개발자 통합은 Booking Engine에서 처리됩니다 — OAuth2를 통한 REST 예약 생성, 64개 이상의 웹훅 이벤트, PMS 및 채널 매니저 동기화, 웹 컴포넌트, 그리고 에이전트가 읽을 수 있는 호스팅 MCP 서버 포함. Wink를 결제 및 정산에 사용하거나, 직접 API 통합 시 상점 기록자가 되어 결제를 직접 운영할 수 있습니다.
+    </p>
+    <div class="mx-auto mt-8 flex max-w-2xl flex-wrap justify-center gap-2.5">
+      {["REST를 통한 예약 생성", "OAuth2 + SDK", "64개 이상의 웹훅 이벤트", "예약 동기화", "웹 컴포넌트", "호스팅 MCP 서버", "상점 기록자 (API 통합)"].map((r) => (
+        <span class="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white/90 ring-1 ring-white/15 backdrop-blur">
+          <span class="size-1.5 rounded-full bg-[#ff8a5c]" aria-hidden="true"></span>{r}
+        </span>
+      ))}
+    </div>
+    <div class="mt-9 flex flex-wrap justify-center gap-3">
+      <a href="/developers/build-on-wink/" class="inline-flex items-center gap-1.5 rounded-md bg-[#ff6b35] px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#e85b29]">Wink에서 빌드하기 <IconArrowRight class="size-4" /></a>
+      <a href="/developers/mcp/" class="inline-flex items-center gap-1.5 rounded-md bg-white/10 px-5 py-2.5 text-sm font-medium text-white ring-1 ring-white/20 backdrop-blur transition-colors hover:bg-white/15">MCP 서버</a>
+      <a href="/agentic-ai/" class="inline-flex items-center gap-1.5 rounded-md bg-white/10 px-5 py-2.5 text-sm font-medium text-white ring-1 ring-white/20 backdrop-blur transition-colors hover:bg-white/15">Agentic AI</a>
+    </div>
+  </div>
+</section>
+
+{/* 8 — Who it's for (white, accent cards) */}
+<section class="@container mx-auto w-full max-w-7xl px-4 pt-24">
+  <div class="mx-auto mb-12 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">누가 이행하나요</p>
+    <h2 class="mkt-h2 font-heading mt-3">하나의 엔진, 세 가지 사용 방법.</h2>
+  </div>
+  <div class="grid gap-5 @md:grid-cols-3">
+    {[
+      { eyebrow: "호텔용", title: "직접 수요를 전환하세요", desc: "자체 웹사이트, 링크, QR 코드, 웹 컴포넌트, WinkLinks 및 Traveliko에서 예약을 지원하고 전체 숙박을 판매하며 투숙객을 유지하세요.", href: "/hotels/", cta: "호텔용 탐색", accent: "#ff6b35" },
+      { eyebrow: "파트너용", title: "생성한 수요를 이행하세요", desc: "링크, 스토어프론트 및 캠페인에서 투숙객을 실제 체크아웃으로 보내고, 확인 및 지급까지 귀속을 유지하세요.", href: "/partners/", cta: "파트너용 탐색", accent: "#ec4899" },
+      { eyebrow: "개발자용", title: "호텔 커머스 위에 빌드하세요", desc: "검색, 예약, 결제 및 확인 뒤에 있는 이행 계층으로 Booking Engine을 사용하세요 — API 통합 시 상점 기록자 포함.", href: "/builders/", cta: "문서 보기", accent: "#22d3ee" },
+    ].map((c) => (
+      <a href={c.href} class="group flex flex-col rounded-2xl border border-border bg-card p-7 shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg" style={`border-top:3px solid ${c.accent}`}>
+        <span class="text-xs font-bold uppercase tracking-wider" style={`color:${c.accent}`}>{c.eyebrow}</span>
+        <h3 class="font-heading mt-2 text-lg font-semibold">{c.title}</h3>
+        <p class="text-muted-foreground mt-2 flex-1 text-sm text-pretty">{c.desc}</p>
+        <span class="mt-4 inline-flex items-center gap-1 text-sm font-semibold" style={`color:${c.accent}`}>{c.cta} <IconArrowRight class="size-4 transition-transform group-hover:translate-x-0.5" /></span>
+      </a>
+    ))}
+  </div>
+</section>
+
+{/* 9 — FAQ */}
+<FaqGrid
+  heading="Booking Engine FAQ"
+  description="두 가지 역할, 경로, 결제 및 빌드 방법."
+  items={faqs}
+/>
+
+{/* 10 — Final CTA (dark) */}
+<section class="w-full border-y border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white">
+  <div class="mx-auto w-full max-w-7xl px-4 py-24 text-center">
+    <h2 class="mkt-h2 font-heading">귀하의 웹사이트와 플랫폼을 위한 하나의 엔진.</h2>
+    <p class="mx-auto mt-4 max-w-2xl text-pretty text-white/70 @lg:text-lg">
+      귀하의 웹사이트에서 직접 수요를 확정 예약으로 전환하고, 모든 파트너, 크리에이터, AI 및 개발자 경로 전반에서 — 결제, 확인 및 귀속 기능이 내장되어 있습니다.
+    </p>
+    <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <a href="https://app.wink.travel" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-[#ff6b35] px-8 text-base font-semibold text-white hover:bg-[#e85b29] sm:w-auto">시작하기</a>
+      <a href="https://cal.com/wink-ws36dy" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-white px-8 text-base font-semibold text-[#1f0a40] hover:bg-white/90 sm:w-auto">데모 요청</a>
+    </div>
+  </div>
+</section>
+
+</div>

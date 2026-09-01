@@ -1,0 +1,280 @@
+---
+title: Agentic AI — AI 代理的旅遊商務基礎設施
+description: "在 Wink，AI 代理不僅推薦飯店 — 他們搜尋即時飯店自有供應，然後透過 REST API 和託管的 MCP 一次完成訂房與付款。現已上線。"
+template: splash
+marketingNav: true
+---
+import '/src/styles/splash-page.css';
+import BreadcrumbJsonLd from "@/components/marketing/BreadcrumbJsonLd.astro";
+
+import FaqGrid from "@/components/marketing/FaqGrid.astro";
+import AgentJsonLd from "@/components/marketing/AgentJsonLd.astro";
+import AgentConversation from "@/components/marketing/infographics/AgentConversation.astro";
+import AgenticShiftFlow from "@/components/marketing/infographics/AgenticShiftFlow.astro";
+
+import IconMapSearch from "@tabler/icons/outline/map-search.svg";
+import IconCalendarCheck from "@tabler/icons/outline/calendar-check.svg";
+import IconSparkles from "@tabler/icons/outline/sparkles.svg";
+import IconCalendarStats from "@tabler/icons/outline/calendar-stats.svg";
+import IconCreditCard from "@tabler/icons/outline/credit-card.svg";
+import IconCoin from "@tabler/icons/outline/coin.svg";
+import IconWebhook from "@tabler/icons/outline/webhook.svg";
+import IconComponents from "@tabler/icons/outline/components.svg";
+import IconUser from "@tabler/icons/outline/user.svg";
+import IconBuildingStore from "@tabler/icons/outline/building-store.svg";
+import IconUsersGroup from "@tabler/icons/outline/users-group.svg";
+import IconCode from "@tabler/icons/outline/code.svg";
+import IconArrowRight from "@tabler/icons/outline/arrow-right.svg";
+import IconCheck from "@tabler/icons/outline/check.svg";
+import IconX from "@tabler/icons/outline/x.svg";
+
+export const faqs = [
+  { title: "為什麼大多數 AI 代理無法訂房，什麼讓某些代理能做到？", content: "推薦飯店是內容問題 — 代理只需要描述和價格。訂房是商務問題：需要即時價格和可用性、可持有的庫存、支付通道、與飯店的結算以及商業關係。大多數助理只有前者，沒有後者，因此會將旅客導向網站完成訂房。當底層基礎設施完整開放時，代理才能完成訂房。Wink 採用 API 優先策略 — 每個平台功能都可外部調用，且託管的 MCP 伺服器公開即時 API 合約 — 因此經核准的代理可以發現飯店供應、讀取即時價格與可用性、建立並同步訂單、收款（Wink 是商戶）、保留歸因並訂閱事件。" },
+  { title: "AI 代理如何連接到 Wink？", content: "將相容的 MCP 用戶端指向託管伺服器 https://docs.mcp.wink.travel/mcp（SSE 備援位於 /sse）。以 Claude Code 為例：claude mcp add --transport http wink-docs https://docs.mcp.wink.travel/mcp。代理接著可使用 api_search 和 docs_search 工具讀取即時 OpenAPI 操作、請求/回應合約及任務配方。" },
+  { title: "AI 代理今天在 Wink 上能做什麼？", content: "目前透過 REST API 和 MCP 伺服器：發現平台、搜尋可訂庫存（含地理位置空間搜尋）、讀取 11 個連接渠道管理器的即時價格與可用性、建立訂單並同步其生命週期至 PMS/渠道管理器、收款（Wink 是商戶）、保留 6 個月歸因並透過合作夥伴流程賺取佣金、訂閱 64+ webhook 事件、生成 AI 內容，並透過 Web Components 嵌入可訂庫存。" },
+  { title: "AI 代理能否透過 Wink 完成飯店訂房？", content: "可以。訂房建立是 REST API 操作，Booking Engine 負責交易履行 — 結帳、付款、確認及訂單同步。代理代表旅客呼叫訂房 API，能完成真實且確認的訂單，並保留來源上下文。" },
+  { title: "飯店如何成為 Wink 上 AI 代理可訂的對象？", content: "只需在 Wink 設定其檔案。當飯店的供應、價格和可用性即時上線（透過 Extranet）後，經核准的 AI 代理即可透過 REST API 和託管 MCP 伺服器自動搜尋並訂房 — 無需針對每家飯店的獨立 AI 整合。代理搜尋飯店即時庫存，建立訂單並透過 Booking Engine 結算付款，保留歸因。Wink 上的每家飯店預設皆為代理就緒。" },
+  { title: "透過 Wink 訂房與 ChatGPT 搭配 Expedia 或 Booking.com 有何不同？", content: "像 ChatGPT 與 Expedia 或 Booking.com 的助理整合在發現階段表現強大 — 聊天中即時價格、照片和地圖 — 但旅客通常會被導向供應商自有網站或 App 完成訂房與付款。在 Wink，代理直接對飯店自有即時供應進行交易：讀取真實價格與可用性、建立訂單，並透過 Booking Engine 一次完成付款 — 並可賺取合作夥伴佣金。發現可在任何地方發生；履行則在 Wink 進行。" },
+  { title: "Wink 是唯一讓 AI 代理訂房並付款的平台嗎？", content: "不是 — 代理驅動的飯店商務是新興類別，數個旅遊與支付業者已宣布或推出端到端代理訂房至 2026 年。Wink 的獨特之處在於組合：供應是飯店自有且直接（非 GDS 轉售或網路爬蟲清單）、代理可透過一層商務同時搜尋、訂房、付款並賺取佣金，且現已可透過 REST API 和託管 MCP 伺服器即時調用 — 非未來規劃。飯店掌控分銷；代理成為有歸因且能賺錢的渠道。" },
+  { title: "Wink 支援哪些代理商務與 AI 標準？", content: "Wink 採用 API 優先並運行託管 MCP（Model Context Protocol）伺服器，任何 MCP 相容代理 — Claude、Codex、Cursor 等 — 都能發現並調用其即時 OpenAPI 合約。Wink 的訂房與支付原語設計與新興代理商務堆疊互通 — Agentic Commerce Protocol (ACP)、Google 的 Agent Payments Protocol (AP2)、Agent2Agent (A2A) 及 x402 類代理支付 — 隨標準整合成熟，而非鎖定專有路徑。" },
+  { title: "有用於 Wink 的 AI 技能嗎？", content: "有 — wink-api-builder 是可攜式代理技能，使用 MCP 伺服器作為真實來源。它引導代理從 api_search 到即時請求/回應合約，再到認證與驗證代碼，並標示現有代碼與當前 API 不符之處。支援 Claude Code、Codex、Cursor 及其他具技能能力的用戶端。" },
+  { title: "AI 代理能以聯盟或合作夥伴身份賺取佣金嗎？", content: "Wink 的合作夥伴模式保留來源與活動歸因，點擊後 6 個月有效，並對確認訂單支付 10% 預設佣金。創造合格需求並導向訂單的代理，可透過相同合作夥伴與 Booking Engine 基礎設施成為有歸因來源。" },
+  { title: "Agentic AI 會取代 Booking Engine 嗎？", content: "不會。Agentic AI 創建或導向意圖；Booking Engine 仍是結帳、付款、確認及訂單同步的履行層。每次代理交接皆透過 Booking Engine 完成。" },
+  { title: "開發者或代理應從哪裡開始？", content: "連接 MCP 伺服器，然後閱讀 Build on Wink、MCP Server 和 AI Skills 文件。當用例與商業路徑明確時，申請 API 存取權。" },
+];
+
+<div class="not-content mkt-page">
+
+<AgentJsonLd faqs={faqs} />
+
+<BreadcrumbJsonLd items={[{ name: "首頁", url: "https://wink.travel/" }, { name: "Agentic AI" }]} />
+
+{/* Hero — agent conversation. Full-bleed per the house `data-full-bleed` pattern,
+    with the breadcrumb inside the band so it lines up with the headline instead of
+    sitting in Starlight's narrower column above a full-width hero. */}
+<section data-full-bleed class="@container relative w-full overflow-hidden border-b border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white">
+  <div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+    <div class="absolute -left-24 -top-10 size-80 rounded-full bg-[#ff6b35]/20 blur-[100px]"></div>
+    <div class="absolute -bottom-16 -right-16 size-96 rounded-full bg-[#9333ea]/30 blur-[120px]"></div>
+  </div>
+  <div class="relative mx-auto w-full max-w-7xl px-4 pb-20 pt-8 lg:pb-24">
+    <nav aria-label="Breadcrumb" class="text-sm text-white/60">
+      <a href="/" class="transition-colors hover:text-white">首頁</a>
+      <span class="px-1.5 text-white/55">/</span>
+      <span class="text-white">Agentic AI</span>
+    </nav>
+    <div class="mt-10 grid items-center gap-12 lg:mt-12 lg:min-h-[33rem] @lg:grid-cols-[1fr_1.02fr]">
+    {/* Left — copy */}
+    <div class="text-center @lg:text-left">
+      <span class="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-xs font-extrabold uppercase tracking-wider text-[#ff8a5c] ring-1 ring-white/15 backdrop-blur @lg:mx-0"><span class="size-1.5 rounded-full bg-gradient-to-r from-[#ff6b35] to-[#ec4899]"></span> Agentic AI</span>
+      <h1 class="font-heading mt-6 text-4xl font-extrabold leading-[1.05] tracking-tight text-balance @lg:text-5xl @2xl:text-6xl">AI 代理能規劃行程。 <span class="wink-shimmer bg-gradient-to-r from-[#ff8a5c] via-[#ec4899] to-[#a855f7] bg-clip-text text-transparent">幾乎沒人能完成訂房。</span></h1>
+      <p class="mx-auto mt-5 max-w-xl text-pretty text-lg text-white/75 @lg:mx-0 @lg:text-xl">推薦飯店是內容問題。訂房是商務問題 — 即時價格、保留庫存、付款、結算與飯店合約。Wink 是彌補這個差距的基礎設施：代理可發現、訂房 <em class="not-italic font-semibold text-white">並付款</em>，直接對飯店控管的供應，透過即時 REST API 和託管 MCP 伺服器。</p>
+      <div class="mt-8 flex flex-col items-center justify-center gap-3 @lg:justify-start sm:flex-row">
+        <a href="/developers/build-on-wink/" class="inline-flex h-12 items-center justify-center rounded-md bg-[#ff6b35] px-7 text-base font-semibold text-white transition-colors hover:bg-[#e85b29]">查看文件</a>
+        <a href="#agents" class="inline-flex h-12 items-center justify-center rounded-md bg-white/10 px-7 text-base font-medium text-white ring-1 ring-white/20 backdrop-blur transition-colors hover:bg-white/15">連接代理</a>
+      </div>
+      <div class="mt-7 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 font-mono text-xs text-white/70"><span class="size-1.5 animate-pulse rounded-full bg-emerald-400"></span> MCP 伺服器即時運行 · docs.mcp.wink.travel/mcp</div>
+    </div>
+
+    {/* Right — agent conversation (swappable infographic) */}
+    <AgentConversation />
+    </div>
+  </div>
+</section>
+
+{/* Direct answer */}
+<section class="mx-auto w-full max-w-3xl px-4 pt-24 pb-24 text-center">
+  <p class="mkt-kicker text-primary">為什麼大多數 AI 代理無法訂房？</p>
+  <p class="mkt-sub text-muted-foreground mt-5">Wink 採用 API 優先：每個平台功能都可外部調用，且託管 MCP 伺服器向 AI 代理公開即時 API 合約。Wink 不強迫旅客透過網站，而是給予核准代理結構化存取飯店供應、價格、可用性、訂房、付款、歸因與事件 — 與 Wink 自身運作的基礎設施相同。</p>
+  <div class="mx-auto mt-7 max-w-2xl rounded-2xl border-2 border-primary/30 bg-primary/[0.04] px-6 py-5 text-pretty text-foreground/90"><strong class="text-foreground">任何飯店只要在 Wink 設定檔案，即可成為代理就緒。</strong> 一旦其供應、價格與可用性即時上線，核准的 AI 代理即可透過 API 和 MCP 伺服器搜尋、訂房與付款 — 無需針對每家飯店的獨立 AI 整合。</div>
+</section>
+
+{/* Live proof — the argument above is shipped, not roadmap. Implementation
+    detail deliberately lives on /builders/ so this page stays the thesis. */}
+<section id="agents" class="@container w-full border-y border-border bg-muted/30" style="scroll-margin-top:5rem">
+  <div class="mx-auto w-full max-w-4xl px-4 py-24 text-center">
+    <p class="mkt-kicker text-primary">現已上線，非未來規劃</p>
+    <h2 class="mkt-h2 font-heading mt-3">從代理到確認付款訂房，四個步驟。</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-2xl">連接託管 MCP 伺服器，將意圖解析為即時 API 操作，生成驗證代碼，然後交由 Booking Engine 完成結帳、付款、確認與 PMS 同步。</p>
+    <ol class="mx-auto mt-10 grid gap-3 text-left @lg:grid-cols-4">
+      <li class="rounded-xl border border-border bg-card px-4 py-3 text-sm"><span class="font-mono text-xs text-primary">01</span><span class="mt-1 block font-semibold">連接 MCP</span></li>
+      <li class="rounded-xl border border-border bg-card px-4 py-3 text-sm"><span class="font-mono text-xs text-primary">02</span><span class="mt-1 block font-semibold">搜尋即時 API</span></li>
+      <li class="rounded-xl border border-border bg-card px-4 py-3 text-sm"><span class="font-mono text-xs text-primary">03</span><span class="mt-1 block font-semibold">建立驗證代碼</span></li>
+      <li class="rounded-xl border border-border bg-card px-4 py-3 text-sm"><span class="font-mono text-xs text-primary">04</span><span class="mt-1 block font-semibold">訂房並收款</span></li>
+    </ol>
+    <div class="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <a href="/builders/#agent-quickstart" class="inline-flex h-12 items-center justify-center rounded-md bg-[#ff6b35] px-7 text-base font-semibold text-white transition-colors hover:bg-[#e85b29]">查看整合步驟</a>
+      <a href="/developers/mcp/" class="inline-flex h-12 items-center justify-center rounded-md border border-border px-7 text-base font-medium transition-colors hover:bg-muted">MCP 伺服器文件</a>
+    </div>
+    <p class="text-muted-foreground mt-5 inline-flex items-center gap-2 font-mono text-xs"><span class="size-1.5 animate-pulse rounded-full bg-emerald-500"></span> docs.mcp.wink.travel/mcp</p>
+  </div>
+</section>
+
+{/* What an agent can do — capability map */}
+<section class="@container mx-auto w-full max-w-7xl px-4 pt-24">
+  <div class="mx-auto mb-14 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">能力地圖</p>
+    <h2 class="mkt-h2 font-heading mt-3">AI 代理在 Wink 上能做什麼。</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">以下每項能力皆可透過 REST API 和 MCP 伺服器即時使用 — 基於 Wink 運行的相同合約。</p>
+  </div>
+  <div class="grid gap-5 @md:grid-cols-2 @2xl:grid-cols-3">
+    {[
+      { icon: IconMapSearch, title: "搜尋飯店庫存", desc: "使用地理位置空間搜尋找到可訂供應 — 點、圓、矩形或多邊形，並支援 GeoIP 偵測。" },
+      { icon: IconCalendarStats, title: "讀取即時價格與可用性", desc: "拉取 11 個連接渠道管理器的即時價格、可用性與庫存。" },
+      { icon: IconCalendarCheck, title: "建立並同步訂單", desc: "透過 API 建立訂單；建立/更新/取消並同步至連接的 PMS 或渠道管理器，完整追蹤生命週期。" },
+      { icon: IconCreditCard, title: "收款", desc: "Wink 處理結帳、取消政策邏輯與訂單後端付款 — Wink 是商戶。" },
+      { icon: IconCoin, title: "保留歸因並賺取佣金", desc: "來源與活動上下文持續追蹤 — 點擊後 6 個月歸因，確認訂單享 10% 預設佣金。" },
+      { icon: IconWebhook, title: "回應 64+ 事件", desc: "訂閱 webhook 事件 — 訂單、付款、退款、渠道管理器更新 — 並觸發後續動作。" },
+      { icon: IconSparkles, title: "生成內容", desc: "涵蓋 9 種庫存類型與 12 種語氣的 AI 內容；一鍵從單一 URL 註冊物件。" },
+      { icon: IconComponents, title: "嵌入可訂庫存", desc: "使用 Web Components 和最少代碼，將即時可訂飯店庫存嵌入任意介面。" },
+      { icon: IconCode, title: "使用完整 API 建置", desc: "每個 Wink 功能皆可透過 REST 外部調用，支援 OAuth2 認證與官方 SDK — 如同系統自有般整合。" },
+    ].map((c) => (
+      <div class="flex flex-col rounded-2xl border border-border bg-card p-6">
+        <span class="mb-4 flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-white"><c.icon class="size-6" /></span>
+        <h3 class="font-heading text-base font-semibold">{c.title}</h3>
+        <p class="text-muted-foreground mt-2 text-sm text-pretty">{c.desc}</p>
+        <span class="mt-4 inline-flex w-fit items-center gap-1.5 rounded-full bg-emerald-500/10 px-2.5 py-1 text-xs font-semibold text-emerald-600 dark:text-emerald-400"><span class="size-1.5 rounded-full bg-emerald-500"></span>現已可用</span>
+      </div>
+    ))}
+  </div>
+</section>
+
+{/* The agentic shift — before/after flow */}
+<section class="@container mx-auto w-full max-w-5xl px-4 pt-24">
+  <div class="mx-auto mb-12 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">轉變</p>
+    <h2 class="mkt-h2 font-heading mt-3">從旅客對網站，轉為旅客對代理。</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">舊模式中旅客自行完成工作。代理模式中，代理成為介面 — Wink 則成為答案背後的商務層。</p>
+  </div>
+  {/* Before/after flow — swappable infographic (infographics/AgenticShiftFlow.astro) */}
+  <AgenticShiftFlow />
+</section>
+
+{/* Why Wink — recommend vs transact */}
+<section class="@container mx-auto w-full max-w-5xl px-4 pt-24">
+  <div class="mx-auto mb-12 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">為什麼選擇 Wink</p>
+    <h2 class="mkt-h2 font-heading mt-3">AI 的答案不是訂房。</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">推薦需要結構化供應、即時價格、結帳、付款、確認與歸因，才能成為商務。</p>
+  </div>
+  <div class="grid gap-6 @md:grid-cols-2">
+    <div class="rounded-2xl border border-border bg-muted/30 p-7">
+      <h3 class="font-heading text-lg font-semibold text-muted-foreground">沒有基礎設施的 AI 代理</h3>
+      <ul class="mt-5 space-y-3">
+        {["網路爬蟲取得，且常為過時供應", "價格可能無法訂房", "先推薦，然後將訂房交給網站或 OTA", "無歸因 — 代理無法賺錢", "建議後失去後續連結"].map((b) => (
+          <li class="flex items-start gap-2.5"><IconX class="mt-0.5 size-5 shrink-0 text-muted-foreground/60" /><span class="text-sm text-muted-foreground">{b}</span></li>
+        ))}
+      </ul>
+      <p class="mt-6 text-sm font-semibold text-muted-foreground">能推薦。</p>
+    </div>
+    <div class="rounded-2xl border-2 border-primary/30 bg-primary/[0.04] p-7">
+      <h3 class="font-heading text-lg font-semibold text-primary">Wink 上的 AI 代理</h3>
+      <ul class="mt-5 space-y-3">
+        {["即時、飯店自有供應 — 非網路爬蟲或轉售", "透過 API 取得即時價格與可用性", "一次流程完成訂房與付款 — Wink 負責結算", "代理可賺錢 — 歸因 + 10% 預設佣金", "確認訂單，與 PMS 同步，並有 webhook — 現已上線"].map((b) => (
+          <li class="flex items-start gap-2.5"><IconCheck class="mt-0.5 size-5 shrink-0 text-primary" /><span class="text-sm text-foreground/90">{b}</span></li>
+        ))}
+      </ul>
+      <p class="mt-6 text-sm font-semibold text-primary">能交易。</p>
+    </div>
+  </div>
+</section>
+
+{/* AI agents for everyone */}
+<section class="@container mx-auto w-full max-w-7xl px-4 pt-24">
+  <div class="mx-auto mb-14 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">每個參與者，皆為代理</p>
+    <h2 class="mkt-h2 font-heading mt-3">為旅客、飯店、合作夥伴與開發者打造的代理。</h2>
+  </div>
+  <div class="grid gap-6 @md:grid-cols-2">
+    {[
+      { icon: IconUser, who: "為旅客", title: "搜尋、訂房與管理住宿", desc: "代理使用結構化供應、即時價格與政策，然後透過 Booking Engine 建立訂單。", prompt: "找一間下月在清邁的成人專屬豪華飯店，附設水療。幫我訂房。" },
+      { icon: IconBuildingStore, who: "為飯店", title: "監督者，不是操作員", desc: "代理協助在 Extranet、Social 和 Studio 中建立、更新與分析 — 飯店保有規則控制權。", prompt: "生成下月社群內容並標示低入住率日期以促銷。" },
+      { icon: IconUsersGroup, who: "為合作夥伴與創作者", title: "自動化活動並賺取佣金", desc: "發現合格飯店，建立資產與商店頁面，發布並保持歸因連結。", prompt: "建立一個推廣馬爾地夫豪華度假村的活動。" },
+      { icon: IconCode, who: "為開發者", title: "打造全新旅遊體驗", desc: "AI 禮賓、銀行與忠誠旅遊代理 — 建構於 MCP 伺服器、REST API 與 Booking Engine 之上。", prompt: "使用 Wink API 在我們的銀行應用中嵌入 AI 飯店訂房功能。" },
+    ].map((c) => (
+      <div class="flex flex-col rounded-2xl border border-border bg-card p-7">
+        <span class="mb-4 flex size-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-white"><c.icon class="size-6" /></span>
+        <span class="text-xs font-semibold uppercase tracking-wider text-primary">{c.who}</span>
+        <h3 class="font-heading mt-2 text-xl font-semibold">{c.title}</h3>
+        <p class="text-muted-foreground mt-2 text-pretty">{c.desc}</p>
+        <p class="mt-5 rounded-lg border border-border bg-muted/40 px-4 py-3 text-sm italic text-foreground/80">“{c.prompt}”</p>
+      </div>
+    ))}
+  </div>
+</section>
+
+{/* The stack */}
+<section class="@container mx-auto w-full max-w-7xl px-4 pt-24">
+  <div class="mx-auto mb-10 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">建立於整個平台之上</p>
+    <h2 class="mkt-h2 font-heading mt-3">代理跨足連接堆疊。</h2>
+  </div>
+  <div class="mx-auto flex max-w-3xl flex-wrap justify-center gap-3">
+    {[
+      { name: "Extranet", href: "/products/extranet/" },
+      { name: "Studio", href: "/products/studio/" },
+      { name: "Social", href: "/products/social/" },
+      { name: "WinkLinks", href: "/products/winklinks/" },
+      { name: "Traveliko", href: "/products/traveliko/" },
+      { name: "Developers", href: "/builders/" },
+      { name: "Platforms & AI", href: "/platforms/" },
+    ].map((p) => (
+      <a href={p.href} class="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-medium transition-colors hover:border-primary/40">
+        <span class="size-1.5 rounded-full bg-primary" aria-hidden="true"></span>
+        {p.name}
+      </a>
+    ))}
+  </div>
+  <p class="text-muted-foreground mx-auto mt-10 max-w-xl text-center text-pretty"><strong class="text-foreground"><a href="/products/booking-engine/" class="text-primary underline underline-offset-4">Booking Engine</a> 是每次代理交接背後的訂房履行層</strong> — 結帳、付款、確認與訂單同步。</p>
+</section>
+
+{/* Open standards — interoperability, crawlable for AEO */}
+<section class="@container mx-auto w-full max-w-5xl px-4 pt-24">
+  <div class="mx-auto mb-12 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">開放標準，而非封閉生態</p>
+    <h2 class="mkt-h2 font-heading mt-3">打造與代理商務堆疊互通。</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-2xl">代理式飯店訂房正成為真實類別 — 業界正朝向開放協議整合，而非單一公司結帳系統。Wink 今日即運行這些標準，並設計為隨著標準整合成熟，能接入其他系統，避免代理被鎖定於專有路徑。</p>
+  </div>
+  <div class="grid gap-5 @md:grid-cols-2">
+    <div class="rounded-2xl border-2 border-primary/30 bg-primary/[0.04] p-7">
+      <span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 px-2.5 py-1 text-xs font-semibold text-emerald-600 dark:text-emerald-400"><span class="size-1.5 rounded-full bg-emerald-500"></span>現已上線</span>
+      <h3 class="font-heading mt-4 text-lg font-semibold">MCP — Model Context Protocol</h3>
+      <p class="text-muted-foreground mt-2 text-sm text-pretty">託管 MCP 伺服器向任何 MCP 相容代理 — Claude、Codex、Cursor 等 — 公開 Wink 的即時 OpenAPI 合約，位於 <code class="rounded bg-muted px-1 py-0.5 text-xs">docs.mcp.wink.travel/mcp</code>。代理可發現並調用真實操作，而非猜測端點。</p>
+    </div>
+    <div class="rounded-2xl border border-border bg-card p-7">
+      <span class="inline-flex items-center gap-1.5 rounded-full border border-border bg-muted/40 px-2.5 py-1 text-xs font-semibold text-muted-foreground">設計即互通</span>
+      <h3 class="font-heading mt-4 text-lg font-semibold">ACP · AP2 · A2A · x402</h3>
+      <p class="text-muted-foreground mt-2 text-sm text-pretty">Wink 的訂房與支付原語設計與新興代理支付堆疊互通 — Agentic Commerce Protocol (ACP)、Google 的 Agent Payments Protocol (AP2)、Agent2Agent (A2A) 及 x402 類代理支付 — 隨標準成熟，並以 Booking Engine 作為底層結算層（Wink 是商戶）。</p>
+    </div>
+  </div>
+</section>
+
+{/* Where this is heading — roadmap, clearly labeled */}
+<section class="mx-auto w-full max-w-3xl px-4 pt-24">
+  <div class="rounded-2xl border border-dashed border-primary/30 bg-primary/[0.03] p-8">
+    <span class="inline-flex items-center gap-1.5 rounded-full border border-primary/30 bg-card px-3 py-1 text-xs font-semibold text-primary">未來方向</span>
+    <p class="text-muted-foreground mt-5 text-pretty">上述能力皆已上線。未來方向是更深入的代理原生商務：更豐富的代理面向訂房原語、代理身份與授權，代表旅客交易，並讓代理成為合作夥伴網絡中有歸因且能賺錢的來源。Wink 的策略定位 — <strong class="text-foreground">AI 代理的旅遊商務基礎設施</strong> — 是從今日 API 到未來的主線。</p>
+  </div>
+</section>
+
+{/* FAQ */}
+<FaqGrid
+  heading="Agentic AI 常見問題"
+  description="涵義、如何連接，以及代理能做什麼。"
+  items={faqs}
+/>
+
+{/* Final CTA */}
+<section class="w-full border-y border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white">
+  <div class="mx-auto w-full max-w-7xl px-4 py-24 text-center">
+    <h2 class="mkt-h2 font-heading">準備為 AI 代理打造旅遊商務了嗎？</h2>
+    <p class="mx-auto mt-4 max-w-2xl text-pretty text-white/70 @lg:text-lg">連接 MCP 伺服器，閱讀即時合約，讓 Booking Engine 完成訂房。或與我們聯繫，了解您的產品如何取得代理存取權。</p>
+    <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <a href="/developers/build-on-wink/" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-[#ff6b35] px-8 text-base font-semibold text-white hover:bg-[#e85b29] sm:w-auto">查看文件</a>
+      <a href="/developers/mcp/" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-white px-8 text-base font-semibold text-[#1f0a40] hover:bg-white/90 sm:w-auto">連接 MCP 伺服器</a>
+      <a href="https://cal.com/wink-ws36dy" class="inline-flex h-12 items-center justify-center px-4 text-sm font-medium text-white/80 underline underline-offset-4 hover:text-white">申請示範</a>
+    </div>
+  </div>
+</section>
+
+</div>

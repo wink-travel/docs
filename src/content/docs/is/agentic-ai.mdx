@@ -1,0 +1,280 @@
+---
+title: Agentic AI — Ferðaþjónustuinngangur fyrir AI-umboðsmenn
+description: "Á Wink mæla AI-umboðsmenn ekki bara með hótelum — þeir leita í rauntíma í hótel-eigu birgðum, bóka og greiða í einni aðgerð í gegnum REST API og hýstan MCP. Í notkun í dag."
+template: splash
+marketingNav: true
+---
+import '/src/styles/splash-page.css';
+import BreadcrumbJsonLd from "@/components/marketing/BreadcrumbJsonLd.astro";
+
+import FaqGrid from "@/components/marketing/FaqGrid.astro";
+import AgentJsonLd from "@/components/marketing/AgentJsonLd.astro";
+import AgentConversation from "@/components/marketing/infographics/AgentConversation.astro";
+import AgenticShiftFlow from "@/components/marketing/infographics/AgenticShiftFlow.astro";
+
+import IconMapSearch from "@tabler/icons/outline/map-search.svg";
+import IconCalendarCheck from "@tabler/icons/outline/calendar-check.svg";
+import IconSparkles from "@tabler/icons/outline/sparkles.svg";
+import IconCalendarStats from "@tabler/icons/outline/calendar-stats.svg";
+import IconCreditCard from "@tabler/icons/outline/credit-card.svg";
+import IconCoin from "@tabler/icons/outline/coin.svg";
+import IconWebhook from "@tabler/icons/outline/webhook.svg";
+import IconComponents from "@tabler/icons/outline/components.svg";
+import IconUser from "@tabler/icons/outline/user.svg";
+import IconBuildingStore from "@tabler/icons/outline/building-store.svg";
+import IconUsersGroup from "@tabler/icons/outline/users-group.svg";
+import IconCode from "@tabler/icons/outline/code.svg";
+import IconArrowRight from "@tabler/icons/outline/arrow-right.svg";
+import IconCheck from "@tabler/icons/outline/check.svg";
+import IconX from "@tabler/icons/outline/x.svg";
+
+export const faqs = [
+  { title: "Af hverju geta flest AI-umboðsmenn ekki bókað hótel, og hvað gerir einn færan um það?", content: "Að mæla með hóteli er efnisvandamál — umboðsmaður þarf aðeins lýsingar og verð. Að bóka er viðskiptavandamál: það þarf rauntíma verð og framboð, birgðir sem hann getur haldið, greiðslumiðlun, uppgjör við hótelið og viðskiptasamband við eignina. Flestir aðstoðarmenn hafa aðeins fyrsta hlutann og ekkert af hinu, svo þeir vísa ferðalanganum á vefsíðu til að ljúka viðskiptunum. Umboðsmaður getur lokið bókun þegar innviðirnir undir liggja fram allar þessar upplýsingar. Wink er API-fyrst — hver eiginleiki kerfisins er kallaður utan frá, og hýstur MCP-þjónn sýnir rauntíma API-samninga — þannig að samþykktur umboðsmaður getur fundið hótelbókanir, lesið rauntíma verð og framboð, búið til og samstillt bókanir, tekið við greiðslu (Wink er kaupmaður skráður), varðveitt uppruna og gerst áskrifandi að atburðum." },
+  { title: "Hvernig tengist AI-umboðsmaður Wink?", content: "Bendið samhæfan MCP viðskiptavin á hýsta þjóninn á https://docs.mcp.wink.travel/mcp (SSE varapunktur á /sse). Frá Claude Code: claude mcp add --transport http wink-docs https://docs.mcp.wink.travel/mcp. Umboðsmaðurinn getur þá notað api_search og docs_search tól til að lesa rauntíma OpenAPI aðgerðir, beiðna/svör samninga og verkefna uppskriftir." },
+  { title: "Hvað getur AI-umboðsmaður raunverulega gert á Wink í dag?", content: "Í dag, í gegnum REST API og MCP þjóninn: uppgötva kerfið, leita að bókanlegum birgðum (þar með talið landfræðilega leit), lesa rauntíma verð og framboð yfir 11 tengda rásastjóra, búa til bókanir og samstilla lífsferil þeirra við PMS/rásastjóra, taka við greiðslu (Wink er kaupmaður skráður), varðveita 6 mánaða uppruna og afla tekna í gegnum samstarfsleiðir, gerast áskrifandi að 64+ webhook atburðum, búa til AI efni og innbyggja bókanlegar birgðir með Web Components." },
+  { title: "Getur AI-umboðsmaður lokið hótelbókun í gegnum Wink?", content: "Já. Bókun er REST API aðgerð, og Booking Engine framkvæmir viðskiptin — úttekt, greiðsla, staðfesting og samstilling bókunar. Umboðsmaður sem kallar á bókunar-API fyrir hönd ferðalangs getur lokið raunverulegri, staðfestri bókun með varðveittum uppruna." },
+  { title: "Hvernig verður hótel bókanlegt fyrir AI-umboðsmann á Wink?", content: "Einungis með því að setja upp prófíl sinn á Wink. Þegar framboð, verð og framboð eru í rauntíma (í gegnum Extranet) er það sjálfkrafa aðgengilegt og bókanlegt fyrir samþykkta AI-umboðsmenn í gegnum REST API og hýstan MCP þjón — engin sértæk AI samþætting fyrir hvert hótel. Umboðsmaðurinn leitar í rauntíma birgðum hótelsins, býr til bókun og greiðir í gegnum Booking Engine, með varðveittum uppruna. Öll hótel á Wink eru sjálfkrafa tilbúin fyrir umboðsmenn." },
+  { title: "Hvernig er bókun hótels í gegnum Wink frábrugðin ChatGPT með Expedia eða Booking.com?", content: "Aðstoðarsamþættingar eins og ChatGPT með Expedia eða Booking.com eru sterkar í uppgötvun — rauntíma verð, myndir og kort í spjallinu — en ferðalangurinn er venjulega vísað á eigin vefsíðu eða app birgjans til að ljúka bókun og greiðslu. Á Wink framkvæmir umboðsmaður beint viðskipti við rauntíma, hótel-eignað framboð: hann les raunveruleg verð og framboð, býr til bókun og greiðir í gegnum Booking Engine í einni aðgerð — og getur aflað sér þóknunar sem samstarfsaðili. Uppgötvun getur gerst hvar sem er; framkvæmd gerist á Wink." },
+  { title: "Er Wink eina kerfið sem leyfir AI-umboðsmönnum að bóka og greiða fyrir hótel?", content: "Nei — umboðsmanna-stýrð hótelviðskipti eru nýtt svið, og nokkrir ferðaiðnaðar- og greiðsluaðilar hafa tilkynnt eða sett af stað end-to-end umboðsbókanir fram til 2026. Það sem einkennir Wink er samsetningin: framboðið er hótel-eignað og beint (ekki GDS endursölu eða vefskrapaðar skráningar), umboðsmaðurinn getur leitað, bókað, greitt OG aflað tekna í gegnum eitt viðskiptalag, og það er kallað í rauntíma í gegnum REST API og hýstan MCP þjón — ekki á áætlun. Hótel halda stjórn á dreifingu; umboðsmaðurinn verður tilgreindur, aflaður tekna rás." },
+  { title: "Hvaða umboðsmanna-viðskipta- og AI-staðla styður Wink?", content: "Wink er API-fyrst og rekur hýstan MCP (Model Context Protocol) þjón í dag, svo hver MCP-samhæfur umboðsmaður — Claude, Codex, Cursor og aðrir — getur fundið og kallað rauntíma OpenAPI samninga. Bókunar- og greiðslugrunnur Wink er hannaður til að samhæfast nýjum umboðsmanna-viðskipta stafla — Agentic Commerce Protocol (ACP), Google Agent Payments Protocol (AP2), Agent2Agent (A2A) og x402-stíl umboðsgreiðslur — eftir því sem staðlarnir sameinast, frekar en að læsa umboðsmönnum í einkaleyfisleið." },
+  { title: "Er til AI-hæfni til að byggja á Wink?", content: "Já — wink-api-builder er flytjanleg hæfni umboðsmanns sem notar MCP þjóninn sem sannleiksgjafa. Hún leiðir umboðsmann í gegnum api_search að rauntíma beiðna/svara samningum, auðkenningu og staðfestum kóða, og merkir ósamræmi milli núverandi kóða og API. Hún virkar með Claude Code, Codex, Cursor og öðrum hæfniviðskiptavinum." },
+  { title: "Getur AI-umboðsmaður aflað tekna sem tengd aðili eða samstarfsaðili?", content: "Samstarfsfyrirkomulag Wink varðveitir uppruna og herferðaupplýsingar í 6 mánuði eftir smell og greiðir 10% sjálfgefna þóknun af staðfestum bókunum. Umboðsmaður sem skapar hæfa eftirspurn og leiðir bókun getur verið tilgreindur uppruni í gegnum sama samstarfsaðila og Booking Engine innviði." },
+  { title: "Er Agentic AI í stað Booking Engine?", content: "Nei. Agentic AI býr til eða leiðir fyrirætlanir; Booking Engine er áfram framkvæmdarlagið fyrir úttekt, greiðslu, staðfestingu og samstillingu bókana. Hver umboðsmaður sem vísað er frá fer í gegnum Booking Engine undir." },
+  { title: "Hvar ætti forritari eða umboðsmaður að byrja?", content: "Tengstu MCP þjóninum, lestu síðan Build on Wink, MCP Server og AI Skills skjölin. Beðið um API aðgang þegar notkunartilvik og viðskiptaleg leið eru skýr." },
+];
+
+<div class="not-content mkt-page">
+
+<AgentJsonLd faqs={faqs} />
+
+<BreadcrumbJsonLd items={[{ name: "Heim", url: "https://wink.travel/" }, { name: "Agentic AI" }]} />
+
+{/* Hero — agent conversation. Full-bleed per the house `data-full-bleed` pattern,
+    with the breadcrumb inside the band so it lines up with the headline instead of
+    sitting in Starlight's narrower column above a full-width hero. */}
+<section data-full-bleed class="@container relative w-full overflow-hidden border-b border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white">
+  <div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+    <div class="absolute -left-24 -top-10 size-80 rounded-full bg-[#ff6b35]/20 blur-[100px]"></div>
+    <div class="absolute -bottom-16 -right-16 size-96 rounded-full bg-[#9333ea]/30 blur-[120px]"></div>
+  </div>
+  <div class="relative mx-auto w-full max-w-7xl px-4 pb-20 pt-8 lg:pb-24">
+    <nav aria-label="Breadcrumb" class="text-sm text-white/60">
+      <a href="/" class="transition-colors hover:text-white">Heim</a>
+      <span class="px-1.5 text-white/55">/</span>
+      <span class="text-white">Agentic AI</span>
+    </nav>
+    <div class="mt-10 grid items-center gap-12 lg:mt-12 lg:min-h-[33rem] @lg:grid-cols-[1fr_1.02fr]">
+    {/* Left — copy */}
+    <div class="text-center @lg:text-left">
+      <span class="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-xs font-extrabold uppercase tracking-wider text-[#ff8a5c] ring-1 ring-white/15 backdrop-blur @lg:mx-0"><span class="size-1.5 rounded-full bg-gradient-to-r from-[#ff6b35] to-[#ec4899]"></span> Agentic AI</span>
+      <h1 class="font-heading mt-6 text-4xl font-extrabold leading-[1.05] tracking-tight text-balance @lg:text-5xl @2xl:text-6xl">AI-umboðsmenn geta skipulagt ferð. <span class="wink-shimmer bg-gradient-to-r from-[#ff8a5c] via-[#ec4899] to-[#a855f7] bg-clip-text text-transparent">Næstum enginn getur bókað hana.</span></h1>
+      <p class="mx-auto mt-5 max-w-xl text-pretty text-lg text-white/75 @lg:mx-0 @lg:text-xl">Að mæla með hóteli er efnisvandamál. Að bóka eitt er viðskiptavandamál — rauntíma verð, haldnar birgðir, greiðsla, uppgjör og samningur við hótelið. Wink er innviðurinn sem lokar þeirri bilun: umboðsmenn finna, bóka <em class="not-italic font-semibold text-white">og greiða</em> gegn hótel-eignuðu framboði, í gegnum rauntíma REST API og hýstan MCP þjón.</p>
+      <div class="mt-8 flex flex-col items-center justify-center gap-3 @lg:justify-start sm:flex-row">
+        <a href="/developers/build-on-wink/" class="inline-flex h-12 items-center justify-center rounded-md bg-[#ff6b35] px-7 text-base font-semibold text-white transition-colors hover:bg-[#e85b29]">Sjá skjöl</a>
+        <a href="#agents" class="inline-flex h-12 items-center justify-center rounded-md bg-white/10 px-7 text-base font-medium text-white ring-1 ring-white/20 backdrop-blur transition-colors hover:bg-white/15">Tengdu umboðsmann</a>
+      </div>
+      <div class="mt-7 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 font-mono text-xs text-white/70"><span class="size-1.5 animate-pulse rounded-full bg-emerald-400"></span> MCP þjónn í notkun · docs.mcp.wink.travel/mcp</div>
+    </div>
+
+    {/* Right — agent conversation (swappable infographic) */}
+    <AgentConversation />
+    </div>
+  </div>
+</section>
+
+{/* Direct answer */}
+<section class="mx-auto w-full max-w-3xl px-4 pt-24 pb-24 text-center">
+  <p class="mkt-kicker text-primary">Af hverju geta flest AI-umboðsmenn ekki bókað hótel?</p>
+  <p class="mkt-sub text-muted-foreground mt-5">Wink er API-fyrst: hver eiginleiki kerfisins er kallaður utan frá, og hýstur MCP þjónn sýnir rauntíma API-samninga fyrir AI-umboðsmenn. Í stað þess að neyða hvern ferðalang í gegnum vefsíðu, gefur Wink samþykktum umboðsmönnum uppbyggðan aðgang að hótelbókunum, verði, framboði, bókun, greiðslu, uppruna og atburðum — sama innviðurinn sem knýr Wink sjálft.</p>
+  <div class="mx-auto mt-7 max-w-2xl rounded-2xl border-2 border-primary/30 bg-primary/[0.04] px-6 py-5 text-pretty text-foreground/90"><strong class="text-foreground">Hvaða hótel sem er verður tilbúið fyrir umboðsmenn einfaldlega með því að setja upp prófíl á Wink.</strong> Þegar framboð, verð og framboð eru í rauntíma geta samþykktir AI-umboðsmenn leitað, bókað og greitt gegn því í gegnum API og MCP þjón — engin sértæk AI samþætting fyrir hvert hótel nauðsynleg.</div>
+</section>
+
+{/* Live proof — the argument above is shipped, not roadmap. Implementation
+    detail deliberately lives on /builders/ so this page stays the thesis. */}
+<section id="agents" class="@container w-full border-y border-border bg-muted/30" style="scroll-margin-top:5rem">
+  <div class="mx-auto w-full max-w-4xl px-4 py-24 text-center">
+    <p class="mkt-kicker text-primary">Í notkun í dag, ekki á áætlun</p>
+    <h2 class="mkt-h2 font-heading mt-3">Fjórir þættir frá umboðsmanni að staðfestri, greiddri bókun.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-2xl">Tengdu hýsta MCP þjóninn, leystu fyrirætlan í raunverulegar aðgerðir gegn rauntíma API, búðu til staðfestan kóða, og afhentu svo Booking Engine fyrir úttekt, greiðslu, staðfestingu og samstillingu PMS.</p>
+    <ol class="mx-auto mt-10 grid gap-3 text-left @lg:grid-cols-4">
+      <li class="rounded-xl border border-border bg-card px-4 py-3 text-sm"><span class="font-mono text-xs text-primary">01</span><span class="mt-1 block font-semibold">Tengdu MCP</span></li>
+      <li class="rounded-xl border border-border bg-card px-4 py-3 text-sm"><span class="font-mono text-xs text-primary">02</span><span class="mt-1 block font-semibold">Leitaðu í rauntíma API</span></li>
+      <li class="rounded-xl border border-border bg-card px-4 py-3 text-sm"><span class="font-mono text-xs text-primary">03</span><span class="mt-1 block font-semibold">Byggðu staðfestan kóða</span></li>
+      <li class="rounded-xl border border-border bg-card px-4 py-3 text-sm"><span class="font-mono text-xs text-primary">04</span><span class="mt-1 block font-semibold">Bókaðu &amp; fáðu greitt</span></li>
+    </ol>
+    <div class="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <a href="/builders/#agent-quickstart" class="inline-flex h-12 items-center justify-center rounded-md bg-[#ff6b35] px-7 text-base font-semibold text-white transition-colors hover:bg-[#e85b29]">Sjá samþættingarþrepin</a>
+      <a href="/developers/mcp/" class="inline-flex h-12 items-center justify-center rounded-md border border-border px-7 text-base font-medium transition-colors hover:bg-muted">MCP þjónn skjöl</a>
+    </div>
+    <p class="text-muted-foreground mt-5 inline-flex items-center gap-2 font-mono text-xs"><span class="size-1.5 animate-pulse rounded-full bg-emerald-500"></span> docs.mcp.wink.travel/mcp</p>
+  </div>
+</section>
+
+{/* What an agent can do — capability map */}
+<section class="@container mx-auto w-full max-w-7xl px-4 pt-24">
+  <div class="mx-auto mb-14 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Hæfnikort</p>
+    <h2 class="mkt-h2 font-heading mt-3">Hvað AI-umboðsmaður getur gert á Wink.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">Allar hæfnir hér að neðan eru í boði í dag í gegnum REST API og MCP þjón — byggt á sömu samningum og Wink keyrir á.</p>
+  </div>
+  <div class="grid gap-5 @md:grid-cols-2 @2xl:grid-cols-3">
+    {[
+      { icon: IconMapSearch, title: "Leitaðu í hótelbókunum", desc: "Finndu bókanlegt framboð með landfræðilegri leit — punktur, hringur, ferhyrningur eða marghyrningur — auk GeoIP greiningar." },
+      { icon: IconCalendarStats, title: "Lesa rauntíma verð & framboð", desc: "Sækja rauntíma verð, framboð og birgðir yfir 11 tengda rásastjóra." },
+      { icon: IconCalendarCheck, title: "Búa til & samstilla bókanir", desc: "Búa til bókanir í gegnum API; búa til / uppfæra / hætta við samstillingu við tengdan PMS eða rásastjóra með fullri lífsferilsskráningu." },
+      { icon: IconCreditCard, title: "Taka við greiðslu", desc: "Wink sér um úttekt, afbókunarreglur og greiðslu á bak við bókunina — Wink er kaupmaður skráður." },
+      { icon: IconCoin, title: "Varðveita uppruna & afla tekna", desc: "Uppruni og herferð varðveitist í 6 mánuði eftir smell og 10% sjálfgefin þóknun af staðfestum bókunum." },
+      { icon: IconWebhook, title: "Bregðast við 64+ atburðum", desc: "Gerast áskrifandi að webhook atburðum — bókanir, greiðslur, endurgreiðslur, uppfærslur rásastjóra — og kveikja á eftirfylgniaðgerðum." },
+      { icon: IconSparkles, title: "Búa til efni", desc: "AI efni yfir 9 birgðategundir og 12 raddstíla; einni smell skráning eignar frá einni slóð." },
+      { icon: IconComponents, title: "Innbyggja bókanlegt framboð", desc: "Settu rauntíma, bókanlegt hótelbókunarframboð í hvaða yfirborð sem er með Web Components og lágmarks kóða." },
+      { icon: IconCode, title: "Byggja á fullu API", desc: "Hver eiginleiki Wink er kallaður utan frá í gegnum REST, með OAuth2 auðkenningu og opinberum SDK — samþættu eins og kerfið væri þitt eigið." },
+    ].map((c) => (
+      <div class="flex flex-col rounded-2xl border border-border bg-card p-6">
+        <span class="mb-4 flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-white"><c.icon class="size-6" /></span>
+        <h3 class="font-heading text-base font-semibold">{c.title}</h3>
+        <p class="text-muted-foreground mt-2 text-sm text-pretty">{c.desc}</p>
+        <span class="mt-4 inline-flex w-fit items-center gap-1.5 rounded-full bg-emerald-500/10 px-2.5 py-1 text-xs font-semibold text-emerald-600 dark:text-emerald-400"><span class="size-1.5 rounded-full bg-emerald-500"></span>Í boði núna</span>
+      </div>
+    ))}
+  </div>
+</section>
+
+{/* The agentic shift — before/after flow */}
+<section class="@container mx-auto w-full max-w-5xl px-4 pt-24">
+  <div class="mx-auto mb-12 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Breytingin</p>
+    <h2 class="mkt-h2 font-heading mt-3">Frá ferðalangi-til-vefsíðu að ferðalangi-til-umboðsmanns.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">Í gamla líkaninu gerði ferðalangurinn verkið. Í umboðslíkaninu verður umboðsmaðurinn viðmótið — og Wink verður viðskiptalagið á bak við svarið.</p>
+  </div>
+  {/* Before/after flow — swappable infographic (infographics/AgenticShiftFlow.astro) */}
+  <AgenticShiftFlow />
+</section>
+
+{/* Why Wink — recommend vs transact */}
+<section class="@container mx-auto w-full max-w-5xl px-4 pt-24">
+  <div class="mx-auto mb-12 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Af hverju Wink</p>
+    <h2 class="mkt-h2 font-heading mt-3">AI-svar er ekki bókun.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">Tillaga þarf uppbyggt framboð, rauntíma verð, úttekt, greiðslu, staðfestingu og uppruna til að verða viðskipti.</p>
+  </div>
+  <div class="grid gap-6 @md:grid-cols-2">
+    <div class="rounded-2xl border border-border bg-muted/30 p-7">
+      <h3 class="font-heading text-lg font-semibold text-muted-foreground">AI-umboðsmaður án innviða</h3>
+      <ul class="mt-5 space-y-3">
+        {["Vefskrapað, oft úrelt framboð", "Verð sem gætu ekki verið bókanleg", "Mælir með, svo víkur bókun til vefsíðu eða OTA", "Enginn uppruni — og engin leið fyrir umboðsmann að afla tekna", "Týnist þráðurinn eftir tillögu"].map((b) => (
+          <li class="flex items-start gap-2.5"><IconX class="mt-0.5 size-5 shrink-0 text-muted-foreground/60" /><span class="text-sm text-muted-foreground">{b}</span></li>
+        ))}
+      </ul>
+      <p class="mt-6 text-sm font-semibold text-muted-foreground">Getur mælt með.</p>
+    </div>
+    <div class="rounded-2xl border-2 border-primary/30 bg-primary/[0.04] p-7">
+      <h3 class="font-heading text-lg font-semibold text-primary">AI-umboðsmaður á Wink</h3>
+      <ul class="mt-5 space-y-3">
+        {["Rauntíma, hótel-eignað framboð — ekki vefskrapað eða endurselt", "Rauntíma verð og framboð í gegnum API", "Bókar OG greiðir í einni aðgerð — Wink sér um uppgjör", "Umboðsmaður getur aflað tekna — uppruni + 10% sjálfgefin þóknun", "Staðfest, samstillt við PMS, með webhook — í notkun í dag"].map((b) => (
+          <li class="flex items-start gap-2.5"><IconCheck class="mt-0.5 size-5 shrink-0 text-primary" /><span class="text-sm text-foreground/90">{b}</span></li>
+        ))}
+      </ul>
+      <p class="mt-6 text-sm font-semibold text-primary">Getur framkvæmt viðskipti.</p>
+    </div>
+  </div>
+</section>
+
+{/* AI agents for everyone */}
+<section class="@container mx-auto w-full max-w-7xl px-4 pt-24">
+  <div class="mx-auto mb-14 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Hver þátttakandi, umboðsmaður</p>
+    <h2 class="mkt-h2 font-heading mt-3">Umboðsmaður fyrir ferðalanga, hótel, samstarfsaðila og forritara.</h2>
+  </div>
+  <div class="grid gap-6 @md:grid-cols-2">
+    {[
+      { icon: IconUser, who: "Fyrir ferðalanga", title: "Leitaðu, bókaðu og stjórnaðu dvöl", desc: "Umboðsmaður vinnur með uppbyggðu framboði, rauntíma verði og reglum — og býr svo til bókun í gegnum Booking Engine.", prompt: "Finndu lúxushótel eingöngu fyrir fullorðna í Chiang Mai næsta mánuð með heilsulind. Bókaðu það." },
+      { icon: IconBuildingStore, who: "Fyrir hótel", title: "Yfirmenn, ekki rekstraraðilar", desc: "Umboðsmenn hjálpa til við að búa til, uppfæra og greina í gegnum Extranet, Social og Studio — hótelið heldur reglum.", prompt: "Búðu til næsta mánaðar samfélagsmiðlaefni og merkja lága nýtingardaga til að kynna." },
+      { icon: IconUsersGroup, who: "Fyrir samstarfsaðila & skapara", title: "Sjálfvirkni herferða og afla tekna", desc: "Uppgötvaðu hæf hótel, byggðu eignir og verslanir, birtaðu og haltu uppruna tengdum.", prompt: "Búðu til herferð sem kynna lúxus á Maldives." },
+      { icon: IconCode, who: "Fyrir forritara", title: "Byggðu ný ferðaupplifun", desc: "AI þjónustufulltrúar, banki og tryggingafélaga ferðaumboðsmenn — byggt á MCP þjón, REST API og Booking Engine.", prompt: "Innbyggðu AI hótelbókun í bankaforritið okkar með Wink API." },
+    ].map((c) => (
+      <div class="flex flex-col rounded-2xl border border-border bg-card p-7">
+        <span class="mb-4 flex size-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-white"><c.icon class="size-6" /></span>
+        <span class="text-xs font-semibold uppercase tracking-wider text-primary">{c.who}</span>
+        <h3 class="font-heading mt-2 text-xl font-semibold">{c.title}</h3>
+        <p class="text-muted-foreground mt-2 text-pretty">{c.desc}</p>
+        <p class="mt-5 rounded-lg border border-border bg-muted/40 px-4 py-3 text-sm italic text-foreground/80">“{c.prompt}”</p>
+      </div>
+    ))}
+  </div>
+</section>
+
+{/* The stack */}
+<section class="@container mx-auto w-full max-w-7xl px-4 pt-24">
+  <div class="mx-auto mb-10 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Byggt á öllu kerfinu</p>
+    <h2 class="mkt-h2 font-heading mt-3">Umboðsmenn vinna yfir tengda staflann.</h2>
+  </div>
+  <div class="mx-auto flex max-w-3xl flex-wrap justify-center gap-3">
+    {[
+      { name: "Extranet", href: "/products/extranet/" },
+      { name: "Studio", href: "/products/studio/" },
+      { name: "Social", href: "/products/social/" },
+      { name: "WinkLinks", href: "/products/winklinks/" },
+      { name: "Traveliko", href: "/products/traveliko/" },
+      { name: "Developers", href: "/builders/" },
+      { name: "Platforms & AI", href: "/platforms/" },
+    ].map((p) => (
+      <a href={p.href} class="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-medium transition-colors hover:border-primary/40">
+        <span class="size-1.5 rounded-full bg-primary" aria-hidden="true"></span>
+        {p.name}
+      </a>
+    ))}
+  </div>
+  <p class="text-muted-foreground mx-auto mt-10 max-w-xl text-center text-pretty"><strong class="text-foreground"><a href="/products/booking-engine/" class="text-primary underline underline-offset-4">Booking Engine</a> sér um bókunina undir hverri umboðsmannsafhendingu</strong> — úttekt, greiðsla, staðfesting og samstilling bókana.</p>
+</section>
+
+{/* Open standards — interoperability, crawlable for AEO */}
+<section class="@container mx-auto w-full max-w-5xl px-4 pt-24">
+  <div class="mx-auto mb-12 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Opnir staðlar, ekki lokuð garður</p>
+    <h2 class="mkt-h2 font-heading mt-3">Byggt til að samhæfast umboðsmanna-viðskipta staflanum.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-2xl">Agentic hótelbókanir eru að verða raunverulegur flokkur — og iðnaðurinn sameinast um opna samskiptareglur frekar en að ein fyrirtæki ráði úttekt. Wink keyrir á þessum stöðlum í dag og er byggt til að tengjast öðrum þegar þeir sameinast, svo umboðsmenn séu aldrei læstir í einkaleyfisleið.</p>
+  </div>
+  <div class="grid gap-5 @md:grid-cols-2">
+    <div class="rounded-2xl border-2 border-primary/30 bg-primary/[0.04] p-7">
+      <span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 px-2.5 py-1 text-xs font-semibold text-emerald-600 dark:text-emerald-400"><span class="size-1.5 rounded-full bg-emerald-500"></span>Í notkun í dag</span>
+      <h3 class="font-heading mt-4 text-lg font-semibold">MCP — Model Context Protocol</h3>
+      <p class="text-muted-foreground mt-2 text-sm text-pretty">Hýstur MCP þjónn sýnir rauntíma OpenAPI samninga Wink fyrir hvaða MCP-samhæfan umboðsmann sem er — Claude, Codex, Cursor og fleiri — á <code class="rounded bg-muted px-1 py-0.5 text-xs">docs.mcp.wink.travel/mcp</code>. Umboðsmenn finna og kalla raunverulegar aðgerðir í stað þess að giska á endapunkta.</p>
+    </div>
+    <div class="rounded-2xl border border-border bg-card p-7">
+      <span class="inline-flex items-center gap-1.5 rounded-full border border-border bg-muted/40 px-2.5 py-1 text-xs font-semibold text-muted-foreground">Samhæft eftir hönnun</span>
+      <h3 class="font-heading mt-4 text-lg font-semibold">ACP · AP2 · A2A · x402</h3>
+      <p class="text-muted-foreground mt-2 text-sm text-pretty">Bókunar- og greiðslugrunnur Wink er hannaður til að samhæfast nýjum umboðsmanna-viðskipta stafla — Agentic Commerce Protocol (ACP), Google Agent Payments Protocol (AP2), Agent2Agent (A2A) og x402-stíl umboðsgreiðslur — eftir því sem staðlarnir þroskast, með Booking Engine sem uppgjörslag undir (Wink er kaupmaður skráður).</p>
+    </div>
+  </div>
+</section>
+
+{/* Where this is heading — roadmap, clearly labeled */}
+<section class="mx-auto w-full max-w-3xl px-4 pt-24">
+  <div class="rounded-2xl border border-dashed border-primary/30 bg-primary/[0.03] p-8">
+    <span class="inline-flex items-center gap-1.5 rounded-full border border-primary/30 bg-card px-3 py-1 text-xs font-semibold text-primary">Hvert þetta stefnir</span>
+    <p class="text-muted-foreground mt-5 text-pretty">Hæfnirnar hér að ofan eru í notkun í dag. Stefnan er dýpri umboðsmanna-innfædd viðskipti: ríkari bókunargrunnur fyrir umboðsmenn, auðkenning og heimild umboðsmanna til að framkvæma viðskipti fyrir hönd ferðalangs, og umboðsmenn sem taka þátt sem tilgreindir, aflaðir tekna aðilar í samstarfsnetinu. Stefnumótun Wink — <strong class="text-foreground">ferðaþjónustuinngangur fyrir AI-umboðsmenn</strong> — er þráðurinn frá núverandi API til framtíðar.</p>
+  </div>
+</section>
+
+{/* FAQ */}
+<FaqGrid
+  heading="Algengar spurningar um Agentic AI"
+  description="Hvað það þýðir, hvernig á að tengjast og hvað umboðsmenn geta gert."
+  items={faqs}
+/>
+
+{/* Final CTA */}
+<section class="w-full border-y border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white">
+  <div class="mx-auto w-full max-w-7xl px-4 py-24 text-center">
+    <h2 class="mkt-h2 font-heading">Tilbúinn að byggja ferðaþjónustuinngang fyrir AI-umboðsmenn?</h2>
+    <p class="mx-auto mt-4 max-w-2xl text-pretty text-white/70 @lg:text-lg">Tengdu MCP þjóninn, lestu rauntíma samningana og láttu Booking Engine sjá um bókunina. Eða hafðu samband við okkur um aðgang umboðsmanns fyrir þitt vöruverkefni.</p>
+    <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <a href="/developers/build-on-wink/" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-[#ff6b35] px-8 text-base font-semibold text-white hover:bg-[#e85b29] sm:w-auto">Sjá skjöl</a>
+      <a href="/developers/mcp/" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-white px-8 text-base font-semibold text-[#1f0a40] hover:bg-white/90 sm:w-auto">Tengdu MCP þjóninn</a>
+      <a href="https://cal.com/wink-ws36dy" class="inline-flex h-12 items-center justify-center px-4 text-sm font-medium text-white/80 underline underline-offset-4 hover:text-white">Beðið um kynningu</a>
+    </div>
+  </div>
+</section>
+
+</div>

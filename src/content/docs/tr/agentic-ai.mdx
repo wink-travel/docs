@@ -1,0 +1,280 @@
+---
+title: Agentic AI — AI Ajanları için Seyahat Ticaret Altyapısı
+description: "Wink'te AI ajanları sadece otel önermez — canlı otel sahipli tedariki arar, ardından REST API ve barındırılan MCP üzerinden tek bir akışta rezervasyon yapar ve ödeme alır. Bugün canlı."
+template: splash
+marketingNav: true
+---
+import '/src/styles/splash-page.css';
+import BreadcrumbJsonLd from "@/components/marketing/BreadcrumbJsonLd.astro";
+
+import FaqGrid from "@/components/marketing/FaqGrid.astro";
+import AgentJsonLd from "@/components/marketing/AgentJsonLd.astro";
+import AgentConversation from "@/components/marketing/infographics/AgentConversation.astro";
+import AgenticShiftFlow from "@/components/marketing/infographics/AgenticShiftFlow.astro";
+
+import IconMapSearch from "@tabler/icons/outline/map-search.svg";
+import IconCalendarCheck from "@tabler/icons/outline/calendar-check.svg";
+import IconSparkles from "@tabler/icons/outline/sparkles.svg";
+import IconCalendarStats from "@tabler/icons/outline/calendar-stats.svg";
+import IconCreditCard from "@tabler/icons/outline/credit-card.svg";
+import IconCoin from "@tabler/icons/outline/coin.svg";
+import IconWebhook from "@tabler/icons/outline/webhook.svg";
+import IconComponents from "@tabler/icons/outline/components.svg";
+import IconUser from "@tabler/icons/outline/user.svg";
+import IconBuildingStore from "@tabler/icons/outline/building-store.svg";
+import IconUsersGroup from "@tabler/icons/outline/users-group.svg";
+import IconCode from "@tabler/icons/outline/code.svg";
+import IconArrowRight from "@tabler/icons/outline/arrow-right.svg";
+import IconCheck from "@tabler/icons/outline/check.svg";
+import IconX from "@tabler/icons/outline/x.svg";
+
+export const faqs = [
+  { title: "Çoğu AI ajanı neden otel rezervasyonu yapamıyor ve bir ajan bunu nasıl yapabiliyor?", content: "Otel önermek bir içerik sorunudur — bir ajan sadece açıklamalar ve fiyatlara ihtiyaç duyar. Rezervasyon yapmak ise bir ticaret sorunudur: canlı fiyatlar ve müsaitlik, gerçekten tutabileceği envanter, ödeme altyapısı, otelle mutabakat ve mülk ile ticari ilişki gerekir. Çoğu asistan ilkini yapar ama diğerlerini yapamaz, bu yüzden yolcuyu işlemi tamamlaması için bir web sitesine yönlendirir. Bir ajan, altyapı tüm bunları açığa çıkardığında rezervasyonu tamamlayabilir. Wink API-önceliklidir — her platform özelliği dışarıdan çağrılabilir ve barındırılan MCP sunucusu canlı API sözleşmelerini açığa çıkarır — böylece onaylı bir ajan otel tedarikini keşfedebilir, canlı fiyat ve müsaitliği okuyabilir, rezervasyon oluşturup senkronize edebilir, ödeme alabilir (Wink kayıtlı satıcıdır), atıfı koruyabilir ve olaylara abone olabilir." },
+  { title: "Bir AI ajanı Wink'e nasıl bağlanır?", content: "Uyumlu bir MCP istemcisini https://docs.mcp.wink.travel/mcp adresindeki barındırılan sunucuya yönlendirin (SSE yedekleme /sse). Claude Code'dan: claude mcp add --transport http wink-docs https://docs.mcp.wink.travel/mcp. Ajan daha sonra api_search ve docs_search araçlarını kullanarak canlı OpenAPI işlemlerini, istek/yanıt sözleşmelerini ve görev tariflerini okuyabilir." },
+  { title: "Bir AI ajanı bugün Wink'te gerçekten neler yapabilir?", content: "Bugün, REST API ve MCP sunucusu aracılığıyla: platformu keşfedebilir, rezervasyon yapılabilir envanteri arayabilir (coğrafi konum mekansal arama dahil), 11 bağlı kanal yöneticisi arasında canlı fiyat ve müsaitliği okuyabilir, rezervasyon oluşturup PMS/kanal yöneticisi ile yaşam döngüsünü senkronize edebilir, ödeme alabilir (Wink kayıtlı satıcıdır), 6 aylık atıfı koruyup ortak akışlardan kazanabilir, 64+ webhook olayına abone olabilir, AI içerik oluşturabilir ve Web Bileşenleri ile rezervasyon yapılabilir envanteri gömebilir." },
+  { title: "Bir AI ajanı Wink üzerinden otel rezervasyonunu tamamlayabilir mi?", content: "Evet. Rezervasyon oluşturma bir REST API işlemidir ve Booking Engine işlemi gerçekleştirir — ödeme, onay ve rezervasyon senkronizasyonu. Bir ajan, yolcu adına rezervasyon API'sini çağırarak gerçek, onaylanmış bir rezervasyonu kaynak bağlamı korunarak tamamlayabilir." },
+  { title: "Bir otel Wink'te AI ajanı tarafından rezervasyon yapılabilir hale nasıl gelir?", content: "Sadece Wink'te profilini kurarak. Otelin tedariki, fiyatları ve müsaitliği canlı olduğunda (Extranet üzerinden), onaylı AI ajanları REST API ve barındırılan MCP sunucusu aracılığıyla otomatik olarak keşfedip rezervasyon yapabilir — otel başına ayrı bir AI entegrasyonu gerekmez. Ajan otelin canlı envanterini arar, rezervasyonu oluşturur ve ödeme işlemini Booking Engine üzerinden yapar, atıf korunur. Wink'teki her otel varsayılan olarak ajan hazırdır." },
+  { title: "Wink üzerinden otel rezervasyonu yapmak ChatGPT ile Expedia veya Booking.com arasındaki fark nedir?", content: "ChatGPT ile Expedia veya Booking.com gibi asistan entegrasyonları keşifte güçlüdür — sohbet içinde canlı fiyatlar, fotoğraflar ve haritalar — ancak yolcu genellikle rezervasyonu tamamlamak ve ödeme yapmak için tedarikçinin kendi web sitesi veya uygulamasına yönlendirilir. Wink'te ajan, canlı, otel sahipli tedarike doğrudan işlem yapar: gerçek fiyat ve müsaitliği okur, rezervasyonu oluşturur ve ödeme işlemini Booking Engine üzerinden tek akışta yapar — ve sonuç üzerinden ortak komisyon kazanabilir. Keşif her yerde olabilir; gerçekleştirme Wink'te olur." },
+  { title: "Wink, AI ajanlarının otel rezervasyonu yapıp ödeme yapmasına izin veren tek platform mu?", content: "Hayır — ajan odaklı otel ticareti gelişmekte olan bir kategoridir ve birkaç seyahat ve ödeme oyuncusu 2026'ya kadar uçtan uca ajan rezervasyonunu duyurdu veya sundu. Wink'i ayıran özellikler: tedarik otel sahipli ve doğrudan (GDS yeniden satışı veya web kazıma listeleri değil), ajan arama, rezervasyon, ödeme VE kazanma işlemlerini tek bir ticaret katmanında yapabilir ve canlı REST API ve barındırılan MCP sunucusu üzerinden bugün çağrılabilir — yol haritası maddesi değil. Oteller dağıtım kontrolünü korur; ajan atıflı, kazanan bir kanal olur." },
+  { title: "Wink hangi ajan ticareti ve AI standartlarını destekliyor?", content: "Wink API-önceliklidir ve bugün barındırılan bir MCP (Model Context Protocol) sunucusu çalıştırır, böylece Claude, Codex, Cursor ve diğer MCP uyumlu ajanlar canlı OpenAPI sözleşmelerini keşfedip çağırabilir. Wink'in rezervasyon ve ödeme temel bileşenleri, gelişmekte olan ajan-ticaret yığını — Agentic Commerce Protocol (ACP), Google'ın Agent Payments Protocol (AP2), Agent2Agent (A2A) ve x402 tarzı ajan ödemeleri — ile birlikte çalışacak şekilde tasarlanmıştır; bu standartlar konsolide oldukça ajanları özel bir yola kilitlemez." },
+  { title: "Wink üzerinde geliştirmek için bir AI Becerisi var mı?", content: "Evet — wink-api-builder, MCP sunucusunu gerçek kaynak olarak kullanan taşınabilir bir ajan becerisidir. Bir ajanı api_search'ten canlı istek/yanıt sözleşmelerine, kimlik doğrulamaya ve doğrulanmış koda yönlendirir ve mevcut kod ile güncel API arasındaki uyumsuzlukları işaretler. Claude Code, Codex, Cursor ve diğer beceri destekli istemcilerle çalışır." },
+  { title: "Bir AI ajanı bağlı kuruluş veya ortak olarak kazanabilir mi?", content: "Wink'in ortak modeli, kaynak ve kampanya atıfını tıklama başına 6 ay korur ve onaylanmış rezervasyonlarda %10 varsayılan komisyon öder. Nitelikli talep yaratan ve rezervasyonu yönlendiren bir ajan, aynı ortak ve Booking Engine altyapısı üzerinden atıflı kaynak olabilir." },
+  { title: "Agentic AI, Booking Engine'in yerini alır mı?", content: "Hayır. Agentic AI niyeti oluşturur veya yönlendirir; Booking Engine ödeme, onay ve rezervasyon senkronizasyonu için gerçekleştirme katmanı olarak kalır. Her ajan devri Booking Engine üzerinden çözülür." },
+  { title: "Bir geliştirici veya ajan nereden başlamalı?", content: "MCP sunucusuna bağlanın, ardından Build on Wink, MCP Server ve AI Skills dokümantasyonunu okuyun. Kullanım durumu ve ticari yol netleştiğinde API erişimi talep edin." },
+];
+
+<div class="not-content mkt-page">
+
+<AgentJsonLd faqs={faqs} />
+
+<BreadcrumbJsonLd items={[{ name: "Anasayfa", url: "https://wink.travel/" }, { name: "Agentic AI" }]} />
+
+{/* Hero — ajan konuşması. Tam genişlikte, evin `data-full-bleed` desenine uygun,
+    breadcrumb bandın içinde, başlıkla hizalanacak şekilde,
+    Starlight'ın dar sütununda değil tam genişlikte hero üstünde. */}
+<section data-full-bleed class="@container relative w-full overflow-hidden border-b border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white">
+  <div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+    <div class="absolute -left-24 -top-10 size-80 rounded-full bg-[#ff6b35]/20 blur-[100px]"></div>
+    <div class="absolute -bottom-16 -right-16 size-96 rounded-full bg-[#9333ea]/30 blur-[120px]"></div>
+  </div>
+  <div class="relative mx-auto w-full max-w-7xl px-4 pb-20 pt-8 lg:pb-24">
+    <nav aria-label="Breadcrumb" class="text-sm text-white/60">
+      <a href="/" class="transition-colors hover:text-white">Anasayfa</a>
+      <span class="px-1.5 text-white/55">/</span>
+      <span class="text-white">Agentic AI</span>
+    </nav>
+    <div class="mt-10 grid items-center gap-12 lg:mt-12 lg:min-h-[33rem] @lg:grid-cols-[1fr_1.02fr]">
+    {/* Sol — metin */}
+    <div class="text-center @lg:text-left">
+      <span class="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-xs font-extrabold uppercase tracking-wider text-[#ff8a5c] ring-1 ring-white/15 backdrop-blur @lg:mx-0"><span class="size-1.5 rounded-full bg-gradient-to-r from-[#ff6b35] to-[#ec4899]"></span> Agentic AI</span>
+      <h1 class="font-heading mt-6 text-4xl font-extrabold leading-[1.05] tracking-tight text-balance @lg:text-5xl @2xl:text-6xl">AI ajanları seyahat planlayabilir. <span class="wink-shimmer bg-gradient-to-r from-[#ff8a5c] via-[#ec4899] to-[#a855f7] bg-clip-text text-transparent">Çoğu rezervasyon yapamaz.</span></h1>
+      <p class="mx-auto mt-5 max-w-xl text-pretty text-lg text-white/75 @lg:mx-0 @lg:text-xl">Otel önermek bir içerik sorunudur. Rezervasyon yapmak ise bir ticaret sorunudur — canlı fiyatlar, tutulan envanter, ödeme, mutabakat ve otelle sözleşme. Wink bu boşluğu kapatan altyapıdır: ajanlar otel kontrolündeki tedariki keşfeder, rezervasyon yapar <em class="not-italic font-semibold text-white">ve ödeme alır</em>, canlı REST API ve barındırılan MCP sunucusu üzerinden.</p>
+      <div class="mt-8 flex flex-col items-center justify-center gap-3 @lg:justify-start sm:flex-row">
+        <a href="/developers/build-on-wink/" class="inline-flex h-12 items-center justify-center rounded-md bg-[#ff6b35] px-7 text-base font-semibold text-white transition-colors hover:bg-[#e85b29]">Dokümantasyonu gör</a>
+        <a href="#agents" class="inline-flex h-12 items-center justify-center rounded-md bg-white/10 px-7 text-base font-medium text-white ring-1 ring-white/20 backdrop-blur transition-colors hover:bg-white/15">Bir ajan bağla</a>
+      </div>
+      <div class="mt-7 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 font-mono text-xs text-white/70"><span class="size-1.5 animate-pulse rounded-full bg-emerald-400"></span> MCP sunucu canlı · docs.mcp.wink.travel/mcp</div>
+    </div>
+
+    {/* Sağ — ajan konuşması (değiştirilebilir infografik) */}
+    <AgentConversation />
+    </div>
+  </div>
+</section>
+
+{/* Doğrudan cevap */}
+<section class="mx-auto w-full max-w-3xl px-4 pt-24 pb-24 text-center">
+  <p class="mkt-kicker text-primary">Çoğu AI ajanı neden otel rezervasyonu yapamıyor?</p>
+  <p class="mkt-sub text-muted-foreground mt-5">Wink API-önceliklidir: her platform özelliği dışarıdan çağrılabilir ve barındırılan MCP sunucusu AI ajanlarına canlı API sözleşmelerini açığa çıkarır. Her yolcuyu bir web sitesinden geçirmek yerine, Wink onaylı ajanlara otel tedariki, fiyatlar, müsaitlik, rezervasyon, ödeme, atıf ve olaylara yapılandırılmış erişim verir — Wink'in kendisini güçlendiren aynı altyapı.</p>
+  <div class="mx-auto mt-7 max-w-2xl rounded-2xl border-2 border-primary/30 bg-primary/[0.04] px-6 py-5 text-pretty text-foreground/90"><strong class="text-foreground">Her otel, Wink'te profilini kurarak otomatik olarak ajan hazır hale gelir.</strong> Tedarik, fiyat ve müsaitlik canlı olduğunda, onaylı AI ajanları API ve MCP sunucusu üzerinden arama yapabilir, rezervasyon oluşturabilir ve ödeme yapabilir — ayrı, otel başına AI entegrasyonu gerekmez.</div>
+</section>
+
+{/* Canlı kanıt — yukarıdaki argüman yol haritası değil, teslim edildi. Uygulama
+    detayı kasıtlı olarak /builders/ altında, böylece bu sayfa tez olarak kalır. */}
+<section id="agents" class="@container w-full border-y border-border bg-muted/30" style="scroll-margin-top:5rem">
+  <div class="mx-auto w-full max-w-4xl px-4 py-24 text-center">
+    <p class="mkt-kicker text-primary">Bugün canlı, yol haritası değil</p>
+    <h2 class="mkt-h2 font-heading mt-3">Ajandan onaylanmış, ödenmiş rezervasyona dört adım.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-2xl">Barındırılan MCP sunucusuna bağlanın, niyeti canlı API'ye karşı gerçek işlemlere dönüştürün, doğrulanmış kod oluşturun, ardından ödeme, onay ve PMS senkronizasyonu için Booking Engine'e devredin.</p>
+    <ol class="mx-auto mt-10 grid gap-3 text-left @lg:grid-cols-4">
+      <li class="rounded-xl border border-border bg-card px-4 py-3 text-sm"><span class="font-mono text-xs text-primary">01</span><span class="mt-1 block font-semibold">MCP'ye bağlan</span></li>
+      <li class="rounded-xl border border-border bg-card px-4 py-3 text-sm"><span class="font-mono text-xs text-primary">02</span><span class="mt-1 block font-semibold">Canlı API ara</span></li>
+      <li class="rounded-xl border border-border bg-card px-4 py-3 text-sm"><span class="font-mono text-xs text-primary">03</span><span class="mt-1 block font-semibold">Doğrulanmış kod oluştur</span></li>
+      <li class="rounded-xl border border-border bg-card px-4 py-3 text-sm"><span class="font-mono text-xs text-primary">04</span><span class="mt-1 block font-semibold">Rezervasyon yap &amp; ödeme al</span></li>
+    </ol>
+    <div class="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <a href="/builders/#agent-quickstart" class="inline-flex h-12 items-center justify-center rounded-md bg-[#ff6b35] px-7 text-base font-semibold text-white transition-colors hover:bg-[#e85b29]">Entegrasyon adımlarını gör</a>
+      <a href="/developers/mcp/" class="inline-flex h-12 items-center justify-center rounded-md border border-border px-7 text-base font-medium transition-colors hover:bg-muted">MCP sunucu dokümanları</a>
+    </div>
+    <p class="text-muted-foreground mt-5 inline-flex items-center gap-2 font-mono text-xs"><span class="size-1.5 animate-pulse rounded-full bg-emerald-500"></span> docs.mcp.wink.travel/mcp</p>
+  </div>
+</section>
+
+{/* Bir ajanın yapabilecekleri — yetenek haritası */}
+<section class="@container mx-auto w-full max-w-7xl px-4 pt-24">
+  <div class="mx-auto mb-14 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Yetenek haritası</p>
+    <h2 class="mkt-h2 font-heading mt-3">Bir AI ajanı Wink'te neler yapabilir.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">Aşağıdaki her yetenek bugün REST API ve MCP sunucusu üzerinden kullanılabilir — Wink'in çalıştığı aynı sözleşmelere dayanır.</p>
+  </div>
+  <div class="grid gap-5 @md:grid-cols-2 @2xl:grid-cols-3">
+    {[
+      { icon: IconMapSearch, title: "Otel envanterini ara", desc: "Rezervasyon yapılabilir tedariki coğrafi konum mekansal arama ile bulun — nokta, daire, dikdörtgen veya çokgen — ayrıca GeoIP tespiti." },
+      { icon: IconCalendarStats, title: "Canlı fiyat ve müsaitlik oku", desc: "11 bağlı kanal yöneticisi arasında gerçek zamanlı fiyat, müsaitlik ve envanter çek." },
+      { icon: IconCalendarCheck, title: "Rezervasyon oluştur ve senkronize et", desc: "API üzerinden rezervasyon oluştur; bağlı PMS veya kanal yöneticisine tam yaşam döngüsü takibi ile oluştur/ güncelle/ iptal senkronizasyonu yap." },
+      { icon: IconCreditCard, title: "Ödeme al", desc: "Wink rezervasyonun arkasında ödeme, iptal politikası mantığı ve ödeme işlemlerini yönetir — Wink kayıtlı satıcıdır." },
+      { icon: IconCoin, title: "Atıfı koru ve kazan", desc: "Kaynak ve kampanya bağlamı yolculuk boyunca korunur — tıklama başına 6 ay atıf ve onaylanmış rezervasyonlarda %10 varsayılan komisyon." },
+      { icon: IconWebhook, title: "64+ olaya tepki ver", desc: "Webhook olaylarına abone ol — rezervasyonlar, ödemeler, iadeler, kanal yöneticisi güncellemeleri — ve takip işlemlerini tetikle." },
+      { icon: IconSparkles, title: "İçerik oluştur", desc: "9 envanter türü ve 12 ses tonunda AI içerik; tek URL'den tek tıkla mülk kaydı." },
+      { icon: IconComponents, title: "Rezervasyon yapılabilir envanteri göm", desc: "Canlı, rezervasyon yapılabilir otel envanterini Web Bileşenleri ve minimum kod ile herhangi bir yüzeye bırak." },
+      { icon: IconCode, title: "Tüm API üzerinde geliştir", desc: "Her Wink özelliği REST üzerinden dışarıdan çağrılabilir, OAuth2 kimlik doğrulama ve resmi SDK'larla — sistemi kendi sistemin gibi entegre et." },
+    ].map((c) => (
+      <div class="flex flex-col rounded-2xl border border-border bg-card p-6">
+        <span class="mb-4 flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-white"><c.icon class="size-6" /></span>
+        <h3 class="font-heading text-base font-semibold">{c.title}</h3>
+        <p class="text-muted-foreground mt-2 text-sm text-pretty">{c.desc}</p>
+        <span class="mt-4 inline-flex w-fit items-center gap-1.5 rounded-full bg-emerald-500/10 px-2.5 py-1 text-xs font-semibold text-emerald-600 dark:text-emerald-400"><span class="size-1.5 rounded-full bg-emerald-500"></span>Şimdi mevcut</span>
+      </div>
+    ))}
+  </div>
+</section>
+
+{/* Agentic değişim — önce/sonra akışı */}
+<section class="@container mx-auto w-full max-w-5xl px-4 pt-24">
+  <div class="mx-auto mb-12 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Değişim</p>
+    <h2 class="mkt-h2 font-heading mt-3">Yolcudan web sitesine değil, yolcudan ajana.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">Eski modelde yolcu işi yapardı. Agentic modelde ajan arayüz olur — ve Wink cevabın arkasındaki ticaret katmanı olur.</p>
+  </div>
+  {/* Önce/sonra akışı — değiştirilebilir infografik (infographics/AgenticShiftFlow.astro) */}
+  <AgenticShiftFlow />
+</section>
+
+{/* Neden Wink — öner vs işlem */}
+<section class="@container mx-auto w-full max-w-5xl px-4 pt-24">
+  <div class="mx-auto mb-12 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Neden Wink</p>
+    <h2 class="mkt-h2 font-heading mt-3">Bir AI cevabı rezervasyon değildir.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">Bir öneri yapılandırılmış tedarik, canlı fiyatlar, ödeme, onay ve atıf gerektirir ki ticarete dönüşsün.</p>
+  </div>
+  <div class="grid gap-6 @md:grid-cols-2">
+    <div class="rounded-2xl border border-border bg-muted/30 p-7">
+      <h3 class="font-heading text-lg font-semibold text-muted-foreground">Altyapısız bir AI ajanı</h3>
+      <ul class="mt-5 space-y-3">
+        {["Web kazıma, çoğunlukla eski tedarik", "Rezervasyon yapılamayabilecek fiyatlar", "Önerir, sonra rezervasyonu web sitesi veya OTA'ya devreder", "Atıf yok — ve ajan için kazanma yolu yok", "Öneriden sonra süreci kaybeder"].map((b) => (
+          <li class="flex items-start gap-2.5"><IconX class="mt-0.5 size-5 shrink-0 text-muted-foreground/60" /><span class="text-sm text-muted-foreground">{b}</span></li>
+        ))}
+      </ul>
+      <p class="mt-6 text-sm font-semibold text-muted-foreground">Öneri yapabilir.</p>
+    </div>
+    <div class="rounded-2xl border-2 border-primary/30 bg-primary/[0.04] p-7">
+      <h3 class="font-heading text-lg font-semibold text-primary">Wink'teki bir AI ajanı</h3>
+      <ul class="mt-5 space-y-3">
+        {["Canlı, otel sahipli tedarik — web kazıma veya yeniden satış değil", "API üzerinden canlı fiyatlar ve müsaitlik", "Tek akışta rezervasyon ve ödeme — Wink ödemeyi yapar", "Ajan kazanabilir — atıf + %10 varsayılan komisyon", "Onaylanmış, PMS ile senkronize, webhook'lar — bugün canlı"].map((b) => (
+          <li class="flex items-start gap-2.5"><IconCheck class="mt-0.5 size-5 shrink-0 text-primary" /><span class="text-sm text-foreground/90">{b}</span></li>
+        ))}
+      </ul>
+      <p class="mt-6 text-sm font-semibold text-primary">İşlem yapabilir.</p>
+    </div>
+  </div>
+</section>
+
+{/* Herkes için AI ajanları */}
+<section class="@container mx-auto w-full max-w-7xl px-4 pt-24">
+  <div class="mx-auto mb-14 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Her katılımcı bir ajan</p>
+    <h2 class="mkt-h2 font-heading mt-3">Yolcular, oteller, ortaklar ve geliştiriciler için ajanlar.</h2>
+  </div>
+  <div class="grid gap-6 @md:grid-cols-2">
+    {[
+      { icon: IconUser, who: "Yolcular için", title: "Ara, rezervasyon yap ve konaklamayı yönet", desc: "Bir ajan yapılandırılmış tedarik, canlı fiyatlar ve politikalarla çalışır — ardından rezervasyonu Booking Engine üzerinden oluşturur.", prompt: "Gelecek ay Chiang Mai'de sadece yetişkinlere özel spa'lı lüks bir otel bul. Rezervasyon yap." },
+      { icon: IconBuildingStore, who: "Oteller için", title: "Denetleyiciler, işletmeciler değil", desc: "Ajanlar Extranet, Sosyal ve Studio'da oluşturma, güncelleme ve analiz yapmaya yardımcı olur — otel kuralları korur.", prompt: "Gelecek ayın sosyal içeriğini oluştur ve düşük doluluk tarihlerini tanıtmak için işaretle." },
+      { icon: IconUsersGroup, who: "Ortaklar & yaratıcılar için", title: "Kampanyaları otomatikleştir ve kazan", desc: "Uygun otelleri keşfet, varlıklar ve vitrinler oluştur, yayınla ve atıfı bağlı tut.", prompt: "Maldivler'deki lüks tatil köylerini tanıtan bir kampanya oluştur." },
+      { icon: IconCode, who: "Geliştiriciler için", title: "Yeni seyahat deneyimleri oluştur", desc: "AI konsiyerjleri, banka ve sadakat seyahat ajanları — MCP sunucusu, REST API ve Booking Engine üzerine kurulu.", prompt: "Wink API kullanarak bankacılık uygulamamız içine AI otel rezervasyonu göm." },
+    ].map((c) => (
+      <div class="flex flex-col rounded-2xl border border-border bg-card p-7">
+        <span class="mb-4 flex size-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-white"><c.icon class="size-6" /></span>
+        <span class="text-xs font-semibold uppercase tracking-wider text-primary">{c.who}</span>
+        <h3 class="font-heading mt-2 text-xl font-semibold">{c.title}</h3>
+        <p class="text-muted-foreground mt-2 text-pretty">{c.desc}</p>
+        <p class="mt-5 rounded-lg border border-border bg-muted/40 px-4 py-3 text-sm italic text-foreground/80">“{c.prompt}”</p>
+      </div>
+    ))}
+  </div>
+</section>
+
+{/* Yığın */}
+<section class="@container mx-auto w-full max-w-7xl px-4 pt-24">
+  <div class="mx-auto mb-10 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Tüm platform üzerine kurulu</p>
+    <h2 class="mkt-h2 font-heading mt-3">Ajanlar bağlı yığın üzerinde çalışır.</h2>
+  </div>
+  <div class="mx-auto flex max-w-3xl flex-wrap justify-center gap-3">
+    {[
+      { name: "Extranet", href: "/products/extranet/" },
+      { name: "Studio", href: "/products/studio/" },
+      { name: "Social", href: "/products/social/" },
+      { name: "WinkLinks", href: "/products/winklinks/" },
+      { name: "Traveliko", href: "/products/traveliko/" },
+      { name: "Developers", href: "/builders/" },
+      { name: "Platforms & AI", href: "/platforms/" },
+    ].map((p) => (
+      <a href={p.href} class="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-medium transition-colors hover:border-primary/40">
+        <span class="size-1.5 rounded-full bg-primary" aria-hidden="true"></span>
+        {p.name}
+      </a>
+    ))}
+  </div>
+  <p class="text-muted-foreground mx-auto mt-10 max-w-xl text-center text-pretty"><strong class="text-foreground"><a href="/products/booking-engine/" class="text-primary underline underline-offset-4">Booking Engine</a> her ajan devrinin altında rezervasyonu gerçekleştirir</strong> — ödeme, onay ve rezervasyon senkronizasyonu.</p>
+</section>
+
+{/* Açık standartlar — birlikte çalışabilirlik, AEO için taranabilir */}
+<section class="@container mx-auto w-full max-w-5xl px-4 pt-24">
+  <div class="mx-auto mb-12 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Kapalı bahçe değil, açık standartlar</p>
+    <h2 class="mkt-h2 font-heading mt-3">Ajan-ticaret yığını ile birlikte çalışacak şekilde inşa edildi.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-2xl">Agentic otel rezervasyonu gerçek bir kategori haline geliyor — ve sektör tek bir şirketin ödeme sistemi yerine açık protokollerde birleşiyor. Wink bugün bu standartlar üzerinde çalışıyor ve diğerleri konsolide oldukça entegre olacak şekilde tasarlandı, böylece ajanlar asla özel bir yola kilitlenmez.</p>
+  </div>
+  <div class="grid gap-5 @md:grid-cols-2">
+    <div class="rounded-2xl border-2 border-primary/30 bg-primary/[0.04] p-7">
+      <span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 px-2.5 py-1 text-xs font-semibold text-emerald-600 dark:text-emerald-400"><span class="size-1.5 rounded-full bg-emerald-500"></span>Bugün canlı</span>
+      <h3 class="font-heading mt-4 text-lg font-semibold">MCP — Model Context Protocol</h3>
+      <p class="text-muted-foreground mt-2 text-sm text-pretty">Barındırılan MCP sunucusu, Wink'in canlı OpenAPI sözleşmelerini Claude, Codex, Cursor ve diğer MCP uyumlu ajanlara açar — <code class="rounded bg-muted px-1 py-0.5 text-xs">docs.mcp.wink.travel/mcp</code>. Ajanlar gerçek işlemleri keşfeder ve çağırır, uç noktaları tahmin etmek yerine.</p>
+    </div>
+    <div class="rounded-2xl border border-border bg-card p-7">
+      <span class="inline-flex items-center gap-1.5 rounded-full border border-border bg-muted/40 px-2.5 py-1 text-xs font-semibold text-muted-foreground">Tasarım gereği birlikte çalışabilir</span>
+      <h3 class="font-heading mt-4 text-lg font-semibold">ACP · AP2 · A2A · x402</h3>
+      <p class="text-muted-foreground mt-2 text-sm text-pretty">Wink'in rezervasyon ve ödeme temel bileşenleri, gelişmekte olan ajan-ödeme yığını — Agentic Commerce Protocol (ACP), Google'ın Agent Payments Protocol (AP2), Agent2Agent (A2A) ve x402 tarzı ajan ödemeleri — ile birlikte çalışacak şekilde tasarlanmıştır; bu standartlar olgunlaştıkça, Booking Engine mutabakat katmanı olarak kalır (Wink kayıtlı satıcıdır).</p>
+    </div>
+  </div>
+</section>
+
+{/* Nereye gidiyor — yol haritası, açıkça etiketli */}
+<section class="mx-auto w-full max-w-3xl px-4 pt-24">
+  <div class="rounded-2xl border border-dashed border-primary/30 bg-primary/[0.03] p-8">
+    <span class="inline-flex items-center gap-1.5 rounded-full border border-primary/30 bg-card px-3 py-1 text-xs font-semibold text-primary">Nereye gidiyor</span>
+    <p class="text-muted-foreground mt-5 text-pretty">Yukarıdaki yetenekler bugün canlı. Yönelim daha derin ajan-yerel ticaret: daha zengin ajan odaklı rezervasyon temel bileşenleri, yolcu adına işlem yapmak için ajan kimliği ve yetkilendirme, ve ajanların ortak ağda atıflı, kazanan kaynaklar olarak katılımı. Wink'in stratejik konumu — <strong class="text-foreground">AI ajanları için seyahat ticaret altyapısı</strong> — bugünün API'sinden geleceğe uzanan çizgidir.</p>
+  </div>
+</section>
+
+{/* SSS */}
+<FaqGrid
+  heading="Agentic AI SSS"
+  description="Ne anlama geliyor, nasıl bağlanılır ve ajanlar neler yapabilir."
+  items={faqs}
+/>
+
+{/* Son CTA */}
+<section class="w-full border-y border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white">
+  <div class="mx-auto w-full max-w-7xl px-4 py-24 text-center">
+    <h2 class="mkt-h2 font-heading">AI ajanları için seyahat ticaretini inşa etmeye hazır mısınız?</h2>
+    <p class="mx-auto mt-4 max-w-2xl text-pretty text-white/70 @lg:text-lg">MCP sunucusuna bağlanın, canlı sözleşmeleri okuyun ve rezervasyonun gerçekleştirilmesi için Booking Engine'i kullanın. Ya da ürününüz için ajan erişimi hakkında bizimle konuşun.</p>
+    <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <a href="/developers/build-on-wink/" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-[#ff6b35] px-8 text-base font-semibold text-white hover:bg-[#e85b29] sm:w-auto">Dokümantasyonu gör</a>
+      <a href="/developers/mcp/" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-white px-8 text-base font-semibold text-[#1f0a40] hover:bg-white/90 sm:w-auto">MCP sunucusuna bağlan</a>
+      <a href="https://cal.com/wink-ws36dy" class="inline-flex h-12 items-center justify-center px-4 text-sm font-medium text-white/80 underline underline-offset-4 hover:text-white">Demo talep et</a>
+    </div>
+  </div>
+</section>
+
+</div>

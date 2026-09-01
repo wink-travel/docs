@@ -1,0 +1,280 @@
+---
+title: Agentic AI — โครงสร้างพื้นฐานการค้าการเดินทางสำหรับ AI Agents
+description: "บน Wink, AI agents ไม่เพียงแค่แนะนำโรงแรม — พวกเขาค้นหาสินค้าคงคลังที่โรงแรมเป็นเจ้าของแบบสด ๆ จากนั้นจองและชำระเงินในขั้นตอนเดียวผ่าน REST API และ MCP ที่โฮสต์อยู่ ใช้งานจริงแล้ววันนี้"
+template: splash
+marketingNav: true
+---
+import '/src/styles/splash-page.css';
+import BreadcrumbJsonLd from "@/components/marketing/BreadcrumbJsonLd.astro";
+
+import FaqGrid from "@/components/marketing/FaqGrid.astro";
+import AgentJsonLd from "@/components/marketing/AgentJsonLd.astro";
+import AgentConversation from "@/components/marketing/infographics/AgentConversation.astro";
+import AgenticShiftFlow from "@/components/marketing/infographics/AgenticShiftFlow.astro";
+
+import IconMapSearch from "@tabler/icons/outline/map-search.svg";
+import IconCalendarCheck from "@tabler/icons/outline/calendar-check.svg";
+import IconSparkles from "@tabler/icons/outline/sparkles.svg";
+import IconCalendarStats from "@tabler/icons/outline/calendar-stats.svg";
+import IconCreditCard from "@tabler/icons/outline/credit-card.svg";
+import IconCoin from "@tabler/icons/outline/coin.svg";
+import IconWebhook from "@tabler/icons/outline/webhook.svg";
+import IconComponents from "@tabler/icons/outline/components.svg";
+import IconUser from "@tabler/icons/outline/user.svg";
+import IconBuildingStore from "@tabler/icons/outline/building-store.svg";
+import IconUsersGroup from "@tabler/icons/outline/users-group.svg";
+import IconCode from "@tabler/icons/outline/code.svg";
+import IconArrowRight from "@tabler/icons/outline/arrow-right.svg";
+import IconCheck from "@tabler/icons/outline/check.svg";
+import IconX from "@tabler/icons/outline/x.svg";
+
+export const faqs = [
+  { title: "ทำไม AI agents ส่วนใหญ่จึงไม่สามารถจองโรงแรมได้ และอะไรที่ทำให้บางตัวทำได้?", content: "การแนะนำโรงแรมเป็นปัญหาด้านเนื้อหา — ตัวแทนต้องการเพียงคำอธิบายและราคาเท่านั้น การจองโรงแรมเป็นปัญหาด้านการค้า: ต้องการอัตราและความพร้อมใช้งานแบบสด, สินค้าคงคลังที่สามารถถือครองได้จริง, ช่องทางการชำระเงิน, การชำระเงินกับโรงแรม และความสัมพันธ์ทางการค้ากับที่พัก ผู้ช่วยส่วนใหญ่มีแค่ส่วนแรกและไม่มีส่วนอื่น ๆ จึงส่งผู้เดินทางไปยังเว็บไซต์เพื่อดำเนินการต่อ ตัวแทนสามารถทำการจองได้เมื่อโครงสร้างพื้นฐานเปิดเผยข้อมูลทั้งหมดนี้ Wink เป็น API-first — ทุกฟีเจอร์ของแพลตฟอร์มสามารถเรียกใช้งานจากภายนอกได้ และเซิร์ฟเวอร์ MCP ที่โฮสต์อยู่เปิดเผยสัญญา API แบบสด — ดังนั้นตัวแทนที่ได้รับอนุมัติสามารถค้นหาสินค้าโรงแรม, อ่านอัตราและความพร้อมใช้งานแบบสด, สร้างและซิงค์การจอง, รับชำระเงิน (Wink เป็นผู้ค้ารายงาน), รักษาการอ้างอิงแหล่งที่มา และสมัครรับเหตุการณ์ต่าง ๆ ได้" },
+  { title: "AI agent เชื่อมต่อกับ Wink ได้อย่างไร?", content: "ชี้ MCP client ที่เข้ากันได้ไปยังเซิร์ฟเวอร์ที่โฮสต์อยู่ที่ https://docs.mcp.wink.travel/mcp (SSE fallback ที่ /sse) จาก Claude Code: claude mcp add --transport http wink-docs https://docs.mcp.wink.travel/mcp จากนั้นตัวแทนสามารถใช้เครื่องมือ api_search และ docs_search เพื่ออ่านการดำเนินการ OpenAPI แบบสด, สัญญาคำขอ/ตอบกลับ และสูตรงานต่าง ๆ" },
+  { title: "AI agent สามารถทำอะไรได้บ้างบน Wink วันนี้?", content: "วันนี้ ผ่าน REST API และเซิร์ฟเวอร์ MCP: ค้นหาแพลตฟอร์ม, ค้นหาสินค้าคงคลังที่จองได้ (รวมถึงการค้นหาตำแหน่งทางภูมิศาสตร์), อ่านอัตราและความพร้อมใช้งานแบบสดจาก 11 ผู้จัดการช่องทางที่เชื่อมต่อ, สร้างการจองและซิงค์วงจรชีวิตกับ PMS/ผู้จัดการช่องทาง, รับชำระเงิน (Wink เป็นผู้ค้ารายงาน), รักษาการอ้างอิง 6 เดือนและรับรายได้ผ่านช่องทางพันธมิตร, สมัครรับเหตุการณ์ webhook กว่า 64 รายการ, สร้างเนื้อหา AI และฝังสินค้าคงคลังที่จองได้ผ่าน Web Components" },
+  { title: "AI agent สามารถทำการจองโรงแรมผ่าน Wink ได้หรือไม่?", content: "ได้ การสร้างการจองเป็นการดำเนินการ REST API และ Booking Engine จะดำเนินการธุรกรรม — ชำระเงิน, การชำระเงิน, การยืนยัน และการซิงค์การจอง ตัวแทนที่เรียก API การจองในนามของผู้เดินทางสามารถทำการจองจริงที่ได้รับการยืนยันพร้อมเก็บบริบทแหล่งที่มาไว้ได้" },
+  { title: "โรงแรมจะกลายเป็นที่จองได้โดย AI agent บน Wink ได้อย่างไร?", content: "เพียงแค่ตั้งค่าประวัติโรงแรมบน Wink เมื่อสินค้าคงคลัง, อัตรา และความพร้อมใช้งานของโรงแรมเป็นแบบสด (ผ่าน Extranet) โรงแรมจะถูกค้นหาและจองได้โดย AI agents ที่ได้รับอนุมัติผ่าน REST API และเซิร์ฟเวอร์ MCP ที่โฮสต์อยู่ — ไม่ต้องมีการผสาน AI แยกสำหรับแต่ละโรงแรม ตัวแทนค้นหาสินค้าคงคลังสดของโรงแรม, สร้างการจอง และชำระเงินผ่าน Booking Engine โดยเก็บการอ้างอิงไว้ โรงแรมทุกแห่งบน Wink พร้อมสำหรับตัวแทนโดยค่าเริ่มต้น" },
+  { title: "การจองโรงแรมผ่าน Wink แตกต่างจาก ChatGPT กับ Expedia หรือ Booking.com อย่างไร?", content: "การผสานผู้ช่วยอย่าง ChatGPT กับ Expedia หรือ Booking.com แข็งแกร่งในด้านการค้นหา — ราคาสด, รูปภาพ และแผนที่ในแชท — แต่ผู้เดินทางมักถูกส่งไปยังเว็บไซต์หรือแอปของผู้ให้บริการเพื่อดำเนินการจองและชำระเงิน ในขณะที่บน Wink ตัวแทนทำธุรกรรมโดยตรงกับสินค้าคงคลังที่โรงแรมเป็นเจ้าของแบบสด: อ่านอัตราและความพร้อมใช้งานจริง, สร้างการจอง และชำระเงินผ่าน Booking Engine ในขั้นตอนเดียว — และสามารถรับค่าคอมมิชชั่นพันธมิตรจากผลลัพธ์ได้ การค้นหาสามารถเกิดขึ้นได้ทุกที่; การดำเนินการเกิดขึ้นบน Wink" },
+  { title: "Wink เป็นแพลตฟอร์มเดียวที่ให้ AI agents จองและชำระเงินโรงแรมได้หรือไม่?", content: "ไม่ — การค้าการเดินทางโดยตัวแทนเป็นหมวดหมู่ที่กำลังเกิดขึ้น และผู้เล่นหลายรายในวงการท่องเที่ยวและการชำระเงินได้ประกาศหรือเปิดตัวการจองแบบ agentic ครบวงจรจนถึงปี 2026 สิ่งที่โดดเด่นของ Wink คือการผสมผสาน: สินค้าคงคลังเป็นของโรงแรมโดยตรง (ไม่ใช่การขายต่อ GDS หรือรายการที่ขูดจากเว็บ), ตัวแทนสามารถค้นหา, จอง, ชำระเงิน และรับรายได้ผ่านชั้นการค้าเดียว และสามารถเรียกใช้งานได้จริงวันนี้ผ่าน REST API และเซิร์ฟเวอร์ MCP ที่โฮสต์อยู่ — ไม่ใช่แค่แผนงาน โรงแรมยังคงควบคุมการกระจาย; ตัวแทนกลายเป็นช่องทางที่มีการอ้างอิงและรับรายได้" },
+  { title: "Wink รองรับมาตรฐาน agentic commerce และ AI ใดบ้าง?", content: "Wink เป็น API-first และดำเนินการเซิร์ฟเวอร์ MCP (Model Context Protocol) ที่โฮสต์อยู่วันนี้ ดังนั้นตัวแทนที่เข้ากันได้กับ MCP — Claude, Codex, Cursor และอื่น ๆ — สามารถค้นหาและเรียกใช้สัญญา OpenAPI แบบสดได้ primitive การจองและการชำระเงินของ Wink ถูกออกแบบมาให้ทำงานร่วมกับสแตก agent-commerce ที่กำลังเกิดขึ้น — Agentic Commerce Protocol (ACP), Google's Agent Payments Protocol (AP2), Agent2Agent (A2A) และ agent payments แบบ x402 — เมื่อมาตรฐานเหล่านี้รวมตัวกัน แทนที่จะล็อกตัวแทนไว้ในเส้นทางเฉพาะ" },
+  { title: "มี AI Skill สำหรับการพัฒนาบน Wink หรือไม่?", content: "มี — wink-api-builder เป็นทักษะตัวแทนที่พกพาได้ซึ่งใช้เซิร์ฟเวอร์ MCP เป็นแหล่งข้อมูลที่ถูกต้อง มันนำทางตัวแทนผ่าน api_search ไปยังสัญญาคำขอ/ตอบกลับแบบสด, การตรวจสอบสิทธิ์ และโค้ดที่ได้รับการยืนยัน และแจ้งเตือนความไม่ตรงกันระหว่างโค้ดที่มีอยู่กับ API ปัจจุบัน ทำงานร่วมกับ Claude Code, Codex, Cursor และไคลเอนต์ที่รองรับทักษะอื่น ๆ" },
+  { title: "AI agent สามารถรับรายได้ในฐานะ affiliate หรือ partner ได้หรือไม่?", content: "โมเดลพันธมิตรของ Wink รักษาการอ้างอิงแหล่งที่มาและแคมเปญไว้ 6 เดือนต่อคลิก และจ่ายค่าคอมมิชชั่นเริ่มต้น 10% สำหรับการจองที่ได้รับการยืนยัน ตัวแทนที่สร้างความต้องการที่มีคุณสมบัติและส่งต่อการจองสามารถเป็นแหล่งที่มีการอ้างอิงผ่านโครงสร้างพื้นฐานพันธมิตรและ Booking Engine เดียวกัน" },
+  { title: "Agentic AI แทนที่ Booking Engine หรือไม่?", content: "ไม่ Agentic AI สร้างหรือส่งต่อเจตนา; Booking Engine ยังคงเป็นชั้นการดำเนินการสำหรับการชำระเงิน, การยืนยัน และการซิงค์การจอง ทุกการส่งต่อของตัวแทนจะถูกแก้ไขผ่าน Booking Engine ด้านล่าง" },
+  { title: "นักพัฒนาหรือตัวแทนควรเริ่มต้นที่ไหน?", content: "เชื่อมต่อกับเซิร์ฟเวอร์ MCP จากนั้นอ่านเอกสาร Build on Wink, MCP Server และ AI Skills ขอการเข้าถึง API เมื่อกรณีการใช้งานและเส้นทางทางการค้าแน่ชัด" },
+];
+
+<div class="not-content mkt-page">
+
+<AgentJsonLd faqs={faqs} />
+
+<BreadcrumbJsonLd items={[{ name: "หน้าแรก", url: "https://wink.travel/" }, { name: "Agentic AI" }]} />
+
+{/* Hero — agent conversation. Full-bleed per the house `data-full-bleed` pattern,
+    with the breadcrumb inside the band so it lines up with the headline instead of
+    sitting in Starlight's narrower column above a full-width hero. */}
+<section data-full-bleed class="@container relative w-full overflow-hidden border-b border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white">
+  <div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+    <div class="absolute -left-24 -top-10 size-80 rounded-full bg-[#ff6b35]/20 blur-[100px]"></div>
+    <div class="absolute -bottom-16 -right-16 size-96 rounded-full bg-[#9333ea]/30 blur-[120px]"></div>
+  </div>
+  <div class="relative mx-auto w-full max-w-7xl px-4 pb-20 pt-8 lg:pb-24">
+    <nav aria-label="Breadcrumb" class="text-sm text-white/60">
+      <a href="/" class="transition-colors hover:text-white">หน้าแรก</a>
+      <span class="px-1.5 text-white/55">/</span>
+      <span class="text-white">Agentic AI</span>
+    </nav>
+    <div class="mt-10 grid items-center gap-12 lg:mt-12 lg:min-h-[33rem] @lg:grid-cols-[1fr_1.02fr]">
+    {/* Left — copy */}
+    <div class="text-center @lg:text-left">
+      <span class="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-xs font-extrabold uppercase tracking-wider text-[#ff8a5c] ring-1 ring-white/15 backdrop-blur @lg:mx-0"><span class="size-1.5 rounded-full bg-gradient-to-r from-[#ff6b35] to-[#ec4899]"></span> Agentic AI</span>
+      <h1 class="font-heading mt-6 text-4xl font-extrabold leading-[1.05] tracking-tight text-balance @lg:text-5xl @2xl:text-6xl">AI agents สามารถวางแผนทริปได้ <span class="wink-shimmer bg-gradient-to-r from-[#ff8a5c] via-[#ec4899] to-[#a855f7] bg-clip-text text-transparent">แทบไม่มีใครจองได้จริง</span></h1>
+      <p class="mx-auto mt-5 max-w-xl text-pretty text-lg text-white/75 @lg:mx-0 @lg:text-xl">การแนะนำโรงแรมเป็นปัญหาด้านเนื้อหา การจองเป็นปัญหาด้านการค้า — อัตราแบบสด, สินค้าคงคลังที่ถือครองได้, การชำระเงิน, การชำระยอดและสัญญากับโรงแรม Wink คือโครงสร้างพื้นฐานที่ปิดช่องว่างนี้: ตัวแทนค้นหา, จอง <em class="not-italic font-semibold text-white">และชำระเงิน</em> กับสินค้าคงคลังที่โรงแรมควบคุม ผ่าน REST API แบบสดและเซิร์ฟเวอร์ MCP ที่โฮสต์อยู่</p>
+      <div class="mt-8 flex flex-col items-center justify-center gap-3 @lg:justify-start sm:flex-row">
+        <a href="/developers/build-on-wink/" class="inline-flex h-12 items-center justify-center rounded-md bg-[#ff6b35] px-7 text-base font-semibold text-white transition-colors hover:bg-[#e85b29]">ดูเอกสาร</a>
+        <a href="#agents" class="inline-flex h-12 items-center justify-center rounded-md bg-white/10 px-7 text-base font-medium text-white ring-1 ring-white/20 backdrop-blur transition-colors hover:bg-white/15">เชื่อมต่อตัวแทน</a>
+      </div>
+      <div class="mt-7 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 font-mono text-xs text-white/70"><span class="size-1.5 animate-pulse rounded-full bg-emerald-400"></span> เซิร์ฟเวอร์ MCP ใช้งานจริง · docs.mcp.wink.travel/mcp</div>
+    </div>
+
+    {/* Right — agent conversation (swappable infographic) */}
+    <AgentConversation />
+    </div>
+  </div>
+</section>
+
+{/* Direct answer */}
+<section class="mx-auto w-full max-w-3xl px-4 pt-24 pb-24 text-center">
+  <p class="mkt-kicker text-primary">ทำไม AI agents ส่วนใหญ่จึงไม่สามารถจองโรงแรมได้?</p>
+  <p class="mkt-sub text-muted-foreground mt-5">Wink เป็น API-first: ทุกฟีเจอร์ของแพลตฟอร์มสามารถเรียกใช้งานจากภายนอกได้ และเซิร์ฟเวอร์ MCP ที่โฮสต์อยู่เปิดเผยสัญญา API แบบสดให้ AI agents แทนที่จะบังคับให้ผู้เดินทางทุกคนผ่านเว็บไซต์ Wink ให้ตัวแทนที่ได้รับอนุมัติเข้าถึงข้อมูลโครงสร้างของสินค้าโรงแรม, อัตรา, ความพร้อมใช้งาน, การจอง, การชำระเงิน, การอ้างอิง และเหตุการณ์ — โครงสร้างพื้นฐานเดียวกับที่ขับเคลื่อน Wink เอง</p>
+  <div class="mx-auto mt-7 max-w-2xl rounded-2xl border-2 border-primary/30 bg-primary/[0.04] px-6 py-5 text-pretty text-foreground/90"><strong class="text-foreground">โรงแรมใดก็ได้จะพร้อมสำหรับตัวแทนทันทีที่ตั้งค่าประวัติบน Wink</strong> เมื่อสินค้าคงคลัง, อัตรา และความพร้อมใช้งานเป็นแบบสด ตัวแทน AI ที่ได้รับอนุมัติสามารถค้นหา, จอง และชำระเงินผ่าน API และเซิร์ฟเวอร์ MCP — ไม่ต้องมีการผสาน AI แยกสำหรับแต่ละโรงแรม</div>
+</section>
+
+{/* Live proof — the argument above is shipped, not roadmap. Implementation
+    detail deliberately lives on /builders/ so this page stays the thesis. */}
+<section id="agents" class="@container w-full border-y border-border bg-muted/30" style="scroll-margin-top:5rem">
+  <div class="mx-auto w-full max-w-4xl px-4 py-24 text-center">
+    <p class="mkt-kicker text-primary">ใช้งานจริงวันนี้ ไม่ใช่แผนงาน</p>
+    <h2 class="mkt-h2 font-heading mt-3">สี่ขั้นตอนจากตัวแทนสู่การจองที่ได้รับการยืนยันและชำระเงิน</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-2xl">เชื่อมต่อเซิร์ฟเวอร์ MCP ที่โฮสต์อยู่, แปลงเจตนาเป็นการดำเนินการจริงกับ API แบบสด, สร้างโค้ดที่ได้รับการยืนยัน แล้วส่งต่อไปยัง Booking Engine สำหรับการชำระเงิน, การยืนยัน และการซิงค์ PMS</p>
+    <ol class="mx-auto mt-10 grid gap-3 text-left @lg:grid-cols-4">
+      <li class="rounded-xl border border-border bg-card px-4 py-3 text-sm"><span class="font-mono text-xs text-primary">01</span><span class="mt-1 block font-semibold">เชื่อมต่อ MCP</span></li>
+      <li class="rounded-xl border border-border bg-card px-4 py-3 text-sm"><span class="font-mono text-xs text-primary">02</span><span class="mt-1 block font-semibold">ค้นหา API แบบสด</span></li>
+      <li class="rounded-xl border border-border bg-card px-4 py-3 text-sm"><span class="font-mono text-xs text-primary">03</span><span class="mt-1 block font-semibold">สร้างโค้ดที่ได้รับการยืนยัน</span></li>
+      <li class="rounded-xl border border-border bg-card px-4 py-3 text-sm"><span class="font-mono text-xs text-primary">04</span><span class="mt-1 block font-semibold">จอง &amp; รับชำระเงิน</span></li>
+    </ol>
+    <div class="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <a href="/builders/#agent-quickstart" class="inline-flex h-12 items-center justify-center rounded-md bg-[#ff6b35] px-7 text-base font-semibold text-white transition-colors hover:bg-[#e85b29]">ดูขั้นตอนการผสาน</a>
+      <a href="/developers/mcp/" class="inline-flex h-12 items-center justify-center rounded-md border border-border px-7 text-base font-medium transition-colors hover:bg-muted">เอกสารเซิร์ฟเวอร์ MCP</a>
+    </div>
+    <p class="text-muted-foreground mt-5 inline-flex items-center gap-2 font-mono text-xs"><span class="size-1.5 animate-pulse rounded-full bg-emerald-500"></span> docs.mcp.wink.travel/mcp</p>
+  </div>
+</section>
+
+{/* What an agent can do — capability map */}
+<section class="@container mx-auto w-full max-w-7xl px-4 pt-24">
+  <div class="mx-auto mb-14 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">แผนที่ความสามารถ</p>
+    <h2 class="mkt-h2 font-heading mt-3">AI agent สามารถทำอะไรได้บน Wink</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">ความสามารถทั้งหมดด้านล่างนี้พร้อมใช้งานวันนี้ผ่าน REST API และเซิร์ฟเวอร์ MCP — อิงตามสัญญาเดียวกับที่ Wink ใช้งาน</p>
+  </div>
+  <div class="grid gap-5 @md:grid-cols-2 @2xl:grid-cols-3">
+    {[
+      { icon: IconMapSearch, title: "ค้นหาสินค้าคงคลังโรงแรม", desc: "ค้นหาสินค้าคงคลังที่จองได้ด้วยการค้นหาตำแหน่งทางภูมิศาสตร์ — จุด, วงกลม, สี่เหลี่ยม หรือรูปหลายเหลี่ยม — พร้อมการตรวจจับ GeoIP" },
+      { icon: IconCalendarStats, title: "อ่านอัตราและความพร้อมใช้งานแบบสด", desc: "ดึงอัตรา, ความพร้อมใช้งาน และสินค้าคงคลังแบบเรียลไทม์จาก 11 ผู้จัดการช่องทางที่เชื่อมต่อ" },
+      { icon: IconCalendarCheck, title: "สร้างและซิงค์การจอง", desc: "สร้างการจองผ่าน API; สร้าง / อัปเดต / ยกเลิก พร้อมซิงค์กับ PMS หรือผู้จัดการช่องทางที่เชื่อมต่อโดยติดตามวงจรชีวิตเต็มรูปแบบ" },
+      { icon: IconCreditCard, title: "รับชำระเงิน", desc: "Wink จัดการการชำระเงิน, นโยบายการยกเลิก และการชำระเงินเบื้องหลังการจอง — Wink เป็นผู้ค้ารายงาน" },
+      { icon: IconCoin, title: "รักษาการอ้างอิงและรับรายได้", desc: "บริบทแหล่งที่มาและแคมเปญคงอยู่ตลอดการเดินทาง — การอ้างอิง 6 เดือนต่อคลิกและค่าคอมมิชชั่นเริ่มต้น 10% สำหรับการจองที่ได้รับการยืนยัน" },
+      { icon: IconWebhook, title: "ตอบสนองต่อเหตุการณ์กว่า 64 รายการ", desc: "สมัครรับเหตุการณ์ webhook — การจอง, การชำระเงิน, การคืนเงิน, การอัปเดตผู้จัดการช่องทาง — และกระตุ้นการดำเนินการติดตาม" },
+      { icon: IconSparkles, title: "สร้างเนื้อหา", desc: "เนื้อหา AI ครอบคลุม 9 ประเภทสินค้าคงคลังและ 12 โทนเสียง; ลงทะเบียนที่พักด้วยคลิกเดียวจาก URL เดียว" },
+      { icon: IconComponents, title: "ฝังสินค้าคงคลังที่จองได้", desc: "วางสินค้าคงคลังโรงแรมที่จองได้แบบสดลงในพื้นผิวใดก็ได้ด้วย Web Components และโค้ดน้อยที่สุด" },
+      { icon: IconCode, title: "พัฒนาบน API ทั้งหมด", desc: "ทุกฟีเจอร์ของ Wink สามารถเรียกใช้งานจากภายนอกผ่าน REST พร้อมการตรวจสอบสิทธิ์ OAuth2 และ SDK อย่างเป็นทางการ — ผสานรวมเหมือนระบบเป็นของคุณเอง" },
+    ].map((c) => (
+      <div class="flex flex-col rounded-2xl border border-border bg-card p-6">
+        <span class="mb-4 flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-white"><c.icon class="size-6" /></span>
+        <h3 class="font-heading text-base font-semibold">{c.title}</h3>
+        <p class="text-muted-foreground mt-2 text-sm text-pretty">{c.desc}</p>
+        <span class="mt-4 inline-flex w-fit items-center gap-1.5 rounded-full bg-emerald-500/10 px-2.5 py-1 text-xs font-semibold text-emerald-600 dark:text-emerald-400"><span class="size-1.5 rounded-full bg-emerald-500"></span>พร้อมใช้งานแล้ว</span>
+      </div>
+    ))}
+  </div>
+</section>
+
+{/* The agentic shift — before/after flow */}
+<section class="@container mx-auto w-full max-w-5xl px-4 pt-24">
+  <div class="mx-auto mb-12 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">การเปลี่ยนแปลง</p>
+    <h2 class="mkt-h2 font-heading mt-3">จากผู้เดินทาง-สู่-เว็บไซต์ เป็น ผู้เดินทาง-สู่-ตัวแทน</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">ในโมเดลเก่าผู้เดินทางทำงานเอง ในโมเดล agentic ตัวแทนกลายเป็นอินเทอร์เฟซ — และ Wink กลายเป็นชั้นการค้าหลังคำตอบ</p>
+  </div>
+  {/* Before/after flow — swappable infographic (infographics/AgenticShiftFlow.astro) */}
+  <AgenticShiftFlow />
+</section>
+
+{/* Why Wink — recommend vs transact */}
+<section class="@container mx-auto w-full max-w-5xl px-4 pt-24">
+  <div class="mx-auto mb-12 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">ทำไมต้อง Wink</p>
+    <h2 class="mkt-h2 font-heading mt-3">คำตอบ AI ไม่ใช่การจอง</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">คำแนะนำต้องการสินค้าคงคลังที่มีโครงสร้าง, อัตราแบบสด, การชำระเงิน, การยืนยัน และการอ้างอิงเพื่อกลายเป็นการค้า</p>
+  </div>
+  <div class="grid gap-6 @md:grid-cols-2">
+    <div class="rounded-2xl border border-border bg-muted/30 p-7">
+      <h3 class="font-heading text-lg font-semibold text-muted-foreground">AI agent ที่ไม่มีโครงสร้างพื้นฐาน</h3>
+      <ul class="mt-5 space-y-3">
+        {["สินค้าคงคลังที่ขูดจากเว็บ มักล้าสมัย", "ราคาที่อาจไม่สามารถจองได้", "แนะนำแล้วส่งต่อการจองไปยังเว็บไซต์หรือ OTA", "ไม่มีการอ้างอิง — และตัวแทนไม่สามารถรับรายได้", "สูญเสียเส้นทางหลังคำแนะนำ"].map((b) => (
+          <li class="flex items-start gap-2.5"><IconX class="mt-0.5 size-5 shrink-0 text-muted-foreground/60" /><span class="text-sm text-muted-foreground">{b}</span></li>
+        ))}
+      </ul>
+      <p class="mt-6 text-sm font-semibold text-muted-foreground">สามารถแนะนำได้</p>
+    </div>
+    <div class="rounded-2xl border-2 border-primary/30 bg-primary/[0.04] p-7">
+      <h3 class="font-heading text-lg font-semibold text-primary">AI agent บน Wink</h3>
+      <ul class="mt-5 space-y-3">
+        {["สินค้าคงคลังที่โรงแรมเป็นเจ้าของแบบสด — ไม่ใช่การขูดเว็บหรือขายต่อ", "อัตราและความพร้อมใช้งานแบบสดผ่าน API", "จองและชำระเงินในขั้นตอนเดียว — Wink ดำเนินการชำระเงิน", "ตัวแทนสามารถรับรายได้ — การอ้างอิง + ค่าคอมมิชชั่นเริ่มต้น 10%", "ได้รับการยืนยัน, ซิงค์กับ PMS, พร้อม webhook — ใช้งานจริงวันนี้"].map((b) => (
+          <li class="flex items-start gap-2.5"><IconCheck class="mt-0.5 size-5 shrink-0 text-primary" /><span class="text-sm text-foreground/90">{b}</span></li>
+        ))}
+      </ul>
+      <p class="mt-6 text-sm font-semibold text-primary">สามารถทำธุรกรรมได้</p>
+    </div>
+  </div>
+</section>
+
+{/* AI agents for everyone */}
+<section class="@container mx-auto w-full max-w-7xl px-4 pt-24">
+  <div class="mx-auto mb-14 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">ทุกคนเป็นตัวแทนได้</p>
+    <h2 class="mkt-h2 font-heading mt-3">ตัวแทนสำหรับผู้เดินทาง, โรงแรม, พันธมิตร และนักพัฒนา</h2>
+  </div>
+  <div class="grid gap-6 @md:grid-cols-2">
+    {[
+      { icon: IconUser, who: "สำหรับผู้เดินทาง", title: "ค้นหา, จอง และจัดการการเข้าพัก", desc: "ตัวแทนทำงานกับสินค้าคงคลังที่มีโครงสร้าง, อัตราและนโยบายแบบสด — จากนั้นสร้างการจองผ่าน Booking Engine", prompt: "ค้นหาโรงแรมหรูสำหรับผู้ใหญ่เท่านั้นในเชียงใหม่เดือนหน้า พร้อมสปา จองเลย" },
+      { icon: IconBuildingStore, who: "สำหรับโรงแรม", title: "ผู้ควบคุม ไม่ใช่ผู้ปฏิบัติ", desc: "ตัวแทนช่วยสร้าง, อัปเดต และวิเคราะห์ผ่าน Extranet, Social และ Studio — โรงแรมยังคงควบคุมนโยบาย", prompt: "สร้างเนื้อหาสังคมสำหรับเดือนหน้าและแจ้งเตือนวันที่มีการเข้าพักต่ำเพื่อโปรโมต" },
+      { icon: IconUsersGroup, who: "สำหรับพันธมิตร & ผู้สร้าง", title: "อัตโนมัติโดยแคมเปญและรับรายได้", desc: "ค้นหาโรงแรมที่มีสิทธิ์, สร้างสินทรัพย์และหน้าร้าน, เผยแพร่ และรักษาการอ้างอิงให้เชื่อมต่อ", prompt: "สร้างแคมเปญโปรโมตรีสอร์ตหรูในมัลดีฟส์" },
+      { icon: IconCode, who: "สำหรับนักพัฒนา", title: "สร้างประสบการณ์การเดินทางใหม่", desc: "ผู้ช่วย AI, ตัวแทนธนาคารและความภักดี — สร้างบนเซิร์ฟเวอร์ MCP, REST API และ Booking Engine", prompt: "ฝังการจองโรงแรม AI ในแอปธนาคารของเราด้วย Wink API" },
+    ].map((c) => (
+      <div class="flex flex-col rounded-2xl border border-border bg-card p-7">
+        <span class="mb-4 flex size-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-white"><c.icon class="size-6" /></span>
+        <span class="text-xs font-semibold uppercase tracking-wider text-primary">{c.who}</span>
+        <h3 class="font-heading mt-2 text-xl font-semibold">{c.title}</h3>
+        <p class="text-muted-foreground mt-2 text-pretty">{c.desc}</p>
+        <p class="mt-5 rounded-lg border border-border bg-muted/40 px-4 py-3 text-sm italic text-foreground/80">“{c.prompt}”</p>
+      </div>
+    ))}
+  </div>
+</section>
+
+{/* The stack */}
+<section class="@container mx-auto w-full max-w-7xl px-4 pt-24">
+  <div class="mx-auto mb-10 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">สร้างบนแพลตฟอร์มทั้งหมด</p>
+    <h2 class="mkt-h2 font-heading mt-3">ตัวแทนทำงานข้ามสแตกที่เชื่อมต่อกัน</h2>
+  </div>
+  <div class="mx-auto flex max-w-3xl flex-wrap justify-center gap-3">
+    {[
+      { name: "Extranet", href: "/products/extranet/" },
+      { name: "Studio", href: "/products/studio/" },
+      { name: "Social", href: "/products/social/" },
+      { name: "WinkLinks", href: "/products/winklinks/" },
+      { name: "Traveliko", href: "/products/traveliko/" },
+      { name: "Developers", href: "/builders/" },
+      { name: "Platforms & AI", href: "/platforms/" },
+    ].map((p) => (
+      <a href={p.href} class="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-medium transition-colors hover:border-primary/40">
+        <span class="size-1.5 rounded-full bg-primary" aria-hidden="true"></span>
+        {p.name}
+      </a>
+    ))}
+  </div>
+  <p class="text-muted-foreground mx-auto mt-10 max-w-xl text-center text-pretty"><strong class="text-foreground"><a href="/products/booking-engine/" class="text-primary underline underline-offset-4">Booking Engine</a> ดำเนินการจองทุกครั้งที่ตัวแทนส่งต่อ</strong> — การชำระเงิน, การยืนยัน และการซิงค์การจอง</p>
+</section>
+
+{/* Open standards — interoperability, crawlable for AEO */}
+<section class="@container mx-auto w-full max-w-5xl px-4 pt-24">
+  <div class="mx-auto mb-12 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">มาตรฐานเปิด ไม่ใช่สวนปิด</p>
+    <h2 class="mkt-h2 font-heading mt-3">สร้างมาเพื่อทำงานร่วมกับสแตก agent-commerce</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-2xl">การจองโรงแรมแบบ agentic กำลังกลายเป็นหมวดหมู่จริง — และอุตสาหกรรมกำลังรวมตัวกันบนโปรโตคอลเปิดแทนที่จะเป็นการชำระเงินของบริษัทเดียว Wink ใช้มาตรฐานเหล่านี้วันนี้และสร้างมาเพื่อเชื่อมต่อกับส่วนอื่น ๆ เมื่อมาตรฐานเหล่านี้รวมตัวกัน ดังนั้นตัวแทนจะไม่ถูกล็อกในเส้นทางเฉพาะ</p>
+  </div>
+  <div class="grid gap-5 @md:grid-cols-2">
+    <div class="rounded-2xl border-2 border-primary/30 bg-primary/[0.04] p-7">
+      <span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 px-2.5 py-1 text-xs font-semibold text-emerald-600 dark:text-emerald-400"><span class="size-1.5 rounded-full bg-emerald-500"></span>ใช้งานจริงวันนี้</span>
+      <h3 class="font-heading mt-4 text-lg font-semibold">MCP — Model Context Protocol</h3>
+      <p class="text-muted-foreground mt-2 text-sm text-pretty">เซิร์ฟเวอร์ MCP ที่โฮสต์อยู่เปิดเผยสัญญา OpenAPI แบบสดของ Wink ให้กับตัวแทนที่เข้ากันได้กับ MCP — Claude, Codex, Cursor และอื่น ๆ — ที่ <code class="rounded bg-muted px-1 py-0.5 text-xs">docs.mcp.wink.travel/mcp</code> ตัวแทนค้นหาและเรียกใช้การดำเนินการจริงแทนการเดาจุดสิ้นสุด</p>
+    </div>
+    <div class="rounded-2xl border border-border bg-card p-7">
+      <span class="inline-flex items-center gap-1.5 rounded-full border border-border bg-muted/40 px-2.5 py-1 text-xs font-semibold text-muted-foreground">ออกแบบให้ทำงานร่วมกันได้</span>
+      <h3 class="font-heading mt-4 text-lg font-semibold">ACP · AP2 · A2A · x402</h3>
+      <p class="text-muted-foreground mt-2 text-sm text-pretty">primitive การจองและการชำระเงินของ Wink ถูกออกแบบมาให้ทำงานร่วมกับสแตก agent-payment ที่กำลังเกิดขึ้น — Agentic Commerce Protocol (ACP), Google's Agent Payments Protocol (AP2), Agent2Agent (A2A) และ agent payments แบบ x402 — เมื่อมาตรฐานเหล่านี้เติบโตขึ้น โดยมี Booking Engine เป็นชั้นการชำระเงินด้านล่าง (Wink เป็นผู้ค้ารายงาน)</p>
+    </div>
+  </div>
+</section>
+
+{/* Where this is heading — roadmap, clearly labeled */}
+<section class="mx-auto w-full max-w-3xl px-4 pt-24">
+  <div class="rounded-2xl border border-dashed border-primary/30 bg-primary/[0.03] p-8">
+    <span class="inline-flex items-center gap-1.5 rounded-full border border-primary/30 bg-card px-3 py-1 text-xs font-semibold text-primary">ทิศทางในอนาคต</span>
+    <p class="text-muted-foreground mt-5 text-pretty">ความสามารถด้านบนพร้อมใช้งานจริงวันนี้ ทิศทางคือการค้าผ่านตัวแทนที่ลึกขึ้น: primitive การจองที่มุ่งสู่ตัวแทนที่สมบูรณ์, ตัวตนและการอนุญาตของตัวแทนสำหรับการทำธุรกรรมแทนผู้เดินทาง และตัวแทนที่เข้าร่วมเป็นแหล่งที่มีการอ้างอิงและรับรายได้ในเครือข่ายพันธมิตร ตำแหน่งเชิงกลยุทธ์ของ Wink — <strong class="text-foreground">โครงสร้างพื้นฐานการค้าการเดินทางสำหรับ AI agents</strong> — คือเส้นทางจาก API วันนี้สู่อนาคตนั้น</p>
+  </div>
+</section>
+
+{/* FAQ */}
+<FaqGrid
+  heading="คำถามที่พบบ่อยเกี่ยวกับ Agentic AI"
+  description="ความหมาย, วิธีเชื่อมต่อ และสิ่งที่ตัวแทนสามารถทำได้"
+  items={faqs}
+/>
+
+{/* Final CTA */}
+<section class="w-full border-y border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white">
+  <div class="mx-auto w-full max-w-7xl px-4 py-24 text-center">
+    <h2 class="mkt-h2 font-heading">พร้อมสร้างการค้าการเดินทางสำหรับ AI agents หรือยัง?</h2>
+    <p class="mx-auto mt-4 max-w-2xl text-pretty text-white/70 @lg:text-lg">เชื่อมต่อเซิร์ฟเวอร์ MCP, อ่านสัญญาแบบสด และให้ Booking Engine ดำเนินการจอง หรือพูดคุยกับเราสำหรับการเข้าถึงตัวแทนสำหรับผลิตภัณฑ์ของคุณ</p>
+    <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <a href="/developers/build-on-wink/" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-[#ff6b35] px-8 text-base font-semibold text-white hover:bg-[#e85b29] sm:w-auto">ดูเอกสาร</a>
+      <a href="/developers/mcp/" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-white px-8 text-base font-semibold text-[#1f0a40] hover:bg-white/90 sm:w-auto">เชื่อมต่อเซิร์ฟเวอร์ MCP</a>
+      <a href="https://cal.com/wink-ws36dy" class="inline-flex h-12 items-center justify-center px-4 text-sm font-medium text-white/80 underline underline-offset-4 hover:text-white">ขอเดโม</a>
+    </div>
+  </div>
+</section>
+
+</div>

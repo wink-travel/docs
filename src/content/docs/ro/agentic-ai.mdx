@@ -1,0 +1,280 @@
+---
+title: Agentic AI — Infrastructură de comerț pentru agenții AI în turism
+description: "Pe Wink, agenții AI nu doar recomandă hoteluri — ei caută în timp real oferta hotelurilor, apoi rezervă și plătesc într-un singur flux prin REST API și MCP găzduit. Disponibil acum."
+template: splash
+marketingNav: true
+---
+import '/src/styles/splash-page.css';
+import BreadcrumbJsonLd from "@/components/marketing/BreadcrumbJsonLd.astro";
+
+import FaqGrid from "@/components/marketing/FaqGrid.astro";
+import AgentJsonLd from "@/components/marketing/AgentJsonLd.astro";
+import AgentConversation from "@/components/marketing/infographics/AgentConversation.astro";
+import AgenticShiftFlow from "@/components/marketing/infographics/AgenticShiftFlow.astro";
+
+import IconMapSearch from "@tabler/icons/outline/map-search.svg";
+import IconCalendarCheck from "@tabler/icons/outline/calendar-check.svg";
+import IconSparkles from "@tabler/icons/outline/sparkles.svg";
+import IconCalendarStats from "@tabler/icons/outline/calendar-stats.svg";
+import IconCreditCard from "@tabler/icons/outline/credit-card.svg";
+import IconCoin from "@tabler/icons/outline/coin.svg";
+import IconWebhook from "@tabler/icons/outline/webhook.svg";
+import IconComponents from "@tabler/icons/outline/components.svg";
+import IconUser from "@tabler/icons/outline/user.svg";
+import IconBuildingStore from "@tabler/icons/outline/building-store.svg";
+import IconUsersGroup from "@tabler/icons/outline/users-group.svg";
+import IconCode from "@tabler/icons/outline/code.svg";
+import IconArrowRight from "@tabler/icons/outline/arrow-right.svg";
+import IconCheck from "@tabler/icons/outline/check.svg";
+import IconX from "@tabler/icons/outline/x.svg";
+
+export const faqs = [
+  { title: "De ce majoritatea agenților AI nu pot face o rezervare la hotel și ce face unii capabili să o facă?", content: "Recomandarea unui hotel este o problemă de conținut — un agent are nevoie doar de descrieri și prețuri. Rezervarea este o problemă de comerț: are nevoie de tarife și disponibilitate în timp real, inventar pe care îl poate deține efectiv, un sistem de plată, decontare către hotel și o relație comercială cu proprietatea. Majoritatea asistenților au doar prima parte și niciuna din celelalte, așa că redirecționează călătorul către un site pentru finalizare. Un agent poate finaliza o rezervare când infrastructura de bază expune toate aceste elemente. Wink este API-first — fiecare funcționalitate a platformei este accesibilă extern, iar un server MCP găzduit expune contractele API live — astfel un agent aprobat poate descoperi oferta hotelurilor, citi tarife și disponibilitate live, crea și sincroniza rezervări, procesa plata (Wink este comerciantul înregistrat), păstra atribuirea și se poate abona la evenimente." },
+  { title: "Cum se conectează un agent AI la Wink?", content: "Direcționați un client MCP compatibil către serverul găzduit la https://docs.mcp.wink.travel/mcp (fallback SSE la /sse). Din Claude Code: claude mcp add --transport http wink-docs https://docs.mcp.wink.travel/mcp. Agentul poate apoi folosi uneltele api_search și docs_search pentru a citi operațiuni OpenAPI live, contracte request/response și rețete de sarcini." },
+  { title: "Ce poate face un agent AI pe Wink astăzi?", content: "Astăzi, prin REST API și serverul MCP: descoperă platforma, caută inventar rezervabil (inclusiv căutare spațială geolocalizată), citește tarife și disponibilitate live prin 11 channel manageri conectați, creează rezervări și sincronizează ciclul lor de viață cu PMS/channel manager, preia plata (Wink este comerciantul înregistrat), păstrează atribuirea pe 6 luni și câștigă prin fluxuri de parteneri, se abonează la peste 64 de evenimente webhook, generează conținut AI și încorporează inventar rezervabil prin Web Components." },
+  { title: "Poate un agent AI să finalizeze o rezervare la hotel prin Wink?", content: "Da. Crearea rezervării este o operațiune REST API, iar Booking Engine realizează tranzacția — checkout, plată, confirmare și sincronizare rezervare. Un agent care apelează API-ul de rezervare în numele călătorului poate finaliza o rezervare reală, confirmată, cu contextul sursei păstrat." },
+  { title: "Cum devine un hotel rezervabil de către un agent AI pe Wink?", content: "Simplu, prin configurarea profilului său pe Wink. Odată ce oferta, tarifele și disponibilitatea hotelului sunt live (prin Extranet), acesta devine automat descoperibil și rezervabil de către agenții AI aprobați prin REST API și serverul MCP găzduit — fără integrare AI separată pentru fiecare hotel. Agentul caută în inventarul live al hotelului, creează rezervarea și decontează plata prin Booking Engine, cu atribuirea păstrată. Fiecare hotel pe Wink este gata pentru agenți în mod implicit." },
+  { title: "Cum diferă rezervarea unui hotel prin Wink față de ChatGPT cu Expedia sau Booking.com?", content: "Integrările asistenților precum ChatGPT cu Expedia sau Booking.com sunt puternice la descoperire — prețuri live, fotografii și hărți în chat — dar călătorul este de obicei redirecționat către site-ul sau aplicația furnizorului pentru a finaliza rezervarea și plata. Pe Wink agentul tranzacționează direct cu oferta live, deținută de hotel: citește tarife și disponibilitate reale, creează rezervarea și decontează plata prin Booking Engine într-un singur flux — și poate câștiga comision de partener. Descoperirea poate avea loc oriunde; finalizarea are loc pe Wink." },
+  { title: "Este Wink singura platformă care permite agenților AI să rezerve și să plătească hoteluri?", content: "Nu — comerțul hotelier condus de agenți este o categorie emergentă, iar mai mulți jucători din turism și plăți au anunțat sau lansat rezervări agentice end-to-end până în 2026. Ce face Wink distinct este combinația: oferta este deținută direct de hotel (nu revânzare GDS sau listări web-scrapate), agentul poate căuta, rezerva, plăti ȘI câștiga printr-un singur strat de comerț, și este accesibil live astăzi prin REST API și server MCP găzduit — nu un element de roadmap. Hotelurile păstrează controlul distribuției; agentul devine un canal atribuit și câștigător." },
+  { title: "Ce standarde de comerț agentic și AI suportă Wink?", content: "Wink este API-first și rulează un server MCP (Model Context Protocol) găzduit astăzi, astfel orice agent compatibil MCP — Claude, Codex, Cursor și alții — poate descoperi și apela contractele sale OpenAPI live. Primitivele de rezervare și plată ale Wink sunt proiectate să interopereze cu stiva emergentă de comerț agentic — Agentic Commerce Protocol (ACP), Agent Payments Protocol (AP2) de la Google, Agent2Agent (A2A) și plăți agentice stil x402 — pe măsură ce aceste standarde se consolidează, în loc să blocheze agenții într-un drum proprietar." },
+  { title: "Există o abilitate AI pentru dezvoltarea pe Wink?", content: "Da — wink-api-builder este o abilitate portabilă pentru agenți care folosește serverul MCP ca sursă de adevăr. Ghidează agentul prin api_search către contracte request/response live, autentificare și cod verificat, și semnalează nepotrivirile dintre codul existent și API-ul curent. Funcționează cu Claude Code, Codex, Cursor și alți clienți capabili de abilități." },
+  { title: "Poate un agent AI să câștige ca afiliat sau partener?", content: "Modelul de parteneri Wink păstrează atribuirea sursei și campaniei pentru 6 luni per click și plătește un comision implicit de 10% pentru rezervările confirmate. Un agent care creează cerere calificată și direcționează o rezervare poate fi o sursă atribuită prin aceeași infrastructură de parteneri și Booking Engine." },
+  { title: "Înlocuiește Agentic AI Booking Engine?", content: "Nu. Agentic AI creează sau direcționează intenția; Booking Engine rămâne stratul de finalizare pentru checkout, plată, confirmare și sincronizare rezervare. Fiecare transfer către agent se rezolvă prin Booking Engine dedesubt." },
+  { title: "De unde ar trebui să înceapă un dezvoltator sau agent?", content: "Conectează-te la serverul MCP, apoi citește documentația Build on Wink, MCP Server și AI Skills. Solicită acces API când cazul de utilizare și ruta comercială sunt clare." },
+];
+
+<div class="not-content mkt-page">
+
+<AgentJsonLd faqs={faqs} />
+
+<BreadcrumbJsonLd items={[{ name: "Acasă", url: "https://wink.travel/" }, { name: "Agentic AI" }]} />
+
+{/* Hero — agent conversation. Full-bleed per the house `data-full-bleed` pattern,
+    with the breadcrumb inside the band so it lines up with the headline instead of
+    sitting in Starlight's narrower column above a full-width hero. */}
+<section data-full-bleed class="@container relative w-full overflow-hidden border-b border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white">
+  <div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+    <div class="absolute -left-24 -top-10 size-80 rounded-full bg-[#ff6b35]/20 blur-[100px]"></div>
+    <div class="absolute -bottom-16 -right-16 size-96 rounded-full bg-[#9333ea]/30 blur-[120px]"></div>
+  </div>
+  <div class="relative mx-auto w-full max-w-7xl px-4 pb-20 pt-8 lg:pb-24">
+    <nav aria-label="Breadcrumb" class="text-sm text-white/60">
+      <a href="/" class="transition-colors hover:text-white">Acasă</a>
+      <span class="px-1.5 text-white/55">/</span>
+      <span class="text-white">Agentic AI</span>
+    </nav>
+    <div class="mt-10 grid items-center gap-12 lg:mt-12 lg:min-h-[33rem] @lg:grid-cols-[1fr_1.02fr]">
+    {/* Left — copy */}
+    <div class="text-center @lg:text-left">
+      <span class="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-xs font-extrabold uppercase tracking-wider text-[#ff8a5c] ring-1 ring-white/15 backdrop-blur @lg:mx-0"><span class="size-1.5 rounded-full bg-gradient-to-r from-[#ff6b35] to-[#ec4899]"></span> Agentic AI</span>
+      <h1 class="font-heading mt-6 text-4xl font-extrabold leading-[1.05] tracking-tight text-balance @lg:text-5xl @2xl:text-6xl">Agenții AI pot planifica o călătorie. <span class="wink-shimmer bg-gradient-to-r from-[#ff8a5c] via-[#ec4899] to-[#a855f7] bg-clip-text text-transparent">Aproape niciunul nu o poate rezerva.</span></h1>
+      <p class="mx-auto mt-5 max-w-xl text-pretty text-lg text-white/75 @lg:mx-0 @lg:text-xl">Recomandarea unui hotel este o problemă de conținut. Rezervarea unuia este o problemă de comerț — tarife live, inventar deținut, plată, decontare și un contract cu hotelul. Wink este infrastructura care închide acest decalaj: agenții descoperă, rezervă <em class="not-italic font-semibold text-white">și plătesc</em> pe baza ofertei controlate de hotel, printr-un REST API live și un server MCP găzduit.</p>
+      <div class="mt-8 flex flex-col items-center justify-center gap-3 @lg:justify-start sm:flex-row">
+        <a href="/developers/build-on-wink/" class="inline-flex h-12 items-center justify-center rounded-md bg-[#ff6b35] px-7 text-base font-semibold text-white transition-colors hover:bg-[#e85b29]">Vezi documentația</a>
+        <a href="#agents" class="inline-flex h-12 items-center justify-center rounded-md bg-white/10 px-7 text-base font-medium text-white ring-1 ring-white/20 backdrop-blur transition-colors hover:bg-white/15">Conectează un agent</a>
+      </div>
+      <div class="mt-7 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 font-mono text-xs text-white/70"><span class="size-1.5 animate-pulse rounded-full bg-emerald-400"></span> Server MCP live · docs.mcp.wink.travel/mcp</div>
+    </div>
+
+    {/* Right — agent conversation (swappable infographic) */}
+    <AgentConversation />
+    </div>
+  </div>
+</section>
+
+{/* Direct answer */}
+<section class="mx-auto w-full max-w-3xl px-4 pt-24 pb-24 text-center">
+  <p class="mkt-kicker text-primary">De ce majoritatea agenților AI nu pot face o rezervare la hotel?</p>
+  <p class="mkt-sub text-muted-foreground mt-5">Wink este API-first: fiecare funcționalitate a platformei este accesibilă extern, iar un server MCP găzduit expune contractele API live către agenții AI. În loc să forțeze fiecare călător să treacă printr-un site, Wink oferă agenților aprobați acces structurat la oferta hotelurilor, tarife, disponibilitate, rezervare, plată, atribuție și evenimente — aceeași infrastructură care alimentează Wink însuși.</p>
+  <div class="mx-auto mt-7 max-w-2xl rounded-2xl border-2 border-primary/30 bg-primary/[0.04] px-6 py-5 text-pretty text-foreground/90"><strong class="text-foreground">Orice hotel devine gata pentru agenți simplu prin configurarea profilului său pe Wink.</strong> Odată ce oferta, tarifele și disponibilitatea sunt live, agenții AI aprobați pot căuta, rezerva și plăti prin API și serverul MCP — fără integrare AI separată pentru fiecare hotel.</div>
+</section>
+
+{/* Live proof — the argument above is shipped, not roadmap. Implementation
+    detail deliberately lives on /builders/ so this page stays the thesis. */}
+<section id="agents" class="@container w-full border-y border-border bg-muted/30" style="scroll-margin-top:5rem">
+  <div class="mx-auto w-full max-w-4xl px-4 py-24 text-center">
+    <p class="mkt-kicker text-primary">Disponibil acum, nu în plan</p>
+    <h2 class="mkt-h2 font-heading mt-3">Patru pași de la agent la rezervare confirmată și plătită.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-2xl">Conectează serverul MCP găzduit, rezolvă intenția în operațiuni reale prin API live, generează cod verificat, apoi predă către Booking Engine pentru checkout, plată, confirmare și sincronizare PMS.</p>
+    <ol class="mx-auto mt-10 grid gap-3 text-left @lg:grid-cols-4">
+      <li class="rounded-xl border border-border bg-card px-4 py-3 text-sm"><span class="font-mono text-xs text-primary">01</span><span class="mt-1 block font-semibold">Conectează MCP</span></li>
+      <li class="rounded-xl border border-border bg-card px-4 py-3 text-sm"><span class="font-mono text-xs text-primary">02</span><span class="mt-1 block font-semibold">Caută API live</span></li>
+      <li class="rounded-xl border border-border bg-card px-4 py-3 text-sm"><span class="font-mono text-xs text-primary">03</span><span class="mt-1 block font-semibold">Construiește cod verificat</span></li>
+      <li class="rounded-xl border border-border bg-card px-4 py-3 text-sm"><span class="font-mono text-xs text-primary">04</span><span class="mt-1 block font-semibold">Rezervă &amp; primește plata</span></li>
+    </ol>
+    <div class="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <a href="/builders/#agent-quickstart" class="inline-flex h-12 items-center justify-center rounded-md bg-[#ff6b35] px-7 text-base font-semibold text-white transition-colors hover:bg-[#e85b29]">Vezi pașii de integrare</a>
+      <a href="/developers/mcp/" class="inline-flex h-12 items-center justify-center rounded-md border border-border px-7 text-base font-medium transition-colors hover:bg-muted">Documentație server MCP</a>
+    </div>
+    <p class="text-muted-foreground mt-5 inline-flex items-center gap-2 font-mono text-xs"><span class="size-1.5 animate-pulse rounded-full bg-emerald-500"></span> docs.mcp.wink.travel/mcp</p>
+  </div>
+</section>
+
+{/* What an agent can do — capability map */}
+<section class="@container mx-auto w-full max-w-7xl px-4 pt-24">
+  <div class="mx-auto mb-14 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Harta capabilităților</p>
+    <h2 class="mkt-h2 font-heading mt-3">Ce poate face un agent AI pe Wink.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">Fiecare capabilitate de mai jos este disponibilă astăzi prin REST API și server MCP — bazată pe aceleași contracte pe care Wink le folosește.</p>
+  </div>
+  <div class="grid gap-5 @md:grid-cols-2 @2xl:grid-cols-3">
+    {[
+      { icon: IconMapSearch, title: "Caută inventarul hotelului", desc: "Găsește oferta rezervabilă cu căutare spațială geolocalizată — punct, cerc, dreptunghi sau poligon — plus detectare GeoIP." },
+      { icon: IconCalendarStats, title: "Citește tarife și disponibilitate live", desc: "Extrage tarife, disponibilitate și inventar în timp real prin 11 channel manageri conectați." },
+      { icon: IconCalendarCheck, title: "Creează și sincronizează rezervări", desc: "Creează rezervări prin API; creează / actualizează / anulează sincronizarea cu PMS sau channel manager conectat cu urmărire completă a ciclului de viață." },
+      { icon: IconCreditCard, title: "Preia plata", desc: "Wink gestionează checkout-ul, logica politicii de anulare și plata din spatele rezervării — Wink este comerciantul înregistrat." },
+      { icon: IconCoin, title: "Păstrează atribuirea și câștigă", desc: "Contextul sursei și campaniei supraviețuiește pe parcurs — atribuirea pe 6 luni per click și comision implicit de 10% la rezervările confirmate." },
+      { icon: IconWebhook, title: "Reacționează la peste 64 de evenimente", desc: "Abonează-te la evenimente webhook — rezervări, plăți, rambursări, actualizări channel manager — și declanșează acțiuni ulterioare." },
+      { icon: IconSparkles, title: "Generează conținut", desc: "Conținut AI pentru 9 tipuri de inventar și 12 tonuri de voce; înregistrare proprietate cu un singur click dintr-un URL." },
+      { icon: IconComponents, title: "Încorporează inventar rezervabil", desc: "Adaugă inventar hotel live și rezervabil în orice suprafață cu Web Components și cod minim." },
+      { icon: IconCode, title: "Construiește pe întreg API-ul", desc: "Fiecare funcționalitate Wink este accesibilă extern prin REST, cu autentificare OAuth2 și SDK-uri oficiale — integrează ca și cum sistemul ar fi al tău." },
+    ].map((c) => (
+      <div class="flex flex-col rounded-2xl border border-border bg-card p-6">
+        <span class="mb-4 flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-white"><c.icon class="size-6" /></span>
+        <h3 class="font-heading text-base font-semibold">{c.title}</h3>
+        <p class="text-muted-foreground mt-2 text-sm text-pretty">{c.desc}</p>
+        <span class="mt-4 inline-flex w-fit items-center gap-1.5 rounded-full bg-emerald-500/10 px-2.5 py-1 text-xs font-semibold text-emerald-600 dark:text-emerald-400"><span class="size-1.5 rounded-full bg-emerald-500"></span>Disponibil acum</span>
+      </div>
+    ))}
+  </div>
+</section>
+
+{/* The agentic shift — before/after flow */}
+<section class="@container mx-auto w-full max-w-5xl px-4 pt-24">
+  <div class="mx-auto mb-12 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Schimbarea</p>
+    <h2 class="mkt-h2 font-heading mt-3">De la călător-la-site la călător-la-agent.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">În modelul vechi călătorul făcea munca. În modelul agentic agentul devine interfața — iar Wink devine stratul de comerț din spatele răspunsului.</p>
+  </div>
+  {/* Before/after flow — swappable infographic (infographics/AgenticShiftFlow.astro) */}
+  <AgenticShiftFlow />
+</section>
+
+{/* Why Wink — recommend vs transact */}
+<section class="@container mx-auto w-full max-w-5xl px-4 pt-24">
+  <div class="mx-auto mb-12 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">De ce Wink</p>
+    <h2 class="mkt-h2 font-heading mt-3">Un răspuns AI nu este o rezervare.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">O recomandare are nevoie de ofertă structurată, tarife live, checkout, plată, confirmare și atribuție pentru a deveni comerț.</p>
+  </div>
+  <div class="grid gap-6 @md:grid-cols-2">
+    <div class="rounded-2xl border border-border bg-muted/30 p-7">
+      <h3 class="font-heading text-lg font-semibold text-muted-foreground">Un agent AI fără infrastructură</h3>
+      <ul class="mt-5 space-y-3">
+        {["Ofertă web-scrapată, adesea învechită", "Prețuri care pot să nu fie rezervabile", "Recomandă, apoi predă rezervarea unui site sau OTA", "Fără atribuție — și fără posibilitatea de a câștiga", "Pierde firul după sugestie"].map((b) => (
+          <li class="flex items-start gap-2.5"><IconX class="mt-0.5 size-5 shrink-0 text-muted-foreground/60" /><span class="text-sm text-muted-foreground">{b}</span></li>
+        ))}
+      </ul>
+      <p class="mt-6 text-sm font-semibold text-muted-foreground">Poate recomanda.</p>
+    </div>
+    <div class="rounded-2xl border-2 border-primary/30 bg-primary/[0.04] p-7">
+      <h3 class="font-heading text-lg font-semibold text-primary">Un agent AI pe Wink</h3>
+      <ul class="mt-5 space-y-3">
+        {["Ofertă live, deținută de hotel — nu web-scrapată sau revândută", "Tarife și disponibilitate live prin API", "Rezervă ȘI plătește într-un singur flux — Wink decontează", "Agentul poate câștiga — atribuție + comision implicit de 10%", "Confirmat, sincronizat cu PMS, cu webhook-uri — disponibil acum"].map((b) => (
+          <li class="flex items-start gap-2.5"><IconCheck class="mt-0.5 size-5 shrink-0 text-primary" /><span class="text-sm text-foreground/90">{b}</span></li>
+        ))}
+      </ul>
+      <p class="mt-6 text-sm font-semibold text-primary">Poate tranzacționa.</p>
+    </div>
+  </div>
+</section>
+
+{/* AI agents for everyone */}
+<section class="@container mx-auto w-full max-w-7xl px-4 pt-24">
+  <div class="mx-auto mb-14 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Fiecare participant, un agent</p>
+    <h2 class="mkt-h2 font-heading mt-3">Un agent pentru călători, hoteluri, parteneri și dezvoltatori.</h2>
+  </div>
+  <div class="grid gap-6 @md:grid-cols-2">
+    {[
+      { icon: IconUser, who: "Pentru călători", title: "Caută, rezervă și gestionează sejurul", desc: "Un agent lucrează cu ofertă structurată, tarife live și politici — apoi creează rezervarea prin Booking Engine.", prompt: "Găsește un hotel de lux doar pentru adulți în Chiang Mai luna viitoare cu spa. Rezervă-l." },
+      { icon: IconBuildingStore, who: "Pentru hoteluri", title: "Supraveghetori, nu operatori", desc: "Agenții ajută la crearea, actualizarea și analiza prin Extranet, Social și Studio — hotelul păstrează regulile.", prompt: "Generează conținut social pentru luna viitoare și semnalează datele cu ocupare scăzută pentru promovare." },
+      { icon: IconUsersGroup, who: "Pentru parteneri & creatori", title: "Automatizează campanii și câștigă", desc: "Descoperă hoteluri eligibile, construiește active și vitrine, publică și păstrează atribuirea conectată.", prompt: "Creează o campanie care promovează resorturi de lux în Maldive." },
+      { icon: IconCode, who: "Pentru dezvoltatori", title: "Construiește experiențe noi de călătorie", desc: "Concierge AI, agenți bancari și de loialitate — construiți pe serverul MCP, REST API și Booking Engine.", prompt: "Încorporează rezervări AI de hotel în aplicația noastră bancară folosind API-ul Wink." },
+    ].map((c) => (
+      <div class="flex flex-col rounded-2xl border border-border bg-card p-7">
+        <span class="mb-4 flex size-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-white"><c.icon class="size-6" /></span>
+        <span class="text-xs font-semibold uppercase tracking-wider text-primary">{c.who}</span>
+        <h3 class="font-heading mt-2 text-xl font-semibold">{c.title}</h3>
+        <p class="text-muted-foreground mt-2 text-pretty">{c.desc}</p>
+        <p class="mt-5 rounded-lg border border-border bg-muted/40 px-4 py-3 text-sm italic text-foreground/80">“{c.prompt}”</p>
+      </div>
+    ))}
+  </div>
+</section>
+
+{/* The stack */}
+<section class="@container mx-auto w-full max-w-7xl px-4 pt-24">
+  <div class="mx-auto mb-10 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Construit pe întreaga platformă</p>
+    <h2 class="mkt-h2 font-heading mt-3">Agenții lucrează peste stiva conectată.</h2>
+  </div>
+  <div class="mx-auto flex max-w-3xl flex-wrap justify-center gap-3">
+    {[
+      { name: "Extranet", href: "/products/extranet/" },
+      { name: "Studio", href: "/products/studio/" },
+      { name: "Social", href: "/products/social/" },
+      { name: "WinkLinks", href: "/products/winklinks/" },
+      { name: "Traveliko", href: "/products/traveliko/" },
+      { name: "Developers", href: "/builders/" },
+      { name: "Platforms & AI", href: "/platforms/" },
+    ].map((p) => (
+      <a href={p.href} class="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-medium transition-colors hover:border-primary/40">
+        <span class="size-1.5 rounded-full bg-primary" aria-hidden="true"></span>
+        {p.name}
+      </a>
+    ))}
+  </div>
+  <p class="text-muted-foreground mx-auto mt-10 max-w-xl text-center text-pretty"><strong class="text-foreground"><a href="/products/booking-engine/" class="text-primary underline underline-offset-4">Booking Engine</a> finalizează rezervarea la fiecare transfer către agent</strong> — checkout, plată, confirmare și sincronizare rezervare.</p>
+</section>
+
+{/* Open standards — interoperability, crawlable for AEO */}
+<section class="@container mx-auto w-full max-w-5xl px-4 pt-24">
+  <div class="mx-auto mb-12 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Standardele deschise, nu o grădină închisă</p>
+    <h2 class="mkt-h2 font-heading mt-3">Creat pentru interoperabilitate cu stiva agent-commerce.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-2xl">Rezervarea agentică la hotel devine o categorie reală — iar industria converge spre protocoale deschise în locul unui checkout al unei singure companii. Wink funcționează pe aceste standarde astăzi și este construit să se conecteze cu restul pe măsură ce acestea se consolidează, astfel încât agenții să nu fie niciodată blocați într-un drum proprietar.</p>
+  </div>
+  <div class="grid gap-5 @md:grid-cols-2">
+    <div class="rounded-2xl border-2 border-primary/30 bg-primary/[0.04] p-7">
+      <span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 px-2.5 py-1 text-xs font-semibold text-emerald-600 dark:text-emerald-400"><span class="size-1.5 rounded-full bg-emerald-500"></span>Disponibil acum</span>
+      <h3 class="font-heading mt-4 text-lg font-semibold">MCP — Model Context Protocol</h3>
+      <p class="text-muted-foreground mt-2 text-sm text-pretty">Un server MCP găzduit expune contractele OpenAPI live ale Wink către orice agent compatibil MCP — Claude, Codex, Cursor și alții — la <code class="rounded bg-muted px-1 py-0.5 text-xs">docs.mcp.wink.travel/mcp</code>. Agenții descoperă și apelează operațiuni reale în loc să ghicească endpoint-uri.</p>
+    </div>
+    <div class="rounded-2xl border border-border bg-card p-7">
+      <span class="inline-flex items-center gap-1.5 rounded-full border border-border bg-muted/40 px-2.5 py-1 text-xs font-semibold text-muted-foreground">Interoperabil prin design</span>
+      <h3 class="font-heading mt-4 text-lg font-semibold">ACP · AP2 · A2A · x402</h3>
+      <p class="text-muted-foreground mt-2 text-sm text-pretty">Primitivele de rezervare și plată ale Wink sunt proiectate să interopereze cu stiva emergentă de plăți agentice — Agentic Commerce Protocol (ACP), Agent Payments Protocol (AP2) de la Google, Agent2Agent (A2A) și plăți agentice stil x402 — pe măsură ce aceste standarde evoluează, cu Booking Engine ca strat de decontare dedesubt (Wink este comerciantul înregistrat).</p>
+    </div>
+  </div>
+</section>
+
+{/* Where this is heading — roadmap, clearly labeled */}
+<section class="mx-auto w-full max-w-3xl px-4 pt-24">
+  <div class="rounded-2xl border border-dashed border-primary/30 bg-primary/[0.03] p-8">
+    <span class="inline-flex items-center gap-1.5 rounded-full border border-primary/30 bg-card px-3 py-1 text-xs font-semibold text-primary">În ce direcție se îndreaptă</span>
+    <p class="text-muted-foreground mt-5 text-pretty">Capabilitățile de mai sus sunt disponibile astăzi. Direcția este un comerț agentic mai profund: primitive de rezervare mai bogate orientate către agenți, identitate și autorizare pentru agenți de a tranzacționa în numele călătorului, și agenți care participă ca surse atribuite și câștigătoare în rețeaua de parteneri. Poziționarea strategică a Wink — <strong class="text-foreground"> infrastructură de comerț pentru agenții AI</strong> — este firul roșu de la API-ul de azi către acel viitor.</p>
+  </div>
+</section>
+
+{/* FAQ */}
+<FaqGrid
+  heading="Întrebări frecvente despre Agentic AI"
+  description="Ce înseamnă, cum să te conectezi și ce pot face agenții."
+  items={faqs}
+/>
+
+{/* Final CTA */}
+<section class="w-full border-y border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white">
+  <div class="mx-auto w-full max-w-7xl px-4 py-24 text-center">
+    <h2 class="mkt-h2 font-heading">Gata să construiești comerț turistic pentru agenții AI?</h2>
+    <p class="mx-auto mt-4 max-w-2xl text-pretty text-white/70 @lg:text-lg">Conectează serverul MCP, citește contractele live și lasă Booking Engine să finalizeze rezervarea. Sau vorbește cu noi despre accesul agenților pentru produsul tău.</p>
+    <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <a href="/developers/build-on-wink/" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-[#ff6b35] px-8 text-base font-semibold text-white hover:bg-[#e85b29] sm:w-auto">Vezi documentația</a>
+      <a href="/developers/mcp/" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-white px-8 text-base font-semibold text-[#1f0a40] hover:bg-white/90 sm:w-auto">Conectează serverul MCP</a>
+      <a href="https://cal.com/wink-ws36dy" class="inline-flex h-12 items-center justify-center px-4 text-sm font-medium text-white/80 underline underline-offset-4 hover:text-white">Solicită o demonstrație</a>
+    </div>
+  </div>
+</section>
+
+</div>

@@ -1,0 +1,280 @@
+---
+title: Agentic AI — AI 에이전트를 위한 여행 커머스 인프라
+description: "Wink에서는 AI 에이전트가 단순히 호텔을 추천하는 것을 넘어, 실시간 호텔 소유 공급을 검색하고 REST API와 호스팅 MCP를 통해 한 번에 예약 및 결제까지 진행합니다. 지금 바로 이용 가능."
+template: splash
+marketingNav: true
+---
+import '/src/styles/splash-page.css';
+import BreadcrumbJsonLd from "@/components/marketing/BreadcrumbJsonLd.astro";
+
+import FaqGrid from "@/components/marketing/FaqGrid.astro";
+import AgentJsonLd from "@/components/marketing/AgentJsonLd.astro";
+import AgentConversation from "@/components/marketing/infographics/AgentConversation.astro";
+import AgenticShiftFlow from "@/components/marketing/infographics/AgenticShiftFlow.astro";
+
+import IconMapSearch from "@tabler/icons/outline/map-search.svg";
+import IconCalendarCheck from "@tabler/icons/outline/calendar-check.svg";
+import IconSparkles from "@tabler/icons/outline/sparkles.svg";
+import IconCalendarStats from "@tabler/icons/outline/calendar-stats.svg";
+import IconCreditCard from "@tabler/icons/outline/credit-card.svg";
+import IconCoin from "@tabler/icons/outline/coin.svg";
+import IconWebhook from "@tabler/icons/outline/webhook.svg";
+import IconComponents from "@tabler/icons/outline/components.svg";
+import IconUser from "@tabler/icons/outline/user.svg";
+import IconBuildingStore from "@tabler/icons/outline/building-store.svg";
+import IconUsersGroup from "@tabler/icons/outline/users-group.svg";
+import IconCode from "@tabler/icons/outline/code.svg";
+import IconArrowRight from "@tabler/icons/outline/arrow-right.svg";
+import IconCheck from "@tabler/icons/outline/check.svg";
+import IconX from "@tabler/icons/outline/x.svg";
+
+export const faqs = [
+  { title: "대부분의 AI 에이전트가 호텔 예약을 할 수 없는 이유와 예약 가능한 에이전트의 차이점은 무엇인가요?", content: "호텔 추천은 콘텐츠 문제입니다 — 에이전트는 설명과 가격 정보만 필요합니다. 예약은 커머스 문제입니다: 실시간 요금과 가용성, 실제 보유 가능한 재고, 결제 수단, 호텔에 대한 정산, 그리고 호텔과의 상업적 관계가 필요합니다. 대부분의 어시스턴트는 첫 번째만 갖추고 나머지는 없기 때문에 여행자를 웹사이트로 넘겨 예약을 마무리하게 합니다. 에이전트가 예약을 완료하려면 모든 인프라가 노출되어야 합니다. Wink는 API 우선 접근법으로 모든 플랫폼 기능이 외부 호출 가능하며, 호스팅된 MCP 서버가 실시간 API 계약을 노출합니다 — 승인된 에이전트는 호텔 공급을 발견하고, 실시간 요금과 가용성을 읽고, 예약을 생성 및 동기화하며, 결제를 처리(Wink가 상인 기록자임), 출처를 보존하고 이벤트를 구독할 수 있습니다." },
+  { title: "AI 에이전트는 어떻게 Wink에 연결하나요?", content: "호환 가능한 MCP 클라이언트를 https://docs.mcp.wink.travel/mcp 에 호스팅된 서버로 지정하세요 (SSE 폴백은 /sse). Claude Code에서는 다음과 같이 입력합니다: claude mcp add --transport http wink-docs https://docs.mcp.wink.travel/mcp. 이후 에이전트는 api_search와 docs_search 도구를 사용해 실시간 OpenAPI 작업, 요청/응답 계약 및 작업 레시피를 읽을 수 있습니다." },
+  { title: "오늘날 AI 에이전트가 Wink에서 실제로 할 수 있는 일은 무엇인가요?", content: "현재 REST API와 MCP 서버를 통해 플랫폼을 발견하고, 예약 가능한 재고(지리 위치 공간 검색 포함)를 검색하며, 11개 연결된 채널 매니저의 실시간 요금과 가용성을 읽고, 예약을 생성하고 PMS/채널 매니저에 동기화하며, 결제를 처리(Wink가 상인 기록자임), 6개월간 출처 보존 및 파트너 플로우를 통한 수익 창출, 64개 이상의 웹훅 이벤트 구독, AI 콘텐츠 생성, 웹 컴포넌트를 통한 예약 가능한 재고 임베딩이 가능합니다." },
+  { title: "AI 에이전트가 Wink를 통해 호텔 예약을 완료할 수 있나요?", content: "네. 예약 생성은 REST API 작업이며, Booking Engine이 거래를 처리합니다 — 체크아웃, 결제, 확인 및 예약 동기화. 여행자를 대신해 예약 API를 호출하는 에이전트는 출처 정보를 보존한 실제 확정 예약을 완료할 수 있습니다." },
+  { title: "호텔이 Wink에서 AI 에이전트에 의해 예약 가능하려면 어떻게 해야 하나요?", content: "호텔이 Wink에 프로필을 설정하기만 하면 됩니다. 호텔의 공급, 요금 및 가용성이 실시간으로 활성화되면(Extranet을 통해) 승인된 AI 에이전트가 REST API와 호스팅 MCP 서버를 통해 자동으로 검색 및 예약할 수 있습니다 — 별도의 호텔별 AI 통합이 필요 없습니다. 에이전트는 호텔의 실시간 재고를 검색하고 예약을 생성하며 Booking Engine을 통해 결제를 정산하고 출처를 보존합니다. Wink의 모든 호텔은 기본적으로 에이전트 준비가 되어 있습니다." },
+  { title: "Wink를 통한 호텔 예약이 Expedia나 Booking.com과 ChatGPT 통합과 어떻게 다른가요?", content: "ChatGPT와 Expedia 또는 Booking.com 같은 어시스턴트 통합은 발견에 강점이 있습니다 — 채팅 내 실시간 가격, 사진, 지도 제공 — 하지만 여행자는 보통 공급자의 웹사이트나 앱으로 이동해 예약과 결제를 완료합니다. Wink에서는 에이전트가 실시간 호텔 소유 공급에 직접 거래합니다: 실제 요금과 가용성을 읽고, 예약을 생성하며, Booking Engine을 통해 한 번에 결제를 정산하고, 결과에 대해 파트너 커미션을 얻을 수 있습니다. 발견은 어디서든 가능하지만, 이행은 Wink에서 이루어집니다." },
+  { title: "Wink만 AI 에이전트가 호텔 예약과 결제를 할 수 있는 플랫폼인가요?", content: "아닙니다 — 에이전트 주도 호텔 커머스는 신흥 카테고리이며, 여러 여행 및 결제 업체가 2026년까지 엔드투엔드 에이전트 예약을 발표하거나 출시했습니다. Wink의 차별점은 조합에 있습니다: 공급은 호텔 소유 및 직접적이며(GDS 재판매나 웹 스크랩 목록이 아님), 에이전트가 검색, 예약, 결제 및 수익 창출을 하나의 커머스 레이어에서 할 수 있고, 실시간 REST API와 호스팅 MCP 서버를 통해 호출 가능하며 — 로드맵이 아닌 현재 서비스 중입니다. 호텔은 유통을 통제하고, 에이전트는 출처가 명확한 수익 채널이 됩니다." },
+  { title: "Wink는 어떤 에이전트 커머스 및 AI 표준을 지원하나요?", content: "Wink는 API 우선이며 오늘날 호스팅 MCP(Model Context Protocol) 서버를 운영하므로, Claude, Codex, Cursor 등 MCP 호환 에이전트가 실시간 OpenAPI 계약을 발견하고 호출할 수 있습니다. Wink의 예약 및 결제 원시 기능은 에이전트 커머스 스택 — Agentic Commerce Protocol(ACP), Google의 Agent Payments Protocol(AP2), Agent2Agent(A2A), x402 스타일 에이전트 결제 — 와 상호 운용되도록 설계되어, 표준이 통합됨에 따라 에이전트를 독점 경로에 묶지 않습니다." },
+  { title: "Wink에서 빌드할 수 있는 AI 스킬이 있나요?", content: "네 — wink-api-builder는 MCP 서버를 진실의 소스로 사용하는 휴대용 에이전트 스킬입니다. api_search를 통해 실시간 요청/응답 계약, 인증, 검증된 코드로 에이전트를 안내하며, 기존 코드와 현재 API 간 불일치를 표시합니다. Claude Code, Codex, Cursor 및 기타 스킬 지원 클라이언트와 함께 작동합니다." },
+  { title: "AI 에이전트가 제휴사나 파트너로서 수익을 올릴 수 있나요?", content: "Wink의 파트너 모델은 클릭당 6개월간 출처 및 캠페인 정보를 보존하며, 확정 예약에 대해 기본 10% 커미션을 지급합니다. 자격 있는 수요를 창출하고 예약을 라우팅하는 에이전트는 동일한 파트너 및 Booking Engine 인프라를 통해 출처가 명확한 소스가 될 수 있습니다." },
+  { title: "Agentic AI가 Booking Engine을 대체하나요?", content: "아닙니다. Agentic AI는 의도를 생성하거나 라우팅하며, Booking Engine은 체크아웃, 결제, 확인 및 예약 동기화의 이행 계층으로 남아 있습니다. 모든 에이전트 핸드오프는 Booking Engine을 통해 해결됩니다." },
+  { title: "개발자나 에이전트는 어디서 시작해야 하나요?", content: "MCP 서버에 연결한 후 Build on Wink, MCP Server, AI Skills 문서를 읽으세요. 사용 사례와 상업적 경로가 명확해지면 API 접근을 요청하세요." },
+];
+
+<div class="not-content mkt-page">
+
+<AgentJsonLd faqs={faqs} />
+
+<BreadcrumbJsonLd items={[{ name: "Home", url: "https://wink.travel/" }, { name: "Agentic AI" }]} />
+
+{/* Hero — agent conversation. Full-bleed per the house `data-full-bleed` pattern,
+    with the breadcrumb inside the band so it lines up with the headline instead of
+    sitting in Starlight's narrower column above a full-width hero. */}
+<section data-full-bleed class="@container relative w-full overflow-hidden border-b border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white">
+  <div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+    <div class="absolute -left-24 -top-10 size-80 rounded-full bg-[#ff6b35]/20 blur-[100px]"></div>
+    <div class="absolute -bottom-16 -right-16 size-96 rounded-full bg-[#9333ea]/30 blur-[120px]"></div>
+  </div>
+  <div class="relative mx-auto w-full max-w-7xl px-4 pb-20 pt-8 lg:pb-24">
+    <nav aria-label="Breadcrumb" class="text-sm text-white/60">
+      <a href="/" class="transition-colors hover:text-white">홈</a>
+      <span class="px-1.5 text-white/55">/</span>
+      <span class="text-white">Agentic AI</span>
+    </nav>
+    <div class="mt-10 grid items-center gap-12 lg:mt-12 lg:min-h-[33rem] @lg:grid-cols-[1fr_1.02fr]">
+    {/* Left — copy */}
+    <div class="text-center @lg:text-left">
+      <span class="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-xs font-extrabold uppercase tracking-wider text-[#ff8a5c] ring-1 ring-white/15 backdrop-blur @lg:mx-0"><span class="size-1.5 rounded-full bg-gradient-to-r from-[#ff6b35] to-[#ec4899]"></span> Agentic AI</span>
+      <h1 class="font-heading mt-6 text-4xl font-extrabold leading-[1.05] tracking-tight text-balance @lg:text-5xl @2xl:text-6xl">AI 에이전트가 여행을 계획합니다. <span class="wink-shimmer bg-gradient-to-r from-[#ff8a5c] via-[#ec4899] to-[#a855f7] bg-clip-text text-transparent">거의 아무도 예약하지 못합니다.</span></h1>
+      <p class="mx-auto mt-5 max-w-xl text-pretty text-lg text-white/75 @lg:mx-0 @lg:text-xl">호텔 추천은 콘텐츠 문제입니다. 예약은 커머스 문제입니다 — 실시간 요금, 보유 재고, 결제, 정산 및 호텔과의 계약. Wink는 그 간극을 메우는 인프라입니다: 에이전트는 호텔이 통제하는 공급을 발견하고, <em class="not-italic font-semibold text-white">예약하고 결제</em>합니다. 실시간 REST API와 호스팅 MCP 서버를 통해 가능합니다.</p>
+      <div class="mt-8 flex flex-col items-center justify-center gap-3 @lg:justify-start sm:flex-row">
+        <a href="/developers/build-on-wink/" class="inline-flex h-12 items-center justify-center rounded-md bg-[#ff6b35] px-7 text-base font-semibold text-white transition-colors hover:bg-[#e85b29]">문서 보기</a>
+        <a href="#agents" class="inline-flex h-12 items-center justify-center rounded-md bg-white/10 px-7 text-base font-medium text-white ring-1 ring-white/20 backdrop-blur transition-colors hover:bg-white/15">에이전트 연결하기</a>
+      </div>
+      <div class="mt-7 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 font-mono text-xs text-white/70"><span class="size-1.5 animate-pulse rounded-full bg-emerald-400"></span> MCP 서버 라이브 · docs.mcp.wink.travel/mcp</div>
+    </div>
+
+    {/* Right — agent conversation (swappable infographic) */}
+    <AgentConversation />
+    </div>
+  </div>
+</section>
+
+{/* Direct answer */}
+<section class="mx-auto w-full max-w-3xl px-4 pt-24 pb-24 text-center">
+  <p class="mkt-kicker text-primary">대부분의 AI 에이전트가 호텔 예약을 할 수 없는 이유는?</p>
+  <p class="mkt-sub text-muted-foreground mt-5">Wink는 API 우선입니다: 모든 플랫폼 기능이 외부 호출 가능하며, 호스팅 MCP 서버가 AI 에이전트에 실시간 API 계약을 노출합니다. 모든 여행자를 웹사이트로 강제하지 않고, 승인된 에이전트에 호텔 공급, 요금, 가용성, 예약, 결제, 출처 및 이벤트에 대한 구조화된 접근을 제공합니다 — Wink 자체를 구동하는 동일한 인프라입니다.</p>
+  <div class="mx-auto mt-7 max-w-2xl rounded-2xl border-2 border-primary/30 bg-primary/[0.04] px-6 py-5 text-pretty text-foreground/90"><strong class="text-foreground">어떤 호텔이든 Wink에 프로필을 설정하는 것만으로 에이전트 준비가 완료됩니다.</strong> 공급, 요금, 가용성이 실시간으로 활성화되면 승인된 AI 에이전트가 API와 MCP 서버를 통해 검색, 예약, 결제를 할 수 있습니다 — 별도의 호텔별 AI 통합은 필요 없습니다.</div>
+</section>
+
+{/* Live proof — the argument above is shipped, not roadmap. Implementation
+    detail deliberately lives on /builders/ so this page stays the thesis. */}
+<section id="agents" class="@container w-full border-y border-border bg-muted/30" style="scroll-margin-top:5rem">
+  <div class="mx-auto w-full max-w-4xl px-4 py-24 text-center">
+    <p class="mkt-kicker text-primary">지금 바로 라이브, 로드맵 아님</p>
+    <h2 class="mkt-h2 font-heading mt-3">에이전트에서 확정된 결제 완료 예약까지 네 단계.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-2xl">호스팅 MCP 서버에 연결하고, 실시간 API에 대한 의도를 실제 작업으로 해결하며, 검증된 코드를 생성한 후, Booking Engine에 넘겨 체크아웃, 결제, 확인 및 PMS 동기화를 진행합니다.</p>
+    <ol class="mx-auto mt-10 grid gap-3 text-left @lg:grid-cols-4">
+      <li class="rounded-xl border border-border bg-card px-4 py-3 text-sm"><span class="font-mono text-xs text-primary">01</span><span class="mt-1 block font-semibold">MCP 연결</span></li>
+      <li class="rounded-xl border border-border bg-card px-4 py-3 text-sm"><span class="font-mono text-xs text-primary">02</span><span class="mt-1 block font-semibold">실시간 API 검색</span></li>
+      <li class="rounded-xl border border-border bg-card px-4 py-3 text-sm"><span class="font-mono text-xs text-primary">03</span><span class="mt-1 block font-semibold">검증된 코드 빌드</span></li>
+      <li class="rounded-xl border border-border bg-card px-4 py-3 text-sm"><span class="font-mono text-xs text-primary">04</span><span class="mt-1 block font-semibold">예약 및 결제 완료</span></li>
+    </ol>
+    <div class="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <a href="/builders/#agent-quickstart" class="inline-flex h-12 items-center justify-center rounded-md bg-[#ff6b35] px-7 text-base font-semibold text-white transition-colors hover:bg-[#e85b29]">통합 단계 보기</a>
+      <a href="/developers/mcp/" class="inline-flex h-12 items-center justify-center rounded-md border border-border px-7 text-base font-medium transition-colors hover:bg-muted">MCP 서버 문서</a>
+    </div>
+    <p class="text-muted-foreground mt-5 inline-flex items-center gap-2 font-mono text-xs"><span class="size-1.5 animate-pulse rounded-full bg-emerald-500"></span> docs.mcp.wink.travel/mcp</p>
+  </div>
+</section>
+
+{/* What an agent can do — capability map */}
+<section class="@container mx-auto w-full max-w-7xl px-4 pt-24">
+  <div class="mx-auto mb-14 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">기능 맵</p>
+    <h2 class="mkt-h2 font-heading mt-3">AI 에이전트가 Wink에서 할 수 있는 일.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">아래 모든 기능은 REST API와 MCP 서버를 통해 오늘날 바로 이용 가능하며, Wink가 운영하는 동일한 계약에 기반합니다.</p>
+  </div>
+  <div class="grid gap-5 @md:grid-cols-2 @2xl:grid-cols-3">
+    {[
+      { icon: IconMapSearch, title: "호텔 재고 검색", desc: "지리 위치 공간 검색 — 점, 원, 사각형, 다각형 — 및 GeoIP 감지를 통해 예약 가능한 공급을 찾습니다." },
+      { icon: IconCalendarStats, title: "실시간 요금 및 가용성 조회", desc: "11개 연결 채널 매니저의 실시간 요금, 가용성 및 재고를 조회합니다." },
+      { icon: IconCalendarCheck, title: "예약 생성 및 동기화", desc: "API를 통해 예약을 생성하고, 연결된 PMS 또는 채널 매니저에 생성/업데이트/취소를 동기화하며 전체 라이프사이클을 추적합니다." },
+      { icon: IconCreditCard, title: "결제 처리", desc: "Wink가 예약 뒤에서 체크아웃, 취소 정책 로직 및 결제를 처리하며, Wink가 상인 기록자입니다." },
+      { icon: IconCoin, title: "출처 보존 및 수익 창출", desc: "여정 동안 출처 및 캠페인 컨텍스트가 유지되며, 클릭당 6개월 출처 보존과 확정 예약에 대해 기본 10% 커미션을 지급합니다." },
+      { icon: IconWebhook, title: "64개 이상의 이벤트 반응", desc: "예약, 결제, 환불, 채널 매니저 업데이트 등 웹훅 이벤트를 구독하고 후속 작업을 트리거합니다." },
+      { icon: IconSparkles, title: "콘텐츠 생성", desc: "9가지 재고 유형과 12가지 음성 톤에 걸친 AI 콘텐츠; 단일 URL에서 원클릭으로 숙소 등록 가능." },
+      { icon: IconComponents, title: "예약 가능한 재고 임베딩", desc: "웹 컴포넌트와 최소한의 코드로 실시간 예약 가능한 호텔 재고를 어떤 화면에도 삽입할 수 있습니다." },
+      { icon: IconCode, title: "전체 API로 빌드", desc: "모든 Wink 기능은 REST를 통해 외부 호출 가능하며, OAuth2 인증과 공식 SDK를 지원 — 시스템을 직접 운영하는 것처럼 통합할 수 있습니다." },
+    ].map((c) => (
+      <div class="flex flex-col rounded-2xl border border-border bg-card p-6">
+        <span class="mb-4 flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-white"><c.icon class="size-6" /></span>
+        <h3 class="font-heading text-base font-semibold">{c.title}</h3>
+        <p class="text-muted-foreground mt-2 text-sm text-pretty">{c.desc}</p>
+        <span class="mt-4 inline-flex w-fit items-center gap-1.5 rounded-full bg-emerald-500/10 px-2.5 py-1 text-xs font-semibold text-emerald-600 dark:text-emerald-400"><span class="size-1.5 rounded-full bg-emerald-500"></span>지금 이용 가능</span>
+      </div>
+    ))}
+  </div>
+</section>
+
+{/* The agentic shift — before/after flow */}
+<section class="@container mx-auto w-full max-w-5xl px-4 pt-24">
+  <div class="mx-auto mb-12 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">변화</p>
+    <h2 class="mkt-h2 font-heading mt-3">여행자-웹사이트에서 여행자-에이전트로.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">기존 모델에서는 여행자가 직접 작업을 했습니다. 에이전트 모델에서는 에이전트가 인터페이스가 되고, Wink가 답변 뒤의 커머스 레이어가 됩니다.</p>
+  </div>
+  {/* Before/after flow — swappable infographic (infographics/AgenticShiftFlow.astro) */}
+  <AgenticShiftFlow />
+</section>
+
+{/* Why Wink — recommend vs transact */}
+<section class="@container mx-auto w-full max-w-5xl px-4 pt-24">
+  <div class="mx-auto mb-12 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">왜 Wink인가</p>
+    <h2 class="mkt-h2 font-heading mt-3">AI 답변은 예약이 아닙니다.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">추천은 구조화된 공급, 실시간 요금, 체크아웃, 결제, 확인 및 출처가 있어야 커머스가 됩니다.</p>
+  </div>
+  <div class="grid gap-6 @md:grid-cols-2">
+    <div class="rounded-2xl border border-border bg-muted/30 p-7">
+      <h3 class="font-heading text-lg font-semibold text-muted-foreground">인프라 없는 AI 에이전트</h3>
+      <ul class="mt-5 space-y-3">
+        {["웹 스크랩된, 종종 오래된 공급", "예약 불가능할 수 있는 가격", "추천 후 예약을 웹사이트나 OTA로 넘김", "출처 없음 — 에이전트가 수익을 올릴 방법 없음", "추천 후 흐름을 잃음"].map((b) => (
+          <li class="flex items-start gap-2.5"><IconX class="mt-0.5 size-5 shrink-0 text-muted-foreground/60" /><span class="text-sm text-muted-foreground">{b}</span></li>
+        ))}
+      </ul>
+      <p class="mt-6 text-sm font-semibold text-muted-foreground">추천 가능.</p>
+    </div>
+    <div class="rounded-2xl border-2 border-primary/30 bg-primary/[0.04] p-7">
+      <h3 class="font-heading text-lg font-semibold text-primary">Wink의 AI 에이전트</h3>
+      <ul class="mt-5 space-y-3">
+        {["실시간 호텔 소유 공급 — 웹 스크랩이나 재판매 아님", "API를 통한 실시간 요금 및 가용성", "한 번에 예약 및 결제 — Wink가 정산", "에이전트가 수익 가능 — 출처 + 기본 10% 커미션", "확정, PMS 동기화, 웹훅 지원 — 지금 바로 이용 가능"].map((b) => (
+          <li class="flex items-start gap-2.5"><IconCheck class="mt-0.5 size-5 shrink-0 text-primary" /><span class="text-sm text-foreground/90">{b}</span></li>
+        ))}
+      </ul>
+      <p class="mt-6 text-sm font-semibold text-primary">거래 가능.</p>
+    </div>
+  </div>
+</section>
+
+{/* AI agents for everyone */}
+<section class="@container mx-auto w-full max-w-7xl px-4 pt-24">
+  <div class="mx-auto mb-14 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">모든 참여자가 에이전트</p>
+    <h2 class="mkt-h2 font-heading mt-3">여행자, 호텔, 파트너, 빌더를 위한 에이전트.</h2>
+  </div>
+  <div class="grid gap-6 @md:grid-cols-2">
+    {[
+      { icon: IconUser, who: "여행자를 위한", title: "검색, 예약, 숙박 관리", desc: "에이전트는 구조화된 공급, 실시간 요금 및 정책과 함께 작동하며, Booking Engine을 통해 예약을 생성합니다.", prompt: "다음 달 치앙마이의 성인 전용 럭셔리 호텔을 스파와 함께 찾아 예약하세요." },
+      { icon: IconBuildingStore, who: "호텔을 위한", title: "운영자가 아닌 감독자", desc: "에이전트는 Extranet, Social, Studio 전반에서 생성, 업데이트, 분석을 돕고 호텔이 규칙을 유지합니다.", prompt: "다음 달 소셜 콘텐츠를 생성하고 저점유 날짜를 표시해 프로모션하세요." },
+      { icon: IconUsersGroup, who: "파트너 및 크리에이터를 위한", title: "캠페인 자동화 및 수익 창출", desc: "적격 호텔을 발견하고, 자산과 스토어프런트를 구축하며, 게시하고 출처 연결을 유지합니다.", prompt: "몰디브의 럭셔리 리조트를 홍보하는 캠페인을 만드세요." },
+      { icon: IconCode, who: "개발자를 위한", title: "새로운 여행 경험 구축", desc: "AI 컨시어지, 은행 및 로열티 여행 에이전트 — MCP 서버, REST API, Booking Engine 기반.", prompt: "Wink API를 사용해 은행 앱 내에 AI 호텔 예약을 임베드하세요." },
+    ].map((c) => (
+      <div class="flex flex-col rounded-2xl border border-border bg-card p-7">
+        <span class="mb-4 flex size-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-white"><c.icon class="size-6" /></span>
+        <span class="text-xs font-semibold uppercase tracking-wider text-primary">{c.who}</span>
+        <h3 class="font-heading mt-2 text-xl font-semibold">{c.title}</h3>
+        <p class="text-muted-foreground mt-2 text-pretty">{c.desc}</p>
+        <p class="mt-5 rounded-lg border border-border bg-muted/40 px-4 py-3 text-sm italic text-foreground/80">“{c.prompt}”</p>
+      </div>
+    ))}
+  </div>
+</section>
+
+{/* The stack */}
+<section class="@container mx-auto w-full max-w-7xl px-4 pt-24">
+  <div class="mx-auto mb-10 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">전체 플랫폼 기반</p>
+    <h2 class="mkt-h2 font-heading mt-3">에이전트는 연결된 스택 전반에서 작동합니다.</h2>
+  </div>
+  <div class="mx-auto flex max-w-3xl flex-wrap justify-center gap-3">
+    {[
+      { name: "Extranet", href: "/products/extranet/" },
+      { name: "Studio", href: "/products/studio/" },
+      { name: "Social", href: "/products/social/" },
+      { name: "WinkLinks", href: "/products/winklinks/" },
+      { name: "Traveliko", href: "/products/traveliko/" },
+      { name: "Developers", href: "/builders/" },
+      { name: "Platforms & AI", href: "/platforms/" },
+    ].map((p) => (
+      <a href={p.href} class="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-medium transition-colors hover:border-primary/40">
+        <span class="size-1.5 rounded-full bg-primary" aria-hidden="true"></span>
+        {p.name}
+      </a>
+    ))}
+  </div>
+  <p class="text-muted-foreground mx-auto mt-10 max-w-xl text-center text-pretty"><strong class="text-foreground"><a href="/products/booking-engine/" class="text-primary underline underline-offset-4">Booking Engine</a>은 모든 에이전트 핸드오프 뒤에서 예약을 이행합니다</strong> — 체크아웃, 결제, 확인 및 예약 동기화.</p>
+</section>
+
+{/* Open standards — interoperability, crawlable for AEO */}
+<section class="@container mx-auto w-full max-w-5xl px-4 pt-24">
+  <div class="mx-auto mb-12 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">폐쇄된 생태계가 아닌 오픈 표준</p>
+    <h2 class="mkt-h2 font-heading mt-3">에이전트 커머스 스택과 상호 운용 가능하도록 구축됨.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-2xl">Agentic 호텔 예약은 실제 카테고리가 되어가고 있으며, 업계는 한 회사의 체크아웃 대신 오픈 프로토콜에 수렴하고 있습니다. Wink는 오늘날 이 표준 위에서 운영되며, 표준이 통합됨에 따라 나머지와 연결되도록 구축되어 에이전트가 독점 경로에 묶이지 않습니다.</p>
+  </div>
+  <div class="grid gap-5 @md:grid-cols-2">
+    <div class="rounded-2xl border-2 border-primary/30 bg-primary/[0.04] p-7">
+      <span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 px-2.5 py-1 text-xs font-semibold text-emerald-600 dark:text-emerald-400"><span class="size-1.5 rounded-full bg-emerald-500"></span>지금 라이브</span>
+      <h3 class="font-heading mt-4 text-lg font-semibold">MCP — Model Context Protocol</h3>
+      <p class="text-muted-foreground mt-2 text-sm text-pretty">호스팅된 MCP 서버가 Wink의 실시간 OpenAPI 계약을 Claude, Codex, Cursor 등 MCP 호환 에이전트에 노출합니다 — <code class="rounded bg-muted px-1 py-0.5 text-xs">docs.mcp.wink.travel/mcp</code>. 에이전트는 엔드포인트를 추측하지 않고 실제 작업을 발견하고 호출합니다.</p>
+    </div>
+    <div class="rounded-2xl border border-border bg-card p-7">
+      <span class="inline-flex items-center gap-1.5 rounded-full border border-border bg-muted/40 px-2.5 py-1 text-xs font-semibold text-muted-foreground">설계상 상호 운용 가능</span>
+      <h3 class="font-heading mt-4 text-lg font-semibold">ACP · AP2 · A2A · x402</h3>
+      <p class="text-muted-foreground mt-2 text-sm text-pretty">Wink의 예약 및 결제 원시 기능은 신흥 에이전트 결제 스택 — Agentic Commerce Protocol(ACP), Google의 Agent Payments Protocol(AP2), Agent2Agent(A2A), x402 스타일 에이전트 결제 — 와 상호 운용되도록 설계되었으며, Booking Engine이 하부 정산 계층으로 작동합니다(Wink가 상인 기록자임).</p>
+    </div>
+  </div>
+</section>
+
+{/* Where this is heading — roadmap, clearly labeled */}
+<section class="mx-auto w-full max-w-3xl px-4 pt-24">
+  <div class="rounded-2xl border border-dashed border-primary/30 bg-primary/[0.03] p-8">
+    <span class="inline-flex items-center gap-1.5 rounded-full border border-primary/30 bg-card px-3 py-1 text-xs font-semibold text-primary">향후 방향</span>
+    <p class="text-muted-foreground mt-5 text-pretty">위의 기능은 오늘날 바로 이용 가능합니다. 방향은 더 깊은 에이전트 네이티브 커머스입니다: 더 풍부한 에이전트 대상 예약 원시 기능, 여행자를 대신해 거래하는 에이전트 신원 및 권한 부여, 그리고 파트너 네트워크에서 출처가 명확한 수익 소스로서 에이전트 참여. Wink의 전략적 포지셔닝 — <strong class="text-foreground">AI 에이전트를 위한 여행 커머스 인프라</strong> — 는 오늘날 API에서 미래로 이어지는 핵심입니다.</p>
+  </div>
+</section>
+
+{/* FAQ */}
+<FaqGrid
+  heading="Agentic AI FAQ"
+  description="의미, 연결 방법, 에이전트가 할 수 있는 일."
+  items={faqs}
+/>
+
+{/* Final CTA */}
+<section class="w-full border-y border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white">
+  <div class="mx-auto w-full max-w-7xl px-4 py-24 text-center">
+    <h2 class="mkt-h2 font-heading">AI 에이전트를 위한 여행 커머스를 구축할 준비가 되셨나요?</h2>
+    <p class="mx-auto mt-4 max-w-2xl text-pretty text-white/70 @lg:text-lg">MCP 서버에 연결하고 실시간 계약을 읽은 후, Booking Engine이 예약을 이행하도록 하세요. 또는 제품에 대한 에이전트 접근에 대해 문의하세요.</p>
+    <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <a href="/developers/build-on-wink/" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-[#ff6b35] px-8 text-base font-semibold text-white hover:bg-[#e85b29] sm:w-auto">문서 보기</a>
+      <a href="/developers/mcp/" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-white px-8 text-base font-semibold text-[#1f0a40] hover:bg-white/90 sm:w-auto">MCP 서버 연결</a>
+      <a href="https://cal.com/wink-ws36dy" class="inline-flex h-12 items-center justify-center px-4 text-sm font-medium text-white/80 underline underline-offset-4 hover:text-white">데모 요청</a>
+    </div>
+  </div>
+</section>
+
+</div>

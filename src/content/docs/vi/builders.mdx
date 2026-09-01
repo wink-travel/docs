@@ -1,0 +1,358 @@
+---
+title: Dành cho Nhà Phát Triển — Truy Cập API Thương Mại Khách Sạn
+description: "Xây dựng thương mại khách sạn với quyền truy cập dành cho nhà phát triển Wink: tìm kiếm, đặt phòng, thanh toán, webhook, MCP, chuyển giao AI và thực hiện qua Booking Engine."
+template: splash
+marketingNav: true
+---
+import '/src/styles/splash-page.css';
+import BreadcrumbJsonLd from "@/components/marketing/BreadcrumbJsonLd.astro";
+
+import DeviceFrame from "@/components/marketing/DeviceFrame.astro";
+import FaqGrid from "@/components/marketing/FaqGrid.astro";
+import FaqJsonLd from "@/components/marketing/FaqJsonLd.astro";
+
+import IconBox from "@tabler/icons/outline/box.svg";
+import IconCpu from "@tabler/icons/outline/cpu.svg";
+import IconDeviceMobile from "@tabler/icons/outline/device-mobile.svg";
+import IconRefresh from "@tabler/icons/outline/refresh.svg";
+import IconRobot from "@tabler/icons/outline/robot.svg";
+import IconCode from "@tabler/icons/outline/code.svg";
+import IconComponents from "@tabler/icons/outline/components.svg";
+import IconBolt from "@tabler/icons/outline/bolt.svg";
+import IconSearch from "@tabler/icons/outline/search.svg";
+import IconAffiliate from "@tabler/icons/outline/affiliate.svg";
+import IconCheck from "@tabler/icons/outline/check.svg";
+import IconX from "@tabler/icons/outline/x.svg";
+import IconArrowRight from "@tabler/icons/outline/arrow-right.svg";
+import IconPlug from "@tabler/icons/outline/plug-connected.svg";
+import IconSparkles from "@tabler/icons/outline/sparkles.svg";
+import IconTool from "@tabler/icons/outline/tool.svg";
+import IconCalendarCheck from "@tabler/icons/outline/calendar-check.svg";
+import RouteConvergence from "@/components/marketing/infographics/RouteConvergence.astro";
+import DevTerminal from "@/components/marketing/infographics/DevTerminal.astro";
+
+export const faqs = [
+  { title: "Có trang sản phẩm truy cập API riêng biệt không?", content: "Không. Truy cập API được xử lý qua trang Builders và tài liệu Build on Wink, không qua một trang sản phẩm marketing độc lập." },
+  { title: "Truy cập API có thay thế Booking Engine không?", content: "Không. Truy cập API định tuyến nhu cầu và logic tích hợp. Booking Engine vẫn là lớp thực hiện cho thanh toán, xác nhận và hoàn tất đặt phòng khách sạn." },
+  { title: "Trợ lý AI có thể sử dụng Wink không?", content: "Có. Máy chủ MCP được lưu trữ cho phép các đại lý AI đọc hợp đồng API trực tiếp để tìm kiếm nguồn cung khách sạn trực tiếp, tạo đặt phòng và thanh toán qua Booking Engine — hoàn tất đặt phòng trong một quy trình, không chỉ chuyển người dùng đến website. Bất kỳ khách sạn nào cũng sẵn sàng cho đại lý khi hồ sơ của nó được công khai trên Wink." },
+  { title: "Tôi có thể nhúng thẻ khách sạn hoặc bản đồ mà không cần tích hợp API đầy đủ không?", content: "Có. Studio có thể tạo các Web Components như thẻ khách sạn, bản đồ, lưới và các tài sản nhúng khác khi một giải pháp nhẹ hơn là đủ — Booking Engine sẽ thực hiện đặt phòng bên dưới." },
+  { title: "Các nhóm khách sạn có thể sử dụng quyền truy cập dành cho nhà phát triển không?", content: "Có. Các nhóm khách sạn và nhà vận hành kỹ thuật có thể sử dụng quyền truy cập dành cho nhà phát triển khi được phê duyệt để kết nối nguồn cung Wink, quy trình đặt phòng và báo cáo với hệ thống nội bộ." },
+  { title: "Nhà phát triển nên bắt đầu từ đâu?", content: "Kết nối với máy chủ MCP, đọc tài liệu Build on Wink, sau đó yêu cầu truy cập API khi trường hợp sử dụng sản phẩm, phạm vi kỹ thuật và lộ trình thương mại đã rõ ràng." },
+  { title: "Quyền truy cập dành cho nhà phát triển có mở cho tất cả mọi người không?", content: "Quyền truy cập dành cho nhà phát triển nên được kiểm soát. Tài liệu công khai và máy chủ MCP hỗ trợ đánh giá, nhưng thông tin xác thực API và sử dụng sản xuất phải phù hợp với sản phẩm và bối cảnh thương mại được phê duyệt." },
+];
+
+<div class="not-content mkt-page">
+
+<FaqJsonLd faqs={faqs} />
+
+<BreadcrumbJsonLd items={[{ name: "Trang chủ", url: "https://wink.travel/" }, { name: "Giải pháp", url: "https://wink.travel/solutions/" }, { name: "Builders" }]} />
+
+{/* Hero — dark, full-bleed (see `data-full-bleed` in src/styles/tweaks.css).
+    The breadcrumb lives INSIDE the band: it shares the hero's content column, so
+    it lines up with the badge and headline instead of sitting in Starlight's
+    narrower default column above a full-width band. */}
+<section data-full-bleed class="relative w-full overflow-hidden border-b border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white">
+  <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+    <div class="absolute -left-24 -top-10 size-96 rounded-full bg-[#ff6b35]/20 blur-[120px]"></div>
+    <div class="absolute -bottom-16 -right-16 size-[34rem] rounded-full bg-[#9333ea]/25 blur-[140px]"></div>
+  </div>
+  <div class="@container relative mx-auto w-full max-w-7xl px-4 pb-20 pt-8 lg:pb-24">
+    <nav aria-label="Breadcrumb" class="text-sm text-white/60">
+      <a href="/" class="transition-colors hover:text-white">Trang chủ</a>
+      <span class="px-1.5 text-white/55">/</span>
+      <a href="/solutions/" class="transition-colors hover:text-white">Giải pháp</a>
+      <span class="px-1.5 text-white/55">/</span>
+      <span class="text-white">Builders</span>
+    </nav>
+    <div class="mt-10 grid items-center gap-12 lg:mt-12 lg:min-h-[33rem] lg:grid-cols-2 lg:gap-16">
+      <div>
+        <span class="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-xs font-extrabold uppercase tracking-wider text-[#ff8a5c] ring-1 ring-white/15 backdrop-blur"><span class="size-1.5 rounded-full bg-gradient-to-r from-[#ff6b35] to-[#ec4899]"></span> Dành cho Nhà Phát Triển</span>
+        <h1 class="font-heading mt-6 text-4xl font-extrabold leading-[1.05] tracking-tight text-balance @lg:text-5xl @2xl:text-[3.25rem]">
+          Xây dựng thương mại khách sạn <span class="bg-gradient-to-r from-[#ff8a5c] via-[#ec4899] to-[#a855f7] bg-clip-text text-transparent">vào sản phẩm của bạn.</span>
+        </h1>
+        <p class="mt-5 max-w-xl text-pretty text-lg text-white/75 @lg:text-xl">
+          Thương mại khách sạn ưu tiên API: tìm kiếm, đặt phòng, thanh toán, hơn 64 webhook, phân bổ và chuyển giao AI — với máy chủ MCP được lưu trữ để các đại lý đọc hợp đồng trực tiếp, và Booking Engine thực hiện bên dưới.
+        </p>
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+          <a href="/developers/build-on-wink/" class="inline-flex h-12 items-center justify-center rounded-md bg-[#ff6b35] px-7 text-base font-semibold text-white transition-colors hover:bg-[#e85b29]">Xem tài liệu</a>
+          <a href="https://app.wink.travel" class="inline-flex h-12 items-center justify-center rounded-md bg-white/10 px-7 text-base font-medium text-white ring-1 ring-white/20 backdrop-blur transition-colors hover:bg-white/15">Yêu cầu truy cập API</a>
+        </div>
+        <div class="mt-7 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-white/65">
+          <span class="inline-flex items-center gap-1.5"><IconCheck class="size-4 text-[#ff8a5c]" /> REST + OAuth2 + SDKs</span>
+          <span class="inline-flex items-center gap-1.5"><IconCheck class="size-4 text-[#ff8a5c]" /> Máy chủ MCP được lưu trữ</span>
+          <span class="inline-flex items-center gap-1.5"><IconCheck class="size-4 text-[#ff8a5c]" /> Hơn 64 sự kiện webhook</span>
+        </div>
+      </div>
+      {/* Terminal visual — swappable infographic (infographics/DevTerminal.astro) */}
+      <DevTerminal />
+  </div>
+</div>
+</section>
+
+{/* Direct answer */}
+<section class="mx-auto w-full max-w-3xl px-4 pt-24 pb-24 text-center">
+  <p class="mkt-kicker text-primary">Nhà phát triển có thể xây dựng gì với Wink?</p>
+  <p class="mkt-sub text-muted-foreground mt-5">
+    Nhà phát triển có thể xây dựng các quy trình thương mại khách sạn như tìm kiếm, đặt phòng, thanh toán, webhook, phân bổ, báo cáo, chuyển giao AI và nhúng vào các sản phẩm được phê duyệt. Quyền truy cập nhà phát triển Wink hoạt động với nguồn cung do khách sạn kiểm soát từ Extranet, bối cảnh đối tác từ mạng lưới nền tảng, chuyển giao AI qua Agentic AI, và thực hiện qua Booking Engine cho thanh toán, xác nhận và hoàn tất đặt phòng khách sạn.
+  </p>
+</section>
+
+{/* Who it's for */}
+<section class="@container w-full border-y border-border bg-muted/30">
+  <div class="mx-auto w-full max-w-7xl px-4 py-24">
+    <div class="mx-auto mb-14 max-w-2xl text-center">
+      <p class="mkt-kicker text-primary">Dành cho ai</p>
+      <h2 class="mkt-h2 font-heading mt-3">Dành cho các nhóm xây dựng thương mại khách sạn, không chỉ đọc tài liệu.</h2>
+      <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">
+        Quyền truy cập nhà phát triển phù hợp với các nhóm sản phẩm, kỹ thuật, AI, nền tảng và vận hành. Đang đánh giá tích hợp cho sản phẩm AI, ngân hàng hoặc siêu ứng dụng? Xem <a href="/platforms/" class="text-primary underline underline-offset-2">Dành cho Nền tảng &amp; AI</a>.
+      </p>
+    </div>
+    <div class="mx-auto grid max-w-4xl gap-5 @md:grid-cols-2">
+      {[
+        { icon: IconBox, title: "Nhóm sản phẩm", desc: "Thêm thương mại khách sạn vào ứng dụng hoặc nền tảng hiện có qua quyền truy cập nhà phát triển + Booking Engine." },
+        { icon: IconCpu, title: "Nhóm sản phẩm AI", desc: "Định tuyến ý định khách sạn do trợ lý AI dẫn dắt vào các quy trình đặt phòng được kiểm soát với Agentic AI và máy chủ MCP." },
+        { icon: IconAffiliate, title: "Đại lý & DMC", desc: "Xây dựng cửa hàng tùy chỉnh, quy trình đặt phòng hoặc sản phẩm hành trình với Web Components." },
+        { icon: IconRefresh, title: "Quản lý kênh / PMS", desc: "Phối hợp tình trạng phòng, giá, đặt chỗ và các luồng sự kiện liên quan." },
+      ].map((c) => (
+        <div class="flex flex-col rounded-2xl border border-border bg-card p-6">
+          <span class="mb-4 flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-white"><c.icon class="size-6" /></span>
+          <h3 class="font-heading text-base font-semibold">{c.title}</h3>
+          <p class="text-muted-foreground mt-2 text-sm text-pretty">{c.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+{/* The problem — dark before/after */}
+<section class="relative w-full overflow-hidden border-y border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white">
+  <div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+    <div class="absolute -left-24 -top-10 size-80 rounded-full bg-[#ff6b35]/20 blur-[100px]"></div>
+    <div class="absolute -bottom-16 -right-16 size-96 rounded-full bg-[#9333ea]/30 blur-[120px]"></div>
+    <img src="/favicon.svg" alt="" class="absolute -right-8 top-8 size-44 rotate-6 opacity-[0.06]" />
+  </div>
+  <div class="@container relative mx-auto w-full max-w-5xl px-4 py-24">
+    <div class="mx-auto mb-12 max-w-2xl text-center">
+      <p class="mkt-kicker text-[#ff8a5c]">Tại sao xây dựng trên nó</p>
+      <h2 class="mkt-h2 font-heading mt-3">Một thẻ khách sạn thì dễ. Một hệ thống đặt phòng khách sạn thì không.</h2>
+      <p class="mkt-sub mx-auto mt-4 max-w-xl text-white/70">
+        Thương mại khách sạn cần các quy tắc nguồn cung, tình trạng phòng, giá, ưu đãi, chính sách, thanh toán, xác nhận, phân bổ và báo cáo. Hãy xây dựng trên những lớp đó thay vì xây lại từ đầu.
+      </p>
+    </div>
+    <div class="grid gap-6 @md:grid-cols-2">
+      <div class="rounded-2xl border border-white/10 bg-white/[0.04] p-7">
+        <h3 class="font-heading text-lg font-semibold text-white/60">Tự xây dựng</h3>
+        <ul class="mt-5 space-y-3">
+          {[
+            "Xây dựng lại các quy tắc nguồn cung, giá và chính sách",
+            "Kết nối thanh toán với dữ liệu khách sạn cụ thể",
+            "Ghép nối phân bổ qua các phiên",
+            "Quản lý thanh toán, hoàn tiền và đối soát",
+            "Kiểm soát AI để không tạo ra tình trạng phòng giả",
+            "Duy trì tất cả khi khách sạn thay đổi hàng ngày",
+          ].map((b) => (
+            <li class="flex items-start gap-2.5"><IconX class="mt-0.5 size-5 shrink-0 text-white/30" /><span class="text-sm text-white/60">{b}</span></li>
+          ))}
+        </ul>
+      </div>
+      <div class="rounded-2xl border border-[#ff6b35]/30 bg-[#ff6b35]/[0.08] p-7">
+        <h3 class="font-heading text-lg font-semibold text-[#ff8a5c]">Xây dựng trên Wink</h3>
+        <ul class="mt-5 space-y-3">
+          {[
+            "Tích hợp nguồn cung được khách sạn phê duyệt từ Extranet",
+            "Booking Engine xử lý thanh toán, xác nhận và hoàn tất",
+            "Bảo lưu phân bổ 6 tháng theo mỗi lần nhấp",
+            "Đăng ký hơn 64 sự kiện webhook",
+            "Chuyển giao AI có cấu trúc qua MCP + Agentic AI",
+            "Phí 5.5% toàn bộ — Booking Engine thực hiện mọi chuyển giao",
+          ].map((b) => (
+            <li class="flex items-start gap-2.5"><IconCheck class="mt-0.5 size-5 shrink-0 text-[#ff8a5c]" /><span class="text-sm text-white/90">{b}</span></li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* The model — how it works numbered cards */}
+<section class="@container mx-auto w-full max-w-7xl px-4 pt-24 pb-24">
+  <div class="mx-auto mb-14 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Mô hình</p>
+    <h2 class="mkt-h2 font-heading mt-3">Từ cuộc gọi đầu tiên đến đặt phòng được xác nhận.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">
+      Một con đường tích hợp từ kết nối đến thực hiện.
+    </p>
+  </div>
+  <ol class="grid gap-5 md:grid-cols-3 xl:grid-cols-5">
+    {[
+      { t: "Kết nối", d: "Thêm máy chủ MCP được lưu trữ hoặc yêu cầu truy cập API với OAuth2 để bắt đầu với các hợp đồng trực tiếp." },
+      { t: "Đọc hợp đồng trực tiếp", d: "Tìm kiếm các thao tác và đọc các sơ đồ yêu cầu và phản hồi hiện tại — không đoán mò, không tài liệu lỗi thời." },
+      { t: "Xây dựng quy trình", d: "Kết nối tìm kiếm, tình trạng phòng, đặt phòng, thanh toán và báo cáo vào sản phẩm của bạn." },
+      { t: "Đăng ký sự kiện", d: "Phản ứng với hơn 64 sự kiện webhook: trạng thái đặt phòng, thanh toán, hoàn tiền, hủy và thay đổi kênh." },
+      { t: "Thực hiện qua Booking Engine", d: "Mỗi cuộc gọi được giải quyết qua Booking Engine cho thanh toán, xác nhận và hoàn tất đặt phòng khách sạn." },
+    ].map((s, i) => (
+      <li class="rounded-2xl border border-border bg-card p-6">
+        <span class="flex size-9 items-center justify-center rounded-full bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-sm font-bold text-white shadow-sm">{i + 1}</span>
+        <h3 class="font-heading mt-4 text-lg font-semibold">{s.t}</h3>
+        <p class="text-muted-foreground mt-2 text-sm text-pretty">{s.d}</p>
+      </li>
+    ))}
+  </ol>
+</section>
+
+{/* Agent quickstart — moved here from /agentic-ai/ so the thesis page argues
+    the case and this page carries the implementation. Linked from /agentic-ai/#agents. */}
+<section id="agent-quickstart" class="@container w-full border-y border-border bg-muted/30" style="scroll-margin-top:5rem">
+  <div class="mx-auto w-full max-w-5xl px-4 py-24">
+    <div class="mx-auto mb-12 max-w-2xl text-center">
+      <p class="mkt-kicker text-primary">Dành cho đại lý AI — bắt đầu tại đây</p>
+      <h2 class="mkt-h2 font-heading mt-3">Kết nối, sau đó đọc hợp đồng trực tiếp.</h2>
+      <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">Máy chủ MCP được lưu trữ cho phép đại lý khám phá API của Wink và xây dựng tích hợp hoạt động mà không phải đoán điểm cuối.</p>
+    </div>
+
+    <div class="grid gap-6 @lg:grid-cols-2">
+      {/* Connect */}
+      <div class="flex flex-col rounded-2xl border border-border bg-card p-6">
+        <span class="mb-4 flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-white"><IconPlug class="size-6" /></span>
+        <h3 class="font-heading text-lg font-semibold">1 · Kết nối máy chủ MCP</h3>
+        <p class="text-muted-foreground mt-2 text-sm">Điểm cuối HTTP có thể stream (dự phòng SSE tại <code class="rounded bg-muted px-1 py-0.5 text-xs">/sse</code>). Từ Claude Code:</p>
+        <pre class="mt-4 overflow-x-auto rounded-lg bg-[#1f0a40] p-4 font-mono text-xs leading-relaxed text-white/90"><code>claude mcp add --transport http \
+  wink-docs https://docs.mcp.wink.travel/mcp</code></pre>
+        <p class="text-muted-foreground mt-3 text-xs">Cũng hoạt động với Codex, Cursor và VS Code — xem <a href="/developers/mcp/" class="text-primary underline underline-offset-2">tài liệu MCP</a>.</p>
+      </div>
+
+      {/* Search */}
+      <div class="flex flex-col rounded-2xl border border-border bg-card p-6">
+        <span class="mb-4 flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-white"><IconSparkles class="size-6" /></span>
+        <h3 class="font-heading text-lg font-semibold">2 · Tìm kiếm API trực tiếp</h3>
+        <p class="text-muted-foreground mt-2 text-sm">Hai công cụ giải quyết ý định thành thao tác thực và tài liệu khái niệm:</p>
+        <ul class="mt-4 space-y-2 text-sm">
+          <li class="flex items-start gap-2"><code class="mt-0.5 rounded bg-muted px-1.5 py-0.5 text-xs text-primary">api_search</code><span class="text-muted-foreground">tìm thao tác để gọi — ví dụ "tra cứu tồn kho", "tạo đặt phòng", "biên nhận thanh toán"</span></li>
+          <li class="flex items-start gap-2"><code class="mt-0.5 rounded bg-muted px-1.5 py-0.5 text-xs text-primary">docs_search</code><span class="text-muted-foreground">tìm khái niệm — "xác thực", "webhooks", "phân bổ"</span></li>
+        </ul>
+        <p class="text-muted-foreground mt-3 text-xs">Mỗi kết quả trả về một URI <code class="rounded bg-muted px-1 py-0.5 text-xs">wink://</code> — mở thao tác, sơ đồ yêu cầu/phản hồi hoặc <strong class="text-foreground/80">công thức</strong> tác vụ.</p>
+      </div>
+
+      {/* Build */}
+      <div class="flex flex-col rounded-2xl border border-border bg-card p-6">
+        <span class="mb-4 flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-white"><IconTool class="size-6" /></span>
+        <h3 class="font-heading text-lg font-semibold">3 · Xây dựng với AI Skill</h3>
+        <p class="text-muted-foreground mt-2 text-sm"><code class="rounded bg-muted px-1.5 py-0.5 text-xs">wink-api-builder</code> sử dụng máy chủ MCP làm nguồn dữ liệu chính xác: api_search → hợp đồng trực tiếp → xác thực → mã đã kiểm tra, và cảnh báo nếu có sai lệch với API hiện tại.</p>
+        <p class="text-muted-foreground mt-3 text-xs">Hoạt động với Claude Code, Codex và Cursor — xem <a href="/developers/ai-skills/" class="text-primary underline underline-offset-2">AI Skills</a>.</p>
+      </div>
+
+      {/* Fulfill */}
+      <div class="flex flex-col rounded-2xl border border-border bg-card p-6">
+        <span class="mb-4 flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-white"><IconCalendarCheck class="size-6" /></span>
+        <h3 class="font-heading text-lg font-semibold">4 · Chuyển giao cho Booking Engine</h3>
+        <p class="text-muted-foreground mt-2 text-sm">Tạo đặt phòng qua API và Booking Engine thực hiện — thanh toán, xác nhận và đồng bộ đặt phòng với PMS hoặc quản lý kênh được kết nối, giữ nguyên bối cảnh nguồn.</p>
+        <p class="text-muted-foreground mt-3 text-xs">Đăng ký <code class="rounded bg-muted px-1 py-0.5 text-xs">booking.created</code> và 63 sự kiện khác để phản ứng theo thời gian thực.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{/* Signature feature — integrations converge on Booking Engine */}
+<section class="relative w-full overflow-hidden border-y border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white">
+  <div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+    <div class="absolute left-1/2 top-1/2 size-[28rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#9333ea]/25 blur-[130px]"></div>
+    <div class="absolute -left-20 top-0 size-72 rounded-full bg-[#ff6b35]/15 blur-[110px]"></div>
+  </div>
+  <div class="@container relative mx-auto w-full max-w-6xl px-4 py-24">
+    <div class="mx-auto mb-12 max-w-2xl text-center">
+      <p class="mkt-kicker text-[#ff8a5c]">Một engine, mọi tích hợp</p>
+      <h2 class="mkt-h2 font-heading mt-3">Mọi tích hợp đều hội tụ về Booking Engine.</h2>
+      <p class="mkt-sub mx-auto mt-4 max-w-xl text-white/70">
+        Dù sản phẩm của bạn gửi nhu cầu qua API, đại lý, thành phần hay liên kết — đặt phòng được giải quyết tại một nơi bạn kiểm soát.
+      </p>
+    </div>
+
+    {/* Signature infographic — swappable (infographics/RouteConvergence.astro) */}
+    <RouteConvergence
+      routes={["REST API", "MCP / agents", "Web Components", "WinkLinks", "Studio + network", "Partner apps"]}
+      outcomeTitle="Đặt phòng được xác nhận"
+      outcomeNote="Thanh toán đã thực hiện, khách được xác nhận, phân bổ và bối cảnh nguồn được bảo lưu."
+    />
+  </div>
+</section>
+
+{/* Choose the surface — gradient badges, aligned CTAs */}
+<section class="@container w-full border-y border-border bg-muted/30">
+  <div class="mx-auto w-full max-w-7xl px-4 py-24">
+    <div class="mx-auto mb-14 max-w-2xl text-center">
+      <p class="mkt-kicker text-primary">Chọn bề mặt</p>
+      <h2 class="mkt-h2 font-heading mt-3">Chọn bề mặt phù hợp trước khi bạn xây dựng quá nhiều.</h2>
+      <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">
+        Từ tích hợp tùy chỉnh đầy đủ đến giải pháp nhúng nhẹ hơn.
+      </p>
+    </div>
+    <div class="grid gap-5 @md:grid-cols-2 @2xl:grid-cols-3">
+      {[
+        { icon: IconCode, title: "API & MCP", desc: "Xây dựng quy trình tìm kiếm, đặt phòng, thanh toán, webhook, phân bổ và báo cáo qua REST + OAuth2 — với máy chủ MCP cho hợp đồng trực tiếp.", href: "/api/overview" },
+        { icon: IconRobot, title: "Agentic AI", desc: "Cho phép đại lý AI tìm kiếm, đặt phòng và thanh toán với nguồn cung khách sạn trực tiếp — hoàn tất đặt phòng, không chỉ chuyển người dùng đến website.", href: "/agentic-ai/" },
+        { icon: IconBolt, title: "Booking Engine", desc: "Tải dữ liệu khách sạn cụ thể và xử lý thanh toán, xác nhận và hoàn tất đặt phòng.", href: "/products/booking-engine/" },
+        { icon: IconComponents, title: "Web Components", desc: "Thêm thẻ có thể đặt, bản đồ, lưới, nút và module khách sạn vào website hoặc bề mặt sản phẩm.", href: "/developers/build-on-wink/" },
+        { icon: IconDeviceMobile, title: "WinkLinks", desc: "Xuất bản các mục khách sạn được tuyển chọn dưới một liên kết công khai ưu tiên di động.", href: "/products/winklinks/" },
+        { icon: IconSearch, title: "Studio + network", desc: "Quản lý quyền truy cập đối tác, kênh bán hàng và bối cảnh phân bổ cho nhu cầu do đối tác dẫn dắt.", href: "/products/studio/" },
+      ].map((c) => (
+        <a href={c.href} class="group flex h-full flex-col rounded-2xl border border-border bg-card p-6 transition-colors hover:border-primary/40">
+          <span class="mb-4 flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-white"><c.icon class="size-6" /></span>
+          <h3 class="font-heading text-base font-semibold">{c.title}</h3>
+          <p class="text-muted-foreground mt-2 text-sm text-pretty">{c.desc}</p>
+          <span class="text-primary mt-auto inline-flex items-center gap-1.5 pt-5 text-sm font-semibold">Khám phá <IconArrowRight class="size-4 transition-transform group-hover:translate-x-0.5" /></span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+{/* Web component showcase — the payoff */}
+<section class="@container mx-auto w-full max-w-7xl px-4 pt-24">
+  <div class="grid items-center gap-12 @lg:grid-cols-2 @lg:gap-16">
+    <div class="@lg:order-2">
+      <p class="mkt-kicker text-primary">Phạm vi đầy đủ</p>
+      <h2 class="mkt-h2 font-heading mt-3">Từ xây dựng API đầy đủ đến thành phần nhúng.</h2>
+      <p class="text-muted-foreground mt-4 text-pretty @lg:text-lg">
+        Đi sâu như tích hợp REST + MCP đầy đủ — hoặc, khi không cần thiết, nhúng một Web Component của Studio: thẻ khách sạn, bản đồ, lưới và module đặt phòng. Dù cách nào, Booking Engine cũng thực hiện đặt phòng bên dưới.
+      </p>
+      <ul class="mt-6 space-y-2.5">
+        {["API REST + OAuth2 đầy đủ, máy chủ MCP được lưu trữ và SDKs", "Hoặc Web Components có thể đặt được — thẻ, bản đồ và lưới", "Hơn 64 sự kiện webhook cho đối soát thời gian thực", "Booking Engine thực hiện bên dưới mọi bề mặt"].map((p) => (
+          <li class="flex items-start gap-2.5"><IconCheck class="mt-0.5 size-5 shrink-0 text-primary" /><span class="text-sm text-foreground/90">{p}</span></li>
+        ))}
+      </ul>
+      <a href="/developers/build-on-wink/" class="mt-7 inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline">Xem tài liệu Build on Wink <IconArrowRight class="size-4" /></a>
+    </div>
+    <div class="@lg:order-1">
+      <DeviceFrame variant="plain" src="/mockups/studio/web-component/embedable-hotel-card.webp" alt="Một Web Component thẻ khách sạn có thể nhúng của Wink" class="mx-auto max-w-[300px]" />
+    </div>
+  </div>
+</section>
+
+{/* FAQ */}
+<FaqGrid
+  heading="Câu hỏi thường gặp dành cho nhà phát triển"
+  description="Những câu hỏi kỹ thuật và sản phẩm được hỏi đầu tiên."
+  items={faqs}
+/>
+
+{/* Final CTA */}
+<section class="relative w-full overflow-hidden border-y border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white">
+  <div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+    <div class="absolute -left-20 -bottom-16 size-80 rounded-full bg-[#ff6b35]/20 blur-[110px]"></div>
+    <div class="absolute -right-16 -top-10 size-80 rounded-full bg-[#9333ea]/25 blur-[120px]"></div>
+  </div>
+  <div class="relative mx-auto w-full max-w-7xl px-4 py-24 text-center">
+    <h2 class="mkt-h2 font-heading">Sẵn sàng xây dựng thương mại khách sạn vào sản phẩm của bạn?</h2>
+    <p class="mx-auto mt-4 max-w-2xl text-pretty text-white/70 @lg:text-lg">
+      Kết nối máy chủ MCP, đọc tài liệu, chọn bề mặt tích hợp phù hợp, và yêu cầu truy cập khi sản phẩm của bạn sẵn sàng kết nối nhu cầu khách sạn được phê duyệt với thực hiện qua Booking Engine.
+    </p>
+    <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <a href="/developers/build-on-wink/" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-[#ff6b35] px-8 text-base font-semibold text-white hover:bg-[#e85b29] sm:w-auto">Xem tài liệu</a>
+      <a href="https://app.wink.travel" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-white px-8 text-base font-semibold text-[#1f0a40] hover:bg-white/90 sm:w-auto">Yêu cầu truy cập API</a>
+      <a href="/contact/" class="inline-flex h-12 items-center justify-center px-4 text-sm font-medium text-white/80 underline underline-offset-4 hover:text-white">Nói chuyện với đội ngũ nền tảng</a>
+    </div>
+  </div>
+</section>
+
+</div>

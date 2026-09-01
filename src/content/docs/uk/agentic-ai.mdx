@@ -1,0 +1,280 @@
+---
+title: Agentic AI — Інфраструктура комерції подорожей для AI агентів
+description: "На Wink AI агенти не просто рекомендують готелі — вони шукають живий готельний інвентар, а потім бронюють і оплачують одним потоком через REST API та хостинговий MCP. Доступно вже сьогодні."
+template: splash
+marketingNav: true
+---
+import '/src/styles/splash-page.css';
+import BreadcrumbJsonLd from "@/components/marketing/BreadcrumbJsonLd.astro";
+
+import FaqGrid from "@/components/marketing/FaqGrid.astro";
+import AgentJsonLd from "@/components/marketing/AgentJsonLd.astro";
+import AgentConversation from "@/components/marketing/infographics/AgentConversation.astro";
+import AgenticShiftFlow from "@/components/marketing/infographics/AgenticShiftFlow.astro";
+
+import IconMapSearch from "@tabler/icons/outline/map-search.svg";
+import IconCalendarCheck from "@tabler/icons/outline/calendar-check.svg";
+import IconSparkles from "@tabler/icons/outline/sparkles.svg";
+import IconCalendarStats from "@tabler/icons/outline/calendar-stats.svg";
+import IconCreditCard from "@tabler/icons/outline/credit-card.svg";
+import IconCoin from "@tabler/icons/outline/coin.svg";
+import IconWebhook from "@tabler/icons/outline/webhook.svg";
+import IconComponents from "@tabler/icons/outline/components.svg";
+import IconUser from "@tabler/icons/outline/user.svg";
+import IconBuildingStore from "@tabler/icons/outline/building-store.svg";
+import IconUsersGroup from "@tabler/icons/outline/users-group.svg";
+import IconCode from "@tabler/icons/outline/code.svg";
+import IconArrowRight from "@tabler/icons/outline/arrow-right.svg";
+import IconCheck from "@tabler/icons/outline/check.svg";
+import IconX from "@tabler/icons/outline/x.svg";
+
+export const faqs = [
+  { title: "Чому більшість AI агентів не можуть забронювати готель, і що робить це можливим?", content: "Рекомендація готелю — це проблема контенту: агенту потрібні лише описи та ціни. Бронювання — це комерційна проблема: потрібні живі тарифи та доступність, інвентар, який агент може утримувати, платіжний канал, розрахунок з готелем і комерційні відносини з об’єктом. Більшість помічників мають лише перше і нічого з решти, тому вони передають мандрівника на сайт для завершення. Агент може завершити бронювання, коли інфраструктура під ним відкриває все це. Wink — API-перший: кожна функція платформи доступна зовні, а хостинговий MCP сервер відкриває живі API контракти — тому схвалений агент може знаходити готельний інвентар, читати живі тарифи та доступність, створювати і синхронізувати бронювання, приймати оплату (Wink є продавцем у записі), зберігати атрибуцію та підписуватися на події." },
+  { title: "Як AI агент підключається до Wink?", content: "Вкажіть сумісний MCP клієнт на хостинговий сервер за адресою https://docs.mcp.wink.travel/mcp (SSE fallback на /sse). З Claude Code: claude mcp add --transport http wink-docs https://docs.mcp.wink.travel/mcp. Потім агент може використовувати інструменти api_search і docs_search для читання живих OpenAPI операцій, контрактів запит/відповідь і рецептів завдань." },
+  { title: "Що AI агент може робити на Wink сьогодні?", content: "Сьогодні через REST API та MCP сервер: відкривати платформу, шукати бронюваний інвентар (включно з геолокаційним просторовим пошуком), читати живі тарифи та доступність по 11 підключених channel manager, створювати бронювання і синхронізувати їх життєвий цикл з PMS/channel manager, приймати оплату (Wink є продавцем у записі), зберігати 6-місячну атрибуцію і заробляти через партнерські потоки, підписуватися на 64+ webhook події, генерувати AI контент і вбудовувати бронюваний інвентар через Web Components." },
+  { title: "Чи може AI агент завершити бронювання готелю через Wink?", content: "Так. Створення бронювання — це операція REST API, а Booking Engine виконує транзакцію — оформлення, оплату, підтвердження і синхронізацію бронювання. Агент, який викликає booking API від імені мандрівника, може завершити реальне, підтверджене бронювання з збереженим контекстом джерела." },
+  { title: "Як готель стає доступним для бронювання AI агентом на Wink?", content: "Просто налаштувавши свій профіль на Wink. Як тільки інвентар, тарифи та доступність готелю живі (через Extranet), він автоматично доступний і бронюваний схваленими AI агентами через REST API і хостинговий MCP сервер — без окремої AI інтеграції для кожного готелю. Агент шукає живий інвентар готелю, створює бронювання і розраховується через Booking Engine, зберігаючи атрибуцію. Кожен готель на Wink за замовчуванням готовий для агентів." },
+  { title: "Чим бронювання готелю через Wink відрізняється від ChatGPT з Expedia або Booking.com?", content: "Інтеграції помічників, як ChatGPT з Expedia або Booking.com, добре працюють для пошуку — живі ціни, фото і карти в чаті — але мандрівника зазвичай перенаправляють на сайт або додаток постачальника для завершення бронювання і оплати. На Wink агент проводить транзакцію безпосередньо з живим, готельним інвентарем: читає реальні тарифи і доступність, створює бронювання і розраховується через Booking Engine одним потоком — і може заробляти партнерську комісію. Пошук може відбуватися будь-де; виконання — на Wink." },
+  { title: "Чи є Wink єдиною платформою, що дозволяє AI агентам бронювати і оплачувати готелі?", content: "Ні — агентська комерція готелів — це нова категорія, і кілька гравців у подорожах і платежах анонсували або запустили повний агентський процес бронювання до 2026 року. Особливість Wink у поєднанні: інвентар належить готелю і є прямим (не перепродаж GDS або веб-скрапінг), агент може шукати, бронювати, платити І заробляти через один комерційний шар, і це доступно вже сьогодні через REST API і хостинговий MCP сервер — не в планах. Готелі зберігають контроль над дистрибуцією; агент стає атрибутованим, що заробляє каналом." },
+  { title: "Які стандарти агентської комерції та AI підтримує Wink?", content: "Wink — API-перший і сьогодні працює на хостинговому MCP (Model Context Protocol) сервері, тому будь-який MCP-сумісний агент — Claude, Codex, Cursor та інші — може відкривати і викликати його живі OpenAPI контракти. Примітиви бронювання і оплати Wink розроблені для взаємодії з новою стеком агентської комерції — Agentic Commerce Protocol (ACP), Agent Payments Protocol (AP2) від Google, Agent2Agent (A2A) і агентськими платежами стилю x402 — у міру консолідації цих стандартів, а не блокування агентів у пропрієтарному шляху." },
+  { title: "Чи є AI Skill для розробки на Wink?", content: "Так — wink-api-builder — це портативний навик агента, який використовує MCP сервер як джерело істини. Він проводить агента через api_search до живих контрактів запит/відповідь, автентифікації, перевіреного коду і позначає невідповідності між існуючим кодом і поточним API. Працює з Claude Code, Codex, Cursor та іншими клієнтами з підтримкою навичок." },
+  { title: "Чи може AI агент заробляти як афілійований партнер?", content: "Партнерська модель Wink зберігає атрибуцію джерела і кампанії протягом 6 місяців на клік і виплачує 10% стандартної комісії за підтверджені бронювання. Агент, який створює кваліфікований попит і направляє бронювання, може бути атрибутованим джерелом через ту ж партнерську і Booking Engine інфраструктуру." },
+  { title: "Чи замінює Agentic AI Booking Engine?", content: "Ні. Agentic AI створює або направляє намір; Booking Engine залишається шаром виконання для оформлення, оплати, підтвердження і синхронізації бронювання. Кожна передача агента завершується через Booking Engine." },
+  { title: "З чого почати розробнику або агенту?", content: "Підключіться до MCP сервера, потім прочитайте документацію Build on Wink, MCP Server і AI Skills. Запросіть доступ до API, коли випадок використання і комерційний шлях будуть зрозумілі." },
+];
+
+<div class="not-content mkt-page">
+
+<AgentJsonLd faqs={faqs} />
+
+<BreadcrumbJsonLd items={[{ name: "Головна", url: "https://wink.travel/" }, { name: "Agentic AI" }]} />
+
+{/* Hero — agent conversation. Full-bleed per the house `data-full-bleed` pattern,
+    with the breadcrumb inside the band so it lines up with the headline instead of
+    sitting in Starlight's narrower column above a full-width hero. */}
+<section data-full-bleed class="@container relative w-full overflow-hidden border-b border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white">
+  <div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+    <div class="absolute -left-24 -top-10 size-80 rounded-full bg-[#ff6b35]/20 blur-[100px]"></div>
+    <div class="absolute -bottom-16 -right-16 size-96 rounded-full bg-[#9333ea]/30 blur-[120px]"></div>
+  </div>
+  <div class="relative mx-auto w-full max-w-7xl px-4 pb-20 pt-8 lg:pb-24">
+    <nav aria-label="Breadcrumb" class="text-sm text-white/60">
+      <a href="/" class="transition-colors hover:text-white">Головна</a>
+      <span class="px-1.5 text-white/55">/</span>
+      <span class="text-white">Agentic AI</span>
+    </nav>
+    <div class="mt-10 grid items-center gap-12 lg:mt-12 lg:min-h-[33rem] @lg:grid-cols-[1fr_1.02fr]">
+    {/* Left — copy */}
+    <div class="text-center @lg:text-left">
+      <span class="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-xs font-extrabold uppercase tracking-wider text-[#ff8a5c] ring-1 ring-white/15 backdrop-blur @lg:mx-0"><span class="size-1.5 rounded-full bg-gradient-to-r from-[#ff6b35] to-[#ec4899]"></span> Agentic AI</span>
+      <h1 class="font-heading mt-6 text-4xl font-extrabold leading-[1.05] tracking-tight text-balance @lg:text-5xl @2xl:text-6xl">AI агенти можуть планувати подорож. <span class="wink-shimmer bg-gradient-to-r from-[#ff8a5c] via-[#ec4899] to-[#a855f7] bg-clip-text text-transparent">Майже ніхто не може її забронювати.</span></h1>
+      <p class="mx-auto mt-5 max-w-xl text-pretty text-lg text-white/75 @lg:mx-0 @lg:text-xl">Рекомендація готелю — це проблема контенту. Бронювання — це комерційна проблема — живі тарифи, утримуваний інвентар, оплата, розрахунок і контракт з готелем. Wink — це інфраструктура, що закриває цю прогалину: агенти знаходять, бронюють <em class="not-italic font-semibold text-white">і оплачують</em> через готельний інвентар, керований готелем, через живий REST API і хостинговий MCP сервер.</p>
+      <div class="mt-8 flex flex-col items-center justify-center gap-3 @lg:justify-start sm:flex-row">
+        <a href="/developers/build-on-wink/" class="inline-flex h-12 items-center justify-center rounded-md bg-[#ff6b35] px-7 text-base font-semibold text-white transition-colors hover:bg-[#e85b29]">Переглянути документацію</a>
+        <a href="#agents" class="inline-flex h-12 items-center justify-center rounded-md bg-white/10 px-7 text-base font-medium text-white ring-1 ring-white/20 backdrop-blur transition-colors hover:bg-white/15">Підключити агента</a>
+      </div>
+      <div class="mt-7 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 font-mono text-xs text-white/70"><span class="size-1.5 animate-pulse rounded-full bg-emerald-400"></span> MCP сервер онлайн · docs.mcp.wink.travel/mcp</div>
+    </div>
+
+    {/* Right — agent conversation (swappable infographic) */}
+    <AgentConversation />
+    </div>
+  </div>
+</section>
+
+{/* Direct answer */}
+<section class="mx-auto w-full max-w-3xl px-4 pt-24 pb-24 text-center">
+  <p class="mkt-kicker text-primary">Чому більшість AI агентів не можуть забронювати готель?</p>
+  <p class="mkt-sub text-muted-foreground mt-5">Wink — API-перший: кожна функція платформи доступна зовні, а хостинговий MCP сервер відкриває живі API контракти для AI агентів. Замість того, щоб змушувати кожного мандрівника проходити через сайт, Wink дає схваленим агентам структурований доступ до готельного інвентарю, тарифів, доступності, бронювання, оплати, атрибуції та подій — ту ж інфраструктуру, що живить сам Wink.</p>
+  <div class="mx-auto mt-7 max-w-2xl rounded-2xl border-2 border-primary/30 bg-primary/[0.04] px-6 py-5 text-pretty text-foreground/90"><strong class="text-foreground">Будь-який готель стає готовим для агента просто налаштувавши свій профіль на Wink.</strong> Як тільки його інвентар, тарифи і доступність живі, схвалені AI агенти можуть шукати, бронювати і оплачувати через API і MCP сервер — без окремої AI інтеграції для кожного готелю.</div>
+</section>
+
+{/* Live proof — the argument above is shipped, not roadmap. Implementation
+    detail deliberately lives on /builders/ so this page stays the thesis. */}
+<section id="agents" class="@container w-full border-y border-border bg-muted/30" style="scroll-margin-top:5rem">
+  <div class="mx-auto w-full max-w-4xl px-4 py-24 text-center">
+    <p class="mkt-kicker text-primary">Доступно вже сьогодні, а не в планах</p>
+    <h2 class="mkt-h2 font-heading mt-3">Чотири кроки від агента до підтвердженого, оплаченого бронювання.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-2xl">Підключіться до хостингового MCP сервера, перетворіть намір у реальні операції через живий API, згенеруйте перевірений код, а потім передайте в Booking Engine для оформлення, оплати, підтвердження і синхронізації з PMS.</p>
+    <ol class="mx-auto mt-10 grid gap-3 text-left @lg:grid-cols-4">
+      <li class="rounded-xl border border-border bg-card px-4 py-3 text-sm"><span class="font-mono text-xs text-primary">01</span><span class="mt-1 block font-semibold">Підключити MCP</span></li>
+      <li class="rounded-xl border border-border bg-card px-4 py-3 text-sm"><span class="font-mono text-xs text-primary">02</span><span class="mt-1 block font-semibold">Шукати живий API</span></li>
+      <li class="rounded-xl border border-border bg-card px-4 py-3 text-sm"><span class="font-mono text-xs text-primary">03</span><span class="mt-1 block font-semibold">Створити перевірений код</span></li>
+      <li class="rounded-xl border border-border bg-card px-4 py-3 text-sm"><span class="font-mono text-xs text-primary">04</span><span class="mt-1 block font-semibold">Бронювати і отримувати оплату</span></li>
+    </ol>
+    <div class="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <a href="/builders/#agent-quickstart" class="inline-flex h-12 items-center justify-center rounded-md bg-[#ff6b35] px-7 text-base font-semibold text-white transition-colors hover:bg-[#e85b29]">Переглянути кроки інтеграції</a>
+      <a href="/developers/mcp/" class="inline-flex h-12 items-center justify-center rounded-md border border-border px-7 text-base font-medium transition-colors hover:bg-muted">Документація MCP сервера</a>
+    </div>
+    <p class="text-muted-foreground mt-5 inline-flex items-center gap-2 font-mono text-xs"><span class="size-1.5 animate-pulse rounded-full bg-emerald-500"></span> docs.mcp.wink.travel/mcp</p>
+  </div>
+</section>
+
+{/* What an agent can do — capability map */}
+<section class="@container mx-auto w-full max-w-7xl px-4 pt-24">
+  <div class="mx-auto mb-14 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Карта можливостей</p>
+    <h2 class="mkt-h2 font-heading mt-3">Що AI агент може робити на Wink.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">Кожна можливість нижче доступна сьогодні через REST API і MCP сервер — на основі тих самих контрактів, на яких працює Wink.</p>
+  </div>
+  <div class="grid gap-5 @md:grid-cols-2 @2xl:grid-cols-3">
+    {[
+      { icon: IconMapSearch, title: "Шукати готельний інвентар", desc: "Знаходьте бронюваний інвентар з геолокаційним просторовим пошуком — точка, коло, прямокутник або полігон — плюс GeoIP визначення." },
+      { icon: IconCalendarStats, title: "Читати живі тарифи та доступність", desc: "Отримуйте тарифи, доступність і інвентар у реальному часі по 11 підключених channel manager." },
+      { icon: IconCalendarCheck, title: "Створювати і синхронізувати бронювання", desc: "Створюйте бронювання через API; створюйте / оновлюйте / скасовуйте синхронізацію з підключеним PMS або channel manager з повним відстеженням життєвого циклу." },
+      { icon: IconCreditCard, title: "Приймати оплату", desc: "Wink обробляє оформлення, логіку політики скасування і оплату за бронюванням — Wink є продавцем у записі." },
+      { icon: IconCoin, title: "Зберігати атрибуцію і заробляти", desc: "Контекст джерела і кампанії зберігається протягом 6 місяців на клік, а також 10% стандартна комісія за підтверджені бронювання." },
+      { icon: IconWebhook, title: "Реагувати на 64+ подій", desc: "Підписуйтеся на webhook події — бронювання, платежі, повернення, оновлення channel manager — і запускайте подальші дії." },
+      { icon: IconSparkles, title: "Генерувати контент", desc: "AI контент для 9 типів інвентарю і 12 тонів голосу; реєстрація об’єкта одним кліком з URL." },
+      { icon: IconComponents, title: "Вбудовувати бронюваний інвентар", desc: "Вставляйте живий, бронюваний готельний інвентар у будь-який інтерфейс за допомогою Web Components і мінімального коду." },
+      { icon: IconCode, title: "Розробляти на повному API", desc: "Кожна функція Wink доступна зовні через REST, з OAuth2 автентифікацією і офіційними SDK — інтегруйте, ніби це ваша власна система." },
+    ].map((c) => (
+      <div class="flex flex-col rounded-2xl border border-border bg-card p-6">
+        <span class="mb-4 flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-white"><c.icon class="size-6" /></span>
+        <h3 class="font-heading text-base font-semibold">{c.title}</h3>
+        <p class="text-muted-foreground mt-2 text-sm text-pretty">{c.desc}</p>
+        <span class="mt-4 inline-flex w-fit items-center gap-1.5 rounded-full bg-emerald-500/10 px-2.5 py-1 text-xs font-semibold text-emerald-600 dark:text-emerald-400"><span class="size-1.5 rounded-full bg-emerald-500"></span>Доступно зараз</span>
+      </div>
+    ))}
+  </div>
+</section>
+
+{/* The agentic shift — before/after flow */}
+<section class="@container mx-auto w-full max-w-5xl px-4 pt-24">
+  <div class="mx-auto mb-12 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Зміна</p>
+    <h2 class="mkt-h2 font-heading mt-3">Від мандрівника до сайту — до мандрівника до агента.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">У старій моделі мандрівник робив всю роботу. В агентській моделі агент стає інтерфейсом — а Wink стає комерційним шаром за відповіддю.</p>
+  </div>
+  {/* Before/after flow — swappable infographic (infographics/AgenticShiftFlow.astro) */}
+  <AgenticShiftFlow />
+</section>
+
+{/* Why Wink — recommend vs transact */}
+<section class="@container mx-auto w-full max-w-5xl px-4 pt-24">
+  <div class="mx-auto mb-12 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Чому Wink</p>
+    <h2 class="mkt-h2 font-heading mt-3">AI відповідь — це не бронювання.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">Рекомендація потребує структурованого інвентарю, живих тарифів, оформлення, оплати, підтвердження і атрибуції, щоб стати комерцією.</p>
+  </div>
+  <div class="grid gap-6 @md:grid-cols-2">
+    <div class="rounded-2xl border border-border bg-muted/30 p-7">
+      <h3 class="font-heading text-lg font-semibold text-muted-foreground">AI агент без інфраструктури</h3>
+      <ul class="mt-5 space-y-3">
+        {["Веб-скрапінг, часто застарілий інвентар", "Ціни, які можуть бути не бронюваними", "Рекомендує, а потім передає бронювання на сайт або OTA", "Немає атрибуції — і немає способу для агента заробляти", "Втрачає нитку після пропозиції"].map((b) => (
+          <li class="flex items-start gap-2.5"><IconX class="mt-0.5 size-5 shrink-0 text-muted-foreground/60" /><span class="text-sm text-muted-foreground">{b}</span></li>
+        ))}
+      </ul>
+      <p class="mt-6 text-sm font-semibold text-muted-foreground">Може рекомендувати.</p>
+    </div>
+    <div class="rounded-2xl border-2 border-primary/30 bg-primary/[0.04] p-7">
+      <h3 class="font-heading text-lg font-semibold text-primary">AI агент на Wink</h3>
+      <ul class="mt-5 space-y-3">
+        {["Живий, готельний інвентар — не веб-скрапінг і не перепродаж", "Живі тарифи і доступність через API", "Бронює І оплачує одним потоком — Wink розраховується", "Агент може заробляти — атрибуція + 10% стандартна комісія", "Підтверджено, синхронізовано з PMS, з webhook — доступно сьогодні"].map((b) => (
+          <li class="flex items-start gap-2.5"><IconCheck class="mt-0.5 size-5 shrink-0 text-primary" /><span class="text-sm text-foreground/90">{b}</span></li>
+        ))}
+      </ul>
+      <p class="mt-6 text-sm font-semibold text-primary">Може проводити транзакції.</p>
+    </div>
+  </div>
+</section>
+
+{/* AI agents for everyone */}
+<section class="@container mx-auto w-full max-w-7xl px-4 pt-24">
+  <div class="mx-auto mb-14 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Кожен учасник — агент</p>
+    <h2 class="mkt-h2 font-heading mt-3">Агент для мандрівників, готелів, партнерів і розробників.</h2>
+  </div>
+  <div class="grid gap-6 @md:grid-cols-2">
+    {[
+      { icon: IconUser, who: "Для мандрівників", title: "Шукати, бронювати і керувати перебуванням", desc: "Агент працює зі структурованим інвентарем, живими тарифами і політиками — потім створює бронювання через Booking Engine.", prompt: "Знайди готель для дорослих класу люкс у Чіангмаї наступного місяця зі спа. Забронюй." },
+      { icon: IconBuildingStore, who: "Для готелів", title: "Супервайзери, а не оператори", desc: "Агенти допомагають створювати, оновлювати і аналізувати через Extranet, Social і Studio — готель зберігає правила.", prompt: "Згенеруй соціальний контент на наступний місяць і познач дати з низькою заповнюваністю для просування." },
+      { icon: IconUsersGroup, who: "Для партнерів і творців", title: "Автоматизувати кампанії і заробляти", desc: "Знаходьте відповідні готелі, створюйте активи і вітрини, публікуйте і зберігайте атрибуцію.", prompt: "Створи кампанію для просування розкішних курортів на Мальдівах." },
+      { icon: IconCode, who: "Для розробників", title: "Створювати нові подорожні сервіси", desc: "AI консьєржі, банківські і лояльні агенти — побудовані на MCP сервері, REST API і Booking Engine.", prompt: "Вбудуй AI бронювання готелів у наш банківський додаток за допомогою Wink API." },
+    ].map((c) => (
+      <div class="flex flex-col rounded-2xl border border-border bg-card p-7">
+        <span class="mb-4 flex size-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-white"><c.icon class="size-6" /></span>
+        <span class="text-xs font-semibold uppercase tracking-wider text-primary">{c.who}</span>
+        <h3 class="font-heading mt-2 text-xl font-semibold">{c.title}</h3>
+        <p class="text-muted-foreground mt-2 text-pretty">{c.desc}</p>
+        <p class="mt-5 rounded-lg border border-border bg-muted/40 px-4 py-3 text-sm italic text-foreground/80">“{c.prompt}”</p>
+      </div>
+    ))}
+  </div>
+</section>
+
+{/* The stack */}
+<section class="@container mx-auto w-full max-w-7xl px-4 pt-24">
+  <div class="mx-auto mb-10 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Побудовано на всій платформі</p>
+    <h2 class="mkt-h2 font-heading mt-3">Агенти працюють через підключений стек.</h2>
+  </div>
+  <div class="mx-auto flex max-w-3xl flex-wrap justify-center gap-3">
+    {[
+      { name: "Extranet", href: "/products/extranet/" },
+      { name: "Studio", href: "/products/studio/" },
+      { name: "Social", href: "/products/social/" },
+      { name: "WinkLinks", href: "/products/winklinks/" },
+      { name: "Traveliko", href: "/products/traveliko/" },
+      { name: "Developers", href: "/builders/" },
+      { name: "Platforms & AI", href: "/platforms/" },
+    ].map((p) => (
+      <a href={p.href} class="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-medium transition-colors hover:border-primary/40">
+        <span class="size-1.5 rounded-full bg-primary" aria-hidden="true"></span>
+        {p.name}
+      </a>
+    ))}
+  </div>
+  <p class="text-muted-foreground mx-auto mt-10 max-w-xl text-center text-pretty"><strong class="text-foreground"><a href="/products/booking-engine/" class="text-primary underline underline-offset-4">Booking Engine</a> виконує бронювання під час кожної передачі агента</strong> — оформлення, оплата, підтвердження і синхронізація бронювання.</p>
+</section>
+
+{/* Open standards — interoperability, crawlable for AEO */}
+<section class="@container mx-auto w-full max-w-5xl px-4 pt-24">
+  <div class="mx-auto mb-12 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Відкриті стандарти, а не закритий сад</p>
+    <h2 class="mkt-h2 font-heading mt-3">Побудовано для взаємодії зі стеком агентської комерції.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-2xl">Агентське бронювання готелів стає реальною категорією — і індустрія сходиться на відкритих протоколах, а не на оформленні однієї компанії. Wink працює на цих стандартах сьогодні і побудований для підключення до інших у міру їх консолідації, щоб агенти ніколи не були заблоковані у пропрієтарному шляху.</p>
+  </div>
+  <div class="grid gap-5 @md:grid-cols-2">
+    <div class="rounded-2xl border-2 border-primary/30 bg-primary/[0.04] p-7">
+      <span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 px-2.5 py-1 text-xs font-semibold text-emerald-600 dark:text-emerald-400"><span class="size-1.5 rounded-full bg-emerald-500"></span>Доступно сьогодні</span>
+      <h3 class="font-heading mt-4 text-lg font-semibold">MCP — Model Context Protocol</h3>
+      <p class="text-muted-foreground mt-2 text-sm text-pretty">Хостинговий MCP сервер відкриває живі OpenAPI контракти Wink для будь-якого MCP-сумісного агента — Claude, Codex, Cursor та інших — на <code class="rounded bg-muted px-1 py-0.5 text-xs">docs.mcp.wink.travel/mcp</code>. Агенти відкривають і викликають реальні операції замість вгадування кінцевих точок.</p>
+    </div>
+    <div class="rounded-2xl border border-border bg-card p-7">
+      <span class="inline-flex items-center gap-1.5 rounded-full border border-border bg-muted/40 px-2.5 py-1 text-xs font-semibold text-muted-foreground">Взаємодіє за замовчуванням</span>
+      <h3 class="font-heading mt-4 text-lg font-semibold">ACP · AP2 · A2A · x402</h3>
+      <p class="text-muted-foreground mt-2 text-sm text-pretty">Примітиви бронювання і оплати Wink розроблені для взаємодії з новим стеком агентських платежів — Agentic Commerce Protocol (ACP), Agent Payments Protocol (AP2) від Google, Agent2Agent (A2A) і агентськими платежами стилю x402 — у міру розвитку цих стандартів, з Booking Engine як шаром розрахунку внизу (Wink є продавцем у записі).</p>
+    </div>
+  </div>
+</section>
+
+{/* Where this is heading — roadmap, clearly labeled */}
+<section class="mx-auto w-full max-w-3xl px-4 pt-24">
+  <div class="rounded-2xl border border-dashed border-primary/30 bg-primary/[0.03] p-8">
+    <span class="inline-flex items-center gap-1.5 rounded-full border border-primary/30 bg-card px-3 py-1 text-xs font-semibold text-primary">Куди це рухається</span>
+    <p class="text-muted-foreground mt-5 text-pretty">Вищезазначені можливості доступні вже сьогодні. Напрямок — глибша агентська комерція: багатші агентські примітиви бронювання, ідентичність і авторизація агента для транзакцій від імені мандрівника, а також участь агентів як атрибутованих, що заробляють джерел у партнерській мережі. Стратегічна позиція Wink — <strong class="text-foreground">інфраструктура комерції подорожей для AI агентів</strong> — це лінія розвитку від сьогоднішнього API до майбутнього.</p>
+  </div>
+</section>
+
+{/* FAQ */}
+<FaqGrid
+  heading="Поширені запитання про Agentic AI"
+  description="Що це означає, як підключитися і що можуть агенти."
+  items={faqs}
+/>
+
+{/* Final CTA */}
+<section class="w-full border-y border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white">
+  <div class="mx-auto w-full max-w-7xl px-4 py-24 text-center">
+    <h2 class="mkt-h2 font-heading">Готові створювати комерцію подорожей для AI агентів?</h2>
+    <p class="mx-auto mt-4 max-w-2xl text-pretty text-white/70 @lg:text-lg">Підключіться до MCP сервера, прочитайте живі контракти і дозвольте Booking Engine виконати бронювання. Або поговоріть з нами про доступ агента для вашого продукту.</p>
+    <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <a href="/developers/build-on-wink/" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-[#ff6b35] px-8 text-base font-semibold text-white hover:bg-[#e85b29] sm:w-auto">Переглянути документацію</a>
+      <a href="/developers/mcp/" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-white px-8 text-base font-semibold text-[#1f0a40] hover:bg-white/90 sm:w-auto">Підключити MCP сервер</a>
+      <a href="https://cal.com/wink-ws36dy" class="inline-flex h-12 items-center justify-center px-4 text-sm font-medium text-white/80 underline underline-offset-4 hover:text-white">Запросити демо</a>
+    </div>
+  </div>
+</section>
+
+</div>

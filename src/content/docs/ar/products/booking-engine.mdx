@@ -1,0 +1,354 @@
+---
+title: محرك الحجز — تمكين الحجوزات في أي مكان عبر الإنترنت
+description: يُشغّل محرك الحجز من Wink الحجوزات المباشرة على موقع فندقك الإلكتروني وهو طبقة المعاملات وراء كل شريك، منشئ ووكلاء الذكاء الاصطناعي — مع الدفع، التزامن والنسبة مضمنة.
+template: splash
+marketingNav: true
+---
+import '/src/styles/splash-page.css';
+import BreadcrumbJsonLd from "@/components/marketing/BreadcrumbJsonLd.astro";
+
+import DeviceFrame from "@/components/marketing/DeviceFrame.astro";
+import ShowcaseRow from "@/components/marketing/ShowcaseRow.astro";
+import FaqGrid from "@/components/marketing/FaqGrid.astro";
+import ProductJsonLd from "@/components/marketing/ProductJsonLd.astro";
+import MoneyFlow from "@/components/marketing/infographics/MoneyFlow.astro";
+
+import IconArrowRight from "@tabler/icons/outline/arrow-right.svg";
+import IconCheck from "@tabler/icons/outline/check.svg";
+
+export const faqs = [
+  { title: "ما هو محرك الحجز من Wink؟", content: "محرك الحجز من Wink هو شيئين في آن واحد. لموقعك الإلكتروني، هو محرك حجز كامل — غرف، أسعار، توافر، إتمام الشراء، الدفع والتأكيد على موقعك الخاص بعلامتك التجارية. لمنصتك، هو طبقة المعاملات التي تحول الطلب من شركاء Wink، المنشئين، وكلاء الذكاء الاصطناعي وتطبيقات المطورين — كل حجز يعود للفندق، مع بقاء الفندق في السيطرة." },
+  { title: "هل يمكن لمحرك الحجز بيع أكثر من الغرف؟", content: "نعم. حيثما تم تكوينه، يبيع الإقامة كاملة حول الغرفة: خطط الأسعار، الباقات، الإضافات، الطعام، السبا، التجارب، التنقلات، الترقيات، تسجيل الوصول المبكر وتسجيل المغادرة المتأخر — وليس فقط ليلة الغرفة." },
+  { title: "ما هي المسارات التي يفي بها محرك الحجز؟", content: "موقع فندقك الخاص بالإضافة إلى كل مسار آخر من Wink: الروابط القابلة للمشاركة، رموز QR، مكونات الويب، متاجر WinkLinks، المنشورات الاجتماعية، متاجر الشركاء، Traveliko، تسليمات Agentic AI وتطبيقات المطورين. كلها تتصل بنفس المحرك." },
+  { title: "كيف يعمل الدفع؟", content: "Wink هو التاجر المسجل ويتولى الدفع من البداية للنهاية. يدير واجهة إتمام الشراء، منطق سياسة الإلغاء، البطاقات المشفرة، 3DS، العملات المتعددة وتقسيم المدفوعات. يجمع المبلغ الكامل للحجز نيابة عن الفندق؛ تُصرف الأموال للفندق عند تسجيل وصول الضيف، بعد خصم رسوم Wink. التكلفة الشاملة هي 5.5% على الحجوزات المباشرة المؤكدة." },
+  { title: "كيف يرتبط محرك الحجز بـ Extranet؟", content: "Extranet هو المكان الذي تدير فيه الفنادق المحتوى، الغرف، الأسعار، التوافر، العروض الترويجية، السياسات وقواعد القنوات. يستخدم محرك الحجز هذا العرض المعتمد لعرض العروض وإتمام الشراء — طبقتان متصلتان، ليستا نفس الواجهة، ليبقى الفندق في السيطرة." },
+  { title: "هل يمكن للمطورين ووكلاء الذكاء الاصطناعي إنشاء الحجوزات؟", content: "نعم. إنشاء الحجز هو عملية REST API، كل ميزة قابلة للاستدعاء خارجيًا باستخدام OAuth2، وخادم MCP مستضاف يسمح لوكلاء الذكاء الاصطناعي بقراءة العقود الحية. اشترك في booking.created وأكثر من 64 حدث ويب هوك، أو دمج المخزون القابل للحجز باستخدام مكونات الويب. في التكاملات المباشرة عبر API يمكنك أيضًا أن تكون التاجر المسجل وتدير الدفع بنفسك." },
+  { title: "هل يزامن محرك الحجز الحجوزات مع نظام إدارة الممتلكات أو مدير القنوات؟", content: "نعم. عند إنشاء الحجوزات أو تحديثها أو إلغائها، يتم مزامنتها مع نظام إدارة الممتلكات أو مدير القنوات المتصل مع تتبع كامل لدورة الحياة، ويتلقى الفندق، المسافر و(عند الاقتضاء) الشريك تأكيدًا." },
+  { title: "هل محرك الحجز هو نفسه OTA؟", content: "لا. هو طبقة التنفيذ والمعاملات — لا يستبدل أبدًا علامة الفندق بعلامة OTA. يساعد العرض الذي يتحكم فيه الفندق على التحويل عبر موقعك الإلكتروني، الشريك، المنشئ، Traveliko، الذكاء الاصطناعي ومسارات المطورين، مع الحفاظ على النسبة." },
+];
+
+<div class="not-content mkt-page">
+
+<ProductJsonLd
+  name="Wink Booking Engine"
+  url="https://wink.travel/products/booking-engine/"
+  applicationCategory="BusinessApplication"
+  description="محرك حجز كامل لموقع الفندق الخاص وطبقة المعاملات وراء كل شريك، منشئ ومسار ذكاء اصطناعي — مع الدفع، مزامنة الحجز والنسبة مضمنة."
+  features={["محرك حجز كامل على موقع الفندق الخاص بعلامته التجارية", "طبقة معاملات لمسارات الشركاء، المنشئين، الذكاء الاصطناعي والمطورين", "يبيع الغرف، خطط الأسعار، الباقات، الإضافات، الطعام، السبا، التجارب والتنقلات", "الدفع تتم إدارته بواسطة Wink", "التاجر المسجل متاح في تكاملات API", "إنشاء الحجز عبر REST API مع OAuth2", "أكثر من 64 حدث ويب هوك بما في ذلك booking.created", "مزامنة الحجز مع نظام إدارة الممتلكات / مدير القنوات", "الحفاظ على المصدر والنسبة للشركاء", "تأكيد للضيف، الفندق والشريك"]}
+  faqs={faqs}
+/>
+
+<BreadcrumbJsonLd items={[{ name: "الرئيسية", url: "https://wink.travel/" }, { name: "المنتجات" }, { name: "محرك الحجز" }]} />
+
+{/* 1 — Hero (dark, full-bleed; see `data-full-bleed` in src/styles/tweaks.css).
+    The breadcrumb lives INSIDE the band so it shares the hero's content column
+    and lines up with the badge and headline. */}
+<section data-full-bleed class="relative w-full overflow-hidden border-b border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white">
+  <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+    <div class="absolute -left-24 -top-10 size-96 rounded-full bg-[#ff6b35]/20 blur-[120px]"></div>
+    <div class="absolute -bottom-16 -right-16 size-[34rem] rounded-full bg-[#9333ea]/25 blur-[140px]"></div>
+  </div>
+  <div class="@container relative mx-auto w-full max-w-7xl px-4 pb-20 pt-8 lg:pb-24">
+    <nav aria-label="Breadcrumb" class="text-sm text-white/60">
+      <a href="/" class="transition-colors hover:text-white">الرئيسية</a>
+      <span class="px-1.5 text-white/55">/</span>
+      <span>المنتجات</span>
+      <span class="px-1.5 text-white/55">/</span>
+      <span class="text-white">محرك الحجز</span>
+    </nav>
+    <div class="mt-10 grid items-center gap-12 lg:mt-12 lg:grid-cols-2 lg:gap-16">
+      <div>
+        <span class="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-xs font-extrabold uppercase tracking-wider text-[#ff8a5c] ring-1 ring-white/15 backdrop-blur"><span class="size-1.5 rounded-full bg-gradient-to-r from-[#ff6b35] to-[#ec4899]"></span> محرك الحجز</span>
+        <h1 class="font-heading mt-6 text-4xl font-extrabold leading-[1.05] tracking-tight text-balance @lg:text-5xl @2xl:text-[3.25rem]">
+          تمكين الحجوزات في أي مكان عبر الإنترنت — <span class="bg-gradient-to-r from-[#ff8a5c] via-[#ec4899] to-[#a855f7] bg-clip-text text-transparent">موقعك، منصتك.</span>
+        </h1>
+        <p class="mt-5 max-w-xl text-pretty text-lg text-white/75 @lg:text-xl">
+          تضع الفنادق محرك الحجز من Wink على موقعها الخاص لتحويل الطلب المباشر إلى حجوزات مؤكدة تبيع الإقامة كاملة. كما أنه طبقة المعاملات التي تعمل عليها منصة Wink بأكملها — لذا كل مسار آخر يتصل بنفس إتمام الشراء. الدفع، التأكيد والنسبة مضمنة.
+        </p>
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+          <a href="https://app.wink.travel" class="inline-flex h-12 items-center justify-center rounded-md bg-[#ff6b35] px-7 text-base font-semibold text-white transition-colors hover:bg-[#e85b29]">ابدأ الآن</a>
+          <a href="https://cal.com/wink-ws36dy" class="inline-flex h-12 items-center justify-center rounded-md bg-white/10 px-7 text-base font-medium text-white ring-1 ring-white/20 backdrop-blur transition-colors hover:bg-white/15">اطلب عرضًا توضيحيًا</a>
+        </div>
+        <div class="mt-7 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-white/65">
+          <span class="inline-flex items-center gap-1.5"><IconCheck class="size-4 text-[#ff8a5c]" /> موقعك</span>
+          <span class="inline-flex items-center gap-1.5"><IconCheck class="size-4 text-[#ff8a5c]" /> منصتك</span>
+          <span class="inline-flex items-center gap-1.5"><IconCheck class="size-4 text-[#ff8a5c]" /> 5.5% شامل كل شيء</span>
+        </div>
+      </div>
+
+      <div class="relative">
+        <DeviceFrame
+          variant="browser"
+          url="book.wink.travel/checkout"
+          src="/mockups/booking-engine/checkout-page-booking-engine-desktop.webp"
+          alt="إتمام شراء محرك الحجز من Wink — الغرفة، السعر، الإضافات والدفع في تدفق واحد"
+          aspect="16/10"
+        />
+        <div class="absolute -bottom-8 -right-1 w-[116px] @sm:w-[136px] @lg:w-[148px]">
+          <DeviceFrame
+            variant="phone"
+            src="/mockups/booking-engine/checkout-mobile.webp"
+            alt="إتمام شراء محرك الحجز على الهاتف المحمول"
+            aspect="9/19.5"
+            class="!max-w-none w-full"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* 2 — The two jobs (white) */}
+<section class="@container mx-auto w-full max-w-5xl px-4 pt-24 text-center">
+  <p class="mkt-kicker text-primary">ما هو محرك الحجز من Wink؟</p>
+  <h2 class="mkt-h2 font-heading mt-3 text-balance">محرك حجز كامل لموقعك — وطبقة المعاملات وراء كل شريك.</h2>
+  <p class="mkt-sub text-muted-foreground mx-auto mt-5 max-w-3xl">
+    لموقعك الإلكتروني، هو كل ما تتوقعه من محرك حجز SaaS: غرف، أسعار، توافر،
+    إتمام الشراء، الدفع والتأكيد على موقعك الخاص بعلامتك التجارية. لمنصتك، هو طبقة المعاملات
+    التي تحول أيضًا الطلب من شركاء Wink، المنشئين ووكلاء الذكاء الاصطناعي — كل ذلك يعود إليك،
+    مع بقاء الفندق في السيطرة.
+  </p>
+  <div class="mt-12 grid gap-5 text-left @md:grid-cols-2">
+    <div class="flex flex-col rounded-2xl border border-border bg-card p-7">
+      <span class="inline-flex w-fit items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-primary">موقعك</span>
+      <h3 class="font-heading mt-4 text-xl font-semibold">محرك حجز كامل، على موقعك الخاص</h3>
+      <p class="text-muted-foreground mt-2 text-sm text-pretty">
+        كل ما تتوقعه من محرك حجز عادي — علامتك التجارية، أسعارك، حجوزات مباشرة تبيع الإقامة كاملة. إذا سبق لك تشغيل محرك حجز، فلا شيء جديد لتتعلمه.
+      </p>
+      <ul class="mt-5 space-y-2.5">
+        {["إتمام شراء بعلامة الفندق على نطاقك الخاص", "غرف، أسعار، توافر وسياسات", "الدفع، التأكيد ومزامنة نظام إدارة الممتلكات / مدير القنوات"].map((p) => (
+          <li class="flex items-start gap-2.5"><IconCheck class="mt-0.5 size-5 shrink-0 text-primary" /><span class="text-sm text-foreground/90">{p}</span></li>
+        ))}
+      </ul>
+    </div>
+    <div class="flex flex-col rounded-2xl border border-border bg-card p-7">
+      <span class="inline-flex w-fit items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-primary">منصتك</span>
+      <h3 class="font-heading mt-4 text-xl font-semibold">بالإضافة إلى طبقة المعاملات لكل مسار شريك</h3>
+      <p class="text-muted-foreground mt-2 text-sm text-pretty">
+        نفس المحرك يشغل أيضًا الحجوزات القادمة من شركاء Wink، المنشئين، وكلاء الذكاء الاصطناعي وتطبيقات المطورين — الطلب الذي لا يمكن لمحرك حجز عادي الوصول إليه. كل حجز يعود إليك: أسعارك، مخزونك، علامتك التجارية، النسبة الكاملة. تحصل على التوزيع دون التخلي عن السيطرة.
+      </p>
+      <div class="mt-5 flex flex-wrap gap-2">
+        {["الشركاء", "المنشئون", "وكلاء الذكاء الاصطناعي", "الروابط القابلة للمشاركة", "WinkLinks", "الاجتماعي", "Traveliko", "تطبيقات المطورين"].map((r) => (
+          <span class="inline-flex items-center gap-1.5 rounded-full border border-border bg-background px-3 py-1 text-xs font-medium">
+            <span class="size-1.5 rounded-full bg-primary" aria-hidden="true"></span>{r}
+          </span>
+        ))}
+      </div>
+    </div>
+  </div>
+  <p class="text-muted-foreground mx-auto mt-8 max-w-2xl text-pretty text-sm">
+    يتدفق العرض من <a href="/products/extranet/" class="text-primary underline underline-offset-4">Extranet</a>؛ تبقى أسعارك والنسبة مرفقة طوال عملية إتمام الشراء.
+  </p>
+</section>
+
+{/* 3 — Sell the whole stay (white, image left) */}
+<section class="@container mx-auto w-full max-w-7xl px-4 pt-24">
+  <div class="grid items-center gap-12 @lg:grid-cols-2 @lg:gap-16">
+    <div class="@lg:order-2">
+      <p class="mkt-kicker text-primary">بيع الإقامة كاملة</p>
+      <h2 class="mkt-h2 font-heading mt-3">أكثر من ليلة غرفة.</h2>
+      <p class="text-muted-foreground mt-4 text-pretty @lg:text-lg">
+        معظم محركات الحجز تتوقف عند الغرفة. Wink يروّج للإقامة كاملة في نفس التدفق — لذا يكون متوسط الحجز أعلى ويصل الضيف مع الرحلة مبنية مسبقًا.
+      </p>
+      <div class="mt-6 flex flex-wrap gap-2.5">
+        {["الغرف", "خطط الأسعار", "الباقات", "الإضافات", "الطعام", "السبا والعافية", "التجارب", "التنقلات", "الترقيات", "تسجيل الوصول المبكر", "تسجيل المغادرة المتأخر"].map((c) => (
+          <span class="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3.5 py-1.5 text-sm font-medium">
+            <span class="size-1.5 rounded-full bg-primary" aria-hidden="true"></span>{c}
+          </span>
+        ))}
+      </div>
+      <ul class="mt-7 space-y-2.5">
+        {["الغرفة، السعر والعرض المناسب للمسار الذي وصل منه الضيف", "التوافر الحي وقواعد المخزون من Extranet", "خيارات الإلغاء والسياسة معروضة مقدمًا"].map((p) => (
+          <li class="flex items-start gap-2.5"><IconCheck class="mt-0.5 size-5 shrink-0 text-primary" /><span class="text-sm text-foreground/90">{p}</span></li>
+        ))}
+      </ul>
+    </div>
+    <div class="@lg:order-1">
+      <DeviceFrame
+        variant="browser"
+        url="book.wink.travel/rate-plan"
+        src="/mockups/booking-engine/rate-plan-add-on-desktop.webp"
+        alt="محرك الحجز خطة السعر والإضافات — بيع الإقامة كاملة"
+        aspect="16/10"
+      />
+    </div>
+  </div>
+</section>
+
+{/* 4 — The booking flow (white) */}
+<section class="@container mx-auto w-full max-w-7xl px-4 pt-24 pb-24">
+  <div class="mx-auto mb-12 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">تدفق الحجز</p>
+    <h2 class="mkt-h2 font-heading mt-3">من أي مسار إلى حجز مؤكد.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">
+      نفس الخطوات الأربع تعمل خلف كل مسار — موقعك الإلكتروني أو شريك — نظيف على سطح المكتب، ومصمم للجوال.
+    </p>
+  </div>
+
+  <div class="space-y-20">
+    <ShowcaseRow
+      step="الخطوة 01 · اختر غرفة"
+      title="غرف محملة من العرض المعتمد من الفندق"
+      desc="الغرف المناسبة، الصور والتوافر تُحمّل مباشرة من Extranet للمسار الذي وصل منه الضيف."
+      points={["التوافر الحي وقواعد المخزون", "محتوى وصور يتحكم بها الفندق", "التواريخ، الضيوف ومنطق الإشغال"]}
+      image="/mockups/booking-engine/room-card-booking-engine-desktop.webp"
+      alt="اختيار غرفة في محرك الحجز مع التوافر والتسعير"
+      url="book.wink.travel/rooms"
+    />
+    <ShowcaseRow
+      reverse
+      step="الخطوة 02 · خطة السعر والإضافات"
+      title="اختر السعر ثم أضف إلى الإقامة"
+      desc="خطط الأسعار، خيارات الإلغاء والإضافات المكونة — الباقات، الطعام، السبا، التنقلات — في نفس التدفق."
+      points={["خطط الوجبات، أسعار الأعضاء والعروض الترويجية", "الإضافات والتجارب حيثما تم تكوينها", "خيارات السياسة والإلغاء معروضة مقدمًا"]}
+      image="/mockups/booking-engine/rate-plan-page-booking-engine-desktop.webp"
+      alt="اختيار خطة السعر مع الإضافات في محرك الحجز"
+      url="book.wink.travel/rate-plan"
+    />
+    <ShowcaseRow
+      step="الخطوة 03 · إتمام الشراء والدفع"
+      title="إتمام شراء واحد، الدفع تتم إدارته بواسطة Wink"
+      desc="يقوم الضيف بمراجعة الإقامة ويدفع في إتمام شراء واحد بعلامة الفندق — الدفع تتم إدارته بواسطة Wink، التاجر المسجل."
+      points={["إتمام شراء بعلامة الفندق ومصمم للجوال", "الدفع تتم إدارته بواسطة Wink", "سجل الحجز مرتبط بالفندق والمسار"]}
+      image="/mockups/booking-engine/checkout-page-booking-engine-desktop.webp"
+      alt="إتمام شراء ودفع في محرك الحجز"
+      url="book.wink.travel/checkout"
+    />
+    <ShowcaseRow
+      reverse
+      frame="plain"
+      step="الخطوة 04 · التأكيد"
+      title="تأكيد للضيف، الفندق والشريك"
+      desc="يتم تأكيد الحجز ويبقى مرتبطًا بالمسار، الحملة، القناة أو الشريك الذي أنشأ الطلب — ويتم مزامنته مع نظام إدارة الممتلكات أو مدير القنوات المتصل."
+      points={["تأكيد فوري للضيف", "إخطار الفندق والشريك", "مزامنة مع نظام إدارة الممتلكات / مدير القنوات، مع الحفاظ على النسبة"]}
+      image="/mockups/booking-engine/booking-confirmation.webp"
+      alt="شاشة تأكيد الحجز في محرك الحجز مع مرجع الحجز وملخص الإقامة"
+    />
+  </div>
+</section>
+
+{/* 5 — Payment & payout (muted band, money flow) */}
+<section class="@container w-full border-y border-border bg-muted/30">
+  <div class="mx-auto w-full max-w-7xl px-4 py-24">
+    <div class="grid items-center gap-12 @lg:grid-cols-2 @lg:gap-16">
+      <div>
+        <p class="mkt-kicker text-primary">كيف يعمل الدفع</p>
+        <h2 class="mkt-h2 font-heading mt-3">الدفع والتسوية، تتم إدارته بواسطة Wink.</h2>
+        <p class="text-muted-foreground mt-4 text-pretty @lg:text-lg">
+          Wink هو التاجر المسجل ويتولى الدفع من البداية للنهاية. يدير إتمام الشراء، السياسة والتسوية بحيث لا يحتاج الفندق إلى ربط معالج — وهو مشمول في سعر شامل واحد.
+        </p>
+        <ul class="mt-6 space-y-3">
+          {[
+            "البطاقات المشفرة، 3DS والعملات المتعددة",
+            "تطبيق سياسة الإلغاء، الوديعة وخطة السعر عند إتمام الشراء",
+            "تقسيم المدفوعات وتسوية النسبة مع الشريك معًا",
+          ].map((p) => (
+            <li class="flex items-start gap-2.5"><IconCheck class="mt-0.5 size-5 shrink-0 text-primary" /><span class="text-sm text-foreground/90">{p}</span></li>
+          ))}
+        </ul>
+        <div class="mt-7 flex items-baseline gap-3 rounded-xl border border-border bg-card px-5 py-4">
+          <span class="font-heading text-3xl font-bold text-foreground">5.5%</span>
+          <span class="text-muted-foreground text-sm text-pretty">شامل كل شيء على الحجوزات المباشرة المؤكدة — المعالجة مشمولة، لا عقد معالج منفصل. <a href="/pricing/" class="text-primary underline underline-offset-4">شاهد الأسعار</a>.</span>
+        </div>
+      </div>
+      {/* Money flow — swappable infographic (infographics/MoneyFlow.astro) */}
+      <MoneyFlow />
+    </div>
+  </div>
+</section>
+
+{/* 6 — Mobile-first (white, uniform phones) */}
+<section class="@container mx-auto w-full max-w-7xl px-4 pt-24 pb-24">
+  <div class="mx-auto mb-12 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">مصمم للجوال أولًا</p>
+    <h2 class="mkt-h2 font-heading mt-3">مصمم لكيفية حجز الضيوف فعليًا.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">
+      يبدأ معظم الطلب على السفر من الهاتف. كل خطوة — اكتشاف، اختيار، إضافة، دفع — مبنية له.
+    </p>
+  </div>
+  <div class="grid grid-cols-2 justify-items-center gap-6 @md:grid-cols-4 @lg:gap-8">
+    {[
+      { src: "/mockups/booking-engine/hotel-card-mobile.webp", alt: "بطاقة الفندق على الهاتف المحمول والتوافر", cap: "اكتشف" },
+      { src: "/mockups/booking-engine/room-details-mobile.webp", alt: "تفاصيل الغرفة على الهاتف المحمول", cap: "اختر" },
+      { src: "/mockups/booking-engine/moble-add-on.webp", alt: "الإضافات والإضافات على الهاتف المحمول", cap: "أضف إلى الإقامة" },
+      { src: "/mockups/booking-engine/checkout-mobile.webp", alt: "إتمام الشراء والدفع على الهاتف المحمول", cap: "ادفع" },
+    ].map((m) => (
+      <div class="w-full max-w-[230px]">
+        <DeviceFrame variant="phone" src={m.src} alt={m.alt} aspect="9/19.5" />
+        <p class="mt-3 text-center text-sm font-medium text-muted-foreground">{m.cap}</p>
+      </div>
+    ))}
+  </div>
+</section>
+
+{/* 7 — Developers & AI (dark band) */}
+<section class="relative w-full overflow-hidden border-y border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white">
+  <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+    <div class="absolute -left-20 -top-12 size-96 rounded-full bg-[#ff6b35]/20 blur-[120px]"></div>
+    <div class="absolute -bottom-16 -right-16 size-[30rem] rounded-full bg-[#9333ea]/25 blur-[140px]"></div>
+  </div>
+  <div class="@container relative mx-auto w-full max-w-4xl px-4 py-24 text-center">
+    <p class="text-sm font-bold uppercase tracking-wider text-[#ff8a5c]">المطورون ووكلاء الذكاء الاصطناعي</p>
+    <h2 class="mkt-h2 font-heading mt-3">طبقة التنفيذ، <span class="bg-gradient-to-r from-[#ff8a5c] via-[#ec4899] to-[#a855f7] bg-clip-text text-transparent">جاهزة للاستخدام.</span></h2>
+    <p class="mkt-sub mx-auto mt-4 max-w-2xl text-white/75">
+      كل تسليم Agentic AI وتكامل مطور يحل في محرك الحجز — إنشاء الحجز عبر REST مع OAuth2، أكثر من 64 حدث ويب هوك، مزامنة نظام إدارة الممتلكات ومدير القنوات، مكونات الويب، وخادم MCP مستضاف يمكن للوكلاء قراءته. استخدم Wink للدفع والتسوية، أو — في التكاملات المباشرة عبر API — كن التاجر المسجل وادِر الدفع بنفسك.
+    </p>
+    <div class="mx-auto mt-8 flex max-w-2xl flex-wrap justify-center gap-2.5">
+      {["إنشاء الحجوزات عبر REST", "OAuth2 + SDKs", "أكثر من 64 حدث ويب هوك", "مزامنة الحجز", "مكونات الويب", "خادم MCP مستضاف", "التاجر المسجل (تكاملات API)"].map((r) => (
+        <span class="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white/90 ring-1 ring-white/15 backdrop-blur">
+          <span class="size-1.5 rounded-full bg-[#ff8a5c]" aria-hidden="true"></span>{r}
+        </span>
+      ))}
+    </div>
+    <div class="mt-9 flex flex-wrap justify-center gap-3">
+      <a href="/developers/build-on-wink/" class="inline-flex items-center gap-1.5 rounded-md bg-[#ff6b35] px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#e85b29]">ابنِ على Wink <IconArrowRight class="size-4" /></a>
+      <a href="/developers/mcp/" class="inline-flex items-center gap-1.5 rounded-md bg-white/10 px-5 py-2.5 text-sm font-medium text-white ring-1 ring-white/20 backdrop-blur transition-colors hover:bg-white/15">خادم MCP</a>
+      <a href="/agentic-ai/" class="inline-flex items-center gap-1.5 rounded-md bg-white/10 px-5 py-2.5 text-sm font-medium text-white ring-1 ring-white/20 backdrop-blur transition-colors hover:bg-white/15">Agentic AI</a>
+    </div>
+  </div>
+</section>
+
+{/* 8 — Who it's for (white, accent cards) */}
+<section class="@container mx-auto w-full max-w-7xl px-4 pt-24">
+  <div class="mx-auto mb-12 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">من يفي هنا</p>
+    <h2 class="mkt-h2 font-heading mt-3">محرك واحد، ثلاث طرق لاستخدامه.</h2>
+  </div>
+  <div class="grid gap-5 @md:grid-cols-3">
+    {[
+      { eyebrow: "للفنادق", title: "حوّل طلبك المباشر", desc: "شغّل الحجز على موقعك الخاص، الروابط، رموز QR، مكونات الويب، WinkLinks وTraveliko — بيع الإقامة كاملة واحتفظ بالضيف.", href: "/hotels/", cta: "استكشف للفنادق", accent: "#ff6b35" },
+      { eyebrow: "للشركاء", title: "نفّذ الطلب الذي تخلقه", desc: "أرسل الضيوف من روابطك، متاجرك وحملاتك إلى إتمام شراء حقيقي — مع النسبة المرفقة عبر التأكيد والتسوية.", href: "/partners/", cta: "استكشف للشركاء", accent: "#ec4899" },
+      { eyebrow: "للمطورين", title: "ابنِ على تجارة الفنادق", desc: "استخدم محرك الحجز كطبقة تنفيذ خلف البحث، الحجز، الدفع والتأكيد — بما في ذلك التاجر المسجل في تكاملات API.", href: "/builders/", cta: "شاهد الوثائق", accent: "#22d3ee" },
+    ].map((c) => (
+      <a href={c.href} class="group flex flex-col rounded-2xl border border-border bg-card p-7 shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg" style={`border-top:3px solid ${c.accent}`}>
+        <span class="text-xs font-bold uppercase tracking-wider" style={`color:${c.accent}`}>{c.eyebrow}</span>
+        <h3 class="font-heading mt-2 text-lg font-semibold">{c.title}</h3>
+        <p class="text-muted-foreground mt-2 flex-1 text-sm text-pretty">{c.desc}</p>
+        <span class="mt-4 inline-flex items-center gap-1 text-sm font-semibold" style={`color:${c.accent}`}>{c.cta} <IconArrowRight class="size-4 transition-transform group-hover:translate-x-0.5" /></span>
+      </a>
+    ))}
+  </div>
+</section>
+
+{/* 9 — FAQ */}
+<FaqGrid
+  heading="الأسئلة الشائعة عن محرك الحجز"
+  description="الوظيفتان، المسارات، الدفع وكيفية البناء عليه."
+  items={faqs}
+/>
+
+{/* 10 — Final CTA (dark) */}
+<section class="w-full border-y border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white">
+  <div class="mx-auto w-full max-w-7xl px-4 py-24 text-center">
+    <h2 class="mkt-h2 font-heading">محرك واحد لموقعك ومنصتك.</h2>
+    <p class="mx-auto mt-4 max-w-2xl text-pretty text-white/70 @lg:text-lg">
+      حوّل الطلب إلى حجوزات مؤكدة على موقعك الخاص — وعبر كل شريك، منشئ، ذكاء اصطناعي ومسار مطور — مع الدفع، التأكيد والنسبة مضمنة.
+    </p>
+    <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <a href="https://app.wink.travel" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-[#ff6b35] px-8 text-base font-semibold text-white hover:bg-[#e85b29] sm:w-auto">ابدأ الآن</a>
+      <a href="https://cal.com/wink-ws36dy" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-white px-8 text-base font-semibold text-[#1f0a40] hover:bg-white/90 sm:w-auto">اطلب عرضًا توضيحيًا</a>
+    </div>
+  </div>
+</section>
+
+</div>

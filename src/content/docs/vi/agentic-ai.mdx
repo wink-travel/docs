@@ -1,0 +1,280 @@
+---
+title: Agentic AI — Cơ sở hạ tầng Thương mại Du lịch cho các Đại lý AI
+description: "Trên Wink, các đại lý AI không chỉ đề xuất khách sạn — họ tìm kiếm nguồn cung khách sạn trực tiếp, sau đó đặt phòng và thanh toán trong một quy trình qua REST API và MCP được lưu trữ. Đang hoạt động ngay hôm nay."
+template: splash
+marketingNav: true
+---
+import '/src/styles/splash-page.css';
+import BreadcrumbJsonLd from "@/components/marketing/BreadcrumbJsonLd.astro";
+
+import FaqGrid from "@/components/marketing/FaqGrid.astro";
+import AgentJsonLd from "@/components/marketing/AgentJsonLd.astro";
+import AgentConversation from "@/components/marketing/infographics/AgentConversation.astro";
+import AgenticShiftFlow from "@/components/marketing/infographics/AgenticShiftFlow.astro";
+
+import IconMapSearch from "@tabler/icons/outline/map-search.svg";
+import IconCalendarCheck from "@tabler/icons/outline/calendar-check.svg";
+import IconSparkles from "@tabler/icons/outline/sparkles.svg";
+import IconCalendarStats from "@tabler/icons/outline/calendar-stats.svg";
+import IconCreditCard from "@tabler/icons/outline/credit-card.svg";
+import IconCoin from "@tabler/icons/outline/coin.svg";
+import IconWebhook from "@tabler/icons/outline/webhook.svg";
+import IconComponents from "@tabler/icons/outline/components.svg";
+import IconUser from "@tabler/icons/outline/user.svg";
+import IconBuildingStore from "@tabler/icons/outline/building-store.svg";
+import IconUsersGroup from "@tabler/icons/outline/users-group.svg";
+import IconCode from "@tabler/icons/outline/code.svg";
+import IconArrowRight from "@tabler/icons/outline/arrow-right.svg";
+import IconCheck from "@tabler/icons/outline/check.svg";
+import IconX from "@tabler/icons/outline/x.svg";
+
+export const faqs = [
+  { title: "Tại sao hầu hết các đại lý AI không thể đặt phòng khách sạn, và điều gì làm cho một đại lý có thể?", content: "Đề xuất khách sạn là vấn đề về nội dung — đại lý chỉ cần mô tả và giá cả. Đặt phòng là vấn đề thương mại: cần có giá và tình trạng phòng trực tiếp, tồn kho mà đại lý có thể giữ, phương thức thanh toán, thanh toán cho khách sạn và mối quan hệ thương mại với cơ sở. Hầu hết trợ lý chỉ có phần đầu tiên và không có phần còn lại, nên họ chuyển khách du lịch sang trang web để hoàn tất. Một đại lý có thể hoàn thành đặt phòng khi cơ sở hạ tầng bên dưới cung cấp tất cả các yếu tố đó. Wink ưu tiên API — mọi tính năng nền tảng đều có thể gọi từ bên ngoài, và một máy chủ MCP được lưu trữ cung cấp các hợp đồng API trực tiếp — vì vậy đại lý được phê duyệt có thể khám phá nguồn cung khách sạn, đọc giá và tình trạng phòng trực tiếp, tạo và đồng bộ đặt phòng, nhận thanh toán (Wink là người bán hàng ghi nhận), bảo tồn nguồn gốc, và đăng ký sự kiện." },
+  { title: "Làm thế nào một đại lý AI kết nối với Wink?", content: "Chỉ cần trỏ một client MCP tương thích tới máy chủ được lưu trữ tại https://docs.mcp.wink.travel/mcp (dự phòng SSE tại /sse). Từ Claude Code: claude mcp add --transport http wink-docs https://docs.mcp.wink.travel/mcp. Đại lý sau đó có thể sử dụng công cụ api_search và docs_search để đọc các thao tác OpenAPI trực tiếp, hợp đồng yêu cầu/phản hồi và công thức nhiệm vụ." },
+  { title: "Một đại lý AI có thể làm gì trên Wink hôm nay?", content: "Hôm nay, qua REST API và máy chủ MCP: khám phá nền tảng, tìm kiếm tồn kho có thể đặt (bao gồm tìm kiếm không gian địa lý), đọc giá và tình trạng phòng trực tiếp trên 11 kênh quản lý kết nối, tạo đặt phòng và đồng bộ vòng đời với PMS/kênh quản lý, nhận thanh toán (Wink là người bán hàng ghi nhận), bảo tồn nguồn gốc 6 tháng và kiếm hoa hồng qua luồng đối tác, đăng ký hơn 64 sự kiện webhook, tạo nội dung AI, và nhúng tồn kho có thể đặt qua Web Components." },
+  { title: "Một đại lý AI có thể hoàn tất đặt phòng khách sạn qua Wink không?", content: "Có. Tạo đặt phòng là thao tác REST API, và Booking Engine thực hiện giao dịch — thanh toán, xác nhận và đồng bộ đặt phòng. Đại lý gọi API đặt phòng thay mặt khách du lịch có thể hoàn tất một đặt phòng thực sự, được xác nhận với ngữ cảnh nguồn gốc được bảo tồn." },
+  { title: "Làm thế nào một khách sạn trở nên có thể đặt bởi đại lý AI trên Wink?", content: "Chỉ cần thiết lập hồ sơ trên Wink. Khi nguồn cung, giá và tình trạng phòng của khách sạn trực tiếp (qua Extranet), nó tự động có thể khám phá và đặt bởi các đại lý AI được phê duyệt qua REST API và máy chủ MCP được lưu trữ — không cần tích hợp AI riêng cho từng khách sạn. Đại lý tìm kiếm tồn kho trực tiếp của khách sạn, tạo đặt phòng và thanh toán qua Booking Engine, với nguồn gốc được bảo tồn. Mỗi khách sạn trên Wink mặc định đã sẵn sàng cho đại lý." },
+  { title: "Đặt phòng khách sạn qua Wink khác gì so với ChatGPT với Expedia hoặc Booking.com?", content: "Các tích hợp trợ lý như ChatGPT với Expedia hoặc Booking.com mạnh về khám phá — giá trực tiếp, ảnh và bản đồ trong chat — nhưng khách du lịch thường được chuyển đến trang web hoặc ứng dụng của nhà cung cấp để hoàn tất đặt phòng và thanh toán. Trên Wink, đại lý giao dịch trực tiếp với nguồn cung khách sạn trực tiếp: đọc giá và tình trạng thực, tạo đặt phòng và thanh toán qua Booking Engine trong một quy trình — và có thể kiếm hoa hồng đối tác. Khám phá có thể xảy ra ở bất cứ đâu; thực hiện giao dịch xảy ra trên Wink." },
+  { title: "Wink có phải là nền tảng duy nhất cho phép đại lý AI đặt và thanh toán khách sạn không?", content: "Không — thương mại khách sạn do đại lý điều khiển là một hạng mục mới nổi, và nhiều bên trong ngành du lịch và thanh toán đã công bố hoặc triển khai đặt phòng đại lý toàn diện đến năm 2026. Điểm đặc biệt của Wink là sự kết hợp: nguồn cung do khách sạn sở hữu và trực tiếp (không phải bán lại qua GDS hay lấy dữ liệu web), đại lý có thể tìm kiếm, đặt, thanh toán VÀ kiếm tiền qua một lớp thương mại duy nhất, và có thể gọi trực tiếp qua REST API và máy chủ MCP được lưu trữ — không phải kế hoạch tương lai. Khách sạn giữ quyền kiểm soát phân phối; đại lý trở thành kênh được ghi nhận và có thu nhập." },
+  { title: "Wink hỗ trợ các tiêu chuẩn thương mại đại lý và AI nào?", content: "Wink ưu tiên API và vận hành máy chủ MCP (Model Context Protocol) được lưu trữ hôm nay, vì vậy bất kỳ đại lý tương thích MCP nào — Claude, Codex, Cursor và các đại lý khác — có thể khám phá và gọi các hợp đồng OpenAPI trực tiếp. Các nguyên thủy đặt phòng và thanh toán của Wink được thiết kế để tương tác với bộ công nghệ thương mại đại lý mới nổi — Agentic Commerce Protocol (ACP), Agent Payments Protocol (AP2) của Google, Agent2Agent (A2A) và thanh toán đại lý kiểu x402 — khi các tiêu chuẩn này được hợp nhất, thay vì khóa đại lý vào một con đường độc quyền." },
+  { title: "Có kỹ năng AI nào để xây dựng trên Wink không?", content: "Có — wink-api-builder là kỹ năng đại lý di động sử dụng máy chủ MCP làm nguồn sự thật. Nó hướng dẫn đại lý qua api_search đến các hợp đồng yêu cầu/phản hồi trực tiếp, xác thực và mã đã xác minh, và cảnh báo sự không khớp giữa mã hiện có và API hiện tại. Nó hoạt động với Claude Code, Codex, Cursor và các client có kỹ năng khác." },
+  { title: "Đại lý AI có thể kiếm tiền như một đối tác hoặc liên kết không?", content: "Mô hình đối tác của Wink bảo tồn nguồn gốc và chiến dịch trong 6 tháng mỗi lượt nhấp và trả hoa hồng mặc định 10% trên các đặt phòng được xác nhận. Đại lý tạo nhu cầu đủ điều kiện và chuyển đặt phòng có thể là nguồn được ghi nhận qua cùng hạ tầng đối tác và Booking Engine." },
+  { title: "Agentic AI có thay thế Booking Engine không?", content: "Không. Agentic AI tạo hoặc chuyển ý định; Booking Engine vẫn là lớp thực hiện cho thanh toán, xác nhận và đồng bộ đặt phòng. Mỗi lần chuyển giao đại lý đều được xử lý qua Booking Engine bên dưới." },
+  { title: "Nhà phát triển hoặc đại lý nên bắt đầu từ đâu?", content: "Kết nối với máy chủ MCP, sau đó đọc tài liệu Build on Wink, MCP Server và AI Skills. Yêu cầu truy cập API khi trường hợp sử dụng và con đường thương mại rõ ràng." },
+];
+
+<div class="not-content mkt-page">
+
+<AgentJsonLd faqs={faqs} />
+
+<BreadcrumbJsonLd items={[{ name: "Trang chủ", url: "https://wink.travel/" }, { name: "Agentic AI" }]} />
+
+{/* Hero — agent conversation. Full-bleed per the house `data-full-bleed` pattern,
+    with the breadcrumb inside the band so it lines up with the headline instead of
+    sitting in Starlight's narrower column above a full-width hero. */}
+<section data-full-bleed class="@container relative w-full overflow-hidden border-b border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white">
+  <div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+    <div class="absolute -left-24 -top-10 size-80 rounded-full bg-[#ff6b35]/20 blur-[100px]"></div>
+    <div class="absolute -bottom-16 -right-16 size-96 rounded-full bg-[#9333ea]/30 blur-[120px]"></div>
+  </div>
+  <div class="relative mx-auto w-full max-w-7xl px-4 pb-20 pt-8 lg:pb-24">
+    <nav aria-label="Breadcrumb" class="text-sm text-white/60">
+      <a href="/" class="transition-colors hover:text-white">Trang chủ</a>
+      <span class="px-1.5 text-white/55">/</span>
+      <span class="text-white">Agentic AI</span>
+    </nav>
+    <div class="mt-10 grid items-center gap-12 lg:mt-12 lg:min-h-[33rem] @lg:grid-cols-[1fr_1.02fr]">
+    {/* Left — copy */}
+    <div class="text-center @lg:text-left">
+      <span class="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-xs font-extrabold uppercase tracking-wider text-[#ff8a5c] ring-1 ring-white/15 backdrop-blur @lg:mx-0"><span class="size-1.5 rounded-full bg-gradient-to-r from-[#ff6b35] to-[#ec4899]"></span> Agentic AI</span>
+      <h1 class="font-heading mt-6 text-4xl font-extrabold leading-[1.05] tracking-tight text-balance @lg:text-5xl @2xl:text-6xl">Các đại lý AI có thể lên kế hoạch chuyến đi. <span class="wink-shimmer bg-gradient-to-r from-[#ff8a5c] via-[#ec4899] to-[#a855f7] bg-clip-text text-transparent">Gần như không ai có thể đặt phòng.</span></h1>
+      <p class="mx-auto mt-5 max-w-xl text-pretty text-lg text-white/75 @lg:mx-0 @lg:text-xl">Đề xuất khách sạn là vấn đề về nội dung. Đặt phòng là vấn đề thương mại — giá trực tiếp, tồn kho giữ chỗ, thanh toán, thanh toán và hợp đồng với khách sạn. Wink là cơ sở hạ tầng kết nối khoảng cách đó: đại lý khám phá, đặt <em class="not-italic font-semibold text-white">và thanh toán</em> với nguồn cung do khách sạn kiểm soát, qua REST API trực tiếp và máy chủ MCP được lưu trữ.</p>
+      <div class="mt-8 flex flex-col items-center justify-center gap-3 @lg:justify-start sm:flex-row">
+        <a href="/developers/build-on-wink/" class="inline-flex h-12 items-center justify-center rounded-md bg-[#ff6b35] px-7 text-base font-semibold text-white transition-colors hover:bg-[#e85b29]">Xem tài liệu</a>
+        <a href="#agents" class="inline-flex h-12 items-center justify-center rounded-md bg-white/10 px-7 text-base font-medium text-white ring-1 ring-white/20 backdrop-blur transition-colors hover:bg-white/15">Kết nối đại lý</a>
+      </div>
+      <div class="mt-7 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 font-mono text-xs text-white/70"><span class="size-1.5 animate-pulse rounded-full bg-emerald-400"></span> Máy chủ MCP trực tiếp · docs.mcp.wink.travel/mcp</div>
+    </div>
+
+    {/* Right — agent conversation (swappable infographic) */}
+    <AgentConversation />
+    </div>
+  </div>
+</section>
+
+{/* Direct answer */}
+<section class="mx-auto w-full max-w-3xl px-4 pt-24 pb-24 text-center">
+  <p class="mkt-kicker text-primary">Tại sao hầu hết các đại lý AI không thể đặt phòng khách sạn?</p>
+  <p class="mkt-sub text-muted-foreground mt-5">Wink ưu tiên API: mọi tính năng nền tảng đều có thể gọi từ bên ngoài, và một máy chủ MCP được lưu trữ cung cấp các hợp đồng API trực tiếp cho các đại lý AI. Thay vì bắt mọi khách du lịch phải qua một trang web, Wink cho phép các đại lý được phê duyệt truy cập có cấu trúc vào nguồn cung khách sạn, giá, tình trạng, đặt phòng, thanh toán, nguồn gốc và sự kiện — cùng cơ sở hạ tầng vận hành Wink.</p>
+  <div class="mx-auto mt-7 max-w-2xl rounded-2xl border-2 border-primary/30 bg-primary/[0.04] px-6 py-5 text-pretty text-foreground/90"><strong class="text-foreground">Bất kỳ khách sạn nào cũng trở nên sẵn sàng cho đại lý chỉ bằng cách thiết lập hồ sơ trên Wink.</strong> Khi nguồn cung, giá và tình trạng phòng trực tiếp, các đại lý AI được phê duyệt có thể tìm kiếm, đặt và thanh toán qua API và máy chủ MCP — không cần tích hợp AI riêng cho từng khách sạn.</div>
+</section>
+
+{/* Live proof — the argument above is shipped, not roadmap. Implementation
+    detail deliberately lives on /builders/ so this page stays the thesis. */}
+<section id="agents" class="@container w-full border-y border-border bg-muted/30" style="scroll-margin-top:5rem">
+  <div class="mx-auto w-full max-w-4xl px-4 py-24 text-center">
+    <p class="mkt-kicker text-primary">Đang hoạt động hôm nay, không phải kế hoạch tương lai</p>
+    <h2 class="mkt-h2 font-heading mt-3">Bốn bước từ đại lý đến đặt phòng được xác nhận và thanh toán.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-2xl">Kết nối máy chủ MCP được lưu trữ, giải quyết ý định thành các thao tác thực tế trên API trực tiếp, tạo mã đã xác minh, rồi chuyển giao cho Booking Engine để thanh toán, xác nhận và đồng bộ PMS.</p>
+    <ol class="mx-auto mt-10 grid gap-3 text-left @lg:grid-cols-4">
+      <li class="rounded-xl border border-border bg-card px-4 py-3 text-sm"><span class="font-mono text-xs text-primary">01</span><span class="mt-1 block font-semibold">Kết nối MCP</span></li>
+      <li class="rounded-xl border border-border bg-card px-4 py-3 text-sm"><span class="font-mono text-xs text-primary">02</span><span class="mt-1 block font-semibold">Tìm kiếm API trực tiếp</span></li>
+      <li class="rounded-xl border border-border bg-card px-4 py-3 text-sm"><span class="font-mono text-xs text-primary">03</span><span class="mt-1 block font-semibold">Xây dựng mã đã xác minh</span></li>
+      <li class="rounded-xl border border-border bg-card px-4 py-3 text-sm"><span class="font-mono text-xs text-primary">04</span><span class="mt-1 block font-semibold">Đặt phòng &amp; nhận thanh toán</span></li>
+    </ol>
+    <div class="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <a href="/builders/#agent-quickstart" class="inline-flex h-12 items-center justify-center rounded-md bg-[#ff6b35] px-7 text-base font-semibold text-white transition-colors hover:bg-[#e85b29]">Xem các bước tích hợp</a>
+      <a href="/developers/mcp/" class="inline-flex h-12 items-center justify-center rounded-md border border-border px-7 text-base font-medium transition-colors hover:bg-muted">Tài liệu máy chủ MCP</a>
+    </div>
+    <p class="text-muted-foreground mt-5 inline-flex items-center gap-2 font-mono text-xs"><span class="size-1.5 animate-pulse rounded-full bg-emerald-500"></span> docs.mcp.wink.travel/mcp</p>
+  </div>
+</section>
+
+{/* What an agent can do — capability map */}
+<section class="@container mx-auto w-full max-w-7xl px-4 pt-24">
+  <div class="mx-auto mb-14 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Bản đồ năng lực</p>
+    <h2 class="mkt-h2 font-heading mt-3">Một đại lý AI có thể làm gì trên Wink.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">Mọi năng lực dưới đây đều có sẵn hôm nay qua REST API và máy chủ MCP — dựa trên cùng các hợp đồng mà Wink vận hành.</p>
+  </div>
+  <div class="grid gap-5 @md:grid-cols-2 @2xl:grid-cols-3">
+    {[
+      { icon: IconMapSearch, title: "Tìm kiếm tồn kho khách sạn", desc: "Tìm nguồn cung có thể đặt với tìm kiếm không gian địa lý — điểm, vòng tròn, hình chữ nhật hoặc đa giác — cùng phát hiện GeoIP." },
+      { icon: IconCalendarStats, title: "Đọc giá & tình trạng trực tiếp", desc: "Lấy giá, tình trạng và tồn kho thời gian thực trên 11 kênh quản lý kết nối." },
+      { icon: IconCalendarCheck, title: "Tạo & đồng bộ đặt phòng", desc: "Tạo đặt phòng qua API; tạo / cập nhật / hủy đồng bộ với PMS hoặc kênh quản lý kết nối với theo dõi vòng đời đầy đủ." },
+      { icon: IconCreditCard, title: "Nhận thanh toán", desc: "Wink xử lý thanh toán, logic chính sách hủy và thanh toán phía sau đặt phòng — Wink là người bán hàng ghi nhận." },
+      { icon: IconCoin, title: "Bảo tồn nguồn gốc & kiếm tiền", desc: "Ngữ cảnh nguồn và chiến dịch tồn tại suốt hành trình — ghi nhận 6 tháng mỗi lượt nhấp và hoa hồng mặc định 10% trên đặt phòng xác nhận." },
+      { icon: IconWebhook, title: "Phản ứng với hơn 64 sự kiện", desc: "Đăng ký sự kiện webhook — đặt phòng, thanh toán, hoàn tiền, cập nhật kênh quản lý — và kích hoạt hành động tiếp theo." },
+      { icon: IconSparkles, title: "Tạo nội dung", desc: "Nội dung AI trên 9 loại tồn kho và 12 tông giọng; đăng ký tài sản chỉ với một URL." },
+      { icon: IconComponents, title: "Nhúng tồn kho có thể đặt", desc: "Thả tồn kho khách sạn trực tiếp có thể đặt vào bất kỳ bề mặt nào với Web Components và mã tối thiểu." },
+      { icon: IconCode, title: "Xây dựng trên toàn bộ API", desc: "Mọi tính năng Wink đều có thể gọi từ bên ngoài qua REST, với xác thực OAuth2 và SDK chính thức — tích hợp như thể hệ thống là của bạn." },
+    ].map((c) => (
+      <div class="flex flex-col rounded-2xl border border-border bg-card p-6">
+        <span class="mb-4 flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-white"><c.icon class="size-6" /></span>
+        <h3 class="font-heading text-base font-semibold">{c.title}</h3>
+        <p class="text-muted-foreground mt-2 text-sm text-pretty">{c.desc}</p>
+        <span class="mt-4 inline-flex w-fit items-center gap-1.5 rounded-full bg-emerald-500/10 px-2.5 py-1 text-xs font-semibold text-emerald-600 dark:text-emerald-400"><span class="size-1.5 rounded-full bg-emerald-500"></span>Có sẵn ngay</span>
+      </div>
+    ))}
+  </div>
+</section>
+
+{/* The agentic shift — before/after flow */}
+<section class="@container mx-auto w-full max-w-5xl px-4 pt-24">
+  <div class="mx-auto mb-12 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Sự chuyển đổi</p>
+    <h2 class="mkt-h2 font-heading mt-3">Từ khách du lịch đến trang web sang khách du lịch đến đại lý.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">Trong mô hình cũ, khách du lịch làm công việc. Trong mô hình đại lý, đại lý trở thành giao diện — và Wink trở thành lớp thương mại phía sau câu trả lời.</p>
+  </div>
+  {/* Before/after flow — swappable infographic (infographics/AgenticShiftFlow.astro) */}
+  <AgenticShiftFlow />
+</section>
+
+{/* Why Wink — recommend vs transact */}
+<section class="@container mx-auto w-full max-w-5xl px-4 pt-24">
+  <div class="mx-auto mb-12 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Tại sao chọn Wink</p>
+    <h2 class="mkt-h2 font-heading mt-3">Một câu trả lời AI không phải là một đặt phòng.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">Một đề xuất cần nguồn cung có cấu trúc, giá trực tiếp, thanh toán, xác nhận và nguồn gốc để trở thành thương mại.</p>
+  </div>
+  <div class="grid gap-6 @md:grid-cols-2">
+    <div class="rounded-2xl border border-border bg-muted/30 p-7">
+      <h3 class="font-heading text-lg font-semibold text-muted-foreground">Đại lý AI không có cơ sở hạ tầng</h3>
+      <ul class="mt-5 space-y-3">
+        {["Nguồn cung lấy từ web, thường lỗi thời", "Giá có thể không đặt được", "Đề xuất rồi chuyển đặt phòng sang trang web hoặc OTA", "Không có nguồn gốc — và đại lý không thể kiếm tiền", "Mất mạch sau đề xuất"].map((b) => (
+          <li class="flex items-start gap-2.5"><IconX class="mt-0.5 size-5 shrink-0 text-muted-foreground/60" /><span class="text-sm text-muted-foreground">{b}</span></li>
+        ))}
+      </ul>
+      <p class="mt-6 text-sm font-semibold text-muted-foreground">Có thể đề xuất.</p>
+    </div>
+    <div class="rounded-2xl border-2 border-primary/30 bg-primary/[0.04] p-7">
+      <h3 class="font-heading text-lg font-semibold text-primary">Đại lý AI trên Wink</h3>
+      <ul class="mt-5 space-y-3">
+        {["Nguồn cung trực tiếp do khách sạn sở hữu — không lấy từ web hay bán lại", "Giá và tình trạng trực tiếp qua API", "Đặt và thanh toán trong một quy trình — Wink thanh toán", "Đại lý có thể kiếm tiền — nguồn gốc + hoa hồng mặc định 10%", "Xác nhận, đồng bộ PMS, với webhook — hoạt động ngay hôm nay"].map((b) => (
+          <li class="flex items-start gap-2.5"><IconCheck class="mt-0.5 size-5 shrink-0 text-primary" /><span class="text-sm text-foreground/90">{b}</span></li>
+        ))}
+      </ul>
+      <p class="mt-6 text-sm font-semibold text-primary">Có thể giao dịch.</p>
+    </div>
+  </div>
+</section>
+
+{/* AI agents for everyone */}
+<section class="@container mx-auto w-full max-w-7xl px-4 pt-24">
+  <div class="mx-auto mb-14 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Mỗi người tham gia, một đại lý</p>
+    <h2 class="mkt-h2 font-heading mt-3">Một đại lý cho khách du lịch, khách sạn, đối tác và nhà phát triển.</h2>
+  </div>
+  <div class="grid gap-6 @md:grid-cols-2">
+    {[
+      { icon: IconUser, who: "Dành cho khách du lịch", title: "Tìm kiếm, đặt và quản lý kỳ nghỉ", desc: "Đại lý làm việc với nguồn cung có cấu trúc, giá trực tiếp và chính sách — rồi tạo đặt phòng qua Booking Engine.", prompt: "Tìm khách sạn sang trọng chỉ dành cho người lớn ở Chiang Mai tháng tới có spa. Đặt phòng." },
+      { icon: IconBuildingStore, who: "Dành cho khách sạn", title: "Người giám sát, không phải người vận hành", desc: "Đại lý giúp tạo, cập nhật và phân tích qua Extranet, Social và Studio — khách sạn giữ quyền kiểm soát quy tắc.", prompt: "Tạo nội dung mạng xã hội tháng tới và đánh dấu ngày ít khách để quảng bá." },
+      { icon: IconUsersGroup, who: "Dành cho đối tác & nhà sáng tạo", title: "Tự động hóa chiến dịch và kiếm tiền", desc: "Khám phá khách sạn đủ điều kiện, xây dựng tài sản và cửa hàng, xuất bản, và giữ kết nối nguồn gốc.", prompt: "Tạo chiến dịch quảng bá khu nghỉ dưỡng sang trọng ở Maldives." },
+      { icon: IconCode, who: "Dành cho nhà phát triển", title: "Xây dựng trải nghiệm du lịch mới", desc: "Concierge AI, đại lý ngân hàng và khách du lịch trung thành — xây dựng trên máy chủ MCP, REST API và Booking Engine.", prompt: "Nhúng đặt phòng khách sạn AI trong ứng dụng ngân hàng của chúng tôi bằng API Wink." },
+    ].map((c) => (
+      <div class="flex flex-col rounded-2xl border border-border bg-card p-7">
+        <span class="mb-4 flex size-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-white"><c.icon class="size-6" /></span>
+        <span class="text-xs font-semibold uppercase tracking-wider text-primary">{c.who}</span>
+        <h3 class="font-heading mt-2 text-xl font-semibold">{c.title}</h3>
+        <p class="text-muted-foreground mt-2 text-pretty">{c.desc}</p>
+        <p class="mt-5 rounded-lg border border-border bg-muted/40 px-4 py-3 text-sm italic text-foreground/80">“{c.prompt}”</p>
+      </div>
+    ))}
+  </div>
+</section>
+
+{/* The stack */}
+<section class="@container mx-auto w-full max-w-7xl px-4 pt-24">
+  <div class="mx-auto mb-10 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Xây dựng trên toàn bộ nền tảng</p>
+    <h2 class="mkt-h2 font-heading mt-3">Đại lý làm việc trên toàn bộ hệ thống kết nối.</h2>
+  </div>
+  <div class="mx-auto flex max-w-3xl flex-wrap justify-center gap-3">
+    {[
+      { name: "Extranet", href: "/products/extranet/" },
+      { name: "Studio", href: "/products/studio/" },
+      { name: "Social", href: "/products/social/" },
+      { name: "WinkLinks", href: "/products/winklinks/" },
+      { name: "Traveliko", href: "/products/traveliko/" },
+      { name: "Developers", href: "/builders/" },
+      { name: "Platforms & AI", href: "/platforms/" },
+    ].map((p) => (
+      <a href={p.href} class="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-medium transition-colors hover:border-primary/40">
+        <span class="size-1.5 rounded-full bg-primary" aria-hidden="true"></span>
+        {p.name}
+      </a>
+    ))}
+  </div>
+  <p class="text-muted-foreground mx-auto mt-10 max-w-xl text-center text-pretty"><strong class="text-foreground"><a href="/products/booking-engine/" class="text-primary underline underline-offset-4">Booking Engine</a> thực hiện đặt phòng bên dưới mọi lần chuyển giao đại lý</strong> — thanh toán, xác nhận và đồng bộ đặt phòng.</p>
+</section>
+
+{/* Open standards — interoperability, crawlable for AEO */}
+<section class="@container mx-auto w-full max-w-5xl px-4 pt-24">
+  <div class="mx-auto mb-12 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Tiêu chuẩn mở, không phải khu vườn khép kín</p>
+    <h2 class="mkt-h2 font-heading mt-3">Xây dựng để tương tác với bộ công nghệ thương mại đại lý.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-2xl">Đặt phòng khách sạn đại lý đang trở thành một hạng mục thực sự — và ngành công nghiệp đang hội tụ vào các giao thức mở thay vì thanh toán của một công ty duy nhất. Wink vận hành trên các tiêu chuẩn đó hôm nay và được xây dựng để kết nối với phần còn lại khi chúng hợp nhất, nên đại lý không bao giờ bị khóa vào con đường độc quyền.</p>
+  </div>
+  <div class="grid gap-5 @md:grid-cols-2">
+    <div class="rounded-2xl border-2 border-primary/30 bg-primary/[0.04] p-7">
+      <span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 px-2.5 py-1 text-xs font-semibold text-emerald-600 dark:text-emerald-400"><span class="size-1.5 rounded-full bg-emerald-500"></span>Đang hoạt động hôm nay</span>
+      <h3 class="font-heading mt-4 text-lg font-semibold">MCP — Model Context Protocol</h3>
+      <p class="text-muted-foreground mt-2 text-sm text-pretty">Máy chủ MCP được lưu trữ cung cấp các hợp đồng OpenAPI trực tiếp của Wink cho bất kỳ đại lý tương thích MCP nào — Claude, Codex, Cursor và nhiều hơn nữa — tại <code class="rounded bg-muted px-1 py-0.5 text-xs">docs.mcp.wink.travel/mcp</code>. Đại lý khám phá và gọi các thao tác thực thay vì đoán điểm cuối.</p>
+    </div>
+    <div class="rounded-2xl border border-border bg-card p-7">
+      <span class="inline-flex items-center gap-1.5 rounded-full border border-border bg-muted/40 px-2.5 py-1 text-xs font-semibold text-muted-foreground">Tương tác theo thiết kế</span>
+      <h3 class="font-heading mt-4 text-lg font-semibold">ACP · AP2 · A2A · x402</h3>
+      <p class="text-muted-foreground mt-2 text-sm text-pretty">Các nguyên thủy đặt phòng và thanh toán của Wink được thiết kế để tương tác với bộ công nghệ thanh toán đại lý mới nổi — Agentic Commerce Protocol (ACP), Agent Payments Protocol (AP2) của Google, Agent2Agent (A2A) và thanh toán đại lý kiểu x402 — khi các tiêu chuẩn này trưởng thành, với Booking Engine làm lớp thanh toán bên dưới (Wink là người bán hàng ghi nhận).</p>
+    </div>
+  </div>
+</section>
+
+{/* Where this is heading — roadmap, clearly labeled */}
+<section class="mx-auto w-full max-w-3xl px-4 pt-24">
+  <div class="rounded-2xl border border-dashed border-primary/30 bg-primary/[0.03] p-8">
+    <span class="inline-flex items-center gap-1.5 rounded-full border border-primary/30 bg-card px-3 py-1 text-xs font-semibold text-primary">Hướng đi tương lai</span>
+    <p class="text-muted-foreground mt-5 text-pretty">Các năng lực trên đều đang hoạt động hôm nay. Hướng đi là thương mại đại lý gốc sâu hơn: các nguyên thủy đặt phòng hướng đại lý phong phú hơn, định danh và ủy quyền đại lý để giao dịch thay mặt khách du lịch, và đại lý tham gia như nguồn được ghi nhận và có thu nhập trong mạng đối tác. Vị trí chiến lược của Wink — <strong class="text-foreground">cơ sở hạ tầng thương mại du lịch cho các đại lý AI</strong> — là sợi chỉ xuyên suốt từ API hôm nay đến tương lai đó.</p>
+  </div>
+</section>
+
+{/* FAQ */}
+<FaqGrid
+  heading="Câu hỏi thường gặp về Agentic AI"
+  description="Nó có nghĩa gì, cách kết nối, và đại lý có thể làm gì."
+  items={faqs}
+/>
+
+{/* Final CTA */}
+<section class="w-full border-y border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white">
+  <div class="mx-auto w-full max-w-7xl px-4 py-24 text-center">
+    <h2 class="mkt-h2 font-heading">Sẵn sàng xây dựng thương mại du lịch cho các đại lý AI?</h2>
+    <p class="mx-auto mt-4 max-w-2xl text-pretty text-white/70 @lg:text-lg">Kết nối máy chủ MCP, đọc các hợp đồng trực tiếp, và để Booking Engine thực hiện đặt phòng. Hoặc nói chuyện với chúng tôi về quyền truy cập đại lý cho sản phẩm của bạn.</p>
+    <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <a href="/developers/build-on-wink/" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-[#ff6b35] px-8 text-base font-semibold text-white hover:bg-[#e85b29] sm:w-auto">Xem tài liệu</a>
+      <a href="/developers/mcp/" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-white px-8 text-base font-semibold text-[#1f0a40] hover:bg-white/90 sm:w-auto">Kết nối máy chủ MCP</a>
+      <a href="https://cal.com/wink-ws36dy" class="inline-flex h-12 items-center justify-center px-4 text-sm font-medium text-white/80 underline underline-offset-4 hover:text-white">Yêu cầu demo</a>
+    </div>
+  </div>
+</section>
+
+</div>

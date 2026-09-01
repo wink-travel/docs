@@ -1,0 +1,314 @@
+---
+title: WinkLinks — หน้าร้านโรงแรมที่จองได้
+description: เปลี่ยนลิงก์ประวัติ แคมเปญ หรือรหัส QR ให้เป็นหน้าร้านท่องเที่ยวบนมือถือที่มีบัตรโรงแรมที่จองได้ รายการ แผนที่ และเช็คเอาต์ผ่าน Booking Engine ฟรีสำหรับใช้งาน
+template: splash
+marketingNav: true
+---
+import '/src/styles/splash-page.css';
+import BreadcrumbJsonLd from "@/components/marketing/BreadcrumbJsonLd.astro";
+
+import DeviceFrame from "@/components/marketing/DeviceFrame.astro";
+import PillarsBand from "@/components/marketing/PillarsBand.astro";
+import FaqGrid from "@/components/marketing/FaqGrid.astro";
+import ProductJsonLd from "@/components/marketing/ProductJsonLd.astro";
+
+import IconLink from "@tabler/icons/outline/link.svg";
+import IconLayoutGrid from "@tabler/icons/outline/layout-grid.svg";
+import IconUsersGroup from "@tabler/icons/outline/users-group.svg";
+import IconBolt from "@tabler/icons/outline/bolt.svg";
+import IconX from "@tabler/icons/outline/x.svg";
+import IconCheck from "@tabler/icons/outline/check.svg";
+import IconArrowRight from "@tabler/icons/outline/arrow-right.svg";
+import IconPencil from "@tabler/icons/outline/pencil.svg";
+import IconShare from "@tabler/icons/outline/share.svg";
+import IconDeviceMobile from "@tabler/icons/outline/device-mobile.svg";
+import IconShoppingBag from "@tabler/icons/outline/shopping-bag.svg";
+import IconBuildingStore from "@tabler/icons/outline/building-store.svg";
+import IconList from "@tabler/icons/outline/list.svg";
+import IconMap from "@tabler/icons/outline/map.svg";
+import IconArticle from "@tabler/icons/outline/article.svg";
+import IconPhoto from "@tabler/icons/outline/photo.svg";
+import IconQrcode from "@tabler/icons/outline/qrcode.svg";
+import IconExternalLink from "@tabler/icons/outline/external-link.svg";
+
+export const faqs = [
+  { title: "WinkLinks คืออะไร?", content: "WinkLinks คือหน้าร้านท่องเที่ยวบนมือถือฟรีสำหรับเนื้อหาโรงแรมที่จองได้ โรงแรมและพันธมิตรจะรวบรวมบัตรโรงแรมที่จองได้ ข้อเสนอ รายการที่คัดสรร แผนที่ ตารางปลายทาง QR และลิงก์ต่าง ๆ ไว้ภายใต้ลิงก์สาธารณะ i.trvl.as/your-name — และส่งแขกเข้าสู่ Booking Engine เมื่อพร้อมจอง" },
+  { title: "WinkLinks เป็นแค่หน้าลิงก์ในประวัติไหม?", content: "ไม่ใช่ WinkLinks สามารถทำหน้าที่เหมือนหน้าลิงก์ในประวัติได้ แต่ยังแสดงบัตรโรงแรมที่จองได้ สินทรัพย์ที่สร้างโดย Studio แผนที่ ตาราง รายการที่คัดสรร เนื้อหาที่หลากหลาย และรายการหน้าร้านท่องเที่ยวที่นำไปสู่ Booking Engine" },
+  { title: "หน้าร้าน WinkLinks สามารถเก็บอะไรได้บ้าง?", content: "บัตรโรงแรมที่จองได้และข้อเสนอ ลิงก์ที่แชร์ได้ รายการที่คัดสรร แผนที่ ตาราง เนื้อหาที่หลากหลาย ไฟล์และสื่อ ปลายทาง QR และลิงก์ปกติ — ทั้งหมดภายใต้ลิงก์สาธารณะบนมือถือหนึ่งเดียว" },
+  { title: "WinkLinks เชื่อมต่อกับการจองอย่างไร?", content: "รายการ WinkLinks ที่จองได้จะส่งแขกเข้าสู่ Booking Engine ซึ่งโหลดข้อมูลเฉพาะโรงแรม รับชำระเงิน และทำการจองให้เสร็จสมบูรณ์ — พร้อมเก็บข้อมูลแหล่งที่มาและพันธมิตรไว้" },
+  { title: "พันธมิตรสามารถใช้ WinkLinks ได้ไหม?", content: "ได้ พันธมิตรสามารถนำเสนอซัพพลายโรงแรมที่มีสิทธิ์แก่ผู้ชมของตน และหน้าร้านจะเก็บบริบทของพันธมิตรและแคมเปญไว้เมื่อแขกจองผ่านรายการพันธมิตร" },
+  { title: "โรงแรมสามารถใช้ WinkLinks สำหรับรหัส QR ได้ไหม?", content: "ได้ ใช้ WinkLinks เป็นปลายทางหลังรหัส QR สำหรับร้านอาหาร สปา แผนกต้อนรับ กิจกรรม สื่อสิ่งพิมพ์ และโปรโมชั่นในที่พัก" },
+  { title: "WinkLinks เหมือนกับ Studio ไหม?", content: "ไม่ใช่ Studio สร้างสินทรัพย์ที่จองได้ เช่น ลิงก์ บัตร แผนที่ ตาราง และรายการที่คัดสรร WinkLinks นำเสนอสินทรัพย์เหล่านั้นในหน้าร้านสาธารณะบนมือถือ" },
+  { title: "WinkLinks ใช้ฟรีไหม?", content: "ใช่ WinkLinks ใช้ฟรี Wink จะคิดค่าธรรมเนียมการจองมาตรฐานเฉพาะเมื่อมีการจองเกิดขึ้น" },
+];
+
+<div class="not-content mkt-page">
+
+<ProductJsonLd
+  name="WinkLinks"
+  url="https://wink.travel/products/winklinks/"
+  applicationCategory="BusinessApplication"
+  description="หน้าร้านท่องเที่ยวบนมือถือฟรีสำหรับเนื้อหาโรงแรมที่จองได้ โรงแรมและพันธมิตรนำเสนอบัตรโรงแรมที่จองได้ รายการ แผนที่ ตาราง และปลายทาง QR ภายใต้ลิงก์สาธารณะ i.trvl.as หนึ่งเดียว พร้อมเช็คเอาต์ผ่าน Booking Engine"
+  features={["หน้าร้านสาธารณะบนมือถือภายใต้ลิงก์ i.trvl.as/your-name เดียว", "บัตรโรงแรมที่จองได้และข้อเสนอ", "รายการที่คัดสรร แผนที่ และตาราง", "ปลายทางรหัส QR", "เลย์เอาต์แบบบัตรและรายการ", "เช็คเอาต์ผ่าน Booking Engine", "เก็บข้อมูลพันธมิตรและแคมเปญ", "ฟรีสำหรับใช้งาน"]}
+  offersFree={true}
+  faqs={faqs}
+/>
+
+<BreadcrumbJsonLd items={[{ name: "หน้าแรก", url: "https://wink.travel/" }, { name: "สินค้า" }, { name: "WinkLinks" }]} />
+
+{/* Hero — dark, flagship (composite storefront + phone) */}
+<section data-full-bleed class="relative w-full overflow-hidden border-b border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white">
+  <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+    <div class="absolute -left-24 -top-10 size-96 rounded-full bg-[#ff6b35]/20 blur-[120px]"></div>
+    <div class="absolute -bottom-16 -right-16 size-[34rem] rounded-full bg-[#9333ea]/25 blur-[140px]"></div>
+  </div>
+  <div class="@container relative mx-auto w-full max-w-7xl px-4 pb-20 pt-8 lg:pb-24">
+    <nav aria-label="Breadcrumb" class="text-sm text-white/60">
+      <a href="/" class="transition-colors hover:text-white">หน้าแรก</a>
+      <span class="px-1.5 text-white/55">/</span>
+      <span>สินค้า</span>
+      <span class="px-1.5 text-white/55">/</span>
+      <span class="text-white">WinkLinks</span>
+    </nav>
+    <div class="mt-10 grid items-center gap-12 lg:mt-12 lg:grid-cols-2 lg:gap-16">
+      <div>
+        <span class="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-xs font-extrabold uppercase tracking-wider text-[#ff8a5c] ring-1 ring-white/15 backdrop-blur"><span class="size-1.5 rounded-full bg-gradient-to-r from-[#ff6b35] to-[#ec4899]"></span> WinkLinks</span>
+        <h1 class="font-heading mt-6 text-4xl font-extrabold leading-[1.05] tracking-tight text-balance @lg:text-5xl @2xl:text-[3.25rem]">
+          เปลี่ยนลิงก์เดียวเป็น <span class="bg-gradient-to-r from-[#ff8a5c] via-[#ec4899] to-[#a855f7] bg-clip-text text-transparent">หน้าร้านโรงแรมที่จองได้</span>
+        </h1>
+        <p class="mt-5 max-w-xl text-pretty text-lg text-white/75 @lg:text-xl">
+          ลิงก์สาธารณะ <code class="rounded bg-white/15 px-1.5 py-0.5 text-base text-white">i.trvl.as/your-name</code> หนึ่งเดียวกลายเป็น
+          หน้าร้านท่องเที่ยวบนมือถือ — บัตรโรงแรมที่จองได้ ข้อเสนอ และรายการที่คัดสรรที่เชื่อมตรงสู่
+          Booking Engine ฟรีสำหรับใช้งาน
+        </p>
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+          <a href="https://app.wink.travel" class="inline-flex h-12 items-center justify-center rounded-md bg-[#ff6b35] px-7 text-base font-semibold text-white transition-colors hover:bg-[#e85b29]">เริ่มต้นใช้งาน — ฟรี</a>
+          <a href="/partners/" class="inline-flex h-12 items-center justify-center rounded-md bg-white/10 px-7 text-base font-medium text-white ring-1 ring-white/20 backdrop-blur transition-colors hover:bg-white/15">เข้าร่วมเป็นพันธมิตร</a>
+        </div>
+        <div class="mt-7 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-white/65">
+          <span class="inline-flex items-center gap-1.5"><IconCheck class="size-4 text-[#ff8a5c]" /> ใช้งานฟรี</span>
+          <span class="inline-flex items-center gap-1.5"><IconCheck class="size-4 text-[#ff8a5c]" /> ไม่ต้องมีเว็บไซต์</span>
+          <span class="inline-flex items-center gap-1.5"><IconCheck class="size-4 text-[#ff8a5c]" /> จองได้ ไม่ใช่แค่ลิงก์</span>
+        </div>
+      </div>
+
+      <div class="relative">
+        <DeviceFrame
+          variant="browser"
+          url="i.trvl.as/grand-hotel"
+          src="/mockups/winklinks/winklinks-card-style-desktop.webp"
+          alt="หน้าร้าน WinkLinks ที่มีบัตรโรงแรมที่จองได้"
+          aspect="16/11"
+        />
+        <div class="absolute -bottom-8 -right-1 w-[116px] @sm:w-[136px] @lg:w-[150px]">
+          <DeviceFrame
+            variant="phone"
+            src="/mockups/winklinks/winklinks-mobile.webp"
+            alt="หน้าร้าน WinkLinks บนมือถือ"
+            aspect="9/19.5"
+            class="!max-w-none w-full"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* Direct answer */}
+<section class="mx-auto w-full max-w-3xl px-4 pt-24 text-center">
+  <p class="mkt-kicker text-primary">WinkLinks คืออะไร?</p>
+  <p class="mkt-sub text-muted-foreground mt-5">
+    WinkLinks คือหน้าร้านท่องเที่ยวบนมือถือสำหรับเนื้อหาโรงแรมที่จองได้ โรงแรมและพันธมิตรจะรวบรวม
+    ข้อเสนอโรงแรม บัตร รายการ แผนที่ ตาราง แคมเปญลิงก์ การจราจรรหัส QR และคำแนะนำไว้ภายใต้ลิงก์สาธารณะ
+    <code class="rounded bg-muted px-1.5 py-0.5 text-sm">i.trvl.as/your-name</code> — และส่งแขกเข้าสู่ Booking Engine เมื่อพร้อมจอง
+  </p>
+</section>
+
+{/* Why */}
+<PillarsBand
+  kicker="ทำไมถึงสำคัญ"
+  heading="ทำให้ลิงก์เดียวทำงานได้จริง"
+  lead="ลิงก์ประวัติ รหัส QR หรือแคมเปญมักมีโอกาสครั้งเดียวในการเปลี่ยนความสนใจเป็นการกระทำ WinkLinks เปลี่ยนช่วงเวลานั้นให้เป็นหน้าร้าน"
+  pillars={[
+    { icon: IconLink, title: "ลิงก์ประวัติลึกไม่พอ", desc: "ลิงก์โปรไฟล์ทั่วไปส่งนักเดินทางไปยังหน้าที่แยกจากกัน ไม่ใช่ตัวเลือกที่จองได้" },
+    { icon: IconLayoutGrid, title: "แคมเปญต้องการหน้าร้าน", desc: "QR ลิงก์ประวัติ หรือคำแนะนำควรแสดงรายการโรงแรมหลายรายการ ไม่ใช่ลิงก์คงที่เพียงหนึ่งเดียว" },
+    { icon: IconUsersGroup, title: "พันธมิตรต้องการหน้าที่ง่าย", desc: "นำเสนอคำแนะนำโรงแรมโดยไม่ต้องสร้างเว็บไซต์หรือผสานรวม" },
+    { icon: IconBolt, title: "รายการที่จองได้ต้องมีเช็คเอาต์", desc: "เมื่อแขกพร้อม หน้าร้านจะนำเข้าสู่ Booking Engine ทันที" },
+  ]}
+/>
+
+{/* Layouts — uniform frames */}
+<section class="@container mx-auto w-full max-w-7xl px-4 pt-24">
+  <div class="mx-auto mb-14 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">เลย์เอาต์</p>
+    <h2 class="mkt-h2 font-heading mt-3">มุมมองแบบบัตรหรือแบบรายการ — เลือกได้ตามใจคุณ</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">
+      นำเสนอเนื้อหาโรงแรมที่จองได้ในแบบที่ผู้ชมของคุณสแกนดูได้ บนมือถือเป็นหลัก ไม่ว่าจะเลือกแบบใด
+    </p>
+  </div>
+  <div class="mx-auto grid max-w-5xl gap-10 @lg:grid-cols-2">
+    <div>
+      <p class="mb-3 text-center text-sm font-semibold">มุมมองแบบบัตร</p>
+      <DeviceFrame variant="browser" url="i.trvl.as/grand-hotel" src="/mockups/winklinks/winklinks-card-style-desktop.webp" alt="หน้าร้าน WinkLinks ในมุมมองแบบบัตร" aspect="3/4" />
+    </div>
+    <div>
+      <p class="mb-3 text-center text-sm font-semibold">มุมมองแบบรายการ</p>
+      <DeviceFrame variant="browser" url="i.trvl.as/grand-hotel" src="/mockups/winklinks/winklinks-list-view-desktop.webp" alt="หน้าร้าน WinkLinks ในมุมมองแบบรายการ" aspect="3/4" />
+    </div>
+  </div>
+</section>
+
+{/* What it holds */}
+<section class="@container mx-auto w-full max-w-7xl px-4 pt-24 pb-24">
+  <div class="mx-auto mb-12 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">เนื้อหาหน้าร้าน</p>
+    <h2 class="mkt-h2 font-heading mt-3">แสดงมากกว่ารายการ URL</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">หน้าร้านเก็บเนื้อหาจริงที่จองได้ — ไม่ใช่แค่ลิงก์ ผสมผสานได้ตามที่เหมาะกับแคมเปญ</p>
+  </div>
+  <div class="mx-auto grid max-w-4xl grid-cols-2 gap-4 @sm:grid-cols-3">
+    {[
+      { icon: IconBuildingStore, label: "บัตรโรงแรมที่จองได้" },
+      { icon: IconLink, label: "ลิงก์ที่แชร์ได้" },
+      { icon: IconList, label: "รายการที่คัดสรร" },
+      { icon: IconMap, label: "แผนที่" },
+      { icon: IconLayoutGrid, label: "ตาราง" },
+      { icon: IconArticle, label: "เนื้อหาที่หลากหลาย" },
+      { icon: IconPhoto, label: "ไฟล์และสื่อ" },
+      { icon: IconQrcode, label: "ปลายทางรหัส QR" },
+      { icon: IconExternalLink, label: "ลิงก์ปกติ" },
+    ].map((c) => (
+      <div class="flex items-center gap-3 rounded-xl border border-border bg-card p-4 transition-colors hover:border-primary/40">
+        <span class="flex size-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary"><c.icon class="size-5" /></span>
+        <span class="text-sm font-medium">{c.label}</span>
+      </div>
+    ))}
+  </div>
+</section>
+
+{/* Value band — gradient (one link, fully bookable) */}
+<section class="@container relative w-full overflow-hidden bg-gradient-to-br from-[#ff6b35] via-[#ec4899] to-[#9333ea] text-white">
+  <div class="pointer-events-none absolute inset-0 opacity-20 mix-blend-overlay" aria-hidden="true">
+    <div class="absolute -left-20 -top-16 size-96 rounded-full bg-white blur-[120px]"></div>
+    <div class="absolute -bottom-20 -right-10 size-96 rounded-full bg-black blur-[130px]"></div>
+  </div>
+  <div class="relative mx-auto w-full max-w-6xl px-4 py-24">
+    <div class="mx-auto mb-12 max-w-2xl text-center">
+      <h2 class="mkt-h2 font-heading">ลิงก์เดียว หน้าร้านที่จองได้ครบถ้วน</h2>
+      <p class="mkt-sub mx-auto mt-4 max-w-2xl text-white/85">ไม่ต้องมีเว็บไซต์ ไม่ต้องเขียนโค้ด — หน้าร้านท่องเที่ยวบนมือถือที่ทุกบัตร ข้อเสนอ และรายการที่คัดสรร นำตรงเข้าสู่ Booking Engine</p>
+    </div>
+    <div class="grid gap-5 @sm:grid-cols-2 @lg:grid-cols-4">
+      {[
+        { stat: "ฟรี", label: "ตั้งค่า $0 รายเดือน $0" },
+        { stat: "ลิงก์เดียว", label: "i.trvl.as/your-name" },
+        { stat: "บนมือถือเป็นหลัก", label: "สร้างมาเพื่อวิธีการจองของผู้คน" },
+        { stat: "จองได้", label: "ตรงเข้าสู่ Booking Engine" },
+      ].map((s) => (
+        <div class="rounded-2xl border border-white/20 bg-white/10 p-6 text-center backdrop-blur">
+          <p class="font-heading text-2xl font-semibold @lg:text-3xl">{s.stat}</p>
+          <p class="mt-2 text-sm text-white/80">{s.label}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+{/* From link to booking — flow */}
+<section class="@container w-full border-y border-border bg-muted/30">
+  <div class="mx-auto w-full max-w-7xl px-4 py-24">
+    <div class="mx-auto mb-12 max-w-2xl text-center">
+      <p class="mkt-kicker text-primary">จากลิงก์สู่การจอง</p>
+      <h2 class="mkt-h2 font-heading mt-3">สี่ขั้นตอนจากความสนใจสู่การยืนยันการเข้าพัก</h2>
+    </div>
+    <ol class="grid gap-5 @md:grid-cols-2 @4xl:grid-cols-4">
+      {[
+        { icon: IconPencil, t: "สร้างหน้าร้าน", d: "เพิ่มบัตรโรงแรมที่จองได้ ข้อเสนอ รายการ แผนที่ และลิงก์ — สินทรัพย์จาก Studio ใส่ตรงได้เลย" },
+        { icon: IconShare, t: "แชร์ลิงก์หรือ QR เดียว", d: "ใส่ i.trvl.as/your-name ในประวัติ แคมเปญ อีเมล หรือหลังรหัส QR" },
+        { icon: IconDeviceMobile, t: "แขกเรียกดูบนมือถือเป็นหลัก", d: "นักเดินทางสแกนบัตรและข้อเสนอที่จองได้แทนหน้าที่แยกจากกัน" },
+        { icon: IconShoppingBag, t: "Booking Engine ดำเนินการ", d: "แตะเดียวเข้าสู่เช็คเอาต์ — ชำระเงิน ยืนยัน และเก็บข้อมูลแหล่งที่มา" },
+      ].map((s, i) => (
+        <li class="relative flex flex-col rounded-2xl border border-border bg-card p-6">
+          <span class="absolute right-5 top-5 font-heading text-2xl font-semibold text-primary/15">0{i + 1}</span>
+          <span class="mb-4 flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-white"><s.icon class="size-6" /></span>
+          <h3 class="font-heading text-base font-semibold">{s.t}</h3>
+          <p class="text-muted-foreground mt-2 text-sm text-pretty">{s.d}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+{/* More than link-in-bio */}
+<section class="@container mx-auto w-full max-w-5xl px-4 pt-24">
+  <div class="mx-auto mb-12 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">ความแตกต่าง</p>
+    <h2 class="mkt-h2 font-heading mt-3">ดูเหมือนลิงก์ในประวัติ ทำงานเหมือนหน้าร้าน</h2>
+  </div>
+  <div class="grid gap-6 @md:grid-cols-2">
+    <div class="rounded-2xl border border-border bg-muted/30 p-7">
+      <h3 class="font-heading text-lg font-semibold text-muted-foreground">ลิงก์ในประวัติทั่วไป</h3>
+      <ul class="mt-5 space-y-3">
+        {["รายการ URL", "ส่งคนออกไปยังที่อื่น", "ไม่มีสต็อกโรงแรมสด", "ไม่มีเช็คเอาต์", "ไม่มีการเก็บข้อมูลแหล่งที่มา"].map((b) => (
+          <li class="flex items-start gap-2.5"><IconX class="mt-0.5 size-5 shrink-0 text-muted-foreground/60" /><span class="text-sm text-muted-foreground">{b}</span></li>
+        ))}
+      </ul>
+    </div>
+    <div class="rounded-2xl border-2 border-primary/30 bg-primary/[0.04] p-7">
+      <h3 class="font-heading text-lg font-semibold text-primary">WinkLinks</h3>
+      <ul class="mt-5 space-y-3">
+        {["บัตรโรงแรมและข้อเสนอที่จองได้", "สต็อกและอัตราสด", "เช็คเอาต์ผ่าน Booking Engine", "เก็บข้อมูลแหล่งที่มา", "หน้าร้านท่องเที่ยวบนมือถือ"].map((b) => (
+          <li class="flex items-start gap-2.5"><IconCheck class="mt-0.5 size-5 shrink-0 text-primary" /><span class="text-sm text-foreground/90">{b}</span></li>
+        ))}
+      </ul>
+    </div>
+  </div>
+  <p class="text-muted-foreground mx-auto mt-10 max-w-xl text-center text-pretty">
+    <strong class="text-foreground"><a href="/products/studio/" class="text-primary underline underline-offset-4">Studio</a> สร้างสินทรัพย์ WinkLinks นำเสนอ และ <a href="/products/booking-engine/" class="text-primary underline underline-offset-4">Booking Engine</a> ดำเนินการจอง</strong>
+  </p>
+</section>
+
+{/* Use cases — house accent cards (was AudienceCards) */}
+<section class="@container mx-auto w-full max-w-7xl px-4 pt-24">
+  <div class="mx-auto mb-12 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">สำหรับใคร</p>
+    <h2 class="mkt-h2 font-heading mt-3">หน้าร้านเดียว ทุกกลุ่มเป้าหมาย</h2>
+  </div>
+  <div class="grid gap-5 @md:grid-cols-3">
+    {[
+      { eyebrow: "สำหรับโรงแรม", title: "ลิงก์เดียวสำหรับแคมเปญที่เป็นเจ้าของ", desc: "ใส่ลิงก์เดียวในประวัติโซเชียล รหัส QR อีเมล หรือสื่อในที่พัก — และแสดงห้องพัก ข้อเสนอ ร้านอาหาร สปา และประสบการณ์", href: "/hotels/", cta: "สำรวจสำหรับโรงแรม", accent: "#ff6b35" },
+      { eyebrow: "สำหรับพันธมิตร", title: "คำแนะนำในหน้าร้านสาธารณะ", desc: "สร้างหน้าปลายทาง คอลเลกชันกิจกรรม หรือหน้าร้านแคมเปญจากโรงแรมในเครือข่าย — พร้อมเก็บข้อมูลแหล่งที่มา", href: "/partners/", cta: "เข้าร่วมเป็นพันธมิตร", accent: "#ec4899" },
+      { eyebrow: "สำหรับนักพัฒนา", title: "หน้าร้านที่รวดเร็วก่อนสร้างเอง", desc: "ใช้ WinkLinks เมื่อคุณต้องการหน้าร้านสาธารณะทันที — และเปลี่ยนไปใช้สิทธิ์นักพัฒนาเมื่อคุณต้องการฟลูว์ที่กำหนดเอง", href: "/builders/", cta: "ดูเอกสาร", accent: "#22d3ee" },
+    ].map((c) => (
+      <a href={c.href} class="group flex flex-col rounded-2xl border border-border bg-card p-7 shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg" style={`border-top:3px solid ${c.accent}`}>
+        <span class="text-xs font-bold uppercase tracking-wider" style={`color:${c.accent}`}>{c.eyebrow}</span>
+        <h3 class="font-heading mt-2 text-lg font-semibold">{c.title}</h3>
+        <p class="text-muted-foreground mt-2 flex-1 text-sm text-pretty">{c.desc}</p>
+        <span class="mt-4 inline-flex items-center gap-1 text-sm font-semibold" style={`color:${c.accent}`}>{c.cta} <IconArrowRight class="size-4 transition-transform group-hover:translate-x-0.5" /></span>
+      </a>
+    ))}
+  </div>
+</section>
+
+{/* FAQ */}
+<FaqGrid
+  heading="คำถามที่พบบ่อยเกี่ยวกับ WinkLinks"
+  description="หน้าร้าน เนื้อหา และการเชื่อมต่อกับการจอง"
+  items={faqs}
+/>
+
+{/* Final CTA */}
+<section class="w-full border-y border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white">
+  <div class="mx-auto w-full max-w-7xl px-4 py-24 text-center">
+    <h2 class="mkt-h2 font-heading">พร้อมเปลี่ยนลิงก์เดียวเป็นหน้าร้านโรงแรมหรือยัง?</h2>
+    <p class="mx-auto mt-4 max-w-2xl text-pretty text-white/70 @lg:text-lg">
+      ใช้ WinkLinks เมื่อคุณต้องการให้ลิงก์ประวัติ ลิงก์แคมเปญ รหัส QR หรือคำแนะนำพันธมิตรแสดง
+      เนื้อหาโรงแรมที่จองได้ก่อนเช็คเอาต์ ฟรีสำหรับใช้งาน
+    </p>
+    <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <a href="https://app.wink.travel" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-[#ff6b35] px-8 text-base font-semibold text-white hover:bg-[#e85b29] sm:w-auto">เริ่มต้นใช้งาน — ฟรี</a>
+      <a href="https://cal.com/wink-ws36dy" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-white px-8 text-base font-semibold text-[#1f0a40] hover:bg-white/90 sm:w-auto">ขอเดโม</a>
+      <a href="/partners/" class="inline-flex h-12 items-center justify-center px-4 text-sm font-medium text-white/80 underline underline-offset-4 hover:text-white">เข้าร่วมเป็นพันธมิตร</a>
+    </div>
+  </div>
+</section>
+
+</div>

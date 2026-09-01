@@ -5,7 +5,7 @@ sidebar:
   order: 0
 ---
 
-Wink **Partner API**, entegre edenlerin rezervasyon yapılabilir seyahat envanterini sorgulaması için kimlik doğrulamalı, yüksek verimli bir yoldur — gömülebilir widget’larımızı ve genel tarama uç noktalarını besleyen aynı tedarik, birinci sınıf programatik arayüz olarak sunulur. Ücretsiz Web Bileşenleri ve genel tarama uç noktaları hafif, insan odaklı gömme için tasarlanmışken, Partner API ölçekli arama, fiyatlandırma ve rezervasyon yapan sistemler için oluşturulmuştur. Erişim entegre eden başına kimlik doğrulanır ve kullanım bazında faturalandırılır, böylece yalnızca gerçekten gönderdiğiniz trafik için ödeme yaparsınız.
+Wink **Partner API**, entegre edenlerin rezervasyon yapılabilir seyahat envanterini sorgulaması için kimlik doğrulamalı, yüksek verimli bir yoldur — gömülebilir widget’larımızı ve genel tarama uç noktalarını besleyen aynı tedarik, birinci sınıf programatik arayüz olarak sunulur. Ücretsiz Web Bileşenleri ve genel tarama uç noktaları hafif, insan odaklı gömme için tasarlanmışken, Partner API ölçekli arama, fiyatlandırma ve rezervasyon yapan sistemler için oluşturulmuştur. Erişim entegre eden başına kimlik doğrulanır ve kullanım başına faturalandırılır, böylece yalnızca gerçekten gönderdiğiniz trafik için ödeme yaparsınız.
 
 ## Planlar ve fiyatlandırma
 
@@ -14,12 +14,12 @@ Bir API çağrısı = bir istek. Ölçümlü kullanım 1.000 istek başına fatu
 | | Ücretsiz | Ücretli | Kurumsal |
 |---|---|---|---|
 | **Fiyat** | $0 | Kullanıma göre | İletişime geçin |
-| **En uygun** | Değerlendirme ve düşük hacimli entegrasyonlar | Ölçekli kullanımda kullandıkça öde | Özel hacim ve müzakere edilmiş koşullar |
+| **En uygun** | Değerlendirme ve düşük hacimli entegrasyonlar | Ölçekli kullanımda öde-kadar | Özel hacim ve müzakere edilen koşullar |
 | Dakikada istek sayısı | 30 (60 ani artış) | Sınırsız | Sınırsız |
 | Aylık istek sayısı | 10.000 | Sınırsız | Sınırsız |
 | API yanıt süresi (P95) | — | 500 ms altında | 500 ms altında |
 | 1.000 istek başına fiyat | Ücretsiz | $1.00 | Özel |
-| Rezervasyona dönüşüm aşımı (5.000:1 oranını aşan her 1.000 fazla arama için) | — | $2.00 | Özel |
+| Rezervasyona dönüşüm aşımı (5.000:1 üzerindeki her 1.000 aşan arama için) | — | $2.00 | Özel |
 | Oran sınırı yanıtı | 429 (duraklatma / aylık kesin durdurma) | Yok | Yok |
 | Hizmet Düzeyi Anlaşması | — | ✓ | ✓ |
 | Öncelikli destek | — | ✓ | ✓ |
@@ -32,7 +32,7 @@ Bir API çağrısı = bir istek. Ölçümlü kullanım 1.000 istek başına fatu
 Rezervasyon yapılabilir envanteri sunan iki yüzey vardır ve bunlar yukarıdaki iki katmana karşılık gelir:
 
 - **Ücretsiz — Tüketici / Rezervasyon Motoru API'si** (REST, `/api/public/**`): anonim, tarayıcı ve widget odaklı. [Rezervasyon Motoru referansına göz atın →](/tr/api/booking-engine/)
-- **Ücretli — Partner Entegratör API'si** (**gRPC**, `wink.partner.v1`): kimlik doğrulamalı, kullanım bazlı, ölçekli sunucu-sunucu entegrasyonu için tasarlanmış. [Entegratör referansına göz atın →](/tr/partner-api/partner/)
+- **Ücretli — Partner Entegratör API'si** (**gRPC**, `wink.partner.v1`): kimlik doğrulamalı, kullanım ölçümlü, ölçekli sunucu-sunucu entegrasyonu için tasarlanmış. [Entegratör referansına göz atın →](/tr/partner-api/partner/)
 
 Partner Entegratör API'si gRPC'dir, REST değildir. HTTP/2 üzerinden oluşturulmuş bir istemci ile
 `partner.wink.travel:443` adresine çağrı yaparsınız, bir bearer token ve çağrı yaptığınız hesabı ileterek:
@@ -43,14 +43,17 @@ grpcurl -H "authorization: Bearer $WINK_TOKEN" partner.wink.travel:443 list
 
 Yukarıdaki referans sayfası her hizmeti, mesajı ve hata durumunu belgeler ve şema çalışma zamanında sunucu yansıması yoluyla da erişilebilir, böylece `grpcurl`, Postman ve Insomnia herhangi bir indirme olmadan keşfeder.
 
+Önceden bir istemci oluşturmak isterseniz, `.proto` kaynak dosyaları
+[github.com/wink-travel/partner-api-proto](https://github.com/wink-travel/partner-api-proto) adresinde yayımlanmıştır.
+
 ## Kullanım ve sınırlar nasıl çalışır
 
 ### Ücretsiz katman
 
-Ücretsiz katman, size maliyetsiz olarak mütevazı üretim trafiği oluşturma, test etme ve çalıştırma imkanı vermek için tasarlanmıştır.
+Ücretsiz katman, düşük maliyetle makul üretim trafiği oluşturmanıza, test etmenize ve çalıştırmanıza olanak tanır.
 
 - **Oran sınırı — Dakikada 30 istek, 60 isteklik ani artış ile.** Sürekli oranın üzerindeki kısa sıçramalar ani artış hakkı ile karşılanır. Aşarsanız, API **HTTP 429 (Çok Fazla İstek)** ile yanıt verir ve anahtarınızın trafiği yeniden sunmaya başlamadan önce **5 dakikalık duraklatma** uygular. Duraklatma süresi bitene kadar bekleyin ve tekrar deneyin, uç noktaya aşırı yüklenmeyin.
-- **Aylık kota — Takvim ayı başına 10.000 istek.** Aylık sınırı aştığınızda, API ayın geri kalanında **HTTP 429** döner — kesin durdurma — ve devam etmek için Ücretli katmana abone olmanız önerilir. Sayaç bir sonraki takvim ayı başında sıfırlanır.
+- **Aylık kota — Takvim ayı başına 10.000 istek.** Aylık sınırı aştığınızda, API ay sonuna kadar **HTTP 429 döner** — kesin durdurma — ve devam etmek için Ücretli katmana abone olmanız önerilir. Sayaç bir sonraki takvim ayı başında sıfırlanır.
 
 Ücretsiz katman Hizmet Düzeyi Anlaşması veya öncelikli destek içermez.
 
@@ -59,11 +62,11 @@ Yukarıdaki referans sayfası her hizmeti, mesajı ve hata durumunu belgeler ve 
 Ücretli katman aylık sınırı ve oran sınırı duraklatmalarını kaldırır, yalnızca kullandığınız kadar faturalandırır.
 
 - **Ölçümlü istekler — 1.000 istek başına $1.00.** Aylık istek sınırı yoktur ve normal kullanımda oran sınırı kısıtlaması yoktur; gerçek hacim üzerinden faturalandırılırsınız.
-- **Rezervasyona dönüşüm aşımı — 1.000 fazla arama başına $2.00.** Tedarikin sağlıklı kalması için arama ("arama sayısı") ile onaylanmış rezervasyonlar oranını ölçeriz. Rezervasyon başına **5.000 arama hakkınız** vardır, aşım uygulanmadan önce. Fazla arama şu şekilde hesaplanır:
+- **Rezervasyona dönüşüm aşımı — 1.000 aşan arama başına $2.00.** Tedarikin sağlıklı kalması için arama ("arama sayısı") ile onaylanmış rezervasyonlar oranını ölçeriz. Aşım uygulanmadan önce **her rezervasyon için 5.000 arama** hakkınız vardır. Aşan arama sayısı şöyle hesaplanır:
 
-  `fazla = max(0, aramalar − rezervasyonlar × 5.000)`
+  `aşım = max(0, aramalar − rezervasyonlar × 5.000)`
 
-  Aşım daha sonra **1.000 fazla arama başına $2.00** olarak faturalandırılır. İyi dönüşüm sağlayan entegrasyonlar nadiren aşım ücreti öder; ücret yalnızca çok fazla arama yapan trafiğe uygulanır.
+  Aşım daha sonra **1.000 aşan arama başına $2.00** olarak faturalandırılır. İyi dönüşüm sağlayan entegrasyonlar nadiren aşım ücreti öder; bu ücret yalnızca çok fazla arama yapan trafiğe uygulanır.
 
 Ücretli katman aşağıda açıklanan Hizmet Düzeyi Anlaşmasını — %99,9 çalışma süresi taahhüdü ve 500 ms altında P95 yanıt süresi hedefi — ve öncelikli, önem derecesine göre destek içerir.
 
@@ -75,18 +78,18 @@ Bu Hizmet Düzeyi Anlaşması ("SLA"), Wink'in ("Wink", "biz") kimlik doğrulama
 
 ### 1. Tanımlar
 
-1. **"Çalışma Süresi"**, Partner API'nin düzgün biçimlendirilmiş, kimlik doğrulanmış isteklere yanıt vermeye hazır olduğu dönemlerdir.
-2. **"Kesinti Süresi"**, Partner API'nin düzgün biçimlendirilmiş, kimlik doğrulanmış isteklere başarılı yanıt vermediği, dakika cinsinden ölçülen dönemdir; Bölüm 4'te belirtilen hariç tutmalar dışındadır. İzole hatalar, önemsiz istek oranını etkilemesi durumunda Kesinti Süresi sayılmaz.
-3. **"Aylık Çalışma Süresi Yüzdesi"**, belirli bir takvim ayı için, o ayın toplam dakikalarından toplam Kesinti Süresi dakikalarının çıkarılması ve kalan dakikanın toplam dakikaya bölünmesiyle yüzde olarak ifade edilir.
+1. **"Çalışma Süresi"**, Partner API'nin doğru biçimlendirilmiş, kimlik doğrulamalı isteklere yanıt vermeye uygun olduğu dönemlerdir.
+2. **"Kesinti Süresi"**, Partner API'nin doğru biçimlendirilmiş, kimlik doğrulamalı isteklere başarılı yanıt vermediği, dakika cinsinden ölçülen dönemdir; Bölüm 4'te belirtilen hariç tutmalar dışındaki sürelerdir. İzole hatalar, önemsiz istek oranını etkiliyorsa, tek başına Kesinti Süresi sayılmaz.
+3. **"Aylık Çalışma Süresi Yüzdesi"**, belirli bir takvim ayı için, o ayın toplam dakikalarından toplam Kesinti Süresi dakikalarının çıkarılması, kalan sürenin toplam dakikaya bölünmesi ve yüzde olarak ifade edilmesidir.
 4. **"Planlı Bakım"**, Wink'in Bölüm 4'e uygun olarak önceden bildirimde bulunduğu Hizmetin planlı bakımıdır.
-5. **"Hizmet Kredisi"**, Partner API için o ay ödediğiniz veya ödeyeceğiniz ücretlerin yüzdesi olarak hesaplanan ve çalışma süresi taahhüdünün karşılanmaması durumunda gelecekteki Partner API ücretlerine mahsup edilen kredi tutarıdır.
-6. **"Yanıt Süresi"**, Wink'in hizmet sınırında düzgün biçimlendirilmiş, kimlik doğrulanmış isteği alması ile yanıt vermeye başlaması arasındaki geçen süredir; ağ geçişi ve istemci tarafı kontrolü dışındaki süreler hariçtir.
+5. **"Hizmet Kredisi"**, Partner API için o ay ödediğiniz veya ödeyeceğiniz ücretlerin yüzdesi olarak hesaplanan ve çalışma süresi taahhüdünün karşılanmaması durumunda gelecekteki Partner API ücretlerinden mahsup edilen kredi tutarıdır.
+6. **"Yanıt Süresi"**, Wink'in hizmet sınırında doğru biçimlendirilmiş, kimlik doğrulamalı isteği alması ile yanıt vermeye başlaması arasındaki geçen süredir; ağ geçişi ve istemci tarafı kontrolü dışındaki süreler hariçtir.
 
 ### 2. Kullanılabilirlik ve Performans Taahhüdü
 
-Wink, Partner API'yi her takvim ayı boyunca **en az %99,9 Aylık Çalışma Süresi Yüzdesi** ile kullanılabilir kılmak için ticari makul çabayı gösterecektir ("Çalışma Süresi Taahhüdü"). Bu taahhüt Wink'in hizmet sınırında ölçülür ve Bölüm 4'te belirtilen makul kontrol dışı faktörleri içermez. Wink'in izleme sistemleri Aylık Çalışma Süresi Yüzdesi ve Yanıt Süresi ölçümlerinde yetkili kayıt kaynağıdır.
+Wink, Partner API'yi her takvim ayı boyunca **en az %99,9 Aylık Çalışma Süresi Yüzdesi** ile kullanılabilir kılmak için ticari makul çaba gösterecektir ("Çalışma Süresi Taahhüdü"). Bu taahhüt Wink'in hizmet sınırında ölçülür ve Bölüm 4'te belirtilen makul kontrolü dışındaki faktörleri içermez. Wink'in izleme sistemleri Aylık Çalışma Süresi Yüzdesi ve Yanıt Süresi ölçümlerinde yetkili kayıt kaynağıdır.
 
-Wink ayrıca her takvim ayı boyunca düzgün biçimlendirilmiş, kimlik doğrulanmış başarılı istekler için Wink hizmet sınırında ölçülen **%95’lik dilim (P95) Yanıt Süresi hedefini 500 milisaniyenin altında** tutmayı hedefler ("Performans Hedefi"). Performans Hedefi Bölüm 4'teki faktörleri, istek kaynaklı uygulama hatalarını ve olağandışı büyük veya karmaşık toplu istekleri kapsamaz. Performans Hedefi bir hizmet hedefidir; Bölüm 3'teki Hizmet Kredileri yalnızca **Çalışma Süresi Taahhüdü** karşılanmadığında uygulanır ve kullanılabilirlik eksiklikleri için tek ve münhasır çaredir.
+Wink ayrıca, her takvim ayı boyunca Wink'in hizmet sınırında ölçülen, başarılı, doğru biçimlendirilmiş, kimlik doğrulamalı istekler için **%95'lik dilim (P95) Yanıt Süresi hedefini 500 milisaniyenin altında** tutmayı hedefler ("Performans Hedefi"). Performans Hedefi, Bölüm 4'te belirtilen faktörleri, istek kaynaklı uygulama hatalarını ve olağandışı büyük veya karmaşık toplu istekleri kapsamaz. Performans Hedefi bir hizmet hedefidir; Bölüm 3'teki Hizmet Kredileri yalnızca **Çalışma Süresi Taahhüdü** karşılanmadığında uygulanır ve kullanılabilirlik eksiklikleri için tek ve münhasır çaredir.
 
 ### 3. Hizmet Kredileri
 
@@ -94,45 +97,45 @@ Aylık Çalışma Süresi Yüzdesi herhangi bir takvim ayında Çalışma Süres
 
 | Aylık Çalışma Süresi Yüzdesi | Hizmet Kredisi |
 |---|---|
-| %99,9’un altında ama %99,0 ve üzerinde | %10 |
-| %99,0’ın altında ama %95,0 ve üzerinde | %25 |
-| %95,0’ın altında | %50 |
+| %99,9'un altında ama %99,0 ve üzerinde | %10 |
+| %99,0'ın altında ama %95,0 ve üzerinde | %25 |
+| %95,0'ın altında | %50 |
 
-1. **Kredi talebi.** Hizmet Kredisi almak için, kesinti yaşanan takvim ayının bitiminden itibaren **otuz (30) gün içinde** Wink’e yazılı talepte bulunmalısınız. Talep, talep ettiğiniz her Kesinti olayı için tarih ve saatleri ve makul şekilde temin edilebilir destekleyici günlükleri veya kanıtları içermelidir. Bu süre sonrasında yapılan talepler uygun değildir.
-2. **Kredi şekli.** Onaylanan Hizmet Kredileri gelecekteki Partner API ücretlerine mahsup edilir ve nakit değeri yoktur. İade değildir ve geçerli yasa gerektirmedikçe ödenmez.
-3. **Maksimum kredi.** Herhangi bir takvim ayı için verilebilecek toplam Hizmet Kredisi, o ay için ödediğiniz veya ödeyeceğiniz Partner API ücretlerinin %50’sini aşamaz.
-4. **Tek ve münhasır çare.** Hizmet Kredileri, Wink’in Çalışma Süresi Taahhüdünü karşılamaması veya Partner API’nin kullanılabilirliğindeki diğer eksiklikler için sizin **tek ve münhasır çarenizdir**.
+1. **Kredi talebi.** Hizmet Kredisi almak için, kesinti yaşanan takvim ayının bitiminden itibaren **otuz (30) gün** içinde Wink'e yazılı talepte bulunmalısınız. Talep, talep ettiğiniz her Kesinti olayı için tarih ve saatleri ile makul şekilde temin edilebilir destekleyici günlükleri veya kanıtları içermelidir. Bu süre sonrasında yapılan talepler uygun değildir.
+2. **Kredi şekli.** Onaylanan Hizmet Kredileri gelecekteki Partner API ücretlerinden mahsup edilir ve nakit değeri yoktur. İade değildir ve geçerli yasalar gerektirmedikçe ödenmez.
+3. **Maksimum kredi.** Herhangi bir takvim ayı için verilebilecek toplam Hizmet Kredisi, o ay için ödediğiniz veya ödeyeceğiniz Partner API ücretlerinin %50'sini aşamaz.
+4. **Tek ve münhasır çare.** Hizmet Kredileri, Wink'in Çalışma Süresi Taahhüdünü karşılamaması veya Partner API'nin kullanılabilirliğindeki diğer eksiklikler için sizin **tek ve münhasır çarenizdir**.
 
 ### 4. Hariç Tutmalar
 
-Çalışma Süresi Taahhüdü ve buna bağlı Hizmet Kredileri, aşağıdaki durumlar için geçerli değildir ve Kesinti Süresi olarak sayılmaz:
+Çalışma Süresi Taahhüdü ve buna bağlı Hizmet Kredileri, aşağıdaki nedenlerden kaynaklanan veya bunlarla ilgili herhangi bir kullanılabilirlik, askıya alma, bozulma veya performans sorunlarına uygulanmaz ve Kesinti Süresi olarak sayılmaz:
 
-1. Wink’in önceden bildirimde bulunduğu **Planlı Bakım**, bu bildirim müşterilerle normalde iletişim kurduğu kanallardan makul süre önce yapılmışsa;
-2. Doğal afetler, devlet eylemleri, ağ veya hizmet kesintileri, hizmet engelleme veya diğer kötü niyetli saldırılar gibi Wink’in makul kontrolü dışındaki **mücbir sebepler** veya diğer nedenler;
-3. **Sizin** eylemleriniz veya ihmalleriniz, ekipmanınız, yazılımınız veya ağınız ya da Wink’in doğrudan kontrolü dışındaki herhangi bir **üçüncü taraf** hizmet, ürün veya sağlayıcı kaynaklı sorunlar;
-4. Hizmeti **kötüye kullanmanız** veya Sözleşme, bu SLA, kabul edilebilir kullanım koşulları veya geçerli oran sınırlarını ihlal etmeniz, aşırı trafik, otomatik kötüye kullanım veya dolandırıcılık gibi Wink’in makul şekilde belirlediği durumlar;
-5. Sözleşme kapsamında uygun şekilde uygulanan erişim **askıya alma veya sonlandırma** işlemleri, ödeme yapılmaması nedeniyle askıya alma dahil.
+1. Wink'in önceden bildirimde bulunduğu **Planlı Bakım**, bu bildirim müşterilerle iletişim için normalde kullandığı kanallardan makul süre önce yapılmışsa;
+2. Doğal afetler, devlet eylemleri, ağ veya hizmet kesintileri, hizmet engelleme veya diğer kötü niyetli saldırılar gibi Wink'in makul kontrolü dışındaki **mücbir sebepler** veya diğer nedenler;
+3. **Sizin** eylemleriniz veya ihmalleriniz, ekipmanınız, yazılımınız veya ağınız ya da Wink'in doğrudan kontrolü altında olmayan herhangi bir **üçüncü taraf** hizmet, ürün veya sağlayıcı kaynaklı sorunlar;
+4. Hizmetin **kötüye kullanımı** veya Sözleşme, bu SLA, kabul edilebilir kullanım koşulları veya geçerli oran sınırı ihlalleri, aşırı trafik, otomatik kötüye kullanım veya dolandırıcılık olarak Wink'in makul şekilde belirlediği durumlar;
+5. Sözleşme kapsamında uygun şekilde gerçekleştirilen erişim **askıya alma veya sonlandırma**, ödeme yapılmaması nedeniyle askıya alma dahil.
 
 ### 5. Destek ve Yanıt Hedefleri
 
-Wink, Partner API için yerel resmi tatiller hariç standart çalışma saatlerinde destek sağlar. Wink, önem derecesine göre ve makul şekilde onayladığı destek taleplerini aşağıdaki hedef yanıt süreleri içinde ilk olarak kabul etmeye ticari makul çaba gösterecektir:
+Wink, Partner API için yerel resmi tatiller hariç standart çalışma saatlerinde destek sağlar. Wink, önem derecesine göre ve sizin atadığınız önceliğe uygun olarak makul çaba ile aşağıdaki hedef yanıt süreleri içinde destek taleplerini kabul eder:
 
 | Önem Derecesi | Açıklama | Hedef ilk yanıt süresi |
 |---|---|---|
 | **Sev 1 — Kritik** | Partner API üretimde kullanılamıyor veya çalışmıyor, geçici çözüm yok. | 4 saat |
 | **Sev 2 — Önemli** | Önemli özellik bozuk veya zayıflamış; geçici çözüm var. | 1 iş günü |
-| **Sev 3 — Önemsiz** | Genel sorular, küçük sorunlar veya özellik talepleri. | 2 iş günü |
+| **Sev 3 — Küçük** | Genel sorular, küçük sorunlar veya özellik talepleri. | 2 iş günü |
 
-Hedef yanıt süreleri Wink’in **ilk iletişimi** kurmayı amaçladığı zamanları belirtir; çözüm garantisi değildir. Öncelikli destek ve önem derecesine göre hedefler, dahil olduğu belirtilen katmanlarda geçerlidir.
+Hedef yanıt süreleri Wink'in **ilk iletişimi** kurmayı amaçladığı zamanları belirtir; çözüm süresi garantisi değildir. Öncelikli destek ve önem derecesine göre hedefler, dahil olduğu katmanlarda geçerlidir.
 
 ### 6. Veri ve Güvenlik
 
-Wink, Partner API üzerinden işlenen verilerin gizliliğini, bütünlüğünü ve kullanılabilirliğini korumak için ticari makul idari, teknik ve organizasyonel önlemler uygular ve bunları periyodik olarak gözden geçirir. Wink’in kişisel veri işleme uygulamaları [Gizlilik Politikası](/tr/privacy) ve Sözleşmedeki veri işleme koşulları ile yönetilir. API kimlik bilgilerinizi güvence altına almak, elde ettiğiniz verileri yasal olarak kullanmak ve olası kimlik bilgisi ihlallerini derhal Wink’e bildirmek sizin sorumluluğunuzdadır.
+Wink, Partner API üzerinden işlenen verilerin gizliliğini, bütünlüğünü ve erişilebilirliğini korumak için ticari makul idari, teknik ve organizasyonel önlemler uygular ve bunları periyodik olarak gözden geçirir. Wink'in kişisel veri işleme uygulamaları [Gizlilik Politikası](/tr/privacy) ve Sözleşmedeki veri işleme koşulları ile yönetilir. API kimlik bilgilerinizi güvence altına almak, elde ettiğiniz verileri yasal olarak kullanmak ve olası kimlik bilgisi ihlallerini derhal Wink'e bildirmek sizin sorumluluğunuzdadır.
 
 ### 7. Sorumluluğun Sınırlandırılması
 
-Hizmet Kredileri, herhangi bir kullanılabilirlik eksikliği veya Çalışma Süresi Taahhüdünün karşılanmaması durumunda **tek ve münhasır çaredir** ve bu tür başarısızlıklardan kaynaklanan diğer tüm sorumlulukların yerine geçer. Bu SLA’da açıkça belirtilenler dışında, Partner API "olduğu gibi" sağlanır. Geçerli yasal sınırlar dahilinde, Wink’in Hizmetten kaynaklanan veya Hizmetle ilgili toplam sorumluluğu Sözleşmede belirtilenlerle sınırlıdır ve Wink dolaylı, tesadüfi, özel, sonuçsal veya cezai zararlar ile kar, gelir, veri veya itibar kayıplarından sorumlu değildir, bu tür zararların olasılığı kendisine bildirilmiş olsa bile.
+Hizmet Kredileri, herhangi bir kullanılabilirlik eksikliği veya Çalışma Süresi Taahhüdünün karşılanmaması durumunda **tek ve münhasır çaredir** ve bu tür başarısızlıklardan kaynaklanan diğer tüm sorumlulukların yerine geçer. Bu SLA açıkça belirtmediği sürece, Partner API "olduğu gibi" sağlanır. Geçerli yasaların izin verdiği azami ölçüde, Wink'in Hizmetten kaynaklanan veya Hizmetle ilgili toplam sorumluluğu Sözleşmede belirtilenlerle sınırlıdır ve Wink dolaylı, tesadüfi, özel, sonuçsal veya cezai zararlar ile kar, gelir, veri veya itibar kayıplarından sorumlu değildir; bu tür zararların olasılığı kendisine bildirilmiş olsa bile.
 
 ### 8. Süre, Değişiklikler ve Fesih
 
-Bu SLA, SLA’nın geçerli olduğu katmanda aktif Partner API aboneliğiniz olduğu sürece geçerlidir. Wink bu SLA’yı zaman zaman güncelleyebilir; önemli değişiklikler müşterilere normalde kullandığı kanallardan bildirilir ve güncelleme yürürlüğe girdikten sonra Partner API’yi kullanmaya devam etmeniz güncellenmiş SLA’yı kabul ettiğiniz anlamına gelir. Bu SLA, Sözleşmenin veya Partner API aboneliğinizin sona ermesi veya feshi ile otomatik olarak sona erer. Doğası gereği fesih sonrası da geçerli olması gereken bölümler — hak kazanılmış ancak talep edilmemiş Hizmet Kredisi uygunluğu, sorumluluğun sınırlandırılması ve tanımlar dahil — yürürlükte kalır.
+Bu SLA, SLA'nın geçerli olduğu katmanda aktif Partner API aboneliğiniz olduğu sürece geçerlidir. Wink bu SLA'yı zaman zaman güncelleyebilir; önemli değişiklikler müşterilere normalde kullandığı kanallardan bildirilir ve güncelleme yürürlüğe girdikten sonra Partner API'yi kullanmaya devam etmeniz güncellenmiş SLA'yı kabul ettiğiniz anlamına gelir. Bu SLA, Sözleşmenin veya Partner API aboneliğinizin sona ermesi veya feshi ile otomatik olarak sona erer. Doğası gereği fesih sonrası da geçerli olması gereken bölümler — hak kazanılmış ancak talep edilmemiş Hizmet Kredisi uygunluğu, sorumluluğun sınırlandırılması ve tanımlar dahil — yürürlükte kalır.

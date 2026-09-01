@@ -1,0 +1,278 @@
+---
+title: Agentic AI — Kelionių komercijos infrastruktūra AI agentams
+description: "Wink platformoje AI agentai ne tik rekomenduoja viešbučius — jie ieško tiesioginės viešbučių tiekimo, tada vienu srautu rezervuoja ir apmoka per REST API ir talpinamą MCP. Veikia jau dabar."
+template: splash
+marketingNav: true
+---
+import '/src/styles/splash-page.css';
+import BreadcrumbJsonLd from "@/components/marketing/BreadcrumbJsonLd.astro";
+
+import FaqGrid from "@/components/marketing/FaqGrid.astro";
+import AgentJsonLd from "@/components/marketing/AgentJsonLd.astro";
+import AgentConversation from "@/components/marketing/infographics/AgentConversation.astro";
+import AgenticShiftFlow from "@/components/marketing/infographics/AgenticShiftFlow.astro";
+
+import IconMapSearch from "@tabler/icons/outline/map-search.svg";
+import IconCalendarCheck from "@tabler/icons/outline/calendar-check.svg";
+import IconSparkles from "@tabler/icons/outline/sparkles.svg";
+import IconCalendarStats from "@tabler/icons/outline/calendar-stats.svg";
+import IconCreditCard from "@tabler/icons/outline/credit-card.svg";
+import IconCoin from "@tabler/icons/outline/coin.svg";
+import IconWebhook from "@tabler/icons/outline/webhook.svg";
+import IconComponents from "@tabler/icons/outline/components.svg";
+import IconUser from "@tabler/icons/outline/user.svg";
+import IconBuildingStore from "@tabler/icons/outline/building-store.svg";
+import IconUsersGroup from "@tabler/icons/outline/users-group.svg";
+import IconCode from "@tabler/icons/outline/code.svg";
+import IconArrowRight from "@tabler/icons/outline/arrow-right.svg";
+import IconCheck from "@tabler/icons/outline/check.svg";
+import IconX from "@tabler/icons/outline/x.svg";
+
+export const faqs = [
+  { title: "Kodėl dauguma AI agentų negali rezervuoti viešbučio ir kas leidžia tai daryti?", content: "Viešbučio rekomendavimas yra turinio problema — agentui reikia tik aprašymų ir kainų. Rezervavimas yra komercijos problema: reikia tiesioginių kainų ir prieinamumo, inventoriaus, kurį galima užlaikyti, mokėjimo sistemos, atsiskaitymo su viešbučiu ir komercinių santykių su objektu. Dauguma asistentų turi tik pirmąjį ir neturi likusių, todėl nukreipia keliautoją į svetainę užbaigti. Agentas gali užbaigti rezervaciją, kai infrastruktūra suteikia viską. Wink yra API-pirmas — kiekviena platformos funkcija yra iškviečiama išorėje, o talpinamas MCP serveris atskleidžia tiesioginius API kontraktus — todėl patvirtintas agentas gali rasti viešbučių tiekimą, skaityti tiesiogines kainas ir prieinamumą, kurti ir sinchronizuoti rezervacijas, priimti mokėjimus (Wink yra įrašytasis pardavėjas), išsaugoti priskyrimą ir prenumeruoti įvykius." },
+  { title: "Kaip AI agentas jungiasi prie Wink?", content: "Nukreipkite suderinamą MCP klientą į talpinamą serverį adresu https://docs.mcp.wink.travel/mcp (SSE atsarginis variantas /sse). Iš Claude Code: claude mcp add --transport http wink-docs https://docs.mcp.wink.travel/mcp. Agentas tada gali naudoti api_search ir docs_search įrankius, kad skaitytų tiesiogines OpenAPI operacijas, užklausų/atsakymų kontraktus ir užduočių receptus." },
+  { title: "Ką AI agentas iš tikrųjų gali daryti Wink šiandien?", content: "Šiandien per REST API ir MCP serverį: atrasti platformą, ieškoti rezervuojamo inventoriaus (įskaitant geografinį erdvinį paiešką), skaityti tiesiogines kainas ir prieinamumą per 11 prijungtų kanalų valdytojų, kurti rezervacijas ir sinchronizuoti jų gyvavimo ciklą su PMS/kanalų valdytoju, priimti mokėjimus (Wink yra įrašytasis pardavėjas), išsaugoti 6 mėn. priskyrimą ir uždirbti per partnerių srautus, prenumeruoti 64+ webhook įvykius, generuoti AI turinį ir įterpti rezervuojamą inventorių per Web Components." },
+  { title: "Ar AI agentas gali užbaigti viešbučio rezervaciją per Wink?", content: "Taip. Rezervacijos kūrimas yra REST API operacija, o Booking Engine vykdo sandorį — atsiskaitymą, mokėjimą, patvirtinimą ir rezervacijos sinchronizavimą. Agentas, kuris kviečia rezervacijos API keliautojo vardu, gali užbaigti tikrą, patvirtintą rezervaciją su išsaugotu šaltinio kontekstu." },
+  { title: "Kaip viešbutis tampa rezervuojamas AI agento per Wink?", content: "Tiesiog sukuriant savo profilį Wink. Kai viešbučio tiekimas, kainos ir prieinamumas yra tiesioginiai (per Extranet), jis automatiškai tampa randamas ir rezervuojamas patvirtintų AI agentų per REST API ir talpinamą MCP serverį — nereikia atskiros AI integracijos kiekvienam viešbučiui. Agentas ieško viešbučio tiesioginio inventoriaus, kuria rezervaciją ir atsiskaito per Booking Engine, išsaugodamas priskyrimą. Kiekvienas Wink viešbutis pagal nutylėjimą yra paruoštas agentams." },
+  { title: "Kaip rezervacija per Wink skiriasi nuo ChatGPT su Expedia ar Booking.com?", content: "Asistentų integracijos, tokios kaip ChatGPT su Expedia ar Booking.com, yra stiprios atradime — tiesioginės kainos, nuotraukos ir žemėlapiai pokalbyje — bet keliautojas paprastai nukreipiamas į tiekėjo svetainę ar programėlę užbaigti rezervaciją ir apmokėjimą. Wink agentas tiesiogiai atlieka sandorius su tiesioginiu, viešbučio valdomu tiekimu: skaito tikras kainas ir prieinamumą, kuria rezervaciją ir atsiskaito per Booking Engine vienu srautu — ir gali uždirbti partnerių komisinius. Atranka gali vykti bet kur; vykdymas vyksta Wink." },
+  { title: "Ar Wink yra vienintelė platforma, leidžianti AI agentams rezervuoti ir apmokėti viešbučius?", content: "Ne — agentų valdomos viešbučių komercijos kategorija sparčiai auga, ir keli kelionių bei mokėjimų žaidėjai paskelbė ar įdiegė pilną agentų rezervaciją iki 2026 m. Išskirtinumas Wink yra derinys: tiekimas yra tiesiogiai viešbučio valdomas (ne GDS perpardavimas ar interneto duomenų rinkimas), agentas gali ieškoti, rezervuoti, mokėti IR uždirbti per vieną komercijos sluoksnį, ir tai veikia tiesiogiai per REST API ir talpinamą MCP serverį — ne tik planuose. Viešbučiai išlaiko kontrolę; agentas tampa priskirtu, uždirbančiu kanalu." },
+  { title: "Kokius agentų komercijos ir AI standartus palaiko Wink?", content: "Wink yra API-pirmas ir šiandien veikia talpinamas MCP (Model Context Protocol) serveris, todėl bet kuris MCP suderinamas agentas — Claude, Codex, Cursor ir kiti — gali rasti ir kviesti tiesioginius OpenAPI kontraktus. Wink rezervacijos ir mokėjimo primityvai sukurti bendradarbiauti su kylančiu agentų komercijos sluoksniu — Agentic Commerce Protocol (ACP), Google Agent Payments Protocol (AP2), Agent2Agent (A2A) ir x402 tipo agentų mokėjimais — kai šie standartai konsoliduojasi, o ne užrakina agentus į patentuotą kelią." },
+  { title: "Ar yra AI įgūdis kūrimui Wink?", content: "Taip — wink-api-builder yra nešiojamas agento įgūdis, kuris naudoja MCP serverį kaip tiesos šaltinį. Jis veda agentą per api_search iki tiesioginių užklausų/atsakymų kontraktų, autentifikacijos ir patvirtinto kodo, ir žymi neatitikimus tarp esamo kodo ir dabartinio API. Veikia su Claude Code, Codex, Cursor ir kitais įgūdžius palaikančiais klientais." },
+  { title: "Ar AI agentas gali uždirbti kaip filialas ar partneris?", content: "Wink partnerių modelis išsaugo šaltinio ir kampanijos priskyrimą 6 mėn. po paspaudimo ir moka 10% numatytą komisinį patvirtintoms rezervacijoms. Agentas, kuris sukuria kvalifikuotą paklausą ir nukreipia rezervaciją, gali būti priskirtas šaltiniu per tą patį partnerių ir Booking Engine infrastruktūrą." },
+  { title: "Ar Agentic AI pakeičia Booking Engine?", content: "Ne. Agentic AI sukuria ar nukreipia ketinimą; Booking Engine lieka vykdymo sluoksniu atsiskaitymui, mokėjimui, patvirtinimui ir rezervacijos sinchronizavimui. Kiekvienas agento perdavimas vyksta per Booking Engine." },
+  { title: "Kur turėtų pradėti kūrėjas ar agentas?", content: "Prisijunkite prie MCP serverio, tada skaitykite Build on Wink, MCP Server ir AI Skills dokumentaciją. Prašykite API prieigos, kai aiškus naudojimo atvejis ir komercinis kelias." },
+];
+
+<div class="not-content mkt-page">
+
+<AgentJsonLd faqs={faqs} />
+
+<BreadcrumbJsonLd items={[{ name: "Pagrindinis", url: "https://wink.travel/" }, { name: "Agentic AI" }]} />
+
+{/* Hero — agento pokalbis. Pilnas plotis pagal house `data-full-bleed` modelį,
+    su trupmenų navigacija juostoje, kad sutaptų su antrašte, o ne būtų siaurame Starlight stulpelyje virš pilno pločio hero. */}
+<section data-full-bleed class="@container relative w-full overflow-hidden border-b border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white">
+  <div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+    <div class="absolute -left-24 -top-10 size-80 rounded-full bg-[#ff6b35]/20 blur-[100px]"></div>
+    <div class="absolute -bottom-16 -right-16 size-96 rounded-full bg-[#9333ea]/30 blur-[120px]"></div>
+  </div>
+  <div class="relative mx-auto w-full max-w-7xl px-4 pb-20 pt-8 lg:pb-24">
+    <nav aria-label="Breadcrumb" class="text-sm text-white/60">
+      <a href="/" class="transition-colors hover:text-white">Pagrindinis</a>
+      <span class="px-1.5 text-white/55">/</span>
+      <span class="text-white">Agentic AI</span>
+    </nav>
+    <div class="mt-10 grid items-center gap-12 lg:mt-12 lg:min-h-[33rem] @lg:grid-cols-[1fr_1.02fr]">
+    {/* Kairė — tekstas */}
+    <div class="text-center @lg:text-left">
+      <span class="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-xs font-extrabold uppercase tracking-wider text-[#ff8a5c] ring-1 ring-white/15 backdrop-blur @lg:mx-0"><span class="size-1.5 rounded-full bg-gradient-to-r from-[#ff6b35] to-[#ec4899]"></span> Agentic AI</span>
+      <h1 class="font-heading mt-6 text-4xl font-extrabold leading-[1.05] tracking-tight text-balance @lg:text-5xl @2xl:text-6xl">AI agentai gali planuoti kelionę. <span class="wink-shimmer bg-gradient-to-r from-[#ff8a5c] via-[#ec4899] to-[#a855f7] bg-clip-text text-transparent">Beveik niekas negali jos rezervuoti.</span></h1>
+      <p class="mx-auto mt-5 max-w-xl text-pretty text-lg text-white/75 @lg:mx-0 @lg:text-xl">Viešbučio rekomendavimas yra turinio problema. Rezervavimas yra komercijos problema — tiesioginės kainos, užlaikytas inventorius, mokėjimas, atsiskaitymas ir sutartis su viešbučiu. Wink yra infrastruktūra, kuri užpildo šią spragą: agentai atranda, rezervuoja <em class="not-italic font-semibold text-white">ir apmoka</em> viešbučio kontroliuojamą tiekimą per tiesioginį REST API ir talpinamą MCP serverį.</p>
+      <div class="mt-8 flex flex-col items-center justify-center gap-3 @lg:justify-start sm:flex-row">
+        <a href="/developers/build-on-wink/" class="inline-flex h-12 items-center justify-center rounded-md bg-[#ff6b35] px-7 text-base font-semibold text-white transition-colors hover:bg-[#e85b29]">Peržiūrėti dokumentaciją</a>
+        <a href="#agents" class="inline-flex h-12 items-center justify-center rounded-md bg-white/10 px-7 text-base font-medium text-white ring-1 ring-white/20 backdrop-blur transition-colors hover:bg-white/15">Prijungti agentą</a>
+      </div>
+      <div class="mt-7 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 font-mono text-xs text-white/70"><span class="size-1.5 animate-pulse rounded-full bg-emerald-400"></span> MCP serveris veikia · docs.mcp.wink.travel/mcp</div>
+    </div>
+
+    {/* Dešinė — agento pokalbis (keičiamas infografikas) */}
+    <AgentConversation />
+    </div>
+  </div>
+</section>
+
+{/* Tiesioginis atsakymas */}
+<section class="mx-auto w-full max-w-3xl px-4 pt-24 pb-24 text-center">
+  <p class="mkt-kicker text-primary">Kodėl dauguma AI agentų negali rezervuoti viešbučio?</p>
+  <p class="mkt-sub text-muted-foreground mt-5">Wink yra API-pirmas: kiekviena platformos funkcija yra iškviečiama išorėje, o talpinamas MCP serveris atskleidžia tiesioginius API kontraktus AI agentams. Vietoje to, kad kiekvieną keliautoją priverstų eiti per svetainę, Wink suteikia patvirtintiems agentams struktūruotą prieigą prie viešbučių tiekimo, kainų, prieinamumo, rezervacijų, mokėjimų, priskyrimo ir įvykių — tą pačią infrastruktūrą, kuri veikia Wink." </p>
+  <div class="mx-auto mt-7 max-w-2xl rounded-2xl border-2 border-primary/30 bg-primary/[0.04] px-6 py-5 text-pretty text-foreground/90"><strong class="text-foreground">Bet kuris viešbutis tampa paruoštas agentams tiesiog sukūręs profilį Wink.</strong> Kai jo tiekimas, kainos ir prieinamumas yra tiesioginiai, patvirtinti AI agentai gali ieškoti, rezervuoti ir apmokėti per API ir MCP serverį — nereikia atskiros AI integracijos kiekvienam viešbučiui.</div>
+</section>
+
+{/* Veikiantis įrodymas — aukščiau pateiktas argumentas yra įgyvendintas, ne tik planuose. Įgyvendinimo detalės tyčia yra /builders/ kataloge, kad ši puslapis išliktų tezė. */}
+<section id="agents" class="@container w-full border-y border-border bg-muted/30" style="scroll-margin-top:5rem">
+  <div class="mx-auto w-full max-w-4xl px-4 py-24 text-center">
+    <p class="mkt-kicker text-primary">Veikia jau dabar, ne planuose</p>
+    <h2 class="mkt-h2 font-heading mt-3">Keturi žingsniai nuo agento iki patvirtintos, apmokėtos rezervacijos.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-2xl">Prisijunkite prie talpinamo MCP serverio, išspręskite ketinimą realioms operacijoms tiesioginiame API, sugeneruokite patvirtintą kodą, tada perduokite Booking Engine atsiskaitymui, mokėjimui, patvirtinimui ir PMS sinchronizavimui.</p>
+    <ol class="mx-auto mt-10 grid gap-3 text-left @lg:grid-cols-4">
+      <li class="rounded-xl border border-border bg-card px-4 py-3 text-sm"><span class="font-mono text-xs text-primary">01</span><span class="mt-1 block font-semibold">Prisijungti prie MCP</span></li>
+      <li class="rounded-xl border border-border bg-card px-4 py-3 text-sm"><span class="font-mono text-xs text-primary">02</span><span class="mt-1 block font-semibold">Ieškoti tiesioginiame API</span></li>
+      <li class="rounded-xl border border-border bg-card px-4 py-3 text-sm"><span class="font-mono text-xs text-primary">03</span><span class="mt-1 block font-semibold">Kurti patvirtintą kodą</span></li>
+      <li class="rounded-xl border border-border bg-card px-4 py-3 text-sm"><span class="font-mono text-xs text-primary">04</span><span class="mt-1 block font-semibold">Rezervuoti ir gauti apmokėjimą</span></li>
+    </ol>
+    <div class="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <a href="/builders/#agent-quickstart" class="inline-flex h-12 items-center justify-center rounded-md bg-[#ff6b35] px-7 text-base font-semibold text-white transition-colors hover:bg-[#e85b29]">Peržiūrėti integracijos žingsnius</a>
+      <a href="/developers/mcp/" class="inline-flex h-12 items-center justify-center rounded-md border border-border px-7 text-base font-medium transition-colors hover:bg-muted">MCP serverio dokumentacija</a>
+    </div>
+    <p class="text-muted-foreground mt-5 inline-flex items-center gap-2 font-mono text-xs"><span class="size-1.5 animate-pulse rounded-full bg-emerald-500"></span> docs.mcp.wink.travel/mcp</p>
+  </div>
+</section>
+
+{/* Ką agentas gali daryti — galimybių žemėlapis */}
+<section class="@container mx-auto w-full max-w-7xl px-4 pt-24">
+  <div class="mx-auto mb-14 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Galimybių žemėlapis</p>
+    <h2 class="mkt-h2 font-heading mt-3">Ką AI agentas gali daryti Wink.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">Kiekviena žemiau esanti galimybė yra prieinama šiandien per REST API ir MCP serverį — remiantis tais pačiais Wink kontraktais.</p>
+  </div>
+  <div class="grid gap-5 @md:grid-cols-2 @2xl:grid-cols-3">
+    {[
+      { icon: IconMapSearch, title: "Ieškoti viešbučių inventoriaus", desc: "Rasti rezervuojamą tiekimą su geografinės vietos erdvine paieška — taškas, apskritimas, stačiakampis ar daugiakampis — plius GeoIP aptikimas." },
+      { icon: IconCalendarStats, title: "Skaityti tiesiogines kainas ir prieinamumą", desc: "Gauti realaus laiko kainas, prieinamumą ir inventorių per 11 prijungtų kanalų valdytojų." },
+      { icon: IconCalendarCheck, title: "Kurti ir sinchronizuoti rezervacijas", desc: "Kurti rezervacijas per API; kurti / atnaujinti / atšaukti sinchronizaciją su prijungtu PMS ar kanalų valdytoju su pilnu gyvavimo ciklo sekimu." },
+      { icon: IconCreditCard, title: "Priimti mokėjimus", desc: "Wink tvarko atsiskaitymą, atšaukimo politikos logiką ir mokėjimą už rezervaciją — Wink yra įrašytasis pardavėjas." },
+      { icon: IconCoin, title: "Išsaugoti priskyrimą ir uždirbti", desc: "Šaltinio ir kampanijos kontekstas išlieka kelionės metu — 6 mėn. paspaudimo priskyrimas ir 10% numatytas komisinis patvirtintoms rezervacijoms." },
+      { icon: IconWebhook, title: "Reaguoti į 64+ įvykius", desc: "Prenumeruoti webhook įvykius — rezervacijas, mokėjimus, grąžinimus, kanalų valdytojų atnaujinimus — ir inicijuoti tolimesnius veiksmus." },
+      { icon: IconSparkles, title: "Generuoti turinį", desc: "AI turinys 9 inventoriaus tipams ir 12 balso tonų; vieno paspaudimo objekto registracija iš vieno URL." },
+      { icon: IconComponents, title: "Įterpti rezervuojamą inventorių", desc: "Įdėti tiesioginį, rezervuojamą viešbučių inventorių į bet kurią vietą su Web Components ir minimaliais kodais." },
+      { icon: IconCode, title: "Kurti visame API", desc: "Kiekviena Wink funkcija yra iškviečiama išorėje per REST, su OAuth2 autentifikacija ir oficialiais SDK — integruokite tarsi sistema būtų jūsų." },
+    ].map((c) => (
+      <div class="flex flex-col rounded-2xl border border-border bg-card p-6">
+        <span class="mb-4 flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-white"><c.icon class="size-6" /></span>
+        <h3 class="font-heading text-base font-semibold">{c.title}</h3>
+        <p class="text-muted-foreground mt-2 text-sm text-pretty">{c.desc}</p>
+        <span class="mt-4 inline-flex w-fit items-center gap-1.5 rounded-full bg-emerald-500/10 px-2.5 py-1 text-xs font-semibold text-emerald-600 dark:text-emerald-400"><span class="size-1.5 rounded-full bg-emerald-500"></span>Prieinama dabar</span>
+      </div>
+    ))}
+  </div>
+</section>
+
+{/* Agentic pokytis — prieš/po srautas */}
+<section class="@container mx-auto w-full max-w-5xl px-4 pt-24">
+  <div class="mx-auto mb-12 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Pokytis</p>
+    <h2 class="mkt-h2 font-heading mt-3">Nuo keliautojo-svetainės iki keliautojo-agentui.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">Sename modelyje keliautojas atlikdavo darbą. Agentiniame modelyje agentas tampa sąsaja — o Wink tampa komercijos sluoksniu už atsakymo.</p>
+  </div>
+  {/* Prieš/po srautas — keičiamas infografikas (infographics/AgenticShiftFlow.astro) */}
+  <AgenticShiftFlow />
+</section>
+
+{/* Kodėl Wink — rekomendacija vs sandoris */}
+<section class="@container mx-auto w-full max-w-5xl px-4 pt-24">
+  <div class="mx-auto mb-12 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Kodėl Wink</p>
+    <h2 class="mkt-h2 font-heading mt-3">AI atsakymas nėra rezervacija.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">Rekomendacijai reikia struktūruoto tiekimo, tiesioginių kainų, atsiskaitymo, mokėjimo, patvirtinimo ir priskyrimo, kad taptų komercija.</p>
+  </div>
+  <div class="grid gap-6 @md:grid-cols-2">
+    <div class="rounded-2xl border border-border bg-muted/30 p-7">
+      <h3 class="font-heading text-lg font-semibold text-muted-foreground">AI agentas be infrastruktūros</h3>
+      <ul class="mt-5 space-y-3">
+        {["Internete surinktas, dažnai pasenęs tiekimas", "Kainos, kurios gali būti nerezervuojamos", "Rekomenduoja, tada perduoda rezervaciją svetainei ar OTA", "Nėra priskyrimo — ir agentas negali uždirbti", "Praranda siūlą po pasiūlymo"].map((b) => (
+          <li class="flex items-start gap-2.5"><IconX class="mt-0.5 size-5 shrink-0 text-muted-foreground/60" /><span class="text-sm text-muted-foreground">{b}</span></li>
+        ))}
+      </ul>
+      <p class="mt-6 text-sm font-semibold text-muted-foreground">Gali rekomenduoti.</p>
+    </div>
+    <div class="rounded-2xl border-2 border-primary/30 bg-primary/[0.04] p-7">
+      <h3 class="font-heading text-lg font-semibold text-primary">AI agentas Wink</h3>
+      <ul class="mt-5 space-y-3">
+        {["Tiesioginis, viešbučio valdomas tiekimas — ne interneto rinkimas ar perpardavimas", "Tiesioginės kainos ir prieinamumas per API", "Rezervuoja IR apmoka vienu srautu — Wink atsiskaito", "Agentas gali uždirbti — priskyrimas + 10% numatytas komisinis", "Patvirtinta, sinchronizuota su PMS, su webhook — veikia jau dabar"].map((b) => (
+          <li class="flex items-start gap-2.5"><IconCheck class="mt-0.5 size-5 shrink-0 text-primary" /><span class="text-sm text-foreground/90">{b}</span></li>
+        ))}
+      </ul>
+      <p class="mt-6 text-sm font-semibold text-primary">Gali vykdyti sandorius.</p>
+    </div>
+  </div>
+</section>
+
+{/* AI agentai visiems */}
+<section class="@container mx-auto w-full max-w-7xl px-4 pt-24">
+  <div class="mx-auto mb-14 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Kiekvienas dalyvis — agentas</p>
+    <h2 class="mkt-h2 font-heading mt-3">Agentas keliautojams, viešbučiams, partneriams ir kūrėjams.</h2>
+  </div>
+  <div class="grid gap-6 @md:grid-cols-2">
+    {[
+      { icon: IconUser, who: "Keliautojams", title: "Ieškoti, rezervuoti ir valdyti viešnagę", desc: "Agentas dirba su struktūruotu tiekimu, tiesioginėmis kainomis ir taisyklėmis — tada kuria rezervaciją per Booking Engine.", prompt: "Raskite tik suaugusiems skirtą prabangų viešbutį Čiangmajuje kitą mėnesį su SPA. Rezervuokite." },
+      { icon: IconBuildingStore, who: "Viešbučiams", title: "Prižiūrėtojai, ne operatoriai", desc: "Agentai padeda kurti, atnaujinti ir analizuoti per Extranet, Social ir Studio — viešbutis išlaiko taisykles.", prompt: "Sugeneruokite kitų mėnesių socialinį turinį ir pažymėkite mažo užimtumo datas reklamai." },
+      { icon: IconUsersGroup, who: "Partneriams ir kūrėjams", title: "Automatizuokite kampanijas ir uždirbkite", desc: "Atraskite tinkamus viešbučius, kurkite turinį ir parduotuves, publikuokite ir išlaikykite priskyrimą.", prompt: "Sukurkite kampaniją, reklamuojančią prabangius kurortus Maldyvuose." },
+      { icon: IconCode, who: "Kūrėjams", title: "Kurti naujas kelionių patirtis", desc: "AI konsjeržai, banko ir lojalumo kelionių agentai — sukurti ant MCP serverio, REST API ir Booking Engine.", prompt: "Įterpkite AI viešbučių rezervaciją į mūsų banko programėlę naudojant Wink API." },
+    ].map((c) => (
+      <div class="flex flex-col rounded-2xl border border-border bg-card p-7">
+        <span class="mb-4 flex size-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-white"><c.icon class="size-6" /></span>
+        <span class="text-xs font-semibold uppercase tracking-wider text-primary">{c.who}</span>
+        <h3 class="font-heading mt-2 text-xl font-semibold">{c.title}</h3>
+        <p class="text-muted-foreground mt-2 text-pretty">{c.desc}</p>
+        <p class="mt-5 rounded-lg border border-border bg-muted/40 px-4 py-3 text-sm italic text-foreground/80">“{c.prompt}”</p>
+      </div>
+    ))}
+  </div>
+</section>
+
+{/* Technologijų rinkinys */}
+<section class="@container mx-auto w-full max-w-7xl px-4 pt-24">
+  <div class="mx-auto mb-10 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Sukurta visoje platformoje</p>
+    <h2 class="mkt-h2 font-heading mt-3">Agentai veikia per sujungtą technologijų rinkinį.</h2>
+  </div>
+  <div class="mx-auto flex max-w-3xl flex-wrap justify-center gap-3">
+    {[
+      { name: "Extranet", href: "/products/extranet/" },
+      { name: "Studio", href: "/products/studio/" },
+      { name: "Social", href: "/products/social/" },
+      { name: "WinkLinks", href: "/products/winklinks/" },
+      { name: "Traveliko", href: "/products/traveliko/" },
+      { name: "Developers", href: "/builders/" },
+      { name: "Platforms & AI", href: "/platforms/" },
+    ].map((p) => (
+      <a href={p.href} class="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-medium transition-colors hover:border-primary/40">
+        <span class="size-1.5 rounded-full bg-primary" aria-hidden="true"></span>
+        {p.name}
+      </a>
+    ))}
+  </div>
+  <p class="text-muted-foreground mx-auto mt-10 max-w-xl text-center text-pretty"><strong class="text-foreground"><a href="/products/booking-engine/" class="text-primary underline underline-offset-4">Booking Engine</a> vykdo rezervaciją po kiekvieno agento perdavimo</strong> — atsiskaitymas, mokėjimas, patvirtinimas ir rezervacijos sinchronizavimas.</p>
+</section>
+
+{/* Atviri standartai — suderinamumas, indeksuojama AEO */}
+<section class="@container mx-auto w-full max-w-5xl px-4 pt-24">
+  <div class="mx-auto mb-12 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Atviri standartai, ne uždara sistema</p>
+    <h2 class="mkt-h2 font-heading mt-3">Sukurta bendradarbiauti su agentų komercijos sluoksniu.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-2xl">Agentinė viešbučių rezervacija tampa realia kategorija — ir pramonė konverguoja prie atvirų protokolų, o ne vienos įmonės atsiskaitymo. Wink šiandien veikia pagal šiuos standartus ir yra sukurta jungtis prie kitų, kai jie konsoliduojasi, todėl agentai niekada nėra užrakinti patentuotame kelyje.</p>
+  </div>
+  <div class="grid gap-5 @md:grid-cols-2">
+    <div class="rounded-2xl border-2 border-primary/30 bg-primary/[0.04] p-7">
+      <span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 px-2.5 py-1 text-xs font-semibold text-emerald-600 dark:text-emerald-400"><span class="size-1.5 rounded-full bg-emerald-500"></span>Veikia jau dabar</span>
+      <h3 class="font-heading mt-4 text-lg font-semibold">MCP — Model Context Protocol</h3>
+      <p class="text-muted-foreground mt-2 text-sm text-pretty">Talpinamas MCP serveris atskleidžia Wink tiesioginius OpenAPI kontraktus bet kuriam MCP suderinamam agentui — Claude, Codex, Cursor ir kitiems — adresu <code class="rounded bg-muted px-1 py-0.5 text-xs">docs.mcp.wink.travel/mcp</code>. Agentai atranda ir kviečia tikras operacijas, o ne spėlioja galinius taškus.</p>
+    </div>
+    <div class="rounded-2xl border border-border bg-card p-7">
+      <span class="inline-flex items-center gap-1.5 rounded-full border border-border bg-muted/40 px-2.5 py-1 text-xs font-semibold text-muted-foreground">Suderinama pagal dizainą</span>
+      <h3 class="font-heading mt-4 text-lg font-semibold">ACP · AP2 · A2A · x402</h3>
+      <p class="text-muted-foreground mt-2 text-sm text-pretty">Wink rezervacijos ir mokėjimo primityvai sukurti bendradarbiauti su kylančiu agentų mokėjimų sluoksniu — Agentic Commerce Protocol (ACP), Google Agent Payments Protocol (AP2), Agent2Agent (A2A) ir x402 tipo agentų mokėjimais — kai šie standartai bręsta, su Booking Engine kaip atsiskaitymo sluoksniu po apačia (Wink yra įrašytasis pardavėjas).</p>
+    </div>
+  </div>
+</section>
+
+{/* Kur tai veda — planai, aiškiai pažymėti */}
+<section class="mx-auto w-full max-w-3xl px-4 pt-24">
+  <div class="rounded-2xl border border-dashed border-primary/30 bg-primary/[0.03] p-8">
+    <span class="inline-flex items-center gap-1.5 rounded-full border border-primary/30 bg-card px-3 py-1 text-xs font-semibold text-primary">Kur tai veda</span>
+    <p class="text-muted-foreground mt-5 text-pretty">Aukščiau išvardytos galimybės veikia jau dabar. Kryptis — gilesnė agentų gimtoji komercija: turtingesni agentams skirti rezervacijos primityvai, agentų tapatybė ir autorizacija keliautojo vardu vykdant sandorius, ir agentai dalyvaujantys kaip priskirti, uždirbantys šaltiniai partnerių tinkle. Wink strateginė pozicija — <strong class="text-foreground"> kelionių komercijos infrastruktūra AI agentams</strong> — yra ryšys nuo šiandienos API iki ateities.</p>
+  </div>
+</section>
+
+{/* DUK */}
+<FaqGrid
+  heading="Agentic AI DUK"
+  description="Ką tai reiškia, kaip prisijungti ir ką agentai gali daryti."
+  items={faqs}
+/>
+
+{/* Paskutinis kvietimas veikti */}
+<section class="w-full border-y border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white">
+  <div class="mx-auto w-full max-w-7xl px-4 py-24 text-center">
+    <h2 class="mkt-h2 font-heading">Pasiruošę kurti kelionių komerciją AI agentams?</h2>
+    <p class="mx-auto mt-4 max-w-2xl text-pretty text-white/70 @lg:text-lg">Prisijunkite prie MCP serverio, perskaitykite tiesioginius kontraktus ir leiskite Booking Engine vykdyti rezervaciją. Arba susisiekite su mumis dėl agentų prieigos jūsų produktui.</p>
+    <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <a href="/developers/build-on-wink/" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-[#ff6b35] px-8 text-base font-semibold text-white hover:bg-[#e85b29] sm:w-auto">Peržiūrėti dokumentaciją</a>
+      <a href="/developers/mcp/" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-white px-8 text-base font-semibold text-[#1f0a40] hover:bg-white/90 sm:w-auto">Prisijungti prie MCP serverio</a>
+      <a href="https://cal.com/wink-ws36dy" class="inline-flex h-12 items-center justify-center px-4 text-sm font-medium text-white/80 underline underline-offset-4 hover:text-white">Užsisakyti demonstraciją</a>
+    </div>
+  </div>
+</section>
+
+</div>

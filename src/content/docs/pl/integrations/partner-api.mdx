@@ -5,52 +5,56 @@ sidebar:
   order: 0
 ---
 
-Wink **Partner API** to uwierzytelniony, o wyższej przepustowości sposób dla integratorów na zapytania o dostępny do rezerwacji zasób podróży — ten sam zasób, który zasila nasze osadzalne widżety i publiczne punkty końcowe do przeglądania, udostępniony jako interfejs programistyczny pierwszej klasy. Gdzie darmowe Web Components i publiczne punkty końcowe do przeglądania są przeznaczone do lekkiego osadzania skierowanego do użytkownika, Partner API jest zbudowane dla systemów, które wyszukują, wyceniają i rezerwują na dużą skalę. Dostęp jest uwierzytelniany dla każdego integratora i rozliczany według zużycia, więc płacisz tylko za ruch, który faktycznie generujesz.
+Wink **Partner API** to uwierzytelniony, o wyższej przepustowości sposób dla integratorów na zapytania o dostępny do rezerwacji zasób podróży — ten sam zasób, który zasila nasze osadzalne widżety i publiczne punkty końcowe do przeglądania, udostępniony jako interfejs programistyczny pierwszej klasy. Gdzie darmowe Web Components i publiczne punkty końcowe do przeglądania są przeznaczone do lekkiego osadzania skierowanego do użytkownika, Partner API jest zbudowane dla systemów, które wyszukują, wyceniają i rezerwują na dużą skalę. Dostęp jest uwierzytelniany dla każdego integratora i rozliczany za użycie, więc płacisz tylko za ruch, który faktycznie generujesz.
 
 ## Plany i cennik
 
-Jedno wywołanie API = jedno zapytanie. Rozliczenie według zużycia jest naliczane za każde 1 000 zapytań.
+Jedno wywołanie API = jedno zapytanie. Rozliczenie za użycie odbywa się za każde 1 000 zapytań.
 
 | | Darmowy | Płatny | Enterprise |
 |---|---|---|---|
-| **Cena** | 0 USD | Według zużycia | Skontaktuj się z nami |
-| **Najlepszy dla** | Ocena i integracje o niskim wolumenie | Płatność za rzeczywiste wykorzystanie na dużą skalę | Niestandardowy wolumen i warunki negocjowane |
+| **Cena** | 0 USD | Na podstawie użycia | Skontaktuj się z nami |
+| **Najlepszy dla** | Ocena i integracje o niskim wolumenie | Płatność za rzeczywiste użycie na dużą skalę | Niestandardowy wolumen i warunki negocjowane |
 | Zapytania na minutę | 30 (60 w piku) | Bez limitu | Bez limitu |
 | Zapytania na miesiąc | 10 000 | Bez limitu | Bez limitu |
 | Czas odpowiedzi API (P95) | — | Poniżej 500 ms | Poniżej 500 ms |
 | Cena za 1 000 zapytań | Darmowe | 1,00 USD | Niestandardowa |
 | Nadwyżka look-to-book (za każde 1 000 nadmiarowych wyszukiwań powyżej 5 000:1) | — | 2,00 USD | Niestandardowa |
-| Odpowiedź na limit zapytań | 429 (pauza / miesięczne twarde zatrzymanie) | Brak | Brak |
+| Odpowiedź na limit zapytań | 429 (pauza / miesięczne zatrzymanie) | Brak | Brak |
 | Umowa o Poziomie Usług | — | ✓ | ✓ |
 | Priorytetowe wsparcie | — | ✓ | ✓ |
 | Dedykowane wdrożenie | — | — | ✓ |
 
-[Uzyskaj klucz API](https://app.wink.travel/account/applications) · [Rozpocznij rozliczanie według zużycia](https://app.wink.travel/account/applications) · [Skontaktuj się ze sprzedażą](https://cal.com/wink-ws36dy)
+[Pobierz klucz API](https://app.wink.travel/account/applications) · [Rozpocznij rozliczanie za użycie](https://app.wink.travel/account/applications) · [Skontaktuj się ze sprzedażą](https://cal.com/wink-ws36dy)
 
 ## Dokumentacja API
 
 Dwa interfejsy obsługują dostępny do rezerwacji zasób i odpowiadają dwóm powyższym poziomom:
 
 - **Darmowy — Consumer / Booking Engine API** (REST, `/api/public/**`): anonimowy, skierowany do przeglądarki i widżetów. [Przeglądaj dokumentację Booking Engine →](/pl/api/booking-engine/)
-- **Płatny — Partner Integrator API** (**gRPC**, `wink.partner.v1`): uwierzytelniony, rozliczany według zużycia, zbudowany do integracji serwer-serwer na dużą skalę. [Przeglądaj dokumentację Integratora →](/pl/partner-api/partner/)
+- **Płatny — Partner Integrator API** (**gRPC**, `wink.partner.v1`): uwierzytelniony, rozliczany za użycie, zbudowany do integracji serwer-serwer na dużą skalę. [Przeglądaj dokumentację Integratora →](/pl/partner-api/partner/)
 
-Partner Integrator API to gRPC, nie REST. Wywołujesz je za pomocą wygenerowanego klienta przez HTTP/2 pod adresem
+Partner Integrator API to gRPC, nie REST. Wywołujesz je za pomocą wygenerowanego klienta przez HTTP/2 na
 `partner.wink.travel:443`, przekazując token Bearer i konto, dla którego wykonujesz zapytanie:
 
 ```bash
 grpcurl -H "authorization: Bearer $WINK_TOKEN" partner.wink.travel:443 list
 ```
 
-Powyższa strona dokumentacji opisuje każdą usługę, komunikat i status błędu, a schemat jest również dostępny w czasie działania przez refleksję serwera, więc `grpcurl`, Postman i Insomnia mogą go odkryć bez konieczności pobierania czegokolwiek.
+Powyższa strona dokumentacji opisuje każdą usługę, komunikat i status błędu, a schemat jest również
+dostępny w czasie działania przez refleksję serwera, więc `grpcurl`, Postman i Insomnia mogą go odkryć bez konieczności pobierania czegokolwiek.
 
-## Jak działają zużycie i limity
+Jeśli wolisz wygenerować klienta wcześniej, pliki źródłowe `.proto` są opublikowane na
+[github.com/wink-travel/partner-api-proto](https://github.com/wink-travel/partner-api-proto).
+
+## Jak działają użycie i limity
 
 ### Darmowy poziom
 
 Darmowy poziom jest zaprojektowany, aby pozwolić Ci budować, testować i obsługiwać umiarkowany ruch produkcyjny bez kosztów.
 
-- **Limit zapytań — 30 zapytań na minutę, z możliwością 60 zapytań w piku.** Krótkie skoki powyżej stałej wartości są absorbowane przez limit pikowy. Jeśli go przekroczysz, API odpowie **HTTP 429 (Too Many Requests)** i zastosuje **5-minutową pauzę** przed wznowieniem obsługi ruchu przez Twój klucz. Odczekaj i spróbuj ponownie po upływie pauzy, zamiast przeciążać punkt końcowy.
-- **Miesięczny limit — 10 000 zapytań na kalendarzowy miesiąc.** Po osiągnięciu limitu miesięcznego API zwraca **HTTP 429 do końca miesiąca** — twarde zatrzymanie — wraz z komunikatem zachęcającym do subskrypcji płatnego poziomu, aby kontynuować. Licznik resetuje się na początku kolejnego miesiąca kalendarzowego.
+- **Limit zapytań — 30 zapytań na minutę, z możliwością 60 zapytań w piku.** Krótkie skoki powyżej stałej wartości są absorbowane przez limit pikowy. Jeśli go przekroczysz, API odpowiada **HTTP 429 (Too Many Requests)** i stosuje **5-minutową pauzę** przed wznowieniem obsługi ruchu przez Twój klucz. Odczekaj i spróbuj ponownie po upływie pauzy, zamiast przeciążać punkt końcowy.
+- **Miesięczny limit — 10 000 zapytań na miesiąc kalendarzowy.** Po osiągnięciu limitu miesięcznego API zwraca **HTTP 429 do końca miesiąca** — twarde zatrzymanie — wraz z komunikatem zachęcającym do subskrypcji płatnego poziomu, aby kontynuować. Licznik resetuje się na początku kolejnego miesiąca kalendarzowego.
 
 Darmowy poziom nie obejmuje Umowy o Poziomie Usług ani priorytetowego wsparcia.
 
@@ -58,7 +62,7 @@ Darmowy poziom nie obejmuje Umowy o Poziomie Usług ani priorytetowego wsparcia.
 
 Płatny poziom usuwa miesięczny limit i pauzy limitu zapytań, a rozlicza Cię tylko za faktyczne użycie.
 
-- **Rozliczanie zapytań — 1,00 USD za 1 000 zapytań.** Nie ma miesięcznego limitu zapytań ani ograniczeń limitu zapytań przy normalnym użytkowaniu; płacisz za rzeczywisty wolumen.
+- **Rozliczanie za zapytania — 1,00 USD za 1 000 zapytań.** Nie ma miesięcznego limitu zapytań ani ograniczeń limitu zapytań przy normalnym użytkowaniu; płacisz za rzeczywisty wolumen.
 - **Nadwyżka look-to-book — 2,00 USD za 1 000 nadmiarowych wyszukiwań.** Aby utrzymać zdrowy zasób, mierzymy stosunek wyszukiwań ("look") do potwierdzonych rezerwacji. Przysługuje Ci **5 000 wyszukiwań na jedną rezerwację** przed naliczeniem nadwyżki. Nadmiar wyszukiwań oblicza się jako:
 
   `nadmiar = max(0, wyszukiwania − rezerwacje × 5 000)`
@@ -71,26 +75,26 @@ Płatny poziom obejmuje Umowę o Poziomie Usług opisaną poniżej — zobowiąz
 
 _Data wejścia w życie: 5 lipca 2026 · Wersja 1.0_
 
-Niniejsza Umowa o Poziomie Usług (dalej „SLA”) określa zobowiązanie do dostępności, kredyty serwisowe oraz cele wsparcia, które Wink („Wink”, „my”, „nas”) zapewnia klientowi („Klient”, „Ty”) dla uwierzytelnionego Wink Partner API („Partner API” lub „Usługa”) na poziomach, dla których SLA jest określona jako obowiązująca. Niniejsza SLA jest włączona do i regulowana przez umowę między Tobą a Wink, na podstawie której uzyskujesz dostęp do Partner API („Umowa”), i obowiązuje tak długo, jak utrzymujesz aktywną, płatną subskrypcję Partner API w dobrym stanie. Terminologia pisana wielką literą, nieokreślona tutaj, ma znaczenie nadane jej w Umowie.
+Niniejsza Umowa o Poziomie Usług (dalej „SLA”) określa zobowiązanie do dostępności, kredyty serwisowe oraz cele wsparcia, które Wink („Wink”, „my”, „nas”) zapewnia klientowi („Klient”, „Ty”) dla uwierzytelnionego Wink Partner API („Partner API” lub „Usługa”) na poziomach, dla których SLA jest określone jako obowiązujące. Niniejsza SLA jest włączona do i regulowana przez umowę między Tobą a Wink, na podstawie której uzyskujesz dostęp do Partner API („Umowa”), i obowiązuje tak długo, jak utrzymujesz aktywną, płatną subskrypcję Partner API w dobrym stanie. Terminologia pisana wielką literą, nieokreślona tutaj, ma znaczenie nadane jej w Umowie.
 
 ### 1. Definicje
 
 1. **„Dostępność”** oznacza okresy, w których Partner API jest dostępne do przyjmowania i pomyślnego odpowiadania na poprawnie sformułowane, uwierzytelnione zapytania.
 2. **„Przestój”** oznacza dowolny okres, mierzony w minutach, podczas którego Partner API nie odpowiada pomyślnie na poprawnie sformułowane, uwierzytelnione zapytania, z wyłączeniem okresów określonych w Wyłączeniach w Sekcji 4. Pojedyncze błędy dotyczące nieistotnej części zapytań nie są same w sobie Przestojem.
 3. **„Miesięczny procent dostępności”** oznacza, dla danego miesiąca kalendarzowego, całkowitą liczbę minut w tym miesiącu minus całkowitą liczbę minut przestoju, podzieloną przez całkowitą liczbę minut w tym miesiącu, wyrażoną w procentach.
-4. **„Planowana konserwacja”** oznacza zaplanowane prace konserwacyjne Usługi, o których Wink poinformował z wyprzedzeniem zgodnie z Sekcją 4.
-5. **„Kredyt serwisowy”** oznacza kredyt, obliczany jako procent opłat zapłaconych lub należnych przez Ciebie za Partner API w danym miesiącu kalendarzowym, który jest stosowany jako wyłączne i jedyne zadośćuczynienie za niespełnienie zobowiązania dostępności.
-6. **„Czas odpowiedzi”** oznacza czas, jaki upływa od momentu otrzymania przez Wink poprawnie sformułowanego, uwierzytelnionego zapytania na granicy usług Wink do momentu rozpoczęcia zwracania odpowiedzi, z wyłączeniem czasu przesyłu sieciowego i czasu po stronie klienta poza kontrolą Wink.
+4. **„Planowana konserwacja”** oznacza zaplanowaną konserwację Usługi, o której Wink poinformował z wyprzedzeniem zgodnie z Sekcją 4.
+5. **„Kredyt serwisowy”** oznacza kredyt, obliczany jako procent opłat zapłaconych lub należnych przez Ciebie za Partner API w danym miesiącu kalendarzowym, który jest stosowany do przyszłych opłat za Partner API jako jedyne i wyłączne zadośćuczynienie za niespełnienie zobowiązania dostępności.
+6. **„Czas odpowiedzi”** oznacza czas, jaki upływa od momentu otrzymania przez Wink poprawnie sformułowanego, uwierzytelnionego zapytania na granicy usługi Wink do momentu rozpoczęcia zwracania odpowiedzi, z wyłączeniem czasu przesyłu sieciowego i czasu po stronie klienta poza kontrolą Wink.
 
 ### 2. Zobowiązanie do dostępności i wydajności
 
-Wink dołoży komercyjnie uzasadnionych starań, aby Partner API było dostępne z **miesięcznym procentem dostępności co najmniej 99,9%** w każdym miesiącu kalendarzowym okresu obowiązywania (dalej „Zobowiązanie do dostępności”). Zobowiązanie do dostępności jest mierzone na granicy usług Wink i wyklucza czynniki poza rozsądną kontrolą Wink, w tym opisane w Sekcji 4. Systemy monitorujące Wink są autorytatywnym źródłem pomiaru miesięcznego procentu dostępności i czasu odpowiedzi.
+Wink dołoży komercyjnie uzasadnionych starań, aby Partner API było dostępne na poziomie **Miesięcznego procentu dostępności co najmniej 99,9%** w każdym miesiącu kalendarzowym okresu obowiązywania (dalej „Zobowiązanie do dostępności”). Zobowiązanie do dostępności jest mierzone na granicy usługi Wink i wyklucza czynniki poza rozsądną kontrolą Wink, w tym opisane w Sekcji 4. Systemy monitorujące Wink są autorytatywnym źródłem pomiaru Miesięcznego procentu dostępności i Czasu odpowiedzi.
 
-Wink dodatkowo celuje w **czas odpowiedzi na poziomie 95. percentyla (P95) poniżej 500 milisekund** dla pomyślnych, poprawnie sformułowanych, uwierzytelnionych zapytań, mierzonego na granicy usług Wink w każdym miesiącu kalendarzowym (dalej „Cel wydajności”). Cel wydajności wyklucza czynniki opisane w Sekcji 4, zapytania zwracające błędy na poziomie aplikacji spowodowane samym zapytaniem oraz wyjątkowo duże lub złożone zapytania wsadowe. Cel wydajności jest celem usługi; Kredyty serwisowe z Sekcji 3 dotyczą niespełnienia **Zobowiązania do dostępności** i są jedynym i wyłącznym zadośćuczynieniem za niedostępność.
+Wink dodatkowo celuje w **czas odpowiedzi na poziomie 95. percentyla (P95) poniżej 500 milisekund** dla pomyślnych, poprawnie sformułowanych, uwierzytelnionych zapytań, mierzonego na granicy usługi Wink w każdym miesiącu kalendarzowym (dalej „Cel wydajności”). Cel wydajności wyklucza czynniki opisane w Sekcji 4, zapytania zwracające błędy na poziomie aplikacji spowodowane samym zapytaniem oraz wyjątkowo duże lub złożone zapytania wsadowe. Cel wydajności jest celem usługi; Kredyty serwisowe z Sekcji 3 dotyczą niespełnienia **Zobowiązania do dostępności** i są jedynym i wyłącznym zadośćuczynieniem za niedostępność.
 
 ### 3. Kredyty serwisowe
 
-Jeśli miesięczny procent dostępności spadnie poniżej Zobowiązania do dostępności w dowolnym miesiącu kalendarzowym, możesz być uprawniony do Kredytu serwisowego obliczanego jako procent opłat za Partner API zapłaconych lub należnych przez Ciebie za ten miesiąc, według następującej skali:
+Jeśli Miesięczny procent dostępności spadnie poniżej Zobowiązania do dostępności w dowolnym miesiącu kalendarzowym, możesz być uprawniony do Kredytu serwisowego obliczanego jako procent opłat za Partner API zapłaconych lub należnych przez Ciebie za ten miesiąc, według następującej skali:
 
 | Miesięczny procent dostępności | Kredyt serwisowy |
 |---|---|
@@ -101,29 +105,29 @@ Jeśli miesięczny procent dostępności spadnie poniżej Zobowiązania do dost�
 1. **Zgłaszanie roszczenia.** Aby otrzymać Kredyt serwisowy, musisz złożyć pisemne roszczenie do Wink w ciągu **trzydziestu (30) dni** od końca miesiąca kalendarzowego, w którym wystąpiło niedociągnięcie. Roszczenie musi zawierać daty i godziny każdego incydentu przestoju, którego dotyczy, oraz wszelkie dostępne logi lub dowody. Roszczenia złożone po tym terminie nie będą rozpatrywane.
 2. **Forma kredytu.** Zatwierdzone Kredyty serwisowe są stosowane do przyszłych opłat za Partner API i nie mają wartości pieniężnej. Nie są zwrotami i nie będą wypłacane, chyba że wymaga tego obowiązujące prawo.
 3. **Maksymalny kredyt.** Łączna wartość Kredytów serwisowych przyznanych za pojedynczy miesiąc kalendarzowy nie przekroczy 50% opłat za Partner API zapłaconych lub należnych przez Ciebie za ten miesiąc.
-4. **Wyłączne zadośćuczynienie.** Kredyty serwisowe są Twoim **jedynym i wyłącznym zadośćuczynieniem** za jakiekolwiek niespełnienie Zobowiązania do dostępności lub inne niedostępności Partner API.
+4. **Jedyny i wyłączny środek zaradczy.** Kredyty serwisowe są Twoim **jedynym i wyłącznym środkiem zaradczym** za jakiekolwiek niespełnienie Zobowiązania do dostępności lub inne niedostępności Partner API.
 
 ### 4. Wyłączenia
 
 Zobowiązanie do dostępności i wynikające z niego Kredyty serwisowe nie mają zastosowania, a Przestój nie obejmuje żadnej niedostępności, zawieszenia, degradacji lub problemu z wydajnością wynikającego z lub związanego z:
 
-1. **Planowaną konserwacją**, o której Wink poinformował z wyprzedzeniem, pod warunkiem, że powiadomienie zostało przekazane z odpowiednim wyprzedzeniem za pomocą kanału, którego Wink zwykle używa do komunikacji z klientami;
+1. **Planowaną konserwacją**, o której Wink poinformował z wyprzedzeniem, pod warunkiem, że powiadomienie zostało przekazane z odpowiednim wyprzedzeniem za pośrednictwem kanału, którego Wink zwykle używa do komunikacji z klientami;
 2. zdarzeniami **siły wyższej** lub innymi przyczynami poza rozsądną kontrolą Wink, w tym klęskami żywiołowymi, działaniami rządu, awariami sieci lub mediów, oraz atakami typu denial-of-service lub innymi złośliwymi atakami;
-3. problemami spowodowanymi przez **Twoje** działania lub zaniechania, Twój sprzęt, oprogramowanie lub sieć, lub przez jakąkolwiek **usługę, produkt lub dostawcę stron trzecich** nie będących pod bezpośrednią kontrolą Wink;
+3. problemami spowodowanymi przez **Twoje** działania lub zaniechania, Twój sprzęt, oprogramowanie lub sieć, lub przez jakąkolwiek **usługę, produkt lub dostawcę stron trzecich** niebędących pod bezpośrednią kontrolą Wink;
 4. Twoim **nadużyciem Usługi** lub **naruszeniem Umowy**, niniejszej SLA, warunków akceptowalnego użytkowania lub obowiązujących limitów zapytań, w tym ruchem, który Wink uzna za nadmierny, automatycznym nadużyciem lub oszustwem; oraz
 5. wszelkimi **zawieszeniami lub zakończeniem** Twojego dostępu prawidłowo dokonanymi na podstawie Umowy, w tym zawieszeniem za brak płatności.
 
 ### 5. Wsparcie i cele odpowiedzi
 
-Wink zapewnia wsparcie dla Partner API w standardowych godzinach pracy, z wyłączeniem lokalnych dni wolnych od pracy. Wink dołoży komercyjnie uzasadnionych starań, aby potwierdzić otrzymanie poprawnie zgłoszonych zgłoszeń wsparcia w następujących docelowych czasach odpowiedzi, w zależności od przypisanego stopnia ważności, który Wink rozsądnie potwierdzi:
+Wink zapewnia wsparcie dla Partner API w standardowych godzinach pracy, z wyłączeniem lokalnych dni wolnych od pracy. Wink dołoży komercyjnie uzasadnionych starań, aby potwierdzić otrzymanie poprawnie zgłoszonych zgłoszeń wsparcia w następujących docelowych czasach odpowiedzi, w zależności od przypisanego stopnia ważności, który Wink rozsądnie potwierdza:
 
 | Stopień ważności | Opis | Docelowy czas pierwszej odpowiedzi |
 |---|---|---|
 | **Sev 1 — Krytyczny** | Partner API jest niedostępne lub nieużywalne w produkcji bez obejścia. | 4 godziny |
-| **Sev 2 — Poważny** | Znaczące ograniczenie lub pogorszenie funkcji; istnieje obejście. | 1 dzień roboczy |
-| **Sev 3 — Drobny** | Ogólne pytania, drobne problemy lub prośby o funkcje. | 2 dni robocze |
+| **Sev 2 — Poważny** | Znaczące ograniczenie lub degradacja funkcji; istnieje obejście. | 1 dzień roboczy |
+| **Sev 3 — Pomniejszy** | Ogólne pytania, drobne problemy lub prośby o funkcje. | 2 dni robocze |
 
-Docelowe czasy odpowiedzi opisują, kiedy Wink zamierza nawiązać **pierwszy kontakt**; nie są gwarancją czasu rozwiązania. Priorytetowe wsparcie i cele oparte na stopniu ważności obowiązują na poziomach, gdzie są one określone jako włączone.
+Docelowe czasy odpowiedzi opisują, kiedy Wink zamierza nawiązać **pierwszy kontakt**; nie są gwarancją czasu rozwiązania. Priorytetowe wsparcie i cele oparte na stopniu ważności obowiązują na poziomach, gdzie są one uwzględnione.
 
 ### 6. Dane i bezpieczeństwo
 
@@ -131,8 +135,8 @@ Wink utrzymuje komercyjnie uzasadnione środki administracyjne, techniczne i org
 
 ### 7. Ograniczenie odpowiedzialności
 
-Kredyty serwisowe są **jedynym i wyłącznym zadośćuczynieniem** za jakąkolwiek niedostępność lub niespełnienie Zobowiązania do dostępności i są udzielane zamiast jakiejkolwiek innej odpowiedzialności wynikającej z takiego niedociągnięcia. Z wyjątkiem wyraźnie określonych w niniejszej SLA, Partner API jest udostępniane „tak jak jest”. W maksymalnym zakresie dozwolonym przez obowiązujące prawo, łączna odpowiedzialność Wink wynikająca z lub związana z Usługą jest ograniczona zgodnie z Umową, a Wink nie ponosi odpowiedzialności za jakiekolwiek szkody pośrednie, przypadkowe, specjalne, następcze lub karne, ani za utracone zyski, przychody, dane lub dobrą wolę, nawet jeśli został poinformowany o możliwości takich szkód.
+Kredyty serwisowe są **jedynym i wyłącznym środkiem zaradczym** za jakąkolwiek niedostępność lub niespełnienie Zobowiązania do dostępności i są udzielane zamiast jakiejkolwiek innej odpowiedzialności wynikającej z takiego niespełnienia. Z wyjątkiem wyraźnie określonych w niniejszej SLA, Partner API jest udostępniane „tak jak jest”. W maksymalnym zakresie dozwolonym przez obowiązujące prawo, łączna odpowiedzialność Wink wynikająca z lub związana z Usługą jest ograniczona zgodnie z postanowieniami Umowy, a Wink nie ponosi odpowiedzialności za jakiekolwiek szkody pośrednie, przypadkowe, specjalne, następcze lub karne, ani za utratę zysków, przychodów, danych lub renomy, nawet jeśli został poinformowany o możliwości takich szkód.
 
 ### 8. Okres obowiązywania, zmiany i zakończenie
 
-Niniejsza SLA obowiązuje tak długo, jak masz aktywną subskrypcję Partner API na poziomie, dla którego SLA jest określona jako obowiązująca. Wink może od czasu do czasu aktualizować tę SLA; istotne zmiany będą komunikowane za pomocą kanału, którego Wink zwykle używa do kontaktu z klientami, a dalsze korzystanie z Partner API po wejściu w życie aktualizacji oznacza akceptację zaktualizowanej SLA. Niniejsza SLA wygasa automatycznie wraz z rozwiązaniem lub wygaśnięciem Umowy lub Twojej subskrypcji Partner API. Sekcje, które ze swej natury powinny przetrwać zakończenie — w tym nabyte, ale niezgłoszone uprawnienia do Kredytów serwisowych, ograniczenie odpowiedzialności i definicje — pozostają w mocy.
+Niniejsza SLA obowiązuje tak długo, jak masz aktywną subskrypcję Partner API na poziomie, dla którego SLA jest określone jako obowiązujące. Wink może od czasu do czasu aktualizować tę SLA; istotne zmiany będą komunikowane za pośrednictwem kanału, którego Wink zwykle używa do kontaktu z klientami, a dalsze korzystanie z Partner API po wejściu aktualizacji w życie oznacza akceptację zaktualizowanej SLA. Niniejsza SLA wygasa automatycznie wraz z rozwiązaniem lub wygaśnięciem Umowy lub Twojej subskrypcji Partner API. Sekcje, które ze swej natury powinny przetrwać zakończenie — w tym nabyte, ale niezgłoszone uprawnienia do Kredytów serwisowych, ograniczenie odpowiedzialności i definicje — pozostają w mocy.
