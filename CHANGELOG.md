@@ -2,6 +2,20 @@
 
 Changelog of docs.
 
+## v1.1.0 (2026-09-02)
+
+### Features
+
+-  **footer**  rename Academy to Documentation, add Status link ([c8681](https://github.com/wink-travel/docs/commit/c868168b4e741d4) Bjorn Harvold)  
+
+### Bug Fixes
+
+-  **build**  import z from astro/zod instead of deprecated astro:content ([1754c](https://github.com/wink-travel/docs/commit/1754c9c218a002a) Bjorn Harvold)  
+-  **i18n**  retry bare fetch timeouts in translate-i18n ([cedf9](https://github.com/wink-travel/docs/commit/cedf976d6079c96) Bjorn Harvold)  
+-  **build**  exclude generated dirs from astro check ([408e2](https://github.com/wink-travel/docs/commit/408e2d0fd8bd2e9) Bjorn Harvold)  
+-  **nav**  make mobile menu panel scroll on its own ([4dc27](https://github.com/wink-travel/docs/commit/4dc27e2c24491ff) Bjorn Harvold)  
+-  **og**  restore homepage's OpenGraph image ([c3856](https://github.com/wink-travel/docs/commit/c38562ccb96ff41) Bjorn Harvold)  
+
 ## v1.0.0 (2026-08-30)
 
 ### Breaking changes
