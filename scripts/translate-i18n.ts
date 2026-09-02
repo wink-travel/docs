@@ -13,6 +13,7 @@ import { resolve, join, dirname, extname } from "path";
 import { fileURLToPath } from "url";
 import cliProgress from "cli-progress";
 import OpenAI from "openai";
+import { Agent, setGlobalDispatcher } from "undici";
 
 import { createHash } from "crypto";
 
@@ -278,8 +279,18 @@ if (!process.env.OPENAI_API_KEY) {
   );
 }
 
+// Node's global fetch (undici under the hood) defaults to a 5-minute
+// headers-timeout, shorter than the OpenAI client's own 10-minute request
+// timeout below. A slow/large file can blow past that 5-minute mark before
+// the client's timeout ever gets a say, surfacing as a bare "Node.js fetch
+// timed out waiting for response headers" with no HTTP status. Raise the
+// dispatcher's timeouts to match so the client's timeout is the one that
+// actually governs.
+setGlobalDispatcher(new Agent({ headersTimeout: 600_000, bodyTimeout: 600_000 }));
+
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
+  timeout: 600_000,
 });
 
 // Optional narrowing via environment variables for quicker tests
@@ -402,7 +413,13 @@ async function translateWholeFile(
       const status = err?.status ?? err?.response?.status;
       const msg = err?.message ?? err?.response?.data ?? String(err);
       console.warn(`[${targetLanguageCode}] OpenAI error (status=${status}): ${msg}`);
-      if (status === 429 || (status && status >= 500)) {
+      // A fetch-level timeout/network failure (e.g. Node's "fetch timed out
+      // waiting for response headers") never gets an HTTP status, so it must
+      // be treated as retryable here too — otherwise it falls straight
+      // through to `break` and burns the file on the very first attempt,
+      // ignoring maxRetries entirely.
+      const isRetryable = status === 429 || (status && status >= 500) || status === undefined;
+      if (isRetryable) {
         const delayMs = Math.min(16000, 1000 * Math.pow(2, attempt));
         await new Promise((res) => setTimeout(res, delayMs));
         attempt++;
