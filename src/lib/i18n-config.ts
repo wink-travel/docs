@@ -22,7 +22,6 @@ export const targetLanguages: TargetLanguage[] = [
   { id: "cs", label: "Čeština" },
   { id: "da", label: "Dansk" },
   { id: "de", label: "Deutsch" },
-  { id: "et", label: "Eesti" },
   { id: "es", label: "Español" },
   { id: "es-AR", label: "Español (AR)" },
   { id: "es-MX", label: "Español (MX)" },

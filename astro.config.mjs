@@ -31,7 +31,7 @@ const apiSidebarGroup = createOpenAPISidebarGroup()
 // The same block also catches /integrations-api/integrator/, the prefix used before the audience
 // was renamed to `partner`; 44 content links still pointed there and are now re-pointed, but
 // external links and bookmarks are not.
-const API_LOCALES = ["ar", "bg", "ca", "cs", "da", "de", "el", "es", "es-AR", "es-MX", "et", "fi", "fr", "he", "hi", "hr", "hu", "id", "is", "it", "ja", "ko", "lt", "lv", "ms", "nl", "no", "pl", "pt-BR", "pt-PT", "ro", "ru", "sk", "sl", "sr", "sv", "th", "tl", "tr", "uk", "vi", "zh-CN", "zh-TW"]
+const API_LOCALES = ["ar", "bg", "ca", "cs", "da", "de", "el", "es", "es-AR", "es-MX", "fi", "fr", "he", "hi", "hr", "hu", "id", "is", "it", "ja", "ko", "lt", "lv", "ms", "nl", "no", "pl", "pt-BR", "pt-PT", "ro", "ru", "sk", "sl", "sr", "sv", "th", "tl", "tr", "uk", "vi", "zh-CN", "zh-TW"]
 const partnerApiRedirects = Object.fromEntries(
   ['', ...API_LOCALES.map((l) => `/${l}`)].flatMap((prefix) => [
     [`${prefix}/integrations-api/partner`, `${prefix}/partner-api/partner`],
@@ -285,7 +285,6 @@ export default defineConfig({
       'cs': { label: 'Čeština', lang: 'cs' },
       'da': { label: 'Dansk', lang: 'da' },
       'de': { label: 'Deutsch', lang: 'de' },
-      'et': { label: 'Eesti', lang: 'et' },
       'es': { label: 'Español', lang: 'es' },
       'es-AR': { label: 'Español (AR)', lang: 'es-AR' },
       'es-MX': { label: 'Español (MX)', lang: 'es-MX' },
