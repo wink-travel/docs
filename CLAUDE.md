@@ -139,8 +139,18 @@ npm run serve                 # build + firebase emulators:start --only function
 npm run deploy                # firebase deploy --only functions
 ```
 
-Note: the **root** `package.json` still lists `mailersend` as a dependency, but nothing under `src/`
-imports it — the function uses its own copy in `functions/package.json`. The root entry is vestigial.
+**The `mailersend` dependency belongs in `functions/package.json` only — do not add it to the root
+`package.json`.** MailerSend is very much in use (it is what actually sends the contact email), but
+only the function talks to it. `firebase.json` points the functions codebase at `"source":
+"functions"`, so Firebase packages and installs that directory on its own; the root `package.json`
+is never uploaded for the function. A root copy would be installed by every site build and audited
+forever while no Astro code imports it — it was removed for exactly that reason.
+
+More to the point, Astro code *cannot* be the one to call MailerSend: the site is a static build, so
+there is no server to hold `MAILERSEND_API_KEY`. Anything importing the SDK from `src/` would ship it
+to the browser. The contact page renders a plain `<form action="/api/contact">`
+(`src/components/starwind-pro/contact-02/Contact2.astro`) that `fetch`es the hosting rewrite — the
+secret and the SDK stay in the function.
 
 ### Path Aliases
 
