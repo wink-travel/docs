@@ -19,7 +19,7 @@ Those terms are available under [Affiliate Portal > Payment Terms](/portal/studi
 :::
 
 **WINK PAYMENT TERMS**   
-**FOR TRAVEL AGENTS (Merchant of Record)**
+**FOR TRAVEL AGENTS (Agent-Collected Payments)**
 
 These Payment Terms of Service (“Payment Terms”) are a binding legal agreement that forms part of the contractual relationship established under the "TERMS & CONDITIONS TRAVEL AGENTS" (“Main Agreement”)
 
