@@ -46,7 +46,7 @@ In addition to terms defined elsewhere in this Agreement, the following definiti
 
 **“Booking Fee”** is the 1.5% deducted from the booking value as a processing fee by Wink.
 
-**“Booking Value”** is the total amount collected by Payment Facilitator from guest for a Booking.
+**“Booking Value”** is the total amount collected by TripPay from guest for a Booking.
 
 **"Book-Out"** means the failure of an Accommodation Provider to accommodate any Guest by reason of, amongst other things, no Room availability by the Participating Hotel or on its behalf by the Accommodation Provider or any third-Party distributor.
 
@@ -70,11 +70,11 @@ In addition to terms defined elsewhere in this Agreement, the following definiti
 
 **“Partner”** means any business or individual that is connecting or using the Wink platform to promote and sell Accommodation Providers' inventory to its audience and/or customers for a commission.
 
-**“Payment Facilitator”** a fully owned subsidiary of Winkfluence (“TripPay”), that governs the Payment Services, collecting payments from guests (“Pay-in”), by charging the payment method associated with their purchase, such as credit card, debit card, bank transfer, crypto currencies or PayPal etc… and disburse the fund owed (“Net Rate”) to the Accommodation provider. 
+**“TripPay”** means TripPay Corporation, a wholly owned subsidiary of Winkfluence Inc., which collects payments from Guests as the Accommodation Provider’s limited payment collection agent under the Payment Terms, collecting payments from guests (“Pay-in”), by charging the payment method associated with their purchase, such as credit card, debit card, bank transfer, crypto currencies or PayPal etc… and disburse the fund owed (“Net Rate”) to the Accommodation provider. 
 
-**“Pay-in”** means the acquisition of a payment made by a guest by the Payment Facilitator.
+**“Pay-in”** means the acquisition of a payment made by a guest by the TripPay.
 
-**“Pay-out”** means the disbursement of the Net Commission to the Affiliate by Payment Facilitator.
+**“Pay-out”** means the disbursement of the Net Commission to the Affiliate by TripPay.
 
 **“Payment Service Fee”** is the 4% deducted from the Booking Value as a payment collection fee by TripPay.
 
@@ -87,8 +87,6 @@ In addition to terms defined elsewhere in this Agreement, the following definiti
 **"Room(s)"** means the accommodation(s) located at any Participating Hotel or lodging.
 
 **"Taxes"** means all local, state, federal, and national taxes and/or service charges including, for the avoidance of doubt, any value-added (VAT), sales, use, excise, lodging, transient, rental, city, resort, and other similar types of taxes, governmental fees, or charges.
-
-**“TripPay”** means the fully owned subsidiary company collecting payments (Pay-in) and disbursements (Pay-out) for Wink, referred to as Payment Facilitator.
 
 **"Sales Channels"** means (i) websites operated, managed, or owned by Wink for other businesses to use to make Bookings and which are only accessible with passwords issued by Wink; (ii) API connections between Wink and its clients' travel websites; or (iii) any other distribution method whereby Wink supplies Rooms to its clients for their onward distribution or sale, whether it be in websites or otherwise.
 
@@ -104,7 +102,7 @@ When you receive a booking confirmation through the Wink platform, you are enter
 
 **3. Independence of Accommodation Providers**
 
-Your relationship with Wink is that of an independent legal entity except that TripPay acts as a payment facilitator as described in the Payment Terms. Wink does not direct or control the services you provide, and you agree that you have complete discretion whether and when to provide those services, and at what price and on what terms to offer them.
+Your relationship with Wink is that of an independent legal entity except that TripPay acts as a limited payment collection agent as described in the Payment Terms. Wink does not direct or control the services you provide, and you agree that you have complete discretion whether and when to provide those services, and at what price and on what terms to offer them.
 
 **4. Managing your listing**
 
@@ -130,11 +128,11 @@ Wink provides Accommodation Providers with the digital tools they need to distri
 
 Booking Fees, Commissions, and Payment Fees apply as follows for any confirmed booking:
 
-* Traveliko.com: Payment Facilitator Fee as described in Payments Terms (4%) \+ Wink Booking Fee (1.5%)  
-* WinkLinks: Payment Facilitator Fee as described in Payments Terms (4%) \+ Wink Booking Fee (1.5%)  
-* Social Share: Payment Facilitator Fee as described in Payments Terms (4%) \+ Wink Booking Fee (1.5%)  
-* Booking Engine: Payment Facilitator Fee as described in Payments Terms (4%) \+ Wink Booking Fee (1.5%)  
-* Wink Network: Payment Facilitator Fee as described in Payments Terms (4%) \+ Wink Booking Fee (1.5%) \+ Affiliate Commission (negotiated commission at hotel discretion)
+* Traveliko.com: TripPay Fee as described in Payments Terms (4%) \+ Wink Booking Fee (1.5%)  
+* WinkLinks: TripPay Fee as described in Payments Terms (4%) \+ Wink Booking Fee (1.5%)  
+* Social Share: TripPay Fee as described in Payments Terms (4%) \+ Wink Booking Fee (1.5%)  
+* Booking Engine: TripPay Fee as described in Payments Terms (4%) \+ Wink Booking Fee (1.5%)  
+* Wink Network: TripPay Fee as described in Payments Terms (4%) \+ Wink Booking Fee (1.5%) \+ Affiliate Commission (negotiated commission at hotel discretion)
 
 Calculation example for a USD 100 Booking made via Trvaveliko, Social Share, Booking Engine or WinkLinks
 
