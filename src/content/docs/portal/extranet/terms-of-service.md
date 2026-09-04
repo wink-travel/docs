@@ -294,7 +294,7 @@ The Accommodation Provider warrants that to the best of its knowledge, neither t
 
 19.5 Announcements. Neither Party shall create, publish, distribute, or permit any written materials, which make reference to the other Party without first submitting to the other Party such material and receiving prior written consent from the non-submitting party. This consent shall not be unreasonably withheld or delayed.
 
-19.6 Each Party may contact the other Party's Data Protection Officer (DPO) through the following e-mail and/or postal addresses: dataprotectionofficer@Wink.
+19.6 Each Party may contact the other Party's Data Protection Officer (DPO) through the following e-mail and/or postal addresses: dataprotectionofficer@wink.travel.
 
 **20. Intellectual Property Rights**
 
