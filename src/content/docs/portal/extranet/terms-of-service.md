@@ -94,7 +94,7 @@ In addition to terms defined elsewhere in this Agreement, the following definiti
 
 **1.1 No Partnership**
 
-1.1.1 This Agreement is not intended, nor should anything herein or in any of the arrangements contemplated herein, be construed, to create a joint venture or the relationship of partners, partnership, or principal and agent between or among the Parties. Unless the Parties agree otherwise in writing, none of them shall (i) enter into any contract or commitment with third parties as agent for or on behalf of the other Party, (ii) describe or present itself as such an agent or in any way hold itself out as being such an agent, or (iii) act on behalf of or represent the other Party in any manner, or for any purpose.
+1.1.1 Except for the limited payment collection agency granted to TripPay under the Payment Terms, this Agreement is not intended, nor should anything herein or in any of the arrangements contemplated herein, be construed, to create a joint venture or the relationship of partners, partnership, or principal and agent between or among the Parties. Unless the Parties agree otherwise in writing, none of them shall (i) enter into any contract or commitment with third parties as agent for or on behalf of the other Party, (ii) describe or present itself as such an agent or in any way hold itself out as being such an agent, or (iii) act on behalf of or represent the other Party in any manner, or for any purpose.
 
 1.1.2 Unless agreed otherwise in writing by Wink or save as set out otherwise in this Agreement, the Accommodation Provider shall not publish anywhere on the Accommodation Provider Website(s) any statement, either express or implied, that the website is part of, endorsed by, or an official website of Wink.
 
