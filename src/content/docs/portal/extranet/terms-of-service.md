@@ -76,7 +76,7 @@ In addition to terms defined elsewhere in this Agreement, the following definiti
 
 **“Pay-out”** means the disbursement of the Net Commission to the Affiliate by Payment Facilitator.
 
-**“Payment Service Fee”** is the 4% deducted from the Affiliate commission as payment acquisition fee by the Payment Facilitator.
+**“Payment Service Fee”** is the 4% deducted from the Booking Value as a payment collection fee by TripPay.
 
 **"Payments Terms"** means the Rates, availability, offers, promotions, payment terms, and any other rules or conditions relating to the distribution of Rooms which are mutually agreed between the Parties.
 
