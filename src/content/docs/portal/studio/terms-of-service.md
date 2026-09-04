@@ -80,7 +80,7 @@ Wink and the Affiliate are a “Party” to this Agreement and are collectively 
 
 **1.2 No Partnership** 
 
-1.2.1 This Agreement is not intended, nor should anything herein or in any of the arrangements contemplated herein, be construed, to create a joint venture or the relationship of partners, partnership or principal and agent between or among the Parties. 
+1.2.1 Except for the limited payment collection agency granted to TripPay under the Payment Terms, this Agreement is not intended, nor should anything herein or in any of the arrangements contemplated herein, be construed, to create a joint venture or the relationship of partners, partnership or principal and agent between or among the Parties. 
 
 1.2.2 Unless agreed otherwise in writing by Wink or as set out otherwise in this Agreement, the Affiliate shall not publish anywhere on the Affiliate Website(s) any statement, either express or implied, that the website is part of, endorsed by, or an official website of Wink. 
 
@@ -408,7 +408,7 @@ If any provision of this Agreement is determined by a government enforcement age
 
 **16. Relationship of the Parties**
 
-The Parties are, and shall act as, independent contractors in the performance of this Agreement. Neither Party shall act as, or be deemed to be, an agent for or partner of the other Party for any purpose whatsoever nor shall either Party has the authority to bind the other in any respect.
+The Parties are, and shall act as, independent contractors in the performance of this Agreement. Except for the limited payment collection agency granted to TripPay under the Payment Terms, neither Party shall act as, or be deemed to be, an agent for or partner of the other Party for any purpose whatsoever, nor shall either Party have the authority to bind the other in any respect.
 
 **17. Assignment** 
 
