@@ -15,7 +15,7 @@ By registering and signing up to the Wink program as an accommodation provider, 
 
 **BETWEEN:**
 
-**Winkfluence**, a company incorporated under the laws of the state of Wyoming and having its registered office at 30 N Gould St, Ste. 22578, Sheridan, WY 82801 U.S.A.. Doing business as "Wink", and
+**Winkfluence Inc.**, a company incorporated under the laws of the State of Wyoming and having its registered office at 30 N Gould St, Ste. 22578, Sheridan, WY 82801, U.S.A., doing business as "Wink", and
 
 **THE ACCOMMODATION PROVIDER**, whose details are set out in the Accommodation Provider Registration Form or have been submitted online (the "Accommodation Provider").
 
