@@ -44,10 +44,10 @@ Wink and the Affiliate are a “Party” to this Agreement and are collectively 
 **“App(s)”** means a native application for mobile devices.  
 **“Agreement”** means this agreement.    
 **“Booking”** means a successful transaction recorded by Wink from a Guest for the reservation of an Accommodation Provider.   
-**“Booking Fee”** is the 1.5% deducted from the Affiliate commission as a processing fee by Wink.  
+**“Booking Fee”** is the 1.5% deducted from the Booking Value, after the Payment Service Fee, as a processing fee by Wink and charged to the Accommodation Provider.  
 **“Booking Value”** is the total amount collected by Payment Facilitator from guest for a Booking.  
 **“Clause”** means a clause of this Agreement.   
-**"Commission"** means the amount owed to the Affiliate prior to the deduction of the Payment Service Fee and Booking Fee for each Materialized Transaction in accordance with this Agreement.   
+**"Commission"** means the amount owed to the Affiliate for each Materialized Transaction, calculated in accordance with Clause 5.3.   
 **"Connections"** means all web-components, links, landing pages and/or JSON feeds and/or deep links and/or hyperlinks, created, hosted and maintained by Wink.   
 **"Content"** means all (descriptive) information of Accommodation Providers available on the Wink Website including but not limited to Accommodation Provider information and descriptions, guest reviews, meta data, details of facilities and (cancellation/no show) policies and general terms of the Accommodation Providers (including any translations thereof) and photos, video, pictures, but excluding rates and availability (including any updates, modifications, replacements, additions or amendments).   
 **"Control"** means the possession of the power or the ability to (directly or indirectly, alone or in concert with others, whether through the ownership of voting securities or other ownership interests, a partnership or otherwise) (i) exercise or cause to exercise more than one-half of the voting rights in the shareholders' meeting of a company, (ii) appoint more than one-half of the ((non-)executive) directors or supervisory directors of a company, or (iii) direct or cause the direction of management relating to a company.   
@@ -60,12 +60,12 @@ Wink and the Affiliate are a “Party” to this Agreement and are collectively 
 **“Merchant Transaction”** means a Materialized Transaction in which the Payment Facilitator is the merchant of record, whereby Payment Facilitator collects funds directly from the Guest for the reservation.   
 **“Materialized Transaction(s)"** means the reservation by a visitor of the Affiliate Website(s) and or App(s) who, through the Connection, has made a reservation with an Accommodation Provider, and which reservation has resulted in the actual provision of accommodation, as confirmed to Wink by the Accommodation Provider. Materialized Transactions will always be adjusted for amendments (e.g. shortened stays), chargebacks, credit card fraud, bad debt or otherwise. For the avoidance of doubt, cancellations, no-shows etc. can never be considered Materialized Transactions.   
 **"Micro Site"** means all white label versions of the primary website of Wink, which are owned, created, hosted and maintained by Wink. The Micro Site may be marked with a 'powered by Wink' logo or equivalent.   
-**“Net Commission”** is the amount owed to the Affiliate for Materialized Transaction(s) after the deduction of the Payment Service Fee and Booking Fee.  
+**“Net Commission”** means the Commission, which is paid to the Affiliate in full.  
 **"Paid Search"** means any form of online advertising that ties the presentation of an ad to a specific keyword-based search request.   
 **“Payment Facilitator”** a fully owned subsidiary of Winkfluence, that governs the Payment Services, collecting payments from guests (“Pay-in”), by charging the payment method associated with their purchase, such as credit card, debit card, bank transfer, crypto currencies or PayPal etc… and disburse the fund owed (“Net Commission”) to the Affiliate local bank account.   
 **“Pay-in”** means the acquisition of a payment made by a guest by the Payment Facilitator.  
 **“Pay-out”** means the disbursement of the Net Commission to the Affiliate by Payment Facilitator.  
-**“Payment Service Fee”** is the 4% deducted from the Affiliate commission as payment acquisition fee by the Payment Facilitator.  
+**“Payment Service Fee”** is the 4% deducted from the Booking Value as a payment collection fee by TripPay and charged to the Accommodation Provider.  
 **"Price Comparison"** means the comparison of Accommodation Provider prices and/or availability made available from or by two or more online Accommodation Provider booking platforms.   
 **"Reselling”** has the meaning as set out in Clause 4.1.7.   
 **“Seller Portal”** has the meaning as set out in Clause 4.1.8.   
