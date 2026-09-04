@@ -362,7 +362,7 @@ If Wink in good faith has reason to believe that the Affiliate has breached its 
 
 Wink takes a zero-tolerance approach to breaches of international trade norms, bribery and corruption prevention legislation and applicable restrictions on trade, funds flow and terrorism financing.  
 The Affiliate warrants that they do and shall comply with, and its Associated Parties do and shall comply with the Wink Supplier Code of Conduct.  
-The Affiliate represents, warrants and undertakes that they do and will comply in all respects with all international trade norms, applicable restrictions on trade, funds flow and terrorism financing and bribery and corruption prevention legislation, including, but not limited to the UK Bribery Act 2010 and the Singapore Prevention of Corruption Act.  
+The Affiliate represents, warrants and undertakes that they do and will comply in all respects with all international trade norms, applicable restrictions on trade, funds flow and terrorism financing and bribery and corruption prevention legislation, including, but not limited to the US Foreign Corrupt Practices Act, the UK Bribery Act 2010 and the Singapore Prevention of Corruption Act.  
 The Affiliate warrants that to the best of its knowledge, neither they nor its Associated Parties have been convicted of an offence involving bribery or corruption or are subject of any investigation by any governmental, administrative or regulatory bodies.
 
 **11. Confidentiality**
