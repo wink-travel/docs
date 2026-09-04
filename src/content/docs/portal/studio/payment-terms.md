@@ -37,8 +37,8 @@ The Payment Services will be provided by the contracting entity depending on the
 
 **1.3 Additional Terms**. Your access to or use of certain Payment Services may be subject to, or require you to accept, additional terms and conditions. If there is a conflict between these Payment Terms and terms and conditions applicable to a specific Payment Service, the latter terms and conditions will take precedence with respect to your use of or access to that Payment Service, unless specified otherwise.
 
-**1.4 Bank account information.** Accommodation Provider shall ensure that its bank account details provided to Payment Collection Agent are accurate at all times, and it shall be notified without delay of any changes to such.  
-Only the person signing this agreement shall be the sole designated representative of Accommodation Provider who shall have the authority to request changes to Accommodation Provider's bank account and/or payee information. No other person shall have such authority on behalf of Accommodation Provider. Any change of such designated person shall be requested to Wink in writing, and any such change shall be implemented only via a written amendment to this Agreement executed by both Parties.
+**1.4 Bank account information.** The Affiliate shall ensure that its bank account details provided to Payment Collection Agent are accurate at all times, and shall notify us without delay of any changes to them.  
+Only the person signing this agreement shall be the sole designated representative of the Affiliate who shall have the authority to request changes to the Affiliate's bank account and/or payee information. No other person shall have such authority on behalf of the Affiliate. Any change of such designated person shall be requested to Wink in writing, and any such change shall be implemented only via a written amendment to this Agreement executed by both Parties.
 
 **2. Payment Terms**
 
