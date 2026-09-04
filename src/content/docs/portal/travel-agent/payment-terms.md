@@ -6,7 +6,7 @@ sidebar:
 ---
 
 :::note
-Last updated 2024-10-30
+Last updated 2026-09-04
 :::
 
 :::caution[Notice]
@@ -101,4 +101,4 @@ Wink reserves the right to modify these Payment Terms at any time. Any changes w
 **8\. Governing Law and Jurisdiction**  
 These Payment Terms are governed by the laws of Singapore. Any disputes arising out of or relating to these terms shall be resolved in the courts of Singapore.
 
-These Payment Terms are integral to and expand upon the payment provisions set forth in the Main Agreement, "TERMS & CONDITIONS TRAVEL AGENTS\_220924," between Wink and the Travel Agent.  
+These Payment Terms are integral to and expand upon the payment provisions set forth in the Main Agreement, "Terms & Conditions for Travel Agents," between Wink and the Travel Agent, as amended from time to time.  
