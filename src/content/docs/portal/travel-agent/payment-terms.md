@@ -58,7 +58,11 @@ Subtotal \= USD 985.00
 Less Travel Agent Commission (10% of Subtotal) \= USD 98.50  
 Net Payment to Accommodation Provider \= USD 886.50
 
-2.3 **Net Payment to Accommodation Providers:** The Travel Agent is responsible for disbursing the Net Payment to the Accommodation Provider according to the terms of the Separate Agreement between the Travel Agent and the Accommodation Provider. Wink is not liable for making any payments to the Accommodation Provider.
+2.3 **Net Payment to Accommodation Providers:** The Travel Agent is responsible for disbursing the Net Payment to the Accommodation Provider according to the terms of the Separate Agreement between the Travel Agent and the Accommodation Provider. Wink does not collect, hold or disburse Guest funds under these Payment Terms and is not liable for making any payment to the Accommodation Provider.
+
+2.4 **Recourse and Indemnity:** Where the Travel Agent fails to remit the Net Payment, the Accommodation Provider’s recourse is against the Travel Agent and not against Wink or the Guest. The Travel Agent shall indemnify and hold Wink harmless from and against any claim, liability, loss or expense arising from the Travel Agent’s failure to collect payment from a Guest or to remit the Net Payment to an Accommodation Provider, including reasonable legal costs.
+
+2.5 **Guest Protection:** A confirmed Booking remains valid notwithstanding any payment dispute between the Travel Agent, the Accommodation Provider and Wink. The Travel Agent shall not cancel or amend a confirmed Booking on the basis of such a dispute.
 
 **3**. **Invoicing and Payment** 
 
