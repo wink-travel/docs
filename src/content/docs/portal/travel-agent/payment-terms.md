@@ -13,13 +13,13 @@ Last updated 2026-09-04
 The payment terms below apply to travel agents that wish to acquire and disburse funds on their own.
 This can only be done through our API and only by travel agents that have indicated that they want to do this during the sign-up process.
 
-All travel agents are still able to book through our travel agent portal using Wink's payment gateway with their own or the traveler's credit card. Where a booking is made that way, payment is collected by TripPay as the Accommodation Provider's limited payment collection agent, and the separate Payment Terms governing that arrangement also apply.
+All travel agents are still able to book through our travel agent portal using Wink's payment gateway with their own or the traveler's credit card. Where a booking is made that way, the Accommodation Provider is the merchant of record and payment is collected by TripPay as its limited payment collection agent, and the separate Payment Terms governing that arrangement also apply.
 
 Those terms are available under [Affiliate Portal > Payment Terms](/portal/studio/payment-terms).
 :::
 
 **WINK PAYMENT TERMS**   
-**FOR TRAVEL AGENTS (Agent-Collected Payments)**
+**FOR TRAVEL AGENTS (Merchant of Record)**
 
 These Payment Terms of Service (“Payment Terms”) are a binding legal agreement that forms part of the contractual relationship established under the "TERMS & CONDITIONS TRAVEL AGENTS" (“Main Agreement”)
 
