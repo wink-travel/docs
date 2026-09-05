@@ -44,7 +44,7 @@ Wink and the Affiliate are a “Party” to this Agreement and are collectively 
 **“App(s)”** means a native application for mobile devices.  
 **“Agreement”** means this agreement.    
 **“Booking”** means a successful transaction recorded by Wink from a Guest for the reservation of an Accommodation Provider.   
-**“Booking Fee”** is the 1.5% deducted from the Booking Value, after the Payment Service Fee, as a processing fee by Wink and charged to the Accommodation Provider.  
+**“Booking Fee”** is the 1.5% deducted from the booking value as a processing fee by Wink.  
 **“Booking Value”** is the total amount collected by TripPay from guest for a Booking.  
 **“Clause”** means a clause of this Agreement.   
 **"Commission"** means the amount owed to the Affiliate for each Materialized Transaction, calculated in accordance with Clause 5.3.   
@@ -252,13 +252,13 @@ Pay-out to Affiliate \= Commission, paid in full
 
 **“BV”** means the Booking Value  
 **“PSF”** means the Payment Services Fee of 4% of the Booking Value, charged to the Accommodation Provider  
-**“BF”** means the Wink Booking Fee of 1.5% of the amount remaining after the Payment Services Fee, charged to the Accommodation Provider  
+**“BF”** means the Wink Booking Fee of 1.5% of the Booking Value, charged to the Accommodation Provider  
 **“ACP”** means the Affiliate Commission Percentage 
 
 Worked example on a USD 100.00 Booking Value with an ACP of 10%:  
 Less Payment Services Fee \= USD 4.00, leaving USD 96.00  
-Less Wink Booking Fee \= USD 1.44, leaving USD 94.56  
-Commission \= 10% of USD 94.56 \= USD 9.46, paid to the Affiliate in full
+Less Wink Booking Fee \= USD 1.50, leaving USD 94.50  
+Commission \= 10% of USD 94.50 \= USD 9.45, paid to the Affiliate in full
 
 5.4 Wink tracks all transaction and will make commercially reasonable efforts to ensure that all Materialized Transaction are tracked, reported and paid. However, Wink’s records will be final and the Affiliate shall have no recourse for any lost revenue or damages in the event that Wink fails to accurately track or report Affiliate Departures, except in the case of gross misconduct or fraudulent behaviour by Wink. Except in these latter cases, the Affiliate’s sole recourse shall be to terminate this Agreement and end its participation in the program. 
 

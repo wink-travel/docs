@@ -138,16 +138,16 @@ Calculation example for a USD 100 Booking made via Trvaveliko, Social Share, Boo
 
 Booking Value \= USD 100.00  
 Less Payment Services Fee (4% of Booking Value) \= USD 4.00, leaving USD 96.00  
-Less Wink Booking Fee (1.5% of USD 96.00) \= USD 1.44, leaving USD 94.56  
-Payable to hotel (“Net Rate”) \= USD 94.56
+Less Wink Booking Fee (1.5% of Booking Value) \= USD 1.50, leaving USD 94.50  
+Payable to hotel (“Net Rate”) \= USD 94.50
 
 Calculation example for a USD 100 Booking made via An Affiliate with a 10% commission
 
 Booking Value \= USD 100.00  
 Less Payment Services Fee (4% of Booking Value) \= USD 4.00, leaving USD 96.00  
-Less Wink Booking Fee (1.5% of USD 96.00) \= USD 1.44, leaving USD 94.56  
-Less Affiliate Commission (10% of USD 94.56) \= USD 9.46  
-Payable to hotel (“Net Rate”) \= USD 85.10
+Less Wink Booking Fee (1.5% of Booking Value) \= USD 1.50, leaving USD 94.50  
+Less Affiliate Commission (10% of USD 94.50) \= USD 9.45  
+Payable to hotel (“Net Rate”) \= USD 85.05
 
 ---
 
