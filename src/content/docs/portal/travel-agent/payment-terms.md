@@ -25,7 +25,7 @@ These Payment Terms of Service (“Payment Terms”) are a binding legal agreeme
 
 **BETWEEN:**
 
-1. **Winkfluence** a company incorporated under the laws of Singapore and having its registered office at \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 with VAT register number 201437335D (hereinafter known as "Wink") and  
+1. **Winkfluence Inc.** a company incorporated under the laws of the State of Wyoming and having its registered office at 30 N Gould St, Ste 22578, Sheridan, WY 82801, USA (hereinafter known as "Wink") and  
      
 2. **THE TRAVEL AGENT** whose details are set out in the Travel Agent Registration Form or have been submitted online (the "Travel Agent").
 
@@ -99,6 +99,6 @@ Any disputes arising out of or related to these Payment Terms shall be handled a
 Wink reserves the right to modify these Payment Terms at any time. Any changes will be communicated to the Travel Agent at least 30 days before they take effect. Continued use of the Wink platform after the effective date constitutes acceptance of the modified terms.
 
 **8\. Governing Law and Jurisdiction**  
-These Payment Terms are governed by the laws of Singapore. Any disputes arising out of or relating to these terms shall be resolved in the courts of Singapore.
+These Payment Terms are governed by the laws of the State of Wyoming, USA. Any disputes arising out of or relating to these terms shall be resolved in the state or federal courts located in Wyoming.
 
 These Payment Terms are integral to and expand upon the payment provisions set forth in the Main Agreement, "Terms & Conditions for Travel Agents," between Wink and the Travel Agent, as amended from time to time.  
