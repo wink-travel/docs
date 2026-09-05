@@ -108,7 +108,7 @@ Only the person signing this agreement shall be the sole designated representati
 
 The Accommodation Provider warrants that they do and shall comply with, and its Associated Parties do and shall comply with the Payment Collection Agent Supplier Code of Conduct.
 
-The Accommodation Provider represents, warrants, and undertakes that they do and will comply in all respects with all international trade norms, applicable restrictions on trade, funds flow, and terrorism financing and bribery and corruption prevention legislation, including, but not limited to the US American Anti-Corruption Act, UK Bribery Act 2010, and the Singapore Prevention of Corruption Act.
+The Accommodation Provider represents, warrants, and undertakes that they do and will comply in all respects with all international trade norms, applicable restrictions on trade, funds flow, and terrorism financing and bribery and corruption prevention legislation, including, but not limited to the US Foreign Corrupt Practices Act and the UK Bribery Act 2010.
 
 The Accommodation Provider warrants that to the best of its knowledge, neither they nor its Associated Parties have been convicted of an offence involving bribery or corruption or are subject to any investigation by any governmental, administrative, or regulatory bodies.
 
