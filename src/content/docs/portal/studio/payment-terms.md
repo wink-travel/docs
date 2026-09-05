@@ -115,7 +115,7 @@ Payment Collection Agent shall not be liable for any delay or failure to fulfil 
 
 7.1 If you choose to use the Payment Services, you do so voluntarily and at your sole risk. To the maximum extent permitted by law, the Payment Services are provided “as is”, without warranty of any kind, either express or implied.
 
-7.2 Notwithstanding Payment Collection Agent’s appointment as the limited payment collection agent of Affiliates pursuant to Section 6, Payment Collection Agent explicitly disclaims all liability for any act or omission of any Affiliate or other third party. Payment Collection Agent does not have any duties or obligations as agent for each Affiliate except to the extent expressly set forth in these Payment Terms, and any additional duties or obligations as may be implied by law are, to the maximum extent permitted by applicable law, expressly excluded.
+7.2 Notwithstanding Payment Collection Agent’s appointment in respect of Commission settlement pursuant to Section 4, Payment Collection Agent explicitly disclaims all liability for any act or omission of any Affiliate or other third party. Payment Collection Agent does not have any duties or obligations as agent for each Affiliate except to the extent expressly set forth in these Payment Terms, and any additional duties or obligations as may be implied by law are, to the maximum extent permitted by applicable law, expressly excluded.
 
 7.3 If we choose to conduct identity verification on any Affiliate, to the extent permitted by applicable law, we disclaim warranties of any kind, either express or implied, that such checks will identify prior misconduct by an Affiliate or guarantee that an Affiliate will not engage in misconduct in the future.
 
