@@ -6,20 +6,20 @@ sidebar:
 ---
 
 :::note
-Last updated 2024-10-30
+Last updated 2026-09-04
 :::
 
 :::caution[Notice]
 The payment terms below apply to travel agents that wish to acquire and disburse funds on their own.
 This can only be done through our API and only by travel agents that have indicated that they want to do this during the sign-up process.
 
-All travel agents are still able to book through our travel agent portal using Wink's payment gateway with their own or the traveler's credit card. Therefore, all travel agents also need to agree to the payment terms where Wink's payment gateway is the merchant of record.
+All travel agents are still able to book through our travel agent portal using Wink's payment gateway with their own or the traveler's credit card. Where a booking is made that way, payment is collected by TripPay as the Accommodation Provider's limited payment collection agent, and the separate Payment Terms governing that arrangement also apply.
 
 Those terms are available under [Affiliate Portal > Payment Terms](/portal/studio/payment-terms).
 :::
 
 **WINK PAYMENT TERMS**   
-**FOR TRAVEL AGENTS (Merchant of Record)**
+**FOR TRAVEL AGENTS (Agent-Collected Payments)**
 
 These Payment Terms of Service (“Payment Terms”) are a binding legal agreement that forms part of the contractual relationship established under the "TERMS & CONDITIONS TRAVEL AGENTS" (“Main Agreement”)
 
@@ -48,16 +48,21 @@ As defined in the main agreement "TERMS & CONDITIONS TRAVEL AGENTS" ("Main Agree
 
 2.1 **Payment Collection:** The Travel Agent is responsible for collecting payment from the Guest at the time of booking. This ensures immediate processing and financial clarity.
 
-2.2 **Fee Deduction:** The Travel Agent shall deduct Service Provider’s fee first then deduct his commission for the subtitle as per example below:
+2.2 **Fee Deduction:** From the Booking Value collected from the Guest, the Travel Agent shall first deduct Wink’s Booking Fee, then deduct its own Commission from the resulting subtotal. The balance is the Net Payment due to the Accommodation Provider.
 
-* 1.5% Booking Fee for Wink.  
-* The Travel Agent’s Commission as specified in the Separate Agreement (we shall use 10% for this example)
+Worked example, using a 1.5% Wink Booking Fee and a 10% Travel Agent Commission as specified in the Separate Agreement:
 
-Booking Value USD 1,000  
-Wink Fee (1.5%) \= USD 15  
-Subtotal \= 1,000 \- 15 \= 985
+Booking Value \= USD 1,000.00  
+Less Wink Booking Fee (1.5% of Booking Value) \= USD 15.00  
+Subtotal \= USD 985.00  
+Less Travel Agent Commission (10% of Subtotal) \= USD 98.50  
+Net Payment to Accommodation Provider \= USD 886.50
 
-2.3 **Net Payment to Accommodation Providers:** The Travel Agent is responsible for disbursing the Net Payment to the Accommodation Provider according to the terms of the Separate Agreement between the Travel Agent and the Accommodation Provider. Wink is not liable for making any payments to the Accommodation Provider.
+2.3 **Net Payment to Accommodation Providers:** The Travel Agent is responsible for disbursing the Net Payment to the Accommodation Provider according to the terms of the Separate Agreement between the Travel Agent and the Accommodation Provider. Wink does not collect, hold or disburse Guest funds under these Payment Terms and is not liable for making any payment to the Accommodation Provider.
+
+2.4 **Recourse and Indemnity:** Where the Travel Agent fails to remit the Net Payment, the Accommodation Provider’s recourse is against the Travel Agent and not against Wink or the Guest. The Travel Agent shall indemnify and hold Wink harmless from and against any claim, liability, loss or expense arising from the Travel Agent’s failure to collect payment from a Guest or to remit the Net Payment to an Accommodation Provider, including reasonable legal costs.
+
+2.5 **Guest Protection:** A confirmed Booking remains valid notwithstanding any payment dispute between the Travel Agent, the Accommodation Provider and Wink. The Travel Agent shall not cancel or amend a confirmed Booking on the basis of such a dispute.
 
 **3**. **Invoicing and Payment** 
 
@@ -65,7 +70,7 @@ Subtotal \= 1,000 \- 15 \= 985
 
 3.2 **Payment Method:** Payments to Wink shall be made via the payment method specified on the invoice. Any costs associated with the payment transfer are the responsibility of the Travel Agent.
 
-3.3 **Late Payments:** In the event of late payment, Wink reserves the right to charge interest on the overdue amount at a rate of 5% per month or the maximum rate permitted by law, whichever is lower. Additionally, if the Travel Agent is late in paying the Accommodation Provider as per the terms of the Separate Agreement, Wink reserves the right to suspend access to the Service until all outstanding payments to both Wink and the Accommodation Provider are resolved. However, if there are any mistakes or errors in the invoice submitted by Wink, Travel Agent shall only be required to make payment of the correct and accurate part of the invoice and shall not be subject to any interest charge or penalty for failing to pay the incorrect part of the invoice.
+3.3 **Late Payments:** In the event of late payment, Wink reserves the right to charge interest on the overdue amount at a rate of 1.5% per month or the maximum rate permitted by law, whichever is lower. Additionally, if the Travel Agent is late in paying the Accommodation Provider as per the terms of the Separate Agreement, Wink reserves the right to suspend access to the Service until all outstanding payments to both Wink and the Accommodation Provider are resolved. However, if there are any mistakes or errors in the invoice submitted by Wink, Travel Agent shall only be required to make payment of the correct and accurate part of the invoice and shall not be subject to any interest charge or penalty for failing to pay the incorrect part of the invoice.
 
 **4\. Roles and Responsibilities**
 
@@ -96,4 +101,4 @@ Wink reserves the right to modify these Payment Terms at any time. Any changes w
 **8\. Governing Law and Jurisdiction**  
 These Payment Terms are governed by the laws of Singapore. Any disputes arising out of or relating to these terms shall be resolved in the courts of Singapore.
 
-These Payment Terms are integral to and expand upon the payment provisions set forth in the Main Agreement, "TERMS & CONDITIONS TRAVEL AGENTS\_220924," between Wink and the Travel Agent.  
+These Payment Terms are integral to and expand upon the payment provisions set forth in the Main Agreement, "Terms & Conditions for Travel Agents," between Wink and the Travel Agent, as amended from time to time.  

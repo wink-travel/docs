@@ -6,7 +6,7 @@ sidebar:
 ---
 
 :::note
-Last updated 2024-06-12
+Last updated 2026-09-04
 :::
   
 **GENERAL TERMS AND CONDITIONS FOR ACCOMMODATION PROVIDERS**
@@ -15,7 +15,7 @@ By registering and signing up to the Wink program as an accommodation provider, 
 
 **BETWEEN:**
 
-**Winkfluence**, a company incorporated under the laws of the state of Wyoming and having its registered office at 30 N Gould St, Ste. 22578, Sheridan, WY 82801 U.S.A.. Doing business as "Wink", and
+**Winkfluence Inc.**, a company incorporated under the laws of the State of Wyoming and having its registered office at 30 N Gould St, Ste. 22578, Sheridan, WY 82801, U.S.A., doing business as "Wink", and
 
 **THE ACCOMMODATION PROVIDER**, whose details are set out in the Accommodation Provider Registration Form or have been submitted online (the "Accommodation Provider").
 
@@ -46,7 +46,7 @@ In addition to terms defined elsewhere in this Agreement, the following definiti
 
 **“Booking Fee”** is the 1.5% deducted from the booking value as a processing fee by Wink.
 
-**“Booking Value”** is the total amount collected by Payment Facilitator from guest for a Booking.
+**“Booking Value”** is the total amount collected by TripPay from guest for a Booking.
 
 **"Book-Out"** means the failure of an Accommodation Provider to accommodate any Guest by reason of, amongst other things, no Room availability by the Participating Hotel or on its behalf by the Accommodation Provider or any third-Party distributor.
 
@@ -70,13 +70,11 @@ In addition to terms defined elsewhere in this Agreement, the following definiti
 
 **“Partner”** means any business or individual that is connecting or using the Wink platform to promote and sell Accommodation Providers' inventory to its audience and/or customers for a commission.
 
-**“Payment Facilitator”** a fully owned subsidiary of Winkfluence (“TripPay”), that governs the Payment Services, collecting payments from guests (“Pay-in”), by charging the payment method associated with their purchase, such as credit card, debit card, bank transfer, crypto currencies or PayPal etc… and disburse the fund owed (“Net Rate”) to the Accommodation provider. 
+**“Pay-in”** means the acquisition of a payment made by a guest by TripPay.
 
-**“Pay-in”** means the acquisition of a payment made by a guest by the Payment Facilitator.
+**“Pay-out”** means the disbursement of the Net Commission to the Affiliate by TripPay.
 
-**“Pay-out”** means the disbursement of the Net Commission to the Affiliate by Payment Facilitator.
-
-**“Payment Service Fee”** is the 4% deducted from the Affiliate commission as payment acquisition fee by the Payment Facilitator.
+**“Payment Service Fee”** is the 4% deducted from the Booking Value as a payment collection fee by TripPay.
 
 **"Payments Terms"** means the Rates, availability, offers, promotions, payment terms, and any other rules or conditions relating to the distribution of Rooms which are mutually agreed between the Parties.
 
@@ -88,13 +86,13 @@ In addition to terms defined elsewhere in this Agreement, the following definiti
 
 **"Taxes"** means all local, state, federal, and national taxes and/or service charges including, for the avoidance of doubt, any value-added (VAT), sales, use, excise, lodging, transient, rental, city, resort, and other similar types of taxes, governmental fees, or charges.
 
-**“TripPay”** means the fully owned subsidiary company collecting payments (Pay-in) and disbursements (Pay-out) for Wink, referred to as Payment Facilitator.
+**“TripPay”** means TripPay Corporation, a wholly owned subsidiary of Winkfluence Inc., which collects payments from Guests as the Accommodation Provider’s limited payment collection agent under the Payment Terms, collecting payments from guests (“Pay-in”), by charging the payment method associated with their purchase, such as credit card, debit card, bank transfer, crypto currencies or PayPal etc… and disburse the fund owed (“Net Rate”) to the Accommodation provider. 
 
 **"Sales Channels"** means (i) websites operated, managed, or owned by Wink for other businesses to use to make Bookings and which are only accessible with passwords issued by Wink; (ii) API connections between Wink and its clients' travel websites; or (iii) any other distribution method whereby Wink supplies Rooms to its clients for their onward distribution or sale, whether it be in websites or otherwise.
 
 **1.1 No Partnership**
 
-1.1.1 This Agreement is not intended, nor should anything herein or in any of the arrangements contemplated herein, be construed, to create a joint venture or the relationship of partners, partnership, or principal and agent between or among the Parties. Unless the Parties agree otherwise in writing, none of them shall (i) enter into any contract or commitment with third parties as agent for or on behalf of the other Party, (ii) describe or present itself as such an agent or in any way hold itself out as being such an agent, or (iii) act on behalf of or represent the other Party in any manner, or for any purpose.
+1.1.1 Except for the limited payment collection agency granted to TripPay under the Payment Terms, this Agreement is not intended, nor should anything herein or in any of the arrangements contemplated herein, be construed, to create a joint venture or the relationship of partners, partnership, or principal and agent between or among the Parties. Unless the Parties agree otherwise in writing, none of them shall (i) enter into any contract or commitment with third parties as agent for or on behalf of the other Party, (ii) describe or present itself as such an agent or in any way hold itself out as being such an agent, or (iii) act on behalf of or represent the other Party in any manner, or for any purpose.
 
 1.1.2 Unless agreed otherwise in writing by Wink or save as set out otherwise in this Agreement, the Accommodation Provider shall not publish anywhere on the Accommodation Provider Website(s) any statement, either express or implied, that the website is part of, endorsed by, or an official website of Wink.
 
@@ -104,7 +102,7 @@ When you receive a booking confirmation through the Wink platform, you are enter
 
 **3. Independence of Accommodation Providers**
 
-Your relationship with Wink is that of an independent legal entity except that TripPay acts as a payment facilitator as described in the Payment Terms. Wink does not direct or control the services you provide, and you agree that you have complete discretion whether and when to provide those services, and at what price and on what terms to offer them.
+Your relationship with Wink is that of an independent legal entity except that TripPay acts as a limited payment collection agent as described in the Payment Terms. Wink does not direct or control the services you provide, and you agree that you have complete discretion whether and when to provide those services, and at what price and on what terms to offer them.
 
 **4. Managing your listing**
 
@@ -130,24 +128,26 @@ Wink provides Accommodation Providers with the digital tools they need to distri
 
 Booking Fees, Commissions, and Payment Fees apply as follows for any confirmed booking:
 
-* Traveliko.com: Payment Facilitator Fee as described in Payments Terms (4%) \+ Wink Booking Fee (1.5%)  
-* WinkLinks: Payment Facilitator Fee as described in Payments Terms (4%) \+ Wink Booking Fee (1.5%)  
-* Social Share: Payment Facilitator Fee as described in Payments Terms (4%) \+ Wink Booking Fee (1.5%)  
-* Booking Engine: Payment Facilitator Fee as described in Payments Terms (4%) \+ Wink Booking Fee (1.5%)  
-* Wink Network: Payment Facilitator Fee as described in Payments Terms (4%) \+ Wink Booking Fee (1.5%) \+ Affiliate Commission (negotiated commission at hotel discretion)
+* Traveliko.com: TripPay Fee as described in Payments Terms (4%) \+ Wink Booking Fee (1.5%)  
+* WinkLinks: TripPay Fee as described in Payments Terms (4%) \+ Wink Booking Fee (1.5%)  
+* Social Share: TripPay Fee as described in Payments Terms (4%) \+ Wink Booking Fee (1.5%)  
+* Booking Engine: TripPay Fee as described in Payments Terms (4%) \+ Wink Booking Fee (1.5%)  
+* Wink Network: TripPay Fee as described in Payments Terms (4%) \+ Wink Booking Fee (1.5%) \+ Affiliate Commission (negotiated commission at hotel discretion)
 
 Calculation example for a USD 100 Booking made via Trvaveliko, Social Share, Booking Engine or WinkLinks
 
-100-4% \= 96  
-96-1.5%=94.56  
-Payable to hotel (“Net Rate”) \=\> USD 94.96
+Booking Value \= USD 100.00  
+Less Payment Services Fee (4% of Booking Value) \= USD 4.00, leaving USD 96.00  
+Less Wink Booking Fee (1.5% of USD 96.00) \= USD 1.44, leaving USD 94.56  
+Payable to hotel (“Net Rate”) \= USD 94.56
 
 Calculation example for a USD 100 Booking made via An Affiliate with a 10% commission
 
-100-4% \= 96  
-96-1.5%=94.56  
-94.56-10%=85.1  
-Payable to hotel (“Net Rate”) \=\> USD 85.1
+Booking Value \= USD 100.00  
+Less Payment Services Fee (4% of Booking Value) \= USD 4.00, leaving USD 96.00  
+Less Wink Booking Fee (1.5% of USD 96.00) \= USD 1.44, leaving USD 94.56  
+Less Affiliate Commission (10% of USD 94.56) \= USD 9.46  
+Payable to hotel (“Net Rate”) \= USD 85.10
 
 ---
 
@@ -278,7 +278,7 @@ Wink takes a zero-tolerance approach to breaches of international trade norms, b
 
 The Accommodation Provider warrants that they do and shall comply with, and its Associated Parties do and shall comply with the Wink Supplier Code of Conduct.
 
-The Accommodation Provider represents, warrants, and undertakes that they do and will comply in all respects with all international trade norms, applicable restrictions on trade, funds flow, and terrorism financing and bribery and corruption prevention legislation, including, but not limited to the UK Bribery Act 2010 and the Singapore Prevention of Corruption Act.
+The Accommodation Provider represents, warrants, and undertakes that they do and will comply in all respects with all international trade norms, applicable restrictions on trade, funds flow, and terrorism financing and bribery and corruption prevention legislation, including, but not limited to the US Foreign Corrupt Practices Act, the UK Bribery Act 2010 and the Singapore Prevention of Corruption Act.
 
 The Accommodation Provider warrants that to the best of its knowledge, neither they nor their Associated Parties have been convicted of an offense involving bribery or corruption or are the subject of any investigation by any governmental, administrative, or regulatory bodies.
 
@@ -294,13 +294,13 @@ The Accommodation Provider warrants that to the best of its knowledge, neither t
 
 19.5 Announcements. Neither Party shall create, publish, distribute, or permit any written materials, which make reference to the other Party without first submitting to the other Party such material and receiving prior written consent from the non-submitting party. This consent shall not be unreasonably withheld or delayed.
 
-19.6 Each Party may contact the other Party's Data Protection Officer (DPO) through the following e-mail and/or postal addresses: dataprotectionofficer@Wink.
+19.6 Each Party may contact the other Party's Data Protection Officer (DPO) through the following e-mail and/or postal addresses: dataprotectionofficer@wink.travel.
 
 **20. Intellectual Property Rights**
 
 20.1 The Accommodation Provider acknowledges that Wink and/or its licensors shall retain ownership of all rights, title, and interest in and to all Intellectual Property Rights of Wink or embodied in the Wink Website, including (but not limited to) the Wink logo, the Content, and the Wink Data. Nothing contained in this Agreement shall be deemed to transfer any such right, title, or interest to the Accommodation Provider in any way.
 
-20.2 The Accommodation Provider shall not disclose, integrate, include, use, combine, exploit, incorporate, or otherwise make the Content and Wink Data (or any part thereof) available (a) with its own content and/or the content of any Wink Competitor (including the Hotels), or (b) to or for the benefit of (i) itself (save for enabling the Service and the System in accordance with the terms of this Agreement), or (ii) any Wink Competitor (including the Hotels) (whether for the promotion of, marketing of, reference to, promotion of, advertising of, or otherwise in the interest of or to such party), or (c) for any other purpose or in any other manner and/or on or through Third Party Platforms except as expressly provided for in this Agreement. The Affiliate shall not amend, alter, modify, distort, create derivative and/or new works based on and/or derived from the Content and the Content shall not include a (direct or indirect) link, reference, click-through, or reference to (the website of) a Wink Competitor (including the Hotels).
+20.2 The Accommodation Provider shall not disclose, integrate, include, use, combine, exploit, incorporate, or otherwise make the Content and Wink Data (or any part thereof) available (a) with its own content and/or the content of any Wink Competitor (including the Hotels), or (b) to or for the benefit of (i) itself (save for enabling the Service and the System in accordance with the terms of this Agreement), or (ii) any Wink Competitor (including the Hotels) (whether for the promotion of, marketing of, reference to, promotion of, advertising of, or otherwise in the interest of or to such party), or (c) for any other purpose or in any other manner and/or on or through Third Party Platforms except as expressly provided for in this Agreement. The Accommodation Provider shall not amend, alter, modify, distort, create derivative and/or new works based on and/or derived from the Content and the Content shall not include a (direct or indirect) link, reference, click-through, or reference to (the website of) a Wink Competitor (including the Hotels).
 
 20.3 The Accommodation Provider shall (and shall procure that the companies within the Accommodation Provider Group shall not (directly or indirectly) register, acquire, use, purchase or obtain Internet domain name which incorporates any word or words which are identical, or confusingly or substantially similar to "Wink" or any variations, translations or misspellings thereof, included as part of the address.
 
@@ -320,7 +320,7 @@ The Accommodation Provider warrants that to the best of its knowledge, neither t
 
 22.3 The Accommodation Provider represents and warrants that it has all necessary rights, licenses, consents, and authorizations required to: (i) provide the Content to Wink; (ii) the Accommodation Provider hereby grants Wink a non-exclusive, royalty-free, irrevocable, worldwide, and sublicensable to third-party marketing and/or distribution partners right to use, modify, display, publish, and adjust the Content, name, logos, trademarks, and any other intellectual property and industrial property of the Accommodation Provider ("IPRs") for the purpose of the performance of the present Agreement; (iii) the Accommodation Provider warrants to Wink and its clients that such IPRs do not infringe any third-party rights; and (iv) the Accommodation Provider shall be liable for any defamatory or immoral information, the veracity and accurateness of its IPRs provided to Wink by any means.
 
-22.4 The Accommodation Provider shall, at all times during and after the expiry of termination of this Agreement, indemnify and keep indemnified Wink, its Accommodation Providers, and/or its partners in full and hold them harmless on demand from and against any and all losses incurred by, awarded against, or agreed to be paid by Wink, its Accommodation Providers, and/or its partners arising from any IPR claim.
+22.4 The Accommodation Provider shall, at all times during and after the expiry of termination of this Agreement, indemnify and keep indemnified Wink, its affiliates, and/or its partners in full and hold them harmless on demand from and against any and all losses incurred by, awarded against, or agreed to be paid by Wink, its affiliates, and/or its partners arising from any IPR claim.
 
 22.5 The Accommodation Provider shall: (i) provide Wink with updates in the way requested by Wink on the progress of the IPR claim including evidence that the IPRs claim has been settled or dismissed by the claimant as soon as reasonably practicable; (ii) In the event that the Accommodation Provider fails to comply with this clause or if Wink is not fully satisfied with the progress of the IPR claim or in order to prevent further damages, Wink shall assume immediate control of the IPR claim at the Accommodation Provider´s cost. Wink will be entitled to set off any cost and compensation paid as a consequence of the IPR claim against any present, contingent and/or future amount(s) due or owing from the Accommodation Provider.
 
@@ -358,7 +358,7 @@ If any provision of this Agreement is determined by a government enforcement age
 
 **29. Relationship of the Parties**
 
-The Parties are, and shall act as, independent contractors in the performance of this Agreement. Neither Party shall act as, or be deemed to be, an agent for or partner of the other Party for any purpose whatsoever nor shall either Party have the authority to bind the other in any respect.
+The Parties are, and shall act as, independent contractors in the performance of this Agreement. Except for the limited payment collection agency granted to TripPay under the Payment Terms, neither Party shall act as, or be deemed to be, an agent for or partner of the other Party for any purpose whatsoever, nor shall either Party have the authority to bind the other in any respect.
 
 **30. Assignment**
 
@@ -380,7 +380,7 @@ Wink shall not be liable for any delay or failure to fulfil any obligation under
 
 **33. Indemnification**
 
-To the maximum extent permitted by applicable law, you agree to release, defend (at Wink’s option), indemnify, and hold Wink and all its Accommodation Providers and subsidiaries, and their officers, directors, employees, and agents, harmless from and against any claims, liabilities, damages, losses, and expenses, including, without limitation, reasonable legal and accounting fees, arising out of or in any way connected with (i) your breach of these Terms; (ii) your improper use of the Services; (iii) your failure, or our failure at your direction, to accurately report, collect, or remit taxes; or (iv) your breach of any laws, regulations, or third-Party rights.
+To the maximum extent permitted by applicable law, you agree to release, defend (at Wink’s option), indemnify, and hold Wink and all its affiliates and subsidiaries, and their officers, directors, employees, and agents, harmless from and against any claims, liabilities, damages, losses, and expenses, including, without limitation, reasonable legal and accounting fees, arising out of or in any way connected with (i) your breach of these Terms; (ii) your improper use of the Services; (iii) your failure, or our failure at your direction, to accurately report, collect, or remit taxes; or (iv) your breach of any laws, regulations, or third-Party rights.
 
 **34. Governing Law and Jurisdiction**
 
@@ -402,7 +402,7 @@ This Agreement may be executed of counter-parts, each of which (once executed) s
 
 The Agreement only enters into force and effect upon written confirmation of acceptance and approval of the Accommodation Provider by Wink. By registering and signing up to the Wink partner program as Accommodation Provider, the Accommodation Provider agrees, acknowledges, and accepts the terms and conditions of this Agreement, including the provisions related to modifications to this Agreement.
 
-The agreement has been read and all the terms and conditions have been agreed to by the accommodation provider. The affiliate explicitly agrees that electronic acceptance of this agreement and its terms and conditions, including those related to modifications, is valid, binding, and enforceable.
+The agreement has been read and all the terms and conditions have been agreed to by the accommodation provider. The Accommodation Provider explicitly agrees that electronic acceptance of this agreement and its terms and conditions, including those related to modifications, is valid, binding, and enforceable.
 
 **38. Notices**
 

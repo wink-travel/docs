@@ -6,7 +6,7 @@ sidebar:
 ---
 
 :::note
-Last updated 2024-06-12
+Last updated 2026-09-04
 :::
 
 **WINK GENERAL TERMS AND CONDITIONS FOR AFFILIATES**
@@ -14,7 +14,7 @@ Last updated 2024-06-12
 By registering and signing up to the Wink partner program as an affiliate partner, the affiliate hereby has reviewed and understands, acknowledges and accepts the terms and conditions of this affiliate agreement (the "agreement").   
 BETWEEN: 
 
-**Winkfluence**, a company incorporated under the laws of the state of Wyoming and having its registered office at 30 N Gould St, Ste. 22578, Sheridan, WY 82801 U.S.A.. Doing business as "Wink", and
+**Winkfluence Inc.**, a company incorporated under the laws of the State of Wyoming and having its registered office at 30 N Gould St, Ste. 22578, Sheridan, WY 82801, U.S.A., doing business as "Wink", and
 
 2. **THE AFFILIATE**, whose details are set out in the Affiliate Partner Registration Form or have been submitted online (the "Affiliate"). 
 
@@ -44,10 +44,10 @@ Wink and the Affiliate are a “Party” to this Agreement and are collectively 
 **“App(s)”** means a native application for mobile devices.  
 **“Agreement”** means this agreement.    
 **“Booking”** means a successful transaction recorded by Wink from a Guest for the reservation of an Accommodation Provider.   
-**“Booking Fee”** is the 1.5% deducted from the Affiliate commission as a processing fee by Wink.  
-**“Booking Value”** is the total amount collected by Payment Facilitator from guest for a Booking.  
+**“Booking Fee”** is the 1.5% deducted from the Booking Value, after the Payment Service Fee, as a processing fee by Wink and charged to the Accommodation Provider.  
+**“Booking Value”** is the total amount collected by TripPay from guest for a Booking.  
 **“Clause”** means a clause of this Agreement.   
-**"Commission"** means the amount owed to the Affiliate prior to the deduction of the Payment Service Fee and Booking Fee for each Materialized Transaction in accordance with this Agreement.   
+**"Commission"** means the amount owed to the Affiliate for each Materialized Transaction, calculated in accordance with Clause 5.3.   
 **"Connections"** means all web-components, links, landing pages and/or JSON feeds and/or deep links and/or hyperlinks, created, hosted and maintained by Wink.   
 **"Content"** means all (descriptive) information of Accommodation Providers available on the Wink Website including but not limited to Accommodation Provider information and descriptions, guest reviews, meta data, details of facilities and (cancellation/no show) policies and general terms of the Accommodation Providers (including any translations thereof) and photos, video, pictures, but excluding rates and availability (including any updates, modifications, replacements, additions or amendments).   
 **"Control"** means the possession of the power or the ability to (directly or indirectly, alone or in concert with others, whether through the ownership of voting securities or other ownership interests, a partnership or otherwise) (i) exercise or cause to exercise more than one-half of the voting rights in the shareholders' meeting of a company, (ii) appoint more than one-half of the ((non-)executive) directors or supervisory directors of a company, or (iii) direct or cause the direction of management relating to a company.   
@@ -57,15 +57,13 @@ Wink and the Affiliate are a “Party” to this Agreement and are collectively 
 **"Intellectual Property Right"** means any patent, copyright, inventions, database rights, design right, registered design, trade mark, trade name, brand, logos, service mark, know-how, utility model, unregistered design or, where relevant, any application for any such right, know-how, trade or business name, domain name (with whatever (country code) top-level domain, e.g. .com,.net., co.th, .de, .fr, eu, co.uk., etc.) or other similar right or obligation whether registered or unregistered or other industrial or intellectual property right subsisting in any territory or jurisdiction in the world.   
 **"JSON"** means a JSON connection between the Wink database and the Affiliate’s database which can be provided by Wink on terms to be agreed.   
 **"Link"** means an embedded icon, object, graphic, or text within a web page or email that consists of a hypertext pointer to the URL address of Wink on the Affiliate Website(s).   
-**“Merchant Transaction”** means a Materialized Transaction in which the Payment Facilitator is the merchant of record, whereby Payment Facilitator collects funds directly from the Guest for the reservation.   
 **“Materialized Transaction(s)"** means the reservation by a visitor of the Affiliate Website(s) and or App(s) who, through the Connection, has made a reservation with an Accommodation Provider, and which reservation has resulted in the actual provision of accommodation, as confirmed to Wink by the Accommodation Provider. Materialized Transactions will always be adjusted for amendments (e.g. shortened stays), chargebacks, credit card fraud, bad debt or otherwise. For the avoidance of doubt, cancellations, no-shows etc. can never be considered Materialized Transactions.   
 **"Micro Site"** means all white label versions of the primary website of Wink, which are owned, created, hosted and maintained by Wink. The Micro Site may be marked with a 'powered by Wink' logo or equivalent.   
-**“Net Commission”** is the amount owed to the Affiliate for Materialized Transaction(s) after the deduction of the Payment Service Fee and Booking Fee.  
+**“Net Commission”** means the Commission, which is paid to the Affiliate in full.  
 **"Paid Search"** means any form of online advertising that ties the presentation of an ad to a specific keyword-based search request.   
-**“Payment Facilitator”** a fully owned subsidiary of Winkfluence, that governs the Payment Services, collecting payments from guests (“Pay-in”), by charging the payment method associated with their purchase, such as credit card, debit card, bank transfer, crypto currencies or PayPal etc… and disburse the fund owed (“Net Commission”) to the Affiliate local bank account.   
-**“Pay-in”** means the acquisition of a payment made by a guest by the Payment Facilitator.  
-**“Pay-out”** means the disbursement of the Net Commission to the Affiliate by Payment Facilitator.  
-**“Payment Service Fee”** is the 4% deducted from the Affiliate commission as payment acquisition fee by the Payment Facilitator.  
+**“Pay-in”** means the acquisition of a payment made by a guest by TripPay.  
+**“Pay-out”** means the disbursement of the Net Commission to the Affiliate by TripPay.  
+**“Payment Service Fee”** is the 4% deducted from the Booking Value as a payment collection fee by TripPay and charged to the Accommodation Provider.  
 **"Price Comparison"** means the comparison of Accommodation Provider prices and/or availability made available from or by two or more online Accommodation Provider booking platforms.   
 **"Reselling”** has the meaning as set out in Clause 4.1.7.   
 **“Seller Portal”** has the meaning as set out in Clause 4.1.8.   
@@ -74,6 +72,7 @@ Wink and the Affiliate are a “Party” to this Agreement and are collectively 
 **“Similar Domain Name”** has the meaning as set out in Clause 4.7.1.   
 **"Spamming Regulations"** means any policies, regulations, restrictions or obligations as from time to time prescribed, declared applicable or announced by Third Party Platforms which (i) prohibit or prevent Double Serving, Cloaking or any similar technique or method, or (ii) contain such further restrictions or regulations in respect of spamming or preserving a unique user experience.   
 **"Third Party Platforms"** means any (third party) search engine (marketing provider), meta-search engine, search engines spiders, travel search sites, price comparison sites, social networking communities, browsers, content sharing and hosting services and multimedia blogging services or other (similar) channels or other forms of (traffic hosting) media, whether online or offline.   
+**“TripPay”** means TripPay Corporation, a wholly owned subsidiary of Winkfluence Inc., which collects payments from Guests as the Accommodation Provider’s limited payment collection agent under the Payment Terms, collecting payments from guests (“Pay-in”), by charging the payment method associated with their purchase, such as credit card, debit card, bank transfer, crypto currencies or PayPal etc… and disburse the fund owed (“Net Commission”) to the Affiliate local bank account.   
 **"Websites"** means the website(s) of Wink and its affiliated companies and affiliated partners (including the Affiliate Website(s)) on which the product and service of Wink is available.   
 **"Wink Competitor"** means any direct or indirect competitor of Wink (excluding, for the avoidance of doubt, companies in the Wink group of companies).   
 **"Wink Data"** means the Intellectual Property Rights of Wink and the Content as provided to the Affiliate under this Agreement and such other information from time to time owned or used by Wink or embodied or included in Wink Websites or made available by Wink to the Affiliate (e.g. rates and availability).   
@@ -81,7 +80,7 @@ Wink and the Affiliate are a “Party” to this Agreement and are collectively 
 
 **1.2 No Partnership** 
 
-1.2.1 This Agreement is not intended, nor should anything herein or in any of the arrangements contemplated herein, be construed, to create a joint venture or the relationship of partners, partnership or principal and agent between or among the Parties. 
+1.2.1 Except for the limited payment collection agency granted to TripPay under the Payment Terms, this Agreement is not intended, nor should anything herein or in any of the arrangements contemplated herein, be construed, to create a joint venture or the relationship of partners, partnership or principal and agent between or among the Parties. 
 
 1.2.2 Unless agreed otherwise in writing by Wink or as set out otherwise in this Agreement, the Affiliate shall not publish anywhere on the Affiliate Website(s) any statement, either express or implied, that the website is part of, endorsed by, or an official website of Wink. 
 
@@ -184,7 +183,7 @@ Reselling is considered a material breach of this Agreement. The Affiliate ackno
    
 Clause 4.4.1 in respect of paragraph (i) up to and including (v) shall survive termination of this Agreement. 
 
-4.4.2 The Affiliate shall not use, exploit or otherwise employ, directly or indirectly, any T Platforms, to seek to avoid or circumvent its covenants, obligations or restrictions under this Agreement or those restrictions or covenants of which the Affiliate could reasonably expect that any such actions fall under the scope of this Agreement. 
+4.4.2 The Affiliate shall not use, exploit or otherwise employ, directly or indirectly, any Third Party Platforms, to seek to avoid or circumvent its covenants, obligations or restrictions under this Agreement or those restrictions or covenants of which the Affiliate could reasonably expect that any such actions fall under the scope of this Agreement. 
 
 4.4.3 The Affiliate shall not exploit or use the Content for any purpose or in any manner and/or on or through Third Party Platforms except as expressly provided for in this Agreement. 
 
@@ -241,19 +240,25 @@ The Affiliate agrees not to contact, solicit or accept any Accommodation Provide
 
 **5. Commission** 
 
-5.1 Wink will pay the Affiliate a Commission, being the percentage set by the Accommodation Provider of the booking value generated by Materialized Transaction. Wink uses the services of a Third-Party Payment Facilitator for Pay-in and Pay-out transactions. Payment Terms are set out in a separate agreement.
+5.1 Wink will pay the Affiliate a Commission, being the percentage set by the Accommodation Provider of the booking value generated by Materialized Transaction. Wink uses TripPay Corporation, a wholly owned subsidiary, for Pay-in and Pay-out transactions. Payment Terms are set out in a separate agreement.
 
 5.2 The Affiliate Commission Percentage or ACP is set by the Accommodation Provider. A default ACP of 10% is used but the parties can agree on a different percentage as set out under Clause 1.2.3.
 
-5.3 The Commission will be paid in accordance with the following formula: 
+5.3 The Commission will be calculated and paid in accordance with the following formula: 
 
-Commission \= BV \* ACP  
-Net Commission Paid (Pay-out) \= Commission \- PSF \- BF 
+Subtotal \= BV \- PSF \- BF  
+Commission \= Subtotal \* ACP  
+Pay-out to Affiliate \= Commission, paid in full 
 
 **“BV”** means the Booking Value  
-**“ACP”** means the Affiliate Commission Percentage   
-**“BF”** means Booking Fee (1.5%)  
-**“PSF”** means Payment Service Fees (4%)
+**“PSF”** means the Payment Services Fee of 4% of the Booking Value, charged to the Accommodation Provider  
+**“BF”** means the Wink Booking Fee of 1.5% of the amount remaining after the Payment Services Fee, charged to the Accommodation Provider  
+**“ACP”** means the Affiliate Commission Percentage 
+
+Worked example on a USD 100.00 Booking Value with an ACP of 10%:  
+Less Payment Services Fee \= USD 4.00, leaving USD 96.00  
+Less Wink Booking Fee \= USD 1.44, leaving USD 94.56  
+Commission \= 10% of USD 94.56 \= USD 9.46, paid to the Affiliate in full
 
 5.4 Wink tracks all transaction and will make commercially reasonable efforts to ensure that all Materialized Transaction are tracked, reported and paid. However, Wink’s records will be final and the Affiliate shall have no recourse for any lost revenue or damages in the event that Wink fails to accurately track or report Affiliate Departures, except in the case of gross misconduct or fraudulent behaviour by Wink. Except in these latter cases, the Affiliate’s sole recourse shall be to terminate this Agreement and end its participation in the program. 
 
@@ -268,7 +273,7 @@ Net Commission Paid (Pay-out) \= Commission \- PSF \- BF
 The Affiliate hereby represents and warrants to Wink that for the term of this Agreement:   
 (i) the Affiliate has all necessary rights, title to, power and authority to own, operate and use the Affiliate Website(s) (including the relevant domain name(s)) and to include the Link, the Micro Site or the Connection (as applicable) on the Affiliate Website(s);   
 (ii) the Affiliate Website(s) shall not (a) engage in Black Hat tactics, violate Spamming Regulations, public policy and morals, or (b) contain or display any inappropriate, improper or unlawful content, reference, material, information, links or banners (e.g. in respect of pornography, racism and the like), defamatory statements, elements which violate the privacy of third parties or are abusive, offensive or obscene, (c) copy or resemble the design, domain names (including sub-domains), look and feel of, or create the impression that it is part of the Wink Website or any of Wink’s affiliates’ or subsidiaries’ websites; (d) advocate discrimination based on race, sex, religion, nationality, disability, sexual orientation or age; (e) promote or engage in illegal activities; (f) violate intellectual property rights of third parties; (g) contain or promote deceptive information or promote gambling; or (h) otherwise be of an inappropriate nature. Any violation of the aforesaid provisions may lead to the Affiliate being terminated forthwith from the program and to forfeiture of any outstanding payments due.   
-(iii) Affiliate shall not use any predatory advertising methods designed to generate traffic away from any website owned or operated by Wink or any of its related companies, including, without limitation,Wink.com (and all local versions thereof with whatever top-level domain),priceline.com,rentalcars.com (and all local versions thereof with whatever top-level domain), www.booking.com, www.kayak.com, Wink (and all local versions thereof with whatever top-level domain)  www.opentable.com (and all local versions thereof with whatever top-level domain) as well as any other websites Wink may notify from time to time. In addition, Affiliate shall prohibit websites that Affiliate controls from such predatory advertising methods. Predatory advertising is defined as any method that creates or overlays links or banners on websites, spawns browser windows, or any method invented to generate traffic from a website without that website owner’s, knowledge, permission, and participation. Examples include, but are not limited to, keyword parsing browser plugins such as Text Enhance, TopText and \+Surf, banner replacement technology such as Gator, browser spawning technology that is not website dependent, as well as using Wink Marks in search engine advertisement texts (e.g. Google AdWords, Yahoo\! Search Marketing,...) or equivalent and in general any other methods which could misleadingly lead potential customers to believe that they will be directed to an Wink Website. Any violation of the aforesaid provisions may lead to the Affiliate being terminated forthwith from the program and to forfeiture of any outstanding payments due.   
+(iii) Affiliate shall not use any predatory advertising methods designed to generate traffic away from any website owned or operated by Wink or any of its related companies, including, without limitation, wink.travel and traveliko.com (and all local versions thereof with whatever top-level domain), as well as any other websites Wink may notify from time to time. In addition, Affiliate shall prohibit websites that Affiliate controls from such predatory advertising methods. Predatory advertising is defined as any method that creates or overlays links or banners on websites, spawns browser windows, or any method invented to generate traffic from a website without that website owner’s, knowledge, permission, and participation. Examples include, but are not limited to, keyword parsing browser plugins such as Text Enhance, TopText and \+Surf, banner replacement technology such as Gator, browser spawning technology that is not website dependent, as well as using Wink Marks in search engine advertisement texts (e.g. Google AdWords, Yahoo\! Search Marketing,...) or equivalent and in general any other methods which could misleadingly lead potential customers to believe that they will be directed to an Wink Website. Any violation of the aforesaid provisions may lead to the Affiliate being terminated forthwith from the program and to forfeiture of any outstanding payments due.   
 (iv) the Affiliate holds and has complied with all permits, licenses and other governmental authorizations necessary for conducting, carrying out and continuing its operations and business, and   
 (v) the Affiliate is an independent contractor for all purposes, and will be responsible and liable for its own taxes, social contributions and all other tax related matters. 
 
@@ -311,7 +316,7 @@ In no event shall any Party be liable to the other Party for any loss of product
 
 **7.5 Liquidated Damages** 
 
-Without prejudice to what is set out elsewhere in this Agreement, both the Affiliate and Wink agree that it may be impracticable and difficult to ascertain the amount of actual damages caused by material breach of the intellectual property and confidentiality provisions set forth in clauses 4 and 10 of this Agreement. Therefore, the parties agree that, in the event it is established that the Affiliate has violated such provisions, the Affiliate shall pay to Wink, as liquidated damages, twenty-five thousand United States dollars (25,000 USD) for each breach. The Affiliate and Wink further agree that these liquidated damages provision represents reasonable compensation for the initial loss which would be incurred by Wink due to any such breach. The Affiliate also agrees that nothing in this provision is intended to limit Wink's right to obtain injunctive and other relief as may be appropriate. This provision is also without prejudice to Wink’s right to claim additional and/or cumulative damages for a breach of this (in case the damage demonstrably exceeds the liquidated damages amount) or any other provision of this Agreement. 
+Without prejudice to what is set out elsewhere in this Agreement, both the Affiliate and Wink agree that it may be impracticable and difficult to ascertain the amount of actual damages caused by material breach of the intellectual property and confidentiality provisions set forth in clauses 4 and 10 of this Agreement. Therefore, the parties agree that, in the event it is established that the Affiliate has violated such provisions, the Affiliate shall pay to Wink, as liquidated damages, ten thousand United States dollars (10,000 USD) for each breach, which the Parties agree is a genuine pre-estimate of the loss Wink would suffer. The Affiliate and Wink further agree that these liquidated damages provision represents reasonable compensation for the initial loss which would be incurred by Wink due to any such breach. The Affiliate also agrees that nothing in this provision is intended to limit Wink's right to obtain injunctive and other relief as may be appropriate. This provision is also without prejudice to Wink’s right to claim additional and/or cumulative damages for a breach of this (in case the damage demonstrably exceeds the liquidated damages amount) or any other provision of this Agreement. 
 
 8. **Modification, Term and termination**
 
@@ -357,14 +362,14 @@ If Wink in good faith has reason to believe that the Affiliate has breached its 
 
 Wink takes a zero-tolerance approach to breaches of international trade norms, bribery and corruption prevention legislation and applicable restrictions on trade, funds flow and terrorism financing.  
 The Affiliate warrants that they do and shall comply with, and its Associated Parties do and shall comply with the Wink Supplier Code of Conduct.  
-The Affiliate represents, warrants and undertakes that they do and will comply in all respects with all international trade norms, applicable restrictions on trade, funds flow and terrorism financing and bribery and corruption prevention legislation, including, but not limited to the UK Bribery Act 2010 and the Singapore Prevention of Corruption Act.  
+The Affiliate represents, warrants and undertakes that they do and will comply in all respects with all international trade norms, applicable restrictions on trade, funds flow and terrorism financing and bribery and corruption prevention legislation, including, but not limited to the US Foreign Corrupt Practices Act, the UK Bribery Act 2010 and the Singapore Prevention of Corruption Act.  
 The Affiliate warrants that to the best of its knowledge, neither they nor its Associated Parties have been convicted of an offence involving bribery or corruption or are subject of any investigation by any governmental, administrative or regulatory bodies.
 
 **11. Confidentiality**
 
 **11.1 Confidential Information** 
 
-Parties understand and agree that in the performance of this Agreement, each Party may have access to or may be exposed to, directly or indirectly, confidential and sensitive information of the other Party (the “Confidential Information”). Confidential Information includes Customer Data, transaction volume, marketing and business plans, business, financial, technical and operational information, usage statistics, ranking data, information in respect of rate, product and availability parity, pricing policies, conversion data and volume of click-troughs, and other related statistics, personal data of Guests, any software or information regarding software provided or used by Wink in connection with this Agreement, the terms of this Agreement and such other non-public information that either a disclosing Party designates as being private or confidential or of which a receiving Party should reasonably know that it should be treated as private and confidential. 
+Parties understand and agree that in the performance of this Agreement, each Party may have access to or may be exposed to, directly or indirectly, confidential and sensitive information of the other Party (the “Confidential Information”). Confidential Information includes Customer Data, transaction volume, marketing and business plans, business, financial, technical and operational information, usage statistics, ranking data, information in respect of rate, product and availability parity, pricing policies, conversion data and volume of click-throughs, and other related statistics, personal data of Guests, any software or information regarding software provided or used by Wink in connection with this Agreement, the terms of this Agreement and such other non-public information that either a disclosing Party designates as being private or confidential or of which a receiving Party should reasonably know that it should be treated as private and confidential. 
 
 **11.2 Protect and safeguard Confidential Information** 
 
@@ -403,7 +408,7 @@ If any provision of this Agreement is determined by a government enforcement age
 
 **16. Relationship of the Parties**
 
-The Parties are, and shall act as, independent contractors in the performance of this Agreement. Neither Party shall act as, or be deemed to be, an agent for or partner of the other Party for any purpose whatsoever nor shall either Party has the authority to bind the other in any respect.
+The Parties are, and shall act as, independent contractors in the performance of this Agreement. Except for the limited payment collection agency granted to TripPay under the Payment Terms, neither Party shall act as, or be deemed to be, an agent for or partner of the other Party for any purpose whatsoever, nor shall either Party have the authority to bind the other in any respect.
 
 **17. Assignment** 
 
