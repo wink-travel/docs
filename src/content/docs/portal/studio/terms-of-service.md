@@ -245,15 +245,21 @@ The Affiliate agrees not to contact, solicit or accept any Accommodation Provide
 
 5.2 The Affiliate Commission Percentage or ACP is set by the Accommodation Provider. A default ACP of 10% is used but the parties can agree on a different percentage as set out under Clause 1.2.3.
 
-5.3 The Commission will be paid in accordance with the following formula: 
+5.3 The Commission will be calculated and paid in accordance with the following formula: 
 
-Commission \= BV \* ACP  
-Net Commission Paid (Pay-out) \= Commission \- PSF \- BF 
+Subtotal \= BV \- PSF \- BF  
+Commission \= Subtotal \* ACP  
+Pay-out to Affiliate \= Commission, paid in full 
 
 **“BV”** means the Booking Value  
-**“ACP”** means the Affiliate Commission Percentage   
-**“BF”** means Booking Fee (1.5%)  
-**“PSF”** means Payment Service Fees (4%)
+**“PSF”** means the Payment Services Fee of 4% of the Booking Value, charged to the Accommodation Provider  
+**“BF”** means the Wink Booking Fee of 1.5% of the amount remaining after the Payment Services Fee, charged to the Accommodation Provider  
+**“ACP”** means the Affiliate Commission Percentage 
+
+Worked example on a USD 100.00 Booking Value with an ACP of 10%:  
+Less Payment Services Fee \= USD 4.00, leaving USD 96.00  
+Less Wink Booking Fee \= USD 1.44, leaving USD 94.56  
+Commission \= 10% of USD 94.56 \= USD 9.46, paid to the Affiliate in full
 
 5.4 Wink tracks all transaction and will make commercially reasonable efforts to ensure that all Materialized Transaction are tracked, reported and paid. However, Wink’s records will be final and the Affiliate shall have no recourse for any lost revenue or damages in the event that Wink fails to accurately track or report Affiliate Departures, except in the case of gross misconduct or fraudulent behaviour by Wink. Except in these latter cases, the Affiliate’s sole recourse shall be to terminate this Agreement and end its participation in the program. 
 
