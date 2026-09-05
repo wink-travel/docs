@@ -138,9 +138,10 @@ Booking Fees, Commissions, and Payment Fees apply as follows for any confirmed b
 
 Calculation example for a USD 100 Booking made via Trvaveliko, Social Share, Booking Engine or WinkLinks
 
-100-4% \= 96  
-96-1.5%=94.56  
-Payable to hotel (“Net Rate”) \=\> USD 94.96
+Booking Value \= USD 100.00  
+Less Payment Services Fee (4% of Booking Value) \= USD 4.00, leaving USD 96.00  
+Less Wink Booking Fee (1.5% of USD 96.00) \= USD 1.44, leaving USD 94.56  
+Payable to hotel (“Net Rate”) \= USD 94.56
 
 Calculation example for a USD 100 Booking made via An Affiliate with a 10% commission
 
