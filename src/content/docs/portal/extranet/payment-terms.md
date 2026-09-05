@@ -11,7 +11,7 @@ Last updated 2026-09-04
 
 **PAYMENT TERMS FOR ACCOMMODATION PROVIDERS**
 
-These Payment Terms of Service (“**Payment Terms**”) are a binding legal agreement between Accommodation Provider and TripPay Corporation (hereinafter referred to as **“Payment Collection Agent”**), a fully owned subsidiary of Winkfluence, that governs the Payment Services (defined below) conducted through or in connection with Wink Platform (herein after referred to as **“Wink”**). When these Payment Terms mention “**Payment Collection Agent**,” “**we**,” “**us**,” or “**our**,” it refers to TripPay Corporation.
+These Payment Terms of Service (“**Payment Terms**”) are a binding legal agreement between Accommodation Provider and TripPay Corporation (hereinafter referred to as **“Payment Collection Agent”**), a wholly owned subsidiary of Winkfluence Inc., that governs the Payment Services (defined below) conducted through or in connection with Wink Platform (herein after referred to as **“Wink”**). When these Payment Terms mention “**Payment Collection Agent**,” “**we**,” “**us**,” or “**our**,” it refers to TripPay Corporation.
 
 Payment Collection Agent provides payments services to Accommodation Providers who are selling inventory through the Wink platform. These payment services may include (if available) the following (collectively, “**Payment Services**”):
 
