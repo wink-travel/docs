@@ -13,7 +13,7 @@ Last updated 2024-10-30
 The terms of service below apply to travel agents that wish to acquire and disburse funds on their own.
 This can only be done through our API and only by travel agents that have indicated that they want to do this during the sign-up process.
 
-All travel agents are still able to book through our travel agent portal using Wink's payment gateway with their own or the traveler's credit card. Therefore, all travel agents also need to agree to the terms of service where Wink's payment gateway is the merchant of record.
+All travel agents are still able to book through our travel agent portal using Wink's payment gateway with their own or the traveler's credit card. Where a booking is made that way, the Accommodation Provider is the merchant of record and payment is collected by TripPay as its limited payment collection agent, and the separate terms of service governing that arrangement also apply.
 
 Those terms are available under [Affiliate Portal > Terms of Service](/portal/studio/terms-of-service).
 :::
@@ -23,7 +23,7 @@ Those terms are available under [Affiliate Portal > Terms of Service](/portal/st
 
 **BETWEEN:**
 
-1. **Winkfluence** a company incorporated under the laws of Singapore and having its registered office at \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 with VAT register number 201437335D (hereinafter known as "Wink") and  
+1. **Winkfluence Inc.** a company incorporated under the laws of the State of Wyoming and having its registered office at 30 N Gould St, Ste 22578, Sheridan, WY 82801, USA (hereinafter known as "Wink") and  
      
 2. **THE TRAVEL AGENT** whose details are set out in the Travel Agent Registration Form or have been submitted online (the "Travel Agent").
 
@@ -75,7 +75,7 @@ Those terms are available under [Affiliate Portal > Terms of Service](/portal/st
     
 * **“Services”** shall mean the services provided by the Service Provider to the Travel Agent under this Agreement, including but not limited to access to the Platform, booking facilitation, and customer support.  
     
-* **“Service Provider”** shall mean Wink, **TRAVELIKO SINGAPORE PTE. LTD** registered in Singapore.  
+* **“Service Provider”** shall mean Wink, **Winkfluence Inc.** registered in the State of Wyoming, USA.  
     
 * **“Travel Agent”** shall mean the entity entering into this Agreement with the Service Provider to promote and sell travel bookings through the Service Provider’s Platform.
 
@@ -228,15 +228,15 @@ Those terms are available under [Affiliate Portal > Terms of Service](/portal/st
 
 **11\. Governing Law and Dispute Resolution**
 
-11.1 **Governing Law:** This Agreement shall be governed by and construed in accordance with the laws of Singapore, without regard to its conflict of law principles.
+11.1 **Governing Law:** This Agreement shall be governed by and construed in accordance with the laws of the State of Wyoming, USA, without regard to its conflict of law principles.
 
 11.2 **Dispute Resolution:** 
 
 11.2.1 **Negotiation:** In the event of any dispute, claim, question, or disagreement arising from or relating to this Agreement, the parties shall first attempt to settle the dispute through good faith negotiations. Such negotiations shall begin upon written notice by one party to the other.
 
-11.2.2 **Arbitration:** If the dispute cannot be resolved through negotiations within thirty (30) days, the dispute shall be referred to and finally resolved by arbitration under the Singapore International Arbitration Centre (SIAC) Rules, which are deemed to be incorporated by reference into this clause. The number of arbitrators shall be one, and the seat, or legal place, of arbitration shall be Singapore. The language to be used in the arbitration proceedings shall be English.
+11.2.2 **Litigation:** If the dispute cannot be resolved through negotiations within thirty (30) days, the dispute shall be submitted to the exclusive jurisdiction of the state or federal courts located in Wyoming, USA, and each party consents to venue and personal jurisdiction there. The language of any proceedings shall be English.
 
-11.2.3 **Jurisdiction:** Notwithstanding the above, either party retains the right to seek interim or injunctive relief in the courts of Singapore to protect its rights or property while awaiting the appointment of an arbitrator, and any such court shall have the exclusive jurisdiction to grant such relief.
+11.2.3 **Interim Relief:** Notwithstanding the above, either party retains the right to seek interim or injunctive relief in the state or federal courts located in Wyoming, USA, to protect its rights or property, and any such court shall have the exclusive jurisdiction to grant such relief.
 
 **12\. Force Majeure**
 
