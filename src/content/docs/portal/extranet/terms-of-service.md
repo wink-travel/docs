@@ -70,8 +70,6 @@ In addition to terms defined elsewhere in this Agreement, the following definiti
 
 **“Partner”** means any business or individual that is connecting or using the Wink platform to promote and sell Accommodation Providers' inventory to its audience and/or customers for a commission.
 
-**“TripPay”** means TripPay Corporation, a wholly owned subsidiary of Winkfluence Inc., which collects payments from Guests as the Accommodation Provider’s limited payment collection agent under the Payment Terms, collecting payments from guests (“Pay-in”), by charging the payment method associated with their purchase, such as credit card, debit card, bank transfer, crypto currencies or PayPal etc… and disburse the fund owed (“Net Rate”) to the Accommodation provider. 
-
 **“Pay-in”** means the acquisition of a payment made by a guest by TripPay.
 
 **“Pay-out”** means the disbursement of the Net Commission to the Affiliate by TripPay.
@@ -87,6 +85,8 @@ In addition to terms defined elsewhere in this Agreement, the following definiti
 **"Room(s)"** means the accommodation(s) located at any Participating Hotel or lodging.
 
 **"Taxes"** means all local, state, federal, and national taxes and/or service charges including, for the avoidance of doubt, any value-added (VAT), sales, use, excise, lodging, transient, rental, city, resort, and other similar types of taxes, governmental fees, or charges.
+
+**“TripPay”** means TripPay Corporation, a wholly owned subsidiary of Winkfluence Inc., which collects payments from Guests as the Accommodation Provider’s limited payment collection agent under the Payment Terms, collecting payments from guests (“Pay-in”), by charging the payment method associated with their purchase, such as credit card, debit card, bank transfer, crypto currencies or PayPal etc… and disburse the fund owed (“Net Rate”) to the Accommodation provider. 
 
 **"Sales Channels"** means (i) websites operated, managed, or owned by Wink for other businesses to use to make Bookings and which are only accessible with passwords issued by Wink; (ii) API connections between Wink and its clients' travel websites; or (iii) any other distribution method whereby Wink supplies Rooms to its clients for their onward distribution or sale, whether it be in websites or otherwise.
 
