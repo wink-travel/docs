@@ -300,7 +300,7 @@ The Affiliate hereby represents and warrants to Wink that for the term of this A
 
 **7.1 Indemnification** 
 
-To the maximum extent permitted by applicable law, you agree to release, defend (at Wink’s option), indemnify, and hold Wink and all its Accommodation Providers and subsidiaries, and their officers, directors, employees, and agents, harmless from and against any claims, liabilities, damages, losses, and expenses, including, without limitation, reasonable legal and accounting fees, arising out of or in any way connected with (i) your breach of these Terms; (ii) your improper use of the Services; (iii) your failure, or our failure at your direction, to accurately report, collect or remit taxes; or (iv) your breach of any laws, regulations, or third-Party rights.
+To the maximum extent permitted by applicable law, you agree to release, defend (at Wink’s option), indemnify, and hold Wink and all its affiliates and subsidiaries, and their officers, directors, employees, and agents, harmless from and against any claims, liabilities, damages, losses, and expenses, including, without limitation, reasonable legal and accounting fees, arising out of or in any way connected with (i) your breach of these Terms; (ii) your improper use of the Services; (iii) your failure, or our failure at your direction, to accurately report, collect or remit taxes; or (iv) your breach of any laws, regulations, or third-Party rights.
 
 **7.2 Maximum liability** 
 
