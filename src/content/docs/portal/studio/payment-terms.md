@@ -6,14 +6,14 @@ sidebar:
 ---
 
 :::note
-Last updated 2024-06-12
+Last updated 2026-09-04
 :::
 
 **PAYMENT TERMS FOR AFFILIATES**
 
 These Payment Terms of Service (“**Payment Terms**”) are a binding legal agreement between you and TripPay Corporation (hereinafter referred to as **“Payment Collection Agent”**), a fully owned subsidiary of Winkfluence, that governs the Payment Services (defined below) conducted through or in connection with Wink Platform (herein after referred to as **“Wink”**). When these Payment Terms mention “**Payment Collection Agent**,” “**we**,” “**us**,” or “**our**,” it refers to TripPay Corporation.
 
-Payment Collection Agent provides payments services to Affiliates who are selling Accommodation Providers’ inventory through the Wink. These payment services may include (if available) the following (collectively, “**Payment Services**”):
+Payment Collection Agent provides payments services to Affiliates who are selling Accommodation Providers’ inventory through the Wink Platform. These payment services may include (if available) the following (collectively, “**Payment Services**”):
 
 * Collecting payments from Guests (“**Pay-in**”), by charging the payment method associated with their purchase, such as credit card, debit card, bank transfer, crypto currencies or PayPal (“**Payment Method**”);  
 * Effecting payments to Affiliates (“**Pay-out**”) to their local bank account.  
@@ -60,7 +60,7 @@ Only the person signing this agreement shall be the sole designated representati
 
 **2.9 Handling of Funds**. Payment Collection Agent holds funds collected from Guests separately from its own operating funds, solely for the purpose of remitting them in accordance with these Payment Terms and the Payment Terms for Accommodation Providers. Payment Collection Agent does not invest such funds and does not retain interest earned on them.
 
-**2.10 Affiliate’s Accuracy.** The Affiliate is responsible for ensuring the accuracy of the bank information maintained in Wink's profile. If the bank account number is provided incorrectly, an additional processing fee will be levied by the banks. Payment Collection Agent will deduct this processing fee from the next Commission payment. In the case that the bank account provided by the Affiliate is closed or frozen or not able to receive/reflect payments for reasons not attributable to Payment Collection Agent, Payment Collection Agent's payment obligation under this Agreement shall be released as long as Payment Collection Agent's records show the payment has been made. 
+**2.10 Affiliate’s Accuracy.** The Affiliate is responsible for ensuring the accuracy of the bank information maintained in your Payment Collection Agent account. If the bank account number is provided incorrectly, an additional processing fee will be levied by the banks. Payment Collection Agent will deduct this processing fee from the next Commission payment. In the case that the bank account provided by the Affiliate is closed or frozen or not able to receive/reflect payments for reasons not attributable to Payment Collection Agent, Payment Collection Agent's payment obligation under this Agreement shall be released as long as Payment Collection Agent's records show the payment has been made. 
 
 **2.11** **Payment Authorizations.** You authorize Payment Collection Agent to collect from you amounts due pursuant to these Payment Terms and/or the Terms by either (i) charging the Payment Method associated with the relevant booking, or (ii) by withholding the amount from your future Pay-out. Specifically, you authorize Payment Collection Agent to collect from you:
 
@@ -79,7 +79,7 @@ Only the person signing this agreement shall be the sole designated representati
 
 **3.2 Refunds.** Any refunds or credits due to a Guest pursuant to the Terms, and Guest Refund Policy, will be initiated and remitted by Payment Collection Agent in accordance with these Payment Terms.
 
-**3.3** Subject to this Section 3.2, Payment Collection Agent will process refunds immediately, however, the timing to receive any refund will depend on the Payment Method and any applicable payment system (e.g., Visa, Mastercard, etc.) rules. In the event of a Force Majeure Event that may affect the processing and settlement of refunds, Payment Collection Agent will initiate and process the refund as soon as is practicable.
+**3.3** Subject to Section 3.2, Payment Collection Agent will process refunds immediately, however, the timing to receive any refund will depend on the Payment Method and any applicable payment system (e.g., Visa, Mastercard, etc.) rules. In the event of a Force Majeure Event that may affect the processing and settlement of refunds, Payment Collection Agent will initiate and process the refund as soon as is practicable.
 
 **4. Commission and Settlement**
 
@@ -104,7 +104,7 @@ Only the person signing this agreement shall be the sole designated representati
 
 5.2 The Payment Collection Agent takes a zero-tolerance approach to breaches of international trade norms, bribery and corruption prevention legislation and applicable restrictions on trade, funds flow and terrorism financing.  
 The Affiliate warrants that they do and shall comply with, and its Associated Parties do and shall comply with the Payment Collection Agent Supplier Code of Conduct.  
-The Affiliate represents, warrants and undertakes that they do and will comply in all respects with all international trade norms, applicable restrictions on trade, funds flow and terrorism financing and bribery and corruption prevention legislation, including, but not limited to the UK Bribery Act 2010 and the Singapore Prevention of Corruption Act.  
+The Affiliate represents, warrants and undertakes that they do and will comply in all respects with all international trade norms, applicable restrictions on trade, funds flow and terrorism financing and bribery and corruption prevention legislation, including, but not limited to the US Foreign Corrupt Practices Act, the UK Bribery Act 2010 and the Singapore Prevention of Corruption Act.  
 The Affiliate warrants that to the best of its knowledge, neither they nor its Associated Parties have been convicted of an offence involving bribery or corruption or are subject of any investigation by any governmental, administrative or regulatory bodies.
 
 **6. Force Majeure**
@@ -147,7 +147,7 @@ To the maximum extent permitted by applicable law, you agree to release, defend 
 
 **10.6 Effect of Termination**. If you cancel your Wink account as an Affiliate or Payment Collection Agent takes any of the measures described above, Payment Collection Agent may provide a full refund to any Guests with confirmed booking(s), and you will not be entitled to any compensation for pending or confirmed bookings that were cancelled. 
 
-**10.7 Survival**. Sections 5 through 11 of these Payment Terms shall survive any termination or expiration of this agreement.
+**10.7 Survival**. Sections 4 through 11 of these Payment Terms shall survive any termination or expiration of this agreement.
 
 **11. Governing Law and Dispute Resolution**
 
