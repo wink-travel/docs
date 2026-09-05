@@ -81,11 +81,13 @@ Only the person signing this agreement shall be the sole designated representati
 
 **3.3** Subject to this Section 3.2, Payment Facilitator will process refunds immediately, however, the timing to receive any refund will depend on the Payment Method and any applicable payment system (e.g., Visa, Mastercard, etc.) rules. In the event of a Force Majeure Event that may affect the processing and settlement of refunds, Payment Facilitator will initiate and process the refund as soon as is practicable.
 
-**4. Appointment of Payment Facilitator as Limited Payment Collection Agent**
+**4. Commission and Settlement**
 
-4.1 Each Affiliate, including each Affiliate Team member, hereby appoints Payment Facilitator as the Affiliate’s payment collection agent solely for the limited purpose of accepting and processing funds from Guests purchasing Accommodation Provider Services on Affiliate’s Websites and App(s) on the Accommodation Provider’s behalf.
+4.1 Payment Collection Agent collects payment from Guests as the limited payment collection agent of the Accommodation Provider, as set out in the Payment Terms for Accommodation Providers. The Affiliate is not a party to that collection and does not receive or hold Guest funds.
 
-4.2 Each Affiliate, including each Affiliate Team member, agrees that payment made by a Guest through Payment Facilitator on Affiliate’s Website and App(s), shall be considered the same as a payment made directly to the Accommodation Provider, and the Accommodation Provider will provide the Accommodation Provider Service booked by the Guest in the agreed-upon manner as if the Accommodation Provider has received the payment directly from the Guest. Each Affiliate agrees that Payment Facilitator may refund the Guest in accordance with the Terms. Each Affiliate understands that Payment Facilitator’ obligation to pay the Affiliate is subject to and conditional upon successful receipt of the associated payments from Guest. Payment Facilitator guarantees payments to Affiliate only for such amounts that have been successfully received by Payment Facilitator from Guests in accordance with these Payment Terms. In accepting appointment as the limited payment collection agent of the Affiliate, Payment Facilitator assumes no liability for any acts or omissions of the Affiliate.
+4.2 Where a booking is attributed to the Affiliate, the Affiliate is entitled to the Commission set out in the General Terms and Conditions for Affiliates. Payment Collection Agent will settle that Commission to the Affiliate out of amounts successfully received from the Guest. Payment Collection Agent’s obligation to pay Commission is subject to and conditional upon successful receipt of the associated payment from the Guest, and to the booking being a Materialized Transaction.
+
+4.3 Payment Collection Agent assumes no liability for any acts or omissions of the Affiliate or of any Accommodation Provider.
 
 **5. Prohibited Activities**
 
