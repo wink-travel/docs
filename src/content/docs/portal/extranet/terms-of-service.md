@@ -6,7 +6,7 @@ sidebar:
 ---
 
 :::note
-Last updated 2024-06-12
+Last updated 2026-09-04
 :::
   
 **GENERAL TERMS AND CONDITIONS FOR ACCOMMODATION PROVIDERS**
@@ -278,7 +278,7 @@ Wink takes a zero-tolerance approach to breaches of international trade norms, b
 
 The Accommodation Provider warrants that they do and shall comply with, and its Associated Parties do and shall comply with the Wink Supplier Code of Conduct.
 
-The Accommodation Provider represents, warrants, and undertakes that they do and will comply in all respects with all international trade norms, applicable restrictions on trade, funds flow, and terrorism financing and bribery and corruption prevention legislation, including, but not limited to the UK Bribery Act 2010 and the Singapore Prevention of Corruption Act.
+The Accommodation Provider represents, warrants, and undertakes that they do and will comply in all respects with all international trade norms, applicable restrictions on trade, funds flow, and terrorism financing and bribery and corruption prevention legislation, including, but not limited to the US Foreign Corrupt Practices Act, the UK Bribery Act 2010 and the Singapore Prevention of Corruption Act.
 
 The Accommodation Provider warrants that to the best of its knowledge, neither they nor their Associated Parties have been convicted of an offense involving bribery or corruption or are the subject of any investigation by any governmental, administrative, or regulatory bodies.
 
