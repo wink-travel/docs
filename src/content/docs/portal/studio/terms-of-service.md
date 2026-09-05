@@ -62,7 +62,7 @@ Wink and the Affiliate are a “Party” to this Agreement and are collectively 
 **“Net Commission”** means the Commission, which is paid to the Affiliate in full.  
 **"Paid Search"** means any form of online advertising that ties the presentation of an ad to a specific keyword-based search request.   
 **“TripPay”** means TripPay Corporation, a wholly owned subsidiary of Winkfluence Inc., which collects payments from Guests as the Accommodation Provider’s limited payment collection agent under the Payment Terms, collecting payments from guests (“Pay-in”), by charging the payment method associated with their purchase, such as credit card, debit card, bank transfer, crypto currencies or PayPal etc… and disburse the fund owed (“Net Commission”) to the Affiliate local bank account.   
-**“Pay-in”** means the acquisition of a payment made by a guest by the TripPay.  
+**“Pay-in”** means the acquisition of a payment made by a guest by TripPay.  
 **“Pay-out”** means the disbursement of the Net Commission to the Affiliate by TripPay.  
 **“Payment Service Fee”** is the 4% deducted from the Booking Value as a payment collection fee by TripPay and charged to the Accommodation Provider.  
 **"Price Comparison"** means the comparison of Accommodation Provider prices and/or availability made available from or by two or more online Accommodation Provider booking platforms.   

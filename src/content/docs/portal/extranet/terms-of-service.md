@@ -72,7 +72,7 @@ In addition to terms defined elsewhere in this Agreement, the following definiti
 
 **“TripPay”** means TripPay Corporation, a wholly owned subsidiary of Winkfluence Inc., which collects payments from Guests as the Accommodation Provider’s limited payment collection agent under the Payment Terms, collecting payments from guests (“Pay-in”), by charging the payment method associated with their purchase, such as credit card, debit card, bank transfer, crypto currencies or PayPal etc… and disburse the fund owed (“Net Rate”) to the Accommodation provider. 
 
-**“Pay-in”** means the acquisition of a payment made by a guest by the TripPay.
+**“Pay-in”** means the acquisition of a payment made by a guest by TripPay.
 
 **“Pay-out”** means the disbursement of the Net Commission to the Affiliate by TripPay.
 
