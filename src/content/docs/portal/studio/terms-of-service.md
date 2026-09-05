@@ -183,7 +183,7 @@ Reselling is considered a material breach of this Agreement. The Affiliate ackno
    
 Clause 4.4.1 in respect of paragraph (i) up to and including (v) shall survive termination of this Agreement. 
 
-4.4.2 The Affiliate shall not use, exploit or otherwise employ, directly or indirectly, any T Platforms, to seek to avoid or circumvent its covenants, obligations or restrictions under this Agreement or those restrictions or covenants of which the Affiliate could reasonably expect that any such actions fall under the scope of this Agreement. 
+4.4.2 The Affiliate shall not use, exploit or otherwise employ, directly or indirectly, any Third Party Platforms, to seek to avoid or circumvent its covenants, obligations or restrictions under this Agreement or those restrictions or covenants of which the Affiliate could reasonably expect that any such actions fall under the scope of this Agreement. 
 
 4.4.3 The Affiliate shall not exploit or use the Content for any purpose or in any manner and/or on or through Third Party Platforms except as expressly provided for in this Agreement. 
 
@@ -369,7 +369,7 @@ The Affiliate warrants that to the best of its knowledge, neither they nor its A
 
 **11.1 Confidential Information** 
 
-Parties understand and agree that in the performance of this Agreement, each Party may have access to or may be exposed to, directly or indirectly, confidential and sensitive information of the other Party (the “Confidential Information”). Confidential Information includes Customer Data, transaction volume, marketing and business plans, business, financial, technical and operational information, usage statistics, ranking data, information in respect of rate, product and availability parity, pricing policies, conversion data and volume of click-troughs, and other related statistics, personal data of Guests, any software or information regarding software provided or used by Wink in connection with this Agreement, the terms of this Agreement and such other non-public information that either a disclosing Party designates as being private or confidential or of which a receiving Party should reasonably know that it should be treated as private and confidential. 
+Parties understand and agree that in the performance of this Agreement, each Party may have access to or may be exposed to, directly or indirectly, confidential and sensitive information of the other Party (the “Confidential Information”). Confidential Information includes Customer Data, transaction volume, marketing and business plans, business, financial, technical and operational information, usage statistics, ranking data, information in respect of rate, product and availability parity, pricing policies, conversion data and volume of click-throughs, and other related statistics, personal data of Guests, any software or information regarding software provided or used by Wink in connection with this Agreement, the terms of this Agreement and such other non-public information that either a disclosing Party designates as being private or confidential or of which a receiving Party should reasonably know that it should be treated as private and confidential. 
 
 **11.2 Protect and safeguard Confidential Information** 
 
