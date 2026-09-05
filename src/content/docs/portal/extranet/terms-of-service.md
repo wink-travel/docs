@@ -358,7 +358,7 @@ If any provision of this Agreement is determined by a government enforcement age
 
 **29. Relationship of the Parties**
 
-The Parties are, and shall act as, independent contractors in the performance of this Agreement. Neither Party shall act as, or be deemed to be, an agent for or partner of the other Party for any purpose whatsoever nor shall either Party have the authority to bind the other in any respect.
+The Parties are, and shall act as, independent contractors in the performance of this Agreement. Except for the limited payment collection agency granted to TripPay under the Payment Terms, neither Party shall act as, or be deemed to be, an agent for or partner of the other Party for any purpose whatsoever, nor shall either Party have the authority to bind the other in any respect.
 
 **30. Assignment**
 
