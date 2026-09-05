@@ -278,7 +278,7 @@ Wink takes a zero-tolerance approach to breaches of international trade norms, b
 
 The Accommodation Provider warrants that they do and shall comply with, and its Associated Parties do and shall comply with the Wink Supplier Code of Conduct.
 
-The Accommodation Provider represents, warrants, and undertakes that they do and will comply in all respects with all international trade norms, applicable restrictions on trade, funds flow, and terrorism financing and bribery and corruption prevention legislation, including, but not limited to the US Foreign Corrupt Practices Act, the UK Bribery Act 2010 and the Singapore Prevention of Corruption Act.
+The Accommodation Provider represents, warrants, and undertakes that they do and will comply in all respects with all international trade norms, applicable restrictions on trade, funds flow, and terrorism financing and bribery and corruption prevention legislation, including, but not limited to the US Foreign Corrupt Practices Act and the UK Bribery Act 2010.
 
 The Accommodation Provider warrants that to the best of its knowledge, neither they nor their Associated Parties have been convicted of an offense involving bribery or corruption or are the subject of any investigation by any governmental, administrative, or regulatory bodies.
 
@@ -384,9 +384,9 @@ To the maximum extent permitted by applicable law, you agree to release, defend 
 
 **34. Governing Law and Jurisdiction**
 
-34.1 This Agreement shall be exclusively governed by and construed in accordance with the laws of Singapore. The Contracts (Rights of Third Parties) Act 2001 (Cap 53B) shall not apply to this Agreement. The Parties will in any event attempt to settle their disputes in an amicable manner out of court by first conducting good faith discussions and negotiations.
+34.1 This Agreement shall be exclusively governed by and construed in accordance with the laws of the State of Wyoming, USA, without regard to its conflict of law principles. This Agreement confers no rights on any person or entity other than the Parties, and no third party shall have any right to enforce any of its terms. The Parties will in any event attempt to settle their disputes in an amicable manner out of court by first conducting good faith discussions and negotiations.
 
-34.2 Any disputes arising out or in connection with this agreement shall exclusively be submitted to and dealt with by the competent court in Singapore, without regard to the conflict of laws rules.
+34.2 Any disputes arising out or in connection with this agreement shall exclusively be submitted to and dealt with by the state or federal courts located in Wyoming, USA.
 
 **35. Counterparts**
 

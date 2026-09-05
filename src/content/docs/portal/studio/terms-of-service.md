@@ -362,7 +362,7 @@ If Wink in good faith has reason to believe that the Affiliate has breached its 
 
 Wink takes a zero-tolerance approach to breaches of international trade norms, bribery and corruption prevention legislation and applicable restrictions on trade, funds flow and terrorism financing.  
 The Affiliate warrants that they do and shall comply with, and its Associated Parties do and shall comply with the Wink Supplier Code of Conduct.  
-The Affiliate represents, warrants and undertakes that they do and will comply in all respects with all international trade norms, applicable restrictions on trade, funds flow and terrorism financing and bribery and corruption prevention legislation, including, but not limited to the US Foreign Corrupt Practices Act, the UK Bribery Act 2010 and the Singapore Prevention of Corruption Act.  
+The Affiliate represents, warrants and undertakes that they do and will comply in all respects with all international trade norms, applicable restrictions on trade, funds flow and terrorism financing and bribery and corruption prevention legislation, including, but not limited to the US Foreign Corrupt Practices Act and the UK Bribery Act 2010.  
 The Affiliate warrants that to the best of its knowledge, neither they nor its Associated Parties have been convicted of an offence involving bribery or corruption or are subject of any investigation by any governmental, administrative or regulatory bodies.
 
 **11. Confidentiality**
@@ -421,8 +421,8 @@ Wink.travel shall not be liable for any delay or failure to fulfil any obligatio
 
 19. **Governing Law and Jurisdiction**
 
-This Agreement shall be exclusively governed by and construed in accordance with the laws of Singapore. The Contracts (Rights of Third Parties) Act 2001 (Cap 53B) shall not apply to this Agreement. The Parties will in any event attempt to settle their disputes in an amicable manner out of court by first conducting good faith discussions and negotiations.   
-Any disputes arising out or in connection with this agreement shall exclusively be submitted to and dealt with by the competent court in Singapore, without regards to the conflict of laws rules.  
+This Agreement shall be exclusively governed by and construed in accordance with the laws of the State of Wyoming, USA, without regard to its conflict of law principles. This Agreement confers no rights on any person or entity other than the Parties, and no third party shall have any right to enforce any of its terms. The Parties will in any event attempt to settle their disputes in an amicable manner out of court by first conducting good faith discussions and negotiations.   
+Any disputes arising out or in connection with this agreement shall exclusively be submitted to and dealt with by the state or federal courts located in Wyoming, USA.  
 irrevocably waive any right that it may have to object to an action being brought in such courts, to claim that the action has been brought in an inconvenient forum, or to claim that such courts do not have jurisdiction.
 
 20. **Counterparts.**
