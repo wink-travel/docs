@@ -48,14 +48,15 @@ As defined in the main agreement "TERMS & CONDITIONS TRAVEL AGENTS" ("Main Agree
 
 2.1 **Payment Collection:** The Travel Agent is responsible for collecting payment from the Guest at the time of booking. This ensures immediate processing and financial clarity.
 
-2.2 **Fee Deduction:** The Travel Agent shall deduct Service Provider’s fee first then deduct his commission for the subtitle as per example below:
+2.2 **Fee Deduction:** From the Booking Value collected from the Guest, the Travel Agent shall first deduct Wink’s Booking Fee, then deduct its own Commission from the resulting subtotal. The balance is the Net Payment due to the Accommodation Provider.
 
-* 1.5% Booking Fee for Wink.  
-* The Travel Agent’s Commission as specified in the Separate Agreement (we shall use 10% for this example)
+Worked example, using a 1.5% Wink Booking Fee and a 10% Travel Agent Commission as specified in the Separate Agreement:
 
-Booking Value USD 1,000  
-Wink Fee (1.5%) \= USD 15  
-Subtotal \= 1,000 \- 15 \= 985
+Booking Value \= USD 1,000.00  
+Less Wink Booking Fee (1.5% of Booking Value) \= USD 15.00  
+Subtotal \= USD 985.00  
+Less Travel Agent Commission (10% of Subtotal) \= USD 98.50  
+Net Payment to Accommodation Provider \= USD 886.50
 
 2.3 **Net Payment to Accommodation Providers:** The Travel Agent is responsible for disbursing the Net Payment to the Accommodation Provider according to the terms of the Separate Agreement between the Travel Agent and the Accommodation Provider. Wink is not liable for making any payments to the Accommodation Provider.
 
