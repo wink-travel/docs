@@ -6,7 +6,7 @@ sidebar:
 ---
 
 :::note
-Last updated 2024-06-12
+Last updated 2026-09-04
 :::
 
 **WINK GENERAL TERMS AND CONDITIONS FOR AFFILIATES**
