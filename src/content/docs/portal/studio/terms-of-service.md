@@ -22,7 +22,7 @@ Wink and the Affiliate are a “Party” to this Agreement and are collectively 
 
 **WHEREAS:**   
 (i) Wink operates an online system (the "System") through which participating Accommodations (collectively the "Accommodation Providers", each “Accommodation Provider") can make their inventory available for reservation, and through which Guests can make reservations at such Accommodation Providers (the "Service");   
-(ii) Wink does not own, control, offer or manage any listings. Wink is not a party to the contracts concluded directly between the Accommodation Providers and Guests. Wink is not acting as an agent in any capacity for Accommodation Providers;  
+(ii) Wink does not own, control, offer or manage any listings. Wink is not a party to the contracts concluded directly between the Accommodation Providers and Guests. Except for the limited payment collection agency granted to TripPay under the Payment Terms, Wink is not acting as an agent in any capacity for Accommodation Providers;  
 (iii) Wink maintains and exploits its own websites (the "Wink Websites"), and also provides the Service and links to the Service on the websites of third parties;   
 (iv) the Affiliate owns, controls, hosts and/or operates one or more Internet domains, websites and applications;   
 (v) the Affiliate and Wink wish that the Affiliate makes the Service (directly or indirectly) available to its customers and visitors of the Affiliate Website(s) and App(s) and in such form and on such terms and conditions (hereinafter known as the ”Terms") as set out in this Agreement. 
