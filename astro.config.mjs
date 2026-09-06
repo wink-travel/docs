@@ -270,6 +270,17 @@ export default defineConfig({
             },
           ])],
         },
+        {
+          label: 'Partner API',
+          collapsed: true,
+          items: [...makeChangelogsSidebarLinks([
+            {
+              type: 'recent',
+              base: 'changelog/partner-api',
+              count: 5
+            },
+          ])],
+        },
       ]
     },
     ],
