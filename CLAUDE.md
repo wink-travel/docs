@@ -62,7 +62,7 @@ Documentation lives in `src/content/docs/` organized by feature area:
 
 The `src/content.config.ts` file (Astro v6 top-level convention, not `src/content/config.ts`) defines two collections:
 - `docs` - Main documentation (uses Starlight loader; custom `generateId` strips file extensions but preserves casing, and collapses `/index` segments)
-- `changelogs` - Auto-synced from GitHub repos (`wink-travel/monorepo-typescript` → `changelog/application`, `wink-travel/monorepo-java` → `changelog/platform`). Loader needs `GH_API_TOKEN`; build fails without it.
+- `changelogs` - Auto-synced from GitHub repos (`wink-travel/monorepo-typescript` → `changelog/application`, `wink-travel/monorepo-java` → `changelog/platform`, `wink-travel/partner-api-proto` → `changelog/partner-api`). Loader needs `GH_API_TOKEN`; build fails without it. The first two are capped to their most recent releases via `keepRecent(...)`; **partner-api is deliberately uncapped** because each of its tags is a public wire contract integrators pin to, and capping would 404 the older `/version/<tag>` pages.
 
 **Zod imports:** import `z` from **`astro/zod`**, never from `astro:content`. Astro 7 deprecated the
 `astro:content` re-export (it is removed in Astro 8) and `astro check` flags it as a `ts(6385)`
