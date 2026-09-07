@@ -112,6 +112,50 @@ export default defineConfig({
     head: [
       // og:image is set per-page in custom-head.astro (generated OG cards for
       // marketing pages, global card fallback otherwise).
+      // Google Consent Mode v2. This block MUST come before gtag.js loads:
+      // it sets analytics and ad storage to denied by default, so GA runs in
+      // cookieless mode and sets no `_ga` until a visitor accepts in the
+      // consent banner (src/components/CookieConsent.astro). A prior choice is
+      // replayed from localStorage here, before the first pageview is sent, so
+      // a returning visitor who accepted is measured from page one.
+      {
+        tag: 'script',
+        content: `
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('consent', 'default', {
+          ad_storage: 'denied',
+          ad_user_data: 'denied',
+          ad_personalization: 'denied',
+          analytics_storage: 'denied',
+          functionality_storage: 'granted',
+          security_storage: 'granted',
+          wait_for_update: 500
+        });
+        // Global Privacy Control is a legally recognised opt-out in California
+        // and elsewhere. It overrides any stored choice and cannot be overridden
+        // by the banner, which is why it is evaluated last.
+        var gpc = navigator.globalPrivacyControl === true;
+        try {
+          var c = localStorage.getItem('wink-cookie-consent');
+          if (c === 'granted' || c === 'denied') {
+            gtag('consent', 'update', {
+              analytics_storage: c,
+              ad_storage: c,
+              ad_user_data: c,
+              ad_personalization: c
+            });
+          }
+        } catch (e) {}
+        if (gpc) {
+          gtag('consent', 'update', {
+            analytics_storage: 'denied',
+            ad_storage: 'denied',
+            ad_user_data: 'denied',
+            ad_personalization: 'denied'
+          });
+        }`
+      },
       {
         tag: 'script',
         attrs: {
@@ -122,8 +166,6 @@ export default defineConfig({
       {
         tag: 'script',
         content: `
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
         gtag('config', 'G-688LY2TNNR');`
       },

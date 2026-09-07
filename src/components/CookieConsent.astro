@@ -1,0 +1,91 @@
+---
+/**
+ * Cookie consent banner, wired to Google Consent Mode v2.
+ *
+ * Analytics storage is denied by default in the head (see `astro.config.mjs`),
+ * so Google Analytics loads but sets no `_ga` cookies until a visitor accepts.
+ * This banner is what flips that: accepting calls `gtag('consent', 'update', …)`
+ * with `analytics_storage: 'granted'`, rejecting re-affirms the denial.
+ *
+ * The choice is stored in localStorage and replayed on the next page load by the
+ * head script, before gtag.js runs — so a returning visitor who accepted is not
+ * asked again and is measured from their first pageview.
+ *
+ * Rendered site-wide via the Footer override, so it appears on docs and
+ * marketing pages alike. Kept dependency-free and inline: a consent banner that
+ * waits on a bundle is a consent banner that flashes.
+ */
+---
+
+<div
+  id="cookie-consent"
+  role="dialog"
+  aria-live="polite"
+  aria-label="Cookie consent"
+  hidden
+  class="fixed inset-x-0 bottom-0 z-50 border-t border-white/15 bg-black/95 text-white backdrop-blur"
+>
+  <div class="mx-auto flex w-full max-w-5xl flex-col gap-4 px-4 py-4 sm:flex-row sm:items-center sm:justify-between">
+    <p class="text-sm text-white/80">
+      We use cookies to run this site and, with your permission, to measure how it is used.
+      Essential cookies are always on. See our <a href="/cookies/" class="underline hover:text-white">Cookie Policy</a>
+      and <a href="/privacy/" class="underline hover:text-white">Privacy Policy</a>.
+    </p>
+    <div class="flex shrink-0 gap-2">
+      <button
+        type="button"
+        data-consent="denied"
+        class="rounded-full border border-white/25 px-4 py-2 text-sm font-semibold text-white/90 transition-colors hover:bg-white/10"
+      >Reject</button>
+      <button
+        type="button"
+        data-consent="granted"
+        class="rounded-full bg-white px-4 py-2 text-sm font-semibold text-black transition-colors hover:bg-white/90"
+      >Accept</button>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  (function () {
+    var KEY = "wink-cookie-consent";
+    var el = document.getElementById("cookie-consent");
+    if (!el) return;
+
+    var stored = null;
+    try {
+      stored = localStorage.getItem(KEY);
+    } catch (e) {
+      /* private mode or blocked storage: fall through and ask again */
+    }
+
+    // A Global Privacy Control signal is itself a legally recognised opt-out,
+    // already applied in the head script. Asking again would invite the visitor
+    // to override a choice their browser already made on their behalf.
+    if (navigator.globalPrivacyControl === true) return;
+
+    // Only ask when there is no prior choice. A stored choice was already
+    // replayed into Consent Mode by the head script.
+    if (stored !== "granted" && stored !== "denied") el.hidden = false;
+
+    el.addEventListener("click", function (ev) {
+      var btn = ev.target.closest("[data-consent]");
+      if (!btn) return;
+      var choice = btn.getAttribute("data-consent");
+      try {
+        localStorage.setItem(KEY, choice);
+      } catch (e) {
+        /* choice will not persist, but applies for this page view */
+      }
+      if (typeof window.gtag === "function") {
+        window.gtag("consent", "update", {
+          analytics_storage: choice,
+          ad_storage: choice,
+          ad_user_data: choice,
+          ad_personalization: choice,
+        });
+      }
+      el.hidden = true;
+    });
+  })();
+</script>
