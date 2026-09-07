@@ -64,14 +64,26 @@ export default defineConfig({
       testMatch: /pages\.spec\.ts/,
       use: { ...device, colorScheme },
     })),
-    // Locale coverage and the locale-link unit test run once each, not
-    // multiplied across the 6 matrix projects above — see tests/locales.spec.ts
-    // and tests/locale-links.spec.ts for why a single pass is the right amount
-    // of coverage for these.
+    // Locale coverage, the locale-link unit test and the JSON-LD structured
+    // data checks run once each, not multiplied across the 6 matrix projects
+    // above — see tests/locales.spec.ts, tests/locale-links.spec.ts and
+    // tests/structured-data.spec.ts for why a single pass is the right amount
+    // of coverage for these. (JSON-LD in particular is byte-identical at every
+    // viewport and theme, so the matrix would just re-assert the same string.)
     {
       name: "locales",
-      testMatch: /locale(s|-links)\.spec\.ts/,
+      testMatch: /(locales|locale-links|structured-data)\.spec\.ts/,
       use: { ...devices["Desktop Chrome"], colorScheme: "light" },
+    },
+    // Mobile hamburger menu: interaction/layout mechanics, not a visual
+    // regression sweep, so one real mobile device is enough — see
+    // tests/mobile-nav.spec.ts. Needs an actual mobile viewport (the
+    // hamburger only renders below the `lg` breakpoint), unlike the
+    // "locales" project above.
+    {
+      name: "mobile-nav",
+      testMatch: /mobile-nav\.spec\.ts/,
+      use: { ...devices["Pixel 7"], colorScheme: "light" },
     },
   ],
 });

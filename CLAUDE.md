@@ -62,7 +62,13 @@ Documentation lives in `src/content/docs/` organized by feature area:
 
 The `src/content.config.ts` file (Astro v6 top-level convention, not `src/content/config.ts`) defines two collections:
 - `docs` - Main documentation (uses Starlight loader; custom `generateId` strips file extensions but preserves casing, and collapses `/index` segments)
-- `changelogs` - Auto-synced from GitHub repos (`wink-travel/monorepo-typescript` → `changelog/application`, `wink-travel/monorepo-java` → `changelog/platform`). Loader needs `GH_API_TOKEN`; build fails without it.
+- `changelogs` - Auto-synced from GitHub repos (`wink-travel/monorepo-typescript` → `changelog/application`, `wink-travel/monorepo-java` → `changelog/platform`, `wink-travel/partner-api-proto` → `changelog/partner-api`). Loader needs `GH_API_TOKEN`; build fails without it. The first two are capped to their most recent releases via `keepRecent(...)`; **partner-api is deliberately uncapped** because each of its tags is a public wire contract integrators pin to, and capping would 404 the older `/version/<tag>` pages.
+
+**Zod imports:** import `z` from **`astro/zod`**, never from `astro:content`. Astro 7 deprecated the
+`astro:content` re-export (it is removed in Astro 8) and `astro check` flags it as a `ts(6385)`
+warning, which `releaseToMaster.bash` surfaces on every release. `astro/zod` re-exports `zod/v4`, so
+schemas here are **Zod 4** — and using Astro's own copy avoids a second Zod instance in the graph,
+where a schema built by one copy fails the other's `instanceof` checks.
 
 ### Component Architecture
 
@@ -103,13 +109,48 @@ Dry-run the file discovery without spending OpenAI calls by forcing an empty lan
 - `OPENAI_API_KEY` - For translation service
 - `OPENAI_TRANSLATION_MODEL` - Optional, defaults to gpt-4.1-mini-2025-04-14
 
-### Actions (Server Endpoints)
+### Contact Form (Firebase Cloud Function)
 
-`src/actions/email.ts` - Contact form handler:
-- Uses MailerSend API for email delivery
-- Zod validation for form inputs
-- Honeypot spam protection
-- Requires `MAILERSEND_API_KEY` environment variable
+The contact form is **not** an Astro action and does not live under `src/`. The site is a fully
+static build, so there is no Astro server at runtime. The handler is a Firebase Cloud Function in
+the separate `functions/` workspace (its own `package.json`, its own `node_modules`, built with
+`tsc` to `functions/lib/`):
+
+`functions/src/index.ts` — exports `contactForm`, an `onRequest` v2 function:
+- Reached at **`/api/contact`**, which `firebase.json` rewrites to the `contactForm` function, so the
+  form posts to a same-origin path and never sees the function URL.
+- Hand-rolled validation (`validateForm`) with per-field length and email checks — **no Zod here**;
+  the `functions/` workspace deliberately carries no schema library.
+- Origin-checked by hand (`cors: false` + an `ALLOWED_ORIGINS` allowlist); a non-allowlisted origin
+  gets 403, and `OPTIONS` is answered directly for the preflight.
+- Honeypot spam protection returns a **200 with `success: true`** on a filled honeypot, so a bot
+  cannot distinguish rejection from delivery.
+- Sends via MailerSend from `no-reply@wink.travel` to `hi@wink.travel`, with the submitter set as
+  reply-to.
+
+**`MAILERSEND_API_KEY` is a Firebase secret, not a `.env.local` variable** — it is declared with
+`defineSecret` and resolved at invocation via `mailersendApiKey.value()`. Set it with
+`firebase functions:secrets:set MAILERSEND_API_KEY`; putting it in `.env.local` does nothing.
+
+```bash
+cd functions && npm install   # separate workspace — root `npm install` does not cover it
+npm run build                 # tsc -> functions/lib/
+npm run serve                 # build + firebase emulators:start --only functions
+npm run deploy                # firebase deploy --only functions
+```
+
+**The `mailersend` dependency belongs in `functions/package.json` only — do not add it to the root
+`package.json`.** MailerSend is very much in use (it is what actually sends the contact email), but
+only the function talks to it. `firebase.json` points the functions codebase at `"source":
+"functions"`, so Firebase packages and installs that directory on its own; the root `package.json`
+is never uploaded for the function. A root copy would be installed by every site build and audited
+forever while no Astro code imports it — it was removed for exactly that reason.
+
+More to the point, Astro code *cannot* be the one to call MailerSend: the site is a static build, so
+there is no server to hold `MAILERSEND_API_KEY`. Anything importing the SDK from `src/` would ship it
+to the browser. The contact page renders a plain `<form action="/api/contact">`
+(`src/components/starwind-pro/contact-02/Contact2.astro`) that `fetch`es the hosting rewrite — the
+secret and the SDK stay in the function.
 
 ### Path Aliases
 
@@ -181,12 +222,23 @@ Create `.env.local` with:
 ```bash
 GH_API_TOKEN=your_github_token   # REQUIRED for `npm run build` (changelog loader)
 OPENAI_API_KEY=your_key_here     # Only needed for `npm run i18n:all`
-MAILERSEND_API_KEY=your_key_here # Only needed at runtime by the contact-form action
 OPENAI_TRANSLATION_MODEL=...     # Optional; defaults to gpt-4.1-mini-2025-04-14
 ```
 
-Only `GH_API_TOKEN` is required to build the site (`README.md` documents this). The OpenAI and MailerSend keys are needed only when you actually exercise translation or the contact form.
+Only `GH_API_TOKEN` is required to build the site (`README.md` documents this). The OpenAI key is
+needed only when you actually run translation.
+
+`MAILERSEND_API_KEY` does **not** belong here — the contact form runs as a Firebase Cloud Function
+and reads it as a Firebase secret (`firebase functions:secrets:set MAILERSEND_API_KEY`). See
+[Contact Form](#contact-form-firebase-cloud-function).
 
 ## Deployment
 
 Built artifacts go to `dist/`, which Firebase Hosting (`firebase.json`) serves. The site is configured for `https://wink.travel`. `releaseToMaster.bash` is the release helper script.
+
+`firebase.json` also declares a `functions` codebase (source `functions/`, runtime `nodejs22`) and
+carries the hosting **rewrite** `/api/contact` → `contactForm` plus 301 **redirects** for renamed
+sections (`/travel-content-creators` → `/travel-creators`, `/dev` → `/builders`, each with a
+`/:locale`-prefixed twin). Hosting and functions deploy independently — `firebase deploy --only
+functions` from `functions/` does not publish the site, and a site release does not update the
+function.

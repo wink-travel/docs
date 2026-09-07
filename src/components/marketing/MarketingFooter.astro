@@ -19,7 +19,7 @@ const APP_URL = "https://app.wink.travel";
 // links (APP_URL) and the mailto: link pass through untouched.
 const withLocale = (href: string) => withLocalePrefix(href, Astro.locals.starlightRoute.locale);
 
-type Link = { label: string; href: string };
+type Link = { label: string; href: string; target?: "_blank"; rel?: string };
 
 const columns: { title: string; links: Link[] }[] = [
   {
@@ -49,8 +49,9 @@ const columns: { title: string; links: Link[] }[] = [
     title: "Resources",
     links: [
       { label: "Resources hub", href: "/resources/" },
-      { label: "Academy", href: "/getting-started/key-features/" },
+      { label: "Documentation", href: "/getting-started/key-features/" },
       { label: "Blog", href: "/blog/" },
+      { label: "Status", href: "https://status.wink.travel", target: "_blank", rel: "noopener noreferrer" },
     ],
   },
   {
@@ -180,7 +181,12 @@ const jsonLd = {
             <ul class="mt-3.5 space-y-2">
               {col.links.map((link) => (
                 <li>
-                  <a class="text-sm text-white/80 transition-colors hover:text-white" href={withLocale(link.href)}>
+                  <a
+                    class="text-sm text-white/80 transition-colors hover:text-white"
+                    href={withLocale(link.href)}
+                    target={link.target}
+                    rel={link.rel}
+                  >
                     {link.label}
                   </a>
                 </li>

@@ -96,3 +96,27 @@ export function discoverLocaleMarketingNavRoutes(localeId: string): string[] {
     .filter((file) => /^marketingNav:\s*true\s*$/m.test(readFileSync(file, "utf8")))
     .map((file) => idToPath(toId(relative(DOCS_DIR, file))));
 }
+
+/**
+ * Routes whose source file emits BreadcrumbList structured data, for one
+ * locale ("" / undefined for the English root). A cheap source grep, the same
+ * shape as discoverLocaleMarketingNavRoutes above — it keeps the structured
+ * data suite in sync as pages gain or lose a breadcrumb, with no hand-kept list.
+ *
+ * Matches both emitters: <BreadcrumbJsonLd> on marketing pages and
+ * <ResourceSchema> (whose @graph carries its own BreadcrumbList) on articles.
+ */
+export function discoverBreadcrumbRoutes(localeId?: string): string[] {
+  const dir = localeId ? join(DOCS_DIR, localeId) : DOCS_DIR;
+  let files: string[];
+  try {
+    files = collectContentFiles(dir);
+  } catch {
+    return [];
+  }
+  return files
+    .filter((file) => /<(BreadcrumbJsonLd|ResourceSchema)\b/.test(readFileSync(file, "utf8")))
+    .map((file) => idToPath(toId(relative(DOCS_DIR, file))))
+    .filter((path) => (localeId ? true : !LOCALE_IDS.has(path.split("/")[1])))
+    .sort();
+}

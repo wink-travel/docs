@@ -5,20 +5,20 @@ sidebar:
   order: 4
 ---
 
-Wink nema pretplate, nema mesta i nema troškove postavljanja. Ogroman deo platforme je besplatan, a postoje samo dve stvari za koje ćete ikada plaćati:
+Wink nema pretplate, nema mesta i nema troškove postavljanja. Ogromna većina platforme je besplatna, a postoje samo dve stvari za koje ćete ikada plaćati:
 
-1. **Mali procenat po rezervaciji** — samo kada zaista zaradite novac.
+1. **Mali procenat po rezervaciji** — samo kada zaista zaradite.
 2. **Naknade po korišćenju** — za nekoliko premium funkcija koje nas koštaju svaki put kada se koriste, svaka sa besplatnim mesečnim limitom.
 
 ## Šta je besplatno
 
 Ovo ništa ne košta, zauvek, bez limita i merenja:
 
-- **Booking engine** — na vašem sajtu, na vašoj WinkLinks stranici ili bilo gde drugde gde ga ugrađujete.
+- **Booking engine** — na vašem sajtu, na vašoj WinkLinks stranici ili bilo gde gde ga ugradite.
 - **Upravljanje nekretninama** — sadržaj, fotografije, cene, planovi cena, dostupnost, promocije i politike.
-- **Affiliate alati** — deljivi linkovi, kurirane liste, mreže, mape, kartice i ugrađeni vidžeti.
+- **Affiliate alati** — deljivi linkovi, kurirane liste, mreže, mape, kartice i ugrađivi vidžeti.
 - **Alati za turističke agente** — pretraga, prilagođene cene i rezervacije u ime vaših klijenata.
-- **WinkLinks** — preuzmite svoj personalizovani URL, napravite svoju stranicu i objavljujte na njoj koliko god želite.
+- **WinkLinks** — preuzmite svoj vanity URL, napravite svoju stranicu i objavljujte na njoj koliko god želite.
 - **Ručno objavljivanje na društvenim mrežama** — sve što sami napišete, na bilo kojoj povezanoj mreži.
 - **Analitika, tabele lidera, zahtevi, podešavanja** i upravljanje nalogom.
 - **Consumer i Booking Engine API-jevi**, plus lookup i autocomplete krajnje tačke.
@@ -29,7 +29,7 @@ Wink podržava i model trgovca i model agenta.
 
 ### Model 1
 
-Wink je trgovac zapisan u trenutku kada se rezervacija izvrši. Wink je odgovoran za sredstva i poseduje sve potrebne licence za rad turističke agencije.
+Wink je trgovac zapisa u trenutku kada se rezervacija desi. Wink je odgovoran za sredstva i poseduje sve potrebne licence za rad turističke agencije.
 Ovaj model važi za 95% svih rezervacija.
 
 Wink naplaćuje `5,5% po rezervaciji` za održavanje platforme.
@@ -56,7 +56,7 @@ Ako želite da podržimo drugu metodu isplate, pošaljite nam e-mail.
 
 ### Model 2
 
-Ovaj model je dostupan samo turističkim agencijama koje imaju licencu za rad turističke agencije u svojoj regiji i koje žele da budu trgovac zapisan. Neki od naših registrovanih turističkih agenata žele da budu odgovorni za rukovanje plaćanjem i isplatom sredstava hotelima. U ovom modelu oni su odgovorni za sredstva i poseduju potrebne licence za rad u svojoj zemlji.
+Ovaj model je dostupan samo turističkim agencijama koje imaju licencu za rad turističke agencije u svojoj regiji i koje žele da budu trgovac zapisa. Neki od naših registrovanih turističkih agenata žele da budu odgovorni za rukovanje plaćanjem i isplatom sredstava hotelima. U ovom modelu oni su odgovorni za sredstva i poseduju potrebne licence za rad u svojoj zemlji.
 
 #### Raspodela
 
@@ -72,14 +72,13 @@ Nekoliko funkcija nas košta svaki put kada se koriste — generativni AI, API-j
 
 | Funkcija | Besplatno mesečno | Zatim | Jedinica naplate |
 | -- | -- | -- | -- |
-| Objavljivanje na društvenim mrežama — slika | 1 | $1.50 | Jedna objavljena objava |
-| Objavljivanje na društvenim mrežama — AI-generisana slika | 0 | $2.50 | Jedna objavljena objava |
-| Objavljivanje na društvenim mrežama — video | 0 | $4.00 | Jedna objavljena objava |
-| Objavljivanje na društvenim mrežama — AI-generisani video | 0 | $14.00 | Jedna objavljena objava |
+| Objavljivanje na društvenim mrežama — slika | 1 | $1.50 | Jedna objava |
+| Objavljivanje na društvenim mrežama — AI-generisana slika | 0 | $2.50 | Jedna objava |
+| Objavljivanje na društvenim mrežama — AI-poboljšani video | 0 | $4.00 | Jedna objava |
+| Objavljivanje na društvenim mrežama — AI-generisani video | 0 | $14.00 | Jedna objava |
 | AI odgovor na komentar ili DM | 5 | $0.05 | Jedan odgovor |
 | Odgovor chatbota | 5 | $0.05 | Jedan odgovor |
 | Partner API | 10,000 | $0.0001 | Jedan hotel-dan |
-| Partner Media API | 1,000 | $0.0005 | Mediji jednog hotela |
 
 Cene su u USD. Besplatni limit se dodeljuje **po nalogu**, ne po korisniku, i resetuje se prvog u mesecu (UTC).
 
@@ -89,48 +88,22 @@ Objave se naplaćuju prema sadržaju, jer to je ono što nas košta da ih naprav
 
 - **Besplatni limit pokriva samo standardne objave sa slikama.** Dobijate jednu takvu po nalogu mesečno. Video objave i AI-generisani mediji se naplaćuju od prve objave — nema besplatnog limita za te kategorije, tako da nekretnina koja objavljuje video treba da očekuje naplatu već u prvom mesecu.
 - **Video ima prednost.** Ako objava sadrži bilo kakav video, cela objava se naplaćuje po video tarifi. Objave koje kombinuju sliku i video smatraju se video objavama.
-- **AI poreklo određuje tarifu.** Mediji koje vi dostavite — vaše fotografije i video zapisi, ili bilo šta iz Wink biblioteke sadržaja — naplaćuju se po standardnoj tarifi. Mediji koje generišemo za vas naplaćuju se po AI tarifi.
+- **AI poreklo određuje tarifu.** Mediji koje vi dostavite — vaše fotografije i video ili bilo šta iz vaše Wink biblioteke sadržaja — naplaćuju se po standardnoj tarifi. Mediji koje generišemo za vas naplaćuju se po AI tarifi.
 
 ### Šta se meri, a šta ne
 
 - Samo **generisana** objava objavljena na mreži treće strane (Facebook, Instagram) se naplaćuje. Objava koju ste sami napisali je besplatna, gde god da je objavljena.
 - **Objavljivanje na WinkLinks je uvek besplatno**, bilo da je generisano ili ne.
-- Naplaćuje se **pri objavljivanju**, ne po pokušaju. Ponovno generisanje nacrta dok ne budete zadovoljni ne povećava račun — plaćate samo za objavu koju zaista objavite. Pokušaji nisu neograničeni: svaka objava dozvoljava oko 10 regeneracija za slike i 3 za video, što odražava troškove njihove proizvodnje. Videćete koliko vam je ostalo dok radite.
+- Naplaćuje se **pri objavljivanju**, ne po pokušaju. Ponovno generisanje nacrta dok ne budete zadovoljni ne povećava račun — plaćate samo za objavu koju zaista objavite. Pokušaji nisu neograničeni: svaka objava dozvoljava oko 10 ponovnih generisanja za slike i 3 za video, što odražava troškove njihove proizvodnje. Videćete koliko vam je ostalo dok radite.
 - Na Partner API-ju, **hotel-dan** je jedan hotel sa cenom za jednu noć boravka — *ne* jedan API poziv. Pretraga koja vraća 20 hotela za 3 noći je 60 hotel-dana iz jednog zahteva. Lookup i autocomplete krajnje tačke su besplatne i nikada se ne mere.
-- Na **Partner Media API-ju**, jedinica je jedan hotel čiji mediji vam se vraćaju, bez obzira na broj fotografija i video zapisa. Zahtev za 50 hotela je 50 jedinica — i ako neki od tih hotela nemaju medije koje imate pravo da vidite, naplaćuju se samo oni koji su zaista vratili medije.
 
-### Primer: OTA kešira cene za 90 dana
-
-Recimo da ste OTA, metasearch sajt ili turoperator i želite cene za 90 dana unapred za **1,000 hotela**, od kojih svaki objavljuje **4 glavna cenovna plana**.
-
-**Jedno potpuno osvežavanje svega je 90,000 hotel-dana — $9.00.**
-
-To je 1,000 hotela × 90 dana. 4 glavna cenovna plana vas ništa dodatno ne koštaju: jedan zahtev vraća svaki cenovni plan koji hotel objavljuje za taj vremenski period, tako da broj cenovnih planova koje nekretnina ima nije dimenzija naplate. Nije ni način na koji delite zahtev — periodični zahtev pokriva do 30 dana, pa biste napravili 3 zahteva po hotelu, i 3 × 30 dana se naplaćuje isto kao jedan zahtev za 90 dana. Naplaćuje se za cene koje ste tražili, a ne za način na koji ste poslali zahtev.
-
-Dakle, ono što plaćate mesečno svodi se na jedno pitanje: koliko često osvežavate?
-
-| Učestalost osvežavanja | Hotel-dani / mesec | Posle 10,000 besplatnih | Mesečni trošak |
-| -- | -- | -- | -- |
-| Jednom mesečno | 90,000 | 80,000 | **$8.00** |
-| Nedeljno | 360,000 | 350,000 | **$35.00** |
-| Dnevno | 2,700,000 | 2,690,000 | **$269.00** |
-| Dva puta dnevno | 5,400,000 | 5,390,000 | **$539.00** |
-
-Osvežavanje svih 1,000 hotela svakog dana je 3,000 zahteva dnevno i košta oko $9.00 dnevno. Sam besplatni limit — 10,000 hotel-dana mesečno — dovoljan je da se cene za oko 110 hotela za punih 90 dana, ili da se izgradi i testira cela integracija bez ikakve naplate.
-
-#### Šta utiče na taj broj
-
-- **Traženje cenovnih planova jedan po jedan.** Periodični zahtev vraća najbolju cenu po tipu sobe za sve cenovne planove odjednom. Ako filtrirate na jedan cenovni plan po zahtevu da biste videli sva četiri zasebno, pravite četiri puta više zahteva i plaćate četiri puta više.
-- **Dodatni kapaciteti, valute ili jezici.** Cena za 1 odraslu osobu i cena za 2 odrasle su dva različita pitanja, i svaki se naplaćuje. Isto važi i za drugu valutu prikaza ili jezik.
-- **Svežina koju ne trebate.** Nije potrebno da svih 90 dana imaju isti nivo osvežavanja. Osvežavajte narednih 14 dana dnevno, a dane od 15 do 90 nedeljno i isti tih 1,000 hotela košta **$71.40** mesečno umesto $269.00 — datumi u skorijoj budućnosti, gde se cene zaista menjaju, ostaju sveži.
-
-### Uključivanje
+### Kako se uključuje
 
 Plaćanje po upotrebi je isključeno po defaultu. Svi dobijaju besplatni limit bez ikakve akcije.
 
-Da biste prešli preko limita, **vlasnik** naloga uključuje plaćanje po upotrebi i bira koji su njegovi nalozi merljivi. Korišćenje sa svih uključenih naloga se sabira u **jednu mesečnu fakturu**, koju možete automatski platiti karticom ili dobiti kao fakturu za samostalno plaćanje.
+Da biste prešli preko limita, **vlasnik** naloga uključuje plaćanje po upotrebi i bira koji od svojih naloga će biti merljivi. Korišćenje sa svih omogućenih naloga se sabira u **jednu mesečnu fakturu**, koju možete automatski platiti karticom ili dobiti kao fakturu za samostalno plaćanje.
 
-Kada se uključi, vaše korišćenje se meri, ali **nikada ne bude ograničeno** — nećete dostići limit brzine za trošenje novca kod nas.
+Kada se uključi, vaše korišćenje se meri, ali **nikada ne bude ograničeno** — nećete dostići limit potrošnje kod nas.
 
 :::note[Ako ga ne uključite]
 Ništa se ne kvari i ništa se ne naplaćuje. Jednostavno stajete na besplatnom limitu za taj mesec: generisane objave neće biti objavljene, a Partner API pozivi vraćaju `429` dok se limit ne resetuje.
@@ -142,10 +115,10 @@ Ništa se ne kvari i ništa se ne naplaćuje. Jednostavno stajete na besplatnom 
 | -- | -- |
 | U dobrom stanju | Sve funkcioniše normalno. |
 | Kašnjenje u plaćanju | Plaćanje nije uspelo i pokušava se ponovo. Vaše funkcije nastavljaju da rade tokom ovog perioda. |
-| Suspendovan | Faktura nije plaćena do kraja. Naplatne akcije su blokirane dok se ne izmiru; besplatne funkcije rade normalno. |
+| Suspendovan | Faktura nije plaćena do kraja. Naplative radnje su blokirane dok se ne izmiru; besplatne funkcije rade normalno. |
 
-:::tip[Uživo cene]
-Cene po jedinici i besplatni limiti su uvek prikazani u Portalu, direktno iz našeg sistema naplate, tako da ih možete proveriti pre nego što se obavežete. Pogledajte [Billing](/sr/account/subscription) da uključite plaćanje po upotrebi, izaberete naloge i pratite mesečnu potrošnju i fakture. Pogledajte [Social](/sr/portal/social/what-is-social) za to kako obim objava utiče na vaše troškove.
+:::tip[Aktuelne cene]
+Jedinicne cene i besplatni limiti su uvek prikazani u Portalu, direktno iz našeg sistema naplate, tako da ih možete proveriti pre nego što se obavežete. Pogledajte [Billing](/sr/portal/plan) da uključite plaćanje po upotrebi, izaberete naloge i pratite korišćenje i fakture za tekući mesec. Pogledajte [Social](/sr/portal/social/what-is-social) za to kako obim objava utiče na vašu potrošnju.
 :::
 
 ## Efekat platforme

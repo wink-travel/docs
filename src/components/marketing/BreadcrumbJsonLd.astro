@@ -3,19 +3,58 @@
  * BreadcrumbList structured data for marketing pages.
  * Mirrors the visual breadcrumb so search and answer engines understand the
  * page's place in the site hierarchy. Pass the same trail the page renders.
- * The final item is the current page and should omit `url`.
+ *
+ * Crumbs are authored as bare, default-locale paths (`/products/`); this
+ * component prefixes them with the current locale and absolutises them, so a
+ * French page's trail points at /fr/... instead of falling back to English.
+ * Absolute URLs are NOT accepted — they are what let the locale drift in the
+ * first place, and `translate-i18n.ts` copies them verbatim into all 43 locales.
+ *
+ * Google requires `item` on every crumb EXCEPT the last (the current page).
+ * A middle crumb without a `path` invalidates the whole BreadcrumbList, so the
+ * final crumb is the only one allowed to omit it — enforced below at build time.
  */
-interface Crumb { name: string; url?: string }
-const { items = [] as Crumb[] } = Astro.props;
+import { withLocalePrefix } from "@/lib/locale-links";
+
+interface Crumb {
+  name: string;
+  /** Site-relative default-locale path, e.g. "/products/". Omit on the last crumb only. */
+  path?: string;
+}
+interface Props {
+  items?: Crumb[];
+}
+
+const { items = [] } = Astro.props as Props;
+const { locale } = Astro.locals.starlightRoute;
+
+const SITE = "https://wink.travel";
+const absolute = (path: string): string => new URL(withLocalePrefix(path, locale), SITE).href;
+
+items.forEach((crumb, i) => {
+  const isLast = i === items.length - 1;
+  if (!isLast && !crumb.path) {
+    throw new Error(
+      `BreadcrumbJsonLd on ${Astro.url.pathname}: crumb ${i + 1} ("${crumb.name}") has no \`path\`. ` +
+        `Google rejects a BreadcrumbList whose non-final items lack \`item\`; only the last crumb may omit it.`,
+    );
+  }
+  if (crumb.path && !crumb.path.startsWith("/")) {
+    throw new Error(
+      `BreadcrumbJsonLd on ${Astro.url.pathname}: crumb ${i + 1} ("${crumb.name}") has path "${crumb.path}". ` +
+        `Paths must be site-relative (start with "/") so they can be locale-prefixed.`,
+    );
+  }
+});
 
 const data = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
-  itemListElement: items.map((c: Crumb, i: number) => ({
+  itemListElement: items.map((crumb, i) => ({
     "@type": "ListItem",
     position: i + 1,
-    name: c.name,
-    ...(c.url ? { item: c.url } : {}),
+    name: crumb.name,
+    ...(crumb.path ? { item: absolute(crumb.path) } : {}),
   })),
 };
 ---

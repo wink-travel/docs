@@ -17,10 +17,10 @@ Uma chamada de API = uma requisição. O uso medido é cobrado por 1.000 requisi
 | **Ideal para** | Avaliação e integrações de baixo volume | Pagamento conforme uso em escala | Volume personalizado e termos negociados |
 | Requisições por minuto | 30 (estouro de 60) | Ilimitado | Ilimitado |
 | Requisições por mês | 10.000 | Ilimitado | Ilimitado |
-| Tempo de resposta da API (P95) | — | Menor que 500 ms | Menor que 500 ms |
+| Tempo de resposta da API (P95) | — | Menos de 500 ms | Menos de 500 ms |
 | Preço por 1.000 requisições | Grátis | R$1,00 | Personalizado |
 | Excesso look-to-book (por 1.000 buscas além de 5.000:1) | — | R$2,00 | Personalizado |
-| Resposta a limite de taxa | 429 (pausa / parada mensal rígida) | Nenhuma | Nenhuma |
+| Resposta a limite de taxa | 429 (pausa / bloqueio mensal) | Nenhuma | Nenhuma |
 | Acordo de Nível de Serviço | — | ✓ | ✓ |
 | Suporte prioritário | — | ✓ | ✓ |
 | Onboarding dedicado | — | — | ✓ |
@@ -32,9 +32,9 @@ Uma chamada de API = uma requisição. O uso medido é cobrado por 1.000 requisi
 Duas interfaces atendem ao inventário reservável, e elas correspondem aos dois níveis acima:
 
 - **Gratuito — API do Motor de Reservas / Consumidor** (REST, `/api/public/**`): anônima, voltada para navegador e widget. [Navegue pela referência do Motor de Reservas →](/pt-BR/api/booking-engine/)
-- **Pago — API Integradora Parceira** (**gRPC**, `wink.partner.v1`): autenticada, com uso medido, construída para integração servidor a servidor em escala. [Navegue pela referência do Integrador →](/pt-BR/partner-api/partner/)
+- **Pago — API Integrador Parceiro** (**gRPC**, `wink.partner.v1`): autenticada, uso medido, construída para integração servidor a servidor em escala. [Navegue pela referência do Integrador →](/pt-BR/partner-api/partner/)
 
-A API Integradora Parceira é gRPC, não REST. Você a chama com um cliente gerado via HTTP/2 em
+A API Integrador Parceiro é gRPC, não REST. Você a chama com um cliente gerado via HTTP/2 em
 `partner.wink.travel:443`, passando um token bearer e a conta para a qual está chamando:
 
 ```bash
@@ -45,29 +45,32 @@ A página de referência acima documenta todos os serviços, mensagens e status 
 disponível em tempo de execução via reflexão do servidor, então `grpcurl`, Postman e Insomnia o descobrem sem
 necessidade de download.
 
+Se preferir gerar um cliente antecipadamente, os arquivos fonte `.proto` estão publicados em
+[github.com/wink-travel/partner-api-proto](https://github.com/wink-travel/partner-api-proto).
+
 ## Como funcionam o uso e os limites
 
 ### Nível gratuito
 
-O nível gratuito é projetado para permitir que você construa, teste e execute tráfego de produção modesto sem custo.
+O nível Gratuito é projetado para permitir que você construa, teste e opere tráfego de produção modesto sem custo.
 
-- **Limite de taxa — 30 requisições por minuto, com estouro de 60 requisições.** Picos curtos acima da taxa sustentada são absorvidos pela tolerância de estouro. Se você ultrapassá-la, a API responde com **HTTP 429 (Muitas Requisições)** e aplica uma **pausa de 5 minutos** antes que sua chave volte a servir tráfego. Diminua o ritmo e tente novamente após a janela de pausa, em vez de sobrecarregar o endpoint.
-- **Cota mensal — 10.000 requisições por mês-calendário.** Ao atingir o limite mensal, a API retorna **HTTP 429 pelo restante do mês** — uma parada rígida — junto com uma mensagem convidando você a assinar o nível Pago para continuar. O contador é reiniciado no início do próximo mês-calendário.
+- **Limite de taxa — 30 requisições por minuto, com estouro de 60 requisições.** Picos curtos acima da taxa sustentada são absorvidos pela cota de estouro. Se você ultrapassá-la, a API responde com **HTTP 429 (Muitas Requisições)** e aplica uma **pausa de 5 minutos** antes que sua chave volte a servir tráfego. Faça uma pausa e tente novamente após esse período, em vez de sobrecarregar o endpoint.
+- **Cota mensal — 10.000 requisições por mês-calendário.** Ao atingir o limite mensal, a API retorna **HTTP 429 pelo restante do mês** — um bloqueio rígido — junto com uma mensagem convidando você a assinar o nível Pago para continuar. O contador é reiniciado no início do próximo mês-calendário.
 
-O nível gratuito não inclui Acordo de Nível de Serviço nem suporte prioritário.
+O nível Gratuito não inclui Acordo de Nível de Serviço nem suporte prioritário.
 
 ### Nível pago
 
-O nível pago remove o limite mensal e as pausas por limite de taxa, e cobra você apenas pelo que usar.
+O nível Pago remove o limite mensal e as pausas por limite de taxa, e cobra apenas pelo que você usa.
 
 - **Requisições medidas — R$1,00 por 1.000 requisições.** Não há limite mensal de requisições nem limitação por limite de taxa em uso normal; você é cobrado pelo volume real.
-- **Excesso look-to-book — R$2,00 por 1.000 buscas excedentes.** Para manter o fornecimento saudável, medimos a proporção de buscas ("looks") para reservas confirmadas. Você tem direito a **5.000 buscas por reserva** antes que o excesso seja cobrado. Buscas excedentes são calculadas como:
+- **Excesso look-to-book — R$2,00 por 1.000 buscas excedentes.** Para manter o fornecimento saudável, medimos a proporção de buscas ("looks") para reservas confirmadas. Você tem direito a **5.000 buscas por reserva** antes que o excesso seja cobrado. O excesso é calculado como:
 
   `excess = max(0, looks − bookings × 5.000)`
 
   O excesso é então cobrado a **R$2,00 por 1.000 buscas excedentes**. Integrações com boa conversão raramente geram excesso; a cobrança só se aplica a tráfego que busca muito mais do que reserva.
 
-O nível pago inclui o Acordo de Nível de Serviço descrito abaixo — compromisso de 99,9% de uptime e meta de tempo de resposta P95 abaixo de 500 ms — e suporte prioritário baseado em severidade.
+O nível Pago inclui o Acordo de Nível de Serviço descrito abaixo — compromisso de 99,9% de uptime e meta de tempo de resposta P95 abaixo de 500 ms — e suporte prioritário baseado em severidade.
 
 ## Acordo de Nível de Serviço
 
@@ -78,7 +81,7 @@ Este Acordo de Nível de Serviço (o "SLA") estabelece o compromisso de disponib
 ### 1. Definições
 
 1. **"Uptime"** significa os períodos durante os quais a API Parceira está disponível para aceitar e responder com sucesso a requisições autenticadas e corretamente formadas.
-2. **"Downtime"** significa qualquer período, medido em minutos, durante o qual a API Parceira falha em responder com sucesso a requisições autenticadas e corretamente formadas, excluindo qualquer período que se enquadre nas Exclusões definidas na Seção 4. Erros isolados que afetam uma fração imaterial das requisições não são, por si só, Downtime.
+2. **"Downtime"** significa qualquer período, medido em minutos, durante o qual a API Parceira falha em responder com sucesso a requisições autenticadas e corretamente formadas, excluindo qualquer período que se enquadre nas Exclusões definidas na Seção 4. Erros isolados que afetam uma fração imaterial de requisições não são, por si só, Downtime.
 3. **"Percentual Mensal de Uptime"** significa, para um dado mês-calendário, o total de minutos naquele mês menos os minutos totais de Downtime, dividido pelo total de minutos naquele mês, expresso em porcentagem.
 4. **"Manutenção Programada"** significa manutenção planejada do Serviço para a qual a Wink forneceu aviso prévio conforme a Seção 4.
 5. **"Crédito de Serviço"** significa um crédito, calculado como uma porcentagem das taxas pagas ou pagáveis por você pela API Parceira no mês-calendário afetado, que é aplicado contra futuras taxas da API Parceira como o único e exclusivo recurso para falha em cumprir o Compromisso de Uptime.
@@ -86,13 +89,13 @@ Este Acordo de Nível de Serviço (o "SLA") estabelece o compromisso de disponib
 
 ### 2. Compromisso de Disponibilidade e Desempenho
 
-A Wink usará esforços comercialmente razoáveis para manter a API Parceira disponível com um **Percentual Mensal de Uptime de pelo menos 99,9%** durante cada mês-calendário do prazo (o "Compromisso de Uptime"). O Compromisso de Uptime é medido na fronteira do serviço da Wink e exclui quaisquer fatores fora do controle razoável da Wink, incluindo os descritos na Seção 4. Os sistemas de monitoramento da Wink são a fonte autoritativa para medir o Percentual Mensal de Uptime e o Tempo de Resposta.
+A Wink usará esforços comercialmente razoáveis para tornar a API Parceira disponível com um **Percentual Mensal de Uptime de pelo menos 99,9%** durante cada mês-calendário do prazo (o "Compromisso de Uptime"). O Compromisso de Uptime é medido na fronteira do serviço da Wink e exclui quaisquer fatores fora do controle razoável da Wink, incluindo os descritos na Seção 4. Os sistemas de monitoramento da Wink são a fonte autoritativa para medir o Percentual Mensal de Uptime e o Tempo de Resposta.
 
-A Wink também tem como meta um **Tempo de Resposta no percentil 95 (P95) inferior a 500 milissegundos** para requisições autenticadas e corretamente formadas bem-sucedidas, medido na fronteira do serviço da Wink ao longo de cada mês-calendário (a "Meta de Desempenho"). A Meta de Desempenho exclui os fatores descritos na Seção 4, requisições que retornam erros em nível de aplicação causados pela própria requisição, e requisições em lote incomumente grandes ou complexas. A Meta de Desempenho é um objetivo de serviço; os Créditos de Serviço na Seção 3 aplicam-se a falhas no cumprimento do **Compromisso de Uptime** e são o único e exclusivo recurso para insuficiências de disponibilidade.
+A Wink também tem como meta um **Tempo de Resposta no percentil 95 (P95) inferior a 500 milissegundos** para requisições autenticadas e corretamente formadas bem-sucedidas, medido na fronteira do serviço da Wink ao longo de cada mês-calendário (a "Meta de Desempenho"). A Meta de Desempenho exclui os fatores descritos na Seção 4, requisições que retornam erros de aplicação causados pela própria requisição, e requisições em lote incomumente grandes ou complexas. A Meta de Desempenho é um objetivo de serviço; os Créditos de Serviço na Seção 3 aplicam-se a falhas no cumprimento do **Compromisso de Uptime** e são o único e exclusivo recurso para falhas de disponibilidade.
 
 ### 3. Créditos de Serviço
 
-Se o Percentual Mensal de Uptime ficar abaixo do Compromisso de Uptime em qualquer mês-calendário, você poderá ser elegível a um Crédito de Serviço calculado como uma porcentagem das taxas da API Parceira pagas ou pagáveis por você naquele mês, conforme a tabela a seguir:
+Se o Percentual Mensal de Uptime ficar abaixo do Compromisso de Uptime em qualquer mês-calendário, você poderá ser elegível a um Crédito de Serviço calculado como uma porcentagem das taxas da API Parceira pagas ou pagáveis por você naquele mês, conforme a seguinte tabela:
 
 | Percentual Mensal de Uptime | Crédito de Serviço |
 |---|---|
@@ -100,10 +103,10 @@ Se o Percentual Mensal de Uptime ficar abaixo do Compromisso de Uptime em qualqu
 | Abaixo de 99,0% mas igual ou acima de 95,0% | 25% |
 | Abaixo de 95,0% | 50% |
 
-1. **Solicitação de crédito.** Para receber um Crédito de Serviço, você deve enviar uma solicitação por escrito à Wink dentro de **trinta (30) dias** após o final do mês-calendário em que a insuficiência ocorreu. A solicitação deve incluir as datas e horários de cada incidente de Downtime que você está reivindicando e quaisquer logs ou evidências razoavelmente disponíveis para você. Solicitações enviadas após esse prazo não são elegíveis.
-2. **Forma do crédito.** Créditos de Serviço aprovados são aplicados contra futuras taxas da API Parceira e não têm valor em dinheiro. Não são reembolsos e não serão pagos, exceto quando exigido pela lei aplicável.
+1. **Solicitação de crédito.** Para receber um Crédito de Serviço, você deve enviar uma solicitação por escrito à Wink dentro de **trinta (30) dias** após o final do mês-calendário em que a falha ocorreu. A solicitação deve incluir as datas e horários de cada incidente de Downtime que você está reivindicando e quaisquer logs ou evidências razoavelmente disponíveis. Solicitações enviadas após esse prazo não são elegíveis.
+2. **Forma do crédito.** Créditos de Serviço aprovados são aplicados contra futuras taxas da API Parceira e não têm valor em dinheiro. Não são reembolsos e não serão pagos, exceto quando exigido por lei aplicável.
 3. **Crédito máximo.** O total de Créditos de Serviço concedidos para qualquer mês-calendário não excederá 50% das taxas da API Parceira pagas ou pagáveis por você naquele mês.
-4. **Recurso único e exclusivo.** Créditos de Serviço são seu **único e exclusivo recurso** para qualquer falha da Wink em cumprir o Compromisso de Uptime ou qualquer outra insuficiência de disponibilidade da API Parceira.
+4. **Recurso único e exclusivo.** Créditos de Serviço são seu **único e exclusivo recurso** para qualquer falha da Wink em cumprir o Compromisso de Uptime ou qualquer outra falha de disponibilidade da API Parceira.
 
 ### 4. Exclusões
 
@@ -111,8 +114,8 @@ O Compromisso de Uptime e quaisquer Créditos de Serviço resultantes não se ap
 
 1. **Manutenção Programada** para a qual a Wink tenha dado aviso prévio, desde que tal aviso seja dado com prazo razoável por meio de um canal que a Wink normalmente usa para comunicar-se com clientes;
 2. eventos de **força maior** ou outras causas fora do controle razoável da Wink, incluindo desastres naturais, atos governamentais, falhas de rede ou utilidades, e ataques de negação de serviço ou outros ataques maliciosos;
-3. problemas causados por **seus** atos ou omissões, seu equipamento, software ou rede, ou por qualquer serviço, produto ou provedor **terceiro** não sob controle direto da Wink;
-4. seu **uso indevido do Serviço** ou **violação do Acordo**, deste SLA, dos termos de uso aceitável ou dos limites de taxa aplicáveis, incluindo tráfego que a Wink razoavelmente determina ser excessivo, abuso automatizado ou fraudulento; e
+3. problemas causados por **seus** atos ou omissões, seu equipamento, software ou rede, ou por qualquer serviço, produto ou fornecedor **terceiro** não sob controle direto da Wink;
+4. seu **uso indevido do Serviço** ou **violação do Acordo**, deste SLA, dos termos de uso aceitável ou dos limites de taxa aplicáveis, incluindo tráfego que a Wink razoavelmente determine ser excessivo, abuso automatizado ou fraudulento; e
 5. qualquer **suspensão ou rescisão** do seu acesso devidamente efetuada sob o Acordo, incluindo suspensão por falta de pagamento.
 
 ### 5. Suporte e Metas de Resposta
@@ -125,7 +128,7 @@ A Wink fornece suporte para a API Parceira durante o horário comercial padrão,
 | **Sev 2 — Maior** | Funcionalidade significativa prejudicada ou degradada; existe solução alternativa. | 1 dia útil |
 | **Sev 3 — Menor** | Perguntas gerais, problemas menores ou solicitações de funcionalidade. | 2 dias úteis |
 
-Os tempos-alvo de resposta descrevem quando a Wink pretende fazer o **contato inicial**; não são garantias de tempo para resolução. Suporte prioritário e metas baseadas em severidade aplicam-se nos níveis em que estão declarados como incluídos.
+Os tempos-alvo de resposta descrevem quando a Wink pretende fazer o **contato inicial**; não são garantias de tempo de resolução. Suporte prioritário e metas baseadas em severidade aplicam-se nos níveis em que estão declarados como incluídos.
 
 ### 6. Dados e Segurança
 
@@ -133,8 +136,8 @@ A Wink mantém medidas administrativas, técnicas e organizacionais comercialmen
 
 ### 7. Limitação de Responsabilidade
 
-Créditos de Serviço são o **único e exclusivo recurso** para qualquer indisponibilidade ou falha em cumprir o Compromisso de Uptime, e são fornecidos em substituição a qualquer outra responsabilidade decorrente de tal falha. Exceto conforme expressamente declarado neste SLA, a API Parceira é fornecida "no estado em que se encontra". Na máxima extensão permitida pela lei aplicável, a responsabilidade agregada da Wink decorrente ou relacionada ao Serviço é limitada conforme estabelecido no Acordo, e a Wink não é responsável por quaisquer danos indiretos, incidentais, especiais, consequenciais ou punitivos, ou por lucros cessantes, receitas, dados ou boa vontade, mesmo que avisada da possibilidade de tais danos.
+Créditos de Serviço são o **único e exclusivo recurso** para qualquer indisponibilidade ou falha em cumprir o Compromisso de Uptime, e são fornecidos em substituição a qualquer outra responsabilidade decorrente de tal falha. Exceto conforme expressamente declarado neste SLA, a API Parceira é fornecida "no estado em que se encontra". Na máxima extensão permitida pela lei aplicável, a responsabilidade agregada da Wink decorrente ou relacionada ao Serviço é limitada conforme estabelecido no Acordo, e a Wink não é responsável por quaisquer danos indiretos, incidentais, especiais, consequenciais ou punitivos, ou por lucros cessantes, receitas, dados ou boa vontade perdidos, mesmo que avisada da possibilidade de tais danos.
 
 ### 8. Prazo, Alterações e Rescisão
 
-Este SLA aplica-se enquanto você tiver uma assinatura ativa da API Parceira em um nível onde o SLA é declarado aplicável. A Wink pode atualizar este SLA periodicamente; mudanças materiais serão comunicadas por um canal que a Wink normalmente usa para alcançar clientes, e o uso continuado da API Parceira após a atualização entrar em vigor constitui aceitação do SLA atualizado. Este SLA termina automaticamente com a rescisão ou expiração do Acordo ou da sua assinatura da API Parceira. Seções que por sua natureza devem sobreviver à rescisão — incluindo elegibilidade a Créditos de Serviço acumulados mas não reclamados, limitação de responsabilidade e definições — permanecem vigentes.
+Este SLA aplica-se enquanto você tiver uma assinatura ativa da API Parceira em um nível onde o SLA é declarado aplicável. A Wink pode atualizar este SLA periodicamente; mudanças materiais serão comunicadas por meio de um canal que a Wink normalmente usa para alcançar clientes, e o uso continuado da API Parceira após a atualização entrar em vigor constitui aceitação do SLA atualizado. Este SLA termina automaticamente com a rescisão ou expiração do Acordo ou da sua assinatura da API Parceira. Seções que por sua natureza devem sobreviver à rescisão — incluindo elegibilidade a Créditos de Serviço acumulados, limitação de responsabilidade e definições — permanecem vigentes.
