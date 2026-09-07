@@ -88,6 +88,13 @@ for (const [oldDel, target] of Object.entries(deleteTargets)) {
  */
 const unlocalized = new Map(Object.entries(mapping.unlocalizedDeletes ?? {}));
 
+/*
+ * Pages that still exist in English but whose translated copies were removed —
+ * a stale translation of a superseded contract is worse than no translation.
+ * Emitted for locale scopes only; the English page is untouched.
+ */
+const localeOnly = mapping.localeOnlyDeletes ?? [];
+
 /**
  * Astro `redirects:` config object. Keys MUST start with "/" and represent
  * the old URL; values are the destination.
@@ -114,6 +121,10 @@ export function buildRedirects() {
     // English-only destinations: same old URL per locale, unscoped target.
     for (const [oldPath, dest] of unlocalized) {
       out[`${scope}/${oldPath}`] = dest;
+    }
+    // Removed translations fall back to the English page.
+    if (scope) {
+      for (const p of localeOnly) out[`${scope}/${p}`] = `/${p}/`;
     }
   }
 
