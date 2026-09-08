@@ -325,6 +325,11 @@ export default defineConfig({
         },
       ]
     },
+
+      // Binding agreements and policies. A top-level group at the end: contracts
+      // sit outside the product documentation flow but stay browsable. The legal/
+      // directory is excluded from machine translation (see i18n-config.ts).
+      { label: 'Legal', items: [{ autogenerate: { directory: 'legal' } }] },
     ],
     locales: {
       root: {
