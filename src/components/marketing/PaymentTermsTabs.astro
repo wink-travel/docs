@@ -44,7 +44,11 @@ const tabs = [
 </nav>
 
 <script is:inline>
+  // Deferred until the document is parsed: this component renders ABOVE the
+  // panels it controls, so at inline-script time #payment-terms-panels does not
+  // exist yet and an immediate run would bail out and bind no listeners.
   (function () {
+  function init() {
     var root = document.getElementById("payment-terms-panels");
     var tabs = Array.prototype.slice.call(document.querySelectorAll("[data-tab]"));
     if (!root || !tabs.length) return;
@@ -94,5 +98,12 @@ const tabs = [
 
     fromHash();
     window.addEventListener("hashchange", fromHash);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
   })();
 </script>
