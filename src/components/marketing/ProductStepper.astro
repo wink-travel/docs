@@ -80,6 +80,26 @@ const steps: Step[] = [
   </div>
 </section>
 
+{/*
+  Without JavaScript nothing clears the `hidden` attribute, so six of the seven
+  steps — most of this section's copy and every screenshot but the first — never
+  render, and the pills above them do nothing when clicked. Fall back to the
+  plain-document reading: all seven steps stacked in order, each already
+  labelled "Step N", and the inert tablist removed.
+
+  `is:inline` is load-bearing. Without it Astro hoists the rule into the page
+  stylesheet, where it would apply to everyone and expand the stepper for
+  every visitor. The panels are `display: grid`, so that is what the override
+  restores — `block` here would flatten the two-column layout.
+*/}
+<noscript>
+  <style is:inline>
+    [data-product-stepper] [role="tablist"] { display: none; }
+    [data-product-stepper] [data-panel][hidden] { display: grid; }
+    [data-product-stepper] [data-panel] + [data-panel] { margin-top: 4rem; }
+  </style>
+</noscript>
+
 <script>
   function setupProductStepper() {
     document.querySelectorAll<HTMLElement>("[data-product-stepper]").forEach((root) => {
