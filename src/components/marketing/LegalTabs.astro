@@ -32,6 +32,12 @@ const { tabs, panelsId, label = "Choose the agreement that applies to you" } =
     wraps to two lines — "TripPay collects for the hotel" does at this width —
     makes one box taller than its neighbours.
   */}
+  {/*
+    `tabindex` here is the static half of a roving tabindex: only the selected
+    tab is in the Tab order, and the script moves it with the arrow keys. That
+    is the other half of the `role="tablist"` contract — without it a screen
+    reader announces "tab 1 of 3" and the arrow keys do nothing.
+  */}
   <div role="tablist" class="grid items-stretch gap-2 sm:grid-cols-3">
     {
       tabs.map((t, i) => (
@@ -41,6 +47,7 @@ const { tabs, panelsId, label = "Choose the agreement that applies to you" } =
           id={`tab-${t.code}`}
           aria-controls={`panel-${t.code}`}
           aria-selected={i === 0 ? "true" : "false"}
+          tabindex={i === 0 ? 0 : -1}
           data-tab={t.code}
           class={`flex h-full flex-col justify-start rounded-xl border px-4 py-3 text-left transition-colors ${
             i === 0
@@ -56,6 +63,29 @@ const { tabs, panelsId, label = "Choose the agreement that applies to you" } =
   </div>
 </nav>
 
+{/*
+  Without JavaScript nothing clears the `hidden` attribute on the two closed
+  panels, so two of the three agreements would be invisible and the deep links
+  that production redirects, llms.txt and the Legal hub point at would land the
+  reader on the wrong contract with no sign the others exist. Fall back to the
+  plain-document reading: every agreement shown in full, one after another, and
+  the tablist — which cannot do anything without a script — removed. Author
+  styles beat the UA stylesheet's `[hidden] { display: none }`, so unhiding the
+  panels needs no `!important`.
+*/}
+<noscript>
+  {/*
+    `is:inline` is load-bearing: without it Astro extracts the rule into the
+    page's stylesheet, where it would apply to everyone and leave all three
+    agreements open at once. The selectors are scoped to this instance's
+    `panelsId` because ProductStepper.astro uses `data-panel` too.
+  */}
+  <style
+    is:inline
+    set:html={`[data-legal-tabs="${panelsId}"]{display:none}#${panelsId} [data-panel][hidden]{display:block}`}
+  />
+</noscript>
+
 <script is:inline>
   // Deferred until the document is parsed: this component renders ABOVE the
   // panels it controls, so at inline-script time the panel container does not
@@ -70,11 +100,16 @@ const { tabs, panelsId, label = "Choose the agreement that applies to you" } =
         var panels = Array.prototype.slice.call(root.querySelectorAll("[data-panel]"));
         if (!tabs.length || !panels.length) return;
 
+        var defaultCode = tabs[0].getAttribute("data-tab");
+
         function select(code, push) {
           if (!document.getElementById("panel-" + code)) return;
           tabs.forEach(function (t) {
             var on = t.getAttribute("data-tab") === code;
             t.setAttribute("aria-selected", on ? "true" : "false");
+            // Roving tabindex: the selected tab is the tablist's single stop in
+            // the Tab order; the others are reachable only by arrow key.
+            t.tabIndex = on ? 0 : -1;
             t.classList.toggle("border-primary", on);
             t.classList.toggle("bg-primary/[0.06]", on);
             t.classList.toggle("text-foreground", on);
@@ -84,12 +119,32 @@ const { tabs, panelsId, label = "Choose the agreement that applies to you" } =
           panels.forEach(function (p) {
             p.hidden = p.getAttribute("data-panel") !== code;
           });
-          if (push) history.replaceState(null, "", "#" + code);
+          // pushState, not replaceState: switching agreement is a navigation the
+          // reader expects Back to undo. replaceState made Back leave the page
+          // entirely instead of returning to the agreement they came from.
+          if (push && "#" + code !== location.hash) {
+            history.pushState(null, "", "#" + code);
+          }
         }
 
-        tabs.forEach(function (t) {
+        function focusTab(index) {
+          var next = tabs[(index + tabs.length) % tabs.length];
+          select(next.getAttribute("data-tab"), true);
+          next.focus();
+        }
+
+        tabs.forEach(function (t, i) {
           t.addEventListener("click", function () {
             select(t.getAttribute("data-tab"), true);
+          });
+          t.addEventListener("keydown", function (event) {
+            // ARIA APG tabs pattern. Home/End are part of it too and cost a line.
+            if (event.key === "ArrowRight" || event.key === "ArrowDown") focusTab(i + 1);
+            else if (event.key === "ArrowLeft" || event.key === "ArrowUp") focusTab(i - 1);
+            else if (event.key === "Home") focusTab(0);
+            else if (event.key === "End") focusTab(tabs.length - 1);
+            else return;
+            event.preventDefault();
           });
         });
 
@@ -99,7 +154,13 @@ const { tabs, panelsId, label = "Choose the agreement that applies to you" } =
         // possible.
         function fromHash() {
           var h = (location.hash || "").replace(/^#/, "");
-          if (!h) return;
+          // No hash means the bare URL — the state the first tab represents.
+          // Without this, going Back past the first #code left whichever panel
+          // was last opened on screen while the URL said otherwise.
+          if (!h) {
+            select(defaultCode, false);
+            return;
+          }
           if (document.getElementById("panel-" + h)) {
             select(h, false);
             return;

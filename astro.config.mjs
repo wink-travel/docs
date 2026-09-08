@@ -7,6 +7,7 @@ import starlightBlog from 'starlight-blog';
 import starlightChangelogs, { makeChangelogsSidebarLinks } from 'starlight-changelogs';
 import starlightOpenAPI, { createOpenAPISidebarGroup } from 'starlight-openapi'
 import { buildRedirects } from './scripts/build-redirects.mjs';
+import { rehypeJsxHeadings } from './scripts/rehype-jsx-headings.mjs';
 
 // Single "API" sidebar parent. Each audience below is one OpenAPI schema, so the
 // rendered tree is Audience › Resource(tag) › Operation — three levels, no per-group
@@ -103,7 +104,13 @@ export default defineConfig({
   // via the deprecated `markdown.remarkPlugins` option. Opt back into the unified
   // (remark/rehype) pipeline so those plugins keep running, preserving v6 behavior.
   markdown: {
-    processor: unified(),
+    // `rehypeJsxHeadings` runs before Astro's own `rehypeHeadingIds`, so
+    // hand-written `<h2>`/`<h3>` in .mdx files reach the table of contents
+    // instead of being skipped as JSX. It is passed to `unified()` rather than
+    // to the top-level `markdown.rehypePlugins`, which Astro v7 deprecates and
+    // `astro check` warns about on every release. See
+    // scripts/rehype-jsx-headings.mjs.
+    processor: unified({ rehypePlugins: [rehypeJsxHeadings] }),
   },
   image: {
     domains: ['res.cloudinary.com']
