@@ -52,6 +52,13 @@
     var el = document.getElementById("cookie-consent");
     if (!el) return;
 
+    // Starlight wraps page content in .main-pane, which sets `isolation: isolate`
+    // and therefore creates a stacking context. Inside it, no z-index can lift the
+    // banner above the left and right sidebars, which live outside that pane and
+    // would paint over it — covering the Accept button and clipping the text.
+    // Reparenting to <body> takes the banner out of that stacking context.
+    if (el.parentElement !== document.body) document.body.appendChild(el);
+
     var stored = null;
     try {
       stored = localStorage.getItem(KEY);
