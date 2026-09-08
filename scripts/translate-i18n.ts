@@ -256,7 +256,10 @@ const rootFiles = [
   "resources.mdx",
   "solutions.mdx",
   "team.mdx",
-  "terms.mdx",
+  // "terms.mdx" — deliberately omitted: the Terms of Service is a binding
+  // agreement whose clause 18.5 states the English version governs. See
+  // UNTRANSLATED_DIRECTORIES in src/lib/i18n-config.ts for the same reasoning
+  // applied to /legal/.
   "travel-creators.mdx",
 ];
 

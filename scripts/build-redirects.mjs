@@ -80,6 +80,21 @@ for (const [oldDel, target] of Object.entries(deleteTargets)) {
   core.set(oldDel, target);
 }
 
+/*
+ * Retired pages whose replacement exists in English only. Their destinations
+ * must NOT be locale-prefixed: /de/portal/studio/payment-terms has to land on
+ * /legal/demand-partner-payment-terms, not on a /de/... path that was never
+ * generated. Kept separate from `core` for that reason.
+ */
+const unlocalized = new Map(Object.entries(mapping.unlocalizedDeletes ?? {}));
+
+/*
+ * Pages that still exist in English but whose translated copies were removed —
+ * a stale translation of a superseded contract is worse than no translation.
+ * Emitted for locale scopes only; the English page is untouched.
+ */
+const localeOnly = mapping.localeOnlyDeletes ?? [];
+
 /**
  * Astro `redirects:` config object. Keys MUST start with "/" and represent
  * the old URL; values are the destination.
@@ -102,6 +117,14 @@ export function buildRedirects() {
         scopedDest = dest;
       }
       out[oldUrl] = scopedDest;
+    }
+    // English-only destinations: same old URL per locale, unscoped target.
+    for (const [oldPath, dest] of unlocalized) {
+      out[`${scope}/${oldPath}`] = dest;
+    }
+    // Removed translations fall back to the English page.
+    if (scope) {
+      for (const p of localeOnly) out[`${scope}/${p}`] = `/${p}/`;
     }
   }
 

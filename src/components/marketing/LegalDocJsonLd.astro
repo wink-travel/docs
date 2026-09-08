@@ -1,0 +1,61 @@
+---
+/**
+ * Structured data for a published legal document (terms, agreement, policy).
+ *
+ * schema.org has no dedicated "contract" type, so this emits a WebPage whose
+ * mainEntity is a DigitalDocument. That is what search and answer engines
+ * actually consume: it carries the version, the effective date and the
+ * publishing entity, which is what makes one agreement distinguishable from
+ * another and lets an engine tell a current document from a superseded one.
+ *
+ * Organization + WebSite already render site-wide via the footer, so the
+ * publisher here is a reference by name rather than a second full definition.
+ *
+ * Pass the same version and effective date the page renders, so the visible
+ * text and the structured data cannot drift apart.
+ */
+interface Props {
+  name: string;
+  description: string;
+  url: string;
+  version?: string;
+  effective: string;   // ISO 8601, e.g. "2026-09-06"
+  audience?: string;   // who the document binds, e.g. "Accommodation providers"
+}
+const {
+  name,
+  description,
+  url,
+  version = "1.0",
+  effective,
+  audience,
+} = Astro.props as Props;
+
+const data = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name,
+  description,
+  url,
+  inLanguage: "en",
+  isPartOf: { "@type": "WebSite", url: "https://wink.travel/" },
+  mainEntity: {
+    "@type": "DigitalDocument",
+    name,
+    description,
+    version,
+    datePublished: effective,
+    dateModified: effective,
+    inLanguage: "en",
+    publisher: {
+      "@type": "Organization",
+      name: "Winkfluence Inc.",
+      url: "https://wink.travel/",
+    },
+    ...(audience
+      ? { audience: { "@type": "Audience", audienceType: audience } }
+      : {}),
+  },
+};
+---
+<script type="application/ld+json" set:html={JSON.stringify(data)} is:inline />

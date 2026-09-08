@@ -62,4 +62,9 @@ export const targetLanguages: TargetLanguage[] = [
 // Top-level directories under src/content/docs that are never machine-translated.
 // `api` and `changelog` are generated from upstream sources, and `blog` is owned
 // by the starlightBlog plugin.
-export const UNTRANSLATED_DIRECTORIES = new Set(["api", "blog", "changelog"]);
+//
+// `legal` holds binding agreements. Terms of Service clause 18.5 states that the
+// English version governs, so a machine translation of a contract would be an
+// unreviewed second version of a legal instrument — a liability, not a feature.
+// Translating these needs human legal review, not the pipeline.
+export const UNTRANSLATED_DIRECTORIES = new Set(["api", "blog", "changelog", "legal"]);
