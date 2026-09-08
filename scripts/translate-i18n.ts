@@ -241,17 +241,14 @@ const loadHashMap = (langDirectory: string): HashMap => {
 const rootFiles = [
   "index.mdx",
   "about.mdx",
-  "acceptable-use.mdx",
   "agentic-ai.mdx",
   "contact.mdx",
-  "cookies.mdx",
   "builders.mdx",
   "hotels.mdx",
   "jobs.mdx",
   "partners.mdx",
   "platforms.mdx",
   "pricing.mdx",
-  "privacy.mdx",
   "products.mdx",
   "resources.mdx",
   "solutions.mdx",
@@ -259,9 +256,25 @@ const rootFiles = [
   // "terms.mdx" — deliberately omitted: the Terms of Service is a binding
   // agreement whose clause 18.5 states the English version governs. See
   // UNTRANSLATED_DIRECTORIES in src/lib/i18n-config.ts for the same reasoning
-  // applied to /legal/.
+  // applied to /legal/. The Privacy, Cookie and Acceptable Use policies used to
+  // sit here too; they now live under /legal/ and are covered by that same
+  // exclusion, so they must NOT be listed as root files.
   "travel-creators.mdx",
 ];
+
+// A root page that has been moved or renamed must not take the whole run down
+// with it: readFile() throws on a missing path and the top-level catch exits,
+// so one stale entry would silently skip every language. Warn and carry on.
+const resolveRootFiles = (): Array<string> =>
+  rootFiles.filter((rootFile) => {
+    const exists = existsSync(join(docsBaseDir, rootFile));
+    if (!exists) {
+      console.warn(
+        `⚠️  Skipping missing root page "${rootFile}" — remove it from rootFiles in scripts/translate-i18n.ts if it moved.`
+      );
+    }
+    return exists;
+  });
 
 // some environment variables
 const __filename = fileURLToPath(import.meta.url);
@@ -544,7 +557,9 @@ async function translateDocs() {
     `📁 ${dirList.length} source directories: ${dirList.join(", ")}`
   );
 
-  let totalFiles = rootFiles.length * langList.length;
+  const rootFileList = resolveRootFiles();
+
+  let totalFiles = rootFileList.length * langList.length;
   for (const directory of dirList) {
     const sourceDirectory = join(docsBaseDir, directory);
     const files = readFiles(sourceDirectory);
@@ -568,7 +583,7 @@ async function translateDocs() {
     // ✅ Load hash map for this language
     const langHashMap = loadHashMap(languageDirectory);
 
-    for (const rootFile of rootFiles) {
+    for (const rootFile of rootFileList) {
       const sourceFile = join(docsBaseDir, rootFile);
       const targetFile = join(languageDirectory, rootFile);
       await translateFile(sourceFile, lang.id, targetFile, rootFile, langHashMap);
