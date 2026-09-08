@@ -6,6 +6,7 @@ marketingNav: true
 ---
 import '/src/styles/splash-page.css';
 import BreadcrumbJsonLd from "@/components/marketing/BreadcrumbJsonLd.astro";
+import PaymentTermsTabs from "@/components/marketing/PaymentTermsTabs.astro";
 
 <div class="not-content mkt-page">
 
@@ -54,28 +55,7 @@ import BreadcrumbJsonLd from "@/components/marketing/BreadcrumbJsonLd.astro";
     states who it is between.
   </div>
 
-  <nav aria-label="Choose your payment route" class="mt-6">
-    <div role="tablist" class="grid gap-2 sm:grid-cols-3">
-      <button type="button" role="tab" id="tab-accommodation-provider" aria-controls="panel-accommodation-provider"
-        aria-selected={"true"} data-tab="accommodation-provider"
-        class="flex flex-col rounded-xl border px-4 py-3 text-left transition-colors">
-        <span class="text-sm font-semibold">Accommodation Provider</span>
-        <span class="mt-0.5 text-xs text-muted-foreground">TripPay collects for the hotel</span>
-      </button>
-      <button type="button" role="tab" id="tab-demand-partner" aria-controls="panel-demand-partner"
-        aria-selected={"false"} data-tab="demand-partner"
-        class="flex flex-col rounded-xl border px-4 py-3 text-left transition-colors">
-        <span class="text-sm font-semibold">Demand Partner</span>
-        <span class="mt-0.5 text-xs text-muted-foreground">Commission settlement</span>
-      </button>
-      <button type="button" role="tab" id="tab-agent-collected" aria-controls="panel-agent-collected"
-        aria-selected={"false"} data-tab="agent-collected"
-        class="flex flex-col rounded-xl border px-4 py-3 text-left transition-colors">
-        <span class="text-sm font-semibold">Agent-Collected Channel</span>
-        <span class="mt-0.5 text-xs text-muted-foreground">The travel agent collects</span>
-      </button>
-    </div>
-  </nav>
+  <PaymentTermsTabs />
 </div>
 
 <article class="mkt-prose mx-auto w-full max-w-3xl px-4 py-10" id="payment-terms-panels">
@@ -345,54 +325,5 @@ import BreadcrumbJsonLd from "@/components/marketing/BreadcrumbJsonLd.astro";
   </section>
 
 </article>
-
-<script is:inline>
-  (function () {
-    var root = document.getElementById("payment-terms-panels");
-    var tabs = Array.prototype.slice.call(document.querySelectorAll("[data-tab]"));
-    if (!root || !tabs.length) return;
-    var panels = Array.prototype.slice.call(root.querySelectorAll("[data-panel]"));
-
-    function select(code, push) {
-      var found = false;
-      tabs.forEach(function (t) {
-        var on = t.getAttribute("data-tab") === code;
-        if (on) found = true;
-        t.setAttribute("aria-selected", on ? "true" : "false");
-        t.classList.toggle("border-primary", on);
-        t.classList.toggle("bg-primary/[0.06]", on);
-        t.classList.toggle("border-border", !on);
-      });
-      if (!found) return;
-      panels.forEach(function (p) {
-        p.hidden = p.getAttribute("data-panel") !== code;
-      });
-      if (push) history.replaceState(null, "", "#" + code);
-    }
-
-    tabs.forEach(function (t) {
-      t.addEventListener("click", function () { select(t.getAttribute("data-tab"), true); });
-    });
-
-    // Deep links: #demand-partner selects that tab; #dp-4-payout opens the tab
-    // that owns the clause, then scrolls to it. Anchor prefixes are what make
-    // the second case possible at all.
-    function fromHash() {
-      var h = (location.hash || "").replace(/^#/, "");
-      if (!h) return;
-      if (document.getElementById("panel-" + h)) { select(h, false); return; }
-      var el = document.getElementById(h);
-      if (!el) return;
-      var panel = el.closest("[data-panel]");
-      if (panel) {
-        select(panel.getAttribute("data-panel"), false);
-        el.scrollIntoView();
-      }
-    }
-    fromHash();
-    window.addEventListener("hashchange", fromHash);
-    select(document.querySelector('[aria-selected="true"]').getAttribute("data-tab"), false);
-  })();
-</script>
 
 </div>
