@@ -14,37 +14,159 @@
  * Rendered site-wide via the Footer override, so it appears on docs and
  * marketing pages alike. Kept dependency-free and inline: a consent banner that
  * waits on a bundle is a consent banner that flashes.
+ *
+ * Styling deliberately uses Starlight's `--sl-color-*` tokens rather than
+ * literal colours, so the banner follows the theme switcher instead of sitting
+ * as a permanent black slab over a light page. The tokens invert themselves
+ * under `:root[data-theme='light']` (see `src/styles/starwind.css`), so there is
+ * no second palette to keep in sync here.
  */
+import { withLocalePrefix } from "@/lib/locale-links";
+
+const locale = Astro.locals.starlightRoute.locale;
+const cookiePolicyHref = withLocalePrefix("/legal/cookies/", locale);
+const privacyPolicyHref = withLocalePrefix("/legal/privacy/", locale);
 ---
 
-<div
-  id="cookie-consent"
-  role="dialog"
-  aria-live="polite"
-  aria-label="Cookie consent"
-  hidden
-  class="fixed inset-x-0 bottom-0 z-50 border-t border-white/15 bg-black/95 text-white backdrop-blur"
->
-  <div class="mx-auto flex w-full max-w-5xl flex-col gap-4 px-4 py-4 sm:flex-row sm:items-center sm:justify-between">
-    <p class="text-sm text-white/80">
+<div id="cookie-consent" role="dialog" aria-live="polite" aria-label="Cookie consent" hidden>
+  <div class="consent-inner">
+    <p class="consent-copy">
       We use cookies to run this site and, with your permission, to measure how it is used.
-      Essential cookies are always on. See our <a href="/legal/cookies/" class="underline hover:text-white">Cookie Policy</a>
-      and <a href="/legal/privacy/" class="underline hover:text-white">Privacy Policy</a>.
+      Essential cookies are always on. See our <a href={cookiePolicyHref}>Cookie Policy</a>{" "}
+      and <a href={privacyPolicyHref}>Privacy Policy</a>.
     </p>
-    <div class="flex shrink-0 gap-2">
-      <button
-        type="button"
-        data-consent="denied"
-        class="rounded-full border border-white/25 px-4 py-2 text-sm font-semibold text-white/90 transition-colors hover:bg-white/10"
-      >Reject</button>
-      <button
-        type="button"
-        data-consent="granted"
-        class="rounded-full bg-white px-4 py-2 text-sm font-semibold text-black transition-colors hover:bg-white/90"
-      >Accept</button>
+    <div class="consent-actions">
+      <button type="button" data-consent="denied" class="consent-button consent-button--secondary">
+        Reject
+      </button>
+      <button type="button" data-consent="granted" class="consent-button consent-button--primary">
+        Accept
+      </button>
     </div>
   </div>
 </div>
+
+<style>
+  /* The banner is reparented to <body> at runtime (see the script below), which
+     puts it outside every Starlight stacking context — so this z-index is
+     finally free to beat `--sl-z-index-skiplink` (20), the highest Starlight
+     uses. */
+  #cookie-consent {
+    position: fixed;
+    inset-inline: 0;
+    bottom: 0;
+    z-index: 100;
+    display: block;
+    border-top: 1px solid var(--sl-color-hairline-light);
+    background-color: var(--sl-color-bg);
+    color: var(--sl-color-gray-2);
+    box-shadow: 0 -4px 16px hsl(0deg 0% 0% / 12%);
+  }
+
+  /* An author `display` declaration outranks the UA sheet's `[hidden]` rule, so
+     the hidden state has to be restated explicitly or the banner never hides. */
+  #cookie-consent[hidden] {
+    display: none;
+  }
+
+  .consent-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-inline: auto;
+    width: 100%;
+    max-width: 64rem;
+    padding: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .consent-inner {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  .consent-copy {
+    margin: 0;
+    font-size: var(--sl-text-sm);
+    line-height: 1.5;
+  }
+
+  /* Without this the policy links fall through to the UA default `#0000EE`,
+     which is unreadable on the dark banner and ignores the theme entirely —
+     these links sit outside `.sl-markdown-content`, so Starlight never styles
+     them. `--sl-color-text-accent` is the ramp this repo already tuned for
+     contrast in both themes. */
+  .consent-copy a {
+    color: var(--sl-color-text-accent);
+    text-decoration: underline;
+  }
+
+  .consent-copy a:hover {
+    color: var(--sl-color-white);
+  }
+
+  .consent-actions {
+    display: flex;
+    flex-shrink: 0;
+    gap: 0.5rem;
+  }
+
+  /* `font-family` is restated rather than inherited from a reset: Tailwind's
+     preflight does not reach these Starlight-rendered pages (the policy links
+     resolving to the UA's `#0000EE` is the proof), so the buttons would
+     otherwise fall back to the UA's own control font. */
+  .consent-button {
+    border-radius: 9999px;
+    padding: 0.5rem 1rem;
+    font-family: inherit;
+    font-size: var(--sl-text-sm);
+    font-weight: 600;
+    line-height: 1.25;
+    cursor: pointer;
+    transition:
+      background-color 0.15s ease,
+      border-color 0.15s ease,
+      color 0.15s ease;
+  }
+
+  .consent-button:focus-visible {
+    outline: 2px solid var(--sl-color-text-accent);
+    outline-offset: 2px;
+  }
+
+  .consent-button--primary {
+    border: 1px solid var(--sl-color-accent);
+    background-color: var(--sl-color-accent);
+    color: var(--sl-color-white);
+  }
+
+  .consent-button--primary:hover {
+    background-color: var(--sl-color-accent-high);
+    border-color: var(--sl-color-accent-high);
+    color: var(--sl-color-bg);
+  }
+
+  /* Reject previously used a `white/25` border on a black bar, which read as a
+     disabled control. `--sl-color-gray-3` clears the 3:1 non-text contrast floor
+     in both themes (≈7:1 light, ≈5:1 dark). */
+  .consent-button--secondary {
+    border: 1px solid var(--sl-color-gray-3);
+    background-color: transparent;
+    color: var(--sl-color-white);
+  }
+
+  .consent-button--secondary:hover {
+    background-color: var(--sl-color-gray-6);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .consent-button {
+      transition: none;
+    }
+  }
+</style>
 
 <script is:inline>
   (function () {
@@ -55,8 +177,10 @@
     // Starlight wraps page content in .main-pane, which sets `isolation: isolate`
     // and therefore creates a stacking context. Inside it, no z-index can lift the
     // banner above the left and right sidebars, which live outside that pane and
-    // would paint over it — covering the Accept button and clipping the text.
+    // would paint over it — covering the Accept button and swallowing its clicks.
     // Reparenting to <body> takes the banner out of that stacking context.
+    // Safe because the site ships no ClientRouter: every navigation is a full
+    // page load, so there is no transition that could strand or duplicate it.
     if (el.parentElement !== document.body) document.body.appendChild(el);
 
     var stored = null;
