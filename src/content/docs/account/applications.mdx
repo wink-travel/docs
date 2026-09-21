@@ -40,52 +40,81 @@ An application generated on Wink can be used for all API endpoints.
  2. Click on `Actions` from the bottom of the account card and choose to `Manage account`.
  3. Click the `Applications` tab on the following page.
  4. This section will list all your applications.
- 5. Choose to edit an existing one or create a new one.
+ 5. Rotate or delete an existing one, or create a new one.
  </Steps>
 
 ## Create app
 
 As you cannot access the `secret key` of the app we created for you, you will need to create your own.
-
-:::caution
-You need to create an affiliate account on Wink or an account on TripPay before you create an app as you will be binding your application to a specific account.
-:::
+You can create an application here without first setting up a property or company — it isn't bound
+to any specific account.
 
 ### Client types
 
-When creating an application, you choose a client type that determines how the app authenticates:
+When creating an application, you choose a client type that determines how the app authenticates.
+This can't be changed later — if you need a different type, create a new application.
 
-- **SPA** (Single Page Application) — For browser-based frontend applications that use the OAuth2 authorization code flow with PKCE. This is the most common type for web apps.
-- **MACHINE_2_MACHINE** — For server-to-server integrations that authenticate directly using client credentials. Use this when your backend service needs to call Wink APIs without a user present.
+- **Web application** — A server-rendered app that can safely keep a client secret (authorization code flow).
+- **Single-page app (SPA)** — A browser app with no backend; uses PKCE, with no client secret.
+- **Mobile app** — A native iOS/Android app; uses PKCE with rotating refresh tokens.
+- **Machine-to-machine** — A backend service acting as itself (client credentials); no user sign-in.
 
 Here are the steps to creating an application:
 
 <Steps>
 1. From the apps page, click the `Create new application` button.
 2. ***Name*** Give your app a name. *e.g. Cool App*
-3. **Client type** Choose `SPA` for web apps or `MACHINE_2_MACHINE` for server integrations.
-4. **Entity name** Link your app with one of your existing accounts. *e.g. Cool Account*
-5. **Redirect URIs** At least one redirect URI is required. It is used for validating the redirect domain after a successful authentication. *e.g. https://www.cool-site.com*
-6. **Post-logout redirect URIs** *(Optional)* URLs where users can be redirected after logging out. This ensures users land on a known page after their session ends.
-7. Click the `Save` button to continue.
+3. **Client type** Choose the type that matches how your app authenticates — see [Client types](#client-types) above.
+4. **Redirect URIs** At least one redirect URI is required. It is used for validating the redirect domain after a successful authentication. Not used for Machine-to-machine apps. *e.g. https://www.cool-site.com*
+5. **Post-logout redirect URIs** *(Optional)* URLs where users can be redirected after logging out. Leave blank to reuse the redirect URIs above.
+6. **Scopes** Choose what this application can access on your behalf — see [Choosing scopes](#choosing-scopes) below.
+7. Click the `Create application` button to continue.
 </Steps>
 
-You are redirected back to your list of applications. You will see your new app in the list and have access to the app secret key only this once. Make sure to copy it and save it in a safe place.
+You are redirected back to your list of applications, and a one-time dialog shows the new Client ID
+and Client secret. Copy the secret now and save it somewhere safe — it is never shown again, and
+there is no way to retrieve it later (only [rotate](#rotate-credentials) it for a new one).
 
-## Update app
+## Choosing scopes
 
-You will need to update your app if one of your redirect URIs change or you want to add or remove a URI.
+Every application always carries the **Sign-in (OpenID Connect)** scopes (`openid`, `profile`,
+`email`, `offline_access`) — these confirm the user's identity and keep them signed in, so they're
+shown checked and locked; they aren't a choice.
 
-To update an existing app, do the following:
+Everything else is opt-in. The remaining scopes are grouped into the same functional sections
+documented in [Scopes](/developers/authentication#scopes) — Account, Inventory & rates, Bookings,
+Marketing & promotions, Property content, Analytics & reports, Channel manager integrations,
+Payments, and Accounting & ledger — each with a plain-language description of what it unlocks. Use
+the `All` / `None` links above the list to select or clear every optional scope at once.
+
+:::note
+**Payments** and **Accounting & ledger** are flagged **Sensitive** because they guard money
+movement — only grant them to applications that specifically need to touch payments or the ledger.
+:::
+
+Two scope families are deliberately **not offered** on this form:
+
+- **`mcp.*`** — AI-agent access to the [Model Context Protocol](/developers/mcp) transport, which is
+  provisioned separately and only for machine-to-machine clients.
+- **Administrator-tier scopes** (`administrator.*`) — platform-level access that isn't granted per
+  application.
+
+Once an app is created, both this tab and [Consented Apps](/account/apps) show its granted scopes
+grouped by section (e.g. "Bookings: `booking.read`"), so you can see what an app can do at a glance
+without opening it.
+
+## Rotate credentials
+
+If a client secret may have leaked, or you just want fresh credentials, rotate them instead of
+recreating the app:
 
 <Steps>
-1. Click the `Actions` link for the app you want to update.
-2. Click the `Update` button under Actions.
-3. Make your changes to the app.
-4. Click the `Save` button to continue.
+1. Find the app in your list of applications and click `Rotate`.
+2. Confirm the dialog — the current Client ID and secret stop working immediately.
+3. Copy the new Client ID and secret from the one-time dialog before closing it.
 </Steps>
 
-You are redirected back to your list of applications.
+Rotating keeps the app's name, client type, redirect URIs, and scopes — only the credentials change.
 
 ## Remove app
 
@@ -93,14 +122,10 @@ You are redirected back to your list of applications.
 Please don't delete the app we auto-created for you to make sure all the features work for your account.
 :::
 
-If you have no further use for an app, you can go ahead and remove it.
-
-To remove an app, do the following:
+If you have no further use for an app, you can go ahead and remove it. This is permanent — the
+credentials are revoked immediately and can't be recovered.
 
 <Steps>
-1. Click the `Actions` link for the app you want to update.
-2. Click the `Remove` button under Actions.
-3. Click `OK` button to confirm deletion.
+1. Find the app in your list of applications and click `Delete`.
+2. Confirm the dialog to permanently delete the application.
 </Steps>
-
-You are redirected back to your list of applications.
