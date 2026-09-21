@@ -52,6 +52,14 @@ const BANNED: Rule[] = [
       "Card processing is passed through at actual cost, so the total is not fixed. Write \"1.5% platform fee plus card processing at cost\".",
   },
   {
+    // Deliberately narrow. "about 5.5% in total with a 4.0% card fee" is the
+    // approved footnoted illustration and must keep passing; a bare promise
+    // that a booking *costs* 5.5% must not.
+    pattern: /(?:only pay|you pay|costs?|flat|just)\s+5\.5%|5\.5%\s+per booking/i,
+    reason:
+      "States 5.5% as the price. Card processing is passed through at actual cost, so only an illustration may cite it: \"1.5% platform fee plus card processing at cost\".",
+  },
+  {
     pattern: /4\.0% payment fee/i,
     reason:
       "There is no flat payment fee any more; it is passed through at cost. 4.0% may only appear as a footnoted illustration.",
