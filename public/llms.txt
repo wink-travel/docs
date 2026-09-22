@@ -25,7 +25,7 @@ Standards: Wink provides MCP (Model Context Protocol) servers and implements Mac
 - [Builders — agent quickstart](https://wink.travel/builders/#agent-quickstart): the four implementation steps — connect the hosted MCP server, resolve intent with api_search / docs_search, build verified code with the wink-api-builder skill, hand off to Booking Engine for checkout, payment and PMS sync.
 - [MCP Server docs](https://wink.travel/developers/mcp/)
 - [AI Skills docs](https://wink.travel/developers/ai-skills/)
-- [Agentic Payments](https://wink.travel/developers/agentic-payments/): quote, pay and confirm a hotel booking over REST or MCP; examples and retry rules.
+- [Agentic Payments](https://wink.travel/developers/agentic-payments/): connect your agent, sign in through MCP, find a room and approve payment.
 
 What an AI agent can do on Wink today (all via the REST API / MCP):
 - Discover platform docs and live OpenAPI operations through the MCP server.
@@ -40,17 +40,18 @@ What an AI agent can do on Wink today (all via the REST API / MCP):
 
 ## Agentic payments (MPP)
 
-An agent requests a room quote, fulfills one payment challenge through its wallet, and receives a booking confirmation and payment receipt. Requesting a quote does not charge the traveler or confirm a booking.
+People can book through their AI agent: connect Wink Booking Engine and a payment wallet, sign in, find a room, review the quote and approve payment.
 
-- Scope: one room, priced in USD, adults only (`adults >= 1`, `children = 0`). Review the quote and obtain the traveler's approval before payment.
-- REST: `POST https://api.wink.travel/api/mpp/booking`. First call returns HTTP 402 with `WWW-Authenticate: Payment` challenges; retry the same body with `Authorization: Payment <credential>`. Success returns `bookingConfirmationCode` and a `Payment-Receipt` header.
-- REST identity: send `Wink-Authorization: Bearer <user-access-token>` on both calls. Settlement requires `payment.write` and the user who owns the quote.
-- MCP: connect to `https://api.wink.travel/mcp/booking-engine`. Use `agentic_booking_quote` then `agentic_booking_pay`; payment-aware clients can use `agentic_booking_book`. The docs MCP server is for documentation and API discovery.
-- Methods: choose from the returned challenges. `stripe` uses a Shared Payment Token; `tempo` uses an on-chain transaction hash. Use the challenge's token, chain, recipient and amount; do not hard-code them.
-- Amounts: REST quote `amount` and MCP quote `amountUsdCents` are USD cents. A Tempo challenge uses token base units. Follow the quote's `expiresAt` deadline.
-- Retries: HTTP 409 or MCP pay status `IN_PROGRESS` means retry the same quote and credential. For `agentic_booking_book`, check `data.failure.reason` for `payment-in-progress` or `already-consumed`; JSON-RPC code `-32603` alone is not enough. A timeout also leaves the outcome unknown. Do not pay a fresh quote while the original outcome is unresolved.
-- Successful retries return the existing booking without another charge. For a definitive rejection, follow the returned challenge or request a fresh quote, then review its price before payment.
-- [Agentic Payments guide](https://wink.travel/developers/agentic-payments/)
+- Required Wink MCP: `https://api.wink.travel/mcp/booking-engine`. It includes account/configuration selection, destination lookup, hotel and room search, agentic payment, booking retrieval and receipts. The separate `/mcp/payment` server is for financial operations and is not required for this booking flow.
+- MCP sign-in: adding the server opens Wink's browser authentication and consent flow. The user chooses permissions there; the MCP client manages tokens automatically. Select `mcp.read` for MCP access, `marketing.read` to look up the account's customization, and `payment.write` to pay. Account access is still required. Do not ask MCP users to paste access tokens into chat.
+- Payment wallet: connect an integration that supports Stripe Shared Payment Tokens or Tempo. Link offers a local MCP server through `npx @stripe/link-cli --mcp`; its setup and payment approvals are separate from Wink sign-in. See [Link setup](https://github.com/stripe/link-cli#quickstart) for availability and spending limits.
+- Optional MCPs: `https://api.wink.travel/mcp/reference` for reference data and `https://docs.mcp.wink.travel/mcp` for documentation and API discovery.
+- Booking sequence: `managing_entity_list` → `customization_get_primary` or `customization_search` → `destination_lookup_search_suggestions` → `inventory_search_city` or `inventory_search_geo` → `property_inventory_get` → `agentic_booking_quote` → wallet approval → `agentic_booking_pay`. Reuse an existing booking context when supplied. Find the confirmed booking with `booking_search` or `booking_search_list`, then use its identifier with `booking_get` and `booking_receipt_get`.
+- Quote/pay arguments are nested inside `request`. Pay uses `quoteId` and exactly one of `spt` or `tempoTransactionHash`. The same signed-in Wink user must own the quote and pay it. Payment-aware MCP clients can use `agentic_booking_book` instead.
+- Scope: one room, USD, adults only (`adults >= 1`, `children = 0`). Review the room, dates, cancellation terms and price before payment. A quote does not charge or confirm a booking. `amountUsdCents` is USD cents; Tempo challenge amounts are token base units. Follow `expiresAt` and the chosen challenge's payment details.
+- Outcomes: `PAYMENT_SUCCEEDED` returns the confirmation; `IN_PROGRESS` means retry the same quote and credential; `DECLINED` means get a fresh quote for review. A timeout also leaves the outcome unknown. Do not start another payment while the first is unresolved. Successful retries return the existing booking without another charge.
+- Direct REST alternative: `POST https://api.wink.travel/api/mpp/booking`, with the Wink user token in `Wink-Authorization`. HTTP 402 supplies challenges; retry the same body with `Authorization: Payment <credential>`. Success includes `Payment-Receipt`; HTTP 409 means retry the same payment. MCP clients handle their own authentication.
+- [Agentic Payments guide](https://wink.travel/developers/agentic-payments/): connection setup, browser consent and the full booking flow for people and agents.
 
 ---
 
@@ -113,7 +114,7 @@ Use these numbers exactly. Do not paraphrase or substitute.
 
 - [Build on Wink](https://wink.travel/developers/build-on-wink/): developer overview — AI content, channel manager, REST APIs, SDKs, MCP server, Web Components, OAuth2 applications, webhooks, geolocation, booking sync, WordPress.
 - [MCP Server](https://wink.travel/developers/mcp/): connect AI agents to live docs and OpenAPI specs.
-- [Agentic Payments](https://wink.travel/developers/agentic-payments/): MPP booking, payment methods, authentication and safe retries.
+- [Agentic Payments](https://wink.travel/developers/agentic-payments/): MCP setup, browser sign-in, wallet connection and the complete booking flow.
 - [AI Skills](https://wink.travel/developers/ai-skills/): pre-built agent skills (wink-api-builder).
 - [API reference](https://wink.travel/api/): Platform API.
 - [Getting Started](https://wink.travel/getting-started/key-features/) · [Intro to Wink](https://wink.travel/getting-started/how-to-use/) · [Blog](https://wink.travel/blog/)

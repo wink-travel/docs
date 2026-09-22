@@ -1,119 +1,113 @@
 ---
 title: Agentic Payments
-description: Quote, pay for and confirm a hotel booking with the Machine Payments Protocol over REST or MCP.
+description: Connect your AI agent to Wink, sign in, find a hotel and approve payment to complete your booking.
 sidebar:
   order: 10.5
 ---
 
-Agentic payments let an AI agent quote a hotel room, pay through a wallet and receive a booking confirmation. Wink uses the **Machine Payments Protocol (MPP)**: request a quote, fulfill its payment challenge, then submit the payment credential.
+You can search for a hotel, choose a room and complete your booking through your AI agent. Connect it to Wink and a payment wallet, then tell it where you want to stay. Wink uses the **Machine Payments Protocol (MPP)** to accept the wallet's payment and return your booking confirmation.
 
-## Before you start
+## 1. Connect the MCP servers
 
-- Sign in as the traveler with a [Wink OAuth2 access token](/developers/authentication/). Payment requires the `payment.write` scope and the same user who requested the quote.
-- Select a hotel, room rate, travel dates and `customizationIdentifier` from your booking context.
-- Use a wallet that supports a payment method offered by the quote.
+For the complete booking flow, your agent needs **Wink Booking Engine** and a **payment wallet**.
 
-This flow books **one room**, priced in **USD**, for **adults only**. Set `adults` to at least `1` and `children` to `0`. Review the price and obtain the traveler's approval before paying.
+| Connection | What it does | How to add it |
+| --- | --- | --- |
+| **Wink Booking Engine** — required | Finds destinations, searches hotels and room rates, quotes and confirms bookings, and retrieves your bookings and receipts. | Add `https://api.wink.travel/mcp/booking-engine` as a remote HTTP MCP server. |
+| **Payment wallet** — required to pay | Provides payment credentials after you approve the purchase. | Connect a wallet that supports Stripe Shared Payment Tokens or Tempo payments. See the Link example below. |
+| Wink Reference — optional | Looks up countries, currencies and other reference data. | `https://api.wink.travel/mcp/reference` |
+| Wink Docs — optional | Helps your agent read documentation and API contracts. | `https://docs.mcp.wink.travel/mcp` |
 
-## Book over REST
+The Booking Engine MCP already includes the tools needed for the traveler booking flow. Wink's separate Payment MCP is for financial operations such as ledgers and withdrawals; it is not needed to pay for a room.
 
-Use `POST https://api.wink.travel/api/mpp/booking` for both steps.
+### Sign in and choose permissions
 
-### 1. Request a quote
+1. Open your agent's MCP or connector settings and add the Booking Engine URL above. Give it a name such as **Wink Booking**.
+2. Your agent opens the Wink sign-in page in your browser. Sign in with the Wink account you want to book under.
+3. On the consent screen, choose the permissions your agent needs, then approve the connection.
+4. Return to your agent. It loads the available tools and manages authentication for subsequent MCP calls.
 
-Save the room details as `booking.json`. Replace the example identifiers and dates with your selection; `checkOut` must be after `checkIn`.
+For this flow, select:
+
+| Permission | Why it is needed |
+| --- | --- |
+| AI agent access (`mcp.read`) | Allows your agent to connect to Wink MCP. |
+| Marketing read (`marketing.read`) | Lets the agent find your account's booking configuration, called a customization. Your account must also have access to that configuration. |
+| Payment write (`payment.write`) | Lets the agent pay for the quote and confirm the booking. |
+
+Keep the sign-in permissions requested by the connection. Your MCP client handles access tokens; you do not need to copy a token into chat or set request headers. If you skipped a needed permission, reconnect through your client's sign-in flow and approve it.
+
+### Connect a payment wallet
+
+For Stripe payments, one option is **Link's agent wallet**. If your client supports local MCP servers and Node.js is installed, add this entry to its MCP configuration:
 
 ```json
 {
-  "hotelIdentifier": "YOUR_HOTEL_ID",
-  "roomRateIdentifier": "YOUR_ROOM_RATE_ID",
-  "checkIn": "2027-01-15",
-  "checkOut": "2027-01-17",
-  "adults": 2,
-  "children": 0,
-  "customizationIdentifier": "YOUR_CUSTOMIZATION_ID"
-}
-```
-
-Set `WINK_ACCESS_TOKEN` to the traveler's access token, then send the request:
-
-```bash
-curl -i https://api.wink.travel/api/mpp/booking \
-  -H "Wink-Authorization: Bearer $WINK_ACCESS_TOKEN" \
-  -H 'Content-Type: application/json' \
-  --data-binary @booking.json
-```
-
-Wink returns **`402 Payment Required`** with a `WWW-Authenticate: Payment ...` challenge for each offered payment method. The JSON body includes `quoteId`, `amount`, `currency`, `expiresAt` and `methods`.
-
-The body’s `amount` is a string in **USD cents**: `"10000"` means **$100.00**. Use `expiresAt` as the payment deadline. Requesting a quote does not charge the traveler or confirm a booking.
-
-### 2. Pay and confirm
-
-Have the wallet fulfill one of the returned challenges:
-
-| Method | What the wallet provides |
-| --- | --- |
-| `stripe` | A Stripe Shared Payment Token (SPT), supplied as `payload.spt`. |
-| `tempo` | A completed on-chain transfer, supplied as `payload.hash` with `payload.type` set to `"hash"`. |
-
-Use the payment details from the chosen challenge. For Tempo, these include the token, chain, recipient and amount in token base units. The quote body's USD-cent amount is not the on-chain transfer amount.
-
-Set `MPP_CREDENTIAL` to the wallet's encoded MPP credential. This contains the returned challenge and payment payload; it is not just the raw SPT or transaction hash. Retry the **same request body**, keeping the identity header:
-
-```bash
-curl -i https://api.wink.travel/api/mpp/booking \
-  -H "Wink-Authorization: Bearer $WINK_ACCESS_TOKEN" \
-  -H "Authorization: Payment $MPP_CREDENTIAL" \
-  -H 'Content-Type: application/json' \
-  --data-binary @booking.json
-```
-
-Keep the Wink token in `Wink-Authorization` on both calls: the wallet uses `Authorization` for the payment credential.
-
-On success, Wink returns **`200 OK`**, a JSON body containing `bookingConfirmationCode`, and a `Payment-Receipt` header. Save the confirmation and receipt. Repeating a successful payment for the same quote returns the existing booking without charging again.
-
-### Handle retries
-
-| Response | What to do |
-| --- | --- |
-| `400` | Correct invalid room details or a malformed credential. |
-| `401` / `403` | Check the traveler's login and `payment.write` scope. |
-| `402` | Inspect the problem `type` and returned challenge. A rejected payment gets a fresh quote; an incomplete payment payload reuses the original challenge. Check the price before paying. |
-| `409` | Payment outcome is still unknown. Wait briefly, then retry the same body and credential. Do not pay a new quote. |
-| `429` | Wait for the number of seconds in `Retry-After`, then retry. |
-
-Treat a timeout or lost payment response as an unknown outcome too: retry the same payment request. If it stays unresolved, contact support with the quote ID before attempting another payment.
-
-## Book over MCP
-
-Connect your client to **`https://api.wink.travel/mcp/booking-engine`** and sign in. See [MCP Servers](/developers/mcp/) for connection details. The documentation server at `docs.mcp.wink.travel` provides documentation and API discovery; booking tools are on the API server.
-
-For clients that call ordinary MCP tools:
-
-1. Call `agentic_booking_quote` with the room details above inside its `request` argument. It returns `quoteId`, `amountUsdCents`, `currency`, `expiresAt` and `mppChallenges`.
-2. Have the wallet fulfill one offered challenge.
-3. Call `agentic_booking_pay` with a `request` containing the `quoteId` and **exactly one** of `spt` or `tempoTransactionHash`.
-
-Example arguments for a Stripe payment:
-
-```json
-{
-  "request": {
-    "quoteId": "QUOTE_ID_FROM_STEP_1",
-    "spt": "SHARED_PAYMENT_TOKEN_FROM_WALLET"
+  "mcpServers": {
+    "link": {
+      "command": "npx",
+      "args": ["@stripe/link-cli", "--mcp"]
+    }
   }
 }
 ```
 
-| Pay result | What to do |
+Ask your agent to connect your Link account, then follow the verification link it provides and approve the connection. Link supplies the Shared Payment Token used to pay for the booking. Link currently supports US accounts; check its spending limits before booking. See [Link's setup guide](https://github.com/stripe/link-cli#quickstart) and [MCP configuration](https://github.com/stripe/link-cli#mcp-server).
+
+You can also use a wallet that supports the Tempo payment challenge offered by Wink. If your agent already has a compatible wallet connected, use that connection. Wallet setup and payment approval are separate from signing in to Wink.
+
+## 2. Ask your agent to find a room
+
+For example:
+
+> Find a room in Bangkok for two adults from 15 to 17 January 2027. Show me the available options, total price and cancellation terms before I choose.
+
+Your agent can find your accessible Wink accounts and their booking configurations. If you have several, tell it which one to use. If you are booking through a supplied booking link or configuration, give that to the agent instead.
+
+The agent then resolves your destination, checks available hotels and loads room rates for your dates. Choose a room and ask for a quote.
+
+This payment flow currently supports **one room, priced in USD, for adults only**. A quote has an expiry time. Requesting one does not charge you or confirm a booking.
+
+## 3. Review and approve payment
+
+Check the hotel, room, dates, guests, cancellation terms and quoted total. When you are ready, ask your agent to book and complete any approval requested by your wallet.
+
+The agent uses one of the payment methods offered by the quote:
+
+- **Stripe:** the wallet provides a Shared Payment Token.
+- **Tempo:** the wallet makes the transfer specified by the challenge and provides its transaction hash.
+
+After payment succeeds, your agent gives you a **booking confirmation code**. It can also retrieve the booking details and receipt through the Booking Engine MCP.
+
+If payment is still processing or the response is lost, let the agent check the **same payment attempt**. It should reuse the quote and payment credential instead of starting a second payment. If payment is declined, ask for a fresh quote and review it before trying again.
+
+## Tool reference for agents and developers
+
+All Wink tools below are available through the **Booking Engine MCP**. The MCP client sends authentication automatically using the permissions approved during sign-in.
+
+| Step | Tools and behavior |
+| --- | --- |
+| Select booking context | `managing_entity_list`, then `customization_get_primary` or `customization_search` for the selected account. Use a supplied customization when one is already known. |
+| Find a destination | `destination_lookup_search_suggestions` and `destination_lookup_get`. |
+| Search hotels and rooms | `inventory_search_city` or `inventory_search_geo`, then `property_inventory_get` for rates and availability. |
+| Quote the selected room | `agentic_booking_quote`. Pass room details inside its `request` argument. |
+| Pay and confirm | Obtain a credential from the connected wallet, then call `agentic_booking_pay` with `request.quoteId` and exactly one of `request.spt` or `request.tempoTransactionHash`. Keep the same signed-in Wink user for quote and payment. |
+| Retrieve the booking and receipt | Use `booking_search` or `booking_search_list` to find the confirmed booking, then `booking_get` and `booking_receipt_get` with its booking identifier. |
+
+The quote request needs `hotelIdentifier`, `roomRateIdentifier`, `checkIn`, `checkOut`, `adults` and `customizationIdentifier`. Dates use `YYYY-MM-DD`; `checkOut` must follow `checkIn`. Set `adults` to at least `1` and `children` to `0`.
+
+The quote returns `quoteId`, `amountUsdCents`, `currency`, `expiresAt` and `mppChallenges`. Display USD cents as dollars: `10000` means **$100.00**. For Tempo, use the chosen challenge's token, chain, recipient and amount in token base units.
+
+| Pay result | Next step |
 | --- | --- |
 | `PAYMENT_SUCCEEDED` | Save `bookingConfirmationCode` and `chargeReference`. |
-| `IN_PROGRESS` | Retry with the same `quoteId` and credential after a short delay. |
-| `DECLINED` | Request a fresh quote and review it before trying another payment. |
+| `IN_PROGRESS` | Wait briefly and retry the same quote and credential. |
+| `DECLINED` | Request a fresh quote and review it before another payment. |
 
-Payment-aware MCP clients can instead use **`agentic_booking_book`**, with the room fields directly in `arguments`. The first call returns JSON-RPC error `-32042` with payment challenges. The client retries the same call with the credential in `params._meta["org.paymentauth/credential"]`; success includes `result._meta["org.paymentauth/receipt"]`.
+A successful retry returns the existing booking without charging again. Treat a timeout as an unknown outcome and retry the same payment. If it stays unresolved, contact support with the quote ID.
 
-For this tool, `-32043` carries a payment failure and challenge. A `-32603` error whose `data.failure.reason` is `payment-in-progress` or `already-consumed` means to retry the same credential. Other errors need their own handling; the error code alone does not identify a pending payment.
+### Other payment transports
 
-Protocol references: [Payment HTTP Authentication Scheme](https://paymentauth.org/draft-httpauth-payment-00) and [MCP transport binding](https://paymentauth.org/draft-payment-transport-mcp-00).
+Payment-aware MCP clients can use `agentic_booking_book` with the room fields directly in `arguments`. The first call returns error `-32042` with payment challenges. Retry the same call with the wallet credential in `params._meta["org.paymentauth/credential"]`; success includes `result._meta["org.paymentauth/receipt"]`. Error `-32043` carries a payment failure and challenge. For `-32603`, a `data.failure.reason` of `payment-in-progress` or `already-consumed` means retry the same credential; the error code alone is not enough.
+
+For a direct REST integration, use `POST https://api.wink.travel/api/mpp/booking` with the same room fields. It returns HTTP `402` with `WWW-Authenticate: Payment` challenges. Retry the same body with the wallet's encoded credential in `Authorization: Payment <credential>`. On this REST endpoint, put the Wink user token in `Wink-Authorization: Bearer <user-access-token>` on both calls. Success returns `bookingConfirmationCode` and a `Payment-Receipt` header; HTTP `409` means retry the same body and credential. These headers are for REST integrations; the MCP connection handles its own authentication.
