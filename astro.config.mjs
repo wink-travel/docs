@@ -1,4 +1,6 @@
 import starlight from '@astrojs/starlight';
+import { makeLastmodLookup } from "./src/lib/sitemap-lastmod.mjs";
+import { isChurningChangelogPage } from "./src/lib/changelog-churn.mjs";
 // import starlightDocSearch from '@astrojs/starlight-docsearch';
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from 'astro/config';
@@ -95,6 +97,9 @@ import markdoc from '@astrojs/markdoc';
 import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
+// Built once at config load: one `git log` pass, reused for all ~16k URLs.
+const lastmodFor = makeLastmodLookup();
+
 export default defineConfig({
   site: 'https://wink.travel',
   redirects: { ...buildRedirects(), '/home-v2': '/', ...partnerApiRedirects },
@@ -390,7 +395,22 @@ export default defineConfig({
       'zh-CN': { label: '简体中文', lang: 'zh-CN' },
       'zh-TW': { label: '繁體中文', lang: 'zh-TW' },
     },
-  }), sitemap(), icon(), markdoc()],
+  }), sitemap({
+    // Release-note URLs churn by design: `keepRecent(25)` in src/content.config.ts
+    // trims older releases every release, so yesterday's changelog URL 404s today.
+    // 48 are already dead and indexed. Keeping them out of the sitemap (and
+    // noindex in custom-head.astro) stops the decay at the source; they stay
+    // reachable and useful, they just aren't submitted for indexing. See
+    // changelog-churn.mjs for which changelog bases this does and doesn't cover.
+    filter: (page) => !isChurningChangelogPage(page),
+    // Every URL shipped with no <lastmod>, so nothing looked fresh. Dates come
+    // from the last commit touching each source file; URLs with no resolvable
+    // source get none rather than a guess.
+    serialize: (item) => {
+      const lastmod = lastmodFor(item.url);
+      return lastmod ? { ...item, lastmod } : item;
+    },
+  }), icon(), markdoc()],
   vite: {
     plugins: [tailwindcss()]
   }

@@ -20,6 +20,8 @@ const {
   applicationCategory = "BusinessApplication",
   features = [] as string[],
   offersFree = false,
+  /** Overrides the default free-tier offer text, for stating real pricing terms. */
+  offerDescription = "",
   offers = [] as { name: string; price: string }[],
   faqs = [] as Faq[],
 } = Astro.props;
@@ -34,7 +36,17 @@ const offerNodes = offers.length
       })),
     }
   : offersFree
-    ? { offers: { "@type": "Offer", price: "0", priceCurrency: "USD", description: "Free tier available" } }
+    ? {
+        offers: {
+          "@type": "Offer",
+          // A custom offerDescription states real, non-zero pricing terms (e.g. a
+          // per-booking fee), so it isn't a $0 offer — omit `price` rather than
+          // assert 0 alongside a description that says otherwise.
+          ...(offerDescription ? {} : { price: "0" }),
+          priceCurrency: "USD",
+          description: offerDescription || "Free tier available",
+        },
+      }
     : {};
 
 const app: Record<string, unknown> = {
