@@ -1,0 +1,119 @@
+---
+title: Agentic Payments
+description: Quote, pay for and confirm a hotel booking with the Machine Payments Protocol over REST or MCP.
+sidebar:
+  order: 10.5
+---
+
+Agentic payments let an AI agent quote a hotel room, pay through a wallet and receive a booking confirmation. Wink uses the **Machine Payments Protocol (MPP)**: request a quote, fulfill its payment challenge, then submit the payment credential.
+
+## Before you start
+
+- Sign in as the traveler with a [Wink OAuth2 access token](/developers/authentication/). Payment requires the `payment.write` scope and the same user who requested the quote.
+- Select a hotel, room rate, travel dates and `customizationIdentifier` from your booking context.
+- Use a wallet that supports a payment method offered by the quote.
+
+This flow books **one room**, priced in **USD**, for **adults only**. Set `adults` to at least `1` and `children` to `0`. Review the price and obtain the traveler's approval before paying.
+
+## Book over REST
+
+Use `POST https://api.wink.travel/api/mpp/booking` for both steps.
+
+### 1. Request a quote
+
+Save the room details as `booking.json`. Replace the example identifiers and dates with your selection; `checkOut` must be after `checkIn`.
+
+```json
+{
+  "hotelIdentifier": "YOUR_HOTEL_ID",
+  "roomRateIdentifier": "YOUR_ROOM_RATE_ID",
+  "checkIn": "2027-01-15",
+  "checkOut": "2027-01-17",
+  "adults": 2,
+  "children": 0,
+  "customizationIdentifier": "YOUR_CUSTOMIZATION_ID"
+}
+```
+
+Set `WINK_ACCESS_TOKEN` to the traveler's access token, then send the request:
+
+```bash
+curl -i https://api.wink.travel/api/mpp/booking \
+  -H "Wink-Authorization: Bearer $WINK_ACCESS_TOKEN" \
+  -H 'Content-Type: application/json' \
+  --data-binary @booking.json
+```
+
+Wink returns **`402 Payment Required`** with a `WWW-Authenticate: Payment ...` challenge for each offered payment method. The JSON body includes `quoteId`, `amount`, `currency`, `expiresAt` and `methods`.
+
+The body’s `amount` is a string in **USD cents**: `"10000"` means **$100.00**. Use `expiresAt` as the payment deadline. Requesting a quote does not charge the traveler or confirm a booking.
+
+### 2. Pay and confirm
+
+Have the wallet fulfill one of the returned challenges:
+
+| Method | What the wallet provides |
+| --- | --- |
+| `stripe` | A Stripe Shared Payment Token (SPT), supplied as `payload.spt`. |
+| `tempo` | A completed on-chain transfer, supplied as `payload.hash` with `payload.type` set to `"hash"`. |
+
+Use the payment details from the chosen challenge. For Tempo, these include the token, chain, recipient and amount in token base units. The quote body's USD-cent amount is not the on-chain transfer amount.
+
+Set `MPP_CREDENTIAL` to the wallet's encoded MPP credential. This contains the returned challenge and payment payload; it is not just the raw SPT or transaction hash. Retry the **same request body**, keeping the identity header:
+
+```bash
+curl -i https://api.wink.travel/api/mpp/booking \
+  -H "Wink-Authorization: Bearer $WINK_ACCESS_TOKEN" \
+  -H "Authorization: Payment $MPP_CREDENTIAL" \
+  -H 'Content-Type: application/json' \
+  --data-binary @booking.json
+```
+
+Keep the Wink token in `Wink-Authorization` on both calls: the wallet uses `Authorization` for the payment credential.
+
+On success, Wink returns **`200 OK`**, a JSON body containing `bookingConfirmationCode`, and a `Payment-Receipt` header. Save the confirmation and receipt. Repeating a successful payment for the same quote returns the existing booking without charging again.
+
+### Handle retries
+
+| Response | What to do |
+| --- | --- |
+| `400` | Correct invalid room details or a malformed credential. |
+| `401` / `403` | Check the traveler's login and `payment.write` scope. |
+| `402` | Inspect the problem `type` and returned challenge. A rejected payment gets a fresh quote; an incomplete payment payload reuses the original challenge. Check the price before paying. |
+| `409` | Payment outcome is still unknown. Wait briefly, then retry the same body and credential. Do not pay a new quote. |
+| `429` | Wait for the number of seconds in `Retry-After`, then retry. |
+
+Treat a timeout or lost payment response as an unknown outcome too: retry the same payment request. If it stays unresolved, contact support with the quote ID before attempting another payment.
+
+## Book over MCP
+
+Connect your client to **`https://api.wink.travel/mcp/booking-engine`** and sign in. See [MCP Servers](/developers/mcp/) for connection details. The documentation server at `docs.mcp.wink.travel` provides documentation and API discovery; booking tools are on the API server.
+
+For clients that call ordinary MCP tools:
+
+1. Call `agentic_booking_quote` with the room details above inside its `request` argument. It returns `quoteId`, `amountUsdCents`, `currency`, `expiresAt` and `mppChallenges`.
+2. Have the wallet fulfill one offered challenge.
+3. Call `agentic_booking_pay` with a `request` containing the `quoteId` and **exactly one** of `spt` or `tempoTransactionHash`.
+
+Example arguments for a Stripe payment:
+
+```json
+{
+  "request": {
+    "quoteId": "QUOTE_ID_FROM_STEP_1",
+    "spt": "SHARED_PAYMENT_TOKEN_FROM_WALLET"
+  }
+}
+```
+
+| Pay result | What to do |
+| --- | --- |
+| `PAYMENT_SUCCEEDED` | Save `bookingConfirmationCode` and `chargeReference`. |
+| `IN_PROGRESS` | Retry with the same `quoteId` and credential after a short delay. |
+| `DECLINED` | Request a fresh quote and review it before trying another payment. |
+
+Payment-aware MCP clients can instead use **`agentic_booking_book`**, with the room fields directly in `arguments`. The first call returns JSON-RPC error `-32042` with payment challenges. The client retries the same call with the credential in `params._meta["org.paymentauth/credential"]`; success includes `result._meta["org.paymentauth/receipt"]`.
+
+For this tool, `-32043` carries a payment failure and challenge. A `-32603` error whose `data.failure.reason` is `payment-in-progress` or `already-consumed` means to retry the same credential. Other errors need their own handling; the error code alone does not identify a pending payment.
+
+Protocol references: [Payment HTTP Authentication Scheme](https://paymentauth.org/draft-httpauth-payment-00) and [MCP transport binding](https://paymentauth.org/draft-payment-transport-mcp-00).
