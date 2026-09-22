@@ -20,9 +20,17 @@ const ogImage =
   isMarketing && isDefaultLocale
     ? new URL(`/og/${ogSlug}.png`, Astro.site).href
     : fallback;
+
+// Release-note pages are excluded from the sitemap (see astro.config.mjs) because
+// `keepRecent(25)` retires older release URLs on every release, leaving indexed
+// 404s behind. noindex closes the loop: they stay readable and linkable, they
+// just stop entering the index and decaying out of it. `follow` is deliberate —
+// their links to docs should still carry weight.
+const isChangelog = Astro.url.pathname.includes("/changelog/");
 ---
 
 <Default />
 <meta property="og:image" content={ogImage} />
 <meta name="twitter:image" content={ogImage} />
+{isChangelog && <meta name="robots" content="noindex,follow" />}
 <DocsBreadcrumbJsonLd />
