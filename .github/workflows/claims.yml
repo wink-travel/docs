@@ -1,0 +1,34 @@
+# Canonical claims guard.
+#
+# The repository had no CI. On 8 September the site began asserting both
+# "Wink is the merchant of record" (marketing pages) and "Wink is never the
+# merchant of record" (public/llms.txt, which exists so AI models read our
+# canonical positions). Nothing connected the two, so the contradiction stayed
+# live for twelve days and was reported by an integrator's AI rather than
+# caught here.
+#
+# This runs the guard on every pull request. It reads source, not `dist/`, so
+# it finishes in seconds and needs no build or secrets.
+name: Claims guard
+
+on:
+  # This PR carries #48's corrections, so master is clean the moment it lands
+  # and the push trigger can be on from the start. Guarding master directly
+  # matters: a contradiction merged by any other route is caught here, not by
+  # an integrator's AI twelve days later.
+  push:
+    branches: [master]
+  pull_request:
+
+jobs:
+  claims:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      # `npm ci` would install the full site toolchain to run one dependency-free
+      # script, so install tsx alone instead and keep the job under a minute.
+      - run: npm install --no-save tsx@4
+      - run: npx tsx ./scripts/check-claims.ts
