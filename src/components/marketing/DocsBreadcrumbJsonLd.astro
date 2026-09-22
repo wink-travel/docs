@@ -1,0 +1,83 @@
+---
+/**
+ * BreadcrumbList for documentation-layer pages.
+ *
+ * Marketing pages declare their own trail inline via BreadcrumbJsonLd, and
+ * Resources articles get one from ResourceSchema, but the documentation layer
+ * had none at all — roughly 162 English pages. This fills that gap centrally
+ * rather than editing every file, and is rendered once from custom-head.astro.
+ *
+ * Only the sections listed below emit a trail. An allowlist rather than a
+ * blocklist is deliberate: a new marketing page must never silently acquire a
+ * second BreadcrumbList here, because duplicate lists are a real Google error.
+ *
+ * `item` must be a URL that actually resolves — Google rejects a list whose
+ * non-final crumb points nowhere. Every `path` below is a real page: five
+ * sections gained an index page, and portal/account reuse the overview pages
+ * they already had rather than growing a competing landing page.
+ */
+import { withLocalePrefix } from "@/lib/locale-links";
+
+interface Section {
+  label: string;
+  /** The section's own landing page — a real, resolvable URL. */
+  path: string;
+  /** Collection id of that landing page, so it does not link to itself. */
+  landingId: string;
+}
+
+const SECTIONS: Record<string, Section> = {
+  "getting-started": { label: "Getting Started", path: "/getting-started/", landingId: "getting-started" },
+  guides: { label: "Guides", path: "/guides/", landingId: "guides" },
+  developers: { label: "Developers", path: "/developers/", landingId: "developers" },
+  integrations: { label: "Integrations", path: "/integrations/", landingId: "integrations" },
+  "booking-engine": { label: "Booking Engine", path: "/booking-engine/", landingId: "booking-engine" },
+  webinars: { label: "Webinars", path: "/webinars/", landingId: "webinars" },
+  // These two already had an overview page listed first in the sidebar, so the
+  // crumb points there instead of at a directory root that serves nothing.
+  portal: { label: "Portal", path: "/portal/overview/", landingId: "portal/overview" },
+  account: { label: "User Settings", path: "/account/overview/", landingId: "account/overview" },
+};
+
+const route = Astro.locals.starlightRoute;
+const rawId = route?.entry?.id ?? "";
+// Starlight ids carry the locale for translated pages (`fr/guides/...`). Strip
+// it to find the section, then let withLocalePrefix put the locale back on the
+// URLs so a French page links to French crumbs.
+const id = rawId.replace(/^[a-z]{2}(-[A-Za-z]+)?\//, "");
+const section = SECTIONS[id.split("/")[0] ?? ""];
+const title = route?.entry?.data?.title;
+
+const SITE = "https://wink.travel";
+const absolute = (path: string): string =>
+  new URL(withLocalePrefix(path, route?.locale), SITE).href;
+
+// The section landing page is the end of its own trail: Home > Section, with
+// no `item` on the last crumb (Google then uses the page's own URL).
+const isLanding = section ? id === section.landingId : false;
+
+const items = !section || !title
+  ? []
+  : isLanding
+    ? [
+        { name: "Home", item: absolute("/") },
+        { name: section.label },
+      ]
+    : [
+        { name: "Home", item: absolute("/") },
+        { name: section.label, item: absolute(section.path) },
+        { name: title },
+      ];
+
+const data = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: items.map((crumb, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: crumb.name,
+    ...(crumb.item ? { item: crumb.item } : {}),
+  })),
+};
+---
+{items.length > 0 && <script type="application/ld+json" set:html={JSON.stringify(data)} is:inline />}
