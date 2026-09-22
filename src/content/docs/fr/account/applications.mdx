@@ -40,52 +40,77 @@ Une application générée sur Wink peut être utilisée pour tous les points d�
  2. Cliquez sur `Actions` en bas de la carte du compte et choisissez `Gérer le compte`.
  3. Cliquez sur l’onglet `Applications` sur la page suivante.
  4. Cette section liste toutes vos applications.
- 5. Choisissez de modifier une application existante ou d’en créer une nouvelle.
+ 5. Faites pivoter ou supprimez une application existante, ou créez-en une nouvelle.
  </Steps>
 
 ## Créer une application
 
 Comme vous ne pouvez pas accéder à la `clé secrète` de l’application que nous avons créée pour vous, vous devrez créer la vôtre.
-
-:::caution
-Vous devez créer un compte affilié sur Wink ou un compte sur TripPay avant de créer une application, car vous lierez votre application à un compte spécifique.
-:::
+Vous pouvez créer une application ici sans avoir à configurer d’abord une propriété ou une société — elle n’est liée à aucun compte spécifique.
 
 ### Types de clients
 
-Lors de la création d’une application, vous choisissez un type de client qui détermine comment l’application s’authentifie :
+Lors de la création d’une application, vous choisissez un type de client qui détermine comment l’application s’authentifie.
+Cela ne peut pas être modifié par la suite — si vous avez besoin d’un type différent, créez une nouvelle application.
 
-- **SPA** (Single Page Application) — Pour les applications frontend basées sur navigateur qui utilisent le flux de code d’autorisation OAuth2 avec PKCE. C’est le type le plus courant pour les applications web.
-- **MACHINE_2_MACHINE** — Pour les intégrations serveur à serveur qui s’authentifient directement avec des identifiants client. Utilisez ce type lorsque votre service backend doit appeler les API Wink sans qu’un utilisateur soit présent.
+- **Application web** — Une application rendue côté serveur qui peut garder un secret client en toute sécurité (flux de code d’autorisation).
+- **Application monopage (SPA)** — Une application navigateur sans backend ; utilise PKCE, sans secret client.
+- **Application mobile** — Une application native iOS/Android ; utilise PKCE avec des jetons de rafraîchissement rotatifs.
+- **Machine-à-machine** — Un service backend agissant en son propre nom (identifiants client) ; pas de connexion utilisateur.
 
 Voici les étapes pour créer une application :
 
 <Steps>
 1. Depuis la page des applications, cliquez sur le bouton `Créer une nouvelle application`.
 2. ***Nom*** Donnez un nom à votre application. *ex. Cool App*
-3. **Type de client** Choisissez `SPA` pour les applications web ou `MACHINE_2_MACHINE` pour les intégrations serveur.
-4. **Nom de l’entité** Liez votre application à l’un de vos comptes existants. *ex. Cool Account*
-5. **URI de redirection** Au moins une URI de redirection est requise. Elle sert à valider le domaine de redirection après une authentification réussie. *ex. https://www.cool-site.com*
-6. **URI de redirection après déconnexion** *(Optionnel)* URL vers lesquelles les utilisateurs peuvent être redirigés après la déconnexion. Cela garantit que les utilisateurs arrivent sur une page connue après la fin de leur session.
-7. Cliquez sur le bouton `Enregistrer` pour continuer.
+3. **Type de client** Choisissez le type qui correspond à la façon dont votre application s’authentifie — voir [Types de clients](#client-types) ci-dessus.
+4. **URI de redirection** Au moins une URI de redirection est requise. Elle est utilisée pour valider le domaine de redirection après une authentification réussie. Non utilisée pour les applications Machine-à-machine. *ex. https://www.cool-site.com*
+5. **URI de redirection après déconnexion** *(Optionnel)* URL vers lesquelles les utilisateurs peuvent être redirigés après la déconnexion. Laissez vide pour réutiliser les URI de redirection ci-dessus.
+6. **Scopes** Choisissez ce à quoi cette application peut accéder en votre nom — voir [Choisir les scopes](#choosing-scopes) ci-dessous.
+7. Cliquez sur le bouton `Créer l’application` pour continuer.
 </Steps>
 
-Vous êtes redirigé vers votre liste d’applications. Vous verrez votre nouvelle application dans la liste et aurez accès à la clé secrète de l’application une seule fois. Assurez-vous de la copier et de la sauvegarder en lieu sûr.
+Vous êtes redirigé vers votre liste d’applications, et une boîte de dialogue unique affiche le nouvel ID client
+et le secret client. Copiez le secret maintenant et conservez-le en lieu sûr — il ne sera plus jamais affiché,
+et il n’y a aucun moyen de le récupérer plus tard (seule la possibilité de [faire pivoter](#rotate-credentials) pour en obtenir un nouveau).
 
-## Mettre à jour une application
+## Choisir les scopes
 
-Vous devrez mettre à jour votre application si l’une de vos URI de redirection change ou si vous souhaitez en ajouter ou en supprimer une.
+Chaque application porte toujours les scopes **Connexion (OpenID Connect)** (`openid`, `profile`,
+`email`, `offline_access`) — ceux-ci confirment l’identité de l’utilisateur et le maintiennent connecté, ils sont donc cochés et verrouillés ; ce n’est pas un choix.
 
-Pour mettre à jour une application existante, procédez comme suit :
+Tout le reste est optionnel. Les scopes restants sont regroupés dans les mêmes sections fonctionnelles
+documentées dans [Scopes](/fr/developers/authentication#scopes) — Compte, Inventaire & tarifs, Réservations,
+Marketing & promotions, Contenu de la propriété, Analyses & rapports, Intégrations gestionnaire de canal,
+Paiements, et Comptabilité & grand livre — chacune avec une description en langage clair de ce qu’elle débloque. Utilisez
+les liens `Tout` / `Aucun` au-dessus de la liste pour sélectionner ou désélectionner tous les scopes optionnels en une fois.
+
+:::note
+**Paiements** et **Comptabilité & grand livre** sont marqués **Sensibles** car ils protègent les mouvements d’argent — ne les accordez qu’aux applications qui ont spécifiquement besoin d’accéder aux paiements ou au grand livre.
+:::
+
+Deux familles de scopes ne sont délibérément **pas proposées** dans ce formulaire :
+
+- **`mcp.*`** — accès agent IA au [Model Context Protocol](/fr/developers/mcp), qui est
+  provisionné séparément et uniquement pour les clients machine-à-machine.
+- **Scopes de niveau administrateur** (`administrator.*`) — accès au niveau plateforme qui n’est pas accordé par application.
+
+Une fois une application créée, cet onglet et [Applications consenties](/fr/account/apps) affichent ses scopes accordés
+groupés par section (ex. "Réservations : `booking.read`"), pour que vous puissiez voir ce qu’une application peut faire d’un coup d’œil
+sans l’ouvrir.
+
+## Faire pivoter les identifiants
+
+Si un secret client a pu être compromis, ou si vous souhaitez simplement des identifiants neufs, faites-les pivoter au lieu
+de recréer l’application :
 
 <Steps>
-1. Cliquez sur le lien `Actions` pour l’application que vous souhaitez mettre à jour.
-2. Cliquez sur le bouton `Mettre à jour` sous Actions.
-3. Effectuez vos modifications sur l’application.
-4. Cliquez sur le bouton `Enregistrer` pour continuer.
+1. Trouvez l’application dans votre liste d’applications et cliquez sur `Faire pivoter`.
+2. Confirmez la boîte de dialogue — l’ID client et le secret actuels cessent de fonctionner immédiatement.
+3. Copiez le nouvel ID client et secret depuis la boîte de dialogue unique avant de la fermer.
 </Steps>
 
-Vous êtes redirigé vers votre liste d’applications.
+La rotation conserve le nom de l’application, le type de client, les URI de redirection et les scopes — seuls les identifiants changent.
 
 ## Supprimer une application
 
@@ -93,14 +118,9 @@ Vous êtes redirigé vers votre liste d’applications.
 Veuillez ne pas supprimer l’application que nous avons créée automatiquement pour vous afin de garantir que toutes les fonctionnalités fonctionnent pour votre compte.
 :::
 
-Si vous n’avez plus besoin d’une application, vous pouvez la supprimer.
-
-Pour supprimer une application, procédez comme suit :
+Si vous n’avez plus besoin d’une application, vous pouvez la supprimer. C’est définitif — les identifiants sont révoqués immédiatement et ne peuvent pas être récupérés.
 
 <Steps>
-1. Cliquez sur le lien `Actions` pour l’application que vous souhaitez supprimer.
-2. Cliquez sur le bouton `Supprimer` sous Actions.
-3. Cliquez sur le bouton `OK` pour confirmer la suppression.
+1. Trouvez l’application dans votre liste d’applications et cliquez sur `Supprimer`.
+2. Confirmez la boîte de dialogue pour supprimer définitivement l’application.
 </Steps>
-
-Vous êtes redirigé vers votre liste d’applications.

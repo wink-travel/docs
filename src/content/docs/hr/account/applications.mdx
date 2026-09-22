@@ -1,6 +1,6 @@
 ---
 title: Aplikacije
-description: Saznajte kako kreirati nove Wink aplikacije koje mogu autentificirati korisnike na vašoj vlastitoj stranici.
+description: Saznajte kako stvoriti nove Wink aplikacije koje mogu autentificirati korisnike na vašoj vlastitoj stranici.
 sidebar:
   order: 10
 ---
@@ -13,7 +13,7 @@ Možete odabrati korištenje Winkovog OAuth2 servera za autentifikaciju vaše pu
 Na taj način možete proširiti Winkove značajke na vlastitu web stranicu ili aplikaciju.
 
 :::note
-Vaša prva aplikacija je već kreirana kada [kreirate novi račun](/hr/portal/create-account). Tu aplikaciju koristimo za neke scenarije rezervacija.
+Vaša prva aplikacija je već kreirana kada [stvorite novi račun](/hr/portal/create-account). Koristimo tu aplikaciju za neke scenarije rezervacija.
 
 Ne možete ponovno koristiti ovu aplikaciju. Molimo kreirajte nove aplikacije prema potrebi.
 :::
@@ -40,67 +40,88 @@ Aplikacija generirana na Wink može se koristiti za sve API krajnje točke.
  2. Kliknite na `Actions` pri dnu kartice računa i odaberite `Manage account`.
  3. Kliknite na karticu `Applications` na sljedećoj stranici.
  4. Ovdje će biti navedene sve vaše aplikacije.
- 5. Odaberite uređivanje postojeće ili kreiranje nove.
+ 5. Rotirajte ili izbrišite postojeću, ili kreirajte novu.
  </Steps>
 
 ## Kreirajte aplikaciju
 
-Budući da ne možete pristupiti `tajnom ključu` aplikacije koju smo kreirali za vas, morat ćete kreirati vlastitu.
-
-:::caution
-Morate kreirati affiliate račun na Wink ili račun na TripPay prije nego što kreirate aplikaciju jer ćete vezati svoju aplikaciju za određeni račun.
-:::
+Budući da ne možete pristupiti `tajnom ključu` aplikacije koju smo kreirali za vas, morat ćete stvoriti vlastitu.
+Aplikaciju možete kreirati ovdje bez prethodnog postavljanja nekretnine ili tvrtke — nije vezana
+za određeni račun.
 
 ### Vrste klijenata
 
-Prilikom kreiranja aplikacije birate vrstu klijenta koja određuje kako se aplikacija autentificira:
+Prilikom kreiranja aplikacije birate vrstu klijenta koja određuje kako se aplikacija autentificira.
+To se kasnije ne može mijenjati — ako vam treba drugačiji tip, kreirajte novu aplikaciju.
 
-- **SPA** (Single Page Application) — Za frontend aplikacije temeljene na pregledniku koje koriste OAuth2 autorizacijski kodni tok s PKCE. Ovo je najčešći tip za web aplikacije.
-- **MACHINE_2_MACHINE** — Za integracije server-server koje se autentificiraju izravno koristeći klijentske vjerodajnice. Koristite ovo kada vaš backend servis treba pozivati Wink API-je bez prisutnosti korisnika.
+- **Web aplikacija** — Aplikacija renderirana na serveru koja može sigurno čuvati klijentski tajni ključ (authorization code flow).
+- **Single-page app (SPA)** — Aplikacija u pregledniku bez backend-a; koristi PKCE, bez klijentskog tajnog ključa.
+- **Mobilna aplikacija** — Izvorna iOS/Android aplikacija; koristi PKCE s rotirajućim refresh tokenima.
+- **Machine-to-machine** — Backend servis koji djeluje samostalno (client credentials); bez prijave korisnika.
 
 Evo koraka za kreiranje aplikacije:
 
 <Steps>
 1. Na stranici aplikacija kliknite gumb `Create new application`.
-2. ***Naziv*** Dajte svojoj aplikaciji ime. *npr. Cool App*
-3. **Vrsta klijenta** Odaberite `SPA` za web aplikacije ili `MACHINE_2_MACHINE` za server integracije.
-4. **Naziv entiteta** Povežite svoju aplikaciju s jednim od postojećih računa. *npr. Cool Account*
-5. **Redirect URI-jevi** Potreban je barem jedan redirect URI. Koristi se za provjeru domene preusmjeravanja nakon uspješne autentifikacije. *npr. https://www.cool-site.com*
-6. **Post-logout redirect URI-jevi** *(Opcionalno)* URL-ovi na koje se korisnici mogu preusmjeriti nakon odjave. To osigurava da korisnici završe na poznatoj stranici nakon završetka sesije.
-7. Kliknite gumb `Save` za nastavak.
+2. ***Ime*** Dajte svojoj aplikaciji ime. *npr. Cool App*
+3. **Vrsta klijenta** Odaberite vrstu koja odgovara načinu autentifikacije vaše aplikacije — pogledajte [Vrste klijenata](#client-types) gore.
+4. **Redirect URI-jevi** Potreban je barem jedan redirect URI. Koristi se za provjeru domene preusmjeravanja nakon uspješne autentifikacije. Ne koristi se za Machine-to-machine aplikacije. *npr. https://www.cool-site.com*
+5. **Post-logout redirect URI-jevi** *(Opcionalno)* URL-ovi na koje se korisnici mogu preusmjeriti nakon odjave. Ostavite prazno za ponovno korištenje gore navedenih redirect URI-jeva.
+6. **Scope-ovi** Odaberite što ova aplikacija može pristupiti u vaše ime — pogledajte [Odabir scope-ova](#choosing-scopes) dolje.
+7. Kliknite gumb `Create application` za nastavak.
 </Steps>
 
-Bit ćete preusmjereni natrag na popis svojih aplikacija. Vidjet ćete svoju novu aplikaciju na popisu i imat ćete pristup tajnom ključu aplikacije samo ovaj put. Obavezno ga kopirajte i spremite na sigurno mjesto.
+Bit ćete preusmjereni natrag na popis aplikacija, a jednom će se prikazati dijalog s novim Client ID-jem
+i Client secretom. Kopirajte tajni ključ sada i spremite ga na sigurno mjesto — nikada se više neće prikazati i
+nema načina da ga kasnije dohvatite (možete ga samo [rotirati](#rotate-credentials) za novi).
 
-## Ažurirajte aplikaciju
+## Odabir scope-ova
 
-Morat ćete ažurirati aplikaciju ako se promijeni neki od vaših redirect URI-jeva ili ako želite dodati ili ukloniti URI.
+Svaka aplikacija uvijek nosi **Sign-in (OpenID Connect)** scope-ove (`openid`, `profile`,
+`email`, `offline_access`) — oni potvrđuju identitet korisnika i drže ga prijavljenim, pa su
+označeni i zaključani; nisu izbor.
 
-Za ažuriranje postojeće aplikacije učinite sljedeće:
+Sve ostalo je opcionalno. Preostali scope-ovi su grupirani u iste funkcionalne sekcije
+dokumentirane u [Scopes](/hr/developers/authentication#scopes) — Račun, Inventar i cijene, Rezervacije,
+Marketing i promocije, Sadržaj nekretnine, Analitika i izvještaji, Integracije channel managera,
+Plaćanja i Knjigovodstvo — svaki s opisom na običnom jeziku što otključava. Koristite
+poveznice `All` / `None` iznad liste za odabir ili poništavanje svih opcionalnih scope-ova odjednom.
 
-<Steps>
-1. Kliknite na `Actions` za aplikaciju koju želite ažurirati.
-2. Kliknite gumb `Update` ispod Actions.
-3. Napravite željene promjene u aplikaciji.
-4. Kliknite gumb `Save` za nastavak.
-</Steps>
-
-Bit ćete preusmjereni natrag na popis svojih aplikacija.
-
-## Uklonite aplikaciju
-
-:::caution
-Molimo vas da ne brišete aplikaciju koju smo automatski kreirali za vas kako bi sve značajke ispravno radile za vaš račun.
+:::note
+**Plaćanja** i **Knjigovodstvo** su označeni kao **Osjetljivi** jer štite novčane transakcije — dodjeljujte ih samo aplikacijama kojima je to specifično potrebno.
 :::
 
-Ako vam aplikacija više nije potrebna, slobodno je uklonite.
+Dvije skupine scope-ova namjerno **nisu ponuđene** u ovom obrascu:
 
-Za uklanjanje aplikacije učinite sljedeće:
+- **`mcp.*`** — pristup AI-agentu transportu [Model Context Protocol](/hr/developers/mcp), koji se
+  zasebno dodjeljuje i samo za machine-to-machine klijente.
+- **Scope-ovi razine administratora** (`administrator.*`) — pristup na razini platforme koji se ne dodjeljuje po aplikaciji.
+
+Nakon što je aplikacija kreirana, i ova kartica i [Consented Apps](/hr/account/apps) prikazuju dodijeljene scope-ove
+grupirane po sekciji (npr. "Rezervacije: `booking.read`"), tako da na prvi pogled možete vidjeti što aplikacija može bez otvaranja.
+
+## Rotiranje vjerodajnica
+
+Ako je klijentski tajni ključ možda procurio ili želite nove vjerodajnice, rotirajte ih umjesto da
+ponovno kreirate aplikaciju:
 
 <Steps>
-1. Kliknite na `Actions` za aplikaciju koju želite ukloniti.
-2. Kliknite gumb `Remove` ispod Actions.
-3. Kliknite gumb `OK` za potvrdu brisanja.
+1. Pronađite aplikaciju na popisu i kliknite `Rotate`.
+2. Potvrdite dijalog — trenutni Client ID i tajni ključ odmah prestaju raditi.
+3. Kopirajte novi Client ID i tajni ključ iz jednokratnog dijaloga prije nego ga zatvorite.
 </Steps>
 
-Bit ćete preusmjereni natrag na popis svojih aplikacija.
+Rotiranje zadržava ime aplikacije, vrstu klijenta, redirect URI-jeve i scope-ove — mijenjaju se samo vjerodajnice.
+
+## Ukloni aplikaciju
+
+:::caution
+Molimo vas da ne brišete aplikaciju koju smo automatski kreirali za vas kako bi sve značajke radile za vaš račun.
+:::
+
+Ako vam aplikacija više nije potrebna, možete je ukloniti. Ovo je trajno — vjerodajnice se odmah opozivaju i ne mogu se vratiti.
+
+<Steps>
+1. Pronađite aplikaciju na popisu i kliknite `Delete`.
+2. Potvrdite dijalog za trajno brisanje aplikacije.
+</Steps>

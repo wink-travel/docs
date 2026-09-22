@@ -24,15 +24,15 @@ Túto aplikáciu nie je možné znovu použiť. Vytvárajte nové aplikácie pod
       height="215"
       resize="scale"
       quality="best"
-      alt="Ukážka aplikácie"
+      alt="Ukážková aplikácia"
       src="academy/application"
       errorImage="noimage_opaque_nyrtl0.png"
-    />
-    <figcaption>*Ukážkový záznam aplikácie*</figcaption>
+/>
+<figcaption>*Ukážkový záznam aplikácie*</figcaption>
 </figure>
 
 :::note
-Aplikácia vygenerovaná na Wink môže byť použitá pre všetky API koncové body.
+Aplikácia vytvorená na Wink môže byť použitá pre všetky API koncové body.
 :::
 
 <Steps>
@@ -40,52 +40,79 @@ Aplikácia vygenerovaná na Wink môže byť použitá pre všetky API koncové 
  2. Kliknite na `Akcie` v spodnej časti karty účtu a vyberte `Spravovať účet`.
  3. Kliknite na kartu `Aplikácie` na nasledujúcej stránke.
  4. Táto sekcia zobrazí všetky vaše aplikácie.
- 5. Vyberte možnosť upraviť existujúcu alebo vytvoriť novú.
- </Steps>
+ 5. Obnovte alebo odstráňte existujúcu aplikáciu, alebo vytvorte novú.
+</Steps>
 
 ## Vytvoriť aplikáciu
 
 Keďže nemáte prístup k `tajnému kľúču` aplikácie, ktorú sme pre vás vytvorili, budete si musieť vytvoriť vlastnú.
-
-:::caution
-Pred vytvorením aplikácie musíte mať vytvorený partnerský účet na Wink alebo účet na TripPay, pretože svoju aplikáciu budete viazať na konkrétny účet.
-:::
+Aplikáciu môžete vytvoriť tu bez predchádzajúceho nastavenia nehnuteľnosti alebo spoločnosti — nie je viazaná
+na žiadny konkrétny účet.
 
 ### Typy klientov
 
-Pri vytváraní aplikácie si vyberiete typ klienta, ktorý určuje, ako sa aplikácia overuje:
+Pri vytváraní aplikácie si vyberiete typ klienta, ktorý určuje, ako sa aplikácia overuje.
+Toto sa neskôr nedá zmeniť — ak potrebujete iný typ, vytvorte novú aplikáciu.
 
-- **SPA** (Single Page Application) — Pre frontendové aplikácie v prehliadači, ktoré používajú OAuth2 autorizačný kódový tok s PKCE. Toto je najbežnejší typ pre webové aplikácie.
-- **MACHINE_2_MACHINE** — Pre serverové integrácie, ktoré sa overujú priamo pomocou prihlasovacích údajov klienta. Použite to, keď váš backendový servis potrebuje volať Wink API bez prítomnosti používateľa.
+- **Webová aplikácia** — Serverom renderovaná aplikácia, ktorá môže bezpečne uchovávať klientsky tajný kľúč (priebeh autorizácie pomocou kódu).
+- **Jednostránková aplikácia (SPA)** — Prehliadačová aplikácia bez backendu; používa PKCE, bez klientskeho tajného kľúča.
+- **Mobilná aplikácia** — Nativná iOS/Android aplikácia; používa PKCE s rotujúcimi obnovovacími tokenmi.
+- **Stroj-stroju** — Backendová služba, ktorá koná sama za seba (klientské poverenia); bez prihlasovania používateľa.
 
 Tu sú kroky na vytvorenie aplikácie:
 
 <Steps>
 1. Na stránke aplikácií kliknite na tlačidlo `Vytvoriť novú aplikáciu`.
 2. ***Názov*** Pomenujte svoju aplikáciu. *napr. Cool App*
-3. **Typ klienta** Vyberte `SPA` pre webové aplikácie alebo `MACHINE_2_MACHINE` pre serverové integrácie.
-4. **Názov entity** Prepojte svoju aplikáciu s jedným z vašich existujúcich účtov. *napr. Cool Account*
-5. **Presmerovacie URI** Vyžaduje sa aspoň jedno presmerovacie URI. Používa sa na overenie domény presmerovania po úspešnom overení. *napr. https://www.cool-site.com*
-6. **Presmerovacie URI po odhlásení** *(Voliteľné)* URL adresy, na ktoré môžu byť používatelia presmerovaní po odhlásení. Zabezpečuje, že používatelia skončia na známej stránke po ukončení relácie.
-7. Kliknite na tlačidlo `Uložiť` pre pokračovanie.
+3. **Typ klienta** Vyberte typ, ktorý zodpovedá spôsobu overenia vašej aplikácie — pozrite si [Typy klientov](#client-types) vyššie.
+4. **Presmerovacie URI** Vyžaduje sa aspoň jedno presmerovacie URI. Používa sa na overenie domény presmerovania po úspešnom overení. Nepoužíva sa pre aplikácie stroj-stroju. *napr. https://www.cool-site.com*
+5. **Presmerovacie URI po odhlásení** *(Voliteľné)* URL adresy, kam môžu byť používatelia presmerovaní po odhlásení. Nechajte prázdne, ak chcete použiť rovnaké URI ako vyššie.
+6. **Rozsahy** Vyberte, k čomu môže táto aplikácia pristupovať vo vašom mene — pozrite si [Výber rozsahov](#choosing-scopes) nižšie.
+7. Kliknite na tlačidlo `Vytvoriť aplikáciu` pre pokračovanie.
 </Steps>
 
-Budete presmerovaní späť na zoznam svojich aplikácií. Novú aplikáciu uvidíte v zozname a kľúč tajomstva aplikácie budete mať k dispozícii iba raz. Nezabudnite si ho skopírovať a bezpečne uložiť.
+Budete presmerovaní späť na zoznam svojich aplikácií a zobrazí sa jednorazový dialóg s novým ID klienta
+a tajným kľúčom klienta. Skopírujte si tajný kľúč teraz a uložte ho na bezpečné miesto — už nikdy sa nezobrazí a
+nie je možné ho neskôr získať (iba [obnoviť](#rotate-credentials) na nový).
 
-## Aktualizovať aplikáciu
+## Výber rozsahov
 
-Aplikáciu budete musieť aktualizovať, ak sa zmení niektoré z vašich presmerovacích URI alebo ak chcete pridať či odstrániť URI.
+Každá aplikácia vždy obsahuje **Prihlásenie (OpenID Connect)** rozsahy (`openid`, `profile`,
+`email`, `offline_access`) — tieto potvrdzujú identitu používateľa a udržiavajú ho prihláseného, preto sú
+zobrazené zaškrtnuté a uzamknuté; nie je to voľba.
 
-Na aktualizáciu existujúcej aplikácie postupujte takto:
+Všetko ostatné je voliteľné. Zvyšné rozsahy sú rozdelené do rovnakých funkčných sekcií
+zdokumentovaných v [Rozsahy](/sk/developers/authentication#scopes) — Účet, Inventár a ceny, Rezervácie,
+Marketing a propagácie, Obsah nehnuteľnosti, Analytika a reporty, Integrácie správcu kanálov,
+Platby a Účtovníctvo a kniha — každá so zrozumiteľným popisom, čo odomyká. Použite
+odkazy `Všetko` / `Žiadne` nad zoznamom na výber alebo zrušenie všetkých voliteľných rozsahov naraz.
+
+:::note
+**Platby** a **Účtovníctvo a kniha** sú označené ako **Citlivé**, pretože chránia pohyb peňazí — udeľujte ich iba aplikáciám, ktoré ich naozaj potrebujú na prácu s platbami alebo knihou.
+:::
+
+Dve skupiny rozsahov nie sú v tomto formulári zámerne **ponúkané**:
+
+- **`mcp.*`** — Prístup AI-agenta k [Model Context Protocol](/sk/developers/mcp) transportu, ktorý je
+  poskytovaný samostatne a iba pre klientov stroj-stroju.
+- **Rozsahy úrovne administrátora** (`administrator.*`) — prístup na úrovni platformy, ktorý sa neudeľuje na úrovni aplikácie.
+
+Po vytvorení aplikácie táto karta aj [Schválené aplikácie](/sk/account/apps) zobrazujú jej udelené rozsahy
+zoskupené podľa sekcií (napr. "Rezervácie: `booking.read`"), takže môžete na prvý pohľad vidieť,
+čo aplikácia dokáže, bez jej otvárania.
+
+## Obnova poverení
+
+Ak sa mohol klientsky tajný kľúč dostať von, alebo chcete len nové poverenia, obnovte ich namiesto
+vytvárania novej aplikácie:
 
 <Steps>
-1. Kliknite na odkaz `Akcie` pri aplikácii, ktorú chcete aktualizovať.
-2. Kliknite na tlačidlo `Aktualizovať` pod Akciami.
-3. Urobte zmeny v aplikácii.
-4. Kliknite na tlačidlo `Uložiť` pre pokračovanie.
+1. Nájdite aplikáciu vo svojom zozname aplikácií a kliknite na `Obnoviť`.
+2. Potvrďte dialóg — aktuálne ID klienta a tajný kľúč okamžite prestanú fungovať.
+3. Skopírujte nové ID klienta a tajný kľúč z jednorazového dialógu pred jeho zatvorením.
 </Steps>
 
-Budete presmerovaní späť na zoznam svojich aplikácií.
+Obnova zachováva názov aplikácie, typ klienta, presmerovacie URI a rozsahy — menia sa iba poverenia.
 
 ## Odstrániť aplikáciu
 
@@ -93,14 +120,9 @@ Budete presmerovaní späť na zoznam svojich aplikácií.
 Prosím, neodstraňujte aplikáciu, ktorú sme pre vás automaticky vytvorili, aby všetky funkcie fungovali pre váš účet.
 :::
 
-Ak už aplikáciu nepotrebujete, môžete ju odstrániť.
-
-Na odstránenie aplikácie postupujte takto:
+Ak už aplikáciu nepotrebujete, môžete ju odstrániť. Toto je trvalé — poverenia sú okamžite zrušené a nie je možné ich obnoviť.
 
 <Steps>
-1. Kliknite na odkaz `Akcie` pri aplikácii, ktorú chcete odstrániť.
-2. Kliknite na tlačidlo `Odstrániť` pod Akciami.
-3. Kliknite na tlačidlo `OK` pre potvrdenie odstránenia.
+1. Nájdite aplikáciu vo svojom zozname aplikácií a kliknite na `Odstrániť`.
+2. Potvrďte dialóg na trvalé odstránenie aplikácie.
 </Steps>
-
-Budete presmerovaní späť na zoznam svojich aplikácií.

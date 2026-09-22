@@ -27,8 +27,8 @@ Anda tidak dapat menggunakan kembali aplikasi ini. Silakan buat aplikasi baru se
       alt="Contoh aplikasi"
       src="academy/application"
       errorImage="noimage_opaque_nyrtl0.png"
-    />
-    <figcaption>*Contoh entri aplikasi*</figcaption>
+/>
+<figcaption>*Contoh entri aplikasi*</figcaption>
 </figure>
 
 :::note
@@ -36,56 +36,84 @@ Aplikasi yang dibuat di Wink dapat digunakan untuk semua endpoint API.
 :::
 
 <Steps>
- 1. Pilih akun yang ingin Anda gunakan dari [Accounts](https://app.wink.travel).
+ 1. Pilih akun yang ingin Anda kelola dari [Accounts](https://app.wink.travel).
  2. Klik `Actions` di bagian bawah kartu akun dan pilih `Manage account`.
  3. Klik tab `Applications` pada halaman berikutnya.
  4. Bagian ini akan menampilkan semua aplikasi Anda.
- 5. Pilih untuk mengedit aplikasi yang sudah ada atau membuat yang baru.
- </Steps>
+ 5. Putar ulang atau hapus aplikasi yang ada, atau buat yang baru.
+</Steps>
 
 ## Buat aplikasi
 
-Karena Anda tidak dapat mengakses `secret key` dari aplikasi yang kami buat untuk Anda, Anda perlu membuat aplikasi Anda sendiri.
-
-:::caution
-Anda perlu membuat akun afiliasi di Wink atau akun di TripPay sebelum membuat aplikasi karena aplikasi Anda akan terikat pada akun tertentu.
-:::
+Karena Anda tidak dapat mengakses `secret key` dari aplikasi yang kami buat untuk Anda, Anda perlu membuat aplikasi sendiri.
+Anda dapat membuat aplikasi di sini tanpa harus terlebih dahulu menyiapkan properti atau perusahaan — aplikasi ini tidak terikat
+pada akun tertentu.
 
 ### Jenis klien
 
-Saat membuat aplikasi, Anda memilih jenis klien yang menentukan cara aplikasi mengautentikasi:
+Saat membuat aplikasi, Anda memilih jenis klien yang menentukan cara aplikasi mengautentikasi.
+Ini tidak dapat diubah nanti — jika Anda membutuhkan jenis yang berbeda, buat aplikasi baru.
 
-- **SPA** (Single Page Application) — Untuk aplikasi frontend berbasis browser yang menggunakan alur kode otorisasi OAuth2 dengan PKCE. Ini adalah jenis yang paling umum untuk aplikasi web.
-- **MACHINE_2_MACHINE** — Untuk integrasi server-ke-server yang mengautentikasi langsung menggunakan kredensial klien. Gunakan ini ketika layanan backend Anda perlu memanggil API Wink tanpa kehadiran pengguna.
+- **Web application** — Aplikasi yang dirender di server dan dapat menyimpan client secret dengan aman (authorization code flow).
+- **Single-page app (SPA)** — Aplikasi browser tanpa backend; menggunakan PKCE, tanpa client secret.
+- **Mobile app** — Aplikasi iOS/Android asli; menggunakan PKCE dengan token refresh yang berputar.
+- **Machine-to-machine** — Layanan backend yang bertindak sebagai dirinya sendiri (client credentials); tanpa login pengguna.
 
 Berikut langkah-langkah membuat aplikasi:
 
 <Steps>
 1. Dari halaman aplikasi, klik tombol `Create new application`.
 2. ***Name*** Beri nama aplikasi Anda. *misal Cool App*
-3. **Client type** Pilih `SPA` untuk aplikasi web atau `MACHINE_2_MACHINE` untuk integrasi server.
-4. **Entity name** Hubungkan aplikasi Anda dengan salah satu akun yang sudah ada. *misal Cool Account*
-5. **Redirect URIs** Minimal satu redirect URI diperlukan. Ini digunakan untuk memvalidasi domain redirect setelah autentikasi berhasil. *misal https://www.cool-site.com*
-6. **Post-logout redirect URIs** *(Opsional)* URL tempat pengguna dapat diarahkan setelah logout. Ini memastikan pengguna mendarat di halaman yang diketahui setelah sesi mereka berakhir.
-7. Klik tombol `Save` untuk melanjutkan.
+3. **Client type** Pilih jenis yang sesuai dengan cara aplikasi Anda mengautentikasi — lihat [Jenis klien](#client-types) di atas.
+4. **Redirect URIs** Minimal satu redirect URI diperlukan. Ini digunakan untuk memvalidasi domain redirect setelah autentikasi berhasil. Tidak digunakan untuk aplikasi Machine-to-machine. *misal https://www.cool-site.com*
+5. **Post-logout redirect URIs** *(Opsional)* URL tempat pengguna dapat diarahkan setelah logout. Kosongkan untuk menggunakan ulang redirect URI di atas.
+6. **Scopes** Pilih apa yang dapat diakses aplikasi ini atas nama Anda — lihat [Memilih scopes](#choosing-scopes) di bawah.
+7. Klik tombol `Create application` untuk melanjutkan.
 </Steps>
 
-Anda akan diarahkan kembali ke daftar aplikasi Anda. Anda akan melihat aplikasi baru Anda dalam daftar dan hanya sekali ini Anda dapat mengakses secret key aplikasi. Pastikan untuk menyalinnya dan menyimpannya di tempat yang aman.
+Anda akan diarahkan kembali ke daftar aplikasi Anda, dan dialog sekali tampil akan menampilkan Client ID
+dan Client secret baru. Salin secret sekarang dan simpan di tempat yang aman — secret ini tidak akan ditampilkan lagi, dan
+tidak ada cara untuk mendapatkannya kembali (hanya bisa [memutar ulang](#rotate-credentials) untuk yang baru).
 
-## Perbarui aplikasi
+## Memilih scopes
 
-Anda perlu memperbarui aplikasi jika salah satu redirect URI Anda berubah atau Anda ingin menambah atau menghapus URI.
+Setiap aplikasi selalu membawa **Sign-in (OpenID Connect)** scopes (`openid`, `profile`,
+`email`, `offline_access`) — ini mengonfirmasi identitas pengguna dan menjaga mereka tetap masuk, sehingga
+ditandai centang dan terkunci; ini bukan pilihan.
 
-Untuk memperbarui aplikasi yang sudah ada, lakukan hal berikut:
+Semua yang lain bersifat opsional. Scopes yang tersisa dikelompokkan ke dalam bagian fungsional yang sama
+seperti yang didokumentasikan di [Scopes](/id/developers/authentication#scopes) — Akun, Inventaris & tarif, Pemesanan,
+Pemasaran & promosi, Konten properti, Analitik & laporan, Integrasi channel manager,
+Pembayaran, dan Akuntansi & buku besar — masing-masing dengan deskripsi bahasa biasa tentang apa yang dibuka. Gunakan
+tautan `All` / `None` di atas daftar untuk memilih atau menghapus semua scopes opsional sekaligus.
+
+:::note
+**Pembayaran** dan **Akuntansi & buku besar** ditandai **Sensitif** karena mereka mengatur pergerakan uang — hanya berikan kepada aplikasi yang memang perlu mengakses pembayaran atau buku besar.
+:::
+
+Dua keluarga scope sengaja **tidak ditawarkan** pada formulir ini:
+
+- **`mcp.*`** — akses agen AI ke transport [Model Context Protocol](/id/developers/mcp), yang
+  disediakan secara terpisah dan hanya untuk klien machine-to-machine.
+- **Scopes tingkat administrator** (`administrator.*`) — akses tingkat platform yang tidak diberikan per
+  aplikasi.
+
+Setelah aplikasi dibuat, tab ini dan [Consented Apps](/id/account/apps) menampilkan scopes yang diberikan
+dikelompokkan per bagian (misal "Bookings: `booking.read`"), sehingga Anda dapat melihat apa yang dapat dilakukan aplikasi secara sekilas
+tanpa membukanya.
+
+## Memutar ulang kredensial
+
+Jika client secret mungkin telah bocor, atau Anda hanya ingin kredensial baru, putar ulang daripada
+membuat ulang aplikasi:
 
 <Steps>
-1. Klik tautan `Actions` untuk aplikasi yang ingin Anda perbarui.
-2. Klik tombol `Update` di bawah Actions.
-3. Lakukan perubahan pada aplikasi.
-4. Klik tombol `Save` untuk melanjutkan.
+1. Temukan aplikasi di daftar aplikasi Anda dan klik `Rotate`.
+2. Konfirmasi dialog — Client ID dan secret saat ini langsung tidak berlaku.
+3. Salin Client ID dan secret baru dari dialog sekali tampil sebelum menutupnya.
 </Steps>
 
-Anda akan diarahkan kembali ke daftar aplikasi Anda.
+Memutar ulang mempertahankan nama aplikasi, jenis klien, redirect URI, dan scopes — hanya kredensial yang berubah.
 
 ## Hapus aplikasi
 
@@ -93,14 +121,9 @@ Anda akan diarahkan kembali ke daftar aplikasi Anda.
 Harap jangan hapus aplikasi yang kami buat otomatis untuk Anda agar semua fitur dapat berfungsi untuk akun Anda.
 :::
 
-Jika Anda tidak lagi membutuhkan aplikasi, Anda dapat menghapusnya.
-
-Untuk menghapus aplikasi, lakukan hal berikut:
+Jika Anda tidak lagi membutuhkan aplikasi, Anda dapat menghapusnya. Ini bersifat permanen — kredensial dicabut segera dan tidak dapat dipulihkan.
 
 <Steps>
-1. Klik tautan `Actions` untuk aplikasi yang ingin Anda hapus.
-2. Klik tombol `Remove` di bawah Actions.
-3. Klik tombol `OK` untuk mengonfirmasi penghapusan.
+1. Temukan aplikasi di daftar aplikasi Anda dan klik `Delete`.
+2. Konfirmasi dialog untuk menghapus aplikasi secara permanen.
 </Steps>
-
-Anda akan diarahkan kembali ke daftar aplikasi Anda.

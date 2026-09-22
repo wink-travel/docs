@@ -1,5 +1,5 @@
 ---
-title: Aplicações
+title: Aplicativos
 description: Saiba como criar novos apps Wink que podem autenticar usuários no seu próprio site.
 sidebar:
   order: 10
@@ -8,9 +8,9 @@ sidebar:
 import { Steps } from '@astrojs/starlight/components';
 import CloudinaryImage from '/src/components/cloudinary-image.astro';
 
-As aplicações dão acesso a todos os recursos do Wink como desenvolvedor. Você pode acessar todos os mesmos dados e até estender os próprios recursos do Wink.
+Os aplicativos dão a você acesso a todos os recursos do Wink como desenvolvedor. Você pode acessar todos os mesmos dados e até estender os próprios recursos do Wink.
 Você pode optar por usar o servidor OAuth2 do Wink para autenticar seu site de viagens da mesma forma que usaria Google ou Facebook.
-Dessa forma, você pode estender os recursos do Wink no seu próprio site ou aplicativo.
+Dessa forma, você pode estender os recursos do Wink para seu próprio site ou aplicativo.
 
 :::note
 Seu primeiro app já está criado quando você [cria uma nova conta](/pt-BR/portal/create-account). Usamos esse app para alguns cenários de reserva.
@@ -24,68 +24,96 @@ Você não pode reutilizar esse app. Por favor, crie novos apps conforme precisa
       height="215"
       resize="scale"
       quality="best"
-      alt="Aplicação de exemplo"
+      alt="Aplicativo de exemplo"
       src="academy/application"
       errorImage="noimage_opaque_nyrtl0.png"
     />
-    <figcaption>*Entrada de aplicação de exemplo*</figcaption>
+    <figcaption>*Entrada de aplicativo de exemplo*</figcaption>
 </figure>
 
 :::note
-Uma aplicação gerada no Wink pode ser usada para todos os endpoints da API.
+Um aplicativo gerado no Wink pode ser usado para todos os endpoints da API.
 :::
 
 <Steps>
  1. Selecione a conta com a qual deseja trabalhar em [Contas](https://app.wink.travel).
  2. Clique em `Ações` na parte inferior do cartão da conta e escolha `Gerenciar conta`.
- 3. Clique na aba `Aplicações` na página seguinte.
- 4. Esta seção listará todas as suas aplicações.
- 5. Escolha editar uma existente ou criar uma nova.
+ 3. Clique na aba `Aplicativos` na página seguinte.
+ 4. Esta seção listará todos os seus aplicativos.
+ 5. Gire ou exclua um existente, ou crie um novo.
  </Steps>
 
 ## Criar app
 
 Como você não pode acessar a `chave secreta` do app que criamos para você, será necessário criar o seu próprio.
-
-:::caution
-Você precisa criar uma conta afiliada no Wink ou uma conta no TripPay antes de criar um app, pois você irá vincular sua aplicação a uma conta específica.
-:::
+Você pode criar um aplicativo aqui sem precisar configurar primeiro uma propriedade ou empresa — ele não está vinculado
+a nenhuma conta específica.
 
 ### Tipos de cliente
 
-Ao criar uma aplicação, você escolhe um tipo de cliente que determina como o app autentica:
+Ao criar um aplicativo, você escolhe um tipo de cliente que determina como o app autentica.
+Isso não pode ser alterado depois — se precisar de um tipo diferente, crie um novo aplicativo.
 
-- **SPA** (Single Page Application) — Para aplicações frontend baseadas em navegador que usam o fluxo de código de autorização OAuth2 com PKCE. Este é o tipo mais comum para apps web.
-- **MACHINE_2_MACHINE** — Para integrações servidor a servidor que autenticam diretamente usando credenciais de cliente. Use este quando seu serviço backend precisar chamar APIs do Wink sem um usuário presente.
+- **Aplicativo web** — Um app renderizado no servidor que pode manter um segredo do cliente com segurança (fluxo de código de autorização).
+- **Aplicativo de página única (SPA)** — Um app no navegador sem backend; usa PKCE, sem segredo do cliente.
+- **App móvel** — Um app nativo iOS/Android; usa PKCE com tokens de atualização rotativos.
+- **Máquina para máquina** — Um serviço backend atuando por si só (credenciais do cliente); sem login de usuário.
 
-Aqui estão os passos para criar uma aplicação:
+Aqui estão os passos para criar um aplicativo:
 
 <Steps>
-1. Na página de apps, clique no botão `Criar nova aplicação`.
+1. Na página de apps, clique no botão `Criar novo aplicativo`.
 2. ***Nome*** Dê um nome ao seu app. *ex: App Legal*
-3. **Tipo de cliente** Escolha `SPA` para apps web ou `MACHINE_2_MACHINE` para integrações servidor.
-4. **Nome da entidade** Vincule seu app a uma das suas contas existentes. *ex: Conta Legal*
-5. **URIs de redirecionamento** É necessário pelo menos um URI de redirecionamento. Ele é usado para validar o domínio de redirecionamento após uma autenticação bem-sucedida. *ex: https://www.site-legal.com*
-6. **URIs de redirecionamento pós-logout** *(Opcional)* URLs para onde os usuários podem ser redirecionados após o logout. Isso garante que os usuários caiam em uma página conhecida após o término da sessão.
-7. Clique no botão `Salvar` para continuar.
+3. **Tipo de cliente** Escolha o tipo que corresponde à forma como seu app autentica — veja [Tipos de cliente](#client-types) acima.
+4. **URIs de redirecionamento** Pelo menos um URI de redirecionamento é obrigatório. Ele é usado para validar o domínio de redirecionamento após uma autenticação bem-sucedida. Não usado para apps Máquina para máquina. *ex: https://www.site-legal.com*
+5. **URIs de redirecionamento pós-logout** *(Opcional)* URLs para onde os usuários podem ser redirecionados após o logout. Deixe em branco para reutilizar os URIs de redirecionamento acima.
+6. **Escopos** Escolha o que este aplicativo pode acessar em seu nome — veja [Escolhendo escopos](#choosing-scopes) abaixo.
+7. Clique no botão `Criar aplicativo` para continuar.
 </Steps>
 
-Você será redirecionado de volta para sua lista de aplicações. Você verá seu novo app na lista e terá acesso à chave secreta do app apenas esta vez. Certifique-se de copiá-la e guardá-la em um local seguro.
+Você será redirecionado de volta para sua lista de aplicativos, e um diálogo único mostrará o novo Client ID
+e o Client secret. Copie o segredo agora e salve em um local seguro — ele nunca será mostrado novamente, e
+não há como recuperá-lo depois (apenas [girar](#rotate-credentials) para um novo).
 
-## Atualizar app
+## Escolhendo escopos
 
-Você precisará atualizar seu app se algum dos seus URIs de redirecionamento mudar ou se quiser adicionar ou remover um URI.
+Todo aplicativo sempre carrega os escopos **Login (OpenID Connect)** (`openid`, `profile`,
+`email`, `offline_access`) — estes confirmam a identidade do usuário e mantêm ele logado, por isso
+são mostrados marcados e bloqueados; não são uma escolha.
 
-Para atualizar um app existente, faça o seguinte:
+Todo o resto é opcional. Os escopos restantes são agrupados nas mesmas seções funcionais
+documentadas em [Escopos](/pt-BR/developers/authentication#scopes) — Conta, Inventário e tarifas, Reservas,
+Marketing e promoções, Conteúdo da propriedade, Análises e relatórios, Integrações com gerenciadores de canais,
+Pagamentos e Contabilidade e livro razão — cada um com uma descrição em linguagem simples do que desbloqueia. Use
+os links `Todos` / `Nenhum` acima da lista para selecionar ou limpar todos os escopos opcionais de uma vez.
+
+:::note
+**Pagamentos** e **Contabilidade e livro razão** são marcados como **Sensíveis** porque controlam movimentação de dinheiro — conceda-os apenas a aplicativos que realmente precisem acessar pagamentos ou o livro razão.
+:::
+
+Duas famílias de escopos são deliberadamente **não oferecidas** neste formulário:
+
+- **`mcp.*`** — acesso de agente de IA ao transporte do [Model Context Protocol](/pt-BR/developers/mcp), que é
+  provisionado separadamente e apenas para clientes máquina para máquina.
+- **Escopos de nível administrador** (`administrator.*`) — acesso em nível de plataforma que não é concedido por
+  aplicativo.
+
+Uma vez criado um app, tanto esta aba quanto [Apps Consentidos](/pt-BR/account/apps) mostram seus escopos concedidos
+agrupados por seção (ex: "Reservas: `booking.read`"), para que você possa ver o que um app pode fazer de relance
+sem precisar abri-lo.
+
+## Girar credenciais
+
+Se um segredo do cliente pode ter sido vazado, ou você só quer credenciais novas, gire-as em vez de
+recriar o app:
 
 <Steps>
-1. Clique no link `Ações` do app que deseja atualizar.
-2. Clique no botão `Atualizar` em Ações.
-3. Faça suas alterações no app.
-4. Clique no botão `Salvar` para continuar.
+1. Encontre o app na sua lista de aplicativos e clique em `Girar`.
+2. Confirme o diálogo — o Client ID e segredo atuais param de funcionar imediatamente.
+3. Copie o novo Client ID e segredo do diálogo único antes de fechá-lo.
 </Steps>
 
-Você será redirecionado de volta para sua lista de aplicações.
+Girar mantém o nome do app, tipo de cliente, URIs de redirecionamento e escopos — só as credenciais mudam.
 
 ## Remover app
 
@@ -93,14 +121,9 @@ Você será redirecionado de volta para sua lista de aplicações.
 Por favor, não exclua o app que criamos automaticamente para você para garantir que todos os recursos funcionem para sua conta.
 :::
 
-Se você não precisar mais de um app, pode removê-lo.
-
-Para remover um app, faça o seguinte:
+Se você não precisar mais de um app, pode removê-lo. Isso é permanente — as credenciais são revogadas imediatamente e não podem ser recuperadas.
 
 <Steps>
-1. Clique no link `Ações` do app que deseja atualizar.
-2. Clique no botão `Remover` em Ações.
-3. Clique no botão `OK` para confirmar a exclusão.
+1. Encontre o app na sua lista de aplicativos e clique em `Excluir`.
+2. Confirme o diálogo para excluir permanentemente o aplicativo.
 </Steps>
-
-Você será redirecionado de volta para sua lista de aplicações.

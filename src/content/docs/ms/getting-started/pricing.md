@@ -7,14 +7,14 @@ sidebar:
 
 Wink tidak mempunyai langganan, tiada tempat duduk dan tiada yuran penyediaan. Sebahagian besar platform adalah percuma, dan hanya ada dua perkara yang anda akan bayar:
 
-1. **Peratusan kecil setiap tempahan** — hanya apabila anda benar-benar menjana wang.
+1. **Yuran platform setiap tempahan, ditambah pemprosesan kad pada kos** — hanya apabila tempahan dibuat.
 2. **Yuran penggunaan bayar-semasa** — pada beberapa ciri premium yang menelan kos setiap kali digunakan, setiap satu dengan elaun bulanan percuma.
 
 ## Apa yang percuma
 
-Ini tidak dikenakan bayaran, selama-lamanya, tanpa elaun dan tanpa pengukuran:
+Ini tidak dikenakan kos, selama-lamanya, tanpa elaun dan tanpa pengukuran:
 
-- **Enjin tempahan** — di laman web anda sendiri, di halaman WinkLinks anda, atau di mana-mana sahaja anda sematkan ia.
+- **Enjin tempahan** — di laman web anda sendiri, di halaman WinkLinks anda, atau di mana-mana sahaja anda sematkannya.
 - **Pengurusan hartanah** — kandungan, foto, kadar, pelan kadar, ketersediaan, promosi dan polisi.
 - **Alat afiliasi** — pautan boleh dikongsi, senarai terpilih, grid, peta, kad dan widget yang boleh disematkan.
 - **Alat ejen pelancongan** — carian, kadar khusus dan tempahan bagi pihak pelanggan anda.
@@ -25,50 +25,46 @@ Ini tidak dikenakan bayaran, selama-lamanya, tanpa elaun dan tanpa pengukuran:
 
 ## Tempahan
 
-Wink menyokong kedua-dua model pedagang dan ejen.
+Wink menyokong dua model: Wink mengutip pembayaran untuk hotel, dan ejen pelancongan berlesen bertindak sebagai pedagang rekod.
 
-### Model 1
+### Model 1 — Wink mengutip untuk hotel
 
-Wink adalah pedagang rekod pada masa tempahan berlaku. Wink bertanggungjawab terhadap dana dan memegang, apa-apa dan semua, lesen untuk mengendalikan agensi pelancongan.
-Model ini terpakai kepada 95% daripada semua tempahan.
-
-Wink mengenakan `5.5% setiap tempahan` untuk mengekalkan platform.
-Sebahagian besar daripada itu pergi ke gerbang pembayaran (Visa, MasterCard dan lain-lain). Purata kos tempahan kepada kami adalah `2.95%`; kadang-kadang setinggi `3.6%`. Bayaran balik separa menambah kos kerana gerbang pembayaran menganggap ini sebagai caj baru.
-Kami ingin menjadi telus sepenuhnya tentang harga sekarang untuk menjimatkan masa semua orang sebelum cuba merundingkan diskaun lanjut sebelum menggunakan Wink. Model harga kami lebih daripada adil dan kami juga perlu mencari nafkah.
+Wink mengutip pembayaran tetamu sebagai ejen kutipan pembayaran terhad hotel. Hotel adalah pedagang rekod, dan nama hotel muncul pada penyata kad tetamu.
+Model ini digunakan untuk 95% daripada semua tempahan.
 
 #### Pecahan
 
-:::note[Yuran pemprosesan]
-Wink mengenakan yuran pemprosesan 1.5% / tempahan. Ini meliputi penyelenggaraan platform dan membolehkan kami memberikan semua yang disenaraikan di atas secara percuma.
+:::note[Yuran platform]
+Wink mengenakan yuran platform 1.5% / tempahan. Ini meliputi penyelenggaraan platform dan membolehkan kami memberikan semua yang disenaraikan di atas secara percuma. Ia tidak dikenakan pada tempahan yang dibatalkan.
 :::
 
-:::note[Yuran pembayaran]
-TripPay mengenakan yuran pembayaran 4.0% / tempahan. Ini meliputi pengambilan pembayaran daripada pelancong.
+:::note[Pemprosesan kad]
+Yuran pemprosesan pembayaran yang dikenakan untuk mengutip pembayaran tetamu disalurkan terus kepada hotel pada kos, tanpa margin. Ia berbeza mengikut kad tetamu dan kaedah pembayaran, dan jumlah tepatnya muncul dalam bahagian Perakaunan setiap tempahan. Jika tempahan dibatalkan atau dikembalikan wang, sebarang yuran yang disimpan oleh pemproses masih dikenakan; jika tiada yuran dikenakan, kami juga tidak mengenakan yuran.
 :::
 
 :::note[Pengagihan dana]
 Terdapat yuran yang berkaitan dengan penghantaran dana ke akaun anda. Ini bergantung pada kaedah pengagihan yang anda pilih. Kami kini menyokong:
 
-- **Pemindahan bank** Kos bergantung pada negara anda berada dan dari mana dana dihantar. Kami menyediakan kalkulator sebut harga yang boleh anda gunakan apabila anda mempunyai dana tersedia dalam akaun anda.
+- **Pemindahan bank** — Kos bergantung pada negara anda berada, dari mana dana dihantar, dan sebarang penukaran mata wang yang dikenakan. Yuran pembayaran dan sebarang kos penukaran dibayar oleh penerima, pada kos. Kami menyediakan kalkulator sebut harga yang boleh anda gunakan apabila anda mempunyai dana tersedia dalam akaun anda.
 
 Jika anda mahu kami menyokong kaedah pembayaran lain, hantarkan e-mel kepada kami.
 :::
 
-### Model 2
+### Model 2 — Ejen pelancongan sebagai pedagang rekod
 
 Model ini hanya tersedia untuk agensi pelancongan yang memegang lesen agensi pelancongan di rantau mereka dan yang ingin menjadi pedagang rekod. Sesetengah ejen pelancongan berdaftar kami ingin bertanggungjawab mengendalikan pembayaran dan pengagihan dana kepada hotel. Di bawah model ini, mereka bertanggungjawab terhadap dana dan memegang lesen yang diperlukan untuk beroperasi di negara mereka.
 
 #### Pecahan
 
-:::note[Yuran pemprosesan]
-Wink mengenakan yuran pemprosesan 1.5% / tempahan. Ini meliputi penyelenggaraan platform dan membolehkan kami memberikan semua yang disenaraikan di atas secara percuma.
+:::note[Yuran platform]
+Wink mengenakan yuran platform 1.5% / tempahan. Ini meliputi penyelenggaraan platform dan membolehkan kami memberikan semua yang disenaraikan di atas.
 :::
 
-Menggunakan model ini, ejen pelancongan hanya membayar yuran pemprosesan Wink dan Wink akan mengeluarkan invois kepada ejen pelancongan secara bulanan.
+Menggunakan model ini, ejen pelancongan hanya membayar yuran platform Wink dan Wink akan mengeluarkan invois kepada ejen pelancongan secara bulanan.
 
 ## Penggunaan (bayar-semasa)
 
-Beberapa ciri menelan kos setiap kali digunakan — AI generatif, API sosial pihak ketiga, dan penyajian harga langsung secara skala besar. Daripada menggabungkan ini ke dalam pelan bulanan yang mungkin anda tidak gunakan, anda hanya membayar untuk apa yang anda benar-benar guna, dan hanya selepas anda menggunakan elaun bulanan percuma.
+Beberapa ciri menelan kos setiap kali digunakan — AI generatif, API sosial pihak ketiga, dan penyajian harga langsung pada skala besar. Daripada menggabungkan ini ke dalam pelan bulanan yang mungkin anda tidak gunakan, anda hanya membayar untuk apa yang anda gunakan, dan hanya selepas anda menggunakan elaun bulanan percuma.
 
 | Ciri | Percuma sebulan | Kemudian | Unit bil |
 | -- | -- | -- | -- |
@@ -80,22 +76,22 @@ Beberapa ciri menelan kos setiap kali digunakan — AI generatif, API sosial pih
 | Jawapan chatbot | 5 | $0.05 | Satu jawapan |
 | API Rakan Kongsi | 10,000 | $0.0001 | Satu hotel-hari |
 
-Harga dalam USD. Elaun percuma diberikan **setiap akaun**, bukan setiap pengguna, dan diset semula pada 1 setiap bulan (UTC).
+Harga dalam USD. Elaun percuma diberikan **setiap akaun**, bukan setiap pengguna, dan diset semula pada 1 haribulan setiap bulan (UTC).
 
 ### Cara catatan dikenakan harga
 
-Catatan dikenakan harga berdasarkan kandungannya, kerana itulah kos kami untuk membuatnya. Imej statik murah; video tidak; apa sahaja yang kami jana dengan AI menelan kos lebih tinggi daripada foto yang anda sediakan sendiri.
+Catatan dikenakan harga berdasarkan kandungannya, kerana itulah kos yang kami tanggung untuk membuatnya. Imej statik murah; video tidak; apa sahaja yang kami jana dengan AI menelan kos lebih tinggi daripada foto yang anda sediakan sendiri.
 
 - **Elaun percuma hanya meliputi catatan imej standard.** Anda mendapat satu setiap akaun setiap bulan. Catatan video dan media dijana AI dikenakan bayaran dari catatan pertama — tiada elaun percuma untuk kategori ini, jadi hartanah yang menyiarkan video harus menjangkakan caj pada bulan pertama.
-- **Video menang.** Jika catatan mengandungi sebarang video, keseluruhan catatan dikenakan pada kadar video. Catatan yang menggabungkan imej dan video adalah catatan video.
+- **Video menang.** Jika catatan mengandungi sebarang video, keseluruhan catatan dikenakan pada kadar video. Catatan yang menggabungkan imej dan video dianggap catatan video.
 - **Asal AI menetapkan kategori.** Media yang anda sediakan — foto dan video anda sendiri, atau apa sahaja dari perpustakaan kandungan Wink anda — dikenakan pada kadar standard. Media yang kami jana untuk anda dikenakan pada kadar AI.
 
 ### Apa yang diukur dan tidak diukur
 
 - Hanya catatan **dijana** yang diterbitkan ke rangkaian pihak ketiga (Facebook, Instagram) yang dikenakan bayaran. Catatan yang anda tulis sendiri adalah percuma, ke mana sahaja ia pergi.
-- **Penerbitan ke WinkLinks sentiasa percuma**, dijana atau tidak.
-- Anda dikenakan bayaran **pada masa terbit**, bukan setiap cubaan. Menghasilkan semula draf sehingga anda berpuas hati tidak menambah bil anda — anda bayar sekali untuk catatan yang anda benar-benar hantar. Cubaan tidak terhad, walaupun: setiap catatan membenarkan kira-kira 10 penghasilan semula untuk imej dan 3 untuk video, yang mencerminkan kos kami untuk menghasilkan mereka. Anda akan melihat berapa banyak yang tinggal semasa anda bekerja.
-- Pada API Rakan Kongsi, satu **hotel-hari** adalah satu hotel yang dinilai untuk satu malam penginapan — *bukan* satu panggilan API. Carian yang mengembalikan 20 hotel untuk penginapan 3 malam adalah 60 hotel-hari dari satu permintaan. Titik akhir carian dan autolengkap adalah percuma dan tidak diukur.
+- **Penerbitan ke WinkLinks sentiasa percuma**, sama ada dijana atau tidak.
+- Anda dikenakan bayaran **pada masa terbit**, bukan setiap cubaan. Menghasilkan semula draf sehingga anda berpuas hati tidak menambah bil anda — anda hanya membayar sekali untuk catatan yang anda terbitkan. Cubaan tidak tanpa had: setiap catatan membenarkan kira-kira 10 penghasilan semula untuk imej dan 3 untuk video, yang mencerminkan kos kami untuk menghasilkan mereka. Anda akan melihat berapa banyak yang tinggal semasa anda bekerja.
+- Pada API Rakan Kongsi, satu **hotel-hari** adalah satu hotel yang dihargai untuk satu malam penginapan — *bukan* satu panggilan API. Carian yang mengembalikan 20 hotel untuk penginapan 3 malam adalah 60 hotel-hari dari satu permintaan. Titik akhir carian dan autolengkap adalah percuma dan tidak diukur.
 
 ### Mengaktifkannya
 
@@ -113,7 +109,7 @@ Tiada apa yang rosak dan tiada bayaran dikenakan. Anda hanya berhenti pada elaun
 
 | Status | Maksudnya |
 | -- | -- |
-| Dalam keadaan baik | Segalanya berfungsi seperti biasa. |
+| Dalam keadaan baik | Segala-galanya berfungsi seperti biasa. |
 | Lewat bayar | Pembayaran gagal dan sedang dicuba semula. Ciri anda terus berfungsi dalam tempoh ini. |
 | Digantung | Invois tidak dibayar sehingga tamat tempoh. Tindakan yang boleh dikenakan bayaran disekat sehingga ia diselesaikan; ciri percuma terus berfungsi seperti biasa. |
 
@@ -123,6 +119,6 @@ Harga unit dan elaun percuma sentiasa dipaparkan dalam Portal, terus dari sistem
 
 ## Kesan platform
 
-Akhir sekali, ketika kami terus berkembang dari segi saiz dan tempahan, kami ingin berkongsi beberapa kesan platform dengan anda. Lebih banyak tempahan membawa peluang untuk diskaun volum dari gerbang pembayaran kami yang membolehkan kami menurunkan yuran pemprosesan untuk semua orang.
+Akhir sekali, semasa kami terus berkembang dari segi saiz dan tempahan, kami ingin berkongsi sebahagian kesan platform dengan anda. Lebih banyak tempahan membawa peluang untuk diskaun volum dari pemproses pembayaran kami. Oleh kerana pemprosesan kad disalurkan pada kos, sebarang penjimatan yang kami rundingkan terus diberikan kepada hotel.
 
 Sertai Wink hari ini dan temui cara baru yang menguntungkan untuk menjalankan perniagaan dalam industri hospitaliti!

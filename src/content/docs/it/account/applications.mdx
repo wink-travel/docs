@@ -27,8 +27,8 @@ Non puoi riutilizzare questa app. Crea nuove app secondo le tue necessità.
       alt="Applicazione di esempio"
       src="academy/application"
       errorImage="noimage_opaque_nyrtl0.png"
-    />
-    <figcaption>*Esempio di inserimento applicazione*</figcaption>
+/>
+<figcaption>*Esempio di inserimento applicazione*</figcaption>
 </figure>
 
 :::note
@@ -40,67 +40,91 @@ Un'applicazione generata su Wink può essere utilizzata per tutti gli endpoint A
  2. Clicca su `Actions` in fondo alla scheda dell'account e scegli `Manage account`.
  3. Clicca sulla scheda `Applications` nella pagina successiva.
  4. Questa sezione elencherà tutte le tue applicazioni.
- 5. Scegli di modificare una esistente o crearne una nuova.
- </Steps>
+ 5. Ruota o elimina una esistente, oppure creane una nuova.
+</Steps>
 
 ## Crea app
 
 Poiché non puoi accedere alla `secret key` dell'app che abbiamo creato per te, dovrai crearne una tua.
-
-:::caution
-Devi creare un account affiliato su Wink o un account su TripPay prima di creare un'app, poiché legherai la tua applicazione a un account specifico.
-:::
+Puoi creare un'applicazione qui senza prima configurare una proprietà o un'azienda — non è vincolata
+a nessun account specifico.
 
 ### Tipi di client
 
-Quando crei un'applicazione, scegli un tipo di client che determina come l'app si autentica:
+Quando crei un'applicazione, scegli un tipo di client che determina come l'app si autentica.
+Questo non può essere modificato in seguito — se ti serve un tipo diverso, crea una nuova applicazione.
 
-- **SPA** (Single Page Application) — Per applicazioni frontend basate su browser che usano il flusso di autorizzazione OAuth2 con codice e PKCE. Questo è il tipo più comune per le app web.
-- **MACHINE_2_MACHINE** — Per integrazioni server-to-server che si autenticano direttamente usando le credenziali client. Usalo quando il tuo servizio backend deve chiamare le API di Wink senza la presenza di un utente.
+- **Web application** — Un'app server-rendered che può conservare in sicurezza un client secret (authorization code flow).
+- **Single-page app (SPA)** — Un'app browser senza backend; usa PKCE, senza client secret.
+- **Mobile app** — Un'app nativa iOS/Android; usa PKCE con token di refresh rotanti.
+- **Machine-to-machine** — Un servizio backend che agisce come se stesso (client credentials); nessun login utente.
 
 Ecco i passaggi per creare un'applicazione:
 
 <Steps>
 1. Dalla pagina delle app, clicca sul pulsante `Create new application`.
 2. ***Nome*** Dai un nome alla tua app. *es. Cool App*
-3. **Tipo client** Scegli `SPA` per app web o `MACHINE_2_MACHINE` per integrazioni server.
-4. **Nome entità** Collega la tua app a uno dei tuoi account esistenti. *es. Cool Account*
-5. **Redirect URIs** È richiesto almeno un URI di redirect. Serve per convalidare il dominio di redirect dopo un'autenticazione riuscita. *es. https://www.cool-site.com*
-6. **Post-logout redirect URIs** *(Opzionale)* URL dove gli utenti possono essere reindirizzati dopo il logout. Garantisce che gli utenti atterrino su una pagina nota dopo la fine della sessione.
-7. Clicca sul pulsante `Save` per continuare.
+3. **Tipo di client** Scegli il tipo che corrisponde a come la tua app si autentica — vedi [Tipi di client](#client-types) sopra.
+4. **Redirect URIs** È richiesto almeno un URI di redirect. Serve per convalidare il dominio di redirect dopo un'autenticazione riuscita. Non usato per app Machine-to-machine. *es. https://www.cool-site.com*
+5. **Post-logout redirect URIs** *(Opzionale)* URL dove gli utenti possono essere reindirizzati dopo il logout. Lascia vuoto per riutilizzare gli URI di redirect sopra.
+6. **Scopes** Scegli cosa questa applicazione può accedere per tuo conto — vedi [Scelta degli scopes](#choosing-scopes) sotto.
+7. Clicca sul pulsante `Create application` per continuare.
 </Steps>
 
-Verrai reindirizzato alla lista delle tue applicazioni. Vedrai la tua nuova app nell'elenco e avrai accesso alla secret key dell'app solo questa volta. Assicurati di copiarla e conservarla in un luogo sicuro.
+Verrai reindirizzato alla lista delle tue applicazioni, e un dialogo una tantum mostrerà il nuovo Client ID
+e Client secret. Copia subito il secret e salvalo in un posto sicuro — non verrà mai più mostrato, e
+non c’è modo di recuperarlo in seguito (puoi solo [ruotarlo](#rotate-credentials) per ottenerne uno nuovo).
 
-## Aggiorna app
+## Scelta degli scopes
 
-Dovrai aggiornare la tua app se cambia uno degli URI di redirect o se vuoi aggiungere o rimuovere un URI.
+Ogni applicazione ha sempre gli scopes **Sign-in (OpenID Connect)** (`openid`, `profile`,
+`email`, `offline_access`) — questi confermano l'identità dell'utente e lo mantengono connesso, quindi sono
+spuntati e bloccati; non sono una scelta.
 
-Per aggiornare un'app esistente, procedi così:
+Tutto il resto è opzionale. Gli scopes rimanenti sono raggruppati nelle stesse sezioni funzionali
+documentate in [Scopes](/it/developers/authentication#scopes) — Account, Inventario & tariffe, Prenotazioni,
+Marketing & promozioni, Contenuti proprietà, Analytics & report, Integrazioni channel manager,
+Pagamenti, e Contabilità & libro mastro — ciascuna con una descrizione in linguaggio semplice di cosa sbloccano. Usa
+i link `All` / `None` sopra la lista per selezionare o deselezionare tutti gli scopes opzionali in una volta.
+
+:::note
+**Pagamenti** e **Contabilità & libro mastro** sono contrassegnati come **Sensibili** perché gestiscono il movimento di denaro — concedili solo ad applicazioni che hanno bisogno specifico di accedere a pagamenti o al libro mastro.
+:::
+
+Due famiglie di scopes non sono deliberate **offerte** in questo modulo:
+
+- **`mcp.*`** — Accesso agente AI al [Model Context Protocol](/it/developers/mcp), che è
+  fornito separatamente e solo per client machine-to-machine.
+- **Scopes di livello amministratore** (`administrator.*`) — accesso a livello piattaforma che non viene concesso per
+  applicazione.
+
+Una volta creata un'app, sia questa scheda che [Consented Apps](/it/account/apps) mostrano gli scopes concessi
+raggruppati per sezione (es. "Prenotazioni: `booking.read`"), così puoi vedere cosa può fare un'app a colpo d'occhio
+senza aprirla.
+
+## Ruota credenziali
+
+Se un client secret potrebbe essere stato compromesso, o vuoi semplicemente credenziali nuove, ruotale invece di
+ricreare l'app:
 
 <Steps>
-1. Clicca sul link `Actions` per l'app che vuoi aggiornare.
-2. Clicca sul pulsante `Update` sotto Actions.
-3. Apporta le modifiche all'app.
-4. Clicca sul pulsante `Save` per continuare.
+1. Trova l'app nella tua lista di applicazioni e clicca `Rotate`.
+2. Conferma il dialogo — il Client ID e secret attuali smettono di funzionare immediatamente.
+3. Copia il nuovo Client ID e secret dal dialogo una tantum prima di chiuderlo.
 </Steps>
 
-Verrai reindirizzato alla lista delle tue applicazioni.
+La rotazione mantiene il nome dell'app, il tipo di client, gli URI di redirect e gli scopes — cambiano solo le credenziali.
 
 ## Rimuovi app
 
 :::caution
-Per favore, non eliminare l'app che abbiamo creato automaticamente per te per assicurarti che tutte le funzionalità funzionino per il tuo account.
+Per favore non eliminare l'app che abbiamo creato automaticamente per te per assicurarti che tutte le funzionalità funzionino per il tuo account.
 :::
 
-Se non hai più bisogno di un'app, puoi procedere a rimuoverla.
-
-Per rimuovere un'app, procedi così:
+Se non hai più bisogno di un'app, puoi rimuoverla. Questa operazione è permanente — le
+credenziali vengono revocate immediatamente e non possono essere recuperate.
 
 <Steps>
-1. Clicca sul link `Actions` per l'app che vuoi rimuovere.
-2. Clicca sul pulsante `Remove` sotto Actions.
-3. Clicca sul pulsante `OK` per confermare l'eliminazione.
+1. Trova l'app nella tua lista di applicazioni e clicca `Delete`.
+2. Conferma il dialogo per eliminare definitivamente l'applicazione.
 </Steps>
-
-Verrai reindirizzato alla lista delle tue applicazioni.

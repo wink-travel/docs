@@ -24,11 +24,11 @@ Não pode reutilizar esta app. Por favor, crie novas apps conforme precisar.
       height="215"
       resize="scale"
       quality="best"
-      alt="Aplicação de exemplo"
+      alt="Exemplo de aplicação"
       src="academy/application"
       errorImage="noimage_opaque_nyrtl0.png"
-    />
-    <figcaption>*Entrada de aplicação de exemplo*</figcaption>
+/>
+<figcaption>*Exemplo de entrada de aplicação*</figcaption>
 </figure>
 
 :::note
@@ -40,67 +40,90 @@ Uma aplicação gerada no Wink pode ser usada para todos os endpoints da API.
  2. Clique em `Ações` na parte inferior do cartão da conta e escolha `Gerir conta`.
  3. Clique no separador `Aplicações` na página seguinte.
  4. Esta secção listará todas as suas aplicações.
- 5. Escolha editar uma existente ou criar uma nova.
- </Steps>
+ 5. Rode ou elimine uma existente, ou crie uma nova.
+</Steps>
 
 ## Criar app
 
 Como não pode aceder à `chave secreta` da app que criámos para si, terá de criar a sua própria.
-
-:::caution
-Precisa de criar uma conta afiliada no Wink ou uma conta no TripPay antes de criar uma app, pois irá associar a sua aplicação a uma conta específica.
-:::
+Pode criar uma aplicação aqui sem configurar primeiro uma propriedade ou empresa — não está vinculada
+a nenhuma conta específica.
 
 ### Tipos de cliente
 
-Ao criar uma aplicação, escolhe um tipo de cliente que determina como a app se autentica:
+Ao criar uma aplicação, escolhe um tipo de cliente que determina como a app se autentica.
+Isto não pode ser alterado depois — se precisar de um tipo diferente, crie uma nova aplicação.
 
-- **SPA** (Single Page Application) — Para aplicações frontend baseadas em browser que usam o fluxo de código de autorização OAuth2 com PKCE. Este é o tipo mais comum para apps web.
-- **MACHINE_2_MACHINE** — Para integrações servidor a servidor que se autenticam diretamente usando credenciais de cliente. Use este tipo quando o seu serviço backend precisar de chamar APIs Wink sem um utilizador presente.
+- **Aplicação web** — Uma app renderizada no servidor que pode guardar com segurança um segredo de cliente (fluxo de código de autorização).
+- **App de página única (SPA)** — Uma app no navegador sem backend; usa PKCE, sem segredo de cliente.
+- **App móvel** — Uma app nativa iOS/Android; usa PKCE com tokens de atualização rotativos.
+- **Máquina para máquina** — Um serviço backend que atua por si só (credenciais de cliente); sem início de sessão de utilizador.
 
 Aqui estão os passos para criar uma aplicação:
 
 <Steps>
 1. Na página das apps, clique no botão `Criar nova aplicação`.
-2. ***Nome*** Dê um nome à sua app. *ex. Cool App*
-3. **Tipo de cliente** Escolha `SPA` para apps web ou `MACHINE_2_MACHINE` para integrações servidor.
-4. **Nome da entidade** Associe a sua app a uma das suas contas existentes. *ex. Cool Account*
-5. **URIs de redirecionamento** É necessário pelo menos um URI de redirecionamento. É usado para validar o domínio de redirecionamento após uma autenticação bem-sucedida. *ex. https://www.cool-site.com*
-6. **URIs de redirecionamento pós-logout** *(Opcional)* URLs para onde os utilizadores podem ser redirecionados após efetuarem logout. Isto garante que os utilizadores aterrem numa página conhecida após o fim da sessão.
-7. Clique no botão `Guardar` para continuar.
+2. ***Nome*** Dê um nome à sua app. *ex. App Fixe*
+3. **Tipo de cliente** Escolha o tipo que corresponde à forma como a sua app se autentica — veja [Tipos de cliente](#tipos-de-cliente) acima.
+4. **URIs de redirecionamento** É necessário pelo menos um URI de redirecionamento. É usado para validar o domínio de redirecionamento após uma autenticação bem-sucedida. Não é usado para apps Máquina para máquina. *ex. https://www.site-fixe.com*
+5. **URIs de redirecionamento pós-logout** *(Opcional)* URLs para onde os utilizadores podem ser redirecionados após o logout. Deixe em branco para reutilizar os URIs de redirecionamento acima.
+6. **Scopes** Escolha o que esta aplicação pode aceder em seu nome — veja [Escolher scopes](#escolher-scopes) abaixo.
+7. Clique no botão `Criar aplicação` para continuar.
 </Steps>
 
-Será redirecionado de volta para a sua lista de aplicações. Verá a sua nova app na lista e terá acesso à chave secreta da app apenas esta vez. Certifique-se de copiá-la e guardá-la num local seguro.
+Será redirecionado de volta para a sua lista de aplicações, e um diálogo único mostrará o novo Client ID
+e o Client secret. Copie o segredo agora e guarde-o num local seguro — nunca mais será mostrado, e
+não há forma de recuperá-lo depois (apenas [rodar](#rodar-credenciais) para obter um novo).
 
-## Atualizar app
+## Escolher scopes
 
-Terá de atualizar a sua app se algum dos seus URIs de redirecionamento mudar ou se quiser adicionar ou remover um URI.
+Cada aplicação carrega sempre os scopes **Início de sessão (OpenID Connect)** (`openid`, `profile`,
+`email`, `offline_access`) — estes confirmam a identidade do utilizador e mantêm-no autenticado, por isso
+são mostrados assinalados e bloqueados; não são uma escolha.
 
-Para atualizar uma app existente, faça o seguinte:
+Todo o resto é opcional. Os scopes restantes estão agrupados nas mesmas secções funcionais
+documentadas em [Scopes](/pt-PT/developers/authentication#scopes) — Conta, Inventário & tarifas, Reservas,
+Marketing & promoções, Conteúdo da propriedade, Análises & relatórios, Integrações de gestor de canais,
+Pagamentos, e Contabilidade & livro de registos — cada uma com uma descrição em linguagem simples do que desbloqueia. Use
+os links `Todos` / `Nenhum` acima da lista para selecionar ou limpar todos os scopes opcionais de uma vez.
+
+:::note
+**Pagamentos** e **Contabilidade & livro de registos** são marcados como **Sensíveis** porque protegem o movimento de dinheiro — só os conceda a aplicações que especificamente precisem de aceder a pagamentos ou ao livro de registos.
+:::
+
+Duas famílias de scopes são deliberadamente **não oferecidas** neste formulário:
+
+- **`mcp.*`** — acesso de agente AI ao transporte do [Model Context Protocol](/pt-PT/developers/mcp), que é
+  provisionado separadamente e apenas para clientes máquina para máquina.
+- **Scopes de nível administrador** (`administrator.*`) — acesso a nível de plataforma que não é concedido por
+  aplicação.
+
+Depois de criada uma app, tanto este separador como [Apps Consentidas](/pt-PT/account/apps) mostram os scopes concedidos
+agrupados por secção (ex. "Reservas: `booking.read`"), para que possa ver o que uma app pode fazer de relance
+sem a abrir.
+
+## Rodar credenciais
+
+Se um segredo de cliente pode ter sido comprometido, ou se simplesmente quer credenciais novas, rode-as em vez de
+recriar a app:
 
 <Steps>
-1. Clique no link `Ações` da app que quer atualizar.
-2. Clique no botão `Atualizar` em Ações.
-3. Faça as alterações na app.
-4. Clique no botão `Guardar` para continuar.
+1. Encontre a app na sua lista de aplicações e clique em `Rodar`.
+2. Confirme o diálogo — o Client ID e segredo atuais deixam de funcionar imediatamente.
+3. Copie o novo Client ID e segredo do diálogo único antes de o fechar.
 </Steps>
 
-Será redirecionado de volta para a sua lista de aplicações.
+Rodar mantém o nome da app, tipo de cliente, URIs de redirecionamento e scopes — só as credenciais mudam.
 
 ## Remover app
 
 :::caution
-Por favor, não elimine a app que criámos automaticamente para si para garantir que todas as funcionalidades funcionem para a sua conta.
+Por favor, não elimine a app que criámos automaticamente para si para garantir que todas as funcionalidades funcionam para a sua conta.
 :::
 
-Se não precisar mais de uma app, pode removê-la.
-
-Para remover uma app, faça o seguinte:
+Se não precisar mais de uma app, pode removê-la. Isto é permanente — as credenciais são revogadas imediatamente e não podem ser recuperadas.
 
 <Steps>
-1. Clique no link `Ações` da app que quer atualizar.
-2. Clique no botão `Remover` em Ações.
-3. Clique no botão `OK` para confirmar a eliminação.
+1. Encontre a app na sua lista de aplicações e clique em `Eliminar`.
+2. Confirme o diálogo para eliminar permanentemente a aplicação.
 </Steps>
-
-Será redirecionado de volta para a sua lista de aplicações.

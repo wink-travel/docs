@@ -50,6 +50,25 @@ Not every integrator needs every API, so endpoints are grouped by **audience** i
 - **Partner** — for technology partners that integrate at the infrastructure layer (channel managers
   today; PMS / GDS / OTA partners over time).
 
+## Downloads
+
+Prefer to work from the raw contract instead of the rendered pages? Every audience below is
+published as a downloadable OpenAPI JSON document, generated straight from the code that serves it:
+
+- [Reference](/api/downloads/reference.json)
+- [Extranet](/api/downloads/extranet.json)
+- [Booking Engine](/api/downloads/booking-engine.json)
+- [Studio](/api/downloads/studio.json)
+- [Social](/api/downloads/social.json)
+- [Link Manager](/api/downloads/link-manager.json)
+- [Settings](/api/downloads/settings.json)
+- [Payment](/api/downloads/payment.json)
+- [User](/api/downloads/user.json)
+- [Travel Agent](/api/downloads/travel-agent.json)
+- [Webhooks](/api/downloads/webhooks.json)
+- [Partner](/api/downloads/partner.json)
+- [Integrator](/api/downloads/channel-manager.json)
+
 ## Testing
 
 You can explore and try out every endpoint interactively in our Scalar API reference:

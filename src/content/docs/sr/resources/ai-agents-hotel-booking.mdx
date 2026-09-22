@@ -28,8 +28,8 @@ import IconArrowRight from "@tabler/icons/outline/arrow-right.svg";
   <span class="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-gradient-to-r from-[#ff6b35]/10 to-[#9333ea]/10 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary"><span class="size-1.5 rounded-full bg-gradient-to-r from-[#ff6b35] to-[#9333ea]"></span> Resursi</span>
   <h1 class="font-heading mt-3 text-4xl font-semibold tracking-tight text-balance @lg:text-5xl">Kako AI agenti rezervišu hotele</h1>
   <p class="mkt-sub text-muted-foreground mt-5">
-    AI pretraga pomaže putniku da <em>pronađe</em> hotel. AI agent ide korak dalje — može da pročita aktuelne cene,
-    napravi rezervaciju, primi uplatu i reaguje na događaje u ime putnika. To funkcioniše samo ako agent ima
+    AI pretraga pomaže putniku da <em>pronađe</em> hotel. AI agent ide korak dalje — može da čita aktuelne cene,
+    kreira rezervaciju, prima uplatu i reaguje na događaje u ime putnika. To funkcioniše samo ako agent ima
     ispod sebe strukturiranu infrastrukturu za travel commerce.
   </p>
   <div class="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
@@ -46,8 +46,8 @@ import IconArrowRight from "@tabler/icons/outline/arrow-right.svg";
   <div class="rounded-2xl border-l-4 border-primary bg-primary/[0.04] p-6">
     <p class="text-xs font-semibold uppercase tracking-wider text-primary">Kratak odgovor</p>
     <p class="mt-3 text-pretty text-foreground/90">
-      AI agent rezerviše hotel pozivom API-ja koji izlaže aktuelnu, hotelom kontrolisanu ponudu — pretražuje
-      inventar, čita aktuelne cene i dostupnost, pravi rezervaciju, prima uplatu i čuva atribuciju. Preporuka
+      AI agent rezerviše hotel pozivajući API koji izlaže aktuelnu, hotelski kontrolisanu ponudu — pretražuje
+      inventar, čita aktuelne cene i dostupnost, kreira rezervaciju, prima uplatu i čuva atribuciju. Preporuka
       postaje potvrđena rezervacija samo kada sloj za izvršenje (booking engine) stoji iza agenta. Na Wink-u,
       agenti se povezuju preko hostovanog MCP servera i REST API-ja, a Booking Engine izvršava transakciju.
     </p>
@@ -57,25 +57,25 @@ import IconArrowRight from "@tabler/icons/outline/arrow-right.svg";
 {/* Body */}
 <article class="mkt-prose mx-auto w-full max-w-3xl px-4 py-14">
 
-## Preporuka hotela nije ista stvar kao i rezervacija
+## Preporuka hotela nije ista stvar kao rezervacija
 
 Većina "AI putovanja" danas staje na preporuci. Asistent predloži tri hotela, pa preda putnika na sajt ili OTA da zapravo rezerviše. Nit se prekida, cena možda nije rezervabilna, i niko ne čuva kontekst izvora.
 
 **AI agent** se razlikuje od AI odgovora. Agent ne opisuje samo hotel — on deluje: proverava aktuelnu dostupnost, sastavlja rezervaciju, prima uplatu i može da reaguje na promene. Da bi se to bezbedno desilo, agentu treba više od teksta. Potrebni su mu strukturirani, aktuelni, rezervabilni podaci i sloj za transakcije koji može da pozove.
 
-Ovo je razlika između [AI otkrivanja](/sr/resources/ai-discovery-hotels/), koje je o tome da budeš **pronađen i shvaćen**, i agentic commerce, koje je o tome da budeš **transaktovan**.
+Ovo je razlika između [AI pronalaženja](/sr/resources/ai-discovery-hotels/), koje je o tome da budeš **pronađen i shvaćen**, i agentic commerce, koje je o tome da budeš **transaktovan**.
 
 ## Šta agent treba pre nego što može da izvrši transakciju
 
 Rezervacija hotela je stvarni komercijalni događaj: pravi soba, prava cena, stvarna dostupnost, pravila, uplata i potvrda koja se sinhronizuje nazad sa hotelom. Agent može to da završi samo ako je svaki deo dostupan kao pozivna operacija.
 
-| Agentu treba | Zašto je važno |
+| Agent treba | Zašto je važno |
 |---|---|
-| Strukturirana, aktuelna ponuda | Podaci sa web-skriptinga zastarevaju; agentu treba aktuelan, hotelom kontrolisan inventar. |
+| Strukturirana, aktuelna ponuda | Podaci sa web-skriptinga zastarevaju; agentu treba aktuelni, hotelski kontrolisani inventar. |
 | Cene i dostupnost u realnom vremenu | Cena koju agent navede mora zaista biti rezervabilna u tom trenutku. |
 | Operacija rezervacije | Kreiranje rezervacije mora biti pravi API poziv, a ne preusmeravanje na web formu. |
-| Uplata | Agent (ili putnik preko njega) mora moći da plati, uz primenu pravila politike. |
-| Atribucija | Izvor, kampanja ili agent koji je napravio rezervaciju treba da ostane povezan. |
+| Plaćanje | Agent (ili putnik preko njega) mora moći da plati, uz primenu pravila politike. |
+| Atribucija | Izvor, kampanja ili agent koji je kreirao rezervaciju treba da ostane vezan. |
 | Događaji | Agent treba da može da reaguje na potvrde, promene, otkazivanja i povraćaje. |
 
 Bez ovoga, agent može da preporuči — ali ne i da rezerviše.
@@ -95,19 +95,19 @@ claude mcp add --transport http \
 
 ### 2 — Pretraži rezervabilni inventar
 
-Agent pretražuje hotelom kontrolisanu ponudu, uključujući prostornu pretragu po geolokaciji, i čita aktuelne cene i dostupnost preko povezanih channel managera.
+Agent pretražuje hotelski kontrolisanu ponudu, uključujući geolokacijsko prostorno pretraživanje, i čita aktuelne cene i dostupnost preko povezanih channel managera.
 
 ### 3 — Kreiraj rezervaciju
 
-Kreiranje rezervacije je REST API operacija. Agent sastavlja sobu, cenu, datume i goste, i pravi rezervaciju preko API-ja.
+Kreiranje rezervacije je REST API operacija. Agent sastavlja sobu, cenu, datume i goste, i kreira rezervaciju preko API-ja.
 
 ### 4 — Primi uplatu i potvrdi
 
-[Booking Engine](/sr/products/booking-engine/) izvršava transakciju — naplatu, uplatu (Wink je trgovac zapisa), logiku politike otkazivanja, potvrdu i sinhronizaciju rezervacije sa povezanim PMS-om ili channel managerom. Izvor i partner atribucija se čuvaju kroz rezervaciju.
+[Booking Engine](/sr/products/booking-engine/) izvršava transakciju — naplatu, uplatu (prikupljenu za hotel, koji ostaje trgovac zapisan), logiku politike otkazivanja, potvrdu i sinhronizaciju rezervacije sa povezanim PMS-om ili channel managerom. Izvor i partner atribucija se čuvaju kroz rezervaciju.
 
 ### 5 — Reaguj na događaje
 
-Agent može da se pretplati na `booking.created` i druge webhook događaje da uskladi, obavesti putnika ili pokrene naknadne akcije.
+Agent može da se pretplati na `booking.created` i druge webhook događaje da uskladi, obavesti putnika ili pokrene prateće akcije.
 
 Princip: **agent kreira ili usmerava nameru; Booking Engine ostaje sloj izvršenja ispod svakog predaje.**
 
@@ -118,11 +118,11 @@ Rešavaju različite zadatke, i hotel treba da bude spreman za oba.
 | | AI pretraga / engine za odgovore | AI agenti |
 |---|---|---|
 | Cilj putnika | Pronaći i uporediti hotele | Rezervisati i upravljati boravkom |
-| Šta hotel treba | [Strukturirani, pretraživi sadržaj](/sr/resources/hotel-content-answer-engines/) | Aktuelan API, cene, rezervacije, uplata |
+| Šta hotel treba | [Strukturirani, pretraživi sadržaj](/sr/resources/hotel-content-answer-engines/) | Aktuelni API, cene, rezervacija, uplata |
 | Krajnji rezultat | Preporuka | Potvrđena rezervacija |
 | Wink površina | Čista ponuda + sadržaj spreman za odgovore | REST API, MCP server, Booking Engine |
 
-[AI otkrivanje za hotele](/sr/resources/ai-discovery-hotels/) pokriva stranu pretrage; ovaj vodič pokriva stranu transakcije.
+[AI pronalaženje za hotele](/sr/resources/ai-discovery-hotels/) pokriva stranu pretrage; ovaj vodič pokriva stranu transakcije.
 
 ## Ko pravi agente za hotelijerski commerce
 
@@ -131,7 +131,7 @@ Agentic travel commerce nisu samo potrošački asistenti. Ista infrastruktura po
 - **Potrošačke putne asistente** koji pretražuju, rezervišu i upravljaju boravkom od početka do kraja.
 - **Bankarske, loyalty i super-app agente** koji ugrađuju rezervaciju hotela u postojeće korisničko iskustvo.
 - **Partner i kreatorske automatizacije** koje pronalaze podobne hotele, prave sadržaje i čuvaju atribuciju — zarađujući 10% osnovne provizije na potvrđene rezervacije.
-- **Hotel-side copilote** koji pomažu timovima da generišu sadržaj i analiziraju performanse kroz [Extranet](/sr/products/extranet/), [Social](/sr/products/social/) i [Studio](/sr/products/studio/), dok hotel zadržava pravila.
+- **Hoteljske kopilote** koji pomažu timovima da generišu sadržaj i analiziraju performanse kroz [Extranet](/sr/products/extranet/), [Social](/sr/products/social/) i [Studio](/sr/products/studio/), dok hotel zadržava pravila.
 
 ## Kuda ovo vodi
 
@@ -139,10 +139,10 @@ Gore navedene mogućnosti su danas dostupne kroz REST API i MCP server. Pravac j
 
 ## Česte greške
 
-- **Posmatranje AI otkrivanja i AI agenata kao istog projekta.** Jedno je sadržaj i struktura; drugo je API i izvršenje. Potrebni su oba.
-- **Dozvoljavanje agentima da navode cene koje ne mogu da rezervišu.** Ponude moraju dolaziti iz aktuelnih cena i dostupnosti, ne sa skrajdovanih stranica.
-- **Gubljenje atribucije pri predaji.** Ako agent stvori potražnju, rezervacija treba da ostane povezana sa tim izvorom.
-- **Preskakanje sloja izvršenja.** Odgovor nije rezervacija dok se ne završi naplata, uplata i potvrda.
+- **Posmatranje AI pronalaženja i AI agenata kao istog projekta.** Jedno je sadržaj i struktura; drugo je API i izvršenje. Potrebni su oba.
+- **Dozvoljavanje agentima da navode cene koje ne mogu da rezervišu.** Ponude moraju dolaziti iz aktuelnih cena i dostupnosti, ne sa skrajnutih stranica.
+- **Gubljenje atribucije pri predaji.** Ako agent kreira potražnju, rezervacija treba da ostane povezana sa tim izvorom.
+- **Preskakanje sloja izvršenja.** Odgovor nije rezervacija dok se ne dogode naplata, uplata i potvrda.
 
 </article>
 
@@ -170,11 +170,11 @@ Gore navedene mogućnosti su danas dostupne kroz REST API i MCP server. Pravac j
   description="Kako agenti izvršavaju transakcije i kako se to razlikuje od AI pretrage."
   items={[
     { title: "Da li AI agent zaista može da završi rezervaciju hotela?", content: "Da. Na Wink-u, kreiranje rezervacije je REST API operacija, a Booking Engine je izvršava — naplata, uplata, potvrda i sinhronizacija rezervacije. Agent koji poziva booking API u ime putnika može da završi pravu, potvrđenu rezervaciju sa sačuvanim kontekstom izvora." },
-    { title: "Kako se AI agent razlikuje od AI pretrage?", content: "AI pretraga i engine za odgovore pomažu putniku da pronađe i uporedi hotele i završavaju se preporukom. AI agent deluje: čita aktuelne cene i dostupnost, pravi rezervaciju, prima uplatu i reaguje na događaje. Hoteli treba da se pripreme za oba — strukturirani sadržaj za otkrivanje i aktuelan API za transakcije." },
+    { title: "Kako se AI agent razlikuje od AI pretrage?", content: "AI pretraga i engine za odgovore pomažu putniku da pronađe i uporedi hotele i završavaju preporukom. AI agent deluje: čita aktuelne cene i dostupnost, kreira rezervaciju, prima uplatu i reaguje na događaje. Hoteli treba da se pripreme za oba — strukturirani sadržaj za pronalaženje i aktuelni API za transakcije." },
     { title: "Kako se AI agent povezuje na Wink?", content: "Kroz hostovani MCP server na https://docs.mcp.wink.travel/mcp i REST API sa OAuth2. Agent koristi api_search i docs_search da pročita aktuelne operacije i ugovore, zatim poziva pravu operaciju." },
     { title: "Da li AI agent zamenjuje Booking Engine?", content: "Ne. Agent kreira ili usmerava nameru; Booking Engine ostaje sloj izvršenja za naplatu, uplatu, potvrdu i sinhronizaciju rezervacije. Svaka predaja agenta se rešava kroz Booking Engine ispod." },
-    { title: "Da li AI agent može da zaradi proviziju kao partner?", content: "Da. Wink čuva atribuciju izvora i kampanje 6 meseci po kliku i plaća 10% osnovne provizije na potvrđene rezervacije. Agent koji stvori kvalifikovanu potražnju i usmeri rezervaciju može biti atribuirani, zarađujući izvor." },
-    { title: "Da li hoteli ostaju pod kontrolom kada agent rezerviše?", content: "Da. Agenti rade sa hotelom kontrolisanom ponudom upravljanom u Extranet-u. Hotel postavlja sobe, cene, politike i pravila kanala; agent transaktuje unutar njih." },
+    { title: "Da li AI agent može da zaradi proviziju kao partner?", content: "Da. Wink čuva izvor i kampanjsku atribuciju 6 meseci po kliku i plaća 10% osnovne provizije na potvrđene rezervacije. Agent koji kreira kvalifikovanu potražnju i usmerava rezervaciju može biti atribuirani, zarađujući izvor." },
+    { title: "Da li hoteli ostaju pod kontrolom kada agent rezerviše?", content: "Da. Agenti rade sa hotelski kontrolisanom ponudom upravljanom u Extranet-u. Hotel postavlja sobe, cene, politike i pravila kanala; agent transaktuje unutar njih." },
   ]}
 />
 

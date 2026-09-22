@@ -8,7 +8,7 @@ sidebar:
 import { Steps } from '@astrojs/starlight/components';
 import CloudinaryImage from '/src/components/cloudinary-image.astro';
 
-Aplikacje dają Ci dostęp do wszystkich funkcji Wink jako deweloperowi. Możesz uzyskać dostęp do tych samych danych, a nawet rozszerzać funkcje Wink.
+Aplikacje dają Ci dostęp do wszystkich funkcji Wink jako deweloper. Możesz uzyskać dostęp do tych samych danych, a nawet rozszerzać funkcje Wink.
 Możesz wybrać użycie serwera OAuth2 Wink do uwierzytelniania swojej strony podróżniczej tak samo, jak używasz Google lub Facebooka.
 Dzięki temu możesz rozszerzyć funkcje Wink na własną stronę internetową lub aplikację.
 
@@ -27,8 +27,8 @@ Nie możesz ponownie użyć tej aplikacji. Proszę twórz nowe aplikacje w miar�
       alt="Przykładowa aplikacja"
       src="academy/application"
       errorImage="noimage_opaque_nyrtl0.png"
-    />
-    <figcaption>*Przykładowy wpis aplikacji*</figcaption>
+/>
+<figcaption>*Przykładowy wpis aplikacji*</figcaption>
 </figure>
 
 :::note
@@ -40,67 +40,87 @@ Aplikacja wygenerowana na Wink może być używana dla wszystkich punktów końc
  2. Kliknij `Akcje` na dole karty konta i wybierz `Zarządzaj kontem`.
  3. Kliknij zakładkę `Aplikacje` na kolejnej stronie.
  4. Ta sekcja wyświetli wszystkie Twoje aplikacje.
- 5. Wybierz edycję istniejącej lub utwórz nową.
- </Steps>
+ 5. Odśwież lub usuń istniejącą, albo utwórz nową.
+</Steps>
 
 ## Utwórz aplikację
 
-Ponieważ nie masz dostępu do `klucza sekretnego` aplikacji, którą dla Ciebie utworzyliśmy, musisz stworzyć własną.
-
-:::caution
-Musisz utworzyć konto afiliacyjne na Wink lub konto na TripPay, zanim stworzysz aplikację, ponieważ będziesz wiązać swoją aplikację z konkretnym kontem.
-:::
+Ponieważ nie masz dostępu do `sekretnego klucza` aplikacji, którą dla Ciebie utworzyliśmy, musisz stworzyć własną.
+Możesz utworzyć aplikację tutaj bez wcześniejszego zakładania nieruchomości lub firmy — nie jest ona powiązana
+z żadnym konkretnym kontem.
 
 ### Typy klientów
 
-Podczas tworzenia aplikacji wybierasz typ klienta, który określa sposób uwierzytelniania aplikacji:
+Podczas tworzenia aplikacji wybierasz typ klienta, który określa sposób uwierzytelniania aplikacji.
+Nie można tego później zmienić — jeśli potrzebujesz innego typu, utwórz nową aplikację.
 
-- **SPA** (Single Page Application) — Dla aplikacji frontendowych działających w przeglądarce, które używają OAuth2 z kodem autoryzacyjnym i PKCE. To najczęstszy typ dla aplikacji webowych.
-- **MACHINE_2_MACHINE** — Dla integracji serwer-serwer, które uwierzytelniają się bezpośrednio za pomocą poświadczeń klienta. Używaj tego, gdy Twój backend musi wywoływać API Wink bez obecności użytkownika.
+- **Aplikacja webowa** — Aplikacja renderowana po stronie serwera, która może bezpiecznie przechowywać sekret klienta (przepływ kodu autoryzacyjnego).
+- **Aplikacja jednostronicowa (SPA)** — Aplikacja w przeglądarce bez backendu; używa PKCE, bez sekretu klienta.
+- **Aplikacja mobilna** — Natywna aplikacja iOS/Android; używa PKCE z rotującymi tokenami odświeżania.
+- **Maszyna do maszyny** — Usługa backendowa działająca jako ona sama (poświadczenia klienta); bez logowania użytkownika.
 
 Oto kroki tworzenia aplikacji:
 
 <Steps>
 1. Na stronie aplikacji kliknij przycisk `Utwórz nową aplikację`.
 2. ***Nazwa*** Nadaj aplikacji nazwę. *np. Cool App*
-3. **Typ klienta** Wybierz `SPA` dla aplikacji webowych lub `MACHINE_2_MACHINE` dla integracji serwerowych.
-4. **Nazwa podmiotu** Połącz aplikację z jednym z Twoich istniejących kont. *np. Cool Account*
-5. **URI przekierowania** Wymagany jest co najmniej jeden URI przekierowania. Służy do weryfikacji domeny przekierowania po pomyślnym uwierzytelnieniu. *np. https://www.cool-site.com*
-6. **URI przekierowania po wylogowaniu** *(Opcjonalne)* Adresy URL, na które użytkownicy mogą być przekierowani po wylogowaniu. Zapewnia to, że użytkownicy trafią na znaną stronę po zakończeniu sesji.
-7. Kliknij przycisk `Zapisz`, aby kontynuować.
+3. **Typ klienta** Wybierz typ odpowiadający sposobowi uwierzytelniania aplikacji — zobacz [Typy klientów](#client-types) powyżej.
+4. **URI przekierowania** Wymagany jest co najmniej jeden URI przekierowania. Służy do weryfikacji domeny przekierowania po pomyślnym uwierzytelnieniu. Nie dotyczy aplikacji Maszyna do maszyny. *np. https://www.cool-site.com*
+5. **URI przekierowania po wylogowaniu** *(Opcjonalne)* Adresy URL, na które użytkownicy mogą być przekierowani po wylogowaniu. Pozostaw puste, aby ponownie użyć powyższych URI przekierowania.
+6. **Zakresy** Wybierz, do czego ta aplikacja może mieć dostęp w Twoim imieniu — zobacz [Wybór zakresów](#choosing-scopes) poniżej.
+7. Kliknij przycisk `Utwórz aplikację`, aby kontynuować.
 </Steps>
 
-Zostaniesz przekierowany z powrotem do listy aplikacji. Zobaczysz swoją nową aplikację na liście i będziesz mieć dostęp do klucza sekretnego aplikacji tylko tym razem. Upewnij się, że go skopiujesz i zapiszesz w bezpiecznym miejscu.
+Zostaniesz przekierowany z powrotem do listy aplikacji, a jednorazowe okno dialogowe pokaże nowy Client ID
+i Client secret. Skopiuj sekret teraz i zapisz w bezpiecznym miejscu — nie będzie już więcej wyświetlany,
+a później nie ma możliwości jego odzyskania (możesz tylko [odświeżyć](#rotate-credentials) na nowy).
 
-## Aktualizuj aplikację
+## Wybór zakresów
 
-Będziesz musiał zaktualizować aplikację, jeśli zmieni się któryś z URI przekierowania lub chcesz dodać lub usunąć URI.
+Każda aplikacja zawsze zawiera zakresy **Logowanie (OpenID Connect)** (`openid`, `profile`,
+`email`, `offline_access`) — potwierdzają one tożsamość użytkownika i utrzymują go zalogowanego, dlatego
+są zaznaczone i zablokowane; nie można ich wybrać.
 
-Aby zaktualizować istniejącą aplikację, wykonaj następujące kroki:
+Wszystko inne jest opcjonalne. Pozostałe zakresy są pogrupowane w te same sekcje funkcjonalne
+opisane w [Zakresy](/pl/developers/authentication#scopes) — Konto, Inwentarz i stawki, Rezerwacje,
+Marketing i promocje, Zawartość nieruchomości, Analizy i raporty, Integracje z channel managerami,
+Płatności oraz Księgowość i rejestr — każda z prostym opisem, co odblokowuje. Użyj linków `Wszystkie` / `Brak` nad listą, aby zaznaczyć lub odznaczyć wszystkie opcjonalne zakresy naraz.
+
+:::note
+**Płatności** i **Księgowość i rejestr** są oznaczone jako **Wrażliwe**, ponieważ dotyczą przepływu pieniędzy — przyznawaj je tylko aplikacjom, które naprawdę muszą mieć dostęp do płatności lub rejestru.
+:::
+
+Dwie rodziny zakresów są celowo **nie oferowane** w tym formularzu:
+
+- **`mcp.*`** — dostęp agenta AI do transportu [Model Context Protocol](/pl/developers/mcp), który jest
+  udostępniany osobno i tylko dla klientów maszyna do maszyny.
+- **Zakresy na poziomie administratora** (`administrator.*`) — dostęp na poziomie platformy, który nie jest przyznawany per aplikacja.
+
+Po utworzeniu aplikacji zarówno ta zakładka, jak i [Zgoda aplikacji](/pl/account/apps) pokazują przyznane zakresy
+pogroupowane według sekcji (np. "Rezerwacje: `booking.read`"), dzięki czemu możesz szybko zobaczyć, co aplikacja może robić bez jej otwierania.
+
+## Odświeżanie poświadczeń
+
+Jeśli sekret klienta mógł wyciec lub po prostu chcesz mieć nowe poświadczenia, odśwież je zamiast
+tworzyć aplikację od nowa:
 
 <Steps>
-1. Kliknij link `Akcje` przy aplikacji, którą chcesz zaktualizować.
-2. Kliknij przycisk `Aktualizuj` w sekcji Akcje.
-3. Wprowadź zmiany w aplikacji.
-4. Kliknij przycisk `Zapisz`, aby kontynuować.
+1. Znajdź aplikację na liście i kliknij `Odśwież`.
+2. Potwierdź w oknie dialogowym — obecny Client ID i sekret przestają działać natychmiast.
+3. Skopiuj nowy Client ID i sekret z jednorazowego okna dialogowego przed jego zamknięciem.
 </Steps>
 
-Zostaniesz przekierowany z powrotem do listy aplikacji.
+Odświeżanie zachowuje nazwę aplikacji, typ klienta, URI przekierowania i zakresy — zmieniają się tylko poświadczenia.
 
-## Usuń aplikację
+## Usuwanie aplikacji
 
 :::caution
 Prosimy, nie usuwaj aplikacji, którą automatycznie dla Ciebie utworzyliśmy, aby zapewnić działanie wszystkich funkcji dla Twojego konta.
 :::
 
-Jeśli nie potrzebujesz już aplikacji, możesz ją usunąć.
-
-Aby usunąć aplikację, wykonaj następujące kroki:
+Jeśli nie potrzebujesz już aplikacji, możesz ją usunąć. Jest to operacja trwała — poświadczenia są natychmiast unieważniane i nie można ich odzyskać.
 
 <Steps>
-1. Kliknij link `Akcje` przy aplikacji, którą chcesz usunąć.
-2. Kliknij przycisk `Usuń` w sekcji Akcje.
-3. Kliknij przycisk `OK`, aby potwierdzić usunięcie.
+1. Znajdź aplikację na liście i kliknij `Usuń`.
+2. Potwierdź w oknie dialogowym, aby trwale usunąć aplikację.
 </Steps>
-
-Zostaniesz przekierowany z powrotem do listy aplikacji.

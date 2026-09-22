@@ -10,7 +10,7 @@ import CloudinaryImage from '/src/components/cloudinary-image.astro';
 
 Applikationer giver dig adgang til alle Wink's funktioner som udvikler. Du kan få adgang til alle de samme data og endda udvide Wink's egne funktioner.
 Du kan vælge at bruge Wink's OAuth2-server til at autentificere dit rejse-site på samme måde, som du ville bruge Google eller Facebook.
-På den måde kan du udvide Wink's funktioner til dit eget website eller applikation.
+På den måde kan du udvide Wink's funktioner til dit eget website eller din egen applikation.
 
 :::note
 Din første app er allerede oprettet, når du [opretter en ny konto](/da/portal/create-account). Vi bruger appen til nogle bookingscenarier.
@@ -27,8 +27,8 @@ Du kan ikke genbruge denne app. Opret venligst nye apps efter behov.
       alt="Eksempel på applikation"
       src="academy/application"
       errorImage="noimage_opaque_nyrtl0.png"
-    />
-    <figcaption>*Eksempel på applikationsindgang*</figcaption>
+/>
+<figcaption>*Eksempel på applikationsindgang*</figcaption>
 </figure>
 
 :::note
@@ -40,67 +40,90 @@ En applikation genereret på Wink kan bruges til alle API-endpoints.
  2. Klik på `Actions` nederst på kontokortet, og vælg `Manage account`.
  3. Klik på fanen `Applications` på den følgende side.
  4. Denne sektion viser alle dine applikationer.
- 5. Vælg at redigere en eksisterende eller oprette en ny.
- </Steps>
+ 5. Roter eller slet en eksisterende, eller opret en ny.
+</Steps>
 
 ## Opret app
 
-Da du ikke kan få adgang til `secret key` for den app, vi har oprettet til dig, skal du oprette din egen.
-
-:::caution
-Du skal oprette en affiliate-konto på Wink eller en konto på TripPay, før du opretter en app, da du vil binde din applikation til en specifik konto.
-:::
+Da du ikke kan få adgang til `secret key` for den app, vi oprettede til dig, skal du oprette din egen.
+Du kan oprette en applikation her uden først at opsætte en ejendom eller virksomhed — den er ikke bundet
+til nogen specifik konto.
 
 ### Klienttyper
 
-Når du opretter en applikation, vælger du en klienttype, der bestemmer, hvordan appen autentificerer:
+Når du opretter en applikation, vælger du en klienttype, der bestemmer, hvordan appen autentificerer.
+Dette kan ikke ændres senere — hvis du har brug for en anden type, skal du oprette en ny applikation.
 
-- **SPA** (Single Page Application) — Til browserbaserede frontend-applikationer, der bruger OAuth2 autorisationskodeflow med PKCE. Dette er den mest almindelige type til webapps.
-- **MACHINE_2_MACHINE** — Til server-til-server-integrationer, der autentificerer direkte ved hjælp af klientoplysninger. Brug denne, når din backend-service skal kalde Wink API'er uden en bruger til stede.
+- **Webapplikation** — En server-renderet app, der sikkert kan opbevare en klienthemmelighed (autoriseringskode-flow).
+- **Single-page app (SPA)** — En browserapp uden backend; bruger PKCE, uden klienthemmelighed.
+- **Mobilapp** — En native iOS/Android-app; bruger PKCE med roterende refresh tokens.
+- **Maskine-til-maskine** — En backend-service, der handler som sig selv (client credentials); ingen brugerlogin.
 
-Her er trinene til at oprette en applikation:
+Her er trinnene til at oprette en applikation:
 
 <Steps>
 1. Fra apps-siden klik på knappen `Create new application`.
 2. ***Navngiv*** Giv din app et navn. *f.eks. Cool App*
-3. **Klienttype** Vælg `SPA` for webapps eller `MACHINE_2_MACHINE` for serverintegrationer.
-4. **Enhedsnavn** Link din app med en af dine eksisterende konti. *f.eks. Cool Account*
-5. **Redirect URIs** Mindst én redirect URI er påkrævet. Den bruges til at validere redirect-domænet efter en vellykket autentificering. *f.eks. https://www.cool-site.com*
-6. **Post-logout redirect URIs** *(Valgfrit)* URL'er, hvor brugere kan blive omdirigeret efter logout. Dette sikrer, at brugerne lander på en kendt side, når deres session slutter.
-7. Klik på knappen `Save` for at fortsætte.
+3. **Klienttype** Vælg den type, der matcher, hvordan din app autentificerer — se [Klienttyper](#client-types) ovenfor.
+4. **Redirect URIs** Mindst én redirect URI er påkrævet. Den bruges til at validere redirect-domænet efter en vellykket autentificering. Ikke brugt til maskine-til-maskine apps. *f.eks. https://www.cool-site.com*
+5. **Post-logout redirect URIs** *(Valgfrit)* URL'er, hvor brugere kan omdirigeres efter logout. Lad stå tom for at genbruge redirect URIs ovenfor.
+6. **Scopes** Vælg, hvad denne applikation kan få adgang til på dine vegne — se [Valg af scopes](#choosing-scopes) nedenfor.
+7. Klik på knappen `Create application` for at fortsætte.
 </Steps>
 
-Du bliver omdirigeret tilbage til din liste over applikationer. Du vil se din nye app på listen og kun denne ene gang have adgang til appens secret key. Sørg for at kopiere den og gemme den et sikkert sted.
+Du bliver omdirigeret tilbage til din liste over applikationer, og en engangs-dialog viser den nye Client ID
+og Client secret. Kopiér hemmeligheden nu og gem den et sikkert sted — den vises aldrig igen, og
+der er ingen måde at hente den senere (kun [rotere](#rotate-credentials) den til en ny).
 
-## Opdater app
+## Valg af scopes
 
-Du skal opdatere din app, hvis en af dine redirect URIs ændres, eller hvis du vil tilføje eller fjerne en URI.
+Hver applikation bærer altid **Sign-in (OpenID Connect)** scopes (`openid`, `profile`,
+`email`, `offline_access`) — disse bekræfter brugerens identitet og holder dem logget ind, så de
+vises markeret og låst; de er ikke et valg.
 
-For at opdatere en eksisterende app skal du gøre følgende:
+Alt andet er valgfrit. De resterende scopes er grupperet i de samme funktionelle sektioner
+dokumenteret i [Scopes](/da/developers/authentication#scopes) — Konto, Lager & priser, Bookinger,
+Marketing & kampagner, Ejendomsindhold, Analyse & rapporter, Channel manager-integrationer,
+Betalinger og Regnskab & bogføring — hver med en letforståelig beskrivelse af, hvad de åbner op for. Brug
+`All` / `None` linksene over listen til at vælge eller fjerne alle valgfrie scopes på én gang.
+
+:::note
+**Betalinger** og **Regnskab & bogføring** er markeret som **Følsomme**, fordi de beskytter pengestrømme — giv kun disse til applikationer, der specifikt har brug for at håndtere betalinger eller regnskabet.
+:::
+
+To scope-familier tilbydes bevidst **ikke** på denne formular:
+
+- **`mcp.*`** — AI-agent adgang til [Model Context Protocol](/da/developers/mcp) transport, som
+  provisioneres separat og kun for maskine-til-maskine klienter.
+- **Administrator-niveau scopes** (`administrator.*`) — platformniveau-adgang, som ikke gives per
+  applikation.
+
+Når en app er oprettet, viser både denne fane og [Consented Apps](/da/account/apps) dens tildelte scopes
+grupperet efter sektion (f.eks. "Bookings: `booking.read`"), så du kan se, hvad en app kan gøre med et blik
+uden at åbne den.
+
+## Roter legitimationsoplysninger
+
+Hvis en klienthemmelighed kan være lækket, eller du bare ønsker nye legitimationsoplysninger, så roter dem i stedet for
+at oprette appen igen:
 
 <Steps>
-1. Klik på linket `Actions` for den app, du vil opdatere.
-2. Klik på knappen `Update` under Actions.
-3. Foretag dine ændringer i appen.
-4. Klik på knappen `Save` for at fortsætte.
+1. Find appen i din liste over applikationer og klik `Rotate`.
+2. Bekræft dialogen — den nuværende Client ID og secret stopper med at virke med det samme.
+3. Kopiér den nye Client ID og secret fra engangs-dialogen, før du lukker den.
 </Steps>
 
-Du bliver omdirigeret tilbage til din liste over applikationer.
+Rotation bevarer appens navn, klienttype, redirect URIs og scopes — kun legitimationsoplysningerne ændres.
 
 ## Fjern app
 
 :::caution
-Slet venligst ikke den app, vi automatisk har oprettet til dig, for at sikre, at alle funktioner fungerer for din konto.
+Slet venligst ikke den app, vi automatisk oprettede for dig, for at sikre, at alle funktioner virker for din konto.
 :::
 
-Hvis du ikke længere har brug for en app, kan du fjerne den.
-
-For at fjerne en app skal du gøre følgende:
+Hvis du ikke længere har brug for en app, kan du fjerne den. Dette er permanent — legitimationsoplysningerne tilbagekaldes straks og kan ikke gendannes.
 
 <Steps>
-1. Klik på linket `Actions` for den app, du vil opdatere.
-2. Klik på knappen `Remove` under Actions.
-3. Klik på knappen `OK` for at bekræfte sletningen.
+1. Find appen i din liste over applikationer og klik `Delete`.
+2. Bekræft dialogen for permanent at slette applikationen.
 </Steps>
-
-Du bliver omdirigeret tilbage til din liste over applikationer.

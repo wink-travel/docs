@@ -9,7 +9,7 @@ import { Steps } from '@astrojs/starlight/components';
 import CloudinaryImage from '/src/components/cloudinary-image.astro';
 
 Az alkalmazások hozzáférést biztosítanak a Wink összes funkciójához fejlesztőként. Hozzáférhet ugyanahhoz az adathoz, és akár kiterjesztheti a Wink saját funkcióit is.
-Választhatja, hogy a Wink OAuth2 szerverét használja utazási oldalának hitelesítésére ugyanúgy, ahogy a Google vagy a Facebook esetében tenné.
+Választhatja, hogy a Wink OAuth2 szerverét használja utazási oldalának hitelesítésére ugyanúgy, ahogy a Google vagy a Facebook esetében.
 Így kiterjesztheti a Wink funkcióit a saját weboldalára vagy alkalmazására.
 
 :::note
@@ -27,80 +27,98 @@ Ezt az alkalmazást nem használhatja újra. Kérjük, hozzon létre új alkalma
       alt="Minta alkalmazás"
       src="academy/application"
       errorImage="noimage_opaque_nyrtl0.png"
-    />
-    <figcaption>*Minta alkalmazás bejegyzés*</figcaption>
+/>
+<figcaption>*Minta alkalmazás bejegyzés*</figcaption>
 </figure>
 
 :::note
-A Wink-en generált alkalmazás minden API végponthoz használható.
+A Wink által generált alkalmazás minden API végponthoz használható.
 :::
 
 <Steps>
- 1. Válassza ki azt a fiókot, amellyel dolgozni szeretne az [Fiókok](https://app.wink.travel) oldalon.
+ 1. Válassza ki a [Fiókok](https://app.wink.travel) közül azt, amellyel dolgozni szeretne.
  2. Kattintson az `Műveletek` gombra a fiókkártya alján, majd válassza a `Fiók kezelése` lehetőséget.
  3. Kattintson az `Alkalmazások` fülre a következő oldalon.
  4. Itt megjelenik az összes alkalmazása.
- 5. Válassza ki, hogy meglévőt szerkeszt vagy újat hoz létre.
- </Steps>
+ 5. Forgassa vagy törölje a meglévő alkalmazást, vagy hozzon létre újat.
+</Steps>
 
 ## Alkalmazás létrehozása
 
 Mivel nem fér hozzá az általunk létrehozott alkalmazás `titkos kulcsához`, sajátot kell létrehoznia.
-
-:::caution
-Alkalmazás létrehozása előtt létre kell hoznia egy affiliate fiókot a Wink-nél vagy egy fiókot a TripPay-nél, mivel az alkalmazását egy adott fiókhoz fogja kötni.
-:::
+Itt létrehozhat egy alkalmazást anélkül, hogy először beállítana egy ingatlant vagy céget — az alkalmazás nincs kötve
+egy adott fiókhoz.
 
 ### Ügyféltípusok
 
-Alkalmazás létrehozásakor ki kell választania egy ügyféltípust, amely meghatározza, hogyan hitelesíti az alkalmazás:
+Alkalmazás létrehozásakor ki kell választania egy ügyféltípust, amely meghatározza, hogyan hitelesíti az alkalmazás magát.
+Ezt később nem lehet megváltoztatni — ha más típusra van szüksége, hozzon létre új alkalmazást.
 
-- **SPA** (Single Page Application) — Böngésző alapú frontend alkalmazásokhoz, amelyek az OAuth2 engedélyezési kód folyamatot használják PKCE-vel. Ez a leggyakoribb típus webalkalmazásokhoz.
-- **MACHINE_2_MACHINE** — Szerver-szerver integrációkhoz, amelyek közvetlenül ügyfél-hitelesítő adatokkal hitelesítenek. Ezt akkor használja, ha a backend szolgáltatásának fel kell hívnia a Wink API-kat felhasználó jelenléte nélkül.
+- **Webalkalmazás** — Szerveroldalon renderelt alkalmazás, amely biztonságosan tárolhat kliens titkos kulcsot (engedélyezési kód folyamat).
+- **Egylapos alkalmazás (SPA)** — Böngészőben futó alkalmazás backend nélkül; PKCE-t használ, kliens titkos kulcs nélkül.
+- **Mobilalkalmazás** — Natív iOS/Android alkalmazás; PKCE-t használ forgó frissítő tokenekkel.
+- **Gép-gép közötti** — Backend szolgáltatás, amely saját magaként működik (ügyfél hitelesítő adatok); nincs felhasználói bejelentkezés.
 
-Íme az alkalmazás létrehozásának lépései:
+Az alkalmazás létrehozásának lépései:
 
 <Steps>
 1. Az alkalmazások oldalán kattintson a `Új alkalmazás létrehozása` gombra.
-2. ***Név*** Adjon nevet az alkalmazásának. *pl. Cool App*
-3. **Ügyféltípus** Válassza a `SPA`-t webalkalmazásokhoz vagy a `MACHINE_2_MACHINE`-t szerver integrációkhoz.
-4. **Entitás neve** Kapcsolja az alkalmazást egy meglévő fiókjához. *pl. Cool Account*
-5. **Átirányítási URI-k** Legalább egy átirányítási URI szükséges. Ezt az átirányítási domain érvényesítésére használják sikeres hitelesítés után. *pl. https://www.cool-site.com*
-6. **Kijelentkezés utáni átirányítási URI-k** *(Opcionális)* URL-ek, ahová a felhasználók kijelentkezés után átirányíthatók. Ez biztosítja, hogy a felhasználók egy ismert oldalra érkezzenek a munkamenetük végeztével.
-7. Kattintson a `Mentés` gombra a folytatáshoz.
+2. ***Név*** Adja meg az alkalmazás nevét. *pl. Cool App*
+3. **Ügyféltípus** Válassza ki azt a típust, amely megfelel az alkalmazás hitelesítési módjának — lásd fent a [Ügyféltípusok](#client-types) részt.
+4. **Átirányítási URI-k** Legalább egy átirányítási URI szükséges. Ezt az átirányítási domain érvényesítésére használják sikeres hitelesítés után. Gép-gép közötti alkalmazásoknál nem használatos. *pl. https://www.cool-site.com*
+5. **Kijelentkezés utáni átirányítási URI-k** *(Opcionális)* URL-ek, ahová a felhasználók kijelentkezés után átirányíthatók. Hagyja üresen, ha az előző átirányítási URI-kat szeretné újra használni.
+6. **Jogosultságok** Válassza ki, hogy az alkalmazás milyen jogosultságokat kapjon az Ön nevében — lásd lent a [Jogosultságok kiválasztása](#choosing-scopes) részt.
+7. Kattintson a `Alkalmazás létrehozása` gombra a folytatáshoz.
 </Steps>
 
-Visszairányítják az alkalmazáslistájához. Az új alkalmazás megjelenik a listában, és csak egyszer fér hozzá az alkalmazás titkos kulcsához. Győződjön meg róla, hogy lemásolja és biztonságos helyen tárolja.
+Visszairányítják az alkalmazáslistájához, és egy egyszeri párbeszédablak megjeleníti az új Ügyfélazonosítót
+és Ügyféltitkos kulcsot. Másolja ki a titkos kulcsot most, és mentse biztonságos helyre — ezt soha többé nem mutatjuk meg,
+és később nem lehet lekérni (csak [forgatni](#rotate-credentials) lehet újra).
 
-## Alkalmazás frissítése
+## Jogosultságok kiválasztása
 
-Frissítenie kell az alkalmazást, ha valamelyik átirányítási URI megváltozik, vagy hozzá szeretne adni vagy eltávolítani egy URI-t.
+Minden alkalmazás mindig tartalmazza a **Bejelentkezés (OpenID Connect)** jogosultságokat (`openid`, `profile`,
+`email`, `offline_access`) — ezek megerősítik a felhasználó személyazonosságát és bejelentkezve tartják, ezért
+be vannak jelölve és zárolva; ezek nem választhatók.
 
-Egy meglévő alkalmazás frissítéséhez tegye a következőt:
+Minden más opcionális. A fennmaradó jogosultságok ugyanabba a funkcionális szekciókba vannak csoportosítva,
+amelyek a [Jogosultságok](/hu/developers/authentication#scopes) dokumentációban szerepelnek — Fiók, Készlet és árak, Foglalások,
+Marketing és promóciók, Ingatlan tartalom, Elemzések és jelentések, Csatornamenedzser integrációk,
+Fizetések, valamint Könyvelés és főkönyv — mindegyik egyszerű nyelven leírja, mit engedélyez. Használja
+a lista feletti `Mind` / `Egyik sem` linkeket az összes opcionális jogosultság egyszerre történő kiválasztásához vagy törléséhez.
+
+:::note
+A **Fizetések** és a **Könyvelés és főkönyv** **Érzékeny** jelölést kaptak, mert pénzmozgást kezelnek — csak olyan alkalmazásoknak adja meg ezeket, amelyeknek kifejezetten szükségük van a fizetésekhez vagy a főkönyvhöz való hozzáférésre.
+:::
+
+Két jogosultságcsaládot szándékosan **nem kínálunk** ezen az űrlapon:
+
+- **`mcp.*`** — AI-ügynök hozzáférés a [Model Context Protocol](/hu/developers/mcp) protokollhoz, amely külön kerül biztosításra, és csak gép-gép közötti ügyfeleknek szól.
+- **Adminisztrátori szintű jogosultságok** (`administrator.*`) — platform szintű hozzáférés, amelyet nem adnak meg alkalmazásonként.
+
+Miután egy alkalmazás létrejött, ez a fül és a [Hozzájárult alkalmazások](/hu/account/apps) is megmutatja a megadott jogosultságokat szekciónként csoportosítva (pl. "Foglalások: `booking.read`"), így egy pillantással láthatja, mit tehet egy alkalmazás anélkül, hogy megnyitná.
+
+## Hitelesítő adatok forgatása
+
+Ha az ügyféltitkos kulcs kiszivároghatott, vagy csak friss hitelesítő adatokra van szüksége, forgassa őket ahelyett, hogy új alkalmazást hozna létre:
 
 <Steps>
-1. Kattintson az `Műveletek` linkre a frissíteni kívánt alkalmazásnál.
-2. Kattintson a `Frissítés` gombra a Műveletek alatt.
-3. Végezze el a kívánt módosításokat az alkalmazáson.
-4. Kattintson a `Mentés` gombra a folytatáshoz.
+1. Keresse meg az alkalmazást az alkalmazáslistában, és kattintson a `Forgatás` gombra.
+2. Erősítse meg a párbeszédablakot — a jelenlegi Ügyfélazonosító és titkos kulcs azonnal érvénytelenné válik.
+3. Másolja ki az új Ügyfélazonosítót és titkos kulcsot az egyszeri párbeszédablakból, mielőtt bezárja.
 </Steps>
 
-Visszairányítják az alkalmazáslistájához.
+A forgatás megtartja az alkalmazás nevét, ügyféltípusát, átirányítási URI-jait és jogosultságait — csak a hitelesítő adatok változnak.
 
 ## Alkalmazás eltávolítása
 
 :::caution
-Kérjük, ne törölje az automatikusan létrehozott alkalmazást, hogy biztosítsa az összes funkció működését a fiókjához.
+Kérjük, ne törölje az általunk automatikusan létrehozott alkalmazást, hogy biztosítsa az összes funkció működését a fiókjában.
 :::
 
-Ha már nincs szüksége egy alkalmazásra, nyugodtan eltávolíthatja.
-
-Alkalmazás eltávolításához tegye a következőt:
+Ha már nincs szüksége egy alkalmazásra, nyugodtan eltávolíthatja. Ez végleges — a hitelesítő adatok azonnal visszavonásra kerülnek, és nem állíthatók vissza.
 
 <Steps>
-1. Kattintson az `Műveletek` linkre az eltávolítani kívánt alkalmazásnál.
-2. Kattintson az `Eltávolítás` gombra a Műveletek alatt.
-3. Kattintson az `OK` gombra a törlés megerősítéséhez.
+1. Keresse meg az alkalmazást az alkalmazáslistában, és kattintson a `Törlés` gombra.
+2. Erősítse meg a párbeszédablakot az alkalmazás végleges törléséhez.
 </Steps>
-
-Visszairányítják az alkalmazáslistájához.

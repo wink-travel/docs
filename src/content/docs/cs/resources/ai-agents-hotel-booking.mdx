@@ -59,7 +59,7 @@ import IconArrowRight from "@tabler/icons/outline/arrow-right.svg";
 
 ## Doporučit hotel není totéž jako ho rezervovat
 
-Většina dnešního „AI cestování“ končí u doporučení. Asistent navrhne tři hotely a pak předá cestovatele na web nebo OTA, aby si rezervaci skutečně provedl. Vznikne přerušení, cena nemusí být rezervovatelná a nikdo neuchovává zdrojový kontext.
+Většina dnešního „AI cestování“ končí u doporučení. Asistent navrhne tři hotely a pak předá cestovatele na web nebo OTA, aby si rezervaci skutečně provedl. Vzniká přerušení, cena nemusí být rezervovatelná a nikdo neuchovává zdrojový kontext.
 
 **AI agent** se liší od AI odpovědi. Agent nejen popisuje hotel — jedná: kontroluje aktuální dostupnost, sestavuje rezervaci, přijímá platbu a může reagovat na změny. Aby to mohlo bezpečně fungovat, agent potřebuje víc než text. Potřebuje strukturovaná, aktuální, rezervovatelná data a transakční vrstvu, kterou může volat.
 
@@ -67,24 +67,24 @@ To je rozdíl mezi [AI objevováním](/cs/resources/ai-discovery-hotels/), kter�
 
 ## Co agent potřebuje, než může provést transakci
 
-Rezervace hotelu je skutečná obchodní událost: správný pokoj, správná cena, skutečná dostupnost, podmínky, platba a potvrzení, které se synchronizuje zpět do hotelu. Agent to může dokončit pouze pokud je každý prvek dostupný jako volatelná operace.
+Rezervace hotelu je skutečná obchodní událost: správný pokoj, správná cena, reálná dostupnost, podmínky, platba a potvrzení, které se synchronizuje zpět do hotelu. Agent to může dokončit pouze tehdy, když je každý prvek dostupný jako volatelná operace.
 
 | Agent potřebuje | Proč je to důležité |
 |---|---|
 | Strukturovanou, živou nabídku | Data získaná webovým scrapingem zastarávají; agent potřebuje aktuální, hotelem řízený inventář. |
-| Aktuální ceny a dostupnost | Cena, kterou agent uvádí, musí být skutečně rezervovatelná v daný moment. |
+| Aktuální ceny a dostupnost | Cena, kterou agent uvádí, musí být skutečně rezervovatelná v daný okamžik. |
 | Operaci rezervace | Vytvoření rezervace musí být skutečné API volání, ne předání na webový formulář. |
 | Platbu | Agent (nebo cestovatel přes něj) musí být schopen zaplatit s aplikovanou logikou podmínek. |
 | Atribuci | Zdroj, kampaň nebo agent, který rezervaci vytvořil, by měl zůstat připojen. |
 | Události | Agent by měl být schopen reagovat na potvrzení, změny, zrušení a refundace. |
 
-Bez těchto věcí může agent doporučit — ale nemůže rezervovat.
+Bez těchto prvků může agent doporučit — ale nemůže rezervovat.
 
 ## Jak AI agent rezervuje hotel na Wink
 
-Wink je API-first: každá funkce platformy je volatelná externě a hostovaný MCP server zpřístupňuje živé API kontrakty agentům. Typický agentický tok:
+Wink je API-first: každá funkce platformy je volatelná externě a hostovaný MCP server zpřístupňuje živé API smlouvy agentům. Typický průběh agenta:
 
-### 1 — Připojit se a načíst živé kontrakty
+### 1 — Připojit se a načíst živé smlouvy
 
 Agent se připojí k hostovanému MCP serveru a použije `api_search` a `docs_search` k nalezení správných operací a načtení jejich skutečných schémat požadavků/odpovědí — žádné hádání endpointů, žádné zastaralé dokumenty.
 
@@ -103,11 +103,11 @@ Vytvoření rezervace je REST API operace. Agent sestaví pokoj, cenu, data a ho
 
 ### 4 — Přijmout platbu a potvrdit
 
-[Booking Engine](/cs/products/booking-engine/) realizuje transakci — checkout, platbu (Wink je obchodníkem záznamu), logiku storno podmínek, potvrzení a synchronizaci rezervace s připojeným PMS nebo channel managerem. Zdroj a partnerská atribuce jsou zachovány.
+[Booking Engine](/cs/products/booking-engine/) realizuje transakci — checkout, platbu (vybranou pro hotel, který zůstává obchodníkem záznamu), logiku storno podmínek, potvrzení a synchronizaci rezervace s připojeným PMS nebo channel managerem. Zdroj a partnerská atribuce jsou zachovány během rezervace.
 
 ### 5 — Reagovat na události
 
-Agent se může přihlásit k odběru `booking.created` a dalších webhook událostí, aby provedl vyrovnání, upozornil cestovatele nebo spustil následné akce.
+Agent se může přihlásit k odběru webhook událostí jako `booking.created` a dalších, aby provedl vyrovnání, upozornil cestovatele nebo spustil následné akce.
 
 Princip: **agent vytváří nebo směruje záměr; Booking Engine zůstává vrstvou plnění pod každým předáním.**
 
@@ -118,7 +118,7 @@ Princip: **agent vytváří nebo směruje záměr; Booking Engine zůstává vrs
 | | AI vyhledávání / odpovědní engine | AI agenti |
 |---|---|---|
 | Cíl cestovatele | Najít a porovnat hotely | Rezervovat a spravovat pobyt |
-| Co hotel potřebuje | [Strukturovaný, prohledávatelný obsah](/cs/resources/hotel-content-answer-engines/) | Živé API, ceny, rezervace, platba |
+| Co hotel potřebuje | [Strukturovaný, prohledávatelný obsah](/cs/resources/hotel-content-answer-engines/) | Živé API, ceny, rezervace, platbu |
 | Konečný stav | Doporučení | Potvrzená rezervace |
 | Povrch Wink | Čistá nabídka + obsah připravený pro odpovědi | REST API, MCP server, Booking Engine |
 
@@ -126,21 +126,21 @@ Princip: **agent vytváří nebo směruje záměr; Booking Engine zůstává vrs
 
 ## Kdo vytváří agenty pro hotelový obchod
 
-Agentický cestovní obchod nejsou jen asistenti pro spotřebitele. Stejná infrastruktura pohání:
+Agentický cestovní obchod nejsou jen spotřebitelské asistenty. Stejná infrastruktura pohání:
 
-- **Spotřebitelské cestovní asistenty**, kteří vyhledávají, rezervují a spravují pobyt od začátku do konce.
-- **Bankovní, věrnostní a super-app agenty**, kteří integrují hotelové rezervace do stávající zákaznické zkušenosti.
-- **Automatizace partnerů a tvůrců**, které objevují způsobilé hotely, vytvářejí obsah a udržují propojení atribuce — vydělávají 10% základní provizi z potvrzených rezervací.
+- **Spotřebitelské cestovní asistenty**, které vyhledávají, rezervují a spravují pobyt od začátku do konce.
+- **Bankovní, věrnostní a super-aplikace agenty**, kteří integrují hotelové rezervace do stávající zákaznické zkušenosti.
+- **Partnerské a tvůrčí automatizace**, které objevují způsobilé hotely, vytvářejí obsah a udržují propojení atribuce — vydělávají 10% základní provizi z potvrzených rezervací.
 - **Hotelové kopiloty**, které pomáhají týmům generovat obsah a analyzovat výkon napříč [Extranetem](/cs/products/extranet/), [Social](/cs/products/social/) a [Studiem](/cs/products/studio/), zatímco hotel si udržuje pravidla.
 
 ## Kam to směřuje
 
-Výše uvedené schopnosti jsou dnes živé přes REST API a MCP server. Směr je k hlubšímu agentickému obchodování: bohatší agentické rezervační primitivy, identita a autorizace agentů pro transakce jménem cestovatele a agenti jako přisuzované, vydělávající zdroje v partnerské síti. Spojovací linka je konzistentní — **infrastruktura cestovního obchodu pro AI agenty**, s Booking Engine jako vrstvou plnění pod tím.
+Výše uvedené schopnosti jsou dnes živé přes REST API a MCP server. Směr je k hlubšímu agentickému obchodování: bohatší agentické rezervační primitivy, identita a autorizace agenta pro transakce jménem cestovatele a agenti jako přisuzované, vydělávající zdroje v partnerské síti. Spojovací linkou je konzistentní — **infrastruktura cestovního obchodu pro AI agenty**, s Booking Engine jako vrstvou plnění pod tím.
 
 ## Běžné chyby
 
 - **Považovat AI objevování a AI agenty za stejný projekt.** Jeden je obsah a struktura; druhý je API a plnění. Potřebujete obojí.
-- **Nechat agenty uvádět ceny, které nemohou rezervovat.** Nabídky musí vycházet z živých cen a dostupnosti, ne ze scrapeovaných stránek.
+- **Nechat agenty uvádět ceny, které nemohou rezervovat.** Nabídky musí pocházet z živých cen a dostupnosti, ne ze scrapeovaných stránek.
 - **Ztrácet atribuci při předání.** Pokud agent vytvoří poptávku, rezervace by měla zůstat propojena s tímto zdrojem.
 - **Přeskakovat vrstvu plnění.** Odpověď není rezervace, dokud skutečně neproběhne checkout, platba a potvrzení.
 
@@ -166,12 +166,12 @@ Výše uvedené schopnosti jsou dnes živé přes REST API a MCP server. Směr j
 
 {/* FAQ */}
 <FaqGrid emitJsonLd
-  heading="Často kladené otázky o AI agentech a rezervacích hotelů"
+  heading="Často kladené dotazy o AI agentech a rezervacích hotelů"
   description="Jak agenti provádějí transakce a jak se to liší od AI vyhledávání."
   items={[
     { title: "Může AI agent skutečně dokončit rezervaci hotelu?", content: "Ano. Na Wink je vytvoření rezervace REST API operace a Booking Engine ji realizuje — checkout, platba, potvrzení a synchronizace rezervace. Agent, který volá rezervační API jménem cestovatele, může dokončit skutečnou, potvrzenou rezervaci se zachovaným zdrojovým kontextem." },
     { title: "Jak se AI agent liší od AI vyhledávání?", content: "AI vyhledávání a odpovědní engine pomáhají cestovateli najít a porovnat hotely a končí doporučením. AI agent jedná: čte živé ceny a dostupnost, vytváří rezervaci, přijímá platbu a reaguje na události. Hotely by se měly připravit na obojí — strukturovaný obsah pro objevování a živé API pro transakce." },
-    { title: "Jak se AI agent připojuje k Wink?", content: "Přes hostovaný MCP server na https://docs.mcp.wink.travel/mcp a REST API s OAuth2. Agent používá api_search a docs_search k načtení živých operací a kontraktů, pak volá správnou operaci." },
+    { title: "Jak se AI agent připojuje k Wink?", content: "Přes hostovaný MCP server na https://docs.mcp.wink.travel/mcp a REST API s OAuth2. Agent používá api_search a docs_search k načtení živých operací a smluv, pak volá správnou operaci." },
     { title: "Nahrazuje AI agent Booking Engine?", content: "Ne. Agent vytváří nebo směruje záměr; Booking Engine zůstává vrstvou plnění pro checkout, platbu, potvrzení a synchronizaci rezervace. Každé předání agenta se řeší přes Booking Engine pod povrchem." },
     { title: "Může AI agent vydělávat provizi jako partner?", content: "Ano. Wink zachovává zdrojovou a kampaňovou atribuci po dobu 6 měsíců od kliknutí a platí 10% základní provizi z potvrzených rezervací. Agent, který vytvoří kvalifikovanou poptávku a směruje rezervaci, může být přisuzovaným, vydělávajícím zdrojem." },
     { title: "Zůstávají hotely pod kontrolou, když agent rezervuje?", content: "Ano. Agent pracuje s hotelem řízenou nabídkou spravovanou v Extranetu. Hotel nastavuje pokoje, ceny, podmínky a pravidla kanálů; agent v nich provádí transakce." },
@@ -183,7 +183,7 @@ Výše uvedené schopnosti jsou dnes živé přes REST API a MCP server. Směr j
   <div class="mx-auto w-full max-w-7xl px-4 py-24 text-center">
     <h2 class="mkt-h2 font-heading">Vytvořte cestovní obchod pro AI agenty.</h2>
     <p class="mx-auto mt-4 max-w-2xl text-pretty text-white/70 @lg:text-lg">
-      Připojte MCP server, načtěte živé kontrakty a nechte Booking Engine realizovat rezervaci za každým předáním agenta.
+      Připojte MCP server, načtěte živé smlouvy a nechte Booking Engine realizovat rezervaci za každým předáním agenta.
     </p>
     <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
       <a href="/agentic-ai/" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-[#ff6b35] px-8 text-base font-semibold text-white hover:bg-[#e85b29] sm:w-auto">Prozkoumat Agentic AI</a>
