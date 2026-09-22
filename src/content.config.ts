@@ -4,6 +4,7 @@ import { docsLoader } from "@astrojs/starlight/loaders";
 import { docsSchema } from "@astrojs/starlight/schema";
 import { blogSchema } from 'starlight-blog/schema';
 import { changelogsLoader } from 'starlight-changelogs/loader';
+import { toDocsId } from './lib/docs-slug.mjs';
 
 // Cap a changelog to its most recent `max` releases. The GitHub provider
 // fetches releases newest-first and calls `process` once per release at load
@@ -28,12 +29,7 @@ export const collections = {
   docs: defineCollection({
     loader: docsLoader({
       // Strip the `.md`/`.mdx` file extension, but don’t lowercase
-      generateId: ({ entry }) =>
-        entry
-          .split(".")
-          .slice(0, -1)
-          .join(".")
-          .replace(/\/index$/i, ""),
+      generateId: ({ entry }) => toDocsId(entry),
     }),
     schema: docsSchema({
       extend: (context) =>

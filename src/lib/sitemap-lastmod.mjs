@@ -16,16 +16,16 @@
  * what it is today, so a build can never fail over this.
  */
 import { execSync } from "node:child_process";
+import { toDocsId } from "./docs-slug.mjs";
 
 const DOCS = "src/content/docs";
 const LOCALE = /^([a-z]{2}(?:-[A-Za-z]{2,4})?)\//;
 
 /** Collection-relative file path -> URL pathname, following Starlight's routing. */
 export function toPathname(relative) {
-  let slug = relative.replace(/\.(md|mdx|markdoc)$/i, "");
-  if (slug === "index") return "/";
-  slug = slug.replace(/\/index$/i, "");
-  return `/${slug}/`;
+  const id = toDocsId(relative);
+  if (id === "index") return "/";
+  return `/${id}/`;
 }
 
 function readGitDates() {
