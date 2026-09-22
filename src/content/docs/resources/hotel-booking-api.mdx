@@ -1,0 +1,154 @@
+---
+title: Hotel Booking API — How to Add Hotel Booking to a Product
+description: What a hotel booking API needs to support, how search, rates, booking and payment fit together, and how to add bookable hotel supply to an app, site or AI agent.
+template: splash
+marketingNav: true
+---
+import '/src/styles/splash-page.css';
+
+import FaqGrid from "@/components/marketing/FaqGrid.astro";
+import ResourceSchema from "@/components/marketing/ResourceSchema.astro";
+import IconArrowRight from "@tabler/icons/outline/arrow-right.svg";
+
+<div class="not-content mkt-page">
+
+<ResourceSchema title="Hotel Booking API — How to Add Hotel Booking to a Product" crumb="Hotel Booking API" slug="hotel-booking-api" datePublished="2026-09-22" description="What a hotel booking API needs to support, how search, rates, booking and payment fit together, and how to add bookable hotel supply to an app, site or AI agent." />
+
+{/* Breadcrumb */}
+<nav aria-label="Breadcrumb" class="mx-auto w-full max-w-3xl px-4 pt-6 text-sm text-muted-foreground">
+  <a href="/" class="hover:text-foreground">Home</a>
+  <span class="px-1.5">/</span>
+  <a href="/resources/" class="hover:text-foreground">Resources</a>
+  <span class="px-1.5">/</span>
+  <span class="text-foreground">Hotel Booking API</span>
+</nav>
+
+{/* Article header */}
+<header class="mx-auto w-full max-w-3xl px-4 pt-8 pb-10">
+  <span class="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-gradient-to-r from-[#ff6b35]/10 to-[#9333ea]/10 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary"><span class="size-1.5 rounded-full bg-gradient-to-r from-[#ff6b35] to-[#9333ea]"></span> Resources</span>
+  <h1 class="font-heading mt-3 text-4xl font-semibold tracking-tight text-balance @lg:text-5xl">How do developers add hotel booking to a product?</h1>
+  <p class="mkt-sub text-muted-foreground mt-5">
+    Search and rates are the easy half. A product only becomes useful when it can create a real booking, take payment, and tell the traveler and the hotel that it happened.
+  </p>
+  <div class="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
+    <a href="https://app.wink.travel" class="inline-flex h-11 items-center justify-center rounded-md bg-[#ff6b35] px-6 text-sm font-semibold text-white hover:bg-[#e85b29]">Request API access</a>
+    <a href="/api/overview/" class="inline-flex h-11 items-center justify-center rounded-md border border-border px-6 text-sm font-medium hover:bg-muted">Read the docs</a>
+  </div>
+  <p class="mt-5 text-sm text-muted-foreground">
+    Plenty of APIs return hotel content. Far fewer let you complete the transaction.
+  </p>
+</header>
+
+{/* Direct answer */}
+<section class="mx-auto w-full max-w-3xl px-4">
+  <div class="rounded-2xl border-l-4 border-primary bg-primary/[0.04] p-6">
+    <p class="text-xs font-semibold uppercase tracking-wider text-primary">The short answer</p>
+    <p class="mt-3 text-pretty text-foreground/90">
+      You need four things: <strong>live rates and availability</strong>, <strong>booking creation</strong>, <strong>payment</strong>, and <strong>confirmation plus webhooks</strong>. Read-only content APIs stop after the first. On Wink the Consumer and Booking Engine APIs are free to use, booking creation runs over REST with OAuth2, there are 64+ webhook events including <code>booking.created</code>, and payment is collected for the hotel — which stays merchant of record — so you do not have to become one. An MCP server exposes the same capabilities to AI agents, and web components cover the cases where you want a booking path without building a UI.
+    </p>
+  </div>
+</section>
+
+{/* Body */}
+<article class="mkt-prose mx-auto w-full max-w-3xl px-4 py-14">
+
+## The four capabilities that matter
+
+| Capability | What it means | Why products stall without it |
+|---|---|---|
+| Live rates and availability | Current prices and what is actually bookable, per date range | Cached rates fail at confirmation and erode trust |
+| Booking creation | Create a real reservation the hotel receives | Without it you are a referral link, not a product |
+| Payment | Take money as part of the booking | A handoff to another site is where conversion dies |
+| Confirmation and webhooks | Tell guest, hotel and your system what happened | Support load and reconciliation gaps otherwise |
+
+Most "hotel APIs" a developer finds cover the first and sometimes the second. The transaction is the hard part, and it is the part that decides whether you have a product.
+
+## Whose supply are you integrating?
+
+This question shapes everything downstream. Supply resold through a chain arrives with a markup inside the rate, staler availability, and no route back to the hotel for a booking question. Supply that comes from the hotel directly carries the hotel's own rate, live availability, and a hotel that knows the booking exists.
+
+For anything where the traveler will compare against the hotel's own website — which is most things — hotel-controlled supply avoids the awkward moment when your price is worse.
+
+## Who is the merchant of record
+
+If you build hotel booking yourself, becoming the merchant of record means taking on payment liability, chargebacks, refunds, tax handling and often a travel-agency licence in each market.
+
+On Wink the **hotel stays merchant of record** and payment is collected for the hotel, so an integrator does not inherit that surface. Merchant-of-record arrangements are available on API integrations where a partner genuinely needs to take payment itself, and that route carries its own licensing requirements.
+
+## Three levels of integration
+
+1. **Web components.** Drop a bookable search, room list or checkout into an existing page. No backend work; least control over layout.
+2. **REST API.** Full control over search, rates, booking creation and confirmation, authenticated with OAuth2. Use it when the booking flow is part of your product's own experience.
+3. **MCP server.** The same capabilities exposed for AI agents, so an assistant can search, price and complete a booking rather than hand the user off to a website.
+
+The three are not exclusive — a product commonly uses components for a marketing surface and the API for its core flow.
+
+## What to build first
+
+- **Search and price for one city and one date range.** Get real rates flowing before designing anything.
+- **Create one test booking end to end**, including payment and confirmation.
+- **Subscribe to `booking.created` and the cancellation events** before you build any UI on top.
+- **Decide your attribution model early** — source context needs to travel with the booking, or your reporting is guesswork later.
+- **Handle the failure cases**: availability lost between quote and book, payment declined, partial refunds.
+
+## Pricing a developer should know
+
+The **Consumer and Booking Engine APIs are free**. The **Partner API** includes a free monthly allowance of 10,000 hotel-days, then bills per unit. Confirmed bookings carry the hotel's 1.5% platform fee plus card processing at cost, and a **10% default commission** applies when your product drove the booking — which is how an integrator earns rather than pays.
+
+## Common mistakes
+
+- **Building on cached rates.** They look fine in development and fail in production.
+- **Leaving payment to a redirect.** Every handoff loses bookings.
+- **Ignoring webhooks until launch.** Reconciliation becomes a manual job.
+- **Becoming merchant of record without needing to.** It is a licensing and liability decision, not just a technical one.
+- **Not passing source context.** Attribution cannot be reconstructed afterwards.
+
+</article>
+
+{/* Related */}
+<section class="mx-auto w-full max-w-3xl px-4 pb-8">
+  <p class="mkt-kicker text-primary">Keep exploring</p>
+  <div class="mt-4 grid gap-3 @md:grid-cols-2">
+    {[
+      { label: "For Builders", href: "/builders/" },
+      { label: "API overview", href: "/api/overview/" },
+      { label: "MCP server", href: "/developers/mcp/" },
+      { label: "Web components", href: "/integrations/web-components/" },
+    ].map((l) => (
+      <a href={l.href} class="group flex items-center justify-between rounded-xl border border-border bg-card px-4 py-3 text-sm font-medium transition-colors hover:border-primary/40">
+        {l.label}
+        <IconArrowRight class="size-4 text-muted-foreground transition-transform group-hover:translate-x-0.5" />
+      </a>
+    ))}
+  </div>
+</section>
+
+{/* FAQ */}
+<FaqGrid emitJsonLd
+  heading="Hotel booking API FAQs"
+  description="What to integrate, what it costs, and who carries the payment liability."
+  items={[
+    { title: "What does a hotel booking API need to support?", content: "Live rates and availability, booking creation, payment, and confirmation with webhooks. Read-only content APIs cover only the first and cannot complete a transaction." },
+    { title: "Is the Wink API free to use?", content: "The Consumer and Booking Engine APIs are free. The Partner API includes 10,000 hotel-days free per month, then bills per unit." },
+    { title: "Do I have to become the merchant of record?", content: "No. The hotel stays merchant of record and payment is collected for the hotel. Merchant-of-record arrangements exist for API integrations that genuinely need to take payment, with their own licensing requirements." },
+    { title: "Can AI agents book through the same capabilities?", content: "Yes. An MCP server exposes search, pricing and booking to agents, so an assistant can complete a booking instead of handing the user off to a website." },
+    { title: "How do I get paid as an integrator?", content: "A 10% default commission applies on bookings your product drove, calculated after the hotel's platform fee and card processing, with attribution lasting 6 months per click." },
+    { title: "Do I need to build a UI?", content: "Not necessarily. Web components provide bookable search, room lists and checkout that drop into an existing page; the REST API is there when the flow should be yours." },
+  ]}
+/>
+
+{/* Final CTA */}
+<section class="w-full border-y border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white">
+  <div class="mx-auto w-full max-w-7xl px-4 py-24 text-center">
+    <h2 class="mkt-h2 font-heading">Build a product that can actually book.</h2>
+    <p class="mx-auto mt-4 max-w-2xl text-pretty text-white/70 @lg:text-lg">
+      Live hotel supply, booking creation over REST, webhooks, an MCP server for agents, and payment you do not have to own.
+    </p>
+    <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <a href="https://app.wink.travel" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-[#ff6b35] px-8 text-base font-semibold text-white hover:bg-[#e85b29] sm:w-auto">Request API access</a>
+      <a href="/builders/" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-white px-8 text-base font-semibold text-[#1f0a40] hover:bg-white/90 sm:w-auto">For Builders</a>
+    </div>
+  </div>
+</section>
+
+</div>
