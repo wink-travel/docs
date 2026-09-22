@@ -1,0 +1,35 @@
+# MDX compile guard.
+#
+# `npm run check` (astro check) does type/schema diagnostics; it does not run
+# a real MDX->JSX compile pass, so it passes on a `.mdx` file that cannot
+# actually compile. The only thing that catches that is `npm run build` — an
+# 8GB, ~10 minute build nobody runs before merging. That gap let an i18n sync
+# merge to master with five translated pricing.mdx files carrying unescaped
+# `*` where the English source uses `&ast;`, which MDX's remark parser read
+# as emphasis markers spanning two separate <span> tags and broke `astro
+# build` outright. It sat on master undetected until someone ran a full build
+# by hand.
+#
+# This runs the bare MDX compiler (no Astro plugins, no schemas, no network)
+# against every `.mdx` file, on every push and pull request. It needs no
+# secrets and finishes in well under a minute.
+name: MDX guard
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+jobs:
+  mdx:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      # Standalone @mdx-js/mdx install, same spirit as claims.yml: this checks MDX
+      # structural well-formedness, which doesn't depend on the exact resolved
+      # version, so it isn't worth a full `npm ci` of the whole site toolchain.
+      - run: npm install --no-save @mdx-js/mdx@3
+      - run: node ./scripts/check-mdx.mjs
