@@ -24,7 +24,7 @@ Hindi mo maaaring gamitin muli ang app na ito. Mangyaring gumawa ng mga bagong a
       height="215"
       resize="scale"
       quality="best"
-      alt="Halimbawang aplikasyon"
+      alt="Sample application"
       src="academy/application"
       errorImage="noimage_opaque_nyrtl0.png"
 />
@@ -32,7 +32,7 @@ Hindi mo maaaring gamitin muli ang app na ito. Mangyaring gumawa ng mga bagong a
 </figure>
 
 :::note
-Ang isang aplikasyon na ginawa sa Wink ay maaaring gamitin para sa lahat ng API endpoints.
+Ang isang aplikasyon na nalikha sa Wink ay maaaring gamitin para sa lahat ng API endpoints.
 :::
 
 <Steps>
@@ -40,67 +40,86 @@ Ang isang aplikasyon na ginawa sa Wink ay maaaring gamitin para sa lahat ng API 
  2. I-click ang `Actions` mula sa ibaba ng account card at piliin ang `Manage account`.
  3. I-click ang tab na `Applications` sa susunod na pahina.
  4. Ipapakita sa seksyong ito ang lahat ng iyong mga aplikasyon.
- 5. Piliin kung i-edit ang isang umiiral na app o gumawa ng bago.
+ 5. I-rotate o tanggalin ang isang umiiral na app, o gumawa ng bago.
 </Steps>
 
 ## Gumawa ng app
 
 Dahil hindi mo ma-access ang `secret key` ng app na ginawa namin para sa iyo, kailangan mong gumawa ng sarili mong app.
-
-:::caution
-Kailangan mong gumawa ng affiliate account sa Wink o isang account sa TripPay bago ka gumawa ng app dahil i-uugnay mo ang iyong aplikasyon sa isang partikular na account.
-:::
+Maaari kang gumawa ng aplikasyon dito nang hindi muna nagse-set up ng property o kumpanya — hindi ito naka-bind
+sa anumang partikular na account.
 
 ### Mga uri ng kliyente
 
-Kapag gumagawa ng aplikasyon, pipili ka ng uri ng kliyente na magtatakda kung paano mag-authenticate ang app:
+Kapag gumagawa ng aplikasyon, pipili ka ng uri ng kliyente na magtatakda kung paano mag-authenticate ang app.
+Hindi ito maaaring baguhin sa hinaharap — kung kailangan mo ng ibang uri, gumawa ng bagong aplikasyon.
 
-- **SPA** (Single Page Application) — Para sa mga browser-based na frontend na aplikasyon na gumagamit ng OAuth2 authorization code flow na may PKCE. Ito ang pinakakaraniwang uri para sa mga web app.
-- **MACHINE_2_MACHINE** — Para sa mga server-to-server na integrasyon na nag-a-authenticate nang direkta gamit ang client credentials. Gamitin ito kapag kailangan ng iyong backend service na tumawag sa Wink APIs nang walang kasamang user.
+- **Web application** — Isang server-rendered na app na ligtas na nakakapag-imbak ng client secret (authorization code flow).
+- **Single-page app (SPA)** — Isang browser app na walang backend; gumagamit ng PKCE, walang client secret.
+- **Mobile app** — Isang native na iOS/Android app; gumagamit ng PKCE na may umiikot na refresh tokens.
+- **Machine-to-machine** — Isang backend service na kumikilos bilang sarili nito (client credentials); walang user sign-in.
 
 Narito ang mga hakbang sa paggawa ng aplikasyon:
 
 <Steps>
 1. Mula sa pahina ng apps, i-click ang button na `Create new application`.
 2. ***Pangalan*** Bigyan ang iyong app ng pangalan. *hal. Cool App*
-3. **Uri ng kliyente** Piliin ang `SPA` para sa web apps o `MACHINE_2_MACHINE` para sa mga server integration.
-4. **Pangalan ng entity** I-link ang iyong app sa isa sa iyong mga umiiral na account. *hal. Cool Account*
-5. **Redirect URIs** Kailangan ng hindi bababa sa isang redirect URI. Ginagamit ito para i-validate ang redirect domain pagkatapos ng matagumpay na authentication. *hal. https://www.cool-site.com*
-6. **Post-logout redirect URIs** *(Opsyonal)* Mga URL kung saan maaaring i-redirect ang mga user pagkatapos mag-logout. Tinitiyak nito na mapupunta ang mga user sa isang kilalang pahina pagkatapos ng kanilang session.
-7. I-click ang button na `Save` upang magpatuloy.
+3. **Uri ng kliyente** Piliin ang uri na tumutugma sa paraan ng pag-authenticate ng iyong app — tingnan ang [Mga uri ng kliyente](#client-types) sa itaas.
+4. **Redirect URIs** Kinakailangan ang hindi bababa sa isang redirect URI. Ginagamit ito para i-validate ang redirect domain pagkatapos ng matagumpay na authentication. Hindi ginagamit para sa Machine-to-machine apps. *hal. https://www.cool-site.com*
+5. **Post-logout redirect URIs** *(Opsyonal)* Mga URL kung saan maaaring i-redirect ang mga user pagkatapos mag-logout. Iwanang blangko upang gamitin muli ang mga redirect URIs sa itaas.
+6. **Scopes** Piliin kung ano ang maaaring ma-access ng aplikasyon na ito sa iyong ngalan — tingnan ang [Pagpili ng scopes](#choosing-scopes) sa ibaba.
+7. I-click ang button na `Create application` upang magpatuloy.
 </Steps>
 
-Ibabalik ka sa iyong listahan ng mga aplikasyon. Makikita mo ang iyong bagong app sa listahan at magkakaroon ka ng access sa secret key ng app isang beses lamang. Siguraduhing kopyahin ito at itago sa isang ligtas na lugar.
+Ibabalik ka sa iyong listahan ng mga aplikasyon, at isang one-time dialog ang magpapakita ng bagong Client ID
+at Client secret. Kopyahin ang secret ngayon at itago ito sa isang ligtas na lugar — hindi na ito muling ipapakita,
+at walang paraan upang makuha ito muli (maaari lamang itong [i-rotate](#rotate-credentials) para sa bago).
 
-## I-update ang app
+## Pagpili ng scopes
 
-Kailangan mong i-update ang iyong app kung may nagbago sa isa sa iyong redirect URIs o kung nais mong magdagdag o mag-alis ng URI.
+Laging dala ng bawat aplikasyon ang **Sign-in (OpenID Connect)** scopes (`openid`, `profile`,
+`email`, `offline_access`) — pinatutunayan nito ang pagkakakilanlan ng user at pinananatiling naka-sign in sila, kaya naka-check at naka-lock ang mga ito; hindi ito pagpipilian.
 
-Para i-update ang isang umiiral na app, gawin ang mga sumusunod:
+Lahat ng iba pa ay opsyonal. Ang natitirang mga scopes ay naka-grupo sa parehong mga seksyon ng functionality
+na dokumentado sa [Scopes](/tl/developers/authentication#scopes) — Account, Inventory & rates, Bookings,
+Marketing & promotions, Property content, Analytics & reports, Channel manager integrations,
+Payments, at Accounting & ledger — bawat isa ay may simpleng paglalarawan kung ano ang binubuksan nito. Gamitin ang
+mga link na `All` / `None` sa itaas ng listahan upang piliin o i-clear ang lahat ng opsyonal na scopes nang sabay-sabay.
 
-<Steps>
-1. I-click ang link na `Actions` para sa app na nais mong i-update.
-2. I-click ang button na `Update` sa ilalim ng Actions.
-3. Gawin ang mga pagbabago sa app.
-4. I-click ang button na `Save` upang magpatuloy.
-</Steps>
-
-Ibabalik ka sa iyong listahan ng mga aplikasyon.
-
-## Alisin ang app
-
-:::caution
-Mangyaring huwag tanggalin ang app na awtomatikong ginawa para sa iyo upang matiyak na gumagana ang lahat ng mga tampok para sa iyong account.
+:::note
+**Payments** at **Accounting & ledger** ay tinag bilang **Sensitive** dahil pinangangalagaan nila ang paggalaw ng pera — bigyan lamang ang mga ito sa mga aplikasyon na partikular na nangangailangan ng access sa payments o ledger.
 :::
 
-Kung wala ka nang gamit sa isang app, maaari mo itong alisin.
+Dalawang pamilya ng scope ang sadyang **hindi inaalok** sa form na ito:
 
-Para alisin ang isang app, gawin ang mga sumusunod:
+- **`mcp.*`** — AI-agent access sa [Model Context Protocol](/tl/developers/mcp) transport, na ibinibigay nang hiwalay at para lamang sa machine-to-machine clients.
+- **Administrator-tier scopes** (`administrator.*`) — platform-level access na hindi ibinibigay per aplikasyon.
+
+Kapag nalikha na ang app, parehong ipinapakita ng tab na ito at ng [Consented Apps](/tl/account/apps) ang mga granted scopes nito
+na naka-grupo ayon sa seksyon (hal. "Bookings: `booking.read`"), kaya makikita mo agad kung ano ang magagawa ng app nang hindi ito binubuksan.
+
+## I-rotate ang credentials
+
+Kung maaaring na-leak ang client secret, o gusto mo lang ng bagong credentials, i-rotate ito sa halip na
+gumawa ng bagong app:
 
 <Steps>
-1. I-click ang link na `Actions` para sa app na nais mong i-update.
-2. I-click ang button na `Remove` sa ilalim ng Actions.
-3. I-click ang button na `OK` upang kumpirmahin ang pagtanggal.
+1. Hanapin ang app sa iyong listahan ng mga aplikasyon at i-click ang `Rotate`.
+2. Kumpirmahin ang dialog — ang kasalukuyang Client ID at secret ay agad na hindi na gagana.
+3. Kopyahin ang bagong Client ID at secret mula sa one-time dialog bago ito isara.
 </Steps>
 
-Ibabalik ka sa iyong listahan ng mga aplikasyon.
+Pinananatili ng pag-rotate ang pangalan ng app, uri ng kliyente, redirect URIs, at scopes — credentials lang ang nagbabago.
+
+## Tanggalin ang app
+
+:::caution
+Mangyaring huwag tanggalin ang app na awtomatikong nilikha para sa iyo upang matiyak na gumagana ang lahat ng mga tampok para sa iyong account.
+:::
+
+Kung wala ka nang gamit sa isang app, maaari mo itong tanggalin. Ito ay permanente — agad na ire-revoke ang credentials at hindi na ito maibabalik.
+
+<Steps>
+1. Hanapin ang app sa iyong listahan ng mga aplikasyon at i-click ang `Delete`.
+2. Kumpirmahin ang dialog upang permanenteng tanggalin ang aplikasyon.
+</Steps>

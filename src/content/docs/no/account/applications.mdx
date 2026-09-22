@@ -27,8 +27,8 @@ Du kan ikke gjenbruke denne appen. Vennligst opprett nye apper etter behov.
       alt="Eksempel på applikasjon"
       src="academy/application"
       errorImage="noimage_opaque_nyrtl0.png"
-    />
-    <figcaption>*Eksempel på applikasjonsoppføring*</figcaption>
+/>
+<figcaption>*Eksempel på applikasjonsoppføring*</figcaption>
 </figure>
 
 :::note
@@ -40,52 +40,80 @@ En applikasjon generert på Wink kan brukes for alle API-endepunkter.
  2. Klikk på `Actions` nederst på kontokortet og velg `Manage account`.
  3. Klikk på fanen `Applications` på neste side.
  4. Denne seksjonen viser alle dine applikasjoner.
- 5. Velg å redigere en eksisterende eller opprette en ny.
- </Steps>
+ 5. Roter eller slett en eksisterende, eller opprett en ny.
+</Steps>
 
 ## Opprett app
 
 Siden du ikke kan få tilgang til `secret key` for appen vi opprettet for deg, må du lage din egen.
-
-:::caution
-Du må opprette en affiliate-konto på Wink eller en konto på TripPay før du oppretter en app, siden du vil knytte applikasjonen til en spesifikk konto.
-:::
+Du kan opprette en applikasjon her uten først å sette opp en eiendom eller selskap — den er ikke bundet
+til noen spesifikk konto.
 
 ### Klienttyper
 
-Når du oppretter en applikasjon, velger du en klienttype som bestemmer hvordan appen autentiserer:
+Når du oppretter en applikasjon, velger du en klienttype som bestemmer hvordan appen autentiserer.
+Dette kan ikke endres senere — hvis du trenger en annen type, opprett en ny applikasjon.
 
-- **SPA** (Single Page Application) — For nettleserbaserte frontend-applikasjoner som bruker OAuth2 autorisasjonskodeflyt med PKCE. Dette er den vanligste typen for webapper.
-- **MACHINE_2_MACHINE** — For server-til-server-integrasjoner som autentiserer direkte med klientlegitimasjon. Bruk dette når backend-tjenesten din trenger å kalle Wink API-er uten at en bruker er til stede.
+- **Webapplikasjon** — En server-renderet app som trygt kan beholde en klienthemmelighet (autorisasjonskodeflyt).
+- **Single-page app (SPA)** — En nettleserapp uten backend; bruker PKCE, uten klienthemmelighet.
+- **Mobilapp** — En native iOS/Android-app; bruker PKCE med roterende refresh tokens.
+- **Maskin-til-maskin** — En backend-tjeneste som opptrer som seg selv (klientlegitimasjon); ingen brukerinnlogging.
 
 Her er stegene for å opprette en applikasjon:
 
 <Steps>
 1. Fra apps-siden, klikk på knappen `Create new application`.
 2. ***Navn*** Gi appen din et navn. *f.eks. Cool App*
-3. **Klienttype** Velg `SPA` for webapper eller `MACHINE_2_MACHINE` for serverintegrasjoner.
-4. **Enhetsnavn** Knytt appen din til en av dine eksisterende kontoer. *f.eks. Cool Account*
-5. **Redirect URIs** Minst én redirect URI kreves. Den brukes for å validere redirect-domenet etter vellykket autentisering. *f.eks. https://www.cool-site.com*
-6. **Post-logout redirect URIs** *(Valgfritt)* URL-er hvor brukere kan bli sendt etter utlogging. Dette sikrer at brukere lander på en kjent side etter at økten deres avsluttes.
-7. Klikk på `Save`-knappen for å fortsette.
+3. **Klienttype** Velg typen som matcher hvordan appen din autentiserer — se [Klienttyper](#client-types) ovenfor.
+4. **Redirect URIs** Minst én redirect URI kreves. Den brukes for å validere redirect-domenet etter vellykket autentisering. Ikke brukt for maskin-til-maskin apper. *f.eks. https://www.cool-site.com*
+5. **Post-logout redirect URIs** *(Valgfritt)* URL-er hvor brukere kan bli sendt etter utlogging. La stå tomt for å bruke redirect URIs ovenfor.
+6. **Scopes** Velg hva denne applikasjonen kan få tilgang til på dine vegne — se [Velge scopes](#choosing-scopes) nedenfor.
+7. Klikk på knappen `Create application` for å fortsette.
 </Steps>
 
-Du blir sendt tilbake til listen over applikasjoner. Du vil se din nye app i listen og få tilgang til appens hemmelige nøkkel kun denne ene gangen. Sørg for å kopiere den og lagre den på et trygt sted.
+Du blir sendt tilbake til listen over applikasjoner, og en engangs-dialog viser den nye Client ID
+og Client secret. Kopier hemmeligheten nå og lagre den trygt — den vises aldri igjen, og
+det finnes ingen måte å hente den senere (bare [rotere](#rotate-credentials) den for en ny).
 
-## Oppdater app
+## Velge scopes
 
-Du må oppdatere appen din hvis en av redirect URI-ene endres eller du ønsker å legge til eller fjerne en URI.
+Hver applikasjon har alltid **Sign-in (OpenID Connect)** scopes (`openid`, `profile`,
+`email`, `offline_access`) — disse bekrefter brukerens identitet og holder dem innlogget, så de
+vises som avkrysset og låst; de er ikke et valg.
 
-For å oppdatere en eksisterende app, gjør følgende:
+Alt annet er valgfritt. De resterende scopes er gruppert i de samme funksjonelle seksjonene
+dokumentert i [Scopes](/no/developers/authentication#scopes) — Konto, Inventar & priser, Bookinger,
+Markedsføring & kampanjer, Eiendomsinnhold, Analyse & rapporter, Kanalintegrasjoner,
+Betalinger, og Regnskap & hovedbok — hver med en enkel beskrivelse av hva de låser opp. Bruk
+`All` / `None` lenkene over listen for å velge eller fjerne alle valgfrie scopes samtidig.
+
+:::note
+**Betalinger** og **Regnskap & hovedbok** er merket som **Sensitive** fordi de beskytter pengeflyt — gi kun tilgang til apper som spesifikt trenger å håndtere betalinger eller hovedbok.
+:::
+
+To scope-familier tilbys bevisst **ikke** i dette skjemaet:
+
+- **`mcp.*`** — AI-agent tilgang til [Model Context Protocol](/no/developers/mcp) transport, som
+  settes opp separat og kun for maskin-til-maskin klienter.
+- **Administrator-nivå scopes** (`administrator.*`) — plattformnivå tilgang som ikke gis per
+  applikasjon.
+
+Når en app er opprettet, viser både denne fanen og [Consented Apps](/no/account/apps) dens tildelte scopes
+gruppert etter seksjon (f.eks. "Bookings: `booking.read`"), slik at du kan se hva en app kan gjøre med et blikk
+uten å åpne den.
+
+## Roter legitimasjon
+
+Hvis en klienthemmelighet kan ha lekket, eller du bare ønsker nye legitimasjoner, roter dem i stedet for
+å opprette appen på nytt:
 
 <Steps>
-1. Klikk på `Actions`-lenken for appen du vil oppdatere.
-2. Klikk på `Update`-knappen under Actions.
-3. Gjør endringene dine i appen.
-4. Klikk på `Save`-knappen for å fortsette.
+1. Finn appen i listen over applikasjoner og klikk `Rotate`.
+2. Bekreft dialogen — nåværende Client ID og secret slutter å fungere umiddelbart.
+3. Kopier den nye Client ID og secret fra engangs-dialogen før du lukker den.
 </Steps>
 
-Du blir sendt tilbake til listen over applikasjoner.
+Rotering beholder appens navn, klienttype, redirect URIs og scopes — kun legitimasjonen endres.
 
 ## Fjern app
 
@@ -93,14 +121,10 @@ Du blir sendt tilbake til listen over applikasjoner.
 Vennligst ikke slett appen vi automatisk opprettet for deg for å sikre at alle funksjoner fungerer for kontoen din.
 :::
 
-Hvis du ikke har bruk for en app lenger, kan du fjerne den.
-
-For å fjerne en app, gjør følgende:
+Hvis du ikke har bruk for en app lenger, kan du fjerne den. Dette er permanent — legitimasjonen
+blir umiddelbart tilbakekalt og kan ikke gjenopprettes.
 
 <Steps>
-1. Klikk på `Actions`-lenken for appen du vil fjerne.
-2. Klikk på `Remove`-knappen under Actions.
-3. Klikk på `OK`-knappen for å bekrefte slettingen.
+1. Finn appen i listen over applikasjoner og klikk `Delete`.
+2. Bekreft dialogen for å permanent slette applikasjonen.
 </Steps>
-
-Du blir sendt tilbake til listen over applikasjoner.

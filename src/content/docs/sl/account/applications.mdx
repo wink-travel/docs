@@ -9,7 +9,7 @@ import { Steps } from '@astrojs/starlight/components';
 import CloudinaryImage from '/src/components/cloudinary-image.astro';
 
 Aplikacije vam kot razvijalcu omogočajo dostop do vseh funkcij Wink. Dostopate lahko do vseh istih podatkov in celo razširite Winkove lastne funkcije.
-Lahko se odločite za uporabo Winkovega OAuth2 strežnika za preverjanje pristnosti vaše potovalne strani, tako kot bi uporabili Google ali Facebook.
+Lahko se odločite za uporabo Winkovega OAuth2 strežnika za preverjanje pristnosti vaše potovalne strani na enak način, kot bi uporabili Google ali Facebook.
 Na ta način lahko razširite Winkove funkcije na svojo lastno spletno stran ali aplikacijo.
 
 :::note
@@ -28,7 +28,7 @@ Te aplikacije ne morete ponovno uporabiti. Prosimo, ustvarite nove aplikacije po
       src="academy/application"
       errorImage="noimage_opaque_nyrtl0.png"
     />
-    <figcaption>*Primer vnosa aplikacije*</figcaption>
+    <figcaption>*Vnos primerne aplikacije*</figcaption>
 </figure>
 
 :::note
@@ -38,69 +38,92 @@ Aplikacija, ustvarjena na Wink, se lahko uporablja za vse API končne točke.
 <Steps>
  1. Izberite račun, s katerim želite delati, na strani [Računi](https://app.wink.travel).
  2. Kliknite na `Dejanja` na dnu kartice računa in izberite `Upravljaj račun`.
- 3. Na naslednji strani kliknite zavihek `Aplikacije`.
+ 3. Kliknite zavihek `Aplikacije` na naslednji strani.
  4. Ta razdelek bo prikazal vse vaše aplikacije.
- 5. Izberite urejanje obstoječe ali ustvarjanje nove.
+ 5. Zamenjajte ali izbrišite obstoječo aplikacijo ali ustvarite novo.
  </Steps>
 
 ## Ustvarjanje aplikacije
 
 Ker ne morete dostopati do `skrivnega ključa` aplikacije, ki smo jo ustvarili za vas, boste morali ustvariti svojo lastno.
-
-:::caution
-Preden ustvarite aplikacijo, morate imeti ustvarjen partnerski račun na Wink ali račun na TripPay, saj boste aplikacijo povezali z določenim računom.
-:::
+Aplikacijo lahko ustvarite tukaj, ne da bi najprej nastavili nepremičnino ali podjetje — ni vezana
+na noben določen račun.
 
 ### Vrste odjemalcev
 
-Pri ustvarjanju aplikacije izberete vrsto odjemalca, ki določa, kako se aplikacija preverja:
+Pri ustvarjanju aplikacije izberete vrsto odjemalca, ki določa, kako se aplikacija preverja.
+To ni mogoče kasneje spremeniti — če potrebujete drugačno vrsto, ustvarite novo aplikacijo.
 
-- **SPA** (Single Page Application) — Za brskalniške frontend aplikacije, ki uporabljajo OAuth2 avtentikacijski tok z avtentikacijskim kodo z PKCE. To je najpogostejša vrsta za spletne aplikacije.
-- **MACHINE_2_MACHINE** — Za integracije strežnik-strežnik, ki se preverjajo neposredno z uporabniškimi poverilnicami. Uporabite to, ko vaš strežniški servis kliče Wink API-je brez prisotnosti uporabnika.
+- **Spletna aplikacija** — Aplikacija, ki se izvaja na strežniku in lahko varno hrani skrivni ključ odjemalca (avtorizacijski tok kode).
+- **Enostranska aplikacija (SPA)** — Brskalniška aplikacija brez strežniške podpore; uporablja PKCE, brez skrivnega ključa odjemalca.
+- **Mobilna aplikacija** — Nativna iOS/Android aplikacija; uporablja PKCE z rotirajočimi osvežitvenimi žetoni.
+- **Stroj-stroj** — Strežniška storitev, ki deluje kot sama (podatki o poverilnicah odjemalca); brez prijave uporabnika.
 
 Tukaj so koraki za ustvarjanje aplikacije:
 
 <Steps>
 1. Na strani aplikacij kliknite gumb `Ustvari novo aplikacijo`.
 2. ***Ime*** Dajte svoji aplikaciji ime. *npr. Cool App*
-3. **Vrsta odjemalca** Izberite `SPA` za spletne aplikacije ali `MACHINE_2_MACHINE` za strežniške integracije.
-4. **Ime entitete** Povežite svojo aplikacijo z enim od vaših obstoječih računov. *npr. Cool Account*
-5. **Preusmeritveni URI-ji** Potreben je vsaj en preusmeritveni URI. Uporablja se za preverjanje domene preusmeritve po uspešni avtentikaciji. *npr. https://www.cool-site.com*
-6. **Preusmeritveni URI-ji po odjavi** *(neobvezno)* URL-ji, kamor se uporabniki preusmerijo po odjavi. To zagotavlja, da uporabniki pristanejo na znani strani po koncu seje.
-7. Kliknite gumb `Shrani`, da nadaljujete.
+3. **Vrsta odjemalca** Izberite vrsto, ki ustreza načinu preverjanja vaše aplikacije — glejte [Vrste odjemalcev](#client-types) zgoraj.
+4. **Preusmeritveni URI-ji** Zahtevan je vsaj en preusmeritveni URI. Uporablja se za preverjanje domene preusmeritve po uspešni avtentikaciji. Ni uporabljen za aplikacije stroj-stroj. *npr. https://www.cool-site.com*
+5. **Preusmeritveni URI-ji po odjavi** *(neobvezno)* URL-ji, kamor se uporabniki preusmerijo po odjavi. Pustite prazno, da ponovno uporabite zgornje preusmeritvene URI-je.
+6. **Obsegi** Izberite, do česa lahko ta aplikacija dostopa v vašem imenu — glejte [Izbira obsegov](#choosing-scopes) spodaj.
+7. Kliknite gumb `Ustvari aplikacijo` za nadaljevanje.
 </Steps>
 
-Preusmerjeni boste nazaj na seznam svojih aplikacij. Nova aplikacija bo prikazana na seznamu, dostop do skrivnega ključa aplikacije pa boste imeli samo enkrat. Poskrbite, da ga kopirate in shranite na varno mesto.
+Preusmerjeni boste nazaj na seznam svojih aplikacij, kjer se bo prikazalo enkratno okno z novim ID-jem odjemalca
+in skrivnim ključem odjemalca. Zdaj kopirajte skrivni ključ in ga shranite na varno mesto — nikoli več ne bo prikazan,
+in ni načina, da bi ga kasneje pridobili (lahko ga le [zamenjate](#rotate-credentials) za novega).
 
-## Posodobitev aplikacije
+## Izbira obsegov
 
-Aplikacijo boste morali posodobiti, če se kateri od vaših preusmeritvenih URI-jev spremeni ali če želite dodati ali odstraniti URI.
+Vsaka aplikacija vedno nosi obsege **Prijava (OpenID Connect)** (`openid`, `profile`,
+`email`, `offline_access`) — ti potrjujejo identiteto uporabnika in ga ohranjajo prijavljenega, zato so
+prikazani kot označeni in zaklenjeni; niso izbira.
 
-Za posodobitev obstoječe aplikacije naredite naslednje:
+Vse ostalo je opcijsko. Preostali obsegi so razdeljeni v iste funkcionalne razdelke,
+dokumentirane v [Obsegi](/sl/developers/authentication#scopes) — Račun, Inventar in cene, Rezervacije,
+Marketing in promocije, Vsebina nepremičnin, Analitika in poročila, Integracije upravljalca kanalov,
+Plačila ter Računovodstvo in knjigovodstvo — vsak z opisom v običajnem jeziku, kaj omogoča. Uporabite
+povezavi `Vse` / `Nič` nad seznamom, da izberete ali počistite vse opcijske obsege naenkrat.
+
+:::note
+**Plačila** in **Računovodstvo in knjigovodstvo** so označeni kot **Občutljivi**, ker varujejo denarne
+tokove — dodeljujte jih le aplikacijam, ki jih specifično potrebujejo za delo s plačili ali knjigovodstvom.
+:::
+
+Dve skupini obsegov nista na voljo v tem obrazcu:
+
+- **`mcp.*`** — dostop AI-agenta do [Model Context Protocol](/sl/developers/mcp) transporta, ki je
+  urejen ločeno in samo za aplikacije stroj-stroj.
+- **Obsegi na ravni skrbnika** (`administrator.*`) — dostop na ravni platforme, ki ni dodeljen po aplikaciji.
+
+Ko je aplikacija ustvarjena, ta zavihek in [Dovoljene aplikacije](/sl/account/apps) prikazujeta njene dodeljene obsege
+po razdelkih (npr. "Rezervacije: `booking.read`"), tako da lahko na prvi pogled vidite, kaj aplikacija zmore,
+brez da jo odprete.
+
+## Zamenjava poverilnic
+
+Če obstaja sum, da je skrivni ključ odjemalca ušel, ali pa želite preprosto nove poverilnice, jih zamenjajte namesto
+da ustvarjate novo aplikacijo:
 
 <Steps>
-1. Kliknite povezavo `Dejanja` za aplikacijo, ki jo želite posodobiti.
-2. Kliknite gumb `Posodobi` pod Dejanja.
-3. Naredite spremembe v aplikaciji.
-4. Kliknite gumb `Shrani`, da nadaljujete.
+1. Poiščite aplikacijo na seznamu in kliknite `Zamenjaj`.
+2. Potrdite pogovorno okno — trenutni ID odjemalca in skrivni ključ takoj prenehata delovati.
+3. Pred zaprtjem pogovornega okna kopirajte novi ID odjemalca in skrivni ključ iz enkratnega prikaza.
 </Steps>
 
-Preusmerjeni boste nazaj na seznam svojih aplikacij.
+Zamenjava ohrani ime aplikacije, vrsto odjemalca, preusmeritvene URI-je in obsege — spremeni se le poverilnica.
 
 ## Odstranitev aplikacije
 
 :::caution
-Prosimo, ne brišite aplikacije, ki smo jo samodejno ustvarili za vas, da zagotovite delovanje vseh funkcij za vaš račun.
+Prosimo, ne brišite aplikacije, ki smo jo samodejno ustvarili za vas, da zagotovimo delovanje vseh funkcij za vaš račun.
 :::
 
-Če aplikacije ne potrebujete več, jo lahko odstranite.
-
-Za odstranitev aplikacije naredite naslednje:
+Če aplikacije ne potrebujete več, jo lahko odstranite. To je trajno — poverilnice so takoj preklicane in jih ni mogoče obnoviti.
 
 <Steps>
-1. Kliknite povezavo `Dejanja` za aplikacijo, ki jo želite odstraniti.
-2. Kliknite gumb `Odstrani` pod Dejanja.
-3. Kliknite gumb `V redu`, da potrdite brisanje.
+1. Poiščite aplikacijo na seznamu in kliknite `Izbriši`.
+2. Potrdite pogovorno okno za trajno brisanje aplikacije.
 </Steps>
-
-Preusmerjeni boste nazaj na seznam svojih aplikacij.

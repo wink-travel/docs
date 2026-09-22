@@ -32,75 +32,100 @@ Je kunt deze app niet hergebruiken. Maak nieuwe apps aan wanneer je ze nodig heb
 </figure>
 
 :::note
-Een applicatie die op Wink is gegenereerd, kan worden gebruikt voor alle API-eindpunten.
+Een applicatie die op Wink is gegenereerd, kan voor alle API-eindpunten worden gebruikt.
 :::
 
 <Steps>
  1. Selecteer het account waarmee je wilt werken via [Accounts](https://app.wink.travel).
  2. Klik onderaan de accountkaart op `Acties` en kies `Account beheren`.
  3. Klik op het tabblad `Applicaties` op de volgende pagina.
- 4. In deze sectie worden al je applicaties weergegeven.
- 5. Kies om een bestaande te bewerken of een nieuwe te maken.
+ 4. In dit gedeelte worden al je applicaties weergegeven.
+ 5. Draai of verwijder een bestaande app, of maak een nieuwe aan.
  </Steps>
 
 ## App maken
 
-Omdat je geen toegang hebt tot de `secret key` van de app die we voor je hebben gemaakt, moet je je eigen app aanmaken.
-
-:::caution
-Je moet een affiliate-account bij Wink of een account bij TripPay aanmaken voordat je een app maakt, omdat je je applicatie aan een specifiek account koppelt.
-:::
+Omdat je geen toegang hebt tot de `geheime sleutel` van de app die wij voor je hebben gemaakt, moet je je eigen app aanmaken.
+Je kunt hier een applicatie maken zonder eerst een accommodatie of bedrijf in te stellen — het is niet gebonden
+aan een specifiek account.
 
 ### Clienttypes
 
-Bij het maken van een applicatie kies je een clienttype dat bepaalt hoe de app authenticatie uitvoert:
+Bij het maken van een applicatie kies je een clienttype dat bepaalt hoe de app authenticatie uitvoert.
+Dit kan later niet worden gewijzigd — als je een ander type nodig hebt, maak dan een nieuwe applicatie aan.
 
-- **SPA** (Single Page Application) — Voor browsergebaseerde frontend-applicaties die de OAuth2 autorisatiecode-flow met PKCE gebruiken. Dit is het meest voorkomende type voor webapps.
-- **MACHINE_2_MACHINE** — Voor server-naar-server integraties die direct authenticeren met clientgegevens. Gebruik dit wanneer je backendservice Wink-API's moet aanroepen zonder dat er een gebruiker aanwezig is.
+- **Webapplicatie** — Een server-gerenderde app die veilig een clientgeheim kan bewaren (authorization code flow).
+- **Single-page app (SPA)** — Een browserapp zonder backend; gebruikt PKCE, zonder clientgeheim.
+- **Mobiele app** — Een native iOS/Android-app; gebruikt PKCE met roterende refresh tokens.
+- **Machine-to-machine** — Een backendservice die namens zichzelf handelt (client credentials); geen gebruikersaanmelding.
 
 Hier zijn de stappen om een applicatie te maken:
 
 <Steps>
 1. Klik op de app-pagina op de knop `Nieuwe applicatie maken`.
-2. ***Naam*** Geef je app een naam. *bijv. Cool App*
-3. **Clienttype** Kies `SPA` voor webapps of `MACHINE_2_MACHINE` voor serverintegraties.
-4. **Entiteitsnaam** Koppel je app aan een van je bestaande accounts. *bijv. Cool Account*
-5. **Redirect-URI's** Minimaal één redirect-URI is vereist. Deze wordt gebruikt om het redirect-domein te valideren na een succesvolle authenticatie. *bijv. https://www.cool-site.com*
-6. **Post-logout redirect-URI's** *(optioneel)* URL's waar gebruikers na uitloggen naartoe kunnen worden geleid. Dit zorgt ervoor dat gebruikers op een bekende pagina landen nadat hun sessie is beëindigd.
-7. Klik op de knop `Opslaan` om door te gaan.
+2. ***Naam*** Geef je app een naam. *bijv. Coole App*
+3. **Clienttype** Kies het type dat overeenkomt met hoe je app authenticatie uitvoert — zie [Clienttypes](#clienttypes) hierboven.
+4. **Redirect-URI's** Minimaal één redirect-URI is vereist. Deze wordt gebruikt om het redirect-domein te valideren na een succesvolle authenticatie. Niet gebruikt voor machine-to-machine apps. *bijv. https://www.coole-site.com*
+5. **Post-logout redirect-URI's** *(optioneel)* URL's waar gebruikers na uitloggen naartoe kunnen worden geleid. Laat leeg om de redirect-URI's hierboven opnieuw te gebruiken.
+6. **Scopes** Kies waartoe deze applicatie namens jou toegang heeft — zie [Scopes kiezen](#choosing-scopes) hieronder.
+7. Klik op de knop `Applicatie maken` om door te gaan.
 </Steps>
 
-Je wordt teruggeleid naar je lijst met applicaties. Je ziet je nieuwe app in de lijst en hebt slechts één keer toegang tot de geheime sleutel van de app. Zorg dat je deze kopieert en op een veilige plek bewaart.
+Je wordt teruggeleid naar je lijst met applicaties en er verschijnt een eenmalige dialoog met de nieuwe Client ID
+en Client secret. Kopieer het geheim nu en sla het veilig op — het wordt nooit meer getoond en
+kan later niet worden teruggehaald (alleen [roteren](#rotate-credentials) voor een nieuwe).
 
-## App bijwerken
+## Scopes kiezen
 
-Je moet je app bijwerken als een van je redirect-URI's verandert of als je een URI wilt toevoegen of verwijderen.
+Elke applicatie draagt altijd de **Aanmelden (OpenID Connect)** scopes (`openid`, `profile`,
+`email`, `offline_access`) — deze bevestigen de identiteit van de gebruiker en houden deze ingelogd, dus ze
+zijn aangevinkt en vergrendeld; ze zijn geen keuze.
 
-Om een bestaande app bij te werken, doe je het volgende:
+Alles wat ernaast staat is opt-in. De overige scopes zijn gegroepeerd in dezelfde functionele secties
+zoals gedocumenteerd in [Scopes](/nl/developers/authentication#scopes) — Account, Voorraad & tarieven, Boekingen,
+Marketing & promoties, Accommodatie-inhoud, Analyse & rapportages, Channel manager-integraties,
+Betalingen, en Boekhouding & grootboek — elk met een duidelijke beschrijving van wat het ontgrendelt. Gebruik
+de links `Alles` / `Geen` boven de lijst om alle optionele scopes tegelijk te selecteren of te deselecteren.
+
+:::note
+**Betalingen** en **Boekhouding & grootboek** zijn gemarkeerd als **Gevoelig** omdat ze geldstromen
+beheren — geef deze alleen aan applicaties die specifiek betalingen of het grootboek moeten kunnen benaderen.
+:::
+
+Twee scope-families worden bewust **niet aangeboden** op dit formulier:
+
+- **`mcp.*`** — AI-agent toegang tot het [Model Context Protocol](/nl/developers/mcp) transport, dat
+  apart wordt geregeld en alleen voor machine-to-machine clients is.
+- **Administrator-niveau scopes** (`administrator.*`) — platformniveau toegang die niet per
+  applicatie wordt toegekend.
+
+Zodra een app is aangemaakt, tonen zowel dit tabblad als [Toestemmingsapps](/nl/account/apps) de verleende scopes
+gegroepeerd per sectie (bijv. "Boekingen: `booking.read`"), zodat je in één oogopslag kunt zien wat een app kan doen
+zonder deze te openen.
+
+## Referenties roteren
+
+Als een clientgeheim mogelijk is gelekt, of je gewoon nieuwe referenties wilt, roteer ze dan in plaats van
+de app opnieuw te maken:
 
 <Steps>
-1. Klik op de link `Acties` voor de app die je wilt bijwerken.
-2. Klik op de knop `Bijwerken` onder Acties.
-3. Breng je wijzigingen aan in de app.
-4. Klik op de knop `Opslaan` om door te gaan.
+1. Zoek de app in je lijst met applicaties en klik op `Roteer`.
+2. Bevestig de dialoog — de huidige Client ID en secret werken direct niet meer.
+3. Kopieer de nieuwe Client ID en secret uit de eenmalige dialoog voordat je deze sluit.
 </Steps>
 
-Je wordt teruggeleid naar je lijst met applicaties.
+Roteer behoudt de naam van de app, het clienttype, redirect-URI's en scopes — alleen de referenties veranderen.
 
 ## App verwijderen
 
 :::caution
-Verwijder de app die we automatisch voor je hebben aangemaakt niet, zodat alle functies voor je account blijven werken.
+Verwijder alsjeblieft niet de app die we automatisch voor je hebben aangemaakt om te zorgen dat alle functies voor je account werken.
 :::
 
-Als je een app niet meer nodig hebt, kun je deze verwijderen.
-
-Om een app te verwijderen, doe je het volgende:
+Als je een app niet meer nodig hebt, kun je deze verwijderen. Dit is permanent — de
+referenties worden direct ingetrokken en kunnen niet worden hersteld.
 
 <Steps>
-1. Klik op de link `Acties` voor de app die je wilt verwijderen.
-2. Klik op de knop `Verwijderen` onder Acties.
-3. Klik op de knop `OK` om de verwijdering te bevestigen.
+1. Zoek de app in je lijst met applicaties en klik op `Verwijderen`.
+2. Bevestig de dialoog om de applicatie permanent te verwijderen.
 </Steps>
-
-Je wordt teruggeleid naar je lijst met applicaties.

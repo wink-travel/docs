@@ -27,8 +27,8 @@ Anda tidak boleh menggunakan semula aplikasi ini. Sila buat aplikasi baru mengik
       alt="Contoh aplikasi"
       src="academy/application"
       errorImage="noimage_opaque_nyrtl0.png"
-    />
-    <figcaption>*Contoh entri aplikasi*</figcaption>
+/>
+<figcaption>*Contoh entri aplikasi*</figcaption>
 </figure>
 
 :::note
@@ -40,52 +40,78 @@ Aplikasi yang dijana di Wink boleh digunakan untuk semua titik akhir API.
  2. Klik pada `Actions` di bahagian bawah kad akaun dan pilih `Manage account`.
  3. Klik tab `Applications` pada halaman berikutnya.
  4. Bahagian ini akan menyenaraikan semua aplikasi anda.
- 5. Pilih untuk mengedit aplikasi sedia ada atau buat yang baru.
- </Steps>
+ 5. Putar atau padam aplikasi sedia ada, atau buat yang baru.
+</Steps>
 
 ## Buat aplikasi
 
 Oleh kerana anda tidak boleh mengakses `secret key` aplikasi yang kami buat untuk anda, anda perlu membuat aplikasi anda sendiri.
-
-:::caution
-Anda perlu membuat akaun affiliate di Wink atau akaun di TripPay sebelum membuat aplikasi kerana anda akan mengikat aplikasi anda kepada akaun tertentu.
-:::
+Anda boleh membuat aplikasi di sini tanpa perlu menyediakan hartanah atau syarikat terlebih dahulu — ia tidak terikat
+kepada mana-mana akaun tertentu.
 
 ### Jenis klien
 
-Apabila membuat aplikasi, anda memilih jenis klien yang menentukan bagaimana aplikasi mengesahkan:
+Apabila membuat aplikasi, anda memilih jenis klien yang menentukan bagaimana aplikasi mengesahkan.
+Ini tidak boleh diubah kemudian — jika anda memerlukan jenis yang berbeza, buat aplikasi baru.
 
-- **SPA** (Single Page Application) — Untuk aplikasi frontend berasaskan pelayar yang menggunakan aliran kod kebenaran OAuth2 dengan PKCE. Ini adalah jenis yang paling biasa untuk aplikasi web.
-- **MACHINE_2_MACHINE** — Untuk integrasi server-ke-server yang mengesahkan secara langsung menggunakan kelayakan klien. Gunakan ini apabila perkhidmatan backend anda perlu memanggil API Wink tanpa kehadiran pengguna.
+- **Aplikasi web** — Aplikasi yang dirender di pelayan yang boleh menyimpan rahsia klien dengan selamat (aliran kod kebenaran).
+- **Aplikasi satu halaman (SPA)** — Aplikasi pelayar tanpa backend; menggunakan PKCE, tanpa rahsia klien.
+- **Aplikasi mudah alih** — Aplikasi asli iOS/Android; menggunakan PKCE dengan token segar yang berputar.
+- **Mesin-ke-mesin** — Perkhidmatan backend yang bertindak sebagai dirinya sendiri (kelayakan klien); tiada log masuk pengguna.
 
 Berikut adalah langkah-langkah untuk membuat aplikasi:
 
 <Steps>
 1. Dari halaman aplikasi, klik butang `Create new application`.
 2. ***Nama*** Beri nama aplikasi anda. *contoh Cool App*
-3. **Jenis klien** Pilih `SPA` untuk aplikasi web atau `MACHINE_2_MACHINE` untuk integrasi server.
-4. **Nama entiti** Pautkan aplikasi anda dengan salah satu akaun sedia ada anda. *contoh Cool Account*
-5. **Redirect URIs** Sekurang-kurangnya satu redirect URI diperlukan. Ia digunakan untuk mengesahkan domain redirect selepas pengesahan berjaya. *contoh https://www.cool-site.com*
-6. **Post-logout redirect URIs** *(Pilihan)* URL di mana pengguna boleh diarahkan selepas log keluar. Ini memastikan pengguna sampai ke halaman yang diketahui selepas sesi mereka tamat.
-7. Klik butang `Save` untuk meneruskan.
+3. **Jenis klien** Pilih jenis yang sesuai dengan cara aplikasi anda mengesahkan — lihat [Jenis klien](#client-types) di atas.
+4. **Redirect URIs** Sekurang-kurangnya satu redirect URI diperlukan. Ia digunakan untuk mengesahkan domain redirect selepas pengesahan berjaya. Tidak digunakan untuk aplikasi Mesin-ke-mesin. *contoh https://www.cool-site.com*
+5. **Post-logout redirect URIs** *(Pilihan)* URL di mana pengguna boleh diarahkan selepas log keluar. Biarkan kosong untuk menggunakan semula redirect URIs di atas.
+6. **Skop** Pilih apa yang aplikasi ini boleh akses bagi pihak anda — lihat [Memilih skop](#choosing-scopes) di bawah.
+7. Klik butang `Create application` untuk meneruskan.
 </Steps>
 
-Anda akan diarahkan kembali ke senarai aplikasi anda. Anda akan melihat aplikasi baru anda dalam senarai dan hanya sekali ini anda boleh mengakses kunci rahsia aplikasi. Pastikan anda menyalinnya dan menyimpannya di tempat yang selamat.
+Anda akan diarahkan kembali ke senarai aplikasi anda, dan dialog sekali sahaja akan memaparkan Client ID
+dan Client secret baru. Salin rahsia itu sekarang dan simpan di tempat selamat — ia tidak akan dipaparkan lagi, dan
+tiada cara untuk mendapatkannya semula kemudian (hanya boleh [putar](#rotate-credentials) untuk yang baru).
 
-## Kemas kini aplikasi
+## Memilih skop
 
-Anda perlu mengemas kini aplikasi anda jika salah satu redirect URI anda berubah atau anda ingin menambah atau membuang URI.
+Setiap aplikasi sentiasa membawa skop **Sign-in (OpenID Connect)** (`openid`, `profile`,
+`email`, `offline_access`) — ini mengesahkan identiti pengguna dan memastikan mereka kekal log masuk, jadi ia
+ditandakan dan dikunci; ia bukan pilihan.
 
-Untuk mengemas kini aplikasi sedia ada, lakukan perkara berikut:
+Semua yang lain adalah pilihan. Skop yang tinggal dikelompokkan ke dalam bahagian fungsi yang sama
+yang didokumenkan dalam [Skop](/ms/developers/authentication#scopes) — Akaun, Inventori & kadar, Tempahan,
+Pemasaran & promosi, Kandungan hartanah, Analitik & laporan, Integrasi pengurus saluran,
+Pembayaran, dan Perakaunan & lejar — setiap satu dengan penerangan mudah tentang apa yang dibuka. Gunakan
+pautan `All` / `None` di atas senarai untuk memilih atau membersihkan semua skop pilihan sekaligus.
+
+:::note
+**Pembayaran** dan **Perakaunan & lejar** ditandakan sebagai **Sensitif** kerana ia mengawal pergerakan wang — hanya berikan kepada aplikasi yang benar-benar perlu mengakses pembayaran atau lejar.
+:::
+
+Dua keluarga skop sengaja **tidak ditawarkan** dalam borang ini:
+
+- **`mcp.*`** — akses ejen AI ke [Model Context Protocol](/ms/developers/mcp) yang disediakan secara berasingan dan hanya untuk klien mesin-ke-mesin.
+- **Skop tahap pentadbir** (`administrator.*`) — akses tahap platform yang tidak diberikan per aplikasi.
+
+Setelah aplikasi dibuat, tab ini dan juga [Consented Apps](/ms/account/apps) memaparkan skop yang diberikan
+dikelompokkan mengikut bahagian (contoh "Tempahan: `booking.read`"), supaya anda boleh lihat apa yang aplikasi boleh lakukan dengan cepat
+tanpa perlu membukanya.
+
+## Putar kelayakan
+
+Jika rahsia klien mungkin telah bocor, atau anda hanya mahu kelayakan baru, putar ia daripada
+membuat semula aplikasi:
 
 <Steps>
-1. Klik pautan `Actions` untuk aplikasi yang anda ingin kemas kini.
-2. Klik butang `Update` di bawah Actions.
-3. Buat perubahan pada aplikasi.
-4. Klik butang `Save` untuk meneruskan.
+1. Cari aplikasi dalam senarai aplikasi anda dan klik `Rotate`.
+2. Sahkan dialog — Client ID dan rahsia semasa akan berhenti berfungsi serta-merta.
+3. Salin Client ID dan rahsia baru dari dialog sekali sahaja sebelum menutupnya.
 </Steps>
 
-Anda akan diarahkan kembali ke senarai aplikasi anda.
+Memutar mengekalkan nama aplikasi, jenis klien, redirect URIs, dan skop — hanya kelayakan yang berubah.
 
 ## Buang aplikasi
 
@@ -93,14 +119,10 @@ Anda akan diarahkan kembali ke senarai aplikasi anda.
 Sila jangan padam aplikasi yang kami buat secara automatik untuk anda supaya semua ciri berfungsi untuk akaun anda.
 :::
 
-Jika anda tidak lagi memerlukan aplikasi, anda boleh terus membuangnya.
-
-Untuk membuang aplikasi, lakukan perkara berikut:
+Jika anda tidak lagi memerlukan aplikasi, anda boleh terus membuangnya. Ini adalah kekal — 
+kelayakan akan dibatalkan serta-merta dan tidak boleh dipulihkan.
 
 <Steps>
-1. Klik pautan `Actions` untuk aplikasi yang anda ingin kemas kini.
-2. Klik butang `Remove` di bawah Actions.
-3. Klik butang `OK` untuk mengesahkan pemadaman.
+1. Cari aplikasi dalam senarai aplikasi anda dan klik `Delete`.
+2. Sahkan dialog untuk memadam aplikasi secara kekal.
 </Steps>
-
-Anda akan diarahkan kembali ke senarai aplikasi anda.

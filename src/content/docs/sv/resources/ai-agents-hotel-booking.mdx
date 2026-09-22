@@ -60,7 +60,7 @@ import IconArrowRight from "@tabler/icons/outline/arrow-right.svg";
 
 ## Att rekommendera ett hotell är inte att boka ett
 
-De flesta "AI-resor" idag stannar vid rekommendationen. En assistent föreslår tre hotell och skickar sedan vidare resenären till en webbplats eller OTA för att faktiskt boka. Tråden bryts, priset kanske inte går att boka, och ingen behåller källkontexten.
+De flesta "AI-resor" idag stannar vid rekommendationen. En assistent föreslår tre hotell och skickar sedan vidare resenären till en webbplats eller en OTA för att faktiskt boka. Tråden bryts, priset kanske inte går att boka, och ingen behåller källkontexten.
 
 En **AI-agent** skiljer sig från ett AI-svar. En agent beskriver inte bara ett hotell — den agerar: kontrollerar live-tillgänglighet, sätter ihop en bokning, tar betalt och kan reagera när något ändras. För att det ska ske säkert behöver agenten mer än text. Den behöver strukturerad, aktuell, bokningsbar data och ett transaktionslager den kan anropa.
 
@@ -75,15 +75,15 @@ En hotellbokning är en verklig kommersiell händelse: rätt rum, rätt pris, ve
 | Strukturerad, live-tillgång | Webbscrapad data blir snabbt inaktuell; en agent behöver aktuell, hotellkontrollerad inventarie. |
 | Realtidspriser & tillgänglighet | Ett pris som agenten anger måste faktiskt gå att boka just då. |
 | En bokningsoperation | Att skapa reservationen måste vara ett riktigt API-anrop, inte en överlämning till ett webbformulär. |
-| Betalning | Agenten (eller resenären via den) måste kunna betala, med policylogik tillämpad. |
+| Betalning | Agenten (eller resenären genom den) måste kunna betala, med policylogik tillämpad. |
 | Attribution | Källan, kampanjen eller agenten som skapade bokningen ska förbli kopplad. |
 | Händelser | Agenten ska kunna reagera på bekräftelser, ändringar, avbokningar och återbetalningar. |
 
-Utan detta kan en agent rekommendera — men inte boka.
+Utan dessa kan en agent rekommendera — men inte boka.
 
 ## Hur en AI-agent bokar hotell på Wink
 
-Wink är API-först: varje plattformsfunktion är anropbar externt, och en hostad MCP-server exponerar live API-kontrakt till agenter. Ett typiskt agentflöde:
+Wink är API-först: varje plattformsfunktion kan anropas externt, och en hostad MCP-server exponerar live API-kontrakt till agenter. Ett typiskt agentflöde:
 
 ### 1 — Anslut och läs live-kontrakten
 
@@ -104,7 +104,7 @@ Bokningsskapande är en REST API-operation. Agenten sätter ihop rum, pris, datu
 
 ### 4 — Ta betalt och bekräfta
 
-[Booking Engine](/sv/products/booking-engine/) fullgör transaktionen — utcheckning, betalning (Wink är betalningsmottagare), avbokningspolicylogik, bekräftelse och bokningssynk till ansluten PMS eller channel manager. Källa och partnerattribution bevaras genom bokningen.
+[Booking Engine](/sv/products/booking-engine/) fullgör transaktionen — utcheckning, betalning (insamlad för hotellet, som förblir handlare av posten), avbokningspolicylogik, bekräftelse och bokningssynk till ansluten PMS eller channel manager. Källa och partnerattribution bevaras genom bokningen.
 
 ### 5 — Reagera på händelser
 
@@ -131,7 +131,7 @@ Agentisk resehandel är inte bara konsumentassistenter. Samma infrastruktur driv
 
 - **Konsumentresassistenter** som söker, bokar och hanterar en vistelse från början till slut.
 - **Bank-, lojalitets- och superapp-agenter** som integrerar hotellbokning i en befintlig kundupplevelse.
-- **Partner- och skapareautomationer** som hittar berättigade hotell, bygger tillgångar och håller attribution kopplad — och tjänar 10 % standardprovision på bekräftade bokningar.
+- **Partner- och skapareautomationer** som hittar berättigade hotell, bygger tillgångar och behåller attribution — och tjänar 10 % standardprovision på bekräftade bokningar.
 - **Hotellsidans copiloter** som hjälper team att skapa innehåll och analysera prestanda över [Extranet](/sv/products/extranet/), [Social](/sv/products/social/) och [Studio](/sv/products/studio/), medan hotellet behåller reglerna.
 
 ## Vart detta är på väg
@@ -141,7 +141,7 @@ Funktionerna ovan är live idag via REST API och MCP-server. Riktningen är djup
 ## Vanliga misstag
 
 - **Att behandla AI-upptäckt och AI-agenter som samma projekt.** Det ena är innehåll och struktur; det andra är API och fullgörande. Du behöver båda.
-- **Att låta agenter ange priser de inte kan boka.** Priser måste komma från livepriser och tillgänglighet, inte från scrappade sidor.
+- **Att låta agenter ange priser de inte kan boka.** Offerter måste komma från livepriser och tillgänglighet, inte från scrappade sidor.
 - **Att tappa attribution vid överlämning.** Om en agent skapar efterfrågan ska bokningen förbli kopplad till den källan.
 - **Att hoppa över fullgörandelagret.** Ett svar är inte en bokning förrän utcheckning, betalning och bekräftelse faktiskt sker.
 
@@ -170,9 +170,9 @@ Funktionerna ovan är live idag via REST API och MCP-server. Riktningen är djup
   heading="Vanliga frågor om AI-agenter och hotellbokning"
   description="Hur agenter transakterar och hur det skiljer sig från AI-sökning."
   items={[
-    { title: "Kan en AI-agent faktiskt slutföra en hotellbokning?", content: "Ja. På Wink är bokningsskapande en REST API-operation och Booking Engine fullgör den — utcheckning, betalning, bekräftelse och bokningssynk. En agent som anropar boknings-API:et på resenärens vägnar kan slutföra en verklig, bekräftad bokning med källkontext bevarad." },
+    { title: "Kan en AI-agent faktiskt slutföra en hotellbokning?", content: "Ja. På Wink är bokningsskapande en REST API-operation och Booking Engine fullgör den — utcheckning, betalning, bekräftelse och bokningssynk. En agent som anropar boknings-API:et på resenärens vägnar kan slutföra en verklig, bekräftad bokning med bevarad källkontext." },
     { title: "Hur skiljer sig en AI-agent från AI-sökning?", content: "AI-sökning och svarsmotorer hjälper en resenär att hitta och jämföra hotell och slutar i en rekommendation. En AI-agent agerar: den läser livepriser och tillgänglighet, skapar en bokning, tar betalt och reagerar på händelser. Hotell bör förbereda sig för båda — strukturerat innehåll för upptäckt och ett live-API för transaktioner." },
-    { title: "Hur ansluter en AI-agent till Wink?", content: "Genom en hostad MCP-server på https://docs.mcp.wink.travel/mcp och REST API med OAuth2. Agenten använder api_search och docs_search för att läsa live-operationer och kontrakt, sedan anropar den rätt operation." },
+    { title: "Hur ansluter en AI-agent till Wink?", content: "Genom en hostad MCP-server på https://docs.mcp.wink.travel/mcp och REST API med OAuth2. Agenten använder api_search och docs_search för att läsa live-operationer och kontrakt, och anropar sedan rätt operation." },
     { title: "Ersätter en AI-agent Booking Engine?", content: "Nej. Agenten skapar eller dirigerar avsikt; Booking Engine förblir fullgörandelagret för utcheckning, betalning, bekräftelse och bokningssynk. Varje agentöverlämning löses genom Booking Engine under." },
     { title: "Kan en AI-agent tjäna provision som partner?", content: "Ja. Wink bevarar källa och kampanjattribution i 6 månader per klick och betalar 10 % standardprovision på bekräftade bokningar. En agent som skapar kvalificerad efterfrågan och dirigerar en bokning kan vara en attribuerad, intjänande källa." },
     { title: "Behåller hotell kontrollen när en agent bokar?", content: "Ja. Agenter arbetar från hotellkontrollerad tillgång som hanteras i Extranet. Hotellet sätter rum, priser, policyer och kanalregler; agenten transakterar inom dessa." },

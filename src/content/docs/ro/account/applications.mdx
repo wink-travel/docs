@@ -1,6 +1,6 @@
 ---
 title: Aplicații
-description: Aflați cum să creați aplicații noi Wink care pot autentifica utilizatorii pe propriul dvs. site.
+description: Aflați cum să creați aplicații noi Wink care pot autentifica utilizatorii pe propriul site.
 sidebar:
   order: 10
 ---
@@ -9,8 +9,8 @@ import { Steps } from '@astrojs/starlight/components';
 import CloudinaryImage from '/src/components/cloudinary-image.astro';
 
 Aplicațiile vă oferă acces la toate funcțiile Wink ca dezvoltator. Puteți accesa toate aceleași date și chiar extinde funcțiile Wink.
-Puteți alege să folosiți serverul OAuth2 al Wink pentru a autentifica site-ul dvs. de călătorii în același mod în care ați folosi Google sau Facebook.
-Astfel, puteți extinde funcțiile Wink în propriul dvs. site web sau aplicație.
+Puteți alege să folosiți serverul OAuth2 Wink pentru a autentifica site-ul dvs. de călătorii în același mod în care ați folosi Google sau Facebook.
+Astfel, puteți extinde funcțiile Wink în propriul site web sau aplicație.
 
 :::note
 Prima dvs. aplicație este deja creată când [creați un cont nou](/ro/portal/create-account). Folosim această aplicație pentru unele scenarii de rezervare.
@@ -27,8 +27,8 @@ Nu puteți reutiliza această aplicație. Vă rugăm să creați aplicații noi 
       alt="Exemplu de aplicație"
       src="academy/application"
       errorImage="noimage_opaque_nyrtl0.png"
-    />
-    <figcaption>*Exemplu de intrare în aplicație*</figcaption>
+/>
+<figcaption>*Exemplu de intrare în aplicație*</figcaption>
 </figure>
 
 :::note
@@ -40,67 +40,88 @@ O aplicație generată pe Wink poate fi folosită pentru toate punctele finale A
  2. Faceți clic pe `Acțiuni` din partea de jos a cardului contului și alegeți `Gestionați contul`.
  3. Faceți clic pe fila `Aplicații` de pe pagina următoare.
  4. Această secțiune va lista toate aplicațiile dvs.
- 5. Alegeți să editați una existentă sau să creați una nouă.
- </Steps>
+ 5. Rotiți sau ștergeți una existentă sau creați una nouă.
+</Steps>
 
-## Creați aplicația
+## Creați aplicație
 
 Deoarece nu puteți accesa `cheia secretă` a aplicației pe care am creat-o pentru dvs., va trebui să creați propria aplicație.
-
-:::caution
-Trebuie să creați un cont afiliat pe Wink sau un cont pe TripPay înainte de a crea o aplicație, deoarece veți lega aplicația de un cont specific.
-:::
+Puteți crea o aplicație aici fără a configura mai întâi o proprietate sau o companie — nu este legată
+de niciun cont specific.
 
 ### Tipuri de client
 
-Când creați o aplicație, alegeți un tip de client care determină modul în care aplicația se autentifică:
+Când creați o aplicație, alegeți un tip de client care determină modul în care aplicația se autentifică.
+Acest lucru nu poate fi schimbat ulterior — dacă aveți nevoie de un tip diferit, creați o aplicație nouă.
 
-- **SPA** (Single Page Application) — Pentru aplicații frontend bazate pe browser care folosesc fluxul de cod de autorizare OAuth2 cu PKCE. Acesta este cel mai comun tip pentru aplicațiile web.
-- **MACHINE_2_MACHINE** — Pentru integrări server-la-server care se autentifică direct folosind acreditările clientului. Folosiți acest tip când serviciul dvs. backend trebuie să apeleze API-urile Wink fără prezența unui utilizator.
+- **Aplicație web** — O aplicație redată pe server care poate păstra în siguranță un secret de client (flux cod de autorizare).
+- **Aplicație single-page (SPA)** — O aplicație în browser fără backend; folosește PKCE, fără secret de client.
+- **Aplicație mobilă** — O aplicație nativă iOS/Android; folosește PKCE cu tokenuri de reîmprospătare rotative.
+- **Machine-to-machine** — Un serviciu backend care acționează ca sine (credite client); fără autentificare utilizator.
 
 Iată pașii pentru crearea unei aplicații:
 
 <Steps>
-1. Din pagina aplicațiilor, faceți clic pe butonul `Creează aplicație nouă`.
+1. Din pagina aplicațiilor, faceți clic pe butonul `Creați aplicație nouă`.
 2. ***Nume*** Dați un nume aplicației dvs. *ex. Aplicație Cool*
-3. **Tip client** Alegeți `SPA` pentru aplicații web sau `MACHINE_2_MACHINE` pentru integrări server.
-4. **Nume entitate** Legați aplicația de unul dintre conturile dvs. existente. *ex. Cont Cool*
-5. **URI-uri de redirecționare** Este necesar cel puțin un URI de redirecționare. Acesta este folosit pentru validarea domeniului de redirecționare după o autentificare reușită. *ex. https://www.cool-site.com*
-6. **URI-uri de redirecționare după deconectare** *(Opțional)* URL-uri unde utilizatorii pot fi redirecționați după ce se deconectează. Acest lucru asigură că utilizatorii ajung pe o pagină cunoscută după încheierea sesiunii.
-7. Faceți clic pe butonul `Salvează` pentru a continua.
+3. **Tip client** Alegeți tipul care corespunde modului în care aplicația dvs. se autentifică — vedeți [Tipuri de client](#client-types) mai sus.
+4. **URI-uri de redirecționare** Este necesar cel puțin un URI de redirecționare. Este folosit pentru validarea domeniului de redirecționare după o autentificare reușită. Nu se folosește pentru aplicațiile Machine-to-machine. *ex. https://www.cool-site.com*
+5. **URI-uri de redirecționare după deconectare** *(Opțional)* URL-uri unde utilizatorii pot fi redirecționați după deconectare. Lăsați gol pentru a reutiliza URI-urile de redirecționare de mai sus.
+6. **Domenii de acces (Scopes)** Alegeți ce poate accesa această aplicație în numele dvs. — vedeți [Alegerea domeniilor de acces](#choosing-scopes) mai jos.
+7. Faceți clic pe butonul `Creați aplicația` pentru a continua.
 </Steps>
 
-Veți fi redirecționat înapoi la lista dvs. de aplicații. Veți vedea noua aplicație în listă și veți avea acces la cheia secretă a aplicației doar o singură dată. Asigurați-vă că o copiați și o păstrați într-un loc sigur.
+Veți fi redirecționat înapoi la lista dvs. de aplicații, iar un dialog afișează o singură dată noul Client ID
+și secretul Clientului. Copiați secretul acum și păstrați-l în siguranță — nu va mai fi afișat niciodată,
+și nu există nicio modalitate de a-l recupera ulterior (doar [rotiți](#rotate-credentials) pentru unul nou).
 
-## Actualizați aplicația
+## Alegerea domeniilor de acces (Scopes)
 
-Va trebui să actualizați aplicația dacă unul dintre URI-urile dvs. de redirecționare se schimbă sau doriți să adăugați ori să eliminați un URI.
+Fiecare aplicație poartă întotdeauna domeniile **Autentificare (OpenID Connect)** (`openid`, `profile`,
+`email`, `offline_access`) — acestea confirmă identitatea utilizatorului și îl mențin autentificat, așa că sunt
+bifate și blocate; nu sunt o opțiune.
 
-Pentru a actualiza o aplicație existentă, faceți următoarele:
+Tot restul este opțional. Domeniile rămase sunt grupate în aceleași secțiuni funcționale
+documentate în [Scopes](/ro/developers/authentication#scopes) — Cont, Inventar & tarife, Rezervări,
+Marketing & promoții, Conținut proprietate, Analize & rapoarte, Integrări channel manager,
+Plăți și Contabilitate & registru — fiecare cu o descriere în limbaj simplu a ceea ce deblochează. Folosiți
+linkurile `Toate` / `Niciuna` de deasupra listei pentru a selecta sau deselecta toate domeniile opționale odată.
 
-<Steps>
-1. Faceți clic pe linkul `Acțiuni` pentru aplicația pe care doriți să o actualizați.
-2. Faceți clic pe butonul `Actualizează` din meniul Acțiuni.
-3. Faceți modificările dorite la aplicație.
-4. Faceți clic pe butonul `Salvează` pentru a continua.
-</Steps>
-
-Veți fi redirecționat înapoi la lista dvs. de aplicații.
-
-## Ștergeți aplicația
-
-:::caution
-Vă rugăm să nu ștergeți aplicația pe care am creat-o automat pentru dvs. pentru a vă asigura că toate funcțiile funcționează pentru contul dvs.
+:::note
+**Plăți** și **Contabilitate & registru** sunt marcate ca **Sensibile** deoarece protejează mișcarea banilor — acordați-le doar aplicațiilor care au nevoie specifică să acceseze plățile sau registrul.
 :::
 
-Dacă nu mai aveți nevoie de o aplicație, o puteți șterge.
+Două familii de domenii nu sunt oferite intenționat în acest formular:
 
-Pentru a șterge o aplicație, faceți următoarele:
+- **`mcp.*`** — acces AI-agent la transportul [Model Context Protocol](/ro/developers/mcp), care este
+  aprovizionat separat și doar pentru clienți machine-to-machine.
+- **Domenii de nivel administrator** (`administrator.*`) — acces la nivel de platformă care nu este acordat per aplicație.
+
+Odată ce o aplicație este creată, atât această filă, cât și [Aplicații cu consimțământ](/ro/account/apps) afișează domeniile acordate
+grupate pe secțiuni (ex. "Rezervări: `booking.read`"), astfel încât să puteți vedea ce poate face o aplicație dintr-o privire
+fără a o deschide.
+
+## Rotirea acreditărilor
+
+Dacă un secret de client ar fi putut fi compromis sau doriți pur și simplu acreditări noi, rotiți-le în loc să recreați aplicația:
 
 <Steps>
-1. Faceți clic pe linkul `Acțiuni` pentru aplicația pe care doriți să o ștergeți.
-2. Faceți clic pe butonul `Șterge` din meniul Acțiuni.
-3. Faceți clic pe butonul `OK` pentru a confirma ștergerea.
+1. Găsiți aplicația în lista dvs. de aplicații și faceți clic pe `Rotiți`.
+2. Confirmați dialogul — Client ID și secretul curent încetează să mai funcționeze imediat.
+3. Copiați noul Client ID și secret din dialogul afișat o singură dată înainte de a-l închide.
 </Steps>
 
-Veți fi redirecționat înapoi la lista dvs. de aplicații.
+Rotirea păstrează numele aplicației, tipul clientului, URI-urile de redirecționare și domeniile — doar acreditările se schimbă.
+
+## Ștergerea aplicației
+
+:::caution
+Vă rugăm să nu ștergeți aplicația pe care am creat-o automat pentru dvs. pentru a asigura funcționarea tuturor caracteristicilor contului dvs.
+:::
+
+Dacă nu mai aveți nevoie de o aplicație, o puteți șterge. Aceasta este o acțiune permanentă — acreditările sunt revocate imediat și nu pot fi recuperate.
+
+<Steps>
+1. Găsiți aplicația în lista dvs. de aplicații și faceți clic pe `Ștergeți`.
+2. Confirmați dialogul pentru a șterge permanent aplicația.
+</Steps>

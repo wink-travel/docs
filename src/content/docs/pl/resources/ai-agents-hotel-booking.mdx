@@ -29,7 +29,7 @@ import IconArrowRight from "@tabler/icons/outline/arrow-right.svg";
   <h1 class="font-heading mt-3 text-4xl font-semibold tracking-tight text-balance @lg:text-5xl">Jak AI agents rezerwują hotele</h1>
   <p class="mkt-sub text-muted-foreground mt-5">
     Wyszukiwanie AI pomaga podróżnemu <em>znaleźć</em> hotel. AI agent idzie dalej — potrafi odczytać aktualne ceny,
-    stworzyć rezerwację, pobrać płatność i reagować na zdarzenia w imieniu podróżnego. To działa tylko wtedy, gdy
+    utworzyć rezerwację, pobrać płatność i reagować na zdarzenia w imieniu podróżnego. To działa tylko wtedy, gdy
     agent ma pod spodem ustrukturyzowaną infrastrukturę handlu turystycznego.
   </p>
   <div class="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
@@ -74,7 +74,7 @@ Rezerwacja hotelu to prawdziwe zdarzenie handlowe: odpowiedni pokój, właściwa
 | Ceny i dostępność w czasie rzeczywistym | Cena podana przez agenta musi być faktycznie rezerwowalna w danym momencie. |
 | Operacja rezerwacji | Tworzenie rezerwacji musi być prawdziwym wywołaniem API, a nie przekierowaniem do formularza internetowego. |
 | Płatność | Agent (lub podróżny przez niego) musi móc zapłacić, z zastosowaniem logiki polityk. |
-| Atrybucja | Źródło, kampania lub agent, który stworzył rezerwację, powinny pozostać przypisane. |
+| Atrybucja | Źródło, kampania lub agent, który utworzył rezerwację, powinny pozostać przypisane. |
 | Zdarzenia | Agent powinien móc reagować na potwierdzenia, zmiany, anulacje i zwroty. |
 
 Bez tego agent może rekomendować — ale nie może rezerwować.
@@ -102,11 +102,11 @@ Tworzenie rezerwacji to operacja REST API. Agent składa pokój, cenę, daty i g
 
 ### 4 — Pobierz płatność i potwierdź
 
-[Booking Engine](/pl/products/booking-engine/) realizuje transakcję — finalizację, płatność (Wink jest sprzedawcą), logikę polityk anulacji, potwierdzenie i synchronizację rezerwacji z podłączonym PMS lub channel managerem. Źródło i atrybucja partnera są zachowane przez rezerwację.
+[Booking Engine](/pl/products/booking-engine/) realizuje transakcję — finalizację, płatność (pobrana dla hotelu, który pozostaje sprzedawcą), logikę polityk anulacji, potwierdzenie i synchronizację rezerwacji z połączonym PMS lub channel managerem. Źródło i atrybucja partnera są zachowane przez rezerwację.
 
 ### 5 — Reaguj na zdarzenia
 
-Agent może subskrybować `booking.created` i inne webhooki, by uzgadniać, powiadamiać podróżnego lub wywoływać dalsze akcje.
+Agent może subskrybować zdarzenia webhook `booking.created` i inne, by uzgadniać, powiadamiać podróżnego lub wywoływać dalsze akcje.
 
 Zasada: **agent tworzy lub kieruje intencję; Booking Engine pozostaje warstwą realizacji pod każdą przekazaniem.**
 
@@ -123,13 +123,13 @@ Rozwiązują różne zadania, a hotel musi być gotowy na oba.
 
 [Odkrywanie AI dla hoteli](/pl/resources/ai-discovery-hotels/) opisuje stronę wyszukiwania; ten przewodnik dotyczy strony transakcji.
 
-## Kto buduje agentów na handlu hotelowym
+## Kto buduje agentów dla handlu hotelowego
 
 Agentowy handel w turystyce to nie tylko asystenci konsumenccy. Ta sama infrastruktura napędza:
 
 - **Konsumenckich asystentów podróży**, którzy wyszukują, rezerwują i zarządzają pobytem od początku do końca.
 - **Agentów bankowych, lojalnościowych i super-aplikacji**, osadzających rezerwacje hoteli w istniejącym doświadczeniu klienta.
-- **Automatyzacje partnerów i twórców**, które odkrywają kwalifikujące się hotele, tworzą zasoby i utrzymują atrybucję — zarabiając 10% domyślnej prowizji od potwierdzonych rezerwacji.
+- **Automatyzacje partnerów i twórców**, które odkrywają kwalifikujące się hotele, tworzą zasoby i utrzymują połączenie atrybucji — zarabiając 10% domyślnej prowizji od potwierdzonych rezerwacji.
 - **Kopilotów po stronie hotelu**, którzy pomagają zespołom generować treści i analizować wyniki w [Extranet](/pl/products/extranet/), [Social](/pl/products/social/) i [Studio](/pl/products/studio/), podczas gdy hotel zachowuje kontrolę nad zasadami.
 
 ## Dokąd to zmierza
@@ -139,7 +139,7 @@ Powyższe możliwości są dostępne dziś przez REST API i serwer MCP. Kierunek
 ## Częste błędy
 
 - **Traktowanie odkrywania AI i AI agents jako tego samego projektu.** Jedno to treść i struktura; drugie to API i realizacja. Potrzebujesz obu.
-- **Pozwalanie agentom podawać ceny, których nie mogą zarezerwować.** Oferty muszą pochodzić z aktualnych cen i dostępności, nie ze stron skanowanych.
+- **Pozwalanie agentom na podawanie cen, których nie mogą zarezerwować.** Oferty muszą pochodzić z aktualnych cen i dostępności, nie ze stron skanowanych.
 - **Utrata atrybucji przy przekazaniu.** Jeśli agent generuje popyt, rezerwacja powinna pozostać powiązana z tym źródłem.
 - **Pomijanie warstwy realizacji.** Odpowiedź to nie rezerwacja, dopóki nie nastąpi finalizacja, płatność i potwierdzenie.
 
@@ -151,9 +151,9 @@ Powyższe możliwości są dostępne dziś przez REST API i serwer MCP. Kierunek
   <div class="mt-4 grid gap-3 @md:grid-cols-2">
     {[
       { label: "Agentic AI", href: "/agentic-ai/" },
-      { label: "Odkrywanie AI dla hoteli", href: "/resources/ai-discovery-hotels/" },
+      { label: "AI Discovery for Hotels", href: "/resources/ai-discovery-hotels/" },
       { label: "Booking Engine", href: "/products/booking-engine/" },
-      { label: "Dla deweloperów", href: "/builders/" },
+      { label: "For Developers", href: "/builders/" },
     ].map((l) => (
       <a href={l.href} class="group flex items-center justify-between rounded-xl border border-border bg-card px-4 py-3 text-sm font-medium transition-colors hover:border-primary/40">
         {l.label}
@@ -166,14 +166,14 @@ Powyższe możliwości są dostępne dziś przez REST API i serwer MCP. Kierunek
 {/* FAQ */}
 <FaqGrid emitJsonLd
   heading="Najczęściej zadawane pytania o AI agents i rezerwacje hoteli"
-  description="Jak agenci dokonują transakcji i czym różnią się od wyszukiwania AI."
+  description="Jak agenci realizują transakcje i czym różnią się od wyszukiwania AI."
   items={[
-    { title: "Czy AI agent może faktycznie zakończyć rezerwację hotelu?", content: "Tak. Na Wink tworzenie rezerwacji to operacja REST API, a Booking Engine ją realizuje — finalizacja, płatność, potwierdzenie i synchronizacja rezerwacji. Agent wywołujący API rezerwacji w imieniu podróżnego może zakończyć prawdziwą, potwierdzoną rezerwację z zachowaniem kontekstu źródła." },
+    { title: "Czy AI agent faktycznie może zakończyć rezerwację hotelu?", content: "Tak. Na Wink tworzenie rezerwacji to operacja REST API, a Booking Engine ją realizuje — finalizacja, płatność, potwierdzenie i synchronizacja rezerwacji. Agent wywołujący API rezerwacji w imieniu podróżnego może zakończyć prawdziwą, potwierdzoną rezerwację z zachowaniem kontekstu źródła." },
     { title: "Czym AI agent różni się od wyszukiwania AI?", content: "Wyszukiwanie AI i silniki odpowiedzi pomagają podróżnemu znaleźć i porównać hotele, kończąc na rekomendacji. AI agent działa: odczytuje aktualne ceny i dostępność, tworzy rezerwację, pobiera płatność i reaguje na zdarzenia. Hotele powinny przygotować się na oba — ustrukturyzowaną treść do odkrywania i żywe API do transakcji." },
     { title: "Jak AI agent łączy się z Wink?", content: "Przez hostowany serwer MCP pod adresem https://docs.mcp.wink.travel/mcp oraz REST API z OAuth2. Agent używa api_search i docs_search, by odczytać aktualne operacje i kontrakty, a następnie wywołuje odpowiednią operację." },
-    { title: "Czy AI agent zastępuje Booking Engine?", content: "Nie. Agent tworzy lub kieruje intencję; Booking Engine pozostaje warstwą realizacji dla finalizacji, płatności, potwierdzenia i synchronizacji rezerwacji. Każde przekazanie agenta rozwiązuje się przez Booking Engine pod spodem." },
+    { title: "Czy AI agent zastępuje Booking Engine?", content: "Nie. Agent tworzy lub kieruje intencję; Booking Engine pozostaje warstwą realizacji finalizacji, płatności, potwierdzenia i synchronizacji rezerwacji. Każde przekazanie agenta rozwiązuje się przez Booking Engine pod spodem." },
     { title: "Czy AI agent może zarabiać prowizję jako partner?", content: "Tak. Wink zachowuje atrybucję źródła i kampanii przez 6 miesięcy od kliknięcia i wypłaca 10% domyślnej prowizji od potwierdzonych rezerwacji. Agent, który generuje kwalifikowany popyt i kieruje rezerwację, może być przypisanym, zarabiającym źródłem." },
-    { title: "Czy hotele zachowują kontrolę, gdy agent dokonuje rezerwacji?", content: "Tak. Agenci działają na kontrolowanym przez hotel zasobie zarządzanym w Extranet. Hotel ustala pokoje, ceny, polityki i zasady kanałów; agent dokonuje transakcji w ich ramach." },
+    { title: "Czy hotele zachowują kontrolę, gdy agent rezerwuje?", content: "Tak. Agenci działają na kontrolowanym przez hotel zasobie zarządzanym w Extranet. Hotel ustala pokoje, ceny, polityki i zasady kanałów; agent dokonuje transakcji w ich ramach." },
   ]}
 />
 
@@ -182,7 +182,7 @@ Powyższe możliwości są dostępne dziś przez REST API i serwer MCP. Kierunek
   <div class="mx-auto w-full max-w-7xl px-4 py-24 text-center">
     <h2 class="mkt-h2 font-heading">Buduj handel turystyczny dla AI agents.</h2>
     <p class="mx-auto mt-4 max-w-2xl text-pretty text-white/70 @lg:text-lg">
-      Połącz serwer MCP, odczytaj aktualne kontrakty i pozwól Booking Engine realizować rezerwację za każdym przekazaniem agenta.
+      Połącz serwer MCP, odczytaj aktualne kontrakty i pozwól Booking Engine realizować rezerwacje za każdym przekazaniem agenta.
     </p>
     <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
       <a href="/agentic-ai/" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-[#ff6b35] px-8 text-base font-semibold text-white hover:bg-[#e85b29] sm:w-auto">Poznaj Agentic AI</a>

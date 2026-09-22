@@ -7,8 +7,8 @@ sidebar:
 
 Wink tidak memiliki langganan, tidak ada kursi, dan tidak ada biaya pengaturan. Sebagian besar platform ini gratis, dan hanya ada dua hal yang akan Anda bayar:
 
-1. **Persentase kecil per pemesanan** — hanya saat Anda benar-benar menghasilkan uang.
-2. **Biaya penggunaan pay-as-you-go** — pada beberapa fitur premium yang menghabiskan biaya setiap kali digunakan, masing-masing dengan kuota gratis bulanan.
+1. **Biaya platform per pemesanan, plus biaya pemrosesan kartu sesuai biaya** — hanya saat pemesanan dilakukan.
+2. **Biaya penggunaan pay-as-you-go** — pada beberapa fitur premium yang mengeluarkan biaya setiap kali digunakan, masing-masing dengan kuota gratis bulanan.
 
 ## Apa yang gratis
 
@@ -25,66 +25,62 @@ Ini tidak dikenakan biaya, selamanya, tanpa kuota dan tanpa pengukuran:
 
 ## Pemesanan
 
-Wink mendukung model merchant dan agen.
+Wink mendukung dua model: Wink mengumpulkan pembayaran untuk hotel, dan agen perjalanan berlisensi yang bertindak sebagai merchant of record.
 
-### Model 1
+### Model 1 — Wink mengumpulkan untuk hotel
 
-Wink adalah merchant resmi saat pemesanan terjadi. Wink bertanggung jawab atas dana dan memegang semua lisensi yang diperlukan untuk mengoperasikan agen perjalanan.  
+Wink mengumpulkan pembayaran tamu sebagai agen pengumpulan pembayaran terbatas hotel. Hotel adalah merchant of record, dan nama hotel muncul di pernyataan kartu tamu.  
 Model ini berlaku untuk 95% dari semua pemesanan.
-
-Wink mengenakan `5,5% per pemesanan` untuk memelihara platform.  
-Sebagian besar biaya tersebut masuk ke gateway pembayaran (Visa, MasterCard, dll). Rata-rata biaya pemesanan bagi kami adalah `2,95%`; kadang hingga `3,6%`. Pengembalian dana sebagian menambah biaya karena gateway pembayaran menganggapnya sebagai biaya baru.  
-Kami ingin transparan tentang harga sekarang agar semua pihak menghemat waktu sebelum mencoba menegosiasikan diskon lebih lanjut sebelum menggunakan Wink. Model harga kami sangat adil dan kami juga perlu mencari nafkah.
 
 #### Rincian
 
-:::note[Biaya pemrosesan]
-Wink mengenakan biaya pemrosesan 1,5% per pemesanan. Ini mencakup pemeliharaan platform dan memungkinkan kami memberikan semua yang tercantum di atas secara gratis.
+:::note[Biaya platform]
+Wink mengenakan biaya platform 1,5% per pemesanan. Ini mencakup pemeliharaan platform dan memungkinkan kami memberikan semua yang tercantum di atas secara gratis. Biaya ini tidak dikenakan pada pemesanan yang dibatalkan.
 :::
 
-:::note[Biaya pembayaran]
-TripPay mengenakan biaya pembayaran 4,0% per pemesanan. Ini mencakup pengambilan pembayaran dari pelancong.
+:::note[Biaya pemrosesan kartu]
+Biaya pemrosesan pembayaran yang dikenakan untuk mengumpulkan pembayaran tamu diteruskan ke hotel sesuai biaya, tanpa margin. Biaya ini bervariasi tergantung kartu dan metode pembayaran tamu, dan jumlah pastinya muncul di bagian Akuntansi setiap pemesanan. Jika pemesanan dibatalkan atau dikembalikan, biaya yang dipertahankan oleh pemroses tetap dikenakan; jika tidak ada biaya, kami juga tidak mengenakan biaya.
 :::
 
 :::note[Pencairan dana]
 Ada biaya terkait pengiriman dana ke akun Anda. Ini tergantung pada metode pencairan yang Anda pilih. Saat ini kami mendukung:
 
-- **Transfer bank** Biaya tergantung pada negara tempat Anda berada dan dari mana dana dikirim. Kami menyediakan kalkulator kutipan yang dapat Anda gunakan saat Anda memiliki dana tersedia di akun Anda.
+- **Transfer bank** — Biaya tergantung pada negara tempat Anda berada, dari mana dana dikirim, dan konversi mata uang yang diterapkan. Biaya pencairan dan biaya konversi dibayar oleh penerima, sesuai biaya. Kami menyediakan kalkulator kutipan yang dapat Anda gunakan saat dana tersedia di akun Anda.
 
 Jika Anda ingin kami mendukung metode pencairan lain, kirimkan email kepada kami.
 :::
 
-### Model 2
+### Model 2 — Agen perjalanan sebagai merchant of record
 
-Model ini hanya tersedia untuk agen perjalanan yang memegang lisensi agen perjalanan di wilayah mereka dan yang ingin menjadi merchant resmi. Beberapa agen perjalanan terdaftar kami ingin bertanggung jawab atas penanganan pembayaran dan pencairan dana ke hotel. Dalam model ini, mereka bertanggung jawab atas dana dan memegang lisensi yang diperlukan untuk beroperasi di negara mereka.
+Model ini hanya tersedia untuk agen perjalanan yang memiliki lisensi agen perjalanan di wilayah mereka dan yang ingin menjadi merchant of record. Beberapa agen perjalanan terdaftar kami ingin bertanggung jawab atas penanganan pembayaran dan pencairan dana ke hotel. Dalam model ini, mereka bertanggung jawab atas dana dan memiliki lisensi yang diperlukan untuk beroperasi di negara mereka.
 
 #### Rincian
 
-:::note[Biaya pemrosesan]
-Wink mengenakan biaya pemrosesan 1,5% per pemesanan. Ini mencakup pemeliharaan platform dan memungkinkan kami memberikan semua yang tercantum di atas secara gratis.
+:::note[Biaya platform]
+Wink mengenakan biaya platform 1,5% per pemesanan. Ini mencakup pemeliharaan platform dan memungkinkan kami memberikan semua yang tercantum di atas secara gratis.
 :::
 
-Dengan model ini, agen perjalanan hanya membayar biaya pemrosesan Wink dan Wink akan mengirimkan faktur kepada agen perjalanan setiap bulan.
+Dengan model ini, agen perjalanan hanya membayar biaya platform Wink dan Wink akan mengirimkan faktur kepada agen perjalanan setiap bulan.
 
 ## Penggunaan (pay-as-you-go)
 
-Beberapa fitur menghabiskan biaya setiap kali digunakan — AI generatif, API sosial pihak ketiga, dan penyajian harga langsung dalam skala besar. Daripada menggabungkan fitur tersebut ke dalam paket bulanan yang mungkin tidak Anda gunakan, Anda hanya membayar untuk apa yang benar-benar Anda konsumsi, dan hanya setelah Anda menggunakan kuota gratis bulanan.
+Beberapa fitur mengeluarkan biaya setiap kali digunakan — AI generatif, API sosial pihak ketiga, dan penyajian harga langsung dalam skala besar. Daripada menggabungkan fitur tersebut dalam paket bulanan yang mungkin tidak Anda gunakan, Anda hanya membayar untuk apa yang benar-benar Anda konsumsi, dan hanya setelah Anda menggunakan kuota gratis bulanan.
 
 | Fitur | Gratis per bulan | Selanjutnya | Unit penagihan |
 | -- | -- | -- | -- |
-| Posting sosial — gambar | 1 | $1,50 | Satu posting yang dipublikasikan |
-| Posting sosial — gambar AI | 0 | $2,50 | Satu posting yang dipublikasikan |
-| Posting sosial — video AI yang ditingkatkan | 0 | $4,00 | Satu posting yang dipublikasikan |
-| Posting sosial — video AI | 0 | $14,00 | Satu posting yang dipublikasikan |
-| Balasan AI untuk komentar atau DM | 5 | $0,05 | Satu balasan |
-| Jawaban chatbot | 5 | $0,05 | Satu jawaban |
-| API Mitra | 10.000 | $0,0001 | Satu hotel-hari |
+| Posting sosial — gambar | 1 | $1.50 | Satu posting yang dipublikasikan |
+| Posting sosial — gambar AI | 0 | $2.50 | Satu posting yang dipublikasikan |
+| Posting sosial — video AI yang ditingkatkan | 0 | $4.00 | Satu posting yang dipublikasikan |
+| Posting sosial — video AI | 0 | $14.00 | Satu posting yang dipublikasikan |
+| Balasan AI untuk komentar atau DM | 5 | $0.05 | Satu balasan |
+| Jawaban chatbot | 5 | $0.05 | Satu jawaban |
+| API Mitra | 10.000 | $0.0001 | Satu hotel-hari |
 
 Harga dalam USD. Kuota gratis diberikan **per akun**, bukan per pengguna, dan direset pada tanggal 1 setiap bulan (UTC).
 
 ### Cara penetapan harga posting
 
-Posting dihargai berdasarkan isinya, karena itulah yang menghabiskan biaya bagi kami untuk membuatnya. Gambar diam murah; video tidak; apa pun yang kami hasilkan dengan AI biayanya jauh lebih tinggi daripada foto yang Anda sediakan sendiri.
+Posting dihargai berdasarkan isinya, karena itulah yang mengeluarkan biaya bagi kami untuk membuatnya. Gambar diam murah; video tidak; apa pun yang kami hasilkan dengan AI biayanya jauh lebih tinggi daripada foto yang Anda sediakan sendiri.
 
 - **Kuota gratis hanya mencakup posting gambar standar.** Anda mendapatkan satu per akun per bulan. Posting video dan media yang dihasilkan AI dikenakan biaya sejak posting pertama — tidak ada kuota gratis untuk kategori ini, jadi properti yang memposting video harus mengantisipasi biaya pada bulan pertama.
 - **Video menang.** Jika sebuah posting mengandung video sama sekali, seluruh posting dikenakan tarif video. Posting yang mencampur gambar dan video dianggap sebagai posting video.
@@ -95,13 +91,13 @@ Posting dihargai berdasarkan isinya, karena itulah yang menghabiskan biaya bagi 
 - Hanya posting **yang dihasilkan** dan dipublikasikan ke jaringan pihak ketiga (Facebook, Instagram) yang dikenakan biaya. Posting yang Anda tulis sendiri gratis, ke mana pun dipublikasikan.
 - **Publikasi ke WinkLinks selalu gratis**, baik dihasilkan atau tidak.
 - Anda dikenakan biaya **saat dipublikasikan**, bukan per percobaan. Menghasilkan ulang draf sampai Anda puas tidak menambah tagihan — Anda membayar sekali untuk posting yang benar-benar Anda kirim. Percobaan tidak tak terbatas: setiap posting memungkinkan sekitar 10 regenerasi untuk gambar dan 3 untuk video, yang mencerminkan biaya produksi kami. Anda akan melihat berapa banyak yang tersisa saat bekerja.
-- Pada API Mitra, satu **hotel-hari** adalah satu hotel yang dihitung untuk satu malam menginap — *bukan* satu panggilan API. Pencarian yang mengembalikan 20 hotel untuk 3 malam adalah 60 hotel-hari dari satu permintaan. Endpoint pencarian dan autocomplete gratis dan tidak diukur.
+- Pada API Mitra, **hotel-hari** adalah satu hotel yang dihitung untuk satu malam menginap — *bukan* satu panggilan API. Pencarian yang mengembalikan 20 hotel untuk 3 malam adalah 60 hotel-hari dari satu permintaan. Endpoint pencarian dan autocomplete gratis dan tidak diukur.
 
 ### Mengaktifkannya
 
 Pay-as-you-go mati secara default. Semua orang mendapatkan kuota gratis tanpa melakukan apa pun.
 
-Untuk melebihi kuota, **pemilik** akun mengaktifkan pay-as-you-go dan memilih akun mana yang akan diukur. Penggunaan dari semua akun yang diaktifkan digabungkan menjadi **faktur bulanan tunggal**, yang dapat Anda bayar otomatis dengan kartu atau terima sebagai faktur untuk dibayar sendiri.
+Untuk melebihi kuota, **pemilik** akun mengaktifkan pay-as-you-go dan memilih akun mana yang akan diukur. Penggunaan dari semua akun yang diaktifkan digabungkan menjadi **faktur bulanan tunggal**, yang dapat Anda bayar otomatis dengan kartu atau terima faktur untuk dibayar sendiri.
 
 Setelah diaktifkan, penggunaan Anda diukur tetapi **tidak pernah dibatasi** — Anda tidak akan terkena batas kecepatan karena membayar kepada kami.
 
@@ -118,11 +114,11 @@ Tidak ada yang rusak dan tidak ada biaya yang dikenakan. Anda hanya berhenti pad
 | Ditangguhkan | Faktur tidak dibayar sampai akhir. Tindakan yang dikenakan biaya diblokir sampai diselesaikan; fitur gratis tetap berjalan normal. |
 
 :::tip[Harga langsung]
-Harga satuan dan kuota gratis selalu ditampilkan di Portal, langsung dari sistem penagihan kami, sehingga Anda dapat memeriksanya sebelum berkomitmen. Lihat [Penagihan](/id/portal/plan) untuk mengaktifkan pay-as-you-go, memilih akun Anda, dan melacak penggunaan serta faktur bulan berjalan. Lihat [Sosial](/id/portal/social/what-is-social) untuk cara volume posting memengaruhi pengeluaran Anda.
+Harga satuan dan kuota gratis selalu ditampilkan di Portal, langsung dari sistem penagihan kami, sehingga Anda dapat memeriksanya sebelum berkomitmen. Lihat [Penagihan](/id/portal/plan) untuk mengaktifkan pay-as-you-go, memilih akun Anda, dan melacak penggunaan serta faktur bulan berjalan. Lihat [Sosial](/id/portal/social/what-is-social) untuk bagaimana volume posting memengaruhi pengeluaran Anda.
 :::
 
 ## Efek platform
 
-Akhirnya, seiring kami terus tumbuh dalam ukuran dan jumlah pemesanan, kami ingin dapat berbagi beberapa efek platform dengan Anda. Lebih banyak pemesanan membawa peluang diskon volume dari gateway pembayaran kami yang memungkinkan kami menurunkan biaya pemrosesan untuk semua orang.
+Akhirnya, seiring kami terus tumbuh dalam ukuran dan jumlah pemesanan, kami ingin dapat berbagi beberapa efek platform dengan Anda. Lebih banyak pemesanan membawa peluang diskon volume dari pemroses pembayaran kami. Karena pemrosesan kartu diteruskan sesuai biaya, setiap penghematan yang kami negosiasikan langsung diberikan ke hotel.
 
 Bergabunglah dengan Wink hari ini dan temukan cara baru yang menguntungkan untuk berbisnis di industri perhotelan!

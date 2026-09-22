@@ -24,7 +24,7 @@ Bạn không thể tái sử dụng ứng dụng này. Vui lòng tạo các ứn
       height="215"
       resize="scale"
       quality="best"
-      alt="Mẫu ứng dụng"
+      alt="Sample application"
       src="academy/application"
       errorImage="noimage_opaque_nyrtl0.png"
     />
@@ -36,56 +36,82 @@ Một ứng dụng được tạo trên Wink có thể được sử dụng cho 
 :::
 
 <Steps>
- 1. Chọn tài khoản bạn muốn làm việc từ [Tài khoản](https://app.wink.travel).
+ 1. Chọn tài khoản bạn muốn làm việc từ [Accounts](https://app.wink.travel).
  2. Nhấp vào `Actions` ở dưới cùng của thẻ tài khoản và chọn `Manage account`.
  3. Nhấp vào tab `Applications` trên trang tiếp theo.
  4. Phần này sẽ liệt kê tất cả các ứng dụng của bạn.
- 5. Chọn chỉnh sửa một ứng dụng hiện có hoặc tạo một ứng dụng mới.
+ 5. Xoay vòng hoặc xóa một ứng dụng hiện có, hoặc tạo một ứng dụng mới.
  </Steps>
 
 ## Tạo ứng dụng
 
 Vì bạn không thể truy cập `secret key` của ứng dụng chúng tôi đã tạo cho bạn, bạn sẽ cần tạo ứng dụng của riêng mình.
+Bạn có thể tạo một ứng dụng tại đây mà không cần thiết lập trước một tài sản hoặc công ty — nó không bị ràng buộc
+với bất kỳ tài khoản cụ thể nào.
 
-:::caution
-Bạn cần tạo tài khoản đại lý trên Wink hoặc tài khoản trên TripPay trước khi tạo ứng dụng vì bạn sẽ liên kết ứng dụng với một tài khoản cụ thể.
+### Loại khách hàng
+
+Khi tạo một ứng dụng, bạn chọn loại khách hàng xác định cách ứng dụng xác thực.
+Điều này không thể thay đổi sau — nếu bạn cần loại khác, hãy tạo một ứng dụng mới.
+
+- **Web application** — Ứng dụng được kết xuất trên máy chủ có thể giữ bí mật khách hàng an toàn (luồng mã ủy quyền).
+- **Single-page app (SPA)** — Ứng dụng trình duyệt không có backend; sử dụng PKCE, không có bí mật khách hàng.
+- **Mobile app** — Ứng dụng gốc iOS/Android; sử dụng PKCE với token làm mới xoay vòng.
+- **Machine-to-machine** — Dịch vụ backend hoạt động như chính nó (client credentials); không đăng nhập người dùng.
+
+Dưới đây là các bước để tạo một ứng dụng:
+
+<Steps>
+1. Từ trang ứng dụng, nhấp vào nút `Create new application`.
+2. ***Tên*** Đặt tên cho ứng dụng của bạn. *ví dụ Cool App*
+3. **Loại khách hàng** Chọn loại phù hợp với cách ứng dụng của bạn xác thực — xem [Loại khách hàng](#client-types) ở trên.
+4. **Redirect URIs** Cần ít nhất một URI chuyển hướng. Nó được dùng để xác thực miền chuyển hướng sau khi xác thực thành công. Không dùng cho ứng dụng Machine-to-machine. *ví dụ https://www.cool-site.com*
+5. **Post-logout redirect URIs** *(Tùy chọn)* Các URL nơi người dùng có thể được chuyển hướng sau khi đăng xuất. Để trống để sử dụng lại các redirect URI ở trên.
+6. **Scopes** Chọn những gì ứng dụng này có thể truy cập thay mặt bạn — xem [Chọn phạm vi](#choosing-scopes) bên dưới.
+7. Nhấp vào nút `Create application` để tiếp tục.
+</Steps>
+
+Bạn sẽ được chuyển hướng trở lại danh sách ứng dụng của mình, và một hộp thoại một lần sẽ hiển thị Client ID
+và Client secret mới. Sao chép bí mật ngay bây giờ và lưu ở nơi an toàn — nó sẽ không bao giờ hiển thị lại, và
+không có cách nào để lấy lại sau này (chỉ có thể [xoay vòng](#rotate-credentials) để lấy cái mới).
+
+## Chọn phạm vi
+
+Mỗi ứng dụng luôn mang theo các phạm vi **Sign-in (OpenID Connect)** (`openid`, `profile`,
+`email`, `offline_access`) — những phạm vi này xác nhận danh tính người dùng và giữ họ đăng nhập, vì vậy chúng
+được đánh dấu chọn và khóa; không phải là lựa chọn.
+
+Mọi thứ khác là tùy chọn. Các phạm vi còn lại được nhóm theo các phần chức năng giống như
+được mô tả trong [Scopes](/vi/developers/authentication#scopes) — Tài khoản, Kho & giá, Đặt chỗ,
+Marketing & khuyến mãi, Nội dung tài sản, Phân tích & báo cáo, Tích hợp quản lý kênh,
+Thanh toán, và Kế toán & sổ cái — mỗi phần có mô tả bằng ngôn ngữ đơn giản về những gì nó mở khóa. Sử dụng
+liên kết `All` / `None` phía trên danh sách để chọn hoặc bỏ chọn tất cả các phạm vi tùy chọn cùng lúc.
+
+:::note
+**Thanh toán** và **Kế toán & sổ cái** được đánh dấu **Nhạy cảm** vì chúng liên quan đến việc chuyển tiền — chỉ cấp cho các ứng dụng thực sự cần truy cập thanh toán hoặc sổ cái.
 :::
 
-### Loại client
+Hai nhóm phạm vi được cố ý **không cung cấp** trên biểu mẫu này:
 
-Khi tạo ứng dụng, bạn chọn loại client xác định cách ứng dụng xác thực:
+- **`mcp.*`** — Truy cập tác nhân AI vào giao thức [Model Context Protocol](/vi/developers/mcp), được cấp riêng và chỉ dành cho khách hàng machine-to-machine.
+- **Phạm vi cấp quản trị viên** (`administrator.*`) — truy cập cấp nền tảng không được cấp theo từng ứng dụng.
 
-- **SPA** (Single Page Application) — Dành cho các ứng dụng frontend trên trình duyệt sử dụng luồng mã ủy quyền OAuth2 với PKCE. Đây là loại phổ biến nhất cho các ứng dụng web.
-- **MACHINE_2_MACHINE** — Dành cho tích hợp máy chủ với máy chủ xác thực trực tiếp bằng thông tin xác thực client. Sử dụng khi dịch vụ backend của bạn cần gọi API Wink mà không có người dùng.
+Khi một ứng dụng được tạo, cả tab này và [Consented Apps](/vi/account/apps) đều hiển thị các phạm vi được cấp
+theo nhóm (ví dụ "Đặt chỗ: `booking.read`"), để bạn có thể xem ứng dụng có thể làm gì ngay lập tức
+mà không cần mở ứng dụng đó.
 
-Dưới đây là các bước để tạo ứng dụng:
+## Xoay vòng thông tin đăng nhập
 
-<Steps>
-1. Từ trang ứng dụng, nhấp nút `Create new application`.
-2. ***Tên*** Đặt tên cho ứng dụng của bạn. *ví dụ Cool App*
-3. **Loại client** Chọn `SPA` cho ứng dụng web hoặc `MACHINE_2_MACHINE` cho tích hợp máy chủ.
-4. **Tên thực thể** Liên kết ứng dụng với một trong các tài khoản hiện có của bạn. *ví dụ Cool Account*
-5. **Redirect URIs** Cần ít nhất một URI chuyển hướng. Nó được dùng để xác thực miền chuyển hướng sau khi xác thực thành công. *ví dụ https://www.cool-site.com*
-6. **Post-logout redirect URIs** *(Tùy chọn)* Các URL để người dùng được chuyển hướng sau khi đăng xuất. Điều này đảm bảo người dùng đến một trang đã biết sau khi phiên kết thúc.
-7. Nhấp nút `Save` để tiếp tục.
-</Steps>
-
-Bạn sẽ được chuyển hướng trở lại danh sách ứng dụng. Bạn sẽ thấy ứng dụng mới trong danh sách và chỉ có thể truy cập khóa bí mật của ứng dụng một lần duy nhất. Hãy chắc chắn sao chép và lưu giữ an toàn.
-
-## Cập nhật ứng dụng
-
-Bạn sẽ cần cập nhật ứng dụng nếu một trong các URI chuyển hướng thay đổi hoặc bạn muốn thêm hoặc xóa URI.
-
-Để cập nhật ứng dụng hiện có, làm như sau:
+Nếu bí mật khách hàng có thể đã bị lộ, hoặc bạn chỉ muốn thông tin đăng nhập mới, hãy xoay vòng thay vì
+tạo lại ứng dụng:
 
 <Steps>
-1. Nhấp liên kết `Actions` cho ứng dụng bạn muốn cập nhật.
-2. Nhấp nút `Update` dưới phần Actions.
-3. Thực hiện các thay đổi cho ứng dụng.
-4. Nhấp nút `Save` để tiếp tục.
+1. Tìm ứng dụng trong danh sách ứng dụng của bạn và nhấp `Rotate`.
+2. Xác nhận hộp thoại — Client ID và bí mật hiện tại sẽ ngừng hoạt động ngay lập tức.
+3. Sao chép Client ID và bí mật mới từ hộp thoại một lần trước khi đóng nó.
 </Steps>
 
-Bạn sẽ được chuyển hướng trở lại danh sách ứng dụng.
+Việc xoay vòng giữ nguyên tên ứng dụng, loại khách hàng, redirect URI và phạm vi — chỉ thay đổi thông tin đăng nhập.
 
 ## Xóa ứng dụng
 
@@ -93,14 +119,9 @@ Bạn sẽ được chuyển hướng trở lại danh sách ứng dụng.
 Vui lòng không xóa ứng dụng chúng tôi tự động tạo cho bạn để đảm bảo tất cả các tính năng hoạt động cho tài khoản của bạn.
 :::
 
-Nếu bạn không còn sử dụng ứng dụng, bạn có thể xóa nó.
-
-Để xóa ứng dụng, làm như sau:
+Nếu bạn không còn sử dụng ứng dụng nữa, bạn có thể xóa nó. Đây là hành động vĩnh viễn — thông tin đăng nhập sẽ bị thu hồi ngay lập tức và không thể khôi phục.
 
 <Steps>
-1. Nhấp liên kết `Actions` cho ứng dụng bạn muốn xóa.
-2. Nhấp nút `Remove` dưới phần Actions.
-3. Nhấp nút `OK` để xác nhận xóa.
+1. Tìm ứng dụng trong danh sách ứng dụng của bạn và nhấp `Delete`.
+2. Xác nhận hộp thoại để xóa ứng dụng vĩnh viễn.
 </Steps>
-
-Bạn sẽ được chuyển hướng trở lại danh sách ứng dụng.

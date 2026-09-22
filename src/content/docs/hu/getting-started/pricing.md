@@ -7,7 +7,7 @@ sidebar:
 
 A Winknek nincs előfizetése, nincs ülőhelydíja és nincs beállítási díja. A platform túlnyomó része ingyenes, és csak két dologért kell fizetned:
 
-1. **Egy kis százalék foglalásonként** — csak akkor, amikor ténylegesen pénzt keresel.
+1. **Platformdíj foglalásonként, plusz kártyakezelési költség** — csak akkor, amikor foglalás történik.
 2. **Használatarányos díjak** — néhány prémium funkcióért, amelyek minden futtatáskor költséget jelentenek számunkra, mindegyikhez havi ingyenes keret tartozik.
 
 ## Mi az, ami ingyenes
@@ -25,88 +25,84 @@ Ezek semmibe sem kerülnek, örökre, keret és mérés nélkül:
 
 ## Foglalások
 
-A Wink támogatja mind a kereskedői, mind az ügynöki modellt.
+A Wink két modellt támogat: a Wink gyűjti be a szálloda részére a fizetést, vagy egy engedéllyel rendelkező utazási ügynök működik kereskedőként.
 
-### 1. modell
+### 1. modell — Wink gyűjti be a szálloda részére
 
-A foglalás időpontjában a Wink a kereskedői nyilvántartásban szerepel. A Wink felel a pénzeszközökért, és rendelkezik minden szükséges engedéllyel utazási iroda működtetéséhez.
+A Wink a vendég fizetését a szálloda korlátozott fizetéskezelő ügynökeként gyűjti be. A szálloda a kereskedő, és a szálloda neve jelenik meg a vendég kártyakivonatán.
 Ez a modell az összes foglalás 95%-ára vonatkozik.
 
-A Wink `5,5% foglalásonként` díjat számít fel a platform fenntartásáért.
-Ennek nagy része a fizetési átjárónak (Visa, MasterCard stb.) megy. Egy átlagos foglalás megszerzése `2,95%`-ba kerül nekünk; néha akár `3,6%` is lehet. A részleges visszatérítések további költséget jelentenek, mivel a fizetési átjáró ezt új díjként kezeli.
-Teljes átláthatóságra törekszünk az árazásban, hogy mindenki időt takaríthasson meg, mielőtt további kedvezményeket próbálna tárgyalni a Wink használata előtt. Az árazási modellünk több mint tisztességes, és nekünk is meg kell élnünk.
+#### Részletezés
+
+:::note[Platformdíj]
+A Wink 1,5%-os platformdíjat számít fel foglalásonként. Ez fedezi a platform karbantartását, és lehetővé teszi, hogy mindent ingyenesen adjunk a fentiekből. Lemondott foglalás esetén nem számítjuk fel.
+:::
+
+:::note[Kártyakezelés]
+A vendég fizetésének feldolgozási díját a szállodának továbbítjuk költségen, haszon nélkül. Ez a vendég kártyájától és fizetési módjától függ, és a pontos összeg minden foglalás Számlázás részében látható. Lemondás vagy visszatérítés esetén a feldolgozó által megtartott díj továbbra is felszámításra kerül; ha nem számítanak fel díjat, mi sem.
+:::
+
+:::note[Összegkifizetés]
+Díjak kapcsolódnak a pénz számládra történő utalásához. Ez az általad választott kifizetési módtól függ. Jelenleg a következőket támogatjuk:
+
+- **Banki átutalás** — A költség az országodtól, a pénz forrásától és az esetleges árfolyamkonverziótól függ. A kifizetési díjat és az esetleges konverziós költséget a kedvezményezett fizeti, költségen. Tartalmazunk egy árajánlat-kalkulátort, amit használhatsz, ha van elérhető egyenleged.
+
+Ha más kifizetési módot szeretnél, írj nekünk e-mailt.
+:::
+
+### 2. modell — Utazási ügynök kereskedőként
+
+Ez a modell csak olyan utazási irodáknak elérhető, akik rendelkeznek utazási iroda engedéllyel a régiójukban, és kereskedőként kívánnak működni. Néhány regisztrált utazási ügynök szeretné kezelni a fizetést és a szállodáknak történő kifizetést. Ebben a modellben ők felelősek a pénzért, és rendelkeznek a szükséges engedélyekkel az országukban.
 
 #### Részletezés
 
-:::note[Tranzakciós díj]
-A Wink 1,5% tranzakciós díjat számít fel foglalásonként. Ez fedezi a platform fenntartását, és ez teszi lehetővé, hogy mindent ingyen adjunk a fentiekből.
+:::note[Platformdíj]
+A Wink 1,5%-os platformdíjat számít fel foglalásonként. Ez fedezi a platform karbantartását, és lehetővé teszi, hogy mindent ingyenesen adjunk a fentiekből.
 :::
 
-:::note[Fizetési díj]
-A TripPay 4,0% fizetési díjat számít fel foglalásonként. Ez fedezi az utazótól történő fizetés beszedését.
-:::
-
-:::note[Alapok kifizetése]
-Díjak merülnek fel a pénzeszközök számládra történő átutalásakor. Ez a választott kifizetési módtól függ. Jelenleg a következőket támogatjuk:
-
-- **Banki átutalás** A költség az országodtól és a pénzeszközök forrásától függ. Tartalmazunk egy árajánlat-kalkulátort, amelyet használhatsz, ha van elérhető pénzed a számládon.
-
-Ha más kifizetési módot szeretnél, küldj nekünk e-mailt.
-:::
-
-### 2. modell
-
-Ez a modell csak azoknak az utazási irodáknak érhető el, akik rendelkeznek utazási iroda működtetéséhez szükséges engedéllyel a régiójukban, és akik szeretnének kereskedői nyilvántartásban lenni. Néhány regisztrált utazási ügynökünk szeretné kezelni a fizetést és a pénzeszközök szállodáknak történő kifizetését. Ebben a modellben ők felelősek a pénzeszközökért, és rendelkeznek a szükséges engedélyekkel az adott országban való működéshez.
-
-#### Részletezés
-
-:::note[Tranzakciós díj]
-A Wink 1,5% tranzakciós díjat számít fel foglalásonként. Ez fedezi a platform fenntartását, és ez teszi lehetővé, hogy mindent ingyen adjunk a fentiekből.
-:::
-
-Ebben a modellben az utazási ügynökök csak a Wink tranzakciós díját fizetik, és a Wink havonta számlázza az utazási ügynököt.
+Ebben a modellben az utazási ügynökök csak a Wink platformdíját fizetik, és a Wink havonta számlázza az ügynököt.
 
 ## Használat (pay-as-you-go)
 
-Néhány funkció minden egyes futtatáskor költséget jelent számunkra — generatív AI, harmadik fél közösségi API-k és élő árak szolgáltatása nagy léptékben. Ahelyett, hogy ezeket havi csomagba foglalnánk, amelyet esetleg nem használsz, csak azért fizetsz, amit ténylegesen fogyasztasz, és csak miután elfogyott az ingyenes havi kereted.
+Néhány funkció minden futtatáskor költséget jelent számunkra — generatív AI, harmadik fél közösségi API-k és élő árak szolgáltatása nagy volumenben. Ahelyett, hogy ezeket havi csomagba foglalnánk, amit esetleg nem használsz, csak azért fizetsz, amit ténylegesen fogyasztasz, és csak miután elfogyott a havi ingyenes kereted.
 
 | Funkció | Ingyenes havonta | Ezután | Számlázott egység |
 | -- | -- | -- | -- |
-| Közösségi poszt — kép | 1 | 1,50 USD | Egy közzétett poszt |
-| Közösségi poszt — AI által generált kép | 0 | 2,50 USD | Egy közzétett poszt |
-| Közösségi poszt — AI által javított videó | 0 | 4,00 USD | Egy közzétett poszt |
-| Közösségi poszt — AI által generált videó | 0 | 14,00 USD | Egy közzétett poszt |
-| AI válasz egy kommentre vagy DM-re | 5 | 0,05 USD | Egy válasz |
-| Chatbot válasz | 5 | 0,05 USD | Egy válasz |
-| Partner API | 10 000 | 0,0001 USD | Egy szálloda-nap |
+| Közösségi poszt — kép | 1 | $1.50 | Egy publikált poszt |
+| Közösségi poszt — AI által generált kép | 0 | $2.50 | Egy publikált poszt |
+| Közösségi poszt — AI által javított videó | 0 | $4.00 | Egy publikált poszt |
+| Közösségi poszt — AI által generált videó | 0 | $14.00 | Egy publikált poszt |
+| AI válasz egy kommentre vagy üzenetre | 5 | $0.05 | Egy válasz |
+| Chatbot válasz | 5 | $0.05 | Egy válasz |
+| Partner API | 10,000 | $0.0001 | Egy szálloda-nap |
 
-Az árak USD-ben értendők. Az ingyenes keret **fiókonként** jár, nem felhasználónként, és minden hónap 1-jén (UTC) újraindul.
+Az árak USD-ben vannak megadva. Az ingyenes keret **fiókonként** jár, nem felhasználónként, és minden hónap 1-jén (UTC) újraindul.
 
 ### Hogyan árazódnak a posztok
 
-A posztokat az alapján árazzuk, hogy mi van bennük, mert ez határozza meg a költségünket. Egy állókép olcsó; egy videó nem; bármi, amit AI-val generálunk, lényegesen többe kerül, mint egy általad feltöltött fotó.
+A posztokat az alapján árazzuk, mi van bennük, mert ez határozza meg a költségünket. Egy állókép olcsó; egy videó nem; bármi, amit AI-val generálunk, lényegesen többe kerül, mint egy általad feltöltött fotó.
 
-- **Az ingyenes keret csak a standard képes posztokra vonatkozik.** Fiókonként havonta egy ilyet kapsz. A videós posztok és az AI által generált média az első poszttól kezdve fizetős — ezekre nincs ingyenes keret, így egy ingatlan, amely videót posztol, az első hónapban díjra számíthat.
-- **A videó nyer.** Ha egy poszt bármilyen videót tartalmaz, az egész poszt a videós díjon kerül számlázásra. Egy poszt, amely képet és videót is tartalmaz, videós posztnak számít.
-- **Az AI eredet határozza meg a díjszintet.** A te általad szolgáltatott média — saját fotók és videók, vagy bármi a Wink tartalomkönyvtárából — a standard díjon kerül számlázásra. Az általunk generált média az AI díjszinten.
+- **Az ingyenes keret csak a szabványos képes posztokra vonatkozik.** Fiókonként havonta egy ilyen jár. A videós posztok és AI által generált média az első poszttól kezdve fizetős — ezekre nincs ingyenes keret, így egy ingatlan, amely videót posztol, az első hónapban díjra számíthat.
+- **A videó a meghatározó.** Ha egy poszt bármilyen videót tartalmaz, az egész poszt a videós díjon kerül számlázásra. Egy poszt, amely képet és videót is tartalmaz, videós posztnak számít.
+- **Az AI eredet határozza meg a díjszintet.** A te általad szolgáltatott média — saját fotók és videók, vagy a Wink tartalomkönyvtárából származó anyagok — a szabványos díjon számlázódik. Az általunk generált média az AI díjszinten.
 
 ### Mi mérhető és mi nem
 
-- Csak egy **generált** poszt, amely harmadik fél hálózatán (Facebook, Instagram) jelenik meg, számlázható. Egy általad írt poszt ingyenes, bárhová is kerül.
-- **A WinkLinks-re történő közzététel mindig ingyenes**, generált vagy nem generált poszt esetén is.
-- A számlázás **a közzétételkor történik**, nem próbálkozásonként. Egy vázlat újragenerálása, amíg elégedett nem vagy vele, nem növeli a számládat — egyszer fizetsz a ténylegesen elküldött posztért. A próbálkozások nem korlátlanok: egy poszthoz körülbelül 10 kép- és 3 videóújragenerálás engedélyezett, ami tükrözi a gyártási költségeinket. Láthatod, mennyi maradt, miközben dolgozol.
-- A Partner API esetén egy **szálloda-nap** egy szálloda egy éjszakára vonatkozó ára — *nem* egy API-hívás. Egy keresés, amely 20 szállodát ad vissza 3 éjszakára, 60 szálloda-napnak számít egyetlen kérésből. A keresési és automatikus kiegészítő végpontok ingyenesek és soha nem mérhetők.
+- Csak a **generált** poszt, amely harmadik fél hálózatán (Facebook, Instagram) kerül publikálásra, számlázható. A saját magad által írt poszt ingyenes, bárhová is megy.
+- **A WinkLinks-re történő publikálás mindig ingyenes**, generált vagy nem generált poszt esetén is.
+- A számlázás **publikáláskor történik**, nem próbálkozásonként. Egy vázlat újragenerálása, amíg elégedett nem vagy vele, nem növeli a számládat — egyszer fizetsz a ténylegesen elküldött posztért. A próbálkozások nem korlátlanok: egy poszthoz kb. 10 kép- és 3 videó újragenerálás engedélyezett, ami tükrözi a gyártási költségeinket. Láthatod, mennyi maradt, miközben dolgozol.
+- A Partner API esetén egy **szálloda-nap** egy szálloda egy éjszakára vonatkozó ára — *nem* egy API hívás. Egy keresés, amely 20 szállodát ad vissza 3 éjszakára, 60 szálloda-napnak számít egyetlen kérésből. A keresési és automatikus kiegészítő végpontok ingyenesek és soha nem mérhetők.
 
 ### Bekapcsolás
 
-A pay-as-you-go alapértelmezés szerint ki van kapcsolva. Mindenki megkapja az ingyenes keretet anélkül, hogy bármit tenne.
+A használatarányos díj alapértelmezés szerint ki van kapcsolva. Mindenki megkapja az ingyenes keretet anélkül, hogy bármit tenne.
 
-A keret túllépéséhez a **fiók tulajdonosa** engedélyezi a pay-as-you-go-t, és kiválasztja, mely fiókjai legyenek mérve. Az összes engedélyezett fiókod használata egy **egyetlen havi számlába** kerül, amelyet automatikusan kártyával rendezhetsz, vagy számlát kapsz, hogy magad fizesd ki.
+A keret túllépéséhez a **fiók tulajdonosa** engedélyezi a használatarányos díjat, és kiválasztja, mely fiókjai legyenek mérve. Az összes engedélyezett fiók használata egy **egyetlen havi számlába** kerül, amelyet automatikusan kártyával rendezhetsz, vagy számlát kapsz, amit magad fizetsz be.
 
-Bekapcsolás után a használat mérve van, de **soha nem korlátozott** — nem fogsz elérni költési korlátot nálunk.
+Bekapcsolás után a használat mérve van, de **soha nem korlátozott** — nem éred el a költési limitet nálunk.
 
 :::note[Ha nem engedélyezed]
-Semmi nem törik el, és semmiért nem számítunk fel díjat. Egyszerűen megállsz az adott hónap ingyenes kereténél: a generált posztok nem jelennek meg, és a Partner API hívások `429` választ adnak, amíg a keret újra nem indul.
+Semmi nem törik el, és semmiért nem számítunk fel díjat. Egyszerűen megállsz az adott hónap ingyenes kereténél: a generált posztok nem jelennek meg, és a Partner API hívások `429` hibát adnak vissza, amíg a keret újra nem indul.
 :::
 
 ### Számlázási állapot
@@ -114,15 +110,15 @@ Semmi nem törik el, és semmiért nem számítunk fel díjat. Egyszerűen megá
 | Állapot | Jelentése |
 | -- | -- |
 | Jó állapot | Minden normálisan működik. |
-| Fizetési késedelem | Egy fizetés sikertelen volt, és újrapróbálkozás alatt áll. A funkciók ebben az időszakban tovább működnek. |
-| Felfüggesztve | Egy számla véglegesen kifizetetlen maradt. A számlázható műveletek blokkolva vannak, amíg rendezve nem lesz; az ingyenes funkciók tovább működnek. |
+| Fizetési késedelem | Egy fizetés sikertelen volt, és újrapróbálják. A funkciók ebben az időszakban tovább működnek. |
+| Felfüggesztve | Egy számla véglegesen kifizetetlen maradt. A fizetős műveletek blokkolva vannak, amíg rendezve nem lesz; az ingyenes funkciók tovább működnek. |
 
 :::tip[Élő árak]
-Az egységárak és az ingyenes keretek mindig megjelennek a Portálon, közvetlenül a számlázási rendszerünkből, így ellenőrizheted őket, mielőtt elköteleznéd magad. Lásd a [Számlázás](/hu/portal/plan) részt a pay-as-you-go engedélyezéséhez, fiókok kiválasztásához, valamint a havi használat és számlák nyomon követéséhez. Lásd a [Közösségi](/hu/portal/social/what-is-social) részt arról, hogyan befolyásolja a posztok mennyisége a költést.
+Az egységárak és az ingyenes keretek mindig megjelennek a Portálon, közvetlenül a számlázási rendszerünkből, így ellenőrizheted őket, mielőtt elköteleznéd magad. Lásd a [Számlázás](/hu/portal/plan) részt a használatarányos díj engedélyezéséhez, fiókok kiválasztásához és a havi használat, valamint számlák nyomon követéséhez. Lásd a [Közösségi](/hu/portal/social/what-is-social) részt arról, hogyan befolyásolja a posztok mennyisége a költést.
 :::
 
 ## A platform hatása
 
-Végül, ahogy tovább növekszünk méretben és foglalások számában, szeretnénk megosztani veled a platform hatásait. Több foglalás lehetőséget teremt a fizetési átjárónktól származó mennyiségi kedvezményekre, amelyek lehetővé tennék, hogy mindenki számára csökkentsük a tranzakciós díjat.
+Végül, ahogy tovább növekszünk méretben és foglalásokban, szeretnénk megosztani veled a platform hatásait. Több foglalás nagyobb volumenű kedvezményeket hoz a fizetésfeldolgozónktól. Mivel a kártyakezelés költségen megy át, bármilyen megtakarítást közvetlenül a szállodák kapnak meg.
 
-Csatlakozz még ma a Winkhez, és fedezd fel a vendéglátóiparban rejlő új, jövedelmező üzleti lehetőségeket!
+Csatlakozz ma a Winkhez, és fedezd fel a vendéglátóiparban az új, jövedelmező üzleti lehetőséget!

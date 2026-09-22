@@ -47,7 +47,7 @@ import IconArrowRight from "@tabler/icons/outline/arrow-right.svg";
     <p class="text-xs font-semibold uppercase tracking-wider text-primary">A resposta curta</p>
     <p class="mt-3 text-pretty text-foreground/90">
       Um agente de IA reserva um hotel ao chamar uma API que expõe oferta em tempo real controlada pelo hotel — pesquisando
-      inventário, consultando tarifas e disponibilidade atuais, criando a reserva, processando o pagamento e preservando
+      inventário, consultando tarifas e disponibilidade atuais, criando uma reserva, processando o pagamento e preservando
       a atribuição. Uma recomendação torna-se uma reserva confirmada apenas quando uma camada de execução (um motor de reservas)
       está por trás do agente. Na Wink, os agentes conectam-se através de um servidor MCP hospedado e da API REST,
       e o Booking Engine executa a transação.
@@ -58,9 +58,9 @@ import IconArrowRight from "@tabler/icons/outline/arrow-right.svg";
 {/* Body */}
 <article class="mkt-prose mx-auto w-full max-w-3xl px-4 py-14">
 
-## Recomendar um hotel não é reservar um
+## Recomendar um hotel não é reservá-lo
 
-A maior parte das "viagens com IA" hoje para na recomendação. Um assistente sugere três hotéis, depois encaminha o viajante para um site ou OTA para efetuar a reserva. A ligação quebra, o preço pode não estar disponível para reserva, e ninguém mantém o contexto da origem.
+A maior parte das "viagens com IA" hoje para na recomendação. Um assistente sugere três hotéis e depois encaminha o viajante para um site ou OTA para efetuar a reserva. A ligação quebra, o preço pode não estar disponível para reserva, e ninguém mantém o contexto da origem.
 
 Um **agente de IA** é diferente de uma resposta de IA. Um agente não se limita a descrever um hotel — ele age: verifica disponibilidade em tempo real, monta uma reserva, processa o pagamento e pode reagir quando algo muda. Para que isso aconteça com segurança, o agente precisa de mais do que texto. Precisa de dados estruturados, atuais e reserváveis e de uma camada de transação que possa chamar.
 
@@ -73,7 +73,7 @@ Uma reserva de hotel é um evento comercial real: o quarto certo, a tarifa certa
 | O agente precisa de | Por que é importante |
 |---|---|
 | Oferta estruturada e em tempo real | Dados extraídos da web ficam desatualizados; um agente precisa de inventário atual controlado pelo hotel. |
-| Tarifas e disponibilidade em tempo real | Um preço que o agente indica deve realmente poder ser reservado naquele momento. |
+| Tarifas e disponibilidade em tempo real | Um preço que o agente indica deve realmente estar reservável naquele momento. |
 | Uma operação de reserva | Criar a reserva tem de ser uma chamada real de API, não um encaminhamento para um formulário web. |
 | Pagamento | O agente (ou o viajante através dele) deve poder pagar, com lógica de políticas aplicada. |
 | Atribuição | A fonte, campanha ou agente que criou a reserva deve permanecer associada. |
@@ -104,7 +104,7 @@ A criação da reserva é uma operação da API REST. O agente monta o quarto, t
 
 ### 4 — Processar pagamento e confirmar
 
-O [Booking Engine](/pt-PT/products/booking-engine/) executa a transação — checkout, pagamento (a Wink é o comerciante registado), lógica de políticas de cancelamento, confirmação e sincronização da reserva com o PMS ou channel manager conectado. Atribuição de fonte e parceiro são preservadas durante a reserva.
+[Booking Engine](/pt-PT/products/booking-engine/) executa a transação — checkout, pagamento (recolhido para o hotel, que permanece comerciante registado), lógica de política de cancelamento, confirmação e sincronização da reserva com o PMS ou channel manager conectado. Atribuição de fonte e parceiro são preservadas durante a reserva.
 
 ### 5 — Reagir a eventos
 
@@ -171,9 +171,9 @@ As capacidades acima estão disponíveis hoje através da API REST e do servidor
   description="Como os agentes transacionam, e como isso difere da pesquisa de IA."
   items={[
     { title: "Um agente de IA pode realmente completar uma reserva de hotel?", content: "Sim. Na Wink, a criação da reserva é uma operação da API REST e o Booking Engine executa — checkout, pagamento, confirmação e sincronização da reserva. Um agente que chama a API de reserva em nome do viajante pode completar uma reserva real e confirmada com o contexto da fonte preservado." },
-    { title: "Como um agente de IA é diferente da pesquisa de IA?", content: "Motores de pesquisa e resposta de IA ajudam o viajante a encontrar e comparar hotéis e terminam numa recomendação. Um agente de IA age: lê tarifas e disponibilidade em tempo real, cria uma reserva, processa o pagamento e reage a eventos. Os hotéis devem preparar-se para ambos — conteúdo estruturado para descoberta, e uma API em tempo real para transações." },
+    { title: "Como um agente de IA é diferente da pesquisa de IA?", content: "Motores de pesquisa e resposta de IA ajudam o viajante a encontrar e comparar hotéis e terminam numa recomendação. Um agente de IA age: lê tarifas e disponibilidade em tempo real, cria uma reserva, processa o pagamento e reage a eventos. Os hotéis devem preparar-se para ambos — conteúdo estruturado para descoberta e uma API em tempo real para transações." },
     { title: "Como um agente de IA se conecta à Wink?", content: "Através de um servidor MCP hospedado em https://docs.mcp.wink.travel/mcp e da API REST com OAuth2. O agente usa api_search e docs_search para ler operações e contratos em tempo real, depois chama a operação correta." },
-    { title: "Um agente de IA substitui o Booking Engine?", content: "Não. O agente cria ou encaminha a intenção; o Booking Engine permanece a camada de execução para checkout, pagamento, confirmação e sincronização da reserva. Cada transferência de agente é resolvida através do Booking Engine por baixo." },
+    { title: "Um agente de IA substitui o Booking Engine?", content: "Não. O agente cria ou encaminha a intenção; o Booking Engine permanece a camada de execução para checkout, pagamento, confirmação e sincronização da reserva. Cada transferência de agente resolve-se através do Booking Engine por baixo." },
     { title: "Um agente de IA pode ganhar comissão como parceiro?", content: "Sim. A Wink preserva a atribuição de fonte e campanha por 6 meses por clique e paga uma comissão padrão de 10% sobre reservas confirmadas. Um agente que cria procura qualificada e encaminha uma reserva pode ser uma fonte atribuída e geradora de receita." },
     { title: "Os hotéis mantêm o controlo quando um agente reserva?", content: "Sim. Os agentes trabalham com oferta controlada pelo hotel gerida no Extranet. O hotel define os quartos, tarifas, políticas e regras de canal; o agente transaciona dentro desses parâmetros." },
   ]}
