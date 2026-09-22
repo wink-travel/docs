@@ -106,8 +106,76 @@ The quote returns `quoteId`, `amountUsdCents`, `currency`, `expiresAt` and `mppC
 
 A successful retry returns the existing booking without charging again. Treat a timeout as an unknown outcome and retry the same payment. If it stays unresolved, contact support with the quote ID.
 
-### Other payment transports
+### Payment-aware MCP clients
 
 Payment-aware MCP clients can use `agentic_booking_book` with the room fields directly in `arguments`. The first call returns error `-32042` with payment challenges. Retry the same call with the wallet credential in `params._meta["org.paymentauth/credential"]`; success includes `result._meta["org.paymentauth/receipt"]`. Error `-32043` carries a payment failure and challenge. For `-32603`, a `data.failure.reason` of `payment-in-progress` or `already-consumed` means retry the same credential; the error code alone is not enough.
 
-For a direct REST integration, use `POST https://api.wink.travel/api/mpp/booking` with the same room fields. It returns HTTP `402` with `WWW-Authenticate: Payment` challenges. Retry the same body with the wallet's encoded credential in `Authorization: Payment <credential>`. On this REST endpoint, put the Wink user token in `Wink-Authorization: Bearer <user-access-token>` on both calls. Success returns `bookingConfirmationCode` and a `Payment-Receipt` header; HTTP `409` means retry the same body and credential. These headers are for REST integrations; the MCP connection handles its own authentication.
+## Book over REST
+
+Use REST when building an integration that calls Wink directly over HTTP. Both the quote and payment use **`POST https://api.wink.travel/api/mpp/booking`**.
+
+Your application needs a [Wink user access token](/developers/authentication/) with `payment.write` permission to pay. Keep the same user for both calls. Send the token in `Wink-Authorization`, leaving `Authorization` available for the wallet's payment credential. These headers apply to REST; an MCP client handles its own authentication.
+
+### 1. Request a quote
+
+Save the selected room as `booking.json`, replacing the example identifiers and dates with your selection. The room fields go directly in the JSON body, without a `request` wrapper.
+
+```json
+{
+  "hotelIdentifier": "YOUR_HOTEL_ID",
+  "roomRateIdentifier": "YOUR_ROOM_RATE_ID",
+  "checkIn": "2027-01-15",
+  "checkOut": "2027-01-17",
+  "adults": 2,
+  "children": 0,
+  "customizationIdentifier": "YOUR_CUSTOMIZATION_ID"
+}
+```
+
+Set `WINK_ACCESS_TOKEN` to the user's access token and send the request:
+
+```bash
+curl -i https://api.wink.travel/api/mpp/booking \
+  -H "Wink-Authorization: Bearer $WINK_ACCESS_TOKEN" \
+  -H 'Content-Type: application/json' \
+  --data-binary @booking.json
+```
+
+Wink returns **`402 Payment Required`** with a `WWW-Authenticate: Payment ...` challenge for each offered method. The JSON body includes `quoteId`, `amount`, `currency`, `expiresAt` and `methods`. Here, `amount` is a string in USD cents: `"10000"` means **$100.00**. Review the quote before its expiry; no payment has been taken yet.
+
+### 2. Pay and confirm
+
+Have the wallet fulfill one returned challenge. For Stripe, it supplies `payload.spt`; for Tempo, it supplies `payload.hash` with `payload.type` set to `"hash"`. Use the payment details from that challenge.
+
+Set `MPP_CREDENTIAL` to the wallet's encoded MPP credential, which contains the challenge and payment payload. Retry the **same request body**, keeping the identity header:
+
+```bash
+curl -i https://api.wink.travel/api/mpp/booking \
+  -H "Wink-Authorization: Bearer $WINK_ACCESS_TOKEN" \
+  -H "Authorization: Payment $MPP_CREDENTIAL" \
+  -H 'Content-Type: application/json' \
+  --data-binary @booking.json
+```
+
+On success, Wink returns **`200 OK`**, a JSON body containing `bookingConfirmationCode`, and a `Payment-Receipt` header. Save the confirmation and receipt. A successful retry returns the existing booking without charging again.
+
+### Handle responses and retries
+
+| Response | What to do |
+| --- | --- |
+| `400` | Correct invalid room details or a malformed credential. |
+| `401` / `403` | Check the user's authentication and payment permission. |
+| `402` | Inspect the returned problem and challenge. A definitive payment rejection gets a fresh quote; an incomplete payment payload reuses the original challenge. Review the price before paying. |
+| `409` | The payment outcome is unresolved. Wait briefly, then retry the same body and credential at the booking endpoint. |
+| `429` | Wait for the number of seconds in `Retry-After`, then retry. |
+
+A `409` response has an `application/problem+json` body. Match its `type` against these exact URLs:
+
+| Problem type | Meaning |
+| --- | --- |
+| [https://api.wink.travel/problems/payment-in-progress](https://api.wink.travel/problems/payment-in-progress) | A payment attempt is still running or settlement cannot yet be confirmed. |
+| [https://api.wink.travel/problems/already-consumed](https://api.wink.travel/problems/already-consumed) | The challenge or payment proof was already used by a possibly successful attempt. This alone does not confirm the booking. |
+
+Both mean **retry the same payment; do not pay a new quote**. The URLs identify and document the problem; they are not payment or polling endpoints. Retry `POST /api/mpp/booking`, and use the problem `type` rather than the free-text `detail` to decide what to do. See the [problem-type reference](https://api.wink.travel/problems) for all Wink payment problems.
+
+A timeout, lost response or server error after submitting payment can also leave the outcome unknown. Retry the same payment request. If the outcome stays unresolved, contact support with the quote ID before starting another payment.
