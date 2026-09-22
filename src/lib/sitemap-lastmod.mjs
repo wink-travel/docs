@@ -21,10 +21,10 @@ const DOCS = "src/content/docs";
 const LOCALE = /^([a-z]{2}(?:-[A-Za-z]{2,4})?)\//;
 
 /** Collection-relative file path -> URL pathname, following Starlight's routing. */
-function toPathname(relative) {
+export function toPathname(relative) {
   let slug = relative.replace(/\.(md|mdx|markdoc)$/i, "");
   if (slug === "index") return "/";
-  slug = slug.replace(/\/index$/, "");
+  slug = slug.replace(/\/index$/i, "");
   return `/${slug}/`;
 }
 
@@ -51,7 +51,7 @@ export function buildLastmodIndex() {
     byFile = readGitDates();
   } catch (error) {
     console.warn(`[sitemap-lastmod] git unavailable, emitting no lastmod: ${error.message}`);
-    return new Map();
+    return { byPath: new Map(), english: new Map() };
   }
 
   /** @type {Map<string,string>} */
@@ -66,17 +66,12 @@ export function buildLastmodIndex() {
     if (!LOCALE.test(relative)) english.set(pathname, date);
   }
 
-  // A locale URL with no translated file of its own is served from the English
-  // content by Starlight's fallback, so it inherits the English date.
-  for (const [pathname, date] of english) {
-    byPath.set(pathname, date);
-  }
   return { byPath, english };
 }
 
 /** Returns an ISO date for a sitemap URL, or undefined when none is known. */
-export function makeLastmodLookup() {
-  const { byPath, english } = buildLastmodIndex();
+export function makeLastmodLookup(index = buildLastmodIndex()) {
+  const { byPath, english } = index;
   return (url) => {
     let pathname;
     try { pathname = new URL(url).pathname; } catch { return undefined; }

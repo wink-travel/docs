@@ -25,8 +25,12 @@ const ogImage =
 // `keepRecent(25)` retires older release URLs on every release, leaving indexed
 // 404s behind. noindex closes the loop: they stay readable and linkable, they
 // just stop entering the index and decaying out of it. `follow` is deliberate —
-// their links to docs should still carry weight.
-const isChangelog = Astro.url.pathname.includes("/changelog/");
+// their links to docs should still carry weight. /changelog/overview/ is the
+// stable landing page, not a churning release/version page, so it stays indexable
+// — this mirrors the sitemap filter in astro.config.mjs.
+const isChangelog =
+  Astro.url.pathname.includes("/changelog/") &&
+  !/\/changelog\/overview\/?$/.test(Astro.url.pathname);
 ---
 
 <Default />

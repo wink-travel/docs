@@ -399,8 +399,10 @@ export default defineConfig({
     // trims older releases every release, so yesterday's changelog URL 404s today.
     // 48 are already dead and indexed. Keeping them out of the sitemap (and
     // noindex in custom-head.astro) stops the decay at the source; they stay
-    // reachable and useful, they just aren't submitted for indexing.
-    filter: (page) => !page.includes('/changelog/'),
+    // reachable and useful, they just aren't submitted for indexing. /changelog/overview/
+    // is the stable, hand-authored landing page (sidebar "Releases > Overview"), not one
+    // of the churning release/version pages, so it stays in.
+    filter: (page) => !page.includes('/changelog/') || /\/changelog\/overview\/?$/.test(page),
     // Every URL shipped with no <lastmod>, so nothing looked fresh. Dates come
     // from the last commit touching each source file; URLs with no resolvable
     // source get none rather than a guess.
