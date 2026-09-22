@@ -18,8 +18,27 @@
  * Bypass with SKIP_DEPLOY_PREFLIGHT=1 when you genuinely intend a partial
  * deploy.
  */
-import { existsSync, readdirSync, statSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { join } from "node:path";
+
+/**
+ * The pagefind platform binary that this machine's install would need, and
+ * the exact version it must match. Read from `pagefind`'s own package.json
+ * rather than hardcoded, because pagefind is a transitive dependency (pulled
+ * in by Starlight) — its version moves on its own schedule as Astro/Starlight
+ * are upgraded, with no corresponding edit in this file to keep it honest.
+ * `pagefind` pins its `optionalDependencies` to its own exact version, so
+ * reading `version` off the wrapper package is sufficient.
+ */
+function pagefindPlatformPackage() {
+  const fallback = "@pagefind/<platform>@<version>";
+  try {
+    const { version } = JSON.parse(readFileSync("node_modules/pagefind/package.json", "utf8"));
+    return `@pagefind/${process.platform}-${process.arch}@${version}`;
+  } catch {
+    return fallback;
+  }
+}
 
 if (process.env.SKIP_DEPLOY_PREFLIGHT === "1") {
   console.log("predeploy: skipped (SKIP_DEPLOY_PREFLIGHT=1)");
@@ -58,7 +77,7 @@ if (!existsSync(DIST)) {
     problems.push([
       "dist/pagefind/pagefind.js is missing — this deploy would remove search from the live site.",
       "Pagefind's platform binary failed to install. Repair the npm cache entry and reinstall:\n" +
-        "        npm pack @pagefind/darwin-arm64@1.5.2 && npm ci   (adjust the platform if not darwin-arm64)\n" +
+        `        npm pack ${pagefindPlatformPackage()} && npm ci\n` +
         "      then rebuild and confirm the log says 'Finished building search index'.",
     ]);
   }
