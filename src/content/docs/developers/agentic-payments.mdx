@@ -18,7 +18,7 @@ For the complete booking flow, your agent needs **Wink Booking Engine** and a **
 | Wink Reference — optional | Looks up countries, currencies and other reference data. | `https://api.wink.travel/mcp/reference` |
 | Wink Docs — optional | Helps your agent read documentation and API contracts. | `https://docs.mcp.wink.travel/mcp` |
 
-The Booking Engine MCP already includes the tools needed for the traveler booking flow. Wink's separate Payment MCP is for financial operations such as ledgers and withdrawals; it is not needed to pay for a room.
+The Booking Engine MCP already includes the tools needed for the traveler booking flow, when agentic booking and payment are enabled for that environment. Wink's separate Payment MCP is for financial operations such as ledgers and withdrawals; it is not needed to pay for a room.
 
 ### Sign in and choose permissions
 
@@ -94,7 +94,7 @@ All Wink tools below are available through the **Booking Engine MCP**. The MCP c
 | Pay and confirm | Obtain a credential from the connected wallet, then call `agentic_booking_pay` with `request.quoteId` and exactly one of `request.spt` or `request.tempoTransactionHash`. Keep the same signed-in Wink user for quote and payment. |
 | Retrieve the booking and receipt | Use `booking_search` or `booking_search_list` to find the confirmed booking, then `booking_get` and `booking_receipt_get` with its booking identifier. |
 
-The quote request needs `hotelIdentifier`, `roomRateIdentifier`, `checkIn`, `checkOut`, `adults` and `customizationIdentifier`. Dates use `YYYY-MM-DD`; `checkOut` must follow `checkIn`. Set `adults` to at least `1` and `children` to `0`.
+The quote request needs `hotelIdentifier`, `roomRateIdentifier`, `checkIn`, `checkOut`, `adults`, `children` and `customizationIdentifier`. Dates use `YYYY-MM-DD`; `checkOut` must follow `checkIn`. Set `adults` to at least `1` and `children` to `0`.
 
 The quote returns `quoteId`, `amountUsdCents`, `currency`, `expiresAt` and `mppChallenges`. Display USD cents as dollars: `10000` means **$100.00**. For Tempo, use the chosen challenge's token, chain, recipient and amount in token base units.
 
@@ -108,7 +108,7 @@ A successful retry returns the existing booking without charging again. Treat a 
 
 ### Payment-aware MCP clients
 
-Payment-aware MCP clients can use `agentic_booking_book` with the room fields directly in `arguments`. The first call returns error `-32042` with payment challenges. Retry the same call with the wallet credential in `params._meta["org.paymentauth/credential"]`; success includes `result._meta["org.paymentauth/receipt"]`. Error `-32043` carries a payment failure and challenge. For `-32603`, a `data.failure.reason` of `payment-in-progress` or `already-consumed` means retry the same credential; the error code alone is not enough.
+Payment-aware MCP clients can use `agentic_booking_book` with the room fields directly in `arguments`. The first call returns error `-32042` with payment challenges. Retry the same call with the wallet credential in `params._meta["org.paymentauth/credential"]`; success includes `result._meta["org.paymentauth/receipt"]`. Error `-32043` carries a payment failure and challenge: a definitive rejection needs a fresh quote, while an incomplete payment payload can retry with the same challenge. For `-32603`, a `data.failure.reason` of `payment-in-progress` or `already-consumed` means retry the same credential; the error code alone is not enough.
 
 ## Book over REST
 
