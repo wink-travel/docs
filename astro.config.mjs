@@ -1,6 +1,6 @@
 import starlight from '@astrojs/starlight';
 import { makeLastmodLookup } from "./src/lib/sitemap-lastmod.mjs";
-import { isChurningChangelogPage } from "./src/lib/changelog-churn.mjs";
+import { isNoindexChangelogPage } from "./src/lib/changelog-noindex.mjs";
 // import starlightDocSearch from '@astrojs/starlight-docsearch';
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from 'astro/config';
@@ -396,13 +396,11 @@ export default defineConfig({
       'zh-TW': { label: '繁體中文', lang: 'zh-TW' },
     },
   }), sitemap({
-    // Release-note URLs churn by design: `keepRecent(25)` in src/content.config.ts
-    // trims older releases every release, so yesterday's changelog URL 404s today.
-    // 48 are already dead and indexed. Keeping them out of the sitemap (and
-    // noindex in custom-head.astro) stops the decay at the source; they stay
-    // reachable and useful, they just aren't submitted for indexing. See
-    // changelog-churn.mjs for which changelog bases this does and doesn't cover.
-    filter: (page) => !isChurningChangelogPage(page),
+    // Changelog pages only show recent release entries (`keepRecent(...)` in
+    // src/content.config.ts trims older application/platform releases every
+    // release), so none of them are submitted for indexing; custom-head.astro
+    // marks the same pages noindex,nofollow. See changelog-noindex.mjs.
+    filter: (page) => !isNoindexChangelogPage(page),
     // Every URL shipped with no <lastmod>, so nothing looked fresh. Dates come
     // from the last commit touching each source file; URLs with no resolvable
     // source get none rather than a guess.
