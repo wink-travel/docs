@@ -1,0 +1,154 @@
+---
+title: Hotel Booking API — Ako pridať hotelové rezervácie do produktu
+description: Čo musí hotelová rezervačná API podporovať, ako spolu súvisia vyhľadávanie, ceny, rezervácie a platby, a ako pridať rezervovateľnú hotelovú ponuku do aplikácie, stránky alebo AI agenta.
+template: splash
+marketingNav: true
+---
+import '/src/styles/splash-page.css';
+
+import FaqGrid from "@/components/marketing/FaqGrid.astro";
+import ResourceSchema from "@/components/marketing/ResourceSchema.astro";
+import IconArrowRight from "@tabler/icons/outline/arrow-right.svg";
+
+<div class="not-content mkt-page">
+
+<ResourceSchema title="Hotel Booking API — Ako pridať hotelové rezervácie do produktu" crumb="Hotel Booking API" slug="hotel-booking-api" datePublished="2026-09-22" description="Čo musí hotelová rezervačná API podporovať, ako spolu súvisia vyhľadávanie, ceny, rezervácie a platby, a ako pridať rezervovateľnú hotelovú ponuku do aplikácie, stránky alebo AI agenta." />
+
+{/* Breadcrumb */}
+<nav aria-label="Breadcrumb" class="mx-auto w-full max-w-3xl px-4 pt-6 text-sm text-muted-foreground">
+  <a href="/" class="hover:text-foreground">Domov</a>
+  <span class="px-1.5">/</span>
+  <a href="/resources/" class="hover:text-foreground">Zdroje</a>
+  <span class="px-1.5">/</span>
+  <span class="text-foreground">Hotel Booking API</span>
+</nav>
+
+{/* Article header */}
+<header class="mx-auto w-full max-w-3xl px-4 pt-8 pb-10">
+  <span class="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-gradient-to-r from-[#ff6b35]/10 to-[#9333ea]/10 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary"><span class="size-1.5 rounded-full bg-gradient-to-r from-[#ff6b35] to-[#9333ea]"></span> Zdroje</span>
+  <h1 class="font-heading mt-3 text-4xl font-semibold tracking-tight text-balance @lg:text-5xl">Ako vývojári pridávajú hotelové rezervácie do produktu?</h1>
+  <p class="mkt-sub text-muted-foreground mt-5">
+    Vyhľadávanie a ceny sú jednoduchá polovica. Produkt je užitočný až vtedy, keď dokáže vytvoriť skutočnú rezerváciu, prijať platbu a oznámiť cestujúcemu aj hotelu, že sa uskutočnila.
+  </p>
+  <div class="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
+    <a href="https://app.wink.travel" class="inline-flex h-11 items-center justify-center rounded-md bg-[#ff6b35] px-6 text-sm font-semibold text-white hover:bg-[#e85b29]">Požiadať o prístup k API</a>
+    <a href="/api/overview/" class="inline-flex h-11 items-center justify-center rounded-md border border-border px-6 text-sm font-medium hover:bg-muted">Prečítať dokumentáciu</a>
+  </div>
+  <p class="mt-5 text-sm text-muted-foreground">
+    Mnoho API vracia hotelový obsah. Omnoho menej ich umožňuje dokončiť transakciu.
+  </p>
+</header>
+
+{/* Direct answer */}
+<section class="mx-auto w-full max-w-3xl px-4">
+  <div class="rounded-2xl border-l-4 border-primary bg-primary/[0.04] p-6">
+    <p class="text-xs font-semibold uppercase tracking-wider text-primary">Krátka odpoveď</p>
+    <p class="mt-3 text-pretty text-foreground/90">
+      Potrebujete štyri veci: <strong>aktuálne ceny a dostupnosť</strong>, <strong>vytvorenie rezervácie</strong>, <strong>platbu</strong> a <strong>potvrdenie plus webhooks</strong>. API len na čítanie obsahu končia pri prvej. Na Wink sú Consumer a Booking Engine API zadarmo, vytváranie rezervácií prebieha cez REST s OAuth2, je k dispozícii viac ako 64 webhook udalostí vrátane <code>booking.created</code> a platba sa vyberá pre hotel — ktorý zostáva obchodníkom záznamu — takže nemusíte ním byť vy. MCP server sprístupňuje rovnaké funkcie AI agentom a webové komponenty pokrývajú prípady, keď chcete cestu k rezervácii bez budovania vlastného UI.
+    </p>
+  </div>
+</section>
+
+{/* Body */}
+<article class="mkt-prose mx-auto w-full max-w-3xl px-4 py-14">
+
+## Štyri schopnosti, ktoré sú dôležité
+
+| Schopnosť | Čo znamená | Prečo produkty bez nej stagnujú |
+|---|---|---|
+| Aktuálne ceny a dostupnosť | Aktuálne ceny a čo je skutočne rezervovateľné, podľa dátumu | Uložené ceny zlyhávajú pri potvrdení a znižujú dôveru |
+| Vytvorenie rezervácie | Vytvoriť skutočnú rezerváciu, ktorú hotel dostane | Bez toho ste len odkaz, nie produkt |
+| Platba | Prijať peniaze ako súčasť rezervácie | Presmerovanie na inú stránku zabíja konverziu |
+| Potvrdenie a webhooks | Oznámiť hosťovi, hotelu a vášmu systému, čo sa stalo | Inak vznikajú problémy s podporou a zosúladením |
+
+Väčšina "hotelových API", ktoré vývojár nájde, pokrýva prvú a niekedy druhú schopnosť. Transakcia je ťažká časť a rozhoduje, či máte produkt.
+
+## Čie zásoby integrujete?
+
+Táto otázka ovplyvňuje všetko, čo nasleduje. Zásoby predávané cez reťazec prichádzajú s prirážkou v cene, staršou dostupnosťou a bez možnosti spätnej väzby k hotelu ohľadom rezervácie. Zásoby priamo od hotela nesú jeho vlastnú cenu, aktuálnu dostupnosť a hotel, ktorý vie o existencii rezervácie.
+
+Pre všetko, kde cestujúci porovnáva s hotelovou vlastnou stránkou — čo je väčšina prípadov — zásoby kontrolované hotelom zabraňujú nepríjemnému momentu, keď je vaša cena horšia.
+
+## Kto je obchodník záznamu
+
+Ak si vytvoríte hotelové rezervácie sami, stať sa obchodníkom záznamu znamená prevziať zodpovednosť za platby, reklamácie, vrátenia peňazí, spracovanie daní a často aj licenciu cestovnej kancelárie v každom trhu.
+
+Na Wink **hotel zostáva obchodníkom záznamu** a platba sa vyberá pre hotel, takže integrátor túto zodpovednosť nepreberá. Dohody o obchodníkovi záznamu sú dostupné pri API integráciách, kde partner naozaj potrebuje prijímať platby s vlastnými licenčnými požiadavkami.
+
+## Tri úrovne integrácie
+
+1. **Webové komponenty.** Vložte rezervovateľné vyhľadávanie, zoznam izieb alebo pokladňu do existujúcej stránky. Žiadna práca na backend; najmenšia kontrola nad rozložením.
+2. **REST API.** Plná kontrola nad vyhľadávaním, cenami, vytváraním rezervácií a potvrdením, autentifikované cez OAuth2. Použite, keď je rezervačný tok súčasťou vášho produktu.
+3. **MCP server.** Rovnaké schopnosti sprístupnené AI agentom, aby asistent mohol vyhľadávať, oceňovať a dokončiť rezerváciu namiesto presmerovania používateľa na web.
+
+Tieto tri nie sú výlučné — produkt často používa komponenty pre marketingovú plochu a API pre hlavný tok.
+
+## Čo postaviť najskôr
+
+- **Vyhľadávanie a ceny pre jedno mesto a jeden dátum.** Zabezpečte, aby prúdili reálne ceny pred návrhom čohokoľvek.
+- **Vytvorte jednu testovaciu rezerváciu od začiatku do konca**, vrátane platby a potvrdenia.
+- **Prihláste sa na odber `booking.created` a udalostí zrušenia** predtým, než postavíte akékoľvek UI.
+- **Rozhodnite sa včas o modeli atribúcie** — kontext zdroja musí cestovať s rezerváciou, inak bude vaše reportovanie neskôr len odhad.
+- **Riešte prípady zlyhania**: dostupnosť stratena medzi ponukou a rezerváciou, zamietnutá platba, čiastočné vrátenia.
+
+## Ceny, ktoré by mal vývojár poznať
+
+**Consumer a Booking Engine API sú zadarmo**. **Partner API** obsahuje mesačný bezplatný limit 10 000 hotelových dní, potom sa účtuje za jednotku. Potvrdené rezervácie nesú hotelovú 1,5% platformovú províziu plus náklady na spracovanie kariet a **10% štandardná provízia** platí, keď vaša služba viedla k rezervácii — takto integrátor zarába, nie platí.
+
+## Bežné chyby
+
+- **Stavať na uložených cenách.** Vyzerajú dobre pri vývoji, ale zlyhávajú v produkcii.
+- **Nechať platbu na presmerovanie.** Každé odovzdanie stráca rezervácie.
+- **Ignorovať webhooks až do spustenia.** Zosúladenie sa stáva manuálnou prácou.
+- **Stať sa obchodníkom záznamu bez potreby.** Je to rozhodnutie o licencii a zodpovednosti, nie len technické.
+- **Neposielať kontext zdroja.** Atribúciu nie je možné neskôr rekonštruovať.
+
+</article>
+
+{/* Related */}
+<section class="mx-auto w-full max-w-3xl px-4 pb-8">
+  <p class="mkt-kicker text-primary">Pokračujte v objavovaní</p>
+  <div class="mt-4 grid gap-3 @md:grid-cols-2">
+    {[
+      { label: "Pre vývojárov", href: "/builders/" },
+      { label: "Prehľad API", href: "/api/overview/" },
+      { label: "MCP server", href: "/developers/mcp/" },
+      { label: "Webové komponenty", href: "/integrations/web-components/" },
+    ].map((l) => (
+      <a href={l.href} class="group flex items-center justify-between rounded-xl border border-border bg-card px-4 py-3 text-sm font-medium transition-colors hover:border-primary/40">
+        {l.label}
+        <IconArrowRight class="size-4 text-muted-foreground transition-transform group-hover:translate-x-0.5" />
+      </a>
+    ))}
+  </div>
+</section>
+
+{/* FAQ */}
+<FaqGrid emitJsonLd
+  heading="Často kladené otázky k hotelovej rezervačnej API"
+  description="Čo integrovať, koľko to stojí a kto nesie zodpovednosť za platbu."
+  items={[
+    { title: "Čo musí hotelová rezervačná API podporovať?", content: "Aktuálne ceny a dostupnosť, vytvorenie rezervácie, platbu a potvrdenie s webhookmi. API len na čítanie obsahu pokrývajú len prvú časť a nemôžu dokončiť transakciu." },
+    { title: "Je Wink API zadarmo na používanie?", content: "Consumer a Booking Engine API sú zadarmo. Partner API obsahuje mesačný bezplatný limit 10 000 hotelových dní, potom sa účtuje za jednotku." },
+    { title: "Musím sa stať obchodníkom záznamu?", content: "Nie. Hotel zostáva obchodníkom záznamu a platba sa vyberá pre hotel. Dohody o obchodníkovi záznamu existujú pre API integrácie, ktoré naozaj potrebujú prijímať platby, s vlastnými licenčnými požiadavkami." },
+    { title: "Môžu AI agenti rezervovať cez rovnaké schopnosti?", content: "Áno. MCP server sprístupňuje vyhľadávanie, oceňovanie a rezervácie agentom, takže asistent môže dokončiť rezerváciu namiesto presmerovania používateľa na web." },
+    { title: "Ako dostanem zaplatené ako integrátor?", content: "Platí sa 10% štandardná provízia za rezervácie, ktoré viedol váš produkt, vypočítaná po hotelovej platformovej poplatku a spracovaní kariet, s atribúciou trvajúcou 6 mesiacov na kliknutie." },
+    { title: "Musím vytvoriť vlastné UI?", content: "Nie nevyhnutne. Webové komponenty poskytujú rezervovateľné vyhľadávanie, zoznamy izieb a pokladňu, ktoré sa vložia do existujúcej stránky; REST API je tu, keď má byť tok váš." },
+  ]}
+/>
+
+{/* Final CTA */}
+<section class="w-full border-y border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white">
+  <div class="mx-auto w-full max-w-7xl px-4 py-24 text-center">
+    <h2 class="mkt-h2 font-heading">Vytvorte produkt, ktorý naozaj dokáže rezervovať.</h2>
+    <p class="mx-auto mt-4 max-w-2xl text-pretty text-white/70 @lg:text-lg">
+      Aktuálna hotelová ponuka, vytváranie rezervácií cez REST, webhooks, MCP server pre agentov a platba, ktorú nemusíte vlastniť.
+    </p>
+    <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <a href="https://app.wink.travel" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-[#ff6b35] px-8 text-base font-semibold text-white hover:bg-[#e85b29] sm:w-auto">Požiadať o prístup k API</a>
+      <a href="/builders/" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-white px-8 text-base font-semibold text-[#1f0a40] hover:bg-white/90 sm:w-auto">Pre vývojárov</a>
+    </div>
+  </div>
+</section>
+
+</div>

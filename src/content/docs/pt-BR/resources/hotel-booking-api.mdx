@@ -1,0 +1,154 @@
+---
+title: API de Reserva de Hotel — Como Adicionar Reserva de Hotel a um Produto
+description: O que uma API de reserva de hotel precisa suportar, como pesquisa, tarifas, reserva e pagamento se encaixam, e como adicionar oferta de hotéis reserváveis a um app, site ou agente de IA.
+template: splash
+marketingNav: true
+---
+import '/src/styles/splash-page.css';
+
+import FaqGrid from "@/components/marketing/FaqGrid.astro";
+import ResourceSchema from "@/components/marketing/ResourceSchema.astro";
+import IconArrowRight from "@tabler/icons/outline/arrow-right.svg";
+
+<div class="not-content mkt-page">
+
+<ResourceSchema title="API de Reserva de Hotel — Como Adicionar Reserva de Hotel a um Produto" crumb="API de Reserva de Hotel" slug="hotel-booking-api" datePublished="2026-09-22" description="O que uma API de reserva de hotel precisa suportar, como pesquisa, tarifas, reserva e pagamento se encaixam, e como adicionar oferta de hotéis reserváveis a um app, site ou agente de IA." />
+
+{/* Breadcrumb */}
+<nav aria-label="Breadcrumb" class="mx-auto w-full max-w-3xl px-4 pt-6 text-sm text-muted-foreground">
+  <a href="/" class="hover:text-foreground">Início</a>
+  <span class="px-1.5">/</span>
+  <a href="/resources/" class="hover:text-foreground">Recursos</a>
+  <span class="px-1.5">/</span>
+  <span class="text-foreground">API de Reserva de Hotel</span>
+</nav>
+
+{/* Article header */}
+<header class="mx-auto w-full max-w-3xl px-4 pt-8 pb-10">
+  <span class="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-gradient-to-r from-[#ff6b35]/10 to-[#9333ea]/10 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary"><span class="size-1.5 rounded-full bg-gradient-to-r from-[#ff6b35] to-[#9333ea]"></span> Recursos</span>
+  <h1 class="font-heading mt-3 text-4xl font-semibold tracking-tight text-balance @lg:text-5xl">Como os desenvolvedores adicionam reserva de hotel a um produto?</h1>
+  <p class="mkt-sub text-muted-foreground mt-5">
+    Pesquisa e tarifas são a parte fácil. Um produto só se torna útil quando pode criar uma reserva real, receber o pagamento e informar o viajante e o hotel que a reserva foi feita.
+  </p>
+  <div class="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
+    <a href="https://app.wink.travel" class="inline-flex h-11 items-center justify-center rounded-md bg-[#ff6b35] px-6 text-sm font-semibold text-white hover:bg-[#e85b29]">Solicitar acesso à API</a>
+    <a href="/api/overview/" class="inline-flex h-11 items-center justify-center rounded-md border border-border px-6 text-sm font-medium hover:bg-muted">Ler a documentação</a>
+  </div>
+  <p class="mt-5 text-sm text-muted-foreground">
+    Muitas APIs retornam conteúdo de hotéis. Pouquíssimas permitem completar a transação.
+  </p>
+</header>
+
+{/* Direct answer */}
+<section class="mx-auto w-full max-w-3xl px-4">
+  <div class="rounded-2xl border-l-4 border-primary bg-primary/[0.04] p-6">
+    <p class="text-xs font-semibold uppercase tracking-wider text-primary">A resposta curta</p>
+    <p class="mt-3 text-pretty text-foreground/90">
+      Você precisa de quatro coisas: <strong>tarifas e disponibilidade ao vivo</strong>, <strong>criação de reserva</strong>, <strong>pagamento</strong> e <strong>confirmação mais webhooks</strong>. APIs de conteúdo somente leitura param na primeira. Na Wink, as APIs Consumer e Booking Engine são gratuitas, a criação de reserva é feita via REST com OAuth2, há mais de 64 eventos de webhook incluindo <code>booking.created</code>, e o pagamento é coletado para o hotel — que permanece como comerciante registrado — então você não precisa se tornar um. Um servidor MCP expõe as mesmas capacidades para agentes de IA, e componentes web cobrem os casos em que você quer um caminho de reserva sem construir uma interface.
+    </p>
+  </div>
+</section>
+
+{/* Body */}
+<article class="mkt-prose mx-auto w-full max-w-3xl px-4 py-14">
+
+## As quatro capacidades que importam
+
+| Capacidade | O que significa | Por que produtos travam sem ela |
+|---|---|---|
+| Tarifas e disponibilidade ao vivo | Preços atuais e o que está realmente reservável, por intervalo de datas | Tarifas em cache falham na confirmação e minam a confiança |
+| Criação de reserva | Criar uma reserva real que o hotel recebe | Sem isso você é um link de indicação, não um produto |
+| Pagamento | Receber dinheiro como parte da reserva | Um redirecionamento para outro site é onde a conversão morre |
+| Confirmação e webhooks | Informar o hóspede, hotel e seu sistema sobre o que aconteceu | Suporta carga e evita lacunas de conciliação |
+
+A maioria das "APIs de hotel" que um desenvolvedor encontra cobre a primeira e às vezes a segunda. A transação é a parte difícil, e é ela que decide se você tem um produto.
+
+## De quem é a oferta que você está integrando?
+
+Essa pergunta define tudo a seguir. Oferta revendida por uma cadeia chega com um markup embutido na tarifa, disponibilidade mais desatualizada e sem rota de volta ao hotel para dúvidas sobre a reserva. Oferta que vem diretamente do hotel carrega a tarifa do próprio hotel, disponibilidade ao vivo e um hotel que sabe que a reserva existe.
+
+Para qualquer coisa onde o viajante vai comparar com o site do próprio hotel — que é a maioria dos casos — a oferta controlada pelo hotel evita o momento constrangedor quando seu preço é pior.
+
+## Quem é o comerciante registrado
+
+Se você construir a reserva de hotel por conta própria, tornar-se o comerciante registrado significa assumir responsabilidade pelo pagamento, estornos, reembolsos, tratamento de impostos e muitas vezes uma licença de agência de viagens em cada mercado.
+
+Na Wink, o **hotel permanece como comerciante registrado** e o pagamento é coletado para o hotel, então o integrador não herda essa responsabilidade. Arranjos de comerciante registrado estão disponíveis em integrações API onde um parceiro realmente precisa receber o pagamento, e essa rota tem seus próprios requisitos de licenciamento.
+
+## Três níveis de integração
+
+1. **Componentes web.** Insira uma busca reservável, lista de quartos ou checkout em uma página existente. Sem trabalho backend; menor controle sobre o layout.
+2. **API REST.** Controle total sobre busca, tarifas, criação de reserva e confirmação, autenticada com OAuth2. Use quando o fluxo de reserva faz parte da experiência do seu produto.
+3. **Servidor MCP.** As mesmas capacidades expostas para agentes de IA, para que um assistente possa buscar, precificar e completar uma reserva em vez de redirecionar o usuário para um site.
+
+Os três não são exclusivos — um produto normalmente usa componentes para uma superfície de marketing e a API para seu fluxo principal.
+
+## O que construir primeiro
+
+- **Buscar e precificar para uma cidade e um intervalo de datas.** Obtenha tarifas reais antes de projetar qualquer coisa.
+- **Criar uma reserva de teste completa**, incluindo pagamento e confirmação.
+- **Assinar `booking.created` e os eventos de cancelamento** antes de construir qualquer interface.
+- **Decidir seu modelo de atribuição cedo** — o contexto da fonte precisa acompanhar a reserva, ou seu relatório será suposição depois.
+- **Tratar os casos de falha**: disponibilidade perdida entre cotação e reserva, pagamento recusado, reembolsos parciais.
+
+## Preços que um desenvolvedor deve conhecer
+
+As **APIs Consumer e Booking Engine são gratuitas**. A **Partner API** inclui uma cota mensal gratuita de 10.000 diárias de hotel, depois cobra por unidade. Reservas confirmadas carregam a taxa de plataforma do hotel de 1,5% mais o custo do processamento do cartão, e uma **comissão padrão de 10%** se aplica quando seu produto gerou a reserva — que é como um integrador ganha em vez de pagar.
+
+## Erros comuns
+
+- **Construir sobre tarifas em cache.** Elas parecem boas no desenvolvimento e falham na produção.
+- **Deixar o pagamento para um redirecionamento.** Cada repasse perde reservas.
+- **Ignorar webhooks até o lançamento.** A conciliação vira trabalho manual.
+- **Tornar-se comerciante registrado sem necessidade.** É uma decisão de licenciamento e responsabilidade, não só técnica.
+- **Não passar o contexto da fonte.** A atribuição não pode ser reconstruída depois.
+
+</article>
+
+{/* Related */}
+<section class="mx-auto w-full max-w-3xl px-4 pb-8">
+  <p class="mkt-kicker text-primary">Continue explorando</p>
+  <div class="mt-4 grid gap-3 @md:grid-cols-2">
+    {[
+      { label: "Para Desenvolvedores", href: "/builders/" },
+      { label: "Visão geral da API", href: "/api/overview/" },
+      { label: "Servidor MCP", href: "/developers/mcp/" },
+      { label: "Componentes web", href: "/integrations/web-components/" },
+    ].map((l) => (
+      <a href={l.href} class="group flex items-center justify-between rounded-xl border border-border bg-card px-4 py-3 text-sm font-medium transition-colors hover:border-primary/40">
+        {l.label}
+        <IconArrowRight class="size-4 text-muted-foreground transition-transform group-hover:translate-x-0.5" />
+      </a>
+    ))}
+  </div>
+</section>
+
+{/* FAQ */}
+<FaqGrid emitJsonLd
+  heading="Perguntas frequentes sobre API de reserva de hotel"
+  description="O que integrar, quanto custa e quem assume a responsabilidade pelo pagamento."
+  items={[
+    { title: "O que uma API de reserva de hotel precisa suportar?", content: "Tarifas e disponibilidade ao vivo, criação de reserva, pagamento e confirmação com webhooks. APIs de conteúdo somente leitura cobrem apenas o primeiro e não podem completar uma transação." },
+    { title: "A API da Wink é gratuita?", content: "As APIs Consumer e Booking Engine são gratuitas. A Partner API inclui 10.000 diárias de hotel gratuitas por mês, depois cobra por unidade." },
+    { title: "Preciso me tornar o comerciante registrado?", content: "Não. O hotel permanece como comerciante registrado e o pagamento é coletado para o hotel. Arranjos de comerciante registrado existem para integrações API que realmente precisam receber o pagamento, com seus próprios requisitos de licenciamento." },
+    { title: "Agentes de IA podem reservar pelas mesmas capacidades?", content: "Sim. Um servidor MCP expõe busca, precificação e reserva para agentes, para que um assistente possa completar uma reserva em vez de redirecionar o usuário para um site." },
+    { title: "Como recebo pagamento como integrador?", content: "Aplica-se uma comissão padrão de 10% nas reservas que seu produto gerou, calculada após a taxa de plataforma do hotel e o processamento do cartão, com atribuição válida por 6 meses por clique." },
+    { title: "Preciso construir uma interface?", content: "Não necessariamente. Componentes web fornecem busca reservável, listas de quartos e checkout que podem ser inseridos em uma página existente; a API REST está disponível quando o fluxo deve ser seu." },
+  ]}
+/>
+
+{/* Final CTA */}
+<section class="w-full border-y border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white">
+  <div class="mx-auto w-full max-w-7xl px-4 py-24 text-center">
+    <h2 class="mkt-h2 font-heading">Construa um produto que realmente possa reservar.</h2>
+    <p class="mx-auto mt-4 max-w-2xl text-pretty text-white/70 @lg:text-lg">
+      Oferta de hotéis ao vivo, criação de reserva via REST, webhooks, um servidor MCP para agentes e pagamento que você não precisa gerenciar.
+    </p>
+    <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <a href="https://app.wink.travel" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-[#ff6b35] px-8 text-base font-semibold text-white hover:bg-[#e85b29] sm:w-auto">Solicitar acesso à API</a>
+      <a href="/builders/" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-white px-8 text-base font-semibold text-[#1f0a40] hover:bg-white/90 sm:w-auto">Para Desenvolvedores</a>
+    </div>
+  </div>
+</section>
+
+</div>

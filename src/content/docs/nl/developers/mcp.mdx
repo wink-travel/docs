@@ -7,9 +7,9 @@ sidebar:
 
 import { Steps, LinkButton, Aside, Tabs, TabItem } from '@astrojs/starlight/components';
 
-De MCP-tools van Wink worden gepubliceerd als **toolsets** — gerichte eindpunten, elk gericht op één taak. Je verbindt je AI-client met de één of twee die bij je werk passen, niet met ze allemaal.
+De MCP-tools van Wink worden gepubliceerd als **toolsets** — gerichte eindpunten, elk gericht op één taak. Je verbindt je AI-client met één of twee die bij je werk passen, niet met ze allemaal.
 
-Elk eindpunt gebruikt **interactieve OAuth2-login** (PKCE autorisatiecode-flow): je AI-agent opent een browsertab, je logt in met je Wink-account, en dat is het. Geen client secrets om te beheren.
+Elk eindpunt gebruikt **interactieve OAuth2-login** (PKCE autorisatiecode-flow): je AI-agent opent een browsertabblad, je logt in met je Wink-account, en dat is het. Geen client secrets om te beheren.
 
 ```bash title="Een channel manager-integrator verbindt met één eindpunt"
 claude mcp add wink-channel-manager https://integrations.wink.travel/mcp/channel-manager --transport http
@@ -23,7 +23,7 @@ claude mcp add wink-rates https://api.wink.travel/mcp/extranet/rates --transport
 
 ## Waarom de tools zijn verdeeld over eindpunten
 
-Wink biedt ongeveer 500 tools aan. Ze allemaal tegelijk aan een agent geven is technisch mogelijk — maar geen goed idee.
+Wink biedt ongeveer 500 tools aan. Ze allemaal tegelijk aan een agent geven is technisch mogelijk — en een slecht idee.
 
 **Tooldefinities kosten context.** Elke tool die een MCP-server adverteert, wordt geladen in het contextvenster van het model voordat het werk begint, samen met de beschrijving en het volledige parameterschema. Vijfhonderd van die tools verbruiken een groot deel van het budget dat je daadwerkelijke taak nodig heeft, bij elke aanvraag.
 
@@ -41,7 +41,7 @@ Kies toolsets voor **focus**, niet voor beveiliging.
 
 ## Eindpuntdirectory
 
-Twee hosts serveren toolsets. Het aantal tools is bij benadering en groeit in de tijd.
+Twee hosts bedienen toolsets. Het aantal tools is bij benadering en groeit in de tijd.
 
 ### `https://api.wink.travel` — het platform
 
@@ -56,10 +56,10 @@ Twee hosts serveren toolsets. Het aantal tools is bij benadering en groeit in de
 | `/mcp/extranet/distribution` | ~37 | Waar inventaris wordt verkocht: verkoopkanalen en tariefmodifiers, affiliate- en leveranciersrelatieverzoeken, registratie, leadcaptatie |
 | `/mcp/studio/curation` | ~35 | Het bouwen van merchandisable collecties: statische en dynamische lijsten, gerangschikte lijsten, opgeslagen zoekopdrachten, eigendomsaggregaten |
 | `/mcp/link-manager` | ~28 | Gesyndiceerde linkcollecties, hun ontwerp, categorieën en tags, plus verkorte URL’s |
-| `/mcp/reference` | ~24 | Alleen-lezen opzoekgegevens: landen, valuta’s en wisselkoersen, talen, tijdzones, geo-opzoekingen, IP-geolocatie |
-| `/mcp/analytics` | ~18 | Boekings- en omzetanalyse: overzichten, lijndiagrammen, ranglijsten, affiliateprestaties, deelstatistieken |
+| `/mcp/reference` | ~24 | Alleen-lezen opzoekgegevens: landen, valuta’s en wisselkoersen, talen, tijdzones, geografische opzoekingen, IP-geolocatie |
+| `/mcp/analytics` | ~18 | Boekings- en omzetanalyses: overzichten, lijndiagrammen, ranglijsten, affiliateprestaties, deelstatistieken |
 | `/mcp/payment` | ~18 | Financiële operaties: het grootboek, opnames en kostenramingen, boekingsfondsaggregaten |
-| `/mcp/booking-engine` | ~17 | Het voor reizigers zichtbare winkelpad: zoeken en opzoeken, winkelwagen en afrekenen, bucketlists, campagne-aanpassing |
+| `/mcp/booking-engine` | ~17 | Het reizigersgerichte winkelpad: zoeken en opzoeken, winkelwagen en afrekenen, bucketlists, campagne-aanpassing |
 | `/mcp/social` | ~17 | Verbonden sociale accounts, publiceren en plannen van berichten, lezen van berichtinzichten |
 | `/mcp/travel-agent` | ~8 | Door agent gefaciliteerde boekingen namens reizigers, en agentrapporten |
 
@@ -83,6 +83,12 @@ Accountbeheer is ook op `api.wink.travel`, bij `/mcp/settings`. Er is geen `/mcp
 
 Elk eindpunt heeft ook een `ping`-tool, zodat je kunt bevestigen dat een verbinding live is voordat je echt werk vraagt.
 
+### Agentic payments
+
+Voor de complete reizigersboekingsflow, verbind **Wink Booking Engine** op `https://api.wink.travel/mcp/booking-engine` en een compatibele **betalingsportemonnee**. Het toevoegen van de Wink MCP opent browser-login en permissiekeuze; je client handelt daarna authenticatie af.
+
+Booking Engine bevat bestemmingsopzoeking, hotel- en kamerzoekopdrachten, `agentic_booking_quote`, `agentic_booking_pay`, `agentic_booking_book`, boekingsopvraging en bonnetjes, wanneer agentic booking en betaling zijn ingeschakeld voor die omgeving. Zie [Agentic Payments](/nl/developers/agentic-payments/) voor de verbindingsinstellingen, de te selecteren permissies en de stappen van zoeken tot bevestiging.
+
 ---
 
 ## Welke toolsets heb ik nodig?
@@ -95,32 +101,39 @@ Elk eindpunt heeft ook een `ping`-tool, zodat je kunt bevestigen dat een verbind
 | **Prijzen en beschikbaarheid beheert** | `/mcp/extranet/rates` |
 | **Dagelijkse reserveringen runt** | `/mcp/extranet/operations` |
 | **Distributie uitbreidt** | `/mcp/extranet/distribution` + `/mcp/analytics` |
-| **Affiliate-pagina’s bouwt** | `/mcp/studio/curation` + `/mcp/studio/embeds` |
+| **Affiliatepagina’s bouwt** | `/mcp/studio/curation` + `/mcp/studio/embeds` |
 | **Link-in-bio-pagina’s runt** | `/mcp/link-manager` + `/mcp/social` |
 | **Boekingen namens reizigers doet** | `/mcp/travel-agent` |
 | **Geld afstemt** | `/mcp/payment` |
-| **Een boekingservaring bouwt** | `/mcp/booking-engine` + `/mcp/reference` |
+| **Een kamer boekt met een AI-agent** | `/mcp/booking-engine` + een compatibele betalingsportemonnee — zie [Agentic Payments](/nl/developers/agentic-payments/) |
+| **Een boekingservaring bouwt** | `/mcp/booking-engine`; optioneel `/mcp/reference` voor extra opzoekingen |
 
-Begin met één. Voeg er een toe als je merkt dat je iets vraagt wat het niet kan — elke verbinding is onafhankelijk, en toevoegen beïnvloedt de anderen nooit.
+**Booking Engine bevat de kern van de boekingsworkflow.** Het biedt account- en aanpassingsontdekking, bestemmingsopzoeking, hotelbeschikbaarheid en kamerprijsdetails, winkelwagens, afrekenen en reizigersboekingsbeheer. Agentic booking- en betalingstools zijn ook inbegrepen wanneer ingeschakeld voor die omgeving.
+
+Voor een stadgebaseerde hotelzoekopdracht gebruik je `destination_lookup_search_suggestions` om de bestemming te bepalen, daarna `inventory_search_city` om beschikbare hotels en tarieven te vinden. Beide tools zitten in `/mcp/booking-engine`, dus deze flow vereist geen Reference-verbinding.
+
+Voeg `/mcp/reference` toe wanneer je ondersteunende opzoekingen nodig hebt zoals landen, valuta’s en wisselkoersen, ondersteunde talen, tijdzones, bredere geografische zoekopdrachten, OTA-classificaties of publieke eigendomskennis. Dit zijn optionele aanvullingen op de boekingsflow.
+
+Begin met één. Voeg er een toe als je iets vraagt wat het niet kan — elke verbinding is onafhankelijk, en het toevoegen van één beïnvloedt de anderen nooit.
 
 <Aside type="tip" title="Wil je toch alles?">
-`https://api.wink.travel/mcp` en `https://integrations.wink.travel/mcp` blijven beschikbaar en serveren **elke** tool op hun host. Ze zijn handig om te verkennen wat er bestaat, maar we raden ze niet aan voor dagelijks werk: de lijst met tools is groot genoeg om je taak te verdringen en de toolselectie van de agent te verslechteren. Geef de voorkeur aan de bovenstaande toolsets.
+`https://api.wink.travel/mcp` en `https://integrations.wink.travel/mcp` blijven beschikbaar en bedienen **elke** tool op hun host. Ze zijn handig om te verkennen wat er is, maar we raden ze niet aan voor dagelijks werk: de lijst met tools is groot genoeg om je taak te verdringen en de toolselectie van de agent te verslechteren. Geef de voorkeur aan de bovenstaande toolsets.
 </Aside>
 
 ---
 
 ## Hoe authenticatie werkt
 
-Wink MCP-servers gebruiken de **OAuth2 Authorization Code + PKCE** flow en ondersteunen **Dynamic Client Registration (RFC 7591)**. Dit gebeurt als je voor het eerst verbinding maakt:
+Wink MCP-servers gebruiken de **OAuth2 Authorization Code + PKCE**-flow en ondersteunen **Dynamic Client Registration (RFC 7591)**. Dit gebeurt als je voor het eerst verbindt:
 
 1. Je AI-client ontdekt de autorisatieserver via de `/.well-known/oauth-protected-resource` metadata van het MCP-eindpunt.
 2. De client registreert zichzelf via **Dynamic Client Registration** — geen handmatige applicatie-instelling nodig.
-3. De client opent een **browsertab** naar `https://iam.wink.travel`. Je logt in met je Wink-account en keurt de gevraagde permissies goed op het toestemmingsscherm.
+3. De client opent een **browsertabblad** naar `https://iam.wink.travel`. Je logt in met je Wink-account en keurt de gevraagde permissies goed op het toestemmingsscherm.
 4. Wink geeft een **toegangstoken** uit dat is gescopeerd op je account en gekoppeld aan je identiteit.
 5. De AI-client voegt het token toe aan elke MCP-aanvraag. Alle toolresultaten zijn automatisch gescopeerd op jouw beheersentiteit.
-6. Tokens verlopen na 3 uur. Je AI-client vernieuwt ze stilletjes op de achtergrond zonder opnieuw te vragen.
+6. Tokens verlopen na 3 uur. Je AI-client vernieuwt ze stil op de achtergrond zonder opnieuw te vragen.
 
-Elke toolaanroep draait **onder jouw identiteit** — dezelfde ACL-regels die het webportaal beschermen, gelden voor de AI-agent.
+Elke toolaanroep draait **onder jouw identiteit** — dezelfde ACL-regels die het webportaal beschermen, gelden ook voor de AI-agent.
 
 ---
 
@@ -156,7 +169,7 @@ claude mcp add wink-analytics  https://api.wink.travel/mcp/analytics           -
 Je logt maar één keer in. Na de eerste browsergoedkeuring hergebruikt Claude Code je Wink-sessie voor extra Wink-eindpunten.
 
 :::tip[Deel met je team]
-Voeg `--scope project` toe aan `claude mcp add` en Claude Code schrijft de server-URL naar `.mcp.json` in de root van de repo. Commit dat bestand — elk teamlid krijgt dezelfde toolsets, en iedereen voltooit zijn eigen browser-login bij de eerste verbinding.
+Voeg `--scope project` toe aan `claude mcp add` en Claude Code schrijft de server-URL naar `.mcp.json` in de root van de repo. Commit dat bestand — elk teamlid krijgt dezelfde toolsets, en iedereen voltooit zijn eigen browser-login de eerste keer dat hij verbindt.
 :::
 
   </TabItem>
@@ -187,7 +200,7 @@ Voeg `--scope project` toe aan `claude mcp add` en Claude Code schrijft de serve
 
 3. **Sluit Claude Desktop volledig af en start opnieuw** (gebruik Quit in de menubalk — alleen het venster sluiten is niet genoeg).
 
-4. Claude Desktop opent een browsertab voor elke nieuwe server. Log in bij Wink en keur de permissies goed.
+4. Claude Desktop opent een browsertabblad voor elke nieuwe server. Log in bij Wink en keur de permissies goed.
 
 5. Het stekker-icoon in de onderste werkbalk toont beide servers als verbonden.
 </Steps>
@@ -222,7 +235,7 @@ Voeg `--scope project` toe aan `claude mcp add` en Claude Code schrijft de serve
    }
    ```
 
-4. Start Codex. Bij het eerste gebruik opent Codex een browsertab naar `https://iam.wink.travel`.
+4. Start Codex. Bij het eerste gebruik opent Codex een browsertabblad naar `https://iam.wink.travel`.
 
 5. **Log in bij Wink** en keur de gevraagde permissies goed.
 
@@ -243,7 +256,7 @@ MCP-serverondersteuning is beschikbaar in de **ChatGPT desktop-app** voor Plus-,
 
 2. Open de app en klik op **je profielicoon** rechtsboven, kies dan **Instellingen**.
 
-3. Ga naar **Connectors** (of **MCP Servers**, afhankelijk van je app-versie) en klik op **Toevoegen**.
+3. Ga naar **Connectors** (of **MCP Servers** afhankelijk van je app-versie) en klik op **Toevoegen**.
 
 4. Voer de URL in van een toolset uit de [directory hierboven](#endpoint-directory), bijvoorbeeld:
    ```
@@ -251,7 +264,7 @@ MCP-serverondersteuning is beschikbaar in de **ChatGPT desktop-app** voor Plus-,
    ```
    Klik daarna op **Verbinden**.
 
-5. ChatGPT opent een browsertab naar `https://iam.wink.travel`. **Log in bij Wink** en keur de permissies goed.
+5. ChatGPT opent een browsertabblad naar `https://iam.wink.travel`. **Log in bij Wink** en keur de permissies goed.
 
 6. Herhaal stap 4–5 voor elke andere toolset die je werk nodig heeft, bijvoorbeeld:
    ```
@@ -290,9 +303,9 @@ MCP-servers zijn alleen configureerbaar in de **desktop-app**. De ChatGPT-webint
    }
    ```
 
-3. Open Cursor. Ga naar **Instellingen → Cursor-instellingen → MCP** en controleer of beide servers met een groene statusindicator verschijnen. Als ze rood tonen, klik op **Vernieuwen**.
+3. Open Cursor. Ga naar **Instellingen → Cursor-instellingen → MCP** en controleer of beide servers met een groene statusindicator verschijnen. Als ze rood zijn, klik op **Vernieuwen**.
 
-4. Cursor opent een browsertab naar `https://iam.wink.travel`. **Log in bij Wink** en keur de permissies goed.
+4. Cursor opent een browsertabblad naar `https://iam.wink.travel`. **Log in bij Wink** en keur de permissies goed.
 
 5. Open een chat (`Ctrl+L` / `Cmd+L`) en vraag Cursor om beschikbare Wink-tools te tonen om de verbinding te bevestigen.
 </Steps>
@@ -328,7 +341,7 @@ Je kunt ook een `mcp.json`-bestand in de root van je project plaatsen in plaats 
 
 3. **Start Windsurf volledig opnieuw op** (Bestand → Afsluiten, dan opnieuw openen).
 
-4. Ga naar **Instellingen → MCP Servers** en controleer of beide servers als verbonden worden weergegeven. Windsurf opent bij het eerste gebruik een browsertab naar `https://iam.wink.travel`.
+4. Ga naar **Instellingen → MCP Servers** en controleer of beide servers als verbonden worden weergegeven. Windsurf opent bij het eerste gebruik een browsertabblad naar `https://iam.wink.travel`.
 
 5. **Log in bij Wink** en keur de permissies goed. De servers worden groen in het instellingenpaneel zodra ze geverifieerd zijn.
 </Steps>
@@ -340,7 +353,7 @@ Windsurf MCP-ondersteuning vereist versie **1.4** of later. Controleer via **Hel
   </TabItem>
   <TabItem label="Cline (VS Code)">
 
-Cline is een VS Code-extensie met een ingebouwde MCP-servermanager. Geen handmatige JSON-bewerking nodig.
+Cline is een VS Code-extensie met een ingebouwde MCP-serverbeheerder. Handmatig JSON-bewerken is niet nodig.
 
 <Steps>
 1. Installeer Cline vanuit de VS Code Marketplace:
@@ -368,13 +381,13 @@ Cline is een VS Code-extensie met een ingebouwde MCP-servermanager. Geen handmat
    }
    ```
 
-5. **Sla het bestand op.** Cline herlaadt automatisch en opent een browsertab naar `https://iam.wink.travel`.
+5. **Sla het bestand op.** Cline herlaadt automatisch en opent een browsertabblad naar `https://iam.wink.travel`.
 
 6. **Log in bij Wink** en keur de permissies goed. Beide servers verschijnen als actief in het MCP Servers-paneel.
 </Steps>
 
 :::tip[Alternatief: toevoegen via URL]
-Klik in het MCP Servers-paneel op **Server toevoegen** en plak direct een toolset-URL zoals `https://api.wink.travel/mcp/extranet/rates`. Cline vult de configuratie automatisch in en regelt authenticatie zonder handmatige JSON-bewerking.
+Klik in het MCP Servers-paneel op **Server toevoegen** en plak direct een toolset-URL zoals `https://api.wink.travel/mcp/extranet/rates`. Cline vult de configuratie automatisch in en regelt authenticatie zonder handmatig JSON te bewerken.
 :::
 
   </TabItem>
@@ -389,16 +402,16 @@ Wanneer je het toestemmingsscherm goedkeurt, zie je een overzicht van wat de age
 
 Twee dingen zijn specifiek voor MCP:
 
-- **De `mcp.read` `mcp.write` `mcp.remove` scopes zijn daarnaast vereist** om de MCP-transport te openen. Een client met een `mcp.*` scope krijgt toegang tot elk Wink MCP-eindpunt, maar elke tool die het aanroept handhaaft nog steeds de sectiescope van het eindpunt dat het omsluit (bijv. `booking.read`).
-- **De AI-client vraagt alleen de scopes aan die het nodig heeft.** Je kunt individuele permissies weigeren op het toestemmingsscherm — tools die een geweigerde scope vereisen, geven een foutmelding bij aanroep.
+- **De `mcp.read` `mcp.write` `mcp.remove` scopes zijn daarnaast vereist** om de MCP-transport te openen. Een client met een `mcp.*` scope mag elk Wink MCP-eindpunt gebruiken, maar elke tool die hij aanroept handhaaft nog steeds de sectiescope van het eindpunt dat hij omhult (bijv. `booking.read`).
+- **De AI-client vraagt alleen de scopes aan die hij nodig heeft.** Je kunt individuele permissies weigeren op het toestemmingsscherm — tools die een geweigerde scope vereisen, geven een foutmelding bij aanroep.
 
-**Toolsets veranderen hier niets aan.** Het eindpunt waar je verbinding mee maakt bepaalt welke tools *vermeld* worden, niet wat ze *mogen doen*. Verbinden met `/mcp/payment` geeft geen financiële permissie die je nog niet had, en verbinden met `/mcp/reference` voorkomt niet dat een tool daar zijn eigen scope afdwingt. Autorisatie wordt per toolaanroep beslist, op basis van je token en de machtigingen van je account.
+**Toolsets veranderen hier niets aan.** Het eindpunt waar je verbinding mee maakt bepaalt welke tools *vermeld* worden, niet wat ze *mogen doen*. Verbinden met `/mcp/payment` geeft geen financiële permissie die je nog niet had, en verbinden met `/mcp/reference` voorkomt niet dat een tool daar zijn eigen scope afdwingt. Autorisatie wordt per toolaanroep bepaald, op basis van je token en de machtigingen van je account.
 
 ---
 
 ## Problemen oplossen
 
-**Browsertab opent niet**
+**Browsertabblad opent niet**
 
 Je AI-client ondersteunt mogelijk de interactieve PKCE-flow nog niet. Controleer of je een recente versie gebruikt:
 - **Claude Code:** `npm install -g @anthropic-ai/claude-code`
@@ -407,7 +420,7 @@ Je AI-client ondersteunt mogelijk de interactieve PKCE-flow nog niet. Controleer
 
 **`401 Unauthorized` na inloggen**
 
-Je gecachte token is mogelijk verlopen. Verwijder en voeg de server opnieuw toe om een verse login te forceren:
+Je opgeslagen token is mogelijk verlopen. Verwijder en voeg de server opnieuw toe om een verse login te forceren:
 
 ```bash
 # Claude Code
@@ -423,11 +436,11 @@ De tool vereist een scope die je niet hebt goedgekeurd op het toestemmingsscherm
 
 **De tool die ik nodig heb staat niet in de lijst**
 
-Je bent waarschijnlijk verbonden met een toolset die die taak niet dekt. Controleer de [endpointdirectory](#endpoint-directory) en voeg de toolset toe die dat wel doet — verbindingen zijn onafhankelijk, dus toevoegen verandert niets aan de anderen. Als je niet zeker weet welke het is, verbind tijdelijk met `https://api.wink.travel/mcp`, vind de tool, en zoek dan op welke toolset die vermeldt.
+Je bent waarschijnlijk verbonden met een toolset die die taak niet dekt. Controleer de [endpointdirectory](#endpoint-directory) en voeg de toolset toe die dat wel doet — verbindingen zijn onafhankelijk, dus toevoegen verandert niets aan de anderen. Als je niet zeker weet welke het heeft, verbind dan tijdelijk met `https://api.wink.travel/mcp`, zoek de tool en kijk welke toolset hem vermeldt.
 
 **`404 Not Found` op een toolset-eindpunt**
 
-Controleer het pad goed — de geneste toolsets hebben twee segmenten (`/mcp/extranet/rates`, niet `/mcp/extranet-rates`), en de platte hebben er één (`/mcp/link-manager`). Let op dat een *niet-geauthenticeerde* aanvraag naar een pad onder `/mcp` een `401` teruggeeft, niet `404`, dus alleen een `401` zegt niet of het eindpunt bestaat.
+Controleer het pad goed — de geneste toolsets hebben twee segmenten (`/mcp/extranet/rates`, niet `/mcp/extranet-rates`), en de platte hebben er één (`/mcp/link-manager`). Let op dat een *niet-geauthenticeerde* aanvraag naar een pad onder `/mcp` een `401` teruggeeft, geen `404`, dus alleen een `401` zegt niet of het eindpunt bestaat.
 
 **Ik verbond met `api.wink.travel/mcp/channel-manager` en kreeg niets**
 
@@ -439,7 +452,7 @@ Je bent ingelogd met een Wink-account zonder beheersentiteit. Ga naar [Wink Port
 
 **Token verloopt midden in een sessie**
 
-Tokens zijn 3 uur geldig. Claude Code en Claude Desktop vernieuwen tokens stilletjes zonder je sessie te onderbreken. Als je na een lange inactiviteit authenticatiefouten ziet, typ dan een nieuw bericht — de client herauthenticeert automatisch.
+Tokens zijn 3 uur geldig. Claude Code en Claude Desktop vernieuwen tokens stil zonder je sessie te onderbreken. Als je na een lange inactiviteit authenticatiefouten ziet, typ dan een nieuw bericht — de client herauthenticeert automatisch.
 
 **Codex CLI toont "MCP server unreachable"**
 
@@ -459,7 +472,7 @@ Windsurf vereist een volledige herstart (niet alleen venster herladen) om wijzig
 
 **Cline "Server toevoegen"-optie niet zichtbaar**
 
-De MCP-servermanager vereist Cline **2.0** of later. Open het VS Code Extensies-paneel, zoek Cline en klik op **Bijwerken** als er een update is. Na bijwerken, herlaad VS Code (`Ctrl+Shift+P` → "Developer: Reload Window").
+De MCP-serverbeheerder vereist Cline **2.0** of later. Open het VS Code Extensies-paneel, zoek Cline en klik op **Bijwerken** als er een update beschikbaar is. Na bijwerken, herlaad VS Code (`Ctrl+Shift+P` → "Developer: Reload Window").
 
 ---
 

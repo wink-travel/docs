@@ -1,0 +1,154 @@
+---
+title: API Pemesanan Hotel — Cara Menambahkan Pemesanan Hotel ke Produk
+description: Apa yang perlu didukung oleh API pemesanan hotel, bagaimana pencarian, tarif, pemesanan, dan pembayaran saling terkait, serta cara menambahkan pasokan hotel yang dapat dipesan ke aplikasi, situs, atau agen AI.
+template: splash
+marketingNav: true
+---
+import '/src/styles/splash-page.css';
+
+import FaqGrid from "@/components/marketing/FaqGrid.astro";
+import ResourceSchema from "@/components/marketing/ResourceSchema.astro";
+import IconArrowRight from "@tabler/icons/outline/arrow-right.svg";
+
+<div class="not-content mkt-page">
+
+<ResourceSchema title="API Pemesanan Hotel — Cara Menambahkan Pemesanan Hotel ke Produk" crumb="API Pemesanan Hotel" slug="hotel-booking-api" datePublished="2026-09-22" description="Apa yang perlu didukung oleh API pemesanan hotel, bagaimana pencarian, tarif, pemesanan, dan pembayaran saling terkait, serta cara menambahkan pasokan hotel yang dapat dipesan ke aplikasi, situs, atau agen AI." />
+
+{/* Breadcrumb */}
+<nav aria-label="Breadcrumb" class="mx-auto w-full max-w-3xl px-4 pt-6 text-sm text-muted-foreground">
+  <a href="/" class="hover:text-foreground">Beranda</a>
+  <span class="px-1.5">/</span>
+  <a href="/resources/" class="hover:text-foreground">Sumber Daya</a>
+  <span class="px-1.5">/</span>
+  <span class="text-foreground">API Pemesanan Hotel</span>
+</nav>
+
+{/* Article header */}
+<header class="mx-auto w-full max-w-3xl px-4 pt-8 pb-10">
+  <span class="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-gradient-to-r from-[#ff6b35]/10 to-[#9333ea]/10 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary"><span class="size-1.5 rounded-full bg-gradient-to-r from-[#ff6b35] to-[#9333ea]"></span> Sumber Daya</span>
+  <h1 class="font-heading mt-3 text-4xl font-semibold tracking-tight text-balance @lg:text-5xl">Bagaimana pengembang menambahkan pemesanan hotel ke produk?</h1>
+  <p class="mkt-sub text-muted-foreground mt-5">
+    Pencarian dan tarif adalah bagian yang mudah. Sebuah produk baru berguna ketika dapat membuat pemesanan nyata, menerima pembayaran, dan memberi tahu pelancong serta hotel bahwa pemesanan telah terjadi.
+  </p>
+  <div class="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
+    <a href="https://app.wink.travel" class="inline-flex h-11 items-center justify-center rounded-md bg-[#ff6b35] px-6 text-sm font-semibold text-white hover:bg-[#e85b29]">Minta akses API</a>
+    <a href="/api/overview/" class="inline-flex h-11 items-center justify-center rounded-md border border-border px-6 text-sm font-medium hover:bg-muted">Baca dokumentasi</a>
+  </div>
+  <p class="mt-5 text-sm text-muted-foreground">
+    Banyak API mengembalikan konten hotel. Jauh lebih sedikit yang memungkinkan Anda menyelesaikan transaksi.
+  </p>
+</header>
+
+{/* Direct answer */}
+<section class="mx-auto w-full max-w-3xl px-4">
+  <div class="rounded-2xl border-l-4 border-primary bg-primary/[0.04] p-6">
+    <p class="text-xs font-semibold uppercase tracking-wider text-primary">Jawaban singkat</p>
+    <p class="mt-3 text-pretty text-foreground/90">
+      Anda membutuhkan empat hal: <strong>tarif dan ketersediaan langsung</strong>, <strong>pembuatan pemesanan</strong>, <strong>pembayaran</strong>, dan <strong>konfirmasi plus webhook</strong>. API konten hanya-baca berhenti pada yang pertama. Di Wink, API Consumer dan Booking Engine gratis digunakan, pembuatan pemesanan berjalan melalui REST dengan OAuth2, ada lebih dari 64 event webhook termasuk <code>booking.created</code>, dan pembayaran dikumpulkan untuk hotel — yang tetap menjadi merchant of record — sehingga Anda tidak perlu menjadi merchant. Server MCP menyediakan kemampuan yang sama untuk agen AI, dan komponen web mencakup kasus di mana Anda ingin jalur pemesanan tanpa membangun UI.
+    </p>
+  </div>
+</section>
+
+{/* Body */}
+<article class="mkt-prose mx-auto w-full max-w-3xl px-4 py-14">
+
+## Empat kemampuan yang penting
+
+| Kemampuan | Artinya | Mengapa produk terhenti tanpa ini |
+|---|---|---|
+| Tarif dan ketersediaan langsung | Harga terkini dan apa yang benar-benar dapat dipesan, per rentang tanggal | Tarif yang di-cache gagal saat konfirmasi dan mengurangi kepercayaan |
+| Pembuatan pemesanan | Membuat reservasi nyata yang diterima hotel | Tanpa ini Anda hanya tautan rujukan, bukan produk |
+| Pembayaran | Menerima uang sebagai bagian dari pemesanan | Pengalihan ke situs lain adalah titik di mana konversi mati |
+| Konfirmasi dan webhook | Memberi tahu tamu, hotel, dan sistem Anda apa yang terjadi | Mendukung beban dan mengisi celah rekonsiliasi |
+
+Sebagian besar "API hotel" yang ditemukan pengembang mencakup yang pertama dan kadang kedua. Transaksi adalah bagian yang sulit, dan itu yang menentukan apakah Anda memiliki produk.
+
+## Pasokan siapa yang Anda integrasikan?
+
+Pertanyaan ini membentuk segalanya ke depan. Pasokan yang dijual kembali melalui rantai datang dengan markup di dalam tarif, ketersediaan yang lebih usang, dan tidak ada jalur kembali ke hotel untuk pertanyaan pemesanan. Pasokan yang berasal langsung dari hotel membawa tarif hotel sendiri, ketersediaan langsung, dan hotel yang mengetahui pemesanan tersebut ada.
+
+Untuk apa pun di mana pelancong akan membandingkan dengan situs web hotel sendiri — yang merupakan sebagian besar kasus — pasokan yang dikontrol hotel menghindari momen canggung ketika harga Anda lebih buruk.
+
+## Siapa merchant of record
+
+Jika Anda membangun pemesanan hotel sendiri, menjadi merchant of record berarti mengambil tanggung jawab pembayaran, chargeback, pengembalian dana, penanganan pajak, dan seringkali lisensi agen perjalanan di setiap pasar.
+
+Di Wink, **hotel tetap menjadi merchant of record** dan pembayaran dikumpulkan untuk hotel, sehingga integrator tidak mewarisi tanggung jawab tersebut. Pengaturan merchant-of-record tersedia pada integrasi API di mana mitra benar-benar perlu menerima pembayaran sendiri, dan jalur itu membawa persyaratan lisensi tersendiri.
+
+## Tiga tingkat integrasi
+
+1. **Komponen web.** Menyisipkan pencarian yang dapat dipesan, daftar kamar, atau checkout ke halaman yang sudah ada. Tidak perlu kerja backend; kontrol tata letak paling sedikit.
+2. **REST API.** Kontrol penuh atas pencarian, tarif, pembuatan pemesanan, dan konfirmasi, diautentikasi dengan OAuth2. Gunakan saat alur pemesanan adalah bagian dari pengalaman produk Anda sendiri.
+3. **Server MCP.** Kemampuan yang sama disediakan untuk agen AI, sehingga asisten dapat mencari, memberi harga, dan menyelesaikan pemesanan daripada mengarahkan pengguna ke situs web.
+
+Ketiganya tidak eksklusif — sebuah produk biasanya menggunakan komponen untuk permukaan pemasaran dan API untuk alur inti.
+
+## Apa yang harus dibangun terlebih dahulu
+
+- **Cari dan beri harga untuk satu kota dan satu rentang tanggal.** Dapatkan tarif nyata mengalir sebelum merancang apa pun.
+- **Buat satu pemesanan uji coba dari awal sampai akhir**, termasuk pembayaran dan konfirmasi.
+- **Berlangganan ke `booking.created` dan event pembatalan** sebelum membangun UI apa pun di atasnya.
+- **Tentukan model atribusi Anda sejak awal** — konteks sumber harus ikut bersama pemesanan, atau pelaporan Anda nanti hanya tebakan.
+- **Tangani kasus kegagalan**: ketersediaan hilang antara penawaran dan pemesanan, pembayaran ditolak, pengembalian dana sebagian.
+
+## Harga yang harus diketahui pengembang
+
+**API Consumer dan Booking Engine gratis**. **API Partner** mencakup kuota gratis 10.000 hari-hotel per bulan, kemudian dikenakan biaya per unit. Pemesanan yang dikonfirmasi membawa biaya platform hotel sebesar 1,5% plus biaya pemrosesan kartu sesuai biaya, dan **komisi default 10%** berlaku saat produk Anda mengarahkan pemesanan — ini cara integrator mendapatkan penghasilan, bukan membayar.
+
+## Kesalahan umum
+
+- **Membangun berdasarkan tarif yang di-cache.** Tarif ini terlihat baik saat pengembangan tapi gagal di produksi.
+- **Meninggalkan pembayaran ke pengalihan.** Setiap pengalihan kehilangan pemesanan.
+- **Mengabaikan webhook sampai peluncuran.** Rekonsiliasi menjadi pekerjaan manual.
+- **Menjadi merchant of record tanpa perlu.** Ini keputusan lisensi dan tanggung jawab, bukan hanya teknis.
+- **Tidak meneruskan konteks sumber.** Atribusi tidak bisa direkonstruksi kemudian.
+
+</article>
+
+{/* Related */}
+<section class="mx-auto w-full max-w-3xl px-4 pb-8">
+  <p class="mkt-kicker text-primary">Terus jelajahi</p>
+  <div class="mt-4 grid gap-3 @md:grid-cols-2">
+    {[
+      { label: "Untuk Pembuat", href: "/builders/" },
+      { label: "Ikhtisar API", href: "/api/overview/" },
+      { label: "Server MCP", href: "/developers/mcp/" },
+      { label: "Komponen Web", href: "/integrations/web-components/" },
+    ].map((l) => (
+      <a href={l.href} class="group flex items-center justify-between rounded-xl border border-border bg-card px-4 py-3 text-sm font-medium transition-colors hover:border-primary/40">
+        {l.label}
+        <IconArrowRight class="size-4 text-muted-foreground transition-transform group-hover:translate-x-0.5" />
+      </a>
+    ))}
+  </div>
+</section>
+
+{/* FAQ */}
+<FaqGrid emitJsonLd
+  heading="FAQ API Pemesanan Hotel"
+  description="Apa yang harus diintegrasikan, berapa biayanya, dan siapa yang memikul tanggung jawab pembayaran."
+  items={[
+    { title: "Apa yang perlu didukung oleh API pemesanan hotel?", content: "Tarif dan ketersediaan langsung, pembuatan pemesanan, pembayaran, dan konfirmasi dengan webhook. API konten hanya-baca hanya mencakup yang pertama dan tidak dapat menyelesaikan transaksi." },
+    { title: "Apakah API Wink gratis digunakan?", content: "API Consumer dan Booking Engine gratis. API Partner mencakup 10.000 hari-hotel gratis per bulan, kemudian dikenakan biaya per unit." },
+    { title: "Apakah saya harus menjadi merchant of record?", content: "Tidak. Hotel tetap menjadi merchant of record dan pembayaran dikumpulkan untuk hotel. Pengaturan merchant-of-record ada untuk integrasi API yang benar-benar perlu menerima pembayaran sendiri, dengan persyaratan lisensi tersendiri." },
+    { title: "Bisakah agen AI memesan melalui kemampuan yang sama?", content: "Ya. Server MCP menyediakan pencarian, penentuan harga, dan pemesanan untuk agen, sehingga asisten dapat menyelesaikan pemesanan tanpa mengarahkan pengguna ke situs web." },
+    { title: "Bagaimana saya dibayar sebagai integrator?", content: "Komisi default 10% berlaku pada pemesanan yang diarahkan produk Anda, dihitung setelah biaya platform hotel dan pemrosesan kartu, dengan atribusi bertahan 6 bulan per klik." },
+    { title: "Apakah saya perlu membangun UI?", content: "Tidak selalu. Komponen web menyediakan pencarian yang dapat dipesan, daftar kamar, dan checkout yang dapat disisipkan ke halaman yang sudah ada; REST API tersedia saat alur harus menjadi milik Anda." },
+  ]}
+/>
+
+{/* Final CTA */}
+<section class="w-full border-y border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white">
+  <div class="mx-auto w-full max-w-7xl px-4 py-24 text-center">
+    <h2 class="mkt-h2 font-heading">Bangun produk yang benar-benar bisa memesan.</h2>
+    <p class="mx-auto mt-4 max-w-2xl text-pretty text-white/70 @lg:text-lg">
+      Pasokan hotel langsung, pembuatan pemesanan melalui REST, webhook, server MCP untuk agen, dan pembayaran yang tidak perlu Anda miliki.
+    </p>
+    <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <a href="https://app.wink.travel" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-[#ff6b35] px-8 text-base font-semibold text-white hover:bg-[#e85b29] sm:w-auto">Minta akses API</a>
+      <a href="/builders/" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-white px-8 text-base font-semibold text-[#1f0a40] hover:bg-white/90 sm:w-auto">Untuk Pembuat</a>
+    </div>
+  </div>
+</section>
+
+</div>

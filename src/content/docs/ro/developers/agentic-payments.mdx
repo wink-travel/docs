@@ -1,0 +1,181 @@
+---
+title: Plăți Agentice
+description: Conectează-ți agentul AI la Wink, autentifică-te, găsește un hotel și aprobă plata pentru a finaliza rezervarea.
+sidebar:
+  order: 10.5
+---
+
+Poți căuta un hotel, alege o cameră și finaliza rezervarea prin agentul tău AI. Conectează-l la Wink și la un portofel de plată, apoi spune-i unde vrei să stai. Wink folosește **Machine Payments Protocol (MPP)** pentru a accepta plata din portofel și a-ți returna confirmarea rezervării.
+
+## 1. Conectează serverele MCP
+
+Pentru fluxul complet de rezervare, agentul tău are nevoie de **Wink Booking Engine** și un **portofel de plată**.
+
+| Conexiune | Ce face | Cum să o adaugi |
+| --- | --- | --- |
+| **Wink Booking Engine** — obligatoriu | Găsește destinații, caută hoteluri și tarife pentru camere, oferă cotații și confirmă rezervările, și recuperează rezervările și chitanțele tale. | Adaugă `https://api.wink.travel/mcp/booking-engine` ca server MCP HTTP la distanță. |
+| **Portofel de plată** — necesar pentru plată | Oferă acreditările de plată după ce aprobi achiziția. | Conectează un portofel care suportă Stripe Shared Payment Tokens sau plăți Tempo. Vezi exemplul Link mai jos. |
+| Wink Reference — opțional | Caută țări, valute și alte date de referință. | `https://api.wink.travel/mcp/reference` |
+| Wink Docs — opțional | Ajută agentul să citească documentația și contractele API. | `https://docs.mcp.wink.travel/mcp` |
+
+Booking Engine MCP include deja uneltele necesare pentru fluxul de rezervare al călătorului, când rezervarea și plata agentică sunt activate pentru acel mediu. MCP-ul separat de Plată al Wink este pentru operațiuni financiare precum registre și retrageri; nu este necesar pentru plata unei camere.
+
+### Autentifică-te și alege permisiunile
+
+1. Deschide setările MCP sau conectorul agentului tău și adaugă URL-ul Booking Engine de mai sus. Dă-i un nume, cum ar fi **Wink Booking**.
+2. Agentul tău deschide pagina de autentificare Wink în browser. Autentifică-te cu contul Wink sub care vrei să faci rezervarea.
+3. Pe ecranul de consimțământ, alege permisiunile de care are nevoie agentul, apoi aprobă conexiunea.
+4. Revino la agent. Acesta încarcă uneltele disponibile și gestionează autentificarea pentru apelurile MCP ulterioare.
+
+Pentru acest flux, selectează:
+
+| Permisiune | De ce este necesară |
+| --- | --- |
+| Acces agent AI (`mcp.read`) | Permite agentului să se conecteze la MCP Wink. |
+| Citire marketing (`marketing.read`) | Permite agentului să găsească configurația de rezervare a contului tău, numită personalizare. Contul tău trebuie să aibă acces la acea configurație. |
+| Scriere plată (`payment.write`) | Permite agentului să plătească cotația și să confirme rezervarea. |
+
+Păstrează permisiunile cerute la autentificare. Clientul MCP gestionează tokenurile de acces; nu trebuie să copiezi un token în chat sau să setezi antete de cerere. Dacă ai sărit peste o permisiune necesară, reconectează-te prin fluxul de autentificare al clientului și aprobă-o.
+
+### Conectează un portofel de plată
+
+Pentru plățile Stripe, o opțiune este **portofelul agentului Link**. Dacă clientul tău suportă servere MCP locale și Node.js este instalat, adaugă această intrare în configurația MCP:
+
+```json
+{
+  "mcpServers": {
+    "link": {
+      "command": "npx",
+      "args": ["@stripe/link-cli", "--mcp"]
+    }
+  }
+}
+```
+
+Cere agentului să conecteze contul tău Link, apoi urmează linkul de verificare pe care îl oferă și aprobă conexiunea. Link furnizează Shared Payment Token folosit pentru plata rezervării. Link suportă momentan conturi din SUA; verifică limitele de cheltuieli înainte de rezervare. Vezi [ghidul de configurare Link](https://github.com/stripe/link-cli#quickstart) și [configurația MCP](https://github.com/stripe/link-cli#mcp-server).
+
+Poți folosi și un portofel care suportă provocarea de plată Tempo oferită de Wink. Dacă agentul tău are deja un portofel compatibil conectat, folosește acea conexiune. Configurarea portofelului și aprobarea plății sunt separate de autentificarea în Wink.
+
+## 2. Cere agentului să găsească o cameră
+
+De exemplu:
+
+> Găsește o cameră în Bangkok pentru doi adulți între 15 și 17 ianuarie 2027. Arată-mi opțiunile disponibile, prețul total și condițiile de anulare înainte să aleg.
+
+Agentul tău poate găsi conturile Wink accesibile și configurațiile lor de rezervare. Dacă ai mai multe, spune-i pe care să o folosească. Dacă faci rezervarea printr-un link sau o configurație furnizată, dă-i agentului acea informație.
+
+Agentul rezolvă destinația, verifică hotelurile disponibile și încarcă tarifele camerelor pentru datele tale. Alege o cameră și cere o cotație.
+
+Acest flux de plată suportă momentan **o singură cameră, cu preț în USD, doar pentru adulți**. O cotație are un timp de expirare. Cererea unei cotații nu te taxează și nu confirmă rezervarea.
+
+## 3. Revizuiește și aprobă plata
+
+Verifică hotelul, camera, datele, oaspeții, condițiile de anulare și totalul cotat. Când ești gata, cere agentului să rezerve și să finalizeze orice aprobare cerută de portofelul tău.
+
+Agentul folosește una dintre metodele de plată oferite de cotație:
+
+- **Stripe:** portofelul oferă un Shared Payment Token.
+- **Tempo:** portofelul face transferul specificat de provocare și oferă hash-ul tranzacției.
+
+După ce plata reușește, agentul îți oferă un **cod de confirmare a rezervării**. Poate de asemenea să recupereze detaliile rezervării și chitanța prin Booking Engine MCP.
+
+Dacă plata este încă în procesare sau răspunsul s-a pierdut, lasă agentul să verifice **aceeași încercare de plată**. Ar trebui să refolosească cotația și acreditarea de plată în loc să înceapă o a doua plată. Dacă plata este refuzată, cere o cotație nouă și revizuiește-o înainte de a încerca din nou.
+
+## Referință unelte pentru agenți și dezvoltatori
+
+Toate uneltele Wink de mai jos sunt disponibile prin **Booking Engine MCP**. Clientul MCP trimite autentificarea automat folosind permisiunile aprobate la autentificare.
+
+| Pas | Unelte și comportament |
+| --- | --- |
+| Selectează contextul rezervării | `managing_entity_list`, apoi `customization_get_primary` sau `customization_search` pentru contul selectat. Folosește o personalizare furnizată dacă este deja cunoscută. |
+| Găsește o destinație | `destination_lookup_search_suggestions` și `destination_lookup_get`. |
+| Caută hoteluri și camere | `inventory_search_city` sau `inventory_search_geo`, apoi `property_inventory_get` pentru tarife și disponibilitate. |
+| Cotarea camerei selectate | `agentic_booking_quote`. Transmite detaliile camerei în argumentul `request`. |
+| Plătește și confirmă | Obține o acreditare din portofelul conectat, apoi apelează `agentic_booking_pay` cu `request.quoteId` și exact unul dintre `request.spt` sau `request.tempoTransactionHash`. Păstrează același utilizator Wink autentificat pentru cotație și plată. |
+| Recuperează rezervarea și chitanța | Folosește `booking_search` sau `booking_search_list` pentru a găsi rezervarea confirmată, apoi `booking_get` și `booking_receipt_get` cu identificatorul rezervării. |
+
+Cererea de cotație necesită `hotelIdentifier`, `roomRateIdentifier`, `checkIn`, `checkOut`, `adults`, `children` și `customizationIdentifier`. Datele folosesc formatul `YYYY-MM-DD`; `checkOut` trebuie să urmeze după `checkIn`. Setează `adults` la cel puțin `1` și `children` la `0`.
+
+Cotația returnează `quoteId`, `amountUsdCents`, `currency`, `expiresAt` și `mppChallenges`. Afișează cenții USD ca dolari: `10000` înseamnă **100,00 $**. Pentru Tempo, folosește tokenul, lanțul, destinatarul și suma în unități de bază ale tokenului din provocarea aleasă.
+
+| Rezultat plată | Pasul următor |
+| --- | --- |
+| `PAYMENT_SUCCEEDED` | Salvează `bookingConfirmationCode` și `chargeReference`. |
+| `IN_PROGRESS` | Așteaptă puțin și încearcă din nou aceeași cotație și acreditare. |
+| `DECLINED` | Cere o cotație nouă și revizuiește-o înainte de o nouă plată. |
+
+O reîncercare reușită returnează rezervarea existentă fără a taxa din nou. Tratează un timeout ca un rezultat necunoscut și reîncearcă aceeași plată. Dacă rămâne nerezolvat, contactează suportul cu ID-ul cotației.
+
+### Clienți MCP conștienți de plată
+
+Clienții MCP conștienți de plată pot folosi `agentic_booking_book` cu câmpurile camerei direct în `arguments`. Primul apel returnează eroarea `-32042` cu provocări de plată. Reîncearcă același apel cu acreditarea portofelului în `params._meta["org.paymentauth/credential"]`; succesul include `result._meta["org.paymentauth/receipt"]`. Eroarea `-32043` conține un eșec de plată și provocare: un refuz definitiv necesită o cotație nouă, în timp ce un payload incomplet poate reîncerca cu aceeași provocare. Pentru `-32603`, un `data.failure.reason` de `payment-in-progress` sau `already-consumed` înseamnă reîncercarea aceleiași acreditări; codul de eroare singur nu este suficient.
+
+## Rezervă prin REST
+
+Folosește REST când construiești o integrare care apelează Wink direct prin HTTP. Atât cotația, cât și plata folosesc **`POST https://api.wink.travel/api/mpp/booking`**.
+
+Aplicația ta are nevoie de un [token de acces utilizator Wink](/ro/developers/authentication/) cu permisiunea `payment.write` pentru a plăti. Păstrează același utilizator pentru ambele apeluri. Trimite tokenul în `Wink-Authorization`, lăsând `Authorization` disponibil pentru acreditarea de plată a portofelului. Aceste antete se aplică la REST; un client MCP gestionează propria autentificare.
+
+### 1. Cere o cotație
+
+Salvează camera selectată ca `booking.json`, înlocuind identificatorii și datele din exemplu cu selecția ta. Câmpurile camerei merg direct în corpul JSON, fără un înveliș `request`.
+
+```json
+{
+  "hotelIdentifier": "ID_HOTELUL_TĂU",
+  "roomRateIdentifier": "ID_TARIF_CAMERĂ",
+  "checkIn": "2027-01-15",
+  "checkOut": "2027-01-17",
+  "adults": 2,
+  "children": 0,
+  "customizationIdentifier": "ID_PERSONALIZARE"
+}
+```
+
+Setează `WINK_ACCESS_TOKEN` la tokenul de acces al utilizatorului și trimite cererea:
+
+```bash
+curl -i https://api.wink.travel/api/mpp/booking \
+  -H "Wink-Authorization: Bearer $WINK_ACCESS_TOKEN" \
+  -H 'Content-Type: application/json' \
+  --data-binary @booking.json
+```
+
+Wink returnează **`402 Payment Required`** cu o provocare `WWW-Authenticate: Payment ...` pentru fiecare metodă oferită. Corpul JSON include `quoteId`, `amount`, `currency`, `expiresAt` și `methods`. Aici, `amount` este un șir în cenți USD: `"10000"` înseamnă **100,00 $**. Revizuiește cotația înainte de expirare; încă nu s-a efectuat nicio plată.
+
+### 2. Plătește și confirmă
+
+Portofelul trebuie să îndeplinească una dintre provocările returnate. Pentru Stripe, furnizează `payload.spt`; pentru Tempo, furnizează `payload.hash` cu `payload.type` setat la `"hash"`. Folosește detaliile de plată din acea provocare.
+
+Setează `MPP_CREDENTIAL` la acreditarea MPP codificată a portofelului, care conține provocarea și payload-ul de plată. Reîncearcă **același corp de cerere**, păstrând antetul de identitate:
+
+```bash
+curl -i https://api.wink.travel/api/mpp/booking \
+  -H "Wink-Authorization: Bearer $WINK_ACCESS_TOKEN" \
+  -H "Authorization: Payment $MPP_CREDENTIAL" \
+  -H 'Content-Type: application/json' \
+  --data-binary @booking.json
+```
+
+La succes, Wink returnează **`200 OK`**, un corp JSON conținând `bookingConfirmationCode` și un antet `Payment-Receipt`. Salvează confirmarea și chitanța. O reîncercare reușită returnează rezervarea existentă fără a taxa din nou.
+
+### Gestionează răspunsurile și reîncercările
+
+| Răspuns | Ce să faci |
+| --- | --- |
+| `400` | Corectează detaliile camerei invalide sau o acreditare incorectă. |
+| `401` / `403` | Verifică autentificarea utilizatorului și permisiunea de plată. |
+| `402` | Inspectează problema și provocarea returnate. Un refuz definitiv al plății necesită o cotație nouă; un payload incomplet refolosește provocarea originală. Revizuiește prețul înainte de plată. |
+| `409` | Rezultatul plății este nerezolvat. Așteaptă puțin, apoi reîncearcă același corp și acreditare la endpoint-ul de rezervare. |
+| `429` | Așteaptă numărul de secunde din `Retry-After`, apoi reîncearcă. |
+
+Un răspuns `409` are un corp `application/problem+json`. Potrivește-i `type` cu aceste URL-uri exacte:
+
+| Tip problemă | Semnificație |
+| --- | --- |
+| [https://api.wink.travel/problems/payment-in-progress](https://api.wink.travel/problems/payment-in-progress) | O încercare de plată este încă în curs sau decontarea nu poate fi confirmată încă. |
+| [https://api.wink.travel/problems/already-consumed](https://api.wink.travel/problems/already-consumed) | Provocarea sau dovada plății a fost deja folosită de o încercare posibil reușită. Aceasta singură nu confirmă rezervarea. |
+
+Ambele înseamnă **reîncearcă aceeași plată; nu plăti o cotație nouă**. URL-urile identifică și documentează problema; nu sunt endpoint-uri de plată sau polling. Reîncearcă `POST /api/mpp/booking` și folosește tipul problemei în loc de textul liber `detail` pentru a decide ce să faci. Vezi [referința tipurilor de probleme](https://api.wink.travel/problems) pentru toate problemele de plată Wink.
+
+Un timeout, răspuns pierdut sau eroare de server după trimiterea plății poate lăsa de asemenea rezultatul necunoscut. Reîncearcă aceeași cerere de plată. Dacă rezultatul rămâne nerezolvat, contactează suportul cu ID-ul cotației înainte de a începe o altă plată.

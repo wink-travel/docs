@@ -1,0 +1,181 @@
+---
+title: Pembayaran Agentic
+description: Sambungkan ejen AI anda ke Wink, log masuk, cari hotel dan luluskan pembayaran untuk melengkapkan tempahan anda.
+sidebar:
+  order: 10.5
+---
+
+Anda boleh mencari hotel, memilih bilik dan melengkapkan tempahan anda melalui ejen AI anda. Sambungkannya ke Wink dan dompet pembayaran, kemudian beritahu ia di mana anda ingin menginap. Wink menggunakan **Machine Payments Protocol (MPP)** untuk menerima pembayaran dari dompet dan mengembalikan pengesahan tempahan anda.
+
+## 1. Sambungkan pelayan MCP
+
+Untuk aliran tempahan lengkap, ejen anda memerlukan **Wink Booking Engine** dan **dompet pembayaran**.
+
+| Sambungan | Fungsi | Cara menambah |
+| --- | --- | --- |
+| **Wink Booking Engine** — diperlukan | Mencari destinasi, mencari hotel dan kadar bilik, mengutip dan mengesahkan tempahan, serta mendapatkan tempahan dan resit anda. | Tambah `https://api.wink.travel/mcp/booking-engine` sebagai pelayan MCP HTTP jauh. |
+| **Dompet pembayaran** — diperlukan untuk membayar | Menyediakan kelayakan pembayaran selepas anda meluluskan pembelian. | Sambungkan dompet yang menyokong Stripe Shared Payment Tokens atau pembayaran Tempo. Lihat contoh Link di bawah. |
+| Rujukan Wink — pilihan | Mencari negara, mata wang dan data rujukan lain. | `https://api.wink.travel/mcp/reference` |
+| Dokumen Wink — pilihan | Membantu ejen anda membaca dokumentasi dan kontrak API. | `https://docs.mcp.wink.travel/mcp` |
+
+Booking Engine MCP sudah termasuk alat yang diperlukan untuk aliran tempahan pelancong, apabila tempahan dan pembayaran agentic diaktifkan untuk persekitaran tersebut. MCP Pembayaran Wink yang berasingan adalah untuk operasi kewangan seperti lejar dan pengeluaran; ia tidak diperlukan untuk membayar bilik.
+
+### Log masuk dan pilih kebenaran
+
+1. Buka tetapan MCP atau penyambung ejen anda dan tambah URL Booking Engine di atas. Beri nama seperti **Wink Booking**.
+2. Ejen anda membuka halaman log masuk Wink dalam pelayar anda. Log masuk dengan akaun Wink yang anda ingin gunakan untuk tempahan.
+3. Pada skrin persetujuan, pilih kebenaran yang diperlukan oleh ejen anda, kemudian luluskan sambungan.
+4. Kembali ke ejen anda. Ia memuatkan alat yang tersedia dan mengurus pengesahan untuk panggilan MCP seterusnya.
+
+Untuk aliran ini, pilih:
+
+| Kebenaran | Sebab diperlukan |
+| --- | --- |
+| Akses ejen AI (`mcp.read`) | Membenarkan ejen anda menyambung ke MCP Wink. |
+| Baca pemasaran (`marketing.read`) | Membolehkan ejen mencari konfigurasi tempahan akaun anda, dipanggil penyesuaian. Akaun anda juga mesti mempunyai akses ke konfigurasi tersebut. |
+| Tulis pembayaran (`payment.write`) | Membolehkan ejen membayar petikan dan mengesahkan tempahan. |
+
+Simpan kebenaran log masuk yang diminta oleh sambungan. Klien MCP anda mengendalikan token akses; anda tidak perlu menyalin token ke dalam chat atau menetapkan header permintaan. Jika anda terlepas kebenaran yang diperlukan, sambung semula melalui aliran log masuk klien anda dan luluskan.
+
+### Sambungkan dompet pembayaran
+
+Untuk pembayaran Stripe, satu pilihan ialah **dompet ejen Link**. Jika klien anda menyokong pelayan MCP tempatan dan Node.js dipasang, tambah entri ini ke konfigurasi MCP-nya:
+
+```json
+{
+  "mcpServers": {
+    "link": {
+      "command": "npx",
+      "args": ["@stripe/link-cli", "--mcp"]
+    }
+  }
+}
+```
+
+Minta ejen anda menyambungkan akaun Link anda, kemudian ikut pautan pengesahan yang disediakan dan luluskan sambungan. Link membekalkan Shared Payment Token yang digunakan untuk membayar tempahan. Link kini menyokong akaun AS; semak had perbelanjaannya sebelum membuat tempahan. Lihat [panduan persediaan Link](https://github.com/stripe/link-cli#quickstart) dan [konfigurasi MCP](https://github.com/stripe/link-cli#mcp-server).
+
+Anda juga boleh menggunakan dompet yang menyokong cabaran pembayaran Tempo yang ditawarkan oleh Wink. Jika ejen anda sudah mempunyai dompet yang serasi disambungkan, gunakan sambungan itu. Persediaan dompet dan kelulusan pembayaran adalah berasingan daripada log masuk ke Wink.
+
+## 2. Minta ejen anda cari bilik
+
+Contohnya:
+
+> Cari bilik di Bangkok untuk dua dewasa dari 15 hingga 17 Januari 2027. Tunjukkan pilihan yang tersedia, jumlah harga dan terma pembatalan sebelum saya memilih.
+
+Ejen anda boleh mencari akaun Wink yang boleh diakses dan konfigurasi tempahannya. Jika anda mempunyai beberapa, beritahu ia yang mana satu untuk digunakan. Jika anda menempah melalui pautan tempahan atau konfigurasi yang disediakan, berikan itu kepada ejen sebaliknya.
+
+Ejen kemudian menyelesaikan destinasi anda, memeriksa hotel yang tersedia dan memuatkan kadar bilik untuk tarikh anda. Pilih bilik dan minta petikan harga.
+
+Aliran pembayaran ini kini menyokong **satu bilik, harga dalam USD, untuk dewasa sahaja**. Petikan mempunyai masa tamat. Meminta petikan tidak mengenakan caj atau mengesahkan tempahan.
+
+## 3. Semak dan luluskan pembayaran
+
+Semak hotel, bilik, tarikh, tetamu, terma pembatalan dan jumlah yang dipetik. Apabila anda sudah bersedia, minta ejen anda menempah dan lengkapkan sebarang kelulusan yang diminta oleh dompet anda.
+
+Ejen menggunakan salah satu kaedah pembayaran yang ditawarkan oleh petikan:
+
+- **Stripe:** dompet menyediakan Shared Payment Token.
+- **Tempo:** dompet membuat pemindahan yang ditentukan oleh cabaran dan menyediakan hash transaksi.
+
+Selepas pembayaran berjaya, ejen anda memberikan **kod pengesahan tempahan**. Ia juga boleh mendapatkan butiran tempahan dan resit melalui Booking Engine MCP.
+
+Jika pembayaran masih diproses atau respons hilang, biarkan ejen menyemak **cubaan pembayaran yang sama**. Ia harus menggunakan semula petikan dan kelayakan pembayaran itu dan bukannya memulakan pembayaran kedua. Jika pembayaran ditolak, minta petikan baru dan semak sebelum mencuba lagi.
+
+## Rujukan alat untuk ejen dan pembangun
+
+Semua alat Wink di bawah tersedia melalui **Booking Engine MCP**. Klien MCP menghantar pengesahan secara automatik menggunakan kebenaran yang diluluskan semasa log masuk.
+
+| Langkah | Alat dan tingkah laku |
+| --- | --- |
+| Pilih konteks tempahan | `managing_entity_list`, kemudian `customization_get_primary` atau `customization_search` untuk akaun yang dipilih. Gunakan penyesuaian yang disediakan apabila sudah diketahui. |
+| Cari destinasi | `destination_lookup_search_suggestions` dan `destination_lookup_get`. |
+| Cari hotel dan bilik | `inventory_search_city` atau `inventory_search_geo`, kemudian `property_inventory_get` untuk kadar dan ketersediaan. |
+| Petik bilik yang dipilih | `agentic_booking_quote`. Hantar butiran bilik dalam argumen `request`. |
+| Bayar dan sahkan | Dapatkan kelayakan dari dompet yang disambungkan, kemudian panggil `agentic_booking_pay` dengan `request.quoteId` dan tepat satu dari `request.spt` atau `request.tempoTransactionHash`. Kekalkan pengguna Wink yang sama untuk petikan dan pembayaran. |
+| Dapatkan tempahan dan resit | Gunakan `booking_search` atau `booking_search_list` untuk mencari tempahan yang disahkan, kemudian `booking_get` dan `booking_receipt_get` dengan pengecam tempahan. |
+
+Permintaan petikan memerlukan `hotelIdentifier`, `roomRateIdentifier`, `checkIn`, `checkOut`, `adults`, `children` dan `customizationIdentifier`. Tarikh menggunakan `YYYY-MM-DD`; `checkOut` mesti selepas `checkIn`. Tetapkan `adults` sekurang-kurangnya `1` dan `children` kepada `0`.
+
+Petikan mengembalikan `quoteId`, `amountUsdCents`, `currency`, `expiresAt` dan `mppChallenges`. Paparkan sen USD sebagai dolar: `10000` bermaksud **$100.00**. Untuk Tempo, gunakan token, rantaian, penerima dan jumlah cabaran yang dipilih dalam unit asas token.
+
+| Keputusan bayar | Langkah seterusnya |
+| --- | --- |
+| `PAYMENT_SUCCEEDED` | Simpan `bookingConfirmationCode` dan `chargeReference`. |
+| `IN_PROGRESS` | Tunggu sebentar dan cuba semula petikan dan kelayakan yang sama. |
+| `DECLINED` | Minta petikan baru dan semak sebelum membuat pembayaran lain. |
+
+Cubaan semula yang berjaya mengembalikan tempahan sedia ada tanpa mengenakan caj lagi. Anggap tamat masa sebagai hasil yang tidak diketahui dan cuba semula pembayaran yang sama. Jika masih tidak selesai, hubungi sokongan dengan ID petikan.
+
+### Klien MCP yang menyokong pembayaran
+
+Klien MCP yang menyokong pembayaran boleh menggunakan `agentic_booking_book` dengan medan bilik terus dalam `arguments`. Panggilan pertama mengembalikan ralat `-32042` dengan cabaran pembayaran. Cuba semula panggilan yang sama dengan kelayakan dompet dalam `params._meta["org.paymentauth/credential"]`; kejayaan termasuk `result._meta["org.paymentauth/receipt"]`. Ralat `-32043` membawa kegagalan pembayaran dan cabaran: penolakan muktamad memerlukan petikan baru, manakala muatan pembayaran tidak lengkap boleh cuba semula dengan cabaran yang sama. Untuk `-32603`, `data.failure.reason` `payment-in-progress` atau `already-consumed` bermaksud cuba semula kelayakan yang sama; kod ralat sahaja tidak mencukupi.
+
+## Tempah melalui REST
+
+Gunakan REST apabila membina integrasi yang memanggil Wink terus melalui HTTP. Kedua-dua petikan dan pembayaran menggunakan **`POST https://api.wink.travel/api/mpp/booking`**.
+
+Aplikasi anda memerlukan [token akses pengguna Wink](/ms/developers/authentication/) dengan kebenaran `payment.write` untuk membayar. Kekalkan pengguna yang sama untuk kedua-dua panggilan. Hantar token dalam `Wink-Authorization`, membiarkan `Authorization` tersedia untuk kelayakan pembayaran dompet. Header ini terpakai untuk REST; klien MCP mengendalikan pengesahannya sendiri.
+
+### 1. Minta petikan
+
+Simpan bilik yang dipilih sebagai `booking.json`, gantikan pengecam dan tarikh contoh dengan pilihan anda. Medan bilik diletakkan terus dalam badan JSON, tanpa pembalut `request`.
+
+```json
+{
+  "hotelIdentifier": "YOUR_HOTEL_ID",
+  "roomRateIdentifier": "YOUR_ROOM_RATE_ID",
+  "checkIn": "2027-01-15",
+  "checkOut": "2027-01-17",
+  "adults": 2,
+  "children": 0,
+  "customizationIdentifier": "YOUR_CUSTOMIZATION_ID"
+}
+```
+
+Tetapkan `WINK_ACCESS_TOKEN` kepada token akses pengguna dan hantar permintaan:
+
+```bash
+curl -i https://api.wink.travel/api/mpp/booking \
+  -H "Wink-Authorization: Bearer $WINK_ACCESS_TOKEN" \
+  -H 'Content-Type: application/json' \
+  --data-binary @booking.json
+```
+
+Wink mengembalikan **`402 Payment Required`** dengan cabaran `WWW-Authenticate: Payment ...` untuk setiap kaedah yang ditawarkan. Badan JSON termasuk `quoteId`, `amount`, `currency`, `expiresAt` dan `methods`. Di sini, `amount` adalah rentetan dalam sen USD: `"10000"` bermaksud **$100.00**. Semak petikan sebelum tamat; tiada pembayaran diambil lagi.
+
+### 2. Bayar dan sahkan
+
+Biarkan dompet memenuhi satu cabaran yang dikembalikan. Untuk Stripe, ia membekalkan `payload.spt`; untuk Tempo, ia membekalkan `payload.hash` dengan `payload.type` ditetapkan kepada `"hash"`. Gunakan butiran pembayaran dari cabaran itu.
+
+Tetapkan `MPP_CREDENTIAL` kepada kelayakan MPP yang disulitkan dari dompet, yang mengandungi cabaran dan muatan pembayaran. Cuba semula **badan permintaan yang sama**, kekalkan header identiti:
+
+```bash
+curl -i https://api.wink.travel/api/mpp/booking \
+  -H "Wink-Authorization: Bearer $WINK_ACCESS_TOKEN" \
+  -H "Authorization: Payment $MPP_CREDENTIAL" \
+  -H 'Content-Type: application/json' \
+  --data-binary @booking.json
+```
+
+Jika berjaya, Wink mengembalikan **`200 OK`**, badan JSON yang mengandungi `bookingConfirmationCode`, dan header `Payment-Receipt`. Simpan pengesahan dan resit. Cubaan semula yang berjaya mengembalikan tempahan sedia ada tanpa mengenakan caj lagi.
+
+### Tangani respons dan cubaan semula
+
+| Respons | Apa yang perlu dilakukan |
+| --- | --- |
+| `400` | Betulkan butiran bilik yang tidak sah atau kelayakan yang salah bentuk. |
+| `401` / `403` | Semak pengesahan pengguna dan kebenaran pembayaran. |
+| `402` | Periksa masalah dan cabaran yang dikembalikan. Penolakan pembayaran muktamad memerlukan petikan baru; muatan pembayaran tidak lengkap menggunakan semula cabaran asal. Semak harga sebelum membayar. |
+| `409` | Hasil pembayaran tidak dapat diselesaikan. Tunggu sebentar, kemudian cuba semula badan dan kelayakan yang sama di titik akhir tempahan. |
+| `429` | Tunggu selama beberapa saat dalam `Retry-After`, kemudian cuba semula. |
+
+Respons `409` mempunyai badan `application/problem+json`. Padankan `type` dengan URL tepat ini:
+
+| Jenis masalah | Maksud |
+| --- | --- |
+| [https://api.wink.travel/problems/payment-in-progress](https://api.wink.travel/problems/payment-in-progress) | Cubaan pembayaran masih berjalan atau penyelesaian belum dapat disahkan. |
+| [https://api.wink.travel/problems/already-consumed](https://api.wink.travel/problems/already-consumed) | Cabaran atau bukti pembayaran sudah digunakan oleh cubaan yang mungkin berjaya. Ini sahaja tidak mengesahkan tempahan. |
+
+Kedua-duanya bermaksud **cuba semula pembayaran yang sama; jangan bayar petikan baru**. URL ini mengenal pasti dan mendokumentasi masalah; ia bukan titik akhir pembayaran atau pengundian. Cuba semula `POST /api/mpp/booking`, dan gunakan `type` masalah itu dan bukannya `detail` teks bebas untuk memutuskan tindakan. Lihat [rujukan jenis masalah](https://api.wink.travel/problems) untuk semua masalah pembayaran Wink.
+
+Tamat masa, respons hilang atau ralat pelayan selepas menghantar pembayaran juga boleh menyebabkan hasil tidak diketahui. Cuba semula permintaan pembayaran yang sama. Jika hasil masih tidak selesai, hubungi sokongan dengan ID petikan sebelum memulakan pembayaran lain.

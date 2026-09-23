@@ -1,0 +1,181 @@
+---
+title: Pagaments Agentics
+description: Connecta el teu agent d'IA a Wink, inicia sessió, troba un hotel i aprova el pagament per completar la teva reserva.
+sidebar:
+  order: 10.5
+---
+
+Pots cercar un hotel, triar una habitació i completar la teva reserva a través del teu agent d'IA. Connecta'l a Wink i a una cartera de pagament, i després indica-li on vols allotjar-te. Wink utilitza el **Machine Payments Protocol (MPP)** per acceptar el pagament de la cartera i retornar la confirmació de la teva reserva.
+
+## 1. Connecta els servidors MCP
+
+Per al flux complet de reserva, el teu agent necessita **Wink Booking Engine** i una **cartera de pagament**.
+
+| Connexió | Què fa | Com afegir-la |
+| --- | --- | --- |
+| **Wink Booking Engine** — obligatori | Troba destinacions, cerca hotels i tarifes d'habitacions, fa pressupostos i confirma reserves, i recupera les teves reserves i rebuts. | Afegeix `https://api.wink.travel/mcp/booking-engine` com a servidor MCP HTTP remot. |
+| **Cartera de pagament** — obligatòria per pagar | Proporciona credencials de pagament després que aprovis la compra. | Connecta una cartera que suporti Stripe Shared Payment Tokens o pagaments Tempo. Consulta l'exemple de Link a continuació. |
+| Wink Reference — opcional | Consulta països, monedes i altres dades de referència. | `https://api.wink.travel/mcp/reference` |
+| Wink Docs — opcional | Ajuda el teu agent a llegir documentació i contractes API. | `https://docs.mcp.wink.travel/mcp` |
+
+El Booking Engine MCP ja inclou les eines necessàries per al flux de reserva del viatger, quan la reserva i el pagament agentics estan habilitats per a aquest entorn. El MCP de Pagament separat de Wink és per a operacions financeres com llibres comptables i retirades; no és necessari per pagar una habitació.
+
+### Inicia sessió i tria permisos
+
+1. Obre la configuració MCP o del connector del teu agent i afegeix l'URL del Booking Engine anterior. Dona-li un nom com **Wink Booking**.
+2. El teu agent obre la pàgina d'inici de sessió de Wink al navegador. Inicia sessió amb el compte de Wink amb què vols fer la reserva.
+3. A la pantalla de consentiment, tria els permisos que necessita el teu agent i aprova la connexió.
+4. Torna al teu agent. Carrega les eines disponibles i gestiona l'autenticació per a les trucades MCP posteriors.
+
+Per a aquest flux, selecciona:
+
+| Permís | Per què és necessari |
+| --- | --- |
+| Accés agent d'IA (`mcp.read`) | Permet que el teu agent es connecti a Wink MCP. |
+| Lectura de màrqueting (`marketing.read`) | Permet que l'agent trobi la configuració de reserva del teu compte, anomenada personalització. El teu compte també ha de tenir accés a aquesta configuració. |
+| Escriptura de pagament (`payment.write`) | Permet que l'agent pagui el pressupost i confirmi la reserva. |
+
+Mantingues els permisos d'inici de sessió sol·licitats per la connexió. El client MCP gestiona els tokens d'accés; no cal que copiïs un token al xat ni que configuris cap capçalera de sol·licitud. Si vas saltar un permís necessari, torna a connectar-te a través del flux d'inici de sessió del teu client i aprova'l.
+
+### Connecta una cartera de pagament
+
+Per als pagaments Stripe, una opció és **la cartera d'agent de Link**. Si el teu client suporta servidors MCP locals i tens Node.js instal·lat, afegeix aquesta entrada a la seva configuració MCP:
+
+```json
+{
+  "mcpServers": {
+    "link": {
+      "command": "npx",
+      "args": ["@stripe/link-cli", "--mcp"]
+    }
+  }
+}
+```
+
+Demana al teu agent que connecti el teu compte Link, després segueix l'enllaç de verificació que proporciona i aprova la connexió. Link subministra el Shared Payment Token que s'utilitza per pagar la reserva. Link actualment suporta comptes dels EUA; comprova els seus límits de despesa abans de reservar. Consulta la [guia de configuració de Link](https://github.com/stripe/link-cli#quickstart) i la [configuració MCP](https://github.com/stripe/link-cli#mcp-server).
+
+També pots utilitzar una cartera que suporti el repte de pagament Tempo ofert per Wink. Si el teu agent ja té una cartera compatible connectada, utilitza aquesta connexió. La configuració de la cartera i l'aprovació del pagament són separades de l'inici de sessió a Wink.
+
+## 2. Demana al teu agent que trobi una habitació
+
+Per exemple:
+
+> Troba una habitació a Bangkok per a dos adults del 15 al 17 de gener de 2027. Mostra'm les opcions disponibles, el preu total i les condicions de cancel·lació abans que triï.
+
+El teu agent pot trobar els comptes Wink accessibles i les seves configuracions de reserva. Si en tens diversos, indica-li quin vols utilitzar. Si estàs reservant a través d'un enllaç o configuració de reserva proporcionada, dóna-li això a l'agent en canvi.
+
+L'agent resol la teva destinació, comprova els hotels disponibles i carrega les tarifes d'habitació per a les teves dates. Tria una habitació i demana un pressupost.
+
+Aquest flux de pagament actualment suporta **una habitació, amb preu en USD, només per a adults**. Un pressupost té un temps d'expiració. Sol·licitar-ne un no et cobra ni confirma cap reserva.
+
+## 3. Revisa i aprova el pagament
+
+Comprova l'hotel, l'habitació, les dates, els hostes, les condicions de cancel·lació i el total pressupostat. Quan estiguis preparat, demana al teu agent que faci la reserva i completi qualsevol aprovació que sol·liciti la teva cartera.
+
+L'agent utilitza un dels mètodes de pagament oferts pel pressupost:
+
+- **Stripe:** la cartera proporciona un Shared Payment Token.
+- **Tempo:** la cartera fa la transferència especificada pel repte i proporciona el seu hash de transacció.
+
+Després que el pagament tingui èxit, el teu agent et dóna un **codi de confirmació de reserva**. També pot recuperar els detalls de la reserva i el rebut a través del Booking Engine MCP.
+
+Si el pagament encara està en procés o la resposta es perd, deixa que l'agent comprovi el **mateix intent de pagament**. Ha de reutilitzar el pressupost i la credencial de pagament en lloc de començar un segon pagament. Si el pagament és rebutjat, demana un pressupost nou i revisa'l abans de tornar-ho a intentar.
+
+## Referència d'eines per a agents i desenvolupadors
+
+Totes les eines de Wink a continuació estan disponibles a través del **Booking Engine MCP**. El client MCP envia l'autenticació automàticament utilitzant els permisos aprovats durant l'inici de sessió.
+
+| Pas | Eines i comportament |
+| --- | --- |
+| Selecciona el context de reserva | `managing_entity_list`, després `customization_get_primary` o `customization_search` per al compte seleccionat. Utilitza una personalització proporcionada quan ja se'n conegui una. |
+| Troba una destinació | `destination_lookup_search_suggestions` i `destination_lookup_get`. |
+| Cerca hotels i habitacions | `inventory_search_city` o `inventory_search_geo`, després `property_inventory_get` per a tarifes i disponibilitat. |
+| Pressuposta l'habitació seleccionada | `agentic_booking_quote`. Passa els detalls de l'habitació dins l'argument `request`. |
+| Paga i confirma | Obté una credencial de la cartera connectada, després crida `agentic_booking_pay` amb `request.quoteId` i exactament un de `request.spt` o `request.tempoTransactionHash`. Mantingues el mateix usuari de Wink signat per al pressupost i el pagament. |
+| Recupera la reserva i el rebut | Utilitza `booking_search` o `booking_search_list` per trobar la reserva confirmada, després `booking_get` i `booking_receipt_get` amb el seu identificador de reserva. |
+
+La sol·licitud de pressupost necessita `hotelIdentifier`, `roomRateIdentifier`, `checkIn`, `checkOut`, `adults`, `children` i `customizationIdentifier`. Les dates s'escriuen en format `YYYY-MM-DD`; `checkOut` ha de ser posterior a `checkIn`. Estableix `adults` a almenys `1` i `children` a `0`.
+
+El pressupost retorna `quoteId`, `amountUsdCents`, `currency`, `expiresAt` i `mppChallenges`. Mostra els cèntims USD com a dòlars: `10000` significa **100,00 $**. Per a Tempo, utilitza el token, cadena, destinatari i quantitat en unitats bàsiques del token del repte escollit.
+
+| Resultat del pagament | Pas següent |
+| --- | --- |
+| `PAYMENT_SUCCEEDED` | Desa `bookingConfirmationCode` i `chargeReference`. |
+| `IN_PROGRESS` | Espera breument i torna a provar el mateix pressupost i credencial. |
+| `DECLINED` | Demana un pressupost nou i revisa'l abans de fer un altre pagament. |
+
+Un reintent amb èxit retorna la reserva existent sense cobrar de nou. Considera un temps d'espera com un resultat desconegut i torna a provar el mateix pagament. Si continua sense resoldre's, contacta amb el suport amb l'ID del pressupost.
+
+### Clients MCP amb consciència de pagament
+
+Els clients MCP amb consciència de pagament poden utilitzar `agentic_booking_book` amb els camps d'habitació directament a `arguments`. La primera crida retorna l'error `-32042` amb reptes de pagament. Torna a provar la mateixa crida amb la credencial de la cartera a `params._meta["org.paymentauth/credential"]`; l'èxit inclou `result._meta["org.paymentauth/receipt"]`. L'error `-32043` indica un fracàs de pagament i repte: un rebuig definitiu necessita un pressupost nou, mentre que una càrrega de pagament incompleta pot reintentar amb el mateix repte. Per a `-32603`, un `data.failure.reason` de `payment-in-progress` o `already-consumed` significa reintentar la mateixa credencial; només el codi d'error no és suficient.
+
+## Reserva via REST
+
+Utilitza REST quan construeixis una integració que cridi Wink directament per HTTP. Tant el pressupost com el pagament utilitzen **`POST https://api.wink.travel/api/mpp/booking`**.
+
+La teva aplicació necessita un [token d'accés d'usuari Wink](/ca/developers/authentication/) amb permís `payment.write` per pagar. Mantingues el mateix usuari per a ambdues crides. Envia el token a `Wink-Authorization`, deixant `Authorization` disponible per a la credencial de pagament de la cartera. Aquestes capçaleres s'apliquen a REST; un client MCP gestiona la seva pròpia autenticació.
+
+### 1. Sol·licita un pressupost
+
+Desa l'habitació seleccionada com a `booking.json`, substituint els identificadors i dates d'exemple per la teva selecció. Els camps de l'habitació van directament al cos JSON, sense un embolcall `request`.
+
+```json
+{
+  "hotelIdentifier": "YOUR_HOTEL_ID",
+  "roomRateIdentifier": "YOUR_ROOM_RATE_ID",
+  "checkIn": "2027-01-15",
+  "checkOut": "2027-01-17",
+  "adults": 2,
+  "children": 0,
+  "customizationIdentifier": "YOUR_CUSTOMIZATION_ID"
+}
+```
+
+Estableix `WINK_ACCESS_TOKEN` al token d'accés de l'usuari i envia la sol·licitud:
+
+```bash
+curl -i https://api.wink.travel/api/mpp/booking \
+  -H "Wink-Authorization: Bearer $WINK_ACCESS_TOKEN" \
+  -H 'Content-Type: application/json' \
+  --data-binary @booking.json
+```
+
+Wink retorna **`402 Payment Required`** amb un repte `WWW-Authenticate: Payment ...` per a cada mètode ofert. El cos JSON inclou `quoteId`, `amount`, `currency`, `expiresAt` i `methods`. Aquí, `amount` és una cadena en cèntims USD: `"10000"` significa **100,00 $**. Revisa el pressupost abans que expiri; encara no s'ha fet cap pagament.
+
+### 2. Paga i confirma
+
+Fes que la cartera compleixi un dels reptes retornats. Per a Stripe, subministra `payload.spt`; per a Tempo, subministra `payload.hash` amb `payload.type` establert a `"hash"`. Utilitza els detalls de pagament d'aquest repte.
+
+Estableix `MPP_CREDENTIAL` a la credencial MPP codificada de la cartera, que conté el repte i la càrrega de pagament. Torna a provar el **mateix cos de sol·licitud**, mantenint la capçalera d'identitat:
+
+```bash
+curl -i https://api.wink.travel/api/mpp/booking \
+  -H "Wink-Authorization: Bearer $WINK_ACCESS_TOKEN" \
+  -H "Authorization: Payment $MPP_CREDENTIAL" \
+  -H 'Content-Type: application/json' \
+  --data-binary @booking.json
+```
+
+En cas d'èxit, Wink retorna **`200 OK`**, un cos JSON que conté `bookingConfirmationCode` i una capçalera `Payment-Receipt`. Desa la confirmació i el rebut. Un reintent amb èxit retorna la reserva existent sense cobrar de nou.
+
+### Gestiona respostes i reintents
+
+| Resposta | Què fer |
+| --- | --- |
+| `400` | Corregeix detalls d'habitació invàlids o una credencial mal formada. |
+| `401` / `403` | Comprova l'autenticació de l'usuari i el permís de pagament. |
+| `402` | Inspecciona el problema i el repte retornats. Un rebuig definitiu del pagament requereix un pressupost nou; una càrrega de pagament incompleta reutilitza el repte original. Revisa el preu abans de pagar. |
+| `409` | El resultat del pagament no està resolt. Espera breument i torna a provar el mateix cos i credencial a l'endpoint de reserva. |
+| `429` | Espera el nombre de segons indicat a `Retry-After`, després torna a provar. |
+
+Una resposta `409` té un cos `application/problem+json`. Compara el seu `type` amb aquestes URL exactes:
+
+| Tipus de problema | Significat |
+| --- | --- |
+| [https://api.wink.travel/problems/payment-in-progress](https://api.wink.travel/problems/payment-in-progress) | Un intent de pagament encara està en execució o encara no es pot confirmar la liquidació. |
+| [https://api.wink.travel/problems/already-consumed](https://api.wink.travel/problems/already-consumed) | El repte o la prova de pagament ja s'ha utilitzat en un intent possiblement reeixit. Això no confirma la reserva per si sol. |
+
+Ambdós signifiquen **torna a provar el mateix pagament; no paguis un pressupost nou**. Les URL identifiquen i documenten el problema; no són punts finals de pagament ni de consulta. Torna a provar `POST /api/mpp/booking` i utilitza el `type` del problema en lloc del text lliure `detail` per decidir què fer. Consulta la [referència de tipus de problema](https://api.wink.travel/problems) per a tots els problemes de pagament de Wink.
+
+Un temps d'espera, resposta perduda o error de servidor després d'enviar el pagament també pot deixar el resultat desconegut. Torna a provar la mateixa sol·licitud de pagament. Si el resultat continua sense resoldre's, contacta amb el suport amb l'ID del pressupost abans de començar un altre pagament.

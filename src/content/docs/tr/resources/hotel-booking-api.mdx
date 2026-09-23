@@ -1,0 +1,154 @@
+---
+title: Otel Rezervasyon API'si — Bir Ürüne Otel Rezervasyonu Nasıl Eklenir
+description: Bir otel rezervasyon API'sinin desteklemesi gerekenler, arama, fiyatlar, rezervasyon ve ödemenin nasıl bir araya geldiği ve rezervasyon yapılabilir otel tedarikini bir uygulamaya, siteye veya yapay zeka ajanına nasıl ekleyeceğiniz.
+template: splash
+marketingNav: true
+---
+import '/src/styles/splash-page.css';
+
+import FaqGrid from "@/components/marketing/FaqGrid.astro";
+import ResourceSchema from "@/components/marketing/ResourceSchema.astro";
+import IconArrowRight from "@tabler/icons/outline/arrow-right.svg";
+
+<div class="not-content mkt-page">
+
+<ResourceSchema title="Otel Rezervasyon API'si — Bir Ürüne Otel Rezervasyonu Nasıl Eklenir" crumb="Otel Rezervasyon API'si" slug="hotel-booking-api" datePublished="2026-09-22" description="Bir otel rezervasyon API'sinin desteklemesi gerekenler, arama, fiyatlar, rezervasyon ve ödemenin nasıl bir araya geldiği ve rezervasyon yapılabilir otel tedarikini bir uygulamaya, siteye veya yapay zeka ajanına nasıl ekleyeceğiniz." />
+
+{/* Breadcrumb */}
+<nav aria-label="Breadcrumb" class="mx-auto w-full max-w-3xl px-4 pt-6 text-sm text-muted-foreground">
+  <a href="/" class="hover:text-foreground">Ana Sayfa</a>
+  <span class="px-1.5">/</span>
+  <a href="/resources/" class="hover:text-foreground">Kaynaklar</a>
+  <span class="px-1.5">/</span>
+  <span class="text-foreground">Otel Rezervasyon API'si</span>
+</nav>
+
+{/* Article header */}
+<header class="mx-auto w-full max-w-3xl px-4 pt-8 pb-10">
+  <span class="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-gradient-to-r from-[#ff6b35]/10 to-[#9333ea]/10 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary"><span class="size-1.5 rounded-full bg-gradient-to-r from-[#ff6b35] to-[#9333ea]"></span> Kaynaklar</span>
+  <h1 class="font-heading mt-3 text-4xl font-semibold tracking-tight text-balance @lg:text-5xl">Geliştiriciler bir ürüne otel rezervasyonunu nasıl ekler?</h1>
+  <p class="mkt-sub text-muted-foreground mt-5">
+    Arama ve fiyatlar kolay kısımdır. Bir ürün, gerçek bir rezervasyon oluşturabildiğinde, ödeme alıp yolcu ve otele bunun gerçekleştiğini bildirdiğinde ancak faydalı olur.
+  </p>
+  <div class="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
+    <a href="https://app.wink.travel" class="inline-flex h-11 items-center justify-center rounded-md bg-[#ff6b35] px-6 text-sm font-semibold text-white hover:bg-[#e85b29]">API erişimi talep et</a>
+    <a href="/api/overview/" class="inline-flex h-11 items-center justify-center rounded-md border border-border px-6 text-sm font-medium hover:bg-muted">Dokümanları oku</a>
+  </div>
+  <p class="mt-5 text-sm text-muted-foreground">
+    Birçok API otel içeriği döner. Çok daha azı işlemi tamamlamaya izin verir.
+  </p>
+</header>
+
+{/* Direct answer */}
+<section class="mx-auto w-full max-w-3xl px-4">
+  <div class="rounded-2xl border-l-4 border-primary bg-primary/[0.04] p-6">
+    <p class="text-xs font-semibold uppercase tracking-wider text-primary">Kısa cevap</p>
+    <p class="mt-3 text-pretty text-foreground/90">
+      Dört şeye ihtiyacınız var: <strong>canlı fiyatlar ve müsaitlik</strong>, <strong>rezervasyon oluşturma</strong>, <strong>ödeme</strong> ve <strong>onay ile webhooks</strong>. Sadece okuma amaçlı içerik API'leri ilkinde durur. Wink'te Consumer ve Booking Engine API'leri ücretsizdir, rezervasyon oluşturma OAuth2 ile REST üzerinden yapılır, <code>booking.created</code> dahil 64+ webhook olayı vardır ve ödeme otel için toplanır — otel kayıtlı satıcı olarak kalır — böylece siz satıcı olmak zorunda kalmazsınız. Bir MCP sunucusu aynı yetenekleri yapay zeka ajanlarına sunar ve web bileşenleri, kullanıcı arayüzü oluşturmadan rezervasyon yolu istediğiniz durumları kapsar.
+    </p>
+  </div>
+</section>
+
+{/* Body */}
+<article class="mkt-prose mx-auto w-full max-w-3xl px-4 py-14">
+
+## Önemli dört yetenek
+
+| Yetenek | Anlamı | Ürünlerin bu olmadan neden takıldığı |
+|---|---|---|
+| Canlı fiyatlar ve müsaitlik | Tarih aralığına göre güncel fiyatlar ve gerçekten rezervasyon yapılabilir olan | Önbelleğe alınmış fiyatlar onayda başarısız olur ve güveni zedeler |
+| Rezervasyon oluşturma | Otelin aldığı gerçek bir rezervasyon yaratmak | Olmazsa sadece bir yönlendirme linkisiniz, ürün değilsiniz |
+| Ödeme | Rezervasyonun parçası olarak para almak | Başka bir siteye yönlendirme dönüşümü öldürür |
+| Onay ve webhooks | Misafire, otele ve sisteminize ne olduğunu bildirmek | Aksi halde destek yükü ve mutabakat boşlukları olur |
+
+Geliştiricilerin bulduğu çoğu "otel API'si" ilkini ve bazen ikincisini kapsar. İşlem kısmı zordur ve ürün olup olmadığını belirler.
+
+## Hangi tedarik entegre ediliyor?
+
+Bu soru tüm sonraki süreci şekillendirir. Zincir üzerinden yeniden satılan tedarik, fiyat içinde bir kar payı, daha eski müsaitlik ve rezervasyon sorusu için otele geri dönüş yolu olmadan gelir. Otelden doğrudan gelen tedarik, otelin kendi fiyatını, canlı müsaitliği ve rezervasyonun varlığını bilen bir oteli taşır.
+
+Yolcunun otelin kendi web sitesiyle karşılaştıracağı her durumda — ki çoğu şey öyledir — otel kontrollü tedarik, fiyatınızın daha kötü olduğu garip anı önler.
+
+## Kayıtlı satıcı kimdir?
+
+Kendi otel rezervasyonunuzu yaparsanız, kayıtlı satıcı olmak ödeme sorumluluğunu, itirazları, iadeleri, vergi işlemlerini ve genellikle her pazarda seyahat acentesi lisansını üstlenmek demektir.
+
+Wink'te **otel kayıtlı satıcı olarak kalır** ve ödeme otel için toplanır, böylece entegratör bu yükü üstlenmez. Kayıtlı satıcı düzenlemeleri, gerçekten ödeme almak zorunda olan API entegrasyonlarında mevcuttur ve bu yol kendi lisanslama gereksinimlerini taşır.
+
+## Üç entegrasyon seviyesi
+
+1. **Web bileşenleri.** Mevcut bir sayfaya rezervasyon yapılabilir arama, oda listesi veya ödeme ekleyin. Backend çalışması yok; düzen üzerinde en az kontrol.
+2. **REST API.** Arama, fiyatlar, rezervasyon oluşturma ve onay üzerinde tam kontrol, OAuth2 ile kimlik doğrulama. Rezervasyon akışı ürününüzün kendi deneyiminin parçasıysa kullanın.
+3. **MCP sunucusu.** Aynı yetenekler yapay zeka ajanlarına sunulur, böylece bir asistan kullanıcıyı bir web sitesine yönlendirmek yerine rezervasyon yapabilir.
+
+Üçü birbirini dışlamaz — bir ürün genellikle pazarlama yüzeyi için bileşenleri ve temel akış için API'yi kullanır.
+
+## Önce ne inşa edilmeli
+
+- **Bir şehir ve bir tarih aralığı için arama ve fiyatlandırma.** Tasarıma başlamadan önce gerçek fiyatların akmasını sağlayın.
+- **Bir test rezervasyonu baştan sona oluşturun**, ödeme ve onay dahil.
+- **`booking.created` ve iptal olaylarına abone olun** herhangi bir kullanıcı arayüzü oluşturmadan önce.
+- **Atıf modelinizi erken belirleyin** — kaynak bağlamı rezervasyonla birlikte gitmeli, yoksa raporlama sonradan tahmine kalır.
+- **Başarısızlık durumlarını yönetin**: teklif ile rezervasyon arasında müsaitlik kaybı, ödeme reddi, kısmi iadeler.
+
+## Geliştiricinin bilmesi gereken fiyatlandırma
+
+**Consumer ve Booking Engine API'leri ücretsizdir**. **Partner API** aylık 10.000 otel-günü ücretsiz içerir, sonra birim başı ücretlendirilir. Onaylanmış rezervasyonlar otelin %1,5 platform ücreti ve maliyet fiyatıyla kart işleme ücretini taşır ve rezervasyonu ürününüz yönlendirdiyse **%10 varsayılan komisyon** uygulanır — bu entegratörün ödeme yapmak yerine kazanma şeklidir.
+
+## Yaygın hatalar
+
+- **Önbelleğe alınmış fiyatlar üzerine inşa etmek.** Geliştirmede iyi görünür, üretimde başarısız olur.
+- **Ödemeyi yönlendirmeye bırakmak.** Her yönlendirme rezervasyon kaybına yol açar.
+- **Webhooks'u lansmana kadar görmezden gelmek.** Mutabakat manuel iş olur.
+- **Gereksiz yere kayıtlı satıcı olmak.** Bu teknik değil, lisanslama ve sorumluluk kararıdır.
+- **Kaynak bağlamını geçirmemek.** Atıf sonradan yeniden oluşturulamaz.
+
+</article>
+
+{/* Related */}
+<section class="mx-auto w-full max-w-3xl px-4 pb-8">
+  <p class="mkt-kicker text-primary">Keşfetmeye devam edin</p>
+  <div class="mt-4 grid gap-3 @md:grid-cols-2">
+    {[
+      { label: "Yapıcılar için", href: "/builders/" },
+      { label: "API genel bakış", href: "/api/overview/" },
+      { label: "MCP sunucusu", href: "/developers/mcp/" },
+      { label: "Web bileşenleri", href: "/integrations/web-components/" },
+    ].map((l) => (
+      <a href={l.href} class="group flex items-center justify-between rounded-xl border border-border bg-card px-4 py-3 text-sm font-medium transition-colors hover:border-primary/40">
+        {l.label}
+        <IconArrowRight class="size-4 text-muted-foreground transition-transform group-hover:translate-x-0.5" />
+      </a>
+    ))}
+  </div>
+</section>
+
+{/* FAQ */}
+<FaqGrid emitJsonLd
+  heading="Otel rezervasyon API'si SSS"
+  description="Ne entegre edilmeli, maliyeti nedir ve ödeme sorumluluğu kimde."
+  items={[
+    { title: "Bir otel rezervasyon API'si neyi desteklemeli?", content: "Canlı fiyatlar ve müsaitlik, rezervasyon oluşturma, ödeme ve webhooks ile onay. Sadece okuma amaçlı içerik API'leri sadece ilkini kapsar ve işlemi tamamlayamaz." },
+    { title: "Wink API kullanımı ücretsiz mi?", content: "Consumer ve Booking Engine API'leri ücretsizdir. Partner API aylık 10.000 otel-günü ücretsiz içerir, sonra birim başı ücretlendirilir." },
+    { title: "Kayıtlı satıcı olmam gerekiyor mu?", content: "Hayır. Otel kayıtlı satıcı olarak kalır ve ödeme otel için toplanır. Gerçekten ödeme almak zorunda olan API entegrasyonları için kayıtlı satıcı düzenlemeleri vardır ve bunların kendi lisanslama gereksinimleri bulunur." },
+    { title: "Yapay zeka ajanları aynı yeteneklerle rezervasyon yapabilir mi?", content: "Evet. Bir MCP sunucusu arama, fiyatlandırma ve rezervasyonu ajanlara sunar, böylece bir asistan kullanıcıyı bir web sitesine yönlendirmek yerine rezervasyonu tamamlayabilir." },
+    { title: "Entegratör olarak nasıl ödeme alırım?", content: "Ürününüzün yönlendirdiği rezervasyonlarda %10 varsayılan komisyon uygulanır, bu otelin platform ücreti ve kart işleme ücretinden sonra hesaplanır ve tıklama başına 6 ay atıf sürer." },
+    { title: "Bir kullanıcı arayüzü oluşturmam gerekiyor mu?", content: "Zorunlu değil. Web bileşenleri mevcut sayfaya eklenebilen rezervasyon yapılabilir arama, oda listeleri ve ödeme sağlar; rezervasyon akışı sizin olmalıysa REST API vardır." },
+  ]}
+/>
+
+{/* Final CTA */}
+<section class="w-full border-y border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white">
+  <div class="mx-auto w-full max-w-7xl px-4 py-24 text-center">
+    <h2 class="mkt-h2 font-heading">Gerçekten rezervasyon yapabilen bir ürün inşa edin.</h2>
+    <p class="mx-auto mt-4 max-w-2xl text-pretty text-white/70 @lg:text-lg">
+      Canlı otel tedariki, REST üzerinden rezervasyon oluşturma, webhooks, ajanlar için bir MCP sunucusu ve sahip olmanız gerekmeyen ödeme.
+    </p>
+    <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <a href="https://app.wink.travel" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-[#ff6b35] px-8 text-base font-semibold text-white hover:bg-[#e85b29] sm:w-auto">API erişimi talep et</a>
+      <a href="/builders/" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-white px-8 text-base font-semibold text-[#1f0a40] hover:bg-white/90 sm:w-auto">Yapıcılar için</a>
+    </div>
+  </div>
+</section>
+
+</div>

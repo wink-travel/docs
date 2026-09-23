@@ -1,0 +1,181 @@
+---
+title: 代理支付
+description: 将您的 AI 代理连接到 Wink，登录，查找酒店并批准付款以完成预订。
+sidebar:
+  order: 10.5
+---
+
+您可以通过 AI 代理搜索酒店、选择房间并完成预订。将其连接到 Wink 和支付钱包，然后告诉它您想住在哪里。Wink 使用 **机器支付协议 (MPP)** 接受钱包的付款并返回您的预订确认。
+
+## 1. 连接 MCP 服务器
+
+要完成整个预订流程，您的代理需要 **Wink 预订引擎** 和一个 **支付钱包**。
+
+| 连接 | 功能 | 如何添加 |
+| --- | --- | --- |
+| **Wink 预订引擎** — 必需 | 查找目的地，搜索酒店和房价，报价并确认预订，检索您的预订和收据。 | 添加 `https://api.wink.travel/mcp/booking-engine` 作为远程 HTTP MCP 服务器。 |
+| **支付钱包** — 支付必需 | 在您批准购买后提供支付凭证。 | 连接支持 Stripe 共享支付令牌或 Tempo 支付的钱包。请参见下面的 Link 示例。 |
+| Wink 参考 — 可选 | 查询国家、货币和其他参考数据。 | `https://api.wink.travel/mcp/reference` |
+| Wink 文档 — 可选 | 帮助您的代理阅读文档和 API 合同。 | `https://docs.mcp.wink.travel/mcp` |
+
+预订引擎 MCP 已包含旅行者预订流程所需的工具，当该环境启用代理预订和支付时。Wink 独立的支付 MCP 用于财务操作，如账本和提款；支付房费不需要它。
+
+### 登录并选择权限
+
+1. 打开代理的 MCP 或连接器设置，添加上述预订引擎 URL。命名为 **Wink Booking** 等。
+2. 代理在浏览器中打开 Wink 登录页面。使用您想要预订的 Wink 账户登录。
+3. 在同意页面，选择代理所需权限，然后批准连接。
+4. 返回代理。它加载可用工具并管理后续 MCP 调用的身份验证。
+
+此流程中，选择：
+
+| 权限 | 需要原因 |
+| --- | --- |
+| AI 代理访问 (`mcp.read`) | 允许代理连接到 Wink MCP。 |
+| 营销读取 (`marketing.read`) | 让代理查找您的账户预订配置，称为定制。您的账户也必须有该配置的访问权限。 |
+| 支付写入 (`payment.write`) | 允许代理支付报价并确认预订。 |
+
+保持连接请求的登录权限。您的 MCP 客户端自动处理访问令牌；无需将令牌复制到聊天或设置请求头。如果跳过了所需权限，请通过客户端的登录流程重新连接并批准。
+
+### 连接支付钱包
+
+对于 Stripe 支付，一个选项是 **Link 的代理钱包**。如果您的客户端支持本地 MCP 服务器且已安装 Node.js，请将此条目添加到其 MCP 配置：
+
+```json
+{
+  "mcpServers": {
+    "link": {
+      "command": "npx",
+      "args": ["@stripe/link-cli", "--mcp"]
+    }
+  }
+}
+```
+
+让代理连接您的 Link 账户，然后按照其提供的验证链接操作并批准连接。Link 提供用于支付预订的共享支付令牌。Link 目前支持美国账户；预订前请检查其消费限额。参见 [Link 的设置指南](https://github.com/stripe/link-cli#quickstart) 和 [MCP 配置](https://github.com/stripe/link-cli#mcp-server)。
+
+您也可以使用支持 Wink 提供的 Tempo 支付挑战的钱包。如果代理已有兼容钱包连接，请使用该连接。钱包设置和支付批准与登录 Wink 是分开的。
+
+## 2. 让代理帮您找房间
+
+例如：
+
+> 找 2027 年 1 月 15 日到 17 日，曼谷两位成人的房间。显示可用选项、总价和取消条款，供我选择。
+
+代理可以找到您可访问的 Wink 账户及其预订配置。如果有多个，请告诉它使用哪个。如果通过提供的预订链接或配置预订，请直接给代理。
+
+代理随后解析目的地，检查可用酒店并加载您日期的房价。选择房间并请求报价。
+
+此支付流程目前支持 **一间房，美元计价，仅限成人**。报价有有效期。请求报价不会收费或确认预订。
+
+## 3. 审核并批准付款
+
+检查酒店、房间、日期、客人、取消条款和报价总价。准备好后，要求代理预订并完成钱包请求的任何批准。
+
+代理使用报价提供的支付方式之一：
+
+- **Stripe：** 钱包提供共享支付令牌。
+- **Tempo：** 钱包执行挑战指定的转账并提供交易哈希。
+
+付款成功后，代理会给您 **预订确认码**。也可以通过预订引擎 MCP 检索预订详情和收据。
+
+如果付款仍在处理中或响应丢失，让代理检查 **同一次支付尝试**。它应重用报价和支付凭证，而不是启动第二次支付。如果付款被拒，要求新的报价并在再次尝试前审核。
+
+## 代理和开发者工具参考
+
+以下所有 Wink 工具均通过 **预订引擎 MCP** 提供。MCP 客户端自动使用登录时批准的权限进行身份验证。
+
+| 步骤 | 工具和行为 |
+| --- | --- |
+| 选择预订上下文 | `managing_entity_list`，然后为选定账户调用 `customization_get_primary` 或 `customization_search`。已知定制时使用提供的定制。 |
+| 查找目的地 | `destination_lookup_search_suggestions` 和 `destination_lookup_get`。 |
+| 搜索酒店和房间 | `inventory_search_city` 或 `inventory_search_geo`，然后调用 `property_inventory_get` 获取价格和可用性。 |
+| 报价所选房间 | `agentic_booking_quote`。在其 `request` 参数中传递房间详情。 |
+| 支付并确认 | 从连接的钱包获取凭证，然后调用 `agentic_booking_pay`，传入 `request.quoteId` 和 `request.spt` 或 `request.tempoTransactionHash` 中的一个。报价和支付保持同一登录 Wink 用户。 |
+| 检索预订和收据 | 使用 `booking_search` 或 `booking_search_list` 查找确认的预订，然后用其预订标识调用 `booking_get` 和 `booking_receipt_get`。 |
+
+报价请求需要 `hotelIdentifier`、`roomRateIdentifier`、`checkIn`、`checkOut`、`adults`、`children` 和 `customizationIdentifier`。日期格式为 `YYYY-MM-DD`；`checkOut` 必须晚于 `checkIn`。`adults` 至少为 `1`，`children` 为 `0`。
+
+报价返回 `quoteId`、`amountUsdCents`、`currency`、`expiresAt` 和 `mppChallenges`。美元分以美元显示：`10000` 表示 **$100.00**。对于 Tempo，使用所选挑战的令牌、链、接收方和以代币基本单位计的金额。
+
+| 支付结果 | 下一步 |
+| --- | --- |
+| `PAYMENT_SUCCEEDED` | 保存 `bookingConfirmationCode` 和 `chargeReference`。 |
+| `IN_PROGRESS` | 稍等并重试相同报价和凭证。 |
+| `DECLINED` | 请求新报价并在再次支付前审核。 |
+
+成功重试返回现有预订，不会重复收费。超时视为未知结果，重试相同支付。若仍未解决，请联系支持并提供报价 ID。
+
+### 支付感知 MCP 客户端
+
+支付感知 MCP 客户端可直接在 `arguments` 中使用房间字段调用 `agentic_booking_book`。首次调用返回错误 `-32042` 和支付挑战。使用钱包凭证在 `params._meta["org.paymentauth/credential"]` 中重试相同调用；成功时包含 `result._meta["org.paymentauth/receipt"]`。错误 `-32043` 表示支付失败和挑战：明确拒绝需新报价，支付信息不完整可用相同挑战重试。对于 `-32603`，`data.failure.reason` 为 `payment-in-progress` 或 `already-consumed` 表示重试相同凭证；仅错误码不足以判断。
+
+## 通过 REST 预订
+
+构建直接通过 HTTP 调用 Wink 的集成时使用 REST。报价和支付均使用 **`POST https://api.wink.travel/api/mpp/booking`**。
+
+您的应用需要带有 `payment.write` 权限的 [Wink 用户访问令牌](/zh-CN/developers/authentication/) 进行支付。两次调用保持同一用户。令牌放在 `Wink-Authorization`，`Authorization` 保留给钱包支付凭证。这些头适用于 REST；MCP 客户端自行处理身份验证。
+
+### 1. 请求报价
+
+将选定房间保存为 `booking.json`，替换示例标识符和日期。房间字段直接放在 JSON 主体，无需 `request` 包装。
+
+```json
+{
+  "hotelIdentifier": "YOUR_HOTEL_ID",
+  "roomRateIdentifier": "YOUR_ROOM_RATE_ID",
+  "checkIn": "2027-01-15",
+  "checkOut": "2027-01-17",
+  "adults": 2,
+  "children": 0,
+  "customizationIdentifier": "YOUR_CUSTOMIZATION_ID"
+}
+```
+
+设置 `WINK_ACCESS_TOKEN` 为用户访问令牌并发送请求：
+
+```bash
+curl -i https://api.wink.travel/api/mpp/booking \
+  -H "Wink-Authorization: Bearer $WINK_ACCESS_TOKEN" \
+  -H 'Content-Type: application/json' \
+  --data-binary @booking.json
+```
+
+Wink 返回 **`402 Payment Required`**，带有 `WWW-Authenticate: Payment ...` 挑战，列出每种支付方式。JSON 主体包含 `quoteId`、`amount`、`currency`、`expiresAt` 和 `methods`。其中 `amount` 是美元分的字符串：`"10000"` 表示 **$100.00**。在报价过期前审核报价；尚未扣款。
+
+### 2. 支付并确认
+
+让钱包完成返回的某个挑战。Stripe 提供 `payload.spt`；Tempo 提供 `payload.hash`，`payload.type` 为 `"hash"`。使用该挑战的支付详情。
+
+设置 `MPP_CREDENTIAL` 为钱包编码的 MPP 凭证，包含挑战和支付负载。重试 **相同请求体**，保持身份头：
+
+```bash
+curl -i https://api.wink.travel/api/mpp/booking \
+  -H "Wink-Authorization: Bearer $WINK_ACCESS_TOKEN" \
+  -H "Authorization: Payment $MPP_CREDENTIAL" \
+  -H 'Content-Type: application/json' \
+  --data-binary @booking.json
+```
+
+成功时，Wink 返回 **`200 OK`**，JSON 主体含 `bookingConfirmationCode`，并带有 `Payment-Receipt` 头。保存确认码和收据。成功重试返回现有预订，不重复收费。
+
+### 处理响应和重试
+
+| 响应 | 处理方式 |
+| --- | --- |
+| `400` | 修正无效房间详情或格式错误的凭证。 |
+| `401` / `403` | 检查用户身份验证和支付权限。 |
+| `402` | 检查返回的问题和挑战。明确拒绝需新报价；支付信息不完整重用原挑战。支付前审核价格。 |
+| `409` | 支付结果未决。稍等后重试相同请求体和凭证。 |
+| `429` | 等待 `Retry-After` 指定秒数后重试。 |
+
+`409` 响应带有 `application/problem+json` 主体。其 `type` 精确匹配以下 URL：
+
+| 问题类型 | 含义 |
+| --- | --- |
+| [https://api.wink.travel/problems/payment-in-progress](https://api.wink.travel/problems/payment-in-progress) | 支付尝试仍在进行或结算尚未确认。 |
+| [https://api.wink.travel/problems/already-consumed](https://api.wink.travel/problems/already-consumed) | 挑战或支付凭证已被可能成功的尝试使用。此情况本身不确认预订。 |
+
+两者均表示 **重试相同支付；不要支付新报价**。这些 URL 用于识别和说明问题，不是支付或轮询端点。重试 `POST /api/mpp/booking`，根据问题 `type` 而非自由文本 `detail` 决定操作。详见 [问题类型参考](https://api.wink.travel/problems) 中所有 Wink 支付问题。
+
+提交支付后超时、响应丢失或服务器错误也可能导致结果未知。重试相同支付请求。若仍未解决，请联系支持并提供报价 ID，避免开始新支付。

@@ -7,11 +7,11 @@ sidebar:
 
 import { Steps, LinkButton, Aside, Tabs, TabItem } from '@astrojs/starlight/components';
 
-A Wink MCP eszközei **eszközkészletek** formájában érhetők el — fókuszált végpontok, amelyek mindegyike egy adott munkát fed le. Az AI kliensét ahhoz az egy vagy két végponthoz csatlakoztatja, amely megfelel a munkájának, nem mindegyikhez.
+A Wink MCP eszközei **eszközkészletek** formájában érhetők el — fókuszált végpontok, amelyek mindegyike egy adott munkát fed le. Az AI kliensét csak az egy vagy két, a munkájához illeszkedő végponthoz csatlakoztatja, nem mindegyikhez.
 
 Minden végpont **interaktív OAuth2 bejelentkezést** használ (PKCE engedélyezési kód folyamat): az AI ügynök megnyit egy böngészőfület, bejelentkezik a Wink fiókjával, és ennyi. Nincs szükség kliens titkok kezelésére.
 
-```bash title="Egy csatornakezelő integrátor egy végponthoz csatlakozik"
+```bash title="Egy channel manager integrátor egy végponthoz csatlakozik"
 claude mcp add wink-channel-manager https://integrations.wink.travel/mcp/channel-manager --transport http
 ```
 
@@ -25,16 +25,16 @@ claude mcp add wink-rates https://api.wink.travel/mcp/extranet/rates --transport
 
 A Wink körülbelül 500 eszközt tesz elérhetővé. Az összes egyszerre való átadása egy ügynöknek technikailag lehetséges — de rossz ötlet.
 
-**Az eszközdefiníciók kontextust igényelnek.** Minden eszköz, amit egy MCP szerver hirdet, betöltődik a modell kontextusablakába, mielőtt bármilyen munkát végezne, a leírásával és a teljes paraméter sémával együtt. Ötszáz ilyen eszköz jelentős részt fogyaszt el abból a keretből, amire a tényleges feladatának szüksége van, minden egyes kérésnél.
+**Az eszközdefiníciók kontextust igényelnek.** Minden eszköz, amit egy MCP szerver hirdet, betöltődik a modell kontextusablakába, mielőtt bármilyen munkát végezne, a leírásával és a teljes paraméter sémával együtt. Ötszáz ilyen eszköz jelentős részt fogyaszt el abból a költségvetésből, amire a tényleges feladatának szüksége van, minden egyes kérésnél.
 
-**A választás minősége romlik, ahogy a lista nő.** Egy ügynök, amely 500 hasonló nevű eszköz közül választ, rosszabb döntéseket hoz, mint egy, amely 40 közül választ. Ha egy csatornakezelőt integrál, körülbelül húsz eszköz releváns számára; a többi 480 zaj, ami megnehezíti a megfelelő eszköz megtalálását.
+**A választás minősége romlik, ahogy a lista nő.** Egy ügynök, amely 500 hasonló nevű eszköz közül választ, rosszabb döntéseket hoz, mint egy, amely 40 közül választ. Ha egy channel managert integrál, körülbelül húsz eszköz releváns számára; a többi 480 zaj, ami megnehezíti a megfelelő eszköz megtalálását.
 
-**A munka valóban szétválasztható.** Valaki, aki egy PMS-ből szinkronizálja a rendelkezésre állást, és valaki, aki affiliate céloldalakat szerkeszt, szinte semmilyen eszközt nem oszt meg. A munkák szerinti szétválasztás azt jelenti, hogy minden kapcsolat egy adott munka szókincsét hordozza.
+**A munka valóban szétválasztható.** Valaki, aki egy PMS-ből szinkronizál elérhetőséget, és valaki, aki affiliate landing oldalakat szerkeszt, szinte semmilyen eszközt nem oszt meg. A munkák szerinti szétválasztás azt jelenti, hogy minden kapcsolat egy adott munka szókincsét hordozza.
 
 <Aside type="caution" title="Az eszközkészletek nem jogosultságok">
-Egy szűk eszközkészlet kiválasztása **nem** korlátozza, hogy a fiókja mit tehet, és egy szélesebb kiválasztása sem ad extra jogosultságot. Minden eszköz ugyanazokat a fiókjogosultságokat érvényesíti, mint a webes portál, az Ön bejelentkezett személyazonossága alatt. Ha a fiókja nem tud foglalást törölni a Wink Portálon, az ügynök sem tudja – függetlenül attól, hogy melyik végponthoz csatlakozik.
+Egy szűk eszközkészlet kiválasztása **nem** korlátozza, hogy a fiókja mit tehet, és egy szélesebb kiválasztása sem ad extra jogosultságot. Minden eszköz ugyanazokat a fiókjogosultságokat érvényesíti, mint a webes portál, az Ön bejelentkezett identitása alatt. Ha a fiókja nem tud foglalást törölni a Wink Portálon, az ügynök sem tudja – függetlenül attól, hogy melyik végponthoz csatlakozik.
 
-Az eszközkészleteket **fókusz miatt válassza, ne biztonság miatt**.
+Az eszközkészleteket **fókuszálásra válassza, ne biztonságra**.
 </Aside>
 
 ---
@@ -49,11 +49,11 @@ Két hoszt szolgál ki eszközkészleteket. Az eszközszámok hozzávetőlegesek
 |---|---:|---|
 | `/mcp/extranet/facilities` | ~64 | Foglalható és helyszíni készlet: vendégszobák és szobatípusok, spa-k, éttermek, tárgyalók, programok, látnivalók, helyszínek, egyéb eladható tételek |
 | `/mcp/extranet/property` | ~62 | Az ingatlan adatai és kereskedelmi feltételei: profil és tartalom, kiegészítők, lemondási szabályzatok, kedvezmények, bejelentések |
-| `/mcp/settings` | ~60 | Fiókadminisztráció: kezelő entitás profilja és arculata, menedzserek és jogosultságaik, testreszabás, webhookok, értesítési beállítások |
-| `/mcp/studio/embeds` | ~48 | Kurált készlet közzététele: widgetek, rácsok és rangsorolt rácsok, kártyák, térképek, mélyhivatkozások készlethez és beszállítói oldalakhoz |
-| `/mcp/extranet/rates` | ~44 | Árak és elérhetőség: készlet áridőszakok és allokációk, ártervek, főárak, speciális és promóciós árak |
+| `/mcp/settings` | ~60 | Fiókadminisztráció: kezelői entitás profilja és arculata, menedzserek és jogosultságaik, testreszabás, webhookok, értesítési beállítások |
+| `/mcp/studio/embeds` | ~48 | Kurált készlet közzététele: widgetek, rácsok és rangsorolt rácsok, kártyák, térképek, mélyhivatkozások készlet- és beszállítói oldalakra |
+| `/mcp/extranet/rates` | ~44 | Ár és elérhetőség: készlet áridőszakok és allokációk, ártervek, főárak, speciális és promóciós árak |
 | `/mcp/extranet/operations` | ~39 | Egy élő ingatlan működtetése: foglalások és életciklusuk, vendégértékelések és válaszok, naptárfolyamok, ütemezett feladatok |
-| `/mcp/extranet/distribution` | ~37 | Hol értékesítik a készletet: értékesítési csatornák és ár módosítók, affiliate és beszállítói kapcsolatok kérései, regisztráció, lead gyűjtés |
+| `/mcp/extranet/distribution` | ~37 | Hol értékesítik a készletet: értékesítési csatornák és ár módosítók, affiliate és beszállítói kapcsolati kérelmek, regisztráció, lead gyűjtés |
 | `/mcp/studio/curation` | ~35 | Eladható gyűjtemények építése: statikus és dinamikus listák, rangsorolt listák, mentett keresések, ingatlan összesítők |
 | `/mcp/link-manager` | ~28 | Szindikált linkgyűjtemények, tervezésük, kategóriák és címkék, valamint rövidített URL-ek |
 | `/mcp/reference` | ~24 | Csak olvasható keresőadatok: országok, valuták és árfolyamok, nyelvek, időzónák, földrajzi keresések, IP földrajzi helymeghatározás |
@@ -63,25 +63,31 @@ Két hoszt szolgál ki eszközkészleteket. Az eszközszámok hozzávetőlegesek
 | `/mcp/social` | ~17 | Kapcsolt közösségi fiókok, bejegyzések közzététele és ütemezése, bejegyzés elemzések olvasása |
 | `/mcp/travel-agent` | ~8 | Ügynök által segített foglalások utazók nevében, és ügynöki jelentések |
 
-### `https://integrations.wink.travel` — csatornakezelő integrációk
+### `https://integrations.wink.travel` — channel manager integrációk
 
 Egy végpont, mert ez a hoszt egy munkára létezik.
 
 | Végpont | Eszközök | Mit fed le |
 |---|---:|---|
-| `/mcp/channel-manager` | ~9 | Csatornakezelő, PMS vagy CRS integráció csatlakoztatása és ellenőrzése |
+| `/mcp/channel-manager` | ~9 | Channel manager, PMS vagy CRS integráció csatlakoztatása és ellenőrzése |
 
-<Aside type="note" title="Csatornakezelő integrálása vs. saját árak kezelése">
+<Aside type="note" title="Channel manager integráció vs. saját árak kezelése">
 Ezek különböző munkák különböző embereknek, és nem osztanak meg végpontot.
 
-Egy **csatornakezelő, PMS vagy CRS szállító** egyszer integrál a `integrations.wink.travel/mcp/channel-manager` végponton keresztül, és azóta ezen az integráción keresztül cserél ingatlanokat, árakat, elérhetőséget és foglalásokat. Ez az egyetlen végpont a teljes felület.
+Egy **channel manager, PMS vagy CRS szállító** egyszer integrál a `integrations.wink.travel/mcp/channel-manager` végponton keresztül, és azóta ezen az integráción keresztül cserél ingatlanokat, árakat, elérhetőséget és foglalásokat. Ez az egyetlen végpont az egész felület.
 
-Egy **szállásadó, aki kézzel változtatja az árait**, az extranet eszközkészleteket használja az `api.wink.travel`-en — `/mcp/extranet/rates` és társai. Ezek nem részei a csatornakezelő integrációnak, és az integrátornak nincs oka, hogy ezekhez csatlakozzon.
+Egy **szállásadó, aki kézzel változtatja az árait**, az extranet eszközkészleteket használja az `api.wink.travel`-en — `/mcp/extranet/rates` és társai. Ezek nem részei a channel manager integrációnak, és az integrátornak nincs oka, hogy ezekhez csatlakozzon.
 
 A fiókadminisztráció is az `api.wink.travel`-en van, a `/mcp/settings` végponton. Az integrációs hoszton nincs `/mcp/settings`.
 </Aside>
 
 Minden végpont tartalmaz egy `ping` eszközt is, így megerősítheti, hogy a kapcsolat élő, mielőtt valódi munkát kérne.
+
+### Agentic fizetések
+
+A teljes utazói foglalási folyamatért csatlakoztassa a **Wink Booking Engine**-t a `https://api.wink.travel/mcp/booking-engine` végponton és egy kompatibilis **fizetési tárcát**. A Wink MCP hozzáadása megnyitja a böngésző bejelentkezést és a jogosultság kiválasztást; az ügyfél ezután kezeli az autentikációt.
+
+A Booking Engine tartalmazza az úti cél keresést, szálloda- és szobakeresést, `agentic_booking_quote`, `agentic_booking_pay`, `agentic_booking_book`, foglalás lekérést és bizonylatokat, amikor az agentic foglalás és fizetés engedélyezve van az adott környezetben. Lásd az [Agentic Payments](/hu/developers/agentic-payments/) oldalt a csatlakozás beállításához, a kiválasztandó jogosultságokhoz és a kereséstől a megerősítésig tartó lépésekhez.
 
 ---
 
@@ -89,38 +95,45 @@ Minden végpont tartalmaz egy `ping` eszközt is, így megerősítheti, hogy a k
 
 | Ha Ön… | Csatlakozzon ide |
 |---|---|
-| **Csatornakezelőt, PMS-t vagy CRS-t integrál** | `integrations.wink.travel/mcp/channel-manager` — csak ehhez |
+| **Channel manager, PMS vagy CRS integrációt végez** | `integrations.wink.travel/mcp/channel-manager` — csak ez az egy |
 | **Ingatlan tartalmát kezeli** | `/mcp/extranet/property` + `/mcp/extranet/facilities` |
 | **Szobákat és szobatípusokat kezel** | `/mcp/extranet/facilities` |
-| **Árakat és elérhetőséget kezel** | `/mcp/extranet/rates` |
-| **Napi foglalásokat kezel** | `/mcp/extranet/operations` |
-| **Értékesítést növel** | `/mcp/extranet/distribution` + `/mcp/analytics` |
-| **Affiliate oldalakat épít** | `/mcp/studio/curation` + `/mcp/studio/embeds` |
-| **Link-in-bio oldalakat futtat** | `/mcp/link-manager` + `/mcp/social` |
-| **Utazók nevében foglal** | `/mcp/travel-agent` |
-| **Pénzügyi egyeztetést végez** | `/mcp/payment` |
-| **Foglalási élményt épít** | `/mcp/booking-engine` + `/mcp/reference` |
+| **Árak és elérhetőség kezelése** | `/mcp/extranet/rates` |
+| **Napi foglalások kezelése** | `/mcp/extranet/operations` |
+| **Értékesítési csatornák bővítése** | `/mcp/extranet/distribution` + `/mcp/analytics` |
+| **Affiliate oldalak építése** | `/mcp/studio/curation` + `/mcp/studio/embeds` |
+| **Link-in-bio oldalak működtetése** | `/mcp/link-manager` + `/mcp/social` |
+| **Utazók nevében foglalás** | `/mcp/travel-agent` |
+| **Pénzügyi egyeztetés** | `/mcp/payment` |
+| **Szobafoglalás AI ügynökkel** | `/mcp/booking-engine` + kompatibilis fizetési tárca — lásd az [Agentic Payments](/hu/developers/agentic-payments/) oldalt |
+| **Foglalási élmény építése** | `/mcp/booking-engine`; opcionálisan `/mcp/reference` további keresésekhez |
 
-Kezdje eggyel. Adjon hozzá egy másikat, amikor olyat kér, amit az előző nem tud — minden kapcsolat független, és egy hozzáadása soha nem befolyásolja a többit.
+**A Booking Engine tartalmazza az alap foglalási munkafolyamatot.** Biztosít fiók- és testreszabás-felderítést, úti cél keresést, szálloda elérhetőséget és szobaár részleteket, bevásárlókosarakat, fizetést és utazói foglaláskezelést. Az agentic foglalási és fizetési eszközök is benne vannak, ha az adott környezetben engedélyezve vannak.
+
+Város alapú szállodakereséshez használja a `destination_lookup_search_suggestions` eszközt az úti cél feloldásához, majd az `inventory_search_city` eszközt a rendelkezésre álló szállodák és árak megtalálásához. Mindkét eszköz a `/mcp/booking-engine` végponton van, így ehhez a folyamathoz nem szükséges Reference kapcsolat.
+
+Adja hozzá a `/mcp/reference` végpontot, ha támogatott keresésekre van szüksége, mint országok, valuták és árfolyamok, támogatott nyelvek, időzónák, szélesebb földrajzi keresések, OTA besorolások vagy nyilvános ingatlanismeret. Ezek opcionális kiegészítések a foglalási folyamathoz.
+
+Kezdje eggyel. Adjon hozzá még egyet, ha olyat kér, amit az nem tud — minden kapcsolat független, és egy hozzáadása soha nem befolyásolja a többit.
 
 <Aside type="tip" title="Mégis mindent szeretne?">
-A `https://api.wink.travel/mcp` és a `https://integrations.wink.travel/mcp` továbbra is elérhetőek és **minden** eszközt kiszolgálnak a hosztjukon. Hasznosak a létező eszközök felfedezéséhez, de nem ajánljuk napi munkára: az eszközlista túl nagy ahhoz, hogy ne nyomja el a feladatát, és rontsa az ügynök eszközválasztását. Előnyben részesítse a fent említett eszközkészleteket.
+A `https://api.wink.travel/mcp` és a `https://integrations.wink.travel/mcp` továbbra is elérhetőek és kiszolgálják a hosztjukon lévő **minden** eszközt. Hasznosak a létező eszközök felfedezéséhez, de nem ajánljuk napi munkára: az eszközlista túl nagy, elnyomja a feladatát és rontja az ügynök eszközválasztását. Előnyben részesítse a fentiekben felsorolt eszközkészleteket.
 </Aside>
 
 ---
 
-## Hogyan működik az azonosítás
+## Hogyan működik az autentikáció
 
-A Wink MCP szerverek az **OAuth2 engedélyezési kód + PKCE** folyamatot használják, és támogatják a **Dinamikus kliensregisztrációt (RFC 7591)**. Így történik az első csatlakozás:
+A Wink MCP szerverek az **OAuth2 Authorization Code + PKCE** folyamatot használják, és támogatják a **Dynamic Client Registration (RFC 7591)**-t. Így történik az első csatlakozás:
 
 1. Az AI kliens felfedezi az engedélyező szervert az MCP végpont `/.well-known/oauth-protected-resource` metaadataiból.
-2. A kliens önmagát regisztrálja a **Dinamikus kliensregisztráció** segítségével — nincs szükség kézi alkalmazásbeállításra.
+2. A kliens önmagát regisztrálja a **Dynamic Client Registration** segítségével — nincs szükség kézi alkalmazásbeállításra.
 3. A kliens megnyit egy **böngészőfület** a `https://iam.wink.travel` címen. Bejelentkezik a Wink fiókjával, és jóváhagyja a kért jogosultságokat a hozzájárulási képernyőn.
-4. A Wink kiad egy **hozzáférési tokent**, amely a fiókjához kötött és azonosítójához kapcsolódik.
-5. Az AI kliens minden MCP kéréshez csatolja a tokent. Minden eszköz eredménye automatikusan a kezelő entitásához kötött.
+4. A Wink kiad egy **hozzáférési tokent**, amely a fiókjához kötött és az identitásához kapcsolódik.
+5. Az AI kliens minden MCP kéréshez csatolja a tokent. Minden eszköz eredménye automatikusan a kezelő entitásához van kötve.
 6. A tokenek 3 óra után lejárnak. Az AI kliens csendben frissíti őket a háttérben, újabb kérés nélkül.
 
-Minden eszközhívás az **ön személyazonossága alatt** fut — ugyanazok az ACL szabályok érvényesek, amelyek a webes portált védik az AI ügynökre is.
+Minden eszközhívás az **Ön identitása alatt fut** — ugyanazok az ACL szabályok érvényesek, amelyek a webes portált védik, az AI ügynökre is.
 
 ---
 
@@ -147,7 +160,7 @@ Minden eszközhívás az **ön személyazonossága alatt** fut — ugyanazok az 
 5. A Claude Code megerősíti a kapcsolatot. Írja be a `/mcp` parancsot, hogy ellenőrizze, megjelenik-e a szerver és betöltődtek-e az eszközök.
 </Steps>
 
-Adjon hozzá annyi eszközkészletet, amennyire a munkája igényli — mindegyik külön szerver bejegyzés a saját nevével:
+Adjon hozzá annyi eszközkészletet, amennyire a munkájának szüksége van — mindegyik külön szerver bejegyzés a saját nevével:
 ```bash
 claude mcp add wink-operations https://api.wink.travel/mcp/extranet/operations --transport http
 claude mcp add wink-analytics  https://api.wink.travel/mcp/analytics           --transport http
@@ -156,7 +169,7 @@ claude mcp add wink-analytics  https://api.wink.travel/mcp/analytics           -
 Csak egyszer kell bejelentkeznie. Az első böngészős jóváhagyás után a Claude Code újra felhasználja a Wink munkamenetét további Wink végpontokhoz.
 
 :::tip[Ossza meg a csapatával]
-Adja hozzá a `--scope project` opciót a `claude mcp add` parancshoz, és a Claude Code a szerver URL-jét a `.mcp.json` fájlba írja a repó gyökerében. Kötelezze el ezt a fájlt — így minden csapattag ugyanazokat az eszközkészleteket kapja, és mindegyikük elvégzi a saját böngészős bejelentkezését az első csatlakozáskor.
+Adja hozzá a `--scope project` opciót a `claude mcp add` parancshoz, és a Claude Code a szerver URL-jét a `.mcp.json` fájlba írja a repo gyökerében. Kötelezze el ezt a fájlt — minden csapattag ugyanazokat az eszközkészleteket kapja, és mindegyikük elvégzi a saját böngészős bejelentkezését az első csatlakozáskor.
 :::
 
   </TabItem>
@@ -185,11 +198,11 @@ Adja hozzá a `--scope project` opciót a `claude mcp add` parancshoz, és a Cla
    }
    ```
 
-3. **Teljesen lépjen ki és indítsa újra** a Claude Desktopot (a menüsorból válassza a Kilépés opciót — az ablak bezárása nem elég).
+3. **Teljesen lépjen ki és indítsa újra** a Claude Desktopot (a menüből válassza a Kilépés opciót — az ablak bezárása nem elég).
 
 4. A Claude Desktop minden új szerverhez megnyit egy böngészőfület. Jelentkezzen be a Wink-be és hagyja jóvá a jogosultságokat.
 
-5. Az alsó eszköztáron a dugó ikon mindkét szervert csatlakoztatottnak mutatja.
+5. Az alsó eszköztáron a dugó ikon zölden jelzi, hogy mindkét szerver csatlakoztatva van.
 </Steps>
 
   </TabItem>
@@ -243,22 +256,22 @@ Az MCP szerver támogatás elérhető a **ChatGPT asztali alkalmazásban** Plus,
 
 2. Nyissa meg az alkalmazást, kattintson a **profil ikonra** a jobb felső sarokban, majd válassza a **Beállítások** menüpontot.
 
-3. Menjen a **Csatlakozók** (vagy **MCP szerverek** az alkalmazás verziójától függően) részhez, és kattintson az **Új hozzáadása** gombra.
+3. Menjen a **Csatlakozók** (vagy **MCP szerverek** az alkalmazás verziójától függően) részhez, és kattintson a **Hozzáadás** gombra.
 
 4. Adja meg egy eszközkészlet URL-jét a [fenti könyvtárból](#endpoint-directory), például:
    ```
    https://api.wink.travel/mcp/extranet/rates
    ```
-   Majd kattintson a **Csatlakozás** gombra.
+   Ezután kattintson a **Csatlakozás** gombra.
 
 5. A ChatGPT megnyit egy böngészőfület a `https://iam.wink.travel` címen. **Jelentkezzen be a Wink-be** és hagyja jóvá a jogosultságokat.
 
-6. Ismételje meg a 4–5. lépéseket bármely más eszközkészlethez, amire a munkája igényt tart, például:
+6. Ismételje meg a 4–5. lépéseket bármely más eszközkészlethez, amire a munkájának szüksége van, például:
    ```
    https://api.wink.travel/mcp/extranet/operations
    ```
 
-7. Minden eszközkészlet megjelenik a Csatlakozók listájában. Indítson új beszélgetést — a Wink eszközök automatikusan elérhetők.
+7. Minden eszközkészlet megjelenik a Csatlakozók listájában. Indítson új csevegést — a Wink eszközök automatikusan elérhetők.
 </Steps>
 
 :::note[Webes alkalmazás korlátozás]
@@ -290,7 +303,7 @@ Az MCP szerverek csak a **asztali alkalmazásban** konfigurálhatók. A chatgpt.
    }
    ```
 
-3. Nyissa meg a Cursort. Menjen a **Beállítások → Cursor beállítások → MCP** részhez, és ellenőrizze, hogy mindkét szerver zöld státuszjelzővel jelenik meg. Ha pirosat mutatnak, kattintson a **Frissítés** gombra.
+3. Nyissa meg a Cursor-t. Menjen a **Beállítások → Cursor beállítások → MCP** részhez, és ellenőrizze, hogy mindkét szerver zöld státusszal jelenik meg. Ha piros, kattintson a **Frissítés** gombra.
 
 4. A Cursor megnyit egy böngészőfület a `https://iam.wink.travel` címen. **Jelentkezzen be a Wink-be** és hagyja jóvá a jogosultságokat.
 
@@ -298,7 +311,7 @@ Az MCP szerverek csak a **asztali alkalmazásban** konfigurálhatók. A chatgpt.
 </Steps>
 
 :::tip[Projekt szintű konfiguráció]
-A projekt gyökerébe is elhelyezhet egy `mcp.json` fájlt a `~/.cursor/` helyett. A projekt szintű konfiguráció elsőbbséget élvez, és elérhetővé teszi a szervereket minden csapattag számára, aki megnyitja a projektet Cursorn belül.
+Az `mcp.json` fájlt a projekt gyökerébe is elhelyezheti a `~/.cursor/` helyett. A projekt szintű konfiguráció elsőbbséget élvez, és elérhetővé teszi a szervereket minden csapattag számára, aki megnyitja a projektet a Cursorban.
 :::
 
   </TabItem>
@@ -328,7 +341,7 @@ A projekt gyökerébe is elhelyezhet egy `mcp.json` fájlt a `~/.cursor/` helyet
 
 3. **Teljesen indítsa újra a Windsurföt** (Fájl → Kilépés, majd újraindítás).
 
-4. Menjen a **Beállítások → MCP szerverek** részhez, és ellenőrizze, hogy mindkét szerver csatlakoztatva van. A Windsurf első használatkor megnyit egy böngészőfület a `https://iam.wink.travel` címen.
+4. Menjen a **Beállítások → MCP szerverek** részhez, és ellenőrizze, hogy mindkét szerver csatlakoztatva van. A Windsurf az első használatkor megnyit egy böngészőfület a `https://iam.wink.travel` címen.
 
 5. **Jelentkezzen be a Wink-be** és hagyja jóvá a jogosultságokat. A szerverek zöldre váltanak a beállítások panelen, ha hitelesítve vannak.
 </Steps>
@@ -373,8 +386,8 @@ A Cline egy VS Code kiterjesztés beépített MCP szerver kezelővel. Nem szüks
 6. **Jelentkezzen be a Wink-be** és hagyja jóvá a jogosultságokat. Mindkét szerver aktívként jelenik meg az MCP szerverek panelen.
 </Steps>
 
-:::tip[Alternatív megoldás: URL alapján hozzáadás]
-Az MCP szerverek panelen kattintson az **Új szerver hozzáadása** gombra, és illessze be közvetlenül egy eszközkészlet URL-jét, például `https://api.wink.travel/mcp/extranet/rates`. A Cline automatikusan kitölti a konfigurációt, és kezeli a hitelesítést anélkül, hogy kézzel kellene szerkeszteni a JSON-t.
+:::tip[Alternatíva: hozzáadás URL alapján]
+Az MCP szerverek panelen kattintson a **Szerver hozzáadása** gombra, és illesszen be egy eszközkészlet URL-t, például `https://api.wink.travel/mcp/extranet/rates`. A Cline automatikusan kitölti a konfigurációt, és kezeli az autentikációt anélkül, hogy kézzel kellene szerkeszteni a JSON-t.
 :::
 
   </TabItem>
@@ -384,15 +397,14 @@ Az MCP szerverek panelen kattintson az **Új szerver hozzáadása** gombra, és 
 
 ## Jogosultsági körök
 
-Amikor jóváhagyja a hozzájárulási képernyőt, látni fogja, hogy az ügynök milyen jogosultságokat kér. Az MCP kliensek ugyanazt a jogosultsági szókincset használják, mint a platform többi része — lásd a teljes
-[jogosultsági körök hivatkozását az Azonosítás oldalon](/hu/developers/authentication#scopes).
+A hozzájárulási képernyőn látható lesz, hogy az ügynök milyen jogosultságokat kér. Az MCP kliensek ugyanazt a jogosultsági szókincset használják, mint a platform többi része — lásd a teljes [jogosultsági körök hivatkozását az Autentikáció oldalon](/hu/developers/authentication#scopes).
 
 Két dolog specifikus az MCP-re:
 
-- **Az `mcp.read`, `mcp.write`, `mcp.remove` jogosultsági körök továbbiak a MCP kapcsolat megnyitásához.** Egy kliens, amely rendelkezik `mcp.*` jogosultsággal, bármely Wink MCP végponthoz hozzáfér, de minden eszköz, amit meghív, továbbra is érvényesíti a végpont szekció jogosultságát (pl. `booking.read`).
-- **Az AI kliens csak azokat a jogosultságokat kéri, amelyekre szüksége van.** Egyéni jogosultságokat megtagadhat a hozzájárulási képernyőn — az ilyen jogosultságot igénylő eszközök hibát adnak vissza, ha meghívják.
+- **Az `mcp.read`, `mcp.write`, `mcp.remove` jogosultsági körök továbbiaként szükségesek** az MCP kapcsolat megnyitásához. Egy kliens, amely rendelkezik `mcp.*` jogosultsággal, bármely Wink MCP végponthoz hozzáfér, de minden eszköz, amit meghív, továbbra is érvényesíti a végpont szekció jogosultságát (pl. `booking.read`).
+- **Az AI kliens csak a szükséges jogosultságokat kéri.** Egyéni jogosultságokat megtagadhat a hozzájárulási képernyőn — az ilyen jogosultságot igénylő eszközök hibát adnak vissza, ha meghívják őket.
 
-**Az eszközkészletek nem változtatnak ezen.** Az, hogy melyik végponthoz csatlakozik, eldönti, mely eszközök vannak *listázva*, nem azt, hogy mit *engedélyeznek*. A `/mcp/payment` végponthoz való csatlakozás nem ad pénzügyi jogosultságot, amit korábban nem kapott, és a `/mcp/reference` végponthoz való csatlakozás sem akadályozza meg, hogy az ottani eszköz a saját jogosultságát érvényesítse. Az engedélyezés eszközhívásonként történik, az ön tokenje és fiókja jogosultságai alapján.
+**Az eszközkészletek nem változtatnak ezen.** Az, hogy melyik végponthoz csatlakozik, eldönti, mely eszközök vannak *listázva*, nem azt, hogy mit *engedélyeznek*. A `/mcp/payment` végponthoz való csatlakozás nem ad pénzügyi jogosultságot, amit korábban nem kapott, és a `/mcp/reference` végponthoz való csatlakozás sem akadályozza meg, hogy egy eszköz ott érvényesítse a saját jogosultságát. Az engedélyezés eszközhívásonként történik, a token és a fiók jogosultságai alapján.
 
 ---
 
@@ -407,7 +419,7 @@ Lehet, hogy az AI kliens még nem támogatja az interaktív PKCE folyamatot. Ell
 
 **`401 Unauthorized` bejelentkezés után**
 
-A gyorsítótárazott token lejárt lehet. Távolítsa el, majd adja hozzá újra a szervert, hogy friss bejelentkezést indítson:
+A gyorsítótárazott token lejárt. Távolítsa el, majd adja hozzá újra a szervert, hogy új bejelentkezést indítson:
 
 ```bash
 # Claude Code
@@ -419,27 +431,27 @@ Claude Desktop és ChatGPT esetén távolítsa el a szerver bejegyzést a beáll
 
 **`403 Forbidden` egy adott eszköz hívásakor**
 
-Az eszköz olyan jogosultságot igényel, amit nem hagyott jóvá a hozzájárulási képernyőn, vagy olyan jogosultságot, amivel a fiókja nem rendelkezik. Csatlakoztassa újra a szervert — a hozzájárulási képernyő újra megjelenik, és jóváhagyhatja a hiányzó jogosultságot. Ha még mindig nem működik, az eszköz olyan fiókjogosultságot igényel, amivel nem rendelkezik; más eszközkészlethez való csatlakozás nem segít, mert az eszközkészletek nem adnak jogosultságokat.
+Az eszköz olyan jogosultságot igényel, amit nem hagyott jóvá a hozzájárulási képernyőn, vagy olyan engedélyt, amivel a fiókja nem rendelkezik. Csatlakoztassa újra a szervert — a hozzájárulási képernyő újra megjelenik, és jóváhagyhatja a hiányzó jogosultságot. Ha még mindig nem működik, az eszköz olyan fiókjogosultságot igényel, amivel nem rendelkezik; más eszközkészlethez való csatlakozás nem segít, mert az eszközkészletek nem adnak jogosultságokat.
 
 **Az általam keresett eszköz nincs a listában**
 
-Valószínűleg olyan eszközkészlethez csatlakozott, amely nem fedi le azt a munkát. Ellenőrizze a [végpont könyvtárat](#endpoint-directory), és adja hozzá a megfelelő eszközkészletet — a kapcsolatok függetlenek, így egy hozzáadása nem változtat a többin. Ha nem biztos benne, melyik tartalmazza, ideiglenesen csatlakozzon a `https://api.wink.travel/mcp` végponthoz, keresse meg az eszközt, majd nézze meg, melyik eszközkészlet listázza.
+Valószínűleg olyan eszközkészlethez csatlakozott, amely nem fedi le azt a munkát. Ellenőrizze a [végpont könyvtárat](#endpoint-directory), és adja hozzá a megfelelő eszközkészletet — a kapcsolatok függetlenek, így egy hozzáadása nem befolyásolja a többit. Ha nem biztos benne, melyikben van, ideiglenesen csatlakozzon a `https://api.wink.travel/mcp` végponthoz, keresse meg az eszközt, majd nézze meg, melyik eszközkészlet listázza.
 
-**`404 Not Found` egy eszközkészlet végpontján**
+**`404 Not Found` eszközkészlet végponton**
 
 Ellenőrizze a pontos útvonalat — a beágyazott eszközkészletek két szegmensből állnak (`/mcp/extranet/rates`, nem `/mcp/extranet-rates`), a laposak egyből (`/mcp/link-manager`). Vegye figyelembe, hogy egy *nem hitelesített* kérés bármely `/mcp` alatti útvonalra `401` választ ad, nem `404`-et, így egy `401` önmagában nem jelzi, hogy létezik-e a végpont.
 
-**Csatlakoztam az `api.wink.travel/mcp/channel-manager` végponthoz, de nem kaptam semmit**
+**Csatlakoztam az `api.wink.travel/mcp/channel-manager` végponthoz, de nem történt semmi**
 
-Ez a végpont nem létezik. A csatornakezelő integráció csak a `https://integrations.wink.travel/mcp/channel-manager` végponton érhető el. Ha kézzel is szeretné kezelni egy ingatlan árait, az egy külön munka, külön végponton — lásd `/mcp/extranet/rates`.
+Ez a végpont nem létezik. A channel manager integráció csak a `https://integrations.wink.travel/mcp/channel-manager` végponton érhető el. Ha kézzel szeretné kezelni egy ingatlan saját árait, az egy külön munka külön végponton — lásd a `/mcp/extranet/rates`-t.
 
 **A szerver megjelenik, de az eszközhívások "account not found" hibát adnak**
 
-Olyan Wink fiókba van bejelentkezve, amelyhez nincs kezelő entitás rendelve. Látogasson el a [Wink Portálra](https://app.wink.travel), és győződjön meg róla, hogy a fiókja be van állítva az MCP szerver használata előtt.
+Olyan Wink fiókba van bejelentkezve, amelyhez nem tartozik kezelő entitás. Látogasson el a [Wink Portálra](https://app.wink.travel), és győződjön meg róla, hogy a fiókja be van állítva az MCP szerver használata előtt.
 
 **A token lejár a munkamenet közben**
 
-A tokenek 3 óráig érvényesek. A Claude Code és Claude Desktop csendben frissíti a tokeneket megszakítás nélkül. Ha hosszú tétlenség után hitelesítési hibákat tapasztal, írjon be egy új üzenetet — a kliens automatikusan újra hitelesít.
+A tokenek 3 óráig érvényesek. A Claude Code és Claude Desktop csendben frissíti a tokeneket megszakítás nélkül. Ha hosszú tétlenség után hitelesítési hibákat tapasztal, írjon be egy új üzenetet — az ügyfél automatikusan újra hitelesít.
 
 **A Codex CLI "MCP server unreachable" hibát jelez**
 
@@ -449,17 +461,17 @@ Ellenőrizze, hogy a `~/.codex/config.json` érvényes JSON (nincsenek feleslege
 
 Az MCP támogatáshoz a ChatGPT asztali alkalmazás **1.2024.352** vagy újabb verziója szükséges, valamint aktív Plus, Pro, Team vagy Enterprise előfizetés. Frissítse az alkalmazást, és ellenőrizze a tervét a Beállítások → Fiók menüpontban.
 
-**A Cursor szerver piros, vagy "Csatlakozás sikertelen" üzenetet mutat**
+**A Cursor szerver piros / "Csatlakozás sikertelen"**
 
-Ellenőrizze, hogy a `~/.cursor/mcp.json` érvényes JSON és tartalmazza a `"type": "http"` beállítást. Ezután menjen a **Beállítások → Cursor beállítások → MCP** részhez, és kattintson a **Frissítés** gombra. Ha a hiba továbbra is fennáll, indítsa újra teljesen a Cursort — a konfigurációs változtatásokat nem mindig veszi észre újraindítás nélkül.
+Ellenőrizze, hogy a `~/.cursor/mcp.json` érvényes JSON és tartalmazza a `"type": "http"` beállítást. Ezután menjen a **Beállítások → Cursor beállítások → MCP** részhez, és kattintson a **Frissítés** gombra. Ha a hiba továbbra is fennáll, indítsa újra teljesen a Cursor-t — a konfigurációs változtatásokat nem mindig veszi észre újraindítás nélkül.
 
 **A Windsurf MCP szerverek nem jelennek meg a beállításokban**
 
-A Windsurf teljes újraindítást igényel (`Fájl → Kilépés`), nem elég csak az ablakot bezárni, hogy észlelje a `mcp_config.json` változásait. Indítsa újra az alkalmazást. Ha a szerverek még mindig nem jelennek meg, ellenőrizze, hogy Windsurf **1.4+** verziót használ a **Súgó → A Windsurf névjegye** menüpontban.
+A Windsurf teljes újraindítást igényel (`Fájl → Kilépés`), nem elég csak az ablakot bezárni, hogy észlelje a `mcp_config.json` változásait. Ha a szerverek még mindig nem jelennek meg, ellenőrizze, hogy Windsurf **1.4+** verziót használ a **Súgó → A Windsurf névjegye** menüpontban.
 
-**A Cline "Szerver hozzáadása" opciója nem látható**
+**A Cline "Szerver hozzáadása" opció nem látható**
 
-Az MCP szerver kezelőhöz Cline **2.0** vagy újabb verzió szükséges. Nyissa meg a VS Code Kiterjesztések panelt, keresse meg a Cline-t, és ha elérhető frissítés, kattintson a **Frissítés** gombra. A frissítés után töltse újra a VS Code-ot (`Ctrl+Shift+P` → "Developer: Reload Window").
+Az MCP szerver kezelőhöz Cline **2.0** vagy újabb verzió szükséges. Nyissa meg a VS Code Kiterjesztések panelt, keresse meg a Cline-t, és kattintson a **Frissítés** gombra, ha elérhető. Frissítés után töltse újra a VS Code-ot (`Ctrl+Shift+P` → "Developer: Reload Window").
 
 ---
 

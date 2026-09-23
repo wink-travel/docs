@@ -1,0 +1,181 @@
+---
+title: Mga Bayad ng Ahente
+description: Ikonekta ang iyong AI agent sa Wink, mag-sign in, maghanap ng hotel at aprubahan ang bayad upang makumpleto ang iyong booking.
+sidebar:
+  order: 10.5
+---
+
+Maaari kang maghanap ng hotel, pumili ng kuwarto at kumpletuhin ang iyong booking sa pamamagitan ng iyong AI agent. Ikonekta ito sa Wink at isang payment wallet, pagkatapos sabihin kung saan mo gustong manatili. Ginagamit ng Wink ang **Machine Payments Protocol (MPP)** upang tanggapin ang bayad mula sa wallet at ibalik ang kumpirmasyon ng iyong booking.
+
+## 1. Ikonekta ang mga MCP server
+
+Para sa kumpletong booking flow, kailangan ng iyong agent ang **Wink Booking Engine** at isang **payment wallet**.
+
+| Koneksyon | Ano ang ginagawa nito | Paano idagdag |
+| --- | --- | --- |
+| **Wink Booking Engine** — kinakailangan | Naghahanap ng mga destinasyon, nagse-search ng mga hotel at room rates, nagbibigay ng quote at kumukumpirma ng mga booking, at kumukuha ng iyong mga booking at resibo. | Idagdag ang `https://api.wink.travel/mcp/booking-engine` bilang remote HTTP MCP server. |
+| **Payment wallet** — kinakailangan para magbayad | Nagbibigay ng payment credentials pagkatapos mong aprubahan ang pagbili. | Ikonekta ang wallet na sumusuporta sa Stripe Shared Payment Tokens o Tempo payments. Tingnan ang halimbawa ng Link sa ibaba. |
+| Wink Reference — opsyonal | Naghahanap ng mga bansa, pera at iba pang reference data. | `https://api.wink.travel/mcp/reference` |
+| Wink Docs — opsyonal | Tinutulungan ang iyong agent na basahin ang dokumentasyon at API contracts. | `https://docs.mcp.wink.travel/mcp` |
+
+Kasama na sa Booking Engine MCP ang mga tool na kailangan para sa traveler booking flow, kapag naka-enable ang agentic booking at payment para sa environment na iyon. Ang hiwalay na Payment MCP ng Wink ay para sa mga financial operation tulad ng ledger at withdrawal; hindi ito kailangan para magbayad ng kuwarto.
+
+### Mag-sign in at pumili ng mga permiso
+
+1. Buksan ang MCP o connector settings ng iyong agent at idagdag ang Booking Engine URL sa itaas. Bigyan ito ng pangalan tulad ng **Wink Booking**.
+2. Binubuksan ng iyong agent ang Wink sign-in page sa iyong browser. Mag-sign in gamit ang Wink account na gusto mong gamitin sa booking.
+3. Sa consent screen, piliin ang mga permiso na kailangan ng iyong agent, pagkatapos aprubahan ang koneksyon.
+4. Bumalik sa iyong agent. I-load nito ang mga available na tool at pinamamahalaan ang authentication para sa mga susunod na MCP calls.
+
+Para sa flow na ito, piliin:
+
+| Permiso | Bakit ito kailangan |
+| --- | --- |
+| AI agent access (`mcp.read`) | Pinapayagan ang iyong agent na kumonekta sa Wink MCP. |
+| Marketing read (`marketing.read`) | Pinapayagan ang agent na hanapin ang booking configuration ng iyong account, na tinatawag na customization. Dapat may access din ang iyong account sa configuration na iyon. |
+| Payment write (`payment.write`) | Pinapayagan ang agent na magbayad para sa quote at kumpirmahin ang booking. |
+
+Panatilihin ang mga sign-in permissions na hinihingi ng koneksyon. Pinamamahalaan ng iyong MCP client ang mga access token; hindi mo kailangang kopyahin ang token sa chat o mag-set ng request headers. Kung nakaligtaan mo ang isang kinakailangang permiso, kumonekta muli sa pamamagitan ng sign-in flow ng iyong client at aprubahan ito.
+
+### Ikonekta ang payment wallet
+
+Para sa Stripe payments, isang opsyon ay ang **Link's agent wallet**. Kung sinusuportahan ng iyong client ang local MCP servers at naka-install ang Node.js, idagdag ang entry na ito sa MCP configuration nito:
+
+```json
+{
+  "mcpServers": {
+    "link": {
+      "command": "npx",
+      "args": ["@stripe/link-cli", "--mcp"]
+    }
+  }
+}
+```
+
+Hilingin sa iyong agent na ikonekta ang iyong Link account, pagkatapos sundan ang verification link na ibibigay nito at aprubahan ang koneksyon. Nagbibigay ang Link ng Shared Payment Token na ginagamit para magbayad sa booking. Sa kasalukuyan, sinusuportahan ng Link ang mga US account; suriin ang mga spending limit bago mag-book. Tingnan ang [Link's setup guide](https://github.com/stripe/link-cli#quickstart) at [MCP configuration](https://github.com/stripe/link-cli#mcp-server).
+
+Maaari ka ring gumamit ng wallet na sumusuporta sa Tempo payment challenge na inaalok ng Wink. Kung may compatible wallet na nakakonekta ang iyong agent, gamitin ang koneksyon na iyon. Ang setup ng wallet at pag-apruba ng bayad ay hiwalay sa pag-sign in sa Wink.
+
+## 2. Hilingin sa iyong agent na maghanap ng kuwarto
+
+Halimbawa:
+
+> Maghanap ng kuwarto sa Bangkok para sa dalawang adulto mula 15 hanggang 17 Enero 2027. Ipakita sa akin ang mga available na opsyon, kabuuang presyo at mga tuntunin sa pagkansela bago ako pumili.
+
+Maaari hanapin ng iyong agent ang mga accessible na Wink account mo at ang kanilang booking configurations. Kung marami kang account, sabihin kung alin ang gagamitin. Kung nagbu-book ka gamit ang isang ibinigay na booking link o configuration, ibigay iyon sa agent.
+
+Pagkatapos, ireresolba ng agent ang iyong destinasyon, susuriin ang mga available na hotel at iloload ang mga room rates para sa iyong mga petsa. Pumili ng kuwarto at humiling ng quote.
+
+Ang payment flow na ito ay kasalukuyang sumusuporta sa **isang kuwarto, naka-presyo sa USD, para sa mga adulto lamang**. May expiry time ang isang quote. Ang paghingi ng quote ay hindi ka sisingilin o magkokumpirma ng booking.
+
+## 3. Suriin at aprubahan ang bayad
+
+Suriin ang hotel, kuwarto, mga petsa, mga bisita, mga tuntunin sa pagkansela at ang quoted total. Kapag handa ka na, hilingin sa iyong agent na mag-book at kumpletuhin ang anumang apruba na hinihingi ng iyong wallet.
+
+Gagamit ang agent ng isa sa mga payment method na inaalok ng quote:
+
+- **Stripe:** nagbibigay ang wallet ng Shared Payment Token.
+- **Tempo:** ginagawa ng wallet ang transfer na tinukoy ng challenge at nagbibigay ng transaction hash nito.
+
+Pagkatapos magtagumpay ang bayad, bibigyan ka ng iyong agent ng **booking confirmation code**. Maaari rin nitong kunin ang detalye ng booking at resibo sa pamamagitan ng Booking Engine MCP.
+
+Kung ang bayad ay nasa proseso pa o nawala ang tugon, hayaan ang agent na suriin ang **parehong payment attempt**. Dapat nitong gamitin muli ang quote at payment credential sa halip na magsimula ng pangalawang bayad. Kung tinanggihan ang bayad, humiling ng bagong quote at suriin ito bago subukang muli.
+
+## Tool reference para sa mga agent at developer
+
+Lahat ng Wink tools sa ibaba ay available sa pamamagitan ng **Booking Engine MCP**. Awtomatikong nagpapadala ng authentication ang MCP client gamit ang mga permiso na inaprubahan sa sign-in.
+
+| Hakbang | Mga tool at kilos |
+| --- | --- |
+| Piliin ang booking context | `managing_entity_list`, pagkatapos `customization_get_primary` o `customization_search` para sa napiling account. Gumamit ng ibinigay na customization kapag kilala na ito. |
+| Maghanap ng destinasyon | `destination_lookup_search_suggestions` at `destination_lookup_get`. |
+| Maghanap ng mga hotel at kuwarto | `inventory_search_city` o `inventory_search_geo`, pagkatapos `property_inventory_get` para sa rates at availability. |
+| Mag-quote ng napiling kuwarto | `agentic_booking_quote`. Ipasok ang detalye ng kuwarto sa loob ng `request` argument nito. |
+| Magbayad at mag-kumpirma | Kumuha ng credential mula sa nakakonektang wallet, pagkatapos tawagan ang `agentic_booking_pay` gamit ang `request.quoteId` at eksaktong isa sa `request.spt` o `request.tempoTransactionHash`. Panatilihin ang parehong naka-sign in na Wink user para sa quote at bayad. |
+| Kunin ang booking at resibo | Gamitin ang `booking_search` o `booking_search_list` para hanapin ang kumpirmadong booking, pagkatapos `booking_get` at `booking_receipt_get` gamit ang booking identifier nito. |
+
+Kailangan ng quote request ang `hotelIdentifier`, `roomRateIdentifier`, `checkIn`, `checkOut`, `adults`, `children` at `customizationIdentifier`. Ginagamit ang format na `YYYY-MM-DD` para sa mga petsa; dapat sumunod ang `checkOut` sa `checkIn`. Itakda ang `adults` sa hindi bababa sa `1` at `children` sa `0`.
+
+Nagbabalik ang quote ng `quoteId`, `amountUsdCents`, `currency`, `expiresAt` at `mppChallenges`. Ipakita ang USD cents bilang dolyar: ang `10000` ay nangangahulugang **$100.00**. Para sa Tempo, gamitin ang token, chain, recipient at amount sa token base units ng napiling challenge.
+
+| Resulta ng bayad | Susunod na hakbang |
+| --- | --- |
+| `PAYMENT_SUCCEEDED` | I-save ang `bookingConfirmationCode` at `chargeReference`. |
+| `IN_PROGRESS` | Maghintay ng kaunti at subukang muli ang parehong quote at credential. |
+| `DECLINED` | Humiling ng bagong quote at suriin ito bago muling magbayad. |
+
+Ang matagumpay na retry ay nagbabalik ng umiiral na booking nang hindi naniningil muli. Ituring ang timeout bilang hindi kilalang resulta at subukang muli ang parehong bayad. Kung nananatiling hindi malutas, makipag-ugnayan sa suporta gamit ang quote ID.
+
+### Mga MCP client na may kaalaman sa bayad
+
+Maaaring gamitin ng mga MCP client na may kaalaman sa bayad ang `agentic_booking_book` na may mga field ng kuwarto nang direkta sa `arguments`. Ang unang tawag ay magbabalik ng error na `-32042` na may mga payment challenge. Subukang muli ang parehong tawag gamit ang wallet credential sa `params._meta["org.paymentauth/credential"]`; ang tagumpay ay may kasamang `result._meta["org.paymentauth/receipt"]`. Ang error na `-32043` ay may dalang payment failure at challenge: ang tiyak na pagtanggi ay nangangailangan ng bagong quote, habang ang hindi kumpletong payment payload ay maaaring subukang muli gamit ang parehong challenge. Para sa `-32603`, ang `data.failure.reason` na `payment-in-progress` o `already-consumed` ay nangangahulugang subukang muli ang parehong credential; hindi sapat ang error code lamang.
+
+## Mag-book gamit ang REST
+
+Gamitin ang REST kapag bumubuo ng integration na direktang tumatawag sa Wink sa pamamagitan ng HTTP. Parehong ginagamit ng quote at bayad ang **`POST https://api.wink.travel/api/mpp/booking`**.
+
+Kailangan ng iyong aplikasyon ng [Wink user access token](/tl/developers/authentication/) na may permiso na `payment.write` para magbayad. Panatilihin ang parehong user para sa parehong tawag. Ipadala ang token sa `Wink-Authorization`, habang ang `Authorization` ay para sa payment credential ng wallet. Ang mga header na ito ay para sa REST; ang MCP client ay pinamamahalaan ang sariling authentication.
+
+### 1. Humiling ng quote
+
+I-save ang napiling kuwarto bilang `booking.json`, palitan ang mga halimbawa ng identifier at petsa ng iyong pinili. Ang mga field ng kuwarto ay direktang ilalagay sa JSON body, walang `request` na wrapper.
+
+```json
+{
+  "hotelIdentifier": "YOUR_HOTEL_ID",
+  "roomRateIdentifier": "YOUR_ROOM_RATE_ID",
+  "checkIn": "2027-01-15",
+  "checkOut": "2027-01-17",
+  "adults": 2,
+  "children": 0,
+  "customizationIdentifier": "YOUR_CUSTOMIZATION_ID"
+}
+```
+
+Itakda ang `WINK_ACCESS_TOKEN` sa access token ng user at ipadala ang request:
+
+```bash
+curl -i https://api.wink.travel/api/mpp/booking \
+  -H "Wink-Authorization: Bearer $WINK_ACCESS_TOKEN" \
+  -H 'Content-Type: application/json' \
+  --data-binary @booking.json
+```
+
+Magbabalik ang Wink ng **`402 Payment Required`** na may `WWW-Authenticate: Payment ...` challenge para sa bawat inaalok na paraan. Kasama sa JSON body ang `quoteId`, `amount`, `currency`, `expiresAt` at `methods`. Dito, ang `amount` ay string sa USD cents: ang `"10000"` ay nangangahulugang **$100.00**. Suriin ang quote bago ito mag-expire; wala pang bayad na kinukuha.
+
+### 2. Magbayad at mag-kumpirma
+
+Hayaan ang wallet na tuparin ang isa sa mga ibinalik na challenge. Para sa Stripe, nagbibigay ito ng `payload.spt`; para sa Tempo, nagbibigay ito ng `payload.hash` na may `payload.type` na `"hash"`. Gamitin ang payment details mula sa challenge na iyon.
+
+Itakda ang `MPP_CREDENTIAL` sa encoded MPP credential ng wallet, na naglalaman ng challenge at payment payload. Subukang muli ang **parehong request body**, panatilihin ang identity header:
+
+```bash
+curl -i https://api.wink.travel/api/mpp/booking \
+  -H "Wink-Authorization: Bearer $WINK_ACCESS_TOKEN" \
+  -H "Authorization: Payment $MPP_CREDENTIAL" \
+  -H 'Content-Type: application/json' \
+  --data-binary @booking.json
+```
+
+Kapag matagumpay, magbabalik ang Wink ng **`200 OK`**, JSON body na naglalaman ng `bookingConfirmationCode`, at `Payment-Receipt` header. I-save ang kumpirmasyon at resibo. Ang matagumpay na retry ay nagbabalik ng umiiral na booking nang hindi naniningil muli.
+
+### Pangasiwaan ang mga tugon at retry
+
+| Tugon | Ano ang gagawin |
+| --- | --- |
+| `400` | Itama ang maling detalye ng kuwarto o maling format ng credential. |
+| `401` / `403` | Suriin ang authentication ng user at permiso sa bayad. |
+| `402` | Suriin ang ibinalik na problema at challenge. Ang tiyak na pagtanggi sa bayad ay nangangailangan ng bagong quote; ang hindi kumpletong payment payload ay muling gagamitin ang orihinal na challenge. Suriin ang presyo bago magbayad. |
+| `409` | Hindi pa nalulutas ang resulta ng bayad. Maghintay ng kaunti, pagkatapos subukang muli ang parehong body at credential sa booking endpoint. |
+| `429` | Maghintay ng bilang ng segundo na nasa `Retry-After`, pagkatapos subukang muli. |
+
+Ang tugon na `409` ay may `application/problem+json` na body. Itugma ang `type` nito sa mga eksaktong URL na ito:
+
+| Uri ng problema | Kahulugan |
+| --- | --- |
+| [https://api.wink.travel/problems/payment-in-progress](https://api.wink.travel/problems/payment-in-progress) | Isang payment attempt ay kasalukuyang tumatakbo o hindi pa makumpirma ang settlement. |
+| [https://api.wink.travel/problems/already-consumed](https://api.wink.travel/problems/already-consumed) | Ang challenge o payment proof ay nagamit na sa isang posibleng matagumpay na pagtatangka. Hindi nito kinukumpirma ang booking. |
+
+Pareho itong nangangahulugang **subukang muli ang parehong bayad; huwag magbayad ng bagong quote**. Kinilala at dinodokumento ng mga URL ang problema; hindi ito mga payment o polling endpoint. Subukang muli ang `POST /api/mpp/booking`, at gamitin ang problem `type` sa halip na ang free-text `detail` para magdesisyon. Tingnan ang [problem-type reference](https://api.wink.travel/problems) para sa lahat ng Wink payment problems.
+
+Ang timeout, nawalang tugon o error sa server pagkatapos magsumite ng bayad ay maaari ring mag-iwan ng hindi kilalang resulta. Subukang muli ang parehong payment request. Kung nananatiling hindi malutas, makipag-ugnayan sa suporta gamit ang quote ID bago magsimula ng panibagong bayad.

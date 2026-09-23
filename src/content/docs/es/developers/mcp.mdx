@@ -29,7 +29,7 @@ Wink expone alrededor de 500 herramientas. Entregar todas a un agente a la vez e
 
 **La calidad de elección disminuye a medida que la lista crece.** Un agente que elige entre 500 herramientas con nombres similares toma peores decisiones que uno que elige entre 40. Si integras un channel manager, aproximadamente veinte herramientas son relevantes para ti; las otras 480 son ruido que dificulta encontrar la herramienta correcta.
 
-**El trabajo es genuinamente separable.** Alguien sincronizando disponibilidad desde un PMS y alguien creando páginas de afiliados comparten casi ninguna herramienta. Dividir por tarea significa que cada conexión lleva el vocabulario de una tarea.
+**El trabajo es genuinamente separable.** Alguien sincronizando disponibilidad desde un PMS y alguien creando páginas afiliadas comparten casi ninguna herramienta. Dividir por tarea significa que cada conexión lleva el vocabulario de una tarea.
 
 <Aside type="caution" title="Los conjuntos de herramientas no son permisos">
 Elegir un conjunto de herramientas estrecho **no** restringe lo que tu cuenta puede hacer, y elegir uno amplio no otorga nada extra. Cada herramienta aplica los mismos permisos de cuenta que el portal web, bajo tu identidad iniciada. Si tu cuenta no puede cancelar una reserva en Wink Portal, el agente tampoco puede — sin importar a qué endpoint esté conectado.
@@ -83,6 +83,12 @@ La administración de cuenta también está en `api.wink.travel`, en `/mcp/setti
 
 Cada endpoint también incluye una herramienta `ping`, para que puedas confirmar que la conexión está activa antes de pedirle que haga trabajo real.
 
+### Pagos agenticos
+
+Para el flujo completo de reserva de viajeros, conecta **Wink Booking Engine** en `https://api.wink.travel/mcp/booking-engine` y una **billetera de pago** compatible. Agregar el MCP de Wink abre el inicio de sesión en el navegador y la selección de permisos; tu cliente luego maneja la autenticación.
+
+Booking Engine incluye búsqueda de destino, búsqueda de hotel y habitación, `agentic_booking_quote`, `agentic_booking_pay`, `agentic_booking_book`, recuperación de reservas y recibos, cuando la reserva y pago agenticos están habilitados para ese entorno. Consulta [Agentic Payments](/es/developers/agentic-payments/) para la configuración de conexión, los permisos a seleccionar y los pasos desde la búsqueda hasta la confirmación.
+
 ---
 
 ## ¿Qué conjuntos de herramientas necesito?
@@ -94,17 +100,24 @@ Cada endpoint también incluye una herramienta `ping`, para que puedas confirmar
 | **Gestionando habitaciones y tipos de habitación** | `/mcp/extranet/facilities` |
 | **Gestionando precios y disponibilidad** | `/mcp/extranet/rates` |
 | **Manejando reservas diarias** | `/mcp/extranet/operations` |
-| **Ampliando distribución** | `/mcp/extranet/distribution` + `/mcp/analytics` |
-| **Creando páginas de afiliados** | `/mcp/studio/curation` + `/mcp/studio/embeds` |
-| **Gestionando páginas link-in-bio** | `/mcp/link-manager` + `/mcp/social` |
+| **Expandiendo distribución** | `/mcp/extranet/distribution` + `/mcp/analytics` |
+| **Creando páginas afiliadas** | `/mcp/studio/curation` + `/mcp/studio/embeds` |
+| **Gestionando páginas de link-in-bio** | `/mcp/link-manager` + `/mcp/social` |
 | **Reservando en nombre de viajeros** | `/mcp/travel-agent` |
 | **Conciliando dinero** | `/mcp/payment` |
-| **Construyendo una experiencia de reserva** | `/mcp/booking-engine` + `/mcp/reference` |
+| **Reservando una habitación con un agente de IA** | `/mcp/booking-engine` + una billetera de pago compatible — ver [Agentic Payments](/es/developers/agentic-payments/) |
+| **Construyendo una experiencia de reserva** | `/mcp/booking-engine`; opcionalmente `/mcp/reference` para consultas adicionales |
 
-Empieza con uno. Añade otro cuando necesites algo que el primero no pueda hacer — cada conexión es independiente, y añadir uno nunca afecta a los demás.
+**Booking Engine incluye el flujo principal de reserva.** Proporciona descubrimiento de cuenta y personalización, búsqueda de destino, disponibilidad de hotel y detalles de tarifas de habitación, carritos de compra, pago y gestión de reservas de viajeros. Las herramientas de reserva y pago agenticos también están incluidas cuando están habilitadas para ese entorno.
 
-<Aside type="tip" title="¿Quieres todo?">
-`https://api.wink.travel/mcp` y `https://integrations.wink.travel/mcp` siguen disponibles y sirven **todas** las herramientas en su host. Son útiles para explorar qué existe, pero no los recomendamos para trabajo diario: la lista de herramientas es lo suficientemente grande para opacar tu tarea y degradar la selección de herramientas del agente. Prefiere los conjuntos de herramientas arriba.
+Para una búsqueda de hotel basada en ciudad, usa `destination_lookup_search_suggestions` para resolver el destino, luego `inventory_search_city` para encontrar hoteles y tarifas disponibles. Ambas herramientas están en `/mcp/booking-engine`, por lo que este flujo no requiere una conexión a Reference.
+
+Agrega `/mcp/reference` cuando necesites consultas de soporte como países, monedas y tipos de cambio, idiomas soportados, zonas horarias, búsquedas geográficas más amplias, clasificaciones OTA o conocimiento público de propiedades. Son adiciones opcionales al flujo de reserva.
+
+Comienza con uno. Agrega otro cuando te encuentres pidiendo algo que no pueda hacer — cada conexión es independiente, y agregar uno nunca afecta a los demás.
+
+<Aside type="tip" title="¿Quieres todo de todas formas?">
+`https://api.wink.travel/mcp` y `https://integrations.wink.travel/mcp` siguen disponibles y sirven **todas** las herramientas en su host. Son útiles para explorar qué existe, pero no los recomendamos para el trabajo diario: la lista de herramientas es lo suficientemente grande para opacar tu tarea y degradar la selección de herramientas del agente. Prefiere los conjuntos de herramientas arriba.
 </Aside>
 
 ---
@@ -130,12 +143,12 @@ Cada llamada a una herramienta se ejecuta **bajo tu identidad** — las mismas r
   <TabItem label="Claude Code">
 
 <Steps>
-1. Asegúrate de que Claude Code está actualizado:
+1. Asegúrate de que Claude Code esté actualizado:
    ```bash
    npm install -g @anthropic-ai/claude-code
    ```
 
-2. Elige un conjunto de herramientas del [directorio arriba](#endpoint-directory) y añádelo. Por ejemplo, precios y disponibilidad:
+2. Elige un conjunto de herramientas del [directorio arriba](#endpoint-directory) y agrégalo. Por ejemplo, precios y disponibilidad:
    ```bash
    claude mcp add wink-rates https://api.wink.travel/mcp/extranet/rates --transport http
    ```
@@ -147,7 +160,7 @@ Cada llamada a una herramienta se ejecuta **bajo tu identidad** — las mismas r
 5. Claude Code confirma la conexión. Escribe `/mcp` para verificar que el servidor aparece y sus herramientas se han cargado.
 </Steps>
 
-Añade tantos conjuntos de herramientas como necesite tu trabajo — cada uno es una entrada de servidor separada con su propio nombre:
+Agrega tantos conjuntos de herramientas como necesite tu trabajo — cada uno es una entrada de servidor separada con su propio nombre:
 ```bash
 claude mcp add wink-operations https://api.wink.travel/mcp/extranet/operations --transport http
 claude mcp add wink-analytics  https://api.wink.travel/mcp/analytics           --transport http
@@ -156,7 +169,7 @@ claude mcp add wink-analytics  https://api.wink.travel/mcp/analytics           -
 Solo inicias sesión una vez. Después de la primera aprobación en el navegador, Claude Code reutiliza tu sesión Wink para endpoints adicionales.
 
 :::tip[Comparte con tu equipo]
-Añade `--scope project` a `claude mcp add` y Claude Code escribe la URL del servidor en `.mcp.json` en la raíz del repositorio. Haz commit de ese archivo — cada miembro del equipo obtiene los mismos conjuntos de herramientas, y cada uno completa su propio inicio de sesión en el navegador la primera vez que se conecta.
+Agrega `--scope project` a `claude mcp add` y Claude Code escribe la URL del servidor en `.mcp.json` en la raíz del repositorio. Haz commit de ese archivo — cada miembro del equipo obtiene los mismos conjuntos de herramientas, y cada uno completa su propio inicio de sesión en el navegador la primera vez que se conecta.
 :::
 
   </TabItem>
@@ -168,7 +181,7 @@ Añade `--scope project` a `claude mcp add` y Claude Code escribe la URL del ser
    - **Windows:** `%APPDATA%\Claude\claude_desktop_config.json`
    - **Linux:** `~/.config/Claude/claude_desktop_config.json`
 
-2. Añade las entradas de servidores MCP:
+2. Agrega las entradas de servidores MCP:
 
    ```json title="claude_desktop_config.json"
    {
@@ -185,7 +198,7 @@ Añade `--scope project` a `claude mcp add` y Claude Code escribe la URL del ser
    }
    ```
 
-3. **Cierra completamente y reinicia** Claude Desktop (usa Quit desde la barra de menú — cerrar la ventana no es suficiente).
+3. **Cierra completamente y reinicia** Claude Desktop (usa Salir desde la barra de menú — cerrar la ventana no es suficiente).
 
 4. Claude Desktop abre una pestaña del navegador para cada servidor nuevo. Inicia sesión en Wink y aprueba los permisos.
 
@@ -196,7 +209,7 @@ Añade `--scope project` a `claude mcp add` y Claude Code escribe la URL del ser
   <TabItem label="OpenAI Codex">
 
 <Steps>
-1. Asegúrate de que Codex CLI está instalado:
+1. Asegúrate de que Codex CLI esté instalado:
    ```bash
    npm install -g @openai/codex
    ```
@@ -205,7 +218,7 @@ Añade `--scope project` a `claude mcp add` y Claude Code escribe la URL del ser
    - **macOS / Linux:** `~/.codex/config.json`
    - **Windows:** `%USERPROFILE%\.codex\config.json`
 
-3. Añade las entradas de servidores MCP de Wink:
+3. Agrega las entradas de servidores MCP de Wink:
 
    ```json title="~/.codex/config.json"
    {
@@ -241,7 +254,7 @@ El soporte para servidores MCP está disponible en la **app de escritorio ChatGP
 <Steps>
 1. Descarga e instala la [app de escritorio ChatGPT](https://openai.com/chatgpt/download/) si aún no lo has hecho.
 
-2. Abre la app y haz clic en **tu icono de perfil** en la esquina superior derecha, luego elige **Configuración**.
+2. Abre la app y haz clic en **tu ícono de perfil** en la esquina superior derecha, luego elige **Configuración**.
 
 3. Ve a **Conectores** (o **Servidores MCP** según la versión de tu app) y haz clic en **Agregar**.
 
@@ -273,7 +286,7 @@ Los servidores MCP solo son configurables en la **app de escritorio**. La interf
    - **macOS / Linux:** `~/.cursor/mcp.json`
    - **Windows:** `%USERPROFILE%\.cursor\mcp.json`
 
-2. Añade las entradas de servidores MCP de Wink:
+2. Agrega las entradas de servidores MCP de Wink:
 
    ```json title="~/.cursor/mcp.json"
    {
@@ -294,7 +307,7 @@ Los servidores MCP solo son configurables en la **app de escritorio**. La interf
 
 4. Cursor abre una pestaña del navegador a `https://iam.wink.travel`. **Inicia sesión en Wink** y aprueba los permisos.
 
-5. Abre un chat (`Ctrl+L` / `Cmd+L`) y pide a Cursor que liste las herramientas Wink disponibles para confirmar la conexión.
+5. Abre un chat (`Ctrl+L` / `Cmd+L`) y pide a Cursor listar las herramientas Wink disponibles para confirmar la conexión.
 </Steps>
 
 :::tip[Configuración con alcance de proyecto]
@@ -309,7 +322,7 @@ También puedes colocar un archivo `mcp.json` en la raíz de tu proyecto en luga
    - **macOS / Linux:** `~/.codeium/windsurf/mcp_config.json`
    - **Windows:** `%USERPROFILE%\.codeium\windsurf\mcp_config.json`
 
-2. Añade las entradas de servidores MCP de Wink:
+2. Agrega las entradas de servidores MCP de Wink:
 
    ```json title="~/.codeium/windsurf/mcp_config.json"
    {
@@ -328,13 +341,13 @@ También puedes colocar un archivo `mcp.json` en la raíz de tu proyecto en luga
 
 3. **Reinicia completamente Windsurf** (Archivo → Salir, luego vuelve a abrir).
 
-4. Ve a **Configuración → Servidores MCP** y verifica que ambos servidores aparecen como conectados. Windsurf abre una pestaña del navegador a `https://iam.wink.travel` en el primer uso.
+4. Ve a **Configuración → Servidores MCP** y verifica que ambos servidores aparezcan como conectados. Windsurf abre una pestaña del navegador a `https://iam.wink.travel` en el primer uso.
 
 5. **Inicia sesión en Wink** y aprueba los permisos. Los servidores se vuelven verdes en el panel de configuración una vez autenticados.
 </Steps>
 
 :::note
-El soporte MCP de Windsurf requiere la versión **1.4** o superior. Verifícalo en **Ayuda → Acerca de Windsurf** y actualiza desde el sitio web de Windsurf si es necesario.
+El soporte MCP de Windsurf requiere la versión **1.4** o superior. Verifica en **Ayuda → Acerca de Windsurf** y actualiza desde el sitio web de Windsurf si es necesario.
 :::
 
   </TabItem>
@@ -347,11 +360,11 @@ Cline es una extensión de VS Code con un gestor de servidores MCP integrado. No
    - Abre VS Code y presiona `Ctrl+Shift+X` / `Cmd+Shift+X`
    - Busca **Cline** y haz clic en **Instalar**
 
-2. Haz clic en el **icono de Cline** en la barra de actividad (barra lateral izquierda) para abrir el panel de Cline.
+2. Haz clic en el **ícono de Cline** en la barra de actividad (barra lateral izquierda) para abrir el panel de Cline.
 
-3. Haz clic en el **icono de Servidores MCP** (icono de enchufe) en la barra de herramientas de Cline, luego elige **Editar configuración MCP**.
+3. Haz clic en el **ícono de Servidores MCP** (ícono de enchufe) en la barra de herramientas de Cline, luego elige **Editar configuración MCP**.
 
-4. VS Code abre `cline_mcp_settings.json`. Añade las entradas de Wink:
+4. VS Code abre `cline_mcp_settings.json`. Agrega las entradas de Wink:
 
    ```json title="cline_mcp_settings.json"
    {
@@ -370,10 +383,10 @@ Cline es una extensión de VS Code con un gestor de servidores MCP integrado. No
 
 5. **Guarda el archivo.** Cline se recarga automáticamente y abre una pestaña del navegador a `https://iam.wink.travel`.
 
-6. **Inicia sesión en Wink** y aprueba los permisos. Ambos servidores aparecen activos en el panel de Servidores MCP.
+6. **Inicia sesión en Wink** y aprueba los permisos. Ambos servidores aparecen como activos en el panel de Servidores MCP.
 </Steps>
 
-:::tip[Alternativa: añadir vía URL]
+:::tip[Alternativa: agregar vía URL]
 En el panel de Servidores MCP, haz clic en **Agregar servidor** y pega directamente una URL de conjunto de herramientas como `https://api.wink.travel/mcp/extranet/rates`. Cline autocompleta la configuración y maneja la autenticación sin editar JSON manualmente.
 :::
 
@@ -384,14 +397,14 @@ En el panel de Servidores MCP, haz clic en **Agregar servidor** y pega directame
 
 ## Alcances
 
-Cuando apruebas la pantalla de consentimiento verás un desglose de lo que el agente está solicitando. Los clientes MCP usan el mismo vocabulario de permisos que el resto de la plataforma — consulta la referencia completa de [alcances en la página de Autenticación](/es/developers/authentication#scopes).
+Cuando apruebes la pantalla de consentimiento verás un desglose de lo que el agente está solicitando. Los clientes MCP usan el mismo vocabulario de permisos que el resto de la plataforma — consulta la referencia completa de [alcances en la página de Autenticación](/es/developers/authentication#scopes).
 
 Dos cosas son específicas de MCP:
 
 - **Los alcances `mcp.read`, `mcp.write` y `mcp.remove` son además requeridos** para abrir el transporte MCP. Un cliente que tenga un alcance `mcp.*` es admitido en cualquier endpoint MCP de Wink, pero cada herramienta que invoque sigue aplicando el alcance de sección del endpoint que envuelve (por ejemplo, `booking.read`).
 - **El cliente de IA solicita solo los alcances que necesita.** Puedes negar permisos individuales en la pantalla de consentimiento — las herramientas que requieran un alcance denegado devolverán un error al invocarlas.
 
-**Los conjuntos de herramientas no cambian nada de esto.** El endpoint al que te conectas decide qué herramientas están *listadas*, no qué pueden *hacer*. Conectarse a `/mcp/payment` no otorga ningún permiso financiero que no tuvieras ya, y conectarse a `/mcp/reference` no impide que una herramienta allí aplique su propio alcance. La autorización se decide por llamada a herramienta, a partir de tu token y los permisos de tu cuenta.
+**Los conjuntos de herramientas no cambian nada de esto.** El endpoint al que te conectas decide qué herramientas están *listadas*, no qué están *permitidas*. Conectarse a `/mcp/payment` no otorga ningún permiso financiero que no tuvieras ya, y conectarse a `/mcp/reference` no impide que una herramienta allí aplique su propio alcance. La autorización se decide por llamada a herramienta, a partir de tu token y los permisos de tu cuenta.
 
 ---
 
@@ -399,14 +412,14 @@ Dos cosas son específicas de MCP:
 
 **No se abre la pestaña del navegador**
 
-Tu cliente de IA puede no soportar aún el flujo interactivo PKCE. Verifica que usas una versión reciente:
+Tu cliente de IA puede no soportar aún el flujo interactivo PKCE. Verifica que estés usando una versión reciente:
 - **Claude Code:** `npm install -g @anthropic-ai/claude-code`
 - **Codex CLI:** `npm install -g @openai/codex`
 - **Claude Desktop / ChatGPT desktop:** actualiza desde el actualizador integrado de la app
 
 **`401 Unauthorized` después de iniciar sesión**
 
-Tu token en caché puede estar obsoleto. Elimina y vuelve a añadir el servidor para forzar un nuevo inicio de sesión:
+Tu token en caché puede estar obsoleto. Elimina y vuelve a agregar el servidor para forzar un nuevo inicio de sesión:
 
 ```bash
 # Claude Code
@@ -414,7 +427,7 @@ claude mcp remove wink-rates
 claude mcp add wink-rates https://api.wink.travel/mcp/extranet/rates --transport http
 ```
 
-Para Claude Desktop y ChatGPT, elimina la entrada del servidor en configuración, reinicia la app y añádelo de nuevo.
+Para Claude Desktop y ChatGPT, elimina la entrada del servidor en configuración, reinicia la app y agrégala de nuevo.
 
 **`403 Forbidden` al llamar a una herramienta específica**
 
@@ -422,7 +435,7 @@ La herramienta requiere un alcance que no aprobaste en la pantalla de consentimi
 
 **La herramienta que necesito no está en la lista**
 
-Probablemente estás conectado a un conjunto de herramientas que no cubre esa tarea. Revisa el [directorio de endpoints](#endpoint-directory) y añade el conjunto que sí lo haga — las conexiones son independientes, así que añadir uno no cambia nada de los demás. Si no sabes cuál lo tiene, conéctate temporalmente a `https://api.wink.travel/mcp`, encuentra la herramienta y luego busca qué conjunto la lista.
+Probablemente estás conectado a un conjunto de herramientas que no cubre esa tarea. Revisa el [directorio de endpoints](#endpoint-directory) y agrega el conjunto que sí — las conexiones son independientes, así que agregar uno no cambia nada de los otros. Si no sabes cuál lo tiene, conéctate temporalmente a `https://api.wink.travel/mcp`, encuentra la herramienta y luego busca qué conjunto la lista.
 
 **`404 Not Found` en un endpoint de conjunto de herramientas**
 
@@ -430,19 +443,19 @@ Revisa bien la ruta — los conjuntos anidados tienen dos segmentos (`/mcp/extra
 
 **Me conecté a `api.wink.travel/mcp/channel-manager` y no obtuve nada**
 
-Ese endpoint no existe. La integración de channel manager se sirve solo desde `https://integrations.wink.travel/mcp/channel-manager`. Si también necesitas leer o escribir las tarifas propias de una propiedad manualmente, eso es una tarea separada en un endpoint separado — mira `/mcp/extranet/rates`.
+Ese endpoint no existe. La integración de channel manager se sirve solo desde `https://integrations.wink.travel/mcp/channel-manager`. Si también necesitas leer o escribir las tarifas propias de una propiedad manualmente, esa es una tarea separada en un endpoint separado — mira `/mcp/extranet/rates`.
 
 **El servidor aparece pero las llamadas a herramientas devuelven "cuenta no encontrada"**
 
-Estás conectado a una cuenta Wink que no tiene entidad gestora. Ve a [Wink Portal](https://app.wink.travel) y asegúrate de que tu cuenta está configurada antes de usar el servidor MCP.
+Estás conectado a una cuenta Wink que no tiene entidad gestora. Ve a [Wink Portal](https://app.wink.travel) y asegúrate de que tu cuenta esté configurada antes de usar el servidor MCP.
 
 **El token expira a mitad de sesión**
 
-Los tokens son válidos por 3 horas. Claude Code y Claude Desktop renuevan tokens silenciosamente sin interrumpir tu sesión. Si ves errores de autenticación tras un largo periodo inactivo, escribe un nuevo mensaje — el cliente se reautenticará automáticamente.
+Los tokens son válidos por 3 horas. Claude Code y Claude Desktop renuevan tokens silenciosamente sin interrumpir tu sesión. Si ves errores de autenticación tras un largo período inactivo, escribe un nuevo mensaje — el cliente se reautenticará automáticamente.
 
 **Codex CLI muestra "MCP server unreachable"**
 
-Verifica que tu `~/.codex/config.json` es JSON válido (sin comas finales) y que `"type": "http"` está configurado. Codex requiere transporte HTTP para servidores remotos; el transporte stdio es solo para binarios locales.
+Verifica que tu `~/.codex/config.json` sea JSON válido (sin comas finales) y que `"type": "http"` esté configurado. Codex requiere transporte HTTP para servidores remotos; transporte stdio es solo para binarios locales.
 
 **El menú "Conectores" de ChatGPT no aparece**
 
@@ -450,15 +463,15 @@ El soporte MCP requiere la versión **1.2024.352** o superior de la app de escri
 
 **El servidor Cursor muestra rojo / "Failed to connect"**
 
-Verifica que tu `~/.cursor/mcp.json` es JSON válido y contiene `"type": "http"`. Luego ve a **Configuración → Configuración de Cursor → MCP** y haz clic en **Actualizar**. Si el error persiste, reinicia completamente Cursor — los cambios de configuración no siempre se detectan sin reinicio.
+Verifica que tu `~/.cursor/mcp.json` sea JSON válido y contenga `"type": "http"`. Luego ve a **Configuración → Configuración de Cursor → MCP** y haz clic en **Actualizar**. Si el error persiste, reinicia completamente Cursor — los cambios de configuración no siempre se aplican sin reiniciar.
 
 **Los servidores MCP de Windsurf no aparecen en configuración**
 
-Windsurf requiere un reinicio completo (no solo recargar ventana) para detectar cambios en `mcp_config.json`. Usa **Archivo → Salir** y vuelve a abrir. Si los servidores siguen sin aparecer, confirma que estás en Windsurf **1.4+** vía **Ayuda → Acerca de Windsurf**.
+Windsurf requiere un reinicio completo (no solo recargar ventana) para aplicar cambios en `mcp_config.json`. Usa **Archivo → Salir** y vuelve a abrir. Si los servidores aún no aparecen, confirma que estás en Windsurf **1.4+** vía **Ayuda → Acerca de Windsurf**.
 
 **La opción "Agregar servidor" en Cline no es visible**
 
-El gestor de servidores MCP requiere Cline **2.0** o superior. Abre el panel de Extensiones de VS Code, busca Cline y haz clic en **Actualizar** si hay una actualización disponible. Tras actualizar, recarga VS Code (`Ctrl+Shift+P` → "Developer: Reload Window").
+El gestor de servidores MCP requiere Cline **2.0** o superior. Abre el panel de Extensiones de VS Code, busca Cline y haz clic en **Actualizar** si hay una actualización disponible. Después de actualizar, recarga VS Code (`Ctrl+Shift+P` → "Developer: Reload Window").
 
 ---
 

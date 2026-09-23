@@ -1,0 +1,154 @@
+---
+title: Hotel Booking API — Hoe hotelreserveringen aan een product toe te voegen
+description: Wat een hotelreserverings-API moet ondersteunen, hoe zoeken, tarieven, reserveringen en betalingen samenwerken, en hoe boekbare hotelaanbiedingen aan een app, site of AI-agent toe te voegen.
+template: splash
+marketingNav: true
+---
+import '/src/styles/splash-page.css';
+
+import FaqGrid from "@/components/marketing/FaqGrid.astro";
+import ResourceSchema from "@/components/marketing/ResourceSchema.astro";
+import IconArrowRight from "@tabler/icons/outline/arrow-right.svg";
+
+<div class="not-content mkt-page">
+
+<ResourceSchema title="Hotel Booking API — Hoe hotelreserveringen aan een product toe te voegen" crumb="Hotel Booking API" slug="hotel-booking-api" datePublished="2026-09-22" description="Wat een hotelreserverings-API moet ondersteunen, hoe zoeken, tarieven, reserveringen en betalingen samenwerken, en hoe boekbare hotelaanbiedingen aan een app, site of AI-agent toe te voegen." />
+
+{/* Breadcrumb */}
+<nav aria-label="Breadcrumb" class="mx-auto w-full max-w-3xl px-4 pt-6 text-sm text-muted-foreground">
+  <a href="/" class="hover:text-foreground">Home</a>
+  <span class="px-1.5">/</span>
+  <a href="/resources/" class="hover:text-foreground">Resources</a>
+  <span class="px-1.5">/</span>
+  <span class="text-foreground">Hotel Booking API</span>
+</nav>
+
+{/* Article header */}
+<header class="mx-auto w-full max-w-3xl px-4 pt-8 pb-10">
+  <span class="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-gradient-to-r from-[#ff6b35]/10 to-[#9333ea]/10 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary"><span class="size-1.5 rounded-full bg-gradient-to-r from-[#ff6b35] to-[#9333ea]"></span> Resources</span>
+  <h1 class="font-heading mt-3 text-4xl font-semibold tracking-tight text-balance @lg:text-5xl">Hoe voegen ontwikkelaars hotelreserveringen toe aan een product?</h1>
+  <p class="mkt-sub text-muted-foreground mt-5">
+    Zoeken en tarieven zijn het makkelijke deel. Een product wordt pas nuttig als het een echte reservering kan maken, betaling kan afhandelen en de reiziger en het hotel kan informeren dat het is gebeurd.
+  </p>
+  <div class="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
+    <a href="https://app.wink.travel" class="inline-flex h-11 items-center justify-center rounded-md bg-[#ff6b35] px-6 text-sm font-semibold text-white hover:bg-[#e85b29]">Vraag API-toegang aan</a>
+    <a href="/api/overview/" class="inline-flex h-11 items-center justify-center rounded-md border border-border px-6 text-sm font-medium hover:bg-muted">Lees de documentatie</a>
+  </div>
+  <p class="mt-5 text-sm text-muted-foreground">
+    Veel API's leveren hotelinhoud. Veel minder laten je de transactie afronden.
+  </p>
+</header>
+
+{/* Direct answer */}
+<section class="mx-auto w-full max-w-3xl px-4">
+  <div class="rounded-2xl border-l-4 border-primary bg-primary/[0.04] p-6">
+    <p class="text-xs font-semibold uppercase tracking-wider text-primary">Het korte antwoord</p>
+    <p class="mt-3 text-pretty text-foreground/90">
+      Je hebt vier dingen nodig: <strong>live tarieven en beschikbaarheid</strong>, <strong>reserveringscreatie</strong>, <strong>betaling</strong> en <strong>bevestiging plus webhooks</strong>. Read-only content API's stoppen na het eerste. Op Wink zijn de Consumer en Booking Engine API's gratis te gebruiken, reserveringscreatie verloopt via REST met OAuth2, er zijn 64+ webhook-events waaronder <code>booking.created</code>, en betaling wordt geïnd voor het hotel — dat blijft merchant of record — dus je hoeft dat zelf niet te worden. Een MCP-server biedt dezelfde mogelijkheden aan AI-agents, en webcomponenten dekken de gevallen waarin je een reserveringspad wilt zonder een UI te bouwen.
+    </p>
+  </div>
+</section>
+
+{/* Body */}
+<article class="mkt-prose mx-auto w-full max-w-3xl px-4 py-14">
+
+## De vier belangrijke mogelijkheden
+
+| Mogelijkheid | Wat het betekent | Waarom producten zonder dit vastlopen |
+|---|---|---|
+| Live tarieven en beschikbaarheid | Huidige prijzen en wat daadwerkelijk boekbaar is, per datumbereik | Gecachte tarieven falen bij bevestiging en ondermijnen vertrouwen |
+| Reserveringscreatie | Maak een echte reservering die het hotel ontvangt | Zonder dit ben je een doorverwijzingslink, geen product |
+| Betaling | Ontvang geld als onderdeel van de reservering | Een overdracht naar een andere site is waar conversie faalt |
+| Bevestiging en webhooks | Informeer gast, hotel en jouw systeem wat er is gebeurd | Anders ontstaan er ondersteuningsdruk en reconciliatieproblemen |
+
+De meeste "hotel-API's" die een ontwikkelaar vindt, dekken het eerste en soms het tweede. De transactie is het lastige deel, en dat bepaalt of je een product hebt.
+
+## Van wiens aanbod integreer je?
+
+Deze vraag bepaalt alles wat daarna komt. Aanbod dat via een keten wordt doorverkocht, komt met een opslag in het tarief, verouderde beschikbaarheid en geen route terug naar het hotel voor vragen over een reservering. Aanbod dat rechtstreeks van het hotel komt, bevat het eigen tarief van het hotel, live beschikbaarheid en een hotel dat weet dat de reservering bestaat.
+
+Voor alles waarbij de reiziger vergelijkt met de eigen website van het hotel — wat meestal het geval is — voorkomt hotelgestuurd aanbod het ongemakkelijke moment dat jouw prijs slechter is.
+
+## Wie is de merchant of record
+
+Als je zelf hotelreserveringen bouwt, betekent merchant of record worden dat je betalingsverantwoordelijkheid, chargebacks, terugbetalingen, belastingafhandeling en vaak een reisbureaulicentie in elke markt op je neemt.
+
+Bij Wink blijft het **hotel merchant of record** en wordt betaling voor het hotel geïnd, dus een integrator erft die verantwoordelijkheid niet. Merchant-of-record-regelingen zijn beschikbaar bij API-integraties waarbij een partner echt zelf betaling moet innen, en die route brengt eigen licentievereisten met zich mee.
+
+## Drie integratieniveaus
+
+1. **Webcomponenten.** Voeg een boekbare zoekfunctie, kamerlijst of checkout toe aan een bestaande pagina. Geen backend-werk; minste controle over layout.
+2. **REST API.** Volledige controle over zoeken, tarieven, reserveringscreatie en bevestiging, geauthenticeerd met OAuth2. Gebruik dit wanneer de reserveringsflow deel uitmaakt van de eigen ervaring van je product.
+3. **MCP-server.** Dezelfde mogelijkheden beschikbaar voor AI-agents, zodat een assistent kan zoeken, prijzen en een reservering kan afronden in plaats van de gebruiker naar een website te sturen.
+
+De drie zijn niet exclusief — een product gebruikt vaak componenten voor een marketingoppervlak en de API voor de kernflow.
+
+## Wat eerst bouwen
+
+- **Zoek en prijs voor één stad en één datumbereik.** Zorg dat echte tarieven binnenkomen voordat je iets ontwerpt.
+- **Maak één testreservering van begin tot eind**, inclusief betaling en bevestiging.
+- **Abonneer je op `booking.created` en de annulerings-events** voordat je een UI bouwt.
+- **Bepaal je attributiemodel vroeg** — broncontext moet meereizen met de reservering, anders is je rapportage later giswerk.
+- **Behandel de faalgevallen**: beschikbaarheid verloren tussen offerte en boeking, betaling geweigerd, gedeeltelijke terugbetalingen.
+
+## Prijzen die een ontwikkelaar moet kennen
+
+De **Consumer en Booking Engine API's zijn gratis**. De **Partner API** bevat een gratis maandelijkse limiet van 10.000 hotel-dagen, daarna wordt per eenheid gefactureerd. Bevestigde reserveringen dragen de 1,5% platformfee van het hotel plus kosten voor kaartverwerking, en er geldt een **standaard commissie van 10%** wanneer jouw product de reservering heeft gegenereerd — zo verdient een integrator in plaats van betaalt.
+
+## Veelvoorkomende fouten
+
+- **Bouwen op gecachte tarieven.** Die lijken prima tijdens ontwikkeling maar falen in productie.
+- **Betaling overlaten aan een redirect.** Elke overdracht kost reserveringen.
+- **Webhooks negeren tot de lancering.** Reconciliatie wordt dan handwerk.
+- **Merchant of record worden zonder noodzaak.** Het is een beslissing over licenties en aansprakelijkheid, niet alleen technisch.
+- **Broncontext niet doorgeven.** Attributie kan later niet worden herbouwd.
+
+</article>
+
+{/* Related */}
+<section class="mx-auto w-full max-w-3xl px-4 pb-8">
+  <p class="mkt-kicker text-primary">Blijf ontdekken</p>
+  <div class="mt-4 grid gap-3 @md:grid-cols-2">
+    {[
+      { label: "Voor Builders", href: "/builders/" },
+      { label: "API-overzicht", href: "/api/overview/" },
+      { label: "MCP-server", href: "/developers/mcp/" },
+      { label: "Webcomponenten", href: "/integrations/web-components/" },
+    ].map((l) => (
+      <a href={l.href} class="group flex items-center justify-between rounded-xl border border-border bg-card px-4 py-3 text-sm font-medium transition-colors hover:border-primary/40">
+        {l.label}
+        <IconArrowRight class="size-4 text-muted-foreground transition-transform group-hover:translate-x-0.5" />
+      </a>
+    ))}
+  </div>
+</section>
+
+{/* FAQ */}
+<FaqGrid emitJsonLd
+  heading="Veelgestelde vragen over de Hotel Booking API"
+  description="Wat te integreren, wat het kost, en wie de betalingsverantwoordelijkheid draagt."
+  items={[
+    { title: "Wat moet een hotelreserverings-API ondersteunen?", content: "Live tarieven en beschikbaarheid, reserveringscreatie, betaling en bevestiging met webhooks. Read-only content API's dekken alleen het eerste en kunnen geen transactie afronden." },
+    { title: "Is de Wink API gratis te gebruiken?", content: "De Consumer en Booking Engine API's zijn gratis. De Partner API bevat 10.000 hotel-dagen gratis per maand, daarna wordt per eenheid gefactureerd." },
+    { title: "Moet ik merchant of record worden?", content: "Nee. Het hotel blijft merchant of record en betaling wordt voor het hotel geïnd. Merchant-of-record-regelingen bestaan voor API-integraties die echt zelf betaling moeten innen, met eigen licentievereisten." },
+    { title: "Kunnen AI-agents via dezelfde mogelijkheden boeken?", content: "Ja. Een MCP-server biedt zoeken, prijzen en reserveren aan agents, zodat een assistent een reservering kan afronden in plaats van de gebruiker naar een website te sturen." },
+    { title: "Hoe word ik betaald als integrator?", content: "Er geldt een standaard commissie van 10% op reserveringen die jouw product heeft gegenereerd, berekend na de platformfee van het hotel en kaartverwerking, met attributie die 6 maanden per klik duurt." },
+    { title: "Moet ik een UI bouwen?", content: "Niet per se. Webcomponenten bieden boekbare zoekfuncties, kamerlijsten en checkout die in een bestaande pagina kunnen worden geplaatst; de REST API is er wanneer de flow van jou moet zijn." },
+  ]}
+/>
+
+{/* Final CTA */}
+<section class="w-full border-y border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white">
+  <div class="mx-auto w-full max-w-7xl px-4 py-24 text-center">
+    <h2 class="mkt-h2 font-heading">Bouw een product dat echt kan boeken.</h2>
+    <p class="mx-auto mt-4 max-w-2xl text-pretty text-white/70 @lg:text-lg">
+      Live hotelaanbod, reserveringscreatie via REST, webhooks, een MCP-server voor agents, en betaling die je niet zelf hoeft te beheren.
+    </p>
+    <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <a href="https://app.wink.travel" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-[#ff6b35] px-8 text-base font-semibold text-white hover:bg-[#e85b29] sm:w-auto">Vraag API-toegang aan</a>
+      <a href="/builders/" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-white px-8 text-base font-semibold text-[#1f0a40] hover:bg-white/90 sm:w-auto">Voor Builders</a>
+    </div>
+  </div>
+</section>
+
+</div>

@@ -1,0 +1,154 @@
+---
+title: 酒店预订 API — 如何将酒店预订添加到产品中
+description: 酒店预订 API 需要支持的内容，搜索、价格、预订和支付如何协同工作，以及如何将可预订的酒店供应添加到应用、网站或 AI 代理中。
+template: splash
+marketingNav: true
+---
+import '/src/styles/splash-page.css';
+
+import FaqGrid from "@/components/marketing/FaqGrid.astro";
+import ResourceSchema from "@/components/marketing/ResourceSchema.astro";
+import IconArrowRight from "@tabler/icons/outline/arrow-right.svg";
+
+<div class="not-content mkt-page">
+
+<ResourceSchema title="酒店预订 API — 如何将酒店预订添加到产品中" crumb="酒店预订 API" slug="hotel-booking-api" datePublished="2026-09-22" description="酒店预订 API 需要支持的内容，搜索、价格、预订和支付如何协同工作，以及如何将可预订的酒店供应添加到应用、网站或 AI 代理中。" />
+
+{/* Breadcrumb */}
+<nav aria-label="Breadcrumb" class="mx-auto w-full max-w-3xl px-4 pt-6 text-sm text-muted-foreground">
+  <a href="/" class="hover:text-foreground">首页</a>
+  <span class="px-1.5">/</span>
+  <a href="/resources/" class="hover:text-foreground">资源</a>
+  <span class="px-1.5">/</span>
+  <span class="text-foreground">酒店预订 API</span>
+</nav>
+
+{/* Article header */}
+<header class="mx-auto w-full max-w-3xl px-4 pt-8 pb-10">
+  <span class="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-gradient-to-r from-[#ff6b35]/10 to-[#9333ea]/10 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary"><span class="size-1.5 rounded-full bg-gradient-to-r from-[#ff6b35] to-[#9333ea]"></span> 资源</span>
+  <h1 class="font-heading mt-3 text-4xl font-semibold tracking-tight text-balance @lg:text-5xl">开发者如何将酒店预订添加到产品中？</h1>
+  <p class="mkt-sub text-muted-foreground mt-5">
+    搜索和价格是简单的一半。产品只有在能够创建真实预订、收款并通知旅客和酒店预订已完成时才有用。
+  </p>
+  <div class="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
+    <a href="https://app.wink.travel" class="inline-flex h-11 items-center justify-center rounded-md bg-[#ff6b35] px-6 text-sm font-semibold text-white hover:bg-[#e85b29]">申请 API 访问权限</a>
+    <a href="/api/overview/" class="inline-flex h-11 items-center justify-center rounded-md border border-border px-6 text-sm font-medium hover:bg-muted">阅读文档</a>
+  </div>
+  <p class="mt-5 text-sm text-muted-foreground">
+    许多 API 返回酒店内容，但很少有能完成交易的。
+  </p>
+</header>
+
+{/* Direct answer */}
+<section class="mx-auto w-full max-w-3xl px-4">
+  <div class="rounded-2xl border-l-4 border-primary bg-primary/[0.04] p-6">
+    <p class="text-xs font-semibold uppercase tracking-wider text-primary">简短回答</p>
+    <p class="mt-3 text-pretty text-foreground/90">
+      你需要四样东西：<strong>实时价格和可用性</strong>、<strong>预订创建</strong>、<strong>支付</strong>，以及<strong>确认和 Webhook</strong>。只读内容 API 只覆盖第一项。在 Wink，Consumer 和 Booking Engine API 免费使用，预订创建通过带 OAuth2 的 REST 运行，支持 64+ 个 webhook 事件，包括 <code>booking.created</code>，支付由酒店收取——酒店保持商户身份——因此你无需成为商户。MCP 服务器为 AI 代理提供相同功能，Web 组件覆盖了无需构建 UI 的预订路径场景。
+    </p>
+  </div>
+</section>
+
+{/* Body */}
+<article class="mkt-prose mx-auto w-full max-w-3xl px-4 py-14">
+
+## 四项关键能力
+
+| 能力 | 含义 | 产品缺失时的影响 |
+|---|---|---|
+| 实时价格和可用性 | 当前价格及实际可预订的日期范围 | 缓存价格在确认时失效，破坏信任 |
+| 预订创建 | 创建酒店实际收到的预订 | 没有它你只是一个推荐链接，不是产品 |
+| 支付 | 作为预订的一部分收款 | 跳转到其他网站会导致转化流失 |
+| 确认和 Webhook | 告知客人、酒店和系统预订状态 | 否则支持负担和对账会出现漏洞 |
+
+大多数开发者找到的“酒店 API”覆盖第一项，有时覆盖第二项。交易是难点，也是决定你是否拥有产品的关键。
+
+## 你整合的是谁的供应？
+
+这个问题决定了后续一切。通过链条转售的供应价格中包含加价，且可用性较陈旧，且无法直接向酒店查询预订问题。直接来自酒店的供应带有酒店自身价格、实时可用性，且酒店知道预订存在。
+
+对于旅客会与酒店官网比价的情况——也就是大多数情况——酒店控制的供应避免了价格更差的尴尬时刻。
+
+## 谁是商户？
+
+如果你自己构建酒店预订，成为商户意味着承担支付责任、拒付、退款、税务处理，且通常需要在每个市场持有旅行社执照。
+
+在 Wink，**酒店保持商户身份**，支付由酒店收取，因此集成方无需承担这部分责任。对于确实需要自行收款的合作伙伴，API 集成提供商户身份方案，但该方案有相应的许可要求。
+
+## 三种集成层级
+
+1. **Web 组件。** 在现有页面中嵌入可预订的搜索、房型列表或结账。无需后端工作；布局控制最少。
+2. **REST API。** 完全控制搜索、价格、预订创建和确认，使用 OAuth2 认证。适用于预订流程是产品自身体验一部分的场景。
+3. **MCP 服务器。** 为 AI 代理开放相同功能，助理可搜索、定价并完成预订，而非将用户转到网站。
+
+三者并非互斥——产品通常用组件做营销界面，用 API 做核心流程。
+
+## 先构建什么
+
+- **针对一个城市和一个日期范围进行搜索和定价。** 先让真实价格流动，再设计其他。
+- **端到端创建一个测试预订**，包括支付和确认。
+- **在构建任何 UI 之前订阅 `booking.created` 和取消事件。**
+- **尽早确定归因模型**——预订需携带来源上下文，否则后续报告只能猜测。
+- **处理失败情况**：报价与预订间可用性丢失、支付被拒、部分退款。
+
+## 开发者应知的定价
+
+**Consumer 和 Booking Engine API 免费**。**Partner API** 每月含 10,000 酒店天免费额度，超出按单位计费。确认预订需支付酒店 1.5% 平台费及成本价的卡片处理费，且当你的产品促成预订时，默认收取 **10% 佣金**——这就是集成方的收益来源。
+
+## 常见错误
+
+- **基于缓存价格构建。** 开发时看起来没问题，生产时失败。
+- **支付跳转到其他页面。** 每次跳转都会流失预订。
+- **直到上线才关注 webhook。** 对账变成手工活。
+- **不必要地成为商户。** 这是许可和责任问题，不仅是技术问题。
+- **不传递来源上下文。** 归因无法事后重建。
+
+</article>
+
+{/* Related */}
+<section class="mx-auto w-full max-w-3xl px-4 pb-8">
+  <p class="mkt-kicker text-primary">继续探索</p>
+  <div class="mt-4 grid gap-3 @md:grid-cols-2">
+    {[
+      { label: "面向开发者", href: "/builders/" },
+      { label: "API 概览", href: "/api/overview/" },
+      { label: "MCP 服务器", href: "/developers/mcp/" },
+      { label: "Web 组件", href: "/integrations/web-components/" },
+    ].map((l) => (
+      <a href={l.href} class="group flex items-center justify-between rounded-xl border border-border bg-card px-4 py-3 text-sm font-medium transition-colors hover:border-primary/40">
+        {l.label}
+        <IconArrowRight class="size-4 text-muted-foreground transition-transform group-hover:translate-x-0.5" />
+      </a>
+    ))}
+  </div>
+</section>
+
+{/* FAQ */}
+<FaqGrid emitJsonLd
+  heading="酒店预订 API 常见问题"
+  description="集成内容、费用及支付责任归属。"
+  items={[
+    { title: "酒店预订 API 需要支持什么？", content: "实时价格和可用性、预订创建、支付，以及带 webhook 的确认。只读内容 API 只覆盖第一项，无法完成交易。" },
+    { title: "Wink API 是免费使用的吗？", content: "Consumer 和 Booking Engine API 免费。Partner API 每月含 10,000 酒店天免费额度，超出按单位计费。" },
+    { title: "我必须成为商户吗？", content: "不必。酒店保持商户身份，支付由酒店收取。对于确实需要自行收款的 API 集成，有商户身份方案，但需满足许可要求。" },
+    { title: "AI 代理能通过相同功能预订吗？", content: "可以。MCP 服务器向代理开放搜索、定价和预订，助理可完成预订，无需将用户转到网站。" },
+    { title: "作为集成方，我如何获得报酬？", content: "当你的产品促成预订时，默认收取 10% 佣金，佣金在酒店平台费和卡片处理费之后计算，归因持续 6 个月每次点击。" },
+    { title: "我需要构建 UI 吗？", content: "不一定。Web 组件提供可预订的搜索、房型列表和结账，可嵌入现有页面；当预订流程应属于你产品时，使用 REST API。" },
+  ]}
+/>
+
+{/* Final CTA */}
+<section class="w-full border-y border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white">
+  <div class="mx-auto w-full max-w-7xl px-4 py-24 text-center">
+    <h2 class="mkt-h2 font-heading">构建真正能完成预订的产品。</h2>
+    <p class="mx-auto mt-4 max-w-2xl text-pretty text-white/70 @lg:text-lg">
+      实时酒店供应、基于 REST 的预订创建、webhook、面向代理的 MCP 服务器，以及无需你拥有的支付。
+    </p>
+    <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <a href="https://app.wink.travel" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-[#ff6b35] px-8 text-base font-semibold text-white hover:bg-[#e85b29] sm:w-auto">申请 API 访问权限</a>
+      <a href="/builders/" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-white px-8 text-base font-semibold text-[#1f0a40] hover:bg-white/90 sm:w-auto">面向开发者</a>
+    </div>
+  </div>
+</section>
+
+</div>

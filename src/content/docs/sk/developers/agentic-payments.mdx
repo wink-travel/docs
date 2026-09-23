@@ -1,0 +1,181 @@
+---
+title: Agentické platby
+description: Pripojte svojho AI agenta k Wink, prihláste sa, nájdite hotel a schváľte platbu na dokončenie rezervácie.
+sidebar:
+  order: 10.5
+---
+
+Môžete vyhľadávať hotel, vybrať izbu a dokončiť rezerváciu prostredníctvom svojho AI agenta. Pripojte ho k Wink a platobnej peňaženke, potom mu povedzte, kde chcete zostať. Wink používa **Machine Payments Protocol (MPP)** na prijatie platby z peňaženky a vrátenie potvrdenia o rezervácii.
+
+## 1. Pripojte MCP servery
+
+Pre kompletný rezervačný proces váš agent potrebuje **Wink Booking Engine** a **platobnú peňaženku**.
+
+| Pripojenie | Čo robí | Ako ho pridať |
+| --- | --- | --- |
+| **Wink Booking Engine** — povinné | Nájde destinácie, vyhľadáva hotely a ceny izieb, ponúka a potvrdzuje rezervácie, a získava vaše rezervácie a účty. | Pridajte `https://api.wink.travel/mcp/booking-engine` ako vzdialený HTTP MCP server. |
+| **Platobná peňaženka** — povinná na platbu | Poskytuje platobné poverenia po vašom schválení nákupu. | Pripojte peňaženku, ktorá podporuje Stripe Shared Payment Tokens alebo Tempo platby. Pozrite si príklad Link nižšie. |
+| Wink Reference — voliteľné | Vyhľadáva krajiny, meny a iné referenčné údaje. | `https://api.wink.travel/mcp/reference` |
+| Wink Docs — voliteľné | Pomáha agentovi čítať dokumentáciu a API zmluvy. | `https://docs.mcp.wink.travel/mcp` |
+
+Booking Engine MCP už obsahuje nástroje potrebné pre rezervačný proces cestujúceho, keď je pre dané prostredie povolené agentické rezervovanie a platba. Samostatný Payment MCP od Wink je určený pre finančné operácie ako účtovné knihy a výbery; nie je potrebný na zaplatenie izby.
+
+### Prihláste sa a vyberte povolenia
+
+1. Otvorte nastavenia MCP alebo konektora svojho agenta a pridajte vyššie uvedenú URL Booking Engine. Pomenujte ho napríklad **Wink Booking**.
+2. Váš agent otvorí prihlasovaciu stránku Wink vo vašom prehliadači. Prihláste sa pomocou Wink účtu, pod ktorým chcete rezervovať.
+3. Na obrazovke so súhlasom vyberte povolenia, ktoré váš agent potrebuje, a schváľte pripojenie.
+4. Vráťte sa k agentovi. Načíta dostupné nástroje a spravuje autentifikáciu pre ďalšie MCP volania.
+
+Pre tento proces vyberte:
+
+| Povolenie | Prečo je potrebné |
+| --- | --- |
+| Prístup AI agenta (`mcp.read`) | Umožňuje agentovi pripojiť sa k Wink MCP. |
+| Čítanie marketingu (`marketing.read`) | Umožňuje agentovi nájsť konfiguráciu rezervácie vášho účtu, nazývanú prispôsobenie. Váš účet musí mať tiež prístup k tejto konfigurácii. |
+| Zápis platby (`payment.write`) | Umožňuje agentovi zaplatiť za ponuku a potvrdiť rezerváciu. |
+
+Zachovajte požadované povolenia pri prihlasovaní. Váš MCP klient spravuje prístupové tokeny; nemusíte kopírovať token do chatu ani nastavovať hlavičky požiadaviek. Ak ste vynechali potrebné povolenie, znova sa prihláste cez prihlasovací proces klienta a schváľte ho.
+
+### Pripojte platobnú peňaženku
+
+Pre platby Stripe je jednou z možností **Linkova agentová peňaženka**. Ak váš klient podporuje lokálne MCP servery a je nainštalovaný Node.js, pridajte tento záznam do jeho MCP konfigurácie:
+
+```json
+{
+  "mcpServers": {
+    "link": {
+      "command": "npx",
+      "args": ["@stripe/link-cli", "--mcp"]
+    }
+  }
+}
+```
+
+Požiadajte svojho agenta, aby pripojil váš Link účet, potom nasledujte overovací odkaz, ktorý poskytne, a schváľte pripojenie. Link dodáva Shared Payment Token používaný na zaplatenie rezervácie. Link momentálne podporuje účty v USA; pred rezerváciou skontrolujte jeho limity výdavkov. Pozrite si [návod na nastavenie Link](https://github.com/stripe/link-cli#quickstart) a [MCP konfiguráciu](https://github.com/stripe/link-cli#mcp-server).
+
+Môžete tiež použiť peňaženku, ktorá podporuje Tempo platobnú výzvu ponúkanú Wink. Ak má váš agent už pripojenú kompatibilnú peňaženku, použite toto pripojenie. Nastavenie peňaženky a schválenie platby sú oddelené od prihlásenia do Wink.
+
+## 2. Požiadajte svojho agenta, aby našiel izbu
+
+Napríklad:
+
+> Nájdite izbu v Bangkoku pre dvoch dospelých od 15. do 17. januára 2027. Ukáž mi dostupné možnosti, celkovú cenu a storno podmienky predtým, než si vyberiem.
+
+Váš agent môže nájsť dostupné Wink účty a ich konfigurácie rezervácií. Ak ich máte viac, povedzte mu, ktorý použiť. Ak rezervujete cez poskytnutý rezervačný odkaz alebo konfiguráciu, dajte to agentovi namiesto toho.
+
+Agent potom vyrieši vašu destináciu, skontroluje dostupné hotely a načíta ceny izieb pre vaše dátumy. Vyberte izbu a požiadajte o ponuku.
+
+Tento platobný proces momentálne podporuje **jednu izbu, ocenenú v USD, iba pre dospelých**. Ponuka má čas vypršania platnosti. Požiadanie o ňu vás neúčtuje ani nepotvrdzuje rezerváciu.
+
+## 3. Skontrolujte a schváľte platbu
+
+Skontrolujte hotel, izbu, dátumy, hostí, storno podmienky a celkovú ponúkanú cenu. Keď ste pripravení, požiadajte svojho agenta o rezerváciu a dokončite akékoľvek schválenie požadované vašou peňaženkou.
+
+Agent použije jednu z platobných metód ponúkaných v ponuke:
+
+- **Stripe:** peňaženka poskytne Shared Payment Token.
+- **Tempo:** peňaženka vykoná prevod podľa výzvy a poskytne jeho transakčný hash.
+
+Po úspešnej platbe vám agent poskytne **potvrdenie o rezervácii**. Môže tiež získať podrobnosti rezervácie a účet cez Booking Engine MCP.
+
+Ak platba stále prebieha alebo bola odpoveď stratená, nech agent skontroluje **rovnaký pokus o platbu**. Mal by znovu použiť ponuku a platobné poverenia namiesto začatia druhej platby. Ak je platba zamietnutá, požiadajte o novú ponuku a skontrolujte ju pred ďalším pokusom.
+
+## Referencia nástrojov pre agentov a vývojárov
+
+Všetky Wink nástroje nižšie sú dostupné cez **Booking Engine MCP**. MCP klient automaticky posiela autentifikáciu pomocou povolení schválených pri prihlasovaní.
+
+| Krok | Nástroje a správanie |
+| --- | --- |
+| Vyberte kontext rezervácie | `managing_entity_list`, potom `customization_get_primary` alebo `customization_search` pre vybraný účet. Použite poskytnuté prispôsobenie, ak je už známe. |
+| Nájdite destináciu | `destination_lookup_search_suggestions` a `destination_lookup_get`. |
+| Vyhľadajte hotely a izby | `inventory_search_city` alebo `inventory_search_geo`, potom `property_inventory_get` pre ceny a dostupnosť. |
+| Ponúknite vybranú izbu | `agentic_booking_quote`. Predajte detaily izby v argumente `request`. |
+| Zaplaťte a potvrďte | Získajte poverenie z pripojenej peňaženky, potom zavolajte `agentic_booking_pay` s `request.quoteId` a presne jedným z `request.spt` alebo `request.tempoTransactionHash`. Použite rovnakého prihláseného používateľa Wink pre ponuku aj platbu. |
+| Získajte rezerváciu a účet | Použite `booking_search` alebo `booking_search_list` na nájdenie potvrdenej rezervácie, potom `booking_get` a `booking_receipt_get` s jej identifikátorom rezervácie. |
+
+Požiadavka na ponuku potrebuje `hotelIdentifier`, `roomRateIdentifier`, `checkIn`, `checkOut`, `adults`, `children` a `customizationIdentifier`. Dátumy používajú formát `YYYY-MM-DD`; `checkOut` musí nasledovať po `checkIn`. Nastavte `adults` aspoň na `1` a `children` na `0`.
+
+Ponuka vracia `quoteId`, `amountUsdCents`, `currency`, `expiresAt` a `mppChallenges`. Zobrazte centy USD ako doláre: `10000` znamená **100,00 $**. Pre Tempo použite token, reťazec, príjemcu a sumu v základných jednotkách tokenu z vybranej výzvy.
+
+| Výsledok platby | Ďalší krok |
+| --- | --- |
+| `PAYMENT_SUCCEEDED` | Uložte `bookingConfirmationCode` a `chargeReference`. |
+| `IN_PROGRESS` | Počkajte chvíľu a skúste znova rovnakú ponuku a poverenie. |
+| `DECLINED` | Požiadajte o novú ponuku a skontrolujte ju pred ďalšou platbou. |
+
+Úspešný opakovaný pokus vráti existujúcu rezerváciu bez ďalšieho účtovania. Timeout považujte za neznámy výsledok a skúste rovnakú platbu znova. Ak zostane nevyriešený, kontaktujte podporu s ID ponuky.
+
+### MCP klienti s podporou platieb
+
+MCP klienti s podporou platieb môžu použiť `agentic_booking_book` s poľami izby priamo v `arguments`. Prvé volanie vráti chybu `-32042` s platobnými výzvami. Skúste rovnaké volanie s poverením peňaženky v `params._meta["org.paymentauth/credential"]`; úspech obsahuje `result._meta["org.paymentauth/receipt"]`. Chyba `-32043` nesie platobné zlyhanie a výzvu: definitívne odmietnutie vyžaduje novú ponuku, zatiaľ čo neúplné platobné údaje môžu skúsiť znova s rovnakou výzvou. Pre `-32603` znamená `data.failure.reason` s hodnotou `payment-in-progress` alebo `already-consumed` opakovanie rovnakého poverenia; samotný kód chyby nestačí.
+
+## Rezervujte cez REST
+
+Použite REST pri budovaní integrácie, ktorá volá Wink priamo cez HTTP. Ponuka aj platba používajú **`POST https://api.wink.travel/api/mpp/booking`**.
+
+Vaša aplikácia potrebuje [Wink používateľský prístupový token](/sk/developers/authentication/) s povolením `payment.write` na zaplatenie. Použite rovnakého používateľa pre obe volania. Pošlite token v hlavičke `Wink-Authorization`, pričom `Authorization` nechajte pre platobné poverenie peňaženky. Tieto hlavičky platia pre REST; MCP klient spravuje vlastnú autentifikáciu.
+
+### 1. Požiadajte o ponuku
+
+Uložte vybranú izbu ako `booking.json`, pričom nahraďte príkladové identifikátory a dátumy vaším výberom. Polia izby idú priamo do JSON tela, bez obalu `request`.
+
+```json
+{
+  "hotelIdentifier": "YOUR_HOTEL_ID",
+  "roomRateIdentifier": "YOUR_ROOM_RATE_ID",
+  "checkIn": "2027-01-15",
+  "checkOut": "2027-01-17",
+  "adults": 2,
+  "children": 0,
+  "customizationIdentifier": "YOUR_CUSTOMIZATION_ID"
+}
+```
+
+Nastavte `WINK_ACCESS_TOKEN` na prístupový token používateľa a odošlite požiadavku:
+
+```bash
+curl -i https://api.wink.travel/api/mpp/booking \
+  -H "Wink-Authorization: Bearer $WINK_ACCESS_TOKEN" \
+  -H 'Content-Type: application/json' \
+  --data-binary @booking.json
+```
+
+Wink vráti **`402 Payment Required`** s výzvou `WWW-Authenticate: Payment ...` pre každú ponúkanú metódu. JSON telo obsahuje `quoteId`, `amount`, `currency`, `expiresAt` a `methods`. Tu je `amount` reťazec v centoch USD: `"10000"` znamená **100,00 $**. Skontrolujte ponuku pred jej vypršaním; platba ešte nebola uskutočnená.
+
+### 2. Zaplaťte a potvrďte
+
+Nech peňaženka splní jednu z vrátených výziev. Pre Stripe poskytuje `payload.spt`; pre Tempo poskytuje `payload.hash` s `payload.type` nastaveným na `"hash"`. Použite platobné údaje z tejto výzvy.
+
+Nastavte `MPP_CREDENTIAL` na zakódované MPP poverenie peňaženky, ktoré obsahuje výzvu a platobné údaje. Skúste **rovnaké telo požiadavky** znova, pričom zachovajte hlavičku identity:
+
+```bash
+curl -i https://api.wink.travel/api/mpp/booking \
+  -H "Wink-Authorization: Bearer $WINK_ACCESS_TOKEN" \
+  -H "Authorization: Payment $MPP_CREDENTIAL" \
+  -H 'Content-Type: application/json' \
+  --data-binary @booking.json
+```
+
+Pri úspechu Wink vráti **`200 OK`**, JSON telo obsahujúce `bookingConfirmationCode` a hlavičku `Payment-Receipt`. Uložte potvrdenie a účet. Úspešný opakovaný pokus vráti existujúcu rezerváciu bez ďalšieho účtovania.
+
+### Spracovanie odpovedí a opakovanie
+
+| Odpoveď | Čo robiť |
+| --- | --- |
+| `400` | Opravte neplatné údaje o izbe alebo nesprávne poverenie. |
+| `401` / `403` | Skontrolujte autentifikáciu používateľa a povolenie platby. |
+| `402` | Skontrolujte vrátený problém a výzvu. Definitívne odmietnutie platby vyžaduje novú ponuku; neúplné platobné údaje znovu použijú pôvodnú výzvu. Skontrolujte cenu pred zaplatením. |
+| `409` | Výsledok platby nie je vyriešený. Počkajte chvíľu a skúste znova rovnaké telo a poverenie na rezervačnom koncovom bode. |
+| `429` | Počkajte počet sekúnd uvedený v `Retry-After`, potom skúste znova. |
+
+Odpoveď `409` má telo `application/problem+json`. Porovnajte jeho `type` s týmito presnými URL:
+
+| Typ problému | Význam |
+| --- | --- |
+| [https://api.wink.travel/problems/payment-in-progress](https://api.wink.travel/problems/payment-in-progress) | Pokus o platbu stále prebieha alebo sa ešte nedá potvrdiť vyrovnanie. |
+| [https://api.wink.travel/problems/already-consumed](https://api.wink.travel/problems/already-consumed) | Výzva alebo dôkaz platby už bol použitý možno úspešným pokusom. Samotné to nepotvrdzuje rezerváciu. |
+
+Oba znamenajú **opakujte rovnakú platbu; neplaťte novú ponuku**. URL identifikujú a dokumentujú problém; nie sú platobné alebo pollingové koncové body. Opakujte `POST /api/mpp/booking` a použite typ problému namiesto voľného textu `detail` na rozhodnutie, čo robiť. Pozrite si [referenciu typov problémov](https://api.wink.travel/problems) pre všetky Wink platobné problémy.
+
+Timeout, strata odpovede alebo chyba servera po odoslaní platby môžu tiež nechať výsledok neznámy. Opakujte rovnakú platobnú požiadavku. Ak výsledok zostane nevyriešený, kontaktujte podporu s ID ponuky pred začatím ďalšej platby.

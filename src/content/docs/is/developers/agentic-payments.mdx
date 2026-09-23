@@ -1,0 +1,181 @@
+---
+title: Agentgreiðslur
+description: Tengdu AI-umboðið þitt við Wink, skráðu þig inn, finndu hótel og samþykktu greiðslu til að ljúka bókun.
+sidebar:
+  order: 10.5
+---
+
+Þú getur leitað að hóteli, valið herbergi og lokið bókun þinni í gegnum AI-umboðið þitt. Tengdu það við Wink og greiðsluvösu, og segðu því hvar þú vilt dvelja. Wink notar **Machine Payments Protocol (MPP)** til að samþykkja greiðslu úr veskinu og skila bókunarstaðfestingu.
+
+## 1. Tengdu MCP-þjónana
+
+Fyrir fulla bókunarferlið þarf umboðið þitt **Wink Booking Engine** og **greiðsluvösu**.
+
+| Tenging | Hvað hún gerir | Hvernig á að bæta við |
+| --- | --- | --- |
+| **Wink Booking Engine** — nauðsynlegt | Finnur áfangastaði, leitar að hótelum og herbergisverðum, gefur tilboð og staðfestir bókanir, og sækir bókanir og kvittanir. | Bættu við `https://api.wink.travel/mcp/booking-engine` sem fjar-MCP-þjón. |
+| **Greiðsluvösa** — nauðsynlegt til að greiða | Veitir greiðslugögn eftir að þú samþykkir kaupin. | Tengdu veski sem styður Stripe Shared Payment Tokens eða Tempo greiðslur. Sjá dæmi um Link hér að neðan. |
+| Wink Reference — valfrjálst | Leitast við lönd, gjaldmiðla og aðrar tilvísanir. | `https://api.wink.travel/mcp/reference` |
+| Wink Docs — valfrjálst | Hjálpar umboðinu að lesa skjöl og API-samninga. | `https://docs.mcp.wink.travel/mcp` |
+
+Booking Engine MCP inniheldur þegar verkfærin sem þarf fyrir ferðamannabókunarferlið þegar agentic bókun og greiðsla eru virkjuð fyrir umhverfið. Sérstakur Payment MCP frá Wink er fyrir fjármálastarfsemi eins og bókhald og úttektir; hann er ekki nauðsynlegur til að greiða fyrir herbergi.
+
+### Skráðu þig inn og veldu heimildir
+
+1. Opnaðu MCP eða tengingarstillingar umboðsins og bættu við Booking Engine slóðinni hér að ofan. Gefðu henni nafn eins og **Wink Booking**.
+2. Umboðið opnar innskráningarsíðu Wink í vafranum þínum. Skráðu þig inn með Wink-reikningnum sem þú vilt bóka undir.
+3. Á samþykkisskjánum velurðu heimildir sem umboðið þarf og samþykkir tenginguna.
+4. Farðu aftur í umboðið þitt. Það hleður tiltækum verkfærum og sér um auðkenningu fyrir eftirfarandi MCP-köll.
+
+Fyrir þetta ferli veldu:
+
+| Heimild | Af hverju hún er nauðsynleg |
+| --- | --- |
+| Aðgangur AI-umboðs (`mcp.read`) | Leyfir umboðinu að tengjast Wink MCP. |
+| Markaðssetningarlestur (`marketing.read`) | Leyfir umboðinu að finna bókunarstillingu reikningsins þíns, sem kallast customization. Reikningurinn þinn þarf einnig að hafa aðgang að þeirri stillingu. |
+| Greiðsluréttindi (`payment.write`) | Leyfir umboðinu að greiða fyrir tilboðið og staðfesta bókunina. |
+
+Haltu þeim heimildum sem tengingin biður um við innskráningu. MCP viðskiptavinurinn þinn sér um að meðhöndla aðgangslykla; þú þarft ekki að afrita lykil í spjall eða stilla beiðnishöfuð. Ef þú slepptir nauðsynlegri heimild, tengdu aftur í gegnum innskráningarferli viðskiptavinarins og samþykktu hana.
+
+### Tengdu greiðsluvösu
+
+Fyrir Stripe greiðslur er einn kostur **Link agent veskið**. Ef viðskiptavinurinn þinn styður staðbundna MCP-þjóna og Node.js er uppsett, bættu þessari færslu við MCP-stillingar hans:
+
+```json
+{
+  "mcpServers": {
+    "link": {
+      "command": "npx",
+      "args": ["@stripe/link-cli", "--mcp"]
+    }
+  }
+}
+```
+
+Biddu umboðið þitt að tengja Link-reikninginn þinn, fylgdu síðan staðfestingartenglinum sem það gefur og samþykktu tenginguna. Link veitir Shared Payment Token sem notað er til að greiða fyrir bókunina. Link styður núverandi bandaríska reikninga; athugaðu útgjaldamörk áður en þú bókar. Sjáðu [uppsetningarleiðbeiningar Link](https://github.com/stripe/link-cli#quickstart) og [MCP-stillingar](https://github.com/stripe/link-cli#mcp-server).
+
+Þú getur einnig notað veski sem styður Tempo greiðsluáskorunina sem Wink býður upp á. Ef umboðið þitt hefur þegar tengt samhæft veski, notaðu þá tenginguna. Uppsetning vesks og samþykkt greiðslu eru aðskilin frá innskráningu í Wink.
+
+## 2. Biddu umboðið þitt að finna herbergi
+
+Til dæmis:
+
+> Finndu herbergi í Bangkok fyrir tvo fullorðna frá 15. til 17. janúar 2027. Sýndu mér tiltækar valmöguleika, heildarverð og afbókunarskilmála áður en ég vel.
+
+Umboðið þitt getur fundið aðgengilega Wink reikninga þína og bókunarstillingar þeirra. Ef þú átt fleiri en einn, segðu því hvaða á að nota. Ef þú bókar í gegnum gefinn bókunartengil eða stillingu, gefðu það í staðinn.
+
+Umboðið leysir síðan áfangastaðinn, athugar tiltæk hótel og hleður herbergisverðum fyrir dagsetningar þínar. Veldu herbergi og biððu um tilboð.
+
+Þetta greiðsluferli styður nú **eitt herbergi, verðlagt í USD, fyrir fullorðna eingöngu**. Tilboð hefur gildistíma. Að biðja um tilboð rukkar þig ekki og staðfestir ekki bókun.
+
+## 3. Skoðaðu og samþykktu greiðslu
+
+Athugaðu hótel, herbergi, dagsetningar, gesti, afbókunarskilmála og tilboðið í heild. Þegar þú ert tilbúinn, biððu umboðið að bóka og ljúka öllum samþykktum sem veskið þitt krefst.
+
+Umboðið notar eina af greiðsluaðferðum sem tilboðið býður upp á:
+
+- **Stripe:** veskið veitir Shared Payment Token.
+- **Tempo:** veskið framkvæmir millifærslu samkvæmt áskorun og veitir færsluhash.
+
+Eftir að greiðsla hefur tekist færðu **bókunarstaðfestingarkóða** frá umboðinu. Það getur einnig sótt bókunarupplýsingar og kvittun í gegnum Booking Engine MCP.
+
+Ef greiðsla er enn í vinnslu eða svar tapast, láttu umboðið athuga **sama greiðslutilraunina**. Það á að endurnýta tilboðið og greiðslugögnin í stað þess að hefja aðra greiðslu. Ef greiðsla er hafnað, biððu um nýtt tilboð og skoðaðu það áður en þú reynir aftur.
+
+## Verkfærayfirlit fyrir umboð og verktaka
+
+Öll Wink verkfæri hér að neðan eru aðgengileg í gegnum **Booking Engine MCP**. MCP viðskiptavinurinn sendir auðkenningu sjálfkrafa með heimildum sem samþykktar voru við innskráningu.
+
+| Skref | Verkfæri og hegðun |
+| --- | --- |
+| Velja bókunarumhverfi | `managing_entity_list`, síðan `customization_get_primary` eða `customization_search` fyrir valinn reikning. Notaðu gefna stillingu ef hún er þekkt. |
+| Finna áfangastað | `destination_lookup_search_suggestions` og `destination_lookup_get`. |
+| Leita að hótelum og herbergjum | `inventory_search_city` eða `inventory_search_geo`, síðan `property_inventory_get` fyrir verð og framboð. |
+| Gefa tilboð fyrir valið herbergi | `agentic_booking_quote`. Sendu herbergisupplýsingar í `request` rökum. |
+| Greiða og staðfesta | Fáðu réttindi úr tengdu veski, síðan kallaðu á `agentic_booking_pay` með `request.quoteId` og nákvæmlega einu af `request.spt` eða `request.tempoTransactionHash`. Haltu sama innskráða Wink notanda fyrir tilboð og greiðslu. |
+| Sækja bókun og kvittun | Notaðu `booking_search` eða `booking_search_list` til að finna staðfesta bókun, síðan `booking_get` og `booking_receipt_get` með bókunarnúmerinu. |
+
+Tilboðskallið þarf `hotelIdentifier`, `roomRateIdentifier`, `checkIn`, `checkOut`, `adults`, `children` og `customizationIdentifier`. Dagsetningar eru í `YYYY-MM-DD`; `checkOut` þarf að vera eftir `checkIn`. Stilltu `adults` að minnsta kosti `1` og `children` í `0`.
+
+Tilboðið skilar `quoteId`, `amountUsdCents`, `currency`, `expiresAt` og `mppChallenges`. Sýndu USD senta sem dollara: `10000` þýðir **$100.00**. Fyrir Tempo, notaðu valda áskorunartáknið, keðju, viðtakanda og upphæð í grunn-einingum táknsins.
+
+| Greiðsluútkomu | Næsta skref |
+| --- | --- |
+| `PAYMENT_SUCCEEDED` | Vistaðu `bookingConfirmationCode` og `chargeReference`. |
+| `IN_PROGRESS` | Bíddu stutt og reyndu sama tilboð og réttindi aftur. |
+| `DECLINED` | Biððu um nýtt tilboð og skoðaðu það áður en þú reynir greiðslu aftur. |
+
+Vel heppnuð endurtekning skilar núverandi bókun án þess að rukka aftur. Meðhöndlaðu tímamörk sem óþekktan útkomu og reyndu sömu greiðslu aftur. Ef hún leysist ekki, hafðu samband við stuðning með tilboðsauðkennið.
+
+### Greiðsluvit MCP viðskiptavinir
+
+Greiðsluvit MCP viðskiptavinir geta notað `agentic_booking_book` með herbergisreitum beint í `arguments`. Fyrsta kallið skilar villu `-32042` með greiðsluáskorunum. Reyndu sama kall með veski-réttindum í `params._meta["org.paymentauth/credential"]`; árangur inniheldur `result._meta["org.paymentauth/receipt"]`. Villa `-32043` ber með sér greiðsluvillu og áskorun: endanleg höfnun þarf nýtt tilboð, en ófullkomin greiðslugögn geta reynt aftur með sömu áskorun. Fyrir `-32603` þýðir `data.failure.reason` af `payment-in-progress` eða `already-consumed` að reyna sömu réttindi aftur; villukóði einn og sér nægir ekki.
+
+## Bókaðu yfir REST
+
+Notaðu REST þegar þú byggir samþættingu sem kallar beint á Wink yfir HTTP. Bæði tilboð og greiðsla nota **`POST https://api.wink.travel/api/mpp/booking`**.
+
+Forritið þitt þarf [Wink notendaaðgangslykil](/is/developers/authentication/) með `payment.write` heimild til að greiða. Haltu sama notanda fyrir báða kalli. Sendu lykilinn í `Wink-Authorization`, láttu `Authorization` vera fyrir greiðslugögn vesksins. Þessir hausar gilda fyrir REST; MCP viðskiptavinur sér um sína eigin auðkenningu.
+
+### 1. Biðja um tilboð
+
+Vistaðu valið herbergi sem `booking.json`, með því að skipta út dæmisauðkennum og dagsetningum fyrir þínar. Herbergisreitir fara beint í JSON líkama, án `request` umbúða.
+
+```json
+{
+  "hotelIdentifier": "YOUR_HOTEL_ID",
+  "roomRateIdentifier": "YOUR_ROOM_RATE_ID",
+  "checkIn": "2027-01-15",
+  "checkOut": "2027-01-17",
+  "adults": 2,
+  "children": 0,
+  "customizationIdentifier": "YOUR_CUSTOMIZATION_ID"
+}
+```
+
+Stilltu `WINK_ACCESS_TOKEN` á aðgangslykil notandans og sendu beiðnina:
+
+```bash
+curl -i https://api.wink.travel/api/mpp/booking \
+  -H "Wink-Authorization: Bearer $WINK_ACCESS_TOKEN" \
+  -H 'Content-Type: application/json' \
+  --data-binary @booking.json
+```
+
+Wink skilar **`402 Payment Required`** með `WWW-Authenticate: Payment ...` áskorun fyrir hverja boðna aðferð. JSON líkaminn inniheldur `quoteId`, `amount`, `currency`, `expiresAt` og `methods`. Hér er `amount` strengur í USD sentum: `"10000"` þýðir **$100.00**. Skoðaðu tilboðið áður en það rennur út; engin greiðsla hefur verið tekin enn.
+
+### 2. Greiða og staðfesta
+
+Láttu veskið uppfylla eina af skilaðri áskorun. Fyrir Stripe veitir það `payload.spt`; fyrir Tempo veitir það `payload.hash` með `payload.type` stilltu á `"hash"`. Notaðu greiðsluupplýsingar úr þeirri áskorun.
+
+Stilltu `MPP_CREDENTIAL` á kóðuð MPP réttindi vesksins, sem inniheldur áskorunina og greiðslugögnin. Reyndu **sama beiðnarlíkamann** aftur, haltu auðkenningarhaus:
+
+```bash
+curl -i https://api.wink.travel/api/mpp/booking \
+  -H "Wink-Authorization: Bearer $WINK_ACCESS_TOKEN" \
+  -H "Authorization: Payment $MPP_CREDENTIAL" \
+  -H 'Content-Type: application/json' \
+  --data-binary @booking.json
+```
+
+Við árangur skilar Wink **`200 OK`**, JSON líkama með `bookingConfirmationCode` og `Payment-Receipt` haus. Vistaðu staðfestingu og kvittun. Vel heppnuð endurtekning skilar núverandi bókun án þess að rukka aftur.
+
+### Meðhöndla svör og endurtekningar
+
+| Svar | Hvað á að gera |
+| --- | --- |
+| `400` | Lagfæra ógildar herbergisupplýsingar eða illa mótað réttindi. |
+| `401` / `403` | Athuga auðkenningu notanda og greiðsluleyfi. |
+| `402` | Skoða skilaða vandamál og áskorun. Endanleg höfnun greiðslu krefst nýs tilboðs; ófullkomin greiðslugögn endurnýta upprunalega áskorun. Skoðaðu verðið áður en þú greiðir. |
+| `409` | Útkoma greiðslu er óleyst. Bíddu stutt og reyndu sama líkama og réttindi aftur á bókunarendapunkti. |
+| `429` | Bíddu í þann tíma sem `Retry-After` segir til um og reyndu aftur. |
+
+Svar `409` hefur `application/problem+json` líkama. Berðu `type` saman við þessar nákvæmu slóðir:
+
+| Tegund vandamáls | Merking |
+| --- | --- |
+| [https://api.wink.travel/problems/payment-in-progress](https://api.wink.travel/problems/payment-in-progress) | Greiðslutilraun er enn í gangi eða uppgjör er ekki staðfest. |
+| [https://api.wink.travel/problems/already-consumed](https://api.wink.travel/problems/already-consumed) | Áskorun eða greiðslusönnun hefur þegar verið notuð af mögulega árangursríkri tilraun. Þetta staðfestir ekki bókunina ein og sér. |
+
+Bæði þýða **reyna sömu greiðslu aftur; ekki greiða nýtt tilboð**. Slóðirnar auðkenna og skjalfesta vandamálið; þær eru ekki greiðslu- eða eftirlitsendapunktar. Reyndu `POST /api/mpp/booking` aftur og notaðu `type` vandamálsins frekar en frjálsa texta `detail` til að ákveða næsta skref. Sjáðu [vandamálategundar yfirlit](https://api.wink.travel/problems) fyrir öll Wink greiðsluvandamál.
+
+Tímamörk, tapað svar eða þjónustuvilla eftir að greiðsla hefur verið send getur einnig skilið útkomu óvissa. Reyndu sömu greiðslu aftur. Ef útkoman leysist ekki, hafðu samband við stuðning með tilboðsauðkennið áður en þú byrjar aðra greiðslu.

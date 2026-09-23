@@ -1,0 +1,154 @@
+---
+title: API Đặt Phòng Khách Sạn — Cách Thêm Đặt Phòng Khách Sạn Vào Sản Phẩm
+description: Những gì một API đặt phòng khách sạn cần hỗ trợ, cách tìm kiếm, giá, đặt phòng và thanh toán kết hợp với nhau, và cách thêm nguồn cung khách sạn có thể đặt được vào ứng dụng, trang web hoặc đại lý AI.
+template: splash
+marketingNav: true
+---
+import '/src/styles/splash-page.css';
+
+import FaqGrid from "@/components/marketing/FaqGrid.astro";
+import ResourceSchema from "@/components/marketing/ResourceSchema.astro";
+import IconArrowRight from "@tabler/icons/outline/arrow-right.svg";
+
+<div class="not-content mkt-page">
+
+<ResourceSchema title="API Đặt Phòng Khách Sạn — Cách Thêm Đặt Phòng Khách Sạn Vào Sản Phẩm" crumb="API Đặt Phòng Khách Sạn" slug="hotel-booking-api" datePublished="2026-09-22" description="Những gì một API đặt phòng khách sạn cần hỗ trợ, cách tìm kiếm, giá, đặt phòng và thanh toán kết hợp với nhau, và cách thêm nguồn cung khách sạn có thể đặt được vào ứng dụng, trang web hoặc đại lý AI." />
+
+{/* Breadcrumb */}
+<nav aria-label="Breadcrumb" class="mx-auto w-full max-w-3xl px-4 pt-6 text-sm text-muted-foreground">
+  <a href="/" class="hover:text-foreground">Trang chủ</a>
+  <span class="px-1.5">/</span>
+  <a href="/resources/" class="hover:text-foreground">Tài nguyên</a>
+  <span class="px-1.5">/</span>
+  <span class="text-foreground">API Đặt Phòng Khách Sạn</span>
+</nav>
+
+{/* Article header */}
+<header class="mx-auto w-full max-w-3xl px-4 pt-8 pb-10">
+  <span class="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-gradient-to-r from-[#ff6b35]/10 to-[#9333ea]/10 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary"><span class="size-1.5 rounded-full bg-gradient-to-r from-[#ff6b35] to-[#9333ea]"></span> Tài nguyên</span>
+  <h1 class="font-heading mt-3 text-4xl font-semibold tracking-tight text-balance @lg:text-5xl">Làm thế nào các nhà phát triển thêm đặt phòng khách sạn vào sản phẩm?</h1>
+  <p class="mkt-sub text-muted-foreground mt-5">
+    Tìm kiếm và giá là phần dễ dàng. Một sản phẩm chỉ trở nên hữu ích khi nó có thể tạo ra một đặt phòng thực sự, nhận thanh toán, và thông báo cho khách du lịch và khách sạn rằng việc đặt phòng đã hoàn tất.
+  </p>
+  <div class="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
+    <a href="https://app.wink.travel" class="inline-flex h-11 items-center justify-center rounded-md bg-[#ff6b35] px-6 text-sm font-semibold text-white hover:bg-[#e85b29]">Yêu cầu truy cập API</a>
+    <a href="/api/overview/" class="inline-flex h-11 items-center justify-center rounded-md border border-border px-6 text-sm font-medium hover:bg-muted">Đọc tài liệu</a>
+  </div>
+  <p class="mt-5 text-sm text-muted-foreground">
+    Có rất nhiều API trả về nội dung khách sạn. Nhưng rất ít API cho phép bạn hoàn tất giao dịch.
+  </p>
+</header>
+
+{/* Direct answer */}
+<section class="mx-auto w-full max-w-3xl px-4">
+  <div class="rounded-2xl border-l-4 border-primary bg-primary/[0.04] p-6">
+    <p class="text-xs font-semibold uppercase tracking-wider text-primary">Câu trả lời ngắn gọn</p>
+    <p class="mt-3 text-pretty text-foreground/90">
+      Bạn cần bốn thứ: <strong>giá và tình trạng phòng trực tiếp</strong>, <strong>tạo đặt phòng</strong>, <strong>thanh toán</strong>, và <strong>xác nhận cùng webhooks</strong>. Các API chỉ đọc nội dung dừng lại ở phần đầu tiên. Trên Wink, API Consumer và Booking Engine miễn phí sử dụng, việc tạo đặt phòng chạy qua REST với OAuth2, có hơn 64 sự kiện webhook bao gồm <code>booking.created</code>, và thanh toán được thu cho khách sạn — khách sạn vẫn là người bán chính thức — nên bạn không phải trở thành người bán. Một máy chủ MCP cung cấp các khả năng tương tự cho các đại lý AI, và các thành phần web bao phủ các trường hợp bạn muốn có đường dẫn đặt phòng mà không cần xây dựng giao diện người dùng.
+    </p>
+  </div>
+</section>
+
+{/* Body */}
+<article class="mkt-prose mx-auto w-full max-w-3xl px-4 py-14">
+
+## Bốn khả năng quan trọng
+
+| Khả năng | Ý nghĩa | Tại sao sản phẩm bị đình trệ nếu thiếu |
+|---|---|---|
+| Giá và tình trạng phòng trực tiếp | Giá hiện tại và những gì thực sự có thể đặt được, theo khoảng ngày | Giá lưu cache thất bại khi xác nhận và làm giảm niềm tin |
+| Tạo đặt phòng | Tạo một đặt phòng thực sự mà khách sạn nhận được | Nếu không có, bạn chỉ là một liên kết giới thiệu, không phải sản phẩm |
+| Thanh toán | Nhận tiền như một phần của đặt phòng | Chuyển sang trang khác là nơi chuyển đổi bị mất |
+| Xác nhận và webhooks | Thông báo cho khách, khách sạn và hệ thống của bạn về những gì đã xảy ra | Hỗ trợ tải và bù trừ nếu không có sẽ bị gián đoạn |
+
+Hầu hết "API khách sạn" mà nhà phát triển tìm thấy chỉ bao phủ phần đầu tiên và đôi khi phần thứ hai. Giao dịch là phần khó, và đó là phần quyết định bạn có một sản phẩm hay không.
+
+## Bạn đang tích hợp nguồn cung của ai?
+
+Câu hỏi này định hình mọi thứ phía sau. Nguồn cung được bán lại qua chuỗi sẽ có giá cộng thêm trong giá, tình trạng phòng cũ hơn, và không có đường liên hệ lại khách sạn để hỏi về đặt phòng. Nguồn cung trực tiếp từ khách sạn mang theo giá của khách sạn, tình trạng phòng trực tiếp, và một khách sạn biết đặt phòng đã tồn tại.
+
+Với bất cứ thứ gì mà khách du lịch sẽ so sánh với trang web chính thức của khách sạn — mà hầu hết đều vậy — nguồn cung do khách sạn kiểm soát tránh được khoảnh khắc khó xử khi giá của bạn cao hơn.
+
+## Ai là người bán chính thức
+
+Nếu bạn tự xây dựng đặt phòng khách sạn, trở thành người bán chính thức có nghĩa là chịu trách nhiệm thanh toán, hoàn tiền, xử lý thuế và thường phải có giấy phép đại lý du lịch ở mỗi thị trường.
+
+Trên Wink, **khách sạn vẫn là người bán chính thức** và thanh toán được thu cho khách sạn, nên người tích hợp không phải chịu trách nhiệm này. Các thỏa thuận người bán chính thức có sẵn cho các tích hợp API khi đối tác thực sự cần nhận thanh toán, và con đường đó có yêu cầu giấy phép riêng.
+
+## Ba cấp độ tích hợp
+
+1. **Thành phần web.** Thả một tìm kiếm có thể đặt, danh sách phòng hoặc thanh toán vào trang hiện có. Không cần backend; kiểm soát bố cục ít nhất.
+2. **REST API.** Kiểm soát đầy đủ tìm kiếm, giá, tạo đặt phòng và xác nhận, xác thực bằng OAuth2. Dùng khi luồng đặt phòng là một phần trải nghiệm của sản phẩm bạn.
+3. **Máy chủ MCP.** Các khả năng tương tự được cung cấp cho các đại lý AI, để trợ lý có thể tìm kiếm, định giá và hoàn tất đặt phòng thay vì chuyển người dùng sang trang web.
+
+Ba cách này không loại trừ nhau — một sản phẩm thường dùng thành phần cho bề mặt marketing và API cho luồng chính.
+
+## Nên xây dựng gì trước
+
+- **Tìm kiếm và định giá cho một thành phố và một khoảng ngày.** Lấy giá thực tế trước khi thiết kế bất cứ thứ gì.
+- **Tạo một đặt phòng thử nghiệm từ đầu đến cuối**, bao gồm thanh toán và xác nhận.
+- **Đăng ký `booking.created` và các sự kiện hủy** trước khi xây dựng giao diện người dùng.
+- **Quyết định mô hình phân bổ sớm** — ngữ cảnh nguồn cần đi kèm với đặt phòng, nếu không báo cáo sẽ chỉ là phỏng đoán sau này.
+- **Xử lý các trường hợp thất bại**: mất tình trạng phòng giữa báo giá và đặt, thanh toán bị từ chối, hoàn tiền một phần.
+
+## Giá mà nhà phát triển nên biết
+
+**API Consumer và Booking Engine miễn phí**. **API Partner** bao gồm 10.000 ngày khách sạn miễn phí mỗi tháng, sau đó tính phí theo đơn vị. Đặt phòng xác nhận chịu phí nền tảng 1.5% của khách sạn cộng với phí xử lý thẻ theo giá vốn, và **hoa hồng mặc định 10%** áp dụng khi sản phẩm của bạn tạo ra đặt phòng — đây là cách người tích hợp kiếm tiền thay vì trả tiền.
+
+## Những sai lầm phổ biến
+
+- **Xây dựng trên giá lưu cache.** Chúng trông ổn khi phát triển nhưng thất bại khi chạy thực tế.
+- **Để thanh toán qua chuyển hướng.** Mỗi lần chuyển giao mất đặt phòng.
+- **Bỏ qua webhooks cho đến khi ra mắt.** Việc đối soát trở thành công việc thủ công.
+- **Trở thành người bán chính thức khi không cần.** Đây là quyết định về giấy phép và trách nhiệm, không chỉ là kỹ thuật.
+- **Không truyền ngữ cảnh nguồn.** Phân bổ không thể tái tạo sau đó.
+
+</article>
+
+{/* Related */}
+<section class="mx-auto w-full max-w-3xl px-4 pb-8">
+  <p class="mkt-kicker text-primary">Tiếp tục khám phá</p>
+  <div class="mt-4 grid gap-3 @md:grid-cols-2">
+    {[
+      { label: "Dành cho Nhà phát triển", href: "/builders/" },
+      { label: "Tổng quan API", href: "/api/overview/" },
+      { label: "Máy chủ MCP", href: "/developers/mcp/" },
+      { label: "Thành phần web", href: "/integrations/web-components/" },
+    ].map((l) => (
+      <a href={l.href} class="group flex items-center justify-between rounded-xl border border-border bg-card px-4 py-3 text-sm font-medium transition-colors hover:border-primary/40">
+        {l.label}
+        <IconArrowRight class="size-4 text-muted-foreground transition-transform group-hover:translate-x-0.5" />
+      </a>
+    ))}
+  </div>
+</section>
+
+{/* FAQ */}
+<FaqGrid emitJsonLd
+  heading="Câu hỏi thường gặp về API đặt phòng khách sạn"
+  description="Cần tích hợp gì, chi phí ra sao, và ai chịu trách nhiệm thanh toán."
+  items={[
+    { title: "API đặt phòng khách sạn cần hỗ trợ những gì?", content: "Giá và tình trạng phòng trực tiếp, tạo đặt phòng, thanh toán, và xác nhận với webhooks. Các API chỉ đọc nội dung chỉ bao phủ phần đầu và không thể hoàn tất giao dịch." },
+    { title: "API Wink có miễn phí không?", content: "API Consumer và Booking Engine miễn phí. API Partner bao gồm 10.000 ngày khách sạn miễn phí mỗi tháng, sau đó tính phí theo đơn vị." },
+    { title: "Tôi có phải trở thành người bán chính thức không?", content: "Không. Khách sạn vẫn là người bán chính thức và thanh toán được thu cho khách sạn. Các thỏa thuận người bán chính thức có sẵn cho các tích hợp API cần nhận thanh toán, với yêu cầu giấy phép riêng." },
+    { title: "Các đại lý AI có thể đặt phòng qua các khả năng tương tự không?", content: "Có. Máy chủ MCP cung cấp tìm kiếm, định giá và đặt phòng cho các đại lý, để trợ lý có thể hoàn tất đặt phòng thay vì chuyển người dùng sang trang web." },
+    { title: "Làm sao tôi được trả tiền khi là người tích hợp?", content: "Hoa hồng mặc định 10% áp dụng trên các đặt phòng do sản phẩm của bạn tạo ra, tính sau phí nền tảng và xử lý thẻ của khách sạn, với phân bổ kéo dài 6 tháng cho mỗi lần nhấp." },
+    { title: "Tôi có cần xây dựng giao diện người dùng không?", content: "Không nhất thiết. Thành phần web cung cấp tìm kiếm có thể đặt, danh sách phòng và thanh toán để thả vào trang hiện có; REST API dùng khi luồng đặt phòng nên là của bạn." },
+  ]}
+/>
+
+{/* Final CTA */}
+<section class="w-full border-y border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white">
+  <div class="mx-auto w-full max-w-7xl px-4 py-24 text-center">
+    <h2 class="mkt-h2 font-heading">Xây dựng sản phẩm có thể thực sự đặt phòng.</h2>
+    <p class="mx-auto mt-4 max-w-2xl text-pretty text-white/70 @lg:text-lg">
+      Nguồn cung khách sạn trực tiếp, tạo đặt phòng qua REST, webhooks, máy chủ MCP cho đại lý, và thanh toán bạn không phải sở hữu.
+    </p>
+    <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <a href="https://app.wink.travel" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-[#ff6b35] px-8 text-base font-semibold text-white hover:bg-[#e85b29] sm:w-auto">Yêu cầu truy cập API</a>
+      <a href="/builders/" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-white px-8 text-base font-semibold text-[#1f0a40] hover:bg-white/90 sm:w-auto">Dành cho Nhà phát triển</a>
+    </div>
+  </div>
+</section>
+
+</div>

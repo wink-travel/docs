@@ -1,0 +1,181 @@
+---
+title: Agentic Maksājumi
+description: Pieslēdziet savu AI aģentu Wink, piesakieties, atrodiet viesnīcu un apstipriniet maksājumu, lai pabeigtu rezervāciju.
+sidebar:
+  order: 10.5
+---
+
+Jūs varat meklēt viesnīcu, izvēlēties numuru un pabeigt rezervāciju caur savu AI aģentu. Pieslēdziet to Wink un maksājumu maku, pēc tam norādiet, kur vēlaties uzturēties. Wink izmanto **Machine Payments Protocol (MPP)**, lai pieņemtu maka maksājumu un atgrieztu jūsu rezervācijas apstiprinājumu.
+
+## 1. Pieslēdziet MCP serverus
+
+Pilnam rezervācijas procesam jūsu aģentam nepieciešams **Wink Booking Engine** un **maksājumu maks**.
+
+| Savienojums | Ko tas dara | Kā to pievienot |
+| --- | --- | --- |
+| **Wink Booking Engine** — obligāts | Atrod galamērķus, meklē viesnīcas un numuru cenas, sniedz piedāvājumus un apstiprina rezervācijas, kā arī izgūst jūsu rezervācijas un kvītis. | Pievienojiet `https://api.wink.travel/mcp/booking-engine` kā attālo HTTP MCP serveri. |
+| **Maksājumu maks** — nepieciešams maksāšanai | Nodrošina maksājuma akreditācijas datus pēc jūsu pirkuma apstiprināšanas. | Pieslēdziet maku, kas atbalsta Stripe Shared Payment Tokens vai Tempo maksājumus. Skatiet zemāk Link piemēru. |
+| Wink Reference — izvēles | Meklē valstis, valūtas un citus atsauces datus. | `https://api.wink.travel/mcp/reference` |
+| Wink Docs — izvēles | Palīdz jūsu aģentam lasīt dokumentāciju un API līgumus. | `https://docs.mcp.wink.travel/mcp` |
+
+Booking Engine MCP jau ietver rīkus ceļotāja rezervācijas plūsmai, kad šajā vidē ir iespējota agentic rezervācija un maksājums. Wink atsevišķais Payment MCP ir paredzēts finanšu operācijām, piemēram, grāmatvedībai un izņemšanai; tas nav nepieciešams numura apmaksai.
+
+### Piesakieties un izvēlieties atļaujas
+
+1. Atveriet sava aģenta MCP vai savienotāja iestatījumus un pievienojiet Booking Engine URL, kas norādīts augstāk. Nosauciet to, piemēram, par **Wink Booking**.
+2. Jūsu aģents atver Wink pieslēgšanās lapu jūsu pārlūkprogrammā. Piesakieties ar Wink kontu, ar kuru vēlaties veikt rezervāciju.
+3. Piešķiršanas ekrānā izvēlieties atļaujas, kas nepieciešamas jūsu aģentam, un apstipriniet savienojumu.
+4. Atgriezieties pie sava aģenta. Tas ielādē pieejamos rīkus un pārvalda autentifikāciju turpmākajiem MCP zvaniem.
+
+Šai plūsmai izvēlieties:
+
+| Atļauja | Kāpēc tā ir nepieciešama |
+| --- | --- |
+| AI aģenta piekļuve (`mcp.read`) | Ļauj jūsu aģentam pieslēgties Wink MCP. |
+| Mārketinga lasīšana (`marketing.read`) | Ļauj aģentam atrast jūsu konta rezervācijas konfigurāciju, ko sauc par pielāgojumu. Jūsu kontam arī jābūt piekļuvei šai konfigurācijai. |
+| Maksājumu rakstīšana (`payment.write`) | Ļauj aģentam apmaksāt piedāvājumu un apstiprināt rezervāciju. |
+
+Saglabājiet pieslēgšanās pieprasītās atļaujas. Jūsu MCP klients pārvalda piekļuves tokenus; jums nav jāielīmē tokens čatā vai jāiestata pieprasījuma galvenes. Ja izlaidāt nepieciešamo atļauju, pieslēdzieties atkārtoti caur sava klienta pieslēgšanās plūsmu un apstipriniet to.
+
+### Pieslēdziet maksājumu maku
+
+Stripe maksājumiem viena iespēja ir **Link aģenta maks**. Ja jūsu klients atbalsta lokālos MCP serverus un Node.js ir instalēts, pievienojiet šo ierakstu tā MCP konfigurācijā:
+
+```json
+{
+  "mcpServers": {
+    "link": {
+      "command": "npx",
+      "args": ["@stripe/link-cli", "--mcp"]
+    }
+  }
+}
+```
+
+Lūdziet savam aģentam pieslēgt jūsu Link kontu, pēc tam sekojiet verifikācijas saitei, ko tas nodrošina, un apstipriniet savienojumu. Link nodrošina Shared Payment Token, kas tiek izmantots rezervācijas apmaksai. Pašlaik Link atbalsta ASV kontus; pirms rezervācijas pārbaudiet tā izdevumu limitus. Skatiet [Link iestatīšanas rokasgrāmatu](https://github.com/stripe/link-cli#quickstart) un [MCP konfigurāciju](https://github.com/stripe/link-cli#mcp-server).
+
+Varat arī izmantot maku, kas atbalsta Tempo maksājumu izaicinājumu, ko piedāvā Wink. Ja jūsu aģentam jau ir pieslēgts saderīgs maks, izmantojiet šo savienojumu. Maka iestatīšana un maksājuma apstiprināšana ir atsevišķi no pieslēgšanās Wink.
+
+## 2. Lūdziet aģentam atrast numuru
+
+Piemēram:
+
+> Atrodi numuru Bangkokā diviem pieaugušajiem no 2027. gada 15. līdz 17. janvārim. Parādi man pieejamās iespējas, kopējo cenu un atcelšanas noteikumus pirms izvēlos.
+
+Jūsu aģents var atrast jūsu pieejamos Wink kontus un to rezervācijas konfigurācijas. Ja jums ir vairāki, norādiet, kuru izmantot. Ja rezervējat caur nodrošinātu rezervācijas saiti vai konfigurāciju, dodiet to aģentam.
+
+Aģents tad noskaidro jūsu galamērķi, pārbauda pieejamās viesnīcas un ielādē numuru cenas jūsu datumiem. Izvēlieties numuru un lūdziet piedāvājumu.
+
+Šī maksājumu plūsma pašlaik atbalsta **vienu numuru, cenu USD, tikai pieaugušajiem**. Piedāvājumam ir derīguma termiņš. Piedāvājuma pieprasīšana nenozīmē maksājuma veikšanu vai rezervācijas apstiprināšanu.
+
+## 3. Pārskatiet un apstipriniet maksājumu
+
+Pārbaudiet viesnīcu, numuru, datumus, viesus, atcelšanas noteikumus un piedāvāto kopējo summu. Kad esat gatavs, lūdziet aģentam veikt rezervāciju un pabeigt jebkuru maka pieprasīto apstiprinājumu.
+
+Aģents izmanto vienu no piedāvātajām maksājuma metodēm:
+
+- **Stripe:** maksājumu maks nodrošina Shared Payment Token.
+- **Tempo:** maksājumu maks veic izaicinājumā norādīto pārskaitījumu un nodrošina tā darījuma hešu.
+
+Pēc veiksmīgas maksāšanas jūsu aģents sniedz jums **rezervācijas apstiprinājuma kodu**. Tas var arī izgūt rezervācijas detaļas un kvīti caur Booking Engine MCP.
+
+Ja maksājums vēl tiek apstrādāts vai atbilde ir pazudusi, ļaujiet aģentam pārbaudīt **to pašu maksājuma mēģinājumu**. Tam jāizmanto atkārtoti piedāvājums un maksājuma akreditācijas dati, nevis jāsāk otrais maksājums. Ja maksājums tiek noraidīts, lūdziet jaunu piedāvājumu un pārskatiet to pirms mēģināt vēlreiz.
+
+## Rīku atsauce aģentiem un izstrādātājiem
+
+Visi zemāk esošie Wink rīki ir pieejami caur **Booking Engine MCP**. MCP klients automātiski nosūta autentifikāciju, izmantojot pieslēgšanās laikā apstiprinātās atļaujas.
+
+| Solis | Rīki un darbības |
+| --- | --- |
+| Izvēlieties rezervācijas kontekstu | `managing_entity_list`, pēc tam `customization_get_primary` vai `customization_search` izvēlētajam kontam. Izmantojiet nodrošināto pielāgojumu, ja tas jau ir zināms. |
+| Atrodiet galamērķi | `destination_lookup_search_suggestions` un `destination_lookup_get`. |
+| Meklējiet viesnīcas un numurus | `inventory_search_city` vai `inventory_search_geo`, pēc tam `property_inventory_get` cenu un pieejamības pārbaudei. |
+| Piedāvājiet izvēlēto numuru | `agentic_booking_quote`. Nododiet numura datus tā `request` argumentā. |
+| Maksājiet un apstipriniet | Iegūstiet akreditācijas datus no pieslēgtā maka, pēc tam izsauciet `agentic_booking_pay` ar `request.quoteId` un tieši vienu no `request.spt` vai `request.tempoTransactionHash`. Saglabājiet to pašu pieslēgto Wink lietotāju piedāvājumam un maksājumam. |
+| Izgūstiet rezervāciju un kvīti | Izmantojiet `booking_search` vai `booking_search_list`, lai atrastu apstiprināto rezervāciju, pēc tam `booking_get` un `booking_receipt_get` ar tās rezervācijas identifikatoru. |
+
+Piedāvājuma pieprasījumam nepieciešams `hotelIdentifier`, `roomRateIdentifier`, `checkIn`, `checkOut`, `adults`, `children` un `customizationIdentifier`. Datumi jānorāda formātā `YYYY-MM-DD`; `checkOut` jābūt pēc `checkIn`. Iestatiet `adults` vismaz uz `1` un `children` uz `0`.
+
+Piedāvājums atgriež `quoteId`, `amountUsdCents`, `currency`, `expiresAt` un `mppChallenges`. Rādiet USD centus kā dolārus: `10000` nozīmē **$100.00**. Tempo gadījumā izmantojiet izvēlētā izaicinājuma tokenu, ķēdi, saņēmēju un summu tokena pamatvienībās.
+
+| Maksājuma rezultāts | Nākamais solis |
+| --- | --- |
+| `PAYMENT_SUCCEEDED` | Saglabājiet `bookingConfirmationCode` un `chargeReference`. |
+| `IN_PROGRESS` | Nedaudz pagaidiet un mēģiniet atkārtoti ar to pašu piedāvājumu un akreditāciju. |
+| `DECLINED` | Pieprasiet jaunu piedāvājumu un pārskatiet to pirms nākamā maksājuma. |
+
+Veiksmīga atkārtota mēģinājuma gadījumā tiek atgriezta esošā rezervācija bez atkārtotas iekasēšanas. Laika pārsniegumu uzskatiet par nezināmu iznākumu un mēģiniet atkārtoti to pašu maksājumu. Ja tas paliek neatrisināts, sazinieties ar atbalstu, norādot piedāvājuma ID.
+
+### Maksājumu atbalstoši MCP klienti
+
+Maksājumu atbalstoši MCP klienti var izmantot `agentic_booking_book` ar numura laukiem tieši `arguments`. Pirmais zvans atgriež kļūdu `-32042` ar maksājumu izaicinājumiem. Mēģiniet atkārtoti to pašu zvanu ar maka akreditāciju `params._meta["org.paymentauth/credential"]`; veiksmīgs zvans satur `result._meta["org.paymentauth/receipt"]`. Kļūda `-32043` satur maksājuma neveiksmi un izaicinājumu: galīga noraidīšana prasa jaunu piedāvājumu, bet nepilnīgs maksājuma saturs var mēģināt atkārtoti ar to pašu izaicinājumu. Kļūda `-32603` ar `data.failure.reason` `payment-in-progress` vai `already-consumed` nozīmē mēģināt atkārtoti ar to pašu akreditāciju; tikai kļūdas kods nav pietiekams.
+
+## Rezervējiet caur REST
+
+Izmantojiet REST, veidojot integrāciju, kas tieši zvana Wink pa HTTP. Gan piedāvājums, gan maksājums izmanto **`POST https://api.wink.travel/api/mpp/booking`**.
+
+Jūsu lietotnei nepieciešams [Wink lietotāja piekļuves tokens](/lv/developers/authentication/) ar `payment.write` atļauju maksāšanai. Saglabājiet to pašu lietotāju abiem zvaniem. Sūtiet tokenu `Wink-Authorization` galvenē, atstājot `Authorization` pieejamu maka maksājuma akreditācijai. Šīs galvenes attiecas uz REST; MCP klients pārvalda savu autentifikāciju.
+
+### 1. Pieprasiet piedāvājumu
+
+Saglabājiet izvēlēto numuru kā `booking.json`, aizstājot piemēra identifikatorus un datumus ar savu izvēli. Numura lauki iet tieši JSON ķermenī, bez `request` ietvara.
+
+```json
+{
+  "hotelIdentifier": "YOUR_HOTEL_ID",
+  "roomRateIdentifier": "YOUR_ROOM_RATE_ID",
+  "checkIn": "2027-01-15",
+  "checkOut": "2027-01-17",
+  "adults": 2,
+  "children": 0,
+  "customizationIdentifier": "YOUR_CUSTOMIZATION_ID"
+}
+```
+
+Iestatiet `WINK_ACCESS_TOKEN` uz lietotāja piekļuves tokenu un nosūtiet pieprasījumu:
+
+```bash
+curl -i https://api.wink.travel/api/mpp/booking \
+  -H "Wink-Authorization: Bearer $WINK_ACCESS_TOKEN" \
+  -H 'Content-Type: application/json' \
+  --data-binary @booking.json
+```
+
+Wink atgriež **`402 Payment Required`** ar `WWW-Authenticate: Payment ...` izaicinājumu katrai piedāvātajai metodei. JSON ķermenī ir `quoteId`, `amount`, `currency`, `expiresAt` un `methods`. Šeit `amount` ir virkne USD centos: `"10000"` nozīmē **$100.00**. Pārskatiet piedāvājumu pirms tā derīguma termiņa; maksājums vēl nav veikts.
+
+### 2. Maksājiet un apstipriniet
+
+Lai maksātu, maka maks izpilda vienu no atgrieztajiem izaicinājumiem. Stripe gadījumā tas nodrošina `payload.spt`; Tempo gadījumā — `payload.hash` ar `payload.type` iestatītu uz `"hash"`. Izmantojiet maksājuma datus no šī izaicinājuma.
+
+Iestatiet `MPP_CREDENTIAL` uz maka kodēto MPP akreditāciju, kas satur izaicinājumu un maksājuma saturu. Mēģiniet atkārtoti ar **to pašu pieprasījuma ķermeni**, saglabājot identitātes galveni:
+
+```bash
+curl -i https://api.wink.travel/api/mpp/booking \
+  -H "Wink-Authorization: Bearer $WINK_ACCESS_TOKEN" \
+  -H "Authorization: Payment $MPP_CREDENTIAL" \
+  -H 'Content-Type: application/json' \
+  --data-binary @booking.json
+```
+
+Veiksmīgas atbildes gadījumā Wink atgriež **`200 OK`**, JSON ķermeni ar `bookingConfirmationCode` un `Payment-Receipt` galveni. Saglabājiet apstiprinājumu un kvīti. Veiksmīga atkārtota mēģinājuma gadījumā tiek atgriezta esošā rezervācija bez atkārtotas iekasēšanas.
+
+### Apstrādājiet atbildes un atkārtotus mēģinājumus
+
+| Atbilde | Ko darīt |
+| --- | --- |
+| `400` | Labojiet nederīgus numura datus vai nepareizu akreditāciju. |
+| `401` / `403` | Pārbaudiet lietotāja autentifikāciju un maksājumu atļauju. |
+| `402` | Pārbaudiet atgriezto problēmu un izaicinājumu. Galīga maksājuma noraidīšana prasa jaunu piedāvājumu; nepilnīgs maksājuma saturs atkārtoti izmanto sākotnējo izaicinājumu. Pārskatiet cenu pirms maksāšanas. |
+| `409` | Maksājuma iznākums nav atrisināts. Nedaudz pagaidiet un mēģiniet atkārtoti ar to pašu ķermeni un akreditāciju rezervācijas galapunktā. |
+| `429` | Pagaidiet tik sekundes, cik norādīts `Retry-After`, pēc tam mēģiniet atkārtoti. |
+
+`409` atbilde satur `application/problem+json` ķermeni. Salīdziniet tā `type` ar šīm precīzajām URL:
+
+| Problēmas veids | Nozīme |
+| --- | --- |
+| [https://api.wink.travel/problems/payment-in-progress](https://api.wink.travel/problems/payment-in-progress) | Maksājuma mēģinājums vēl notiek vai norēķinu vēl nevar apstiprināt. |
+| [https://api.wink.travel/problems/already-consumed](https://api.wink.travel/problems/already-consumed) | Izaicinājums vai maksājuma pierādījums jau tika izmantots iespējami veiksmīgā mēģinājumā. Tas vien neapstiprina rezervāciju. |
+
+Abi nozīmē **atkārtoti mēģināt to pašu maksājumu; nemaksājiet jaunu piedāvājumu**. URL identificē un dokumentē problēmu; tie nav maksājumu vai aptaujas galapunkti. Mēģiniet atkārtoti `POST /api/mpp/booking` un izmantojiet problēmas `type`, nevis brīvteksta `detail`, lai izlemtu, ko darīt. Skatiet [problēmu veidu atsauci](https://api.wink.travel/problems) visām Wink maksājumu problēmām.
+
+Laika pārsniegums, pazudusi atbilde vai servera kļūda pēc maksājuma iesniegšanas var arī atstāt iznākumu nezināmu. Mēģiniet atkārtoti to pašu maksājuma pieprasījumu. Ja iznākums paliek neatrisināts, sazinieties ar atbalstu, norādot piedāvājuma ID pirms jauna maksājuma sākšanas.

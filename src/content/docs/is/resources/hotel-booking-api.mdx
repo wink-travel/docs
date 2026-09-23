@@ -1,0 +1,154 @@
+---
+title: Hotel Booking API — Hvernig á að bæta hótelbókun við vöru
+description: Hvað hótelbókunar-API þarf að styðja, hvernig leit, verð, bókun og greiðsla tengjast, og hvernig bæta má bókanlegu hótelframboði við app, síðu eða gerviaðstoð.
+template: splash
+marketingNav: true
+---
+import '/src/styles/splash-page.css';
+
+import FaqGrid from "@/components/marketing/FaqGrid.astro";
+import ResourceSchema from "@/components/marketing/ResourceSchema.astro";
+import IconArrowRight from "@tabler/icons/outline/arrow-right.svg";
+
+<div class="not-content mkt-page">
+
+<ResourceSchema title="Hotel Booking API — Hvernig á að bæta hótelbókun við vöru" crumb="Hotel Booking API" slug="hotel-booking-api" datePublished="2026-09-22" description="Hvað hótelbókunar-API þarf að styðja, hvernig leit, verð, bókun og greiðsla tengjast, og hvernig bæta má bókanlegu hótelframboði við app, síðu eða gerviaðstoð." />
+
+{/* Breadcrumb */}
+<nav aria-label="Breadcrumb" class="mx-auto w-full max-w-3xl px-4 pt-6 text-sm text-muted-foreground">
+  <a href="/" class="hover:text-foreground">Heim</a>
+  <span class="px-1.5">/</span>
+  <a href="/resources/" class="hover:text-foreground">Auðlindir</a>
+  <span class="px-1.5">/</span>
+  <span class="text-foreground">Hotel Booking API</span>
+</nav>
+
+{/* Article header */}
+<header class="mx-auto w-full max-w-3xl px-4 pt-8 pb-10">
+  <span class="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-gradient-to-r from-[#ff6b35]/10 to-[#9333ea]/10 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary"><span class="size-1.5 rounded-full bg-gradient-to-r from-[#ff6b35] to-[#9333ea]"></span> Auðlindir</span>
+  <h1 class="font-heading mt-3 text-4xl font-semibold tracking-tight text-balance @lg:text-5xl">Hvernig bæta verktakar hótelbókun við vöru?</h1>
+  <p class="mkt-sub text-muted-foreground mt-5">
+    Leit og verð eru hinn auðveldi hlutinn. Vara verður aðeins gagnleg þegar hægt er að búa til raunverulega bókun, taka við greiðslu og láta ferðamann og hótel vita að bókun hafi átt sér stað.
+  </p>
+  <div class="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
+    <a href="https://app.wink.travel" class="inline-flex h-11 items-center justify-center rounded-md bg-[#ff6b35] px-6 text-sm font-semibold text-white hover:bg-[#e85b29]">Beiðni um API-aðgang</a>
+    <a href="/api/overview/" class="inline-flex h-11 items-center justify-center rounded-md border border-border px-6 text-sm font-medium hover:bg-muted">Lestu skjölin</a>
+  </div>
+  <p class="mt-5 text-sm text-muted-foreground">
+    Mörg API skila hótelinnihaldi. Mun færri leyfa þér að ljúka viðskiptunum.
+  </p>
+</header>
+
+{/* Direct answer */}
+<section class="mx-auto w-full max-w-3xl px-4">
+  <div class="rounded-2xl border-l-4 border-primary bg-primary/[0.04] p-6">
+    <p class="text-xs font-semibold uppercase tracking-wider text-primary">Stutta svarið</p>
+    <p class="mt-3 text-pretty text-foreground/90">
+      Þú þarft fjögur atriði: <strong>raunveruleg verð og framboð</strong>, <strong>bókunaruppbyggingu</strong>, <strong>greiðslu</strong> og <strong>staðfestingu ásamt vefviðburðum (webhooks)</strong>. Innihalds-API sem eru aðeins til að lesa hætta eftir fyrsta atriðið. Á Wink eru Consumer og Booking Engine API ókeypis í notkun, bókunaruppbygging fer fram yfir REST með OAuth2, það eru yfir 64 vefviðburðir þar á meðal <code>booking.created</code>, og greiðsla er innheimt fyrir hótelið — sem heldur áfram að vera kaupmaður bókunarinnar — svo þú þarft ekki að verða kaupmaður. MCP þjónn býður sömu möguleika fyrir gerviaðstoð, og vefþættir ná yfir þau tilfelli þar sem þú vilt bókunarleið án þess að byggja upp notendaviðmót.
+    </p>
+  </div>
+</section>
+
+{/* Body */}
+<article class="mkt-prose mx-auto w-full max-w-3xl px-4 py-14">
+
+## Fjögur mikilvæg hæfniatriði
+
+| Hæfni | Hvað það þýðir | Af hverju vörur stöðvast án þess |
+|---|---|---|
+| Raunveruleg verð og framboð | Núverandi verð og hvað er raunverulega bókanlegt, fyrir dagsetningar | Geymd verð mistakast við staðfestingu og rýrir traust |
+| Bókunaruppbygging | Búa til raunverulega bókun sem hótelið fær | Án þess ertu bara tilvísunartengill, ekki vara |
+| Greiðsla | Taka við peningum sem hluta af bókun | Að vísa notanda á aðra síðu drepur viðskipti |
+| Staðfesting og vefviðburðir | Láta gest, hótel og kerfi vita hvað gerðist | Annars verður álag og samræmingarvandamál |
+
+Flest "hótel-API" sem verktaki finnur ná yfir fyrsta og stundum annan liðinn. Viðskiptin eru erfiðasti hlutinn og það er sá hluti sem ræður hvort þú hafir vöru.
+
+## Hvaða framboð ertu að samþætta?
+
+Þessi spurning mótar allt sem kemur á eftir. Framboð sem er endurselt í gegnum keðju kemur með álagi inniföldu í verði, eldri framboð og engin leið til baka til hótelsins fyrir bókunarspurningu. Framboð sem kemur beint frá hótelinu ber með sér eigið verð hótelsins, lifandi framboð og hótel sem veit að bókunin er til.
+
+Fyrir allt þar sem ferðamaðurinn mun bera saman við eigin vefsíðu hótelsins — sem er flest allt — forðast hótelstýrt framboð vandræðalega stundina þegar verðið þitt er verra.
+
+## Hver er kaupmaður bókunarinnar
+
+Ef þú byggir hótelbókun sjálfur þýðir kaupmaður bókunarinnar að taka á sig ábyrgð á greiðslum, endurkröfum, endurgreiðslum, skattamálum og oft leyfi fyrir ferðaskrifstofu á hverjum markaði.
+
+Á Wink heldur **hótelið áfram að vera kaupmaður bókunarinnar** og greiðsla er innheimt fyrir hótelið, svo samþættir þarf ekki að taka á sig þá ábyrgð. Kaupmaður bókunar-samningar eru í boði fyrir API-samþættingar þar sem samstarfsaðili þarf raunverulega að taka við greiðslu sjálfur, og sú leið hefur sín eigin leyfis- og reglugerðarkröfur.
+
+## Þrjú stig samþættingar
+
+1. **Vefþættir.** Settu inn bókanlega leit, herbergjalista eða greiðslusíðu á núverandi síðu. Engin bakendavinna; minnst stjórn á útliti.
+2. **REST API.** Full stjórn á leit, verði, bókunaruppbyggingu og staðfestingu, auðkennd með OAuth2. Notaðu þegar bókunarferlið er hluti af eigin upplifun vörunnar.
+3. **MCP þjónn.** Sömu möguleikar í boði fyrir gerviaðstoð, svo að aðstoðarmaður geti leitað, verðlagt og lokið bókun í stað þess að vísa notanda á vefsíðu.
+
+Þessi þrjú eru ekki útilokandi — vara notar oft vefþætti fyrir markaðsyfirborð og API fyrir kjarnaflæði.
+
+## Hvað á að byggja fyrst
+
+- **Leit og verð fyrir eina borg og eitt dagsetningabil.** Fáðu raunveruleg verð flæðandi áður en þú hannað neitt.
+- **Búðu til eina prófunarbókun frá upphafi til enda**, þar með talið greiðslu og staðfestingu.
+- **Gerast áskrifandi að `booking.created` og afbókunaratburðum** áður en þú byggir notendaviðmót ofan á.
+- **Ákveddu þitt eignunarlíkan snemma** — upprunalegur samhengi þarf að fylgja bókuninni, annars verður skýrslugerð gisk.
+- **Haltu utan um mistök**: framboð glatast milli tilboðs og bókunar, greiðsla hafnað, hlutlægar endurgreiðslur.
+
+## Verðlagning sem verktaki ætti að vita
+
+**Consumer og Booking Engine API eru ókeypis**. **Partner API** inniheldur ókeypis mánaðarlega heimild fyrir 10.000 hóteldaga, síðan er rukkað á einingu. Staðfestar bókanir bera með sér 1,5% þjónustugjald hótelsins auk kostnaðar við kortavinnslu, og **10% sjálfgefinn þóknun** gildir þegar vara þín leiddi til bókunar — sem er hvernig samþættir þénar frekar en greiðir.
+
+## Algengar villur
+
+- **Byggja á geymdum verðupplýsingum.** Þau líta vel út í þróun en mistakast í framleiðslu.
+- **Láta greiðslu fara í gegnum tilvísun.** Hver vísa tapar bókunum.
+- **Hunsa vefviðburði þar til útgáfu.** Samræming verður handvirkt verk.
+- **Verða kaupmaður bókunarinnar án þess að þurfa.** Þetta er ákvörðun um leyfi og ábyrgð, ekki bara tæknileg.
+- **Ekki senda upprunalegt samhengi.** Eignun verður ekki hægt að endurbyggja síðar.
+
+</article>
+
+{/* Related */}
+<section class="mx-auto w-full max-w-3xl px-4 pb-8">
+  <p class="mkt-kicker text-primary">Haltu áfram að kanna</p>
+  <div class="mt-4 grid gap-3 @md:grid-cols-2">
+    {[
+      { label: "Fyrir verktaka", href: "/builders/" },
+      { label: "Yfirlit API", href: "/api/overview/" },
+      { label: "MCP þjónn", href: "/developers/mcp/" },
+      { label: "Vefþættir", href: "/integrations/web-components/" },
+    ].map((l) => (
+      <a href={l.href} class="group flex items-center justify-between rounded-xl border border-border bg-card px-4 py-3 text-sm font-medium transition-colors hover:border-primary/40">
+        {l.label}
+        <IconArrowRight class="size-4 text-muted-foreground transition-transform group-hover:translate-x-0.5" />
+      </a>
+    ))}
+  </div>
+</section>
+
+{/* FAQ */}
+<FaqGrid emitJsonLd
+  heading="Algengar spurningar um Hotel Booking API"
+  description="Hvað á að samþætta, hvað kostar það, og hver ber ábyrgð á greiðslu."
+  items={[
+    { title: "Hvað þarf hótelbókunar-API að styðja?", content: "Raunveruleg verð og framboð, bókunaruppbyggingu, greiðslu og staðfestingu með vefviðburðum. Innihalds-API sem eru aðeins til að lesa ná aðeins fyrsta lið og geta ekki lokið viðskiptum." },
+    { title: "Er Wink API ókeypis í notkun?", content: "Consumer og Booking Engine API eru ókeypis. Partner API inniheldur 10.000 hóteldaga ókeypis á mánuði, síðan er rukkað á einingu." },
+    { title: "Þarf ég að verða kaupmaður bókunarinnar?", content: "Nei. Hótelið heldur áfram að vera kaupmaður bókunarinnar og greiðsla er innheimt fyrir hótelið. Kaupmaður bókunar-samningar eru til fyrir API-samþættingar þar sem samstarfsaðili þarf raunverulega að taka við greiðslu, með sínum eigin leyfis- og reglugerðarkröfum." },
+    { title: "Geta gerviaðstoðar bókað með sömu hæfni?", content: "Já. MCP þjónn býður leit, verðlagningu og bókun fyrir aðstoðarmenn, svo að aðstoðarmaður geti lokið bókun í stað þess að vísa notanda á vefsíðu." },
+    { title: "Hvernig fæ ég greitt sem samþættir?", content: "Sjálfgefin 10% þóknun gildir á bókanir sem vara þín leiddi til, reiknuð eftir þjónustugjald hótelsins og kortavinnslu, með eignun sem varir í 6 mánuði eftir smell." },
+    { title: "Þarf ég að byggja notendaviðmót?", content: "Ekki endilega. Vefþættir bjóða upp á bókanlega leit, herbergjalista og greiðslu sem setjast inn á núverandi síðu; REST API er til þegar flæði á að vera þitt eigið." },
+  ]}
+/>
+
+{/* Final CTA */}
+<section class="w-full border-y border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white">
+  <div class="mx-auto w-full max-w-7xl px-4 py-24 text-center">
+    <h2 class="mkt-h2 font-heading">Byggðu vöru sem getur raunverulega bókað.</h2>
+    <p class="mx-auto mt-4 max-w-2xl text-pretty text-white/70 @lg:text-lg">
+      Lifandi hótelframboð, bókunaruppbygging yfir REST, vefviðburðir, MCP þjónn fyrir aðstoðarmenn og greiðsla sem þú þarft ekki að eiga.
+    </p>
+    <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <a href="https://app.wink.travel" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-[#ff6b35] px-8 text-base font-semibold text-white hover:bg-[#e85b29] sm:w-auto">Beiðni um API-aðgang</a>
+      <a href="/builders/" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-white px-8 text-base font-semibold text-[#1f0a40] hover:bg-white/90 sm:w-auto">Fyrir verktaka</a>
+    </div>
+  </div>
+</section>
+
+</div>

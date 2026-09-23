@@ -1,6 +1,6 @@
 ---
 title: Máy chủ MCP
-description: Kết nối các đại lý AI với nền tảng Wink qua Model Context Protocol. Wink xuất bản các công cụ của mình dưới dạng các điểm cuối tập trung theo công việc để đại lý của bạn chỉ tải những gì công việc cần — được bảo mật bằng đăng nhập OAuth2 tương tác.
+description: Kết nối các đại lý AI với nền tảng Wink qua Giao thức Ngữ cảnh Mô hình. Wink xuất bản các công cụ của mình dưới dạng các điểm cuối tập trung, theo từng công việc cụ thể để đại lý của bạn chỉ tải những gì công việc cần — được bảo mật bằng đăng nhập OAuth2 tương tác.
 sidebar:
   order: 10
 ---
@@ -21,18 +21,18 @@ claude mcp add wink-rates https://api.wink.travel/mcp/extranet/rates --transport
 
 ---
 
-## Tại sao các công cụ được chia ra thành các điểm cuối
+## Tại sao các công cụ được chia ra theo điểm cuối
 
-Wink cung cấp khoảng 500 công cụ. Giao tất cả cho một đại lý cùng lúc về mặt kỹ thuật là có thể — nhưng là một ý tưởng tồi.
+Wink cung cấp khoảng 500 công cụ. Giao hết tất cả cho một đại lý cùng lúc về mặt kỹ thuật là có thể — nhưng là một ý tưởng tồi.
 
-**Định nghĩa công cụ tiêu tốn ngữ cảnh.** Mỗi công cụ mà máy chủ MCP quảng bá được tải vào cửa sổ ngữ cảnh của mô hình trước khi nó thực hiện bất kỳ công việc nào, cùng với mô tả và toàn bộ sơ đồ tham số. Năm trăm công cụ như vậy chiếm một phần lớn ngân sách mà nhiệm vụ thực tế của bạn cần, ở mỗi yêu cầu.
+**Định nghĩa công cụ tiêu tốn ngữ cảnh.** Mỗi công cụ mà máy chủ MCP quảng bá được tải vào cửa sổ ngữ cảnh của mô hình trước khi nó thực hiện công việc, cùng với mô tả và toàn bộ sơ đồ tham số. Năm trăm công cụ như vậy chiếm một phần lớn ngân sách mà nhiệm vụ thực sự của bạn cần, ở mỗi yêu cầu.
 
-**Chất lượng lựa chọn giảm khi danh sách tăng.** Một đại lý chọn từ 500 công cụ có tên tương tự sẽ đưa ra lựa chọn kém hơn so với một đại lý chọn từ 40 công cụ. Nếu bạn tích hợp một quản lý kênh, khoảng hai mươi công cụ liên quan đến bạn; 480 công cụ còn lại là nhiễu làm cho công cụ đúng khó tìm hơn.
+**Chất lượng lựa chọn giảm khi danh sách dài.** Một đại lý chọn từ 500 công cụ có tên tương tự sẽ đưa ra lựa chọn kém hơn so với chọn từ 40 công cụ. Nếu bạn tích hợp một quản lý kênh, khoảng hai mươi công cụ liên quan đến bạn; 480 công cụ còn lại là nhiễu làm cho công cụ đúng khó tìm hơn.
 
-**Công việc thực sự có thể tách biệt.** Người đồng bộ hóa tình trạng phòng từ PMS và người quản lý trang đích liên kết gần như không chia sẻ công cụ nào. Chia theo công việc có nghĩa mỗi kết nối mang từ vựng của một công việc.
+**Công việc thực sự có thể tách biệt.** Người đồng bộ tình trạng phòng từ PMS và người quản lý trang đích liên kết gần như không chia sẻ công cụ nào. Chia theo công việc có nghĩa mỗi kết nối mang từ vựng của một công việc.
 
 <Aside type="caution" title="Bộ công cụ không phải là quyền hạn">
-Chọn một bộ công cụ hẹp **không** giới hạn những gì tài khoản của bạn có thể làm, và chọn một bộ rộng không cấp thêm gì. Mỗi công cụ thực thi cùng quyền tài khoản như cổng web, dưới danh tính bạn đã đăng nhập. Nếu tài khoản của bạn không thể hủy đặt phòng trong Wink Portal, đại lý cũng không thể — bất kể nó kết nối với điểm cuối nào.
+Chọn một bộ công cụ hẹp **không** giới hạn những gì tài khoản của bạn có thể làm, và chọn bộ rộng không cấp thêm gì. Mỗi công cụ thực thi cùng quyền tài khoản như cổng web, dưới danh tính bạn đã đăng nhập. Nếu tài khoản của bạn không thể hủy đặt phòng trong Wink Portal, đại lý cũng không thể — bất kể nó kết nối tới điểm cuối nào.
 
 Chọn bộ công cụ để **tập trung**, không phải để bảo mật.
 </Aside>
@@ -50,18 +50,18 @@ Hai máy chủ phục vụ các bộ công cụ. Số lượng công cụ là ư
 | `/mcp/extranet/facilities` | ~64 | Kho hàng có thể đặt và tại chỗ: phòng khách và loại phòng, spa, nhà hàng, phòng họp, hoạt động, điểm tham quan, địa điểm, các mặt hàng bán khác |
 | `/mcp/extranet/property` | ~62 | Hồ sơ tài sản và điều khoản thương mại: hồ sơ và nội dung, phụ kiện, chính sách hủy, ưu đãi, thông báo |
 | `/mcp/settings` | ~60 | Quản trị tài khoản: hồ sơ và thương hiệu thực thể quản lý, quản lý và quyền hạn, tùy chỉnh, webhook, tùy chọn thông báo |
-| `/mcp/studio/embeds` | ~48 | Xuất bản kho hàng được tuyển chọn: widget, lưới và lưới xếp hạng, thẻ, bản đồ, liên kết sâu đến kho hàng và trang nhà cung cấp |
+| `/mcp/studio/embeds` | ~48 | Xuất bản kho hàng được tuyển chọn: widget, lưới và lưới xếp hạng, thẻ, bản đồ, liên kết sâu tới kho hàng và trang nhà cung cấp |
 | `/mcp/extranet/rates` | ~44 | Giá và tình trạng: các khoảng thời gian và hạn mức giá kho hàng, kế hoạch giá, giá chính, giá đặc biệt và khuyến mãi |
 | `/mcp/extranet/operations` | ~39 | Vận hành tài sản trực tiếp: đặt phòng và vòng đời, đánh giá khách và phản hồi, nguồn cấp lịch, tác vụ theo lịch |
-| `/mcp/extranet/distribution` | ~37 | Nơi kho hàng được bán: kênh bán hàng và bộ điều chỉnh giá, yêu cầu quan hệ liên kết và nhà cung cấp, đăng ký, thu thập khách hàng tiềm năng |
+| `/mcp/extranet/distribution` | ~37 | Nơi kho hàng được bán: kênh bán và bộ điều chỉnh giá, yêu cầu quan hệ liên kết và nhà cung cấp, đăng ký, thu thập khách hàng tiềm năng |
 | `/mcp/studio/curation` | ~35 | Xây dựng bộ sưu tập có thể bán: danh sách tĩnh và động, danh sách xếp hạng, tìm kiếm đã lưu, tổng hợp tài sản |
 | `/mcp/link-manager` | ~28 | Bộ sưu tập liên kết được phân phối, thiết kế, danh mục và thẻ, cùng URL rút gọn |
 | `/mcp/reference` | ~24 | Dữ liệu tra cứu chỉ đọc: quốc gia, tiền tệ và tỷ giá, ngôn ngữ, múi giờ, tra cứu địa lý, định vị IP |
 | `/mcp/analytics` | ~18 | Phân tích đặt phòng và doanh thu: tổng quan, biểu đồ đường, bảng xếp hạng, hiệu suất liên kết, chỉ số chia sẻ |
 | `/mcp/payment` | ~18 | Hoạt động tài chính: sổ cái, rút tiền và ước tính phí, tổng hợp quỹ đặt phòng |
-| `/mcp/booking-engine` | ~17 | Lộ trình mua sắm dành cho khách du lịch: tìm kiếm và tra cứu, giỏ hàng và thanh toán, danh sách mong muốn, tùy chỉnh chiến dịch |
+| `/mcp/booking-engine` | ~17 | Đường dẫn mua sắm dành cho khách du lịch: tìm kiếm và tra cứu, giỏ hàng và thanh toán, danh sách mong muốn, tùy chỉnh chiến dịch |
 | `/mcp/social` | ~17 | Tài khoản mạng xã hội kết nối, xuất bản và lên lịch bài đăng, đọc thông tin bài đăng |
-| `/mcp/travel-agent` | ~8 | Đặt phòng do đại lý thực hiện thay khách du lịch, và báo cáo đại lý |
+| `/mcp/travel-agent` | ~8 | Đặt phòng do đại lý thực hiện thay khách, và báo cáo đại lý |
 
 ### `https://integrations.wink.travel` — tích hợp quản lý kênh
 
@@ -69,27 +69,33 @@ Một điểm cuối, vì máy chủ này tồn tại cho một công việc duy
 
 | Điểm cuối | Công cụ | Phạm vi |
 |---|---:|---|
-| `/mcp/channel-manager` | ~9 | Kết nối và xác minh tích hợp quản lý kênh, PMS hoặc CRS |
+| `/mcp/channel-manager` | ~9 | Kết nối và xác thực tích hợp quản lý kênh, PMS hoặc CRS |
 
 <Aside type="note" title="Tích hợp quản lý kênh so với quản lý giá riêng">
-Đây là các công việc khác nhau cho những người khác nhau, và chúng không chia sẻ điểm cuối.
+Đây là các công việc khác nhau cho những người khác nhau, và không chia sẻ điểm cuối.
 
 Một **nhà cung cấp quản lý kênh, PMS hoặc CRS** tích hợp một lần qua `integrations.wink.travel/mcp/channel-manager`, và từ đó trao đổi tài sản, giá, tình trạng và đặt phòng qua tích hợp đó. Điểm cuối duy nhất đó là toàn bộ bề mặt.
 
-Một **chủ khách sạn thay đổi giá của họ bằng tay** sử dụng bộ công cụ extranet trên `api.wink.travel` — `/mcp/extranet/rates` và các bộ liên quan. Chúng không phải là một phần của tích hợp quản lý kênh và người tích hợp không có lý do để kết nối với chúng.
+Một **chủ khách sạn thay đổi giá của họ bằng tay** sử dụng bộ công cụ extranet trên `api.wink.travel` — `/mcp/extranet/rates` và các bộ liên quan. Chúng không phải là một phần của tích hợp quản lý kênh và người tích hợp không có lý do để kết nối tới chúng.
 
 Quản trị tài khoản cũng nằm trên `api.wink.travel`, tại `/mcp/settings`. Không có `/mcp/settings` trên máy chủ tích hợp.
 </Aside>
 
-Mỗi điểm cuối cũng có một công cụ `ping`, để bạn xác nhận kết nối còn hoạt động trước khi yêu cầu thực hiện công việc thực.
+Mỗi điểm cuối cũng có công cụ `ping`, để bạn xác nhận kết nối còn hoạt động trước khi yêu cầu thực hiện công việc thực.
+
+### Thanh toán đại lý
+
+Để có quy trình đặt phòng hoàn chỉnh cho khách du lịch, kết nối **Wink Booking Engine** tại `https://api.wink.travel/mcp/booking-engine` và một **ví thanh toán** tương thích. Thêm MCP của Wink sẽ mở đăng nhập trình duyệt và chọn quyền; khách hàng của bạn sau đó xử lý xác thực.
+
+Booking Engine bao gồm tra cứu điểm đến, tìm kiếm khách sạn và phòng, `agentic_booking_quote`, `agentic_booking_pay`, `agentic_booking_book`, truy xuất đặt phòng và biên lai, khi đặt phòng và thanh toán đại lý được bật cho môi trường đó. Xem [Thanh toán đại lý](/vi/developers/agentic-payments/) để biết thiết lập kết nối, quyền chọn và các bước từ tìm kiếm đến xác nhận.
 
 ---
 
-## Tôi cần bộ công cụ nào?
+## Tôi cần những bộ công cụ nào?
 
 | Nếu bạn là… | Kết nối tới |
 |---|---|
-| **Tích hợp quản lý kênh, PMS hoặc CRS** | `integrations.wink.travel/mcp/channel-manager` — chỉ điểm này |
+| **Tích hợp quản lý kênh, PMS hoặc CRS** | `integrations.wink.travel/mcp/channel-manager` — chỉ bộ này |
 | **Quản lý nội dung tài sản** | `/mcp/extranet/property` + `/mcp/extranet/facilities` |
 | **Quản lý phòng và loại phòng** | `/mcp/extranet/facilities` |
 | **Quản lý giá và tình trạng** | `/mcp/extranet/rates` |
@@ -99,12 +105,19 @@ Mỗi điểm cuối cũng có một công cụ `ping`, để bạn xác nhận 
 | **Vận hành trang link-in-bio** | `/mcp/link-manager` + `/mcp/social` |
 | **Đặt phòng thay khách du lịch** | `/mcp/travel-agent` |
 | **Đối soát tiền** | `/mcp/payment` |
-| **Xây dựng trải nghiệm đặt phòng** | `/mcp/booking-engine` + `/mcp/reference` |
+| **Đặt phòng với đại lý AI** | `/mcp/booking-engine` + ví thanh toán tương thích — xem [Thanh toán đại lý](/vi/developers/agentic-payments/) |
+| **Xây dựng trải nghiệm đặt phòng** | `/mcp/booking-engine`; tùy chọn thêm `/mcp/reference` cho tra cứu bổ sung |
+
+**Booking Engine bao gồm quy trình đặt phòng cốt lõi.** Nó cung cấp khám phá tài khoản và tùy chỉnh, tra cứu điểm đến, chi tiết tình trạng khách sạn và giá phòng, giỏ hàng, thanh toán và quản lý đặt phòng khách du lịch. Công cụ đặt phòng và thanh toán đại lý cũng được bao gồm khi bật cho môi trường đó.
+
+Để tìm kiếm khách sạn theo thành phố, dùng `destination_lookup_search_suggestions` để xác định điểm đến, rồi `inventory_search_city` để tìm khách sạn và giá có sẵn. Cả hai công cụ đều trong `/mcp/booking-engine`, nên quy trình này không cần kết nối Reference.
+
+Thêm `/mcp/reference` khi bạn cần tra cứu hỗ trợ như quốc gia, tiền tệ và tỷ giá, ngôn ngữ hỗ trợ, múi giờ, tìm kiếm địa lý rộng hơn, phân loại OTA, hoặc kiến thức công khai về tài sản. Đây là các bổ sung tùy chọn cho quy trình đặt phòng.
 
 Bắt đầu với một bộ. Thêm bộ khác khi bạn thấy mình cần thứ mà bộ đó không làm được — mỗi kết nối độc lập, và thêm một bộ không ảnh hưởng đến các bộ khác.
 
 <Aside type="tip" title="Vẫn muốn tất cả?">
-`https://api.wink.travel/mcp` và `https://integrations.wink.travel/mcp` vẫn có sẵn và phục vụ **mọi** công cụ trên máy chủ của họ. Chúng hữu ích để khám phá những gì tồn tại, nhưng chúng tôi không khuyến nghị dùng cho công việc hàng ngày: danh sách công cụ quá lớn sẽ làm lấn át nhiệm vụ của bạn và giảm chất lượng lựa chọn công cụ của đại lý. Ưu tiên các bộ công cụ ở trên.
+`https://api.wink.travel/mcp` và `https://integrations.wink.travel/mcp` vẫn có sẵn và phục vụ **mọi** công cụ trên máy chủ của họ. Chúng hữu ích để khám phá những gì tồn tại, nhưng không khuyến nghị dùng cho công việc hàng ngày: danh sách công cụ quá lớn sẽ làm lấn át nhiệm vụ của bạn và giảm chất lượng lựa chọn công cụ của đại lý. Ưu tiên các bộ công cụ ở trên.
 </Aside>
 
 ---
@@ -115,9 +128,9 @@ Máy chủ MCP của Wink sử dụng luồng **OAuth2 Authorization Code + PKCE
 
 1. Khách hàng AI của bạn phát hiện máy chủ ủy quyền từ siêu dữ liệu `/.well-known/oauth-protected-resource` của điểm cuối MCP.
 2. Khách hàng tự đăng ký qua **Đăng ký Khách hàng Động** — không cần thiết lập ứng dụng thủ công.
-3. Khách hàng mở một **tab trình duyệt** tới `https://iam.wink.travel`. Bạn đăng nhập bằng tài khoản Wink và phê duyệt quyền được yêu cầu trên màn hình đồng ý.
-4. Wink cấp một **token truy cập** được giới hạn cho tài khoản của bạn và liên kết với danh tính của bạn.
-5. Khách hàng AI đính kèm token vào mọi yêu cầu MCP. Tất cả kết quả công cụ tự động giới hạn theo thực thể quản lý của bạn.
+3. Khách hàng mở một **tab trình duyệt** tới `https://iam.wink.travel`. Bạn đăng nhập bằng tài khoản Wink và chấp thuận quyền được yêu cầu trên màn hình đồng ý.
+4. Wink cấp một **token truy cập** được phạm vi hóa cho tài khoản của bạn và liên kết với danh tính của bạn.
+5. Khách hàng AI đính kèm token vào mọi yêu cầu MCP. Tất cả kết quả công cụ tự động được phạm vi hóa theo thực thể quản lý của bạn.
 6. Token hết hạn sau 3 giờ. Khách hàng AI của bạn làm mới token một cách im lặng trong nền mà không yêu cầu lại.
 
 Mỗi cuộc gọi công cụ chạy **dưới danh tính của bạn** — các quy tắc ACL bảo vệ cổng web cũng áp dụng cho đại lý AI.
@@ -142,7 +155,7 @@ Mỗi cuộc gọi công cụ chạy **dưới danh tính của bạn** — các
 
 3. Claude Code liên hệ máy chủ, phát hiện máy chủ ủy quyền, và mở trình duyệt mặc định của bạn.
 
-4. **Đăng nhập vào Wink** và phê duyệt yêu cầu quyền trên màn hình đồng ý.
+4. **Đăng nhập vào Wink** và chấp thuận yêu cầu quyền trên màn hình đồng ý.
 
 5. Claude Code xác nhận kết nối. Gõ `/mcp` để kiểm tra máy chủ xuất hiện và công cụ đã tải.
 </Steps>
@@ -153,10 +166,10 @@ claude mcp add wink-operations https://api.wink.travel/mcp/extranet/operations -
 claude mcp add wink-analytics  https://api.wink.travel/mcp/analytics           --transport http
 ```
 
-Bạn chỉ đăng nhập một lần. Sau lần phê duyệt trình duyệt đầu tiên, Claude Code tái sử dụng phiên Wink của bạn cho các điểm cuối Wink khác.
+Bạn chỉ đăng nhập một lần. Sau lần chấp thuận trình duyệt đầu tiên, Claude Code tái sử dụng phiên Wink của bạn cho các điểm cuối Wink khác.
 
 :::tip[Chia sẻ với nhóm]
-Thêm `--scope project` vào `claude mcp add` và Claude Code ghi URL máy chủ vào `.mcp.json` ở thư mục gốc repo. Commit file đó — mọi thành viên trong nhóm có cùng bộ công cụ, và mỗi người hoàn thành đăng nhập trình duyệt riêng lần đầu kết nối.
+Thêm `--scope project` vào `claude mcp add` và Claude Code ghi URL máy chủ vào `.mcp.json` ở thư mục gốc repo. Commit file đó — mọi thành viên nhóm đều có cùng bộ công cụ, và mỗi người hoàn thành đăng nhập trình duyệt riêng lần đầu kết nối.
 :::
 
   </TabItem>
@@ -187,7 +200,7 @@ Thêm `--scope project` vào `claude mcp add` và Claude Code ghi URL máy chủ
 
 3. **Thoát hoàn toàn và khởi động lại** Claude Desktop (dùng Quit từ thanh menu — đóng cửa sổ không đủ).
 
-4. Claude Desktop mở tab trình duyệt cho mỗi máy chủ mới. Đăng nhập vào Wink và phê duyệt quyền.
+4. Claude Desktop mở tab trình duyệt cho mỗi máy chủ mới. Đăng nhập vào Wink và chấp thuận quyền.
 
 5. Biểu tượng phích cắm trên thanh công cụ dưới cùng hiển thị cả hai máy chủ đã kết nối.
 </Steps>
@@ -224,9 +237,9 @@ Thêm `--scope project` vào `claude mcp add` và Claude Code ghi URL máy chủ
 
 4. Khởi động Codex. Lần đầu sử dụng, Codex mở tab trình duyệt tới `https://iam.wink.travel`.
 
-5. **Đăng nhập vào Wink** và phê duyệt quyền được yêu cầu.
+5. **Đăng nhập vào Wink** và chấp thuận quyền được yêu cầu.
 
-6. Codex xác nhận kết nối. Chạy `codex` và yêu cầu liệt kê công cụ có sẵn để xác nhận máy chủ Wink hoạt động.
+6. Codex xác nhận kết nối. Chạy `codex` và yêu cầu liệt kê công cụ có sẵn để kiểm tra máy chủ Wink hoạt động.
 </Steps>
 
 :::note
@@ -236,12 +249,12 @@ Hỗ trợ MCP của Codex CLI yêu cầu phiên bản **1.0** trở lên. Chạ
   </TabItem>
   <TabItem label="ChatGPT">
 
-Hỗ trợ máy chủ MCP có trong **ứng dụng ChatGPT desktop** cho người đăng ký Plus, Pro, Team và Enterprise.
+Hỗ trợ máy chủ MCP có trong **ứng dụng ChatGPT desktop** cho người dùng Plus, Pro, Team và Enterprise.
 
 <Steps>
 1. Tải và cài đặt [ứng dụng ChatGPT desktop](https://openai.com/chatgpt/download/) nếu bạn chưa có.
 
-2. Mở ứng dụng và nhấp vào **biểu tượng hồ sơ của bạn** ở góc trên bên phải, sau đó chọn **Cài đặt**.
+2. Mở ứng dụng và nhấp vào **biểu tượng hồ sơ của bạn** ở góc trên bên phải, rồi chọn **Cài đặt**.
 
 3. Vào **Kết nối** (hoặc **Máy chủ MCP** tùy phiên bản ứng dụng) và nhấp **Thêm**.
 
@@ -251,7 +264,7 @@ Hỗ trợ máy chủ MCP có trong **ứng dụng ChatGPT desktop** cho ngườ
    ```
    Rồi nhấp **Kết nối**.
 
-5. ChatGPT mở tab trình duyệt tới `https://iam.wink.travel`. **Đăng nhập vào Wink** và phê duyệt quyền.
+5. ChatGPT mở tab trình duyệt tới `https://iam.wink.travel`. **Đăng nhập vào Wink** và chấp thuận quyền.
 
 6. Lặp lại bước 4–5 cho các bộ công cụ khác bạn cần, ví dụ:
    ```
@@ -292,13 +305,13 @@ Máy chủ MCP chỉ cấu hình được trong **ứng dụng desktop**. Giao d
 
 3. Mở Cursor. Vào **Cài đặt → Cài đặt Cursor → MCP** và xác nhận cả hai máy chủ hiển thị với chỉ báo trạng thái màu xanh. Nếu đỏ, nhấp **Làm mới**.
 
-4. Cursor mở tab trình duyệt tới `https://iam.wink.travel`. **Đăng nhập vào Wink** và phê duyệt quyền.
+4. Cursor mở tab trình duyệt tới `https://iam.wink.travel`. **Đăng nhập vào Wink** và chấp thuận quyền.
 
 5. Mở cuộc trò chuyện (`Ctrl+L` / `Cmd+L`) và yêu cầu Cursor liệt kê công cụ Wink có sẵn để xác nhận kết nối.
 </Steps>
 
 :::tip[Cấu hình theo dự án]
-Bạn cũng có thể đặt file `mcp.json` ở thư mục gốc dự án thay vì trong `~/.cursor/`. Cấu hình cấp dự án ưu tiên và làm cho máy chủ có sẵn cho mọi thành viên mở dự án trong Cursor.
+Bạn cũng có thể đặt file `mcp.json` ở thư mục gốc dự án thay vì trong `~/.cursor/`. Cấu hình cấp dự án ưu tiên và làm cho máy chủ có sẵn với mọi thành viên mở dự án trong Cursor.
 :::
 
   </TabItem>
@@ -328,9 +341,9 @@ Bạn cũng có thể đặt file `mcp.json` ở thư mục gốc dự án thay 
 
 3. **Khởi động lại hoàn toàn Windsurf** (File → Quit, rồi mở lại).
 
-4. Vào **Cài đặt → Máy chủ MCP** và xác nhận cả hai máy chủ hiển thị là đã kết nối. Windsurf mở tab trình duyệt tới `https://iam.wink.travel` lần đầu sử dụng.
+4. Vào **Cài đặt → Máy chủ MCP** và xác nhận cả hai máy chủ hiển thị đã kết nối. Windsurf mở tab trình duyệt tới `https://iam.wink.travel` lần đầu sử dụng.
 
-5. **Đăng nhập vào Wink** và phê duyệt quyền. Máy chủ chuyển sang màu xanh trong bảng cài đặt khi xác thực thành công.
+5. **Đăng nhập vào Wink** và chấp thuận quyền. Máy chủ chuyển sang màu xanh trong bảng cài đặt khi xác thực thành công.
 </Steps>
 
 :::note
@@ -347,7 +360,7 @@ Cline là tiện ích mở rộng VS Code với trình quản lý máy chủ MCP
    - Mở VS Code và nhấn `Ctrl+Shift+X` / `Cmd+Shift+X`
    - Tìm **Cline** và nhấp **Cài đặt**
 
-2. Nhấp biểu tượng **Cline** trên Thanh hoạt động (thanh bên trái) để mở bảng Cline.
+2. Nhấp biểu tượng **Cline** trên Thanh Hoạt động (thanh bên trái) để mở bảng Cline.
 
 3. Nhấp biểu tượng **Máy chủ MCP** (biểu tượng phích cắm) trên thanh công cụ Cline, rồi chọn **Chỉnh sửa Cài đặt MCP**.
 
@@ -370,11 +383,11 @@ Cline là tiện ích mở rộng VS Code với trình quản lý máy chủ MCP
 
 5. **Lưu file.** Cline tự động tải lại và mở tab trình duyệt tới `https://iam.wink.travel`.
 
-6. **Đăng nhập vào Wink** và phê duyệt quyền. Cả hai máy chủ hiển thị hoạt động trong bảng Máy chủ MCP.
+6. **Đăng nhập vào Wink** và chấp thuận quyền. Cả hai máy chủ hiển thị hoạt động trong bảng Máy chủ MCP.
 </Steps>
 
 :::tip[Thay thế: thêm qua URL]
-Trong bảng Máy chủ MCP, nhấp **Thêm máy chủ** và dán URL bộ công cụ như `https://api.wink.travel/mcp/extranet/rates` trực tiếp. Cline tự động điền cấu hình và xử lý xác thực mà không cần chỉnh sửa JSON thủ công.
+Trong bảng Máy chủ MCP, nhấp **Thêm Máy chủ** và dán URL bộ công cụ như `https://api.wink.travel/mcp/extranet/rates` trực tiếp. Cline tự động điền cấu hình và xử lý xác thực mà không cần chỉnh sửa JSON thủ công.
 :::
 
   </TabItem>
@@ -384,15 +397,15 @@ Trong bảng Máy chủ MCP, nhấp **Thêm máy chủ** và dán URL bộ công
 
 ## Phạm vi
 
-Khi bạn phê duyệt màn hình đồng ý, bạn sẽ thấy phân tích những gì đại lý yêu cầu. Khách hàng MCP sử dụng cùng từ vựng quyền như phần còn lại của nền tảng — xem đầy đủ
+Khi bạn chấp thuận màn hình đồng ý, bạn sẽ thấy phân tích những gì đại lý yêu cầu. Khách hàng MCP sử dụng cùng từ vựng quyền như phần còn lại của nền tảng — xem đầy đủ
 [tham chiếu phạm vi trên trang Xác thực](/vi/developers/authentication#scopes).
 
 Hai điểm đặc thù của MCP:
 
-- **Phạm vi `mcp.read` `mcp.write` `mcp.remove` cũng được yêu cầu** để mở giao thức MCP. Khách hàng có phạm vi `mcp.*` được phép truy cập bất kỳ điểm cuối MCP Wink nào, nhưng mỗi công cụ nó gọi vẫn thực thi phạm vi phần của điểm cuối mà nó bao bọc (ví dụ `booking.read`).
+- **Phạm vi `mcp.read` `mcp.write` `mcp.remove` cũng được yêu cầu** để mở giao thức MCP. Khách hàng có phạm vi `mcp.*` được phép truy cập bất kỳ điểm cuối MCP Wink nào, nhưng mỗi công cụ nó gọi vẫn thực thi phạm vi phần của điểm cuối đó (ví dụ `booking.read`).
 - **Khách hàng AI chỉ yêu cầu phạm vi cần thiết.** Bạn có thể từ chối từng quyền trên màn hình đồng ý — công cụ yêu cầu phạm vi bị từ chối sẽ trả lỗi khi gọi.
 
-**Bộ công cụ không thay đổi điều này.** Điểm cuối bạn kết nối quyết định công cụ nào *được liệt kê*, không phải công cụ được *cho phép làm gì*. Kết nối tới `/mcp/payment` không cấp thêm quyền tài chính bạn chưa có, và kết nối tới `/mcp/reference` không ngăn công cụ ở đó thực thi phạm vi riêng. Ủy quyền được quyết định theo từng cuộc gọi công cụ, dựa trên token và quyền tài khoản của bạn.
+**Bộ công cụ không thay đổi điều này.** Điểm cuối bạn kết nối quyết định công cụ nào *được liệt kê*, không phải công cụ nào *được phép làm*. Kết nối tới `/mcp/payment` không cấp quyền tài chính bạn chưa có, và kết nối tới `/mcp/reference` không ngăn công cụ đó thực thi phạm vi riêng. Ủy quyền được quyết định theo từng cuộc gọi công cụ, dựa trên token và quyền tài khoản của bạn.
 
 ---
 
@@ -407,7 +420,7 @@ Khách hàng AI của bạn có thể chưa hỗ trợ luồng PKCE tương tác
 
 **`401 Unauthorized` sau khi đăng nhập**
 
-Token lưu cache có thể đã hết hạn. Xóa và thêm lại máy chủ để kích hoạt đăng nhập mới:
+Token lưu trong bộ nhớ có thể đã hết hạn. Xóa và thêm lại máy chủ để kích hoạt đăng nhập mới:
 
 ```bash
 # Claude Code
@@ -419,15 +432,15 @@ Với Claude Desktop và ChatGPT, xóa mục máy chủ trong cài đặt, khở
 
 **`403 Forbidden` khi gọi công cụ cụ thể**
 
-Công cụ yêu cầu phạm vi bạn không phê duyệt trên màn hình đồng ý, hoặc quyền tài khoản bạn không có. Kết nối lại máy chủ — màn hình đồng ý sẽ hiện lại và bạn có thể phê duyệt quyền thiếu. Nếu vẫn lỗi, công cụ cần quyền tài khoản bạn không có; kết nối bộ công cụ khác không giúp được vì bộ công cụ không cấp quyền.
+Công cụ yêu cầu phạm vi bạn không chấp thuận trên màn hình đồng ý, hoặc quyền tài khoản bạn không có. Kết nối lại máy chủ — màn hình đồng ý sẽ xuất hiện lại và bạn có thể chấp thuận quyền thiếu. Nếu vẫn lỗi, công cụ cần quyền tài khoản bạn không có; kết nối bộ công cụ khác không giúp được vì bộ công cụ không cấp quyền.
 
 **Công cụ tôi cần không có trong danh sách**
 
-Bạn có thể đang kết nối bộ công cụ không bao phủ công việc đó. Kiểm tra [thư mục điểm cuối](#endpoint-directory) và thêm bộ công cụ phù hợp — các kết nối độc lập, thêm bộ không ảnh hưởng bộ khác. Nếu không chắc bộ nào có, tạm kết nối `https://api.wink.travel/mcp`, tìm công cụ, rồi tra cứu bộ công cụ liệt kê nó.
+Bạn có thể đang kết nối bộ công cụ không bao phủ công việc đó. Kiểm tra [thư mục điểm cuối](#endpoint-directory) và thêm bộ công cụ phù hợp — các kết nối độc lập, thêm bộ không ảnh hưởng bộ khác. Nếu không chắc bộ nào có, tạm kết nối `https://api.wink.travel/mcp`, tìm công cụ, rồi tra xem bộ công cụ nào liệt kê nó.
 
 **`404 Not Found` trên điểm cuối bộ công cụ**
 
-Kiểm tra kỹ đường dẫn — các bộ công cụ lồng có hai đoạn (`/mcp/extranet/rates`, không phải `/mcp/extranet-rates`), các bộ phẳng có một đoạn (`/mcp/link-manager`). Lưu ý yêu cầu *chưa xác thực* tới bất kỳ đường dẫn nào dưới `/mcp` trả `401`, không phải `404`, nên chỉ `401` không cho biết điểm cuối có tồn tại hay không.
+Kiểm tra kỹ đường dẫn — các bộ công cụ lồng nhau có hai đoạn (`/mcp/extranet/rates`, không phải `/mcp/extranet-rates`), các bộ phẳng có một đoạn (`/mcp/link-manager`). Lưu ý yêu cầu *chưa xác thực* tới bất kỳ đường dẫn nào dưới `/mcp` trả `401`, không phải `404`, nên chỉ có `401` không cho biết điểm cuối có tồn tại hay không.
 
 **Tôi kết nối `api.wink.travel/mcp/channel-manager` mà không có gì**
 
@@ -439,7 +452,7 @@ Bạn đăng nhập tài khoản Wink không có thực thể quản lý. Vào [
 
 **Token hết hạn giữa phiên**
 
-Token có hiệu lực 3 giờ. Claude Code và Claude Desktop làm mới token im lặng mà không gián đoạn phiên. Nếu thấy lỗi xác thực sau thời gian không hoạt động dài, gõ tin nhắn mới — khách hàng sẽ tự động xác thực lại.
+Token có hiệu lực 3 giờ. Claude Code và Claude Desktop làm mới token im lặng mà không gián đoạn phiên. Nếu thấy lỗi xác thực sau thời gian dài không hoạt động, gõ tin nhắn mới — khách hàng sẽ tự xác thực lại.
 
 **Codex CLI báo "MCP server unreachable"**
 
@@ -459,7 +472,7 @@ Windsurf yêu cầu khởi động lại hoàn toàn (không chỉ tải lại c
 
 **Tùy chọn "Add Server" của Cline không thấy**
 
-Trình quản lý máy chủ MCP yêu cầu Cline **2.0** trở lên. Mở bảng Tiện ích mở rộng VS Code, tìm Cline, và nhấp **Cập nhật** nếu có. Sau khi cập nhật, tải lại VS Code (`Ctrl+Shift+P` → "Developer: Reload Window").
+Trình quản lý máy chủ MCP yêu cầu Cline **2.0** trở lên. Mở bảng Tiện ích mở rộng VS Code, tìm Cline và nhấp **Cập nhật** nếu có. Sau khi cập nhật, tải lại VS Code (`Ctrl+Shift+P` → "Developer: Reload Window").
 
 ---
 

@@ -1,0 +1,181 @@
+---
+title: Agentic Fizetések
+description: Csatlakoztassa AI ügynökét a Winkhez, jelentkezzen be, keressen szállodát, és hagyja jóvá a fizetést a foglalás befejezéséhez.
+sidebar:
+  order: 10.5
+---
+
+AI ügynökén keresztül kereshet szállodát, választhat szobát, és befejezheti foglalását. Csatlakoztassa a Winkhez és egy fizetési tárcához, majd mondja meg neki, hol szeretne megszállni. A Wink a **Machine Payments Protocol (MPP)** segítségével fogadja el a tárca fizetését, és visszaküldi a foglalás visszaigazolását.
+
+## 1. Csatlakoztassa az MCP szervereket
+
+A teljes foglalási folyamathoz az ügynökének szüksége van a **Wink Booking Engine**-re és egy **fizetési tárcára**.
+
+| Kapcsolat | Mit csinál | Hogyan adható hozzá |
+| --- | --- | --- |
+| **Wink Booking Engine** — kötelező | Úti célokat keres, szállodákat és szobadíjakat keres, árajánlatot ad és megerősíti a foglalásokat, valamint lekéri a foglalásokat és a számlákat. | Adja hozzá a `https://api.wink.travel/mcp/booking-engine` távoli HTTP MCP szerverként. |
+| **Fizetési tárca** — fizetéshez kötelező | Fizetési hitelesítő adatokat biztosít a vásárlás jóváhagyása után. | Csatlakoztasson egy tárcát, amely támogatja a Stripe Shared Payment Tokeneket vagy a Tempo fizetéseket. Lásd az alábbi Link példát. |
+| Wink Referencia — opcionális | Országokat, valutákat és egyéb referenciaadatokat keres. | `https://api.wink.travel/mcp/reference` |
+| Wink Dokumentáció — opcionális | Segíti az ügynököt a dokumentáció és API szerződések olvasásában. | `https://docs.mcp.wink.travel/mcp` |
+
+A Booking Engine MCP már tartalmazza az utazói foglalási folyamathoz szükséges eszközöket, amikor az agentic foglalás és fizetés engedélyezve van az adott környezetben. A Wink különálló Payment MCP-je pénzügyi műveletekhez, például főkönyvekhez és kifizetésekhez használatos; szobafizetéshez nincs rá szükség.
+
+### Jelentkezzen be és válassza ki az engedélyeket
+
+1. Nyissa meg az ügynök MCP vagy csatlakozó beállításait, és adja hozzá a fenti Booking Engine URL-t. Adjon neki nevet, például **Wink Booking**.
+2. Az ügynök megnyitja a Wink bejelentkezési oldalát a böngészőben. Jelentkezzen be a foglaláshoz használni kívánt Wink fiókkal.
+3. Az engedélyezési képernyőn válassza ki az ügynök által igényelt engedélyeket, majd hagyja jóvá a kapcsolatot.
+4. Térjen vissza az ügynökhöz. Betölti a rendelkezésre álló eszközöket, és kezeli az autentikációt a további MCP hívásokhoz.
+
+Ehhez a folyamathoz válassza ki:
+
+| Engedély | Miért szükséges |
+| --- | --- |
+| AI ügynök hozzáférés (`mcp.read`) | Lehetővé teszi az ügynök számára a Wink MCP-hez való csatlakozást. |
+| Marketing olvasás (`marketing.read`) | Lehetővé teszi az ügynök számára, hogy megtalálja a fiók foglalási konfigurációját, azaz a testreszabást. A fióknak is hozzáféréssel kell rendelkeznie ehhez a konfigurációhoz. |
+| Fizetés írás (`payment.write`) | Lehetővé teszi az ügynök számára, hogy kifizessen egy árajánlatot és megerősítse a foglalást. |
+
+Tartsa meg a bejelentkezéskor kért engedélyeket. Az MCP kliens kezeli a hozzáférési tokeneket; nem kell tokeneket másolnia a csevegésbe vagy kérés fejlécbe állítania. Ha kihagyott egy szükséges engedélyt, csatlakozzon újra a kliens bejelentkezési folyamatán keresztül, és hagyja jóvá.
+
+### Csatlakoztasson egy fizetési tárcát
+
+Stripe fizetésekhez az egyik lehetőség a **Link ügynöki tárcája**. Ha az ügyfele támogatja a helyi MCP szervereket és telepítve van a Node.js, adja hozzá ezt a bejegyzést az MCP konfigurációjához:
+
+```json
+{
+  "mcpServers": {
+    "link": {
+      "command": "npx",
+      "args": ["@stripe/link-cli", "--mcp"]
+    }
+  }
+}
+```
+
+Kérje meg az ügynököt, hogy csatlakoztassa Link fiókját, majd kövesse az általa adott ellenőrző linket, és hagyja jóvá a kapcsolatot. A Link biztosítja a Shared Payment Tokent, amelyet a foglalás kifizetéséhez használnak. A Link jelenleg csak amerikai fiókokat támogat; ellenőrizze a költési korlátokat foglalás előtt. Lásd a [Link beállítási útmutatóját](https://github.com/stripe/link-cli#quickstart) és az [MCP konfigurációt](https://github.com/stripe/link-cli#mcp-server).
+
+Használhat olyan tárcát is, amely támogatja a Wink által kínált Tempo fizetési kihívást. Ha az ügynök már rendelkezik kompatibilis tárcával, használja azt a kapcsolatot. A tárca beállítása és a fizetés jóváhagyása külön történik a Winkbe való bejelentkezéstől.
+
+## 2. Kérje meg az ügynököt, hogy találjon szobát
+
+Például:
+
+> Keress egy szobát Bangkokban két felnőttnek 2027. január 15-től 17-ig. Mutasd meg a rendelkezésre álló lehetőségeket, az összárat és a lemondási feltételeket, mielőtt választanék.
+
+Az ügynök megtalálhatja az Ön által elérhető Wink fiókokat és azok foglalási konfigurációit. Ha több is van, mondja meg neki, melyiket használja. Ha egy adott foglalási link vagy konfiguráció alapján foglal, adja azt meg az ügynöknek.
+
+Az ügynök ezután feloldja az úti célt, ellenőrzi a rendelkezésre álló szállodákat, és betölti a szobadíjakat az Ön dátumaira. Válasszon szobát, és kérjen árajánlatot.
+
+Ez a fizetési folyamat jelenleg **egy szobát, USD-ben árazva, csak felnőtteknek** támogat. Az árajánlatnak van lejárati ideje. Az árajánlat kérése nem von maga után díjat, és nem erősíti meg a foglalást.
+
+## 3. Ellenőrizze és hagyja jóvá a fizetést
+
+Ellenőrizze a szállodát, szobát, dátumokat, vendégeket, lemondási feltételeket és az árajánlat összegét. Ha készen áll, kérje meg az ügynököt a foglalásra, és fejezze be a tárca által kért jóváhagyást.
+
+Az ügynök az árajánlat által kínált fizetési módok egyikét használja:
+
+- **Stripe:** a tárca biztosítja a Shared Payment Tokent.
+- **Tempo:** a tárca végrehajtja a kihívásban megadott átutalást, és megadja a tranzakció hash-ét.
+
+A fizetés sikeres teljesítése után az ügynök megadja a **foglalás visszaigazolási kódját**. A foglalás részleteit és a számlát is lekérheti a Booking Engine MCP-n keresztül.
+
+Ha a fizetés még feldolgozás alatt áll vagy a válasz elveszett, hagyja, hogy az ügynök ellenőrizze ugyanazt a fizetési kísérletet. Újra fel kell használnia az árajánlatot és a fizetési hitelesítőt, ahelyett, hogy új fizetést indítana. Ha a fizetés elutasításra kerül, kérjen új árajánlatot, és ellenőrizze azt, mielőtt újra próbálkozna.
+
+## Eszközreferencia ügynököknek és fejlesztőknek
+
+Az alábbi összes Wink eszköz elérhető a **Booking Engine MCP**-n keresztül. Az MCP kliens automatikusan küldi az autentikációt a bejelentkezéskor jóváhagyott engedélyek alapján.
+
+| Lépés | Eszközök és viselkedés |
+| --- | --- |
+| Foglalási kontextus kiválasztása | `managing_entity_list`, majd `customization_get_primary` vagy `customization_search` a kiválasztott fiókhoz. Használjon adott testreszabást, ha az már ismert. |
+| Úti cél keresése | `destination_lookup_search_suggestions` és `destination_lookup_get`. |
+| Szállodák és szobák keresése | `inventory_search_city` vagy `inventory_search_geo`, majd `property_inventory_get` az árak és elérhetőség lekéréséhez. |
+| Kiválasztott szoba árajánlata | `agentic_booking_quote`. Adja át a szoba adatait a `request` argumentumban. |
+| Fizetés és megerősítés | Szerezzen hitelesítőt a csatlakoztatott tárcától, majd hívja az `agentic_booking_pay`-t a `request.quoteId`-vel és pontosan az egyik `request.spt` vagy `request.tempoTransactionHash` értékkel. Tartsa ugyanazt a bejelentkezett Wink felhasználót az árajánlat és a fizetés során. |
+| Foglalás és számla lekérése | Használja a `booking_search` vagy `booking_search_list`-et a megerősített foglalás megtalálásához, majd a `booking_get` és `booking_receipt_get`-et a foglalás azonosítójával. |
+
+Az árajánlat kéréshez szükséges: `hotelIdentifier`, `roomRateIdentifier`, `checkIn`, `checkOut`, `adults`, `children` és `customizationIdentifier`. A dátumok formátuma `YYYY-MM-DD`; a `checkOut`-nak a `checkIn` után kell lennie. Az `adults` értéke legalább `1`, a `children` pedig `0` legyen.
+
+Az árajánlat visszaadja a `quoteId`, `amountUsdCents`, `currency`, `expiresAt` és `mppChallenges` értékeket. Az USD centeket dollárként jelenítse meg: `10000` jelentése **100,00 $**. Tempo esetén használja a kiválasztott kihívás tokenjét, láncát, címzettjét és az összeget token alapegységekben.
+
+| Fizetés eredménye | Következő lépés |
+| --- | --- |
+| `PAYMENT_SUCCEEDED` | Mentse el a `bookingConfirmationCode`-ot és a `chargeReference`-t. |
+| `IN_PROGRESS` | Várjon rövid ideig, majd próbálja újra ugyanazt az árajánlatot és hitelesítőt. |
+| `DECLINED` | Kérjen új árajánlatot, és ellenőrizze azt, mielőtt újra fizetne. |
+
+A sikeres újrapróbálkozás a meglévő foglalást adja vissza további díj felszámolása nélkül. Az időtúllépést ismeretlen eredményként kezelje, és próbálja újra ugyanazt a fizetést. Ha továbbra sem oldódik meg, vegye fel a kapcsolatot a támogatással az árajánlat azonosítójával.
+
+### Fizetés-tudatos MCP kliensek
+
+A fizetés-tudatos MCP kliensek használhatják az `agentic_booking_book` hívást a szobamezőkkel közvetlenül az `arguments`-ban. Az első hívás `-32042` hibát ad fizetési kihívásokkal. Próbálja újra ugyanazt a hívást a tárca hitelesítőjével a `params._meta["org.paymentauth/credential"]` mezőben; siker esetén a válasz tartalmazza a `result._meta["org.paymentauth/receipt"]`-t. A `-32043` hiba fizetési hibát és kihívást tartalmaz: a végleges elutasításhoz új árajánlat szükséges, míg a hiányos fizetési adatok esetén újrapróbálkozás lehetséges ugyanazzal a kihívással. A `-32603` esetén a `data.failure.reason` értéke `payment-in-progress` vagy `already-consumed` azt jelenti, hogy ugyanazzal a hitelesítővel próbálkozzon újra; maga a hibakód nem elég.
+
+## Foglalás REST-en keresztül
+
+REST-et használjon, ha olyan integrációt épít, amely közvetlenül HTTP-n keresztül hívja a Winket. Az árajánlat és a fizetés is a **`POST https://api.wink.travel/api/mpp/booking`** végponton történik.
+
+Az alkalmazásának szüksége van egy [Wink felhasználói hozzáférési tokenre](/hu/developers/authentication/) `payment.write` engedéllyel a fizetéshez. Mindkét híváshoz ugyanazt a felhasználót használja. Küldje el a tokent a `Wink-Authorization` fejlécben, az `Authorization` fejlécet pedig tartsa szabadon a tárca fizetési hitelesítő adatának. Ezek a fejlécek a REST-re vonatkoznak; az MCP kliens saját autentikációt kezel.
+
+### 1. Kérjen árajánlatot
+
+Mentse el a kiválasztott szobát `booking.json` néven, az alábbi példaazonosítókat és dátumokat cserélve a saját választására. A szobamezők közvetlenül a JSON törzsben legyenek, `request` csomagolás nélkül.
+
+```json
+{
+  "hotelIdentifier": "YOUR_HOTEL_ID",
+  "roomRateIdentifier": "YOUR_ROOM_RATE_ID",
+  "checkIn": "2027-01-15",
+  "checkOut": "2027-01-17",
+  "adults": 2,
+  "children": 0,
+  "customizationIdentifier": "YOUR_CUSTOMIZATION_ID"
+}
+```
+
+Állítsa be a `WINK_ACCESS_TOKEN`-t a felhasználó hozzáférési tokenjére, és küldje el a kérést:
+
+```bash
+curl -i https://api.wink.travel/api/mpp/booking \
+  -H "Wink-Authorization: Bearer $WINK_ACCESS_TOKEN" \
+  -H 'Content-Type: application/json' \
+  --data-binary @booking.json
+```
+
+A Wink **`402 Payment Required`** választ ad egy `WWW-Authenticate: Payment ...` kihívással minden kínált fizetési módszerhez. A JSON törzs tartalmazza a `quoteId`, `amount`, `currency`, `expiresAt` és `methods` mezőket. Itt az `amount` egy USD centben megadott string: `"10000"` jelentése **100,00 $**. Ellenőrizze az árajánlatot a lejárat előtt; még nem történt fizetés.
+
+### 2. Fizessen és erősítse meg
+
+A tárcának teljesítenie kell az egyik visszakapott kihívást. Stripe esetén `payload.spt`-t, Tempo esetén `payload.hash`-t ad, ahol `payload.type` `"hash"` értékű. Használja a fizetési adatokat abból a kihívásból.
+
+Állítsa be a `MPP_CREDENTIAL`-t a tárca kódolt MPP hitelesítő adatára, amely tartalmazza a kihívást és a fizetési adatokat. Próbálja újra a **ugyanazt a kérés törzset**, megtartva az azonosító fejlécet:
+
+```bash
+curl -i https://api.wink.travel/api/mpp/booking \
+  -H "Wink-Authorization: Bearer $WINK_ACCESS_TOKEN" \
+  -H "Authorization: Payment $MPP_CREDENTIAL" \
+  -H 'Content-Type: application/json' \
+  --data-binary @booking.json
+```
+
+Siker esetén a Wink **`200 OK`** választ ad, JSON törzsben a `bookingConfirmationCode`-dal, és egy `Payment-Receipt` fejlécet. Mentse el a visszaigazolást és a számlát. A sikeres újrapróbálkozás a meglévő foglalást adja vissza további díj felszámolása nélkül.
+
+### Válaszok és újrapróbálkozások kezelése
+
+| Válasz | Mit tegyen |
+| --- | --- |
+| `400` | Javítsa ki az érvénytelen szobaadatokat vagy a hibás hitelesítőt. |
+| `401` / `403` | Ellenőrizze a felhasználó hitelesítését és fizetési engedélyét. |
+| `402` | Vizsgálja meg a visszakapott problémát és kihívást. A végleges fizetés elutasítás új árajánlatot igényel; a hiányos fizetési adatok újrahasználják az eredeti kihívást. Ellenőrizze az árat fizetés előtt. |
+| `409` | A fizetés eredménye nem ismert. Várjon rövid ideig, majd próbálja újra ugyanazzal a törzzsel és hitelesítővel a foglalási végponton. |
+| `429` | Várjon a `Retry-After` fejlécben megadott másodpercekig, majd próbálja újra. |
+
+A `409` válasz `application/problem+json` törzset tartalmaz. Hasonlítsa össze a `type` értékét az alábbi pontos URL-ekkel:
+
+| Probléma típusa | Jelentése |
+| --- | --- |
+| [https://api.wink.travel/problems/payment-in-progress](https://api.wink.travel/problems/payment-in-progress) | Egy fizetési kísérlet még folyamatban van, vagy a rendezés még nem erősíthető meg. |
+| [https://api.wink.travel/problems/already-consumed](https://api.wink.travel/problems/already-consumed) | A kihívást vagy fizetési bizonyítékot már felhasználták egy esetleg sikeres kísérlethez. Ez önmagában nem erősíti meg a foglalást. |
+
+Mindkettő azt jelenti, hogy **ugyanazzal a fizetéssel próbálkozzon újra; ne fizessen új árajánlatot**. Az URL-ek azonosítják és dokumentálják a problémát; nem fizetési vagy lekérdezési végpontok. Próbálja újra a `POST /api/mpp/booking` hívást, és a probléma `type`-ját használja a szabad szöveges `detail` helyett a döntéshez. Lásd a [probléma-típus referenciát](https://api.wink.travel/problems) az összes Wink fizetési problémához.
+
+Időtúllépés, elveszett válasz vagy szerverhiba a fizetés elküldése után is ismeretlen eredményt hagyhat. Próbálja újra ugyanazt a fizetési kérést. Ha az eredmény továbbra sem ismert, vegye fel a kapcsolatot a támogatással az árajánlat azonosítójával, mielőtt újabb fizetésbe kezdene.

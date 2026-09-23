@@ -1,6 +1,6 @@
 ---
 title: Servere MCP
-description: Conectează agenți AI la platforma Wink prin Model Context Protocol. Wink publică uneltele sale ca endpoint-uri focalizate, orientate pe sarcini, astfel încât agentul tău încarcă doar ce are nevoie munca ta — securizat prin autentificare interactivă OAuth2.
+description: Conectează agenții AI la platforma Wink prin Model Context Protocol. Wink publică uneltele sale ca endpoint-uri focalizate, orientate pe sarcini, astfel încât agentul tău încarcă doar ce are nevoie pentru munca ta — securizat prin autentificare interactivă OAuth2.
 sidebar:
   order: 10
 ---
@@ -25,11 +25,11 @@ claude mcp add wink-rates https://api.wink.travel/mcp/extranet/rates --transport
 
 Wink expune aproximativ 500 de unelte. Să le dai pe toate unui agent dintr-o dată este tehnic posibil — și o idee proastă.
 
-**Definițiile uneltelor consumă context.** Fiecare unealtă pe care un server MCP o anunță este încărcată în fereastra de context a modelului înainte să facă orice lucru, împreună cu descrierea și schema completă a parametrilor săi. Cinci sute dintre acestea consumă o mare parte din bugetul de context necesar sarcinii tale reale, la fiecare cerere.
+**Definițiile uneltelor consumă context.** Fiecare unealtă pe care un server MCP o publică este încărcată în fereastra de context a modelului înainte să facă orice lucru, împreună cu descrierea și schema completă a parametrilor. Cinci sute dintre acestea consumă o mare parte din bugetul necesar sarcinii tale reale, la fiecare cerere.
 
 **Calitatea alegerii scade pe măsură ce lista crește.** Un agent care alege din 500 de unelte cu nume similare face alegeri mai slabe decât unul care alege din 40. Dacă integrezi un channel manager, aproximativ douăzeci de unelte sunt relevante pentru tine; celelalte 480 sunt zgomot care face mai dificilă găsirea uneltei potrivite.
 
-**Munca este cu adevărat separabilă.** Cineva care sincronizează disponibilitatea dintr-un PMS și cineva care creează pagini de afiliat împărtășesc aproape nicio unealtă. Împărțirea pe sarcini înseamnă că fiecare conexiune poartă vocabularul unei singure sarcini.
+**Munca este cu adevărat separabilă.** Cineva care sincronizează disponibilitatea dintr-un PMS și cineva care creează pagini de afiliere aproape că nu împart unelte. Împărțirea pe sarcini înseamnă că fiecare conexiune poartă vocabularul unei singure sarcini.
 
 <Aside type="caution" title="Seturile de unelte nu sunt permisiuni">
 Alegerea unui set restrâns de unelte **nu** limitează ce poate face contul tău, iar alegerea unuia larg nu acordă nimic în plus. Fiecare unealtă aplică aceleași permisiuni de cont ca portalul web, sub identitatea ta autentificată. Dacă contul tău nu poate anula o rezervare în Wink Portal, nici agentul nu poate — indiferent de endpoint-ul la care este conectat.
@@ -49,17 +49,17 @@ Două gazde servesc seturi de unelte. Numărul uneltelor este aproximativ și cr
 |---|---:|---|
 | `/mcp/extranet/facilities` | ~64 | Inventarul rezervabil și la fața locului: camere și tipuri de camere, spa-uri, restaurante, săli de conferințe, activități, atracții, locuri, alte articole vândute |
 | `/mcp/extranet/property` | ~62 | Fișa proprietății și termenii comerciali: profil și conținut, suplimente, politici de anulare, beneficii, anunțuri |
-| `/mcp/settings` | ~60 | Administrarea contului: profilul și brandingul entității de management, manageri și drepturile lor, personalizare, webhooks, preferințe de notificare |
+| `/mcp/settings` | ~60 | Administrarea contului: profilul și brandingul entității de administrare, manageri și drepturile lor, personalizare, webhooks, preferințe de notificare |
 | `/mcp/studio/embeds` | ~48 | Publicarea inventarului selectat: widget-uri, grile și grile ordonate, carduri, hărți, linkuri profunde către inventar și pagini de furnizori |
 | `/mcp/extranet/rates` | ~44 | Prețuri și disponibilitate: perioade și alocări de tarife, planuri tarifare, tarife master, tarife speciale și promoționale |
 | `/mcp/extranet/operations` | ~39 | Gestionarea unei proprietăți active: rezervări și ciclul lor de viață, recenzii și răspunsuri ale oaspeților, feed-uri calendaristice, sarcini programate |
 | `/mcp/extranet/distribution` | ~37 | Unde se vinde inventarul: canale de vânzare și modificatori de tarif, cereri de relații cu afiliați și furnizori, înregistrare, captare lead-uri |
 | `/mcp/studio/curation` | ~35 | Construirea colecțiilor comercializabile: liste statice și dinamice, liste ordonate, căutări salvate, agregate de proprietăți |
 | `/mcp/link-manager` | ~28 | Colecții de linkuri syndicate, designul lor, categorii și etichete, plus URL-uri scurtate |
-| `/mcp/reference` | ~24 | Date de referință doar pentru citire: țări, valute și cursuri de schimb, limbi, fusuri orare, căutări geo, geolocalizare IP |
+| `/mcp/reference` | ~24 | Date de referință doar în citire: țări, valute și cursuri de schimb, limbi, fusuri orare, căutări geografice, geolocalizare IP |
 | `/mcp/analytics` | ~18 | Analize de rezervări și venituri: overview-uri, grafice liniare, clasamente, performanța afiliaților, metrici de partajare |
 | `/mcp/payment` | ~18 | Operațiuni financiare: registrul, retrageri și estimări de taxe, agregate de fonduri de rezervare |
-| `/mcp/booking-engine` | ~17 | Calea de cumpărare pentru călător: căutare și consultare, coș de cumpărături și checkout, liste de dorințe, personalizare campanii |
+| `/mcp/booking-engine` | ~17 | Calea de cumpărare pentru călător: căutare și consultare, coș de cumpărături și checkout, liste de dorințe, personalizarea campaniilor |
 | `/mcp/social` | ~17 | Conturi sociale conectate, publicare și programare postări, citire insight-uri postări |
 | `/mcp/travel-agent` | ~8 | Rezervări facilitate de agenți în numele călătorilor și rapoarte ale agenților |
 
@@ -81,7 +81,13 @@ Un **hotelier care își schimbă manual propriile tarife** folosește seturile 
 Administrarea contului este de asemenea pe `api.wink.travel`, la `/mcp/settings`. Nu există `/mcp/settings` pe gazda de integrări.
 </Aside>
 
-Fiecare endpoint poartă și o unealtă `ping`, astfel încât poți confirma că o conexiune este activă înainte de a-i cere să facă o muncă reală.
+Fiecare endpoint poartă și o unealtă `ping`, astfel încât poți confirma că o conexiune este activă înainte de a-i cere să facă muncă reală.
+
+### Plăți agentice
+
+Pentru fluxul complet de rezervare a călătorului, conectează **Wink Booking Engine** la `https://api.wink.travel/mcp/booking-engine` și un **portofel de plată** compatibil. Adăugarea MCP Wink deschide autentificarea în browser și selecția permisiunilor; clientul tău gestionează apoi autentificarea.
+
+Booking Engine include căutarea destinației, căutarea hotelurilor și a camerelor, `agentic_booking_quote`, `agentic_booking_pay`, `agentic_booking_book`, recuperarea rezervărilor și chitanțele, când rezervarea și plata agentică sunt activate pentru acel mediu. Vezi [Agentic Payments](/ro/developers/agentic-payments/) pentru configurarea conexiunii, permisiunile de selectat și pașii de la căutare la confirmare.
 
 ---
 
@@ -94,14 +100,21 @@ Fiecare endpoint poartă și o unealtă `ping`, astfel încât poți confirma c�
 | **Gestionezi camere și tipuri de camere** | `/mcp/extranet/facilities` |
 | **Gestionezi prețuri și disponibilitate** | `/mcp/extranet/rates` |
 | **Gestionezi rezervările zilnice** | `/mcp/extranet/operations` |
-| **Crești distribuția** | `/mcp/extranet/distribution` + `/mcp/analytics` |
-| **Construiești pagini de afiliat** | `/mcp/studio/curation` + `/mcp/studio/embeds` |
+| **Dezvolți distribuția** | `/mcp/extranet/distribution` + `/mcp/analytics` |
+| **Construiești pagini de afiliere** | `/mcp/studio/curation` + `/mcp/studio/embeds` |
 | **Gestionezi pagini link-in-bio** | `/mcp/link-manager` + `/mcp/social` |
 | **Faci rezervări în numele călătorilor** | `/mcp/travel-agent` |
 | **Reconcilii bani** | `/mcp/payment` |
-| **Construiești o experiență de rezervare** | `/mcp/booking-engine` + `/mcp/reference` |
+| **Rezervi o cameră cu un agent AI** | `/mcp/booking-engine` + un portofel de plată compatibil — vezi [Agentic Payments](/ro/developers/agentic-payments/) |
+| **Construiești o experiență de rezervare** | `/mcp/booking-engine`; opțional `/mcp/reference` pentru căutări suplimentare |
 
-Începe cu unul. Adaugă altul când găsești că ai nevoie de ceva ce nu poate face — fiecare conexiune este independentă și adăugarea uneia nu afectează pe celelalte.
+**Booking Engine include fluxul principal de rezervare.** Oferă descoperirea contului și personalizarea, căutarea destinației, disponibilitatea hotelurilor și detalii despre tarifele camerelor, coșuri de cumpărături, checkout și gestionarea rezervărilor călătorilor. Uneltele de rezervare și plată agentică sunt incluse când sunt activate pentru acel mediu.
+
+Pentru o căutare de hotel bazată pe oraș, folosește `destination_lookup_search_suggestions` pentru a rezolva destinația, apoi `inventory_search_city` pentru a găsi hoteluri și tarife disponibile. Ambele unelte sunt în `/mcp/booking-engine`, deci acest flux nu necesită o conexiune Reference.
+
+Adaugă `/mcp/reference` când ai nevoie de căutări suport, cum ar fi țări, valute și cursuri de schimb, limbi suportate, fusuri orare, căutări geografice mai largi, clasificări OTA sau cunoștințe publice despre proprietăți. Acestea sunt adaosuri opționale la fluxul de rezervare.
+
+Începe cu unul. Adaugă altul când descoperi că ai nevoie de ceva ce primul nu poate face — fiecare conexiune este independentă, iar adăugarea unuia nu afectează pe celelalte.
 
 <Aside type="tip" title="Vrei totuși totul?">
 `https://api.wink.travel/mcp` și `https://integrations.wink.travel/mcp` rămân disponibile și servesc **toate** uneltele de pe gazda lor. Sunt utile pentru explorare, dar nu le recomandăm pentru munca zilnică: lista de unelte este suficient de mare încât să copleșească sarcina ta și să degradeze selecția uneltelor agentului. Preferă seturile de unelte de mai sus.
@@ -113,11 +126,11 @@ Fiecare endpoint poartă și o unealtă `ping`, astfel încât poți confirma c�
 
 Serverele MCP Wink folosesc fluxul **OAuth2 Authorization Code + PKCE** și suportă **Dynamic Client Registration (RFC 7591)**. Iată ce se întâmplă când te conectezi prima dată:
 
-1. Clientul tău AI descoperă serverul de autorizare din metadatele endpoint-ului MCP `/.well-known/oauth-protected-resource`.
-2. Clientul se înregistrează singur prin **Dynamic Client Registration** — nu este nevoie de configurare manuală a aplicației.
+1. Clientul tău AI descoperă serverul de autorizare din metadatele `/.well-known/oauth-protected-resource` ale endpoint-ului MCP.
+2. Clientul se înregistrează singur prin **Dynamic Client Registration** — nu este necesară configurare manuală a aplicației.
 3. Clientul deschide o **filă de browser** către `https://iam.wink.travel`. Te autentifici cu contul Wink și aprobi permisiunile cerute pe ecranul de consimțământ.
 4. Wink emite un **token de acces** legat de contul și identitatea ta.
-5. Clientul AI atașează tokenul la fiecare cerere MCP. Toate rezultatele uneltelor sunt automat limitate la entitatea ta de management.
+5. Clientul AI atașează tokenul la fiecare cerere MCP. Toate rezultatele uneltelor sunt automat limitate la entitatea ta de administrare.
 6. Tokenurile expiră după 3 ore. Clientul AI le reîmprospătează silențios în fundal fără a cere din nou autentificare.
 
 Fiecare apel de unealtă rulează **sub identitatea ta** — aceleași reguli ACL care protejează portalul web se aplică agentului AI.
@@ -156,7 +169,7 @@ claude mcp add wink-analytics  https://api.wink.travel/mcp/analytics           -
 Te autentifici o singură dată. După prima aprobare în browser, Claude Code reutilizează sesiunea Wink pentru endpoint-urile Wink suplimentare.
 
 :::tip[Partajează cu echipa ta]
-Adaugă `--scope project` la `claude mcp add` și Claude Code scrie URL-ul serverului în `.mcp.json` la rădăcina repo-ului. Comite acel fișier — fiecare membru al echipei primește aceleași seturi de unelte și fiecare își finalizează propria autentificare în browser prima dată când se conectează.
+Adaugă `--scope project` la `claude mcp add` și Claude Code scrie URL-ul serverului în `.mcp.json` la rădăcina repo-ului. Comite acel fișier — fiecare membru al echipei primește aceleași seturi de unelte, iar fiecare își face propria autentificare în browser prima dată când se conectează.
 :::
 
   </TabItem>
@@ -226,11 +239,11 @@ Adaugă `--scope project` la `claude mcp add` și Claude Code scrie URL-ul serve
 
 5. **Autentifică-te în Wink** și aprobă permisiunile cerute.
 
-6. Codex confirmă conexiunea. Rulează `codex` și cere să listeze uneltele disponibile pentru a verifica că serverele Wink sunt active.
+6. Codex confirmă conexiunea. Rulează `codex` și cere să listeze uneltele disponibile pentru a verifica dacă serverele Wink sunt active.
 </Steps>
 
 :::note
-Suportul MCP în Codex CLI necesită versiunea **1.0** sau mai nouă. Rulează `codex --version` pentru a verifica și `npm install -g @openai/codex` pentru a face upgrade.
+Suportul MCP în Codex CLI necesită versiunea **1.0** sau mai recentă. Rulează `codex --version` pentru a verifica și `npm install -g @openai/codex` pentru a face upgrade.
 :::
 
   </TabItem>
@@ -241,15 +254,15 @@ Suportul pentru servere MCP este disponibil în **aplicația desktop ChatGPT** p
 <Steps>
 1. Descarcă și instalează [aplicația desktop ChatGPT](https://openai.com/chatgpt/download/) dacă nu ai făcut-o deja.
 
-2. Deschide aplicația și dă click pe **iconița profilului tău** în colțul din dreapta sus, apoi alege **Setări**.
+2. Deschide aplicația și dă click pe **iconița profilului tău** în colțul din dreapta sus, apoi alege **Settings**.
 
-3. Mergi la **Conectori** (sau **Servere MCP** în funcție de versiunea aplicației) și apasă **Adaugă**.
+3. Mergi la **Connectors** (sau **MCP Servers** în funcție de versiunea aplicației) și apasă **Add**.
 
 4. Introdu URL-ul unui set de unelte din [directorul de mai sus](#endpoint-directory), de exemplu:
    ```
    https://api.wink.travel/mcp/extranet/rates
    ```
-   Apoi apasă **Conectează**.
+   Apoi apasă **Connect**.
 
 5. ChatGPT deschide o filă de browser către `https://iam.wink.travel`. **Autentifică-te în Wink** și aprobă permisiunile.
 
@@ -258,7 +271,7 @@ Suportul pentru servere MCP este disponibil în **aplicația desktop ChatGPT** p
    https://api.wink.travel/mcp/extranet/operations
    ```
 
-7. Fiecare set de unelte apare în lista ta de Conectori. Începe o conversație nouă — uneltele Wink sunt disponibile automat.
+7. Fiecare set de unelte apare în lista ta de Connectors. Începe o conversație nouă — uneltele Wink sunt disponibile automat.
 </Steps>
 
 :::note[Limitare aplicație web]
@@ -290,7 +303,7 @@ Serverele MCP pot fi configurate doar în **aplicația desktop**. Interfața web
    }
    ```
 
-3. Deschide Cursor. Mergi la **Settings → Cursor Settings → MCP** și confirmă că ambele servere apar cu indicator verde de stare. Dacă apar roșu, apasă **Refresh**.
+3. Deschide Cursor. Mergi la **Settings → Cursor Settings → MCP** și confirmă că ambele servere apar cu indicator verde. Dacă apar roșu, apasă **Refresh**.
 
 4. Cursor deschide o filă de browser către `https://iam.wink.travel`. **Autentifică-te în Wink** și aprobă permisiunile.
 
@@ -328,19 +341,19 @@ Poți plasa și un fișier `mcp.json` la rădăcina proiectului în loc de `~/.c
 
 3. **Repornește complet Windsurf** (File → Quit, apoi redeschide).
 
-4. Mergi la **Settings → MCP Servers** și verifică dacă ambele servere apar ca fiind conectate. Windsurf deschide o filă de browser către `https://iam.wink.travel` la prima utilizare.
+4. Mergi la **Settings → MCP Servers** și verifică dacă ambele servere sunt conectate. Windsurf deschide o filă de browser către `https://iam.wink.travel` la prima utilizare.
 
 5. **Autentifică-te în Wink** și aprobă permisiunile. Serverele devin verzi în panoul de setări după autentificare.
 </Steps>
 
 :::note
-Suportul MCP în Windsurf necesită versiunea **1.4** sau mai nouă. Verifică prin **Help → About Windsurf** și actualizează de pe site-ul Windsurf dacă este nevoie.
+Suportul MCP Windsurf necesită versiunea **1.4** sau mai recentă. Verifică prin **Help → About Windsurf** și actualizează de pe site-ul Windsurf dacă este nevoie.
 :::
 
   </TabItem>
   <TabItem label="Cline (VS Code)">
 
-Cline este o extensie VS Code cu manager MCP încorporat. Nu este nevoie să editezi JSON manual.
+Cline este o extensie VS Code cu manager MCP încorporat. Nu este necesară editarea manuală a JSON-ului.
 
 <Steps>
 1. Instalează Cline din VS Code Marketplace:
@@ -374,7 +387,7 @@ Cline este o extensie VS Code cu manager MCP încorporat. Nu este nevoie să edi
 </Steps>
 
 :::tip[Alternativ: adaugă prin URL]
-În panoul MCP Servers, apasă **Add Server** și lipește direct un URL de set de unelte, cum ar fi `https://api.wink.travel/mcp/extranet/rates`. Cline completează automat configurația și gestionează autentificarea fără să editezi JSON manual.
+În panoul MCP Servers, apasă **Add Server** și lipește direct un URL de set de unelte, cum ar fi `https://api.wink.travel/mcp/extranet/rates`. Cline completează automat configurația și gestionează autentificarea fără editare manuală JSON.
 :::
 
   </TabItem>
@@ -384,15 +397,15 @@ Cline este o extensie VS Code cu manager MCP încorporat. Nu este nevoie să edi
 
 ## Scopuri
 
-Când aprobi ecranul de consimțământ vei vedea o defalcare a ceea ce cere agentul. Clienții MCP folosesc același vocabular de permisiuni ca restul platformei — vezi referința completă a
-[scopurilor pe pagina de Autentificare](/ro/developers/authentication#scopes).
+Când aprobi ecranul de consimțământ vei vedea o defalcare a ceea ce cere agentul. Clienții MCP folosesc același vocabular de permisiuni ca restul platformei — vezi referința completă
+[scope-urilor pe pagina de Autentificare](/ro/developers/authentication#scopes).
 
 Două lucruri sunt specifice MCP:
 
-- **Scopurile `mcp.read`, `mcp.write`, `mcp.remove` sunt suplimentar necesare** pentru a deschide transportul MCP. Un client care deține un scop `mcp.*` este admis la orice endpoint MCP Wink, dar fiecare unealtă pe care o invocă aplică în continuare scopul secțiunii endpoint-ului pe care îl înfășoară (ex. `booking.read`).
+- **Scopurile `mcp.read`, `mcp.write`, `mcp.remove` sunt suplimentar necesare** pentru a deschide transportul MCP. Un client care deține un scop `mcp.*` este admis la orice endpoint Wink MCP, dar fiecare unealtă pe care o invocă aplică în continuare scopul secțiunii endpoint-ului pe care îl înfășoară (ex. `booking.read`).
 - **Clientul AI cere doar scopurile de care are nevoie.** Poți refuza permisiuni individuale pe ecranul de consimțământ — uneltele care necesită un scop refuzat vor returna o eroare când sunt invocate.
 
-**Seturile de unelte nu schimbă nimic din toate acestea.** Endpoint-ul la care te conectezi decide ce unelte sunt *listate*, nu ce unelte sunt *permise*. Conectarea la `/mcp/payment` nu acordă permisiuni financiare pe care nu le aveai deja, iar conectarea la `/mcp/reference` nu împiedică o unealtă să aplice propriul scop. Autorizarea se decide la fiecare apel de unealtă, din tokenul tău și drepturile contului tău.
+**Seturile de unelte nu schimbă nimic din toate acestea.** Endpoint-ul la care te conectezi decide ce unelte sunt *listate*, nu ce pot *face*. Conectarea la `/mcp/payment` nu acordă permisiuni financiare pe care nu le aveai deja, iar conectarea la `/mcp/reference` nu împiedică o unealtă să aplice propriul scop. Autorizarea se decide la fiecare apel de unealtă, din tokenul tău și drepturile contului tău.
 
 ---
 
@@ -417,13 +430,13 @@ claude mcp add wink-rates https://api.wink.travel/mcp/extranet/rates --transport
 
 Pentru Claude Desktop și ChatGPT, elimină intrarea serverului din setări, repornește aplicația și adaugă-l din nou.
 
-**`403 Forbidden` când apelezi o unealtă specifică**
+**`403 Forbidden` la apelul unei unelte specifice**
 
-Unealta necesită un scop pe care nu l-ai aprobat pe ecranul de consimțământ sau o permisiune pe care contul tău nu o deține. Reconectează serverul — ecranul de consimțământ va apărea din nou și poți aproba permisiunea lipsă. Dacă tot eșuează, unealta are nevoie de o permisiune de cont pe care nu o ai; conectarea la un alt set de unelte nu va ajuta, pentru că seturile de unelte nu acordă permisiuni.
+Unealta necesită un scop pe care nu l-ai aprobat pe ecranul de consimțământ sau o permisiune pe care contul tău nu o deține. Reconectează serverul — ecranul de consimțământ va apărea din nou și poți aproba permisiunea lipsă. Dacă tot eșuează, unealta are nevoie de o permisiune de cont pe care nu o ai; conectarea la un alt set de unelte nu ajută, pentru că seturile de unelte nu acordă permisiuni.
 
 **Unealta de care am nevoie nu este în listă**
 
-Probabil ești conectat la un set de unelte care nu acoperă acea sarcină. Verifică [directorul endpoint-urilor](#endpoint-directory) și adaugă setul de unelte care o face — conexiunile sunt independente, deci adăugarea unuia nu schimbă nimic la celelalte. Dacă nu ești sigur care îl are, conectează-te temporar la `https://api.wink.travel/mcp`, găsește unealta, apoi verifică care set de unelte o listează.
+Probabil ești conectat la un set de unelte care nu acoperă acea sarcină. Verifică [directorul endpoint-urilor](#endpoint-directory) și adaugă setul de unelte care o face — conexiunile sunt independente, deci adăugarea unuia nu schimbă nimic la celelalte. Dacă nu ești sigur care îl are, conectează-te temporar la `https://api.wink.travel/mcp`, găsește unealta, apoi verifică ce set de unelte o listează.
 
 **`404 Not Found` pe un endpoint de set de unelte**
 
@@ -431,11 +444,11 @@ Verifică cu atenție calea — seturile de unelte imbricate au două segmente (
 
 **M-am conectat la `api.wink.travel/mcp/channel-manager` și nu am primit nimic**
 
-Acest endpoint nu există. Integrarea channel manager este servită doar de la `https://integrations.wink.travel/mcp/channel-manager`. Dacă ai nevoie și să citești sau să scrii tarifele proprii ale unei proprietăți manual, aceasta este o sarcină separată pe un endpoint separat — vezi `/mcp/extranet/rates`.
+Acest endpoint nu există. Integrarea channel manager este servită doar de `https://integrations.wink.travel/mcp/channel-manager`. Dacă ai nevoie și să citești sau să scrii tarifele proprii ale unei proprietăți manual, aceasta este o sarcină separată pe un endpoint separat — vezi `/mcp/extranet/rates`.
 
-**Serverul apare, dar apelurile uneltelor returnează "contul nu a fost găsit"**
+**Serverul apare, dar apelurile uneltelor returnează "account not found"**
 
-Ești autentificat într-un cont Wink care nu are o entitate de management. Mergi la [Wink Portal](https://app.wink.travel) și asigură-te că contul tău este configurat înainte de a folosi serverul MCP.
+Ești autentificat într-un cont Wink care nu are o entitate de administrare. Mergi la [Wink Portal](https://app.wink.travel) și asigură-te că contul tău este configurat înainte de a folosi serverul MCP.
 
 **Tokenul expiră în timpul sesiunii**
 
@@ -447,7 +460,7 @@ Verifică dacă `~/.codex/config.json` este JSON valid (fără virgule finale) �
 
 **Meniul "Connectors" din ChatGPT lipsește**
 
-Suportul MCP necesită versiunea aplicației desktop ChatGPT **1.2024.352** sau mai nouă și un abonament activ Plus, Pro, Team sau Enterprise. Actualizează aplicația și verifică planul în Setări → Cont.
+Suportul MCP necesită versiunea aplicației desktop ChatGPT **1.2024.352** sau mai recentă și un abonament activ Plus, Pro, Team sau Enterprise. Actualizează aplicația și verifică planul în Settings → Account.
 
 **Serverul Cursor apare roșu / "Failed to connect"**
 
@@ -459,7 +472,7 @@ Windsurf necesită o repornire completă (nu doar reîncărcarea ferestrei) pent
 
 **Opțiunea "Add Server" din Cline nu este vizibilă**
 
-Managerul de servere MCP necesită Cline **2.0** sau mai nou. Deschide panoul Extensions din VS Code, găsește Cline și apasă **Update** dacă există o actualizare. După actualizare, reîncarcă VS Code (`Ctrl+Shift+P` → "Developer: Reload Window").
+Managerul de servere MCP necesită Cline **2.0** sau mai recent. Deschide panoul Extensions din VS Code, găsește Cline și apasă **Update** dacă există o actualizare. După actualizare, reîncarcă VS Code (`Ctrl+Shift+P` → "Developer: Reload Window").
 
 ---
 

@@ -29,7 +29,7 @@ Wink tarjoaa noin 500 työkalua. Kaikkien antaminen agentille kerralla on teknis
 
 **Valinnan laatu heikkenee listan kasvaessa.** Agentti, joka valitsee 500 samankaltaisesti nimetyistä työkaluista, tekee huonompia valintoja kuin agentti, joka valitsee 40:stä. Jos integroit kanavahallinnan, noin kaksikymmentä työkalua on sinulle relevantteja; loput 480 ovat melua, joka vaikeuttaa oikean työkalun löytämistä.
 
-**Työ on aidosti erotettavissa.** Henkilö, joka synkronoi saatavuutta PMS:stä, ja henkilö, joka kuratoi affiliate-laskeutumissivuja, jakavat lähes nolla työkalua. Tehtäväkohtainen jako tarkoittaa, että jokainen yhteys kantaa yhden tehtävän sanaston.
+**Työ on aidosti erotettavissa.** Henkilö, joka synkronoi saatavuutta PMS:stä, ja henkilö, joka kuratoi affiliate-laskentatauluja, jakavat lähes nolla työkalua. Tehtäväkohtainen jako tarkoittaa, että jokainen yhteys kantaa yhden tehtävän sanaston.
 
 <Aside type="caution" title="Työkalusarjat eivät ole käyttöoikeuksia">
 Kapean työkalusarjan valinta **ei** rajoita tilisi toimintoja, eikä laajan valinta anna mitään ylimääräistä. Jokainen työkalu noudattaa samoja tilin käyttöoikeuksia kuin verkkosivusto, kirjautuneen identiteettisi alla. Jos tilisi ei voi perua varausta Wink Portalissa, agenttikaan ei voi — riippumatta siitä, mihin päätepisteeseen se on yhdistetty.
@@ -58,9 +58,9 @@ Kaksi isäntää palvelee työkalusarjoja. Työkalujen määrät ovat likimäär
 | `/mcp/link-manager` | ~28 | Syndikoidut linkkikokoelmat, niiden suunnittelu, kategoriat ja tagit, sekä lyhennetyt URL-osoitteet |
 | `/mcp/reference` | ~24 | Vain luku -hakutiedot: maat, valuutat ja valuuttakurssit, kielet, aikavyöhykkeet, maantieteelliset haut, IP-sijainti |
 | `/mcp/analytics` | ~18 | Varaus- ja tulosanalyytiikka: yleiskatsaukset, viivakaaviot, tulostaulut, affiliate-suorituskyky, jakomittarit |
-| `/mcp/payment` | ~18 | Taloudelliset toiminnot: kirjanpito, nostot ja kuluarviot, varausrahastojen yhteenvedot |
+| `/mcp/payment` | ~18 | Taloustoiminnot: kirjanpito, nostot ja kuluarviot, varausrahastojen yhteenvedot |
 | `/mcp/booking-engine` | ~17 | Matkustajalle suunnattu ostopolku: haku ja haku, ostoskori ja kassalle siirtyminen, bucket-listat, kampanjan räätälöinti |
-| `/mcp/social` | ~17 | Yhdistetyt sosiaalitilit, julkaisujen ja aikataulutuksen hallinta, julkaisujen analytiikan lukeminen |
+| `/mcp/social` | ~17 | Yhdistetyt sosiaalitilit, julkaisujen aikataulutus ja julkaisu, julkaisujen analytiikan lukeminen |
 | `/mcp/travel-agent` | ~8 | Agentin avustamat varaukset matkustajien puolesta ja agenttiraportit |
 
 ### `https://integrations.wink.travel` — kanavahallinnan integraatiot
@@ -74,14 +74,20 @@ Yksi päätepiste, koska tämä isäntä on olemassa yhtä tehtävää varten.
 <Aside type="note" title="Kanavahallinnan integrointi vs. omien hintojen hallinta">
 Nämä ovat eri tehtäviä eri ihmisille, eikä niillä ole yhteistä päätepistettä.
 
-**Kanavahallinnan, PMS:n tai CRS:n toimittaja** integroituu kerran osoitteessa `integrations.wink.travel/mcp/channel-manager` ja vaihtaa sen jälkeen kiinteistöt, hinnat, saatavuuden ja varaukset tämän integraation kautta. Tämä yksittäinen päätepiste kattaa kaiken.
+**Kanavahallinnan, PMS:n tai CRS:n toimittaja** integroituu kerran osoitteessa `integrations.wink.travel/mcp/channel-manager`, ja sen jälkeen vaihtaa kiinteistötietoja, hintoja, saatavuutta ja varauksia tämän integraation kautta. Tämä yksittäinen päätepiste on koko rajapinta.
 
-**Hotelliyrittäjä, joka muuttaa omia hintojaan käsin**, käyttää extranet-työkalusarjoja osoitteessa `api.wink.travel` — `/mcp/extranet/rates` ja kumppanit. Nämä eivät kuulu kanavahallinnan integraatioon, eikä integraattorilla ole syytä yhdistää niihin.
+**Hotelliyrittäjä, joka muuttaa omia hintojaan käsin**, käyttää extranet-työkalusarjoja osoitteessa `api.wink.travel` — `/mcp/extranet/rates` ja muut. Nämä eivät kuulu kanavahallinnan integraatioon, eikä integroijalla ole syytä yhdistää niihin.
 
-Tilinhallinta on myös `api.wink.travel`-osoitteessa, `/mcp/settings`. Integraatioisännällä ei ole `/mcp/settings`-päätepistettä.
+Tilinhallinta on myös `api.wink.travel`-isännällä, kohdassa `/mcp/settings`. Integraatioisännällä ei ole `/mcp/settings`-päätepistettä.
 </Aside>
 
-Jokainen päätepiste sisältää myös `ping`-työkalun, jolla voit varmistaa yhteyden olevan elossa ennen varsinaista työtä.
+Jokainen päätepiste sisältää myös `ping`-työkalun, jolla voit varmistaa yhteyden toimivuuden ennen varsinaista työtä.
+
+### Agenttiset maksut
+
+Täydelliseen matkustajan varausprosessiin yhdistä **Wink Booking Engine** osoitteessa `https://api.wink.travel/mcp/booking-engine` ja yhteensopiva **maksulompakko**. Winkin MCP:n lisääminen avaa selaimen kirjautumista ja lupien valintaa varten; asiakas hoitaa sitten todennuksen.
+
+Booking Engine sisältää kohteen haun, hotellin ja huoneiden haun, `agentic_booking_quote`, `agentic_booking_pay`, `agentic_booking_book`, varausten hakemisen ja kuitit, kun agenttivaraus ja -maksu ovat käytössä kyseisessä ympäristössä. Katso [Agentic Payments](/fi/developers/agentic-payments/) yhteyden muodostamisesta, valittavista käyttöoikeuksista ja hakuvaiheesta vahvistukseen.
 
 ---
 
@@ -96,15 +102,22 @@ Jokainen päätepiste sisältää myös `ping`-työkalun, jolla voit varmistaa y
 | **Hoitaessa päivittäisiä varauksia** | `/mcp/extranet/operations` |
 | **Kasvattamassa jakelua** | `/mcp/extranet/distribution` + `/mcp/analytics` |
 | **Rakentamassa affiliate-sivuja** | `/mcp/studio/curation` + `/mcp/studio/embeds` |
-| **Hoitaessa link-in-bio -sivuja** | `/mcp/link-manager` + `/mcp/social` |
+| **Pyörittämässä link-in-bio -sivuja** | `/mcp/link-manager` + `/mcp/social` |
 | **Varaamassa matkustajien puolesta** | `/mcp/travel-agent` |
-| **Sovittamassa rahaliikennettä** | `/mcp/payment` |
-| **Rakentamassa varauskokemusta** | `/mcp/booking-engine` + `/mcp/reference` |
+| **Sovittamassa rahavirtoja** | `/mcp/payment` |
+| **Varaamassa huonetta tekoälyagentilla** | `/mcp/booking-engine` + yhteensopiva maksulompakko — katso [Agentic Payments](/fi/developers/agentic-payments/) |
+| **Rakentamassa varauskokemusta** | `/mcp/booking-engine`; tarvittaessa `/mcp/reference` lisähakuihin |
+
+**Booking Engine sisältää varauksen ydintoiminnallisuuden.** Se tarjoaa tilin ja räätälöinnin tunnistuksen, kohteen haun, hotellin saatavuuden ja huonehintatiedot, ostoskorit, kassalle siirtymisen ja matkustajan varauksen hallinnan. Agenttivaraus- ja maksutyökalut sisältyvät myös, kun ne ovat käytössä kyseisessä ympäristössä.
+
+Kaupunkipohjaiseen hotellihakuun käytä `destination_lookup_search_suggestions` kohteen ratkaisemiseen, sitten `inventory_search_city` saatavilla olevien hotellien ja hintojen löytämiseen. Molemmat työkalut ovat `/mcp/booking-engine`-päätepisteessä, joten tämä virtaus ei vaadi Reference-yhteyttä.
+
+Lisää `/mcp/reference`, kun tarvitset tukihakuita kuten maat, valuutat ja valuuttakurssit, tuetut kielet, aikavyöhykkeet, laajemmat maantieteelliset haut, OTA-luokitukset tai julkiset kiinteistötiedot. Nämä ovat valinnaisia lisäyksiä varausprosessiin.
 
 Aloita yhdellä. Lisää toinen, kun huomaat tarvitsevasi jotain, mitä se ei osaa — jokainen yhteys on itsenäinen, eikä yhden lisääminen vaikuta muihin.
 
 <Aside type="tip" title="Haluatko silti kaiken?">
-`https://api.wink.travel/mcp` ja `https://integrations.wink.travel/mcp` ovat edelleen saatavilla ja tarjoavat **kaikki** työkalut isäntänsä kautta. Ne ovat hyödyllisiä tutustumiseen, mutta emme suosittele niitä päivittäiseen käyttöön: työkalulista on niin suuri, että se häiritsee tehtävääsi ja heikentää agentin työkalujen valintaa. Suosi yllä olevia työkalusarjoja.
+`https://api.wink.travel/mcp` ja `https://integrations.wink.travel/mcp` ovat edelleen käytettävissä ja tarjoavat **kaikki** työkalut isännällään. Ne ovat hyödyllisiä tutustumiseen, mutta emme suosittele niitä päivittäiseen työhön: työkalulista on niin suuri, että se peittää tehtäväsi ja heikentää agentin työkalujen valintaa. Suosi yllä olevia työkalusarjoja.
 </Aside>
 
 ---
@@ -113,14 +126,14 @@ Aloita yhdellä. Lisää toinen, kun huomaat tarvitsevasi jotain, mitä se ei os
 
 Wink MCP -palvelimet käyttävät **OAuth2 Authorization Code + PKCE** -virtaa ja tukevat **Dynamic Client Registration (RFC 7591)** -toimintoa. Näin tapahtuu, kun yhdistät ensimmäistä kertaa:
 
-1. Tekoälyasiakkaasi löytää valtuutuspalvelimen MCP-päätepisteen `/.well-known/oauth-protected-resource` -metadatasta.
+1. Tekoälyasiakas löytää valtuutuspalvelimen MCP-päätepisteen `/.well-known/oauth-protected-resource` -metadatasta.
 2. Asiakas rekisteröityy itse **Dynamic Client Registration** -menetelmällä — manuaalista sovelluksen asetusta ei tarvita.
 3. Asiakas avaa **selaimen välilehden** osoitteeseen `https://iam.wink.travel`. Kirjaudut sisään Wink-tililläsi ja hyväksyt pyydetyt käyttöoikeudet suostumusnäytöllä.
 4. Wink myöntää **käyttöoikeustunnuksen**, joka on sidottu tiliisi ja identiteettiisi.
 5. Tekoälyasiakas liittää tunnuksen jokaiseen MCP-pyyntöön. Kaikki työkalujen tulokset rajataan automaattisesti hallinnoivan yksikön mukaan.
-6. Tunnukset vanhenevat 3 tunnin kuluttua. Tekoälyasiakas päivittää ne hiljaisesti taustalla ilman uutta kehotetta.
+6. Tunnukset vanhenevat 3 tunnin kuluttua. Asiakas päivittää ne hiljaisesti taustalla ilman uutta kehotetta.
 
-Jokainen työkalukutsu suoritetaan **identiteettisi alla** — samat käyttöoikeussäännöt, jotka suojaavat verkkosivustoa, koskevat myös tekoälyagenttia.
+Jokainen työkalukutsu suoritetaan **identiteettisi alla** — samat käyttöoikeussäännöt, jotka suojaavat verkkosivustoa, pätevät myös tekoälyagenttiin.
 
 ---
 
@@ -142,7 +155,7 @@ Jokainen työkalukutsu suoritetaan **identiteettisi alla** — samat käyttöoik
 
 3. Claude Code ottaa yhteyden palvelimeen, löytää valtuutuspalvelimen ja avaa oletusselaimesi.
 
-4. **Kirjaudu Winkiin** ja hyväksy käyttöoikeuspyyntö suostumusnäytöllä.
+4. **Kirjaudu sisään Winkiin** ja hyväksy lupapyyntö suostumusnäytöllä.
 
 5. Claude Code vahvistaa yhteyden. Kirjoita `/mcp` varmistaaksesi, että palvelin näkyy ja sen työkalut ovat ladattu.
 </Steps>
@@ -153,10 +166,10 @@ claude mcp add wink-operations https://api.wink.travel/mcp/extranet/operations -
 claude mcp add wink-analytics  https://api.wink.travel/mcp/analytics           --transport http
 ```
 
-Kirjaudut sisään vain kerran. Ensimmäisen selaimen hyväksynnän jälkeen Claude Code käyttää Wink-istuntoasi lisäosoitteisiin.
+Kirjaudut sisään vain kerran. Ensimmäisen selaimen hyväksynnän jälkeen Claude Code käyttää samaa Wink-istuntoasi lisäosoitteisiin.
 
 :::tip[Jaa tiimisi kanssa]
-Lisää `--scope project` komentoon `claude mcp add` ja Claude Code tallentaa palvelimen URL-osoitteen `.mcp.json`-tiedostoon reposi juureen. Tee commit tästä tiedostosta — jokainen tiimin jäsen saa samat työkalusarjat ja suorittaa oman selaimen kirjautumisen ensimmäisellä kerralla.
+Lisää `--scope project` komentoon `claude mcp add` ja Claude Code tallentaa palvelimen URL-osoitteen `.mcp.json`-tiedostoon reposi juureen. Tee commit tästä tiedostosta — jokainen tiimin jäsen saa samat työkalusarjat ja suorittaa oman selaimen kirjautumisensa ensimmäisellä kerralla.
 :::
 
   </TabItem>
@@ -224,7 +237,7 @@ Lisää `--scope project` komentoon `claude mcp add` ja Claude Code tallentaa pa
 
 4. Käynnistä Codex. Ensimmäisellä käyttökerralla Codex avaa selaimen välilehden osoitteeseen `https://iam.wink.travel`.
 
-5. **Kirjaudu Winkiin** ja hyväksy pyydetyt käyttöoikeudet.
+5. **Kirjaudu sisään Winkiin** ja hyväksy pyydetyt käyttöoikeudet.
 
 6. Codex vahvistaa yhteyden. Suorita `codex` ja pyydä listaamaan käytettävissä olevat työkalut varmistaaksesi, että Wink-palvelimet ovat aktiivisia.
 </Steps>
@@ -251,7 +264,7 @@ MCP-palvelintuki on saatavilla **ChatGPT:n työpöytäsovelluksessa** Plus-, Pro
    ```
    Klikkaa sitten **Yhdistä**.
 
-5. ChatGPT avaa selaimen välilehden osoitteeseen `https://iam.wink.travel`. **Kirjaudu Winkiin** ja hyväksy käyttöoikeudet.
+5. ChatGPT avaa selaimen välilehden osoitteeseen `https://iam.wink.travel`. **Kirjaudu sisään Winkiin** ja hyväksy käyttöoikeudet.
 
 6. Toista vaiheet 4–5 kaikille muille työkalusarjoille, joita työsi tarvitsee, esimerkiksi:
    ```
@@ -262,7 +275,7 @@ MCP-palvelintuki on saatavilla **ChatGPT:n työpöytäsovelluksessa** Plus-, Pro
 </Steps>
 
 :::note[Verkkosovelluksen rajoitus]
-MCP-palvelimia voi määrittää vain **työpöytäsovelluksessa**. ChatGPT:n verkkokäyttöliittymä chatgpt.com ei tue mukautettuja MCP-palvelimia.
+MCP-palvelimia voi määrittää vain **työpöytäsovelluksessa**. ChatGPT:n verkkokäyttöliittymä chatgpt.com:ssa ei tue mukautettuja MCP-palvelimia.
 :::
 
   </TabItem>
@@ -292,13 +305,13 @@ MCP-palvelimia voi määrittää vain **työpöytäsovelluksessa**. ChatGPT:n ve
 
 3. Avaa Cursor. Mene kohtaan **Asetukset → Cursor-asetukset → MCP** ja varmista, että molemmat palvelimet näkyvät vihreällä tilamerkillä. Jos ne näkyvät punaisina, klikkaa **Päivitä**.
 
-4. Cursor avaa selaimen välilehden osoitteeseen `https://iam.wink.travel`. **Kirjaudu Winkiin** ja hyväksy käyttöoikeudet.
+4. Cursor avaa selaimen välilehden osoitteeseen `https://iam.wink.travel`. **Kirjaudu sisään Winkiin** ja hyväksy käyttöoikeudet.
 
 5. Avaa keskustelu (`Ctrl+L` / `Cmd+L`) ja pyydä Cursoria listaamaan käytettävissä olevat Wink-työkalut varmistaaksesi yhteyden.
 </Steps>
 
 :::tip[Projektikohtainen asetustiedosto]
-Voit myös sijoittaa `mcp.json`-tiedoston projektisi juureen `~/.cursor/`-kansion sijaan. Projektikohtainen asetustiedosto menee asetusten edelle ja tekee palvelimet saataville jokaiselle tiimin jäsenelle, joka avaa projektin Cursorissa.
+Voit myös sijoittaa `mcp.json`-tiedoston projektisi juureen `~/.cursor/`-kansion sijaan. Projektikohtainen asetustiedosto menee asetuksissa edelle ja tekee palvelimet saataville jokaiselle tiimin jäsenelle, joka avaa projektin Cursorissa.
 :::
 
   </TabItem>
@@ -330,7 +343,7 @@ Voit myös sijoittaa `mcp.json`-tiedoston projektisi juureen `~/.cursor/`-kansio
 
 4. Mene kohtaan **Asetukset → MCP-palvelimet** ja varmista, että molemmat palvelimet näkyvät yhdistettyinä. Windsurf avaa selaimen välilehden osoitteeseen `https://iam.wink.travel` ensimmäisellä käyttökerralla.
 
-5. **Kirjaudu Winkiin** ja hyväksy käyttöoikeudet. Palvelimet muuttuvat vihreiksi asetuspaneelissa, kun todennus on suoritettu.
+5. **Kirjaudu sisään Winkiin** ja hyväksy käyttöoikeudet. Palvelimet muuttuvat vihreiksi asetuspaneelissa, kun todennus on suoritettu.
 </Steps>
 
 :::note
@@ -349,7 +362,7 @@ Cline on VS Code -laajennus, jossa on sisäänrakennettu MCP-palvelinhallinta. M
 
 2. Klikkaa **Cline-kuvaketta** Aktiviteettipalkissa (vasen sivupalkki) avataksesi Cline-paneelin.
 
-3. Klikkaa **MCP-palvelimet** -kuvaketta (pistokkeen kuva) Cline-työkalupalkissa, valitse sitten **Muokkaa MCP-asetuksia**.
+3. Klikkaa **MCP-palvelimet** -kuvaketta (pistokkeen kuva) Cline-työkalurivillä, valitse sitten **Muokkaa MCP-asetuksia**.
 
 4. VS Code avaa tiedoston `cline_mcp_settings.json`. Lisää Wink-merkinnät:
 
@@ -370,7 +383,7 @@ Cline on VS Code -laajennus, jossa on sisäänrakennettu MCP-palvelinhallinta. M
 
 5. **Tallenna tiedosto.** Cline lataa asetukset uudelleen automaattisesti ja avaa selaimen välilehden osoitteeseen `https://iam.wink.travel`.
 
-6. **Kirjaudu Winkiin** ja hyväksy käyttöoikeudet. Molemmat palvelimet näkyvät aktiivisina MCP-palvelimet-paneelissa.
+6. **Kirjaudu sisään Winkiin** ja hyväksy käyttöoikeudet. Molemmat palvelimet näkyvät aktiivisina MCP-palvelimet-paneelissa.
 </Steps>
 
 :::tip[Vaihtoehto: lisää URL:n kautta]
@@ -384,14 +397,14 @@ MCP-palvelimet-paneelissa klikkaa **Lisää palvelin** ja liitä työkalusarjan 
 
 ## Käyttöoikeudet
 
-Kun hyväksyt suostumusnäytön, näet erittelyn agentin pyytämistä oikeuksista. MCP-asiakkaat käyttävät samaa käyttöoikeussanastoa kuin muu alusta — katso täydellinen [käyttöoikeusviite Todennus-sivulta](/fi/developers/authentication#scopes).
+Kun hyväksyt suostumusnäytön, näet erittelyn agentin pyytämistä oikeuksista. MCP-asiakkaat käyttävät samaa käyttöoikeussanastoa kuin muu alusta — katso täydellinen [käyttöoikeusviite todennussivulla](/fi/developers/authentication#scopes).
 
 Kaksi asiaa on erityisiä MCP:lle:
 
-- **`mcp.read` `mcp.write` `mcp.remove` -oikeudet vaaditaan lisäksi** MCP-yhteyden avaamiseen. Asiakas, jolla on `mcp.*`-oikeus, pääsee mihin tahansa Wink MCP -päätepisteeseen, mutta jokainen kutsuttu työkalu noudattaa edelleen päätepisteen osio-oikeuksia (esim. `booking.read`).
-- **Tekoälyasiakas pyytää vain tarvitsemansa oikeudet.** Voit kieltää yksittäiset oikeudet suostumusnäytöllä — työkalut, jotka vaativat kiellettyä oikeutta, palauttavat virheen kutsuttaessa.
+- **`mcp.read`, `mcp.write` ja `mcp.remove` -oikeudet vaaditaan lisäksi** MCP-yhteyden avaamiseen. Asiakas, jolla on `mcp.*`-oikeus, pääsee mihin tahansa Wink MCP -päätepisteeseen, mutta jokainen kutsuttu työkalu noudattaa edelleen päätepisteen omaa osakäyttöoikeutta (esim. `booking.read`).
+- **Tekoälyasiakas pyytää vain tarvitsemansa oikeudet.** Voit kieltää yksittäisiä oikeuksia suostumusnäytöllä — työkalut, jotka vaativat kiellettyä oikeutta, palauttavat virheen kutsuttaessa.
 
-**Työkalusarjat eivät muuta tätä.** Päätepiste, johon yhdistät, päättää, mitkä työkalut *listataan*, ei mitä ne *saavat tehdä*. Yhdistäminen `/mcp/payment`-päätepisteeseen ei anna taloudellisia oikeuksia, joita sinulla ei jo ole, eikä yhdistäminen `/mcp/reference`-päätepisteeseen estä siellä olevaa työkalua noudattamasta omia oikeuksiaan. Valtuutus päätetään jokaisessa työkalukutsussa tokenin ja tilisi valtuuksien perusteella.
+**Työkalusarjat eivät muuta tätä.** Päätepiste, johon yhdistät, päättää, mitkä työkalut *listataan*, ei mitä ne *saavat tehdä*. Yhdistäminen `/mcp/payment` ei anna taloudellisia oikeuksia, joita sinulla ei jo ole, eikä yhdistäminen `/mcp/reference` estä työkalua noudattamasta omaa käyttöoikeuttaan. Valtuutus päätetään jokaisen työkalukutsun yhteydessä tokenin ja tilisi valtuutusten perusteella.
 
 ---
 
@@ -399,14 +412,14 @@ Kaksi asiaa on erityisiä MCP:lle:
 
 **Selaimen välilehti ei avaudu**
 
-Tekoälyasiakkaasi ei ehkä vielä tue interaktiivista PKCE-virtaa. Varmista, että käytät uusinta versiota:
+Tekoälyasiakkaasi ei ehkä tue vielä interaktiivista PKCE-virtaa. Varmista, että käytät uusinta versiota:
 - **Claude Code:** `npm install -g @anthropic-ai/claude-code`
 - **Codex CLI:** `npm install -g @openai/codex`
 - **Claude Desktop / ChatGPT työpöytä:** päivitä sovelluksen sisäisellä päivitystyökalulla
 
 **`401 Unauthorized` kirjautumisen jälkeen**
 
-Välimuistissa oleva token voi olla vanhentunut. Poista palvelin ja lisää se uudelleen, jolloin kirjautuminen käynnistyy uudestaan:
+Välimuistissa oleva token voi olla vanhentunut. Poista ja lisää palvelin uudelleen, jolloin kirjautuminen käynnistyy uudestaan:
 
 ```bash
 # Claude Code
@@ -414,15 +427,15 @@ claude mcp remove wink-rates
 claude mcp add wink-rates https://api.wink.travel/mcp/extranet/rates --transport http
 ```
 
-Claude Desktopissa ja ChatGPT:ssä poista palvelin asetuksista, käynnistä sovellus uudelleen ja lisää palvelin uudelleen.
+Claude Desktopissa ja ChatGPT:ssä poista palvelin asetuksista, käynnistä sovellus uudelleen ja lisää palvelin uudestaan.
 
 **`403 Forbidden` tiettyä työkalua kutsuttaessa**
 
-Työkalu vaatii oikeuden, jota et hyväksynyt suostumusnäytöllä, tai tililläsi ei ole tarvittavaa oikeutta. Yhdistä palvelin uudelleen — suostumusnäyttö tulee uudestaan ja voit hyväksyä puuttuvan oikeuden. Jos virhe jatkuu, työkalu tarvitsee tilioikeuden, jota sinulla ei ole; eri työkalusarjaan yhdistäminen ei auta, koska työkalusarjat eivät myönnä oikeuksia.
+Työkalu vaatii käyttöoikeuden, jota et hyväksynyt suostumusnäytöllä, tai tililläsi ei ole tarvittavaa oikeutta. Yhdistä palvelin uudelleen — suostumusnäyttö tulee uudestaan ja voit hyväksyä puuttuvan oikeuden. Jos virhe jatkuu, työkalu tarvitsee tilioikeuden, jota sinulla ei ole; eri työkalusarjaan yhdistäminen ei auta, koska työkalusarjat eivät myönnä oikeuksia.
 
 **Tarvittava työkalu ei ole listassa**
 
-Olet todennäköisesti yhdistänyt työkalusarjaan, joka ei kata kyseistä tehtävää. Tarkista [päätepistehakemisto](#endpoint-directory) ja lisää oikea työkalusarja — yhteydet ovat itsenäisiä, joten yhden lisääminen ei vaikuta muihin. Jos et ole varma, mikä sarja sisältää työkalun, yhdistä väliaikaisesti `https://api.wink.travel/mcp`, etsi työkalu ja katso, missä työkalusarjassa se on.
+Olet todennäköisesti yhdistänyt työkalusarjaan, joka ei kata kyseistä tehtävää. Tarkista [päätepistehakemisto](#endpoint-directory) ja lisää oikea työkalusarja — yhteydet ovat itsenäisiä, joten yhden lisääminen ei vaikuta muihin. Jos et ole varma, mikä sisältää työkalun, yhdistä tilapäisesti `https://api.wink.travel/mcp`, etsi työkalu ja katso, mihin työkalusarjaan se kuuluu.
 
 **`404 Not Found` työkalusarjan päätepisteessä**
 
@@ -430,7 +443,7 @@ Tarkista polku huolellisesti — sisäkkäisillä työkalusarjoilla on kaksi seg
 
 **Yhdistin `api.wink.travel/mcp/channel-manager` eikä mitään tapahtunut**
 
-Tätä päätepistettä ei ole olemassa. Kanavahallinnan integraatio palvellaan vain osoitteessa `https://integrations.wink.travel/mcp/channel-manager`. Jos sinun täytyy myös lukea tai kirjoittaa kiinteistön omia hintoja käsin, se on eri tehtävä eri päätepisteessä — katso `/mcp/extranet/rates`.
+Tätä päätepistettä ei ole olemassa. Kanavahallinnan integraatio palvelee vain osoitteessa `https://integrations.wink.travel/mcp/channel-manager`. Jos tarvitset myös kiinteistön omien hintojen lukemista tai kirjoittamista käsin, se on eri tehtävä eri päätepisteessä — katso `/mcp/extranet/rates`.
 
 **Palvelin näkyy, mutta työkalukutsut palauttavat "account not found"**
 
@@ -438,7 +451,7 @@ Olet kirjautunut Wink-tilille, jolla ei ole hallinnoivaa yksikköä. Mene [Wink 
 
 **Token vanhenee istunnon aikana**
 
-Tokenit ovat voimassa 3 tuntia. Claude Code ja Claude Desktop päivittävät tokenit hiljaisesti ilman keskeytystä. Jos näet todennusvirheitä pitkän käyttämättömyyden jälkeen, kirjoita uusi viesti — asiakas todennus uudelleen automaattisesti.
+Tokenit ovat voimassa 3 tuntia. Claude Code ja Claude Desktop päivittävät tokenit hiljaisesti ilman keskeytystä. Jos näet todennusvirheitä pitkän tauon jälkeen, kirjoita uusi viesti — asiakas todennus uudelleen automaattisesti.
 
 **Codex CLI näyttää "MCP server unreachable"**
 
@@ -446,19 +459,19 @@ Tarkista, että `~/.codex/config.json` on kelvollinen JSON (ei loppupisteitä) j
 
 **ChatGPT:n "Connectors" -valikko puuttuu**
 
-MCP-tuki vaatii ChatGPT:n työpöytäsovelluksen version **1.2024.352** tai uudemman ja aktiivisen Plus-, Pro-, Team- tai Enterprise-tilauksen. Päivitä sovellus ja tarkista tilisi tiedot kohdasta Asetukset → Tili.
+MCP-tuki vaatii ChatGPT:n työpöytäsovelluksen version **1.2024.352** tai uudemman ja aktiivisen Plus-, Pro-, Team- tai Enterprise-tilauksen. Päivitä sovellus ja tarkista tilisi asetuksista.
 
 **Cursor-palvelin näyttää punaisena / "Failed to connect"**
 
-Varmista, että `~/.cursor/mcp.json` on kelvollinen JSON ja sisältää `"type": "http"`. Mene sitten kohtaan **Asetukset → Cursor-asetukset → MCP** ja klikkaa **Päivitä**. Jos virhe jatkuu, käynnistä Cursor kokonaan uudelleen — asetusten muutokset eivät aina päivity ilman uudelleenkäynnistystä.
+Varmista, että `~/.cursor/mcp.json` on kelvollinen JSON ja sisältää `"type": "http"`. Mene sitten **Asetukset → Cursor-asetukset → MCP** ja klikkaa **Päivitä**. Jos virhe jatkuu, käynnistä Cursor kokonaan uudelleen — asetusten muutokset eivät aina päivity ilman uudelleenkäynnistystä.
 
 **Windsurf MCP -palvelimia ei näy asetuksissa**
 
-Windsurf vaatii täydellisen uudelleenkäynnistyksen (ei pelkkää ikkunan uudelleenlatausta) `mcp_config.json` -muutosten havaitsemiseksi. Käytä **Tiedosto → Lopeta** ja käynnistä uudelleen. Jos palvelimia ei vieläkään näy, varmista, että käytössäsi on Windsurfin versio **1.4+** kohdasta **Ohje → Tietoja Windsurfista**.
+Windsurf vaatii täydellisen uudelleenkäynnistyksen (ei pelkkää ikkunan uudelleenlatausta) `mcp_config.json` -muutosten havaitsemiseksi. Käytä **Tiedosto → Lopeta** ja käynnistä uudelleen. Varmista, että käytössä on Windsurf **1.4+** kohdasta **Ohje → Tietoja Windsurfista**.
 
 **Cline "Lisää palvelin" -vaihtoehto ei näy**
 
-MCP-palvelinhallinta vaatii Cline-version **2.0** tai uudemman. Avaa VS Code -laajennukset-paneeli, etsi Cline ja klikkaa **Päivitä**, jos päivitys on saatavilla. Päivityksen jälkeen lataa VS Code uudelleen (`Ctrl+Shift+P` → "Developer: Reload Window").
+MCP-palvelinhallinta vaatii Cline-version **2.0** tai uudemman. Avaa VS Code -laajennukset, etsi Cline ja klikkaa **Päivitä**, jos päivitys on saatavilla. Päivityksen jälkeen lataa VS Code uudelleen (`Ctrl+Shift+P` → "Developer: Reload Window").
 
 ---
 

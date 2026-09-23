@@ -1,0 +1,181 @@
+---
+title: Agentic Payments
+description: Anslut din AI-agent till Wink, logga in, hitta ett hotell och godkänn betalningen för att slutföra din bokning.
+sidebar:
+  order: 10.5
+---
+
+Du kan söka efter ett hotell, välja ett rum och slutföra din bokning via din AI-agent. Anslut den till Wink och en betalningsplånbok, och berätta sedan var du vill bo. Wink använder **Machine Payments Protocol (MPP)** för att acceptera plånbokens betalning och returnera din bokningsbekräftelse.
+
+## 1. Anslut MCP-servrarna
+
+För hela bokningsflödet behöver din agent **Wink Booking Engine** och en **betalningsplånbok**.
+
+| Anslutning | Vad den gör | Hur du lägger till den |
+| --- | --- | --- |
+| **Wink Booking Engine** — krävs | Hittar destinationer, söker hotell och rumspriser, ger offerter och bekräftar bokningar samt hämtar dina bokningar och kvitton. | Lägg till `https://api.wink.travel/mcp/booking-engine` som en fjärr-HTTP MCP-server. |
+| **Betalningsplånbok** — krävs för att betala | Tillhandahåller betalningsuppgifter efter att du godkänt köpet. | Anslut en plånbok som stöder Stripe Shared Payment Tokens eller Tempo-betalningar. Se exemplet för Link nedan. |
+| Wink Reference — valfri | Söker upp länder, valutor och annan referensdata. | `https://api.wink.travel/mcp/reference` |
+| Wink Docs — valfri | Hjälper din agent att läsa dokumentation och API-kontrakt. | `https://docs.mcp.wink.travel/mcp` |
+
+Booking Engine MCP inkluderar redan verktygen som behövs för resenärens bokningsflöde när agentic bokning och betalning är aktiverade för den miljön. Winks separata Payment MCP är för finansiella operationer som huvudböcker och uttag; den behövs inte för att betala för ett rum.
+
+### Logga in och välj behörigheter
+
+1. Öppna din agents MCP- eller anslutningsinställningar och lägg till Booking Engine-URL:en ovan. Ge den ett namn som **Wink Booking**.
+2. Din agent öppnar Wink-inloggningssidan i din webbläsare. Logga in med det Wink-konto du vill boka under.
+3. På samtyckesskärmen väljer du de behörigheter din agent behöver och godkänner anslutningen.
+4. Gå tillbaka till din agent. Den laddar de tillgängliga verktygen och hanterar autentisering för efterföljande MCP-anrop.
+
+För detta flöde, välj:
+
+| Behörighet | Varför den behövs |
+| --- | --- |
+| AI-agentåtkomst (`mcp.read`) | Gör det möjligt för din agent att ansluta till Wink MCP. |
+| Marknadsföringsläsning (`marketing.read`) | Låter agenten hitta ditt kontos bokningskonfiguration, kallad anpassning. Ditt konto måste också ha tillgång till den konfigurationen. |
+| Betalningsskrivning (`payment.write`) | Låter agenten betala för offerten och bekräfta bokningen. |
+
+Behåll de inloggningsbehörigheter som begärs av anslutningen. Din MCP-klient hanterar åtkomsttoken; du behöver inte kopiera en token till chatten eller ställa in begärandehuvuden. Om du hoppade över en nödvändig behörighet, anslut igen via din klients inloggningsflöde och godkänn den.
+
+### Anslut en betalningsplånbok
+
+För Stripe-betalningar är ett alternativ **Links agentplånbok**. Om din klient stöder lokala MCP-servrar och Node.js är installerat, lägg till denna post i dess MCP-konfiguration:
+
+```json
+{
+  "mcpServers": {
+    "link": {
+      "command": "npx",
+      "args": ["@stripe/link-cli", "--mcp"]
+    }
+  }
+}
+```
+
+Be din agent att ansluta ditt Link-konto, följ sedan verifieringslänken den tillhandahåller och godkänn anslutningen. Link levererar Shared Payment Token som används för att betala bokningen. Link stöder för närvarande amerikanska konton; kontrollera dess utgiftsgränser innan du bokar. Se [Links installationsguide](https://github.com/stripe/link-cli#quickstart) och [MCP-konfiguration](https://github.com/stripe/link-cli#mcp-server).
+
+Du kan också använda en plånbok som stöder Tempo-betalningsutmaningen som erbjuds av Wink. Om din agent redan har en kompatibel plånbok ansluten, använd den anslutningen. Plånboksinställning och betalningsgodkännande är separata från inloggning till Wink.
+
+## 2. Be din agent hitta ett rum
+
+Till exempel:
+
+> Hitta ett rum i Bangkok för två vuxna från 15 till 17 januari 2027. Visa mig tillgängliga alternativ, totalpris och avbokningsvillkor innan jag väljer.
+
+Din agent kan hitta dina tillgängliga Wink-konton och deras bokningskonfigurationer. Om du har flera, berätta för den vilket som ska användas. Om du bokar via en medföljande bokningslänk eller konfiguration, ge den till agenten istället.
+
+Agenten löser sedan din destination, kontrollerar tillgängliga hotell och laddar rumspriser för dina datum. Välj ett rum och be om en offert.
+
+Detta betalningsflöde stöder för närvarande **ett rum, prissatt i USD, för vuxna endast**. En offert har en utgångstid. Att begära en debiterar dig inte eller bekräftar en bokning.
+
+## 3. Granska och godkänn betalning
+
+Kontrollera hotellet, rummet, datumen, gästerna, avbokningsvillkoren och det angivna totalpriset. När du är redo, be din agent boka och slutföra eventuellt godkännande som din plånbok kräver.
+
+Agenten använder en av de betalningsmetoder som erbjuds av offerten:
+
+- **Stripe:** plånboken tillhandahåller en Shared Payment Token.
+- **Tempo:** plånboken gör överföringen som specificeras av utmaningen och tillhandahåller dess transaktionshash.
+
+Efter att betalningen lyckats ger din agent dig en **bokningsbekräftelsekod**. Den kan också hämta bokningsdetaljer och kvitto via Booking Engine MCP.
+
+Om betalningen fortfarande behandlas eller svaret förloras, låt agenten kontrollera **samma betalningsförsök**. Den bör återanvända offerten och betalningsuppgiften istället för att starta en andra betalning. Om betalningen nekas, be om en ny offert och granska den innan du försöker igen.
+
+## Verktygsreferens för agenter och utvecklare
+
+Alla Wink-verktyg nedan är tillgängliga via **Booking Engine MCP**. MCP-klienten skickar autentisering automatiskt med de behörigheter som godkänts vid inloggning.
+
+| Steg | Verktyg och beteende |
+| --- | --- |
+| Välj bokningskontext | `managing_entity_list`, sedan `customization_get_primary` eller `customization_search` för valt konto. Använd en medföljande anpassning när en redan är känd. |
+| Hitta en destination | `destination_lookup_search_suggestions` och `destination_lookup_get`. |
+| Sök hotell och rum | `inventory_search_city` eller `inventory_search_geo`, sedan `property_inventory_get` för priser och tillgänglighet. |
+| Offert för valt rum | `agentic_booking_quote`. Skicka rumsdetaljer i dess `request`-argument. |
+| Betala och bekräfta | Skaffa en uppgift från den anslutna plånboken, sedan anropa `agentic_booking_pay` med `request.quoteId` och exakt en av `request.spt` eller `request.tempoTransactionHash`. Behåll samma inloggade Wink-användare för offert och betalning. |
+| Hämta bokning och kvitto | Använd `booking_search` eller `booking_search_list` för att hitta den bekräftade bokningen, sedan `booking_get` och `booking_receipt_get` med dess bokningsidentifierare. |
+
+Offertförfrågan behöver `hotelIdentifier`, `roomRateIdentifier`, `checkIn`, `checkOut`, `adults`, `children` och `customizationIdentifier`. Datum använder `YYYY-MM-DD`; `checkOut` måste följa efter `checkIn`. Sätt `adults` till minst `1` och `children` till `0`.
+
+Offerten returnerar `quoteId`, `amountUsdCents`, `currency`, `expiresAt` och `mppChallenges`. Visa USD-cent som dollar: `10000` betyder **$100.00**. För Tempo, använd den valda utmaningens token, kedja, mottagare och belopp i tokenbasenheter.
+
+| Betalningsresultat | Nästa steg |
+| --- | --- |
+| `PAYMENT_SUCCEEDED` | Spara `bookingConfirmationCode` och `chargeReference`. |
+| `IN_PROGRESS` | Vänta kort och försök samma offert och uppgift igen. |
+| `DECLINED` | Begär en ny offert och granska den innan en ny betalning. |
+
+Ett lyckat försök returnerar den befintliga bokningen utan att debitera igen. Behandla en timeout som ett okänt utfall och försök samma betalning igen. Om det förblir olöst, kontakta support med offert-ID.
+
+### Betalningsmedvetna MCP-klienter
+
+Betalningsmedvetna MCP-klienter kan använda `agentic_booking_book` med rumsfälten direkt i `arguments`. Det första anropet returnerar fel `-32042` med betalningsutmaningar. Försök samma anrop igen med plånbokens uppgift i `params._meta["org.paymentauth/credential"]`; framgång inkluderar `result._meta["org.paymentauth/receipt"]`. Fel `-32043` innehåller ett betalningsfel och utmaning: ett definitivt avslag kräver en ny offert, medan en ofullständig betalningspayload kan försöka igen med samma utmaning. För `-32603` betyder `data.failure.reason` av `payment-in-progress` eller `already-consumed` att samma uppgift kan försöka igen; felkoden ensam räcker inte.
+
+## Boka via REST
+
+Använd REST när du bygger en integration som anropar Wink direkt över HTTP. Både offert och betalning använder **`POST https://api.wink.travel/api/mpp/booking`**.
+
+Din applikation behöver en [Wink-användaråtkomsttoken](/sv/developers/authentication/) med `payment.write`-behörighet för att betala. Behåll samma användare för båda anropen. Skicka token i `Wink-Authorization`, så att `Authorization` är tillgängligt för plånbokens betalningsuppgift. Dessa huvuden gäller för REST; en MCP-klient hanterar sin egen autentisering.
+
+### 1. Begär en offert
+
+Spara det valda rummet som `booking.json`, ersätt exempelidentifierare och datum med ditt val. Rumsfälten går direkt i JSON-kroppen, utan en `request`-omslag.
+
+```json
+{
+  "hotelIdentifier": "YOUR_HOTEL_ID",
+  "roomRateIdentifier": "YOUR_ROOM_RATE_ID",
+  "checkIn": "2027-01-15",
+  "checkOut": "2027-01-17",
+  "adults": 2,
+  "children": 0,
+  "customizationIdentifier": "YOUR_CUSTOMIZATION_ID"
+}
+```
+
+Sätt `WINK_ACCESS_TOKEN` till användarens åtkomsttoken och skicka förfrågan:
+
+```bash
+curl -i https://api.wink.travel/api/mpp/booking \
+  -H "Wink-Authorization: Bearer $WINK_ACCESS_TOKEN" \
+  -H 'Content-Type: application/json' \
+  --data-binary @booking.json
+```
+
+Wink returnerar **`402 Payment Required`** med en `WWW-Authenticate: Payment ...`-utmaning för varje erbjuden metod. JSON-kroppen innehåller `quoteId`, `amount`, `currency`, `expiresAt` och `methods`. Här är `amount` en sträng i USD-cent: `"10000"` betyder **$100.00**. Granska offerten innan den går ut; ingen betalning har tagits än.
+
+### 2. Betala och bekräfta
+
+Låt plånboken uppfylla en av de returnerade utmaningarna. För Stripe tillhandahålls `payload.spt`; för Tempo tillhandahålls `payload.hash` med `payload.type` satt till `"hash"`. Använd betalningsuppgifterna från den utmaningen.
+
+Sätt `MPP_CREDENTIAL` till plånbokens kodade MPP-uppgift, som innehåller utmaningen och betalningspayloaden. Försök igen med **samma begärandekropp**, behåll identitetshuvudet:
+
+```bash
+curl -i https://api.wink.travel/api/mpp/booking \
+  -H "Wink-Authorization: Bearer $WINK_ACCESS_TOKEN" \
+  -H "Authorization: Payment $MPP_CREDENTIAL" \
+  -H 'Content-Type: application/json' \
+  --data-binary @booking.json
+```
+
+Vid framgång returnerar Wink **`200 OK`**, en JSON-kropp som innehåller `bookingConfirmationCode` och en `Payment-Receipt`-header. Spara bekräftelsen och kvittot. Ett lyckat försök returnerar den befintliga bokningen utan att debitera igen.
+
+### Hantera svar och försök igen
+
+| Svar | Vad du ska göra |
+| --- | --- |
+| `400` | Korrigera ogiltiga rumsuppgifter eller en felaktig uppgift. |
+| `401` / `403` | Kontrollera användarens autentisering och betalningsbehörighet. |
+| `402` | Inspektera det returnerade problemet och utmaningen. Ett definitivt betalningsavslag kräver en ny offert; en ofullständig betalningspayload återanvänder den ursprungliga utmaningen. Granska priset innan betalning. |
+| `409` | Betalningsutfallet är oklart. Vänta kort och försök samma kropp och uppgift igen vid bokningsändpunkten. |
+| `429` | Vänta det antal sekunder som anges i `Retry-After`, försök sedan igen. |
+
+Ett `409`-svar har en `application/problem+json`-kropp. Matcha dess `type` mot dessa exakta URL:er:
+
+| Problemtyp | Betydelse |
+| --- | --- |
+| [https://api.wink.travel/problems/payment-in-progress](https://api.wink.travel/problems/payment-in-progress) | Ett betalningsförsök pågår fortfarande eller avräkning kan ännu inte bekräftas. |
+| [https://api.wink.travel/problems/already-consumed](https://api.wink.travel/problems/already-consumed) | Utmaningen eller betalningsbeviset användes redan av ett eventuellt lyckat försök. Detta bekräftar inte bokningen i sig. |
+
+Båda betyder **försök samma betalning igen; betala inte en ny offert**. URL:erna identifierar och dokumenterar problemet; de är inte betalnings- eller pollingändpunkter. Försök `POST /api/mpp/booking` igen och använd problemets `type` istället för fritexten `detail` för att avgöra vad som ska göras. Se [problemtypreferensen](https://api.wink.travel/problems) för alla Wink-betalningsproblem.
+
+En timeout, förlorat svar eller serverfel efter att betalningen skickats kan också lämna utfallet okänt. Försök samma betalningsförfrågan igen. Om utfallet förblir olöst, kontakta support med offert-ID innan du startar en ny betalning.

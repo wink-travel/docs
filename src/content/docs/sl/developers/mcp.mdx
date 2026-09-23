@@ -1,15 +1,15 @@
 ---
 title: MCP strežniki
-description: Povežite AI agente s platformo Wink prek Model Context Protocol. Wink objavlja svoja orodja kot osredotočene, nalogam prilagojene končne točke, tako da vaš agent naloži le tisto, kar vaše delo potrebuje — zaščiteno z interaktivno prijavo OAuth2.
+description: Povežite AI agente s platformo Wink prek Model Context Protocol. Wink objavlja svoja orodja kot osredotočene, nalogam prilagojene končne točke, tako da vaš agent naloži le tisto, kar vaše delo potrebuje — zaščiteno z interaktivnim OAuth2 prijavljanjem.
 sidebar:
   order: 10
 ---
 
 import { Steps, LinkButton, Aside, Tabs, TabItem } from '@astrojs/starlight/components';
 
-Winkova orodja MCP so objavljena kot **sklopi orodij** — osredotočene končne točke, vsaka pokriva eno nalogo. Povežete svoj AI odjemalec z eno ali dvema, ki ustrezata vašemu delu, ne z vsemi.
+Winkova MCP orodja so objavljena kot **nabori orodij** — osredotočene končne točke, vsaka pokriva eno nalogo. Povežete svoj AI odjemalec z eno ali dvema, ki ustrezata vašemu delu, ne z vsemi.
 
-Vsaka končna točka uporablja **interaktivno prijavo OAuth2** (PKCE avtentikacijski potek s kodo za avtorizacijo): vaš AI agent odpre zavihek brskalnika, se prijavite z vašim Wink računom in to je to. Ni treba upravljati skrivnosti odjemalca.
+Vsaka končna točka uporablja **interaktivno OAuth2 prijavo** (PKCE avtentikacijski potek s kodo za avtorizacijo): vaš AI agent odpre zavihek brskalnika, se prijavite z vašim Wink računom in to je to. Ni treba upravljati skrivnosti odjemalca.
 
 ```bash title="Integrator upravljalca kanalov se poveže z eno končno točko"
 claude mcp add wink-channel-manager https://integrations.wink.travel/mcp/channel-manager --transport http
@@ -27,21 +27,21 @@ Wink ponuja okoli 500 orodij. Predati jih vsem agentu naenkrat je tehnično mogo
 
 **Definicije orodij porabijo kontekst.** Vsako orodje, ki ga MCP strežnik oglašuje, se naloži v kontekstno okno modela, preden opravi kakršnokoli delo, skupaj z opisom in celotno shemo parametrov. Petsto takih orodij porabi velik del proračuna, ki ga vaša dejanska naloga potrebuje, pri vsakem posameznem zahtevku.
 
-**Kakovost izbire upada z rastjo seznama.** Agent, ki izbira med 500 podobno poimenovanimi orodji, sprejema slabše odločitve kot tisti, ki izbira med 40. Če integrirate upravljalca kanalov, je približno dvajset orodij relevantnih za vas; preostalih 480 je šum, ki otežuje iskanje pravega orodja.
+**Kakovost izbire pada z rastjo seznama.** Agent, ki izbira med 500 podobno poimenovanimi orodji, sprejema slabše odločitve kot tisti, ki izbira med 40. Če integrirate upravljalca kanalov, je približno dvajset orodij relevantnih za vas; ostalih 480 je šum, ki otežuje iskanje pravega orodja.
 
-**Delo je resnično ločljivo.** Nekdo, ki sinhronizira razpoložljivost iz PMS, in nekdo, ki ureja partnerske pristajalne strani, skoraj ne delita orodij. Razdelitev po nalogah pomeni, da vsaka povezava nosi besedišče ene naloge.
+**Delo je resnično ločljivo.** Nekdo, ki sinhronizira razpoložljivost iz PMS, in nekdo, ki ureja partnerske pristajalne strani, skoraj ne delita nobenega orodja. Razdelitev po nalogah pomeni, da vsaka povezava nosi besedišče ene naloge.
 
-<Aside type="caution" title="Sklopi orodij niso dovoljenja">
-Izbira ozkega sklopa orodij **ne** omejuje, kaj lahko vaš račun počne, in izbira širokega ne podeli ničesar dodatnega. Vsako orodje uveljavlja enaka dovoljenja računa kot spletni portal, pod vašo prijavljeno identiteto. Če vaš račun ne more preklicati rezervacije v Wink Portalu, agent tudi ne more — ne glede na to, s katero končno točko je povezan.
+<Aside type="caution" title="Nabori orodij niso dovoljenja">
+Izbira ozkega nabora orodij **ne** omejuje tega, kar lahko vaš račun počne, in izbira širokega ne podeli ničesar dodatnega. Vsako orodje uveljavlja enaka dovoljenja računa kot spletni portal, pod vašo prijavljeno identiteto. Če vaš račun ne more preklicati rezervacije v Wink Portalu, agent tudi ne more — ne glede na to, s katero končno točko je povezan.
 
-Izberite sklope orodij za **osredotočenost**, ne za varnost.
+Izbirajte nabor orodij za **osredotočenost**, ne za varnost.
 </Aside>
 
 ---
 
-## Direktorij končnih točk
+## Katalog končnih točk
 
-Dva gostitelja strežeta sklope orodij. Število orodij je približno in se s časom povečuje.
+Dva gostitelja strežeta naborom orodij. Število orodij je približno in se s časom povečuje.
 
 ### `https://api.wink.travel` — platforma
 
@@ -59,9 +59,9 @@ Dva gostitelja strežeta sklope orodij. Število orodij je približno in se s č
 | `/mcp/reference` | ~24 | Podatki samo za branje: države, valute in menjalni tečaji, jeziki, časovne cone, geografske poizvedbe, IP geolokacija |
 | `/mcp/analytics` | ~18 | Analitika rezervacij in prihodkov: pregledi, črtni grafikoni, lestvice, uspešnost partnerjev, metrične delitve |
 | `/mcp/payment` | ~18 | Finančne operacije: knjiga, dvigi in ocene stroškov, agregati sredstev rezervacij |
-| `/mcp/booking-engine` | ~17 | Nakupna pot za potnike: iskanje in poizvedbe, nakupovalni voziček in zaključek nakupa, sezname želja, prilagoditve kampanj |
+| `/mcp/booking-engine` | ~17 | Nakupna pot za potnika: iskanje in poizvedba, nakupovalna košarica in zaključek nakupa, sezname želja, prilagoditev kampanj |
 | `/mcp/social` | ~17 | Povezani družbeni računi, objavljanje in načrtovanje objav, branje vpogledov v objave |
-| `/mcp/travel-agent` | ~8 | Rezervacije, ki jih opravi agent v imenu potnikov, in poročila agentov |
+| `/mcp/travel-agent` | ~8 | Rezervacije, ki jih opravi agent v imenu potnikov, in agentova poročila |
 
 ### `https://integrations.wink.travel` — integracije upravljalcev kanalov
 
@@ -74,18 +74,24 @@ Ena končna točka, ker ta gostitelj obstaja za eno nalogo.
 <Aside type="note" title="Integracija upravljalca kanalov vs. upravljanje lastnih cen">
 To so različne naloge za različne ljudi in ne delijo končne točke.
 
-**Prodajalec upravljalca kanalov, PMS ali CRS** se enkrat integrira prek `integrations.wink.travel/mcp/channel-manager` in nato izmenjuje nepremičnine, cene, razpoložljivost in rezervacije prek te integracije. Ta ena končna točka je celotna površina.
+**Prodajalec upravljalca kanalov, PMS ali CRS** se enkrat integrira prek `integrations.wink.travel/mcp/channel-manager` in nato preko te integracije izmenjuje nepremičnine, cene, razpoložljivost in rezervacije. Ta ena končna točka je celotna površina.
 
-**Hotelir, ki ročno spreminja lastne cene**, uporablja orodja extranet na `api.wink.travel` — `/mcp/extranet/rates` in sorodne. Ta niso del integracije upravljalca kanalov in integrator nima razloga, da bi se nanje povezal.
+**Hotelir, ki ročno spreminja lastne cene**, uporablja orodja extranet na `api.wink.travel` — `/mcp/extranet/rates` in sorodna. Ta niso del integracije upravljalca kanalov in integrator nima razloga, da bi se nanje povezal.
 
 Upravljanje računa je prav tako na `api.wink.travel`, na `/mcp/settings`. Na gostitelju integracij ni `/mcp/settings`.
 </Aside>
 
 Vsaka končna točka ima tudi orodje `ping`, tako da lahko potrdite, da je povezava aktivna, preden zahtevate dejansko delo.
 
+### Agentne plačilne storitve
+
+Za popoln potek rezervacije potnika povežite **Wink Booking Engine** na `https://api.wink.travel/mcp/booking-engine` in združljiv **plačilni denarnico**. Dodajanje Wink MCP odpre prijavo v brskalniku in izbiro dovoljenj; vaš odjemalec nato upravlja avtentikacijo.
+
+Booking Engine vključuje iskanje destinacije, iskanje hotelov in sob, `agentic_booking_quote`, `agentic_booking_pay`, `agentic_booking_book`, pridobivanje rezervacij in potrdil, ko so agentne rezervacije in plačila omogočene za to okolje. Oglejte si [Agentic Payments](/sl/developers/agentic-payments/) za nastavitev povezave, dovoljenja za izbiro in korake od iskanja do potrditve.
+
 ---
 
-## Kateri sklopi orodij potrebujem?
+## Kateri nabor orodij potrebujem?
 
 | Če ste… | Povežite se z |
 |---|---|
@@ -96,29 +102,36 @@ Vsaka končna točka ima tudi orodje `ping`, tako da lahko potrdite, da je povez
 | **Upravljate dnevne rezervacije** | `/mcp/extranet/operations` |
 | **Širite distribucijo** | `/mcp/extranet/distribution` + `/mcp/analytics` |
 | **Gradite partnerske strani** | `/mcp/studio/curation` + `/mcp/studio/embeds` |
-| **Upravljate povezave v biografiji** | `/mcp/link-manager` + `/mcp/social` |
+| **Upravljate strani z link-in-bio** | `/mcp/link-manager` + `/mcp/social` |
 | **Rezervirate v imenu potnikov** | `/mcp/travel-agent` |
 | **Poravnate denar** | `/mcp/payment` |
-| **Gradite rezervacijsko izkušnjo** | `/mcp/booking-engine` + `/mcp/reference` |
+| **Rezervirate sobo z AI agentom** | `/mcp/booking-engine` + združljiva plačilna denarnica — glejte [Agentic Payments](/sl/developers/agentic-payments/) |
+| **Gradite rezervacijsko izkušnjo** | `/mcp/booking-engine`; po želji `/mcp/reference` za dodatne poizvedbe |
 
-Začnite z enim. Dodajte drugega, ko ugotovite, da nekaj, kar potrebujete, ni mogoče — vsaka povezava je neodvisna in dodajanje ene ne vpliva na druge.
+**Booking Engine vključuje osnovni rezervacijski potek.** Omogoča odkrivanje računa in prilagoditev, iskanje destinacije, razpoložljivost hotelov in podrobnosti cen sob, nakupovalne košarice, zaključek nakupa in upravljanje rezervacij potnikov. Agentna orodja za rezervacije in plačila so vključena, ko so omogočena za to okolje.
+
+Za iskanje hotelov v mestu uporabite `destination_lookup_search_suggestions` za določitev destinacije, nato `inventory_search_city` za iskanje razpoložljivih hotelov in cen. Obe orodji sta v `/mcp/booking-engine`, zato ta potek ne zahteva povezave Reference.
+
+Dodajte `/mcp/reference`, ko potrebujete podporne poizvedbe, kot so države, valute in menjalni tečaji, podprti jeziki, časovne cone, širše geografske poizvedbe, OTA klasifikacije ali javno znanje o nepremičninah. To so neobvezni dodatki k rezervacijskemu poteku.
+
+Začnite z enim. Dodajte drugega, ko ugotovite, da nekaj ne zmore — vsaka povezava je neodvisna in dodajanje ene ne vpliva na druge.
 
 <Aside type="tip" title="Še vedno želite vse?">
-`https://api.wink.travel/mcp` in `https://integrations.wink.travel/mcp` ostajata na voljo in strežeta **vsa** orodja na svojem gostitelju. Koristna sta za raziskovanje, kaj obstaja, vendar ju ne priporočamo za vsakodnevno delo: seznam orodij je dovolj velik, da zasenči vašo nalogo in poslabša izbiro orodij agenta. Raje uporabite zgornje sklope orodij.
+`https://api.wink.travel/mcp` in `https://integrations.wink.travel/mcp` ostajata na voljo in strežeta **vsa** orodja na svojem gostitelju. Koristna sta za raziskovanje, kaj obstaja, vendar ju ne priporočamo za vsakodnevno delo: seznam orodij je dovolj velik, da zasenči vašo nalogo in poslabša izbiro orodij agenta. Raje uporabite zgornje naborje orodij.
 </Aside>
 
 ---
 
 ## Kako deluje avtentikacija
 
-Wink MCP strežniki uporabljajo **OAuth2 Authorization Code + PKCE** potek in podpirajo **Dynamic Client Registration (RFC 7591)**. Tako poteka povezava prvič:
+Wink MCP strežniki uporabljajo **OAuth2 Authorization Code + PKCE** potek in podpirajo **Dynamic Client Registration (RFC 7591)**. Tako poteka ob prvi povezavi:
 
 1. Vaš AI odjemalec odkrije avtentikacijski strežnik iz metapodatkov MCP končne točke `/.well-known/oauth-protected-resource`.
 2. Odjemalec se sam registrira prek **Dynamic Client Registration** — ni potrebna ročna nastavitev aplikacije.
 3. Odjemalec odpre **zavihek brskalnika** na `https://iam.wink.travel`. Prijavite se z Wink računom in odobrite zahtevana dovoljenja na zaslonu za soglasje.
 4. Wink izda **dostopni žeton**, vezan na vaš račun in identiteto.
-5. AI odjemalec priloži žeton vsakemu MCP zahtevku. Vsi rezultati orodij so samodejno omejeni na vaš upravljavski subjekt.
-6. Žetoni potečejo po 3 urah. Vaš AI odjemalec tiho osveži žeton v ozadju brez ponovnega poziva.
+5. AI odjemalec priloži žeton vsakemu MCP zahtevku. Vsi rezultati orodij so samodejno omejeni na vašo upravljavsko entiteto.
+6. Žetoni potečejo po 3 urah. Vaš AI odjemalec tiho osveži žeton v ozadju brez ponovne zahteve po prijavi.
 
 Vsak klic orodja teče **pod vašo identiteto** — enaka pravila ACL, ki varujejo spletni portal, veljajo tudi za AI agenta.
 
@@ -135,7 +148,7 @@ Vsak klic orodja teče **pod vašo identiteto** — enaka pravila ACL, ki varuje
    npm install -g @anthropic-ai/claude-code
    ```
 
-2. Izberite sklop orodij iz [zgornjega direktorija](#endpoint-directory) in ga dodajte. Na primer, cene in razpoložljivost:
+2. Izberite nabor orodij iz [zgornjega kataloga](#endpoint-directory) in ga dodajte. Na primer, cene in razpoložljivost:
    ```bash
    claude mcp add wink-rates https://api.wink.travel/mcp/extranet/rates --transport http
    ```
@@ -147,7 +160,7 @@ Vsak klic orodja teče **pod vašo identiteto** — enaka pravila ACL, ki varuje
 5. Claude Code potrdi povezavo. Vnesite `/mcp` za preverjanje, da se strežnik prikaže in so orodja naložena.
 </Steps>
 
-Dodajte toliko sklopov orodij, kot vaše delo potrebuje — vsak je ločen vnos strežnika z lastnim imenom:
+Dodajte toliko naborov orodij, kot jih vaše delo potrebuje — vsak je ločen vnos strežnika z lastnim imenom:
 ```bash
 claude mcp add wink-operations https://api.wink.travel/mcp/extranet/operations --transport http
 claude mcp add wink-analytics  https://api.wink.travel/mcp/analytics           --transport http
@@ -156,7 +169,7 @@ claude mcp add wink-analytics  https://api.wink.travel/mcp/analytics           -
 Prijavite se samo enkrat. Po prvi odobritvi v brskalniku Claude Code ponovno uporabi vašo Wink sejo za dodatne Wink končne točke.
 
 :::tip[Delite s svojo ekipo]
-Dodajte `--scope project` k `claude mcp add` in Claude Code zapiše URL strežnika v `.mcp.json` v korenu repozitorija. Potrdite to datoteko — vsak član ekipe dobi iste sklope orodij, vsak pa opravi svojo prijavo v brskalnik ob prvi povezavi.
+Dodajte `--scope project` k `claude mcp add` in Claude Code zapiše URL strežnika v `.mcp.json` v korenu repozitorija. Potrdite to datoteko — vsak član ekipe dobi iste nabor orodij in vsak opravi svojo prijavo v brskalniku ob prvi povezavi.
 :::
 
   </TabItem>
@@ -185,7 +198,7 @@ Dodajte `--scope project` k `claude mcp add` in Claude Code zapiše URL strežni
    }
    ```
 
-3. **Popolnoma zaprite in ponovno zaženite** Claude Desktop (uporabite Quit iz menijske vrstice — zapiranje okna ni dovolj).
+3. **Popolnoma zaprite in ponovno zaženite** Claude Desktop (uporabite Quit iz menijske vrstice — samo zapiranje okna ni dovolj).
 
 4. Claude Desktop odpre zavihek brskalnika za vsak nov strežnik. Prijavite se v Wink in odobrite dovoljenja.
 
@@ -205,7 +218,7 @@ Dodajte `--scope project` k `claude mcp add` in Claude Code zapiše URL strežni
    - **macOS / Linux:** `~/.codex/config.json`
    - **Windows:** `%USERPROFILE%\.codex\config.json`
 
-3. Dodajte Wink MCP strežnike:
+3. Dodajte vnose Wink MCP strežnikov:
 
    ```json title="~/.codex/config.json"
    {
@@ -243,9 +256,9 @@ Podpora MCP strežnikov je na voljo v **ChatGPT namizni aplikaciji** za naročni
 
 2. Odprite aplikacijo in kliknite **ikono svojega profila** v zgornjem desnem kotu, nato izberite **Nastavitve**.
 
-3. Pojdite na **Povezovalnike** (ali **MCP strežniki** glede na različico aplikacije) in kliknite **Dodaj**.
+3. Pojdite na **Povezovalnike** (ali **MCP strežniki**, odvisno od različice aplikacije) in kliknite **Dodaj**.
 
-4. Vnesite URL sklopa orodij iz [zgornjega direktorija](#endpoint-directory), na primer:
+4. Vnesite URL nabora orodij iz [zgornjega kataloga](#endpoint-directory), na primer:
    ```
    https://api.wink.travel/mcp/extranet/rates
    ```
@@ -253,12 +266,12 @@ Podpora MCP strežnikov je na voljo v **ChatGPT namizni aplikaciji** za naročni
 
 5. ChatGPT odpre zavihek brskalnika na `https://iam.wink.travel`. **Prijavite se v Wink** in odobrite dovoljenja.
 
-6. Ponovite koraka 4–5 za vsak drug sklop orodij, ki ga vaše delo potrebuje, na primer:
+6. Ponovite koraka 4–5 za vsak drug nabor orodij, ki ga vaše delo potrebuje, na primer:
    ```
    https://api.wink.travel/mcp/extranet/operations
    ```
 
-7. Vsak sklop orodij se prikaže na seznamu Povezovalnikov. Začnite nov pogovor — Wink orodja so samodejno na voljo.
+7. Vsak nabor orodij se prikaže na seznamu Povezovalnikov. Začnite nov pogovor — Wink orodja so samodejno na voljo.
 </Steps>
 
 :::note[Omejitev spletne aplikacije]
@@ -273,7 +286,7 @@ MCP strežniki so konfigurabilni samo v **namizni aplikaciji**. Spletni vmesnik 
    - **macOS / Linux:** `~/.cursor/mcp.json`
    - **Windows:** `%USERPROFILE%\.cursor\mcp.json`
 
-2. Dodajte Wink MCP strežnike:
+2. Dodajte vnose Wink MCP strežnikov:
 
    ```json title="~/.cursor/mcp.json"
    {
@@ -309,7 +322,7 @@ Lahko tudi postavite datoteko `mcp.json` v koren vašega projekta namesto v `~/.
    - **macOS / Linux:** `~/.codeium/windsurf/mcp_config.json`
    - **Windows:** `%USERPROFILE%\.codeium\windsurf\mcp_config.json`
 
-2. Dodajte Wink MCP strežnike:
+2. Dodajte vnose Wink MCP strežnikov:
 
    ```json title="~/.codeium/windsurf/mcp_config.json"
    {
@@ -326,7 +339,7 @@ Lahko tudi postavite datoteko `mcp.json` v koren vašega projekta namesto v `~/.
    }
    ```
 
-3. **Popolnoma znova zaženite Windsurf** (Datoteka → Izhod, nato ponovno odprite).
+3. **Popolnoma ponovno zaženite Windsurf** (Datoteka → Izhod, nato ponovno odprite).
 
 4. Pojdite na **Nastavitve → MCP strežniki** in preverite, da sta oba strežnika prikazana kot povezana. Windsurf ob prvi uporabi odpre zavihek brskalnika na `https://iam.wink.travel`.
 
@@ -349,7 +362,7 @@ Cline je razširitev za VS Code z vgrajenim upravljalcem MCP strežnikov. Ročno
 
 2. Kliknite **ikono Cline** v vrstici aktivnosti (levi stranski meni), da odprete panel Cline.
 
-3. Kliknite **ikono MCP strežnikov** (ikona vtičnice) v orodni vrstici Cline, nato izberite **Uredi nastavitve MCP**.
+3. Kliknite ikono **MCP strežniki** (ikona vtičnice) v orodni vrstici Cline, nato izberite **Uredi nastavitve MCP**.
 
 4. VS Code odpre `cline_mcp_settings.json`. Dodajte Wink vnose:
 
@@ -373,8 +386,8 @@ Cline je razširitev za VS Code z vgrajenim upravljalcem MCP strežnikov. Ročno
 6. **Prijavite se v Wink** in odobrite dovoljenja. Oba strežnika se prikažeta kot aktivna v panelu MCP strežnikov.
 </Steps>
 
-:::tip[Alternativa: dodaj prek URL]
-V panelu MCP strežnikov kliknite **Dodaj strežnik** in prilepite URL sklopa orodij, na primer `https://api.wink.travel/mcp/extranet/rates` neposredno. Cline samodejno izpolni konfiguracijo in upravlja avtentikacijo brez ročnega urejanja JSON.
+:::tip[Alternativa: dodaj preko URL]
+V panelu MCP strežnikov kliknite **Dodaj strežnik** in prilepite URL nabora orodij, na primer `https://api.wink.travel/mcp/extranet/rates`. Cline samodejno izpolni konfiguracijo in upravlja avtentikacijo brez ročnega urejanja JSON.
 :::
 
   </TabItem>
@@ -385,19 +398,20 @@ V panelu MCP strežnikov kliknite **Dodaj strežnik** in prilepite URL sklopa or
 ## Obsegi
 
 Ko odobrite zaslon za soglasje, boste videli razčlenitev, kaj agent zahteva. MCP
-odjemalci uporabljajo isto dovoljenjsko besedišče kot preostala platforma — oglejte si celoten
-[referenčni seznam obsegov na strani za avtentikacijo](/sl/developers/authentication#scopes).
+odjemalci uporabljajo isto dovoljenjsko besedišče kot preostala platforma — glejte celoten
+[referenčni seznam obsegov na strani Avtentikacija](/sl/developers/authentication#scopes).
 
 Dve stvari sta specifični za MCP:
 
 - **Obsegi `mcp.read`, `mcp.write`, `mcp.remove` so dodatno zahtevani** za odprtje MCP
-  transporta. Odjemalec z obsegom `mcp.*` ima dostop do katere koli Wink MCP končne točke, a vsako
+  transporta. Odjemalec z obsegom `mcp.*` je sprejet na katerikoli Wink MCP končni točki, a vsako
   orodje, ki ga kliče, še vedno uveljavlja obseg sekcije končne točke, ki jo ovija (npr. `booking.read`).
-- **AI odjemalec zahteva samo obsege, ki jih potrebuje.** Na zaslonu za soglasje lahko zavrnete posamezna dovoljenja — orodja, ki zahtevajo zavrnjeni obseg, bodo ob klicu vrnila napako.
+- **AI odjemalec zahteva samo obsege, ki jih potrebuje.** Posamezna dovoljenja lahko zavrnete na
+  zaslonu za soglasje — orodja, ki zahtevajo zavrnjeni obseg, bodo ob klicu vrnila napako.
 
-**Sklopi orodij tega ne spreminjajo.** Končna točka, s katero se povežete, določa, katera orodja so *na seznamu*,
+**Nabori orodij tega ne spreminjajo.** Končna točka, s katero se povežete, določa, katera orodja so *na seznamu*,
 ne pa, kaj so *dovoljena*. Povezava na `/mcp/payment` ne podeli nobenih finančnih dovoljenj, ki jih
-že nimate, povezava na `/mcp/reference` pa ne prepreči orodju, da uveljavlja svoj obseg. Avtorizacija se odloča pri vsakem klicu orodja, na podlagi vašega žetona in pravic vašega računa.
+že nimate, in povezava na `/mcp/reference` ne prepreči orodju, da uveljavlja svoj obseg. Avtorizacija se odloča za vsak klic orodja posebej, na podlagi vašega žetona in pravic vašega računa.
 
 ---
 
@@ -424,29 +438,29 @@ Za Claude Desktop in ChatGPT odstranite vnos strežnika iz nastavitev, znova za�
 
 **`403 Forbidden` pri klicu določenega orodja**
 
-Orodje zahteva obseg, ki ga niste odobrili na zaslonu za soglasje, ali dovoljenje, ki ga vaš račun nima. Ponovno povežite strežnik — zaslon za soglasje se bo znova prikazal in lahko odobrite manjkajoče dovoljenje. Če še vedno ne deluje, orodje potrebuje dovoljenje računa, ki ga nimate; povezava na drug sklop orodij ne bo pomagala, ker sklopi orodij ne podeljujejo dovoljenj.
+Orodje zahteva obseg, ki ga niste odobrili na zaslonu za soglasje, ali dovoljenje, ki ga vaš račun nima. Ponovno povežite strežnik — zaslon za soglasje se bo prikazal znova in lahko odobrite manjkajoče dovoljenje. Če še vedno ne deluje, orodje potrebuje dovoljenje računa, ki ga nimate; povezava na drug nabor orodij ne pomaga, ker nabori orodij ne podeljujejo dovoljenj.
 
 **Orodje, ki ga potrebujem, ni na seznamu**
 
-Verjetno ste povezani s sklopom orodij, ki ne pokriva te naloge. Preverite [direktorij končnih točk](#endpoint-directory) in dodajte sklop orodij, ki jo pokriva — povezave so neodvisne, zato dodajanje enega ne spremeni drugih. Če niste prepričani, kateri ga ima, se začasno povežite na `https://api.wink.travel/mcp`, poiščite orodje in nato preverite, kateri sklop ga navaja.
+Verjetno ste povezani z naborom orodij, ki ne pokriva te naloge. Preverite [katalog končnih točk](#endpoint-directory) in dodajte nabor orodij, ki jo pokriva — povezave so neodvisne, zato dodajanje enega ne spremeni drugih. Če niste prepričani, kateri jo ima, začasno se povežite na `https://api.wink.travel/mcp`, poiščite orodje in nato preverite, kateri nabor orodij ga vsebuje.
 
-**`404 Not Found` na končni točki sklopa orodij**
+**`404 Not Found` na končni točki nabora orodij**
 
-Preverite pot natančno — gnezdeni sklopi orodij imajo dva segmenta (`/mcp/extranet/rates`, ne `/mcp/extranet-rates`), ploski pa enega (`/mcp/link-manager`). Upoštevajte, da *neavtenticiran* zahtevek na katerokoli pot pod `/mcp` vrne `401`, ne `404`, zato sam `401` ne pove, ali končna točka obstaja.
+Preverite pot natančno — gnezdeni nabori orodij imajo dva segmenta (`/mcp/extranet/rates`, ne `/mcp/extranet-rates`), ploski pa enega (`/mcp/link-manager`). Upoštevajte, da *neavtenticiran* zahtevek na katerikoli poti pod `/mcp` vrne `401`, ne `404`, zato sam `401` ne pove, ali končna točka obstaja.
 
 **Povezal sem se na `api.wink.travel/mcp/channel-manager` in nisem dobil ničesar**
 
-Ta končna točka ne obstaja. Integracija upravljalca kanalov je na voljo samo na `https://integrations.wink.travel/mcp/channel-manager`. Če morate tudi ročno brati ali pisati lastne cene nepremičnine, je to ločena naloga na ločeni končni točki — glejte `/mcp/extranet/rates`.
+Ta končna točka ne obstaja. Integracija upravljalca kanalov je na voljo samo na `https://integrations.wink.travel/mcp/channel-manager`. Če morate tudi ročno brati ali pisati cene nepremičnine, je to ločena naloga na ločeni končni točki — glejte `/mcp/extranet/rates`.
 
 **Strežnik se prikaže, a klici orodij vrnejo "račun ni najden"**
 
-Prijavljeni ste v Wink račun, ki nima upravljavskega subjekta. Obiščite [Wink Portal](https://app.wink.travel) in poskrbite, da je vaš račun nastavljen, preden uporabljate MCP strežnik.
+Prijavljeni ste v Wink račun, ki nima upravljavske entitete. Obiščite [Wink Portal](https://app.wink.travel) in poskrbite, da je vaš račun nastavljen, preden uporabljate MCP strežnik.
 
 **Žeton poteče med sejo**
 
 Žetoni veljajo 3 ure. Claude Code in Claude Desktop tiho osvežujeta žetone brez prekinitve seje. Če po dolgem obdobju neaktivnosti vidite napake avtentikacije, vnesite novo sporočilo — odjemalec se bo samodejno ponovno avtenticiral.
 
-**Codex CLI prikaže "MCP server unreachable"**
+**Codex CLI prikazuje "MCP server unreachable"**
 
 Preverite, da je vaša datoteka `~/.codex/config.json` veljaven JSON (brez odvečnih vejic) in da je `"type": "http"` nastavljeno. Codex zahteva HTTP transport za oddaljene strežnike; stdio transport je samo za lokalne binarne datoteke.
 
@@ -464,7 +478,7 @@ Windsurf zahteva popoln ponovni zagon (ne samo osvežitev okna), da zazna spreme
 
 **Možnost "Add Server" v Cline ni vidna**
 
-Upravitelj MCP strežnikov zahteva Cline **2.0** ali novejši. Odprite panel razširitev VS Code, poiščite Cline in kliknite **Posodobi**, če je na voljo posodobitev. Po posodobitvi znova naložite VS Code (`Ctrl+Shift+P` → "Developer: Reload Window").
+Upravitelj MCP strežnikov zahteva Cline **2.0** ali novejši. Odprite panel razširitev VS Code, poiščite Cline in kliknite **Posodobi**, če je na voljo. Po posodobitvi znova naložite VS Code (`Ctrl+Shift+P` → "Developer: Reload Window").
 
 ---
 

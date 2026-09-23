@@ -9,7 +9,7 @@ import { Steps, LinkButton, Aside, Tabs, TabItem } from '@astrojs/starlight/comp
 
 Les outils MCP de Wink sont publiés sous forme de **ensembles d’outils** — des points de terminaison ciblés, chacun couvrant un métier. Vous connectez votre client IA à un ou deux qui correspondent à votre travail, pas à tous.
 
-Chaque point de terminaison utilise une **connexion OAuth2 interactive** (flux d’autorisation par code PKCE) : votre agent IA ouvre un onglet navigateur, vous vous connectez avec votre compte Wink, et c’est tout. Aucun secret client à gérer.
+Chaque point de terminaison utilise une **connexion OAuth2 interactive** (flux de code d’autorisation PKCE) : votre agent IA ouvre un onglet navigateur, vous vous connectez avec votre compte Wink, et c’est tout. Aucun secret client à gérer.
 
 ```bash title="Un intégrateur de channel manager se connecte à un point de terminaison"
 claude mcp add wink-channel-manager https://integrations.wink.travel/mcp/channel-manager --transport http
@@ -29,7 +29,7 @@ Wink expose environ 500 outils. Les fournir tous à un agent en même temps est 
 
 **La qualité du choix diminue avec la taille de la liste.** Un agent qui choisit parmi 500 outils aux noms similaires fait de moins bons choix qu’un agent qui choisit parmi 40. Si vous intégrez un channel manager, environ vingt outils vous concernent ; les 480 autres sont du bruit qui rend l’outil juste plus difficile à trouver.
 
-**Le travail est réellement séparable.** Quelqu’un qui synchronise la disponibilité depuis un PMS et quelqu’un qui crée des pages affiliées partagent presque aucun outil. La séparation par métier signifie que chaque connexion porte le vocabulaire d’un seul métier.
+**Le travail est réellement séparable.** Quelqu’un qui synchronise la disponibilité depuis un PMS et quelqu’un qui crée des pages affiliées partagent presque aucun outil. La séparation par métier signifie que chaque connexion porte le vocabulaire d’un métier.
 
 <Aside type="caution" title="Les ensembles d’outils ne sont pas des permissions">
 Choisir un ensemble d’outils restreint **ne limite pas** ce que votre compte peut faire, et choisir un ensemble large ne donne rien de plus. Chaque outil applique les mêmes permissions de compte que le portail web, sous votre identité connectée. Si votre compte ne peut pas annuler une réservation dans Wink Portal, l’agent ne le peut pas non plus — quel que soit le point de terminaison auquel il est connecté.
@@ -48,20 +48,20 @@ Deux hôtes servent des ensembles d’outils. Les nombres d’outils sont approx
 | Point de terminaison | Outils | Ce qu’il couvre |
 |---|---:|---|
 | `/mcp/extranet/facilities` | ~64 | L’inventaire réservable et sur site : chambres et types de chambres, spas, restaurants, salles de réunion, activités, attractions, lieux, autres articles vendables |
-| `/mcp/extranet/property` | ~62 | Le dossier de la propriété et ses conditions commerciales : profil et contenu, options, politiques d’annulation, avantages, annonces |
+| `/mcp/extranet/property` | ~62 | La fiche de l’établissement et ses conditions commerciales : profil et contenu, options, politiques d’annulation, avantages, annonces |
 | `/mcp/settings` | ~60 | Administration du compte : profil et image de l’entité gestionnaire, gestionnaires et leurs droits, personnalisation, webhooks, préférences de notification |
-| `/mcp/studio/embeds` | ~48 | Publication d’inventaire sélectionné : widgets, grilles et grilles classées, cartes, cartes, liens profonds vers l’inventaire et les pages fournisseurs |
+| `/mcp/studio/embeds` | ~48 | Publication d’inventaire sélectionné : widgets, grilles et grilles classées, cartes, cartes, liens profonds vers inventaire et pages fournisseurs |
 | `/mcp/extranet/rates` | ~44 | Tarifs et disponibilités : périodes et allotements de tarifs d’inventaire, plans tarifaires, tarifs maîtres, tarifs spéciaux et promotionnels |
-| `/mcp/extranet/operations` | ~39 | Gestion d’une propriété en activité : réservations et leur cycle de vie, avis clients et réponses, flux de calendrier, tâches planifiées |
+| `/mcp/extranet/operations` | ~39 | Gestion d’un établissement en activité : réservations et leur cycle de vie, avis clients et réponses, flux de calendrier, tâches planifiées |
 | `/mcp/extranet/distribution` | ~37 | Où l’inventaire est vendu : canaux de vente et modificateurs de tarifs, demandes de relations affiliées et fournisseurs, enregistrement, capture de leads |
-| `/mcp/studio/curation` | ~35 | Création de collections commercialisables : listes statiques et dynamiques, listes classées, recherches sauvegardées, agrégats de propriétés |
+| `/mcp/studio/curation` | ~35 | Création de collections commercialisables : listes statiques et dynamiques, listes classées, recherches sauvegardées, agrégats d’établissements |
 | `/mcp/link-manager` | ~28 | Collections de liens syndiqués, leur design, catégories et tags, plus URLs raccourcies |
-| `/mcp/reference` | ~24 | Données de référence en lecture seule : pays, devises et taux de change, langues, fuseaux horaires, recherches géographiques, géolocalisation IP |
-| `/mcp/analytics` | ~18 | Analyses de réservations et de revenus : vues d’ensemble, graphiques, classements, performances affiliées, métriques de partage |
+| `/mcp/reference` | ~24 | Données de consultation en lecture seule : pays, devises et taux de change, langues, fuseaux horaires, recherches géographiques, géolocalisation IP |
+| `/mcp/analytics` | ~18 | Analyses de réservations et revenus : vues d’ensemble, graphiques, classements, performances affiliées, métriques de partage |
 | `/mcp/payment` | ~18 | Opérations financières : grand livre, retraits et estimations de frais, agrégats de fonds de réservation |
 | `/mcp/booking-engine` | ~17 | Parcours d’achat côté voyageur : recherche et consultation, panier et paiement, listes de souhaits, personnalisation de campagne |
 | `/mcp/social` | ~17 | Comptes sociaux connectés, publication et planification de posts, lecture des insights des posts |
-| `/mcp/travel-agent` | ~8 | Réservations facilitées par agent au nom des voyageurs, et rapports d’agent |
+| `/mcp/travel-agent` | ~8 | Réservations facilitées par agent pour les voyageurs, et rapports d’agent |
 
 ### `https://integrations.wink.travel` — intégrations channel manager
 
@@ -83,6 +83,12 @@ L’administration du compte est aussi sur `api.wink.travel`, à `/mcp/settings`
 
 Chaque point de terminaison porte aussi un outil `ping`, pour confirmer qu’une connexion est active avant de lui demander un vrai travail.
 
+### Paiements agentiques
+
+Pour le parcours complet de réservation voyageur, connectez **Wink Booking Engine** à `https://api.wink.travel/mcp/booking-engine` et un **portefeuille de paiement** compatible. Ajouter le MCP Wink ouvre la connexion navigateur et la sélection des permissions ; votre client gère ensuite l’authentification.
+
+Booking Engine inclut la recherche de destination, la recherche d’hôtels et de chambres, `agentic_booking_quote`, `agentic_booking_pay`, `agentic_booking_book`, la récupération de réservations et les reçus, lorsque la réservation et le paiement agentiques sont activés pour cet environnement. Voir [Agentic Payments](/fr/developers/agentic-payments/) pour la configuration, les permissions à sélectionner et les étapes de la recherche à la confirmation.
+
 ---
 
 ## Quels ensembles d’outils me faut-il ?
@@ -90,35 +96,42 @@ Chaque point de terminaison porte aussi un outil `ping`, pour confirmer qu’une
 | Si vous êtes… | Connectez-vous à |
 |---|---|
 | **Intégrateur channel manager, PMS ou CRS** | `integrations.wink.travel/mcp/channel-manager` — uniquement celui-ci |
-| **Gestionnaire de contenu d’une propriété** | `/mcp/extranet/property` + `/mcp/extranet/facilities` |
+| **Gestionnaire de contenu d’un établissement** | `/mcp/extranet/property` + `/mcp/extranet/facilities` |
 | **Gestionnaire de chambres et types de chambres** | `/mcp/extranet/facilities` |
-| **Gestionnaire de tarifs et disponibilités** | `/mcp/extranet/rates` |
+| **Gestionnaire des prix et disponibilités** | `/mcp/extranet/rates` |
 | **Gestionnaire des réservations au quotidien** | `/mcp/extranet/operations` |
 | **Développeur de la distribution** | `/mcp/extranet/distribution` + `/mcp/analytics` |
 | **Créateur de pages affiliées** | `/mcp/studio/curation` + `/mcp/studio/embeds` |
 | **Gestionnaire de pages link-in-bio** | `/mcp/link-manager` + `/mcp/social` |
-| **Réservations au nom des voyageurs** | `/mcp/travel-agent` |
-| **Rapprochement financier** | `/mcp/payment` |
-| **Création d’une expérience de réservation** | `/mcp/booking-engine` + `/mcp/reference` |
+| **Réservant pour des voyageurs** | `/mcp/travel-agent` |
+| **Réconciliateur financier** | `/mcp/payment` |
+| **Réservant une chambre avec un agent IA** | `/mcp/booking-engine` + un portefeuille de paiement compatible — voir [Agentic Payments](/fr/developers/agentic-payments/) |
+| **Créateur d’expérience de réservation** | `/mcp/booking-engine` ; optionnellement `/mcp/reference` pour des consultations supplémentaires |
 
-Commencez par un seul. Ajoutez-en un autre quand vous vous rendez compte qu’il vous manque une fonctionnalité — chaque connexion est indépendante, et en ajouter une ne modifie jamais les autres.
+**Booking Engine inclut le flux principal de réservation.** Il fournit la découverte de compte et personnalisation, la recherche de destination, la disponibilité d’hôtels et détails des tarifs, les paniers, le paiement et la gestion des réservations voyageur. Les outils de réservation et paiement agentiques sont aussi inclus quand activés pour cet environnement.
 
-<Aside type="tip" title="Vous voulez tout avoir ?">
-`https://api.wink.travel/mcp` et `https://integrations.wink.travel/mcp` restent disponibles et servent **tous** les outils de leur hôte. Ils sont utiles pour explorer ce qui existe, mais nous ne les recommandons pas pour le travail quotidien : la liste d’outils est trop grande et masque votre tâche, dégradant la sélection d’outils de l’agent. Préférez les ensembles d’outils ci-dessus.
+Pour une recherche d’hôtel basée sur une ville, utilisez `destination_lookup_search_suggestions` pour résoudre la destination, puis `inventory_search_city` pour trouver hôtels et tarifs disponibles. Ces deux outils sont dans `/mcp/booking-engine`, donc ce flux ne nécessite pas de connexion Reference.
+
+Ajoutez `/mcp/reference` quand vous avez besoin de consultations complémentaires comme pays, devises et taux de change, langues supportées, fuseaux horaires, recherches géographiques plus larges, classifications OTA, ou connaissances publiques sur les établissements. Ce sont des ajouts optionnels au flux de réservation.
+
+Commencez par un seul. Ajoutez-en un autre quand vous constatez qu’il ne peut pas faire ce dont vous avez besoin — chaque connexion est indépendante, et en ajouter une ne modifie jamais les autres.
+
+<Aside type="tip" title="Vous voulez tout quand même ?">
+`https://api.wink.travel/mcp` et `https://integrations.wink.travel/mcp` restent disponibles et servent **tous** les outils sur leur hôte. Ils sont utiles pour explorer ce qui existe, mais nous ne les recommandons pas pour le travail quotidien : la liste d’outils est assez grande pour noyer votre tâche et dégrader la sélection d’outils de l’agent. Préférez les ensembles d’outils ci-dessus.
 </Aside>
 
 ---
 
 ## Comment fonctionne l’authentification
 
-Les serveurs MCP Wink utilisent le flux **OAuth2 Authorization Code + PKCE** et supportent **l’enregistrement dynamique de client (RFC 7591)**. Voici ce qui se passe lors de votre première connexion :
+Les serveurs MCP Wink utilisent le flux **OAuth2 Authorization Code + PKCE** et supportent **Dynamic Client Registration (RFC 7591)**. Voici ce qui se passe lors de la première connexion :
 
 1. Votre client IA découvre le serveur d’autorisation à partir des métadonnées `/.well-known/oauth-protected-resource` du point de terminaison MCP.
-2. Le client s’enregistre automatiquement via **l’enregistrement dynamique de client** — aucune configuration manuelle d’application requise.
+2. Le client s’auto-enregistre via **Dynamic Client Registration** — aucune configuration manuelle d’application requise.
 3. Le client ouvre un **onglet navigateur** vers `https://iam.wink.travel`. Vous vous connectez avec votre compte Wink et approuvez les permissions demandées sur l’écran de consentement.
 4. Wink émet un **jeton d’accès** lié à votre compte et à votre identité.
-5. Le client IA joint ce jeton à chaque requête MCP. Tous les résultats d’outils sont automatiquement limités à votre entité gestionnaire.
-6. Les jetons expirent au bout de 3 heures. Votre client IA les renouvelle silencieusement en arrière-plan sans nouvelle demande.
+5. Le client IA joint le jeton à chaque requête MCP. Tous les résultats d’outils sont automatiquement limités à votre entité gestionnaire.
+6. Les jetons expirent après 3 heures. Votre client IA les renouvelle silencieusement en arrière-plan sans nouvelle demande.
 
 Chaque appel d’outil s’exécute **sous votre identité** — les mêmes règles ACL qui protègent le portail web s’appliquent à l’agent IA.
 
@@ -153,10 +166,10 @@ claude mcp add wink-operations https://api.wink.travel/mcp/extranet/operations -
 claude mcp add wink-analytics  https://api.wink.travel/mcp/analytics           --transport http
 ```
 
-Vous ne vous connectez qu’une seule fois. Après la première approbation dans le navigateur, Claude Code réutilise votre session Wink pour les autres points de terminaison Wink.
+Vous ne vous connectez qu’une fois. Après la première approbation dans le navigateur, Claude Code réutilise votre session Wink pour les points de terminaison Wink supplémentaires.
 
 :::tip[Partagez avec votre équipe]
-Ajoutez `--scope project` à `claude mcp add` et Claude Code écrit l’URL du serveur dans `.mcp.json` à la racine du dépôt. Commitez ce fichier — chaque membre de l’équipe obtient les mêmes ensembles d’outils, et chacun complète sa propre connexion navigateur la première fois qu’il se connecte.
+Ajoutez `--scope project` à `claude mcp add` et Claude Code écrit l’URL du serveur dans `.mcp.json` à la racine du dépôt. Engagez ce fichier — chaque membre de l’équipe obtient les mêmes ensembles d’outils, et chacun complète sa propre connexion navigateur la première fois qu’il se connecte.
 :::
 
   </TabItem>
@@ -189,7 +202,7 @@ Ajoutez `--scope project` à `claude mcp add` et Claude Code écrit l’URL du s
 
 4. Claude Desktop ouvre un onglet navigateur pour chaque nouveau serveur. Connectez-vous à Wink et approuvez les permissions.
 
-5. L’icône de prise dans la barre d’outils en bas montre les deux serveurs comme connectés.
+5. L’icône de prise dans la barre d’outils inférieure montre les deux serveurs comme connectés.
 </Steps>
 
   </TabItem>
@@ -222,11 +235,11 @@ Ajoutez `--scope project` à `claude mcp add` et Claude Code écrit l’URL du s
    }
    ```
 
-4. Lancez Codex. À la première utilisation, Codex ouvre un onglet navigateur vers `https://iam.wink.travel`.
+4. Lancez Codex. Lors de la première utilisation, Codex ouvre un onglet navigateur vers `https://iam.wink.travel`.
 
 5. **Connectez-vous à Wink** et approuvez les permissions demandées.
 
-6. Codex confirme la connexion. Lancez `codex` et demandez la liste des outils disponibles pour vérifier que les serveurs Wink sont actifs.
+6. Codex confirme la connexion. Lancez `codex` et demandez-lui de lister les outils disponibles pour vérifier que les serveurs Wink sont actifs.
 </Steps>
 
 :::note
@@ -290,7 +303,7 @@ Les serveurs MCP ne sont configurables que dans l’**application desktop**. L�
    }
    ```
 
-3. Ouvrez Cursor. Allez dans **Paramètres → Paramètres Cursor → MCP** et vérifiez que les deux serveurs apparaissent avec un indicateur de statut vert. S’ils sont rouges, cliquez sur **Rafraîchir**.
+3. Ouvrez Cursor. Allez dans **Paramètres → Paramètres Cursor → MCP** et vérifiez que les deux serveurs apparaissent avec un indicateur de statut vert. S’ils sont rouges, cliquez sur **Actualiser**.
 
 4. Cursor ouvre un onglet navigateur vers `https://iam.wink.travel`. **Connectez-vous à Wink** et approuvez les permissions.
 
@@ -340,7 +353,7 @@ Le support MCP Windsurf nécessite la version **1.4** ou ultérieure. Vérifiez 
   </TabItem>
   <TabItem label="Cline (VS Code)">
 
-Cline est une extension VS Code avec un gestionnaire de serveurs MCP intégré. Aucune édition manuelle de JSON n’est requise.
+Cline est une extension VS Code avec un gestionnaire MCP intégré. Aucune édition manuelle de JSON n’est requise.
 
 <Steps>
 1. Installez Cline depuis le Marketplace VS Code :
@@ -374,7 +387,7 @@ Cline est une extension VS Code avec un gestionnaire de serveurs MCP intégré. 
 </Steps>
 
 :::tip[Alternative : ajout via URL]
-Dans le panneau Serveurs MCP, cliquez sur **Ajouter un serveur** et collez directement une URL d’ensemble d’outils comme `https://api.wink.travel/mcp/extranet/rates`. Cline remplit automatiquement la configuration et gère l’authentification sans édition manuelle de JSON.
+Dans le panneau Serveurs MCP, cliquez sur **Ajouter un serveur** et collez directement une URL d’ensemble d’outils comme `https://api.wink.travel/mcp/extranet/rates`. Cline remplit automatiquement la configuration et gère l’authentification sans édition manuelle du JSON.
 :::
 
   </TabItem>
@@ -386,12 +399,12 @@ Dans le panneau Serveurs MCP, cliquez sur **Ajouter un serveur** et collez direc
 
 Lorsque vous approuvez l’écran de consentement, vous verrez le détail des demandes de l’agent. Les clients MCP utilisent le même vocabulaire de permissions que le reste de la plateforme — voir la référence complète des [scopes sur la page Authentification](/fr/developers/authentication#scopes).
 
-Deux points sont spécifiques à MCP :
+Deux points sont spécifiques au MCP :
 
-- **Les scopes `mcp.read`, `mcp.write` et `mcp.remove` sont également requis** pour ouvrir le transport MCP. Un client qui détient un scope `mcp.*` est admis sur n’importe quel point de terminaison MCP Wink, mais chaque outil qu’il invoque applique toujours le scope de section du point de terminaison qu’il enveloppe (ex. `booking.read`).
-- **Le client IA ne demande que les scopes dont il a besoin.** Vous pouvez refuser des permissions individuelles sur l’écran de consentement — les outils qui requièrent un scope refusé renverront une erreur lorsqu’ils seront invoqués.
+- **Les scopes `mcp.read`, `mcp.write` et `mcp.remove` sont également requis** pour ouvrir le transport MCP. Un client possédant un scope `mcp.*` est admis sur n’importe quel point de terminaison MCP Wink, mais chaque outil invoqué applique toujours le scope de section du point de terminaison qu’il enveloppe (ex. `booking.read`).
+- **Le client IA ne demande que les scopes dont il a besoin.** Vous pouvez refuser des permissions individuelles sur l’écran de consentement — les outils nécessitant un scope refusé renverront une erreur à l’invocation.
 
-**Les ensembles d’outils ne changent rien à cela.** Le point de terminaison auquel vous vous connectez décide quels outils sont *listés*, pas ce qu’ils sont *autorisés à faire*. Se connecter à `/mcp/payment` ne donne aucune permission financière que vous n’aviez déjà, et se connecter à `/mcp/reference` n’empêche pas un outil d’appliquer son propre scope. L’autorisation est décidée à chaque appel d’outil, à partir de votre jeton et des droits de votre compte.
+**Les ensembles d’outils ne changent rien à cela.** Le point de terminaison auquel vous vous connectez décide quels outils sont *listés*, pas ce qu’ils sont *autorisés à faire*. Se connecter à `/mcp/payment` ne donne aucune permission financière supplémentaire, et se connecter à `/mcp/reference` n’empêche pas un outil d’appliquer son propre scope. L’autorisation est décidée à chaque appel d’outil, à partir de votre jeton et des droits de votre compte.
 
 ---
 
@@ -422,7 +435,7 @@ L’outil requiert un scope que vous n’avez pas approuvé sur l’écran de co
 
 **L’outil dont j’ai besoin n’est pas dans la liste**
 
-Vous êtes probablement connecté à un ensemble d’outils qui ne couvre pas ce métier. Consultez le [répertoire des points de terminaison](#endpoint-directory) et ajoutez l’ensemble d’outils qui le couvre — les connexions sont indépendantes, donc en ajouter une ne change rien aux autres. Si vous ne savez pas lequel le contient, connectez-vous temporairement à `https://api.wink.travel/mcp`, trouvez l’outil, puis regardez quel ensemble d’outils le liste.
+Vous êtes probablement connecté à un ensemble d’outils qui ne couvre pas ce métier. Consultez le [répertoire des points de terminaison](#endpoint-directory) et ajoutez l’ensemble d’outils qui le fait — les connexions sont indépendantes, donc en ajouter une ne change rien aux autres. Si vous ne savez pas lequel le contient, connectez-vous temporairement à `https://api.wink.travel/mcp`, trouvez l’outil, puis regardez quel ensemble d’outils le liste.
 
 **`404 Not Found` sur un point de terminaison d’ensemble d’outils**
 
@@ -430,11 +443,11 @@ Vérifiez bien le chemin — les ensembles imbriqués ont deux segments (`/mcp/e
 
 **Je me suis connecté à `api.wink.travel/mcp/channel-manager` et je n’ai rien**
 
-Ce point de terminaison n’existe pas. L’intégration channel manager est servie uniquement depuis `https://integrations.wink.travel/mcp/channel-manager`. Si vous devez aussi lire ou écrire les tarifs propres d’une propriété manuellement, c’est un métier séparé sur un point de terminaison séparé — voir `/mcp/extranet/rates`.
+Ce point de terminaison n’existe pas. L’intégration channel manager est servie uniquement depuis `https://integrations.wink.travel/mcp/channel-manager`. Si vous devez aussi lire ou écrire les tarifs propres d’un établissement manuellement, c’est un métier séparé sur un point de terminaison séparé — voir `/mcp/extranet/rates`.
 
 **Le serveur apparaît mais les appels d’outils renvoient "compte introuvable"**
 
-Vous êtes connecté à un compte Wink qui n’a pas d’entité gestionnaire. Allez sur [Wink Portal](https://app.wink.travel) et assurez-vous que votre compte est configuré avant d’utiliser le serveur MCP.
+Vous êtes connecté à un compte Wink sans entité gestionnaire. Allez sur [Wink Portal](https://app.wink.travel) et assurez-vous que votre compte est configuré avant d’utiliser le serveur MCP.
 
 **Le jeton expire en cours de session**
 
@@ -444,13 +457,13 @@ Les jetons sont valides 3 heures. Claude Code et Claude Desktop renouvellent les
 
 Vérifiez que votre `~/.codex/config.json` est un JSON valide (pas de virgules finales) et que `"type": "http"` est bien défini. Codex requiert le transport HTTP pour les serveurs distants ; le transport stdio est réservé aux binaires locaux.
 
-**Le menu "Connectors" de ChatGPT est manquant**
+**Le menu "Connectors" de ChatGPT est absent**
 
 Le support MCP nécessite la version **1.2024.352** ou ultérieure de l’application desktop ChatGPT et un abonnement actif Plus, Pro, Team ou Enterprise. Mettez à jour l’app et vérifiez votre plan dans Paramètres → Compte.
 
 **Le serveur Cursor affiche rouge / "Échec de connexion"**
 
-Vérifiez que votre `~/.cursor/mcp.json` est un JSON valide et contient `"type": "http"`. Ensuite, allez dans **Paramètres → Paramètres Cursor → MCP** et cliquez sur **Rafraîchir**. Si l’erreur persiste, redémarrez complètement Cursor — les changements de config ne sont pas toujours pris en compte sans redémarrage.
+Vérifiez que votre `~/.cursor/mcp.json` est un JSON valide et contient `"type": "http"`. Puis allez dans **Paramètres → Paramètres Cursor → MCP** et cliquez sur **Actualiser**. Si l’erreur persiste, redémarrez complètement Cursor — les changements de config ne sont pas toujours pris en compte sans redémarrage.
 
 **Les serveurs MCP Windsurf ne s’affichent pas dans les paramètres**
 

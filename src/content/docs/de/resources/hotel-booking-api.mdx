@@ -1,0 +1,154 @@
+---
+title: Hotel Booking API — Wie man Hotelbuchungen in ein Produkt integriert
+description: Was eine Hotel Booking API unterstützen muss, wie Suche, Preise, Buchung und Zahlung zusammenpassen und wie man buchbare Hotelangebote in eine App, Website oder einen KI-Agenten einbindet.
+template: splash
+marketingNav: true
+---
+import '/src/styles/splash-page.css';
+
+import FaqGrid from "@/components/marketing/FaqGrid.astro";
+import ResourceSchema from "@/components/marketing/ResourceSchema.astro";
+import IconArrowRight from "@tabler/icons/outline/arrow-right.svg";
+
+<div class="not-content mkt-page">
+
+<ResourceSchema title="Hotel Booking API — Wie man Hotelbuchungen in ein Produkt integriert" crumb="Hotel Booking API" slug="hotel-booking-api" datePublished="2026-09-22" description="Was eine Hotel Booking API unterstützen muss, wie Suche, Preise, Buchung und Zahlung zusammenpassen und wie man buchbare Hotelangebote in eine App, Website oder einen KI-Agenten einbindet." />
+
+{/* Breadcrumb */}
+<nav aria-label="Breadcrumb" class="mx-auto w-full max-w-3xl px-4 pt-6 text-sm text-muted-foreground">
+  <a href="/" class="hover:text-foreground">Startseite</a>
+  <span class="px-1.5">/</span>
+  <a href="/resources/" class="hover:text-foreground">Ressourcen</a>
+  <span class="px-1.5">/</span>
+  <span class="text-foreground">Hotel Booking API</span>
+</nav>
+
+{/* Article header */}
+<header class="mx-auto w-full max-w-3xl px-4 pt-8 pb-10">
+  <span class="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-gradient-to-r from-[#ff6b35]/10 to-[#9333ea]/10 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary"><span class="size-1.5 rounded-full bg-gradient-to-r from-[#ff6b35] to-[#9333ea]"></span> Ressourcen</span>
+  <h1 class="font-heading mt-3 text-4xl font-semibold tracking-tight text-balance @lg:text-5xl">Wie fügen Entwickler Hotelbuchungen in ein Produkt ein?</h1>
+  <p class="mkt-sub text-muted-foreground mt-5">
+    Suche und Preise sind die einfache Hälfte. Ein Produkt wird erst dann nützlich, wenn es eine echte Buchung erstellen, Zahlungen abwickeln und dem Reisenden sowie dem Hotel mitteilen kann, dass die Buchung erfolgt ist.
+  </p>
+  <div class="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
+    <a href="https://app.wink.travel" class="inline-flex h-11 items-center justify-center rounded-md bg-[#ff6b35] px-6 text-sm font-semibold text-white hover:bg-[#e85b29]">API-Zugang anfragen</a>
+    <a href="/api/overview/" class="inline-flex h-11 items-center justify-center rounded-md border border-border px-6 text-sm font-medium hover:bg-muted">Dokumentation lesen</a>
+  </div>
+  <p class="mt-5 text-sm text-muted-foreground">
+    Viele APIs liefern Hotelinhalte. Viel weniger ermöglichen es, die Transaktion abzuschließen.
+  </p>
+</header>
+
+{/* Direct answer */}
+<section class="mx-auto w-full max-w-3xl px-4">
+  <div class="rounded-2xl border-l-4 border-primary bg-primary/[0.04] p-6">
+    <p class="text-xs font-semibold uppercase tracking-wider text-primary">Die kurze Antwort</p>
+    <p class="mt-3 text-pretty text-foreground/90">
+      Sie benötigen vier Dinge: <strong>Live-Preise und Verfügbarkeit</strong>, <strong>Buchungserstellung</strong>, <strong>Zahlung</strong> und <strong>Bestätigung plus Webhooks</strong>. Nur-Lese-Content-APIs hören nach dem ersten Punkt auf. Bei Wink sind die Consumer- und Booking Engine APIs kostenlos nutzbar, die Buchungserstellung läuft über REST mit OAuth2, es gibt über 64 Webhook-Events inklusive <code>booking.created</code>, und die Zahlung wird für das Hotel eingezogen — das weiterhin der Händler des Geschäfts bleibt — sodass Sie selbst kein Händler werden müssen. Ein MCP-Server stellt dieselben Funktionen für KI-Agenten bereit, und Webkomponenten decken Fälle ab, in denen Sie einen Buchungspfad ohne eigene UI wünschen.
+    </p>
+  </div>
+</section>
+
+{/* Body */}
+<article class="mkt-prose mx-auto w-full max-w-3xl px-4 py-14">
+
+## Die vier wichtigen Funktionen
+
+| Funktion | Bedeutung | Warum Produkte ohne sie scheitern |
+|---|---|---|
+| Live-Preise und Verfügbarkeit | Aktuelle Preise und tatsächlich buchbare Verfügbarkeiten pro Zeitraum | Zwischengespeicherte Preise versagen bei der Bestätigung und zerstören Vertrauen |
+| Buchungserstellung | Eine echte Reservierung erstellen, die das Hotel erhält | Ohne sie sind Sie nur ein Empfehlungslink, kein Produkt |
+| Zahlung | Geld im Rahmen der Buchung einziehen | Eine Weiterleitung zu einer anderen Seite führt zum Abbruch der Buchung |
+| Bestätigung und Webhooks | Gast, Hotel und Ihr System informieren, was passiert ist | Sonst entstehen Supportaufwand und Abgleichlücken |
+
+Die meisten „Hotel-APIs“, die Entwickler finden, decken den ersten und manchmal den zweiten Punkt ab. Die Transaktion ist der schwierige Teil und entscheidet, ob Sie ein Produkt haben.
+
+## Wessen Angebot integrieren Sie?
+
+Diese Frage bestimmt alles Weitere. Über eine Kette weiterverkauftes Angebot enthält einen Aufschlag im Preis, veraltetere Verfügbarkeiten und keinen direkten Kontakt zum Hotel bei Buchungsfragen. Angebot, das direkt vom Hotel kommt, enthält die eigenen Preise des Hotels, Live-Verfügbarkeiten und ein Hotel, das die Buchung kennt.
+
+Bei allem, was der Reisende mit der Hotel-Website vergleicht — also fast alles — vermeidet hotelkontrolliertes Angebot den unangenehmen Moment, wenn Ihr Preis schlechter ist.
+
+## Wer ist der Händler des Geschäfts?
+
+Wenn Sie Hotelbuchungen selbst aufbauen, bedeutet Händler des Geschäfts zu werden, dass Sie Zahlungsrisiken, Rückbuchungen, Rückerstattungen, Steuerabwicklung und oft eine Reisebürolizenz in jedem Markt übernehmen.
+
+Bei Wink bleibt das **Hotel Händler des Geschäfts** und die Zahlung wird für das Hotel eingezogen, sodass ein Integrator diese Verantwortung nicht übernehmen muss. Händler-Des-Geschäfts-Vereinbarungen sind bei API-Integrationen möglich, wenn ein Partner tatsächlich selbst Zahlungen abwickeln muss, was eigene Lizenzanforderungen mit sich bringt.
+
+## Drei Integrationsstufen
+
+1. **Webkomponenten.** Fügen Sie eine buchbare Suche, Zimmerliste oder Kasse in eine bestehende Seite ein. Kein Backend nötig; geringste Kontrolle über das Layout.
+2. **REST API.** Volle Kontrolle über Suche, Preise, Buchungserstellung und Bestätigung, authentifiziert mit OAuth2. Nutzen Sie sie, wenn der Buchungsablauf Teil der eigenen Produkterfahrung ist.
+3. **MCP-Server.** Dieselben Funktionen für KI-Agenten, sodass ein Assistent suchen, Preise ermitteln und eine Buchung abschließen kann, ohne den Nutzer auf eine Website weiterzuleiten.
+
+Die drei sind nicht exklusiv — ein Produkt nutzt oft Komponenten für Marketingflächen und die API für den Kernablauf.
+
+## Was zuerst bauen
+
+- **Suche und Preis für eine Stadt und einen Zeitraum.** Lassen Sie echte Preise fließen, bevor Sie etwas entwerfen.
+- **Erstellen Sie eine Testbuchung von Anfang bis Ende**, inklusive Zahlung und Bestätigung.
+- **Abonnieren Sie `booking.created` und die Stornierungs-Events**, bevor Sie eine UI darauf aufbauen.
+- **Entscheiden Sie früh Ihr Attributionsmodell** — Quellkontext muss mit der Buchung mitreisen, sonst ist Ihr Reporting später nur Schätzung.
+- **Behandeln Sie Fehlerfälle**: Verfügbarkeit verloren zwischen Angebot und Buchung, Zahlung abgelehnt, Teilrückerstattungen.
+
+## Preise, die Entwickler kennen sollten
+
+Die **Consumer- und Booking Engine APIs sind kostenlos**. Die **Partner API** enthält eine kostenlose monatliche Freimenge von 10.000 Hotel-Tagen, danach erfolgt die Abrechnung pro Einheit. Bestätigte Buchungen tragen die 1,5 % Plattformgebühr des Hotels plus Kartenverarbeitungskosten, und eine **Standardprovision von 10 %** gilt, wenn Ihr Produkt die Buchung ausgelöst hat — so verdient ein Integrator, statt zu zahlen.
+
+## Häufige Fehler
+
+- **Auf zwischengespeicherten Preisen aufbauen.** Sie sehen in der Entwicklung gut aus, versagen aber in der Produktion.
+- **Zahlung per Weiterleitung abwickeln.** Jede Übergabe kostet Buchungen.
+- **Webhooks bis zum Launch ignorieren.** Abgleich wird manuelle Arbeit.
+- **Händler des Geschäfts werden, ohne es zu müssen.** Es ist eine Lizenz- und Haftungsentscheidung, keine rein technische.
+- **Quellkontext nicht übergeben.** Attribution kann später nicht rekonstruiert werden.
+
+</article>
+
+{/* Related */}
+<section class="mx-auto w-full max-w-3xl px-4 pb-8">
+  <p class="mkt-kicker text-primary">Weiter entdecken</p>
+  <div class="mt-4 grid gap-3 @md:grid-cols-2">
+    {[
+      { label: "Für Entwickler", href: "/builders/" },
+      { label: "API-Übersicht", href: "/api/overview/" },
+      { label: "MCP-Server", href: "/developers/mcp/" },
+      { label: "Webkomponenten", href: "/integrations/web-components/" },
+    ].map((l) => (
+      <a href={l.href} class="group flex items-center justify-between rounded-xl border border-border bg-card px-4 py-3 text-sm font-medium transition-colors hover:border-primary/40">
+        {l.label}
+        <IconArrowRight class="size-4 text-muted-foreground transition-transform group-hover:translate-x-0.5" />
+      </a>
+    ))}
+  </div>
+</section>
+
+{/* FAQ */}
+<FaqGrid emitJsonLd
+  heading="Häufige Fragen zur Hotel Booking API"
+  description="Was zu integrieren ist, was es kostet und wer die Zahlungshaftung trägt."
+  items={[
+    { title: "Was muss eine Hotel Booking API unterstützen?", content: "Live-Preise und Verfügbarkeit, Buchungserstellung, Zahlung und Bestätigung mit Webhooks. Nur-Lese-Content-APIs decken nur den ersten Punkt ab und können keine Transaktion abschließen." },
+    { title: "Ist die Wink API kostenlos nutzbar?", content: "Die Consumer- und Booking Engine APIs sind kostenlos. Die Partner API enthält monatlich 10.000 Hotel-Tage kostenlos, danach erfolgt die Abrechnung pro Einheit." },
+    { title: "Muss ich Händler des Geschäfts werden?", content: "Nein. Das Hotel bleibt Händler des Geschäfts und die Zahlung wird für das Hotel eingezogen. Händler-Des-Geschäfts-Vereinbarungen gibt es für API-Integrationen, die tatsächlich selbst Zahlungen abwickeln müssen, mit eigenen Lizenzanforderungen." },
+    { title: "Können KI-Agenten über dieselben Funktionen buchen?", content: "Ja. Ein MCP-Server stellt Suche, Preisermittlung und Buchung für Agenten bereit, sodass ein Assistent eine Buchung abschließen kann, ohne den Nutzer auf eine Website weiterzuleiten." },
+    { title: "Wie werde ich als Integrator bezahlt?", content: "Eine Standardprovision von 10 % gilt für Buchungen, die Ihr Produkt ausgelöst hat, berechnet nach der Plattformgebühr des Hotels und der Kartenverarbeitung, mit einer Attribution von 6 Monaten pro Klick." },
+    { title: "Muss ich eine UI bauen?", content: "Nicht unbedingt. Webkomponenten bieten buchbare Suche, Zimmerlisten und Kasse, die in eine bestehende Seite eingefügt werden können; die REST API ist da, wenn der Ablauf Ihnen gehören soll." },
+  ]}
+/>
+
+{/* Final CTA */}
+<section class="w-full border-y border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white">
+  <div class="mx-auto w-full max-w-7xl px-4 py-24 text-center">
+    <h2 class="mkt-h2 font-heading">Bauen Sie ein Produkt, das wirklich buchen kann.</h2>
+    <p class="mx-auto mt-4 max-w-2xl text-pretty text-white/70 @lg:text-lg">
+      Live-Hotelangebot, Buchungserstellung über REST, Webhooks, ein MCP-Server für Agenten und Zahlung, die Sie nicht besitzen müssen.
+    </p>
+    <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <a href="https://app.wink.travel" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-[#ff6b35] px-8 text-base font-semibold text-white hover:bg-[#e85b29] sm:w-auto">API-Zugang anfragen</a>
+      <a href="/builders/" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-white px-8 text-base font-semibold text-[#1f0a40] hover:bg-white/90 sm:w-auto">Für Entwickler</a>
+    </div>
+  </div>
+</section>
+
+</div>

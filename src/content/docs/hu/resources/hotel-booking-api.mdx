@@ -1,0 +1,154 @@
+---
+title: Szállodai foglalási API — Hogyan adjunk szállodai foglalást egy termékhez
+description: Mit kell támogatnia egy szállodai foglalási API-nak, hogyan illeszkedik össze a keresés, az árak, a foglalás és a fizetés, valamint hogyan lehet foglalható szállodai kínálatot hozzáadni egy alkalmazáshoz, oldalhoz vagy AI ügynökhöz.
+template: splash
+marketingNav: true
+---
+import '/src/styles/splash-page.css';
+
+import FaqGrid from "@/components/marketing/FaqGrid.astro";
+import ResourceSchema from "@/components/marketing/ResourceSchema.astro";
+import IconArrowRight from "@tabler/icons/outline/arrow-right.svg";
+
+<div class="not-content mkt-page">
+
+<ResourceSchema title="Szállodai foglalási API — Hogyan adjunk szállodai foglalást egy termékhez" crumb="Szállodai foglalási API" slug="hotel-booking-api" datePublished="2026-09-22" description="Mit kell támogatnia egy szállodai foglalási API-nak, hogyan illeszkedik össze a keresés, az árak, a foglalás és a fizetés, valamint hogyan lehet foglalható szállodai kínálatot hozzáadni egy alkalmazáshoz, oldalhoz vagy AI ügynökhöz." />
+
+{/* Breadcrumb */}
+<nav aria-label="Breadcrumb" class="mx-auto w-full max-w-3xl px-4 pt-6 text-sm text-muted-foreground">
+  <a href="/" class="hover:text-foreground">Kezdőlap</a>
+  <span class="px-1.5">/</span>
+  <a href="/resources/" class="hover:text-foreground">Erőforrások</a>
+  <span class="px-1.5">/</span>
+  <span class="text-foreground">Szállodai foglalási API</span>
+</nav>
+
+{/* Article header */}
+<header class="mx-auto w-full max-w-3xl px-4 pt-8 pb-10">
+  <span class="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-gradient-to-r from-[#ff6b35]/10 to-[#9333ea]/10 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary"><span class="size-1.5 rounded-full bg-gradient-to-r from-[#ff6b35] to-[#9333ea]"></span> Erőforrások</span>
+  <h1 class="font-heading mt-3 text-4xl font-semibold tracking-tight text-balance @lg:text-5xl">Hogyan adnak a fejlesztők szállodai foglalást egy termékhez?</h1>
+  <p class="mkt-sub text-muted-foreground mt-5">
+    A keresés és az árak a könnyű rész. Egy termék csak akkor válik hasznossá, ha képes valódi foglalást létrehozni, fizetést fogadni, és tájékoztatni az utazót és a szállodát, hogy megtörtént a foglalás.
+  </p>
+  <div class="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
+    <a href="https://app.wink.travel" class="inline-flex h-11 items-center justify-center rounded-md bg-[#ff6b35] px-6 text-sm font-semibold text-white hover:bg-[#e85b29]">API-hozzáférés kérése</a>
+    <a href="/api/overview/" class="inline-flex h-11 items-center justify-center rounded-md border border-border px-6 text-sm font-medium hover:bg-muted">Dokumentáció olvasása</a>
+  </div>
+  <p class="mt-5 text-sm text-muted-foreground">
+    Sok API szolgáltat szállodai tartalmat. Sokkal kevesebb engedi a tranzakció befejezését.
+  </p>
+</header>
+
+{/* Direct answer */}
+<section class="mx-auto w-full max-w-3xl px-4">
+  <div class="rounded-2xl border-l-4 border-primary bg-primary/[0.04] p-6">
+    <p class="text-xs font-semibold uppercase tracking-wider text-primary">A rövid válasz</p>
+    <p class="mt-3 text-pretty text-foreground/90">
+      Négy dologra van szükséged: <strong>élő árak és elérhetőség</strong>, <strong>foglalás létrehozása</strong>, <strong>fizetés</strong> és <strong>megerősítés plusz webhookok</strong>. Az olvasási jogú tartalom API-k csak az elsőig jutnak el. A Wink Consumer és Booking Engine API-k ingyenesen használhatók, a foglalás létrehozása REST-en keresztül OAuth2-vel történik, több mint 64 webhook esemény van, köztük a <code>booking.created</code>, és a fizetés a szálloda számára történik — amely marad a kereskedő — így neked nem kell azzá válnod. Egy MCP szerver ugyanezeket a képességeket teszi elérhetővé AI ügynököknek, és webkomponensek fedik le azokat az eseteket, amikor foglalási útvonalat szeretnél UI építése nélkül.
+    </p>
+  </div>
+</section>
+
+{/* Body */}
+<article class="mkt-prose mx-auto w-full max-w-3xl px-4 py-14">
+
+## A négy fontos képesség
+
+| Képesség | Mit jelent | Miért akad el nélküle a termék |
+|---|---|---|
+| Élő árak és elérhetőség | Aktuális árak és mi foglalható ténylegesen, dátumtartományonként | A gyorsítótárazott árak megerősítéskor hibáznak és rontják a bizalmat |
+| Foglalás létrehozása | Valódi foglalás létrehozása, amit a szálloda megkap | Nélküle csak egy ajánló link vagy, nem termék |
+| Fizetés | Pénz fogadása a foglalás részeként | Egy másik oldalra irányításnál elvész a konverzió |
+| Megerősítés és webhookok | Tájékoztatni a vendéget, a szállodát és a rendszeredet, mi történt | Egyébként támogatási terhelés és egyeztetési hiányosságok lesznek |
+
+A legtöbb "szállodai API", amit egy fejlesztő talál, az elsőt, néha a másodikat fedi le. A tranzakció a nehéz rész, és ez dönti el, hogy van-e terméked.
+
+## Kinek a kínálatát integrálod?
+
+Ez a kérdés alakítja az egész további folyamatot. A láncon keresztül újraértékesített kínálat árréses árral, elavultabb elérhetőséggel és nincs visszacsatolási út a szállodához foglalási kérdés esetén. A közvetlenül a szállodától származó kínálat a szálloda saját árát, élő elérhetőségét és egy olyan szállodát hordoz, amely tud a foglalásról.
+
+Bármi esetén, amikor az utazó összehasonlítja a szálloda saját weboldalával — ami a legtöbb eset — a szálloda által kontrollált kínálat elkerüli azt a kínos pillanatot, amikor az árad rosszabb.
+
+## Ki a kereskedő
+
+Ha magad építed a szállodai foglalást, a kereskedővé válás azt jelenti, hogy vállalod a fizetési felelősséget, visszatérítéseket, adókezelést és gyakran utazási ügynöki engedélyt minden piacon.
+
+A Wink-nál a **szálloda marad a kereskedő**, és a fizetés a szálloda számára történik, így az integrátornak nem kell ezt vállalnia. Kereskedői megállapodások elérhetők API integrációknál, ahol a partnernek valóban szüksége van a fizetés átvételére, és ez a megoldás saját engedélyezési követelményeket von maga után.
+
+## Három integrációs szint
+
+1. **Webkomponensek.** Helyezz be egy foglalható keresőt, szobalistát vagy fizetési felületet egy meglévő oldalba. Nincs backend munka; legkevesebb irányítás a megjelenés felett.
+2. **REST API.** Teljes irányítás a keresés, árak, foglalás létrehozása és megerősítés felett, OAuth2 hitelesítéssel. Használd, ha a foglalási folyamat a termék saját élményének része.
+3. **MCP szerver.** Ugyanezek a képességek AI ügynökök számára, hogy egy asszisztens keresni, árazni és foglalást végrehajtani tudjon anélkül, hogy a felhasználót weboldalra irányítaná.
+
+A három nem kizárólagos — egy termék gyakran használ komponenseket marketing felületként és az API-t a fő folyamathoz.
+
+## Mit építs először
+
+- **Keresés és ár egy városra és egy dátumtartományra.** Szerezz valódi árakat mielőtt bármit terveznél.
+- **Hozz létre egy tesztfoglalást végig**, beleértve a fizetést és a megerősítést.
+- **Iratkozz fel a `booking.created` és a lemondási eseményekre** mielőtt bármilyen UI-t építenél rá.
+- **Döntsd el korán az attribúciós modellt** — a forráskörnyezetnek utaznia kell a foglalással, különben a jelentés csak találgatás lesz később.
+- **Kezeld a hibás eseteket**: elérhetőség elvesztése az ajánlat és a foglalás között, fizetés elutasítása, részleges visszatérítések.
+
+## Árazás, amit a fejlesztőnek tudnia kell
+
+A **Consumer és Booking Engine API-k ingyenesek**. A **Partner API** havi 10 000 szállodai nap ingyenes kerettel rendelkezik, utána egységenként számláz. A megerősített foglalások a szálloda 1,5%-os platformdíját és a kártyakezelési költséget tartalmazzák, és **10% alap jutalék** vonatkozik, ha a terméked vezette a foglalást — így az integrátor keres, nem fizet.
+
+## Gyakori hibák
+
+- **Gyorsítótárazott árakra építeni.** Fejlesztéskor jól néznek ki, de élesben hibáznak.
+- **Fizetés átirányításra hagyása.** Minden átadásnál veszteség van a foglalásokból.
+- **Webhookok figyelmen kívül hagyása a bevezetésig.** Az egyeztetés kézi munkává válik.
+- **Kereskedővé válni, ha nem szükséges.** Ez engedélyezési és felelősségi döntés, nem csak technikai.
+- **Nem továbbítani a forráskörnyezetet.** Az attribúció később nem állítható vissza.
+
+</article>
+
+{/* Related */}
+<section class="mx-auto w-full max-w-3xl px-4 pb-8">
+  <p class="mkt-kicker text-primary">Folytasd a felfedezést</p>
+  <div class="mt-4 grid gap-3 @md:grid-cols-2">
+    {[
+      { label: "Fejlesztőknek", href: "/builders/" },
+      { label: "API áttekintés", href: "/api/overview/" },
+      { label: "MCP szerver", href: "/developers/mcp/" },
+      { label: "Webkomponensek", href: "/integrations/web-components/" },
+    ].map((l) => (
+      <a href={l.href} class="group flex items-center justify-between rounded-xl border border-border bg-card px-4 py-3 text-sm font-medium transition-colors hover:border-primary/40">
+        {l.label}
+        <IconArrowRight class="size-4 text-muted-foreground transition-transform group-hover:translate-x-0.5" />
+      </a>
+    ))}
+  </div>
+</section>
+
+{/* FAQ */}
+<FaqGrid emitJsonLd
+  heading="Szállodai foglalási API GYIK"
+  description="Mit integráljunk, mennyibe kerül, és ki viseli a fizetési felelősséget."
+  items={[
+    { title: "Mit kell támogatnia egy szállodai foglalási API-nak?", content: "Élő árak és elérhetőség, foglalás létrehozása, fizetés és megerősítés webhookokkal. Az olvasási jogú tartalom API-k csak az elsőt fedik le, és nem tudnak tranzakciót befejezni." },
+    { title: "Ingyenes a Wink API használata?", content: "A Consumer és Booking Engine API-k ingyenesek. A Partner API havi 10 000 szállodai nap ingyenes kerettel rendelkezik, utána egységenként számláz." },
+    { title: "Kell kereskedővé válnom?", content: "Nem. A szálloda marad a kereskedő, és a fizetés a szálloda számára történik. Kereskedői megállapodások léteznek API integrációknál, ahol a partnernek valóban szüksége van a fizetés átvételére, saját engedélyezési követelményekkel." },
+    { title: "Az AI ügynökök ugyanazokon a képességeken keresztül foglalhatnak?", content: "Igen. Egy MCP szerver keresést, árazást és foglalást tesz elérhetővé az ügynököknek, így egy asszisztens befejezheti a foglalást anélkül, hogy a felhasználót weboldalra irányítaná." },
+    { title: "Hogyan kapok fizetést integrátorként?", content: "Alapértelmezett 10% jutalék vonatkozik a foglalásokra, amelyeket a terméked generált, a szálloda platformdíja és a kártyakezelés után, az attribúció 6 hónapig tart kattintásonként." },
+    { title: "Kell UI-t építenem?", content: "Nem feltétlenül. A webkomponensek foglalható keresőt, szobalistákat és fizetési felületet biztosítanak, amelyeket egy meglévő oldalba lehet helyezni; a REST API akkor van, ha a folyamat a tiéd kell legyen." },
+  ]}
+/>
+
+{/* Final CTA */}
+<section class="w-full border-y border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white">
+  <div class="mx-auto w-full max-w-7xl px-4 py-24 text-center">
+    <h2 class="mkt-h2 font-heading">Építs olyan terméket, ami tényleg foglalni tud.</h2>
+    <p class="mx-auto mt-4 max-w-2xl text-pretty text-white/70 @lg:text-lg">
+      Élő szállodai kínálat, foglalás létrehozása REST-en keresztül, webhookok, MCP szerver ügynököknek, és fizetés, amit nem neked kell birtokolnod.
+    </p>
+    <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <a href="https://app.wink.travel" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-[#ff6b35] px-8 text-base font-semibold text-white hover:bg-[#e85b29] sm:w-auto">API-hozzáférés kérése</a>
+      <a href="/builders/" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-white px-8 text-base font-semibold text-[#1f0a40] hover:bg-white/90 sm:w-auto">Fejlesztőknek</a>
+    </div>
+  </div>
+</section>
+
+</div>

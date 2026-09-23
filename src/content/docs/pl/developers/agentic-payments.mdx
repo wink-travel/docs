@@ -1,0 +1,181 @@
+---
+title: Płatności Agentic
+description: Połącz swojego agenta AI z Wink, zaloguj się, znajdź hotel i zatwierdź płatność, aby zakończyć rezerwację.
+sidebar:
+  order: 10.5
+---
+
+Możesz wyszukać hotel, wybrać pokój i zakończyć rezerwację za pomocą swojego agenta AI. Połącz go z Wink i portfelem płatniczym, a następnie powiedz, gdzie chcesz się zatrzymać. Wink używa **Machine Payments Protocol (MPP)**, aby zaakceptować płatność z portfela i zwrócić potwierdzenie rezerwacji.
+
+## 1. Połącz serwery MCP
+
+Do pełnego procesu rezerwacji twój agent potrzebuje **Wink Booking Engine** oraz **portfela płatniczego**.
+
+| Połączenie | Co robi | Jak dodać |
+| --- | --- | --- |
+| **Wink Booking Engine** — wymagane | Znajduje destynacje, wyszukuje hotele i ceny pokoi, wycenia i potwierdza rezerwacje oraz pobiera twoje rezerwacje i paragony. | Dodaj `https://api.wink.travel/mcp/booking-engine` jako zdalny serwer HTTP MCP. |
+| **Portfel płatniczy** — wymagany do płatności | Dostarcza dane płatnicze po zatwierdzeniu zakupu. | Połącz portfel obsługujący Stripe Shared Payment Tokens lub płatności Tempo. Zobacz przykład Link poniżej. |
+| Wink Reference — opcjonalne | Wyszukuje kraje, waluty i inne dane referencyjne. | `https://api.wink.travel/mcp/reference` |
+| Wink Docs — opcjonalne | Pomaga agentowi czytać dokumentację i kontrakty API. | `https://docs.mcp.wink.travel/mcp` |
+
+Booking Engine MCP zawiera już narzędzia potrzebne do procesu rezerwacji podróżnego, gdy w danym środowisku włączone są agentic booking i płatności. Oddzielny Payment MCP Wink służy do operacji finansowych, takich jak księgi rachunkowe i wypłaty; nie jest potrzebny do płatności za pokój.
+
+### Zaloguj się i wybierz uprawnienia
+
+1. Otwórz ustawienia MCP lub konektora swojego agenta i dodaj powyższy URL Booking Engine. Nadaj mu nazwę, np. **Wink Booking**.
+2. Twój agent otworzy stronę logowania Wink w przeglądarce. Zaloguj się na konto Wink, pod którym chcesz dokonać rezerwacji.
+3. Na ekranie zgody wybierz uprawnienia, których agent potrzebuje, a następnie zatwierdź połączenie.
+4. Wróć do agenta. Załaduje dostępne narzędzia i będzie zarządzał uwierzytelnianiem dla kolejnych wywołań MCP.
+
+Dla tego procesu wybierz:
+
+| Uprawnienie | Dlaczego jest potrzebne |
+| --- | --- |
+| Dostęp agenta AI (`mcp.read`) | Pozwala agentowi łączyć się z MCP Wink. |
+| Odczyt marketingowy (`marketing.read`) | Umożliwia agentowi znalezienie konfiguracji rezerwacji twojego konta, zwanej personalizacją. Twoje konto musi mieć też dostęp do tej konfiguracji. |
+| Zapis płatności (`payment.write`) | Pozwala agentowi zapłacić za wycenę i potwierdzić rezerwację. |
+
+Zachowaj uprawnienia logowania wymagane przez połączenie. Twój klient MCP obsługuje tokeny dostępu; nie musisz kopiować tokena do czatu ani ustawiać nagłówków żądań. Jeśli pominąłeś potrzebne uprawnienie, połącz się ponownie przez proces logowania klienta i zatwierdź je.
+
+### Połącz portfel płatniczy
+
+Dla płatności Stripe jedną z opcji jest **portfel agenta Link**. Jeśli twój klient obsługuje lokalne serwery MCP i masz zainstalowane Node.js, dodaj ten wpis do konfiguracji MCP:
+
+```json
+{
+  "mcpServers": {
+    "link": {
+      "command": "npx",
+      "args": ["@stripe/link-cli", "--mcp"]
+    }
+  }
+}
+```
+
+Poproś agenta o połączenie twojego konta Link, następnie postępuj zgodnie z podanym linkiem weryfikacyjnym i zatwierdź połączenie. Link dostarcza Shared Payment Token używany do płatności za rezerwację. Link obecnie obsługuje konta w USA; sprawdź limity wydatków przed rezerwacją. Zobacz [przewodnik konfiguracji Link](https://github.com/stripe/link-cli#quickstart) oraz [konfigurację MCP](https://github.com/stripe/link-cli#mcp-server).
+
+Możesz też użyć portfela obsługującego wyzwanie płatnicze Tempo oferowane przez Wink. Jeśli twój agent ma już połączony kompatybilny portfel, użyj tego połączenia. Konfiguracja portfela i zatwierdzenie płatności są oddzielne od logowania do Wink.
+
+## 2. Poproś agenta o znalezienie pokoju
+
+Na przykład:
+
+> Znajdź pokój w Bangkoku dla dwóch dorosłych od 15 do 17 stycznia 2027. Pokaż dostępne opcje, całkowitą cenę i warunki anulacji, zanim wybiorę.
+
+Twój agent może znaleźć dostępne konta Wink i ich konfiguracje rezerwacji. Jeśli masz ich kilka, powiedz, którego użyć. Jeśli rezerwujesz przez dostarczony link lub konfigurację, podaj ją agentowi.
+
+Agent rozpozna twoją destynację, sprawdzi dostępne hotele i załaduje ceny pokoi na twoje daty. Wybierz pokój i poproś o wycenę.
+
+Ten proces płatności obecnie obsługuje **jeden pokój, wyceniany w USD, tylko dla dorosłych**. Wycena ma czas ważności. Jej żądanie nie obciąża cię ani nie potwierdza rezerwacji.
+
+## 3. Sprawdź i zatwierdź płatność
+
+Sprawdź hotel, pokój, daty, gości, warunki anulacji i podaną cenę całkowitą. Gdy będziesz gotowy, poproś agenta o dokonanie rezerwacji i zatwierdź wszelkie wymagane zgody w portfelu.
+
+Agent używa jednej z metod płatności oferowanych przez wycenę:
+
+- **Stripe:** portfel dostarcza Shared Payment Token.
+- **Tempo:** portfel wykonuje przelew określony przez wyzwanie i dostarcza hash transakcji.
+
+Po pomyślnej płatności agent poda ci **kod potwierdzenia rezerwacji**. Może też pobrać szczegóły rezerwacji i paragon przez Booking Engine MCP.
+
+Jeśli płatność jest w trakcie przetwarzania lub odpowiedź została utracona, pozwól agentowi sprawdzić **ten sam próbę płatności**. Powinien ponownie użyć wyceny i danych płatniczych zamiast rozpoczynać drugą płatność. Jeśli płatność zostanie odrzucona, poproś o nową wycenę i sprawdź ją przed kolejną próbą.
+
+## Referencje narzędzi dla agentów i deweloperów
+
+Wszystkie poniższe narzędzia Wink są dostępne przez **Booking Engine MCP**. Klient MCP automatycznie wysyła uwierzytelnienie, korzystając z uprawnień zatwierdzonych podczas logowania.
+
+| Krok | Narzędzia i zachowanie |
+| --- | --- |
+| Wybierz kontekst rezerwacji | `managing_entity_list`, następnie `customization_get_primary` lub `customization_search` dla wybranego konta. Użyj dostarczonej personalizacji, jeśli jest znana. |
+| Znajdź destynację | `destination_lookup_search_suggestions` i `destination_lookup_get`. |
+| Wyszukaj hotele i pokoje | `inventory_search_city` lub `inventory_search_geo`, następnie `property_inventory_get` dla cen i dostępności. |
+| Wyceń wybrany pokój | `agentic_booking_quote`. Przekaż szczegóły pokoju w argumencie `request`. |
+| Zapłać i potwierdź | Uzyskaj dane uwierzytelniające z połączonego portfela, następnie wywołaj `agentic_booking_pay` z `request.quoteId` i dokładnie jednym z `request.spt` lub `request.tempoTransactionHash`. Używaj tego samego zalogowanego użytkownika Wink dla wyceny i płatności. |
+| Pobierz rezerwację i paragon | Użyj `booking_search` lub `booking_search_list`, aby znaleźć potwierdzoną rezerwację, następnie `booking_get` i `booking_receipt_get` z jej identyfikatorem. |
+
+Żądanie wyceny wymaga `hotelIdentifier`, `roomRateIdentifier`, `checkIn`, `checkOut`, `adults`, `children` oraz `customizationIdentifier`. Daty w formacie `YYYY-MM-DD`; `checkOut` musi być po `checkIn`. Ustaw `adults` na co najmniej `1`, a `children` na `0`.
+
+Wycena zwraca `quoteId`, `amountUsdCents`, `currency`, `expiresAt` i `mppChallenges`. Wyświetl centy USD jako dolary: `10000` oznacza **100,00 $**. Dla Tempo użyj tokena, łańcucha, odbiorcy i kwoty w jednostkach bazowych tokena z wybranego wyzwania.
+
+| Wynik płatności | Następny krok |
+| --- | --- |
+| `PAYMENT_SUCCEEDED` | Zapisz `bookingConfirmationCode` i `chargeReference`. |
+| `IN_PROGRESS` | Poczekaj chwilę i spróbuj ponownie z tą samą wyceną i danymi. |
+| `DECLINED` | Poproś o nową wycenę i sprawdź ją przed kolejną płatnością. |
+
+Udana próba ponowienia zwraca istniejącą rezerwację bez ponownego obciążania. Traktuj timeout jako nieznany wynik i spróbuj ponownie tę samą płatność. Jeśli problem się utrzymuje, skontaktuj się z pomocą techniczną, podając ID wyceny.
+
+### Klienci MCP obsługujący płatności
+
+Klienci MCP obsługujący płatności mogą użyć `agentic_booking_book` z polami pokoju bezpośrednio w `arguments`. Pierwsze wywołanie zwraca błąd `-32042` z wyzwaniami płatniczymi. Spróbuj ponownie to samo wywołanie z danymi portfela w `params._meta["org.paymentauth/credential"]`; sukces zawiera `result._meta["org.paymentauth/receipt"]`. Błąd `-32043` zawiera niepowodzenie płatności i wyzwanie: ostateczne odrzucenie wymaga nowej wyceny, natomiast niekompletne dane płatności mogą ponowić próbę z tym samym wyzwaniem. Dla `-32603` `data.failure.reason` o wartości `payment-in-progress` lub `already-consumed` oznacza ponowienie tej samej danej; sam kod błędu nie wystarcza.
+
+## Rezerwacja przez REST
+
+Użyj REST, gdy tworzysz integrację wywołującą Wink bezpośrednio przez HTTP. Zarówno wycena, jak i płatność używają **`POST https://api.wink.travel/api/mpp/booking`**.
+
+Twoja aplikacja potrzebuje [tokena dostępu użytkownika Wink](/pl/developers/authentication/) z uprawnieniem `payment.write` do płatności. Używaj tego samego użytkownika dla obu wywołań. Prześlij token w nagłówku `Wink-Authorization`, pozostawiając `Authorization` dla danych płatniczych portfela. Te nagłówki dotyczą REST; klient MCP obsługuje własne uwierzytelnianie.
+
+### 1. Poproś o wycenę
+
+Zapisz wybrany pokój jako `booking.json`, zastępując przykładowe identyfikatory i daty swoimi danymi. Pola pokoju umieść bezpośrednio w ciele JSON, bez opakowania `request`.
+
+```json
+{
+  "hotelIdentifier": "YOUR_HOTEL_ID",
+  "roomRateIdentifier": "YOUR_ROOM_RATE_ID",
+  "checkIn": "2027-01-15",
+  "checkOut": "2027-01-17",
+  "adults": 2,
+  "children": 0,
+  "customizationIdentifier": "YOUR_CUSTOMIZATION_ID"
+}
+```
+
+Ustaw `WINK_ACCESS_TOKEN` na token dostępu użytkownika i wyślij żądanie:
+
+```bash
+curl -i https://api.wink.travel/api/mpp/booking \
+  -H "Wink-Authorization: Bearer $WINK_ACCESS_TOKEN" \
+  -H 'Content-Type: application/json' \
+  --data-binary @booking.json
+```
+
+Wink zwraca **`402 Payment Required`** z wyzwaniem `WWW-Authenticate: Payment ...` dla każdej oferowanej metody. Ciało JSON zawiera `quoteId`, `amount`, `currency`, `expiresAt` i `methods`. Tutaj `amount` to ciąg znaków w centach USD: `"10000"` oznacza **100,00 $**. Sprawdź wycenę przed wygaśnięciem; płatność nie została jeszcze pobrana.
+
+### 2. Zapłać i potwierdź
+
+Niech portfel wykona jedno z zwróconych wyzwań. Dla Stripe dostarcza `payload.spt`; dla Tempo `payload.hash` z `payload.type` ustawionym na `"hash"`. Użyj danych płatności z tego wyzwania.
+
+Ustaw `MPP_CREDENTIAL` na zakodowane dane MPP portfela, zawierające wyzwanie i dane płatności. Spróbuj ponownie **tego samego ciała żądania**, zachowując nagłówek tożsamości:
+
+```bash
+curl -i https://api.wink.travel/api/mpp/booking \
+  -H "Wink-Authorization: Bearer $WINK_ACCESS_TOKEN" \
+  -H "Authorization: Payment $MPP_CREDENTIAL" \
+  -H 'Content-Type: application/json' \
+  --data-binary @booking.json
+```
+
+Po sukcesie Wink zwraca **`200 OK`**, ciało JSON z `bookingConfirmationCode` oraz nagłówek `Payment-Receipt`. Zapisz potwierdzenie i paragon. Udana próba ponowienia zwraca istniejącą rezerwację bez ponownego obciążania.
+
+### Obsługa odpowiedzi i ponowień
+
+| Odpowiedź | Co zrobić |
+| --- | --- |
+| `400` | Popraw nieprawidłowe dane pokoju lub błędne dane uwierzytelniające. |
+| `401` / `403` | Sprawdź uwierzytelnienie użytkownika i uprawnienia płatności. |
+| `402` | Sprawdź zwrócony problem i wyzwanie. Ostateczne odrzucenie płatności wymaga nowej wyceny; niekompletne dane płatności ponownie używają oryginalnego wyzwania. Sprawdź cenę przed płatnością. |
+| `409` | Wynik płatności jest nierozstrzygnięty. Poczekaj chwilę, a następnie spróbuj ponownie to samo ciało i dane uwierzytelniające na endpoint rezerwacji. |
+| `429` | Poczekaj liczbę sekund podaną w `Retry-After`, a następnie spróbuj ponownie. |
+
+Odpowiedź `409` ma ciało `application/problem+json`. Dopasuj jej `type` do tych dokładnych URL:
+
+| Typ problemu | Znaczenie |
+| --- | --- |
+| [https://api.wink.travel/problems/payment-in-progress](https://api.wink.travel/problems/payment-in-progress) | Próba płatności jest w toku lub rozliczenie nie może być jeszcze potwierdzone. |
+| [https://api.wink.travel/problems/already-consumed](https://api.wink.travel/problems/already-consumed) | Wyzwanie lub dowód płatności zostały już użyte przez możliwie udaną próbę. Samo to nie potwierdza rezerwacji. |
+
+Oba oznaczają **ponów tę samą płatność; nie płać za nową wycenę**. URL identyfikują i dokumentują problem; nie są endpointami płatności ani odpytywania. Ponów `POST /api/mpp/booking` i użyj `type` problemu zamiast wolnego tekstu `detail` do decyzji, co zrobić. Zobacz [referencję typów problemów](https://api.wink.travel/problems) dla wszystkich problemów płatniczych Wink.
+
+Timeout, utrata odpowiedzi lub błąd serwera po przesłaniu płatności mogą również pozostawić wynik nieznany. Ponów to samo żądanie płatności. Jeśli wynik pozostanie nierozstrzygnięty, skontaktuj się z pomocą techniczną, podając ID wyceny, zanim rozpoczniesz kolejną płatność.
