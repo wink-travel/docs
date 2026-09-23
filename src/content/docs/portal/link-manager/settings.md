@@ -28,7 +28,7 @@ Additional controls include:
 
 ## API
 
-Developers who want to manage `WinkLinks` can head over to [Developers > API > WinkLinks](/api).
+Developers who want to manage `WinkLinks` can head over to [Developers > API > WinkLinks](/api/overview/).
 
 ## Further reading
 
