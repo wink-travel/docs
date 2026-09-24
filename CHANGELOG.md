@@ -2,6 +2,12 @@
 
 Changelog of docs.
 
+## v1.1.1 (2026-09-02)
+
+### Bug Fixes
+
+-  **seo**  emit valid, locale-correct BreadcrumbList structured data ([00e26](https://github.com/wink-travel/docs/commit/00e2652a346d0fd) Bjorn Harvold)  
+
 ## v1.1.0 (2026-09-02)
 
 ### Features
