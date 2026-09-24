@@ -14,7 +14,7 @@ For the complete booking flow, your agent needs **Wink Booking Engine** and a **
 | Connection | What it does | How to add it |
 | --- | --- | --- |
 | **Wink Booking Engine** — required | Finds destinations, searches hotels and room rates, quotes and confirms bookings, and retrieves your bookings and receipts. | Add `https://api.wink.travel/mcp/booking-engine` as a remote HTTP MCP server. |
-| **Payment wallet** — required to pay | Provides payment credentials after you approve the purchase. | Connect a wallet that supports Stripe Shared Payment Tokens or Tempo payments. See the Link example below. |
+| **Payment wallet** — required to pay | Provides payment credentials after you approve the purchase. | Connect a wallet that supports Stripe Shared Payment Tokens. See the Link example below. |
 | Wink Reference — optional | Looks up countries, currencies and other reference data. | `https://api.wink.travel/mcp/reference` |
 | Wink Docs — optional | Helps your agent read documentation and API contracts. | `https://docs.mcp.wink.travel/mcp` |
 
@@ -54,7 +54,7 @@ For Stripe payments, one option is **Link's agent wallet**. If your client suppo
 
 Ask your agent to connect your Link account, then follow the verification link it provides and approve the connection. Link supplies the Shared Payment Token used to pay for the booking. Link currently supports US accounts; check its spending limits before booking. See [Link's setup guide](https://github.com/stripe/link-cli#quickstart) and [MCP configuration](https://github.com/stripe/link-cli#mcp-server).
 
-You can also use a wallet that supports the Tempo payment challenge offered by Wink. If your agent already has a compatible wallet connected, use that connection. Wallet setup and payment approval are separate from signing in to Wink.
+If your agent already has a compatible wallet connected, use that connection. Wallet setup and payment approval are separate from signing in to Wink.
 
 ## 2. Ask your agent to find a room
 
@@ -72,10 +72,9 @@ This payment flow currently supports **one room, priced in USD, for adults only*
 
 Check the hotel, room, dates, guests, cancellation terms and quoted total. When you are ready, ask your agent to book and complete any approval requested by your wallet.
 
-The agent uses one of the payment methods offered by the quote:
+The wallet provides a **Stripe Shared Payment Token** to pay for the quote.
 
-- **Stripe:** the wallet provides a Shared Payment Token.
-- **Tempo:** the wallet makes the transfer specified by the challenge and provides its transaction hash.
+**Tempo stablecoin payments are coming soon.**
 
 After payment succeeds, your agent gives you a **booking confirmation code**. It can also retrieve the booking details and receipt through the Booking Engine MCP.
 
@@ -91,12 +90,12 @@ All Wink tools below are available through the **Booking Engine MCP**. The MCP c
 | Find a destination | `destination_lookup_search_suggestions` and `destination_lookup_get`. |
 | Search hotels and rooms | `inventory_search_city` or `inventory_search_geo`, then `property_inventory_get` for rates and availability. |
 | Quote the selected room | `agentic_booking_quote`. Pass room details inside its `request` argument. |
-| Pay and confirm | Obtain a credential from the connected wallet, then call `agentic_booking_pay` with `request.quoteId` and exactly one of `request.spt` or `request.tempoTransactionHash`. Keep the same signed-in Wink user for quote and payment. |
+| Pay and confirm | Obtain a Shared Payment Token from the connected wallet, then call `agentic_booking_pay` with `request.quoteId` and `request.spt`. Keep the same signed-in Wink user for quote and payment. |
 | Retrieve the booking and receipt | Use `booking_search` or `booking_search_list` to find the confirmed booking, then `booking_get` and `booking_receipt_get` with its booking identifier. |
 
 The quote request needs `hotelIdentifier`, `roomRateIdentifier`, `checkIn`, `checkOut`, `adults`, `children` and `customizationIdentifier`. Dates use `YYYY-MM-DD`; `checkOut` must follow `checkIn`. Set `adults` to at least `1` and `children` to `0`.
 
-The quote returns `quoteId`, `amountUsdCents`, `currency`, `expiresAt` and `mppChallenges`. Display USD cents as dollars: `10000` means **$100.00**. For Tempo, use the chosen challenge's token, chain, recipient and amount in token base units.
+The quote returns `quoteId`, `amountUsdCents`, `currency`, `expiresAt` and `mppChallenges`. Display USD cents as dollars: `10000` means **$100.00**.
 
 | Pay result | Next step |
 | --- | --- |
@@ -145,7 +144,7 @@ Wink returns **`402 Payment Required`** with a `WWW-Authenticate: Payment ...` c
 
 ### 2. Pay and confirm
 
-Have the wallet fulfill one returned challenge. For Stripe, it supplies `payload.spt`; for Tempo, it supplies `payload.hash` with `payload.type` set to `"hash"`. Use the payment details from that challenge.
+Have the wallet fulfill the returned Stripe challenge by supplying a Shared Payment Token in `payload.spt`. Use the payment details from that challenge.
 
 Set `MPP_CREDENTIAL` to the wallet's encoded MPP credential, which contains the challenge and payment payload. Retry the **same request body**, keeping the identity header:
 
