@@ -9,12 +9,12 @@ AIエージェントを通じてホテルを検索し、部屋を選択して予
 
 ## 1. MCPサーバーを接続する
 
-完全な予約フローには、エージェントに**Wink Booking Engine**と**支払いウォレット**が必要です。
+予約の一連の流れには、エージェントに**Wink Booking Engine**と**支払いウォレット**が必要です。
 
 | 接続 | 役割 | 追加方法 |
 | --- | --- | --- |
 | **Wink Booking Engine** — 必須 | 目的地の検索、ホテルと部屋料金の検索、見積もりと予約の確定、予約と領収書の取得を行います。 | `https://api.wink.travel/mcp/booking-engine` をリモートHTTP MCPサーバーとして追加します。 |
-| **支払いウォレット** — 支払いに必須 | 購入承認後に支払い資格情報を提供します。 | Stripe Shared Payment TokensまたはTempo支払いをサポートするウォレットを接続します。以下のLinkの例を参照してください。 |
+| **支払いウォレット** — 支払いに必須 | 購入承認後に支払い資格情報を提供します。 | Stripe Shared Payment Tokensをサポートするウォレットを接続します。下記のLinkの例を参照してください。 |
 | Wink Reference — 任意 | 国、通貨、その他の参照データを検索します。 | `https://api.wink.travel/mcp/reference` |
 | Wink Docs — 任意 | エージェントがドキュメントやAPI契約を読むのに役立ちます。 | `https://docs.mcp.wink.travel/mcp` |
 
@@ -27,7 +27,7 @@ Booking Engine MCPには、エージェント予約と支払いが有効な環�
 3. 同意画面でエージェントに必要な権限を選択し、接続を承認します。
 4. エージェントに戻ると、利用可能なツールを読み込み、以降のMCP呼び出しの認証を管理します。
 
-このフローで選択する権限は以下の通りです：
+このフローでは以下を選択してください：
 
 | 権限 | 必要な理由 |
 | --- | --- |
@@ -35,11 +35,11 @@ Booking Engine MCPには、エージェント予約と支払いが有効な環�
 | マーケティング読み取り (`marketing.read`) | エージェントがアカウントの予約設定（カスタマイズ）を見つけられるようにします。アカウントもその設定にアクセスできる必要があります。 |
 | 支払い書き込み (`payment.write`) | エージェントが見積もりの支払いと予約の確定を行えるようにします。 |
 
-接続時に要求されるサインイン権限は保持してください。MCPクライアントがアクセストークンを管理するため、チャットにトークンをコピーしたりリクエストヘッダーを設定したりする必要はありません。必要な権限をスキップした場合は、クライアントのサインインフローから再接続して承認してください。
+接続時に要求されたサインイン権限は保持してください。MCPクライアントがアクセストークンを管理するため、チャットにトークンをコピーしたりリクエストヘッダーを設定したりする必要はありません。必要な権限をスキップした場合は、クライアントのサインインフローから再接続して承認してください。
 
 ### 支払いウォレットを接続する
 
-Stripe支払いの場合、選択肢の一つは**Linkのエージェントウォレット**です。クライアントがローカルMCPサーバーをサポートし、Node.jsがインストールされている場合、MCP設定に以下のエントリを追加します：
+Stripe支払いの場合、選択肢の一つは**Linkのエージェントウォレット**です。クライアントがローカルMCPサーバーをサポートしNode.jsがインストールされている場合、MCP設定に以下を追加します：
 
 ```json
 {
@@ -52,38 +52,37 @@ Stripe支払いの場合、選択肢の一つは**Linkのエージェントウ�
 }
 ```
 
-エージェントにLinkアカウントの接続を依頼し、提供された検証リンクに従って接続を承認してください。Linkは予約支払いに使用されるShared Payment Tokenを提供します。現在Linkは米国アカウントをサポートしているため、予約前に利用限度額を確認してください。[Linkのセットアップガイド](https://github.com/stripe/link-cli#quickstart)と[MCP設定](https://github.com/stripe/link-cli#mcp-server)を参照してください。
+エージェントにLinkアカウントの接続を依頼し、提供された検証リンクに従って接続を承認してください。Linkは予約支払いに使うShared Payment Tokenを提供します。Linkは現在米国アカウントのみ対応しているため、予約前に利用限度額を確認してください。[Linkのセットアップガイド](https://github.com/stripe/link-cli#quickstart)と[MCP設定](https://github.com/stripe/link-cli#mcp-server)を参照してください。
 
-また、Winkが提供するTempo支払いチャレンジをサポートするウォレットも使用できます。エージェントにすでに互換性のあるウォレットが接続されている場合は、その接続を使用してください。ウォレットのセットアップと支払い承認はWinkへのサインインとは別です。
+エージェントにすでに互換性のあるウォレットが接続されている場合は、その接続を使用してください。ウォレットのセットアップと支払い承認はWinkへのサインインとは別です。
 
 ## 2. エージェントに部屋を探してもらう
 
 例：
 
-> 2027年1月15日から17日まで、バンコクで大人2名の部屋を探してください。利用可能なオプション、合計価格、キャンセル条件を表示してから選びます。
+> 2027年1月15日から17日まで、バンコクで大人2名の部屋を探して。利用可能なオプション、合計価格、キャンセル条件を見せてから選びたい。
 
 エージェントはアクセス可能なWinkアカウントとその予約設定を見つけられます。複数ある場合はどれを使うか伝えてください。提供された予約リンクや設定を使う場合は、それをエージェントに渡してください。
 
-エージェントは目的地を解決し、利用可能なホテルを確認し、指定日付の部屋料金を読み込みます。部屋を選択し、見積もりを依頼してください。
+エージェントは目的地を解決し、利用可能なホテルを確認し、指定日付の部屋料金を読み込みます。部屋を選んで見積もりを依頼してください。
 
-この支払いフローは現在、**1部屋、USD価格、大人のみ**に対応しています。見積もりには有効期限があります。見積もりを依頼しても料金は発生せず、予約は確定しません。
+この支払いフローは現在、**1部屋、USD価格、大人のみ**に対応しています。見積もりには有効期限があります。見積もりを依頼しても料金は発生せず、予約も確定しません。
 
 ## 3. 支払いの確認と承認
 
-ホテル、部屋、日付、宿泊者、キャンセル条件、見積もり合計を確認してください。準備ができたら、エージェントに予約を依頼し、ウォレットからの承認を完了してください。
+ホテル、部屋、日付、宿泊者、キャンセル条件、見積もり合計を確認してください。準備ができたらエージェントに予約を依頼し、ウォレットからの承認を完了してください。
 
-エージェントは見積もりで提供された支払い方法のいずれかを使用します：
+ウォレットは見積もり支払いに使う**Stripe Shared Payment Token**を提供します。
 
-- **Stripe:** ウォレットがShared Payment Tokenを提供します。
-- **Tempo:** ウォレットがチャレンジで指定された送金を行い、その取引ハッシュを提供します。
+**Tempoのステーブルコイン支払いは近日対応予定です。**
 
-支払いが成功すると、エージェントは**予約確認コード**を提供します。Booking Engine MCPを通じて予約詳細と領収書も取得可能です。
+支払いが成功すると、エージェントは**予約確認コード**を返します。Booking Engine MCPを通じて予約詳細や領収書も取得可能です。
 
-支払いが処理中または応答が失われた場合、エージェントに**同じ支払い試行**を確認させてください。見積もりと支払い資格情報を再利用し、二重支払いを避けます。支払いが拒否された場合は新しい見積もりを依頼し、再度確認してから試してください。
+支払いが処理中、または応答が失われた場合は、エージェントに**同じ支払い試行**を確認させてください。見積もりと支払い資格情報を再利用し、二重支払いを避けます。支払いが拒否された場合は新しい見積もりを依頼し、再度確認してから試してください。
 
 ## エージェントと開発者向けツールリファレンス
 
-以下のWinkツールはすべて**Booking Engine MCP**を通じて利用可能です。MCPクライアントはサインイン時に承認された権限を使い、自動的に認証を送信します。
+以下のWinkツールはすべて**Booking Engine MCP**を通じて利用可能です。MCPクライアントはサインイン時に承認された権限を使い自動で認証を行います。
 
 | ステップ | ツールと動作 |
 | --- | --- |
@@ -91,34 +90,34 @@ Stripe支払いの場合、選択肢の一つは**Linkのエージェントウ�
 | 目的地の検索 | `destination_lookup_search_suggestions` と `destination_lookup_get`。 |
 | ホテルと部屋の検索 | `inventory_search_city` または `inventory_search_geo`、次に料金と空室状況のために `property_inventory_get`。 |
 | 選択した部屋の見積もり | `agentic_booking_quote`。部屋の詳細は `request` 引数内に渡す。 |
-| 支払いと確定 | 接続されたウォレットから資格情報を取得し、`request.quoteId` と `request.spt` または `request.tempoTransactionHash` のいずれか一つを使って `agentic_booking_pay` を呼び出す。見積もりと支払いで同じWinkユーザーでサインインを維持。 |
-| 予約と領収書の取得 | 確定した予約を `booking_search` または `booking_search_list` で検索し、予約識別子で `booking_get` と `booking_receipt_get` を使用。 |
+| 支払いと確定 | 接続されたウォレットからShared Payment Tokenを取得し、`agentic_booking_pay` を `request.quoteId` と `request.spt` で呼び出す。見積もりと支払いは同じサインイン済みWinkユーザーで行う。 |
+| 予約と領収書の取得 | 確定済み予約を `booking_search` または `booking_search_list` で検索し、予約識別子で `booking_get` と `booking_receipt_get` を使用。 |
 
 見積もりリクエストには `hotelIdentifier`、`roomRateIdentifier`、`checkIn`、`checkOut`、`adults`、`children`、`customizationIdentifier` が必要です。日付は `YYYY-MM-DD` 形式で、`checkOut` は `checkIn` の後でなければなりません。`adults` は最低1、`children` は0に設定してください。
 
-見積もりは `quoteId`、`amountUsdCents`、`currency`、`expiresAt`、`mppChallenges` を返します。USDセントはドルとして表示します：`10000` は**$100.00**を意味します。Tempoの場合は選択したチャレンジのトークン、チェーン、受取人、トークンの基本単位の金額を使用します。
+見積もりは `quoteId`、`amountUsdCents`、`currency`、`expiresAt`、`mppChallenges` を返します。USDセントはドル表示に変換してください：`10000` は**$100.00**です。
 
 | 支払い結果 | 次のステップ |
 | --- | --- |
 | `PAYMENT_SUCCEEDED` | `bookingConfirmationCode` と `chargeReference` を保存。 |
 | `IN_PROGRESS` | 少し待って同じ見積もりと資格情報で再試行。 |
-| `DECLINED` | 新しい見積もりを依頼し、再度確認してから支払いを試みる。 |
+| `DECLINED` | 新しい見積もりを依頼し、支払い前に確認。 |
 
-成功した再試行は既存の予約を返し、再度課金しません。タイムアウトは不明な結果として扱い、同じ支払いを再試行してください。解決しない場合は見積もりIDを添えてサポートに連絡してください。
+成功した再試行は既存の予約を返し、再課金しません。タイムアウトは不明な結果として扱い、同じ支払いを再試行してください。解決しない場合は見積もりIDを添えてサポートに連絡してください。
 
 ### 支払い対応MCPクライアント
 
-支払い対応MCPクライアントは、部屋のフィールドを直接 `arguments` に入れて `agentic_booking_book` を使用できます。最初の呼び出しは支払いチャレンジ付きのエラー `-32042` を返します。同じ呼び出しをウォレット資格情報を `params._meta["org.paymentauth/credential"]` に入れて再試行します。成功時は `result._meta["org.paymentauth/receipt"]` を含みます。エラー `-32043` は支払い失敗とチャレンジを含みます：確定的な拒否は新しい見積もりが必要で、不完全な支払いペイロードは同じチャレンジで再試行可能です。`-32603` の場合、`data.failure.reason` が `payment-in-progress` または `already-consumed` なら同じ資格情報で再試行します。エラーコードだけでは不十分です。
+支払い対応MCPクライアントは、部屋情報を直接 `arguments` に入れて `agentic_booking_book` を使えます。最初の呼び出しは支払いチャレンジ付きのエラー `-32042` を返します。同じ呼び出しをウォレット資格情報を `params._meta["org.paymentauth/credential"]` に入れて再試行してください。成功時は `result._meta["org.paymentauth/receipt"]` を含みます。エラー `-32043` は支払い失敗とチャレンジを含みます：確定的な拒否は新しい見積もりが必要で、不完全な支払いペイロードは同じチャレンジで再試行可能です。`-32603` の場合、`data.failure.reason` が `payment-in-progress` または `already-consumed` なら同じ資格情報で再試行してください。エラーコードだけでは判断できません。
 
 ## REST経由で予約する
 
-Winkに直接HTTPで呼び出す統合を構築する場合はRESTを使用します。見積もりと支払いはどちらも **`POST https://api.wink.travel/api/mpp/booking`** を使います。
+Winkに直接HTTPで呼び出す統合を構築する場合はRESTを使います。見積もりと支払いはどちらも **`POST https://api.wink.travel/api/mpp/booking`** を使用します。
 
-アプリケーションには支払いに `payment.write` 権限を持つ[Winkユーザーアクセストークン](/ja/developers/authentication/)が必要です。両方の呼び出しで同じユーザーを使用してください。トークンは `Wink-Authorization` ヘッダーに送信し、`Authorization` はウォレットの支払い資格情報用に空けておきます。これらのヘッダーはREST用で、MCPクライアントは独自の認証を処理します。
+アプリケーションには支払いに `payment.write` 権限を持つ[Winkユーザーアクセストークン](/ja/developers/authentication/)が必要です。両方の呼び出しで同じユーザーを使ってください。トークンは `Wink-Authorization` ヘッダーに入れ、`Authorization` はウォレットの支払い資格情報用に空けておきます。これらのヘッダーはREST用で、MCPクライアントは独自に認証を処理します。
 
 ### 1. 見積もりをリクエストする
 
-選択した部屋を `booking.json` として保存し、例の識別子と日付を選択内容に置き換えます。部屋のフィールドはJSON本文に直接入れ、`request`ラッパーは不要です。
+選択した部屋を `booking.json` として保存し、例の識別子と日付を選択内容に置き換えます。部屋情報はJSON本文に直接入れ、`request`ラッパーは不要です。
 
 ```json
 {
@@ -141,13 +140,13 @@ curl -i https://api.wink.travel/api/mpp/booking \
   --data-binary @booking.json
 ```
 
-Winkは支払い方法ごとに `WWW-Authenticate: Payment ...` チャレンジ付きで **`402 Payment Required`** を返します。JSON本文には `quoteId`、`amount`、`currency`、`expiresAt`、`methods` が含まれます。ここで `amount` はUSDセントの文字列で、`"10000"` は**$100.00**を意味します。期限内に見積もりを確認してください。まだ支払いは発生していません。
+Winkは**`402 Payment Required`**を返し、`WWW-Authenticate: Payment ...`チャレンジを各支払い方法ごとに返します。JSON本文には `quoteId`、`amount`、`currency`、`expiresAt`、`methods` が含まれます。ここで `amount` はUSDセントの文字列で、`"10000"` は**$100.00**を意味します。期限内に見積もりを確認してください。まだ支払いは発生していません。
 
 ### 2. 支払いと確定
 
-ウォレットに返されたチャレンジのいずれかを完了させます。Stripeの場合は `payload.spt` を、Tempoの場合は `payload.hash`（`payload.type` は `"hash"`）を提供します。チャレンジの支払い詳細を使用してください。
+ウォレットは返されたStripeチャレンジを満たし、Shared Payment Tokenを `payload.spt` に入れて支払いを行います。チャレンジの支払い詳細を使用してください。
 
-`MPP_CREDENTIAL` をチャレンジと支払いペイロードを含むウォレットのエンコード済みMPP資格情報に設定し、**同じリクエスト本文**を使って、識別ヘッダーを維持して再試行します：
+`MPP_CREDENTIAL` にチャレンジと支払いペイロードを含むウォレットのエンコード済みMPP資格情報を設定し、**同じリクエスト本文**を同じIDヘッダーで再試行します：
 
 ```bash
 curl -i https://api.wink.travel/api/mpp/booking \
@@ -157,7 +156,7 @@ curl -i https://api.wink.travel/api/mpp/booking \
   --data-binary @booking.json
 ```
 
-成功するとWinkは **`200 OK`** とJSON本文に `bookingConfirmationCode`、`Payment-Receipt` ヘッダーを返します。確認コードと領収書を保存してください。成功した再試行は既存の予約を返し、再課金しません。
+成功するとWinkは**`200 OK`**を返し、JSON本文に `bookingConfirmationCode` と `Payment-Receipt` ヘッダーを含みます。確認コードと領収書を保存してください。成功した再試行は既存の予約を返し、再課金しません。
 
 ### 応答と再試行の処理
 
@@ -166,16 +165,16 @@ curl -i https://api.wink.travel/api/mpp/booking \
 | `400` | 無効な部屋情報や不正な資格情報を修正。 |
 | `401` / `403` | ユーザーの認証と支払い権限を確認。 |
 | `402` | 返された問題とチャレンジを確認。確定的な支払い拒否は新しい見積もりが必要。不完全な支払いペイロードは元のチャレンジを再利用。支払い前に価格を確認。 |
-| `409` | 支払い結果が未解決。少し待って同じ本文と資格情報で予約エンドポイントを再試行。 |
-| `429` | `Retry-After` の秒数だけ待って再試行。 |
+| `409` | 支払い結果が未確定。少し待って同じ本文と資格情報で予約エンドポイントを再試行。 |
+| `429` | `Retry-After`の秒数だけ待って再試行。 |
 
-`409` 応答は `application/problem+json` 本文を持ち、`type` を以下のURLと照合します：
+`409`応答は `application/problem+json` 本文を持ち、`type` は以下のURLと一致します：
 
 | 問題タイプ | 意味 |
 | --- | --- |
-| [https://api.wink.travel/problems/payment-in-progress](https://api.wink.travel/problems/payment-in-progress) | 支払い試行がまだ進行中か、決済がまだ確認できない。 |
-| [https://api.wink.travel/problems/already-consumed](https://api.wink.travel/problems/already-consumed) | チャレンジまたは支払い証明がすでに使用されている可能性がある。これだけでは予約確定を意味しない。 |
+| [https://api.wink.travel/problems/payment-in-progress](https://api.wink.travel/problems/payment-in-progress) | 支払い試行がまだ進行中、または決済がまだ確定していません。 |
+| [https://api.wink.travel/problems/already-consumed](https://api.wink.travel/problems/already-consumed) | チャレンジまたは支払い証明がすでに使用されている可能性があります。これだけでは予約確定を意味しません。 |
 
-どちらも**同じ支払いを再試行し、新しい見積もりで支払わない**ことを意味します。URLは問題の識別と文書化用であり、支払いやポーリングのエンドポイントではありません。`POST /api/mpp/booking` を再試行し、自由文の `detail` ではなく問題の `type` を使って対応を判断してください。すべてのWink支払い問題は[問題タイプリファレンス](https://api.wink.travel/problems)を参照。
+どちらも**同じ支払いを再試行し、新しい見積もりで支払わない**ことを意味します。URLは問題の識別とドキュメントであり、支払いやポーリングのエンドポイントではありません。`POST /api/mpp/booking` を再試行し、自由文の `detail` ではなく問題の `type` で対応を判断してください。すべてのWink支払い問題は[問題タイプリファレンス](https://api.wink.travel/problems)を参照。
 
-支払い送信後のタイムアウト、応答の喪失、サーバーエラーも結果不明を招くことがあります。同じ支払いリクエストを再試行してください。解決しない場合は見積もりIDを添えてサポートに連絡し、別の支払いを開始する前に相談してください。
+支払い送信後のタイムアウト、応答の紛失、サーバーエラーも結果不明を招くことがあります。同じ支払いリクエストを再試行してください。解決しない場合は見積もりIDを添えてサポートに連絡し、別の支払いを開始する前に相談してください。

@@ -13,9 +13,9 @@ Pentru fluxul complet de rezervare, agentul tău are nevoie de **Wink Booking En
 
 | Conexiune | Ce face | Cum să o adaugi |
 | --- | --- | --- |
-| **Wink Booking Engine** — obligatoriu | Găsește destinații, caută hoteluri și tarife pentru camere, oferă cotații și confirmă rezervările, și recuperează rezervările și chitanțele tale. | Adaugă `https://api.wink.travel/mcp/booking-engine` ca server MCP HTTP la distanță. |
-| **Portofel de plată** — necesar pentru plată | Oferă acreditările de plată după ce aprobi achiziția. | Conectează un portofel care suportă Stripe Shared Payment Tokens sau plăți Tempo. Vezi exemplul Link mai jos. |
-| Wink Reference — opțional | Caută țări, valute și alte date de referință. | `https://api.wink.travel/mcp/reference` |
+| **Wink Booking Engine** — obligatoriu | Găsește destinații, caută hoteluri și tarife de camere, oferă cotații și confirmă rezervări, și preia rezervările și chitanțele tale. | Adaugă `https://api.wink.travel/mcp/booking-engine` ca server MCP HTTP la distanță. |
+| **Portofel de plată** — necesar pentru plată | Oferă acreditările de plată după ce aprobi achiziția. | Conectează un portofel care suportă Stripe Shared Payment Tokens. Vezi exemplul Link mai jos. |
+| Wink Reference — opțional | Caută țări, monede și alte date de referință. | `https://api.wink.travel/mcp/reference` |
 | Wink Docs — opțional | Ajută agentul să citească documentația și contractele API. | `https://docs.mcp.wink.travel/mcp` |
 
 Booking Engine MCP include deja uneltele necesare pentru fluxul de rezervare al călătorului, când rezervarea și plata agentică sunt activate pentru acel mediu. MCP-ul separat de Plată al Wink este pentru operațiuni financiare precum registre și retrageri; nu este necesar pentru plata unei camere.
@@ -35,7 +35,7 @@ Pentru acest flux, selectează:
 | Citire marketing (`marketing.read`) | Permite agentului să găsească configurația de rezervare a contului tău, numită personalizare. Contul tău trebuie să aibă acces la acea configurație. |
 | Scriere plată (`payment.write`) | Permite agentului să plătească cotația și să confirme rezervarea. |
 
-Păstrează permisiunile cerute la autentificare. Clientul MCP gestionează tokenurile de acces; nu trebuie să copiezi un token în chat sau să setezi antete de cerere. Dacă ai sărit peste o permisiune necesară, reconectează-te prin fluxul de autentificare al clientului și aprobă-o.
+Păstrează permisiunile cerute la autentificare. Clientul tău MCP gestionează tokenurile de acces; nu trebuie să copiezi un token în chat sau să setezi antete de cerere. Dacă ai sărit peste o permisiune necesară, reconectează-te prin fluxul de autentificare al clientului și aprob-o.
 
 ### Conectează un portofel de plată
 
@@ -54,7 +54,7 @@ Pentru plățile Stripe, o opțiune este **portofelul agentului Link**. Dacă cl
 
 Cere agentului să conecteze contul tău Link, apoi urmează linkul de verificare pe care îl oferă și aprobă conexiunea. Link furnizează Shared Payment Token folosit pentru plata rezervării. Link suportă momentan conturi din SUA; verifică limitele de cheltuieli înainte de rezervare. Vezi [ghidul de configurare Link](https://github.com/stripe/link-cli#quickstart) și [configurația MCP](https://github.com/stripe/link-cli#mcp-server).
 
-Poți folosi și un portofel care suportă provocarea de plată Tempo oferită de Wink. Dacă agentul tău are deja un portofel compatibil conectat, folosește acea conexiune. Configurarea portofelului și aprobarea plății sunt separate de autentificarea în Wink.
+Dacă agentul tău are deja un portofel compatibil conectat, folosește acea conexiune. Configurarea portofelului și aprobarea plății sunt separate de autentificarea în Wink.
 
 ## 2. Cere agentului să găsească o cameră
 
@@ -72,14 +72,13 @@ Acest flux de plată suportă momentan **o singură cameră, cu preț în USD, d
 
 Verifică hotelul, camera, datele, oaspeții, condițiile de anulare și totalul cotat. Când ești gata, cere agentului să rezerve și să finalizeze orice aprobare cerută de portofelul tău.
 
-Agentul folosește una dintre metodele de plată oferite de cotație:
+Portofelul oferă un **Stripe Shared Payment Token** pentru plata cotației.
 
-- **Stripe:** portofelul oferă un Shared Payment Token.
-- **Tempo:** portofelul face transferul specificat de provocare și oferă hash-ul tranzacției.
+**Plățile cu stablecoin Tempo vor fi disponibile în curând.**
 
-După ce plata reușește, agentul îți oferă un **cod de confirmare a rezervării**. Poate de asemenea să recupereze detaliile rezervării și chitanța prin Booking Engine MCP.
+După ce plata reușește, agentul îți oferă un **cod de confirmare a rezervării**. Poate de asemenea să preia detaliile rezervării și chitanța prin Booking Engine MCP.
 
-Dacă plata este încă în procesare sau răspunsul s-a pierdut, lasă agentul să verifice **aceeași încercare de plată**. Ar trebui să refolosească cotația și acreditarea de plată în loc să înceapă o a doua plată. Dacă plata este refuzată, cere o cotație nouă și revizuiește-o înainte de a încerca din nou.
+Dacă plata este încă în procesare sau răspunsul s-a pierdut, lasă agentul să verifice **aceeași încercare de plată**. Ar trebui să refolosească cotația și acreditarea de plată în loc să înceapă o a doua plată. Dacă plata este refuzată, cere o cotație nouă și revizuiește-o înainte să încerci din nou.
 
 ## Referință unelte pentru agenți și dezvoltatori
 
@@ -90,15 +89,15 @@ Toate uneltele Wink de mai jos sunt disponibile prin **Booking Engine MCP**. Cli
 | Selectează contextul rezervării | `managing_entity_list`, apoi `customization_get_primary` sau `customization_search` pentru contul selectat. Folosește o personalizare furnizată dacă este deja cunoscută. |
 | Găsește o destinație | `destination_lookup_search_suggestions` și `destination_lookup_get`. |
 | Caută hoteluri și camere | `inventory_search_city` sau `inventory_search_geo`, apoi `property_inventory_get` pentru tarife și disponibilitate. |
-| Cotarea camerei selectate | `agentic_booking_quote`. Transmite detaliile camerei în argumentul `request`. |
-| Plătește și confirmă | Obține o acreditare din portofelul conectat, apoi apelează `agentic_booking_pay` cu `request.quoteId` și exact unul dintre `request.spt` sau `request.tempoTransactionHash`. Păstrează același utilizator Wink autentificat pentru cotație și plată. |
-| Recuperează rezervarea și chitanța | Folosește `booking_search` sau `booking_search_list` pentru a găsi rezervarea confirmată, apoi `booking_get` și `booking_receipt_get` cu identificatorul rezervării. |
+| Cotă camera selectată | `agentic_booking_quote`. Transmite detaliile camerei în argumentul `request`. |
+| Plătește și confirmă | Obține un Shared Payment Token din portofelul conectat, apoi apelează `agentic_booking_pay` cu `request.quoteId` și `request.spt`. Păstrează același utilizator Wink autentificat pentru cotație și plată. |
+| Preia rezervarea și chitanța | Folosește `booking_search` sau `booking_search_list` pentru a găsi rezervarea confirmată, apoi `booking_get` și `booking_receipt_get` cu identificatorul rezervării. |
 
 Cererea de cotație necesită `hotelIdentifier`, `roomRateIdentifier`, `checkIn`, `checkOut`, `adults`, `children` și `customizationIdentifier`. Datele folosesc formatul `YYYY-MM-DD`; `checkOut` trebuie să urmeze după `checkIn`. Setează `adults` la cel puțin `1` și `children` la `0`.
 
-Cotația returnează `quoteId`, `amountUsdCents`, `currency`, `expiresAt` și `mppChallenges`. Afișează cenții USD ca dolari: `10000` înseamnă **100,00 $**. Pentru Tempo, folosește tokenul, lanțul, destinatarul și suma în unități de bază ale tokenului din provocarea aleasă.
+Cotația returnează `quoteId`, `amountUsdCents`, `currency`, `expiresAt` și `mppChallenges`. Afișează cenții USD ca dolari: `10000` înseamnă **100,00 $**.
 
-| Rezultat plată | Pasul următor |
+| Rezultat plată | Pas următor |
 | --- | --- |
 | `PAYMENT_SUCCEEDED` | Salvează `bookingConfirmationCode` și `chargeReference`. |
 | `IN_PROGRESS` | Așteaptă puțin și încearcă din nou aceeași cotație și acreditare. |
@@ -108,7 +107,7 @@ O reîncercare reușită returnează rezervarea existentă fără a taxa din nou
 
 ### Clienți MCP conștienți de plată
 
-Clienții MCP conștienți de plată pot folosi `agentic_booking_book` cu câmpurile camerei direct în `arguments`. Primul apel returnează eroarea `-32042` cu provocări de plată. Reîncearcă același apel cu acreditarea portofelului în `params._meta["org.paymentauth/credential"]`; succesul include `result._meta["org.paymentauth/receipt"]`. Eroarea `-32043` conține un eșec de plată și provocare: un refuz definitiv necesită o cotație nouă, în timp ce un payload incomplet poate reîncerca cu aceeași provocare. Pentru `-32603`, un `data.failure.reason` de `payment-in-progress` sau `already-consumed` înseamnă reîncercarea aceleiași acreditări; codul de eroare singur nu este suficient.
+Clienții MCP conștienți de plată pot folosi `agentic_booking_book` cu câmpurile camerei direct în `arguments`. Primul apel returnează eroarea `-32042` cu provocări de plată. Reîncearcă același apel cu acreditarea portofelului în `params._meta["org.paymentauth/credential"]`; succesul include `result._meta["org.paymentauth/receipt"]`. Eroarea `-32043` conține un eșec de plată și o provocare: un refuz definitiv necesită o cotație nouă, în timp ce un payload incomplet poate reîncerca cu aceeași provocare. Pentru `-32603`, un `data.failure.reason` de `payment-in-progress` sau `already-consumed` înseamnă reîncercarea aceleiași acreditări; codul de eroare singur nu este suficient.
 
 ## Rezervă prin REST
 
@@ -122,13 +121,13 @@ Salvează camera selectată ca `booking.json`, înlocuind identificatorii și da
 
 ```json
 {
-  "hotelIdentifier": "ID_HOTELUL_TĂU",
-  "roomRateIdentifier": "ID_TARIF_CAMERĂ",
+  "hotelIdentifier": "ID_HOTELUL_TAU",
+  "roomRateIdentifier": "ID_TARIF_CAMERA_TA",
   "checkIn": "2027-01-15",
   "checkOut": "2027-01-17",
   "adults": 2,
   "children": 0,
-  "customizationIdentifier": "ID_PERSONALIZARE"
+  "customizationIdentifier": "ID_PERSONALIZARE_TA"
 }
 ```
 
@@ -145,7 +144,7 @@ Wink returnează **`402 Payment Required`** cu o provocare `WWW-Authenticate: Pa
 
 ### 2. Plătește și confirmă
 
-Portofelul trebuie să îndeplinească una dintre provocările returnate. Pentru Stripe, furnizează `payload.spt`; pentru Tempo, furnizează `payload.hash` cu `payload.type` setat la `"hash"`. Folosește detaliile de plată din acea provocare.
+Fă portofelul să îndeplinească provocarea Stripe returnată, furnizând un Shared Payment Token în `payload.spt`. Folosește detaliile de plată din acea provocare.
 
 Setează `MPP_CREDENTIAL` la acreditarea MPP codificată a portofelului, care conține provocarea și payload-ul de plată. Reîncearcă **același corp de cerere**, păstrând antetul de identitate:
 

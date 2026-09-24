@@ -13,25 +13,25 @@ Bạn có thể tìm kiếm khách sạn, chọn phòng và hoàn tất đặt p
 
 | Kết nối | Chức năng | Cách thêm |
 | --- | --- | --- |
-| **Wink Booking Engine** — bắt buộc | Tìm điểm đến, tìm kiếm khách sạn và giá phòng, báo giá và xác nhận đặt phòng, cũng như truy xuất đặt phòng và biên lai của bạn. | Thêm `https://api.wink.travel/mcp/booking-engine` làm máy chủ HTTP MCP từ xa. |
-| **Ví thanh toán** — bắt buộc để thanh toán | Cung cấp thông tin xác thực thanh toán sau khi bạn phê duyệt giao dịch mua. | Kết nối ví hỗ trợ Stripe Shared Payment Tokens hoặc thanh toán Tempo. Xem ví dụ về Link bên dưới. |
+| **Wink Booking Engine** — bắt buộc | Tìm điểm đến, tìm kiếm khách sạn và giá phòng, báo giá và xác nhận đặt phòng, cũng như truy xuất đặt phòng và biên lai của bạn. | Thêm `https://api.wink.travel/mcp/booking-engine` làm máy chủ MCP HTTP từ xa. |
+| **Ví thanh toán** — bắt buộc để thanh toán | Cung cấp thông tin thanh toán sau khi bạn phê duyệt giao dịch mua. | Kết nối ví hỗ trợ Stripe Shared Payment Tokens. Xem ví dụ về Link bên dưới. |
 | Wink Reference — tùy chọn | Tra cứu quốc gia, tiền tệ và dữ liệu tham chiếu khác. | `https://api.wink.travel/mcp/reference` |
 | Wink Docs — tùy chọn | Giúp đại lý của bạn đọc tài liệu và hợp đồng API. | `https://docs.mcp.wink.travel/mcp` |
 
-Booking Engine MCP đã bao gồm các công cụ cần thiết cho quy trình đặt phòng của khách du lịch, khi đặt phòng và thanh toán agentic được bật cho môi trường đó. MCP Thanh toán riêng của Wink dành cho các hoạt động tài chính như sổ cái và rút tiền; nó không cần thiết để thanh toán cho phòng.
+Booking Engine MCP đã bao gồm các công cụ cần thiết cho quy trình đặt phòng của khách du lịch, khi đặt phòng và thanh toán agentic được bật cho môi trường đó. Payment MCP riêng biệt của Wink dành cho các hoạt động tài chính như sổ cái và rút tiền; nó không cần thiết để thanh toán cho phòng.
 
 ### Đăng nhập và chọn quyền truy cập
 
 1. Mở cài đặt MCP hoặc connector của đại lý và thêm URL Booking Engine ở trên. Đặt tên như **Wink Booking**.
-2. Đại lý của bạn mở trang đăng nhập Wink trong trình duyệt. Đăng nhập bằng tài khoản Wink bạn muốn đặt phòng.
+2. Đại lý của bạn mở trang đăng nhập Wink trên trình duyệt. Đăng nhập bằng tài khoản Wink bạn muốn đặt phòng.
 3. Trên màn hình đồng ý, chọn các quyền mà đại lý cần, sau đó phê duyệt kết nối.
-4. Quay lại đại lý của bạn. Nó tải các công cụ có sẵn và quản lý xác thực cho các cuộc gọi MCP tiếp theo.
+4. Quay lại đại lý. Nó tải các công cụ có sẵn và quản lý xác thực cho các cuộc gọi MCP tiếp theo.
 
 Với quy trình này, chọn:
 
 | Quyền truy cập | Lý do cần thiết |
 | --- | --- |
-| Truy cập đại lý AI (`mcp.read`) | Cho phép đại lý kết nối với MCP của Wink. |
+| Truy cập đại lý AI (`mcp.read`) | Cho phép đại lý kết nối với Wink MCP. |
 | Đọc marketing (`marketing.read`) | Cho phép đại lý tìm cấu hình đặt phòng của tài khoản bạn, gọi là customization. Tài khoản của bạn cũng phải có quyền truy cập cấu hình đó. |
 | Ghi thanh toán (`payment.write`) | Cho phép đại lý thanh toán báo giá và xác nhận đặt phòng. |
 
@@ -54,7 +54,7 @@ Giữ các quyền đăng nhập được yêu cầu bởi kết nối. Khách h
 
 Yêu cầu đại lý kết nối tài khoản Link của bạn, sau đó làm theo liên kết xác minh nó cung cấp và phê duyệt kết nối. Link cung cấp Shared Payment Token dùng để thanh toán đặt phòng. Link hiện hỗ trợ tài khoản Mỹ; kiểm tra giới hạn chi tiêu trước khi đặt phòng. Xem [hướng dẫn thiết lập Link](https://github.com/stripe/link-cli#quickstart) và [cấu hình MCP](https://github.com/stripe/link-cli#mcp-server).
 
-Bạn cũng có thể dùng ví hỗ trợ thử thách thanh toán Tempo do Wink cung cấp. Nếu đại lý đã có ví tương thích kết nối, dùng kết nối đó. Thiết lập ví và phê duyệt thanh toán tách biệt với đăng nhập Wink.
+Nếu đại lý của bạn đã có ví tương thích được kết nối, hãy dùng kết nối đó. Thiết lập ví và phê duyệt thanh toán là riêng biệt với việc đăng nhập Wink.
 
 ## 2. Yêu cầu đại lý tìm phòng
 
@@ -62,24 +62,23 @@ Ví dụ:
 
 > Tìm phòng ở Bangkok cho hai người lớn từ 15 đến 17 tháng 1 năm 2027. Hiển thị các lựa chọn có sẵn, tổng giá và điều khoản hủy trước khi tôi chọn.
 
-Đại lý của bạn có thể tìm các tài khoản Wink mà bạn có quyền truy cập và cấu hình đặt phòng của chúng. Nếu bạn có nhiều tài khoản, nói cho nó biết dùng tài khoản nào. Nếu bạn đặt phòng qua liên kết hoặc cấu hình đặt phòng được cung cấp, hãy đưa cho đại lý thay vì vậy.
+Đại lý của bạn có thể tìm các tài khoản Wink mà bạn có quyền truy cập và cấu hình đặt phòng của chúng. Nếu bạn có nhiều tài khoản, hãy nói cho nó biết dùng tài khoản nào. Nếu bạn đặt phòng qua liên kết hoặc cấu hình đặt phòng được cung cấp, hãy đưa cho đại lý thay vào đó.
 
 Đại lý sẽ xác định điểm đến, kiểm tra khách sạn có sẵn và tải giá phòng cho ngày của bạn. Chọn phòng và yêu cầu báo giá.
 
-Quy trình thanh toán này hiện chỉ hỗ trợ **một phòng, giá bằng USD, cho người lớn**. Báo giá có thời hạn hết hạn. Yêu cầu báo giá không tính phí bạn hoặc xác nhận đặt phòng.
+Quy trình thanh toán này hiện chỉ hỗ trợ **một phòng, định giá bằng USD, cho người lớn**. Báo giá có thời hạn hết hạn. Yêu cầu báo giá không tính phí bạn hoặc xác nhận đặt phòng.
 
 ## 3. Xem lại và phê duyệt thanh toán
 
-Kiểm tra khách sạn, phòng, ngày, khách, điều khoản hủy và tổng giá báo giá. Khi sẵn sàng, yêu cầu đại lý đặt phòng và hoàn tất mọi phê duyệt được ví yêu cầu.
+Kiểm tra khách sạn, phòng, ngày, khách, điều khoản hủy và tổng giá báo giá. Khi bạn sẵn sàng, yêu cầu đại lý đặt phòng và hoàn tất mọi phê duyệt được ví yêu cầu.
 
-Đại lý sử dụng một trong các phương thức thanh toán được báo giá cung cấp:
+Ví cung cấp **Stripe Shared Payment Token** để thanh toán báo giá.
 
-- **Stripe:** ví cung cấp Shared Payment Token.
-- **Tempo:** ví thực hiện chuyển khoản theo thử thách và cung cấp mã băm giao dịch.
+**Thanh toán bằng stablecoin Tempo sẽ sớm ra mắt.**
 
 Sau khi thanh toán thành công, đại lý cung cấp cho bạn **mã xác nhận đặt phòng**. Nó cũng có thể truy xuất chi tiết đặt phòng và biên lai qua Booking Engine MCP.
 
-Nếu thanh toán đang xử lý hoặc phản hồi bị mất, để đại lý kiểm tra **cùng một lần thanh toán**. Nó nên tái sử dụng báo giá và thông tin xác thực thanh toán thay vì bắt đầu thanh toán thứ hai. Nếu thanh toán bị từ chối, yêu cầu báo giá mới và xem lại trước khi thử lại.
+Nếu thanh toán vẫn đang xử lý hoặc phản hồi bị mất, hãy để đại lý kiểm tra **cùng một lần thanh toán**. Nó nên tái sử dụng báo giá và thông tin thanh toán thay vì bắt đầu thanh toán lần hai. Nếu thanh toán bị từ chối, yêu cầu báo giá mới và xem lại trước khi thử lại.
 
 ## Tham khảo công cụ cho đại lý và nhà phát triển
 
@@ -89,36 +88,36 @@ Tất cả công cụ Wink dưới đây có sẵn qua **Booking Engine MCP**. K
 | --- | --- |
 | Chọn ngữ cảnh đặt phòng | `managing_entity_list`, sau đó `customization_get_primary` hoặc `customization_search` cho tài khoản đã chọn. Dùng customization được cung cấp nếu đã biết trước. |
 | Tìm điểm đến | `destination_lookup_search_suggestions` và `destination_lookup_get`. |
-| Tìm khách sạn và phòng | `inventory_search_city` hoặc `inventory_search_geo`, sau đó `property_inventory_get` để lấy giá và tình trạng phòng. |
+| Tìm kiếm khách sạn và phòng | `inventory_search_city` hoặc `inventory_search_geo`, sau đó `property_inventory_get` để lấy giá và tình trạng phòng. |
 | Báo giá phòng đã chọn | `agentic_booking_quote`. Truyền chi tiết phòng trong đối số `request`. |
-| Thanh toán và xác nhận | Lấy thông tin xác thực từ ví đã kết nối, sau đó gọi `agentic_booking_pay` với `request.quoteId` và chính xác một trong `request.spt` hoặc `request.tempoTransactionHash`. Giữ cùng người dùng Wink đã đăng nhập cho báo giá và thanh toán. |
+| Thanh toán và xác nhận | Lấy Shared Payment Token từ ví đã kết nối, sau đó gọi `agentic_booking_pay` với `request.quoteId` và `request.spt`. Giữ cùng người dùng Wink đã đăng nhập cho báo giá và thanh toán. |
 | Truy xuất đặt phòng và biên lai | Dùng `booking_search` hoặc `booking_search_list` để tìm đặt phòng đã xác nhận, sau đó `booking_get` và `booking_receipt_get` với mã định danh đặt phòng. |
 
 Yêu cầu báo giá cần `hotelIdentifier`, `roomRateIdentifier`, `checkIn`, `checkOut`, `adults`, `children` và `customizationIdentifier`. Ngày dùng định dạng `YYYY-MM-DD`; `checkOut` phải sau `checkIn`. Đặt `adults` ít nhất là `1` và `children` là `0`.
 
-Báo giá trả về `quoteId`, `amountUsdCents`, `currency`, `expiresAt` và `mppChallenges`. Hiển thị số cent USD dưới dạng đô la: `10000` nghĩa là **$100.00**. Với Tempo, dùng token, chuỗi, người nhận và số tiền theo đơn vị cơ sở token của thử thách đã chọn.
+Báo giá trả về `quoteId`, `amountUsdCents`, `currency`, `expiresAt` và `mppChallenges`. Hiển thị số cent USD dưới dạng đô la: `10000` nghĩa là **$100.00**.
 
 | Kết quả thanh toán | Bước tiếp theo |
 | --- | --- |
 | `PAYMENT_SUCCEEDED` | Lưu `bookingConfirmationCode` và `chargeReference`. |
-| `IN_PROGRESS` | Chờ một lúc và thử lại cùng báo giá và thông tin xác thực. |
+| `IN_PROGRESS` | Chờ một lúc và thử lại cùng báo giá và thông tin thanh toán. |
 | `DECLINED` | Yêu cầu báo giá mới và xem lại trước khi thanh toán lại. |
 
-Thử lại thành công trả về đặt phòng hiện có mà không tính phí thêm. Xử lý timeout như kết quả không xác định và thử lại thanh toán cùng. Nếu vẫn chưa giải quyết, liên hệ hỗ trợ với ID báo giá.
+Thử lại thành công trả về đặt phòng hiện có mà không tính phí thêm. Xử lý timeout như kết quả không xác định và thử lại thanh toán. Nếu vẫn không rõ, liên hệ hỗ trợ với ID báo giá.
 
 ### Khách hàng MCP nhận biết thanh toán
 
-Khách hàng MCP nhận biết thanh toán có thể dùng `agentic_booking_book` với các trường phòng trực tiếp trong `arguments`. Lần gọi đầu trả lỗi `-32042` kèm thử thách thanh toán. Thử lại cùng lệnh với thông tin xác thực ví trong `params._meta["org.paymentauth/credential"]`; thành công trả về `result._meta["org.paymentauth/receipt"]`. Lỗi `-32043` mang thất bại thanh toán và thử thách: từ chối dứt khoát cần báo giá mới, trong khi payload thanh toán chưa đầy đủ có thể thử lại với thử thách cũ. Với `-32603`, `data.failure.reason` là `payment-in-progress` hoặc `already-consumed` nghĩa là thử lại cùng thông tin xác thực; mã lỗi riêng không đủ.
+Khách hàng MCP nhận biết thanh toán có thể dùng `agentic_booking_book` với các trường phòng trực tiếp trong `arguments`. Lần gọi đầu trả lỗi `-32042` kèm thử thách thanh toán. Thử lại cùng gọi với thông tin ví trong `params._meta["org.paymentauth/credential"]`; thành công trả về `result._meta["org.paymentauth/receipt"]`. Lỗi `-32043` mang thất bại thanh toán và thử thách: từ chối dứt khoát cần báo giá mới, trong khi payload thanh toán chưa hoàn chỉnh có thể thử lại với thử thách cũ. Với `-32603`, `data.failure.reason` là `payment-in-progress` hoặc `already-consumed` nghĩa là thử lại cùng thông tin; mã lỗi riêng không đủ.
 
 ## Đặt phòng qua REST
 
 Dùng REST khi xây dựng tích hợp gọi Wink trực tiếp qua HTTP. Cả báo giá và thanh toán dùng **`POST https://api.wink.travel/api/mpp/booking`**.
 
-Ứng dụng của bạn cần [token truy cập người dùng Wink](/vi/developers/authentication/) với quyền `payment.write` để thanh toán. Giữ cùng người dùng cho cả hai cuộc gọi. Gửi token trong `Wink-Authorization`, để `Authorization` dành cho thông tin xác thực thanh toán của ví. Các header này áp dụng cho REST; khách hàng MCP tự xử lý xác thực.
+Ứng dụng của bạn cần [token truy cập người dùng Wink](/vi/developers/authentication/) với quyền `payment.write` để thanh toán. Giữ cùng người dùng cho cả hai cuộc gọi. Gửi token trong `Wink-Authorization`, để `Authorization` cho thông tin thanh toán của ví. Các header này áp dụng cho REST; khách hàng MCP tự xử lý xác thực.
 
 ### 1. Yêu cầu báo giá
 
-Lưu phòng đã chọn thành `booking.json`, thay thế các mã định danh và ngày ví dụ bằng lựa chọn của bạn. Các trường phòng nằm trực tiếp trong thân JSON, không có bao bọc `request`.
+Lưu phòng đã chọn thành `booking.json`, thay thế các mã định danh và ngày ví dụ bằng lựa chọn của bạn. Các trường phòng nằm trực tiếp trong thân JSON, không có wrapper `request`.
 
 ```json
 {
@@ -145,9 +144,9 @@ Wink trả về **`402 Payment Required`** kèm `WWW-Authenticate: Payment ...` 
 
 ### 2. Thanh toán và xác nhận
 
-Để ví thực hiện một thử thách trả về. Với Stripe, nó cung cấp `payload.spt`; với Tempo, nó cung cấp `payload.hash` với `payload.type` đặt là `"hash"`. Dùng chi tiết thanh toán từ thử thách đó.
+Để ví hoàn thành thử thách Stripe trả về bằng cách cung cấp Shared Payment Token trong `payload.spt`. Dùng chi tiết thanh toán từ thử thách đó.
 
-Đặt `MPP_CREDENTIAL` thành thông tin xác thực MPP đã mã hóa của ví, chứa thử thách và payload thanh toán. Thử lại **cùng thân yêu cầu**, giữ header định danh:
+Đặt `MPP_CREDENTIAL` thành thông tin MPP đã mã hóa của ví, chứa thử thách và payload thanh toán. Thử lại **cùng thân yêu cầu**, giữ header định danh:
 
 ```bash
 curl -i https://api.wink.travel/api/mpp/booking \
@@ -165,7 +164,7 @@ Thành công, Wink trả về **`200 OK`**, thân JSON chứa `bookingConfirmati
 | --- | --- |
 | `400` | Sửa chi tiết phòng không hợp lệ hoặc thông tin xác thực sai định dạng. |
 | `401` / `403` | Kiểm tra xác thực người dùng và quyền thanh toán. |
-| `402` | Kiểm tra vấn đề và thử thách trả về. Từ chối thanh toán dứt khoát cần báo giá mới; payload thanh toán chưa đầy đủ tái sử dụng thử thách gốc. Xem lại giá trước khi thanh toán. |
+| `402` | Kiểm tra vấn đề và thử thách trả về. Từ chối thanh toán dứt khoát cần báo giá mới; payload thanh toán chưa hoàn chỉnh tái sử dụng thử thách cũ. Xem lại giá trước khi thanh toán. |
 | `409` | Kết quả thanh toán chưa rõ ràng. Chờ một lúc, sau đó thử lại cùng thân và thông tin xác thực tại endpoint đặt phòng. |
 | `429` | Chờ số giây trong `Retry-After`, sau đó thử lại. |
 
@@ -173,9 +172,9 @@ Phản hồi `409` có thân `application/problem+json`. So khớp `type` với 
 
 | Loại vấn đề | Ý nghĩa |
 | --- | --- |
-| [https://api.wink.travel/problems/payment-in-progress](https://api.wink.travel/problems/payment-in-progress) | Một lần thanh toán đang chạy hoặc chưa thể xác nhận thanh toán. |
+| [https://api.wink.travel/problems/payment-in-progress](https://api.wink.travel/problems/payment-in-progress) | Một lần thanh toán vẫn đang chạy hoặc chưa thể xác nhận thanh toán. |
 | [https://api.wink.travel/problems/already-consumed](https://api.wink.travel/problems/already-consumed) | Thử thách hoặc bằng chứng thanh toán đã được dùng trong một lần có thể thành công. Điều này không xác nhận đặt phòng. |
 
-Cả hai nghĩa là **thử lại cùng thanh toán; không thanh toán báo giá mới**. Các URL xác định và tài liệu hóa vấn đề; không phải endpoint thanh toán hay polling. Thử lại `POST /api/mpp/booking`, dùng `type` vấn đề thay vì `detail` văn bản tự do để quyết định hành động. Xem [tham khảo loại vấn đề](https://api.wink.travel/problems) cho tất cả vấn đề thanh toán Wink.
+Cả hai nghĩa là **thử lại cùng thanh toán; không thanh toán báo giá mới**. Các URL xác định và tài liệu vấn đề; không phải endpoint thanh toán hay polling. Thử lại `POST /api/mpp/booking`, dùng `type` vấn đề thay vì `detail` văn bản tự do để quyết định hành động. Xem [tham khảo loại vấn đề](https://api.wink.travel/problems) cho tất cả vấn đề thanh toán Wink.
 
-Timeout, mất phản hồi hoặc lỗi máy chủ sau khi gửi thanh toán cũng có thể để kết quả không xác định. Thử lại cùng yêu cầu thanh toán. Nếu kết quả vẫn chưa rõ, liên hệ hỗ trợ với ID báo giá trước khi bắt đầu thanh toán khác.
+Timeout, mất phản hồi hoặc lỗi máy chủ sau khi gửi thanh toán cũng có thể khiến kết quả không rõ. Thử lại cùng yêu cầu thanh toán. Nếu kết quả vẫn chưa rõ, liên hệ hỗ trợ với ID báo giá trước khi bắt đầu thanh toán khác.

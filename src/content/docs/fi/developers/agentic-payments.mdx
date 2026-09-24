@@ -5,16 +5,16 @@ sidebar:
   order: 10.5
 ---
 
-Voit etsiä hotellin, valita huoneen ja viimeistellä varauksesi tekoälyagenttisi kautta. Yhdistä se Winkiä ja maksulompaketta varten, ja kerro, missä haluat yöpyä. Wink käyttää **Machine Payments Protocol (MPP)** -protokollaa hyväksyäkseen lompakon maksun ja palauttaakseen varausvahvistuksesi.
+Voit etsiä hotellin, valita huoneen ja viimeistellä varauksesi tekoälyagenttisi kautta. Yhdistä se Winkiä ja maksulompaketta varten, ja kerro, missä haluat yöpyä. Wink käyttää **Machine Payments Protocol (MPP)** -protokollaa hyväksyäkseen lompakon maksun ja palauttaakseen varausvahvistuksen.
 
 ## 1. Yhdistä MCP-palvelimet
 
-Täydellistä varausprosessia varten agenttisi tarvitsee **Wink Booking Engine** -varausmoottorin ja **maksulompakon**.
+Täydellistä varausprosessia varten agenttisi tarvitsee **Wink Booking Engine** -järjestelmän ja **maksulompakon**.
 
 | Yhteys | Mitä se tekee | Kuinka lisätä |
 | --- | --- | --- |
-| **Wink Booking Engine** — pakollinen | Löytää kohteet, etsii hotelleja ja huonehintoja, antaa tarjouksia ja vahvistaa varaukset sekä hakee varauksesi ja kuitit. | Lisää `https://api.wink.travel/mcp/booking-engine` etä-HTTP MCP -palvelimeksi. |
-| **Maksulompakko** — pakollinen maksua varten | Tarjoaa maksutiedot, kun hyväksyt ostoksen. | Yhdistä lompakko, joka tukee Stripe Shared Payment Tokenseja tai Tempo-maksuja. Katso alla oleva Link-esimerkki. |
+| **Wink Booking Engine** — pakollinen | Löytää kohteet, etsii hotelleja ja huonehintoja, antaa tarjouksia ja vahvistaa varaukset sekä hakee varauksesi ja kuitit. | Lisää `https://api.wink.travel/mcp/booking-engine` etäisenä HTTP MCP -palvelimena. |
+| **Maksulompakko** — pakollinen maksua varten | Tarjoaa maksutiedot, kun hyväksyt ostoksen. | Yhdistä lompakko, joka tukee Stripe Shared Payment Tokenia. Katso alla oleva Link-esimerkki. |
 | Wink Reference — valinnainen | Hakee maita, valuuttoja ja muuta viitetietoa. | `https://api.wink.travel/mcp/reference` |
 | Wink Docs — valinnainen | Auttaa agenttiasi lukemaan dokumentaatiota ja API-sopimuksia. | `https://docs.mcp.wink.travel/mcp` |
 
@@ -27,13 +27,13 @@ Booking Engine MCP sisältää jo tarvittavat työkalut matkustajan varausproses
 3. Suostumusnäytöllä valitse agenttisi tarvitsemat oikeudet ja hyväksy yhteys.
 4. Palaa agenttiisi. Se lataa käytettävissä olevat työkalut ja hallinnoi todennusta seuraavia MCP-kutsuja varten.
 
-Tässä prosessissa valitse:
+Tälle prosessille valitse:
 
 | Oikeus | Miksi se tarvitaan |
 | --- | --- |
-| AI agent access (`mcp.read`) | Sallii agenttisi yhdistää Wink MCP:hen. |
-| Marketing read (`marketing.read`) | Antaa agentille pääsyn tilisi varausasetuksiin, joita kutsutaan mukautuksiksi. Tililläsi on myös oltava pääsy kyseiseen asetukseen. |
-| Payment write (`payment.write`) | Sallii agentin maksaa tarjouksen ja vahvistaa varauksen. |
+| AI-agentin käyttöoikeus (`mcp.read`) | Sallii agenttisi yhdistää Wink MCP:hen. |
+| Markkinoinnin lukuoikeus (`marketing.read`) | Antaa agentille pääsyn tilisi varausasetuksiin, joita kutsutaan mukautuksiksi. Tililläsi on myös oltava pääsy kyseiseen asetukseen. |
+| Maksun kirjoitusoikeus (`payment.write`) | Sallii agentin maksaa tarjouksen ja vahvistaa varauksen. |
 
 Pidä kirjautumisoikeudet, joita yhteys pyytää. MCP-asiakas hoitaa käyttöoikeustunnukset; sinun ei tarvitse kopioida tunnusta chattiin tai asettaa pyyntöotsikoita. Jos unohdit tarvittavan oikeuden, yhdistä uudelleen asiakkaasi kirjautumisprosessin kautta ja hyväksy se.
 
@@ -54,13 +54,13 @@ Stripe-maksuihin yksi vaihtoehto on **Linkin agenttilompakko**. Jos asiakkaasi t
 
 Pyydä agenttiasi yhdistämään Link-tilisi, seuraa sen antamaa vahvistuslinkkiä ja hyväksy yhteys. Link toimittaa jaetun maksutunnuksen (Shared Payment Token), jota käytetään varauksen maksamiseen. Link tukee tällä hetkellä Yhdysvaltain tilejä; tarkista sen kulutusrajat ennen varausta. Katso [Linkin asennusopas](https://github.com/stripe/link-cli#quickstart) ja [MCP-konfiguraatio](https://github.com/stripe/link-cli#mcp-server).
 
-Voit myös käyttää lompakkoa, joka tukee Winkin tarjoamaa Tempo-maksuhaastetta. Jos agentillasi on jo yhteensopiva lompakko yhdistettynä, käytä sitä. Lompakon asennus ja maksun hyväksyntä ovat erillisiä kirjautumisesta Winkiin.
+Jos agentillasi on jo yhteensopiva lompakko yhdistettynä, käytä sitä. Lompakon asennus ja maksun hyväksyntä ovat erillisiä Winkiin kirjautumisesta.
 
 ## 2. Pyydä agenttiasi etsimään huone
 
 Esimerkiksi:
 
-> Etsi huone Bangkokista kahdelle aikuiselle ajalle 15.–17. tammikuuta 2027. Näytä minulle saatavilla olevat vaihtoehdot, kokonaishinta ja peruutusehdot ennen valintaa.
+> Etsi huone Bangkokista kahdelle aikuiselle ajalle 15.–17. tammikuuta 2027. Näytä saatavilla olevat vaihtoehdot, kokonaishinta ja peruutusehdot ennen kuin valitsen.
 
 Agenttisi voi löytää käytettävissä olevat Wink-tilisi ja niiden varausasetukset. Jos sinulla on useita, kerro, mitä käytetään. Jos varaat toimitetun varauslinkin tai asetuksen kautta, anna se agentille.
 
@@ -70,55 +70,54 @@ Tämä maksuprosessi tukee tällä hetkellä **yhtä huonetta, USD-valuutassa, v
 
 ## 3. Tarkista ja hyväksy maksu
 
-Tarkista hotelli, huone, päivät, vieraat, peruutusehdot ja tarjottu kokonaishinta. Kun olet valmis, pyydä agenttiasi varaamaan ja suorittamaan mahdollinen lompakon vaatima hyväksyntä.
+Tarkista hotelli, huone, päivät, vieraat, peruutusehdot ja tarjottu kokonaishinta. Kun olet valmis, pyydä agenttiasi varaamaan ja suorittamaan mahdollinen lompakkosi vaatima hyväksyntä.
 
-Agentti käyttää tarjouksen tarjoamaa maksutapaa:
+Lompakko tarjoaa **Stripe Shared Payment Tokenin** tarjouksen maksamiseen.
 
-- **Stripe:** lompakko antaa jaetun maksutunnuksen (Shared Payment Token).
-- **Tempo:** lompakko suorittaa haasteessa määritellyn siirron ja antaa tapahtuman hajautusarvon.
+**Tempo-stablecoin-maksut tulevat pian.**
 
-Maksun onnistuttua agentti antaa sinulle **varausvahvistuskoodin**. Se voi myös hakea varauksen tiedot ja kuitin Booking Engine MCP:n kautta.
+Maksun onnistuttua agenttisi antaa sinulle **varausvahvistuskoodin**. Se voi myös hakea varauksen tiedot ja kuitin Booking Engine MCP:n kautta.
 
 Jos maksu on vielä käsittelyssä tai vastaus on kadonnut, anna agentin tarkistaa **sama maksuyritys**. Sen tulisi käyttää uudelleen tarjousta ja maksutietoja sen sijaan, että aloittaisi toisen maksun. Jos maksu hylätään, pyydä uusi tarjous ja tarkista se ennen uutta maksuyritystä.
 
 ## Työkalujen viite agentteja ja kehittäjiä varten
 
-Kaikki alla olevat Wink-työkalut ovat saatavilla **Booking Engine MCP**:n kautta. MCP-asiakas lähettää todennuksen automaattisesti kirjautumisen yhteydessä hyväksyttyjen oikeuksien perusteella.
+Kaikki alla olevat Wink-työkalut ovat saatavilla **Booking Engine MCP:n** kautta. MCP-asiakas lähettää todennuksen automaattisesti kirjautumisen yhteydessä hyväksyttyjen oikeuksien perusteella.
 
 | Vaihe | Työkalut ja toiminta |
 | --- | --- |
 | Valitse varauskonteksti | `managing_entity_list`, sitten `customization_get_primary` tai `customization_search` valitulle tilille. Käytä toimitettua mukautusta, jos sellainen on tiedossa. |
 | Etsi kohde | `destination_lookup_search_suggestions` ja `destination_lookup_get`. |
-| Etsi hotelleja ja huoneita | `inventory_search_city` tai `inventory_search_geo`, sitten `property_inventory_get` hintoja ja saatavuutta varten. |
+| Etsi hotelleja ja huoneita | `inventory_search_city` tai `inventory_search_geo`, sitten `property_inventory_get` hintojen ja saatavuuden tarkistukseen. |
 | Tarjoa valittu huone | `agentic_booking_quote`. Anna huonetiedot `request`-argumentissa. |
-| Maksa ja vahvista | Hanki tunniste yhdistetystä lompakosta, sitten kutsu `agentic_booking_pay` käyttäen `request.quoteId` ja täsmälleen yhtä `request.spt` tai `request.tempoTransactionHash`. Käytä samaa kirjautunutta Wink-käyttäjää tarjouksessa ja maksussa. |
+| Maksa ja vahvista | Hanki jaettu maksutunnus (Shared Payment Token) yhdistetystä lompakosta, sitten kutsu `agentic_booking_pay` käyttäen `request.quoteId` ja `request.spt`. Käytä samaa kirjautunutta Wink-käyttäjää tarjoukselle ja maksulle. |
 | Hae varaus ja kuitti | Käytä `booking_search` tai `booking_search_list` vahvistetun varauksen löytämiseen, sitten `booking_get` ja `booking_receipt_get` varausnumerolla. |
 
-Tarjouspyyntö tarvitsee `hotelIdentifier`, `roomRateIdentifier`, `checkIn`, `checkOut`, `adults`, `children` ja `customizationIdentifier`. Päivät ovat muodossa `YYYY-MM-DD`; `checkOut` on oltava `checkIn` jälkeen. Aikuisten määrä on vähintään `1` ja lasten määrä `0`.
+Tarjouspyyntö tarvitsee `hotelIdentifier`, `roomRateIdentifier`, `checkIn`, `checkOut`, `adults`, `children` ja `customizationIdentifier`. Päivät ovat muodossa `YYYY-MM-DD`; `checkOut` on oltava `checkIn` jälkeen. Aseta `adults` vähintään `1` ja `children` `0`.
 
-Tarjous palauttaa `quoteId`, `amountUsdCents`, `currency`, `expiresAt` ja `mppChallenges`. Näytä USD-sentit dollareina: `10000` tarkoittaa **100,00 $**. Tempolle käytä valitun haasteen tokenia, ketjua, vastaanottajaa ja määrää tokenin perusyksiköissä.
+Tarjous palauttaa `quoteId`, `amountUsdCents`, `currency`, `expiresAt` ja `mppChallenges`. Näytä USD-sentit dollareina: `10000` tarkoittaa **100,00 $**.
 
 | Maksun tulos | Seuraava vaihe |
 | --- | --- |
 | `PAYMENT_SUCCEEDED` | Tallenna `bookingConfirmationCode` ja `chargeReference`. |
-| `IN_PROGRESS` | Odota hetki ja yritä uudelleen samaa tarjousta ja tunnistetta. |
+| `IN_PROGRESS` | Odota hetki ja yritä samaa tarjousta ja tunnistetta uudelleen. |
 | `DECLINED` | Pyydä uusi tarjous ja tarkista se ennen uutta maksua. |
 
-Onnistunut uudelleenyrittäminen palauttaa olemassa olevan varauksen ilman uutta veloitusta. Aikakatkaisu tulkitaan tuntemattomaksi lopputulokseksi ja maksu yritetään uudelleen. Jos tilanne ei ratkea, ota yhteys tukeen tarjouksen ID:n kanssa.
+Onnistunut uudelleenyrittäminen palauttaa olemassa olevan varauksen ilman uutta veloitusta. Käsittele aikakatkaisu tuntemattomana lopputuloksena ja yritä samaa maksua uudelleen. Jos tilanne ei ratkea, ota yhteys tukeen tarjouksen ID:n kanssa.
 
 ### Maksutietoiset MCP-asiakkaat
 
-Maksutietoiset MCP-asiakkaat voivat käyttää `agentic_booking_book` -kutsua huonetietojen kanssa suoraan `arguments`-kentässä. Ensimmäinen kutsu palauttaa virheen `-32042` maksushaasteiden kanssa. Yritä samaa kutsua uudelleen lompakon tunnisteella `params._meta["org.paymentauth/credential"]`; onnistuminen sisältää `result._meta["org.paymentauth/receipt"]`. Virhe `-32043` sisältää maksun epäonnistumisen ja haasteen: lopullinen hylkäys vaatii uuden tarjouksen, kun taas keskeneräinen maksutieto voi yrittää uudelleen samalla haasteella. Virhe `-32603` ja `data.failure.reason` arvot `payment-in-progress` tai `already-consumed` tarkoittavat, että sama tunniste voidaan yrittää uudelleen; pelkkä virhekoodi ei riitä.
+Maksutietoiset MCP-asiakkaat voivat käyttää `agentic_booking_book` -kutsua huonetietojen kanssa suoraan `arguments`-kentässä. Ensimmäinen kutsu palauttaa virheen `-32042` maksushaasteiden kanssa. Yritä samaa kutsua uudelleen lompakon tunnisteella `params._meta["org.paymentauth/credential"]`; onnistuminen sisältää `result._meta["org.paymentauth/receipt"]`. Virhe `-32043` sisältää maksun epäonnistumisen ja haasteen: lopullinen hylkäys vaatii uuden tarjouksen, kun taas keskeneräinen maksutieto voi yrittää uudelleen samalla haasteella. Virhe `-32603` ja `data.failure.reason` arvot `payment-in-progress` tai `already-consumed` tarkoittavat, että samaa tunnistetta voi yrittää uudelleen; pelkkä virhekoodi ei riitä.
 
 ## Varaa RESTin kautta
 
 Käytä RESTiä, kun rakennat integraatiota, joka kutsuu Winkiä suoraan HTTP:n yli. Sekä tarjous että maksu käyttävät **`POST https://api.wink.travel/api/mpp/booking`**.
 
-Sovelluksesi tarvitsee [Wink-käyttäjän käyttöoikeustunnuksen](/fi/developers/authentication/) `payment.write` -oikeudella maksua varten. Käytä samaa käyttäjää molemmissa kutsuissa. Lähetä tunnus otsikossa `Wink-Authorization`, jättäen `Authorization` lompakon maksutunnistetta varten. Nämä otsikot koskevat RESTiä; MCP-asiakas hoitaa oman todennuksensa.
+Sovelluksesi tarvitsee [Wink-käyttäjän käyttöoikeustunnuksen](/fi/developers/authentication/) `payment.write` -oikeudella maksua varten. Käytä samaa käyttäjää molemmissa kutsuissa. Lähetä tunnus otsikossa `Wink-Authorization`, jättäen `Authorization` vapaaksi lompakon maksutunnistetta varten. Nämä otsikot koskevat RESTiä; MCP-asiakas hoitaa oman todennuksensa.
 
 ### 1. Pyydä tarjous
 
-Tallenna valittu huone tiedostoon `booking.json`, korvaten esimerkkitunnukset ja päivämäärät omilla valinnoillasi. Huonetiedot menevät suoraan JSON-runkoon ilman `request`-käärettä.
+Tallenna valittu huone tiedostoon `booking.json`, korvaten esimerkkitunnukset ja päivämäärät valinnoillasi. Huonetiedot menevät suoraan JSON-runkoon ilman `request`-käärettä.
 
 ```json
 {
@@ -145,7 +144,7 @@ Wink palauttaa **`402 Payment Required`** -vastauksen `WWW-Authenticate: Payment
 
 ### 2. Maksa ja vahvista
 
-Anna lompakon suorittaa yksi palautetuista haasteista. Stripelle se antaa `payload.spt`; Tempolle `payload.hash` ja `payload.type` on `"hash"`. Käytä haasteen maksutietoja.
+Anna lompakon suorittaa palautettu Stripe-haaste toimittamalla jaettu maksutunnus `payload.spt`-kentässä. Käytä haasteen maksutietoja.
 
 Aseta `MPP_CREDENTIAL` lompakon koodattuun MPP-tunnisteeseen, joka sisältää haasteen ja maksutiedot. Yritä uudelleen **samaa pyyntörunkoa**, säilyttäen identiteettiotsikko:
 
@@ -166,7 +165,7 @@ Onnistuneessa vastauksessa Wink palauttaa **`200 OK`**, JSON-runko sisältää `
 | `400` | Korjaa virheelliset huonetiedot tai virheellinen tunniste. |
 | `401` / `403` | Tarkista käyttäjän todennus ja maksuoikeudet. |
 | `402` | Tarkista palautettu ongelma ja haaste. Lopullinen maksun hylkäys vaatii uuden tarjouksen; keskeneräinen maksutieto käyttää alkuperäistä haastetta uudelleen. Tarkista hinta ennen maksua. |
-| `409` | Maksun lopputulos on ratkaisematon. Odota hetki ja yritä uudelleen sama runko ja tunniste varauspäätepisteessä. |
+| `409` | Maksun lopputulos on ratkaisematon. Odota hetki ja yritä samaa runkoa ja tunnistetta uudelleen varauspäätepisteessä. |
 | `429` | Odota `Retry-After`-otsikossa ilmoitettu sekuntimäärä ja yritä uudelleen. |
 
 `409`-vastauksessa on `application/problem+json` -runko. Vertaa sen `type`-kenttää näihin tarkkoihin URL-osoitteisiin:
@@ -176,6 +175,6 @@ Onnistuneessa vastauksessa Wink palauttaa **`200 OK`**, JSON-runko sisältää `
 | [https://api.wink.travel/problems/payment-in-progress](https://api.wink.travel/problems/payment-in-progress) | Maksuyritys on vielä käynnissä tai selvitystä ei ole vielä vahvistettu. |
 | [https://api.wink.travel/problems/already-consumed](https://api.wink.travel/problems/already-consumed) | Haaste tai maksutodiste on jo käytetty mahdollisesti onnistuneessa yrityksessä. Tämä ei yksin vahvista varausta. |
 
-Molemmat tarkoittavat **yritä sama maksu uudelleen; älä maksa uutta tarjousta**. URL-osoitteet tunnistavat ja dokumentoivat ongelman; ne eivät ole maksun tai kyselyn päätepisteitä. Yritä uudelleen `POST /api/mpp/booking` ja käytä ongelman `type`-kenttää vapaan tekstin `detail` sijaan päätöksenteossa. Katso [ongelmatyyppien viite](https://api.wink.travel/problems) kaikista Wink-maksuongelmista.
+Molemmat tarkoittavat **yritä samaa maksua uudelleen; älä maksa uutta tarjousta**. URL-osoitteet tunnistavat ja dokumentoivat ongelman; ne eivät ole maksun tai kyselyn päätepisteitä. Yritä uudelleen `POST /api/mpp/booking` ja käytä ongelman `type`-kenttää vapaan tekstin `detail` sijaan päätöksenteossa. Katso [ongelmatyyppien viite](https://api.wink.travel/problems) kaikista Wink-maksuongelmista.
 
 Aikakatkaisu, kadonnut vastaus tai palvelinvirhe maksun lähettämisen jälkeen voi myös jättää lopputuloksen epävarmaksi. Yritä samaa maksupyyntöä uudelleen. Jos lopputulos pysyy ratkaisemattomana, ota yhteys tukeen tarjouksen ID:n kanssa ennen uuden maksun aloittamista.

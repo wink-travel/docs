@@ -5,7 +5,7 @@ sidebar:
   order: 10.5
 ---
 
-AI ajanınz aracılığıyla bir otel arayabilir, bir oda seçebilir ve rezervasyonunuzu tamamlayabilirsiniz. Bunu yapmak için ajanınzı Wink ve bir ödeme cüzdanına bağlayın, ardından nerede kalmak istediğinizi söyleyin. Wink, cüzdanın ödemesini kabul etmek ve rezervasyon onayınızı iletmek için **Machine Payments Protocol (MPP)** kullanır.
+AI ajanınz aracılığıyla bir otel arayabilir, bir oda seçebilir ve rezervasyonunuzu tamamlayabilirsiniz. Bunu yapmak için ajanınzı Wink ve bir ödeme cüzdanına bağlayın, ardından nerede kalmak istediğinizi söyleyin. Wink, cüzdanın ödemesini kabul etmek ve rezervasyon onayınızı geri göndermek için **Machine Payments Protocol (MPP)** kullanır.
 
 ## 1. MCP sunucularını bağlayın
 
@@ -13,12 +13,12 @@ Tam rezervasyon akışı için ajanınzın **Wink Booking Engine** ve bir **öde
 
 | Bağlantı | Ne yapar | Nasıl eklenir |
 | --- | --- | --- |
-| **Wink Booking Engine** — zorunlu | Destinasyonları bulur, otelleri ve oda fiyatlarını arar, rezervasyonları fiyatlandırır ve onaylar, rezervasyonlarınızı ve makbuzlarınızı getirir. | `https://api.wink.travel/mcp/booking-engine` adresini uzak bir HTTP MCP sunucusu olarak ekleyin. |
-| **Ödeme cüzdanı** — ödeme yapmak için zorunlu | Satın alma onayınızdan sonra ödeme kimlik bilgilerini sağlar. | Stripe Shared Payment Tokens veya Tempo ödemelerini destekleyen bir cüzdan bağlayın. Aşağıdaki Link örneğine bakın. |
+| **Wink Booking Engine** — zorunlu | Destinasyonları bulur, otelleri ve oda fiyatlarını arar, fiyat teklifleri verir ve rezervasyonları onaylar, ayrıca rezervasyonlarınızı ve makbuzlarınızı alır. | `https://api.wink.travel/mcp/booking-engine` adresini uzak bir HTTP MCP sunucusu olarak ekleyin. |
+| **Ödeme cüzdanı** — ödeme yapmak için zorunlu | Satın alma onayınızdan sonra ödeme kimlik bilgilerini sağlar. | Stripe Shared Payment Tokens destekleyen bir cüzdan bağlayın. Aşağıdaki Link örneğine bakın. |
 | Wink Referans — isteğe bağlı | Ülkeler, para birimleri ve diğer referans verilerini arar. | `https://api.wink.travel/mcp/reference` |
 | Wink Dokümanlar — isteğe bağlı | Ajanınızın dokümantasyon ve API sözleşmelerini okumasına yardımcı olur. | `https://docs.mcp.wink.travel/mcp` |
 
-Booking Engine MCP, agentic rezervasyon ve ödeme etkinleştirildiğinde gezgin rezervasyon akışı için gereken araçları zaten içerir. Wink'in ayrı Ödeme MCP'si finansal işlemler (defterler ve çekimler gibi) içindir; oda ödemesi için gerekli değildir.
+Booking Engine MCP, agentic rezervasyon ve ödeme etkinleştirildiğinde yolcu rezervasyon akışı için gereken araçları zaten içerir. Wink'in ayrı Ödeme MCP'si finansal işlemler (defterler ve çekimler gibi) içindir; oda ödemesi için gerekli değildir.
 
 ### Giriş yapın ve izinleri seçin
 
@@ -31,9 +31,9 @@ Bu akış için seçin:
 
 | İzin | Neden gerekli |
 | --- | --- |
-| AI ajan erişimi (`mcp.read`) | Ajanınızın Wink MCP'ye bağlanmasını sağlar. |
+| AI ajan erişimi (`mcp.read`) | Ajanınızın Wink MCP'ye bağlanmasına izin verir. |
 | Pazarlama okuma (`marketing.read`) | Ajanın hesabınızın rezervasyon yapılandırmasını (özelleştirme) bulmasını sağlar. Hesabınızın da bu yapılandırmaya erişimi olmalıdır. |
-| Ödeme yazma (`payment.write`) | Ajanın fiyat teklifi için ödeme yapmasını ve rezervasyonu onaylamasını sağlar. |
+| Ödeme yazma (`payment.write`) | Ajanın fiyat teklifini ödemesine ve rezervasyonu onaylamasına izin verir. |
 
 Bağlantı tarafından istenen giriş izinlerini koruyun. MCP istemciniz erişim belirteçlerini otomatik olarak yönetir; belirteci sohbet içine kopyalamanıza veya istek başlıklarını ayarlamanıza gerek yoktur. Gerekli bir izni atladıysanız, istemcinizin giriş akışıyla yeniden bağlanın ve onaylayın.
 
@@ -52,9 +52,9 @@ Stripe ödemeleri için bir seçenek **Link'in ajan cüzdanı**dır. İstemciniz
 }
 ```
 
-Ajanınızdan Link hesabınızı bağlamasını isteyin, ardından sağladığı doğrulama bağlantısını takip edin ve bağlantıyı onaylayın. Link, rezervasyon için kullanılan Paylaşılan Ödeme Jetonunu sağlar. Link şu anda ABD hesaplarını desteklemektedir; rezervasyon yapmadan önce harcama limitlerini kontrol edin. [Link'in kurulum kılavuzuna](https://github.com/stripe/link-cli#quickstart) ve [MCP yapılandırmasına](https://github.com/stripe/link-cli#mcp-server) bakın.
+Ajanınızdan Link hesabınızı bağlamasını isteyin, ardından sağladığı doğrulama bağlantısını takip edin ve bağlantıyı onaylayın. Link, rezervasyon ödemesi için kullanılan Shared Payment Token'ı sağlar. Link şu anda ABD hesaplarını desteklemektedir; rezervasyon yapmadan önce harcama limitlerini kontrol edin. [Link'in kurulum kılavuzuna](https://github.com/stripe/link-cli#quickstart) ve [MCP yapılandırmasına](https://github.com/stripe/link-cli#mcp-server) bakın.
 
-Ayrıca Wink tarafından sunulan Tempo ödeme zorluğunu destekleyen bir cüzdan da kullanabilirsiniz. Ajanınızda zaten uyumlu bir cüzdan bağlıysa, o bağlantıyı kullanın. Cüzdan kurulumu ve ödeme onayı, Wink'e giriş yapmaktan ayrı işlemlerdir.
+Ajanınızda zaten uyumlu bir cüzdan bağlıysa, o bağlantıyı kullanın. Cüzdan kurulumu ve ödeme onayı, Wink'e giriş yapmaktan ayrı işlemlerdir.
 
 ## 2. Ajanınızdan bir oda bulmasını isteyin
 
@@ -62,24 +62,23 @@ Ayrıca Wink tarafından sunulan Tempo ödeme zorluğunu destekleyen bir cüzdan
 
 > 15-17 Ocak 2027 tarihleri arasında Bangkok'ta iki yetişkin için bir oda bul. Seçmeden önce mevcut seçenekleri, toplam fiyatı ve iptal koşullarını göster.
 
-Ajanınız erişilebilir Wink hesaplarınızı ve rezervasyon yapılandırmalarını bulabilir. Birden fazla hesabınız varsa, hangisini kullanacağını söyleyin. Sağlanan bir rezervasyon bağlantısı veya yapılandırması üzerinden rezervasyon yapıyorsanız, bunu ajana verin.
+Ajanınız erişilebilir Wink hesaplarınızı ve rezervasyon yapılandırmalarını bulabilir. Birden fazla varsa, hangisini kullanacağını söyleyin. Sağlanan bir rezervasyon bağlantısı veya yapılandırması üzerinden rezervasyon yapıyorsanız, bunu ajana verin.
 
 Ajan ardından destinasyonunuzu çözer, mevcut otelleri kontrol eder ve tarihleriniz için oda fiyatlarını yükler. Bir oda seçin ve fiyat teklifi isteyin.
 
-Bu ödeme akışı şu anda **bir oda, USD cinsinden fiyatlandırılmış, sadece yetişkinler için** desteklenmektedir. Bir fiyat teklifinin son kullanma süresi vardır. Teklif istemek sizi ücretlendirmez veya rezervasyonu onaylamaz.
+Bu ödeme akışı şu anda **bir oda, USD cinsinden fiyatlandırılmış, sadece yetişkinler için** desteklenmektedir. Bir fiyat teklifinin son kullanma süresi vardır. Teklif istemek sizi ücretlendirmez veya rezervasyon onaylamaz.
 
 ## 3. Ödemeyi gözden geçirin ve onaylayın
 
-Otel, oda, tarihler, misafirler, iptal koşulları ve teklif edilen toplam tutarı kontrol edin. Hazır olduğunuzda, ajandanızdan rezervasyon yapmasını ve cüzdanınız tarafından istenen onayı tamamlamasını isteyin.
+Otel, oda, tarihler, misafirler, iptal koşulları ve teklif edilen toplam tutarı kontrol edin. Hazır olduğunuzda, ajandan rezervasyon yapmasını ve cüzdanınız tarafından istenen onayı tamamlamasını isteyin.
 
-Ajan, teklif tarafından sunulan ödeme yöntemlerinden birini kullanır:
+Cüzdan, fiyat teklifini ödemek için bir **Stripe Shared Payment Token** sağlar.
 
-- **Stripe:** cüzdan Paylaşılan Ödeme Jetonu sağlar.
-- **Tempo:** cüzdan zorlukta belirtilen transferi yapar ve işlem karmasını sağlar.
+**Tempo stablecoin ödemeleri yakında geliyor.**
 
-Ödeme başarılı olduktan sonra, ajan size bir **rezervasyon onay kodu** verir. Ayrıca Booking Engine MCP aracılığıyla rezervasyon detaylarını ve makbuzunu da alabilir.
+Ödeme başarılı olduktan sonra, ajanın size bir **rezervasyon onay kodu** verir. Ayrıca Booking Engine MCP aracılığıyla rezervasyon detaylarını ve makbuzunu alabilir.
 
-Ödeme hâlâ işleniyorsa veya yanıt kaybolduysa, ajanın **aynı ödeme girişimini** kontrol etmesine izin verin. İkinci bir ödeme başlatmak yerine teklifi ve ödeme kimlik bilgisini yeniden kullanmalıdır. Ödeme reddedilirse, yeni bir teklif isteyin ve tekrar denemeden önce gözden geçirin.
+Ödeme hâlâ işleniyorsa veya yanıt kaybolduysa, ajanın **aynı ödeme girişimini** kontrol etmesine izin verin. İkinci bir ödeme başlatmak yerine fiyat teklifini ve ödeme kimlik bilgisini yeniden kullanmalıdır. Ödeme reddedilirse, yeni bir fiyat teklifi isteyin ve tekrar denemeden önce gözden geçirin.
 
 ## Ajanlar ve geliştiriciler için araç referansı
 
@@ -87,30 +86,30 @@ Aşağıdaki tüm Wink araçları **Booking Engine MCP** üzerinden kullanılabi
 
 | Adım | Araçlar ve davranış |
 | --- | --- |
-| Rezervasyon bağlamını seç | `managing_entity_list`, ardından seçilen hesap için `customization_get_primary` veya `customization_search`. Zaten bilinen bir özelleştirme varsa onu kullanın. |
-| Bir destinasyon bulun | `destination_lookup_search_suggestions` ve `destination_lookup_get`. |
-| Otelleri ve odaları arayın | `inventory_search_city` veya `inventory_search_geo`, ardından fiyatlar ve müsaitlik için `property_inventory_get`. |
-| Seçilen oda için teklif alın | `agentic_booking_quote`. Oda detaylarını `request` argümanı içinde geçirin. |
-| Ödeyin ve onaylayın | Bağlı cüzdandan bir kimlik bilgisi alın, sonra `request.quoteId` ve tam olarak birini `request.spt` veya `request.tempoTransactionHash` ile `agentic_booking_pay` çağrısı yapın. Teklif ve ödeme için aynı Wink kullanıcısı ile giriş yapmaya devam edin. |
-| Rezervasyonu ve makbuzu alın | Onaylanmış rezervasyonu bulmak için `booking_search` veya `booking_search_list` kullanın, ardından rezervasyon kimliği ile `booking_get` ve `booking_receipt_get`. |
+| Rezervasyon bağlamını seç | `managing_entity_list`, ardından seçilen hesap için `customization_get_primary` veya `customization_search`. Zaten bilinen bir özelleştirme varsa onu kullan. |
+| Bir destinasyon bul | `destination_lookup_search_suggestions` ve `destination_lookup_get`. |
+| Otelleri ve odaları ara | `inventory_search_city` veya `inventory_search_geo`, ardından fiyatlar ve müsaitlik için `property_inventory_get`. |
+| Seçilen oda için fiyat teklifi ver | `agentic_booking_quote`. Oda detaylarını `request` argümanı içinde iletin. |
+| Öde ve onayla | Bağlı cüzdandan Shared Payment Token alın, sonra `request.quoteId` ve `request.spt` ile `agentic_booking_pay` çağrısı yapın. Teklif ve ödeme için aynı Wink kullanıcısı ile giriş yapmış olun. |
+| Rezervasyonu ve makbuzu al | Onaylanmış rezervasyonu bulmak için `booking_search` veya `booking_search_list` kullanın, ardından rezervasyon kimliği ile `booking_get` ve `booking_receipt_get`. |
 
 Teklif isteği `hotelIdentifier`, `roomRateIdentifier`, `checkIn`, `checkOut`, `adults`, `children` ve `customizationIdentifier` gerektirir. Tarihler `YYYY-MM-DD` formatında olmalıdır; `checkOut`, `checkIn`'den sonra olmalıdır. `adults` en az `1` ve `children` `0` olarak ayarlanmalıdır.
 
-Teklif, `quoteId`, `amountUsdCents`, `currency`, `expiresAt` ve `mppChallenges` döner. USD centleri dolar olarak gösterin: `10000` **$100.00** anlamına gelir. Tempo için seçilen zorluğun token, zincir, alıcı ve token baz birimlerinde tutarını kullanın.
+Teklif, `quoteId`, `amountUsdCents`, `currency`, `expiresAt` ve `mppChallenges` döner. USD centleri dolar olarak gösterin: `10000` **100,00 $** anlamına gelir.
 
 | Ödeme sonucu | Sonraki adım |
 | --- | --- |
 | `PAYMENT_SUCCEEDED` | `bookingConfirmationCode` ve `chargeReference` kaydedin. |
-| `IN_PROGRESS` | Kısa bir süre bekleyin ve aynı teklif ve kimlik bilgisi ile tekrar deneyin. |
+| `IN_PROGRESS` | Kısa bir süre bekleyin ve aynı teklif ve kimlik bilgisiyle tekrar deneyin. |
 | `DECLINED` | Yeni bir teklif isteyin ve başka bir ödeme yapmadan önce gözden geçirin. |
 
-Başarılı bir yeniden deneme, tekrar ücretlendirmeden mevcut rezervasyonu döner. Zaman aşımını bilinmeyen bir sonuç olarak kabul edin ve aynı ödemeyi yeniden deneyin. Çözülmezse, destekle iletişime geçin ve teklif kimliğini verin.
+Başarılı bir yeniden deneme, tekrar ücretlendirmeden mevcut rezervasyonu döner. Zaman aşımı bilinmeyen bir sonuç olarak kabul edilir ve aynı ödeme yeniden denenir. Çözülmezse, destekle iletişime geçin ve teklif kimliğini verin.
 
 ### Ödeme farkında MCP istemcileri
 
-Ödeme farkında MCP istemcileri, oda alanlarını doğrudan `arguments` içinde kullanarak `agentic_booking_book` çağrısı yapabilir. İlk çağrı, ödeme zorlukları ile hata `-32042` döner. Aynı çağrıyı cüzdan kimlik bilgisi `params._meta["org.paymentauth/credential"]` ile yeniden deneyin; başarı `result._meta["org.paymentauth/receipt"]` içerir. Hata `-32043` ödeme başarısızlığı ve zorluk taşır: kesin bir reddetme yeni teklif gerektirir, eksik ödeme yükü aynı zorlukla yeniden denenebilir. `-32603` için, `data.failure.reason` `payment-in-progress` veya `already-consumed` ise aynı kimlik bilgisi ile yeniden deneyin; hata kodu tek başına yeterli değildir.
+Ödeme farkında MCP istemcileri, oda alanlarını doğrudan `arguments` içinde kullanarak `agentic_booking_book` çağrısı yapabilir. İlk çağrı, ödeme zorluklarıyla birlikte `-32042` hatası döner. Aynı çağrıyı cüzdan kimlik bilgisi `params._meta["org.paymentauth/credential"]` içinde yeniden deneyin; başarı `result._meta["org.paymentauth/receipt"]` içerir. `-32043` hatası ödeme başarısızlığı ve zorluğu taşır: kesin bir reddetme yeni teklif gerektirirken, eksik ödeme yükü aynı zorlukla yeniden denenebilir. `-32603` için, `data.failure.reason` değeri `payment-in-progress` veya `already-consumed` ise aynı kimlik bilgisiyle yeniden deneyin; sadece hata kodu yeterli değildir.
 
-## REST üzerinden rezervasyon yapın
+## REST üzerinden rezervasyon yapma
 
 Wink'e doğrudan HTTP üzerinden çağrı yapan bir entegrasyon oluştururken REST kullanın. Hem teklif hem de ödeme **`POST https://api.wink.travel/api/mpp/booking`** kullanır.
 
@@ -118,7 +117,7 @@ Uygulamanızın ödeme yapmak için `payment.write` izni olan bir [Wink kullanı
 
 ### 1. Teklif isteyin
 
-Seçilen odayı `booking.json` olarak kaydedin, örnek kimlikleri ve tarihleri kendi seçiminizle değiştirin. Oda alanları JSON gövdesine doğrudan, `request` sarmalayıcısı olmadan gider.
+Seçilen odayı `booking.json` olarak kaydedin, örnek kimlikleri ve tarihleri seçiminizle değiştirin. Oda alanları JSON gövdesine doğrudan, `request` sarmalayıcısı olmadan gider.
 
 ```json
 {
@@ -141,13 +140,13 @@ curl -i https://api.wink.travel/api/mpp/booking \
   --data-binary @booking.json
 ```
 
-Wink, her sunulan yöntem için `WWW-Authenticate: Payment ...` zorluğu ile **`402 Payment Required`** döner. JSON gövdesi `quoteId`, `amount`, `currency`, `expiresAt` ve `methods` içerir. Burada `amount` USD cent cinsinden bir stringdir: `"10000"` **$100.00** anlamına gelir. Teklifin süresi dolmadan önce gözden geçirin; henüz ödeme alınmamıştır.
+Wink, her sunulan yöntem için `WWW-Authenticate: Payment ...` zorluğu ile **`402 Payment Required`** döner. JSON gövdesi `quoteId`, `amount`, `currency`, `expiresAt` ve `methods` içerir. Burada `amount` USD cent cinsinden bir stringdir: `"10000"` **100,00 $** anlamına gelir. Teklifin süresi dolmadan önce gözden geçirin; henüz ödeme alınmamıştır.
 
-### 2. Ödeyin ve onaylayın
+### 2. Öde ve onayla
 
-Cüzdan, dönen zorluklardan birini yerine getirsin. Stripe için `payload.spt`; Tempo için `payload.hash` ve `payload.type` `"hash"` olarak ayarlanır. Ödeme detaylarını bu zorluktan alın.
+Cüzdan, dönen Stripe zorluğunu Shared Payment Token sağlayarak yerine getirsin. Ödeme ayrıntılarını bu zorluktan alın.
 
-`MPP_CREDENTIAL`'ı, zorluk ve ödeme yükünü içeren cüzdanın kodlanmış MPP kimlik bilgisi olarak ayarlayın. Aynı istek gövdesini kimlik başlığı ile birlikte yeniden deneyin:
+`MPP_CREDENTIAL`'ı, zorluk ve ödeme yükünü içeren cüzdanın kodlanmış MPP kimlik bilgisi olarak ayarlayın. Aynı istek gövdesini, kimlik başlığını koruyarak yeniden deneyin:
 
 ```bash
 curl -i https://api.wink.travel/api/mpp/booking \
@@ -157,7 +156,7 @@ curl -i https://api.wink.travel/api/mpp/booking \
   --data-binary @booking.json
 ```
 
-Başarılı olursa, Wink **`200 OK`** ve `bookingConfirmationCode` içeren JSON gövdesi ile `Payment-Receipt` başlığı döner. Onay ve makbuzu kaydedin. Başarılı bir yeniden deneme, tekrar ücretlendirmeden mevcut rezervasyonu döner.
+Başarılı olursa, Wink **`200 OK`** döner, JSON gövdesinde `bookingConfirmationCode` ve `Payment-Receipt` başlığı bulunur. Onay ve makbuzu kaydedin. Başarılı bir yeniden deneme, tekrar ücretlendirmeden mevcut rezervasyonu döner.
 
 ### Yanıtları ve yeniden denemeleri yönetin
 
@@ -165,17 +164,17 @@ Başarılı olursa, Wink **`200 OK`** ve `bookingConfirmationCode` içeren JSON 
 | --- | --- |
 | `400` | Geçersiz oda detaylarını veya hatalı kimlik bilgisini düzeltin. |
 | `401` / `403` | Kullanıcının kimlik doğrulamasını ve ödeme iznini kontrol edin. |
-| `402` | Dönen problemi ve zorluğu inceleyin. Kesin ödeme reddi yeni teklif gerektirir; eksik ödeme yükü orijinal zorluğu yeniden kullanır. Ödemeden önce fiyatı gözden geçirin. |
-| `409` | Ödeme sonucu çözülmemiştir. Kısa bekleyin, sonra aynı gövde ve kimlik bilgisi ile rezervasyon uç noktasını yeniden deneyin. |
+| `402` | Dönen problem ve zorluğu inceleyin. Kesin ödeme reddi yeni teklif gerektirir; eksik ödeme yükü orijinal zorluğu yeniden kullanır. Ödemeden önce fiyatı gözden geçirin. |
+| `409` | Ödeme sonucu çözülmemiştir. Kısa bir süre bekleyin, ardından aynı gövde ve kimlik bilgisiyle rezervasyon uç noktasını yeniden deneyin. |
 | `429` | `Retry-After` süresi kadar bekleyin, sonra yeniden deneyin. |
 
-`409` yanıtı `application/problem+json` gövdesi içerir. `type` değerini tam olarak şu URL'lerle eşleştirin:
+`409` yanıtı `application/problem+json` gövdesine sahiptir. `type` değerini aşağıdaki tam URL'lerle eşleştirin:
 
 | Problem türü | Anlamı |
 | --- | --- |
-| [https://api.wink.travel/problems/payment-in-progress](https://api.wink.travel/problems/payment-in-progress) | Bir ödeme girişimi hâlâ devam ediyor veya mutabakat henüz onaylanamadı. |
-| [https://api.wink.travel/problems/already-consumed](https://api.wink.travel/problems/already-consumed) | Zorluk veya ödeme kanıtı zaten muhtemelen başarılı bir girişim tarafından kullanıldı. Bu tek başına rezervasyonu onaylamaz. |
+| [https://api.wink.travel/problems/payment-in-progress](https://api.wink.travel/problems/payment-in-progress) | Bir ödeme girişimi hâlâ devam ediyor veya mutabakat henüz onaylanamıyor. |
+| [https://api.wink.travel/problems/already-consumed](https://api.wink.travel/problems/already-consumed) | Zorluk veya ödeme kanıtı muhtemelen başarılı bir girişim tarafından zaten kullanıldı. Bu tek başına rezervasyonu onaylamaz. |
 
-Her ikisi de **aynı ödemeyi yeniden deneyin; yeni bir teklif ödemeyin** anlamına gelir. URL'ler problemi tanımlar ve belgeler; ödeme veya sorgulama uç noktaları değildir. `POST /api/mpp/booking` yeniden deneyin ve ne yapacağınıza karar verirken serbest metin `detail` yerine problem `type` kullanın. Tüm Wink ödeme problemleri için [problem türü referansına](https://api.wink.travel/problems) bakın.
+Her ikisi de **aynı ödemeyi yeniden deneyin; yeni bir teklif ödemeyin** anlamına gelir. URL'ler problemi tanımlar ve belgeler; ödeme veya sorgulama uç noktaları değildir. `POST /api/mpp/booking` yeniden deneyin ve ne yapacağınıza karar vermek için serbest metin `detail` yerine problem `type` kullanın. Tüm Wink ödeme problemleri için [problem türü referansına](https://api.wink.travel/problems) bakın.
 
-Ödeme gönderildikten sonra zaman aşımı, yanıt kaybı veya sunucu hatası da sonucu bilinmeyen bırakabilir. Aynı ödeme isteğini yeniden deneyin. Sonuç çözülmezse, başka bir ödeme yapmadan önce destekle iletişime geçin ve teklif kimliğini verin.
+Ödeme gönderildikten sonra zaman aşımı, yanıt kaybı veya sunucu hatası da sonucu bilinmeyen bırakabilir. Aynı ödeme isteğini yeniden deneyin. Sonuç çözülmezse, başka bir ödeme başlatmadan önce destekle iletişime geçin ve teklif kimliğini verin.

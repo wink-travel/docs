@@ -14,7 +14,7 @@ Untuk alur pemesanan lengkap, agen Anda memerlukan **Wink Booking Engine** dan *
 | Koneksi | Fungsinya | Cara menambahkannya |
 | --- | --- | --- |
 | **Wink Booking Engine** — wajib | Mencari destinasi, mencari hotel dan tarif kamar, mengutip dan mengonfirmasi pemesanan, serta mengambil pemesanan dan tanda terima Anda. | Tambahkan `https://api.wink.travel/mcp/booking-engine` sebagai server MCP HTTP jarak jauh. |
-| **Dompet pembayaran** — wajib untuk membayar | Menyediakan kredensial pembayaran setelah Anda menyetujui pembelian. | Hubungkan dompet yang mendukung Stripe Shared Payment Tokens atau pembayaran Tempo. Lihat contoh Link di bawah. |
+| **Dompet pembayaran** — wajib untuk membayar | Menyediakan kredensial pembayaran setelah Anda menyetujui pembelian. | Hubungkan dompet yang mendukung Stripe Shared Payment Tokens. Lihat contoh Link di bawah. |
 | Referensi Wink — opsional | Mencari data referensi seperti negara, mata uang, dan lainnya. | `https://api.wink.travel/mcp/reference` |
 | Dokumen Wink — opsional | Membantu agen Anda membaca dokumentasi dan kontrak API. | `https://docs.mcp.wink.travel/mcp` |
 
@@ -35,7 +35,7 @@ Untuk alur ini, pilih:
 | Baca pemasaran (`marketing.read`) | Memungkinkan agen menemukan konfigurasi pemesanan akun Anda, yang disebut kustomisasi. Akun Anda juga harus memiliki akses ke konfigurasi tersebut. |
 | Tulis pembayaran (`payment.write`) | Memungkinkan agen membayar kutipan dan mengonfirmasi pemesanan. |
 
-Pertahankan izin masuk yang diminta oleh koneksi. Klien MCP Anda menangani token akses; Anda tidak perlu menyalin token ke chat atau mengatur header permintaan. Jika Anda melewatkan izin yang diperlukan, sambungkan kembali melalui alur masuk klien Anda dan setujui izin tersebut.
+Simpan izin masuk yang diminta oleh koneksi. Klien MCP Anda menangani token akses; Anda tidak perlu menyalin token ke chat atau mengatur header permintaan. Jika Anda melewatkan izin yang diperlukan, sambungkan kembali melalui alur masuk klien Anda dan setujui izin tersebut.
 
 ### Hubungkan dompet pembayaran
 
@@ -54,32 +54,31 @@ Untuk pembayaran Stripe, salah satu opsinya adalah **dompet agen Link**. Jika kl
 
 Minta agen Anda menghubungkan akun Link Anda, lalu ikuti tautan verifikasi yang disediakan dan setujui koneksi. Link menyediakan Shared Payment Token yang digunakan untuk membayar pemesanan. Link saat ini mendukung akun AS; periksa batas pengeluaran sebelum memesan. Lihat [panduan pengaturan Link](https://github.com/stripe/link-cli#quickstart) dan [konfigurasi MCP](https://github.com/stripe/link-cli#mcp-server).
 
-Anda juga dapat menggunakan dompet yang mendukung tantangan pembayaran Tempo yang ditawarkan oleh Wink. Jika agen Anda sudah memiliki dompet kompatibel yang terhubung, gunakan koneksi tersebut. Pengaturan dompet dan persetujuan pembayaran terpisah dari masuk ke Wink.
+Jika agen Anda sudah memiliki dompet kompatibel yang terhubung, gunakan koneksi tersebut. Pengaturan dompet dan persetujuan pembayaran terpisah dari masuk ke Wink.
 
 ## 2. Minta agen Anda mencari kamar
 
-Misalnya:
+Contoh:
 
-> Cari kamar di Bangkok untuk dua dewasa dari 15 hingga 17 Januari 2027. Tunjukkan opsi yang tersedia, total harga, dan ketentuan pembatalan sebelum saya memilih.
+> Cari kamar di Bangkok untuk dua dewasa dari 15 sampai 17 Januari 2027. Tunjukkan opsi yang tersedia, total harga, dan ketentuan pembatalan sebelum saya memilih.
 
-Agen Anda dapat menemukan akun Wink yang dapat diakses dan konfigurasi pemesanannya. Jika Anda memiliki beberapa, beri tahu agen mana yang akan digunakan. Jika Anda memesan melalui tautan pemesanan atau konfigurasi yang disediakan, berikan itu ke agen.
+Agen Anda dapat menemukan akun Wink yang dapat diakses dan konfigurasi pemesanannya. Jika Anda memiliki beberapa, beri tahu agen yang mana yang akan digunakan. Jika Anda memesan melalui tautan pemesanan atau konfigurasi yang disediakan, berikan itu ke agen.
 
-Agen kemudian menyelesaikan destinasi Anda, memeriksa hotel yang tersedia, dan memuat tarif kamar untuk tanggal Anda. Pilih kamar dan minta kutipan.
+Agen kemudian menentukan destinasi Anda, memeriksa hotel yang tersedia, dan memuat tarif kamar untuk tanggal Anda. Pilih kamar dan minta kutipan.
 
 Alur pembayaran ini saat ini mendukung **satu kamar, dengan harga dalam USD, untuk dewasa saja**. Kutipan memiliki waktu kedaluwarsa. Meminta kutipan tidak membebankan biaya atau mengonfirmasi pemesanan.
 
 ## 3. Tinjau dan setujui pembayaran
 
-Periksa hotel, kamar, tanggal, tamu, ketentuan pembatalan, dan total kutipan. Saat Anda siap, minta agen Anda memesan dan menyelesaikan persetujuan apa pun yang diminta oleh dompet Anda.
+Periksa hotel, kamar, tanggal, tamu, ketentuan pembatalan, dan total yang dikutip. Saat Anda siap, minta agen Anda memesan dan selesaikan persetujuan apa pun yang diminta oleh dompet Anda.
 
-Agen menggunakan salah satu metode pembayaran yang ditawarkan oleh kutipan:
+Dompet menyediakan **Stripe Shared Payment Token** untuk membayar kutipan.
 
-- **Stripe:** dompet menyediakan Shared Payment Token.
-- **Tempo:** dompet melakukan transfer yang ditentukan oleh tantangan dan menyediakan hash transaksi.
+**Pembayaran stablecoin Tempo akan segera hadir.**
 
 Setelah pembayaran berhasil, agen Anda memberikan **kode konfirmasi pemesanan**. Agen juga dapat mengambil detail pemesanan dan tanda terima melalui Booking Engine MCP.
 
-Jika pembayaran masih diproses atau respons hilang, biarkan agen memeriksa **upaya pembayaran yang sama**. Agen harus menggunakan kembali kutipan dan kredensial pembayaran yang sama daripada memulai pembayaran kedua. Jika pembayaran ditolak, minta kutipan baru dan tinjau sebelum mencoba lagi.
+Jika pembayaran masih diproses atau respons hilang, biarkan agen memeriksa **upaya pembayaran yang sama**. Agen harus menggunakan kembali kutipan dan kredensial pembayaran tersebut, bukan memulai pembayaran kedua. Jika pembayaran ditolak, minta kutipan baru dan tinjau sebelum mencoba lagi.
 
 ## Referensi alat untuk agen dan pengembang
 
@@ -87,34 +86,34 @@ Semua alat Wink di bawah ini tersedia melalui **Booking Engine MCP**. Klien MCP 
 
 | Langkah | Alat dan perilaku |
 | --- | --- |
-| Pilih konteks pemesanan | `managing_entity_list`, lalu `customization_get_primary` atau `customization_search` untuk akun yang dipilih. Gunakan kustomisasi yang disediakan jika sudah diketahui. |
+| Pilih konteks pemesanan | `managing_entity_list`, lalu `customization_get_primary` atau `customization_search` untuk akun yang dipilih. Gunakan kustomisasi yang sudah diketahui jika ada. |
 | Cari destinasi | `destination_lookup_search_suggestions` dan `destination_lookup_get`. |
 | Cari hotel dan kamar | `inventory_search_city` atau `inventory_search_geo`, lalu `property_inventory_get` untuk tarif dan ketersediaan. |
 | Kutip kamar yang dipilih | `agentic_booking_quote`. Kirim detail kamar dalam argumen `request`. |
-| Bayar dan konfirmasi | Dapatkan kredensial dari dompet yang terhubung, lalu panggil `agentic_booking_pay` dengan `request.quoteId` dan tepat satu dari `request.spt` atau `request.tempoTransactionHash`. Gunakan pengguna Wink yang sama untuk kutipan dan pembayaran. |
+| Bayar dan konfirmasi | Dapatkan Shared Payment Token dari dompet yang terhubung, lalu panggil `agentic_booking_pay` dengan `request.quoteId` dan `request.spt`. Gunakan pengguna Wink yang sama untuk kutipan dan pembayaran. |
 | Ambil pemesanan dan tanda terima | Gunakan `booking_search` atau `booking_search_list` untuk menemukan pemesanan yang dikonfirmasi, lalu `booking_get` dan `booking_receipt_get` dengan pengenal pemesanan. |
 
 Permintaan kutipan membutuhkan `hotelIdentifier`, `roomRateIdentifier`, `checkIn`, `checkOut`, `adults`, `children`, dan `customizationIdentifier`. Tanggal menggunakan format `YYYY-MM-DD`; `checkOut` harus setelah `checkIn`. Setel `adults` minimal `1` dan `children` ke `0`.
 
-Kutipan mengembalikan `quoteId`, `amountUsdCents`, `currency`, `expiresAt`, dan `mppChallenges`. Tampilkan sen USD sebagai dolar: `10000` berarti **$100.00**. Untuk Tempo, gunakan token, rantai, penerima, dan jumlah dalam satuan dasar token dari tantangan yang dipilih.
+Kutipan mengembalikan `quoteId`, `amountUsdCents`, `currency`, `expiresAt`, dan `mppChallenges`. Tampilkan sen USD sebagai dolar: `10000` berarti **$100.00**.
 
 | Hasil pembayaran | Langkah berikutnya |
 | --- | --- |
 | `PAYMENT_SUCCEEDED` | Simpan `bookingConfirmationCode` dan `chargeReference`. |
 | `IN_PROGRESS` | Tunggu sebentar dan coba ulang kutipan dan kredensial yang sama. |
-| `DECLINED` | Minta kutipan baru dan tinjau sebelum melakukan pembayaran lagi. |
+| `DECLINED` | Minta kutipan baru dan tinjau sebelum mencoba pembayaran lagi. |
 
-Percobaan ulang yang berhasil mengembalikan pemesanan yang ada tanpa membebankan biaya lagi. Perlakukan batas waktu sebagai hasil yang tidak diketahui dan coba ulang pembayaran yang sama. Jika tetap tidak terselesaikan, hubungi dukungan dengan ID kutipan.
+Percobaan ulang yang berhasil mengembalikan pemesanan yang ada tanpa membebankan biaya lagi. Anggap batas waktu sebagai hasil yang tidak diketahui dan coba ulang pembayaran yang sama. Jika tetap tidak terselesaikan, hubungi dukungan dengan ID kutipan.
 
 ### Klien MCP yang sadar pembayaran
 
-Klien MCP yang sadar pembayaran dapat menggunakan `agentic_booking_book` dengan bidang kamar langsung di `arguments`. Panggilan pertama mengembalikan kesalahan `-32042` dengan tantangan pembayaran. Coba ulang panggilan yang sama dengan kredensial dompet di `params._meta["org.paymentauth/credential"]`; keberhasilan menyertakan `result._meta["org.paymentauth/receipt"]`. Kesalahan `-32043` membawa kegagalan pembayaran dan tantangan: penolakan pasti memerlukan kutipan baru, sementara payload pembayaran yang tidak lengkap dapat mencoba ulang dengan tantangan yang sama. Untuk `-32603`, `data.failure.reason` dengan nilai `payment-in-progress` atau `already-consumed` berarti coba ulang kredensial yang sama; kode kesalahan saja tidak cukup.
+Klien MCP yang sadar pembayaran dapat menggunakan `agentic_booking_book` dengan bidang kamar langsung di `arguments`. Panggilan pertama mengembalikan kesalahan `-32042` dengan tantangan pembayaran. Coba ulang panggilan yang sama dengan kredensial dompet di `params._meta["org.paymentauth/credential"]`; keberhasilan menyertakan `result._meta["org.paymentauth/receipt"]`. Kesalahan `-32043` membawa kegagalan pembayaran dan tantangan: penolakan pasti memerlukan kutipan baru, sementara payload pembayaran yang tidak lengkap dapat dicoba ulang dengan tantangan yang sama. Untuk `-32603`, `data.failure.reason` berupa `payment-in-progress` atau `already-consumed` berarti coba ulang kredensial yang sama; kode kesalahan saja tidak cukup.
 
-## Pesan melalui REST
+## Pesan lewat REST
 
-Gunakan REST saat membangun integrasi yang memanggil Wink langsung melalui HTTP. Baik kutipan maupun pembayaran menggunakan **`POST https://api.wink.travel/api/mpp/booking`**.
+Gunakan REST saat membangun integrasi yang memanggil Wink langsung lewat HTTP. Baik kutipan maupun pembayaran menggunakan **`POST https://api.wink.travel/api/mpp/booking`**.
 
-Aplikasi Anda memerlukan [token akses pengguna Wink](/id/developers/authentication/) dengan izin `payment.write` untuk membayar. Gunakan pengguna yang sama untuk kedua panggilan. Kirim token di header `Wink-Authorization`, biarkan `Authorization` tersedia untuk kredensial pembayaran dompet. Header ini berlaku untuk REST; klien MCP menangani autentikasinya sendiri.
+Aplikasi Anda memerlukan [token akses pengguna Wink](/id/developers/authentication/) dengan izin `payment.write` untuk membayar. Gunakan pengguna yang sama untuk kedua panggilan. Kirim token di `Wink-Authorization`, biarkan `Authorization` tersedia untuk kredensial pembayaran dompet. Header ini berlaku untuk REST; klien MCP menangani autentikasinya sendiri.
 
 ### 1. Minta kutipan
 
@@ -141,13 +140,13 @@ curl -i https://api.wink.travel/api/mpp/booking \
   --data-binary @booking.json
 ```
 
-Wink mengembalikan **`402 Payment Required`** dengan tantangan `WWW-Authenticate: Payment ...` untuk setiap metode yang ditawarkan. Badan JSON berisi `quoteId`, `amount`, `currency`, `expiresAt`, dan `methods`. Di sini, `amount` adalah string dalam sen USD: `"10000"` berarti **$100.00**. Tinjau kutipan sebelum kedaluwarsa; belum ada pembayaran yang diambil.
+Wink mengembalikan **`402 Payment Required`** dengan tantangan `WWW-Authenticate: Payment ...` untuk setiap metode yang ditawarkan. Badan JSON mencakup `quoteId`, `amount`, `currency`, `expiresAt`, dan `methods`. Di sini, `amount` adalah string dalam sen USD: `"10000"` berarti **$100.00**. Tinjau kutipan sebelum kedaluwarsa; belum ada pembayaran yang diambil.
 
 ### 2. Bayar dan konfirmasi
 
-Biarkan dompet memenuhi salah satu tantangan yang dikembalikan. Untuk Stripe, dompet menyediakan `payload.spt`; untuk Tempo, dompet menyediakan `payload.hash` dengan `payload.type` disetel ke `"hash"`. Gunakan detail pembayaran dari tantangan tersebut.
+Biarkan dompet memenuhi tantangan Stripe yang dikembalikan dengan menyediakan Shared Payment Token di `payload.spt`. Gunakan detail pembayaran dari tantangan tersebut.
 
-Setel `MPP_CREDENTIAL` ke kredensial MPP yang dikodekan dari dompet, yang berisi tantangan dan payload pembayaran. Coba ulang **badan permintaan yang sama**, pertahankan header identitas:
+Setel `MPP_CREDENTIAL` ke kredensial MPP yang dikodekan dari dompet, yang berisi tantangan dan payload pembayaran. Coba ulang **badan permintaan yang sama**, dengan header identitas:
 
 ```bash
 curl -i https://api.wink.travel/api/mpp/booking \
@@ -165,7 +164,7 @@ Jika berhasil, Wink mengembalikan **`200 OK`**, badan JSON berisi `bookingConfir
 | --- | --- |
 | `400` | Perbaiki detail kamar yang tidak valid atau kredensial yang salah format. |
 | `401` / `403` | Periksa autentikasi pengguna dan izin pembayaran. |
-| `402` | Periksa masalah dan tantangan yang dikembalikan. Penolakan pembayaran pasti memerlukan kutipan baru; payload pembayaran yang tidak lengkap menggunakan kembali tantangan asli. Tinjau harga sebelum membayar. |
+| `402` | Periksa masalah dan tantangan yang dikembalikan. Penolakan pembayaran pasti memerlukan kutipan baru; payload pembayaran yang tidak lengkap menggunakan tantangan asli. Tinjau harga sebelum membayar. |
 | `409` | Hasil pembayaran belum terselesaikan. Tunggu sebentar, lalu coba ulang badan dan kredensial yang sama di endpoint pemesanan. |
 | `429` | Tunggu selama detik yang tercantum di `Retry-After`, lalu coba ulang. |
 
@@ -176,6 +175,6 @@ Respons `409` memiliki badan `application/problem+json`. Cocokkan `type` dengan 
 | [https://api.wink.travel/problems/payment-in-progress](https://api.wink.travel/problems/payment-in-progress) | Upaya pembayaran masih berjalan atau penyelesaian belum dapat dikonfirmasi. |
 | [https://api.wink.travel/problems/already-consumed](https://api.wink.travel/problems/already-consumed) | Tantangan atau bukti pembayaran sudah digunakan oleh upaya yang mungkin berhasil. Ini saja tidak mengonfirmasi pemesanan. |
 
-Keduanya berarti **coba ulang pembayaran yang sama; jangan bayar kutipan baru**. URL ini mengidentifikasi dan mendokumentasikan masalah; bukan endpoint pembayaran atau polling. Coba ulang `POST /api/mpp/booking`, dan gunakan `type` masalah daripada teks bebas `detail` untuk menentukan tindakan. Lihat [referensi jenis masalah](https://api.wink.travel/problems) untuk semua masalah pembayaran Wink.
+Keduanya berarti **coba ulang pembayaran yang sama; jangan bayar kutipan baru**. URL tersebut mengidentifikasi dan mendokumentasikan masalah; bukan endpoint pembayaran atau polling. Coba ulang `POST /api/mpp/booking`, dan gunakan `type` masalah daripada teks bebas `detail` untuk menentukan tindakan. Lihat [referensi jenis masalah](https://api.wink.travel/problems) untuk semua masalah pembayaran Wink.
 
-Timeout, respons hilang, atau kesalahan server setelah mengirim pembayaran juga dapat meninggalkan hasil tidak diketahui. Coba ulang permintaan pembayaran yang sama. Jika hasil tetap tidak terselesaikan, hubungi dukungan dengan ID kutipan sebelum memulai pembayaran lain.
+Batas waktu, respons hilang, atau kesalahan server setelah mengirim pembayaran juga dapat meninggalkan hasil tidak diketahui. Coba ulang permintaan pembayaran yang sama. Jika hasil tetap tidak terselesaikan, hubungi dukungan dengan ID kutipan sebelum memulai pembayaran lain.

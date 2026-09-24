@@ -13,12 +13,12 @@ For hele bestillingsflyten trenger agenten din **Wink Booking Engine** og en **b
 
 | Tilkobling | Hva den gjør | Hvordan legge den til |
 | --- | --- | --- |
-| **Wink Booking Engine** — påkrevd | Finner destinasjoner, søker etter hoteller og rompriser, gir pristilbud og bekrefter bestillinger, og henter bestillinger og kvitteringer. | Legg til `https://api.wink.travel/mcp/booking-engine` som en ekstern HTTP MCP-server. |
-| **Betalingslommebok** — nødvendig for betaling | Gir betalingslegitimasjon etter at du godkjenner kjøpet. | Koble til en lommebok som støtter Stripe Shared Payment Tokens eller Tempo-betalinger. Se Link-eksempelet nedenfor. |
+| **Wink Booking Engine** — påkrevd | Finner reisemål, søker etter hoteller og rompriser, gir pristilbud og bekrefter bestillinger, og henter bestillinger og kvitteringer. | Legg til `https://api.wink.travel/mcp/booking-engine` som en ekstern HTTP MCP-server. |
+| **Betalingslommebok** — nødvendig for betaling | Gir betalingslegitimasjon etter at du godkjenner kjøpet. | Koble til en lommebok som støtter Stripe Shared Payment Tokens. Se Link-eksempelet nedenfor. |
 | Wink Reference — valgfritt | Slår opp land, valutaer og annen referansedata. | `https://api.wink.travel/mcp/reference` |
 | Wink Docs — valgfritt | Hjelper agenten din med å lese dokumentasjon og API-kontrakter. | `https://docs.mcp.wink.travel/mcp` |
 
-Booking Engine MCP inkluderer allerede verktøyene som trengs for reisendes bestillingsflyt, når agentisk bestilling og betaling er aktivert for det miljøet. Winks separate Payment MCP er for finansielle operasjoner som regnskaper og uttak; den trengs ikke for å betale for et rom.
+Booking Engine MCP inkluderer allerede verktøyene som trengs for reisendes bestillingsflyt når agentisk bestilling og betaling er aktivert for det miljøet. Winks separate Payment MCP er for finansielle operasjoner som regnskapsbøker og uttak; den trengs ikke for å betale for et rom.
 
 ### Logg inn og velg tillatelser
 
@@ -27,7 +27,7 @@ Booking Engine MCP inkluderer allerede verktøyene som trengs for reisendes best
 3. På samtykkeskjermen velger du tillatelsene agenten trenger, og godkjenner tilkoblingen.
 4. Gå tilbake til agenten. Den laster inn tilgjengelige verktøy og håndterer autentisering for påfølgende MCP-kall.
 
-For denne flyten, velg:
+For denne flyten velger du:
 
 | Tillatelse | Hvorfor den trengs |
 | --- | --- |
@@ -52,9 +52,9 @@ For Stripe-betalinger er ett alternativ **Link sin agentlommebok**. Hvis kliente
 }
 ```
 
-Be agenten koble til Link-kontoen din, følg deretter verifiseringslenken den gir og godkjenn tilkoblingen. Link leverer Shared Payment Token som brukes til å betale for bestillingen. Link støtter for øyeblikket amerikanske kontoer; sjekk forbruksgrenser før bestilling. Se [Link sin oppsettsveiledning](https://github.com/stripe/link-cli#quickstart) og [MCP-konfigurasjon](https://github.com/stripe/link-cli#mcp-server).
+Be agenten koble til Link-kontoen din, følg deretter verifiseringslenken den gir og godkjenn tilkoblingen. Link leverer Shared Payment Token som brukes til å betale for bestillingen. Link støtter for øyeblikket amerikanske kontoer; sjekk forbruksgrenser før bestilling. Se [Links oppsettsveiledning](https://github.com/stripe/link-cli#quickstart) og [MCP-konfigurasjon](https://github.com/stripe/link-cli#mcp-server).
 
-Du kan også bruke en lommebok som støtter Tempo-betalingsutfordringen som tilbys av Wink. Hvis agenten allerede har en kompatibel lommebok koblet til, bruk den tilkoblingen. Oppsett av lommebok og betalingsgodkjenning er separat fra pålogging til Wink.
+Hvis agenten allerede har en kompatibel lommebok koblet til, bruk den tilkoblingen. Oppsett av lommebok og betalingsgodkjenning er separat fra pålogging til Wink.
 
 ## 2. Be agenten finne et rom
 
@@ -64,22 +64,21 @@ For eksempel:
 
 Agenten kan finne dine tilgjengelige Wink-kontoer og deres bestillingskonfigurasjoner. Hvis du har flere, fortell hvilken den skal bruke. Hvis du bestiller via en levert bestillingslenke eller konfigurasjon, gi den til agenten i stedet.
 
-Agenten løser deretter destinasjonen, sjekker tilgjengelige hoteller og laster rompriser for datoene dine. Velg et rom og be om et pristilbud.
+Agenten løser deretter reisemålet, sjekker tilgjengelige hoteller og laster rompriser for datoene dine. Velg et rom og be om et pristilbud.
 
 Denne betalingsflyten støtter for øyeblikket **ett rom, priset i USD, kun for voksne**. Et pristilbud har en utløpstid. Å be om et pristilbud belaster deg ikke eller bekrefter en bestilling.
 
 ## 3. Gå gjennom og godkjenn betaling
 
-Sjekk hotell, rom, datoer, gjester, avbestillingsvilkår og totalprisen i pristilbudet. Når du er klar, be agenten bestille og fullføre eventuell godkjenning som kreves av lommeboken din.
+Sjekk hotell, rom, datoer, gjester, avbestillingsvilkår og totalprisen som er oppgitt. Når du er klar, be agenten bestille og fullføre eventuell godkjenning som kreves av lommeboken din.
 
-Agenten bruker en av betalingsmetodene som tilbys i pristilbudet:
+Lommeboken gir en **Stripe Shared Payment Token** for å betale pristilbudet.
 
-- **Stripe:** lommeboken gir en Shared Payment Token.
-- **Tempo:** lommeboken utfører overføringen spesifisert av utfordringen og gir transaksjonens hash.
+**Tempo stablecoin-betalinger kommer snart.**
 
-Etter at betalingen er vellykket, gir agenten deg en **bestillingsbekreftelseskode**. Den kan også hente bestillingsdetaljer og kvittering gjennom Booking Engine MCP.
+Etter at betalingen er vellykket, gir agenten deg en **bestillingsbekreftelseskode**. Den kan også hente bestillingsdetaljer og kvittering via Booking Engine MCP.
 
-Hvis betalingen fortsatt behandles eller svaret er tapt, la agenten sjekke **samme betalingsforsøk**. Den bør gjenbruke pristilbudet og betalingslegitimasjonen i stedet for å starte en ny betaling. Hvis betalingen avvises, be om et nytt pristilbud og gå gjennom det før du prøver igjen.
+Hvis betalingen fortsatt behandles eller svaret går tapt, la agenten sjekke **samme betalingsforsøk**. Den bør gjenbruke pristilbudet og betalingslegitimasjonen i stedet for å starte en ny betaling. Hvis betalingen avvises, be om et nytt pristilbud og gå gjennom det før du prøver igjen.
 
 ## Verktøyreferanse for agenter og utviklere
 
@@ -88,37 +87,37 @@ Alle Wink-verktøyene nedenfor er tilgjengelige gjennom **Booking Engine MCP**. 
 | Trinn | Verktøy og oppførsel |
 | --- | --- |
 | Velg bestillingskontekst | `managing_entity_list`, deretter `customization_get_primary` eller `customization_search` for valgt konto. Bruk en levert tilpasning når en allerede er kjent. |
-| Finn en destinasjon | `destination_lookup_search_suggestions` og `destination_lookup_get`. |
+| Finn et reisemål | `destination_lookup_search_suggestions` og `destination_lookup_get`. |
 | Søk etter hoteller og rom | `inventory_search_city` eller `inventory_search_geo`, deretter `property_inventory_get` for priser og tilgjengelighet. |
 | Gi pristilbud på valgt rom | `agentic_booking_quote`. Send romdetaljer i `request`-argumentet. |
-| Betal og bekreft | Skaff legitimasjon fra tilkoblet lommebok, kall deretter `agentic_booking_pay` med `request.quoteId` og nøyaktig én av `request.spt` eller `request.tempoTransactionHash`. Bruk samme påloggede Wink-bruker for pristilbud og betaling. |
+| Betal og bekreft | Skaff en Shared Payment Token fra tilkoblet lommebok, deretter kall `agentic_booking_pay` med `request.quoteId` og `request.spt`. Bruk samme påloggede Wink-bruker for pristilbud og betaling. |
 | Hent bestilling og kvittering | Bruk `booking_search` eller `booking_search_list` for å finne bekreftet bestilling, deretter `booking_get` og `booking_receipt_get` med bestillings-ID. |
 
-Pristilbud-forespørselen trenger `hotelIdentifier`, `roomRateIdentifier`, `checkIn`, `checkOut`, `adults`, `children` og `customizationIdentifier`. Datoer bruker `ÅÅÅÅ-MM-DD`; `checkOut` må følge etter `checkIn`. Sett `adults` til minst `1` og `children` til `0`.
+Pristilbud-forespørselen trenger `hotelIdentifier`, `roomRateIdentifier`, `checkIn`, `checkOut`, `adults`, `children` og `customizationIdentifier`. Datoer bruker `YYYY-MM-DD`; `checkOut` må følge etter `checkIn`. Sett `adults` til minst `1` og `children` til `0`.
 
-Pristilbudet returnerer `quoteId`, `amountUsdCents`, `currency`, `expiresAt` og `mppChallenges`. Vis USD-cent som dollar: `10000` betyr **$100,00**. For Tempo, bruk den valgte utfordringens token, kjede, mottaker og beløp i token-basisenheter.
+Pristilbudet returnerer `quoteId`, `amountUsdCents`, `currency`, `expiresAt` og `mppChallenges`. Vis USD-cent som dollar: `10000` betyr **$100,00**.
 
 | Betalingsresultat | Neste steg |
 | --- | --- |
 | `PAYMENT_SUCCEEDED` | Lagre `bookingConfirmationCode` og `chargeReference`. |
-| `IN_PROGRESS` | Vent litt og prøv samme pristilbud og legitimasjon på nytt. |
+| `IN_PROGRESS` | Vent kort og prøv samme pristilbud og legitimasjon på nytt. |
 | `DECLINED` | Be om et nytt pristilbud og gå gjennom det før ny betaling. |
 
-Et vellykket nytt forsøk returnerer eksisterende bestilling uten ny belastning. Behandle timeout som et ukjent utfall og prøv samme betaling på nytt. Hvis det forblir uløst, kontakt support med pristilbud-ID.
+Et vellykket nytt forsøk returnerer eksisterende bestilling uten ny belastning. Behandle en tidsavbrudd som et ukjent utfall og prøv samme betaling på nytt. Hvis det forblir uløst, kontakt support med pristilbud-ID.
 
 ### Betalingsbevisste MCP-klienter
 
-Betalingsbevisste MCP-klienter kan bruke `agentic_booking_book` med romfeltene direkte i `arguments`. Første kall returnerer feil `-32042` med betalingsutfordringer. Prøv samme kall på nytt med lommebokens legitimasjon i `params._meta["org.paymentauth/credential"]`; suksess inkluderer `result._meta["org.paymentauth/receipt"]`. Feil `-32043` inneholder betalingsfeil og utfordring: en definitiv avvisning krever nytt pristilbud, mens en ufullstendig betalingsdata kan prøves på nytt med samme utfordring. For `-32603` betyr `data.failure.reason` av `payment-in-progress` eller `already-consumed` at samme legitimasjon kan prøves på nytt; feilkoden alene er ikke nok.
+Betalingsbevisste MCP-klienter kan bruke `agentic_booking_book` med romfeltene direkte i `arguments`. Første kall returnerer feil `-32042` med betalingsutfordringer. Prøv samme kall på nytt med lommeboklegitimasjon i `params._meta["org.paymentauth/credential"]`; suksess inkluderer `result._meta["org.paymentauth/receipt"]`. Feil `-32043` inneholder betalingsfeil og utfordring: en definitiv avvisning krever nytt pristilbud, mens en ufullstendig betalingsdata kan prøves på nytt med samme utfordring. For `-32603` betyr `data.failure.reason` av `payment-in-progress` eller `already-consumed` at samme legitimasjon kan prøves på nytt; feilkoden alene er ikke nok.
 
 ## Bestill via REST
 
 Bruk REST når du bygger en integrasjon som kaller Wink direkte over HTTP. Både pristilbud og betaling bruker **`POST https://api.wink.travel/api/mpp/booking`**.
 
-Applikasjonen din trenger en [Wink bruker-tilgangstoken](/no/developers/authentication/) med `payment.write`-tillatelse for å betale. Bruk samme bruker for begge kall. Send token i `Wink-Authorization`, slik at `Authorization` er tilgjengelig for lommebokens betalingslegitimasjon. Disse overskriftene gjelder for REST; en MCP-klient håndterer egen autentisering.
+Applikasjonen din trenger en [Wink bruker-tilgangstoken](/no/developers/authentication/) med `payment.write`-tillatelse for å betale. Bruk samme bruker for begge kall. Send token i `Wink-Authorization`, og la `Authorization` være tilgjengelig for lommebokens betalingslegitimasjon. Disse overskriftene gjelder for REST; en MCP-klient håndterer egen autentisering.
 
 ### 1. Be om pristilbud
 
-Lagre det valgte rommet som `booking.json`, og erstatt eksempel-ID-er og datoer med ditt valg. Romfeltene går direkte i JSON-kroppen, uten en `request`-innpakning.
+Lagre det valgte rommet som `booking.json`, og erstatt eksempel-ID-er og datoer med ditt valg. Romfeltene går direkte i JSON-kroppen, uten `request`-innpakning.
 
 ```json
 {
@@ -145,7 +144,7 @@ Wink returnerer **`402 Payment Required`** med en `WWW-Authenticate: Payment ...
 
 ### 2. Betal og bekreft
 
-La lommeboken oppfylle én av de returnerte utfordringene. For Stripe leveres `payload.spt`; for Tempo leveres `payload.hash` med `payload.type` satt til `"hash"`. Bruk betalingsdetaljene fra den utfordringen.
+La lommeboken oppfylle den returnerte Stripe-utfordringen ved å levere en Shared Payment Token i `payload.spt`. Bruk betalingsdetaljene fra den utfordringen.
 
 Sett `MPP_CREDENTIAL` til lommebokens kodede MPP-legitimasjon, som inneholder utfordringen og betalingsdata. Prøv **samme forespørselskropp** på nytt, og behold identitetsoverskriften:
 
@@ -165,17 +164,17 @@ Ved suksess returnerer Wink **`200 OK`**, en JSON-kropp med `bookingConfirmation
 | --- | --- |
 | `400` | Korriger ugyldige romdetaljer eller en feilformatert legitimasjon. |
 | `401` / `403` | Sjekk brukerens autentisering og betalingstillatelse. |
-| `402` | Undersøk det returnerte problemet og utfordringen. En definitiv betalingsavvisning krever nytt pristilbud; en ufullstendig betalingsdata gjenbruker den opprinnelige utfordringen. Gå gjennom prisen før betaling. |
-| `409` | Betalingsutfallet er uavklart. Vent litt, og prøv samme kropp og legitimasjon på nytt ved bestillingsendepunktet. |
-| `429` | Vent i antall sekunder angitt i `Retry-After`, og prøv på nytt. |
+| `402` | Undersøk det returnerte problemet og utfordringen. En definitiv betalingsavvisning krever nytt pristilbud; en ufullstendig betalingsdata gjenbruker opprinnelig utfordring. Gå gjennom prisen før betaling. |
+| `409` | Betalingsutfallet er uavklart. Vent kort, og prøv samme kropp og legitimasjon på nytt ved bestillingsendepunktet. |
+| `429` | Vent det antall sekunder som står i `Retry-After`, og prøv på nytt. |
 
 Et `409`-svar har en `application/problem+json`-kropp. Match dens `type` mot disse eksakte URL-ene:
 
 | Problemetype | Betydning |
 | --- | --- |
 | [https://api.wink.travel/problems/payment-in-progress](https://api.wink.travel/problems/payment-in-progress) | Et betalingsforsøk pågår fortsatt eller oppgjør kan ikke bekreftes ennå. |
-| [https://api.wink.travel/problems/already-consumed](https://api.wink.travel/problems/already-consumed) | Utfordringen eller betalingsbeviset ble allerede brukt av et muligens vellykket forsøk. Dette alene bekrefter ikke bestillingen. |
+| [https://api.wink.travel/problems/already-consumed](https://api.wink.travel/problems/already-consumed) | Utfordringen eller betalingsbeviset ble allerede brukt av et muligens vellykket forsøk. Dette bekrefter ikke bestillingen alene. |
 
 Begge betyr **prøv samme betaling på nytt; ikke betal et nytt pristilbud**. URL-ene identifiserer og dokumenterer problemet; de er ikke betalings- eller polling-endepunkter. Prøv `POST /api/mpp/booking` på nytt, og bruk problemets `type` i stedet for fritekst `detail` for å avgjøre hva du skal gjøre. Se [problem-type referanse](https://api.wink.travel/problems) for alle Wink betalingsproblemer.
 
-Timeout, tapt svar eller serverfeil etter innsending av betaling kan også etterlate utfallet ukjent. Prøv samme betalingsforespørsel på nytt. Hvis utfallet forblir uløst, kontakt support med pristilbud-ID før du starter en ny betaling.
+En tidsavbrudd, tapt svar eller serverfeil etter innsending av betaling kan også etterlate utfallet ukjent. Prøv samme betalingsforespørsel på nytt. Hvis utfallet forblir uløst, kontakt support med pristilbud-ID før du starter en ny betaling.

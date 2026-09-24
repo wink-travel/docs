@@ -14,16 +14,16 @@ Para el flujo completo de reserva, tu agente necesita **Wink Booking Engine** y 
 | Conexión | Qué hace | Cómo agregarla |
 | --- | --- | --- |
 | **Wink Booking Engine** — requerido | Encuentra destinos, busca hoteles y tarifas de habitaciones, cotiza y confirma reservas, y recupera tus reservas y recibos. | Agrega `https://api.wink.travel/mcp/booking-engine` como un servidor MCP HTTP remoto. |
-| **Billetera de pago** — requerida para pagar | Proporciona credenciales de pago después de que apruebes la compra. | Conecta una billetera que soporte Stripe Shared Payment Tokens o pagos Tempo. Consulta el ejemplo de Link abajo. |
+| **Billetera de pago** — requerida para pagar | Proporciona credenciales de pago después de que apruebes la compra. | Conecta una billetera que soporte Stripe Shared Payment Tokens. Consulta el ejemplo de Link abajo. |
 | Referencia Wink — opcional | Consulta países, monedas y otros datos de referencia. | `https://api.wink.travel/mcp/reference` |
 | Documentos Wink — opcional | Ayuda a tu agente a leer documentación y contratos API. | `https://docs.mcp.wink.travel/mcp` |
 
-El Booking Engine MCP ya incluye las herramientas necesarias para el flujo de reserva del viajero, cuando la reserva y el pago agentic están habilitados para ese entorno. El Payment MCP separado de Wink es para operaciones financieras como libros contables y retiros; no es necesario para pagar una habitación.
+El MCP del Booking Engine ya incluye las herramientas necesarias para el flujo de reserva del viajero, cuando la reserva y el pago agentic están habilitados para ese entorno. El MCP de Pago separado de Wink es para operaciones financieras como libros contables y retiros; no es necesario para pagar una habitación.
 
 ### Inicia sesión y elige permisos
 
 1. Abre la configuración MCP o del conector de tu agente y agrega la URL del Booking Engine arriba. Asígnale un nombre como **Wink Booking**.
-2. Tu agente abre la página de inicio de sesión de Wink en tu navegador. Inicia sesión con la cuenta de Wink bajo la cual quieres reservar.
+2. Tu agente abre la página de inicio de sesión de Wink en tu navegador. Inicia sesión con la cuenta de Wink con la que quieres reservar.
 3. En la pantalla de consentimiento, elige los permisos que tu agente necesita y aprueba la conexión.
 4. Regresa a tu agente. Carga las herramientas disponibles y gestiona la autenticación para las llamadas MCP posteriores.
 
@@ -35,11 +35,11 @@ Para este flujo, selecciona:
 | Lectura de marketing (`marketing.read`) | Permite que el agente encuentre la configuración de reserva de tu cuenta, llamada personalización. Tu cuenta también debe tener acceso a esa configuración. |
 | Escritura de pago (`payment.write`) | Permite que el agente pague la cotización y confirme la reserva. |
 
-Mantén los permisos de inicio de sesión solicitados por la conexión. Tu cliente MCP maneja los tokens de acceso; no necesitas copiar un token en el chat ni configurar encabezados de solicitud. Si omitiste un permiso necesario, vuelve a conectar a través del flujo de inicio de sesión de tu cliente y apruébalo.
+Mantén los permisos de inicio de sesión solicitados por la conexión. Tu cliente MCP maneja los tokens de acceso; no necesitas copiar un token en el chat ni configurar encabezados de solicitud. Si omitiste un permiso necesario, vuelve a conectar mediante el flujo de inicio de sesión de tu cliente y apruébalo.
 
 ### Conecta una billetera de pago
 
-Para pagos con Stripe, una opción es la **billetera de agente de Link**. Si tu cliente soporta servidores MCP locales y Node.js está instalado, agrega esta entrada a su configuración MCP:
+Para pagos con Stripe, una opción es **la billetera de agente de Link**. Si tu cliente soporta servidores MCP locales y tienes Node.js instalado, agrega esta entrada a su configuración MCP:
 
 ```json
 {
@@ -54,7 +54,7 @@ Para pagos con Stripe, una opción es la **billetera de agente de Link**. Si tu 
 
 Pide a tu agente que conecte tu cuenta Link, luego sigue el enlace de verificación que proporciona y aprueba la conexión. Link suministra el Shared Payment Token usado para pagar la reserva. Actualmente Link soporta cuentas de EE. UU.; verifica sus límites de gasto antes de reservar. Consulta la [guía de configuración de Link](https://github.com/stripe/link-cli#quickstart) y la [configuración MCP](https://github.com/stripe/link-cli#mcp-server).
 
-También puedes usar una billetera que soporte el desafío de pago Tempo ofrecido por Wink. Si tu agente ya tiene una billetera compatible conectada, usa esa conexión. La configuración de la billetera y la aprobación del pago son independientes del inicio de sesión en Wink.
+Si tu agente ya tiene una billetera compatible conectada, usa esa conexión. La configuración de la billetera y la aprobación del pago son independientes del inicio de sesión en Wink.
 
 ## 2. Pide a tu agente que busque una habitación
 
@@ -62,7 +62,7 @@ Por ejemplo:
 
 > Busca una habitación en Bangkok para dos adultos del 15 al 17 de enero de 2027. Muéstrame las opciones disponibles, el precio total y las condiciones de cancelación antes de que elija.
 
-Tu agente puede encontrar las cuentas Wink accesibles y sus configuraciones de reserva. Si tienes varias, indícale cuál usar. Si reservas a través de un enlace o configuración de reserva proporcionada, dáselo al agente en su lugar.
+Tu agente puede encontrar las cuentas Wink accesibles y sus configuraciones de reserva. Si tienes varias, indícale cuál usar. Si reservas mediante un enlace o configuración de reserva proporcionada, dáselo al agente en su lugar.
 
 El agente entonces resuelve tu destino, verifica hoteles disponibles y carga tarifas de habitaciones para tus fechas. Elige una habitación y pide una cotización.
 
@@ -72,14 +72,13 @@ Este flujo de pago actualmente soporta **una habitación, con precio en USD, sol
 
 Verifica el hotel, habitación, fechas, huéspedes, condiciones de cancelación y total cotizado. Cuando estés listo, pide a tu agente que reserve y complete cualquier aprobación solicitada por tu billetera.
 
-El agente usa uno de los métodos de pago ofrecidos por la cotización:
+La billetera proporciona un **Stripe Shared Payment Token** para pagar la cotización.
 
-- **Stripe:** la billetera proporciona un Shared Payment Token.
-- **Tempo:** la billetera realiza la transferencia especificada por el desafío y proporciona su hash de transacción.
+**Los pagos con stablecoin Tempo estarán disponibles pronto.**
 
-Después de que el pago tenga éxito, tu agente te da un **código de confirmación de reserva**. También puede recuperar los detalles de la reserva y el recibo a través del Booking Engine MCP.
+Después de que el pago sea exitoso, tu agente te da un **código de confirmación de reserva**. También puede recuperar los detalles de la reserva y el recibo a través del Booking Engine MCP.
 
-Si el pago aún está en proceso o se pierde la respuesta, deja que el agente verifique el **mismo intento de pago**. Debe reutilizar la cotización y la credencial de pago en lugar de iniciar un segundo pago. Si el pago es rechazado, pide una cotización nueva y revísala antes de intentar de nuevo.
+Si el pago aún está en proceso o se pierde la respuesta, permite que el agente verifique el **mismo intento de pago**. Debe reutilizar la cotización y la credencial de pago en lugar de iniciar un segundo pago. Si el pago es rechazado, pide una cotización nueva y revísala antes de intentar de nuevo.
 
 ## Referencia de herramientas para agentes y desarrolladores
 
@@ -87,18 +86,18 @@ Todas las herramientas de Wink a continuación están disponibles a través del 
 
 | Paso | Herramientas y comportamiento |
 | --- | --- |
-| Seleccionar contexto de reserva | `managing_entity_list`, luego `customization_get_primary` o `customization_search` para la cuenta seleccionada. Usa una personalización proporcionada cuando ya se conoce una. |
+| Seleccionar contexto de reserva | `managing_entity_list`, luego `customization_get_primary` o `customization_search` para la cuenta seleccionada. Usa una personalización suministrada cuando ya se conoce una. |
 | Buscar un destino | `destination_lookup_search_suggestions` y `destination_lookup_get`. |
 | Buscar hoteles y habitaciones | `inventory_search_city` o `inventory_search_geo`, luego `property_inventory_get` para tarifas y disponibilidad. |
 | Cotizar la habitación seleccionada | `agentic_booking_quote`. Pasa los detalles de la habitación dentro de su argumento `request`. |
-| Pagar y confirmar | Obtén una credencial de la billetera conectada, luego llama a `agentic_booking_pay` con `request.quoteId` y exactamente uno de `request.spt` o `request.tempoTransactionHash`. Mantén el mismo usuario Wink conectado para cotización y pago. |
+| Pagar y confirmar | Obtén un Shared Payment Token de la billetera conectada, luego llama a `agentic_booking_pay` con `request.quoteId` y `request.spt`. Mantén el mismo usuario Wink conectado para cotización y pago. |
 | Recuperar la reserva y recibo | Usa `booking_search` o `booking_search_list` para encontrar la reserva confirmada, luego `booking_get` y `booking_receipt_get` con su identificador de reserva. |
 
 La solicitud de cotización necesita `hotelIdentifier`, `roomRateIdentifier`, `checkIn`, `checkOut`, `adults`, `children` y `customizationIdentifier`. Las fechas usan `YYYY-MM-DD`; `checkOut` debe ser posterior a `checkIn`. Establece `adults` al menos en `1` y `children` en `0`.
 
-La cotización devuelve `quoteId`, `amountUsdCents`, `currency`, `expiresAt` y `mppChallenges`. Muestra los centavos USD como dólares: `10000` significa **$100.00**. Para Tempo, usa el token, cadena, destinatario y monto en unidades base del token del desafío elegido.
+La cotización devuelve `quoteId`, `amountUsdCents`, `currency`, `expiresAt` y `mppChallenges`. Muestra los centavos USD como dólares: `10000` significa **$100.00**.
 
-| Resultado del pago | Siguiente paso |
+| Resultado de pago | Siguiente paso |
 | --- | --- |
 | `PAYMENT_SUCCEEDED` | Guarda `bookingConfirmationCode` y `chargeReference`. |
 | `IN_PROGRESS` | Espera brevemente y reintenta la misma cotización y credencial. |
@@ -145,9 +144,9 @@ Wink devuelve **`402 Payment Required`** con un desafío `WWW-Authenticate: Paym
 
 ### 2. Paga y confirma
 
-Haz que la billetera cumpla uno de los desafíos devueltos. Para Stripe, suministra `payload.spt`; para Tempo, suministra `payload.hash` con `payload.type` establecido en `"hash"`. Usa los detalles de pago de ese desafío.
+Haz que la billetera cumpla el desafío Stripe devuelto suministrando un Shared Payment Token en `payload.spt`. Usa los detalles de pago de ese desafío.
 
-Establece `MPP_CREDENTIAL` a la credencial MPP codificada de la billetera, que contiene el desafío y la carga de pago. Reintenta la **misma solicitud**, manteniendo el encabezado de identidad:
+Establece `MPP_CREDENTIAL` a la credencial MPP codificada de la billetera, que contiene el desafío y la carga de pago. Reintenta el **mismo cuerpo de solicitud**, manteniendo el encabezado de identidad:
 
 ```bash
 curl -i https://api.wink.travel/api/mpp/booking \
@@ -173,7 +172,7 @@ Una respuesta `409` tiene un cuerpo `application/problem+json`. Compara su `type
 
 | Tipo de problema | Significado |
 | --- | --- |
-| [https://api.wink.travel/problems/payment-in-progress](https://api.wink.travel/problems/payment-in-progress) | Un intento de pago aún está en curso o no se puede confirmar el asentamiento. |
+| [https://api.wink.travel/problems/payment-in-progress](https://api.wink.travel/problems/payment-in-progress) | Un intento de pago aún está en curso o el asentamiento no puede confirmarse todavía. |
 | [https://api.wink.travel/problems/already-consumed](https://api.wink.travel/problems/already-consumed) | El desafío o prueba de pago ya fue usado por un intento posiblemente exitoso. Esto por sí solo no confirma la reserva. |
 
 Ambos significan **reintenta el mismo pago; no pagues una cotización nueva**. Las URLs identifican y documentan el problema; no son endpoints de pago o sondeo. Reintenta `POST /api/mpp/booking` y usa el `type` del problema en lugar del texto libre `detail` para decidir qué hacer. Consulta la [referencia de tipos de problema](https://api.wink.travel/problems) para todos los problemas de pago de Wink.

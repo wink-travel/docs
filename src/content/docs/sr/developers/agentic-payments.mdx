@@ -5,25 +5,25 @@ sidebar:
   order: 10.5
 ---
 
-Možete pretraživati hotel, izabrati sobu i završiti rezervaciju preko svog AI agenta. Povežite ga sa Wink-om i platnim novčanikom, zatim mu recite gde želite da boravite. Wink koristi **Machine Payments Protocol (MPP)** da prihvati uplatu iz novčanika i vrati potvrdu vaše rezervacije.
+Možete pretraživati hotel, izabrati sobu i završiti rezervaciju preko svog AI agenta. Povežite ga sa Wink-om i novčanikom za plaćanje, zatim mu recite gde želite da boravite. Wink koristi **Machine Payments Protocol (MPP)** da prihvati uplatu iz novčanika i vrati potvrdu vaše rezervacije.
 
 ## 1. Povežite MCP servere
 
-Za kompletan tok rezervacije, vaš agent treba **Wink Booking Engine** i **platni novčanik**.
+Za kompletan tok rezervacije, vaš agent treba **Wink Booking Engine** i **novčanik za plaćanje**.
 
 | Veza | Šta radi | Kako da je dodate |
 | --- | --- | --- |
 | **Wink Booking Engine** — obavezno | Pronalazi destinacije, pretražuje hotele i cene soba, daje ponude i potvrđuje rezervacije, i preuzima vaše rezervacije i račune. | Dodajte `https://api.wink.travel/mcp/booking-engine` kao udaljeni HTTP MCP server. |
-| **Platni novčanik** — obavezno za plaćanje | Obezbeđuje podatke za plaćanje nakon što odobrite kupovinu. | Povežite novčanik koji podržava Stripe Shared Payment Tokens ili Tempo uplate. Pogledajte primer Link-a ispod. |
+| **Novčanik za plaćanje** — obavezno za plaćanje | Obezbeđuje podatke za plaćanje nakon što odobrite kupovinu. | Povežite novčanik koji podržava Stripe Shared Payment Tokens. Pogledajte primer za Link ispod. |
 | Wink Reference — opciono | Pretražuje zemlje, valute i druge referentne podatke. | `https://api.wink.travel/mcp/reference` |
-| Wink Docs — opciono | Pomaže vašem agentu da čita dokumentaciju i API ugovore. | `https://docs.mcp.wink.travel/mcp` |
+| Wink Docs — opciono | Pomaže agentu da čita dokumentaciju i API ugovore. | `https://docs.mcp.wink.travel/mcp` |
 
 Booking Engine MCP već uključuje alate potrebne za tok rezervacije putnika, kada je agentic booking i plaćanje omogućeno za to okruženje. Poseban Payment MCP od Wink-a je za finansijske operacije kao što su knjigovodstveni zapisi i isplate; nije potreban za plaćanje sobe.
 
 ### Prijavite se i izaberite dozvole
 
 1. Otvorite MCP ili podešavanja konektora svog agenta i dodajte URL Booking Engine-a iznad. Dajte mu ime kao što je **Wink Booking**.
-2. Vaš agent otvara stranicu za prijavu Wink-a u vašem pregledaču. Prijavite se sa Wink nalogom pod kojim želite da rezervišete.
+2. Vaš agent otvara Wink stranicu za prijavu u vašem pregledaču. Prijavite se sa Wink nalogom pod kojim želite da rezervišete.
 3. Na ekranu za saglasnost izaberite dozvole koje agent treba, zatim odobrite vezu.
 4. Vratite se agentu. On učitava dostupne alate i upravlja autentifikacijom za naredne MCP pozive.
 
@@ -31,13 +31,13 @@ Za ovaj tok izaberite:
 
 | Dozvola | Zašto je potrebna |
 | --- | --- |
-| Pristup AI agentu (`mcp.read`) | Omogućava agentu da se poveže sa Wink MCP. |
-| Čitanje marketinga (`marketing.read`) | Dozvoljava agentu da pronađe konfiguraciju rezervacije vašeg naloga, nazvanu prilagođavanje. Vaš nalog takođe mora imati pristup toj konfiguraciji. |
+| Pristup AI agentu (`mcp.read`) | Dozvoljava agentu da se poveže sa Wink MCP. |
+| Čitanje marketinga (`marketing.read`) | Omogućava agentu da pronađe konfiguraciju rezervacije vašeg naloga, zvanu prilagođavanje. Vaš nalog takođe mora imati pristup toj konfiguraciji. |
 | Pisanje plaćanja (`payment.write`) | Dozvoljava agentu da plati ponudu i potvrdi rezervaciju. |
 
 Zadržite dozvole za prijavu koje zahteva veza. Vaš MCP klijent automatski upravlja pristupnim tokenima; ne morate kopirati token u chat ili postavljati zaglavlja zahteva. Ako ste preskočili potrebnu dozvolu, ponovo se povežite kroz tok prijave vašeg klijenta i odobrite je.
 
-### Povežite platni novčanik
+### Povežite novčanik za plaćanje
 
 Za Stripe uplate, jedna opcija je **Link-ov agent novčanik**. Ako vaš klijent podržava lokalne MCP servere i Node.js je instaliran, dodajte ovaj unos u njegovu MCP konfiguraciju:
 
@@ -54,7 +54,7 @@ Za Stripe uplate, jedna opcija je **Link-ov agent novčanik**. Ako vaš klijent 
 
 Zamolite svog agenta da poveže vaš Link nalog, zatim sledite verifikacioni link koji vam agent pruži i odobrite vezu. Link obezbeđuje Shared Payment Token koji se koristi za plaćanje rezervacije. Link trenutno podržava američke naloge; proverite njegove limite potrošnje pre rezervacije. Pogledajte [Link-ov vodič za podešavanje](https://github.com/stripe/link-cli#quickstart) i [MCP konfiguraciju](https://github.com/stripe/link-cli#mcp-server).
 
-Takođe možete koristiti novčanik koji podržava Tempo payment challenge koji nudi Wink. Ako vaš agent već ima povezan kompatibilan novčanik, koristite tu vezu. Podešavanje novčanika i odobrenje plaćanja su odvojeni od prijave na Wink.
+Ako vaš agent već ima povezan kompatibilan novčanik, koristite tu vezu. Podešavanje novčanika i odobrenje plaćanja su odvojeni od prijave u Wink.
 
 ## 2. Zamolite agenta da pronađe sobu
 
@@ -62,7 +62,7 @@ Na primer:
 
 > Pronađi sobu u Bangkoku za dvoje odraslih od 15. do 17. januara 2027. Prikaži mi dostupne opcije, ukupnu cenu i uslove otkazivanja pre nego što izaberem.
 
-Vaš agent može pronaći dostupne Wink naloge kojima imate pristup i njihove konfiguracije rezervacija. Ako imate više njih, recite mu koji da koristi. Ako rezervišete preko dostavljenog linka za rezervaciju ili konfiguracije, dajte to agentu umesto toga.
+Vaš agent može pronaći dostupne Wink naloge i njihove konfiguracije rezervacija kojima imate pristup. Ako imate više njih, recite mu koji da koristi. Ako rezervišete preko dostavljenog linka za rezervaciju ili konfiguracije, dajte to agentu umesto toga.
 
 Agent zatim rešava vašu destinaciju, proverava dostupne hotele i učitava cene soba za vaše datume. Izaberite sobu i zatražite ponudu.
 
@@ -72,14 +72,13 @@ Ovaj tok plaćanja trenutno podržava **jednu sobu, cenjenu u USD, samo za odras
 
 Proverite hotel, sobu, datume, goste, uslove otkazivanja i ukupnu ponuđenu cenu. Kada ste spremni, zamolite agenta da rezerviše i završi bilo koje odobrenje koje traži vaš novčanik.
 
-Agent koristi jedan od načina plaćanja ponuđenih u ponudi:
+Novčanik obezbeđuje **Stripe Shared Payment Token** za plaćanje ponude.
 
-- **Stripe:** novčanik obezbeđuje Shared Payment Token.
-- **Tempo:** novčanik izvršava transfer definisan izazovom i obezbeđuje njegov hash transakcije.
+**Tempo stablecoin uplate uskoro stižu.**
 
 Nakon uspešne uplate, agent vam daje **kod potvrde rezervacije**. Takođe može preuzeti detalje rezervacije i račun preko Booking Engine MCP.
 
-Ako je uplata još u toku ili je odgovor izgubljen, dozvolite agentu da proveri **isti pokušaj plaćanja**. Trebalo bi da ponovo iskoristi ponudu i podatke za plaćanje umesto da započinje drugu uplatu. Ako je uplata odbijena, zatražite novu ponudu i pregledajte je pre ponovnog pokušaja.
+Ako je uplata još u obradi ili je odgovor izgubljen, dozvolite agentu da proveri **isti pokušaj plaćanja**. Trebalo bi da ponovo iskoristi ponudu i podatke za plaćanje umesto da započne drugu uplatu. Ako je uplata odbijena, zatražite novu ponudu i pregledajte je pre ponovnog pokušaja.
 
 ## Referenca alata za agente i programere
 
@@ -87,16 +86,16 @@ Svi Wink alati ispod dostupni su preko **Booking Engine MCP**. MCP klijent autom
 
 | Korak | Alati i ponašanje |
 | --- | --- |
-| Izaberite kontekst rezervacije | `managing_entity_list`, zatim `customization_get_primary` ili `customization_search` za izabrani nalog. Koristite dostavljenu prilagodbu ako je već poznata. |
+| Izaberite kontekst rezervacije | `managing_entity_list`, zatim `customization_get_primary` ili `customization_search` za izabrani nalog. Koristite dostavljenu konfiguraciju ako je već poznata. |
 | Pronađite destinaciju | `destination_lookup_search_suggestions` i `destination_lookup_get`. |
 | Pretražite hotele i sobe | `inventory_search_city` ili `inventory_search_geo`, zatim `property_inventory_get` za cene i dostupnost. |
-| Ponudite izabranu sobu | `agentic_booking_quote`. Prosledite detalje sobe u njegovom `request` argumentu. |
-| Platite i potvrdite | Nabavite podatke za plaćanje iz povezanog novčanika, zatim pozovite `agentic_booking_pay` sa `request.quoteId` i tačno jednim od `request.spt` ili `request.tempoTransactionHash`. Zadržite istog prijavljenog Wink korisnika za ponudu i uplatu. |
-| Preuzmite rezervaciju i račun | Koristite `booking_search` ili `booking_search_list` da pronađete potvrđenu rezervaciju, zatim `booking_get` i `booking_receipt_get` sa njenim identifikatorom rezervacije. |
+| Ponudite izabranu sobu | `agentic_booking_quote`. Prosledite detalje sobe u argumentu `request`. |
+| Platite i potvrdite | Nabavite Shared Payment Token iz povezanog novčanika, zatim pozovite `agentic_booking_pay` sa `request.quoteId` i `request.spt`. Koristite istog prijavljenog Wink korisnika za ponudu i uplatu. |
+| Preuzmite rezervaciju i račun | Koristite `booking_search` ili `booking_search_list` da pronađete potvrđenu rezervaciju, zatim `booking_get` i `booking_receipt_get` sa identifikatorom rezervacije. |
 
 Zahtev za ponudu treba `hotelIdentifier`, `roomRateIdentifier`, `checkIn`, `checkOut`, `adults`, `children` i `customizationIdentifier`. Datumi su u formatu `YYYY-MM-DD`; `checkOut` mora biti posle `checkIn`. Postavite `adults` na najmanje `1` i `children` na `0`.
 
-Ponuda vraća `quoteId`, `amountUsdCents`, `currency`, `expiresAt` i `mppChallenges`. Prikazujte američke centi kao dolare: `10000` znači **$100.00**. Za Tempo, koristite token, lanac, primaoca i iznos u osnovnim jedinicama tokena iz izabranog izazova.
+Ponuda vraća `quoteId`, `amountUsdCents`, `currency`, `expiresAt` i `mppChallenges`. Prikažite američke centi kao dolare: `10000` znači **100,00 $**.
 
 | Rezultat plaćanja | Sledeći korak |
 | --- | --- |
@@ -114,7 +113,7 @@ MCP klijenti sa podrškom za plaćanje mogu koristiti `agentic_booking_book` sa 
 
 Koristite REST kada pravite integraciju koja direktno poziva Wink preko HTTP-a. I ponuda i uplata koriste **`POST https://api.wink.travel/api/mpp/booking`**.
 
-Vaša aplikacija treba [Wink korisnički pristupni token](/sr/developers/authentication/) sa dozvolom `payment.write` za plaćanje. Koristite istog korisnika za oba poziva. Pošaljite token u `Wink-Authorization`, ostavljajući `Authorization` za podatke o plaćanju iz novčanika. Ova zaglavlja važe za REST; MCP klijent upravlja svojom autentifikacijom.
+Vaša aplikacija treba [Wink korisnički pristupni token](/sr/developers/authentication/) sa dozvolom `payment.write` za plaćanje. Koristite istog korisnika za oba poziva. Pošaljite token u `Wink-Authorization`, ostavljajući `Authorization` za podatke o uplati iz novčanika. Ova zaglavlja važe za REST; MCP klijent upravlja svojom autentifikacijom.
 
 ### 1. Zatražite ponudu
 
@@ -141,11 +140,11 @@ curl -i https://api.wink.travel/api/mpp/booking \
   --data-binary @booking.json
 ```
 
-Wink vraća **`402 Payment Required`** sa `WWW-Authenticate: Payment ...` izazovom za svaki ponuđeni metod. JSON telo uključuje `quoteId`, `amount`, `currency`, `expiresAt` i `methods`. Ovde je `amount` string u američkim centima: `"10000"` znači **$100.00**. Pregledajte ponudu pre isteka; uplata još nije izvršena.
+Wink vraća **`402 Payment Required`** sa `WWW-Authenticate: Payment ...` izazovom za svaku ponuđenu metodu. JSON telo uključuje `quoteId`, `amount`, `currency`, `expiresAt` i `methods`. Ovde je `amount` string u američkim centima: `"10000"` znači **100,00 $**. Pregledajte ponudu pre isteka; uplata još nije izvršena.
 
 ### 2. Platite i potvrdite
 
-Neka novčanik ispuni jedan vraćeni izazov. Za Stripe, on obezbeđuje `payload.spt`; za Tempo, `payload.hash` sa `payload.type` postavljenim na `"hash"`. Koristite podatke o plaćanju iz tog izazova.
+Neka novčanik ispuni vraćeni Stripe izazov tako što će dostaviti Shared Payment Token u `payload.spt`. Koristite podatke o plaćanju iz tog izazova.
 
 Postavite `MPP_CREDENTIAL` na kodirani MPP podatak novčanika, koji sadrži izazov i podatke o uplati. Pokušajte ponovo **isti zahtev**, zadržavajući zaglavlje identiteta:
 
@@ -169,13 +168,13 @@ U slučaju uspeha, Wink vraća **`200 OK`**, JSON telo sa `bookingConfirmationCo
 | `409` | Ishod plaćanja nije rešen. Sačekajte kratko, zatim pokušajte ponovo sa istim telom i podacima na endpointu za rezervaciju. |
 | `429` | Sačekajte broj sekundi iz `Retry-After`, zatim pokušajte ponovo. |
 
-Odgovor `409` ima telo tipa `application/problem+json`. Uporedite njegov `type` sa ovim tačnim URL-ovima:
+Odgovor `409` ima telo `application/problem+json`. Uporedite njegov `type` sa ovim tačnim URL-ovima:
 
 | Tip problema | Značenje |
 | --- | --- |
 | [https://api.wink.travel/problems/payment-in-progress](https://api.wink.travel/problems/payment-in-progress) | Pokušaj plaćanja je još u toku ili se poravnanje još ne može potvrditi. |
 | [https://api.wink.travel/problems/already-consumed](https://api.wink.travel/problems/already-consumed) | Izazov ili dokaz o uplati je već iskorišćen u možda uspešnom pokušaju. Ovo samo po sebi ne potvrđuje rezervaciju. |
 
-Oba znače **pokušajte istu uplatu ponovo; nemojte plaćati novu ponudu**. URL-ovi identifikuju i dokumentuju problem; nisu endpointi za plaćanje ili proveru. Pokušajte ponovo `POST /api/mpp/booking` i koristite `type` problema umesto slobodnog teksta `detail` da odlučite šta dalje. Pogledajte [referencu tipova problema](https://api.wink.travel/problems) za sve Wink probleme sa plaćanjem.
+Oba znače **pokušajte istu uplatu ponovo; ne plaćajte novu ponudu**. URL-ovi identifikuju i dokumentuju problem; nisu endpointi za plaćanje ili proveru. Pokušajte `POST /api/mpp/booking` ponovo i koristite `type` problema umesto slobodnog teksta `detail` da odlučite šta dalje. Pogledajte [referencu tipova problema](https://api.wink.travel/problems) za sve Wink probleme sa plaćanjem.
 
-Timeout, izgubljen odgovor ili greška servera nakon slanja uplate takođe mogu ostaviti ishod nepoznatim. Pokušajte istu uplatu ponovo. Ako ishod ostane nerešen, kontaktirajte podršku sa ID-jem ponude pre nego što započnete novu uplatu.
+Timeout, izgubljen odgovor ili greška servera nakon slanja uplate takođe mogu ostaviti ishod nepoznatim. Pokušajte isti zahtev za uplatu ponovo. Ako ishod ostane nerešen, kontaktirajte podršku sa ID-jem ponude pre nego što započnete novu uplatu.

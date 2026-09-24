@@ -14,11 +14,11 @@ Voor de volledige boekingsflow heeft je agent **Wink Booking Engine** en een **b
 | Verbinding | Wat het doet | Hoe toe te voegen |
 | --- | --- | --- |
 | **Wink Booking Engine** — vereist | Vindt bestemmingen, zoekt hotels en kamertarieven, geeft offertes en bevestigt boekingen, en haalt je boekingen en bonnetjes op. | Voeg `https://api.wink.travel/mcp/booking-engine` toe als een externe HTTP MCP-server. |
-| **Betaalportemonnee** — vereist om te betalen | Levert betaalgegevens nadat je de aankoop hebt goedgekeurd. | Verbind een portemonnee die Stripe Shared Payment Tokens of Tempo-betalingen ondersteunt. Zie het Link-voorbeeld hieronder. |
-| Wink Reference — optioneel | Zoekt landen, valuta’s en andere referentiegegevens op. | `https://api.wink.travel/mcp/reference` |
+| **Betaalportemonnee** — vereist om te betalen | Levert betaalgegevens nadat je de aankoop hebt goedgekeurd. | Verbind een portemonnee die Stripe Shared Payment Tokens ondersteunt. Zie het Link-voorbeeld hieronder. |
+| Wink Reference — optioneel | Zoekt landen, valuta en andere referentiegegevens op. | `https://api.wink.travel/mcp/reference` |
 | Wink Docs — optioneel | Helpt je agent documentatie en API-contracten te lezen. | `https://docs.mcp.wink.travel/mcp` |
 
-De Booking Engine MCP bevat al de benodigde tools voor de reiziger-boekingsflow, wanneer agentic booking en betaling voor die omgeving zijn ingeschakeld. De aparte Payment MCP van Wink is voor financiële operaties zoals grootboeken en opnames; deze is niet nodig om een kamer te betalen.
+De Booking Engine MCP bevat al de benodigde tools voor de reiziger-boekingsflow, wanneer agentic booking en betaling voor die omgeving zijn ingeschakeld. De aparte Payment MCP van Wink is bedoeld voor financiële operaties zoals grootboeken en opnames; deze is niet nodig om een kamer te betalen.
 
 ### Aanmelden en machtigingen kiezen
 
@@ -35,11 +35,11 @@ Selecteer voor deze flow:
 | Marketing lezen (`marketing.read`) | Hiermee kan de agent de boekingsconfiguratie van je account vinden, een zogenaamde customization. Je account moet ook toegang hebben tot die configuratie. |
 | Betaling schrijven (`payment.write`) | Hiermee kan de agent betalen voor de offerte en de boeking bevestigen. |
 
-Bewaar de machtigingen die bij het aanmelden worden gevraagd. Je MCP-client regelt toegangstokens; je hoeft geen token in de chat te kopiëren of request-headers in te stellen. Als je een benodigde machtiging hebt overgeslagen, meld je dan opnieuw aan via de aanmeldflow van je client en keur deze goed.
+Bewaar de machtigingen die door de verbinding worden gevraagd. Je MCP-client regelt toegangstokens; je hoeft geen token in de chat te kopiëren of request-headers in te stellen. Als je een benodigde machtiging hebt overgeslagen, maak dan opnieuw verbinding via de aanmeldflow van je client en keur deze goed.
 
 ### Verbind een betaalportemonnee
 
-Voor Stripe-betalingen is een optie de **agentportemonnee van Link**. Als je client lokale MCP-servers ondersteunt en Node.js is geïnstalleerd, voeg dan deze invoer toe aan de MCP-configuratie:
+Voor Stripe-betalingen is een optie **Link's agent wallet**. Als je client lokale MCP-servers ondersteunt en Node.js is geïnstalleerd, voeg dan deze invoer toe aan de MCP-configuratie:
 
 ```json
 {
@@ -54,9 +54,9 @@ Voor Stripe-betalingen is een optie de **agentportemonnee van Link**. Als je cli
 
 Vraag je agent om je Link-account te verbinden, volg dan de verificatielink die het geeft en keur de verbinding goed. Link levert de Shared Payment Token die wordt gebruikt om de boeking te betalen. Link ondersteunt momenteel alleen Amerikaanse accounts; controleer de bestedingslimieten voordat je boekt. Zie [Link's setup guide](https://github.com/stripe/link-cli#quickstart) en [MCP configuration](https://github.com/stripe/link-cli#mcp-server).
 
-Je kunt ook een portemonnee gebruiken die de Tempo-betalinguitdaging ondersteunt die Wink aanbiedt. Als je agent al een compatibele portemonnee verbonden heeft, gebruik dan die verbinding. Het instellen van de portemonnee en het goedkeuren van betalingen zijn los van het aanmelden bij Wink.
+Als je agent al een compatibele portemonnee heeft verbonden, gebruik dan die verbinding. Het instellen van de portemonnee en het goedkeuren van betalingen zijn los van het aanmelden bij Wink.
 
-## 2. Vraag je agent een kamer te zoeken
+## 2. Vraag je agent een kamer te vinden
 
 Bijvoorbeeld:
 
@@ -64,26 +64,25 @@ Bijvoorbeeld:
 
 Je agent kan je toegankelijke Wink-accounts en hun boekingsconfiguraties vinden. Als je er meerdere hebt, vertel dan welke te gebruiken. Als je boekt via een meegeleverde boekingslink of configuratie, geef die dan aan de agent.
 
-De agent bepaalt dan je bestemming, controleert beschikbare hotels en laadt kamertarieven voor je data. Kies een kamer en vraag om een offerte.
+De agent bepaalt vervolgens je bestemming, controleert beschikbare hotels en laadt kamertarieven voor je data. Kies een kamer en vraag om een offerte.
 
 Deze betalingsflow ondersteunt momenteel **één kamer, geprijsd in USD, alleen voor volwassenen**. Een offerte heeft een vervaltijd. Het aanvragen ervan brengt geen kosten in rekening en bevestigt geen boeking.
 
 ## 3. Controleer en keur betaling goed
 
-Controleer het hotel, de kamer, data, gasten, annuleringsvoorwaarden en het geoffreerde totaal. Als je klaar bent, vraag je agent om te boeken en voltooi je eventuele goedkeuring die je portemonnee vraagt.
+Controleer het hotel, de kamer, data, gasten, annuleringsvoorwaarden en het geoffreerde totaalbedrag. Als je klaar bent, vraag je agent om te boeken en voltooi je eventuele goedkeuring die je portemonnee vraagt.
 
-De agent gebruikt een van de betaalmethoden die de offerte biedt:
+De portemonnee levert een **Stripe Shared Payment Token** om de offerte te betalen.
 
-- **Stripe:** de portemonnee levert een Shared Payment Token.
-- **Tempo:** de portemonnee voert de overdracht uit die door de uitdaging is gespecificeerd en levert de transactiehash.
+**Tempo stablecoin-betalingen komen binnenkort.**
 
 Na een geslaagde betaling geeft je agent je een **boekingsbevestigingscode**. Het kan ook de boekingsgegevens en het bonnetje ophalen via de Booking Engine MCP.
 
-Als de betaling nog verwerkt wordt of het antwoord verloren is gegaan, laat de agent dan dezelfde betalingspoging controleren. Deze moet de offerte en betaalgegevens hergebruiken in plaats van een tweede betaling te starten. Als de betaling wordt geweigerd, vraag dan een nieuwe offerte aan en controleer die voordat je het opnieuw probeert.
+Als de betaling nog verwerkt wordt of het antwoord verloren is gegaan, laat de agent dan de **zelfde betalingspoging** controleren. Deze moet de offerte en betaalgegevens hergebruiken in plaats van een tweede betaling te starten. Als de betaling wordt geweigerd, vraag dan een nieuwe offerte aan en controleer deze voordat je het opnieuw probeert.
 
-## Toolreferentie voor agenten en ontwikkelaars
+## Toolreferentie voor agents en ontwikkelaars
 
-Alle onderstaande Wink-tools zijn beschikbaar via de **Booking Engine MCP**. De MCP-client stuurt authenticatie automatisch mee met de machtigingen die tijdens het aanmelden zijn goedgekeurd.
+Alle Wink-tools hieronder zijn beschikbaar via de **Booking Engine MCP**. De MCP-client stuurt authenticatie automatisch mee met de tijdens het aanmelden goedgekeurde machtigingen.
 
 | Stap | Tools en gedrag |
 | --- | --- |
@@ -91,34 +90,34 @@ Alle onderstaande Wink-tools zijn beschikbaar via de **Booking Engine MCP**. De 
 | Zoek een bestemming | `destination_lookup_search_suggestions` en `destination_lookup_get`. |
 | Zoek hotels en kamers | `inventory_search_city` of `inventory_search_geo`, daarna `property_inventory_get` voor tarieven en beschikbaarheid. |
 | Offerte voor geselecteerde kamer | `agentic_booking_quote`. Geef kamergegevens mee in het `request`-argument. |
-| Betalen en bevestigen | Verkrijg een credential van de verbonden portemonnee, roep dan `agentic_booking_pay` aan met `request.quoteId` en precies één van `request.spt` of `request.tempoTransactionHash`. Gebruik dezelfde aangemelde Wink-gebruiker voor offerte en betaling. |
-| Haal de boeking en het bonnetje op | Gebruik `booking_search` of `booking_search_list` om de bevestigde boeking te vinden, daarna `booking_get` en `booking_receipt_get` met het boekings-ID. |
+| Betalen en bevestigen | Verkrijg een Shared Payment Token van de verbonden portemonnee, roep dan `agentic_booking_pay` aan met `request.quoteId` en `request.spt`. Gebruik dezelfde aangemelde Wink-gebruiker voor offerte en betaling. |
+| Haal boeking en bonnetje op | Gebruik `booking_search` of `booking_search_list` om de bevestigde boeking te vinden, daarna `booking_get` en `booking_receipt_get` met het boekings-ID. |
 
-De offerteaanvraag heeft `hotelIdentifier`, `roomRateIdentifier`, `checkIn`, `checkOut`, `adults`, `children` en `customizationIdentifier` nodig. Data gebruiken `YYYY-MM-DD`; `checkOut` moet na `checkIn` zijn. Zet `adults` op minimaal `1` en `children` op `0`.
+De offerteaanvraag heeft `hotelIdentifier`, `roomRateIdentifier`, `checkIn`, `checkOut`, `adults`, `children` en `customizationIdentifier` nodig. Data gebruiken `YYYY-MM-DD`; `checkOut` moet na `checkIn` liggen. Zet `adults` op minimaal `1` en `children` op `0`.
 
-De offerte retourneert `quoteId`, `amountUsdCents`, `currency`, `expiresAt` en `mppChallenges`. Toon USD-cents als dollars: `10000` betekent **$100,00**. Voor Tempo gebruik je de gekozen uitdaging met token, chain, ontvanger en bedrag in token basiseenheden.
+De offerte retourneert `quoteId`, `amountUsdCents`, `currency`, `expiresAt` en `mppChallenges`. Toon USD-cents als dollars: `10000` betekent **$100,00**.
 
 | Betaalresultaat | Volgende stap |
 | --- | --- |
 | `PAYMENT_SUCCEEDED` | Sla `bookingConfirmationCode` en `chargeReference` op. |
-| `IN_PROGRESS` | Wacht kort en probeer dezelfde offerte en credential opnieuw. |
-| `DECLINED` | Vraag een nieuwe offerte aan en controleer die voordat je opnieuw betaalt. |
+| `IN_PROGRESS` | Wacht even en probeer dezelfde offerte en betaalgegevens opnieuw. |
+| `DECLINED` | Vraag een nieuwe offerte aan en controleer deze voordat je opnieuw betaalt. |
 
-Een succesvolle herhaling retourneert de bestaande boeking zonder opnieuw kosten in rekening te brengen. Behandel een time-out als een onbekende uitkomst en probeer dezelfde betaling opnieuw. Als het onopgelost blijft, neem dan contact op met support met het offerte-ID.
+Een succesvolle herhaling retourneert de bestaande boeking zonder opnieuw kosten in rekening te brengen. Behandel een time-out als een onbekende uitkomst en probeer dezelfde betaling opnieuw. Als het probleem blijft, neem dan contact op met support met het offerte-ID.
 
 ### Betalingsbewuste MCP-clients
 
-Betalingsbewuste MCP-clients kunnen `agentic_booking_book` gebruiken met de kamer velden direct in `arguments`. De eerste aanroep retourneert fout `-32042` met betalingsuitdagingen. Probeer dezelfde aanroep opnieuw met de portemonnee-credential in `params._meta["org.paymentauth/credential"]`; succes bevat `result._meta["org.paymentauth/receipt"]`. Fout `-32043` bevat een betalingsfout en uitdaging: een definitieve afwijzing vereist een nieuwe offerte, terwijl een onvolledige betalingspayload opnieuw kan proberen met dezelfde uitdaging. Voor `-32603` betekent een `data.failure.reason` van `payment-in-progress` of `already-consumed` dat dezelfde credential opnieuw geprobeerd moet worden; de foutcode alleen is niet voldoende.
+Betalingsbewuste MCP-clients kunnen `agentic_booking_book` gebruiken met de kamer velden direct in `arguments`. De eerste oproep retourneert fout `-32042` met betalingsuitdagingen. Probeer dezelfde oproep opnieuw met de portemonnee-credential in `params._meta["org.paymentauth/credential"]`; succes bevat `result._meta["org.paymentauth/receipt"]`. Fout `-32043` bevat een betalingsfout en uitdaging: een definitieve afwijzing vereist een nieuwe offerte, terwijl een onvolledige betalingspayload opnieuw kan proberen met dezelfde uitdaging. Voor `-32603` betekent een `data.failure.reason` van `payment-in-progress` of `already-consumed` dat dezelfde credential opnieuw geprobeerd moet worden; de foutcode alleen is niet voldoende.
 
 ## Boeken via REST
 
 Gebruik REST bij het bouwen van een integratie die Wink direct via HTTP aanroept. Zowel de offerte als betaling gebruiken **`POST https://api.wink.travel/api/mpp/booking`**.
 
-Je applicatie heeft een [Wink gebruikers-access token](/nl/developers/authentication/) nodig met `payment.write` machtiging om te betalen. Gebruik dezelfde gebruiker voor beide aanroepen. Stuur het token in `Wink-Authorization`, zodat `Authorization` beschikbaar blijft voor de betaalcredential van de portemonnee. Deze headers gelden voor REST; een MCP-client regelt zijn eigen authenticatie.
+Je applicatie heeft een [Wink user access token](/nl/developers/authentication/) nodig met `payment.write`-machtiging om te betalen. Gebruik dezelfde gebruiker voor beide oproepen. Stuur het token in `Wink-Authorization`, zodat `Authorization` beschikbaar blijft voor de betaalcredential van de portemonnee. Deze headers gelden voor REST; een MCP-client regelt zijn eigen authenticatie.
 
 ### 1. Vraag een offerte aan
 
-Sla de geselecteerde kamer op als `booking.json`, vervang de voorbeeld-ID’s en data door je keuze. De kamer velden gaan direct in de JSON-body, zonder een `request`-wrapper.
+Sla de geselecteerde kamer op als `booking.json`, vervang de voorbeeld-ID's en data door je eigen selectie. De kamer velden gaan direct in de JSON-body, zonder een `request`-wrapper.
 
 ```json
 {
@@ -132,7 +131,7 @@ Sla de geselecteerde kamer op als `booking.json`, vervang de voorbeeld-ID’s en
 }
 ```
 
-Stel `WINK_ACCESS_TOKEN` in op het access token van de gebruiker en verstuur het verzoek:
+Stel `WINK_ACCESS_TOKEN` in op het toegangstoken van de gebruiker en verstuur het verzoek:
 
 ```bash
 curl -i https://api.wink.travel/api/mpp/booking \
@@ -141,13 +140,13 @@ curl -i https://api.wink.travel/api/mpp/booking \
   --data-binary @booking.json
 ```
 
-Wink retourneert **`402 Payment Required`** met een `WWW-Authenticate: Payment ...` uitdaging voor elke aangeboden methode. De JSON-body bevat `quoteId`, `amount`, `currency`, `expiresAt` en `methods`. Hier is `amount` een string in USD-cents: `"10000"` betekent **$100,00**. Controleer de offerte vóór de vervaldatum; er is nog geen betaling gedaan.
+Wink retourneert **`402 Payment Required`** met een `WWW-Authenticate: Payment ...`-uitdaging voor elke aangeboden methode. De JSON-body bevat `quoteId`, `amount`, `currency`, `expiresAt` en `methods`. Hier is `amount` een string in USD-cents: `"10000"` betekent **$100,00**. Controleer de offerte vóór de vervaldatum; er is nog geen betaling gedaan.
 
 ### 2. Betalen en bevestigen
 
-Laat de portemonnee een van de teruggegeven uitdagingen vervullen. Voor Stripe levert deze `payload.spt`; voor Tempo levert deze `payload.hash` met `payload.type` ingesteld op `"hash"`. Gebruik de betalingsgegevens uit die uitdaging.
+Laat de portemonnee de teruggegeven Stripe-uitdaging vervullen door een Shared Payment Token te leveren in `payload.spt`. Gebruik de betalingsgegevens uit die uitdaging.
 
-Stel `MPP_CREDENTIAL` in op de gecodeerde MPP-credential van de portemonnee, die de uitdaging en betalingspayload bevat. Probeer dezelfde request body opnieuw, met dezelfde identity-header:
+Stel `MPP_CREDENTIAL` in op de gecodeerde MPP-credential van de portemonnee, die de uitdaging en betalingspayload bevat. Probeer dezelfde **request body** opnieuw, met de identity-header:
 
 ```bash
 curl -i https://api.wink.travel/api/mpp/booking \
@@ -157,25 +156,25 @@ curl -i https://api.wink.travel/api/mpp/booking \
   --data-binary @booking.json
 ```
 
-Bij succes retourneert Wink **`200 OK`**, een JSON-body met `bookingConfirmationCode` en een `Payment-Receipt` header. Sla de bevestiging en het bonnetje op. Een succesvolle herhaling retourneert de bestaande boeking zonder opnieuw kosten in rekening te brengen.
+Bij succes retourneert Wink **`200 OK`**, een JSON-body met `bookingConfirmationCode` en een `Payment-Receipt`-header. Sla de bevestiging en het bonnetje op. Een succesvolle herhaling retourneert de bestaande boeking zonder opnieuw kosten in rekening te brengen.
 
-### Afhandelen van reacties en herhalingen
+### Verwerk reacties en herhalingen
 
 | Reactie | Wat te doen |
 | --- | --- |
 | `400` | Corrigeer ongeldige kamergegevens of een onjuiste credential. |
 | `401` / `403` | Controleer de authenticatie en betaalmachtiging van de gebruiker. |
-| `402` | Inspecteer het geretourneerde probleem en de uitdaging. Een definitieve betalingsafwijzing vraagt om een nieuwe offerte; een onvolledige betalingspayload hergebruikt de originele uitdaging. Controleer de prijs vóór betaling. |
-| `409` | De betalingsuitkomst is onopgelost. Wacht kort en probeer dezelfde body en credential opnieuw bij de boekingsendpoint. |
+| `402` | Bekijk het geretourneerde probleem en de uitdaging. Een definitieve betalingsafwijzing vereist een nieuwe offerte; een onvolledige betalingspayload hergebruikt de originele uitdaging. Controleer de prijs vóór betaling. |
+| `409` | De betalingsuitkomst is onduidelijk. Wacht even en probeer dezelfde body en credential opnieuw bij de boekingsendpoint. |
 | `429` | Wacht het aantal seconden in `Retry-After` en probeer opnieuw. |
 
-Een `409`-reactie heeft een `application/problem+json` body. Vergelijk het `type` met deze exacte URL’s:
+Een `409`-reactie heeft een `application/problem+json`-body. Vergelijk het `type` met deze exacte URL's:
 
 | Probleemtype | Betekenis |
 | --- | --- |
 | [https://api.wink.travel/problems/payment-in-progress](https://api.wink.travel/problems/payment-in-progress) | Een betalingspoging is nog bezig of afwikkeling kan nog niet worden bevestigd. |
 | [https://api.wink.travel/problems/already-consumed](https://api.wink.travel/problems/already-consumed) | De uitdaging of betalingsbewijs is al gebruikt door een mogelijk succesvolle poging. Dit bevestigt de boeking niet op zichzelf. |
 
-Beide betekenen **probeer dezelfde betaling opnieuw; betaal geen nieuwe offerte**. De URL’s identificeren en documenteren het probleem; het zijn geen betalings- of polling-endpoints. Probeer `POST /api/mpp/booking` opnieuw en gebruik het probleem `type` in plaats van de vrije tekst `detail` om te beslissen wat te doen. Zie de [problem-type referentie](https://api.wink.travel/problems) voor alle Wink-betalingsproblemen.
+Beide betekenen **probeer dezelfde betaling opnieuw; betaal geen nieuwe offerte**. De URL's identificeren en documenteren het probleem; het zijn geen betalings- of pollingendpoints. Probeer `POST /api/mpp/booking` opnieuw en gebruik het probleem-`type` in plaats van de vrije tekst `detail` om te beslissen wat te doen. Zie de [problem-type referentie](https://api.wink.travel/problems) voor alle Wink-betaalproblemen.
 
 Een time-out, verloren reactie of serverfout na het indienen van de betaling kan ook de uitkomst onbekend laten. Probeer dezelfde betalingsaanvraag opnieuw. Als de uitkomst onopgelost blijft, neem dan contact op met support met het offerte-ID voordat je een nieuwe betaling start.

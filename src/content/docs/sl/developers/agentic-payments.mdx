@@ -1,5 +1,5 @@
 ---
-title: Agentic Payments
+title: Agentic plačila
 description: Povežite svojega AI agenta z Wink, se prijavite, poiščite hotel in potrdite plačilo za dokončanje rezervacije.
 sidebar:
   order: 10.5
@@ -14,7 +14,7 @@ Za celoten rezervacijski potek vaš agent potrebuje **Wink Booking Engine** in *
 | Povezava | Kaj počne | Kako jo dodati |
 | --- | --- | --- |
 | **Wink Booking Engine** — obvezno | Najde destinacije, išče hotele in cene sob, ponuja in potrjuje rezervacije ter pridobiva vaše rezervacije in račune. | Dodajte `https://api.wink.travel/mcp/booking-engine` kot oddaljeni HTTP MCP strežnik. |
-| **Plačilna denarnica** — obvezno za plačilo | Zagotavlja plačilne poverilnice po vaši odobritvi nakupa. | Povežite denarnico, ki podpira Stripe Shared Payment Tokens ali Tempo plačila. Glejte primer Link spodaj. |
+| **Plačilna denarnica** — obvezno za plačilo | Zagotavlja plačilne poverilnice po vaši odobritvi nakupa. | Povežite denarnico, ki podpira Stripe Shared Payment Tokens. Glejte primer Link spodaj. |
 | Wink Reference — neobvezno | Poišče države, valute in druge referenčne podatke. | `https://api.wink.travel/mcp/reference` |
 | Wink Docs — neobvezno | Pomaga agentu pri branju dokumentacije in API pogodb. | `https://docs.mcp.wink.travel/mcp` |
 
@@ -35,11 +35,11 @@ Za ta potek izberite:
 | Branje marketinga (`marketing.read`) | Agentu omogoča iskanje konfiguracije rezervacij vašega računa, imenovane prilagoditev. Vaš račun mora imeti tudi dostop do te konfiguracije. |
 | Pisanje plačil (`payment.write`) | Agentu omogoča plačilo ponudbe in potrditev rezervacije. |
 
-Ohranite dovoljenja za prijavo, ki jih zahteva povezava. Vaš MCP odjemalec samodejno upravlja dostopne žetone; ni vam treba kopirati žetona v klepet ali nastavljati glave zahtevka. Če ste izpustili potrebno dovoljenje, se ponovno povežite prek prijavnega poteka vašega odjemalca in ga potrdite.
+Ohranite dovoljenja za prijavo, ki jih zahteva povezava. Vaš MCP odjemalec samodejno upravlja dostopne žetone; ni vam treba kopirati žetona v klepet ali nastavljati glave zahtevka. Če ste izpustili potrebno dovoljenje, se ponovno povežite prek prijavnega postopka vašega odjemalca in ga potrdite.
 
 ### Povežite plačilno denarnico
 
-Za Stripe plačila je ena možnost **Linkova denarnica agenta**. Če vaš odjemalec podpira lokalne MCP strežnike in je nameščen Node.js, dodajte ta vnos v njegovo MCP konfiguracijo:
+Za plačila s Stripe je ena možnost **Linkova denarnica agenta**. Če vaš odjemalec podpira lokalne MCP strežnike in je nameščen Node.js, dodajte ta vnos v njegovo MCP konfiguracijo:
 
 ```json
 {
@@ -52,9 +52,9 @@ Za Stripe plačila je ena možnost **Linkova denarnica agenta**. Če vaš odjema
 }
 ```
 
-Prosite svojega agenta, naj poveže vaš Link račun, nato sledite potrditveni povezavi, ki jo zagotovi, in potrdite povezavo. Link zagotavlja Shared Payment Token, ki se uporablja za plačilo rezervacije. Link trenutno podpira ameriške račune; pred rezervacijo preverite njegove omejitve porabe. Glejte [Linkov vodič za nastavitev](https://github.com/stripe/link-cli#quickstart) in [MCP konfiguracijo](https://github.com/stripe/link-cli#mcp-server).
+Prosite svojega agenta, naj poveže vaš Link račun, nato sledite potrditveni povezavi, ki jo zagotovi, in potrdite povezavo. Link zagotavlja Shared Payment Token, ki se uporablja za plačilo rezervacije. Link trenutno podpira račune v ZDA; pred rezervacijo preverite njegove omejitve porabe. Glejte [Linkov vodič za nastavitev](https://github.com/stripe/link-cli#quickstart) in [MCP konfiguracijo](https://github.com/stripe/link-cli#mcp-server).
 
-Lahko uporabite tudi denarnico, ki podpira Tempo plačilni izziv, ki ga ponuja Wink. Če ima vaš agent že povezano združljivo denarnico, uporabite to povezavo. Nastavitev denarnice in odobritev plačila sta ločena od prijave v Wink.
+Če ima vaš agent že povezano združljivo denarnico, uporabite to povezavo. Nastavitev denarnice in odobritev plačila sta ločena od prijave v Wink.
 
 ## 2. Prosite svojega agenta, naj poišče sobo
 
@@ -70,12 +70,11 @@ Ta plačilni potek trenutno podpira **eno sobo, ceno v USD, samo za odrasle**. P
 
 ## 3. Preglejte in potrdite plačilo
 
-Preverite hotel, sobo, datume, goste, pogoje odpovedi in skupno ponudbo. Ko ste pripravljeni, prosite svojega agenta, naj rezervira in dokonča morebitno odobritev, ki jo zahteva vaša denarnica.
+Preverite hotel, sobo, datume, goste, pogoje odpovedi in skupno ponudbo. Ko ste pripravljeni, prosite agenta, naj rezervira, in dokončajte morebitno odobritev, ki jo zahteva vaša denarnica.
 
-Agent uporabi eno od plačilnih metod, ki jih ponuja ponudba:
+Denarnica zagotovi **Stripe Shared Payment Token** za plačilo ponudbe.
 
-- **Stripe:** denarnica zagotovi Shared Payment Token.
-- **Tempo:** denarnica izvede prenos, določen z izzivom, in zagotovi njegov transakcijski hash.
+**Plačila s Tempo stablecoin prihajajo kmalu.**
 
 Po uspešnem plačilu vam agent poda **kodo potrditve rezervacije**. Prav tako lahko pridobi podrobnosti rezervacije in račun prek Booking Engine MCP.
 
@@ -90,21 +89,21 @@ Vsa spodnja Wink orodja so na voljo prek **Booking Engine MCP**. MCP odjemalec s
 | Izberite kontekst rezervacije | `managing_entity_list`, nato `customization_get_primary` ali `customization_search` za izbrani račun. Uporabite posredovano prilagoditev, če je že znana. |
 | Poiščite destinacijo | `destination_lookup_search_suggestions` in `destination_lookup_get`. |
 | Iščite hotele in sobe | `inventory_search_city` ali `inventory_search_geo`, nato `property_inventory_get` za cene in razpoložljivost. |
-| Ponudite izbrano sobo | `agentic_booking_quote`. Podajte podatke sobe v argument `request`. |
-| Plačajte in potrdite | Pridobite poverilnico iz povezane denarnice, nato pokličite `agentic_booking_pay` z `request.quoteId` in natanko enim od `request.spt` ali `request.tempoTransactionHash`. Ohranite istega prijavljenega Wink uporabnika za ponudbo in plačilo. |
+| Ponudite izbrano sobo | `agentic_booking_quote`. Podajte podatke sobe v njegovem argumentu `request`. |
+| Plačajte in potrdite | Pridobite Shared Payment Token iz povezane denarnice, nato pokličite `agentic_booking_pay` z `request.quoteId` in `request.spt`. Ohranite istega prijavljenega Wink uporabnika za ponudbo in plačilo. |
 | Pridobite rezervacijo in račun | Uporabite `booking_search` ali `booking_search_list` za iskanje potrjene rezervacije, nato `booking_get` in `booking_receipt_get` z identifikatorjem rezervacije. |
 
 Zahteva za ponudbo potrebuje `hotelIdentifier`, `roomRateIdentifier`, `checkIn`, `checkOut`, `adults`, `children` in `customizationIdentifier`. Datumi so v formatu `YYYY-MM-DD`; `checkOut` mora slediti `checkIn`. Nastavite `adults` na najmanj `1` in `children` na `0`.
 
-Ponudba vrne `quoteId`, `amountUsdCents`, `currency`, `expiresAt` in `mppChallenges`. Prikažite ameriške cente kot dolarje: `10000` pomeni **100,00 $**. Za Tempo uporabite izbrani izziv s tokenom, verigo, prejemnikom in zneskom v osnovnih enotah tokena.
+Ponudba vrne `quoteId`, `amountUsdCents`, `currency`, `expiresAt` in `mppChallenges`. Prikažite ameriške cente kot dolarje: `10000` pomeni **100,00 $**.
 
 | Rezultat plačila | Naslednji korak |
 | --- | --- |
 | `PAYMENT_SUCCEEDED` | Shranite `bookingConfirmationCode` in `chargeReference`. |
 | `IN_PROGRESS` | Počakajte kratek čas in poskusite znova z isto ponudbo in poverilnico. |
-| `DECLINED` | Zahtevajte novo ponudbo in jo pred ponovnim plačilom preglejte. |
+| `DECLINED` | Zahtevajte novo ponudbo in jo preglejte pred ponovnim plačilom. |
 
-Uspešen ponovni poskus vrne obstoječo rezervacijo brez ponovnega zaračunavanja. Časovna omejitev se obravnava kot neznan izid in ponovite isto plačilo. Če ostane nerešeno, kontaktirajte podporo s ID-jem ponudbe.
+Uspešen ponovni poskus vrne obstoječo rezervacijo brez ponovnega zaračunavanja. Časovna omejitev se obravnava kot neznan izid in poskusite znova z istim plačilom. Če ostane nerešeno, kontaktirajte podporo s številko ponudbe.
 
 ### MCP odjemalci, ki podpirajo plačila
 
@@ -132,7 +131,7 @@ Izbrano sobo shranite kot `booking.json`, pri čemer zamenjajte primerne identif
 }
 ```
 
-Nastavite `WINK_ACCESS_TOKEN` na uporabnikov dostopni žeton in pošljite zahtevo:
+Nastavite `WINK_ACCESS_TOKEN` na uporabnikov dostopni žeton in pošljite zahtevek:
 
 ```bash
 curl -i https://api.wink.travel/api/mpp/booking \
@@ -145,9 +144,9 @@ Wink vrne **`402 Payment Required`** z izzivom `WWW-Authenticate: Payment ...` z
 
 ### 2. Plačajte in potrdite
 
-Naj denarnica izpolni enega od vrnjenih izzivov. Za Stripe zagotovi `payload.spt`; za Tempo `payload.hash` z `payload.type` nastavljeno na `"hash"`. Uporabite plačilne podatke iz tega izziva.
+Naj denarnica izpolni vrnjeni Stripe izziv z zagotovitvijo Shared Payment Token v `payload.spt`. Uporabite podatke o plačilu iz tega izziva.
 
-Nastavite `MPP_CREDENTIAL` na kodirano MPP poverilnico denarnice, ki vsebuje izziv in plačilno vsebino. Ponovno pošljite **isto telo zahteve**, pri čemer ohranite glavo identitete:
+Nastavite `MPP_CREDENTIAL` na kodirano MPP poverilnico denarnice, ki vsebuje izziv in plačilno vsebino. Ponovno pošljite **isto telo zahtevka**, pri čemer ohranite glavo identitete:
 
 ```bash
 curl -i https://api.wink.travel/api/mpp/booking \
@@ -157,16 +156,16 @@ curl -i https://api.wink.travel/api/mpp/booking \
   --data-binary @booking.json
 ```
 
-Ob uspehu Wink vrne **`200 OK`**, JSON telo z `bookingConfirmationCode` in glavo `Payment-Receipt`. Shranite potrditev in račun. Uspešen ponovni poskus vrne obstoječo rezervacijo brez ponovnega zaračunavanja.
+Ob uspehu Wink vrne **`200 OK`**, JSON telo z `bookingConfirmationCode` in glavo `Payment-Receipt`. Shranite potrdilo in račun. Uspešen ponovni poskus vrne obstoječo rezervacijo brez ponovnega zaračunavanja.
 
-### Ravnanje z odzivi in ponovitvami
+### Obdelava odgovorov in ponovnih poskusov
 
-| Odziv | Kaj storiti |
+| Odgovor | Kaj storiti |
 | --- | --- |
 | `400` | Popravite neveljavne podatke sobe ali nepravilno poverilnico. |
 | `401` / `403` | Preverite avtentikacijo uporabnika in dovoljenje za plačilo. |
 | `402` | Preverite vrnjeno težavo in izziv. Dokončna zavrnitev plačila zahteva novo ponudbo; nepopolna plačilna vsebina ponovno uporabi izvirni izziv. Pred plačilom preglejte ceno. |
-| `409` | Izid plačila ni rešen. Počakajte kratek čas in poskusite znova z istim telesom in poverilnico na rezervacijskem končnem točki. |
+| `409` | Izid plačila ni rešen. Počakajte kratek čas in poskusite znova z istim telesom in poverilnico na končni točki rezervacije. |
 | `429` | Počakajte število sekund, navedeno v `Retry-After`, nato poskusite znova. |
 
 Odgovor `409` ima telo `application/problem+json`. Ujemite njegov `type` z naslednjimi natančnimi URL-ji:
@@ -174,8 +173,8 @@ Odgovor `409` ima telo `application/problem+json`. Ujemite njegov `type` z nasle
 | Vrsta težave | Pomen |
 | --- | --- |
 | [https://api.wink.travel/problems/payment-in-progress](https://api.wink.travel/problems/payment-in-progress) | Poskus plačila je še v teku ali poravnava še ni potrjena. |
-| [https://api.wink.travel/problems/already-consumed](https://api.wink.travel/problems/already-consumed) | Izziv ali dokazilo o plačilu je bilo že uporabljeno v morda uspešnem poskusu. To samo po sebi ne potrdi rezervacije. |
+| [https://api.wink.travel/problems/already-consumed](https://api.wink.travel/problems/already-consumed) | Izziv ali dokazilo o plačilu je že bilo uporabljeno v morda uspešnem poskusu. To samo po sebi ne potrjuje rezervacije. |
 
-Oba pomenita **ponovite isto plačilo; ne plačujte nove ponudbe**. URL-ji identificirajo in dokumentirajo težavo; niso plačilne ali polling končne točke. Ponovite `POST /api/mpp/booking` in uporabite vrsto težave namesto prosto besedilo `detail` za odločitev o ukrepu. Glejte [referenco vrst težav](https://api.wink.travel/problems) za vse Wink plačilne težave.
+Oba pomenita **ponovni poskus istega plačila; ne plačajte nove ponudbe**. URL-ji identificirajo in dokumentirajo težavo; niso plačilne ali polling končne točke. Ponovno pošljite `POST /api/mpp/booking` in uporabite vrsto težave `type` namesto prosto besedilo `detail` za odločitev o nadaljnjih korakih. Glejte [referenco vrst težav](https://api.wink.travel/problems) za vse Wink plačilne težave.
 
-Časovna omejitev, izgubljen odgovor ali strežniška napaka po oddaji plačila lahko prav tako pustijo izid neznan. Ponovite isti zahtevek za plačilo. Če izid ostane nerešen, kontaktirajte podporo s ID-jem ponudbe, preden začnete novo plačilo.
+Časovna omejitev, izgubljen odgovor ali strežniška napaka po oddaji plačila lahko prav tako pustijo izid neznan. Ponovno pošljite isti zahtevek za plačilo. Če izid ostane nerešen, kontaktirajte podporo s številko ponudbe, preden začnete novo plačilo.

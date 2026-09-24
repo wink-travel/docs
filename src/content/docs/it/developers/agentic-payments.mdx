@@ -9,12 +9,12 @@ Puoi cercare un hotel, scegliere una camera e completare la tua prenotazione tra
 
 ## 1. Collega i server MCP
 
-Per il flusso completo di prenotazione, il tuo agente necessita di **Wink Booking Engine** e di un **portafoglio di pagamento**.
+Per il flusso completo di prenotazione, il tuo agente ha bisogno di **Wink Booking Engine** e di un **portafoglio di pagamento**.
 
 | Connessione | Cosa fa | Come aggiungerla |
 | --- | --- | --- |
 | **Wink Booking Engine** — obbligatorio | Trova destinazioni, cerca hotel e tariffe delle camere, fornisce preventivi e conferma prenotazioni, e recupera le tue prenotazioni e ricevute. | Aggiungi `https://api.wink.travel/mcp/booking-engine` come server MCP HTTP remoto. |
-| **Portafoglio di pagamento** — necessario per pagare | Fornisce le credenziali di pagamento dopo che approvi l'acquisto. | Collega un portafoglio che supporta Stripe Shared Payment Tokens o pagamenti Tempo. Vedi l'esempio di Link qui sotto. |
+| **Portafoglio di pagamento** — necessario per pagare | Fornisce le credenziali di pagamento dopo che approvi l’acquisto. | Collega un portafoglio che supporta Stripe Shared Payment Tokens. Vedi l’esempio di Link qui sotto. |
 | Wink Reference — opzionale | Cerca paesi, valute e altri dati di riferimento. | `https://api.wink.travel/mcp/reference` |
 | Wink Docs — opzionale | Aiuta il tuo agente a leggere la documentazione e i contratti API. | `https://docs.mcp.wink.travel/mcp` |
 
@@ -23,16 +23,16 @@ Il Booking Engine MCP include già gli strumenti necessari per il flusso di pren
 ### Accedi e scegli le autorizzazioni
 
 1. Apri le impostazioni MCP o del connettore del tuo agente e aggiungi l’URL del Booking Engine sopra indicato. Dagli un nome come **Wink Booking**.
-2. Il tuo agente apre la pagina di accesso Wink nel browser. Accedi con l’account Wink con cui vuoi prenotare.
+2. Il tuo agente apre la pagina di accesso di Wink nel browser. Accedi con l’account Wink con cui vuoi prenotare.
 3. Nella schermata di consenso, scegli le autorizzazioni di cui il tuo agente ha bisogno, quindi approva la connessione.
 4. Torna al tuo agente. Carica gli strumenti disponibili e gestisce l’autenticazione per le chiamate MCP successive.
 
 Per questo flusso, seleziona:
 
-| Autorizzazione | Perché è necessaria |
+| Autorizzazione | Perché serve |
 | --- | --- |
 | Accesso agente AI (`mcp.read`) | Permette al tuo agente di connettersi a Wink MCP. |
-| Lettura marketing (`marketing.read`) | Consente all’agente di trovare la configurazione di prenotazione del tuo account, chiamata personalizzazione. Il tuo account deve avere accesso anche a quella configurazione. |
+| Lettura marketing (`marketing.read`) | Consente all’agente di trovare la configurazione di prenotazione del tuo account, chiamata personalizzazione. Il tuo account deve avere accesso a quella configurazione. |
 | Scrittura pagamento (`payment.write`) | Permette all’agente di pagare il preventivo e confermare la prenotazione. |
 
 Mantieni le autorizzazioni di accesso richieste dalla connessione. Il client MCP gestisce i token di accesso; non devi copiare un token nella chat o impostare intestazioni di richiesta. Se hai saltato un’autorizzazione necessaria, riconnettiti tramite il flusso di accesso del client e approvala.
@@ -54,17 +54,17 @@ Per i pagamenti Stripe, un’opzione è **il portafoglio agente di Link**. Se il
 
 Chiedi al tuo agente di collegare il tuo account Link, quindi segui il link di verifica fornito e approva la connessione. Link fornisce il Shared Payment Token usato per pagare la prenotazione. Link supporta attualmente account USA; verifica i limiti di spesa prima di prenotare. Vedi la [guida di configurazione di Link](https://github.com/stripe/link-cli#quickstart) e la [configurazione MCP](https://github.com/stripe/link-cli#mcp-server).
 
-Puoi anche usare un portafoglio che supporta la sfida di pagamento Tempo offerta da Wink. Se il tuo agente ha già un portafoglio compatibile collegato, usa quella connessione. La configurazione del portafoglio e l’approvazione del pagamento sono separate dall’accesso a Wink.
+Se il tuo agente ha già un portafoglio compatibile collegato, usa quella connessione. La configurazione del portafoglio e l’approvazione del pagamento sono separate dall’accesso a Wink.
 
 ## 2. Chiedi al tuo agente di trovare una camera
 
-Ad esempio:
+Per esempio:
 
-> Trova una camera a Bangkok per due adulti dal 15 al 17 gennaio 2027. Mostrami le opzioni disponibili, il prezzo totale e le condizioni di cancellazione prima che scelga.
+> Trova una camera a Bangkok per due adulti dal 15 al 17 gennaio 2027. Mostrami le opzioni disponibili, il prezzo totale e le condizioni di cancellazione prima di scegliere.
 
-Il tuo agente può trovare gli account Wink accessibili e le loro configurazioni di prenotazione. Se ne hai diversi, digli quale usare. Se stai prenotando tramite un link o una configurazione di prenotazione fornita, fornisci quella al posto suo.
+Il tuo agente può trovare gli account Wink accessibili e le loro configurazioni di prenotazione. Se ne hai diversi, digli quale usare. Se stai prenotando tramite un link di prenotazione o una configurazione fornita, fornisci quella al posto suo.
 
-L’agente risolve quindi la tua destinazione, controlla gli hotel disponibili e carica le tariffe delle camere per le tue date. Scegli una camera e chiedi un preventivo.
+L’agente risolve quindi la destinazione, controlla gli hotel disponibili e carica le tariffe delle camere per le tue date. Scegli una camera e chiedi un preventivo.
 
 Questo flusso di pagamento supporta attualmente **una camera, con prezzo in USD, solo per adulti**. Un preventivo ha un tempo di scadenza. Richiederne uno non ti addebita né conferma una prenotazione.
 
@@ -72,31 +72,30 @@ Questo flusso di pagamento supporta attualmente **una camera, con prezzo in USD,
 
 Controlla hotel, camera, date, ospiti, condizioni di cancellazione e totale preventivato. Quando sei pronto, chiedi al tuo agente di prenotare e completa qualsiasi approvazione richiesta dal tuo portafoglio.
 
-L’agente usa uno dei metodi di pagamento offerti dal preventivo:
+Il portafoglio fornisce un **Stripe Shared Payment Token** per pagare il preventivo.
 
-- **Stripe:** il portafoglio fornisce un Shared Payment Token.
-- **Tempo:** il portafoglio effettua il trasferimento specificato dalla sfida e fornisce il suo hash di transazione.
+**I pagamenti con stablecoin Tempo arriveranno presto.**
 
-Dopo il successo del pagamento, il tuo agente ti fornisce un **codice di conferma prenotazione**. Può anche recuperare i dettagli della prenotazione e la ricevuta tramite il Booking Engine MCP.
+Dopo il pagamento riuscito, il tuo agente ti fornisce un **codice di conferma prenotazione**. Può anche recuperare i dettagli della prenotazione e la ricevuta tramite il Booking Engine MCP.
 
-Se il pagamento è ancora in elaborazione o la risposta è persa, lascia che l’agente controlli lo **stesso tentativo di pagamento**. Dovrebbe riutilizzare il preventivo e la credenziale di pagamento invece di iniziare un secondo pagamento. Se il pagamento viene rifiutato, richiedi un nuovo preventivo e rivedilo prima di riprovare.
+Se il pagamento è ancora in elaborazione o la risposta si perde, lascia che l’agente controlli lo **stesso tentativo di pagamento**. Dovrebbe riutilizzare il preventivo e la credenziale di pagamento invece di iniziare un secondo pagamento. Se il pagamento viene rifiutato, chiedi un nuovo preventivo e rivedilo prima di riprovare.
 
 ## Riferimento strumenti per agenti e sviluppatori
 
-Tutti gli strumenti Wink qui sotto sono disponibili tramite il **Booking Engine MCP**. Il client MCP invia automaticamente l’autenticazione usando le autorizzazioni approvate durante l’accesso.
+Tutti gli strumenti Wink qui sotto sono disponibili tramite il **Booking Engine MCP**. Il client MCP invia l’autenticazione automaticamente usando le autorizzazioni approvate durante l’accesso.
 
 | Passo | Strumenti e comportamento |
 | --- | --- |
-| Seleziona contesto di prenotazione | `managing_entity_list`, poi `customization_get_primary` o `customization_search` per l’account selezionato. Usa una personalizzazione fornita se già nota. |
+| Seleziona il contesto di prenotazione | `managing_entity_list`, poi `customization_get_primary` o `customization_search` per l’account selezionato. Usa una personalizzazione fornita se già nota. |
 | Trova una destinazione | `destination_lookup_search_suggestions` e `destination_lookup_get`. |
 | Cerca hotel e camere | `inventory_search_city` o `inventory_search_geo`, poi `property_inventory_get` per tariffe e disponibilità. |
 | Preventiva la camera selezionata | `agentic_booking_quote`. Passa i dettagli della camera dentro il suo argomento `request`. |
-| Paga e conferma | Ottieni una credenziale dal portafoglio collegato, poi chiama `agentic_booking_pay` con `request.quoteId` e esattamente uno tra `request.spt` o `request.tempoTransactionHash`. Mantieni lo stesso utente Wink connesso per preventivo e pagamento. |
+| Paga e conferma | Ottieni un Shared Payment Token dal portafoglio collegato, poi chiama `agentic_booking_pay` con `request.quoteId` e `request.spt`. Mantieni lo stesso utente Wink connesso per preventivo e pagamento. |
 | Recupera la prenotazione e la ricevuta | Usa `booking_search` o `booking_search_list` per trovare la prenotazione confermata, poi `booking_get` e `booking_receipt_get` con il suo identificatore di prenotazione. |
 
 La richiesta di preventivo necessita di `hotelIdentifier`, `roomRateIdentifier`, `checkIn`, `checkOut`, `adults`, `children` e `customizationIdentifier`. Le date usano il formato `YYYY-MM-DD`; `checkOut` deve seguire `checkIn`. Imposta `adults` ad almeno `1` e `children` a `0`.
 
-Il preventivo restituisce `quoteId`, `amountUsdCents`, `currency`, `expiresAt` e `mppChallenges`. Mostra i centesimi USD come dollari: `10000` significa **$100.00**. Per Tempo, usa il token, la chain, il destinatario e l’importo in unità base del token della sfida scelta.
+Il preventivo restituisce `quoteId`, `amountUsdCents`, `currency`, `expiresAt` e `mppChallenges`. Mostra i centesimi USD come dollari: `10000` significa **$100.00**.
 
 | Risultato pagamento | Passo successivo |
 | --- | --- |
@@ -104,17 +103,17 @@ Il preventivo restituisce `quoteId`, `amountUsdCents`, `currency`, `expiresAt` e
 | `IN_PROGRESS` | Attendi brevemente e riprova lo stesso preventivo e credenziale. |
 | `DECLINED` | Richiedi un nuovo preventivo e rivedilo prima di un altro pagamento. |
 
-Un tentativo riuscito di ripetizione restituisce la prenotazione esistente senza addebitare di nuovo. Considera un timeout come esito sconosciuto e riprova lo stesso pagamento. Se resta irrisolto, contatta il supporto con l’ID del preventivo.
+Un ritentativo riuscito restituisce la prenotazione esistente senza addebitare di nuovo. Considera un timeout come esito sconosciuto e riprova lo stesso pagamento. Se resta irrisolto, contatta il supporto con l’ID del preventivo.
 
 ### Client MCP con consapevolezza del pagamento
 
-I client MCP con consapevolezza del pagamento possono usare `agentic_booking_book` con i campi della camera direttamente in `arguments`. La prima chiamata restituisce errore `-32042` con le sfide di pagamento. Riprova la stessa chiamata con la credenziale del portafoglio in `params._meta["org.paymentauth/credential"]`; il successo include `result._meta["org.paymentauth/receipt"]`. L’errore `-32043` indica un fallimento di pagamento e una sfida: un rifiuto definitivo richiede un nuovo preventivo, mentre un payload di pagamento incompleto può riprovare con la stessa sfida. Per `-32603`, un `data.failure.reason` di `payment-in-progress` o `already-consumed` significa riprovare la stessa credenziale; il solo codice errore non è sufficiente.
+I client MCP con consapevolezza del pagamento possono usare `agentic_booking_book` con i campi della camera direttamente in `arguments`. La prima chiamata restituisce errore `-32042` con sfide di pagamento. Riprova la stessa chiamata con la credenziale del portafoglio in `params._meta["org.paymentauth/credential"]`; il successo include `result._meta["org.paymentauth/receipt"]`. L’errore `-32043` indica un fallimento di pagamento e una sfida: un rifiuto definitivo richiede un nuovo preventivo, mentre un payload di pagamento incompleto può riprovare con la stessa sfida. Per `-32603`, un `data.failure.reason` di `payment-in-progress` o `already-consumed` significa riprovare la stessa credenziale; il solo codice errore non è sufficiente.
 
 ## Prenota via REST
 
 Usa REST quando costruisci un’integrazione che chiama Wink direttamente via HTTP. Sia il preventivo che il pagamento usano **`POST https://api.wink.travel/api/mpp/booking`**.
 
-La tua applicazione necessita di un [token di accesso utente Wink](/it/developers/authentication/) con autorizzazione `payment.write` per pagare. Mantieni lo stesso utente per entrambe le chiamate. Invia il token in `Wink-Authorization`, lasciando `Authorization` disponibile per la credenziale di pagamento del portafoglio. Queste intestazioni si applicano a REST; un client MCP gestisce la propria autenticazione.
+La tua applicazione ha bisogno di un [token di accesso utente Wink](/it/developers/authentication/) con autorizzazione `payment.write` per pagare. Mantieni lo stesso utente per entrambe le chiamate. Invia il token in `Wink-Authorization`, lasciando `Authorization` disponibile per la credenziale di pagamento del portafoglio. Queste intestazioni si applicano a REST; un client MCP gestisce la propria autenticazione.
 
 ### 1. Richiedi un preventivo
 
@@ -145,7 +144,7 @@ Wink restituisce **`402 Payment Required`** con una sfida `WWW-Authenticate: Pay
 
 ### 2. Paga e conferma
 
-Fai sì che il portafoglio soddisfi una delle sfide restituite. Per Stripe, fornisce `payload.spt`; per Tempo, fornisce `payload.hash` con `payload.type` impostato a `"hash"`. Usa i dettagli di pagamento di quella sfida.
+Fai in modo che il portafoglio soddisfi la sfida Stripe restituita fornendo un Shared Payment Token in `payload.spt`. Usa i dettagli di pagamento da quella sfida.
 
 Imposta `MPP_CREDENTIAL` alla credenziale MPP codificata del portafoglio, che contiene la sfida e il payload di pagamento. Riprova lo **stesso corpo di richiesta**, mantenendo l’intestazione di identità:
 
@@ -157,7 +156,7 @@ curl -i https://api.wink.travel/api/mpp/booking \
   --data-binary @booking.json
 ```
 
-In caso di successo, Wink restituisce **`200 OK`**, un corpo JSON contenente `bookingConfirmationCode` e un’intestazione `Payment-Receipt`. Salva la conferma e la ricevuta. Un tentativo riuscito di ripetizione restituisce la prenotazione esistente senza addebitare di nuovo.
+Se ha successo, Wink restituisce **`200 OK`**, un corpo JSON contenente `bookingConfirmationCode` e un’intestazione `Payment-Receipt`. Salva la conferma e la ricevuta. Un ritentativo riuscito restituisce la prenotazione esistente senza addebitare di nuovo.
 
 ### Gestisci risposte e ritentativi
 
@@ -176,6 +175,6 @@ Una risposta `409` ha un corpo `application/problem+json`. Confronta il suo `typ
 | [https://api.wink.travel/problems/payment-in-progress](https://api.wink.travel/problems/payment-in-progress) | Un tentativo di pagamento è ancora in corso o la liquidazione non può ancora essere confermata. |
 | [https://api.wink.travel/problems/already-consumed](https://api.wink.travel/problems/already-consumed) | La sfida o la prova di pagamento è già stata usata da un tentativo forse riuscito. Questo da solo non conferma la prenotazione. |
 
-Entrambi significano **ripeti lo stesso pagamento; non pagare un nuovo preventivo**. Gli URL identificano e documentano il problema; non sono endpoint di pagamento o polling. Riprova `POST /api/mpp/booking` e usa il `type` del problema anziché il testo libero `detail` per decidere cosa fare. Vedi il [riferimento ai tipi di problema](https://api.wink.travel/problems) per tutti i problemi di pagamento Wink.
+Entrambi significano **riprovare lo stesso pagamento; non pagare un nuovo preventivo**. Gli URL identificano e documentano il problema; non sono endpoint di pagamento o polling. Riprova `POST /api/mpp/booking` e usa il `type` del problema anziché il testo libero `detail` per decidere cosa fare. Vedi il [riferimento ai tipi di problema](https://api.wink.travel/problems) per tutti i problemi di pagamento Wink.
 
 Un timeout, una risposta persa o un errore server dopo l’invio del pagamento possono lasciare l’esito sconosciuto. Riprova la stessa richiesta di pagamento. Se l’esito resta irrisolto, contatta il supporto con l’ID del preventivo prima di iniziare un altro pagamento.

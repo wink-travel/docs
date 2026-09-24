@@ -14,7 +14,7 @@ For den komplette bookingproces har din agent brug for **Wink Booking Engine** o
 | Forbindelse | Hvad den gør | Hvordan man tilføjer den |
 | --- | --- | --- |
 | **Wink Booking Engine** — påkrævet | Finder destinationer, søger hoteller og værelsespriser, giver tilbud og bekræfter bookinger samt henter dine bookinger og kvitteringer. | Tilføj `https://api.wink.travel/mcp/booking-engine` som en fjern HTTP MCP-server. |
-| **Betalingswallet** — påkrævet for betaling | Leverer betalingsoplysninger efter du har godkendt købet. | Forbind en wallet, der understøtter Stripe Shared Payment Tokens eller Tempo-betalinger. Se Link-eksemplet nedenfor. |
+| **Betalingswallet** — påkrævet for betaling | Leverer betalingsoplysninger efter du har godkendt købet. | Forbind en wallet, der understøtter Stripe Shared Payment Tokens. Se Link-eksemplet nedenfor. |
 | Wink Reference — valgfri | Opslag af lande, valutaer og andre referenceoplysninger. | `https://api.wink.travel/mcp/reference` |
 | Wink Docs — valgfri | Hjælper din agent med at læse dokumentation og API-kontrakter. | `https://docs.mcp.wink.travel/mcp` |
 
@@ -54,7 +54,7 @@ For Stripe-betalinger er en mulighed **Links agentwallet**. Hvis din klient unde
 
 Bed din agent om at forbinde din Link-konto, følg derefter verifikationslinket, den giver, og godkend forbindelsen. Link leverer Shared Payment Token, som bruges til at betale for bookingen. Link understøtter i øjeblikket amerikanske konti; tjek deres forbrugsgrænser før booking. Se [Links opsætningsguide](https://github.com/stripe/link-cli#quickstart) og [MCP-konfiguration](https://github.com/stripe/link-cli#mcp-server).
 
-Du kan også bruge en wallet, der understøtter Tempo-betalingsudfordringen, som Wink tilbyder. Hvis din agent allerede har en kompatibel wallet forbundet, brug den forbindelse. Wallet-opsætning og betalingsgodkendelse er adskilt fra login til Wink.
+Hvis din agent allerede har en kompatibel wallet forbundet, brug den forbindelse. Wallet-opsætning og betalingsgodkendelse er adskilt fra login til Wink.
 
 ## 2. Bed din agent om at finde et værelse
 
@@ -70,16 +70,15 @@ Dette betalingsflow understøtter i øjeblikket **ét værelse, prissat i USD, k
 
 ## 3. Gennemgå og godkend betaling
 
-Tjek hotellet, værelset, datoerne, gæsterne, afbestillingsbetingelserne og den tilbudte totalpris. Når du er klar, bed din agent om at booke og fuldføre eventuel godkendelse, som din wallet kræver.
+Tjek hotellet, værelset, datoerne, gæsterne, afbestillingsbetingelserne og det tilbudte totalbeløb. Når du er klar, bed din agent om at booke og fuldføre eventuel godkendelse, som din wallet kræver.
 
-Agenten bruger en af de betalingsmetoder, som tilbuddet tilbyder:
+Walleten leverer en **Stripe Shared Payment Token** til at betale for tilbuddet.
 
-- **Stripe:** wallet’en leverer et Shared Payment Token.
-- **Tempo:** wallet’en foretager overførslen, som udfordringen specificerer, og leverer dens transaktionshash.
+**Tempo stablecoin-betalinger kommer snart.**
 
 Efter betalingen er gennemført, giver din agent dig en **bookingbekræftelseskode**. Den kan også hente bookingdetaljer og kvittering via Booking Engine MCP.
 
-Hvis betalingen stadig behandles, eller svaret er gået tabt, kan agenten tjekke **samme betalingsforsøg**. Den bør genbruge tilbuddet og betalingsoplysningerne i stedet for at starte en ny betaling. Hvis betalingen afvises, bed om et nyt tilbud og gennemgå det, før du prøver igen.
+Hvis betalingen stadig behandles, eller svaret går tabt, lad agenten tjekke **samme betalingsforsøg**. Den bør genbruge tilbuddet og betalingsoplysningerne i stedet for at starte en anden betaling. Hvis betalingen afvises, bed om et nyt tilbud og gennemgå det, før du prøver igen.
 
 ## Værktøjsreference for agenter og udviklere
 
@@ -91,24 +90,24 @@ Alle Wink-værktøjer nedenfor er tilgængelige via **Booking Engine MCP**. MCP-
 | Find en destination | `destination_lookup_search_suggestions` og `destination_lookup_get`. |
 | Søg hoteller og værelser | `inventory_search_city` eller `inventory_search_geo`, derefter `property_inventory_get` for priser og tilgængelighed. |
 | Tilbud på det valgte værelse | `agentic_booking_quote`. Send værelsesdetaljer i dets `request`-argument. |
-| Betal og bekræft | Få en legitimationsoplysning fra den tilknyttede wallet, og kald derefter `agentic_booking_pay` med `request.quoteId` og præcis én af `request.spt` eller `request.tempoTransactionHash`. Behold samme indloggede Wink-bruger til tilbud og betaling. |
-| Hent booking og kvittering | Brug `booking_search` eller `booking_search_list` til at finde den bekræftede booking, derefter `booking_get` og `booking_receipt_get` med dens booking-id. |
+| Betal og bekræft | Få en Shared Payment Token fra den tilknyttede wallet, og kald derefter `agentic_booking_pay` med `request.quoteId` og `request.spt`. Brug samme indloggede Wink-bruger til tilbud og betaling. |
+| Hent booking og kvittering | Brug `booking_search` eller `booking_search_list` til at finde den bekræftede booking, derefter `booking_get` og `booking_receipt_get` med bookingens identifikator. |
 
 Tilbudsanmodningen kræver `hotelIdentifier`, `roomRateIdentifier`, `checkIn`, `checkOut`, `adults`, `children` og `customizationIdentifier`. Datoer bruger `YYYY-MM-DD`; `checkOut` skal følge efter `checkIn`. Sæt `adults` til mindst `1` og `children` til `0`.
 
-Tilbuddet returnerer `quoteId`, `amountUsdCents`, `currency`, `expiresAt` og `mppChallenges`. Vis USD-cent som dollars: `10000` betyder **$100,00**. For Tempo, brug den valgte udfordrings token, kæde, modtager og beløb i tokenens basisenheder.
+Tilbuddet returnerer `quoteId`, `amountUsdCents`, `currency`, `expiresAt` og `mppChallenges`. Vis USD-cent som dollars: `10000` betyder **$100,00**.
 
 | Betalingsresultat | Næste trin |
 | --- | --- |
 | `PAYMENT_SUCCEEDED` | Gem `bookingConfirmationCode` og `chargeReference`. |
-| `IN_PROGRESS` | Vent kort og prøv samme tilbud og legitimationsoplysning igen. |
+| `IN_PROGRESS` | Vent kort og prøv samme tilbud og legitimationsoplysninger igen. |
 | `DECLINED` | Anmod om et nyt tilbud og gennemgå det, før du prøver at betale igen. |
 
 Et vellykket forsøg returnerer den eksisterende booking uden at opkræve igen. Behandl en timeout som et ukendt resultat og prøv samme betaling igen. Hvis det forbliver uafklaret, kontakt support med tilbuds-ID’et.
 
 ### Betalingsbevidste MCP-klienter
 
-Betalingsbevidste MCP-klienter kan bruge `agentic_booking_book` med værelsesfelterne direkte i `arguments`. Det første kald returnerer fejl `-32042` med betalingsudfordringer. Prøv samme kald igen med wallet-legitimationsoplysninger i `params._meta["org.paymentauth/credential"]`; succes inkluderer `result._meta["org.paymentauth/receipt"]`. Fejl `-32043` indeholder en betalingsfejl og udfordring: en definitiv afvisning kræver et nyt tilbud, mens en ufuldstændig betalingspayload kan prøves igen med samme udfordring. For `-32603` betyder `data.failure.reason` af `payment-in-progress` eller `already-consumed`, at samme legitimationsoplysning kan prøves igen; fejlkoden alene er ikke nok.
+Betalingsbevidste MCP-klienter kan bruge `agentic_booking_book` med værelsefelterne direkte i `arguments`. Det første kald returnerer fejl `-32042` med betalingsudfordringer. Prøv samme kald igen med wallet-legitimationsoplysninger i `params._meta["org.paymentauth/credential"]`; succes inkluderer `result._meta["org.paymentauth/receipt"]`. Fejl `-32043` indeholder en betalingsfejl og udfordring: en definitiv afvisning kræver et nyt tilbud, mens en ufuldstændig betalingspayload kan prøves igen med samme udfordring. For `-32603` betyder `data.failure.reason` af `payment-in-progress` eller `already-consumed`, at samme legitimationsoplysninger kan prøves igen; fejlkoden alene er ikke nok.
 
 ## Book via REST
 
@@ -145,9 +144,9 @@ Wink returnerer **`402 Payment Required`** med en `WWW-Authenticate: Payment ...
 
 ### 2. Betal og bekræft
 
-Lad wallet’en opfylde en af de returnerede udfordringer. For Stripe leverer den `payload.spt`; for Tempo leverer den `payload.hash` med `payload.type` sat til `"hash"`. Brug betalingsoplysningerne fra den udfordring.
+Lad wallet’en opfylde den returnerede Stripe-udfordring ved at levere en Shared Payment Token i `payload.spt`. Brug betalingsoplysningerne fra den udfordring.
 
-Sæt `MPP_CREDENTIAL` til walletens kodede MPP-legitimationsoplysning, som indeholder udfordringen og betalingspayloaden. Prøv **samme anmodningsbody** igen, og behold identitetsheaderen:
+Sæt `MPP_CREDENTIAL` til walletens kodede MPP-legitimationsoplysninger, som indeholder udfordringen og betalingspayloaden. Prøv **samme anmodningsbody** igen, og behold identitet-headeren:
 
 ```bash
 curl -i https://api.wink.travel/api/mpp/booking \
@@ -164,9 +163,9 @@ Ved succes returnerer Wink **`200 OK`**, en JSON-body med `bookingConfirmationCo
 | Svar | Hvad du skal gøre |
 | --- | --- |
 | `400` | Ret ugyldige værelsesdetaljer eller en forkert formateret legitimationsoplysning. |
-| `401` / `403` | Tjek brugerens autentificering og betalingsrettigheder. |
+| `401` / `403` | Tjek brugerens autentificering og betalingstilladelse. |
 | `402` | Undersøg det returnerede problem og udfordring. En definitiv betalingsafvisning kræver et nyt tilbud; en ufuldstændig betalingspayload genbruger den oprindelige udfordring. Gennemgå prisen før betaling. |
-| `409` | Betalingsresultatet er uafklaret. Vent kort, og prøv samme body og legitimationsoplysning igen ved booking-endpointet. |
+| `409` | Betalingsresultatet er uafklaret. Vent kort, og prøv samme body og legitimationsoplysninger igen ved booking-endpointet. |
 | `429` | Vent det antal sekunder, der står i `Retry-After`, og prøv igen. |
 
 Et `409`-svar har en `application/problem+json`-body. Match dens `type` mod disse præcise URL’er:
