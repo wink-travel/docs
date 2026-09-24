@@ -1,5 +1,5 @@
 ---
-title: Integrácia Webhookov
+title: Integrácia webhookov
 description: Tento návod ukazuje vývojárom, ako nastaviť webhooky na prijímanie notifikácií v reálnom čase o rezerváciách, platbách a ďalších udalostiach.
 sidebar:
   order: 3
@@ -13,7 +13,7 @@ Webhooky umožňujú vašim systémom prijímať notifikácie v reálnom čase, 
 
 Tento návod je určený pre vývojárov integrujúcich Wink s externými systémami, ako sú systémy správy nehnuteľností (PMS), manažéri kanálov, CRM alebo vlastné dashboardy.
 
-## Ako webhooky fungujú
+## Ako fungujú webhooky
 
 1. Zaregistrujete URL webhooku vo Winku.
 2. Keď nastane udalosť (napr. nová rezervácia), Wink pošle HTTP POST na vašu URL.
@@ -23,20 +23,20 @@ Tento návod je určený pre vývojárov integrujúcich Wink s externými systé
 
 <Steps>
 1. Prihláste sa do svojho účtu (Extranet, Studio alebo TripPay — všetky podporujú webhooky).
-2. Prejdite do `Applications` a potom `Webhooks`. Pozrite si [Webhooky](/sk/portal/settings/webhooks).
+2. Prejdite do `Applications` a potom `Webhooks`. Pozrite si [Webhooks](/sk/portal/settings/webhooks).
 3. Kliknite na `Create webhook`.
-4. Zadajte **názov** (napr. "Synchronizácia rezervácií PMS").
+4. Zadajte **názov** (napr. "PMS synchronizácia rezervácií").
 5. Zadajte svoju **webhook URL** — HTTPS endpoint na vašom serveri.
-6. **Vyberte udalosti** — Vyberte konkrétne udalosti, na ktoré sa chcete prihlásiť, alebo nechajte prázdne pre prijímanie všetkých udalostí.
+6. **Vyberte udalosti** — Vyberte konkrétne udalosti, na ktoré sa chcete prihlásiť, alebo nechajte prázdne, aby ste dostávali všetky udalosti.
 7. Prepnite **Enabled** na zapnuté.
 8. Kliknite na `Save` — odpoveď zobrazí váš **signing secret iba raz**; uložte si ho teraz.
 </Steps>
 
 ## Typy udalostí
 
-Wink dnes publikuje 70 typov webhook udalostí naprieč rezerváciami, nehnuteľnosťami, účtami (správa entít)
+Wink dnes publikuje 70 typov udalostí webhookov naprieč rezerváciami, nehnuteľnosťami, účtami (správa entít)
 a inventárom (typy izieb, cenové plány, hlavné ceny, doplnky, zariadenia, predajné kanály, promo akcie).
-Bežné:
+Bežné príklady:
 
 | Kategória | Príklady |
 |---|---|
@@ -45,7 +45,7 @@ Bežné:
 | **Inventár** | `room_type.updated`, `rate_plan.created`, `master_rate.updated`, `special_rate.created`, `sales_channel.created` |
 | **Účet** | `managing_entity.created`, `managing_entity.status.updated`, `managing_entity.manager.added` |
 
-Kompletný, generovaný zoznam — s popisom, kto ho prijíma, a odkazom na referenčnú stránku každej udalosti — je **Katalóg webhook udalostí**. Referenčná stránka pre každú udalosť (JSON telo, hlavičky, retry politika) je v [Webhooks API](/sk/api/webhooks/).
+Kompletný, generovaný zoznam — s popisom, kto ho prijíma a odkazom na referenčnú stránku každej udalosti — je **Katalóg udalostí webhookov**. Referenčná stránka pre každú udalosť (JSON telo, hlavičky, retry politika) je v [Webhooks API](/sk/api/webhooks/).
 
 <LinkButton href="/sk/developers/webhook-events">
   Zobraziť všetky typy udalostí
@@ -67,16 +67,11 @@ Každé doručenie je HTTP `POST` na vašu webhook URL s `Content-Type: applicat
 }
 ```
 
-- `id` — identifikátor udalosti; rovnaký pre každý endpoint vášho účtu, ktorý túto udalosť prijíma, a pre
-  každé opätovné doručenie. Použite ho ako svoj **idempotentný kľúč**.
-- `type` — kľúč typu udalosti (tiež odoslaný ako hlavička `Wink-Event-Type`). Rozlišujte podľa `type` a `schemaVersion`
-  na parsovanie `object`.
-- `object` — vybraný súhrn zdroja, ktorého sa udalosť týka (identifikátory, stav, polia, na ktoré reagujete)
-  plus `links.self`, kanonická REST URL dodávateľa plného zdroja. Stiahnite si ju s vlastnými API
-  povereniami, keď potrebujete viac než súhrn; ak udalosť prijímate ako reseller alebo cestovná agentúra, použite
-  príslušný endpoint zdroja vo vašom API pre rovnaký identifikátor.
+- `id` — identifikátor udalosti; rovnaký pre každý endpoint vášho účtu, ktorý túto udalosť prijíma, a pre každý retry. Použite ho ako svoj **idempotentný kľúč**.
+- `type` — kľúč typu udalosti (tiež odoslaný ako hlavička `Wink-Event-Type`). Rozlišujte podľa `type` a `schemaVersion` na parsovanie `object`.
+- `object` — vybraný súhrn zdroja, ktorého sa udalosť týka (identifikátory, stav, polia, na ktoré reagujete) plus `links.self`, kanonická REST URL dodávateľa plného zdroja. Stiahnite si ju s vlastnými API povereniami, keď potrebujete viac než súhrn; ak udalosť prijímate ako reseller alebo cestovná agentúra, použite príslušný endpoint vlastného API pre rovnaký identifikátor.
 
-Každá schéma payloadu je zdokumentovaná pre udalosť v referencii [Webhooks API](/sk/api/webhooks/).
+Každá schéma payloadu je zdokumentovaná pre každú udalosť v referencii [Webhooks API](/sk/api/webhooks/).
 
 ### Hlavičky
 
@@ -91,20 +86,16 @@ Každá schéma payloadu je zdokumentovaná pre udalosť v referencii [Webhooks 
 
 ## Overovanie podpisov
 
-Každý webhook má **signing secret** (`whsec_…`), ktorý Wink zobrazí **iba raz**, keď webhook vytvoríte alebo
-otočíte jeho tajomstvo. Uložte ho ako heslo. Každé doručenie nesie
+Každý webhook má **signing secret** (`whsec_…`), ktorý Wink zobrazí **iba raz**, keď webhook vytvoríte alebo obnovíte jeho tajomstvo. Uložte si ho ako heslo. Každé doručenie nesie
 
 ```
 Wink-Signature: t=1755250200,v1=5d41402abc4b2a76b9719d911017c592…
 ```
 
-kde `t` je Unix timestamp (v sekundách) a `v1` je hexadecimálny **HMAC-SHA256** reťazec
-`t + "." + rawBody`, kľúčovaný vaším tajomstvom, a `rawBody` je presné telo požiadavky v bajtoch, ako bolo prijaté —
-nepreserializujte JSON pred overením. Po dobu 24 hodín po otočení tajomstva hlavička nesie
-druhú hodnotu `v1=` podpísanú predchádzajúcim tajomstvom; doručenie akceptujte, ak **ktorýkoľvek** `v1` sedí.
+kde `t` je Unix timestamp (v sekundách) a `v1` je hexadecimálny **HMAC-SHA256** reťazec malými písmenami zo stringu
+`t + "." + rawBody`, kľúčovaný vaším tajomstvom, a `rawBody` je presné telo požiadavky v bajtoch, ako bolo prijaté — nepreserializujte JSON pred overením. Po dobu 24 hodín po obnove tajomstva hlavička nesie druhú hodnotu `v1=` podpísanú predchádzajúcim tajomstvom; akceptujte doručenie, ak **ktorýkoľvek** `v1` sedí.
 
-Overujte v štyroch krokoch: rozparsujte `t` a všetky `v1`; prepočítajte HMAC nad `t.rawBody` s vaším tajomstvom;
-porovnajte pomocou časovo bezpečného porovnania; odmietnite, ak `|now − t|` prekročí vašu toleranciu (odporúčané 5 minút).
+Overte v štyroch krokoch: rozparsujte `t` a všetky `v1`; prepočítajte HMAC cez `t.rawBody` s vaším tajomstvom; porovnajte pomocou časovo bezpečného porovnania; odmietnite, ak `|now − t|` prekročí vašu toleranciu (odporúča sa 5 minút).
 
 ```js
 // Node.js (Express-style; uistite sa, že máte RAW telo, nie parsovaný objekt)
@@ -141,15 +132,15 @@ static boolean verify(String header, String rawBody, String secret, long nowSeco
 }
 ```
 
-Otočte tajomstvo z portálu alebo pomocou `POST /api/managing-entity/{id}/webhook/{webhookId}/rotate-secret`;
-odpoveď zobrazí nové tajomstvo iba raz, a staré zostáva platné 24 hodín, kým ho nasadíte.
+Obnovte tajomstvo z portálu alebo pomocou `POST /api/managing-entity/{id}/webhook/{webhookId}/rotate-secret`;
+odpoveď zobrazí nové tajomstvo iba raz a staré zostáva platné 24 hodín, kým ho nasadíte.
 
 ## Opakované pokusy a opätovné doručenie
 
-- Odpovedzte akýmkoľvek `2xx` do 10 sekúnd na potvrdenie prijatia. Ťažkú prácu robte asynchrónne.
+- Odpovedzte akýmkoľvek `2xx` do 10 sekúnd na potvrdenie prijatia. Ťažké spracovanie robte asynchrónne.
 - `5xx`, timeout, `408` alebo `429` sa opakujú s odstupmi: po 1 minúte, 5 minútach, 30 minútach, 2 hodinách,
   6 hodinách, 12 hodinách, potom denne — 10 pokusov za cca 3 dni — potom je doručenie označené ako **mŕtve**.
-- Akýkoľvek iný `4xx` sa považuje za "odmietnuté doručenie" a **neopakuje sa**.
+- Akýkoľvek iný `4xx` sa považuje za "odmietnuté doručenie" a **neopakujú sa**.
 - Každá udalosť, doručenie a pokus (stav, ukážka odpovede) je viditeľný v **Applications > Webhooks**
   a cez API (`…/webhook/event/grid`, `…/webhook/delivery/grid`). Môžete **opätovne doručiť** akékoľvek doručenie
   (`POST …/webhook/delivery/{deliveryId}/redeliver`, čo spustí novú sériu pokusov), opätovne doručiť všetky mŕtve
@@ -173,14 +164,14 @@ na živé udalosti.
 
 ## Pozastavenie a vymazanie
 
-Webhook môžete **zakázať** bez vymazania. Tým pozastavíte doručovanie, aby ste mohli riešiť problémy bez straty konfigurácie. Keď ste pripravení, opäť ho zapnite.
+Webhook môžete **zakázať** bez vymazania. Tým sa pozastaví doručovanie, aby ste mohli riešiť problémy bez straty konfigurácie. Keď ste pripravení, opäť ho zapnite.
 
-Vymazanie webhooku ho trvalo odstráni. Akákoľvek integrácia závislá na tomto webhooku prestane prijímať notifikácie.
+Vymazanie webhooku ho trvalo odstráni. Akákoľvek integrácia, ktorá na ňom závisí, prestane prijímať notifikácie.
 
 ## Ďalšie čítanie
 
-- [Katalóg webhook udalostí](/sk/developers/webhook-events) — Každý typ udalosti, generovaný z katalógu platformy.
+- [Katalóg udalostí webhookov](/sk/developers/webhook-events) — Každý typ udalosti, generovaný z katalógu platformy.
 - [Referenčný manuál Webhooks API](/sk/api/webhooks/) — Schémy payloadov, hlavičky a endpointy na správu prihlásení/doručení.
-- [Webhooky](/sk/portal/settings/webhooks) — Kompletná referencia správy webhookov.
+- [Webhooks](/sk/portal/settings/webhooks) — Kompletná referencia správy webhookov.
 - [Applications](/sk/account/applications) — Správa vašich API poverení.
-- [Developers > APIs](/sk/api) — Kompletná API dokumentácia.
+- [Developers > APIs](/sk/api/overview/) — Kompletná dokumentácia API.

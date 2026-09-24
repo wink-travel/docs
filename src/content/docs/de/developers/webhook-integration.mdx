@@ -16,7 +16,7 @@ Diese Anleitung richtet sich an Entwickler, die Wink mit externen Systemen wie P
 ## Funktionsweise von Webhooks
 
 1. Sie registrieren eine Webhook-URL bei Wink.
-2. Wenn ein Ereignis eintritt (z. B. eine neue Buchung), sendet Wink eine HTTP-POST-Anfrage an Ihre URL.
+2. Wenn ein Ereignis eintritt (z. B. eine neue Buchung), sendet Wink eine HTTP POST-Anfrage an Ihre URL.
 3. Ihr Server verarbeitet die Nutzlast und antwortet mit einem `200 OK`.
 
 ## Einrichtung eines Webhooks
@@ -52,7 +52,7 @@ Die vollständige, generierte Liste — mit Beschreibung, Empfängern und einem 
 
 ## Was Sie erhalten
 
-Jede Zustellung ist ein HTTP-`POST` an Ihre Webhook-URL mit `Content-Type: application/json` und folgendem Umschlag:
+Jede Zustellung ist ein HTTP `POST` an Ihre Webhook-URL mit `Content-Type: application/json` und folgendem Umschlag:
 
 ```json
 {
@@ -62,15 +62,15 @@ Jede Zustellung ist ein HTTP-`POST` an Ihre Webhook-URL mit `Content-Type: appli
   "ownerIdentifier": "3c6b1a5d-8e2f-4a0b-9c7d-6e4f0a8b2c51",
   "recipientRole": "SUPPLIER",
   "schemaVersion": 2,
-  "object": { "...": "ereignisspezifische Nutzlast, z. B. BookingWebhookPayload" }
+  "object": { "...": "ereignisspezifische Nutzlast, z.B. BookingWebhookPayload" }
 }
 ```
 
 - `id` — die Ereignis-ID; identisch für jeden Endpunkt Ihres Kontos, der dieses Ereignis erhält, und für jeden erneuten Zustellversuch. Verwenden Sie sie als Ihre **Idempotenz-Schlüssel**.
-- `type` — der Ereignistyp-Schlüssel (auch als `Wink-Event-Type` Header gesendet). Verzweigen Sie nach `type` und `schemaVersion`, um `object` zu parsen.
+- `type` — der Ereignistyp-Schlüssel (wird auch als `Wink-Event-Type` Header gesendet). Verzweigen Sie anhand von `type` und `schemaVersion`, um `object` zu parsen.
 - `object` — eine kuratierte Zusammenfassung der Ressource, auf die sich das Ereignis bezieht (IDs, Status, die Felder, auf die Sie reagieren), plus `links.self`, die kanonische REST-URL der vollständigen Ressource auf Lieferantenseite. Rufen Sie diese mit Ihren eigenen API-Zugangsdaten ab, wenn Sie mehr als die Zusammenfassung benötigen; wenn Sie das Ereignis als Reseller oder Reisebüro erhalten, verwenden Sie den entsprechenden Ressourcen-Endpunkt Ihrer eigenen API-Oberfläche für dieselbe ID.
 
-Jedes Nutzlastschema ist pro Ereignis in der [Webhooks API](/de/api/webhooks/) Referenz dokumentiert.
+Jedes Payload-Schema ist pro Ereignis in der [Webhooks API](/de/api/webhooks/) Referenz dokumentiert.
 
 ### Header
 
@@ -91,7 +91,7 @@ Jeder Webhook hat ein **Signing Secret** (`whsec_…`), das Wink **einmalig** an
 Wink-Signature: t=1755250200,v1=5d41402abc4b2a76b9719d911017c592…
 ```
 
-wobei `t` ein Unix-Timestamp (Sekunden) ist und `v1` die hexadezimale, kleingeschriebene **HMAC-SHA256** des Strings
+wobei `t` ein Unix-Timestamp (Sekunden) ist und `v1` die kleingeschriebene hexadezimale **HMAC-SHA256** des Strings
 `t + "." + rawBody`, mit Ihrem Secret als Schlüssel, und `rawBody` die exakten Bytes des Request-Bodys, wie empfangen — serialisieren Sie das JSON vor der Verifikation nicht neu. Für 24 Stunden nach einer Secret-Rotation enthält der Header einen zweiten `v1=`-Wert, der mit dem vorherigen Secret signiert ist; akzeptieren Sie die Zustellung, wenn **irgendein** `v1` übereinstimmt.
 
 Verifizieren Sie in vier Schritten: parsen Sie `t` und alle `v1`; berechnen Sie den HMAC über `t.rawBody` mit Ihrem Secret neu; vergleichen Sie mit einem zeitkonstanten Vergleich; lehnen Sie ab, wenn `|jetzt − t|` Ihre Toleranz überschreitet (5 Minuten empfohlen).
@@ -148,10 +148,10 @@ Senden Sie sich ein synthetisches `webhook.test`-Ereignis aus dem Portal oder mi
 
 ## Best Practices
 
-- **Verwenden Sie HTTPS** — Wink sendet Nutzlasten nur an HTTPS-Endpunkte.
+- **Verwenden Sie HTTPS** — Wink sendet Payloads nur an HTTPS-Endpunkte.
 - **Antworten Sie schnell** — Geben Sie ein `200 OK` zurück, sobald Sie die Nutzlast erhalten. Führen Sie aufwändige Verarbeitung asynchron aus.
 - **Idempotenz** — Ihr Handler sollte idempotent sein; deduplizieren Sie anhand von `Wink-Event-Id`. Wink versucht erneut, wenn keine `2xx`-Antwort empfangen wird.
-- **Quelle validieren** — Verifizieren Sie den `Wink-Signature`-Header (siehe [Signaturen verifizieren](#verifying-signatures)) vor der Verarbeitung; lehnen Sie alles ab, was fehlschlägt.
+- **Quelle validieren** — Verifizieren Sie den `Wink-Signature`-Header (siehe [Signaturen verifizieren](#signaturen-verifizieren)) vor der Verarbeitung; lehnen Sie alles ab, was fehlschlägt.
 - **Logging** — Protokollieren Sie jede empfangene Webhook-Nutzlast. Das erleichtert die Fehlersuche bei Integrationsproblemen erheblich.
 
 ## Pausieren und Löschen
@@ -163,7 +163,7 @@ Das Löschen eines Webhooks entfernt ihn dauerhaft. Jede Integration, die auf di
 ## Weiterführende Informationen
 
 - [Webhook Events Catalog](/de/developers/webhook-events) — Alle Ereignistypen, generiert aus dem Plattform-Katalog.
-- [Webhooks API reference](/de/api/webhooks/) — Nutzlast-Schemata pro Ereignis, Header und Endpunkte zur Verwaltung von Abonnements und Zustellungen.
+- [Webhooks API reference](/de/api/webhooks/) — Payload-Schemas pro Ereignis, Header und Endpunkte zur Verwaltung von Abonnements und Zustellungen.
 - [Webhooks](/de/portal/settings/webhooks) — Vollständige Referenz zur Webhook-Verwaltung.
 - [Applications](/de/account/applications) — Verwalten Sie Ihre API-Zugangsdaten.
-- [Developers > APIs](/de/api) — Vollständige API-Dokumentation.
+- [Developers > APIs](/de/api/overview/) — Vollständige API-Dokumentation.

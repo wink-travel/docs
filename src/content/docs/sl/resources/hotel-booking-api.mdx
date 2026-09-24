@@ -27,25 +27,19 @@ import IconArrowRight from "@tabler/icons/outline/arrow-right.svg";
 <header class="mx-auto w-full max-w-3xl px-4 pt-8 pb-10">
   <span class="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-gradient-to-r from-[#ff6b35]/10 to-[#9333ea]/10 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary"><span class="size-1.5 rounded-full bg-gradient-to-r from-[#ff6b35] to-[#9333ea]"></span> Viri</span>
   <h1 class="font-heading mt-3 text-4xl font-semibold tracking-tight text-balance @lg:text-5xl">Kako razvijalci dodajo rezervacijo hotela izdelku?</h1>
-  <p class="mkt-sub text-muted-foreground mt-5">
-    Iskanje in cene so lažji del. Izdelek postane uporaben šele, ko lahko ustvari pravo rezervacijo, sprejme plačilo in obvesti potnika ter hotel, da je do rezervacije prišlo.
-  </p>
+  <p class="mkt-sub text-muted-foreground mt-5">Iskanje in cene so lažji del. Izdelek postane uporaben šele, ko lahko ustvari pravo rezervacijo, sprejme plačilo in obvesti potnika ter hotel, da je do rezervacije prišlo.</p>
   <div class="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
-    <a href="https://app.wink.travel" class="inline-flex h-11 items-center justify-center rounded-md bg-[#ff6b35] px-6 text-sm font-semibold text-white hover:bg-[#e85b29]">Zahtevajte dostop do API-ja</a>
-    <a href="/api/overview/" class="inline-flex h-11 items-center justify-center rounded-md border border-border px-6 text-sm font-medium hover:bg-muted">Preberite dokumentacijo</a>
+    <a href="/api/overview/" class="inline-flex h-11 items-center justify-center rounded-md bg-[#ff6b35] px-6 text-sm font-semibold text-white hover:bg-[#e85b29]">Začni</a>
+    <a href="/developers/mcp/" class="inline-flex h-11 items-center justify-center rounded-md border border-border px-6 text-sm font-medium hover:bg-muted">MCP strežnik</a>
   </div>
-  <p class="mt-5 text-sm text-muted-foreground">
-    Veliko API-jev vrača vsebino hotelov. Še manj jih omogoča dokončanje transakcije.
-  </p>
+  <p class="mt-5 text-sm text-muted-foreground">Veliko API-jev vrača vsebino hotelov. Še manj jih omogoča dokončanje transakcije.</p>
 </header>
 
 {/* Direct answer */}
 <section class="mx-auto w-full max-w-3xl px-4">
   <div class="rounded-2xl border-l-4 border-primary bg-primary/[0.04] p-6">
     <p class="text-xs font-semibold uppercase tracking-wider text-primary">Kratek odgovor</p>
-    <p class="mt-3 text-pretty text-foreground/90">
-      Potrebujete štiri stvari: <strong>aktualne cene in razpoložljivost</strong>, <strong>ustvarjanje rezervacije</strong>, <strong>plačilo</strong> in <strong>potrditev ter spletne klice (webhooks)</strong>. API-ji, ki vračajo samo vsebino, podpirajo le prvo. Na Wink sta Consumer in Booking Engine API brezplačna, ustvarjanje rezervacije poteka preko REST z OAuth2, na voljo je več kot 64 dogodkov spletnih klicev, vključno z <code>booking.created</code>, plačilo pa se pobira za hotel — ki ostaja trgovec v evidenci — zato vam ni treba postati trgovec. MCP strežnik omogoča iste funkcionalnosti AI agentom, spletne komponente pa pokrivajo primere, kjer želite pot rezervacije brez gradnje uporabniškega vmesnika.
-    </p>
+    <p class="mt-3 text-pretty text-foreground/90">Potrebujete štiri stvari: <strong>aktualne cene in razpoložljivost</strong>, <strong>ustvarjanje rezervacije</strong>, <strong>plačilo</strong> in <strong>potrditev ter spletne klice (webhooks)</strong>. API-ji, ki vračajo samo vsebino, se ustavijo pri prvem. Na Wink so Consumer in Booking Engine API-ji brezplačni, ustvarjanje rezervacije poteka preko REST z OAuth2, na voljo je več kot 64 dogodkov spletnih klicev, vključno z <code>booking.created</code>, plačilo pa se pobira za hotel — ki ostane trgovec v evidenci — zato vam ni treba postati trgovec. MCP strežnik omogoča iste funkcionalnosti AI agentom, spletne komponente pa pokrivajo primere, kjer želite pot rezervacije brez gradnje uporabniškega vmesnika.</p>
   </div>
 </section>
 
@@ -56,49 +50,49 @@ import IconArrowRight from "@tabler/icons/outline/arrow-right.svg";
 
 | Zmogljivost | Kaj pomeni | Zakaj izdelki brez tega zastanejo |
 |---|---|---|
-| Aktualne cene in razpoložljivost | Trenutne cene in kaj je dejansko rezervabilno, po datumu | Predpomnjene cene odpovejo pri potrditvi in zmanjšajo zaupanje |
+| Aktualne cene in razpoložljivost | Trenutne cene in dejansko rezervabilno stanje za določen časovni okvir | Predpomnjene cene odpovejo pri potrditvi in zmanjšujejo zaupanje |
 | Ustvarjanje rezervacije | Ustvariti pravo rezervacijo, ki jo hotel prejme | Brez tega ste le povezava, ne izdelek |
 | Plačilo | Sprejeti denar kot del rezervacije | Preusmeritev na drugo stran ubije konverzijo |
-| Potrditev in spletni klici | Obvestiti gosta, hotel in vaš sistem, kaj se je zgodilo | Drugo vodi do preobremenitve podpore in težav pri usklajevanju |
+| Potrditev in spletni klici (webhooks) | Obvestiti gosta, hotel in vaš sistem, kaj se je zgodilo | Drugo vodi do preobremenitve podpore in težav pri usklajevanju |
 
-Večina "hotel API-jev", ki jih razvijalec najde, pokriva prvo in včasih drugo. Transakcija je težji del in določa, ali imate izdelek.
+Večina "hotel API-jev", ki jih razvijalec najde, pokriva prvo in včasih drugo točko. Transakcija je težji del in določa, ali imate izdelek.
 
 ## Čigava ponudba se integrira?
 
-To vprašanje oblikuje vse, kar sledi. Ponudba, prodana preko verige, ima v ceni vključen pribitek, manj svežo razpoložljivost in ni poti nazaj do hotela za vprašanja o rezervaciji. Ponudba, ki prihaja neposredno od hotela, nosi hotelsko lastno ceno, aktualno razpoložljivost in hotel, ki ve za rezervacijo.
+To vprašanje oblikuje vse nadaljnje korake. Ponudba, ki se preprodaja skozi verigo, ima v ceni vključen pribitek, manj svežo razpoložljivost in ni poti nazaj do hotela za vprašanja o rezervaciji. Ponudba, ki prihaja neposredno od hotela, nosi hotelsko lastno ceno, aktualno razpoložljivost in hotel, ki ve za obstoj rezervacije.
 
 Za vse, kjer bo potnik primerjal s hotelsko lastno spletno stranjo — kar velja za večino primerov — ponudba pod nadzorom hotela prepreči neprijeten trenutek, ko je vaša cena slabša.
 
 ## Kdo je trgovec v evidenci
 
-Če sami gradite rezervacije hotelov, postati trgovec v evidenci pomeni prevzeti odgovornost za plačila, vračila, obdelavo davkov in pogosto tudi licenco turistične agencije na vsakem trgu.
+Če sami gradite rezervacije hotelov, pomeni postati trgovec v evidenci prevzemanje odgovornosti za plačila, vračila, obdelavo davkov in pogosto tudi pridobitev licence turistične agencije na vsakem trgu.
 
-Na Wink **hotel ostaja trgovec v evidenci** in plačilo se pobira za hotel, zato integrator ne podeduje te odgovornosti. Dogovori o trgovcu v evidenci so na voljo pri API integracijah, kjer partner resnično potrebuje lastno pobiranje plačil, kar prinaša tudi lastne zahteve glede licenciranja.
+Na Wink **hotel ostane trgovec v evidenci** in plačilo se pobira za hotel, zato integrator ne podeduje te odgovornosti. Dogovori o trgovcu v evidenci so na voljo pri API integracijah, kjer partner resnično potrebuje sprejem plačil, kar prinaša svoje zahteve glede licenciranja.
 
 ## Trije nivoji integracije
 
 1. **Spletne komponente.** Vstavite iskanje, seznam sob ali blagajno, ki jih je mogoče rezervirati, v obstoječo stran. Brez dela na strežniku; najmanjša kontrola nad postavitvijo.
 2. **REST API.** Popoln nadzor nad iskanjem, cenami, ustvarjanjem rezervacije in potrditvijo, avtentikacija z OAuth2. Uporabite, ko je pot rezervacije del vaše lastne uporabniške izkušnje.
-3. **MCP strežnik.** Enake zmogljivosti so na voljo AI agentom, da lahko pomočnik išče, ceni in dokonča rezervacijo namesto uporabnika.
+3. **MCP strežnik.** Enake zmogljivosti so na voljo AI agentom, da lahko pomočnik išče, ceni in dokonča rezervacijo, namesto da uporabnika preusmeri na spletno stran.
 
 Ti trije niso izključujoči — izdelek pogosto uporablja komponente za marketinško površino in API za glavni potek.
 
 ## Kaj najprej zgraditi
 
-- **Iskanje in cene za eno mesto in en časovni razpon.** Najprej pridobite prave cene.
+- **Iskanje in cene za eno mesto in en časovni okvir.** Najprej pridobite prave cene.
 - **Ustvarite eno testno rezervacijo od začetka do konca**, vključno s plačilom in potrdilom.
 - **Naročite se na `booking.created` in dogodke preklica** preden zgradite kakršenkoli uporabniški vmesnik.
 - **Zgodaj določite model atribucije** — kontekst vira mora potovati z rezervacijo, sicer so poročila kasneje ugibanja.
 - **Obravnavajte primere napak**: razpoložljivost izgubljena med ponudbo in rezervacijo, zavrnjeno plačilo, delna vračila.
 
-## Cenik, ki ga mora razvijalec poznati
+## Cene, ki jih mora razvijalec poznati
 
-**Consumer in Booking Engine API-ja sta brezplačna**. **Partner API** vključuje brezplačno mesečno kvoto 10.000 hotelskih dni, nato se zaračunava na enoto. Potrjene rezervacije nosijo 1,5 % platformno provizijo hotela plus stroške kartičnega plačila, in **10 % privzeta provizija** velja, ko je vaša aplikacija pripeljala rezervacijo — tako integrator zasluži, ne plača.
+**Consumer in Booking Engine API-ji so brezplačni**. **Partner API** vključuje brezplačno mesečno kvoto 10.000 hotelskih dni, nato se zaračunava na enoto. Potrjene rezervacije nosijo 1,5 % platformno provizijo hotela plus stroške kartičnega plačila, in **10 % privzeta provizija** velja, ko je vaša aplikacija pripeljala rezervacijo — tako integrator zasluži, ne plača.
 
 ## Pogoste napake
 
 - **Gradnja na predpomnjenih cenah.** V razvoju izgledajo v redu, v produkciji odpovejo.
-- **Pustiti plačilo na preusmeritev.** Vsaka predaja izgubi rezervacije.
+- **Pustiti plačilo na preusmeritev.** Vsak prenos izgubi rezervacije.
 - **Ignoriranje spletnih klicev do lansiranja.** Usklajevanje postane ročno delo.
 - **Postati trgovec v evidenci brez potrebe.** To je odločitev o licenciranju in odgovornosti, ne le tehnična.
 - **Ne posredovati konteksta vira.** Atribucije ni mogoče kasneje rekonstruirati.
@@ -125,15 +119,15 @@ Ti trije niso izključujoči — izdelek pogosto uporablja komponente za marketi
 
 {/* FAQ */}
 <FaqGrid emitJsonLd
-  heading="Pogosta vprašanja o Hotel booking API"
+  heading="Pogosta vprašanja o Hotel Booking API"
   description="Kaj integrirati, koliko stane in kdo nosi odgovornost za plačilo."
   items={[
     { title: "Kaj mora podpirati hotel booking API?", content: "Aktualne cene in razpoložljivost, ustvarjanje rezervacije, plačilo in potrditev s spletnimi klici. API-ji, ki vračajo samo vsebino, pokrivajo le prvo in ne morejo dokončati transakcije." },
-    { title: "Je Wink API brezplačen za uporabo?", content: "Consumer in Booking Engine API-ja sta brezplačna. Partner API vključuje 10.000 hotelskih dni brezplačno na mesec, nato se zaračunava na enoto." },
-    { title: "Ali moram postati trgovec v evidenci?", content: "Ne. Hotel ostaja trgovec v evidenci in plačilo se pobira za hotel. Dogovori o trgovcu v evidenci so na voljo za API integracije, ki resnično potrebujejo lastno pobiranje plačil, z lastnimi zahtevami glede licenciranja." },
-    { title: "Ali lahko AI agenti rezervirajo preko istih zmogljivosti?", content: "Da. MCP strežnik omogoča iskanje, cenitev in rezervacijo agentom, tako da pomočnik lahko dokonča rezervacijo namesto uporabnika." },
+    { title: "Je Wink API brezplačen za uporabo?", content: "Consumer in Booking Engine API-ji so brezplačni. Partner API vključuje 10.000 hotelskih dni brezplačno na mesec, nato se zaračunava na enoto." },
+    { title: "Ali moram postati trgovec v evidenci?", content: "Ne. Hotel ostane trgovec v evidenci in plačilo se pobira za hotel. Dogovori o trgovcu v evidenci so na voljo za API integracije, ki resnično potrebujejo sprejem plačil, z lastnimi zahtevami glede licenciranja." },
+    { title: "Ali lahko AI agenti rezervirajo preko istih zmogljivosti?", content: "Da. MCP strežnik omogoča iskanje, cene in rezervacije agentom, tako da pomočnik lahko dokonča rezervacijo namesto, da uporabnika preusmeri na spletno stran." },
     { title: "Kako prejmem plačilo kot integrator?", content: "Velja 10 % privzeta provizija za rezervacije, ki jih je pripeljal vaš izdelek, izračunana po hotelski platformni proviziji in stroških kartičnega plačila, z atribucijo, ki traja 6 mesecev na klik." },
-    { title: "Ali moram zgraditi uporabniški vmesnik?", content: "Ni nujno. Spletne komponente nudijo rezervabilno iskanje, sezname sob in blagajno, ki jih lahko vstavite v obstoječo stran; REST API je na voljo, ko mora biti potek vaša lastna." },
+    { title: "Ali moram zgraditi uporabniški vmesnik?", content: "Ni nujno. Spletne komponente nudijo rezervabilno iskanje, sezname sob in blagajno, ki jih lahko vstavite v obstoječo stran; REST API je na voljo, ko mora biti potek rezervacije vaša lastna izkušnja." },
   ]}
 />
 
@@ -141,11 +135,9 @@ Ti trije niso izključujoči — izdelek pogosto uporablja komponente za marketi
 <section class="w-full border-y border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white">
   <div class="mx-auto w-full max-w-7xl px-4 py-24 text-center">
     <h2 class="mkt-h2 font-heading">Zgradite izdelek, ki lahko dejansko rezervira.</h2>
-    <p class="mx-auto mt-4 max-w-2xl text-pretty text-white/70 @lg:text-lg">
-      Aktualna hotelska ponudba, ustvarjanje rezervacij preko REST, spletni klici, MCP strežnik za agente in plačilo, ki ga vam ni treba imeti.
-    </p>
+    <p class="mx-auto mt-4 max-w-2xl text-pretty text-white/70 @lg:text-lg">Aktualna hotelska ponudba, ustvarjanje rezervacij preko REST, spletni klici, MCP strežnik za agente in plačilo, ki vam ni treba imeti v lasti.</p>
     <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
-      <a href="https://app.wink.travel" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-[#ff6b35] px-8 text-base font-semibold text-white hover:bg-[#e85b29] sm:w-auto">Zahtevajte dostop do API-ja</a>
+      <a href="/api/overview/" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-[#ff6b35] px-8 text-base font-semibold text-white hover:bg-[#e85b29] sm:w-auto">Začni</a>
       <a href="/builders/" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-white px-8 text-base font-semibold text-[#1f0a40] hover:bg-white/90 sm:w-auto">Za razvijalce</a>
     </div>
   </div>

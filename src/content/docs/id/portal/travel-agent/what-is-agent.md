@@ -19,4 +19,4 @@ Jika tidak, lanjutkan ke bagian berikutnya.
 
 ## API
 
-Pengembang yang ingin mengelola `Travel Agent` dapat menuju ke [Developers > API > Travel Agent](/id/api).
+Pengembang yang ingin mengelola `Travel Agent` dapat menuju ke [Developers > API > Travel Agent](/id/api/overview/).

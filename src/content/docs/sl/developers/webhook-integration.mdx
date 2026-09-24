@@ -23,19 +23,19 @@ Ta vodič je namenjen razvijalcem, ki integrirajo Wink z zunanjimi sistemi, kot 
 
 <Steps>
 1. Prijavite se v svoj račun (Extranet, Studio ali TripPay — vsi podpirajo webhooke).
-2. Pojdite na `Applications` in nato `Webhooks`. Oglejte si [Webhooks](/sl/portal/settings/webhooks).
+2. Pojdite na `Applications` in nato `Webhooks`. Oglejte si [Webhooke](/sl/portal/settings/webhooks).
 3. Kliknite `Create webhook`.
 4. Vnesite **ime** (npr. "PMS Sinhronizacija rezervacij").
 5. Vnesite svoj **webhook URL** — HTTPS končno točko na vašem strežniku.
-6. **Izberite dogodke** — Izberite specifične dogodke, na katere se želite naročiti, ali pustite prazno, da prejmete vse dogodke.
+6. **Izberite dogodke** — Izberite specifične dogodke, na katere se želite naročiti, ali pustite prazno za prejem vseh dogodkov.
 7. Vklopite **Enabled**.
 8. Kliknite `Save` — odgovor prikaže vaš **signing secret samo enkrat**; shranite ga zdaj.
 </Steps>
 
 ## Vrste dogodkov
 
-Wink danes objavlja 70 vrst webhook dogodkov, ki zajemajo rezervacije, nepremičnine, račune (upravljavske entitete) in inventar (vrste sob, cenovne načrte, glavne cene, dodatke, objekte, prodajne kanale, promocije).
-Pogosti so:
+Wink danes objavlja 70 vrst webhook dogodkov, ki zajemajo rezervacije, nepremičnine, račune (upravljavske entitete) in inventar (vrste sob, ceniki, glavni ceniki, dodatki, objekti, prodajni kanali, promocije).
+Pogosti:
 
 | Kategorija | Primeri |
 |---|---|
@@ -52,7 +52,7 @@ Celoten, generiran seznam — z opisom, kdo ga prejme, in povezavo do referenčn
 
 ## Kaj prejmete
 
-Vsaka dostava je HTTP `POST` na vaš webhook URL z `Content-Type: application/json` in to ovojnino:
+Vsaka dostava je HTTP `POST` na vaš webhook URL z `Content-Type: application/json` in to ovojnico:
 
 ```json
 {
@@ -62,11 +62,11 @@ Vsaka dostava je HTTP `POST` na vaš webhook URL z `Content-Type: application/js
   "ownerIdentifier": "3c6b1a5d-8e2f-4a0b-9c7d-6e4f0a8b2c51",
   "recipientRole": "SUPPLIER",
   "schemaVersion": 2,
-  "object": { "...": "dogodkovno-specifična vsebina, npr. BookingWebhookPayload" }
+  "object": { "...": "dogodek-specifična vsebina, npr. BookingWebhookPayload" }
 }
 ```
 
-- `id` — identifikator dogodka; enak za vsako končno točko vašega računa, ki prejme ta dogodek, in za vsak ponovni poskus. Uporabite ga kot svojo **ključ idempotentnosti**.
+- `id` — identifikator dogodka; enak za vsak konec vaše računa, ki prejme ta dogodek, in za vsak ponovni poskus. Uporabite ga kot **ključ idempotentnosti**.
 - `type` — ključ vrste dogodka (tudi poslan kot glava `Wink-Event-Type`). Razločite po `type` in `schemaVersion` za razčlenitev `object`.
 - `object` — skrbno izbran povzetek vira, na katerega se dogodek nanaša (identifikatorji, status, polja, na katera vplivate) plus `links.self`, kanonični REST URL dobaviteljeve strani celotnega vira. Pridobite ga z lastnimi API poverilnicami, ko potrebujete več kot povzetek; če dogodek prejmete kot preprodajalec ali potovalni agent, uporabite ustrezno končno točko svojega API-ja za isti identifikator.
 
@@ -78,7 +78,7 @@ Vsaka shema vsebine je dokumentirana za vsak dogodek v referenci [Webhooks API](
 |---|---|
 | `Wink-Version` | Verzija žične pogodbe, `2.0`. |
 | `Wink-Event-Id` | Enako kot `id` v telesu — vaš ključ idempotentnosti. |
-| `Wink-Delivery-Id` | Edinstven za vsako končno točko za dogodek; se spremeni le, če ponovno dostavite. |
+| `Wink-Delivery-Id` | Edinstven za konec na dogodek; se spremeni samo ob ponovni dostavi. |
 | `Wink-Event-Type` | Enako kot `type` v telesu. |
 | `Wink-Delivery-Attempt` | Številka poskusa dostave, štetje od 1. |
 | `Wink-Signature` | HMAC podpis — glej spodaj. |
@@ -100,7 +100,7 @@ Preverite v štirih korakih: razčlenite `t` in vsak `v1`; ponovno izračunajte 
 primerjajte s primerjavo v konstantnem času; zavrnite, če je `|now − t|` večji od vaše tolerance (priporočeno 5 minut).
 
 ```js
-// Node.js (Express stil; poskrbite, da imate RAW telo, ne razčlenjenega objekta)
+// Node.js (Express stil; zagotovite, da imate RAW telo, ne razčlenjenega objekta)
 import { createHmac, timingSafeEqual } from 'node:crypto';
 
 export function verifyWinkSignature(header, rawBody, secret, toleranceSeconds = 300) {
@@ -134,15 +134,15 @@ static boolean verify(String header, String rawBody, String secret, long nowSeco
 }
 ```
 
-Skrivnost zamenjajte iz portala ali z `POST /api/managing-entity/{id}/webhook/{webhookId}/rotate-secret`;
-odgovor prikaže novo skrivnost samo enkrat, stara pa ostane veljavna 24 ur, medtem ko jo uvajate.
+Zamenjajte skrivnost iz portala ali z `POST /api/managing-entity/{id}/webhook/{webhookId}/rotate-secret`;
+odgovor prikaže novo skrivnost samo enkrat, stara pa ostane veljavna 24 ur, da jo lahko uvedete.
 
 ## Ponovni poskusi in ponovna dostava
 
 - Odgovorite z vsakim `2xx` v 10 sekundah, da potrdite prejem. Težka opravila izvajajte asinhrono.
 - `5xx`, timeout, `408` ali `429` se poskušajo znova z vračanjem: po 1 minuti, 5 minutah, 30 minutah, 2 urah,
   6 urah, 12 urah, nato dnevno — 10 poskusov v približno 3 dneh — nato je dostava označena kot **mrtva**.
-- Vsak drug `4xx` se obravnava kot "zavrnjena dostava" in se **ne** poskuša znova.
+- Vsak drug `4xx` se obravnava kot "dostavo ste zavrnili" in se **ne** poskuša znova.
 - Vsak dogodek, dostava in poskus (status, izsek odgovora) je viden pod **Applications > Webhooks**
   in preko API-ja (`…/webhook/event/grid`, `…/webhook/delivery/grid`). Lahko **ponovno dostavite** katerokoli dostavo
   (`POST …/webhook/delivery/{deliveryId}/redeliver`, kar začne nov niz poskusov), ponovno dostavite vse mrtve
@@ -162,7 +162,7 @@ na žive dogodke.
 - **Odgovarjajte hitro** — Vrnete `200 OK` takoj, ko prejmete vsebino. Vsa težka obdelava naj bo asinhrona.
 - **Idempotentnost** — Vaš obdelovalec naj bo idempotenten; odstranjujte podvojene po `Wink-Event-Id`. Wink ponavlja, če ne prejme `2xx` odgovora.
 - **Preverite vir** — Pred obdelavo preverite glavo `Wink-Signature` (glej [Preverjanje podpisov](#verifying-signatures)); zavrnite vse, kar ne uspe.
-- **Dnevnik** — Beležite vsak webhook payload, ki ga prejmete. To močno olajša odpravljanje težav pri integraciji.
+- **Dnevnik** — Beležite vsak webhook, ki ga prejmete. To močno olajša odpravljanje težav pri integraciji.
 
 ## Zaustavitev in brisanje
 
@@ -173,7 +173,7 @@ Brisanje webhooka ga trajno odstrani. Vsaka integracija, ki je odvisna od tega w
 ## Dodatno branje
 
 - [Katalog webhook dogodkov](/sl/developers/webhook-events) — Vsaka vrsta dogodka, generirana iz kataloga platforme.
-- [Webhooks API referenca](/sl/api/webhooks/) — Sheme vsebin po dogodkih, glave in končne točke za upravljanje naročnin/dostav.
-- [Webhooks](/sl/portal/settings/webhooks) — Celotna referenca za upravljanje webhookov.
+- [Webhooks API referenca](/sl/api/webhooks/) — Sheme vsebine po dogodku, glave in končne točke za upravljanje naročnin/dostav.
+- [Webhooki](/sl/portal/settings/webhooks) — Celotna referenca za upravljanje webhookov.
 - [Applications](/sl/account/applications) — Upravljajte svoje API poverilnice.
-- [Developers > APIs](/sl/api) — Celotna API dokumentacija.
+- [Developers > APIs](/sl/api/overview/) — Celotna API dokumentacija.

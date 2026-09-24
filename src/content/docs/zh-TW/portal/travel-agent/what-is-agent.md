@@ -19,4 +19,4 @@ sidebar:
 
 ## API
 
-想管理 `Travel Agent` 的開發者可以前往 [Developers > API > Travel Agent](/zh-TW/api)。
+想管理 `Travel Agent` 的開發者可以前往 [開發者 > API > Travel Agent](/zh-TW/api/overview/)。

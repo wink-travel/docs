@@ -13,7 +13,7 @@ Narito ang mga paraan kung paano mo mai-configure ang pag-uugali ng iyong WinkLi
 - **Initial display** Kontrolin kung paano unang nakikipag-ugnayan ang iyong audience sa iyong site at nakikita ang iyong nilalaman. May tatlong opsyon na magagamit mo:
     - `Column-based` na disenyo. Ito ang aming inirerekomendang disenyo at kung hindi ka nagpapakita ng masyadong maraming nilalaman, maganda ang itsura nito sa iyong pahina. Gayunpaman, maaari itong maging `heavy` kung marami kang ibinabahaging rich content.
     - `Row-based` na disenyo. Isa itong paraan para gawing medyo magaan ang iyong nilalaman para sa mga browser ngunit inirerekomenda namin na may katulad na dami ng teksto ang iyong nilalaman para mas maganda ang pagkaka-align ng mga card.
-    - `List-based` na disenyo. Karamihan sa ibang link managers ay nagpapakita ng simpleng listahan na may url at minimal na nilalaman. Piliin ang paraang ito ng pagpapakita kung marami kang nilalaman at gusto mo itong ipakita nang mabilis hangga't maaari.
+    - `List-based` na disenyo. Karamihan sa ibang link managers ay nagpapakita ng simpleng listahan na may url at minimal na nilalaman. Piliin ang ganitong paraan ng pagpapakita ng iyong nilalaman kung marami kang content at gusto mo itong ipakita nang mabilis hangga't maaari.
 - **Profile picture** Sa itaas ng bawat WinkLinks page ay ang iyong profile picture ng account kasama ang paglalarawan ng iyong account. Maaari mong ipakita ang iyong profile picture sa dalawang paraan:
     - `Circle` Inirerekomenda naming gamitin ang circular style kung ang larawan mo ay sarili mo o anumang bagay na kasya sa loob ng bilog na lalagyan.
     - `Rectangle` Inirerekomenda naming gamitin ang rectangular style kung ang logo ng iyong kumpanya ang profile picture mo dahil karamihan sa mga logo ng kumpanya ay hugis parihaba.
@@ -28,7 +28,7 @@ Karagdagang mga kontrol ay kinabibilangan ng:
 
 ## API
 
-Ang mga developer na nais pamahalaan ang `WinkLinks` ay maaaring pumunta sa [Developers > API > WinkLinks](/tl/api).
+Ang mga developer na nais pamahalaan ang `WinkLinks` ay maaaring pumunta sa [Developers > API > WinkLinks](/tl/api/overview/).
 
 ## Karagdagang babasahin
 

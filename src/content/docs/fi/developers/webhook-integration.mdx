@@ -67,9 +67,9 @@ Jokainen toimitus on HTTP `POST` webhook-URL-osoitteeseesi `Content-Type: applic
 
 - `id` — tapahtuman tunniste; sama kaikille tilisi päätepisteille, jotka vastaanottavat tämän tapahtuman, ja kaikille uudelleenyrityksille. Käytä sitä **idempotenssiavaimena**.
 - `type` — tapahtumatyyppinäppäin (lähetetään myös `Wink-Event-Type`-otsikkona). Haarauta `type` ja `schemaVersion` perusteella `object`-kentän jäsentämiseen.
-- `object` — kuratoitu yhteenveto resurssista, johon tapahtuma liittyy (tunnisteet, tila, käsiteltävät kentät) sekä `links.self`, toimittajan puolen kanoninen REST-URL koko resurssille. Hae se omilla API-tunnuksillasi, kun tarvitset enemmän kuin yhteenvedon; jos saat tapahtuman jälleenmyyjänä tai matkatoimistona, käytä vastaavaa resurssipäätepistettä omassa API-pinnassasi saman tunnisteen perusteella.
+- `object` — kuratoitu yhteenveto resurssista, johon tapahtuma liittyy (tunnisteet, tila, käsiteltävät kentät) sekä `links.self`, toimittajan puolen kanoninen REST-URL koko resurssille. Hae se omilla API-tunnuksillasi, kun tarvitset enemmän kuin yhteenvedon; jos saat tapahtuman jälleenmyyjänä tai matkatoimistona, käytä vastaavaa resurssipäätepistettä omassa API-pinnassasi saman tunnisteen osalta.
 
-Jokaisen kuoren skeema on dokumentoitu tapahtumakohtaisesti [Webhooks API](/fi/api/webhooks/) -viitteessä.
+Jokaisen kuoren rakenne on dokumentoitu tapahtumakohtaisesti [Webhooks API](/fi/api/webhooks/) -viitteessä.
 
 ### Otsikot
 
@@ -77,7 +77,7 @@ Jokaisen kuoren skeema on dokumentoitu tapahtumakohtaisesti [Webhooks API](/fi/a
 |---|---|
 | `Wink-Version` | Rajapintasopimuksen versio, `2.0`. |
 | `Wink-Event-Id` | Sama kuin `id` rungossa — idempotenssiavain. |
-| `Wink-Delivery-Id` | Yksilöllinen päätepistettä kohden per tapahtuma; muuttuu vain uudelleenlähetyksessä. |
+| `Wink-Delivery-Id` | Yksilöllinen päätepistettä kohti per tapahtuma; muuttuu vain uudelleenlähetyksessä. |
 | `Wink-Event-Type` | Sama kuin `type` rungossa. |
 | `Wink-Delivery-Attempt` | 1-pohjainen yrityskertojen numero tälle toimitukselle. |
 | `Wink-Signature` | HMAC-allekirjoitus — katso alla. |
@@ -90,7 +90,7 @@ Jokaisella webhookilla on **allekirjoitussalaisuus** (`whsec_…`), jonka Wink n
 Wink-Signature: t=1755250200,v1=5d41402abc4b2a76b9719d911017c592…
 ```
 
-missä `t` on Unix-aikaleima (sekunteina) ja `v1` on pienaakkosilla kirjoitettu hex-muotoinen **HMAC-SHA256** merkkijonosta `t + "." + rawBody`, avaimena salaisuutesi, ja `rawBody` on tarkka pyyntörunko tavuina sellaisena kuin se vastaanotetaan — älä uudelleensarjoita JSON:ia ennen varmistusta. 24 tuntia salaisuuden kierron jälkeen otsikko sisältää toisen `v1=` arvon, joka on allekirjoitettu edellisellä salaisuudella; hyväksy toimitus, jos **jokin** `v1` vastaa.
+missä `t` on Unix-aikaleima (sekunteina) ja `v1` on pienaakkoinen heksadesimaalimuotoinen **HMAC-SHA256** merkkijonosta `t + "." + rawBody`, avaimena salaisuutesi, ja `rawBody` on tarkka vastaanotettu pyyntörunko — älä uudelleensarjoita JSON:ia ennen varmistusta. 24 tuntia salaisuuden kierron jälkeen otsikko sisältää toisen `v1=` arvon, joka on allekirjoitettu edellisellä salaisuudella; hyväksy toimitus, jos **jokin** `v1` vastaa.
 
 Varmista neljässä vaiheessa: jäsennä `t` ja kaikki `v1`; laske HMAC uudelleen `t.rawBody`-merkkijonolle salaisuudellasi; vertaa vakioaikaisella vertailulla; hylkää, jos `|nyt − t|` ylittää sallitun rajan (suositus 5 minuuttia).
 
@@ -141,13 +141,13 @@ Kierrä salaisuus portaalista tai `POST /api/managing-entity/{id}/webhook/{webho
 
 ## Testitapahtumat
 
-Lähetä itsellesi synteettinen `webhook.test` -tapahtuma portaalista tai `POST /api/managing-entity/{id}/webhook/{webhookId}/test` -kutsulla. Se on allekirjoitettu ja toimitetaan täsmälleen kuten oikea tapahtuma, joten voit varmistaa päätepisteesi, allekirjoituksen tarkistuksen ja idempotenssikäsittelyn ennen live-tapahtumiin tilaamista.
+Lähetä itsellesi synteettinen `webhook.test` -tapahtuma portaalista tai `POST /api/managing-entity/{id}/webhook/{webhookId}/test` -kutsulla. Se on allekirjoitettu ja toimitettu täsmälleen kuten oikea tapahtuma, joten voit varmistaa päätepisteesi, allekirjoituksen tarkistuksen ja idempotenssikäsittelyn ennen live-tapahtumiin tilaamista.
 
 ## Parhaat käytännöt
 
-- **Käytä HTTPS:ää** — Wink lähettää kuoret vain HTTPS-päätepisteisiin.
-- **Vastaa nopeasti** — Palauta `200 OK` heti, kun saat kuoren. Tee raskas käsittely asynkronisesti.
-- **Idempotenssi** — Käsittelijäsi tulee olla idempotentti; poista duplikaatit `Wink-Event-Id`-kentän perusteella. Wink yrittää uudelleen, jos se ei saa `2xx`-vastausta.
+- **Käytä HTTPS:ää** — Wink lähettää tiedot vain HTTPS-päätepisteisiin.
+- **Vastaa nopeasti** — Palauta `200 OK` heti, kun saat tiedot. Tee raskas käsittely asynkronisesti.
+- **Idempotenssi** — Käsittelijäsi tulee olla idempotentti; poista duplikaatit `Wink-Event-Id`-kentän perusteella. Wink yrittää uudelleen, jos ei saa `2xx`-vastausta.
 - **Varmista lähde** — Tarkista `Wink-Signature`-otsikko (katso [Allekirjoitusten varmistaminen](#verifying-signatures)) ennen käsittelyä; hylkää kaikki epäonnistuneet.
 - **Lokitus** — Kirjaa kaikki vastaanottamasi webhook-kuoret. Tämä helpottaa integrointiongelmien vianmääritystä.
 
@@ -163,4 +163,4 @@ Webhookin poistaminen poistaa sen pysyvästi. Kaikki integraatiot, jotka käytt�
 - [Webhooks API reference](/fi/api/webhooks/) — Tapahtumakohtaiset kuorimallit, otsikot ja tilaus/toimitushallinnan päätepisteet.
 - [Webhooks](/fi/portal/settings/webhooks) — Täydellinen webhook-hallinnan viite.
 - [Applications](/fi/account/applications) — Hallitse API-tunnuksiasi.
-- [Developers > APIs](/fi/api) — Täydellinen API-dokumentaatio.
+- [Developers > APIs](/fi/api/overview/) — Täydellinen API-dokumentaatio.

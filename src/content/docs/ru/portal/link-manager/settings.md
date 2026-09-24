@@ -28,7 +28,7 @@ sidebar:
 
 ## API
 
-Разработчики, которые хотят управлять `WinkLinks`, могут перейти в [Developers > API > WinkLinks](/ru/api).
+Разработчики, которые хотят управлять `WinkLinks`, могут перейти в [Developers > API > WinkLinks](/ru/api/overview/).
 
 ## Дополнительное чтение
 

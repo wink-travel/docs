@@ -34,7 +34,7 @@ Bu rehber, Wink'i mülk yönetim sistemleri (PMS), kanal yöneticileri, CRM'ler 
 
 ## Olay türleri
 
-Wink bugün rezervasyonlar, mülkler, hesaplar (yönetim birimleri) ve envanter (oda tipleri, fiyat planları, ana fiyatlar, ek hizmetler, tesisler, satış kanalları, promosyonlar) genelinde 70 webhook olayı yayınlamaktadır. Yaygın olanlar:
+Wink bugün rezervasyonlar, mülkler, hesaplar (yönetim birimleri) ve envanter (oda tipleri, fiyat planları, ana fiyatlar, ek hizmetler, tesisler, satış kanalları, promosyonlar) genelinde 70 webhook olay türü yayınlamaktadır. Yaygın olanlar:
 
 | Kategori | Örnekler |
 |---|---|
@@ -43,7 +43,7 @@ Wink bugün rezervasyonlar, mülkler, hesaplar (yönetim birimleri) ve envanter 
 | **Envanter** | `room_type.updated`, `rate_plan.created`, `master_rate.updated`, `special_rate.created`, `sales_channel.created` |
 | **Hesap** | `managing_entity.created`, `managing_entity.status.updated`, `managing_entity.manager.added` |
 
-Tam, oluşturulmuş liste — açıklama, alıcı ve her olayın referans sayfasına bağlantı ile — **Webhook Olayları Kataloğu**dur. Her olayın referans sayfası (JSON gövdesi, başlıklar, yeniden deneme politikası) [Webhooks API](/tr/api/webhooks/) içinde bulunur.
+Tam, oluşturulmuş liste — açıklama, alıcı bilgisi ve her olayın referans sayfasına bağlantı ile — **Webhook Olayları Kataloğu**dur. Her olayın referans sayfası (JSON gövdesi, başlıklar, yeniden deneme politikası) [Webhooks API](/tr/api/webhooks/) adresinde bulunur.
 
 <LinkButton href="/tr/developers/webhook-events">
   Tüm olay türlerini görüntüle
@@ -51,7 +51,7 @@ Tam, oluşturulmuş liste — açıklama, alıcı ve her olayın referans sayfas
 
 ## Aldıklarınız
 
-Her teslimat, webhook URL'nize `Content-Type: application/json` ile bir HTTP `POST` ve şu zarfla yapılır:
+Her teslimat, webhook URL'nize `Content-Type: application/json` ile bir HTTP `POST` ve şu zarf yapısıyla gelir:
 
 ```json
 {
@@ -67,7 +67,7 @@ Her teslimat, webhook URL'nize `Content-Type: application/json` ile bir HTTP `PO
 
 - `id` — olay tanımlayıcısı; bu olayı alan hesabınızdaki her uç nokta ve her yeniden deneme için aynıdır. Bunu **idempotency anahtarı** olarak kullanın.
 - `type` — olay türü anahtarı (aynı zamanda `Wink-Event-Type` başlığı olarak gönderilir). `type` ve `schemaVersion` değerlerine göre `object` ayrıştırılır.
-- `object` — olayın konusu olan kaynağın özetlenmiş hali (tanımlayıcılar, durum, işlem yaptığınız alanlar) ve `links.self`, tedarikçi tarafındaki tam kaynağın canonical REST URL'si. Özetin ötesinde bilgi gerektiğinde kendi API kimlik bilgilerinizle çekin; olayı bir bayi veya seyahat acentesi olarak alıyorsanız, aynı tanımlayıcı için kendi API yüzeyinizdeki ilgili kaynak uç noktasını kullanın.
+- `object` — olayla ilgili kaynağın özetlenmiş hali (tanımlayıcılar, durum, işlem yaptığınız alanlar) ve `links.self`, tedarikçi tarafındaki tam kaynağın canonical REST URL'si. Özetden fazlasına ihtiyaç duyduğunuzda kendi API kimlik bilgilerinizle alın; olayı bir bayi veya seyahat acentesi olarak alıyorsanız, aynı tanımlayıcı için kendi API yüzeyinizdeki ilgili kaynak uç noktasını kullanın.
 
 Her yük şeması, olay bazında [Webhooks API](/tr/api/webhooks/) referansında belgelenmiştir.
 
@@ -75,9 +75,9 @@ Her yük şeması, olay bazında [Webhooks API](/tr/api/webhooks/) referansında
 
 | Başlık | Anlamı |
 |---|---|
-| `Wink-Version` | Wire sözleşme sürümü, `2.0`. |
+| `Wink-Version` | Wire sözleşme versiyonu, `2.0`. |
 | `Wink-Event-Id` | Gövdedeki `id` ile aynı — idempotency anahtarınız. |
-| `Wink-Delivery-Id` | Her uç nokta için olay başına benzersiz; yalnızca yeniden teslim ederseniz değişir. |
+| `Wink-Delivery-Id` | Olay başına uç nokta bazında benzersiz; yalnızca yeniden teslim ederseniz değişir. |
 | `Wink-Event-Type` | Gövdedeki `type` ile aynı. |
 | `Wink-Delivery-Attempt` | Bu teslimat için 1 tabanlı deneme sayısı. |
 | `Wink-Signature` | HMAC imzası — aşağıya bakınız. |
@@ -90,9 +90,9 @@ Her webhook'un, oluşturduğunuzda veya gizli anahtarını döndürdüğünüzde
 Wink-Signature: t=1755250200,v1=5d41402abc4b2a76b9719d911017c592…
 ```
 
-Burada `t` Unix zaman damgası (saniye) ve `v1` gizli anahtarınızla anahtarlanmış, küçük harfli hex formatında **HMAC-SHA256** imzasıdır; imzalanan veri `t + "." + rawBody` stringidir ve `rawBody` tam olarak alınan istek gövdesinin baytlarıdır — doğrulamadan önce JSON'u yeniden serileştirmeyin. Gizli anahtar döndürme işleminden sonraki 24 saat boyunca başlık, önceki gizli anahtarla imzalanmış ikinci bir `v1=` değeri taşır; **herhangi bir** `v1` eşleşirse teslimatı kabul edin.
+Burada `t` Unix zaman damgası (saniye), `v1` ise gizli anahtarınızla anahtarlanmış, küçük harfli hex formatında **HMAC-SHA256** imzasıdır. İmza, `t + "." + rawBody` stringinin HMAC'sidir ve `rawBody` tam olarak alınan istek gövdesi baytlarıdır — doğrulamadan önce JSON'u yeniden serileştirmeyin. Gizli anahtar döndürme işleminden sonraki 24 saat boyunca başlık, önceki gizli anahtarla imzalanmış ikinci bir `v1=` değeri taşır; **herhangi bir** `v1` eşleşirse teslimatı kabul edin.
 
-Dört adımda doğrulayın: `t` ve her `v1` değerini ayrıştırın; gizli anahtarınızla `t.rawBody` üzerinde HMAC'i yeniden hesaplayın; sabit zamanlı karşılaştırma yapın; `|şimdi − t|` toleransınızı aşarsa (önerilen 5 dakika) reddedin.
+Dört adımda doğrulayın: `t` ve her `v1`'i ayrıştırın; gizli anahtarınızla `t.rawBody` üzerinde HMAC'i yeniden hesaplayın; sabit zamanlı karşılaştırma yapın; `|şimdi − t|` toleransınızı aşarsa (5 dakika önerilir) reddedin.
 
 ```js
 // Node.js (Express tarzı; RAW gövdeye sahip olduğunuzdan emin olun, ayrıştırılmış nesne değil)
@@ -133,10 +133,10 @@ Gizli anahtarı portalden veya `POST /api/managing-entity/{id}/webhook/{webhookI
 
 ## Yeniden denemeler ve yeniden teslim
 
-- Onaylamak için 10 saniye içinde herhangi bir `2xx` ile yanıt verin. Ağır işleri asenkron yapın.
+- Teslimatı onaylamak için 10 saniye içinde herhangi bir `2xx` ile yanıt verin. Ağır işleri asenkron yapın.
 - `5xx`, zaman aşımı, `408` veya `429` durumları geri çekmeli olarak yeniden denenir: 1 dakika, 5 dakika, 30 dakika, 2 saat, 6 saat, 12 saat, sonra günlük — yaklaşık 3 gün içinde 10 deneme — ardından teslimat **ölü** olarak işaretlenir.
-- Diğer tüm `4xx` durumları "bu teslimatı reddettiniz" olarak kabul edilir ve **yeniden denenmez**.
-- Her olay, teslimat ve deneme (durum, yanıt kesiti) **Applications > Webhooks** altında ve API üzerinden (`…/webhook/event/grid`, `…/webhook/delivery/grid`) görünür. Herhangi bir teslimatı **yeniden teslim edebilir** (`POST …/webhook/delivery/{deliveryId}/redeliver`, yeni bir deneme serisi başlatır), bir webhook'un tüm ölü teslimatlarını bir kerede yeniden teslim edebilir (`POST …/webhook/{webhookId}/redeliver-dead`) veya iptal edebilirsiniz.
+- Diğer tüm `4xx` durumları "teslimatı reddettiniz" olarak kabul edilir ve **yeniden denenmez**.
+- Her olay, teslimat ve deneme (durum, yanıt kesiti) **Applications > Webhooks** altında ve API üzerinden (`…/webhook/event/grid`, `…/webhook/delivery/grid`) görünür. Herhangi bir teslimatı **yeniden teslim edebilir** (`POST …/webhook/delivery/{deliveryId}/redeliver`, yeni bir deneme serisi başlatır), bir webhook'un tüm ölü teslimatlarını topluca yeniden teslim edebilir (`POST …/webhook/{webhookId}/redeliver-dead`) veya iptal edebilirsiniz.
 - Teslimatlar 30 gün saklanır.
 
 ## Test olayları
@@ -147,7 +147,7 @@ Portaldan veya `POST /api/managing-entity/{id}/webhook/{webhookId}/test` ile ken
 
 - **HTTPS kullanın** — Wink yalnızca HTTPS uç noktalarına yük gönderir.
 - **Hızlı yanıt verin** — Yükü aldığınızda hemen `200 OK` döndürün. Ağır işlemleri asenkron yapın.
-- **Idempotency** — İşleyiciniz idempotent olmalıdır; `Wink-Event-Id` ile çoğaltmayı önleyin. Wink, `2xx` yanıtı almazsa yeniden dener.
+- **Idempotency** — İşleyiciniz idempotent olmalıdır; `Wink-Event-Id` ile çoğaltmaları önleyin. Wink `2xx` yanıtı alamazsa yeniden dener.
 - **Kaynağı doğrulayın** — İşlem yapmadan önce `Wink-Signature` başlığını doğrulayın (bkz. [İmzaların doğrulanması](#verifying-signatures)); başarısız olanları reddedin.
 - **Kayıt tutma** — Aldığınız her webhook yükünü kaydedin. Bu, entegrasyon sorunlarını çözmeyi çok kolaylaştırır.
 
@@ -159,8 +159,8 @@ Webhook'u silmek kalıcı olarak kaldırır. Bu webhook'a bağlı tüm entegrasy
 
 ## Daha fazla okuma
 
-- [Webhook Olayları Kataloğu](/tr/developers/webhook-events) — Platform kataloğundan oluşturulmuş her olay türü.
+- [Webhook Olayları Kataloğu](/tr/developers/webhook-events) — Platform kataloğundan oluşturulmuş tüm olay türleri.
 - [Webhooks API referansı](/tr/api/webhooks/) — Olay bazında yük şemaları, başlıklar ve abonelik/teslim yönetim uç noktaları.
 - [Webhooks](/tr/portal/settings/webhooks) — Webhook yönetimi için tam referans.
 - [Applications](/tr/account/applications) — API kimlik bilgilerinizi yönetin.
-- [Developers > APIs](/tr/api) — Tam API dokümantasyonu.
+- [Geliştiriciler > API'ler](/tr/api/overview/) — Tam API dokümantasyonu.

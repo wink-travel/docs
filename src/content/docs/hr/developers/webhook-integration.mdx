@@ -7,7 +7,7 @@ sidebar:
 
 import { Steps, LinkButton } from '@astrojs/starlight/components';
 
-Webhookovi omogućuju vašim sustavima da primaju obavijesti u stvarnom vremenu kada se događaji dogode na vašem Wink računu — nove rezervacije, otkazivanja, ažuriranja plaćanja i još mnogo toga. Ovaj vodič vodi vas kroz postavljanje i najbolje prakse.
+Webhookovi omogućuju vašim sustavima primanje obavijesti u stvarnom vremenu kada se događaji dogode na vašem Wink računu — nove rezervacije, otkazivanja, ažuriranja plaćanja i još mnogo toga. Ovaj vodič vodi vas kroz postavljanje i najbolje prakse.
 
 ## Publika
 
@@ -23,9 +23,9 @@ Ovaj vodič je namijenjen programerima koji integriraju Wink s vanjskim sustavim
 
 <Steps>
 1. Prijavite se na svoj račun (Extranet, Studio ili TripPay — svi podržavaju webhookove).
-2. Idite na `Applications`, zatim `Webhooks`. Pogledajte [Webhooks](/hr/portal/settings/webhooks).
+2. Idite na `Applications` pa zatim `Webhooks`. Pogledajte [Webhooks](/hr/portal/settings/webhooks).
 3. Kliknite `Create webhook`.
-4. Unesite **ime** (npr. "PMS Sinkronizacija Rezervacija").
+4. Unesite **ime** (npr. "PMS Sinkronizacija rezervacija").
 5. Unesite svoj **webhook URL** — HTTPS krajnju točku na vašem poslužitelju.
 6. **Odaberite događaje** — Odaberite specifične događaje na koje se želite pretplatiti ili ostavite prazno za primanje svih događaja.
 7. Uključite **Enabled**.
@@ -51,7 +51,7 @@ Potpuni, generirani popis — s opisom, tko ga prima i poveznicom na referentnu 
 
 ## Što primate
 
-Svaka dostava je HTTP `POST` na vaš webhook URL s `Content-Type: application/json` i ovom omotnicom:
+Svaka dostava je HTTP `POST` na vaš webhook URL s `Content-Type: application/json` i ovim omotačem:
 
 ```json
 {
@@ -67,7 +67,7 @@ Svaka dostava je HTTP `POST` na vaš webhook URL s `Content-Type: application/js
 
 - `id` — identifikator događaja; isti je za svaku krajnju točku vašeg računa koja prima ovaj događaj i za svaki pokušaj ponovnog slanja. Koristite ga kao svoj **ključ idempotentnosti**.
 - `type` — ključ vrste događaja (također se šalje kao zaglavlje `Wink-Event-Type`). Granajte prema `type` i `schemaVersion` za parsiranje `object`.
-- `object` — sažetak resursa na koji se događaj odnosi (identifikatori, status, polja na koja djelujete) plus `links.self`, kanonski REST URL dobavljača za puni resurs. Dohvatite ga s vlastitim API vjerodajnicama kad vam treba više od sažetka; ako primate događaj kao preprodavač ili putni agent, koristite odgovarajuću krajnju točku vlastitog API-ja za isti identifikator.
+- `object` — sažetak resursa na koji se događaj odnosi (identifikatori, status, polja na koja djelujete) plus `links.self`, kanonski REST URL dobavljača za puni resurs. Dohvatite ga s vlastitim API vjerodajnicama kad vam treba više od sažetka; ako primate događaj kao preprodavač ili putni agent, koristite odgovarajuću krajnju točku svog API-ja za isti identifikator.
 
 Svaka shema podataka je dokumentirana po događaju u referenci [Webhooks API](/hr/api/webhooks/).
 
@@ -92,7 +92,7 @@ Wink-Signature: t=1755250200,v1=5d41402abc4b2a76b9719d911017c592…
 
 gdje je `t` Unix vremenska oznaka (sekunde), a `v1` je mala heksadecimalna **HMAC-SHA256** vrijednost stringa `t + "." + rawBody`, potpisana vašom tajnom, a `rawBody` je točno tijelo zahtjeva u bajtovima kako je primljeno — nemojte ponovno serijalizirati JSON prije verifikacije. 24 sata nakon rotacije tajne zaglavlje nosi drugi `v1=` potpisan prethodnom tajnom; prihvatite dostavu ako se **bilo koji** `v1` podudara.
 
-Provjerite u četiri koraka: parsirajte `t` i svaki `v1`; ponovno izračunajte HMAC preko `t.rawBody` s vašom tajnom; usporedite s usporedbom u konstantnom vremenu; odbacite ako `|now − t|` prelazi vašu toleranciju (preporučeno 5 minuta).
+Provjerite u četiri koraka: parsirajte `t` i svaki `v1`; ponovno izračunajte HMAC preko `t.rawBody` s vašom tajnom; usporedite s usporedbom u konstantnom vremenu; odbacite ako `|sada − t|` prelazi vašu toleranciju (preporučeno 5 minuta).
 
 ```js
 // Node.js (Express-style; provjerite da imate RAW tijelo, a ne parsirani objekt)
@@ -135,22 +135,21 @@ Rotirajte tajnu iz portala ili s `POST /api/managing-entity/{id}/webhook/{webhoo
 
 - Odgovorite s bilo kojim `2xx` unutar 10 sekundi za potvrdu. Teške zadatke obavite asinhrono.
 - `5xx`, timeout, `408` ili `429` se ponovo pokušavaju s odgodom: nakon 1 minute, 5 minuta, 30 minuta, 2 sata, 6 sati, 12 sati, zatim dnevno — 10 pokušaja tijekom otprilike 3 dana — nakon čega se dostava označava kao **mrtva**.
-- Bilo koji drugi `4xx` tretira se kao "odbijena dostava" i **ne ponavlja se**.
+- Svaki drugi `4xx` tretira se kao "odbili ste ovu dostavu" i **ne** pokušava se ponovno.
 - Svaki događaj, dostava i pokušaj (status, isječak odgovora) vidljivi su pod **Applications > Webhooks** i putem API-ja (`…/webhook/event/grid`, `…/webhook/delivery/grid`). Možete **ponovno poslati** bilo koju dostavu (`POST …/webhook/delivery/{deliveryId}/redeliver`, što pokreće novi niz pokušaja), ponovno poslati sve mrtve dostave webhooka odjednom (`POST …/webhook/{webhookId}/redeliver-dead`), ili otkazati jednu.
 - Dostave se čuvaju 30 dana.
 
 ## Testni događaji
 
-Pošaljite si sintetički događaj `webhook.test` iz portala ili s
-`POST /api/managing-entity/{id}/webhook/{webhookId}/test`. Potpisan je i dostavljen kao pravi događaj, tako da možete provjeriti svoju krajnju točku, provjeru potpisa i rukovanje idempotentnošću prije pretplate na stvarne događaje.
+Pošaljite si sintetički događaj `webhook.test` iz portala ili s `POST /api/managing-entity/{id}/webhook/{webhookId}/test`. Potpisan je i dostavljen kao pravi događaj, tako da možete provjeriti svoju krajnju točku, provjeru potpisa i rukovanje idempotentnošću prije pretplate na žive događaje.
 
 ## Najbolje prakse
 
 - **Koristite HTTPS** — Wink šalje podatke samo na HTTPS krajnje točke.
-- **Odgovarajte brzo** — Vratite `200 OK` čim primite podatke. Teške procese obavite asinhrono.
-- **Idempotentnost** — Vaš handler treba biti idempotentan; deduplicirajte po `Wink-Event-Id`. Wink ponavlja pokušaje ako ne primi `2xx` odgovor.
+- **Odgovarajte brzo** — Vratite `200 OK` čim primite podatke. Teške obrade radite asinhrono.
+- **Idempotentnost** — Vaš handler treba biti idempotentan; deduplicirajte prema `Wink-Event-Id`. Wink ponavlja pokušaje ako ne primi `2xx` odgovor.
 - **Provjerite izvor** — Provjerite zaglavlje `Wink-Signature` (vidi [Verifikacija potpisa](#verifying-signatures)) prije obrade; odbacite sve što ne uspije.
-- **Evidencija** — Zabilježite svaki webhook payload koji primite. To znatno olakšava otklanjanje problema s integracijom.
+- **Logiranje** — Zabilježite svaki webhook payload koji primite. To znatno olakšava otklanjanje problema s integracijom.
 
 ## Pauziranje i brisanje
 
@@ -164,4 +163,4 @@ Brisanje webhooka trajno ga uklanja. Svaka integracija koja ovisi o tom webhooku
 - [Webhooks API referenca](/hr/api/webhooks/) — Sheme podataka po događaju, zaglavlja i krajnje točke za upravljanje pretplatama/dostavom.
 - [Webhooks](/hr/portal/settings/webhooks) — Potpuna referenca za upravljanje webhookovima.
 - [Applications](/hr/account/applications) — Upravljajte svojim API vjerodajnicama.
-- [Developers > APIs](/hr/api) — Potpuna API dokumentacija.
+- [Developers > APIs](/hr/api/overview/) — Potpuna API dokumentacija.

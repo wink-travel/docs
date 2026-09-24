@@ -16,7 +16,7 @@ Questa guida è rivolta agli sviluppatori che integrano Wink con sistemi esterni
 ## Come funzionano i webhook
 
 1. Registri un URL webhook su Wink.
-2. Quando si verifica un evento (es. una nuova prenotazione), Wink invia un HTTP POST al tuo URL.
+2. Quando si verifica un evento (ad esempio, una nuova prenotazione), Wink invia un HTTP POST al tuo URL.
 3. Il tuo server elabora il payload e risponde con un `200 OK`.
 
 ## Configurare un webhook
@@ -28,8 +28,8 @@ Questa guida è rivolta agli sviluppatori che integrano Wink con sistemi esterni
 4. Inserisci un **nome** (es. "Sincronizzazione Prenotazioni PMS").
 5. Inserisci il tuo **webhook URL** — l’endpoint HTTPS sul tuo server.
 6. **Seleziona eventi** — scegli eventi specifici a cui iscriverti, oppure lascia vuoto per ricevere tutti gli eventi.
-7. Attiva l’opzione **Enabled**.
-8. Clicca su `Save` — la risposta mostra il tuo **signing secret una sola volta**; salvalo subito.
+7. Attiva l’interruttore **Enabled**.
+8. Clicca su `Save` — la risposta mostra il tuo **segreto di firma una sola volta**; salvalo subito.
 </Steps>
 
 ## Tipi di eventi
@@ -44,7 +44,7 @@ I più comuni:
 | **Inventario** | `room_type.updated`, `rate_plan.created`, `master_rate.updated`, `special_rate.created`, `sales_channel.created` |
 | **Account** | `managing_entity.created`, `managing_entity.status.updated`, `managing_entity.manager.added` |
 
-L’elenco completo e generato — con descrizione, destinatari e link alla pagina di riferimento di ogni evento — è il **Catalogo Eventi Webhook**. La pagina di riferimento per ogni evento (corpo JSON, header, politica di retry) si trova nella [Webhooks API](/it/api/webhooks/).
+L’elenco completo e generato — con descrizione, destinatari e link alla pagina di riferimento di ogni evento — è il **Catalogo Eventi Webhook**. La pagina di riferimento per ogni evento (corpo JSON, header, politica di retry) si trova nelle [Webhooks API](/it/api/webhooks/).
 
 <LinkButton href="/it/developers/webhook-events">
   Visualizza tutti i tipi di evento
@@ -67,10 +67,10 @@ Ogni consegna è un HTTP `POST` al tuo URL webhook con `Content-Type: applicatio
 ```
 
 - `id` — identificatore dell’evento; identico per ogni endpoint del tuo account che riceve questo evento e per ogni retry. Usalo come tua **chiave di idempotenza**.
-- `type` — chiave del tipo di evento (inviata anche come header `Wink-Event-Type`). Gestisci in base a `type` e `schemaVersion` per interpretare `object`.
+- `type` — chiave del tipo di evento (inviata anche come header `Wink-Event-Type`). Ramifica su `type` e `schemaVersion` per interpretare `object`.
 - `object` — un riassunto curato della risorsa a cui si riferisce l’evento (identificatori, stato, campi su cui agisci) più `links.self`, l’URL REST canonico lato fornitore della risorsa completa. Recuperalo con le tue credenziali API quando ti serve più del riassunto; se ricevi l’evento come rivenditore o agente di viaggio, usa l’endpoint corrispondente della tua API per lo stesso identificatore.
 
-Ogni schema payload è documentato per evento nella [Webhooks API](/it/api/webhooks/) di riferimento.
+Ogni schema payload è documentato per evento nelle [Webhooks API](/it/api/webhooks/) di riferimento.
 
 ### Header
 
@@ -85,7 +85,7 @@ Ogni schema payload è documentato per evento nella [Webhooks API](/it/api/webho
 
 ## Verifica delle firme
 
-Ogni webhook ha un **signing secret** (`whsec_…`) che Wink mostra **una sola volta**, quando crei il webhook o ruoti il suo segreto. Salvalo come una password. Ogni consegna porta
+Ogni webhook ha un **segreto di firma** (`whsec_…`) che Wink mostra **una sola volta**, quando crei il webhook o ruoti il segreto. Salvalo come una password. Ogni consegna porta
 
 ```
 Wink-Signature: t=1755250200,v1=5d41402abc4b2a76b9719d911017c592…
@@ -138,11 +138,11 @@ la risposta mostra il nuovo segreto una sola volta, e quello vecchio continua a 
 
 - Rispondi con qualsiasi `2xx` entro 10 secondi per confermare. Esegui il lavoro pesante in modo asincrono.
 - Un `5xx`, timeout, `408` o `429` viene ritentato con backoff: dopo 1 minuto, 5 minuti, 30 minuti, 2 ore,
-  6 ore, 12 ore, poi giornalmente — 10 tentativi in circa 3 giorni — dopo i quali la consegna è marcata **dead**.
+  6 ore, 12 ore, poi giornalmente — 10 tentativi in circa 3 giorni — dopo di che la consegna è marcata **dead**.
 - Qualsiasi altro `4xx` è trattato come "hai rifiutato questa consegna" e **non** viene ritentato.
 - Ogni evento, consegna e tentativo (stato, snippet di risposta) è visibile sotto **Applications > Webhooks**
   e tramite API (`…/webhook/event/grid`, `…/webhook/delivery/grid`). Puoi **ridistribuire** qualsiasi consegna
-  (`POST …/webhook/delivery/{deliveryId}/redeliver`, che avvia una nuova serie di tentativi), ridistribuire tutte le consegne dead di un webhook in una volta (`POST …/webhook/{webhookId}/redeliver-dead`), o annullarne una.
+  (`POST …/webhook/delivery/{deliveryId}/redeliver`, che avvia una nuova serie di retry), ridistribuire tutte le consegne dead di un webhook in una volta (`POST …/webhook/{webhookId}/redeliver-dead`), o cancellarne una.
 - Le consegne sono conservate per 30 giorni.
 
 ## Eventi di test
@@ -158,7 +158,7 @@ agli eventi live.
 - **Rispondi rapidamente** — Restituisci un `200 OK` appena ricevi il payload. Esegui qualsiasi elaborazione pesante in modo asincrono.
 - **Idempotenza** — Il tuo handler deve essere idempotente; deduplica su `Wink-Event-Id`. Wink ritenta se non riceve una risposta `2xx`.
 - **Valida la fonte** — Verifica l’header `Wink-Signature` (vedi [Verifica delle firme](#verifica-delle-firme)) prima di elaborare; rifiuta tutto ciò che fallisce.
-- **Logging** — Registra ogni payload webhook che ricevi. Questo facilita molto il debug delle integrazioni.
+- **Logging** — Registra ogni payload webhook ricevuto. Questo facilita molto il debug delle integrazioni.
 
 ## Pausa e cancellazione
 
@@ -169,7 +169,7 @@ Cancellare un webhook lo rimuove definitivamente. Qualsiasi integrazione che si 
 ## Ulteriori letture
 
 - [Catalogo Eventi Webhook](/it/developers/webhook-events) — Ogni tipo di evento, generato dal catalogo della piattaforma.
-- [Riferimento API Webhooks](/it/api/webhooks/) — Schemi payload per evento, header e endpoint di gestione iscrizioni/consegne.
+- [Riferimento API Webhooks](/it/api/webhooks/) — Schemi payload per evento, header e endpoint di gestione sottoscrizione/consegna.
 - [Webhooks](/it/portal/settings/webhooks) — Riferimento completo per la gestione dei webhook.
 - [Applications](/it/account/applications) — Gestisci le tue credenziali API.
-- [Developers > APIs](/it/api) — Documentazione completa delle API.
+- [Developers > APIs](/it/api/overview/) — Documentazione completa delle API.

@@ -28,7 +28,7 @@ Esta guía está dirigida a desarrolladores que integran Wink con sistemas exter
 4. Ingresa un **nombre** (por ejemplo, "Sincronización de reservas PMS").
 5. Ingresa tu **URL de webhook** — el endpoint HTTPS en tu servidor.
 6. **Selecciona eventos** — Elige eventos específicos para suscribirte, o déjalo vacío para recibir todos los eventos.
-7. Activa el interruptor **Enabled**.
+7. Activa **Enabled**.
 8. Haz clic en `Save` — la respuesta muestra tu **secreto de firma una sola vez**; guárdalo ahora.
 </Steps>
 
@@ -67,7 +67,7 @@ Cada entrega es un HTTP `POST` a tu URL de webhook con `Content-Type: applicatio
 
 - `id` — identificador del evento; idéntico para cada endpoint de tu cuenta que reciba este evento y para cada reintento. Úsalo como tu **clave de idempotencia**.
 - `type` — clave del tipo de evento (también enviada como encabezado `Wink-Event-Type`). Ramifica según `type` y `schemaVersion` para analizar `object`.
-- `object` — un resumen curado del recurso al que se refiere el evento (identificadores, estado, los campos sobre los que actúas) más `links.self`, la URL REST canónica del lado del proveedor del recurso completo. Consúltala con tus propias credenciales API cuando necesites más que el resumen; si recibes el evento como revendedor o agente de viajes, usa el endpoint correspondiente de tu propia API para el mismo identificador.
+- `object` — resumen curado del recurso al que se refiere el evento (identificadores, estado, campos sobre los que actúas) más `links.self`, la URL REST canónica del lado del proveedor del recurso completo. Consúltala con tus propias credenciales API cuando necesites más que el resumen; si recibes el evento como revendedor o agente de viajes, usa el endpoint correspondiente de tu propia API para el mismo identificador.
 
 Cada esquema de carga útil está documentado por evento en la referencia de la [API de Webhooks](/es/api/webhooks/).
 
@@ -134,7 +134,7 @@ Rota el secreto desde el portal o con `POST /api/managing-entity/{id}/webhook/{w
 ## Reintentos y reenvíos
 
 - Responde con cualquier `2xx` en 10 segundos para confirmar. Realiza el trabajo pesado de forma asíncrona.
-- Un `5xx`, un timeout, `408` o `429` se reintentan con retroceso: después de 1 minuto, 5 minutos, 30 minutos, 2 horas, 6 horas, 12 horas, luego diario — 10 intentos en unos 3 días — tras lo cual la entrega se marca como **muerta**.
+- Un `5xx`, un timeout, `408` o `429` se reintenta con retroceso: después de 1 minuto, 5 minutos, 30 minutos, 2 horas, 6 horas, 12 horas, luego diario — 10 intentos en unos 3 días — tras lo cual la entrega se marca como **muerta**.
 - Cualquier otro `4xx` se trata como "rechazaste esta entrega" y **no** se reintenta.
 - Cada evento, entrega e intento (estado, fragmento de respuesta) es visible en **Applications > Webhooks** y a través de la API (`…/webhook/event/grid`, `…/webhook/delivery/grid`). Puedes **reenviar** cualquier entrega (`POST …/webhook/delivery/{deliveryId}/redeliver`, que inicia una nueva serie de reintentos), reenviar todas las entregas muertas de un webhook a la vez (`POST …/webhook/{webhookId}/redeliver-dead`), o cancelar una.
 - Las entregas se conservan por 30 días.
@@ -153,7 +153,7 @@ Envíate un evento sintético `webhook.test` desde el portal o con `POST /api/ma
 
 ## Pausar y eliminar
 
-Puedes **deshabilitar** un webhook sin eliminarlo. Esto pausa la entrega para que puedas solucionar problemas sin perder tu configuración. Cuando estés listo, actívalo de nuevo.
+Puedes **desactivar** un webhook sin eliminarlo. Esto pausa la entrega para que puedas solucionar problemas sin perder tu configuración. Cuando estés listo, actívalo de nuevo.
 
 Eliminar un webhook lo borra permanentemente. Cualquier integración que dependa de ese webhook dejará de recibir notificaciones.
 
@@ -163,4 +163,4 @@ Eliminar un webhook lo borra permanentemente. Cualquier integración que dependa
 - [Referencia de la API de Webhooks](/es/api/webhooks/) — Esquemas de carga útil por evento, encabezados y endpoints de gestión de suscripción/entrega.
 - [Webhooks](/es/portal/settings/webhooks) — Referencia completa para la gestión de webhooks.
 - [Applications](/es/account/applications) — Gestiona tus credenciales API.
-- [Developers > APIs](/es/api) — Documentación completa de la API.
+- [Developers > APIs](/es/api/overview/) — Documentación completa de la API.

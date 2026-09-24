@@ -34,9 +34,7 @@ Esta guía está dirigida a desarrolladores que integran Wink con sistemas exter
 
 ## Tipos de eventos
 
-Wink publica hoy 70 tipos de eventos de webhook en reservas, propiedades, cuentas (entidades gestoras)
-e inventario (tipos de habitación, planes tarifarios, tarifas maestras, complementos, servicios, canales de venta, promociones).
-Los más comunes:
+Wink publica hoy 70 tipos de eventos de webhook en reservas, propiedades, cuentas (entidades gestoras) e inventario (tipos de habitación, planes tarifarios, tarifas maestras, complementos, servicios, canales de venta, promociones). Los más comunes:
 
 | Categoría | Ejemplos |
 |---|---|
@@ -45,9 +43,7 @@ Los más comunes:
 | **Inventario** | `room_type.updated`, `rate_plan.created`, `master_rate.updated`, `special_rate.created`, `sales_channel.created` |
 | **Cuenta** | `managing_entity.created`, `managing_entity.status.updated`, `managing_entity.manager.added` |
 
-La lista completa y generada — con descripción, destinatarios y enlace a la página de referencia de cada evento —
-es el **Catálogo de Eventos de Webhook**. La página de referencia para cada evento (cuerpo JSON, encabezados, política de reintentos)
-está en la [API de Webhooks](/es-AR/api/webhooks/).
+La lista completa y generada — con descripción, destinatarios y enlace a la página de referencia de cada evento — es el **Catálogo de Eventos de Webhook**. La página de referencia para cada evento (cuerpo JSON, encabezados, política de reintentos) está en la [API de Webhooks](/es-AR/api/webhooks/).
 
 <LinkButton href="/es-AR/developers/webhook-events">
   Ver todos los tipos de eventos
@@ -69,14 +65,9 @@ Cada entrega es un HTTP `POST` a tu URL de webhook con `Content-Type: applicatio
 }
 ```
 
-- `id` — identificador del evento; idéntico para cada endpoint de tu cuenta que reciba este evento y para
-  cada reintento. Usalo como tu **clave de idempotencia**.
-- `type` — clave del tipo de evento (también enviada como encabezado `Wink-Event-Type`). Ramificá según `type` y `schemaVersion`
-  para parsear `object`.
-- `object` — un resumen curado del recurso al que se refiere el evento (identificadores, estado, los campos sobre los que actuás)
-  más `links.self`, la URL REST canónica del lado del proveedor del recurso completo. Consultala con tus propias credenciales API
-  cuando necesites más que el resumen; si recibís el evento como revendedor o agencia de viajes, usá
-  el endpoint correspondiente de tu propia API para el mismo identificador.
+- `id` — identificador del evento; idéntico para cada endpoint de tu cuenta que recibe este evento y para cada reintento. Usalo como tu **clave de idempotencia**.
+- `type` — clave del tipo de evento (también enviada como encabezado `Wink-Event-Type`). Ramificá según `type` y `schemaVersion` para parsear `object`.
+- `object` — un resumen curado del recurso al que se refiere el evento (identificadores, estado, los campos sobre los que actuás) más `links.self`, la URL REST canónica del lado del proveedor del recurso completo. Consultala con tus propias credenciales API cuando necesites más que el resumen; si recibís el evento como revendedor o agencia de viajes, usá el endpoint correspondiente de tu propia API para el mismo identificador.
 
 Cada esquema de carga útil está documentado por evento en la referencia de la [API de Webhooks](/es-AR/api/webhooks/).
 
@@ -93,20 +84,15 @@ Cada esquema de carga útil está documentado por evento en la referencia de la 
 
 ## Verificación de firmas
 
-Cada webhook tiene un **secreto de firma** (`whsec_…`) que Wink muestra **una sola vez**, cuando creás el webhook o
-rotás su secreto. Guardalo como una contraseña. Cada entrega lleva
+Cada webhook tiene un **secreto de firma** (`whsec_…`) que Wink muestra **una sola vez**, cuando creás el webhook o rotás su secreto. Guardalo como una contraseña. Cada entrega lleva
 
 ```
 Wink-Signature: t=1755250200,v1=5d41402abc4b2a76b9719d911017c592…
 ```
 
-donde `t` es un timestamp Unix (segundos) y `v1` es el **HMAC-SHA256** en minúsculas hexadecimal de la cadena
-`t + "." + rawBody`, con clave tu secreto, y `rawBody` es el cuerpo exacto de la solicitud tal como se recibió —
-no reserialices el JSON antes de verificar. Durante 24 horas después de rotar el secreto, el encabezado lleva un
-segundo valor `v1=` firmado con el secreto anterior; aceptá la entrega si **algún** `v1` coincide.
+donde `t` es un timestamp Unix (segundos) y `v1` es el **HMAC-SHA256** en minúsculas hexadecimal de la cadena `t + "." + rawBody`, con clave tu secreto, y `rawBody` es el cuerpo exacto de la solicitud tal como se recibió — no reserialices el JSON antes de verificar. Durante 24 horas después de rotar el secreto, el encabezado lleva un segundo valor `v1=` firmado con el secreto anterior; aceptá la entrega si **algún** `v1` coincide.
 
-Verificá en cuatro pasos: parseá `t` y cada `v1`; recalculá el HMAC sobre `t.rawBody` con tu secreto;
-compará con una comparación en tiempo constante; rechazá si `|now − t|` excede tu tolerancia (se recomiendan 5 minutos).
+Verificá en cuatro pasos: parseá `t` y cada `v1`; recalculá el HMAC sobre `t.rawBody` con tu secreto; compará con una comparación de tiempo constante; rechazá si `|ahora − t|` excede tu tolerancia (se recomiendan 5 minutos).
 
 ```js
 // Node.js (estilo Express; asegurate de tener el cuerpo RAW, no un objeto parseado)
@@ -143,46 +129,38 @@ static boolean verify(String header, String rawBody, String secret, long nowSeco
 }
 ```
 
-Rotá el secreto desde el portal o con `POST /api/managing-entity/{id}/webhook/{webhookId}/rotate-secret`;
-la respuesta muestra el nuevo secreto una sola vez, y el anterior sigue verificando durante 24 horas mientras lo implementás.
+Rotá el secreto desde el portal o con `POST /api/managing-entity/{id}/webhook/{webhookId}/rotate-secret`; la respuesta muestra el nuevo secreto una vez, y el anterior sigue verificando durante 24 horas mientras lo implementás.
 
 ## Reintentos y reentregas
 
 - Respondé con cualquier `2xx` dentro de 10 segundos para confirmar. Hacé el trabajo pesado de forma asíncrona.
-- Un `5xx`, un timeout, `408` o `429` se reintenta con backoff: después de 1 minuto, 5 minutos, 30 minutos, 2 horas,
-  6 horas, 12 horas, luego diario — 10 intentos en unos 3 días — tras lo cual la entrega se marca como **muerta**.
+- Un `5xx`, un timeout, `408` o `429` se reintenta con backoff: después de 1 minuto, 5 minutos, 30 minutos, 2 horas, 6 horas, 12 horas, luego diario — 10 intentos en unos 3 días — tras lo cual la entrega se marca como **muerta**.
 - Cualquier otro `4xx` se trata como "rechazaste esta entrega" y **no** se reintenta.
-- Cada evento, entrega e intento (estado, fragmento de respuesta) es visible en **Applications > Webhooks**
-  y a través de la API (`…/webhook/event/grid`, `…/webhook/delivery/grid`). Podés **reentregar** cualquier entrega
-  (`POST …/webhook/delivery/{deliveryId}/redeliver`, que inicia una nueva serie de reintentos), reentregar todas las entregas muertas
-  de un webhook a la vez (`POST …/webhook/{webhookId}/redeliver-dead`), o cancelar una.
+- Cada evento, entrega e intento (estado, fragmento de respuesta) es visible en **Applications > Webhooks** y a través de la API (`…/webhook/event/grid`, `…/webhook/delivery/grid`). Podés **reentregar** cualquier entrega (`POST …/webhook/delivery/{deliveryId}/redeliver`, que inicia una nueva serie de reintentos), reentregar todas las entregas muertas de un webhook a la vez (`POST …/webhook/{webhookId}/redeliver-dead`), o cancelar una.
 - Las entregas se conservan por 30 días.
 
 ## Eventos de prueba
 
-Enviate un evento sintético `webhook.test` desde el portal o con
-`POST /api/managing-entity/{id}/webhook/{webhookId}/test`. Está firmado y entregado exactamente como un evento real,
-así podés verificar tu endpoint, la verificación de firma y el manejo de idempotencia antes de suscribirte
-a eventos en vivo.
+Enviate un evento sintético `webhook.test` desde el portal o con `POST /api/managing-entity/{id}/webhook/{webhookId}/test`. Está firmado y entregado exactamente como un evento real, para que puedas verificar tu endpoint, la verificación de firma y el manejo de idempotencia antes de suscribirte a eventos en vivo.
 
 ## Mejores prácticas
 
 - **Usá HTTPS** — Wink envía cargas útiles solo a endpoints HTTPS.
 - **Respondé rápido** — Devolvé un `200 OK` tan pronto recibas la carga útil. Hacé cualquier procesamiento pesado de forma asíncrona.
 - **Idempotencia** — Tu manejador debe ser idempotente; deduplicá con `Wink-Event-Id`. Wink reintenta si no recibe una respuesta `2xx`.
-- **Validá la fuente** — Verificá el encabezado `Wink-Signature` (ver [Verificación de firmas](#verificación-de-firmas)) antes de procesar; rechazá todo lo que falle.
+- **Validá la fuente** — Verificá el encabezado `Wink-Signature` (ver [Verificación de firmas](#verificación-de-firmas)) antes de procesar; rechazá cualquier cosa que falle.
 - **Registro** — Registrá cada carga útil de webhook que recibas. Esto facilita mucho la depuración de problemas de integración.
 
 ## Pausar y eliminar
 
-Podés **desactivar** un webhook sin eliminarlo. Esto pausa la entrega para que puedas solucionar problemas sin perder tu configuración. Cuando estés listo, activalo de nuevo.
+Podés **deshabilitar** un webhook sin eliminarlo. Esto pausa la entrega para que puedas solucionar problemas sin perder tu configuración. Cuando estés listo, activalo nuevamente.
 
 Eliminar un webhook lo borra permanentemente. Cualquier integración que dependa de ese webhook dejará de recibir notificaciones.
 
-## Lecturas adicionales
+## Lecturas recomendadas
 
 - [Catálogo de Eventos de Webhook](/es-AR/developers/webhook-events) — Todos los tipos de eventos, generados desde el catálogo de la plataforma.
 - [Referencia de la API de Webhooks](/es-AR/api/webhooks/) — Esquemas de carga útil por evento, encabezados y endpoints de gestión de suscripción/entrega.
 - [Webhooks](/es-AR/portal/settings/webhooks) — Referencia completa para la gestión de webhooks.
 - [Applications](/es-AR/account/applications) — Gestioná tus credenciales API.
-- [Developers > APIs](/es-AR/api) — Documentación completa de la API.
+- [Developers > APIs](/es-AR/api/overview/) — Documentación completa de la API.

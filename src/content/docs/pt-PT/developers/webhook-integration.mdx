@@ -7,7 +7,7 @@ sidebar:
 
 import { Steps, LinkButton } from '@astrojs/starlight/components';
 
-Os webhooks permitem que os seus sistemas recebam notificações em tempo real quando eventos acontecem na sua conta Wink — novas reservas, cancelamentos, atualizações de pagamento e mais. Este guia orienta-o na configuração e nas melhores práticas.
+Os webhooks permitem que os seus sistemas recebam notificações em tempo real quando eventos ocorrem na sua conta Wink — novas reservas, cancelamentos, atualizações de pagamento e mais. Este guia orienta-o na configuração e nas melhores práticas.
 
 ## Público-alvo
 
@@ -43,7 +43,7 @@ O Wink publica atualmente 70 tipos de eventos de webhook relacionados com reserv
 | **Inventário** | `room_type.updated`, `rate_plan.created`, `master_rate.updated`, `special_rate.created`, `sales_channel.created` |
 | **Conta** | `managing_entity.created`, `managing_entity.status.updated`, `managing_entity.manager.added` |
 
-A lista completa e gerada — com descrição, destinatários e um link para a página de referência de cada evento — é o **Catálogo de Eventos de Webhook**. A página de referência para cada evento (corpo JSON, cabeçalhos, política de reenvio) está na [API de Webhooks](/pt-PT/api/webhooks/).
+A lista completa e gerada — com descrição, destinatários e um link para a página de referência de cada evento — é o **Catálogo de Eventos de Webhook**. A página de referência para cada evento (corpo JSON, cabeçalhos, política de reenvio) está disponível na [API de Webhooks](/pt-PT/api/webhooks/).
 
 <LinkButton href="/pt-PT/developers/webhook-events">
   Ver todos os tipos de evento
@@ -90,7 +90,7 @@ Cada webhook tem um **segredo de assinatura** (`whsec_…`) que o Wink mostra **
 Wink-Signature: t=1755250200,v1=5d41402abc4b2a76b9719d911017c592…
 ```
 
-onde `t` é um timestamp Unix (segundos) e `v1` é o **HMAC-SHA256** em hex minúsculo da string `t + "." + rawBody`, com chave no seu segredo, e `rawBody` são os bytes exatos do corpo da requisição tal como recebidos — não reserialize o JSON antes de verificar. Durante 24 horas após a rotação do segredo, o cabeçalho traz um segundo valor `v1=` assinado com o segredo anterior; aceite a entrega se **qualquer** `v1` corresponder.
+onde `t` é um timestamp Unix (segundos) e `v1` é o **HMAC-SHA256** em hexadecimal minúsculo da string `t + "." + rawBody`, com chave no seu segredo, e `rawBody` são os bytes exatos do corpo da requisição tal como recebidos — não reserialize o JSON antes de verificar. Durante 24 horas após a rotação do segredo, o cabeçalho traz um segundo valor `v1=` assinado com o segredo anterior; aceite a entrega se **qualquer** `v1` corresponder.
 
 Verifique em quatro passos: analise `t` e cada `v1`; recalcule o HMAC sobre `t.rawBody` com o seu segredo; compare com uma comparação em tempo constante; rejeite se `|agora − t|` exceder a sua tolerância (recomendado 5 minutos).
 
@@ -131,11 +131,11 @@ static boolean verify(String header, String rawBody, String secret, long nowSeco
 
 Rode o segredo a partir do portal ou com `POST /api/managing-entity/{id}/webhook/{webhookId}/rotate-secret`; a resposta mostra o novo segredo uma vez, e o antigo continua a verificar durante 24 horas enquanto o implementa.
 
-## Repetições e reentregas
+## Reenvios e novas entregas
 
 - Responda com qualquer `2xx` dentro de 10 segundos para confirmar. Faça o trabalho pesado de forma assíncrona.
-- Um `5xx`, timeout, `408` ou `429` é reintentado com backoff: após 1 minuto, 5 minutos, 30 minutos, 2 horas, 6 horas, 12 horas, depois diariamente — 10 tentativas em cerca de 3 dias — após o que a entrega é marcada como **morta**.
-- Qualquer outro `4xx` é tratado como "rejeitou esta entrega" e **não** é reintentado.
+- Um `5xx`, timeout, `408` ou `429` é reenviado com backoff: após 1 minuto, 5 minutos, 30 minutos, 2 horas, 6 horas, 12 horas, depois diariamente — 10 tentativas durante cerca de 3 dias — após o que a entrega é marcada como **morta**.
+- Qualquer outro `4xx` é tratado como "rejeitou esta entrega" e **não** é reenviado.
 - Cada evento, entrega e tentativa (estado, excerto da resposta) é visível em **Applications > Webhooks** e via API (`…/webhook/event/grid`, `…/webhook/delivery/grid`). Pode **reenviar** qualquer entrega (`POST …/webhook/delivery/{deliveryId}/redeliver`, que inicia uma nova série de tentativas), reenviar todas as entregas mortas de um webhook de uma vez (`POST …/webhook/{webhookId}/redeliver-dead`), ou cancelar uma.
 - As entregas são mantidas por 30 dias.
 
@@ -163,4 +163,4 @@ Eliminar um webhook remove-o permanentemente. Qualquer integração que dependa 
 - [Referência da API de Webhooks](/pt-PT/api/webhooks/) — Esquemas de payload por evento, cabeçalhos e endpoints de gestão de subscrição/entrega.
 - [Webhooks](/pt-PT/portal/settings/webhooks) — Referência completa para gestão de webhooks.
 - [Applications](/pt-PT/account/applications) — Gerir as suas credenciais API.
-- [Developers > APIs](/pt-PT/api) — Documentação completa da API.
+- [Developers > APIs](/pt-PT/api/overview/) — Documentação completa da API.

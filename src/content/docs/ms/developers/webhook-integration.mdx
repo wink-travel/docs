@@ -26,7 +26,7 @@ Panduan ini untuk pembangun yang mengintegrasikan Wink dengan sistem luaran sepe
 2. Pergi ke `Applications` kemudian `Webhooks`. Lihat [Webhooks](/ms/portal/settings/webhooks).
 3. Klik `Create webhook`.
 4. Masukkan **nama** (contohnya, "PMS Booking Sync").
-5. Masukkan **URL webhook** anda — titik akhir HTTPS pada pelayan anda.
+5. Masukkan **URL webhook** anda — titik hujung HTTPS pada pelayan anda.
 6. **Pilih acara** — Pilih acara tertentu untuk dilanggan, atau biarkan kosong untuk menerima semua acara.
 7. Togol **Enabled** ke hidup.
 8. Klik `Save` — respons menunjukkan **rahsia tandatangan sekali sahaja**; simpan sekarang.
@@ -69,14 +69,14 @@ Setiap penghantaran adalah HTTP `POST` ke URL webhook anda dengan `Content-Type:
 }
 ```
 
-- `id` — pengecam acara; sama untuk setiap titik akhir akaun anda yang menerima acara ini dan untuk
-  setiap cubaan semula. Gunakan sebagai **kunci idempotensi** anda.
+- `id` — pengecam acara; sama untuk setiap titik hujung akaun anda yang menerima acara ini dan untuk
+  setiap cubaan semula. Gunakan sebagai **kunci idempoten** anda.
 - `type` — kunci jenis acara (juga dihantar sebagai pengepala `Wink-Event-Type`). Cabang pada `type` dan `schemaVersion`
   untuk mengurai `object`.
-- `object` — ringkasan terpilih sumber acara tersebut (pengecam, status, medan yang anda bertindak ke atas)
+- `object` — ringkasan terpilih sumber acara tersebut (pengecam, status, medan yang anda bertindak)
   serta `links.self`, URL REST kanonik sisi pembekal bagi sumber penuh. Dapatkan dengan kelayakan API anda sendiri
   apabila anda memerlukan lebih daripada ringkasan; jika anda menerima acara sebagai penjual semula atau ejen pelancongan, gunakan
-  titik akhir sumber yang sepadan pada permukaan API anda sendiri untuk pengecam yang sama.
+  titik hujung sumber yang sepadan pada permukaan API anda sendiri untuk pengecam yang sama.
 
 Setiap skema muatan didokumentasikan mengikut acara dalam rujukan [Webhooks API](/ms/api/webhooks/).
 
@@ -85,8 +85,8 @@ Setiap skema muatan didokumentasikan mengikut acara dalam rujukan [Webhooks API]
 | Pengepala | Maksud |
 |---|---|
 | `Wink-Version` | Versi kontrak wayar, `2.0`. |
-| `Wink-Event-Id` | Sama seperti `id` dalam badan — kunci idempotensi anda. |
-| `Wink-Delivery-Id` | Unik bagi setiap titik akhir bagi setiap acara; berubah hanya jika anda menghantar semula. |
+| `Wink-Event-Id` | Sama seperti `id` dalam badan — kunci idempoten anda. |
+| `Wink-Delivery-Id` | Unik bagi setiap titik hujung bagi setiap acara; berubah hanya jika anda menghantar semula. |
 | `Wink-Event-Type` | Sama seperti `type` dalam badan. |
 | `Wink-Delivery-Attempt` | Nombor cubaan bermula dari 1 untuk penghantaran ini. |
 | `Wink-Signature` | Tandatangan HMAC — lihat di bawah. |
@@ -94,7 +94,7 @@ Setiap skema muatan didokumentasikan mengikut acara dalam rujukan [Webhooks API]
 ## Mengesahkan tandatangan
 
 Setiap webhook mempunyai **rahsia tandatangan** (`whsec_…`) yang Wink tunjukkan **sekali sahaja**, apabila anda mencipta webhook atau
-menggilirkan rahsia. Simpan seperti kata laluan. Setiap penghantaran membawa
+menggilirkan rahsianya. Simpan seperti kata laluan. Setiap penghantaran membawa
 
 ```
 Wink-Signature: t=1755250200,v1=5d41402abc4b2a76b9719d911017c592…
@@ -102,7 +102,7 @@ Wink-Signature: t=1755250200,v1=5d41402abc4b2a76b9719d911017c592…
 
 di mana `t` adalah cap masa Unix (saat) dan `v1` adalah **HMAC-SHA256** heks huruf kecil bagi rentetan
 `t + "." + rawBody`, dikunci dengan rahsia anda, dan `rawBody` adalah bait badan permintaan tepat seperti diterima —
-jangan serikan semula JSON sebelum mengesahkan. Untuk 24 jam selepas penggiliran rahsia, pengepala membawa
+jangan serikan semula JSON sebelum mengesahkan. Selama 24 jam selepas penggiliran rahsia, pengepala membawa
 nilai `v1=` kedua yang ditandatangani dengan rahsia sebelumnya; terima penghantaran jika **mana-mana** `v1` sepadan.
 
 Sahkan dalam empat langkah: uraikan `t` dan setiap `v1`; kira semula HMAC ke atas `t.rawBody` dengan rahsia anda;
@@ -155,34 +155,34 @@ respons menunjukkan rahsia baru sekali sahaja, dan yang lama terus disahkan sela
 - Setiap acara, penghantaran dan cubaan (status, petikan respons) boleh dilihat di bawah **Applications > Webhooks**
   dan melalui API (`…/webhook/event/grid`, `…/webhook/delivery/grid`). Anda boleh **menghantar semula** mana-mana penghantaran
   (`POST …/webhook/delivery/{deliveryId}/redeliver`, yang memulakan siri cubaan semula baru), menghantar semula semua penghantaran mati
-  webhook sekaligus (`POST …/webhook/{webhookId}/redeliver-dead`), atau membatalkannya.
+  webhook sekaligus (`POST …/webhook/{webhookId}/redeliver-dead`), atau batalkan satu.
 - Penghantaran disimpan selama 30 hari.
 
 ## Acara ujian
 
-Hantar sendiri acara sintetik `webhook.test` dari portal atau dengan
+Hantar kepada diri anda acara sintetik `webhook.test` dari portal atau dengan
 `POST /api/managing-entity/{id}/webhook/{webhookId}/test`. Ia ditandatangani dan dihantar sama seperti acara sebenar,
-jadi anda boleh mengesahkan titik akhir anda, pemeriksaan tandatangan dan pengendalian idempotensi sebelum melanggan
+jadi anda boleh mengesahkan titik hujung anda, semakan tandatangan dan pengendalian idempoten sebelum melanggan
 acara langsung.
 
 ## Amalan terbaik
 
-- **Gunakan HTTPS** — Wink hanya menghantar muatan ke titik akhir HTTPS.
-- **Balas dengan cepat** — Kembalikan `200 OK` sebaik sahaja anda menerima muatan. Lakukan pemprosesan berat secara tak segerak.
-- **Idempotensi** — Pengendali anda harus idempotent; hapus pendua berdasarkan `Wink-Event-Id`. Wink cuba semula apabila tidak menerima respons `2xx`.
-- **Sahkan sumber** — Sahkan pengepala `Wink-Signature` (lihat [Mengesahkan tandatangan](#verifying-signatures)) sebelum memproses; tolak apa-apa yang gagal.
+- **Gunakan HTTPS** — Wink hanya menghantar muatan ke titik hujung HTTPS.
+- **Balas dengan cepat** — Pulangkan `200 OK` sebaik sahaja anda menerima muatan. Lakukan pemprosesan berat secara tak segerak.
+- **Idempoten** — Pengendali anda harus idempoten; elakkan pendua berdasarkan `Wink-Event-Id`. Wink cuba semula jika tidak menerima respons `2xx`.
+- **Sahkan sumber** — Sahkan pengepala `Wink-Signature` (lihat [Mengesahkan tandatangan](#mengesahkan-tandatangan)) sebelum memproses; tolak apa-apa yang gagal.
 - **Log** — Log setiap muatan webhook yang anda terima. Ini memudahkan penyahpepijatan isu integrasi.
 
 ## Menjeda dan memadam
 
 Anda boleh **nyahaktifkan** webhook tanpa memadamnya. Ini menjeda penghantaran supaya anda boleh menyelesaikan masalah tanpa kehilangan konfigurasi anda. Apabila anda bersedia, togol semula ke hidup.
 
-Memadam webhook mengeluarkannya secara kekal. Sebarang integrasi yang bergantung pada webhook itu akan berhenti menerima pemberitahuan.
+Memadam webhook menghapuskannya secara kekal. Mana-mana integrasi yang bergantung pada webhook itu akan berhenti menerima pemberitahuan.
 
 ## Bacaan lanjut
 
 - [Katalog Acara Webhook](/ms/developers/webhook-events) — Setiap jenis acara, dijana dari katalog platform.
-- [Rujukan API Webhooks](/ms/api/webhooks/) — Skema muatan per acara, pengepala, dan titik akhir pengurusan langganan/penghantaran.
+- [Rujukan API Webhooks](/ms/api/webhooks/) — Skema muatan per acara, pengepala, dan titik hujung pengurusan langganan/penghantaran.
 - [Webhooks](/ms/portal/settings/webhooks) — Rujukan penuh untuk pengurusan webhook.
 - [Applications](/ms/account/applications) — Urus kelayakan API anda.
-- [Developers > APIs](/ms/api) — Dokumentasi API penuh.
+- [Pembangun > API](/ms/api/overview/) — Dokumentasi API penuh.

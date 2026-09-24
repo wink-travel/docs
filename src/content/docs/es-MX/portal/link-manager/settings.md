@@ -28,7 +28,7 @@ Controles adicionales incluyen:
 
 ## API
 
-Los desarrolladores que quieran administrar `WinkLinks` pueden dirigirse a [Developers > API > WinkLinks](/es-MX/api).
+Los desarrolladores que quieran administrar `WinkLinks` pueden dirigirse a [Developers > API > WinkLinks](/es-MX/api/overview/).
 
 ## Lectura adicional
 

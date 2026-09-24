@@ -13,10 +13,10 @@ Reisebyråer har et delsett av de samme portalfunksjonene som [Studio](/no/porta
 
 ## Søk
 
-Gå til [Søk](/no/portal/studio/search) for å lære hvordan du søker etter og booker hoteller.
+Gå til [Search](/no/portal/studio/search) for å lære hvordan du søker etter og booker hoteller.
 
 Ellers kan du fortsette til neste seksjon.
 
 ## API
 
-Utviklere som ønsker å administrere `Travel Agent` kan gå til [Developers > API > Travel Agent](/no/api).
+Utviklere som ønsker å administrere `Travel Agent` kan gå til [Developers > API > Travel Agent](/no/api/overview/).

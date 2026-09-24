@@ -28,7 +28,7 @@ Ek kontroller şunları içerir:
 
 ## API
 
-`WinkLinks`i yönetmek isteyen geliştiriciler [Developers > API > WinkLinks](/tr/api) sayfasına gidebilirler.
+`WinkLinks`i yönetmek isteyen geliştiriciler [Developers > API > WinkLinks](/tr/api/overview/) sayfasına gidebilirler.
 
 ## Daha fazla okuma
 

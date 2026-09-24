@@ -25,7 +25,7 @@ Tento průvodce je určen vývojářům integrujícím Wink s externími systém
 1. Přihlaste se ke svému účtu (Extranet, Studio nebo TripPay — všechny podporují webhooky).
 2. Přejděte do `Applications` a poté `Webhooks`. Viz [Webhooky](/cs/portal/settings/webhooks).
 3. Klikněte na `Create webhook`.
-4. Zadejte **název** (např. "PMS Synchronizace rezervací").
+4. Zadejte **název** (např. "PMS synchronizace rezervací").
 5. Zadejte svou **webhook URL** — HTTPS endpoint na vašem serveru.
 6. **Vyberte události** — Vyberte konkrétní události, na které se chcete přihlásit, nebo nechte prázdné pro příjem všech událostí.
 7. Přepněte **Enabled** na zapnuto.
@@ -34,7 +34,7 @@ Tento průvodce je určen vývojářům integrujícím Wink s externími systém
 
 ## Typy událostí
 
-Wink dnes publikuje 70 typů webhook událostí napříč rezervacemi, nemovitostmi, účty (správní entity) a inventářem (typy pokojů, sazební plány, hlavní sazby, doplňky, zařízení, prodejní kanály, promo akce). Mezi běžné patří:
+Wink dnes publikuje 70 typů webhook událostí napříč rezervacemi, nemovitostmi, účty (správci entit) a inventářem (typy pokojů, cenové plány, hlavní sazby, doplňky, zařízení, prodejní kanály, promo akce). Mezi běžné patří:
 
 | Kategorie | Příklady |
 |---|---|
@@ -67,7 +67,7 @@ Každé doručení je HTTP `POST` na vaši webhook URL s `Content-Type: applicat
 
 - `id` — identifikátor události; stejný pro každý endpoint vašeho účtu, který tuto událost přijímá, a pro každý retry. Použijte ho jako svůj **idempotentní klíč**.
 - `type` — klíč typu události (také odesílaný jako hlavička `Wink-Event-Type`). Rozlišujte podle `type` a `schemaVersion` pro parsování `object`.
-- `object` — vybraný souhrn zdroje, o kterém událost je (identifikátory, stav, pole, na která reagujete) plus `links.self`, kanonická REST URL na straně dodavatele k plnému zdroji. Stáhněte si ji s vlastními API přihlašovacími údaji, pokud potřebujete víc než souhrn; pokud událost přijímáte jako reseller nebo cestovní agent, použijte odpovídající endpoint svého API pro stejný identifikátor.
+- `object` — vybraný souhrn zdroje, o kterém událost je (identifikátory, stav, pole, na která reagujete) plus `links.self`, kanonická REST URL na straně dodavatele k plnému zdroji. Stáhněte si ji s vlastními API přihlašovacími údaji, pokud potřebujete víc než souhrn; pokud událost přijímáte jako reseller nebo cestovní agentura, použijte odpovídající endpoint svého API pro stejný identifikátor.
 
 Každé schéma payloadu je dokumentováno pro každou událost v referenci [Webhooks API](/cs/api/webhooks/).
 
@@ -84,14 +84,14 @@ Každé schéma payloadu je dokumentováno pro každou událost v referenci [Web
 
 ## Ověřování podpisů
 
-Každý webhook má **signing secret** (`whsec_…`), který Wink zobrazí **pouze jednou**, při vytvoření webhooku nebo při rotaci jeho tajemství. Uložte si ho jako heslo. Každé doručení nese
+Každý webhook má **signing secret** (`whsec_…`), který Wink zobrazí **jednou**, při vytvoření webhooku nebo rotaci jeho tajemství. Uložte si ho jako heslo. Každé doručení nese
 
 ```
 Wink-Signature: t=1755250200,v1=5d41402abc4b2a76b9719d911017c592…
 ```
 
 kde `t` je Unixový timestamp (v sekundách) a `v1` je hexadecimální **HMAC-SHA256** malými písmeny řetězce
-`t + "." + rawBody`, podepsaný vaším tajemstvím, a `rawBody` je přesný obsah těla požadavku, jak byl přijat — JSON před ověřením nepřepisujte. Po dobu 24 hodin po rotaci tajemství hlavička nese druhou hodnotu `v1=` podepsanou předchozím tajemstvím; doručení přijměte, pokud **nějaký** `v1` sedí.
+`t + "." + rawBody`, podepsaný vaším tajemstvím, a `rawBody` je přesný obsah těla požadavku, jak byl přijat — JSON před ověřením nepřepisujte. Po dobu 24 hodin po rotaci tajemství hlavička nese druhou hodnotu `v1=` podepsanou předchozím tajemstvím; doručení přijměte, pokud **nějaký** `v1` odpovídá.
 
 Ověřte ve čtyřech krocích: rozparsujte `t` a všechny `v1`; přepočítejte HMAC přes `t.rawBody` s vaším tajemstvím; porovnejte konstantním časem; odmítněte, pokud `|now − t|` překročí vaši toleranci (doporučeno 5 minut).
 
@@ -136,7 +136,7 @@ Rotujte tajemství z portálu nebo pomocí `POST /api/managing-entity/{id}/webho
 
 - Odpovězte jakýmkoli `2xx` do 10 sekund pro potvrzení. Náročné zpracování provádějte asynchronně.
 - `5xx`, timeout, `408` nebo `429` se opakují s postupným prodlevami: po 1 minutě, 5 minutách, 30 minutách, 2 hodinách, 6 hodinách, 12 hodinách, pak denně — 10 pokusů během cca 3 dnů — poté je doručení označeno jako **mrtvé**.
-- Jakýkoli jiný `4xx` se považuje za "odmítnutí doručení" a **neopakuje se**.
+- Jakýkoli jiný `4xx` se považuje za „odmítnutí doručení“ a **neopakuje se**.
 - Každá událost, doručení a pokus (stav, úryvek odpovědi) je viditelný v **Applications > Webhooks** a přes API (`…/webhook/event/grid`, `…/webhook/delivery/grid`). Můžete **znovu doručit** jakékoli doručení (`POST …/webhook/delivery/{deliveryId}/redeliver`, což spustí novou sérii pokusů), znovu doručit všechny mrtvé doručení webhooku najednou (`POST …/webhook/{webhookId}/redeliver-dead`) nebo jedno zrušit.
 - Doručení se uchovávají 30 dní.
 
@@ -165,4 +165,4 @@ Smazání webhooku jej trvale odstraní. Jakákoli integrace, která na tento we
 - [Reference Webhooks API](/cs/api/webhooks/) — Schémata payloadů, hlavičky a endpointy pro správu odběrů/doručení.
 - [Webhooky](/cs/portal/settings/webhooks) — Kompletní reference pro správu webhooků.
 - [Applications](/cs/account/applications) — Správa vašich API přihlašovacích údajů.
-- [Developers > APIs](/cs/api) — Kompletní dokumentace API.
+- [Developers > APIs](/cs/api/overview/) — Kompletní dokumentace API.

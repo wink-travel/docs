@@ -1,13 +1,13 @@
 ---
 title: Integración de Webhooks
-description: Esta guía muestra a los desarrolladores cómo configurar webhooks para recibir notificaciones en tiempo real sobre reservaciones, pagos y otros eventos.
+description: Esta guía muestra a los desarrolladores cómo configurar webhooks para recibir notificaciones en tiempo real sobre reservas, pagos y otros eventos.
 sidebar:
   order: 3
 ---
 
 import { Steps, LinkButton } from '@astrojs/starlight/components';
 
-Los webhooks permiten que tus sistemas reciban notificaciones en tiempo real cuando ocurren eventos en tu cuenta Wink — nuevas reservaciones, cancelaciones, actualizaciones de pagos y más. Esta guía te lleva paso a paso por la configuración y las mejores prácticas.
+Los webhooks permiten que tus sistemas reciban notificaciones en tiempo real cuando ocurren eventos en tu cuenta Wink — nuevas reservas, cancelaciones, actualizaciones de pagos y más. Esta guía te lleva paso a paso por la configuración y las mejores prácticas.
 
 ## Audiencia
 
@@ -16,7 +16,7 @@ Esta guía es para desarrolladores que integran Wink con sistemas externos como 
 ## Cómo funcionan los webhooks
 
 1. Registras una URL de webhook en Wink.
-2. Cuando ocurre un evento (por ejemplo, una nueva reservación), Wink envía un HTTP POST a tu URL.
+2. Cuando ocurre un evento (por ejemplo, una nueva reserva), Wink envía un HTTP POST a tu URL.
 3. Tu servidor procesa la carga útil y responde con un `200 OK`.
 
 ## Configuración de un webhook
@@ -34,11 +34,11 @@ Esta guía es para desarrolladores que integran Wink con sistemas externos como 
 
 ## Tipos de eventos
 
-Wink publica hoy 70 tipos de eventos de webhook en reservaciones, propiedades, cuentas (entidades gestoras) e inventario (tipos de habitación, planes tarifarios, tarifas maestras, complementos, instalaciones, canales de venta, promociones). Los más comunes:
+Wink publica hoy 70 tipos de eventos de webhook en reservas, propiedades, cuentas (entidades gestoras) e inventario (tipos de habitación, planes tarifarios, tarifas maestras, complementos, instalaciones, canales de venta, promociones). Los más comunes:
 
 | Categoría | Ejemplos |
 |---|---|
-| **Reservación** | `booking.create`, `booking.cancelled`, `booking.refund.partial`, `booking.refund.full`, `booking.review.created` |
+| **Reserva** | `booking.create`, `booking.cancelled`, `booking.refund.partial`, `booking.refund.full`, `booking.review.created` |
 | **Propiedad** | `property.created`, `property.status.updated`, `property.policy.updated` |
 | **Inventario** | `room_type.updated`, `rate_plan.created`, `master_rate.updated`, `special_rate.created`, `sales_channel.created` |
 | **Cuenta** | `managing_entity.created`, `managing_entity.status.updated`, `managing_entity.manager.added` |
@@ -77,7 +77,7 @@ Cada esquema de carga útil está documentado por evento en la referencia de la 
 |---|---|
 | `Wink-Version` | Versión del contrato wire, `2.0`. |
 | `Wink-Event-Id` | Igual que `id` en el cuerpo — tu clave de idempotencia. |
-| `Wink-Delivery-Id` | Único por endpoint por evento; cambia solo si reentregas. |
+| `Wink-Delivery-Id` | Único por endpoint y evento; cambia solo si reenvías. |
 | `Wink-Event-Type` | Igual que `type` en el cuerpo. |
 | `Wink-Delivery-Attempt` | Número de intento basado en 1 para esta entrega. |
 | `Wink-Signature` | Firma HMAC — ver más abajo. |
@@ -90,7 +90,8 @@ Cada webhook tiene un **secreto de firma** (`whsec_…`) que Wink muestra **una 
 Wink-Signature: t=1755250200,v1=5d41402abc4b2a76b9719d911017c592…
 ```
 
-donde `t` es un timestamp Unix (segundos) y `v1` es el **HMAC-SHA256** en minúsculas hexadecimal de la cadena `t + "." + rawBody`, con clave tu secreto, y `rawBody` es el cuerpo exacto de la solicitud en bytes tal como se recibió — no vuelvas a serializar el JSON antes de verificar. Durante 24 horas después de rotar el secreto, el encabezado lleva un segundo valor `v1=` firmado con el secreto anterior; acepta la entrega si **algún** `v1` coincide.
+donde `t` es un timestamp Unix (segundos) y `v1` es el **HMAC-SHA256** en minúsculas hexadecimal de la cadena
+`t + "." + rawBody`, con clave tu secreto, y `rawBody` es el cuerpo exacto de la solicitud tal como se recibió — no vuelvas a serializar el JSON antes de verificar. Durante 24 horas después de rotar el secreto, el encabezado lleva un segundo valor `v1=` firmado con el secreto anterior; acepta la entrega si **algún** `v1` coincide.
 
 Verifica en cuatro pasos: analiza `t` y cada `v1`; recalcula el HMAC sobre `t.rawBody` con tu secreto; compara con una comparación en tiempo constante; rechaza si `|ahora − t|` excede tu tolerancia (se recomiendan 5 minutos).
 
@@ -131,23 +132,24 @@ static boolean verify(String header, String rawBody, String secret, long nowSeco
 
 Rota el secreto desde el portal o con `POST /api/managing-entity/{id}/webhook/{webhookId}/rotate-secret`; la respuesta muestra el nuevo secreto una vez, y el anterior sigue verificando durante 24 horas mientras lo implementas.
 
-## Reintentos y reentregas
+## Reintentos y reenvíos
 
 - Responde con cualquier `2xx` en 10 segundos para confirmar. Haz el trabajo pesado de forma asíncrona.
-- Un `5xx`, un timeout, `408` o `429` se reintenta con backoff: después de 1 minuto, 5 minutos, 30 minutos, 2 horas, 6 horas, 12 horas, luego diario — 10 intentos en unos 3 días — tras lo cual la entrega se marca como **muerta**.
+- Un `5xx`, un timeout, `408` o `429` se reintenta con backoff: después de 1 minuto, 5 minutos, 30 minutos, 2 horas, 6 horas, 12 horas, luego diario — 10 intentos en aproximadamente 3 días — tras lo cual la entrega se marca como **muerta**.
 - Cualquier otro `4xx` se trata como "rechazaste esta entrega" y **no** se reintenta.
-- Cada evento, entrega e intento (estado, fragmento de respuesta) es visible en **Applications > Webhooks** y a través de la API (`…/webhook/event/grid`, `…/webhook/delivery/grid`). Puedes **reentregar** cualquier entrega (`POST …/webhook/delivery/{deliveryId}/redeliver`, que inicia una nueva serie de reintentos), reentregar todas las entregas muertas de un webhook a la vez (`POST …/webhook/{webhookId}/redeliver-dead`), o cancelar una.
+- Cada evento, entrega e intento (estado, fragmento de respuesta) es visible en **Applications > Webhooks** y a través de la API (`…/webhook/event/grid`, `…/webhook/delivery/grid`). Puedes **reenviar** cualquier entrega (`POST …/webhook/delivery/{deliveryId}/redeliver`, que inicia una nueva serie de reintentos), reenviar todas las entregas muertas de un webhook a la vez (`POST …/webhook/{webhookId}/redeliver-dead`), o cancelar una.
 - Las entregas se conservan por 30 días.
 
 ## Eventos de prueba
 
-Envíate un evento sintético `webhook.test` desde el portal o con `POST /api/managing-entity/{id}/webhook/{webhookId}/test`. Está firmado y entregado exactamente como un evento real, para que puedas verificar tu endpoint, la verificación de firma y el manejo de idempotencia antes de suscribirte a eventos en vivo.
+Envíate un evento sintético `webhook.test` desde el portal o con
+`POST /api/managing-entity/{id}/webhook/{webhookId}/test`. Está firmado y entregado exactamente como un evento real, para que puedas verificar tu endpoint, la verificación de firma y el manejo de idempotencia antes de suscribirte a eventos en vivo.
 
 ## Mejores prácticas
 
 - **Usa HTTPS** — Wink envía cargas útiles solo a endpoints HTTPS.
 - **Responde rápido** — Devuelve un `200 OK` tan pronto recibas la carga útil. Haz cualquier procesamiento pesado de forma asíncrona.
-- **Idempotencia** — Tu manejador debe ser idempotente; deduplica con `Wink-Event-Id`. Wink reintenta si no recibe una respuesta `2xx`.
+- **Idempotencia** — Tu manejador debe ser idempotente; deduplica con `Wink-Event-Id`. Wink reintenta cuando no recibe una respuesta `2xx`.
 - **Valida la fuente** — Verifica el encabezado `Wink-Signature` (ver [Verificación de firmas](#verificación-de-firmas)) antes de procesar; rechaza cualquier cosa que falle.
 - **Registro** — Registra cada carga útil de webhook que recibas. Esto facilita mucho la depuración de problemas de integración.
 
@@ -163,4 +165,4 @@ Eliminar un webhook lo borra permanentemente. Cualquier integración que dependa
 - [Referencia de la API de Webhooks](/es-MX/api/webhooks/) — Esquemas de carga útil por evento, encabezados y endpoints de gestión de suscripción/entrega.
 - [Webhooks](/es-MX/portal/settings/webhooks) — Referencia completa para la gestión de webhooks.
 - [Applications](/es-MX/account/applications) — Gestiona tus credenciales API.
-- [Developers > APIs](/es-MX/api) — Documentación completa de la API.
+- [Developers > APIs](/es-MX/api/overview/) — Documentación completa de la API.

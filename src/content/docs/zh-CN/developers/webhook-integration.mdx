@@ -7,7 +7,7 @@ sidebar:
 
 import { Steps, LinkButton } from '@astrojs/starlight/components';
 
-Webhook 让您的系统能够在 Wink 账户发生事件时接收实时通知——新预订、取消、支付更新等。本文将引导您完成设置及最佳实践。
+Webhook 让您的系统在 Wink 账户发生事件时接收实时通知——新预订、取消、支付更新等。本文将引导您完成设置及最佳实践。
 
 ## 受众
 
@@ -22,7 +22,7 @@ Webhook 让您的系统能够在 Wink 账户发生事件时接收实时通知—
 ## 设置 webhook
 
 <Steps>
-1. 登录您的账户（Extranet、Studio 或 TripPay 均支持 webhook）。
+1. 登录您的账户（Extranet、Studio 或 TripPay——均支持 webhook）。
 2. 进入 `Applications`，然后选择 `Webhooks`。参见 [Webhooks](/zh-CN/portal/settings/webhooks)。
 3. 点击 `Create webhook`。
 4. 输入 **名称**（例如 “PMS 预订同步”）。
@@ -34,17 +34,16 @@ Webhook 让您的系统能够在 Wink 账户发生事件时接收实时通知—
 
 ## 事件类型
 
-Wink 目前发布了 70 种 webhook 事件类型，涵盖预订、物业、账户（管理实体）和库存（房型、价格计划、主价格、附加服务、设施、销售渠道、促销）等。
-常见事件：
+Wink 目前发布了 70 种 webhook 事件类型，涵盖预订、物业、账户（管理实体）和库存（房型、价格计划、主价格、附加服务、设施、销售渠道、促销）。常见事件：
 
-| 分类 | 示例 |
+| 类别 | 示例 |
 |---|---|
-| **预订** | `booking.create`，`booking.cancelled`，`booking.refund.partial`，`booking.refund.full`，`booking.review.created` |
-| **物业** | `property.created`，`property.status.updated`，`property.policy.updated` |
-| **库存** | `room_type.updated`，`rate_plan.created`，`master_rate.updated`，`special_rate.created`，`sales_channel.created` |
-| **账户** | `managing_entity.created`，`managing_entity.status.updated`，`managing_entity.manager.added` |
+| **预订** | `booking.create`、`booking.cancelled`、`booking.refund.partial`、`booking.refund.full`、`booking.review.created` |
+| **物业** | `property.created`、`property.status.updated`、`property.policy.updated` |
+| **库存** | `room_type.updated`、`rate_plan.created`、`master_rate.updated`、`special_rate.created`、`sales_channel.created` |
+| **账户** | `managing_entity.created`、`managing_entity.status.updated`、`managing_entity.manager.added` |
 
-完整的生成列表——包含描述、接收方及每个事件参考页面链接——即为 **Webhook 事件目录**。每个事件的参考页面（JSON 体、头信息、重试策略）均在 [Webhooks API](/zh-CN/api/webhooks/) 中。
+完整的生成列表——包含描述、接收方及每个事件参考页面链接——即为 **Webhook 事件目录**。每个事件的参考页面（JSON 体、头信息、重试策略）位于 [Webhooks API](/zh-CN/api/webhooks/)。
 
 <LinkButton href="/zh-CN/developers/webhook-events">
   查看所有事件类型
@@ -68,20 +67,20 @@ Wink 目前发布了 70 种 webhook 事件类型，涵盖预订、物业、账�
 
 - `id` —— 事件标识符；对于接收此事件的账户所有端点及每次重试均相同。用作您的 **幂等键**。
 - `type` —— 事件类型键（也作为 `Wink-Event-Type` 头发送）。根据 `type` 和 `schemaVersion` 解析 `object`。
-- `object` —— 事件相关资源的精简摘要（标识符、状态、您需要处理的字段）及 `links.self`，即供应商侧完整资源的标准 REST URL。需要详细信息时，使用您自己的 API 凭据获取；如果您作为转售商或旅行社接收事件，请使用您自己 API 的对应资源端点。
+- `object` —— 事件相关资源的精简摘要（标识符、状态、您操作的字段）及 `links.self`，供应商侧完整资源的标准 REST URL。需要详细信息时，使用您自己的 API 凭据获取；如果您作为转售商或旅行社接收事件，请使用您自己 API 的对应资源端点。
 
 每个负载模式在 [Webhooks API](/zh-CN/api/webhooks/) 参考中按事件文档说明。
 
 ### 头信息
 
-| 头名称 | 含义 |
+| 头名 | 含义 |
 |---|---|
 | `Wink-Version` | 协议版本，`2.0`。 |
 | `Wink-Event-Id` | 与正文中的 `id` 相同——您的幂等键。 |
 | `Wink-Delivery-Id` | 每个端点每个事件唯一；仅在重新投递时更改。 |
 | `Wink-Event-Type` | 与正文中的 `type` 相同。 |
 | `Wink-Delivery-Attempt` | 本次投递的尝试次数，从 1 开始。 |
-| `Wink-Signature` | HMAC 签名 —— 详见下文。 |
+| `Wink-Signature` | HMAC 签名——详见下文。 |
 
 ## 验证签名
 
@@ -93,7 +92,7 @@ Wink-Signature: t=1755250200,v1=5d41402abc4b2a76b9719d911017c592…
 
 其中 `t` 是 Unix 时间戳（秒），`v1` 是字符串 `t + "." + rawBody` 的小写十六进制 **HMAC-SHA256**，使用您的密钥加密，`rawBody` 是接收到的请求体的原始字节——验证时不要重新序列化 JSON。密钥轮换后 24 小时内，头部会携带用旧密钥签名的第二个 `v1=` 值；只要**任一** `v1` 匹配即接受投递。
 
-验证步骤四步走：解析 `t` 和所有 `v1`；用密钥重新计算 `t.rawBody` 的 HMAC；用常量时间比较函数比对；如果 `|now − t|` 超出容忍范围（建议 5 分钟）则拒绝。
+验证步骤四步走：解析 `t` 和所有 `v1`；用密钥重新计算 `t.rawBody` 的 HMAC；用常量时间比较法比对；如果 `|now − t|` 超出容忍范围（建议 5 分钟）则拒绝。
 
 ```js
 // Node.js (Express 风格；确保使用原始请求体，而非解析后的对象)
@@ -130,15 +129,14 @@ static boolean verify(String header, String rawBody, String secret, long nowSeco
 }
 ```
 
-您可以在门户或通过 `POST /api/managing-entity/{id}/webhook/{webhookId}/rotate-secret` 轮换密钥；
-响应会显示新密钥一次，旧密钥在您完成更新的 24 小时内仍然有效。
+您可以从门户或通过 `POST /api/managing-entity/{id}/webhook/{webhookId}/rotate-secret` 轮换密钥；响应会显示新密钥一次，旧密钥在 24 小时内仍可验证，方便平滑过渡。
 
 ## 重试与重新投递
 
 - 在 10 秒内返回任何 `2xx` 状态以确认接收。耗时操作请异步处理。
-- 遇到 `5xx`、超时、`408` 或 `429` 会按退避策略重试：1 分钟、5 分钟、30 分钟、2 小时、6 小时、12 小时，然后每天一次——共 10 次尝试，约 3 天后标记为 **死信**。
+- `5xx`、超时、`408` 或 `429` 会按退避策略重试：1 分钟、5 分钟、30 分钟、2 小时、6 小时、12 小时，然后每天一次——共 10 次尝试，约 3 天后标记为 **死信**。
 - 其他任何 `4xx` 状态视为“您拒绝了此投递”，不会重试。
-- 每个事件、投递及尝试（状态、响应片段）均可在 **Applications > Webhooks** 及 API (`…/webhook/event/grid`、`…/webhook/delivery/grid`) 查看。您可以 **重新投递** 任意投递（`POST …/webhook/delivery/{deliveryId}/redeliver`，启动新的重试序列），一次性重新投递 webhook 的所有死信（`POST …/webhook/{webhookId}/redeliver-dead`），或取消某次投递。
+- 每个事件、投递和尝试（状态、响应片段）均可在 **Applications > Webhooks** 及 API (`…/webhook/event/grid`、`…/webhook/delivery/grid`) 查看。您可以 **重新投递** 任意投递（`POST …/webhook/delivery/{deliveryId}/redeliver`，启动新的重试序列），一次性重新投递 webhook 的所有死信投递（`POST …/webhook/{webhookId}/redeliver-dead`），或取消某次投递。
 - 投递数据保留 30 天。
 
 ## 测试事件
@@ -165,4 +163,4 @@ static boolean verify(String header, String rawBody, String secret, long nowSeco
 - [Webhooks API 参考](/zh-CN/api/webhooks/) —— 按事件的负载模式、头信息及订阅/投递管理端点。
 - [Webhooks](/zh-CN/portal/settings/webhooks) —— webhook 管理完整参考。
 - [Applications](/zh-CN/account/applications) —— 管理您的 API 凭据。
-- [开发者 > APIs](/zh-CN/api) —— 完整 API 文档。
+- [开发者 > API](/zh-CN/api/overview/) —— 完整 API 文档。

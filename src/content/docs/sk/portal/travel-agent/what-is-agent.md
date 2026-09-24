@@ -19,4 +19,4 @@ Inak pokračujte do ďalšej sekcie.
 
 ## API
 
-Vývojári, ktorí chcú spravovať `Travel Agent`, môžu prejsť na [Developers > API > Travel Agent](/sk/api).
+Vývojári, ktorí chcú spravovať `Travel Agent`, môžu prejsť na [Developers > API > Travel Agent](/sk/api/overview/).

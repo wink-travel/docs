@@ -7,9 +7,9 @@ sidebar:
 
 import { Steps, LinkButton } from '@astrojs/starlight/components';
 
-Webhooks permitem que seus sistemas recebam notificações em tempo real quando eventos acontecem na sua conta Wink — novas reservas, cancelamentos, atualizações de pagamento e mais. Este guia orienta você na configuração e nas melhores práticas.
+Webhooks permitem que seus sistemas recebam notificações em tempo real quando eventos acontecem na sua conta Wink — novas reservas, cancelamentos, atualizações de pagamento e muito mais. Este guia orienta você na configuração e nas melhores práticas.
 
-## Público
+## Público-alvo
 
 Este guia é para desenvolvedores que integram o Wink com sistemas externos, como sistemas de gestão de propriedades (PMS), gerenciadores de canais, CRMs ou painéis personalizados.
 
@@ -25,7 +25,7 @@ Este guia é para desenvolvedores que integram o Wink com sistemas externos, com
 1. Faça login na sua conta (Extranet, Studio ou TripPay — todos suportam webhooks).
 2. Navegue até `Applications` e depois `Webhooks`. Veja [Webhooks](/pt-BR/portal/settings/webhooks).
 3. Clique em `Create webhook`.
-4. Insira um **nome** (ex.: "Sincronização de Reservas PMS").
+4. Insira um **nome** (por exemplo, "Sincronização de Reservas PMS").
 5. Insira sua **URL do webhook** — o endpoint HTTPS no seu servidor.
 6. **Selecione eventos** — Escolha eventos específicos para assinar ou deixe vazio para receber todos os eventos.
 7. Ative o botão **Enabled**.
@@ -61,13 +61,13 @@ Cada entrega é um HTTP `POST` para sua URL de webhook com `Content-Type: applic
   "ownerIdentifier": "3c6b1a5d-8e2f-4a0b-9c7d-6e4f0a8b2c51",
   "recipientRole": "SUPPLIER",
   "schemaVersion": 2,
-  "object": { "...": "payload específico do evento, ex.: BookingWebhookPayload" }
+  "object": { "...": "payload específico do evento, ex. BookingWebhookPayload" }
 }
 ```
 
-- `id` — identificador do evento; idêntico para cada endpoint da sua conta que recebe este evento e para cada reenvio. Use como sua **chave de idempotência**.
-- `type` — chave do tipo de evento (também enviada no cabeçalho `Wink-Event-Type`). Faça ramificações com base em `type` e `schemaVersion` para analisar `object`.
-- `object` — um resumo curado do recurso ao qual o evento se refere (identificadores, status, os campos que você atua) mais `links.self`, a URL REST canônica do lado do fornecedor do recurso completo. Busque com suas próprias credenciais de API quando precisar de mais que o resumo; se receber o evento como revendedor ou agente de viagens, use o endpoint correspondente da sua própria API para o mesmo identificador.
+- `id` — o identificador do evento; idêntico para cada endpoint da sua conta que recebe este evento e para cada reenvio. Use-o como sua **chave de idempotência**.
+- `type` — a chave do tipo de evento (também enviada no cabeçalho `Wink-Event-Type`). Faça ramificações com base em `type` e `schemaVersion` para analisar o `object`.
+- `object` — um resumo curado do recurso ao qual o evento se refere (identificadores, status, os campos que você atua) mais `links.self`, a URL REST canônica do lado do fornecedor do recurso completo. Busque-a com suas próprias credenciais de API quando precisar de mais que o resumo; se você receber o evento como revendedor ou agente de viagens, use o endpoint correspondente do seu próprio API para o mesmo identificador.
 
 Cada esquema de payload está documentado por evento na referência da [API de Webhooks](/pt-BR/api/webhooks/).
 
@@ -84,7 +84,7 @@ Cada esquema de payload está documentado por evento na referência da [API de W
 
 ## Verificando assinaturas
 
-Cada webhook tem um **segredo de assinatura** (`whsec_…`) que o Wink mostra **uma única vez**, quando você cria o webhook ou gira seu segredo. Armazene como uma senha. Cada entrega carrega
+Cada webhook tem um **segredo de assinatura** (`whsec_…`) que o Wink mostra **uma única vez**, quando você cria o webhook ou gira seu segredo. Armazene-o como uma senha. Cada entrega carrega
 
 ```
 Wink-Signature: t=1755250200,v1=5d41402abc4b2a76b9719d911017c592…
@@ -129,7 +129,7 @@ static boolean verify(String header, String rawBody, String secret, long nowSeco
 }
 ```
 
-Gire o segredo pelo portal ou com `POST /api/managing-entity/{id}/webhook/{webhookId}/rotate-secret`; a resposta mostra o novo segredo uma única vez, e o antigo continua válido por 24 horas enquanto você o substitui.
+Gire o segredo pelo portal ou com `POST /api/managing-entity/{id}/webhook/{webhookId}/rotate-secret`; a resposta mostra o novo segredo uma única vez, e o antigo continua válido por 24 horas enquanto você o distribui.
 
 ## Reenvios e redelivery
 
@@ -163,4 +163,4 @@ Excluir um webhook remove-o permanentemente. Qualquer integração que dependa d
 - [Referência da API de Webhooks](/pt-BR/api/webhooks/) — Esquemas de payload por evento, cabeçalhos e endpoints de gerenciamento de assinatura/entrega.
 - [Webhooks](/pt-BR/portal/settings/webhooks) — Referência completa para gerenciamento de webhooks.
 - [Applications](/pt-BR/account/applications) — Gerencie suas credenciais de API.
-- [Developers > APIs](/pt-BR/api) — Documentação completa da API.
+- [Developers > APIs](/pt-BR/api/overview/) — Documentação completa da API.

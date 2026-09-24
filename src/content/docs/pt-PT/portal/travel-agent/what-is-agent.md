@@ -19,4 +19,4 @@ Caso contrário, continue para a próxima secção.
 
 ## API
 
-Os programadores que quiserem gerir `Travel Agent` podem aceder a [Developers > API > Travel Agent](/pt-PT/api).
+Os desenvolvedores que querem gerir `Travel Agent` podem ir a [Developers > API > Travel Agent](/pt-PT/api/overview/).

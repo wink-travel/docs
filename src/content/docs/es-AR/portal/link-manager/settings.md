@@ -16,19 +16,19 @@ Aquí están las formas en que puedes configurar el comportamiento de WinkLinks 
     - Diseño `basado en lista`. La mayoría de los otros gestores de enlaces muestran una lista simple con una URL y contenido mínimo. Elegí esta forma de mostrar tu contenido si tenés mucho contenido y querés mostrarlo lo más rápido posible.
 - **Foto de perfil** En la parte superior de cada página de WinkLinks está la foto de perfil de tu cuenta junto con la descripción de tu cuenta. Podés mostrar tu foto de perfil de dos maneras:
     - `Círculo` Recomendamos usar un estilo circular si tu foto es tuya o cualquier otra cosa que encaje dentro de un contenedor redondo.
-    - `Rectángulo` Recomendamos usar un estilo rectangular si el logo de tu empresa es tu foto de perfil, ya que la mayoría de los logos de empresa son rectangulares por naturaleza.
-- **Personalización** Personalizá el aspecto y la sensación de tu página de WinkLinks. Podés personalizar tu paleta de colores a tu gusto para que combine perfectamente con tu marca. Esta configuración también influye en cómo se muestran las tarjetas de inventario de Wink, mapas y cuadrículas.  
+    - `Rectángulo` Recomendamos usar un estilo rectangular si el logo de tu empresa es tu foto de perfil, ya que la mayoría de los logos de empresas son rectangulares por naturaleza.
+- **Personalización** Personalizá el aspecto y la sensación de tu página de WinkLinks. Podés personalizar tu paleta de colores a tu gusto para que combine perfectamente con tu marca. Esta configuración también influye en cómo se muestran las tarjetas de inventario Wink, mapas y cuadrículas.  
   
 Controles adicionales incluyen:  
 
-- Comportamiento de visualización de publicaciones (Modo Banner, Banner Inteligente/Interactivo, Ajuste automático consciente del diseño)  
+- Comportamiento de visualización de publicaciones (Modo Banner, Banner Inteligente/Interactivo, ajuste automático consciente del diseño)  
 - Códigos QR personalizados con marca (forma, colores, puntos, esquinas)  
 - Organización de contenido con etiquetas (categorizar enlaces como "Hoteles", "Viajes", "Ofertas")  
 - Control total sobre la disposición de enlaces, cargas de archivos y bloques de contenido
 
 ## API
 
-Los desarrolladores que quieran administrar `WinkLinks` pueden dirigirse a [Developers > API > WinkLinks](/es-AR/api).
+Los desarrolladores que quieran administrar `WinkLinks` pueden dirigirse a [Developers > API > WinkLinks](/es-AR/api/overview/).
 
 ## Lectura adicional
 

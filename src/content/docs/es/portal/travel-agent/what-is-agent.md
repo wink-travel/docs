@@ -11,12 +11,12 @@ Los agentes de viajes más avanzados pueden optar por integrarse a nivel de API 
 
 Los agentes de viajes tienen un subconjunto de las mismas funciones del portal que [Studio](/es/portal/studio/what-is-studio), por lo que no las cubriremos nuevamente aquí.
 
-## Búsqueda
+## Buscar
 
-Ve a [Search](/es/portal/studio/search) para aprender cómo buscar y reservar hoteles.
+Ve a [Buscar](/es/portal/studio/search) para aprender cómo buscar y reservar hoteles.
 
 De lo contrario, continúa con la siguiente sección.
 
 ## API
 
-Los desarrolladores que quieran gestionar `Travel Agent` pueden dirigirse a [Developers > API > Travel Agent](/es/api).
+Los desarrolladores que quieran gestionar `Travel Agent` pueden dirigirse a [Developers > API > Travel Agent](/es/api/overview/).

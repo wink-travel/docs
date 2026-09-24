@@ -1,22 +1,22 @@
 ---
 title: Webhook-integrasjon
-description: Denne veiledningen viser utviklere hvordan de setter opp webhooks for å motta sanntidsvarsler for bestillinger, betalinger og andre hendelser.
+description: Denne guiden viser utviklere hvordan de setter opp webhooks for å motta sanntidsvarsler for bestillinger, betalinger og andre hendelser.
 sidebar:
   order: 3
 ---
 
 import { Steps, LinkButton } from '@astrojs/starlight/components';
 
-Webhooks lar systemene dine motta sanntidsvarsler når hendelser skjer på Wink-kontoen din — nye bestillinger, avbestillinger, betalingsoppdateringer og mer. Denne veiledningen tar deg gjennom oppsett og beste praksis.
+Webhooks lar systemene dine motta sanntidsvarsler når hendelser skjer på Wink-kontoen din — nye bestillinger, avbestillinger, betalingsoppdateringer og mer. Denne guiden tar deg gjennom oppsett og beste praksis.
 
 ## Målgruppe
 
-Denne veiledningen er for utviklere som integrerer Wink med eksterne systemer som eiendomsadministrasjonssystemer (PMS), kanaladministratorer, CRM-er eller tilpassede dashbord.
+Denne guiden er for utviklere som integrerer Wink med eksterne systemer som eiendomsforvaltningssystemer (PMS), kanaladministratorer, CRM-er eller tilpassede dashbord.
 
 ## Hvordan webhooks fungerer
 
 1. Du registrerer en webhook-URL på Wink.
-2. Når en hendelse inntreffer (f.eks. en ny bestilling), sender Wink en HTTP POST til din URL.
+2. Når en hendelse inntreffer (f.eks. en ny bestilling), sender Wink en HTTP POST til URL-en din.
 3. Serveren din behandler nyttelasten og svarer med en `200 OK`.
 
 ## Sette opp en webhook
@@ -34,9 +34,7 @@ Denne veiledningen er for utviklere som integrerer Wink med eksterne systemer so
 
 ## Hendelsestyper
 
-Wink publiserer i dag 70 webhook-hendelsestyper innen bestillinger, eiendommer, kontoer (forvaltningsenheter)
-og inventar (romtyper, prisplaner, hovedpriser, tillegg, fasiliteter, salgskanaler, kampanjer).
-Vanlige:
+Wink publiserer i dag 70 webhook-hendelsestyper innen bestillinger, eiendommer, kontoer (forvaltningsenheter) og inventar (romtyper, prisplaner, hovedpriser, tillegg, fasiliteter, salgskanaler, kampanjer). Vanlige:
 
 | Kategori | Eksempler |
 |---|---|
@@ -53,7 +51,7 @@ Den komplette, genererte listen — med beskrivelse, hvem som mottar den, og en 
 
 ## Hva du mottar
 
-Hver levering er en HTTP `POST` til din webhook-URL med `Content-Type: application/json` og denne konvolutten:
+Hver levering er en HTTP `POST` til webhook-URL-en din med `Content-Type: application/json` og denne konvolutten:
 
 ```json
 {
@@ -67,13 +65,9 @@ Hver levering er en HTTP `POST` til din webhook-URL med `Content-Type: applicati
 }
 ```
 
-- `id` — hendelsesidentifikatoren; identisk for hvert endepunkt på kontoen din som mottar denne hendelsen og for
-  hver retry. Bruk den som din **idempotensnøkkel**.
-- `type` — hendelsestypenøkkelen (også sendt som `Wink-Event-Type` header). Bruk `type` og `schemaVersion`
-  for å tolke `object`.
-- `object` — et kuratert sammendrag av ressursen hendelsen gjelder (identifikatorer, status, feltene du handler på)
-  pluss `links.self`, leverandørsidens kanoniske REST-URL til hele ressursen. Hent den med dine egne API-legitimasjoner når du trenger mer enn sammendraget; hvis du mottar hendelsen som en forhandler eller reisebyrå, bruk
-  tilsvarende ressursendepunkt i ditt eget API for samme identifikator.
+- `id` — hendelsesidentifikatoren; identisk for hvert endepunkt på kontoen din som mottar denne hendelsen og for hver retry. Bruk den som din **idempotensnøkkel**.
+- `type` — hendelsestypenøkkel (også sendt som `Wink-Event-Type` header). Bruk `type` og `schemaVersion` for å tolke `object`.
+- `object` — et kuratert sammendrag av ressursen hendelsen gjelder (identifikatorer, status, feltene du handler på) pluss `links.self`, leverandørsidens kanoniske REST-URL til hele ressursen. Hent den med dine egne API-legitimasjoner når du trenger mer enn sammendraget; hvis du mottar hendelsen som forhandler eller reisebyrå, bruk tilsvarende ressursendepunkt i ditt eget API for samme identifikator.
 
 Hver nyttelastskjema er dokumentert per hendelse i [Webhooks API](/no/api/webhooks/) referansen.
 
@@ -88,25 +82,20 @@ Hver nyttelastskjema er dokumentert per hendelse i [Webhooks API](/no/api/webhoo
 | `Wink-Delivery-Attempt` | 1-basert forsøkstall for denne leveringen. |
 | `Wink-Signature` | HMAC-signatur — se nedenfor. |
 
-## Verifisering av signaturer
+## Verifisere signaturer
 
-Hver webhook har en **signeringshemmelighet** (`whsec_…`) som Wink viser **én gang**, når du oppretter webhooken eller
-roterer hemmeligheten. Lagre den som et passord. Hver levering bærer
+Hver webhook har en **signeringshemmelighet** (`whsec_…`) som Wink viser **én gang**, når du oppretter webhooken eller roterer hemmeligheten. Lagre den som et passord. Hver levering bærer
 
 ```
 Wink-Signature: t=1755250200,v1=5d41402abc4b2a76b9719d911017c592…
 ```
 
-der `t` er et Unix-tidsstempel (sekunder) og `v1` er den småbokstav-hexadezimale **HMAC-SHA256** av strengen
-`t + "." + rawBody`, nøkklet med din hemmelighet, og `rawBody` er de eksakte forespørselsbody-bytene som mottas —
-ikke serialiser JSON på nytt før verifisering. I 24 timer etter en hemmelighetsrotasjon bærer headeren en
-annen `v1=`-verdi signert med forrige hemmelighet; aksepter leveringen hvis **noen** `v1` matcher.
+hvor `t` er et Unix-tidsstempel (sekunder) og `v1` er den småbokstav-hexadezimale **HMAC-SHA256** av strengen `t + "." + rawBody`, nøkklet med din hemmelighet, og `rawBody` er de eksakte forespørselsbody-bytene som mottas — ikke serialiser JSON på nytt før verifisering. I 24 timer etter en hemmelighetsrotasjon bærer headeren en andre `v1=`-verdi signert med forrige hemmelighet; aksepter leveringen hvis **noen** `v1` matcher.
 
-Verifiser i fire steg: parse `t` og hver `v1`; regn ut HMAC over `t.rawBody` med din hemmelighet;
-sammenlign med en konstant-tids sammenligning; avvis hvis `|nå − t|` overskrider din toleranse (5 minutter anbefalt).
+Verifiser i fire steg: parse `t` og hver `v1`; regn ut HMAC over `t.rawBody` med din hemmelighet; sammenlign med en konstant-tids sammenligning; avvis hvis `|nå − t|` overskrider toleransen din (5 minutter anbefalt).
 
 ```js
-// Node.js (Express-stil; sørg for at du har RAW body, ikke et parsede objekt)
+// Node.js (Express-stil; sørg for at du har RAW body, ikke et tolket objekt)
 import { createHmac, timingSafeEqual } from 'node:crypto';
 
 export function verifyWinkSignature(header, rawBody, secret, toleranceSeconds = 300) {
@@ -140,46 +129,38 @@ static boolean verify(String header, String rawBody, String secret, long nowSeco
 }
 ```
 
-Roter hemmeligheten fra portalen eller med `POST /api/managing-entity/{id}/webhook/{webhookId}/rotate-secret`;
-responsen viser den nye hemmeligheten én gang, og den gamle verifiseres i 24 timer mens du ruller den ut.
+Roter hemmeligheten fra portalen eller med `POST /api/managing-entity/{id}/webhook/{webhookId}/rotate-secret`; responsen viser den nye hemmeligheten én gang, og den gamle verifiseres fortsatt i 24 timer mens du ruller den ut.
 
-## Gjentakelser og ny levering
+## Retries og ny levering
 
 - Svar med hvilken som helst `2xx` innen 10 sekunder for å bekrefte mottak. Gjør tung behandling asynkront.
-- En `5xx`, timeout, `408` eller `429` prøves på nytt med økende intervaller: etter 1 minutt, 5 minutter, 30 minutter, 2 timer,
-  6 timer, 12 timer, deretter daglig — 10 forsøk over omtrent 3 dager — deretter markeres leveringen som **død**.
+- En `5xx`, timeout, `408` eller `429` prøves på nytt med backoff: etter 1 minutt, 5 minutter, 30 minutter, 2 timer, 6 timer, 12 timer, deretter daglig — 10 forsøk over omtrent 3 dager — deretter markeres leveringen som **død**.
 - Enhver annen `4xx` behandles som "du avviste denne leveringen" og prøves **ikke** på nytt.
-- Hver hendelse, levering og forsøk (status, responsutdrag) er synlig under **Applications > Webhooks**
-  og via API (`…/webhook/event/grid`, `…/webhook/delivery/grid`). Du kan **ny-levere** enhver levering
-  (`POST …/webhook/delivery/{deliveryId}/redeliver`, som starter en ny retry-serie), ny-levere alle døde
-  leveringer av en webhook samtidig (`POST …/webhook/{webhookId}/redeliver-dead`), eller avbryte en.
+- Hver hendelse, levering og forsøk (status, responsutdrag) er synlig under **Applications > Webhooks** og via API (`…/webhook/event/grid`, `…/webhook/delivery/grid`). Du kan **ny-levere** enhver levering (`POST …/webhook/delivery/{deliveryId}/redeliver`, som starter en ny retry-serie), ny-levere alle døde leveringer for en webhook samtidig (`POST …/webhook/{webhookId}/redeliver-dead`), eller avbryte en.
 - Leveringer beholdes i 30 dager.
 
 ## Testhendelser
 
-Send deg selv en syntetisk `webhook.test`-hendelse fra portalen eller med
-`POST /api/managing-entity/{id}/webhook/{webhookId}/test`. Den er signert og levert akkurat som en ekte
-hendelse, slik at du kan verifisere endepunktet ditt, signatursjekken og idempotenshåndteringen før du abonnerer
-på live-hendelser.
+Send deg selv en syntetisk `webhook.test`-hendelse fra portalen eller med `POST /api/managing-entity/{id}/webhook/{webhookId}/test`. Den er signert og levert akkurat som en ekte hendelse, slik at du kan verifisere endepunktet ditt, signatursjekken og idempotenshåndteringen før du abonnerer på live-hendelser.
 
 ## Beste praksis
 
 - **Bruk HTTPS** — Wink sender nyttelaster kun til HTTPS-endepunkter.
 - **Svar raskt** — Returner en `200 OK` så snart du mottar nyttelasten. Gjør tung behandling asynkront.
 - **Idempotens** — Håndtereren din bør være idempotent; dedupliser på `Wink-Event-Id`. Wink prøver på nytt hvis den ikke mottar en `2xx` respons.
-- **Valider kilden** — Verifiser `Wink-Signature` headeren (se [Verifisering av signaturer](#verifisering-av-signaturer)) før behandling; avvis alt som feiler.
+- **Valider kilden** — Verifiser `Wink-Signature` headeren (se [Verifisere signaturer](#verifisere-signaturer)) før behandling; avvis alt som feiler.
 - **Logging** — Logg hver webhook-nyttelast du mottar. Dette gjør feilsøking av integrasjonsproblemer mye enklere.
 
 ## Pause og sletting
 
 Du kan **deaktivere** en webhook uten å slette den. Dette pauser leveringen slik at du kan feilsøke uten å miste konfigurasjonen. Når du er klar, slå den på igjen.
 
-Sletting av en webhook fjerner den permanent. Enhver integrasjon som er avhengig av den webhooken vil slutte å motta varsler.
+Å slette en webhook fjerner den permanent. Enhver integrasjon som er avhengig av den webhooken vil slutte å motta varsler.
 
 ## Videre lesning
 
 - [Webhook Events Catalog](/no/developers/webhook-events) — Alle hendelsestyper, generert fra plattformens katalog.
-- [Webhooks API reference](/no/api/webhooks/) — Per-hendelse nyttelastskjemaer, headere og abonnement-/leveringsendepunkter.
+- [Webhooks API reference](/no/api/webhooks/) — Nyttelastskjemaer per hendelse, headere og endepunkter for abonnement/levering.
 - [Webhooks](/no/portal/settings/webhooks) — Full referanse for webhook-administrasjon.
-- [Applications](/no/account/applications) — Administrer dine API-legitimasjoner.
-- [Developers > APIs](/no/api) — Full API-dokumentasjon.
+- [Applications](/no/account/applications) — Administrer API-legitimasjonene dine.
+- [Developers > APIs](/no/api/overview/) — Full API-dokumentasjon.

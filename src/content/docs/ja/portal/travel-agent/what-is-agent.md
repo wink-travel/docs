@@ -9,7 +9,7 @@ sidebar:
 
 より高度な旅行代理店は、Winkプラットフォーム外での支払いおよび支払い処理を目的として、APIレベルでの統合を選択できます。
 
-旅行代理店は[Studio](/ja/portal/studio/what-is-studio)と同じポータル機能の一部を利用できますので、ここでは再度説明しません。
+旅行代理店は[Studio](/ja/portal/studio/what-is-studio)と同じポータル機能の一部を利用できるため、ここでは再度説明しません。
 
 ## 検索
 
@@ -19,4 +19,4 @@ sidebar:
 
 ## API
 
-`Travel Agent`を管理したい開発者は、[Developers > API > Travel Agent](/ja/api)にアクセスしてください。
+`Travel Agent`を管理したい開発者は、[Developers > API > Travel Agent](/ja/api/overview/)にアクセスしてください。

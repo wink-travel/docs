@@ -7,7 +7,7 @@ sidebar:
 
 import { Steps, LinkButton } from '@astrojs/starlight/components';
 
-Webhooks låter dina system ta emot realtidsnotiser när händelser inträffar på ditt Wink-konto — nya bokningar, avbokningar, betalningsuppdateringar och mer. Denna guide leder dig genom installation och bästa praxis.
+Webhooks låter dina system ta emot realtidsnotiser när händelser sker på ditt Wink-konto — nya bokningar, avbokningar, betalningsuppdateringar med mera. Denna guide leder dig genom installation och bästa praxis.
 
 ## Målgrupp
 
@@ -93,12 +93,12 @@ Wink-Signature: t=1755250200,v1=5d41402abc4b2a76b9719d911017c592…
 ```
 
 där `t` är en Unix-tidsstämpel (sekunder) och `v1` är den gemenerade hexadecimala **HMAC-SHA256** av strängen
-`t + "." + rawBody`, nycklad med din hemlighet, och `rawBody` är exakt begäranens kroppsbitar som mottagits — serialisera inte om JSON innan verifiering. I 24 timmar efter en hemlighetsrotation bär headern ett andra `v1=`-värde signerat med den tidigare hemligheten; acceptera leveransen om **någon** `v1` matchar.
+`t + "." + rawBody`, nycklad med din hemlighet, och `rawBody` är exakt begäranens kroppsbitar som mottagits — serialisera inte om JSON innan verifiering. Under 24 timmar efter en hemlighetsrotation bär headern ett andra `v1=` värde signerat med den tidigare hemligheten; acceptera leveransen om **någon** `v1` matchar.
 
 Verifiera i fyra steg: tolka `t` och varje `v1`; beräkna om HMAC över `t.rawBody` med din hemlighet; jämför med en konstant-tidsjämförelse; avvisa om `|nu − t|` överstiger din tolerans (5 minuter rekommenderas).
 
 ```js
-// Node.js (Express-stil; se till att du har RAW-kroppen, inte ett tolkat objekt)
+// Node.js (Express-stil; se till att du har RAW-kroppen, inte ett parsad objekt)
 import { createHmac, timingSafeEqual } from 'node:crypto';
 
 export function verifyWinkSignature(header, rawBody, secret, toleranceSeconds = 300) {
@@ -138,9 +138,9 @@ svaret visar den nya hemligheten en gång, och den gamla fortsätter verifieras 
 ## Omförsök och omleverans
 
 - Svara med valfri `2xx` inom 10 sekunder för att bekräfta. Gör det tunga arbetet asynkront.
-- En `5xx`, timeout, `408` eller `429` försöks om med backoff: efter 1 minut, 5 minuter, 30 minuter, 2 timmar,
+- En `5xx`, timeout, `408` eller `429` försöks igen med backoff: efter 1 minut, 5 minuter, 30 minuter, 2 timmar,
   6 timmar, 12 timmar, sedan dagligen — 10 försök under cirka 3 dagar — varefter leveransen markeras som **död**.
-- Alla andra `4xx` behandlas som "du avvisade denna leverans" och försöks **inte** om.
+- Alla andra `4xx` behandlas som "du avvisade denna leverans" och försöks **inte** igen.
 - Varje händelse, leverans och försök (status, svarssnutt) är synligt under **Applications > Webhooks**
   och via API:et (`…/webhook/event/grid`, `…/webhook/delivery/grid`). Du kan **omleverera** vilken leverans som helst
   (`POST …/webhook/delivery/{deliveryId}/redeliver`, vilket startar en ny omförsöksserie), omleverera alla döda
@@ -158,8 +158,8 @@ på live-händelser.
 
 - **Använd HTTPS** — Wink skickar payloads endast till HTTPS-endpoints.
 - **Svara snabbt** — Returnera en `200 OK` så snart du tar emot payloaden. Gör allt tungt arbete asynkront.
-- **Idempotens** — Din hanterare bör vara idempotent; deduplicera på `Wink-Event-Id`. Wink försöker om när den inte får ett `2xx`-svar.
-- **Verifiera källan** — Verifiera `Wink-Signature`-headern (se [Verifiera signaturer](#verifiera-signaturer)) innan bearbetning; avvisa allt som misslyckas.
+- **Idempotens** — Din hanterare bör vara idempotent; deduplicera på `Wink-Event-Id`. Wink försöker igen om den inte får ett `2xx`-svar.
+- **Verifiera källan** — Verifiera `Wink-Signature` headern (se [Verifiera signaturer](#verifiera-signaturer)) innan bearbetning; avvisa allt som misslyckas.
 - **Loggning** — Logga varje webhook-payload du tar emot. Detta gör felsökning av integrationsproblem mycket enklare.
 
 ## Pausa och ta bort
@@ -171,7 +171,7 @@ Att ta bort en webhook tar bort den permanent. Alla integrationer som förlitar 
 ## Vidare läsning
 
 - [Webhook Events Catalog](/sv/developers/webhook-events) — Alla händelsetyper, genererade från plattformens katalog.
-- [Webhooks API reference](/sv/api/webhooks/) — Per-händelse payload-scheman, headers och prenumerations-/leveranshanteringsendpoints.
+- [Webhooks API reference](/sv/api/webhooks/) — Payload-scheman per händelse, headers och prenumerations-/leveranshanteringsendpoints.
 - [Webhooks](/sv/portal/settings/webhooks) — Fullständig referens för webhook-hantering.
 - [Applications](/sv/account/applications) — Hantera dina API-uppgifter.
-- [Developers > APIs](/sv/api) — Fullständig API-dokumentation.
+- [Developers > APIs](/sv/api/overview/) — Fullständig API-dokumentation.

@@ -19,4 +19,4 @@ Muussa tapauksessa jatka seuraavaan osioon.
 
 ## API
 
-Kehittäjät, jotka haluavat hallita `Travel Agent` -toimintoa, voivat siirtyä kohtaan [Developers > API > Travel Agent](/fi/api).
+Kehittäjät, jotka haluavat hallita `Travel Agent` -toimintoja, voivat siirtyä kohtaan [Developers > API > Travel Agent](/fi/api/overview/).

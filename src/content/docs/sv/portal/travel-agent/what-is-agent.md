@@ -9,7 +9,7 @@ Vår lösning för registrerade resebyråer är [Wink Agent](https://agent.wink.
 
 Mer avancerade resebyråer kan välja att integrera på API-nivå för att hantera betalningar och utbetalningar utanför Wink-plattformen.
 
-Resebyråer har en delmängd av samma portalfunktioner som [Studio](/sv/portal/studio/what-is-studio) så vi kommer inte att gå igenom dem igen här.
+Resebyråer har en delmängd av samma portal-funktioner som [Studio](/sv/portal/studio/what-is-studio) så vi kommer inte att gå igenom dem igen här.
 
 ## Sök
 
@@ -19,4 +19,4 @@ Annars, fortsätt till nästa avsnitt.
 
 ## API
 
-Utvecklare som vill hantera `Travel Agent` kan gå till [Developers > API > Travel Agent](/sv/api).
+Utvecklare som vill hantera `Travel Agent` kan gå till [Developers > API > Travel Agent](/sv/api/overview/).

@@ -16,7 +16,7 @@ Deze gids is bedoeld voor ontwikkelaars die Wink integreren met externe systemen
 ## Hoe webhooks werken
 
 1. Je registreert een webhook-URL op Wink.
-2. Wanneer een gebeurtenis plaatsvindt (bijv. een nieuwe boeking), stuurt Wink een HTTP POST naar jouw URL.
+2. Wanneer een gebeurtenis plaatsvindt (bijv. een nieuwe boeking), stuurt Wink een HTTP POST naar je URL.
 3. Je server verwerkt de payload en reageert met een `200 OK`.
 
 ## Een webhook instellen
@@ -91,7 +91,7 @@ Wink-Signature: t=1755250200,v1=5d41402abc4b2a76b9719d911017c592…
 ```
 
 waarbij `t` een Unix-timestamp is (seconden) en `v1` de kleine letters hex **HMAC-SHA256** is van de string
-`t + "." + rawBody`, gehasht met je geheim, en `rawBody` is de exacte request body bytes zoals ontvangen — serialiseer de JSON niet opnieuw voordat je verifieert. Gedurende 24 uur na een geheimrotatie bevat de header een tweede `v1=` waarde ondertekend met het vorige geheim; accepteer de levering als **één van de** `v1` overeenkomt.
+`t + "." + rawBody`, gehasht met je geheim, en `rawBody` is de exacte request body bytes zoals ontvangen — serialiseer de JSON niet opnieuw voordat je verifieert. Gedurende 24 uur na een geheimrotatie bevat de header een tweede `v1=` waarde ondertekend met het vorige geheim; accepteer de levering als **één** van de `v1` overeenkomt.
 
 Verifieer in vier stappen: parseer `t` en elke `v1`; herbereken de HMAC over `t.rawBody` met je geheim; vergelijk met een constant-time vergelijking; verwerp als `|nu − t|` je tolerantie overschrijdt (5 minuten aanbevolen).
 
@@ -135,7 +135,7 @@ Roteer het geheim vanuit het portaal of met `POST /api/managing-entity/{id}/webh
 ## Herhalingen en herlevering
 
 - Reageer binnen 10 seconden met een `2xx` om te bevestigen. Doe zware verwerking asynchroon.
-- Een `5xx`, timeout, `408` of `429` wordt met backoff opnieuw geprobeerd: na 1 minuut, 5 minuten, 30 minuten, 2 uur, 6 uur, 12 uur, daarna dagelijks — 10 pogingen over ongeveer 3 dagen — waarna de levering als **dead** wordt gemarkeerd.
+- Een `5xx`, timeout, `408` of `429` wordt met backoff opnieuw geprobeerd: na 1 minuut, 5 minuten, 30 minuten, 2 uur, 6 uur, 12 uur, daarna dagelijks — 10 pogingen in ongeveer 3 dagen — waarna de levering als **dead** wordt gemarkeerd.
 - Elke andere `4xx` wordt behandeld als "je hebt deze levering geweigerd" en wordt **niet** opnieuw geprobeerd.
 - Elke gebeurtenis, levering en poging (status, responsfragment) is zichtbaar onder **Applications > Webhooks** en via de API (`…/webhook/event/grid`, `…/webhook/delivery/grid`). Je kunt elke levering **herleveren** (`POST …/webhook/delivery/{deliveryId}/redeliver`, wat een nieuwe retry-reeks start), alle dead leveringen van een webhook tegelijk herleveren (`POST …/webhook/{webhookId}/redeliver-dead`), of een levering annuleren.
 - Leveringen worden 30 dagen bewaard.
@@ -143,26 +143,26 @@ Roteer het geheim vanuit het portaal of met `POST /api/managing-entity/{id}/webh
 ## Testgebeurtenissen
 
 Stuur jezelf een synthetische `webhook.test` gebeurtenis vanuit het portaal of met
-`POST /api/managing-entity/{id}/webhook/{webhookId}/test`. Deze is ondertekend en wordt exact als een echte gebeurtenis geleverd, zodat je je eindpunt, je handtekeningcontrole en je idempotentie-afhandeling kunt verifiëren voordat je je abonneert op live gebeurtenissen.
+`POST /api/managing-entity/{id}/webhook/{webhookId}/test`. Deze is ondertekend en wordt geleverd zoals een echte gebeurtenis, zodat je je eindpunt, handtekeningcontrole en idempotentieafhandeling kunt verifiëren voordat je je abonneert op live gebeurtenissen.
 
 ## Beste praktijken
 
 - **Gebruik HTTPS** — Wink stuurt payloads alleen naar HTTPS-eindpunten.
-- **Reageer snel** — Geef zo snel mogelijk een `200 OK` terug zodra je de payload ontvangt. Doe zware verwerking asynchroon.
+- **Reageer snel** — Geef een `200 OK` terug zodra je de payload ontvangt. Doe zware verwerking asynchroon.
 - **Idempotentie** — Je handler moet idempotent zijn; dedupliceer op `Wink-Event-Id`. Wink probeert opnieuw als het geen `2xx` respons ontvangt.
-- **Valideer de bron** — Verifieer de `Wink-Signature` header (zie [Handtekeningen verifiëren](#verifying-signatures)) voordat je verwerkt; verwerp alles wat faalt.
+- **Valideer de bron** — Verifieer de `Wink-Signature` header (zie [Handtekeningen verifiëren](#verifiëren-handtekeningen)) voordat je verwerkt; verwerp alles wat faalt.
 - **Logging** — Log elke webhook-payload die je ontvangt. Dit maakt het debuggen van integratieproblemen veel eenvoudiger.
 
 ## Pauzeren en verwijderen
 
 Je kunt een webhook **uitschakelen** zonder deze te verwijderen. Dit pauzeert de levering zodat je kunt troubleshooten zonder je configuratie te verliezen. Wanneer je klaar bent, zet je hem weer aan.
 
-Het verwijderen van een webhook verwijdert deze permanent. Elke integratie die op die webhook vertrouwt, ontvangt dan geen meldingen meer.
+Een webhook verwijderen verwijdert deze permanent. Elke integratie die op die webhook vertrouwt, ontvangt dan geen meldingen meer.
 
 ## Verdere lectuur
 
 - [Webhook Events Catalog](/nl/developers/webhook-events) — Elk gebeurtenistype, gegenereerd uit de catalogus van het platform.
-- [Webhooks API reference](/nl/api/webhooks/) — Per gebeurtenis payloadschema's, headers en de endpoints voor abonnement- en leveringsbeheer.
+- [Webhooks API reference](/nl/api/webhooks/) — Per-gebeurtenis payloadschema's, headers en de endpoints voor abonnement- en leveringsbeheer.
 - [Webhooks](/nl/portal/settings/webhooks) — Volledige referentie voor webhookbeheer.
 - [Applications](/nl/account/applications) — Beheer je API-gegevens.
-- [Developers > APIs](/nl/api) — Volledige API-documentatie.
+- [Developers > APIs](/nl/api/overview/) — Volledige API-documentatie.

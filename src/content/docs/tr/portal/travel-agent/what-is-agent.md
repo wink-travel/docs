@@ -19,4 +19,4 @@ Aksi takdirde, bir sonraki bölüme devam edin.
 
 ## API
 
-`Travel Agent` yönetmek isteyen geliştiriciler [Developers > API > Travel Agent](/tr/api) sayfasına gidebilirler.
+`Travel Agent` yönetmek isteyen geliştiriciler [Developers > API > Travel Agent](/tr/api/overview/) sayfasına gidebilirler.

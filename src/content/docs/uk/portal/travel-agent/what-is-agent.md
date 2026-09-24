@@ -19,4 +19,4 @@ sidebar:
 
 ## API
 
-Розробники, які хочуть керувати `Travel Agent`, можуть перейти до [Developers > API > Travel Agent](/uk/api).
+Розробники, які хочуть керувати `Travel Agent`, можуть перейти до [Developers > API > Travel Agent](/uk/api/overview/).

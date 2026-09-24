@@ -19,4 +19,4 @@ V nasprotnem primeru nadaljujte na naslednji razdelek.
 
 ## API
 
-Razvijalci, ki želijo upravljati `Travel Agent`, lahko obiščejo [Developers > API > Travel Agent](/sl/api).
+Razvijalci, ki želijo upravljati `Travel Agent`, lahko obiščejo [Developers > API > Travel Agent](/sl/api/overview/).

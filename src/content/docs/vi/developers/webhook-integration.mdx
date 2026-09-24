@@ -66,8 +66,8 @@ Mỗi lần gửi là một HTTP `POST` đến URL webhook của bạn với `Co
 ```
 
 - `id` — định danh sự kiện; giống nhau cho mọi điểm cuối của tài khoản bạn nhận sự kiện này và cho mọi lần thử lại. Dùng làm **khóa idempotency**.
-- `type` — khóa loại sự kiện (cũng được gửi dưới dạng header `Wink-Event-Type`). Phân nhánh theo `type` và `schemaVersion` để phân tích `object`.
-- `object` — tóm tắt có chọn lọc về tài nguyên sự kiện liên quan (định danh, trạng thái, các trường bạn thao tác) cùng với `links.self`, URL REST chuẩn của nhà cung cấp cho tài nguyên đầy đủ. Lấy nó bằng API của bạn khi cần nhiều hơn tóm tắt; nếu bạn nhận sự kiện với vai trò đại lý hoặc nhà bán lại, hãy dùng điểm cuối tài nguyên tương ứng trong API của bạn cho cùng định danh.
+- `type` — khóa loại sự kiện (cũng được gửi trong header `Wink-Event-Type`). Phân nhánh theo `type` và `schemaVersion` để phân tích `object`.
+- `object` — tóm tắt có chọn lọc về tài nguyên sự kiện liên quan (định danh, trạng thái, các trường bạn thao tác) cùng với `links.self`, URL REST chuẩn của nhà cung cấp cho tài nguyên đầy đủ. Lấy dữ liệu này bằng API của bạn khi cần nhiều hơn tóm tắt; nếu bạn nhận sự kiện với vai trò đại lý hoặc nhà bán lại, hãy dùng điểm cuối tài nguyên tương ứng trong API của bạn cho cùng định danh.
 
 Mỗi cấu trúc payload được tài liệu hóa theo sự kiện trong tham khảo [Webhooks API](/vi/api/webhooks/).
 
@@ -84,7 +84,7 @@ Mỗi cấu trúc payload được tài liệu hóa theo sự kiện trong tham 
 
 ## Xác thực chữ ký
 
-Mỗi webhook có một **mã bí mật ký** (`whsec_…`) mà Wink chỉ hiển thị **một lần**, khi bạn tạo webhook hoặc xoay mã bí mật. Hãy lưu nó như mật khẩu. Mỗi lần gửi kèm theo
+Mỗi webhook có một **mã bí mật ký** (`whsec_…`) mà Wink chỉ hiển thị **một lần**, khi bạn tạo webhook hoặc xoay mã bí mật. Hãy lưu giữ như mật khẩu. Mỗi lần gửi kèm theo
 
 ```
 Wink-Signature: t=1755250200,v1=5d41402abc4b2a76b9719d911017c592…
@@ -95,7 +95,7 @@ trong đó `t` là dấu thời gian Unix (giây) và `v1` là chữ ký **HMAC-
 Xác thực gồm bốn bước: phân tích `t` và mọi `v1`; tính lại HMAC trên `t.rawBody` với mã bí mật; so sánh bằng phương pháp thời gian cố định; từ chối nếu `|now − t|` vượt quá ngưỡng cho phép (khuyến nghị 5 phút).
 
 ```js
-// Node.js (kiểu Express; đảm bảo bạn có RAW body, không phải đối tượng đã phân tích)
+// Node.js (kiểu Express; đảm bảo bạn có phần thân RAW, không phải đối tượng đã phân tích)
 import { createHmac, timingSafeEqual } from 'node:crypto';
 
 export function verifyWinkSignature(header, rawBody, secret, toleranceSeconds = 300) {
@@ -134,14 +134,14 @@ Xoay mã bí mật từ portal hoặc với `POST /api/managing-entity/{id}/webh
 ## Thử lại và gửi lại
 
 - Phản hồi với bất kỳ mã `2xx` nào trong vòng 10 giây để xác nhận. Thực hiện công việc nặng một cách bất đồng bộ.
-- Mã `5xx`, timeout, `408` hoặc `429` sẽ được thử lại với khoảng cách tăng dần: sau 1 phút, 5 phút, 30 phút, 2 giờ, 6 giờ, 12 giờ, rồi hàng ngày — 10 lần thử trong khoảng 3 ngày — sau đó lần gửi được đánh dấu là **chết**.
+- Mã `5xx`, timeout, `408` hoặc `429` sẽ được thử lại với khoảng cách tăng dần: sau 1 phút, 5 phút, 30 phút, 2 giờ, 6 giờ, 12 giờ, rồi hàng ngày — 10 lần thử trong khoảng 3 ngày — sau đó đánh dấu là **chết**.
 - Mã `4xx` khác được coi là "bạn từ chối lần gửi này" và **không** được thử lại.
 - Mỗi sự kiện, lần gửi và lần thử (trạng thái, đoạn phản hồi) đều hiển thị trong **Applications > Webhooks** và qua API (`…/webhook/event/grid`, `…/webhook/delivery/grid`). Bạn có thể **gửi lại** bất kỳ lần gửi nào (`POST …/webhook/delivery/{deliveryId}/redeliver`, bắt đầu chuỗi thử lại mới), gửi lại tất cả lần gửi chết của một webhook cùng lúc (`POST …/webhook/{webhookId}/redeliver-dead`), hoặc hủy một lần gửi.
 - Các lần gửi được lưu trữ trong 30 ngày.
 
 ## Sự kiện thử nghiệm
 
-Gửi cho bạn một sự kiện tổng hợp `webhook.test` từ portal hoặc với `POST /api/managing-entity/{id}/webhook/{webhookId}/test`. Nó được ký và gửi giống hệt sự kiện thật, giúp bạn xác thực điểm cuối, kiểm tra chữ ký và xử lý idempotency trước khi đăng ký nhận sự kiện thực.
+Gửi cho bạn một sự kiện tổng hợp `webhook.test` từ portal hoặc với `POST /api/managing-entity/{id}/webhook/{webhookId}/test`. Nó được ký và gửi giống hệt sự kiện thật, giúp bạn xác thực điểm cuối, kiểm tra chữ ký và xử lý idempotency trước khi đăng ký sự kiện thực.
 
 ## Thực hành tốt nhất
 
@@ -155,7 +155,7 @@ Gửi cho bạn một sự kiện tổng hợp `webhook.test` từ portal hoặc
 
 Bạn có thể **vô hiệu hóa** một webhook mà không xóa nó. Điều này tạm dừng việc gửi để bạn có thể khắc phục sự cố mà không mất cấu hình. Khi sẵn sàng, bật lại.
 
-Xóa webhook sẽ xóa vĩnh viễn. Bất kỳ tích hợp nào dựa vào webhook đó sẽ ngừng nhận thông báo.
+Xóa webhook sẽ xóa vĩnh viễn. Mọi tích hợp dựa vào webhook đó sẽ ngừng nhận thông báo.
 
 ## Đọc thêm
 
@@ -163,4 +163,4 @@ Xóa webhook sẽ xóa vĩnh viễn. Bất kỳ tích hợp nào dựa vào webh
 - [Tham khảo Webhooks API](/vi/api/webhooks/) — Cấu trúc payload theo sự kiện, header và các điểm cuối quản lý đăng ký/gửi.
 - [Webhooks](/vi/portal/settings/webhooks) — Tham khảo đầy đủ về quản lý webhook.
 - [Applications](/vi/account/applications) — Quản lý thông tin xác thực API của bạn.
-- [Developers > APIs](/vi/api) — Tài liệu API đầy đủ.
+- [Developers > APIs](/vi/api/overview/) — Tài liệu API đầy đủ.

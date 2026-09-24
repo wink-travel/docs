@@ -71,7 +71,7 @@ Cada lliurament és un HTTP `POST` a la vostra URL de webhook amb `Content-Type:
 
 - `id` — l’identificador de l’esdeveniment; idèntic per a cada punt final del vostre compte que rep aquest esdeveniment i per
   a cada reintent. Utilitzeu-lo com a **clau d’idempotència**.
-- `type` — la clau del tipus d’esdeveniment (també enviada com a capçalera `Wink-Event-Type`). Ramifiqueu per `type` i `schemaVersion`
+- `type` — la clau del tipus d’esdeveniment (també enviada com a capçalera `Wink-Event-Type`). Ramifiqueu segons `type` i `schemaVersion`
   per analitzar `object`.
 - `object` — un resum curat del recurs sobre el qual tracta l’esdeveniment (identificadors, estat, els camps sobre els quals actueu)
   més `links.self`, la URL REST canònica del costat del proveïdor del recurs complet. Obteniu-la amb les vostres pròpies credencials API
@@ -86,7 +86,7 @@ Cada esquema de càrrega útil està documentat per esdeveniment a la referènci
 |---|---|
 | `Wink-Version` | Versió del contracte de comunicació, `2.0`. |
 | `Wink-Event-Id` | Igual que `id` al cos — la vostra clau d’idempotència. |
-| `Wink-Delivery-Id` | Únic per punt final per esdeveniment; canvia només si torneu a lliurar. |
+| `Wink-Delivery-Id` | Únic per punt final per esdeveniment; canvia només si reenvieu. |
 | `Wink-Event-Type` | Igual que `type` al cos. |
 | `Wink-Delivery-Attempt` | Número d’intent basat en 1 per a aquest lliurament. |
 | `Wink-Signature` | Signatura HMAC — vegeu més avall. |
@@ -105,7 +105,7 @@ on `t` és un timestamp Unix (segons) i `v1` és el **HMAC-SHA256** en hex minú
 no torneu a serialitzar el JSON abans de verificar. Durant 24 hores després d’una rotació del secret, la capçalera porta un
 segon valor `v1=` signat amb el secret anterior; accepteu el lliurament si **alguna** `v1` coincideix.
 
-Verifiqueu en quatre passos: analitzeu `t` i cada `v1`; torneu a calcular el HMAC sobre `t.rawBody` amb el vostre secret;
+Verifiqueu en quatre passos: analitzeu `t` i cada `v1`; recalculeu el HMAC sobre `t.rawBody` amb el vostre secret;
 compareu amb una comparació de temps constant; rebutgeu si `|ara − t|` excedeix la vostra tolerància (es recomanen 5 minuts).
 
 ```js
@@ -151,7 +151,7 @@ la resposta mostra el nou secret una sola vegada, i l’antic continua verifican
 - Responeu amb qualsevol `2xx` en menys de 10 segons per reconèixer. Feu la feina pesada de manera asíncrona.
 - Un `5xx`, un temps d’espera, `408` o `429` es reintenta amb retrocés: després d’1 minut, 5 minuts, 30 minuts, 2 hores,
   6 hores, 12 hores, després diàriament — 10 intents durant uns 3 dies — després dels quals el lliurament es marca com a **mort**.
-- Qualsevol altre `4xx` es tracta com "heu rebutjat aquest lliurament" i **no** es reintenta.
+- Qualsevol altre `4xx` es tracta com a "heu rebutjat aquest lliurament" i **no** es reintenta.
 - Cada esdeveniment, lliurament i intent (estat, fragment de resposta) és visible a **Applications > Webhooks**
   i a través de l’API (`…/webhook/event/grid`, `…/webhook/delivery/grid`). Podeu **reentregar** qualsevol lliurament
   (`POST …/webhook/delivery/{deliveryId}/redeliver`, que inicia una nova sèrie de reintents), reentregar tots els lliuraments morts
@@ -185,4 +185,4 @@ Eliminar un webhook el suprimeix permanentment. Qualsevol integració que depeng
 - [Referència de l’API de Webhooks](/ca/api/webhooks/) — Esquemes de càrrega útil per esdeveniment, capçaleres i punts finals de gestió de subscripcions/lliuraments.
 - [Webhooks](/ca/portal/settings/webhooks) — Referència completa per a la gestió de webhooks.
 - [Applications](/ca/account/applications) — Gestioneu les vostres credencials API.
-- [Developers > APIs](/ca/api) — Documentació completa de l’API.
+- [Developers > APIs](/ca/api/overview/) — Documentació completa de l’API.

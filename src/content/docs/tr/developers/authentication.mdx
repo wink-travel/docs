@@ -21,7 +21,7 @@ Bir uygulama size Wink ve TripPay API'leri ile iletişim kurmak için kullanabil
 
 **Adım 1**. Staging veya üretim ortamımızda bir erişim belirteci alın:
 
-Muhtemelen, diliniz için tüm ağır işleri sizin yerinize yapacak sağlam bir OAuth2 kütüphanesi ile çalışacaksınız.
+Muhtemelen, diliniz için sağlam bir OAuth2 kütüphanesi kullanıyor olacaksınız ve bu kütüphane tüm ağır işleri sizin için yapacaktır.
 Örneklerimiz, komut satırından `curl` kullanarak en temel kullanımı gösterecektir.
 
 ### Staging
@@ -63,18 +63,18 @@ Herhangi bir uç noktamıza çağrı yaptığınızda, başlıkta aşağıdakile
 
 ## Kapsamlar
 
-Bir **kapsam**, erişim belirtecinizin taşıdığı bir izindir. Bir belirteç talep ettiğinizde,
+Bir **kapsam**, erişim belirtecinizin taşıdığı bir izindir. Bir belirteç istediğinizde,
 `scope` parametresinde boşlukla ayrılmış kapsam listesini iletirsiniz ve belirteç yalnızca
-bu kapsamların kapsadığı alanlara erişebilir. `client_credentials` yetkilendirmesi ile kapsamları belirteç talebinizde ayarlarsınız —
+bu kapsamların kapsadığı alanlara erişebilir. `client_credentials` yetkilendirmesi ile kapsamları belirteç isteğinizde ayarlarsınız —
 yukarıdaki [`curl`](#staging) örneklerine ve [Postman adım adım rehberine](/tr/developers/setup#postman) bakın.
 
-Kapsamlar `section.action` biçiminde adlandırılır, burada action şunlardan biridir:
+Kapsamlar `section.action` biçiminde adlandırılır ve eylem şunlardan biridir:
 
 - `read` — kaynakları görüntüleme (güvenli `GET` istekleri)
 - `write` — kaynak oluşturma ve güncelleme (`POST` / `PUT` / `PATCH`)
 - `remove` — kaynak silme (`DELETE`)
 
-Wink izinleri fonksiyonel alanlara göre gruplar. Entegrasyonunuzun ihtiyaç duyduğu kapsamları talep edin:
+Wink izinleri işlevsel alanlara göre gruplar. Entegrasyonunuzun ihtiyaç duyduğu kapsamları isteyin:
 
 | Kapsam grubu | Kapsamlar | Açtıkları alanlar | Risk |
 |--------------|-----------|-------------------|------|
@@ -90,18 +90,18 @@ Wink izinleri fonksiyonel alanlara göre gruplar. Entegrasyonunuzun ihtiyaç duy
 | **MCP** | `mcp.read` `mcp.write` `mcp.remove` | AI ajanları için [MCP taşıma](/tr/developers/mcp) (`/mcp`) açar | Düşük–Orta |
 
 :::note
-**Risk** sütunu hassasiyeti yansıtır: `read` alt uç, `write`/`remove` üst uçtur.
+**Risk** sütunu hassasiyeti yansıtır: `read` düşük uç, `write`/`remove` ise yüksek uçtur.
 **Ödeme** ve **Muhasebe** para hareketini koruduğundan daha yüksek risk taşır.
 :::
 
 Dikkat edilmesi gereken birkaç nokta:
 
-- **Minimumu talep edin.** Entegrasyonunuzun gerçekten kullandığı kapsamları isteyin — gereğinden geniş erişimle verilen bir belirteç sızarsa daha büyük zarar verir.
-- **Bilinmeyen kapsamlar reddedilir.** Uygulamanızın kayıtlı olmadığı veya var olmayan bir kapsam talep etmek, belirteç verilmesini başarısız kılar.
-- **`mcp.*` yalnızca AI ajan istemcileri içindir.** MCP taşımasını açmak için gereklidir; normal REST API çağrıları için gerekli değildir. [Model Context Protocol](/tr/developers/mcp) sayfasına bakın.
+- **Minimum isteyin.** Entegrasyonunuzun gerçekten kullandığı kapsamları isteyin — gereğinden geniş erişimle verilen bir belirteç sızarsa daha büyük zarar verir.
+- **Bilinmeyen kapsamlar reddedilir.** Uygulamanızın kayıtlı olmadığı veya var olmayan bir kapsam isterseniz, belirteç verilmez.
+- **`mcp.*` yalnızca AI ajan istemcileri içindir.** MCP taşımasını açmak için gereklidir; normal REST API çağrıları için gerekli değildir. Bakınız [Model Context Protocol](/tr/developers/mcp).
 
 :::tip
 Başlamadan önce tek bir satır kod yazmadan tüm API'lerimizi test edebilirsiniz.
 
-Bir uygulamanızdan 'Client ID' ve 'Secret Key' alın ve herhangi bir [API](/tr/api) sayfasına gidin.
+Bir uygulamanızdan 'Client ID' ve 'Secret Key' alın ve herhangi bir [API'mize](/tr/api/overview/) gidin.
 :::

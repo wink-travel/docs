@@ -5,7 +5,7 @@ sidebar:
   order: 0
 ---
 
-Naším řešením pro registrované cestovní agenty je [Wink Agent](https://agent.wink.travel). Je to samoobslužný portál, který agenti mohou používat k vyhledávání a rezervaci jménem svých zákazníků a získávat provizi za každou rezervaci.
+Naše řešení pro registrované cestovní agenty je [Wink Agent](https://agent.wink.travel). Je to samoobslužný portál, který agenti mohou používat k vyhledávání a rezervaci jménem svých zákazníků a získávat provizi za každou rezervaci.
 
 Pokročilejší cestovní agenti si mohou zvolit integraci na úrovni API za účelem správy plateb a výplat mimo platformu Wink.
 
@@ -13,10 +13,10 @@ Cestovní agenti mají podmnožinu stejných funkcí portálu jako [Studio](/cs/
 
 ## Vyhledávání
 
-Přejděte na [Vyhledávání](/cs/portal/studio/search), kde se naučíte, jak vyhledávat a rezervovat hotely.
+Přejděte na [Vyhledávání](/cs/portal/studio/search) a naučte se, jak vyhledávat a rezervovat hotely.
 
 Jinak pokračujte do další sekce.
 
 ## API
 
-Vývojáři, kteří chtějí spravovat `Travel Agent`, mohou přejít na [Developers > API > Travel Agent](/cs/api).
+Vývojáři, kteří chtějí spravovat `Travel Agent`, mohou přejít na [Developers > API > Travel Agent](/cs/api/overview/).

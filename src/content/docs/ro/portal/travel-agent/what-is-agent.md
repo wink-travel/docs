@@ -7,7 +7,7 @@ sidebar:
 
 Soluția noastră pentru agenții de turism înregistrați este [Wink Agent](https://agent.wink.travel). Este un portal self-service pe care agenții îl pot folosi pentru a căuta și rezerva în numele clienților lor și pentru a câștiga un comision pentru fiecare rezervare.
 
-Agenții de turism mai avansați pot alege să se integreze la nivel de API în scopul gestionării plăților și a decontărilor în afara platformei Wink.
+Agenții de turism mai avansați pot alege să se integreze la nivel de API pentru a gestiona plățile și decontările în afara platformei Wink.
 
 Agenții de turism au un subset din aceleași funcționalități ale portalului ca [Studio](/ro/portal/studio/what-is-studio), așa că nu le vom acoperi din nou aici.
 
@@ -15,8 +15,8 @@ Agenții de turism au un subset din aceleași funcționalități ale portalului 
 
 Accesați [Search](/ro/portal/studio/search) pentru a afla cum să căutați și să rezervați hoteluri.
 
-Altfel, continuați cu secțiunea următoare.
+În caz contrar, continuați cu secțiunea următoare.
 
 ## API
 
-Dezvoltatorii care doresc să gestioneze `Travel Agent` pot accesa [Developers > API > Travel Agent](/ro/api).
+Dezvoltatorii care doresc să gestioneze `Travel Agent` pot accesa [Developers > API > Travel Agent](/ro/api/overview/).

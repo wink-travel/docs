@@ -1,5 +1,5 @@
 ---
-title: ตัวแทนท่องเที่ยวคืออะไร?
+title: ตัวแทนคืออะไร?
 description: เรียนรู้ว่า Wink สนับสนุนตัวแทนท่องเที่ยวที่ลงทะเบียนอย่างไร
 sidebar:
   order: 0
@@ -13,10 +13,10 @@ sidebar:
 
 ## การค้นหา
 
-ไปที่ [Search](/th/portal/studio/search) เพื่อเรียนรู้วิธีค้นหาและจองโรงแรม
+ไปที่ [Search](/th/portal/studio/search) เพื่อเรียนรู้วิธีการค้นหาและจองโรงแรม
 
 หากไม่เช่นนั้น ให้ดำเนินการต่อไปยังส่วนถัดไป
 
 ## API
 
-นักพัฒนาที่ต้องการจัดการ `Travel Agent` สามารถไปที่ [Developers > API > Travel Agent](/th/api) ได้เลย
+นักพัฒนาที่ต้องการจัดการ `Travel Agent` สามารถไปที่ [Developers > API > Travel Agent](/th/api/overview/) ได้เลย

@@ -19,4 +19,4 @@ sidebar:
 
 ## API
 
-Разработчиците, които искат да управляват `Travel Agent`, могат да отидат на [Developers > API > Travel Agent](/bg/api).
+Разработчиците, които искат да управляват `Travel Agent`, могат да отидат на [Developers > API > Travel Agent](/bg/api/overview/).

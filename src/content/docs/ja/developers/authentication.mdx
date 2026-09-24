@@ -21,7 +21,7 @@ Wink IAM認証サーバーは一般的なOAuth2エンドポイントをサポー
 
 **ステップ1**. ステージングまたは本番環境でアクセストークンを取得します：
 
-おそらく、言語に対応した強力なOAuth2ライブラリを使用しているため、ほとんどの処理はライブラリが行います。
+おそらく、言語に対応した強力なOAuth2ライブラリを使用しているでしょう。これがほとんどの処理を自動で行います。
 ここでは、`curl`を使ったコマンドラインでの最も基本的な使用例を示します。
 
 ### ステージング
@@ -63,7 +63,7 @@ curl -X POST https://iam.wink.travel/oauth2/token \
 
 ## スコープ
 
-**スコープ**はアクセストークンに付与される権限です。トークンをリクエストする際に、`scope`パラメータでスペース区切りのスコープリストを渡し、トークンはそのスコープがカバーする範囲にのみアクセスできます。`client_credentials`グラントでは、トークンリクエスト時にスコープを設定します — 上記の[`curl`](#staging)例や[Postmanウォークスルー](/ja/developers/setup#postman)を参照してください。
+**スコープ**はアクセストークンに付与される権限です。トークンをリクエストする際、`scope`パラメータにスペース区切りのスコープリストを渡し、トークンはそのスコープがカバーする範囲のみアクセス可能です。`client_credentials`グラントでは、トークンリクエスト時にスコープを設定します — 上記の[`curl`](#staging)例や[Postmanウォークスルー](/ja/developers/setup#postman)を参照してください。
 
 スコープは`section.action`という名前で、actionは以下のいずれかです：
 
@@ -71,7 +71,7 @@ curl -X POST https://iam.wink.travel/oauth2/token \
 - `write` — リソースの作成・更新（`POST` / `PUT` / `PATCH`）
 - `remove` — リソースの削除（`DELETE`）
 
-Winkは機能別に権限をグループ化しています。統合に必要なスコープのみをリクエストしてください：
+Winkは機能別に権限をグループ化しています。統合に必要なスコープのみリクエストしてください：
 
 | スコープグループ | スコープ | アクセス可能な内容 | リスク |
 |-------------|--------|------------------|------|
@@ -82,22 +82,22 @@ Winkは機能別に権限をグループ化しています。統合に必要な�
 | **コンテンツ** | `content.read` `content.write` `content.remove` | 物件説明、レビュー、メディア、地図、グリーンインデックス | 低〜中 |
 | **分析** | `analytics.read` `analytics.write` `analytics.remove` | レポートと分析 — 収益、リーダーボード | 低〜中 |
 | **統合** | `integrations.read` `integrations.write` `integrations.remove` | チャンネルマネージャー、外部予約システム、Google Hotel、通知エンドポイント、予約同期 | 低〜中 |
-| **決済** | `payment.read` `payment.write` `payment.remove` | 決済処理、Stripe、Revolut、支払い、サブスクリプション | 中〜高 |
+| **支払い** | `payment.read` `payment.write` `payment.remove` | 支払い処理、Stripe、Revolut、支払い、サブスクリプション | 中〜高 |
 | **会計** | `accounting.read` `accounting.write` `accounting.remove` | 会計、出金台帳、照合 | 中〜高 |
 | **MCP** | `mcp.read` `mcp.write` `mcp.remove` | AIエージェント向けの[MCPトランスポート](/ja/developers/mcp)（`/mcp`）を開く | 低〜中 |
 
 :::note
-**リスク**列は感度を示しています：`read`は低リスク、`write`/`remove`は高リスクです。**決済**と**会計**は資金移動を扱うため、リスクが高くなります。
+**リスク**列は感度を示しています：`read`は低リスク、`write`/`remove`は高リスクです。**支払い**と**会計**は資金移動を扱うため、リスクが高くなります。
 :::
 
 いくつか注意点：
 
-- **最小限のリクエストを。** 統合で実際に使用するスコープのみをリクエストしてください — 必要以上に広範囲のアクセス権を持つトークンは、漏洩時の影響範囲が大きくなります。
+- **最小限のリクエストを。** 統合で実際に使用するスコープのみをリクエストしてください。必要以上に広いアクセス権を持つトークンは、漏洩時の影響範囲が大きくなります。
 - **不明なスコープは拒否されます。** 登録されていない、または存在しないスコープをリクエストすると、トークン発行時に失敗します。
-- **`mcp.*`はAIエージェントクライアント専用です。** MCPトランスポートを開くために必要であり、通常のREST API呼び出しには不要です。[Model Context Protocol](/ja/developers/mcp)を参照してください。
+- **`mcp.*`はAIエージェントクライアント専用です。** MCPトランスポートを開くために必要で、通常のREST API呼び出しには不要です。[Model Context Protocol](/ja/developers/mcp)を参照してください。
 
 :::tip
-コードを書かずに、すべてのAPIをテストできます。
+コードを書かずにすべてのAPIをテストできます。
 
-アプリの「Client ID」と「Secret Key」を取得し、任意の[API](/ja/api)にアクセスしてください。
+アプリから「Client ID」と「Secret Key」を取得し、任意の[API](/ja/api/overview/)にアクセスしてください。
 :::

@@ -7,7 +7,7 @@ sidebar:
 
 import { Steps, LinkButton } from '@astrojs/starlight/components';
 
-Webhook ļauj jūsu sistēmām saņemt reāllaika paziņojumus, kad jūsu Wink kontā notiek notikumi — jaunas rezervācijas, atcelšanas, maksājumu atjauninājumi un citi. Šī rokasgrāmata soli pa solim ved cauri iestatīšanai un labākajām praksēm.
+Webhook ļauj jūsu sistēmām saņemt reāllaika paziņojumus, kad jūsu Wink kontā notiek notikumi — jaunas rezervācijas, atcelšanas, maksājumu atjauninājumi un citi. Šī rokasgrāmata ved jūs cauri iestatīšanai un labākajām praksēm.
 
 ## Auditorija
 
@@ -29,12 +29,12 @@ Webhook ļauj jūsu sistēmām saņemt reāllaika paziņojumus, kad jūsu Wink k
 5. Ievadiet savu **webhook URL** — HTTPS galapunktu jūsu serverī.
 6. **Izvēlieties notikumus** — izvēlieties konkrētus notikumus, uz kuriem abonēties, vai atstājiet tukšu, lai saņemtu visus notikumus.
 7. Ieslēdziet **Enabled**.
-8. Noklikšķiniet uz `Save` — atbilde parāda jūsu **parakstīšanas slepeno atslēgu vienu reizi**; saglabājiet to tagad.
+8. Noklikšķiniet uz `Save` — atbilde parāda jūsu **parakstīšanas slepeno atslēgu vienreiz**; saglabājiet to tagad.
 </Steps>
 
 ## Notikumu veidi
 
-Wink šobrīd publicē 70 webhook notikumu veidus rezervācijām, īpašumiem, kontiem (pārvaldības vienībām) un inventāram (numuru veidi, tarifu plāni, galvenie tarifi, papildinājumi, ērtības, pārdošanas kanāli, akcijas). Biežākie:
+Wink šodien publicē 70 webhook notikumu veidus rezervācijās, īpašumos, kontos (pārvaldības vienībās) un inventārā (numuru veidi, tarifu plāni, galvenie tarifi, papildinājumi, ērtības, pārdošanas kanāli, akcijas). Biežākie:
 
 | Kategorija | Piemēri |
 |---|---|
@@ -43,7 +43,7 @@ Wink šobrīd publicē 70 webhook notikumu veidus rezervācijām, īpašumiem, k
 | **Inventārs** | `room_type.updated`, `rate_plan.created`, `master_rate.updated`, `special_rate.created`, `sales_channel.created` |
 | **Konts** | `managing_entity.created`, `managing_entity.status.updated`, `managing_entity.manager.added` |
 
-Pilns, ģenerēts saraksts — ar aprakstu, kam tas tiek nosūtīts un saiti uz katra notikuma atsauces lapu — ir **Webhook notikumu katalogs**. Atsauces lapa katram notikumam (JSON saturs, galvenes, atkārtotas piegādes politika) atrodas [Webhooks API](/lv/api/webhooks/).
+Pilns, ģenerētais saraksts — ar aprakstu, kam tas tiek nosūtīts un saiti uz katra notikuma atsauces lapu — ir **Webhook notikumu katalogs**. Atsauces lapa katram notikumam (JSON saturs, galvenes, atkārtotas piegādes politika) atrodas [Webhooks API](/lv/api/webhooks/).
 
 <LinkButton href="/lv/developers/webhook-events">
   Skatīt visus notikumu veidus
@@ -66,10 +66,10 @@ Katrs piegādes pieprasījums ir HTTP `POST` uz jūsu webhook URL ar `Content-Ty
 ```
 
 - `id` — notikuma identifikators; identisks katram jūsu konta galapunktam, kas saņem šo notikumu, un katrai atkārtotai piegādei. Izmantojiet to kā savu **idempotences atslēgu**.
-- `type` — notikuma veida atslēga (tiek nosūtīta arī kā `Wink-Event-Type` galvene). Pamatojieties uz `type` un `schemaVersion`, lai parsētu `object`.
+- `type` — notikuma veida atslēga (tiek nosūtīta arī kā `Wink-Event-Type` galvene). Izmantojiet `type` un `schemaVersion`, lai parsētu `object`.
 - `object` — atlasīts resursa kopsavilkums, par kuru ir notikums (identifikatori, statuss, lauki, ar kuriem jūs strādājat) plus `links.self`, piegādātāja puses kanoniskais REST URL pilnam resursam. Iegūstiet to ar savām API akreditācijām, ja nepieciešams vairāk nekā kopsavilkums; ja saņemat notikumu kā izplatītājs vai ceļojumu aģents, izmantojiet atbilstošo sava API resursu galapunktu ar to pašu identifikatoru.
 
-Katras piegādes shēmas dokumentācija ir pieejama katram notikumam [Webhooks API](/lv/api/webhooks/) atsaucē.
+Katras piegādes shēma ir dokumentēta katram notikumam [Webhooks API](/lv/api/webhooks/) atsaucē.
 
 ### Galvenes
 
@@ -84,13 +84,13 @@ Katras piegādes shēmas dokumentācija ir pieejama katram notikumam [Webhooks A
 
 ## Parakstu pārbaude
 
-Katram webhook ir **parakstīšanas slepenā atslēga** (`whsec_…`), ko Wink parāda **vienu reizi**, kad izveido webhook vai nomaina tā slepeno atslēgu. Saglabājiet to kā paroli. Katrs piegādes pieprasījums satur
+Katram webhook ir **parakstīšanas slepenā atslēga** (`whsec_…`), ko Wink parāda **vienreiz**, kad izveido webhook vai nomaina slepeno atslēgu. Saglabājiet to kā paroli. Katrs piegādes pieprasījums satur
 
 ```
 Wink-Signature: t=1755250200,v1=5d41402abc4b2a76b9719d911017c592…
 ```
 
-kur `t` ir Unix laika zīmogs (sekundes) un `v1` ir mazajiem burtiem hex formātā **HMAC-SHA256** no virknes `t + "." + rawBody`, parakstīts ar jūsu slepeno atslēgu, un `rawBody` ir precīzs pieprasījuma ķermeņa baitu saturs, kāds tas tika saņemts — nepārrakstiet JSON pirms pārbaudes. 24 stundas pēc slepenās atslēgas nomaiņas galvene satur otro `v1=` vērtību, kas parakstīta ar iepriekšējo slepeno atslēgu; pieņemiet piegādi, ja **kāds** no `v1` atbilst.
+kur `t` ir Unix laika zīmogs (sekundes) un `v1` ir mazajiem burtiem hex formātā **HMAC-SHA256** no virknes `t + "." + rawBody`, parakstīts ar jūsu slepeno atslēgu, un `rawBody` ir precīzs pieprasījuma ķermeņa baitu saturs, kāds tas tika saņemts — nepārrakstiet JSON pirms pārbaudes. 24 stundas pēc slepenās atslēgas nomaiņas galvene satur otru `v1=` vērtību, kas parakstīta ar iepriekšējo slepeno atslēgu; pieņemiet piegādi, ja **kāds** no `v1` atbilst.
 
 Pārbaudiet četros soļos: parsējiet `t` un katru `v1`; pārrēķiniet HMAC pār `t.rawBody` ar jūsu slepeno atslēgu; salīdziniet ar konstanta laika salīdzinājumu; noraidiet, ja `|now − t|` pārsniedz jūsu toleranci (ieteicams 5 minūtes).
 
@@ -129,11 +129,11 @@ static boolean verify(String header, String rawBody, String secret, long nowSeco
 }
 ```
 
-Nomainiet slepeno atslēgu portālā vai ar `POST /api/managing-entity/{id}/webhook/{webhookId}/rotate-secret`; atbilde parāda jauno slepeno atslēgu vienu reizi, un vecā atslēga turpina darboties 24 stundas, kamēr to izplatāt.
+Nomainiet slepeno atslēgu portālā vai ar `POST /api/managing-entity/{id}/webhook/{webhookId}/rotate-secret`; atbilde parāda jauno slepeno atslēgu vienreiz, un vecā atslēga turpina darboties 24 stundas, kamēr to izplatāt.
 
 ## Mēģinājumi un atkārtota piegāde
 
-- Atbildiet ar jebkuru `2xx` 10 sekunžu laikā, lai apstiprinātu saņemšanu. Smago apstrādi veiciet asinhroni.
+- Atbildiet ar jebkuru `2xx` 10 sekunžu laikā, lai apstiprinātu. Veiciet smago apstrādi asinhroni.
 - `5xx`, laika pārsniegums, `408` vai `429` tiek mēģināti atkārtoti ar aizkavi: pēc 1 minūtes, 5 minūtēm, 30 minūtēm, 2 stundām, 6 stundām, 12 stundām, tad katru dienu — 10 mēģinājumi aptuveni 3 dienu laikā — pēc tam piegāde tiek atzīmēta kā **mirusi**.
 - Jebkura cita `4xx` tiek uzskatīta par "jūs noraidījāt šo piegādi" un **netiek** mēģināta atkārtoti.
 - Katrs notikums, piegāde un mēģinājums (statuss, atbildes fragments) ir redzams sadaļā **Applications > Webhooks** un caur API (`…/webhook/event/grid`, `…/webhook/delivery/grid`). Jūs varat **atkārtoti piegādāt** jebkuru piegādi (`POST …/webhook/delivery/{deliveryId}/redeliver`, kas sāk jaunu mēģinājumu sēriju), atkārtoti piegādāt visas mirušās piegādes vienlaikus (`POST …/webhook/{webhookId}/redeliver-dead`), vai atcelt vienu.
@@ -141,14 +141,14 @@ Nomainiet slepeno atslēgu portālā vai ar `POST /api/managing-entity/{id}/webh
 
 ## Testa notikumi
 
-Nosūtiet sev sintētisku `webhook.test` notikumu no portāla vai ar `POST /api/managing-entity/{id}/webhook/{webhookId}/test`. Tas ir parakstīts un piegādāts tieši kā īsts notikums, tāpēc varat pārbaudīt savu galapunktu, paraksta pārbaudi un idempotences apstrādi pirms abonējat reālos notikumus.
+Nosūtiet sev sintētisku `webhook.test` notikumu no portāla vai ar `POST /api/managing-entity/{id}/webhook/{webhookId}/test`. Tas ir parakstīts un piegādāts tieši kā īsts notikums, tāpēc varat pārbaudīt savu galapunktu, paraksta pārbaudi un idempotences apstrādi pirms abonējat dzīvos notikumus.
 
 ## Labākās prakses
 
 - **Izmantojiet HTTPS** — Wink nosūta datus tikai uz HTTPS galapunktiem.
-- **Atbildiet ātri** — Atgrieziet `200 OK` tiklīdz saņemat datus. Smago apstrādi veiciet asinhroni.
-- **Idempotence** — Jūsu apstrādātājam jābūt idempotentam; deduplikācija pēc `Wink-Event-Id`. Wink mēģina atkārtot, ja nesaņem `2xx` atbildi.
-- **Avota pārbaude** — Pārbaudiet `Wink-Signature` galveni (skatīt [Parakstu pārbaude](#parakstu-pārbaude)) pirms apstrādes; noraidiet visu, kas neiztur pārbaudi.
+- **Atbildiet ātri** — Atgrieziet `200 OK` tiklīdz saņemat datus. Veiciet smago apstrādi asinhroni.
+- **Idempotence** — Jūsu apstrādātājam jābūt idempotentam; deduplikējiet pēc `Wink-Event-Id`. Wink mēģina atkārtot, ja nesaņem `2xx` atbildi.
+- **Avota validācija** — Pārbaudiet `Wink-Signature` galveni (skatīt [Parakstu pārbaude](#parakstu-pārbaude)) pirms apstrādes; noraidiet visu, kas neiztur pārbaudi.
 - **Žurnālu veidošana** — Žurnālojiet katru saņemto webhook datus. Tas ievērojami atvieglo integrācijas problēmu novēršanu.
 
 ## Pauzēšana un dzēšana
@@ -159,8 +159,8 @@ Webhook dzēšana to neatgriezeniski noņem. Jebkura integrācija, kas paļaujas
 
 ## Papildu lasāmviela
 
-- [Webhook notikumu katalogs](/lv/developers/webhook-events) — katrs notikuma veids, ģenerēts no platformas kataloga.
-- [Webhooks API atsauce](/lv/api/webhooks/) — katra notikuma datu shēmas, galvenes un abonēšanas/piegādes pārvaldības galapunkti.
-- [Webhooks](/lv/portal/settings/webhooks) — pilna webhook pārvaldības atsauce.
-- [Applications](/lv/account/applications) — pārvaldiet savas API akreditācijas.
-- [Izstrādātāji > API](/lv/api) — pilna API dokumentācija.
+- [Webhook notikumu katalogs](/lv/developers/webhook-events) — Katrs notikuma veids, ģenerēts no platformas kataloga.
+- [Webhooks API atsauce](/lv/api/webhooks/) — Katra notikuma datu shēmas, galvenes un abonēšanas/piegādes pārvaldības galapunkti.
+- [Webhooks](/lv/portal/settings/webhooks) — Pilna webhook pārvaldības atsauce.
+- [Applications](/lv/account/applications) — Pārvaldiet savas API akreditācijas.
+- [Izstrādātāji > API](/lv/api/overview/) — Pilna API dokumentācija.

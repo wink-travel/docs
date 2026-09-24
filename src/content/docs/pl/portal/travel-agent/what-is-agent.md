@@ -13,10 +13,10 @@ Agenci turystyczni mają podzbiór tych samych funkcji portalu co [Studio](/pl/p
 
 ## Wyszukiwanie
 
-Przejdź do [Wyszukiwanie](/pl/portal/studio/search), aby dowiedzieć się, jak wyszukiwać i rezerwować hotele.
+Przejdź do [Wyszukiwania](/pl/portal/studio/search), aby dowiedzieć się, jak wyszukiwać i rezerwować hotele.
 
 W przeciwnym razie kontynuuj do następnej sekcji.
 
 ## API
 
-Deweloperzy, którzy chcą zarządzać `Travel Agent`, mogą przejść do [Developers > API > Travel Agent](/pl/api).
+Deweloperzy, którzy chcą zarządzać `Travel Agent`, mogą przejść do [Developers > API > Travel Agent](/pl/api/overview/).

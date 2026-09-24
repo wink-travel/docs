@@ -13,10 +13,10 @@ sidebar:
 
 ## 검색
 
-호텔 검색 및 예약 방법을 알아보려면 [Search](/ko/portal/studio/search)로 이동하세요.
+호텔을 검색하고 예약하는 방법은 [검색](/ko/portal/studio/search)에서 확인하세요.
 
 그렇지 않으면 다음 섹션으로 계속 진행하세요.
 
 ## API
 
-`Travel Agent`를 관리하려는 개발자는 [Developers > API > Travel Agent](/ko/api)로 이동할 수 있습니다.
+`Travel Agent`를 관리하려는 개발자는 [Developers > API > Travel Agent](/ko/api/overview/)로 이동하세요.

@@ -9,7 +9,7 @@ Mūsu risinājums reģistrētiem ceļojumu aģentiem ir [Wink Agent](https://age
 
 Vairāk pieredzējuši ceļojumu aģenti var izvēlēties integrēties API līmenī, lai veiktu maksājumus un izmaksas ārpus Wink platformas.
 
-Ceļojumu aģentiem ir pieejama daļa no tām pašām portāla funkcijām kā [Studio](/lv/portal/studio/what-is-studio), tāpēc šeit tās atkārtoti neapskatīsim.
+Ceļojumu aģentiem ir pieejama daļa no tādām pašām portāla funkcijām kā [Studio](/lv/portal/studio/what-is-studio), tāpēc šeit tās atkārtoti neapskatīsim.
 
 ## Meklēšana
 
@@ -19,4 +19,4 @@ Citādi turpiniet uz nākamo sadaļu.
 
 ## API
 
-Izstrādātāji, kas vēlas pārvaldīt `Travel Agent`, var doties uz [Developers > API > Travel Agent](/lv/api).
+Izstrādātāji, kas vēlas pārvaldīt `Travel Agent`, var doties uz [Developers > API > Travel Agent](/lv/api/overview/).

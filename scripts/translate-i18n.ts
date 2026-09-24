@@ -18,6 +18,11 @@ import { Agent, setGlobalDispatcher } from "undici";
 import { createHash } from "crypto";
 
 import { loadEnv } from "./load-env.js";
+import {
+  normalizeDigitTildeRanges,
+  restoreAstEntities,
+  validateMdx,
+} from "./lib/translation-guards.mjs";
 import { targetLanguages, UNTRANSLATED_DIRECTORIES } from "../src/lib/i18n-config.js";
 
 const HASH_ALGO = "sha256";
@@ -365,7 +370,8 @@ const directories = discoverSourceDirectories();
 // Whole-file translation: send entire MDX including frontmatter and body
 async function translateWholeFile(
   rawMdx: string,
-  targetLanguageCode: string
+  targetLanguageCode: string,
+  compileFeedback?: string
 ): Promise<string | null> {
   const text = rawMdx?.trim();
   if (!text) return null;
@@ -399,7 +405,17 @@ async function translateWholeFile(
     "  JSX attributes NEVER use trailing commas: `<Comp prop=\"value\" nextProp=\"…\" />` — NO comma after the closing quote.",
     "  Examples: <Card title=\"...\" />, hero: { tagline: \"...\", actions: [{ text: \"...\" }] }.",
     "- Alt/captions: translate visible text; keep URLs/identifiers untouched.",
+    "- HTML entities such as '&ast;' MUST stay exactly as written; never convert them to the literal character ('*').",
+    "- Write numeric ranges (e.g. 15–25%) with an en dash (–), never a tilde (~), even if the target language usually uses '~'.",
     "- Output ONLY the translated file; no commentary.",
+    ...(compileFeedback
+      ? [
+          "",
+          "Your previous translation of this file FAILED to compile as MDX with this error:",
+          compileFeedback,
+          "Fix the cause (usually a markdown-sensitive character such as '*', '_' or '~' that you changed) and translate again.",
+        ]
+      : []),
     "",
     `Domain context: ${DOMAIN_CONTEXT}`,
     "- Apply terminology consistency across the entire file: keep product names and key travel terms consistent and do-not-translate product names as above.",
@@ -453,6 +469,33 @@ const saveHashMap = (langDirectory: string, map: HashMap): void => {
   writeFile(hashPath, JSON.stringify(map, null, 2));
 };
 
+// Deterministic clean-up applied to every raw model translation, before the MDX
+// compile check. Order matters: entity/range repair first, link rewriting last.
+function postProcessTranslation(
+  rawContent: string,
+  translatedFile: string,
+  targetLang: string,
+  relativePath: string,
+  outExt: string
+): string {
+  let output = fixJsxAttributeTrailingCommas(
+    fixFrontmatterSpecialStartChars(
+      fixQuotedFrontmatterNestedValues(fixFrontmatterColons(translatedFile))
+    )
+  );
+  if (outExt === ".md" || outExt === ".mdx") {
+    output = restoreAstEntities(rawContent, output);
+    output = normalizeDigitTildeRanges(rawContent, output);
+    output = restoreImportSpecifiers(rawContent, output, `${targetLang}/${relativePath}`);
+    // Add locale prefixes to root-relative links
+    output = rewriteLinksOnContent(output, targetLang);
+    if (relativePath === "index.mdx") {
+      output = rewriteCommonHrefPrefixes(output, targetLang);
+    }
+  }
+  return output;
+}
+
 async function translateFile(
   fullPath: string,
   targetLang: string,
@@ -484,26 +527,37 @@ async function translateFile(
     return;
   }
 
-  // Send whole file for translation
-  const translatedFile = await translateWholeFile(rawContent, targetLang);
-  if (translatedFile === null) {
-    console.warn(`⚠️ Skipped ${targetLang}/${relativePath} due to translation failure.`);
-    return;
-  }
-
-  let output = fixJsxAttributeTrailingCommas(
-    fixFrontmatterSpecialStartChars(
-      fixQuotedFrontmatterNestedValues(fixFrontmatterColons(translatedFile))
-    )
-  );
-  // Post-process all doc files: add locale prefixes to root-relative links
+  const label = `${targetLang}/${relativePath}`;
   const outExt = extname(relativePath).toLowerCase();
-  if (outExt === ".md" || outExt === ".mdx") {
-    output = restoreImportSpecifiers(rawContent, output, `${targetLang}/${relativePath}`);
-    output = rewriteLinksOnContent(output, targetLang);
-    if (relativePath === "index.mdx") {
-      output = rewriteCommonHrefPrefixes(output, targetLang);
+
+  // Translate, post-process, and (for .mdx) prove the result compiles. One retry
+  // feeds the compiler error back to the model; a file that still fails is NOT
+  // written and its hash is NOT saved, so the next run tries it again instead of
+  // marking a broken file "up to date".
+  let output: string | null = null;
+  let compileFeedback: string | undefined;
+  for (let attempt = 0; attempt < 2 && output === null; attempt++) {
+    const translatedFile = await translateWholeFile(rawContent, targetLang, compileFeedback);
+    if (translatedFile === null) {
+      console.warn(`⚠️ Skipped ${label} due to translation failure.`);
+      return;
     }
+    const candidate = postProcessTranslation(rawContent, translatedFile, targetLang, relativePath, outExt);
+    if (outExt !== ".mdx") {
+      output = candidate;
+      break;
+    }
+    const verdict = await validateMdx(candidate);
+    if (verdict.ok) {
+      output = candidate;
+    } else {
+      compileFeedback = verdict.error;
+      console.warn(`⚠️ ${label}: translation does not compile as MDX (attempt ${attempt + 1}/2): ${verdict.error}`);
+    }
+  }
+  if (output === null) {
+    console.warn(`⚠️ Skipped ${label}: no compilable translation after retry; hash not saved so it will be retried.`);
+    return;
   }
 
   console.log(`✍️ Writing translated file: ${fileName}`);

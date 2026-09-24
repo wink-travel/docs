@@ -19,16 +19,16 @@ So können Sie das Verhalten Ihrer WinkLinks mit `Design` konfigurieren:
     - `Rechteck` Wir empfehlen einen rechteckigen Stil, wenn Ihr Firmenlogo Ihr Profilbild ist, da die meisten Firmenlogos rechteckig sind.
 - **Anpassung** Personalisieren Sie das Aussehen und Gefühl Ihrer WinkLinks-Seite. Sie können Ihre Farbpalette nach Herzenslust anpassen, um perfekt zu Ihrer Marke zu passen. Diese Einstellung beeinflusst auch, wie Wink-Inventarkarten, Karten und Raster angezeigt werden.  
   
-Weitere Steuerungsmöglichkeiten umfassen:  
+Weitere Steuerungen umfassen:  
 
 - Anzeigeverhalten von Beiträgen (Banner-Modus, Smart Banner/Interaktiv, Layout-bewusste automatische Anpassung)  
 - Benutzerdefinierte gebrandete QR-Codes (Form, Farben, Punkte, Ecken)  
-- Inhaltsorganisation mit Tags (Kategorisierung von Links wie „Hotels“, „Reisen“, „Angebote“)  
+- Inhaltsorganisation mit Tags (Kategorisierung von Links wie „Hotels“, „Reisen“, „Verkäufe“)  
 - Volle Kontrolle über Link-Anordnung, Datei-Uploads und Inhaltsblöcke
 
 ## API
 
-Entwickler, die `WinkLinks` verwalten möchten, können zu [Developers > API > WinkLinks](/de/api) gehen.
+Entwickler, die `WinkLinks` verwalten möchten, können zu [Developers > API > WinkLinks](/de/api/overview/) gehen.
 
 ## Weiterführende Informationen
 

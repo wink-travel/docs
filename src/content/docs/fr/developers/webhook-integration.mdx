@@ -16,7 +16,7 @@ Ce guide s'adresse aux développeurs intégrant Wink avec des systèmes externes
 ## Fonctionnement des webhooks
 
 1. Vous enregistrez une URL de webhook sur Wink.
-2. Lorsqu'un événement se produit (par exemple, une nouvelle réservation), Wink envoie un HTTP POST à votre URL.
+2. Lorsqu’un événement survient (par exemple, une nouvelle réservation), Wink envoie un HTTP POST à votre URL.
 3. Votre serveur traite la charge utile et répond avec un `200 OK`.
 
 ## Configuration d’un webhook
@@ -65,8 +65,8 @@ Chaque livraison est un HTTP `POST` vers votre URL de webhook avec `Content-Type
 }
 ```
 
-- `id` — l’identifiant de l’événement ; identique pour chaque point de terminaison de votre compte recevant cet événement et pour chaque réessai. Utilisez-le comme votre **clé d’idémpotence**.
-- `type` — la clé du type d’événement (également envoyée dans l’en-tête `Wink-Event-Type`). Branchez-vous sur `type` et `schemaVersion` pour analyser `object`.
+- `id` — identifiant de l’événement ; identique pour chaque point de terminaison de votre compte recevant cet événement et pour chaque réessai. Utilisez-le comme votre **clé d’empotence**.
+- `type` — clé du type d’événement (également envoyée dans l’en-tête `Wink-Event-Type`). Branchez-vous sur `type` et `schemaVersion` pour analyser `object`.
 - `object` — un résumé sélectionné de la ressource concernée par l’événement (identifiants, statut, champs sur lesquels vous agissez) plus `links.self`, l’URL REST canonique côté fournisseur de la ressource complète. Récupérez-la avec vos propres identifiants API si vous avez besoin de plus que le résumé ; si vous recevez l’événement en tant que revendeur ou agent de voyage, utilisez le point de terminaison correspondant de votre propre API pour le même identifiant.
 
 Chaque schéma de charge utile est documenté par événement dans la référence de l’[API Webhooks](/fr/api/webhooks/).
@@ -76,7 +76,7 @@ Chaque schéma de charge utile est documenté par événement dans la référenc
 | En-tête | Signification |
 |---|---|
 | `Wink-Version` | Version du contrat de communication, `2.0`. |
-| `Wink-Event-Id` | Identique à `id` dans le corps — votre clé d’idémpotence. |
+| `Wink-Event-Id` | Identique à `id` dans le corps — votre clé d’empotence. |
 | `Wink-Delivery-Id` | Unique par point de terminaison et par événement ; change uniquement en cas de nouvelle livraison. |
 | `Wink-Event-Type` | Identique à `type` dans le corps. |
 | `Wink-Delivery-Attempt` | Numéro de tentative (à partir de 1) pour cette livraison. |
@@ -92,10 +92,10 @@ Wink-Signature: t=1755250200,v1=5d41402abc4b2a76b9719d911017c592…
 
 où `t` est un timestamp Unix (en secondes) et `v1` est le **HMAC-SHA256** hexadécimal en minuscules de la chaîne `t + "." + rawBody`, signé avec votre secret, et `rawBody` est le corps exact de la requête tel que reçu — ne re-sérialisez pas le JSON avant la vérification. Pendant 24 heures après une rotation de secret, l’en-tête porte une seconde valeur `v1=` signée avec l’ancien secret ; acceptez la livraison si **l’un des** `v1` correspond.
 
-Vérifiez en quatre étapes : analysez `t` et chaque `v1` ; recalculer le HMAC sur `t.rawBody` avec votre secret ; comparez avec une comparaison en temps constant ; rejetez si `|now − t|` dépasse votre tolérance (5 minutes recommandées).
+Vérifiez en quatre étapes : analysez `t` et chaque `v1` ; recalculer le HMAC sur `t.rawBody` avec votre secret ; comparez avec une comparaison en temps constant ; rejetez si `|maintenant − t|` dépasse votre tolérance (5 minutes recommandées).
 
 ```js
-// Node.js (style Express ; assurez-vous d’avoir le corps RAW, pas un objet parsé)
+// Node.js (style Express ; assurez-vous d’avoir le corps BRUT, pas un objet analysé)
 import { createHmac, timingSafeEqual } from 'node:crypto';
 
 export function verifyWinkSignature(header, rawBody, secret, toleranceSeconds = 300) {
@@ -141,26 +141,26 @@ Faites tourner le secret depuis le portail ou avec `POST /api/managing-entity/{i
 
 ## Événements de test
 
-Envoyez-vous un événement synthétique `webhook.test` depuis le portail ou avec `POST /api/managing-entity/{id}/webhook/{webhookId}/test`. Il est signé et livré exactement comme un événement réel, vous permettant de vérifier votre point de terminaison, votre vérification de signature et votre gestion de l’idémpotence avant de vous abonner aux événements en direct.
+Envoyez-vous un événement synthétique `webhook.test` depuis le portail ou avec `POST /api/managing-entity/{id}/webhook/{webhookId}/test`. Il est signé et livré exactement comme un événement réel, vous permettant de vérifier votre point de terminaison, la vérification de signature et la gestion de l’empotence avant de vous abonner aux événements en direct.
 
 ## Bonnes pratiques
 
 - **Utilisez HTTPS** — Wink envoie les charges utiles uniquement vers des points de terminaison HTTPS.
 - **Répondez rapidement** — Retournez un `200 OK` dès réception de la charge utile. Effectuez les traitements lourds de manière asynchrone.
-- **Idempotence** — Votre gestionnaire doit être idempotent ; dédupliquez sur `Wink-Event-Id`. Wink réessaie lorsqu’il ne reçoit pas de réponse `2xx`.
-- **Validez la source** — Vérifiez l’en-tête `Wink-Signature` (voir [Vérification des signatures](#verifying-signatures)) avant de traiter ; rejetez tout ce qui échoue.
+- **Empotence** — Votre gestionnaire doit être idempotent ; dédupliquez sur `Wink-Event-Id`. Wink réessaie si un code `2xx` n’est pas reçu.
+- **Validez la source** — Vérifiez l’en-tête `Wink-Signature` (voir [Vérification des signatures](#verifying-signatures)) avant de traiter ; rejetez toute requête échouant à la vérification.
 - **Journalisation** — Enregistrez chaque charge utile webhook reçue. Cela facilite grandement le débogage des problèmes d’intégration.
 
 ## Mise en pause et suppression
 
-Vous pouvez **désactiver** un webhook sans le supprimer. Cela suspend la livraison pour que vous puissiez dépanner sans perdre votre configuration. Lorsque vous êtes prêt, réactivez-le.
+Vous pouvez **désactiver** un webhook sans le supprimer. Cela suspend la livraison pour vous permettre de résoudre les problèmes sans perdre votre configuration. Lorsque vous êtes prêt, réactivez-le.
 
 Supprimer un webhook le supprime définitivement. Toute intégration dépendant de ce webhook cessera de recevoir des notifications.
 
-## Lectures complémentaires
+## Pour aller plus loin
 
 - [Catalogue des événements Webhook](/fr/developers/webhook-events) — Tous les types d’événements, générés à partir du catalogue de la plateforme.
-- [Référence API Webhooks](/fr/api/webhooks/) — Schémas de charge utile par événement, en-têtes, et points de gestion des abonnements/livraisons.
+- [Référence API Webhooks](/fr/api/webhooks/) — Schémas de charge utile par événement, en-têtes, et points de terminaison de gestion des abonnements/livraisons.
 - [Webhooks](/fr/portal/settings/webhooks) — Référence complète pour la gestion des webhooks.
 - [Applications](/fr/account/applications) — Gérez vos identifiants API.
-- [Développeurs > APIs](/fr/api) — Documentation complète de l’API.
+- [Développeurs > APIs](/fr/api/overview/) — Documentation complète de l’API.

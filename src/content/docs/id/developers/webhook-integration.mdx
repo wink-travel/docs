@@ -16,25 +16,25 @@ Panduan ini ditujukan untuk pengembang yang mengintegrasikan Wink dengan sistem 
 ## Cara kerja webhook
 
 1. Anda mendaftarkan URL webhook di Wink.
-2. Saat sebuah peristiwa terjadi (misalnya, pemesanan baru), Wink mengirim HTTP POST ke URL Anda.
+2. Saat sebuah peristiwa terjadi (misalnya, pemesanan baru), Wink mengirimkan HTTP POST ke URL Anda.
 3. Server Anda memproses payload dan merespons dengan `200 OK`.
 
-## Mengatur webhook
+## Menyiapkan webhook
 
 <Steps>
 1. Masuk ke akun Anda (Extranet, Studio, atau TripPay — semuanya mendukung webhook).
-2. Navigasikan ke `Applications` lalu `Webhooks`. Lihat [Webhooks](/id/portal/settings/webhooks).
+2. Arahkan ke `Applications` lalu `Webhooks`. Lihat [Webhooks](/id/portal/settings/webhooks).
 3. Klik `Create webhook`.
 4. Masukkan **nama** (misalnya, "Sinkronisasi Pemesanan PMS").
 5. Masukkan **URL webhook** Anda — endpoint HTTPS di server Anda.
-6. **Pilih acara** — Pilih acara spesifik untuk berlangganan, atau kosongkan untuk menerima semua acara.
+6. **Pilih acara** — Pilih acara spesifik untuk berlangganan, atau biarkan kosong untuk menerima semua acara.
 7. Aktifkan toggle **Enabled**.
 8. Klik `Save` — respons akan menampilkan **signing secret** Anda sekali; simpan sekarang.
 </Steps>
 
 ## Jenis acara
 
-Wink menerbitkan 70 jenis acara webhook hari ini di berbagai kategori pemesanan, properti, akun (entitas pengelola)
+Wink menerbitkan 70 jenis acara webhook hari ini yang mencakup pemesanan, properti, akun (entitas pengelola)
 dan inventaris (tipe kamar, rencana tarif, tarif utama, tambahan, fasilitas, saluran penjualan, promosi).
 Yang umum:
 
@@ -72,7 +72,7 @@ Setiap pengiriman adalah HTTP `POST` ke URL webhook Anda dengan `Content-Type: a
   setiap pengulangan. Gunakan sebagai **kunci idempoten** Anda.
 - `type` — kunci jenis acara (juga dikirim sebagai header `Wink-Event-Type`). Cabang berdasarkan `type` dan `schemaVersion`
   untuk mengurai `object`.
-- `object` — ringkasan terkurasi dari sumber daya yang menjadi subjek acara (pengidentifikasi, status, bidang yang Anda proses)
+- `object` — ringkasan terkurasi dari sumber daya yang menjadi acara (pengidentifikasi, status, bidang yang Anda proses)
   plus `links.self`, URL REST kanonik sisi pemasok dari sumber daya lengkap. Ambil dengan kredensial API Anda sendiri
   saat Anda membutuhkan lebih dari ringkasan; jika Anda menerima acara sebagai reseller atau agen perjalanan, gunakan
   endpoint sumber daya yang sesuai dari permukaan API Anda sendiri untuk pengenal yang sama.
@@ -92,7 +92,7 @@ Setiap skema payload didokumentasikan per acara di referensi [Webhooks API](/id/
 
 ## Memverifikasi tanda tangan
 
-Setiap webhook memiliki **signing secret** (`whsec_…`) yang Wink tunjukkan **sekali**, saat Anda membuat webhook atau
+Setiap webhook memiliki **signing secret** (`whsec_…`) yang Wink tampilkan **sekali**, saat Anda membuat webhook atau
 memutar rahasianya. Simpan seperti kata sandi. Setiap pengiriman membawa
 
 ```
@@ -108,7 +108,7 @@ Verifikasi dalam empat langkah: uraikan `t` dan setiap `v1`; hitung ulang HMAC a
 bandingkan dengan perbandingan waktu-konstan; tolak jika `|now − t|` melebihi toleransi Anda (disarankan 5 menit).
 
 ```js
-// Node.js (Gaya Express; pastikan Anda memiliki badan RAW, bukan objek yang sudah diurai)
+// Node.js (Gaya Express; pastikan Anda memiliki badan RAW, bukan objek yang diurai)
 import { createHmac, timingSafeEqual } from 'node:crypto';
 
 export function verifyWinkSignature(header, rawBody, secret, toleranceSeconds = 300) {
@@ -160,8 +160,8 @@ respons menampilkan rahasia baru sekali, dan yang lama tetap dapat diverifikasi 
 ## Acara uji
 
 Kirimkan acara sintetis `webhook.test` dari portal atau dengan
-`POST /api/managing-entity/{id}/webhook/{webhookId}/test`. Acara ini ditandatangani dan dikirim persis seperti acara nyata,
-sehingga Anda dapat memverifikasi endpoint, pemeriksaan tanda tangan, dan penanganan idempoten sebelum berlangganan
+`POST /api/managing-entity/{id}/webhook/{webhookId}/test`. Acara ini ditandatangani dan dikirimkan persis seperti acara nyata,
+sehingga Anda dapat memverifikasi endpoint, pemeriksaan tanda tangan, dan penanganan idempoten Anda sebelum berlangganan
 acara langsung.
 
 ## Praktik terbaik
@@ -181,7 +181,7 @@ Menghapus webhook menghapusnya secara permanen. Integrasi apa pun yang bergantun
 ## Bacaan lanjutan
 
 - [Katalog Acara Webhook](/id/developers/webhook-events) — Setiap jenis acara, dihasilkan dari katalog platform.
-- [Referensi API Webhooks](/id/api/webhooks/) — Skema payload per acara, header, dan endpoint manajemen langganan/pengiriman.
+- [Referensi Webhooks API](/id/api/webhooks/) — Skema payload per acara, header, dan endpoint manajemen langganan/pengiriman.
 - [Webhooks](/id/portal/settings/webhooks) — Referensi lengkap untuk manajemen webhook.
 - [Applications](/id/account/applications) — Kelola kredensial API Anda.
-- [Developers > APIs](/id/api) — Dokumentasi API lengkap.
+- [Developers > APIs](/id/api/overview/) — Dokumentasi API lengkap.

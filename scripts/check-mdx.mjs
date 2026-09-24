@@ -12,7 +12,9 @@
  * tags, which broke `astro build` outright. It sat on master undetected until
  * someone ran a full build by hand.
  *
- * This compiles every `.mdx` file with the bare MDX compiler — no Astro
+ * This compiles every `.mdx` file with the MDX compiler plus remark-gfm (the
+ * build enables GFM; without it `~a~` strikethrough is not parsed and the
+ * Korean `15~25%` variant of this bug slips through) — no other Astro
  * plugins, no schemas, no network — so it runs in under a minute with no
  * secrets required, and is viable in CI on every push and PR. Plain `.mjs`,
  * like predeploy-check.mjs: `@mdx-js/mdx` pulls in a dependency chain that
@@ -25,6 +27,7 @@
  * which language it's in, and translation is exactly what caused this bug.
  */
 import { compile } from "@mdx-js/mdx";
+import remarkGfm from "remark-gfm";
 import { readdirSync, readFileSync, statSync } from "node:fs";
 import { join, relative } from "node:path";
 
@@ -46,7 +49,7 @@ let failures = 0;
 for (const file of targets) {
   const text = readFileSync(file, "utf8");
   try {
-    await compile(text, { jsx: true });
+    await compile(text, { jsx: true, remarkPlugins: [remarkGfm] });
   } catch (error) {
     failures++;
     console.error(`✗ ${relative(ROOT, file)}`);

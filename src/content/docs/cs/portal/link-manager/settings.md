@@ -9,7 +9,7 @@ Pro správu nastavení WinkLinks přejděte v hlavním navigačním panelu na `W
 
 Zde jsou způsoby, jak můžete konfigurovat chování WinkLinks pomocí `Design`:
 
-- **Inteligentní** Povolením inteligence se snažíme získat `bohatý` obsah dostupný ze stránek jako jsou `Wink`, `Spotify`, `Instagram`, `Facebook`, `YouTube`, `X (dříve Twitter)` a další. *např. pokud sdílíte příspěvek z IG na WinkLinks, příspěvek se zobrazí tak, jak ho vidíte na IG, s počtem lajků, komentářů a možností interakce s příspěvkem.*
+- **Inteligentní** Povolením inteligence se snažíme získat `bohatý` obsah dostupný ze stránek jako jsou `Wink`, `Spotify`, `Instagram`, `Facebook`, `YouTube`, `X (dříve Twitter)` a další. *např. pokud sdílíte příspěvek z IG na WinkLinks, příspěvek se zobrazí tak, jak ho vidíte na IG, s počtem lajků, komentáři a možností interakce s příspěvkem.*
 - **Počáteční zobrazení** Ovládejte, jak vaše publikum poprvé interaguje s vaší stránkou a vidí váš obsah. Máte k dispozici tři možnosti:
     - `Sloupcový` design. Toto je náš preferovaný design a pokud nezobrazujete příliš mnoho obsahu, bude na vaší stránce vypadat skvěle. Může se však stát `těžkým`, pokud sdílíte hodně bohatého obsahu.
     - `Řádkový` design. Toto je jeden ze způsobů, jak učinit váš obsah prohlížeči méně náročným, ale doporučujeme, aby váš obsah měl podobné množství textu, aby se karty lépe zarovnaly.
@@ -17,7 +17,7 @@ Zde jsou způsoby, jak můžete konfigurovat chování WinkLinks pomocí `Design
 - **Profilový obrázek** V horní části každé stránky WinkLinks je profilový obrázek vašeho účtu spolu s popisem účtu. Profilový obrázek můžete zobrazit dvěma způsoby:
     - `Kruh` Doporučujeme používat kruhový styl, pokud je váš obrázek vás samotných nebo cokoli, co se vejde do kulatého rámečku.
     - `Obdélník` Doporučujeme používat obdélníkový styl, pokud je vaším profilovým obrázkem logo firmy, protože většina firemních log má obdélníkový tvar.
-- **Přizpůsobení** Personalizujte vzhled a dojem vaší stránky WinkLinks. Můžete si přizpůsobit barevnou paletu podle svého gusta, aby perfektně ladila s vaší značkou. Toto nastavení také ovlivňuje, jak se zobrazují karty inventáře Wink, mapy a mřížky.  
+- **Přizpůsobení** Personalizujte vzhled a dojem vaší stránky WinkLinks. Můžete si přizpůsobit barevnou paletu podle svých představ, aby perfektně ladila s vaší značkou. Toto nastavení také ovlivňuje, jak se zobrazují karty inventáře Wink, mapy a mřížky.  
   
 Další ovládací prvky zahrnují:  
 
@@ -28,7 +28,7 @@ Další ovládací prvky zahrnují:
 
 ## API
 
-Vývojáři, kteří chtějí spravovat `WinkLinks`, mohou přejít na [Developers > API > WinkLinks](/cs/api).
+Vývojáři, kteří chtějí spravovat `WinkLinks`, mohou přejít na [Developers > API > WinkLinks](/cs/api/overview/).
 
 ## Další čtení
 

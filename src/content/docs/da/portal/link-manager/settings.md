@@ -23,12 +23,12 @@ Yderligere kontroller inkluderer:
 
 - Visningsadfærd for opslag (Banner-tilstand, Smart Banner/Interaktiv, Layout-bevidst automatisk justering)  
 - Brugerdefinerede brandede QR-koder (form, farver, prikker, hjørner)  
-- Indholdsorganisering med tags (kategoriser links som "Hoteller", "Rejser", "Tilbud")  
+- Indholdsorganisering med tags (kategoriser links som "Hoteller", "Rejser", "Salg")  
 - Fuld kontrol over linkarrangement, filuploads og indholdsblokke
 
 ## API
 
-Udviklere, der ønsker at administrere `WinkLinks`, kan gå til [Developers > API > WinkLinks](/da/api).
+Udviklere, der ønsker at administrere `WinkLinks`, kan gå til [Developers > API > WinkLinks](/da/api/overview/).
 
 ## Yderligere læsning
 

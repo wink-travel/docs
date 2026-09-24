@@ -7,7 +7,7 @@ sidebar:
 
 Vores løsning for registrerede rejsebureauer er [Wink Agent](https://agent.wink.travel). Det er en selvbetjeningsportal, som agenter kan bruge til at søge og booke på vegne af deres kunder og tjene en kommission for sig selv på hver booking.
 
-Mere avancerede rejsebureauer kan vælge at integrere på API-niveau med henblik på at håndtere betaling og udbetalinger uden for Wink-platformen.
+Mere avancerede rejsebureauer kan vælge at integrere på API-niveau med henblik på håndtering af betaling og udbetalinger uden for Wink-platformen.
 
 Rejsebureauer har et delmængde af de samme portal-funktioner som [Studio](/da/portal/studio/what-is-studio), så vi vil ikke gennemgå dem igen her.
 
@@ -19,4 +19,4 @@ Ellers fortsæt til næste afsnit.
 
 ## API
 
-Udviklere, der ønsker at administrere `Travel Agent`, kan gå til [Developers > API > Travel Agent](/da/api).
+Udviklere, der ønsker at administrere `Travel Agent`, kan gå til [Developers > API > Travel Agent](/da/api/overview/).

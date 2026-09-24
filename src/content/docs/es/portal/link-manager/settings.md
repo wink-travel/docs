@@ -28,8 +28,8 @@ Controles adicionales incluyen:
 
 ## API
 
-Los desarrolladores que quieran gestionar `WinkLinks` pueden dirigirse a [Developers > API > WinkLinks](/es/api).
+Los desarrolladores que quieran gestionar `WinkLinks` pueden dirigirse a [Developers > API > WinkLinks](/es/api/overview/).
 
-## Lectura adicional
+## Lecturas adicionales
 
 - Lee más sobre [Personalizaciones](/es/portal/settings/branding).

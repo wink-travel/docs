@@ -1,6 +1,6 @@
 ---
 title: Webhook 整合
-description: 本指南示範開發人員如何設定 webhook，以接收訂單、付款及其他事件的即時通知。
+description: 本指南示範開發者如何設定 webhook，以接收訂單、付款及其他事件的即時通知。
 sidebar:
   order: 3
 ---
@@ -11,7 +11,7 @@ Webhook 讓您的系統在 Wink 帳戶發生事件時接收即時通知 — 新�
 
 ## 目標讀者
 
-本指南適用於將 Wink 與外部系統整合的開發人員，例如物業管理系統（PMS）、渠道管理器、CRM 或自訂儀表板。
+本指南適用於將 Wink 與外部系統整合的開發者，例如物業管理系統（PMS）、渠道管理器、CRM 或自訂儀表板。
 
 ## Webhook 運作方式
 
@@ -23,18 +23,18 @@ Webhook 讓您的系統在 Wink 帳戶發生事件時接收即時通知 — 新�
 
 <Steps>
 1. 登入您的帳戶（Extranet、Studio 或 TripPay — 均支援 webhook）。
-2. 前往 `Applications`，然後點選 `Webhooks`。詳見 [Webhooks](/zh-TW/portal/settings/webhooks)。
+2. 前往 `Applications`，然後點選 `Webhooks`。參見 [Webhooks](/zh-TW/portal/settings/webhooks)。
 3. 點擊 `Create webhook`。
 4. 輸入 **名稱**（例如「PMS 訂單同步」）。
 5. 輸入您的 **webhook URL** — 您伺服器上的 HTTPS 端點。
 6. **選擇事件** — 選擇要訂閱的特定事件，或留空以接收所有事件。
 7. 切換 **Enabled** 為開啟。
-8. 點擊 `Save` — 回應會顯示您的 **簽署密鑰（signing secret）一次**；請立即妥善保存。
+8. 點擊 `Save` — 回應會顯示您的 **簽署密鑰（signing secret）一次**；請立即保存。
 </Steps>
 
 ## 事件類型
 
-Wink 目前發布 70 種 webhook 事件類型，涵蓋訂單、物業、帳戶（管理實體）及庫存（房型、價格方案、主價格、附加項目、設施、銷售渠道、促銷活動）。常見類型：
+Wink 目前發布 70 種 webhook 事件類型，涵蓋訂單、物業、帳戶（管理實體）及庫存（房型、價格方案、主價格、附加服務、設施、銷售渠道、促銷）。常見類型：
 
 | 類別 | 範例 |
 |---|---|
@@ -43,7 +43,7 @@ Wink 目前發布 70 種 webhook 事件類型，涵蓋訂單、物業、帳戶�
 | **庫存** | `room_type.updated`、`rate_plan.created`、`master_rate.updated`、`special_rate.created`、`sales_channel.created` |
 | **帳戶** | `managing_entity.created`、`managing_entity.status.updated`、`managing_entity.manager.added` |
 
-完整且自動生成的清單 — 含描述、接收對象及每個事件參考頁面連結 — 即為 **Webhook 事件目錄**。每個事件的參考頁面（JSON 主體、標頭、重試政策）位於 [Webhooks API](/zh-TW/api/webhooks/)。
+完整且自動生成的清單 — 含描述、接收者及每個事件參考頁面連結 — 即為 **Webhook 事件目錄**。每個事件的參考頁面（JSON 主體、標頭、重試政策）位於 [Webhooks API](/zh-TW/api/webhooks/)。
 
 <LinkButton href="/zh-TW/developers/webhook-events">
   查看所有事件類型
@@ -77,7 +77,7 @@ Wink 目前發布 70 種 webhook 事件類型，涵蓋訂單、物業、帳戶�
 |---|---|
 | `Wink-Version` | 通訊協定版本，`2.0`。 |
 | `Wink-Event-Id` | 與主體中 `id` 相同 — 您的冪等鍵。 |
-| `Wink-Delivery-Id` | 每個端點每事件唯一；僅在重新傳送時變更。 |
+| `Wink-Delivery-Id` | 每個端點每事件唯一；僅在重新傳送時改變。 |
 | `Wink-Event-Type` | 與主體中 `type` 相同。 |
 | `Wink-Delivery-Attempt` | 此次傳送的嘗試次數（從 1 開始）。 |
 | `Wink-Signature` | HMAC 簽章 — 詳見下方。 |
@@ -90,9 +90,9 @@ Wink 目前發布 70 種 webhook 事件類型，涵蓋訂單、物業、帳戶�
 Wink-Signature: t=1755250200,v1=5d41402abc4b2a76b9719d911017c592…
 ```
 
-其中 `t` 是 Unix 時間戳（秒），`v1` 是以您的密鑰為鍵，對字串 `t + "." + rawBody` 計算的十六進位小寫 **HMAC-SHA256**，`rawBody` 是收到的原始請求主體位元組 — 驗證前請勿重新序列化 JSON。密鑰輪替後 24 小時內，標頭會帶有第二個用舊密鑰簽署的 `v1=` 值；只要 **任一** `v1` 符合即接受傳送。
+其中 `t` 是 Unix 時間戳（秒），`v1` 是以您的密鑰為鍵，對字串 `t + "." + rawBody` 計算的 **HMAC-SHA256** 小寫十六進位字串，`rawBody` 是收到的原始請求主體位元組 — 驗證前請勿重新序列化 JSON。密鑰輪替後 24 小時內，標頭會帶有第二個用舊密鑰簽署的 `v1=` 值；只要 **任一** `v1` 符合即接受傳送。
 
-驗證流程四步驟：解析 `t` 與所有 `v1`；用密鑰重新計算 `t.rawBody` 的 HMAC；以常數時間比較；若 `|now − t|` 超過容忍時間（建議 5 分鐘）則拒絕。
+驗證流程四步驟：解析 `t` 與所有 `v1`；用密鑰重新計算 `t.rawBody` 的 HMAC；用常數時間比較；若 `|now − t|` 超過容忍時間（建議 5 分鐘）則拒絕。
 
 ```js
 // Node.js (Express-style; 確保取得 RAW 主體，而非解析後物件)
@@ -129,15 +129,15 @@ static boolean verify(String header, String rawBody, String secret, long nowSeco
 }
 ```
 
-您可從入口網站或使用 `POST /api/managing-entity/{id}/webhook/{webhookId}/rotate-secret` 輪替密鑰；回應會顯示新密鑰一次，舊密鑰在您部署期間的 24 小時內仍可驗證。
+您可從入口網站或使用 `POST /api/managing-entity/{id}/webhook/{webhookId}/rotate-secret` 輪替密鑰；回應會顯示新密鑰一次，舊密鑰在您部署期間仍可驗證 24 小時。
 
 ## 重試與重新傳送
 
-- 請在 10 秒內以任何 `2xx` 回應確認接收。繁重工作請非同步處理。
-- `5xx`、逾時、`408` 或 `429` 會依序延遲重試：1 分鐘、5 分鐘、30 分鐘、2 小時、6 小時、12 小時，然後每日一次 — 共 10 次嘗試，約 3 天後標記為 **失效**。
+- 請在 10 秒內以任何 `2xx` 回應確認接收。重度處理請非同步執行。
+- 遇 `5xx`、逾時、`408` 或 `429` 時，會依序以 1 分鐘、5 分鐘、30 分鐘、2 小時、6 小時、12 小時、每日的間隔重試 — 共 10 次，約 3 天後標記為 **失效**。
 - 其他 `4xx` 視為「您拒絕此傳送」，不會重試。
 - 每個事件、傳送與嘗試（狀態、回應摘要）皆可於 **Applications > Webhooks** 及 API (`…/webhook/event/grid`、`…/webhook/delivery/grid`) 查看。您可 **重新傳送** 任一傳送（`POST …/webhook/delivery/{deliveryId}/redeliver`，啟動新重試序列）、一次重新傳送 webhook 所有失效傳送（`POST …/webhook/{webhookId}/redeliver-dead`），或取消傳送。
-- 傳送紀錄保留 30 天。
+- 傳送資料保留 30 天。
 
 ## 測試事件
 
@@ -145,15 +145,15 @@ static boolean verify(String header, String rawBody, String secret, long nowSeco
 
 ## 最佳實踐
 
-- **使用 HTTPS** — Wink 僅傳送負載至 HTTPS 端點。
-- **快速回應** — 收到負載後立即回傳 `200 OK`。繁重處理請非同步執行。
-- **冪等性** — 處理程序應具冪等性；以 `Wink-Event-Id` 去重。Wink 未收到 `2xx` 回應會重試。
+- **使用 HTTPS** — Wink 僅傳送至 HTTPS 端點。
+- **快速回應** — 收到負載後立即回傳 `200 OK`，重度處理請非同步執行。
+- **冪等性** — 處理器應具冪等性；以 `Wink-Event-Id` 去重。Wink 未收到 `2xx` 回應會重試。
 - **驗證來源** — 處理前驗證 `Wink-Signature` 標頭（參見 [驗證簽章](#verifying-signatures)）；驗證失敗即拒絕。
 - **記錄** — 記錄每個收到的 webhook 負載，有助於除錯整合問題。
 
 ## 暫停與刪除
 
-您可以 **停用** webhook 而不刪除。這會暫停傳送，方便您排查問題且不會遺失設定。準備好後可切回啟用。
+您可以 **停用** webhook 而不刪除。這會暫停傳送，方便您排查問題且不會遺失設定。準備好時，再切回啟用。
 
 刪除 webhook 則會永久移除。任何依賴該 webhook 的整合將停止接收通知。
 
@@ -163,4 +163,4 @@ static boolean verify(String header, String rawBody, String secret, long nowSeco
 - [Webhooks API 參考](/zh-TW/api/webhooks/) — 各事件負載結構、標頭及訂閱/傳送管理端點。
 - [Webhooks](/zh-TW/portal/settings/webhooks) — webhook 管理完整參考。
 - [Applications](/zh-TW/account/applications) — 管理您的 API 憑證。
-- [Developers > APIs](/zh-TW/api) — 完整 API 文件。
+- [Developers > APIs](/zh-TW/api/overview/) — 完整 API 文件。
