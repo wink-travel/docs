@@ -2,6 +2,592 @@
 
 Changelog of docs.
 
+## v1.2.0 (2026-09-24)
+
+### Features
+
+-  **seo**  mark every changelog page noindex,nofollow ([6c826](https://github.com/wink-travel/docs/commit/6c82629565621c1) Bjorn Harvold)  
+-  **changelog**  publish Partner API contract releases (#42) ([ca3ac](https://github.com/wink-travel/docs/commit/ca3ac499d27b324) Bjorn Harvold)  
+
+### Bug Fixes
+
+-  **consent**  make the banner theme-aware, readable and locale-correct ([ced36](https://github.com/wink-travel/docs/commit/ced361ff6007ff4) Bjorn Harvold)  
+
+### Other changes
+
+**Release audit: paragraph styling, dead links, and a clean build (#80)**
+
+* Fix the marketing cards broken by a heading nested inside a link 
+* The featured audience cards render in pieces: an empty bordered box, then the 
+* title, body and CTA spilling out below it. It is live on wink.travel today and 
+* affects the homepage, Solutions, Hotels, Partners, Builders, Products, Contact, 
+* Booking Engine and WinkLinks. 
+* Cause: Starlight&#x27;s rehype-heading-links plugin wraps every heading that has an 
+* &#x60;id&#x60; in a &#x60;&lt;div class&#x3D;&quot;sl-heading-wrapper&quot;&gt;&#x60; and appends an 
+* &#x60;&lt;a class&#x3D;&quot;sl-anchor-link&quot;&gt;&#x60;. Nine of these cards are an &#x60;&lt;a&gt;&#x60; that wraps an 
+* &#x60;&lt;h3&gt;&#x60;, so the generated markup puts an anchor inside an anchor. Nested anchors 
+* are invalid, so the browser&#x27;s parser closes the outer card link at that point 
+* and every later child escapes the card -- which is exactly the fragmentation on 
+* screen. Invisible in review: the MDX source is correct, the damage is done by a 
+* plugin downstream, and &#x60;astro check&#x60; does not render. 
+* Fix: card titles are no longer headings. &#x60;&lt;h3 class&#x3D;&quot;...&quot;&gt;&#x60; becomes 
+* &#x60;&lt;div class&#x3D;&quot;...&quot;&gt;&#x60; with the same classes, so the visual result is identical 
+* (Tailwind Preflight zeroes margins on both and all spacing here is explicit). 
+* No heading means no id, no anchor, no nesting. A &#x60;&lt;div&gt;&#x60; is used rather than a 
+* &#x60;&lt;p&gt;&#x60; because a &#x60;&lt;p&gt;&#x60; in MDX gets its own auto-wrapped paragraph -- the trap 
+* this repo has hit twice before. 
+* Applied to 9 English cards and the 462 copies across 43 locales, since the 
+* translated files carry the same markup and the next i18n run is a day away. 
+* Not changed, deliberately: the site-wide &#x60;markdown.headingLinks&#x60; flag would 
+* also fix it in one line, but it would strip anchor links from the whole 
+* documentation layer to repair nine marketing cards. 
+* Verified by screenshot at 1440px before and after: the card now renders as one 
+* unit -- badge, title, copy and CTA in the left column, the three check rows in 
+* the right -- matching the locked featured-card pattern. Confirmed the same 
+* breakage exists in the deployed production build, so this is a pre-existing 
+* defect and not a regression from the recent merges. 
+* Co-Authored-By: Claude Opus 5 &lt;noreply@anthropic.com&gt; 
+* Drop &quot;Request API access&quot; — the API is open, so send people to the docs 
+* &quot;Request API access&quot; implied a gate that does not exist. Nothing is walled: 
+* the Consumer and Booking Engine APIs are free, the MCP server is hosted and 
+* public, and a developer only needs OAuth2 credentials. The CTA was sending 
+* people to app.wink.travel to ask permission for something already available. 
+* All six buttons now read &quot;Get started&quot; and point at /api/overview/, the API 
+* reference landing. 
+* Two follow-on labels, because the change would otherwise leave a contradiction 
+* on the page: 
+* - /platforms/ paired the old CTA with &quot;Read the docs&quot; pointing at /builders/, 
+* which is a marketing page, not documentation. With the new button going to 
+* the real docs, that label named the wrong thing twice over, so it is now 
+* &quot;For Builders&quot;. 
+* - The API resource page&#x27;s secondary already pointed at /api/overview/, which 
+* the primary now covers, so it points at the MCP server docs instead. 
+* Prose carrying the same implication is corrected too: the builders FAQ and 
+* stepper, the platforms integration FAQ, the builders closing paragraph, and the 
+* llms.txt summary line that told AI readers the CTA was &quot;request API access&quot;. 
+* Locale copies still carry the translated old wording and the old link; they 
+* come current on the next i18n run, which is Bjorn&#x27;s. 
+* Verified on a dev server: all six CTAs resolve, /api/overview/, 
+* /developers/mcp/, /developers/build-on-wink/ and /builders/ all return 200, and 
+* no &quot;request access&quot; phrasing remains in English source or llms.txt. 
+* Co-Authored-By: Claude Opus 5 &lt;noreply@anthropic.com&gt; 
+* Repair paragraphs that lost their styling, and the links that 404 
+* Two defects found by auditing the built site rather than the source. 
+* MDX auto-wraps the inner text of a multi-line &#x60;&lt;p class&#x3D;&quot;...&quot;&gt;&#x60; in a second 
+* &#x60;&lt;p&gt;&#x60;. A &#x60;&lt;p&gt;&#x60; cannot contain a &#x60;&lt;p&gt;&#x60;, so the browser force-closes the styled 
+* one and the text escapes with no classes -- losing max-width, the muted colour 
+* and top margin. It rendered as &#x60;&lt;/p&gt;&lt;/p&gt;&#x60; on 111 built pages including the 
+* homepage, every product page and every audience page. The repo has hit this 
+* trap twice before; the documented fix is to keep styled blocks on one line, so 
+* 7,087 such blocks are now single-lined across English and every locale. 
+* The transform is whitespace-only by construction: code fences are masked out 
+* first, and each file is written only if stripping all whitespace leaves it 
+* byte-identical. A first attempt without those guards inserted a stray fence 
+* into 43 files -- caught by the MDX guard, reverted, and redone. 
+* Links, from a full crawl of the built output: 
+* - &#x60;/api&#x60; 404s (the API landing is &#x60;/api/overview/&#x60;), linked 37 times from the 
+* portal documentation. 
+* - &#x60;/dev/&#x60; and &#x60;/travel-content-creators/&#x60; were renamed in #33 and survive only 
+* through firebase.json redirects. 24 and 18 internal links, plus two canonical 
+* URLs in llms.txt, now point at &#x60;/builders/&#x60; and &#x60;/travel-creators/&#x60; directly 
+* rather than taking a redirect hop on every visit. 
+* Verified: claims guard, mdx guard (8,489 files) and astro check all clean. 
+* Co-Authored-By: Claude Opus 5 &lt;noreply@anthropic.com&gt; 
+* Limit the paragraph repair to English source 
+* Collapsing a multi-line &lt;p&gt; is not always semantically neutral. ko/pricing.mdx 
+* carries &quot;~15%&quot; and &quot;15~25%&quot; on adjacent lines; joined into one line, GFM reads 
+* the two tildes as a strikethrough span and it crosses a &lt;/span&gt;, so the build 
+* fails. The whitespace-only assertion could not catch this -- the bytes were 
+* identical, the parse was not. 
+* Locale paragraph formatting is therefore restored, and the repair applies to 
+* the 37 English files (156 blocks) where it was verified safe. The locale copies 
+* regenerate from English on the next i18n run and will inherit the single-line 
+* form then. 
+* No English paragraph carries the same hazard: every collapsed block was 
+* re-checked for paired inline-markdown characters. 
+* Co-Authored-By: Claude Opus 5 &lt;noreply@anthropic.com&gt; 
+* fix(builders): align developer-access copy with the open, no-approval message 
+* The rewritten FAQ said there is no approval step while the next answer 
+* still called access controlled and approved. Drop the remaining 
+* approval wording in builders, platforms and partners. 
+* Co-Authored-By: Claude Opus 5.5 (1M context) &lt;noreply@anthropic.com&gt; 
+* Claude-Session: https://claude.ai/code/session_01PAEsjxpLHCmVsdMSyNWySN 
+* --------- 
+* Co-authored-by: Yann &lt;yann@Yanns-MacBook-Pro.local&gt; 
+* Co-authored-by: Claude Opus 5 &lt;noreply@anthropic.com&gt; 
+* Co-authored-by: Bjorn Harvold &lt;bjorn@harvold.com&gt; 
+
+[64bfa](https://github.com/wink-travel/docs/commit/64bfaffda7e028b) YannWink *2026-09-23 13:35:21*
+
+**Add six question-shaped resource pages for AI search (#73)**
+
+* Perplexity and other answer engines pick the page that answers the question in 
+* the asker&#x27;s own words. The 14 existing Resources pages are all explainer-shaped 
+* -- &quot;What is X&quot;, &quot;A practical guide&quot; -- so the site had strong material and 
+* almost no page that opens by answering a question someone actually types. 
+* Six pages, each on a distinct query intent none of the existing pages claims: 
+* - hotel-affiliate-programs -- how programs pay, what commission is a 
+* percentage OF, attribution windows, running one as a hotel 
+* - travel-creator-hotel-commissions -- what a creator earns, and why a 
+* bookable link keeps paying after a brand fee stops 
+* - hotel-booking-fees-explained -- what a direct booking costs, separated into 
+* platform fee, pass-through card processing and conditional commission 
+* - travel-agency-hotel-booking -- direct hotel supply vs a wholesaler&#x27;s, for 
+* agencies, DMCs and tour operators 
+* - hotel-booking-api -- the four capabilities a booking integration needs, and 
+* the three levels of integration 
+* - who-can-sell-hotel-rooms -- when a travel-agency licence is actually 
+* required, and why referral and merchant-of-record are different activities 
+* Deliberately NOT written: a &quot;can AI assistants book a hotel&quot; page, which was on 
+* the original list. /resources/ai-agents-hotel-booking/ already answers it well, 
+* and a second page would cannibalise it -- the site&#x27;s own rule is to keep the 
+* distinctive page and cut the redundant one. hotel-booking-fees-explained is 
+* scoped to fee mechanics and cross-links to direct-bookings-vs-ota-economics for 
+* the channel comparison, so those two do not compete either. 
+* Every page follows the locked Resources template exactly -- splash layout, 
+* ResourceSchema, breadcrumb, a &quot;short answer&quot; block that answers in the first 
+* paragraph, mkt-prose body, related cards, FaqGrid with emitJsonLd, dark CTA 
+* band -- and all six are listed on the Resources index. 
+* Numbers follow the locked wording: 1.5% platform fee plus card processing at 
+* cost, 4.0% only as a labelled illustration, 10% default commission calculated 
+* after fees, 6-month attribution, and the hotel as merchant of record. No 
+* provider is named. 
+* Verified on a dev server: all six return 200; each emits exactly one Article, 
+* one BreadcrumbList and one 6-question FAQPage with no duplicate types; all 26 
+* internal links resolve; the claims guard reports the same 56 pre-existing 
+* contradictions as master, so these add none; and with #53 merged in the pages 
+* still emit only one BreadcrumbList. 
+* Co-authored-by: Yann &lt;yann@Yanns-MacBook-Pro.local&gt; 
+* Co-authored-by: Claude Opus 5 &lt;noreply@anthropic.com&gt; 
+
+[cfcb7](https://github.com/wink-travel/docs/commit/cfcb747d04a6bce) YannWink *2026-09-22 16:42:03*
+
+**Date the sitemap, stop the changelog decay, and disambiguate the brand (#72)**
+
+* Date the sitemap, stop the changelog decay, and disambiguate the brand 
+* Three AEO gaps, all verified against the live site rather than assumed. 
+* The sitemap shipped 16,138 URLs with zero &lt;lastmod&gt;. Nothing looked fresh, 
+* and answer engines weight freshness. Dates now come from the last commit that 
+* touched each source file -- honest, and it asks no frontmatter discipline of 
+* authors. A URL with no resolvable source file gets no date rather than a 
+* guessed one; a partial sitemap is valid, a wrong date is not. One &#x60;git log&#x60; 
+* pass at config load covers all 16k URLs, and if git is unavailable the index 
+* comes back empty so a build can never fail over this. 
+* Release-note URLs decay on a schedule: &#x60;keepRecent(25)&#x60; retires older releases 
+* every release, so an indexed changelog URL 404s a few releases later. 48 are 
+* already dead. They are now excluded from the sitemap and marked 
+* noindex,follow -- still readable and still passing link weight to docs, but no 
+* longer entering an index they will fall out of. The 48 already indexed get 
+* exact 301s in the redirects PR; a glob is impossible there because it would 
+* shadow the 100 live changelog pages. 
+* &quot;Wink&quot; competes with a smart-home brand and an analytics product, so the 
+* Organization node now carries the names people actually search 
+* (alternateName), the property Google uses to separate same-named entities 
+* (disambiguatingDescription), and knowsAbout topics. 
+* The homepage -- the page most likely to be cited -- declared no 
+* SoftwareApplication at all, so nothing said what Wink *is* as a product. 
+* Product pages each declare their own through ProductJsonLd, so the homepage 
+* now reuses that same component rather than introducing a second pattern. It is 
+* passed no &#x60;faqs&#x60; on purpose: FaqJsonLd already emits the FAQPage there and two 
+* would be a duplicate, which is a real Google error. ProductJsonLd gained one 
+* optional prop so the offer can state the actual terms -- a 1.5% platform fee 
+* plus card processing at cost -- instead of the generic &quot;Free tier available&quot;. 
+* Verified: the lastmod lookup resolves correctly for marketing, resources, 
+* docs, locale and fallback URLs and returns nothing for generated routes; the 
+* claims guard reports the same 56 pre-existing contradictions as master, so 
+* this adds none (all 56 are #48&#x27;s to fix). 
+* Co-Authored-By: Claude Opus 5 &lt;noreply@anthropic.com&gt; 
+* fix: crashing sitemap lastmod fallback, changelog overview noindex, and $0 offer JSON-LD 
+* - buildLastmodIndex()&#x27;s git-failure path now returns the same {byPath, english} 
+* shape as its success path, instead of a bare Map() that made 
+* makeLastmodLookup destructure undefined and throw on the very first lookup 
+* in any environment where &#x60;git log&#x60; fails. 
+* - toPathname()&#x27;s index-stripping regex is now case-insensitive, matching 
+* content.config.ts&#x27;s generateId. 
+* - Dropped a dead loop in buildLastmodIndex that re-set entries already set 
+* identically by the loop above it. 
+* - The sitemap filter and custom-head.astro&#x27;s noindex check both excluded all 
+* of /changelog/, including the stable, hand-authored /changelog/overview/ 
+* landing page. Both now carve out that one page. 
+* - ProductJsonLd&#x27;s offersFree branch hardcoded price &quot;0&quot; even when a custom 
+* offerDescription states real, non-zero pricing terms (the homepage&#x27;s 1.5% 
+* platform fee / 10% commission copy) -- now omits &#x60;price&#x60; in that case 
+* instead of asserting a contradictory $0. 
+* - Added unit tests for sitemap-lastmod.mjs (Node&#x27;s built-in test runner, no 
+* new dependency) covering the git-failure fallback, the case-insensitive 
+* index collapse, and the locale-fallback lookup behavior. 
+* Co-Authored-By: Claude Sonnet 5 &lt;noreply@anthropic.com&gt; 
+* fix: keep partner-api and overview changelog pages indexable 
+* The changelog exclusion added in the previous commit was over-broad: it 
+* dropped every /changelog/ URL from the sitemap and noindexed it, including 
+* /changelog/partner-api/... (content.config.ts documents this feed as 
+* deliberately uncapped -- every tag is a wire contract integrators pin to, 
+* the opposite of the churning application/platform feeds keepRecent(25) 
+* trims) and /changelog/overview/ (a permanent, hand-authored landing page). 
+* - New shared src/lib/changelog-churn.mjs replaces the ad hoc regex/.includes 
+* checks duplicated between astro.config.mjs&#x27;s sitemap filter and 
+* custom-head.astro&#x27;s noindex check, so they can&#x27;t drift apart again. 
+* - New shared src/lib/docs-slug.mjs extracts the file-path-to-route-id logic 
+* out of content.config.ts&#x27;s generateId, and sitemap-lastmod.mjs&#x27;s 
+* toPathname now calls it instead of reimplementing the same rule 
+* independently. 
+* - test:unit now runs &#x60;node --test src&#x60; (Node&#x27;s own recursive discovery) 
+* instead of &#x60;node --test src/**/*.test.mjs&#x60;, which relied on shell-level 
+* &#x60;**&#x60; glob expansion that isn&#x27;t guaranteed under npm&#x27;s default POSIX shell. 
+* Co-Authored-By: Claude Sonnet 5 &lt;noreply@anthropic.com&gt; 
+* fix: restore &amp;ast; footnote escaping lost in five pricing translations 
+* The English pricing.mdx escapes its footnote asterisks as &amp;ast; specifically 
+* because a literal &#x60;*&#x60; is markdown emphasis syntax. bg, lv, ru, th and uk&#x27;s 
+* translated pricing.mdx (from i18n sync 68f39422) all came back with literal 
+* &#x60;*&#x60; instead, in all 5 of the source&#x27;s 5 &amp;ast; locations. Two of them -- 
+* the &quot;~15%&quot; and &quot;total, paid by the hotel&quot; spans -- paired as an emphasis 
+* node spanning both &lt;span&gt; tags, which broke &#x60;astro build&#x60; outright (&#x60;npm 
+* run check&#x60; doesn&#x27;t run a real MDX compile pass, so it stayed undetected on 
+* master until someone ran a full build by hand). 
+* Translated prose is unchanged; only the escaping is restored, to exactly 
+* match what the English source already does at each of these 5 spots. 
+* Co-Authored-By: Claude Sonnet 5 &lt;noreply@anthropic.com&gt; 
+* fix: resolve schemas dir from cwd instead of a bundled import.meta.url 
+* SCHEMAS_DIR was computed as &#x60;../../../../schemas/&#x60; relative to 
+* import.meta.url. That resolves correctly against the source file&#x27;s own 
+* path, but astro build bundles this route into a chunk at a different 
+* directory depth than its source, so the same relative path overshot by one 
+* directory in the production build -- landing on the repo&#x27;s parent directory 
+* instead of ./schemas -- and made getStaticPaths throw ENOENT, failing the 
+* build outright. It only worked in &#x60;astro dev&#x60;, where nothing is bundled or 
+* moved, which is presumably why it went unnoticed since it merged. 
+* astro dev/build always run with cwd at the project root, so resolve from 
+* process.cwd() instead -- it isn&#x27;t affected by where the bundler places the 
+* compiled route. 
+* Co-Authored-By: Claude Sonnet 5 &lt;noreply@anthropic.com&gt; 
+* build: add an MDX compile guard so a bad translation can&#x27;t merge silently 
+* Two build-breaking bugs shipped to master this session (a translation that 
+* mangled &amp;ast; escaping into literal &#x60;*&#x60;, and a bundling-fragile 
+* import.meta.url path) because nothing between &#x60;npm run check&#x60; and a full, 
+* manual &#x60;npm run build&#x60; actually compiles the site&#x27;s ~8,200 .mdx files. 
+* &#x60;astro check&#x60; does type/schema diagnostics, not a real MDX-&gt;JSX compile 
+* pass, so both sat on master undetected until someone ran a full build by 
+* hand -- an 8GB, ~10 minute build nobody runs before merging. 
+* scripts/check-mdx.mjs compiles every .mdx file with the bare MDX compiler 
+* (no Astro plugins, no schemas, no network), which is enough to catch this 
+* whole class of structural syntax error in well under a minute. Deliberately 
+* covers locale directories too (unlike check-claims.ts, which skips them): 
+* a file that can&#x27;t compile is broken regardless of language, and translation 
+* is exactly what caused this bug. Wired into &#x60;npm run check:mdx&#x60; and a new 
+* CI workflow (.github/workflows/mdx-guard.yml) that runs it on every push 
+* and pull request, mirroring claims.yml&#x27;s existing pattern. 
+* Co-Authored-By: Claude Sonnet 5 &lt;noreply@anthropic.com&gt; 
+* --------- 
+* Co-authored-by: Yann &lt;yann@Yanns-MacBook-Pro.local&gt; 
+* Co-authored-by: Claude Opus 5 &lt;noreply@anthropic.com&gt; 
+* Co-authored-by: Bjorn Harvold &lt;bjorn@harvold.com&gt; 
+
+[2c703](https://github.com/wink-travel/docs/commit/2c7031f219a1a2b) YannWink *2026-09-22 16:30:47*
+
+**Recover 110 legacy URLs with 301s, and fix the broken locale redirects (#71)**
+
+* Recover 110 legacy URLs with 301s, and fix the locale redirects 
+* An audit flagged four old URLs returning 404 with no redirect. Probing the 
+* site&#x27;s history properly -- 3,077 archived URLs from the Wayback CDX index, 
+* 450 of them content pages, every one requested against production -- found 
+* 219 dead, not four. 110 have a clear modern equivalent and are mapped here. 
+* Each 404 throws away whatever link equity and ranking history that URL 
+* earned, and Perplexity and other answer engines lean on the Google and Bing 
+* indexes, so a dead URL is a dead citation. 
+* Two bugs surfaced while testing, both invisible on inspection: 
+* The existing &#x60;/:locale/dev{,/**}&#x60; rules have never worked. &#x60;:locale&#x60; and 
+* &#x60;{,/**}&#x60; each work alone, but combined they match nothing -- /es/dev/ still 
+* 404s today. So the locale half of the #33 rename coverage has been inert 
+* since it was added. 
+* Worse, &#x60;:locale&#x60; is an unconstrained segment capture: it matches ANY first 
+* segment, so &#x60;/:locale/studio&#x60; also matched the live /products/studio/ and 
+* 301&#x27;d it away. A bare &#x60;:locale&#x60; is not safe in this repo. Both are replaced 
+* with an RE2 named capture over the 42 real locale codes. 
+* Specific sources are ordered before broader ones, because Firebase applies 
+* the first matching rule and /studio would otherwise swallow 
+* /studio/payment-terms. 
+* Verified against the real dist/ in the Firebase hosting emulator, not by 
+* reading the config: 330 redirect assertions (110 sources x bare, /es, /zh-TW) 
+* all land on the intended destination, and 51 live pages -- including the 
+* ones the globs sit next to -- still return 200. 
+* Deliberately not mapped, and why: 
+* - 48 dead /changelog/**/version/** URLs. A glob there would shadow 100 live 
+* changelog pages, and keepRecent(25) mints new ones every release, so this 
+* needs a policy decision rather than 48 rules. 
+* - ~9 consumer travel posts from the Traveliko era (Phuket, Chiang Mai, 
+* Bangkok, sustainable travel). Sending them to a B2B blog invites soft-404 
+* treatment; leaving them 404 is the honest signal. 
+* - WordPress scaffolding (/sample-page, /may-test-1, /locations.kml) and app 
+* endpoints (/registration, /user/register), which have no marketing value. 
+* Co-Authored-By: Claude Opus 5 &lt;noreply@anthropic.com&gt; 
+* Redirect the 48 dead changelog URLs to their section index 
+* &#x60;keepRecent(25)&#x60; in src/content.config.ts trims older releases on every 
+* release, so changelog URLs Google has indexed 404 a few releases later. 48 are 
+* dead today. 
+* These have to be exact sources, not a glob: /changelog/**/version/** would 
+* also match the 100 release pages that are still live, and Firebase evaluates 
+* redirects before static files, so a glob there would delete them from the site. 
+* This only cleans up what is already indexed. The recurrence is stopped in the 
+* AEO signals PR, which drops the changelog from the sitemap and marks it 
+* noindex,follow so these URLs stop entering an index they will fall out of. 
+* Verified in the hosting emulator: all 48 redirect to their section index, and 
+* the live changelog pages -- including paginated and versioned ones -- still 
+* return 200. 
+* Co-Authored-By: Claude Opus 5 &lt;noreply@anthropic.com&gt; 
+* --------- 
+* Co-authored-by: Yann &lt;yann@Yanns-MacBook-Pro.local&gt; 
+* Co-authored-by: Claude Opus 5 &lt;noreply@anthropic.com&gt; 
+
+[520e4](https://github.com/wink-travel/docs/commit/520e48275b7199c) YannWink *2026-09-22 14:33:51*
+
+**Merge pull request #77 from wink-travel/docs/booking-reference-optional**
+
+* docs: make Reference optional for MCP bookings 
+
+[d3e38](https://github.com/wink-travel/docs/commit/d3e38b24128699b) flowmode *2026-09-22 09:31:01*
+
+**Refuse a deploy that would strip search or pages from production (#54)**
+
+* Refuse a deploy that would strip search or pages from production 
+* &#x60;firebase deploy&#x60; replaces the entire hosting bucket, so whatever is missing 
+* from &#x60;dist/&#x60; is deleted from the live site. Two failure modes here are 
+* invisible in the build&#x27;s exit code: 
+* Pagefind is the site&#x27;s only search (DocSearch is commented out). A corrupt 
+* npm cache entry left &#x60;@pagefind/darwin-arm64&#x60; without its 55 MB binary, so 
+* the &#x60;astro:build:done&#x60; hook failed and &#x60;dist/pagefind&#x60; was never written -- 
+* while &#x60;npm run build&#x60; still exited 0. Deploying that build would have removed 
+* search from production, silently. That cache is now repaired and the index 
+* builds again, but nothing stopped the bad deploy except remembering not to. 
+* Separately, &#x60;astro build&#x60; exits 0 even when pages fail to render; a build has 
+* come out nearly empty at exit 0 before. 
+* &#x60;scripts/predeploy-check.mjs&#x60; runs as a Firebase predeploy hook and checks 
+* what the exit code does not: the page count is not absurdly low, the search 
+* index exists and is non-empty, and the sitemap was written. Each failure says 
+* how to fix it rather than only what is wrong. Dependency-free Node so it adds 
+* nothing to deploy time, and SKIP_DEPLOY_PREFLIGHT&#x3D;1 overrides it for a 
+* deliberate partial deploy. 
+* Verified against a real 26,976-page dist: passes intact, refuses with exit 1 
+* when the search index is removed, passes again when restored. 
+* Co-Authored-By: Claude Opus 5 &lt;noreply@anthropic.com&gt; 
+* fix(deploy): stop hardcoding the pagefind platform-package version 
+* The repair command printed on a missing dist/pagefind/pagefind.js hardcoded 
+* @pagefind/darwin-arm64@1.5.2. pagefind is a transitive dependency (pulled in 
+* by Starlight), so its version moves on its own schedule as Astro/Starlight 
+* are upgraded, with nothing to keep this literal in sync — a stale version 
+* could point at a repair command that reinstalls a mismatched pair, since 
+* pagefind pins its optionalDependencies to its own exact version. 
+* Read the platform package name and version at runtime instead, from 
+* pagefind&#x27;s own package.json and process.platform/arch. 
+* Co-Authored-By: Claude Sonnet 5 &lt;noreply@anthropic.com&gt; 
+* --------- 
+* Co-authored-by: Yann &lt;yann@Yanns-MacBook-Pro.local&gt; 
+* Co-authored-by: Claude Opus 5 &lt;noreply@anthropic.com&gt; 
+* Co-authored-by: Bjorn Harvold &lt;bjorn@harvold.com&gt; 
+
+[6fff0](https://github.com/wink-travel/docs/commit/6fff05756cfbe2d) YannWink *2026-09-22 02:59:35*
+
+**Give the documentation layer breadcrumbs and section landing pages (#53)**
+
+* Give the documentation layer section landing pages and breadcrumbs 
+* The documentation layer had no BreadcrumbList at all -- roughly 162 
+* English pages across getting-started, guides, portal, developers, 
+* integrations, account, booking-engine and webinars. Marketing pages 
+* declare a trail inline and Resources articles get one from 
+* ResourceSchema, but nothing covered the docs. 
+* A trail needs a middle crumb whose &#x60;item&#x60; URL actually resolves, and 
+* most of these sections had no landing page, so six are added here: 
+* getting-started, guides, developers, integrations, booking-engine and 
+* webinars. Each lists what the section contains rather than standing in 
+* as a stub. 
+* portal and account are deliberately NOT given index pages. Both already 
+* have an overview page listed first in the sidebar, so a second landing 
+* page would compete with it; their crumbs point at the existing 
+* /portal/overview/ and /account/overview/ instead. 
+* DocsBreadcrumbJsonLd renders once from custom-head.astro and emits 
+* Home &gt; Section &gt; Page. It uses an allowlist of sections rather than a 
+* blocklist, so a new marketing page can never silently acquire a second 
+* BreadcrumbList -- duplicate lists are a real Google error, unlike the 
+* absent ones this fixes. 
+* guides needs an explicit sidebar entry because that group is built from 
+* its four subgroups and autogenerates nothing at its own root, so the 
+* page would otherwise exist at /guides/ while being invisible in the nav. 
+* Co-Authored-By: Claude Opus 5 &lt;noreply@anthropic.com&gt; 
+* Claude-Session: https://claude.ai/code/session_01GhX16rWWbzrZbh84gRpYRJ 
+* List the guides landing page by its real slug 
+* Starlight resolves a sidebar entry against a page&#x27;s slug, and the slug for 
+* guides/index.mdx is &#x60;guides&#x60;, not &#x60;guides/index&#x60; — the latter matches no 
+* page and throws during route generation. 
+* Co-Authored-By: Claude Opus 5 &lt;noreply@anthropic.com&gt; 
+* --------- 
+* Co-authored-by: Yann &lt;yann@Yanns-MacBook-Pro.local&gt; 
+* Co-authored-by: Claude Opus 5 &lt;noreply@anthropic.com&gt; 
+
+[04a21](https://github.com/wink-travel/docs/commit/04a21da27cff42d) YannWink *2026-09-22 02:37:51*
+
+**Apply the safe dependency audit fix (#52)**
+
+* Lockfile only -- package.json is untouched and no package is added or 
+* removed. Takes npm audit from 36 advisories to 11, and critical from 1 
+* to 0, high from 12 to 3. The critical was &#x60;tar&#x60;. 
+* The remaining 11 are upstream-blocked, not skipped. Bumping the two 
+* implicated direct dependencies was tested and cleared nothing: 
+* firebase-tools 15.22.4 -&gt; 15.30.2 and starlight-openapi 0.26.1 -&gt; 0.26.2 
+* both leave the same 11. They need semver-major bumps of packages those 
+* two pin -- httpsnippet -&gt; form-data under starlight-openapi, and 
+* @google-cloud/pubsub / gaxios / uuid / csv-parse under firebase-tools -- 
+* so clearing them means either waiting for upstream or forcing majors on 
+* the deploy tool and the OpenAPI renderer. Not worth the regression risk 
+* for what is left. 
+* What is left is also low real-world exposure: esbuild&#x27;s advisory is an 
+* arbitrary file read via the dev server on Windows, and stream-json&#x27;s is a 
+* DoS in a JSON filter only reachable through firebase-tools at deploy 
+* time. Neither ships to a browser; both are build- or deploy-time only. 
+* Claude-Session: https://claude.ai/code/session_01GhX16rWWbzrZbh84gRpYRJ 
+* Co-authored-by: Yann &lt;yann@Yanns-MacBook-Pro.local&gt; 
+* Co-authored-by: Claude Opus 5 &lt;noreply@anthropic.com&gt; 
+
+[8f085](https://github.com/wink-travel/docs/commit/8f0858d65e67289) YannWink *2026-09-22 02:37:16*
+
+**Add the missing breadcrumb to the pricing page (#49)**
+
+* Every comparable marketing page emits a BreadcrumbList — /pricing/ was 
+* the only one that didn&#x27;t, despite being a primary commercial page. Adds 
+* the Home -&gt; Pricing trail using the same component and pattern as its 
+* siblings. 
+* Not extended to the documentation layer: sections like /guides/ and 
+* /portal/ have no index page, so a middle crumb there would point at a 
+* URL that does not exist, which Google rejects. That needs section 
+* landing pages first. 
+* Claude-Session: https://claude.ai/code/session_01GhX16rWWbzrZbh84gRpYRJ 
+* Co-authored-by: Yann &lt;yann@Yanns-MacBook-Pro.local&gt; 
+* Co-authored-by: Claude Opus 5 &lt;noreply@anthropic.com&gt; 
+
+[a156b](https://github.com/wink-travel/docs/commit/a156bdf4be850af) YannWink *2026-09-22 02:36:14*
+
+**Add a canonical claims guard and the repository's first CI (#70)**
+
+* Correct the merchant-of-record claim on the marketing pages 
+* The legal pages say the hotel is the merchant of record and that payment 
+* is collected on its behalf, as its agent. These pages still said Wink was 
+* the merchant of record, which contradicts the agreements a hotel signs. 
+* Co-Authored-By: Claude Opus 5 &lt;noreply@anthropic.com&gt; 
+* Claude-Session: https://claude.ai/code/session_01GhX16rWWbzrZbh84gRpYRJ 
+* State the price as 1.5% platform fee plus card processing at cost 
+* The card processing fee is now passed through to the hotel at actual 
+* cost, so a fixed &quot;5.5% all-in&quot; is no longer true: the processing half 
+* varies with the guest&#x27;s card and payment method. Every headline now 
+* leads with the 1.5% platform fee and names the pass-through, and the 
+* worked examples keep 4.0% as an illustration with a footnote saying so. 
+* The processor is not named here — marketing says &quot;card processing fee&quot; 
+* and the payment terms carry the detail. 
+* Co-Authored-By: Claude Opus 5 &lt;noreply@anthropic.com&gt; 
+* Claude-Session: https://claude.ai/code/session_01GhX16rWWbzrZbh84gRpYRJ 
+* Rewrite the pricing documentation page for the pass-through model 
+* Drops the acquiring-cost figures we no longer absorb (2.95%, 3.6%) and 
+* the negotiation preamble, names the two models by who is merchant of 
+* record, and states that payout and currency-conversion costs are the 
+* payee&#x27;s, at cost. 
+* Co-Authored-By: Claude Opus 5 &lt;noreply@anthropic.com&gt; 
+* Claude-Session: https://claude.ai/code/session_01GhX16rWWbzrZbh84gRpYRJ 
+* Escape the footnote asterisks that broke the MDX build 
+* The five bare asterisks marking the card-processing footnote parsed as 
+* markdown emphasis and swallowed the closing &lt;/span&gt;, failing the build 
+* at pricing.mdx:90. astro check passes over this class of error, so it 
+* only surfaced in a full build. Replaced with &amp;ast;, which renders the 
+* same and carries no markdown meaning. 
+* Co-Authored-By: Claude Opus 5 &lt;noreply@anthropic.com&gt; 
+* Claude-Session: https://claude.ai/code/session_01GhX16rWWbzrZbh84gRpYRJ 
+* Update a stale JSX comment above the payment card 
+* The comment still read &quot;Wink is MoR&quot; above the card now titled &quot;Payment 
+* collected for the hotel&quot;. Comment text only — no rendered output changes. 
+* Co-Authored-By: Claude Opus 5 &lt;noreply@anthropic.com&gt; 
+* Claude-Session: https://claude.ai/code/session_01GhX16rWWbzrZbh84gRpYRJ 
+* Tighten the remaining merchant-of-record wording on Booking Engine 
+* Four strings still leaned the wrong way after the merchant-of-record 
+* correction. None asserted that Wink is the merchant of record, so they 
+* were not contradictions, but they read that way: 
+* - &quot;payment handled by Wink&quot; (a heading and two list items) now says 
+* &quot;payment collected for the hotel&quot;, matching the rest of the page. 
+* - &quot;Merchant of record available on API integrations&quot; and &quot;Merchant of 
+* record (API integrations)&quot; both describe a capability offered to the 
+* integrator, not to Wink. Reworded so the subject is unambiguous. 
+* Co-Authored-By: Claude Opus 5 &lt;noreply@anthropic.com&gt; 
+* Claude-Session: https://claude.ai/code/session_01GhX16rWWbzrZbh84gRpYRJ 
+* Add a canonical claims guard and the CI to run it 
+* public/llms.txt publishes Wink&#x27;s canonical positions so AI models and 
+* integrators read one authoritative answer. Nothing linked those claims 
+* to the ~1,200 pages that restate them, so on 8 September the site began 
+* saying both &quot;Wink is the merchant of record&quot; (marketing) and &quot;Wink is 
+* never the merchant of record&quot; (llms.txt). It stayed live twelve days and 
+* was reported by an integrator&#x27;s AI rather than caught here. 
+* The guard fails when English source contradicts a canonical position: 
+* merchant-of-record phrasing, the retired &quot;5.5% all-in&quot; and &quot;4.0% payment 
+* fee&quot; claims, and the canonical line going missing from llms.txt. It reads 
+* source rather than dist/, so it runs in seconds with no build. 
+* Validated both ways: 51 contradictions on master, 0 on the branch that 
+* fixes them. 
+* Locale directories are out of scope by design -- translations are 
+* refreshed at release time and lag English, so gating on them would fail 
+* every build in between. 
+* This is also the repository&#x27;s first CI. 
+* Co-Authored-By: Claude Opus 5 &lt;noreply@anthropic.com&gt; 
+* Claude-Session: https://claude.ai/code/session_01GhX16rWWbzrZbh84gRpYRJ 
+* Guard the flat 5.5% price claim, and watch master too 
+* Three gaps left after the first pass: 
+* The guard banned &quot;5.5% all-in&quot; but not other ways of stating 5.5% as the 
+* price. &#x60;Pricing7Demo.astro&#x60; still promised &quot;You only pay 5.5% per booking&quot; — 
+* a flat claim of exactly the kind #48 removed. The file renders nowhere (no 
+* page imports it), so no visitor saw it, but a string like that is a trap for 
+* whoever copies the next pricing block. Both are fixed here. 
+* The new pattern is deliberately narrow: &quot;about 5.5% in total with a 4.0% 
+* card fee&quot; is the approved footnoted illustration and still passes, while 
+* &quot;only pay / you pay / costs / just 5.5%&quot; and &quot;5.5% per booking&quot; do not. Both 
+* directions were probed against the real script, and its exit codes (1 when a 
+* contradiction is present, 0 when clean) were checked, since CI depends on 
+* them. 
+* The workflow now also runs on push to master. It was pull_request-only 
+* because master carried the 51 contradictions; this branch carries #48&#x27;s 
+* corrections, so master is clean the moment it lands. Guarding master itself 
+* is the point — a contradiction merged by any other route should fail here, 
+* not surface twelve days later in an integrator&#x27;s AI. 
+* Co-Authored-By: Claude Opus 5 &lt;noreply@anthropic.com&gt; 
+* --------- 
+* Co-authored-by: Yann &lt;yann@Yanns-MacBook-Pro.local&gt; 
+* Co-authored-by: Claude Opus 5 &lt;noreply@anthropic.com&gt; 
+
+[d4e9c](https://github.com/wink-travel/docs/commit/d4e9cd1671fed5a) Bjorn Harvold *2026-09-22 02:34:29*
+
+**Gate analytics behind consent and resolve the remaining policy placeholders (#44)**
+
+* Google Analytics was loading unconditionally and setting _ga cookies on first 
+* page load for every visitor, including EEA/UK, with no consent banner anywhere 
+* in the repo — while the Cookie Policy described a banner that did not exist. 
+* - Google Consent Mode v2, denied by default, injected before gtag.js. GA loads 
+* in cookieless mode and sets nothing until a visitor accepts. 
+* - Consent banner (src/components/CookieConsent.astro), mounted site-wide via 
+* the Footer override so it covers docs pages as well as marketing. Choice 
+* persists in localStorage and is replayed before the first pageview. 
+* - Global Privacy Control is honoured in code, not just claimed in the policy: 
+* a GPC signal forces analytics storage denied, overrides any stored choice, 
+* and suppresses the banner rather than inviting the visitor to override the 
+* choice their browser already made. 
+* Policy edits, each now backed by the implementation above: 
+* - Privacy 8: adds Cloudflare (CDN, email obfuscation). Firebase was already 
+* covered by the existing Google entry. 
+* - Privacy 12: no Article 27 representative is appointed, so the text says what 
+* is true rather than implying one exists (unblocks EDIT 14). 
+* - Privacy 13: the CPRA &quot;sharing&quot; question is answerable now that analytics is 
+* consent-gated and GPC is honoured (unblocks EDIT 13). 
+* - Cookie Policy: all four placeholders resolved — no advertising tags, the 
+* banner now exists, GPC honoured, DNT not (no agreed standard). 
+* No [CONFIRM] placeholder remains on any published policy page. 
+* Claude-Session: https://claude.ai/code/session_01GhX16rWWbzrZbh84gRpYRJ 
+* Co-authored-by: Yann &lt;yann@Yanns-MacBook-Pro.local&gt; 
+* Co-authored-by: Claude Opus 5 &lt;noreply@anthropic.com&gt; 
+
+[74890](https://github.com/wink-travel/docs/commit/74890e37c3906fe) YannWink *2026-09-08 00:41:35*
+
+
 ## v1.1.1 (2026-09-02)
 
 ### Bug Fixes
