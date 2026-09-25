@@ -14,10 +14,8 @@ import { rehypeJsxHeadings } from './scripts/rehype-jsx-headings.mjs';
 // Single "API" sidebar parent. Each audience below is one OpenAPI schema, so the
 // rendered tree is Audience › Resource(tag) › Operation — three levels, no per-group
 // or audience-wrapper nesting. Snapshots live in ./schemas/<audience>.json and are
-// refreshed by `npm run schemas:sync` from monorepo-java's BUILD OUTPUT -- no deployment
-// is involved, so a snapshot cannot carry the wrong environment. Audience ids match the
-// upstream springdoc group ids one-for-one; sync-schemas.ts is the authoritative map of
-// which generator produces which.
+// maintained in this repo (see schemas/README.md). Audience ids match the upstream
+// springdoc group ids one-for-one.
 const apiSidebarGroup = createOpenAPISidebarGroup()
 
 // The Partner reference moved from /integrations-api/partner/ to /partner-api/partner/ when it
@@ -202,7 +200,6 @@ export default defineConfig({
     // },
     plugins: [
       // Generate the OpenAPI reference pages from local snapshots in ./schemas/.
-      // Refresh snapshots with `npm run schemas:sync`.
       // Sort audience sections alphabetically by label (Account, Affiliate, Consumer,
       // Partner, Platform, Supplier). The "Overview" link is a separate sidebar item, so
       // it stays first.

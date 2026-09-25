@@ -5,7 +5,7 @@ import { join } from 'node:path';
 // Serves each ./schemas/<audience>.json snapshot verbatim as a downloadable file, so
 // integrators can grab the raw OpenAPI document instead of only browsing the rendered
 // reference pages. Reads from the schemas/ build artifacts directly (rather than a copy
-// under public/) so a download can never drift from what npm run schemas:sync last wrote.
+// under public/) so a download can never drift from the snapshots in schemas/.
 //
 // Resolved from process.cwd(), not import.meta.url: `astro build` bundles this route
 // into a chunk at a different directory depth than its source file, so a relative

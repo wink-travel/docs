@@ -5,7 +5,7 @@
 //
 // Astro/Vite loads these files automatically, but scripts run under plain `tsx`
 // get no such treatment, so anything reading process.env must call loadEnv()
-// first. See scripts/translate-i18n.ts and scripts/sync-schemas.ts.
+// first. See scripts/translate-i18n.ts.
 
 import { dirname, join, resolve } from "path";
 import { fileURLToPath } from "url";

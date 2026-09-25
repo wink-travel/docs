@@ -33,10 +33,6 @@ npm run build
 # Preview production build
 npm preview
 
-# Refresh OpenAPI schema snapshots from monorepo-java's build output (writes to ./schemas/)
-# Requires the monorepo to have been built first -- see schemas/README.md
-npm run schemas:sync
-
 # Translate all documentation to all languages
 npm run i18n:all
 # Translate specific language only
@@ -173,9 +169,7 @@ The site uses these Starlight plugins (see `astro.config.mjs`):
 - `starlightOpenAPI` - Renders API reference pages from the OpenAPI snapshots in the top-level `schemas/`
   directory: twelve documents, one per audience, nested under a single "API" sidebar group via
   `createOpenAPISidebarGroup()` — see the `apiSidebarGroup` constant in `astro.config.mjs`. The snapshots
-  are BUILD ARTIFACTS of monorepo-java, not fetched from any deployment, so they cannot be pointed at the
-  wrong environment; refresh with `npm run schemas:sync` after building the monorepo (see
-  `schemas/README.md` for the exact commands and why the sync rejects a placeholder version).
+  are maintained in this repo; there is no sync script (see `schemas/README.md`).
 - `starlightDocSearch` is installed but currently commented out in `astro.config.mjs`.
 
 Sidebar is explicitly listed in `astro.config.mjs` (not fully auto-generated): each top-level group is `autogenerate`'d from a directory under `src/content/docs/`, and a single "API" group (containing the `apiSidebarGroup` placeholder) appears immediately after Developers. Adding a new top-level docs section requires editing the `sidebar` array.
