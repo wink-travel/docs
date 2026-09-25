@@ -1,6 +1,6 @@
 ---
 title: REST i gRPC
-description: Jak integrować się z platformą Wink przez REST lub gRPC, generować klienta z naszych schematów oraz używać serwera MCP do generowania kodu integracyjnego dopasowanego do Twojego przypadku użycia.
+description: Jak integrować się z platformą Wink przez REST lub gRPC, generować klienta z naszych schematów oraz używać serwera MCP do generowania kodu integracyjnego dla Twojego przypadku użycia.
 sidebar:
   order: 7
 ---
@@ -24,8 +24,8 @@ Każda grupa API publikuje dokument OpenAPI 3. Wskaż na niego dowolny generator
 typowanego klienta w swoim języku.
 
 ```bash
-# Specyfikacja dla grupy jest dostępna obok jej strony referencyjnej.
-curl -o wink-extranet.json https://api.wink.travel/v3/api-docs/extranet
+# Specyfikacja każdej grupy jest do pobrania na tej stronie: /api/downloads/<group>.json
+curl -o wink-extranet.json https://wink.travel/api/downloads/extranet.json
 
 npx @openapitools/openapi-generator-cli generate \
   -i wink-extranet.json -g typescript-fetch -o ./wink-client
@@ -42,7 +42,7 @@ publikuje na dwa sposoby:
 
 - **Odbicie serwera (server reflection)** — serwer opisuje sam siebie, więc narzędzia takie jak `grpcurl`, Postman i Insomnia
   mogą odkryć schemat w czasie działania bez konieczności pobierania plików. Odbicie wymaga tego samego tokena bearer co każde inne wywołanie.
-- **Pliki `.proto`**, jeśli wolisz mieć schemat lokalnie i generować klienta z wyprzedzeniem.
+- **Pliki `.proto`**, jeśli wolisz mieć schemat lokalnie i generować klienta wcześniej.
 
 ```bash
 # Odkryj schemat z działającego serwera (z uwierzytelnieniem).
@@ -53,7 +53,7 @@ grpcurl -H "authorization: Bearer $WINK_TOKEN" \
 protoc --go_out=. --go-grpc_out=. partner_lookup.proto
 ```
 
-Wywołania przesyłają Twój token bearer w nagłówku metadanych `authorization`, dokładnie tak jak REST przesyła go w nagłówku `Authorization`. Błędy pojawiają się jako kod statusu gRPC w trailerach odpowiedzi, a nie jako kod statusu HTTP — [referencja Partnera](/pl/partner-api/partner/) wymienia statusy, których powinieneś się spodziewać.
+Wywołania niosą Twój token bearer w nagłówku metadanych `authorization`, dokładnie tak jak REST w nagłówku `Authorization`. Błędy pojawiają się jako kod statusu gRPC w trailerach odpowiedzi, a nie jako kod statusu HTTP — [referencja Partnera](/pl/partner-api/partner/) wymienia statusy, których powinieneś się spodziewać.
 
 <LinkButton href="https://grpc.io/docs/languages/" variant="secondary" icon="external">
   Szybkie starty gRPC według języka
@@ -76,4 +76,4 @@ narzędzia, które Twój asystent może wywoływać i analizować, więc zamiast
 
 - [Konfiguracja](/pl/developers/setup/) — konta, środowiska i dane uwierzytelniające
 - [Uwierzytelnianie](/pl/developers/authentication/) — uzyskiwanie i odświeżanie tokenów
-- [Integracja Webhook](/pl/developers/webhook-integration/) — odbieranie zdarzeń zamiast odpytywania
+- [Integracja webhooków](/pl/developers/webhook-integration/) — odbieranie zdarzeń zamiast odpytywania

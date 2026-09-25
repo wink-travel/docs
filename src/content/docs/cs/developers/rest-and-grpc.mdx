@@ -20,11 +20,11 @@ Wink nabízí dva transporty. Který použijete, závisí na tom, s jakým API i
 
 ## Vygenerujte REST klienta
 
-Každá skupina API publikuje dokument OpenAPI 3. Směřujte na něj jakýkoliv OpenAPI generátor a získáte typovaný klient ve vašem jazyce.
+Každá skupina API vydává dokument OpenAPI 3. Směřujte na něj jakýkoliv OpenAPI generátor a získáte typovaného klienta ve vašem jazyce.
 
 ```bash
-# Specifikace pro skupinu je dostupná vedle její referenční stránky.
-curl -o wink-extranet.json https://api.wink.travel/v3/api-docs/extranet
+# Specifikace každé skupiny je ke stažení na tomto webu: /api/downloads/<group>.json
+curl -o wink-extranet.json https://wink.travel/api/downloads/extranet.json
 
 npx @openapitools/openapi-generator-cli generate \
   -i wink-extranet.json -g typescript-fetch -o ./wink-client
@@ -36,10 +36,10 @@ npx @openapitools/openapi-generator-cli generate \
 
 ## Vygenerujte gRPC klienta
 
-Partner Integrator API je gRPC. Klienta vygenerujete ze schématu `.proto`, které Wink publikuje dvěma způsoby:
+Partner Integrator API je gRPC. Klienta vygenerujete ze schématu `.proto`, které Wink zveřejňuje dvěma způsoby:
 
-- **Server reflection** — server se popisuje sám, takže nástroje jako `grpcurl`, Postman a Insomnia mohou schéma objevit za běhu bez nutnosti stahovat soubory. Reflection vyžaduje stejný bearer token jako jakýkoliv jiný požadavek.
-- **Soubory `.proto`**, pokud raději chcete schéma mít lokálně a generovat předem.
+- **Server reflection** — server se popisuje sám, takže nástroje jako `grpcurl`, Postman a Insomnia mohou za běhu objevit schéma bez nutnosti stahovat soubory. Reflection vyžaduje stejný bearer token jako jakýkoliv jiný požadavek.
+- **Soubory `.proto`**, pokud raději chcete schéma přibalit a generovat předem.
 
 ```bash
 # Objevte schéma z běžícího serveru (autentizováno).
@@ -50,7 +50,7 @@ grpcurl -H "authorization: Bearer $WINK_TOKEN" \
 protoc --go_out=. --go-grpc_out=. partner_lookup.proto
 ```
 
-Volání nesou váš bearer token v metadatovém hlavičce `authorization`, stejně jako REST v hlavičce `Authorization`. Chyby přicházejí jako gRPC status kód v odpovědních trailech místo HTTP status kódu — [Partner reference](/cs/partner-api/partner/) uvádí statusy, které byste měli očekávat.
+Volání nesou váš bearer token v metadatovém hlavičkovém poli `authorization`, stejně jako REST v hlavičce `Authorization`. Chyby přicházejí jako gRPC status kód v odpovědních trailerích místo HTTP status kódu — [Partner reference](/cs/partner-api/partner/) uvádí statusy, které byste měli očekávat.
 
 <LinkButton href="https://grpc.io/docs/languages/" variant="secondary" icon="external">
   gRPC rychlé starty podle jazyka

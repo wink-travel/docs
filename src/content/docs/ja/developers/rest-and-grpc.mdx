@@ -1,30 +1,31 @@
 ---
 title: REST と gRPC
-description: REST または gRPC を介して Wink Platform と統合する方法、スキーマからクライアントを生成する方法、および MCP サーバーを使用してユースケースに合わせた統合コードを生成する方法。
+description: REST または gRPC を介して Wink Platform と統合し、スキーマからクライアントを生成し、MCP サーバーを使ってユースケースに合わせた統合コードを生成する方法。
 sidebar:
   order: 7
 ---
 
 import { LinkButton, Aside } from '@astrojs/starlight/components';
 
-Wink は 2 つのトランスポートを提供しています。どちらを使用するかは統合する API によって異なります。
+Wink は 2 つのトランスポートを提供しています。どちらを使うかは統合する API によります。
 
 | | トランスポート | スキーマ | ドキュメント |
 | --- | --- | --- | --- |
 | ほとんどの Wink API | HTTPS 上の REST | OpenAPI 3 | サイドバーの **API** 以下の任意のグループ |
 | Partner Integrator API | HTTP/2 上の gRPC | Protocol Buffers | [Partner](/ja/partner-api/partner/) |
 
-<Aside type="note" title="言語SDKの公開は終了しました">
-  手作業で管理された SDK はラップしている API に遅れがちで、実際に必要な言語をカバーしていませんでした。代わりにスキーマからクライアントを生成してください — 常に最新です — または MCP サーバーにユースケースに合わせた統合コードを書かせましょう。
+<Aside type="note" title="言語 SDK の公開は終了しました">
+  手作業で管理された SDK はラップする API に追いつかず、必要な言語をカバーしていませんでした。代わりにスキーマからクライアントを生成してください — 常に最新です — または MCP サーバーにユースケースに合わせた統合コードを書かせましょう。
 </Aside>
 
-## REST クライアントの生成
+## REST クライアントを生成する
 
-すべての API グループは OpenAPI 3 ドキュメントを公開しています。任意の OpenAPI ジェネレーターに指定すれば、言語に対応した型付きクライアントが得られます。
+各 API グループは OpenAPI 3 ドキュメントを公開しています。任意の OpenAPI ジェネレーターに指定すれば、
+言語に対応した型付きクライアントが得られます。
 
 ```bash
-# グループの仕様はリファレンスページの隣で提供されています。
-curl -o wink-extranet.json https://api.wink.travel/v3/api-docs/extranet
+# 各グループの仕様はこのサイトからダウンロード可能です: /api/downloads/<group>.json
+curl -o wink-extranet.json https://wink.travel/api/downloads/extranet.json
 
 npx @openapitools/openapi-generator-cli generate \
   -i wink-extranet.json -g typescript-fetch -o ./wink-client
@@ -34,9 +35,9 @@ npx @openapitools/openapi-generator-cli generate \
   言語別 OpenAPI ジェネレーター
 </LinkButton>
 
-## gRPC クライアントの生成
+## gRPC クライアントを生成する
 
-Partner Integrator API は gRPC です。Wink は `.proto` スキーマを 2 つの方法で公開しています。
+Partner Integrator API は gRPC です。`.proto` スキーマからクライアントを生成します。Wink は以下の 2 つの方法で公開しています：
 
 - **サーバーリフレクション** — サーバーが自身を記述するため、`grpcurl`、Postman、Insomnia などのツールがファイルをダウンロードせずに実行時にスキーマを検出できます。リフレクションには他の呼び出しと同じベアラートークンが必要です。
 - **`.proto` ファイル** — スキーマをベンダリングして事前に生成したい場合はこちら。
@@ -46,11 +47,11 @@ Partner Integrator API は gRPC です。Wink は `.proto` スキーマを 2 つ
 grpcurl -H "authorization: Bearer $WINK_TOKEN" \
   partner.wink.travel:443 list
 
-# 次にクライアントを生成 — ここでは Go。サポートされているすべての言語で同様です。
+# その後クライアントを生成 — ここでは Go。対応言語は同様の方法です。
 protoc --go_out=. --go-grpc_out=. partner_lookup.proto
 ```
 
-呼び出しは REST の `Authorization` ヘッダーと同様に `authorization` メタデータヘッダーにベアラートークンを含みます。エラーは HTTP ステータスコードではなく、レスポンスのトレーラーに gRPC ステータスコードとして返されます — [Partner リファレンス](/ja/partner-api/partner/) に期待されるステータスが記載されています。
+呼び出しは `authorization` メタデータヘッダーにベアラートークンを含みます。これは REST の `Authorization` ヘッダーと同様です。エラーは HTTP ステータスコードではなく、レスポンスのトレーラーに gRPC ステータスコードとして返されます — [Partner リファレンス](/ja/partner-api/partner/) に期待されるステータスが記載されています。
 
 <LinkButton href="https://grpc.io/docs/languages/" variant="secondary" icon="external">
   言語別 gRPC クイックスタート
@@ -62,10 +63,10 @@ protoc --go_out=. --go-grpc_out=. partner_lookup.proto
 
 ## または MCP サーバーに書かせる
 
-AI コーディングアシスタントを使う場合、MCP サーバーが最速のルートです。Wink の API をアシスタントが呼び出して推論できるツールとして公開しているため、クライアント全体を生成してエンドポイントを探す代わりに、作りたいものを説明するだけでユースケースに合わせた統合コードが得られます。
+AI コーディングアシスタントを使う場合、MCP サーバーが最速のルートです。Wink の API をアシスタントが呼び出し推論できるツールとして公開しているため、クライアント全体を生成してエンドポイントを探す代わりに、作りたいものを説明するだけでユースケースに合わせた統合コードが得られます。
 
 <LinkButton href="/ja/developers/mcp/" variant="primary">
-  Wink MCP サーバーのセットアップ
+  Wink MCP サーバーをセットアップする
 </LinkButton>
 
 ## さらに読む

@@ -26,8 +26,8 @@ Každá skupina API publikuje dokument OpenAPI 3. Nasmerujte naň akýkoľvek Op
 typovaného klienta vo vašom jazyku.
 
 ```bash
-# Špecifikácia pre skupinu je dostupná vedľa jej referenčnej stránky.
-curl -o wink-extranet.json https://api.wink.travel/v3/api-docs/extranet
+# Špecifikácia každej skupiny je na stiahnutie na tejto stránke: /api/downloads/<group>.json
+curl -o wink-extranet.json https://wink.travel/api/downloads/extranet.json
 
 npx @openapitools/openapi-generator-cli generate \
   -i wink-extranet.json -g typescript-fetch -o ./wink-client
@@ -43,7 +43,7 @@ Partner Integrator API je gRPC. Klienta vygenerujete zo schémy `.proto`, ktorú
 publikuje dvoma spôsobmi:
 
 - **Server reflection** — server sa sám popisuje, takže nástroje ako `grpcurl`, Postman a Insomnia
-  môžu počas behu objaviť schému bez nutnosti sťahovať súbory. Reflection vyžaduje rovnaký bearer
+  môžu počas behu objaviť schému bez potreby sťahovať súbory. Reflection vyžaduje rovnaký bearer
   token ako ktorýkoľvek iný volanie.
 - **Súbory `.proto`**, ak radšej chcete mať schému lokálne a generovať vopred.
 
@@ -56,9 +56,8 @@ grpcurl -H "authorization: Bearer $WINK_TOKEN" \
 protoc --go_out=. --go-grpc_out=. partner_lookup.proto
 ```
 
-Volania nesú váš bearer token v metadátovom hlavičke `authorization`, presne tak, ako REST ho nesie v
-hlavičke `Authorization`. Chyby prichádzajú ako gRPC status kód v odpovedných traileroch namiesto
-HTTP status kódu — [Partner referenčný manuál](/sk/partner-api/partner/) uvádza statusy, ktoré
+Volania nesú váš bearer token v metadátovom hlavičke `authorization`, presne ako REST v hlavičke
+`Authorization`. Chyby prichádzajú ako gRPC status kód v odpovedných traileroch namiesto HTTP status kódu — [Partner referenčný manuál](/sk/partner-api/partner/) uvádza statusy, ktoré
 môžete očakávať.
 
 <LinkButton href="https://grpc.io/docs/languages/" variant="secondary" icon="external">
@@ -71,9 +70,9 @@ môžete očakávať.
 
 ## Alebo nechajte MCP server, nech to napíše
 
-Ak používate AI asistenta na kódovanie, náš MCP server je najrýchlejšia cesta. Umožňuje, aby Wink API
-boli nástrojmi, ktoré váš asistent môže volať a analyzovať, takže namiesto generovania celého klienta a
-hľadania endpointov sami, popíšete, čo budujete, a dostanete integračný kód prispôsobený tomu.
+Ak používate AI asistenta na kódovanie, náš MCP server je najrýchlejšia cesta. Poskytuje Wink API ako
+nástroje, ktoré váš asistent môže volať a analyzovať, takže namiesto generovania celého klienta a hľadania
+endpointov sami, popíšete, čo budujete, a dostanete integračný kód prispôsobený tomu.
 
 <LinkButton href="/sk/developers/mcp/" variant="primary">
   Nastavte Wink MCP server
@@ -83,4 +82,4 @@ hľadania endpointov sami, popíšete, čo budujete, a dostanete integračný k�
 
 - [Nastavenie](/sk/developers/setup/) — účty, prostredia a poverenia
 - [Autentifikácia](/sk/developers/authentication/) — získavanie a obnovovanie tokenov
-- [Integrácia webhookov](/sk/developers/webhook-integration/) — prijímanie udalostí namiesto polling-u
+- [Integrácia webhooku](/sk/developers/webhook-integration/) — prijímanie udalostí namiesto pollingovania

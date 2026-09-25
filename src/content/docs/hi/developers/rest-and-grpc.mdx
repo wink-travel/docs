@@ -15,30 +15,30 @@ Wink दो ट्रांसपोर्ट प्रदान करता �
 | Partner Integrator API | HTTP/2 पर gRPC | Protocol Buffers | [Partner](/hi/partner-api/partner/) |
 
 <Aside type="note" title="हम अब भाषा SDKs प्रकाशित नहीं करते">
-  हाथ से बनाए गए SDKs उन APIs से पीछे रह जाते थे जिन्हें वे कवर करते थे, और कभी भी उस भाषा को कवर नहीं करते थे जिसकी आपको वास्तव में आवश्यकता थी। इसके बजाय स्कीमा से क्लाइंट जनरेट करें — यह हमेशा वर्तमान होता है — या हमारे MCP सर्वर को आपके उपयोग के मामले के अनुसार एकीकरण कोड लिखने दें।
+  हाथ से बनाए गए SDKs उन APIs के पीछे रह जाते थे जिन्हें वे कवर करते थे, और कभी भी उस भाषा को कवर नहीं करते थे जिसकी आपको वास्तव में आवश्यकता थी। इसके बजाय स्कीमा से क्लाइंट जनरेट करें — यह हमेशा वर्तमान होता है — या हमारे MCP सर्वर को आपके उपयोग के मामले के अनुसार एकीकरण कोड लिखने दें।
 </Aside>
 
 ## REST क्लाइंट जनरेट करें
 
-प्रत्येक API समूह एक OpenAPI 3 दस्तावेज़ प्रकाशित करता है। किसी भी OpenAPI जनरेटर को इसे इंगित करें और आपको अपनी भाषा में एक टाइप्ड क्लाइंट मिलेगा।
+प्रत्येक API समूह एक OpenAPI 3 दस्तावेज़ प्रकाशित करता है। किसी भी OpenAPI जनरेटर को इसे पॉइंट करें और आपको अपनी भाषा में एक टाइप्ड क्लाइंट मिलेगा।
 
 ```bash
-# किसी समूह के लिए स्पेक उसके संदर्भ पृष्ठ के पास परोसा जाता है।
-curl -o wink-extranet.json https://api.wink.travel/v3/api-docs/extranet
+# प्रत्येक समूह का स्पेक इस साइट पर डाउनलोड के लिए उपलब्ध है: /api/downloads/<group>.json
+curl -o wink-extranet.json https://wink.travel/api/downloads/extranet.json
 
 npx @openapitools/openapi-generator-cli generate \
   -i wink-extranet.json -g typescript-fetch -o ./wink-client
 ```
 
 <LinkButton href="https://openapi-generator.tech/docs/generators" variant="secondary" icon="external">
-  भाषा के अनुसार OpenAPI जनरेटर
+  भाषा अनुसार OpenAPI जनरेटर
 </LinkButton>
 
 ## gRPC क्लाइंट जनरेट करें
 
 Partner Integrator API gRPC है। आप `.proto` स्कीमा से क्लाइंट जनरेट करते हैं, जिसे Wink दो तरीकों से प्रकाशित करता है:
 
-- **सर्वर रिफ्लेक्शन** — सर्वर स्वयं का वर्णन करता है, इसलिए `grpcurl`, Postman और Insomnia जैसे टूल्स रनटाइम पर स्कीमा खोज सकते हैं बिना कोई फाइल डाउनलोड किए। रिफ्लेक्शन के लिए किसी भी अन्य कॉल की तरह समान बीयरर टोकन की आवश्यकता होती है।
+- **सर्वर रिफ्लेक्शन** — सर्वर स्वयं का वर्णन करता है, इसलिए `grpcurl`, Postman और Insomnia जैसे टूल्स रनटाइम पर स्कीमा खोज सकते हैं बिना कोई फाइल डाउनलोड किए। रिफ्लेक्शन के लिए उसी बीयरर टोकन की आवश्यकता होती है जो किसी अन्य कॉल के लिए होती है।
 - **`.proto` फाइलें**, यदि आप स्कीमा को वेंडर करना और पहले से जनरेट करना पसंद करते हैं।
 
 ```bash
@@ -53,7 +53,7 @@ protoc --go_out=. --go-grpc_out=. partner_lookup.proto
 कॉल्स आपके बीयरर टोकन को `authorization` मेटाडेटा हेडर में ले जाते हैं, ठीक वैसे ही जैसे REST इसे `Authorization` हेडर में ले जाता है। त्रुटियाँ HTTP स्टेटस कोड के बजाय प्रतिक्रिया ट्रेलर्स में gRPC स्टेटस कोड के रूप में आती हैं — [Partner संदर्भ](/hi/partner-api/partner/) में वे स्टेटस सूचीबद्ध हैं जिनकी आपको उम्मीद करनी चाहिए।
 
 <LinkButton href="https://grpc.io/docs/languages/" variant="secondary" icon="external">
-  भाषा के अनुसार gRPC त्वरित शुरुआत
+  भाषा अनुसार gRPC त्वरित शुरुआत
 </LinkButton>
 
 <LinkButton href="https://grpc.io/docs/what-is-grpc/introduction/" variant="secondary" icon="external">
@@ -65,7 +65,7 @@ protoc --go_out=. --go-grpc_out=. partner_lookup.proto
 यदि आप AI कोडिंग सहायक का उपयोग करते हैं, तो हमारा MCP सर्वर सबसे तेज़ मार्ग है। यह Wink के APIs को ऐसे टूल्स के रूप में प्रस्तुत करता है जिन्हें आपका सहायक कॉल और समझ सकता है, इसलिए पूरे क्लाइंट को जनरेट करने और एंडपॉइंट्स खोजने के बजाय, आप जो बना रहे हैं उसका वर्णन करते हैं और उस के अनुसार एकीकरण कोड प्राप्त करते हैं।
 
 <LinkButton href="/hi/developers/mcp/" variant="primary">
-  Wink MCP सर्वर सेट अप करें
+  Wink MCP सर्वर सेटअप करें
 </LinkButton>
 
 ## आगे पढ़ें

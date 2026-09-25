@@ -1,6 +1,6 @@
 ---
 title: REST ir gRPC
-description: Kaip integruotis su Wink Platforma per REST arba gRPC, sugeneruoti klientą iš mūsų schemų ir naudoti mūsų MCP serverį integracijos kodo generavimui jūsų atvejui.
+description: Kaip integruotis su Wink Platforma per REST arba gRPC, sugeneruoti klientą iš mūsų schemų ir naudoti mūsų MCP serverį integracijos kodo generavimui pagal jūsų poreikius.
 sidebar:
   order: 7
 ---
@@ -15,7 +15,7 @@ Wink siūlo du transporto būdus. Kurį naudosite, priklauso nuo to, su kuria AP
 | Partner Integrator API | gRPC per HTTP/2 | Protocol Buffers | [Partner](/lt/partner-api/partner/) |
 
 <Aside type="note" title="Mes nebeleidžiame kalbų SDK">
-  Rankiniu būdu tvarkomi SDK atsiliko nuo API, kuriuos jie apėmė, ir niekada neapėmė kalbos, kurios jums iš tikrųjų reikėjo. Vietoje to sugeneruokite klientą iš schemos — ji visada yra atnaujinta — arba leiskite mūsų MCP serveriui parašyti integracijos kodą, pritaikytą jūsų atvejui.
+  Rankomis prižiūrimi SDK atsiliko nuo API, kuriuos jie apėmė, ir niekada neapėmė kalbos, kurios jums iš tikrųjų reikėjo. Vietoje to sugeneruokite klientą iš schemos — ji visada yra atnaujinta — arba leiskite mūsų MCP serveriui parašyti integracijos kodą, pritaikytą jūsų naudojimo atvejui.
 </Aside>
 
 ## Sugeneruokite REST klientą
@@ -23,8 +23,8 @@ Wink siūlo du transporto būdus. Kurį naudosite, priklauso nuo to, su kuria AP
 Kiekviena API grupė skelbia OpenAPI 3 dokumentą. Nukreipkite bet kurį OpenAPI generatorių į jį ir gausite tipizuotą klientą savo kalba.
 
 ```bash
-# Grupės specifikacija pateikiama šalia jos nuorodos puslapio.
-curl -o wink-extranet.json https://api.wink.travel/v3/api-docs/extranet
+# Kiekvienos grupės specifikacija yra atsisiuntimas šiame puslapyje: /api/downloads/<group>.json
+curl -o wink-extranet.json https://wink.travel/api/downloads/extranet.json
 
 npx @openapitools/openapi-generator-cli generate \
   -i wink-extranet.json -g typescript-fetch -o ./wink-client
@@ -38,11 +38,11 @@ npx @openapitools/openapi-generator-cli generate \
 
 Partner Integrator API yra gRPC. Jūs sugeneruojate klientą iš `.proto` schemos, kurią Wink skelbia dviem būdais:
 
-- **Serverio refleksija** — serveris aprašo save, todėl įrankiai kaip `grpcurl`, Postman ir Insomnia gali rasti schemą vykdymo metu be jokių failų atsisiuntimo. Refleksija reikalauja tokio paties nešiklio žetono kaip ir bet kuris kitas kvietimas.
+- **Serverio refleksija** — serveris aprašo save, todėl įrankiai kaip `grpcurl`, Postman ir Insomnia gali aptikti schemą vykdymo metu be jokių failų atsisiuntimo. Refleksijai reikalingas tas pats nešiklio tokenas kaip ir bet kuriam kitam kvietimui.
 - **`.proto` failai**, jei norite turėti schemą vietoje ir generuoti iš anksto.
 
 ```bash
-# Suraskite schemą iš veikiančio serverio (autentifikuoto).
+# Aptikite schemą iš veikiantį serverio (autentifikuotai).
 grpcurl -H "authorization: Bearer $WINK_TOKEN" \
   partner.wink.travel:443 list
 
@@ -50,10 +50,10 @@ grpcurl -H "authorization: Bearer $WINK_TOKEN" \
 protoc --go_out=. --go-grpc_out=. partner_lookup.proto
 ```
 
-Kvietimai perduoda jūsų nešiklio žetoną `authorization` metaduomenų antraštėje, tiksliai taip pat, kaip REST naudoja `Authorization` antraštę. Klaidos pateikiamos kaip gRPC statuso kodas atsakymo pabaigoje, o ne kaip HTTP statuso kodas — [Partnerio nuoroda](/lt/partner-api/partner/) nurodo statusus, kurių turėtumėte tikėtis.
+Kvietimai perduoda jūsų nešiklio tokeną `authorization` metaduomenų antraštėje, tiksliai taip pat, kaip REST naudoja `Authorization` antraštę. Klaidos pateikiamos kaip gRPC statuso kodas atsakymo pabaigoje, o ne kaip HTTP statuso kodas — [Partnerio referencijoje](/lt/partner-api/partner/) išvardyti statusai, kurių turėtumėte tikėtis.
 
 <LinkButton href="https://grpc.io/docs/languages/" variant="secondary" icon="external">
-  gRPC greitos pradžios pagal kalbą
+  gRPC greitas pradžios vadovas pagal kalbą
 </LinkButton>
 
 <LinkButton href="https://grpc.io/docs/what-is-grpc/introduction/" variant="secondary" icon="external">
@@ -62,7 +62,7 @@ Kvietimai perduoda jūsų nešiklio žetoną `authorization` metaduomenų antra�
 
 ## Arba leiskite MCP serveriui parašyti kodą
 
-Jei naudojate AI programavimo asistentą, mūsų MCP serveris yra greičiausias kelias. Jis pateikia Wink API kaip įrankius, kuriuos jūsų asistentas gali kviesti ir analizuoti, todėl vietoje to, kad generuotumėte visą klientą ir patys ieškotumėte galinių taškų, aprašote, ką kuriate, ir gaunate integracijos kodą, pritaikytą tam.
+Jei naudojate AI programavimo asistentą, mūsų MCP serveris yra greičiausias kelias. Jis pateikia Wink API kaip įrankius, kuriuos jūsų asistentas gali kviesti ir analizuoti, todėl vietoje to, kad generuotumėte visą klientą ir patys ieškotumėte galinių taškų, jūs aprašote, ką kuriate, ir gaunate integracijos kodą, pritaikytą tam.
 
 <LinkButton href="/lt/developers/mcp/" variant="primary">
   Įdiekite Wink MCP serverį
@@ -71,5 +71,5 @@ Jei naudojate AI programavimo asistentą, mūsų MCP serveris yra greičiausias 
 ## Tolimesnė medžiaga
 
 - [Nustatymas](/lt/developers/setup/) — paskyros, aplinkos ir kredencialai
-- [Autentifikacija](/lt/developers/authentication/) — žetonų gavimas ir atnaujinimas
+- [Autentifikacija](/lt/developers/authentication/) — tokenų gavimas ir atnaujinimas
 - [Webhook integracija](/lt/developers/webhook-integration/) — įvykių gavimas vietoje užklausų siuntimo

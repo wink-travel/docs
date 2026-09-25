@@ -7,7 +7,7 @@ sidebar:
 
 import { LinkButton, Aside } from '@astrojs/starlight/components';
 
-Wink มีการเชื่อมต่อสองแบบ ขึ้นอยู่กับว่าคุณกำลังรวมกับ API ใด
+Wink มีการเชื่อมต่อสองแบบ การเลือกใช้งานขึ้นอยู่กับ API ที่คุณกำลังรวมระบบด้วย
 
 | | การเชื่อมต่อ | สคีมา | เอกสาร |
 | --- | --- | --- | --- |
@@ -23,8 +23,8 @@ Wink มีการเชื่อมต่อสองแบบ ขึ้น�
 แต่ละกลุ่ม API จะเผยแพร่เอกสาร OpenAPI 3 ชี้ OpenAPI generator ใดก็ได้ไปที่เอกสารนั้น แล้วคุณจะได้ไคลเอนต์ที่มีการพิมพ์ชนิดในภาษาของคุณ
 
 ```bash
-# สเปกสำหรับกลุ่มจะให้บริการข้างหน้าหน้าการอ้างอิงของมัน
-curl -o wink-extranet.json https://api.wink.travel/v3/api-docs/extranet
+# สเปกของแต่ละกลุ่มสามารถดาวน์โหลดได้ที่ไซต์นี้: /api/downloads/<group>.json
+curl -o wink-extranet.json https://wink.travel/api/downloads/extranet.json
 
 npx @openapitools/openapi-generator-cli generate \
   -i wink-extranet.json -g typescript-fetch -o ./wink-client
@@ -38,19 +38,19 @@ npx @openapitools/openapi-generator-cli generate \
 
 Partner Integrator API ใช้ gRPC คุณสร้างไคลเอนต์จากสคีมา `.proto` ซึ่ง Wink เผยแพร่สองวิธี:
 
-- **Server reflection** — เซิร์ฟเวอร์อธิบายตัวเอง ดังนั้นเครื่องมืออย่าง `grpcurl`, Postman และ Insomnia สามารถค้นหาสคีมาในขณะรันไทม์โดยไม่ต้องดาวน์โหลดไฟล์ Reflection ต้องใช้โทเค็น bearer เดียวกับการเรียกอื่นๆ
-- **ไฟล์ `.proto`** หากคุณต้องการเก็บสคีมาไว้เองและสร้างล่วงหน้า
+- **Server reflection** — เซิร์ฟเวอร์อธิบายตัวเอง ดังนั้นเครื่องมืออย่าง `grpcurl`, Postman และ Insomnia สามารถค้นหาสคีมาในขณะรันไทม์โดยไม่ต้องดาวน์โหลดไฟล์ การ reflection ต้องใช้ bearer token เดียวกับการเรียกอื่นๆ
+- **ไฟล์ `.proto`** หากคุณต้องการเก็บสคีมาไว้ในโปรเจกต์และสร้างล่วงหน้า
 
 ```bash
 # ค้นหาสคีมาจากเซิร์ฟเวอร์ที่กำลังทำงาน (ต้องยืนยันตัวตน)
 grpcurl -H "authorization: Bearer $WINK_TOKEN" \
   partner.wink.travel:443 list
 
-# จากนั้นสร้างไคลเอนต์ — ตัวอย่างนี้เป็น Go; ทุกภาษาที่รองรับทำงานเหมือนกัน
+# จากนั้นสร้างไคลเอนต์ — ตัวอย่างนี้เป็น Go; ทุกภาษาที่รองรับทำแบบเดียวกัน
 protoc --go_out=. --go-grpc_out=. partner_lookup.proto
 ```
 
-การเรียกจะส่งโทเค็น bearer ของคุณในส่วนหัว metadata `authorization` เหมือนกับที่ REST ส่งในส่วนหัว `Authorization` ข้อผิดพลาดจะมาพร้อมรหัสสถานะ gRPC ใน response trailers แทนที่จะเป็นรหัสสถานะ HTTP — [เอกสารอ้างอิง Partner](/th/partner-api/partner/) ระบุรหัสสถานะที่คุณควรคาดหวัง
+การเรียกจะส่ง bearer token ของคุณในส่วนหัว metadata `authorization` เหมือนกับที่ REST ส่งในส่วนหัว `Authorization` ข้อผิดพลาดจะถูกส่งเป็นรหัสสถานะ gRPC ใน response trailers แทนที่จะเป็นรหัสสถานะ HTTP — [เอกสารอ้างอิง Partner](/th/partner-api/partner/) ระบุรหัสสถานะที่คุณควรคาดหวัง
 
 <LinkButton href="https://grpc.io/docs/languages/" variant="secondary" icon="external">
   เริ่มต้นใช้งาน gRPC ตามภาษา
@@ -62,7 +62,7 @@ protoc --go_out=. --go-grpc_out=. partner_lookup.proto
 
 ## หรือให้เซิร์ฟเวอร์ MCP เขียนโค้ดให้
 
-ถ้าคุณใช้ผู้ช่วยเขียนโค้ด AI เซิร์ฟเวอร์ MCP ของเราเป็นเส้นทางที่เร็วที่สุด มันเปิดเผย API ของ Wink เป็นเครื่องมือที่ผู้ช่วยของคุณสามารถเรียกและวิเคราะห์ได้ ดังนั้นแทนที่จะสร้างไคลเอนต์ทั้งหมดและค้นหา endpoint เอง คุณแค่บอกว่ากำลังสร้างอะไร แล้วจะได้โค้ดการรวมที่เหมาะกับสิ่งนั้น
+ถ้าคุณใช้ผู้ช่วยเขียนโค้ด AI เซิร์ฟเวอร์ MCP ของเราเป็นเส้นทางที่เร็วที่สุด มันเปิดเผย API ของ Wink เป็นเครื่องมือที่ผู้ช่วยของคุณสามารถเรียกใช้และวิเคราะห์ได้ ดังนั้นแทนที่จะสร้างไคลเอนต์ทั้งหมดและค้นหา endpoint เอง คุณแค่บอกว่ากำลังสร้างอะไร แล้วจะได้โค้ดการรวมที่เหมาะกับสิ่งนั้น
 
 <LinkButton href="/th/developers/mcp/" variant="primary">
   ตั้งค่าเซิร์ฟเวอร์ Wink MCP
@@ -71,5 +71,5 @@ protoc --go_out=. --go-grpc_out=. partner_lookup.proto
 ## อ่านเพิ่มเติม
 
 - [การตั้งค่า](/th/developers/setup/) — บัญชี, สภาพแวดล้อม และข้อมูลรับรอง
-- [การยืนยันตัวตน](/th/developers/authentication/) — การขอและรีเฟรชโทเค็น
-- [การรวม Webhook](/th/developers/webhook-integration/) — รับเหตุการณ์แทนการดึงข้อมูลซ้ำๆ
+- [การยืนยันตัวตน](/th/developers/authentication/) — การขอและรีเฟรชโทเคน
+- [การรวม Webhook](/th/developers/webhook-integration/) — รับเหตุการณ์แทนการดึงข้อมูลแบบ polling

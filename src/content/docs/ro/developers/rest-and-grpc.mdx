@@ -7,7 +7,7 @@ sidebar:
 
 import { LinkButton, Aside } from '@astrojs/starlight/components';
 
-Wink oferă două tipuri de transport. Care dintre ele o folosești depinde de API-ul cu care te integrezi.
+Wink oferă două tipuri de transport. Alegerea unuia depinde de API-ul cu care te integrezi.
 
 | | Transport | Schema | Docs |
 | --- | --- | --- | --- |
@@ -15,16 +15,16 @@ Wink oferă două tipuri de transport. Care dintre ele o folosești depinde de A
 | Partner Integrator API | gRPC peste HTTP/2 | Protocol Buffers | [Partner](/ro/partner-api/partner/) |
 
 <Aside type="note" title="Nu mai publicăm SDK-uri pentru limbaje">
-  SDK-urile întreținute manual au rămas în urmă față de API-urile pe care le înfășurau și nu au acoperit niciodată limbajul de care aveai nevoie. Generează un client din schema în schimb — este întotdeauna actualizat — sau lasă serverul nostru MCP să scrie cod de integrare adaptat cazului tău de utilizare.
+  SDK-urile întreținute manual rămâneau în urmă față de API-urile pe care le înfășurau și nu acopereau niciodată limbajul de care aveai nevoie. Generează un client din schema în schimb — este întotdeauna actualizat — sau lasă serverul nostru MCP să scrie cod de integrare adaptat cazului tău de utilizare.
 </Aside>
 
 ## Generează un client REST
 
-Fiecare grup de API publică un document OpenAPI 3. Direcționează orice generator OpenAPI către el și obții un client tipizat în limbajul tău.
+Fiecare grup de API publică un document OpenAPI 3. Indică orice generator OpenAPI către acesta și obții un client tipizat în limbajul tău.
 
 ```bash
-# Specificația pentru un grup este servită lângă pagina sa de referință.
-curl -o wink-extranet.json https://api.wink.travel/v3/api-docs/extranet
+# Specificația fiecărui grup este disponibilă pentru descărcare pe acest site: /api/downloads/<group>.json
+curl -o wink-extranet.json https://wink.travel/api/downloads/extranet.json
 
 npx @openapitools/openapi-generator-cli generate \
   -i wink-extranet.json -g typescript-fetch -o ./wink-client
@@ -39,7 +39,7 @@ npx @openapitools/openapi-generator-cli generate \
 Partner Integrator API este gRPC. Generezi un client din schema `.proto`, pe care Wink o publică în două moduri:
 
 - **Server reflection** — serverul se descrie singur, astfel încât unelte precum `grpcurl`, Postman și Insomnia pot descoperi schema la rulare fără fișiere de descărcat. Reflection necesită același token bearer ca orice alt apel.
-- **Fișierele `.proto`**, dacă preferi să incluzi schema și să generezi în avans.
+- **Fișierele `.proto`**, dacă preferi să incluzi schema și să generezi din timp.
 
 ```bash
 # Descoperă schema de la un server activ (autentificat).
@@ -50,7 +50,7 @@ grpcurl -H "authorization: Bearer $WINK_TOKEN" \
 protoc --go_out=. --go-grpc_out=. partner_lookup.proto
 ```
 
-Apelurile poartă tokenul tău bearer în antetul metadata `authorization`, exact cum REST îl poartă în antetul `Authorization`. Erorile sosesc ca un cod de stare gRPC în trailer-ele răspunsului, nu ca un cod de stare HTTP — [referința Partner](/ro/partner-api/partner/) listează codurile de stare pe care trebuie să le aștepți.
+Apelurile poartă tokenul tău bearer în antetul de metadate `authorization`, exact cum REST îl poartă în antetul `Authorization`. Erorile sosesc ca un cod de stare gRPC în trailer-ele răspunsului, nu ca un cod de stare HTTP — [referința Partner](/ro/partner-api/partner/) listează codurile de stare pe care trebuie să le aștepți.
 
 <LinkButton href="https://grpc.io/docs/languages/" variant="secondary" icon="external">
   Porniri rapide gRPC după limbaj
@@ -62,7 +62,7 @@ Apelurile poartă tokenul tău bearer în antetul metadata `authorization`, exac
 
 ## Sau lasă serverul MCP să scrie codul
 
-Dacă folosești un asistent AI pentru programare, serverul nostru MCP este cea mai rapidă cale. Expune API-urile Wink ca unelte pe care asistentul tău le poate apela și analiza, astfel încât în loc să generezi un client complet și să cauți singur endpoint-urile, descrii ce construiești și primești cod de integrare adaptat acelui scop.
+Dacă folosești un asistent AI pentru programare, serverul nostru MCP este cea mai rapidă cale. Acesta expune API-urile Wink ca unelte pe care asistentul tău le poate apela și analiza, astfel încât în loc să generezi un client complet și să cauți singur endpoint-urile, descrii ce construiești și primești cod de integrare adaptat exact nevoilor tale.
 
 <LinkButton href="/ro/developers/mcp/" variant="primary">
   Configurează serverul Wink MCP

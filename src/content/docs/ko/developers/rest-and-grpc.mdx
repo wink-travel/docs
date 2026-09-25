@@ -1,6 +1,6 @@
 ---
 title: REST 및 gRPC
-description: REST 또는 gRPC를 통해 Wink 플랫폼과 통합하는 방법, 스키마에서 클라이언트를 생성하는 방법, 그리고 MCP 서버를 사용해 사용 사례에 맞는 통합 코드를 생성하는 방법입니다.
+description: REST 또는 gRPC를 통해 Wink Platform과 통합하는 방법, 스키마에서 클라이언트를 생성하는 방법, 그리고 MCP 서버를 사용해 사용 사례에 맞는 통합 코드를 생성하는 방법입니다.
 sidebar:
   order: 7
 ---
@@ -15,7 +15,7 @@ Wink는 두 가지 전송 방식을 제공합니다. 어떤 방식을 사용할�
 | Partner Integrator API | HTTP/2를 통한 gRPC | Protocol Buffers | [Partner](/ko/partner-api/partner/) |
 
 <Aside type="note" title="더 이상 언어별 SDK를 제공하지 않습니다">
-  수작업으로 관리된 SDK는 래핑하는 API보다 뒤처졌고, 실제로 필요한 언어를 모두 지원하지 못했습니다. 대신 스키마에서 클라이언트를 생성하세요 — 항상 최신 상태이며 — 또는 MCP 서버가 사용 사례에 맞게 작성한 통합 코드를 사용하세요.
+  수동으로 관리하는 SDK는 래핑하는 API보다 뒤처졌고, 실제로 필요한 언어를 모두 지원하지 못했습니다. 대신 스키마에서 클라이언트를 생성하세요 — 항상 최신 상태이며 — 또는 MCP 서버가 사용 사례에 맞게 통합 코드를 작성하도록 하세요.
 </Aside>
 
 ## REST 클라이언트 생성하기
@@ -23,8 +23,8 @@ Wink는 두 가지 전송 방식을 제공합니다. 어떤 방식을 사용할�
 모든 API 그룹은 OpenAPI 3 문서를 제공합니다. OpenAPI 생성기에 문서를 지정하면 원하는 언어로 타입이 지정된 클라이언트를 얻을 수 있습니다.
 
 ```bash
-# 그룹의 스펙은 참조 페이지 옆에서 제공됩니다.
-curl -o wink-extranet.json https://api.wink.travel/v3/api-docs/extranet
+# 모든 그룹의 스펙은 이 사이트에서 다운로드할 수 있습니다: /api/downloads/<group>.json
+curl -o wink-extranet.json https://wink.travel/api/downloads/extranet.json
 
 npx @openapitools/openapi-generator-cli generate \
   -i wink-extranet.json -g typescript-fetch -o ./wink-client
@@ -38,19 +38,19 @@ npx @openapitools/openapi-generator-cli generate \
 
 Partner Integrator API는 gRPC입니다. Wink가 두 가지 방식으로 제공하는 `.proto` 스키마에서 클라이언트를 생성합니다:
 
-- **서버 리플렉션** — 서버가 스스로를 설명하므로 `grpcurl`, Postman, Insomnia 같은 도구가 실행 시점에 스키마를 다운로드 없이 발견할 수 있습니다. 리플렉션은 다른 호출과 동일한 베어러 토큰이 필요합니다.
+- **서버 리플렉션** — 서버가 스스로를 설명하므로 `grpcurl`, Postman, Insomnia 같은 도구가 실행 시점에 파일 다운로드 없이 스키마를 발견할 수 있습니다. 리플렉션은 다른 호출과 동일한 베어러 토큰이 필요합니다.
 - **`.proto` 파일** — 스키마를 직접 관리하고 미리 생성하고 싶을 때 사용합니다.
 
 ```bash
-# 실행 중인 서버에서 스키마를 발견합니다 (인증 필요).
+# 실행 중인 서버에서 스키마를 발견하기 (인증 필요).
 grpcurl -H "authorization: Bearer $WINK_TOKEN" \
   partner.wink.travel:443 list
 
-# 그런 다음 클라이언트를 생성합니다 — 여기서는 Go; 지원하는 모든 언어가 동일한 방식으로 작동합니다.
+# 그런 다음 클라이언트 생성 — 여기서는 Go; 지원하는 모든 언어가 동일한 방식으로 작동합니다.
 protoc --go_out=. --go-grpc_out=. partner_lookup.proto
 ```
 
-호출 시 REST가 `Authorization` 헤더에 토큰을 담는 것처럼, gRPC는 `authorization` 메타데이터 헤더에 베어러 토큰을 담습니다. 오류는 HTTP 상태 코드 대신 응답 트레일러의 gRPC 상태 코드로 전달되며 — [Partner 참조](/ko/partner-api/partner/)에서 예상 가능한 상태 코드를 확인할 수 있습니다.
+호출 시 REST의 `Authorization` 헤더와 동일하게 `authorization` 메타데이터 헤더에 베어러 토큰을 전달합니다. 오류는 HTTP 상태 코드가 아닌 gRPC 상태 코드로 응답 트레일러에 전달됩니다 — [Partner 참조](/ko/partner-api/partner/)에서 예상할 수 있는 상태 코드를 확인하세요.
 
 <LinkButton href="https://grpc.io/docs/languages/" variant="secondary" icon="external">
   언어별 gRPC 빠른 시작

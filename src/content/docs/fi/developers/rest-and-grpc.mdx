@@ -1,13 +1,13 @@
 ---
 title: REST ja gRPC
-description: Kuinka integroit Wink Platformiin RESTin tai gRPC:n kautta, generoit asiakkaan skeemojemme pohjalta ja käytät MCP-palvelintamme luomaan integraatiokoodin käyttötapaustasi varten.
+description: Kuinka integroit Wink Platformiin RESTin tai gRPC:n kautta, generoit asiakkaan skeemoistamme ja käytät MCP-palvelintamme luomaan integraatiokoodin käyttötapaustasi varten.
 sidebar:
   order: 7
 ---
 
 import { LinkButton, Aside } from '@astrojs/starlight/components';
 
-Wink tarjoaa kahta siirtotapaa. Kumpaa käytät, riippuu siitä, minkä API:n kanssa integroidut.
+Wink tarjoaa kaksi siirtotapaa. Kumpaa käytät, riippuu siitä, minkä API:n kanssa integroidut.
 
 | | Siirtotapa | Skeema | Dokumentaatio |
 | --- | --- | --- | --- |
@@ -23,8 +23,8 @@ Wink tarjoaa kahta siirtotapaa. Kumpaa käytät, riippuu siitä, minkä API:n ka
 Jokainen API-ryhmä julkaisee OpenAPI 3 -dokumentin. Suuntaa mikä tahansa OpenAPI-generaattori siihen, niin saat tyypitetyn asiakkaan omalla kielelläsi.
 
 ```bash
-# Ryhmän spesifikaatio on saatavilla sen referenssisivun vierestä.
-curl -o wink-extranet.json https://api.wink.travel/v3/api-docs/extranet
+# Jokaisen ryhmän spesifikaatio on ladattavissa tältä sivustolta: /api/downloads/<group>.json
+curl -o wink-extranet.json https://wink.travel/api/downloads/extranet.json
 
 npx @openapitools/openapi-generator-cli generate \
   -i wink-extranet.json -g typescript-fetch -o ./wink-client
@@ -38,8 +38,8 @@ npx @openapitools/openapi-generator-cli generate \
 
 Partner Integrator API on gRPC. Generoit asiakkaan `.proto`-skeemasta, jonka Wink julkaisee kahdella tavalla:
 
-- **Palvelimen reflektio** — palvelin kuvaa itsensä, joten työkalut kuten `grpcurl`, Postman ja Insomnia voivat löytää skeeman ajonaikaisesti ilman tiedostojen lataamista. Reflektio vaatii saman bearer-tokenin kuin muutkin kutsut.
-- **`.proto`-tiedostot**, jos haluat mieluummin hallita skeemaa itse ja generoida etukäteen.
+- **Palvelimen heijastus** — palvelin kuvaa itsensä, joten työkalut kuten `grpcurl`, Postman ja Insomnia voivat löytää skeeman ajon aikana ilman tiedostojen lataamista. Heijastus vaatii saman bearer-tokenin kuin muutkin kutsut.
+- **`.proto`-tiedostot**, jos haluat mieluummin sisällyttää skeeman ja generoida etukäteen.
 
 ```bash
 # Löydä skeema käynnissä olevalta palvelimelta (autentikoitu).
@@ -50,7 +50,7 @@ grpcurl -H "authorization: Bearer $WINK_TOKEN" \
 protoc --go_out=. --go-grpc_out=. partner_lookup.proto
 ```
 
-Kutsut kuljettavat bearer-tokenisi `authorization`-metadataotsikossa, aivan kuten REST kuljettaa sen `Authorization`-otsikossa. Virheet tulevat gRPC-tilakoodina vastauksen trailer-osassa HTTP-tilakoodin sijaan — [Partnerin referenssi](/fi/partner-api/partner/) listaa odotettavat tilakoodit.
+Kutsut kuljettavat bearer-tokenisi `authorization`-metadataotsikossa, aivan kuten REST kuljettaa sen `Authorization`-otsikossa. Virheet saapuvat gRPC-tilakoodina vastauksen trailer-osassa HTTP-tilakoodin sijaan — [Partnerin referenssi](/fi/partner-api/partner/) listaa odotettavissa olevat tilakoodit.
 
 <LinkButton href="https://grpc.io/docs/languages/" variant="secondary" icon="external">
   gRPC pika-aloitukset kielittäin
@@ -62,7 +62,7 @@ Kutsut kuljettavat bearer-tokenisi `authorization`-metadataotsikossa, aivan kute
 
 ## Tai anna MCP-palvelimen kirjoittaa se
 
-Jos käytät tekoälypohjaista koodausavustajaa, MCP-palvelimemme on nopein reitti. Se tarjoaa Wink API:t työkaluina, joita avustajasi voi kutsua ja joiden perusteella se voi tehdä päätelmiä, joten sen sijaan, että generoit koko asiakkaan ja etsit päätepisteet itse, kuvailet mitä rakennat ja saat integraatiokoodin käyttötapauksesi mukaan.
+Jos käytät tekoälypohjaista koodausavustajaa, MCP-palvelimemme on nopein reitti. Se tarjoaa Wink API:t työkaluina, joita avustajasi voi kutsua ja joiden perusteella se voi tehdä päätelmiä, joten sen sijaan, että generoit koko asiakkaan ja etsisit päätepisteet itse, kuvailet mitä rakennat ja saat integraatiokoodin, joka on muokattu käyttötapaukseesi.
 
 <LinkButton href="/fi/developers/mcp/" variant="primary">
   Ota Wink MCP -palvelin käyttöön
