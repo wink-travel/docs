@@ -1,0 +1,120 @@
+---
+version: 2
+plan:
+  project-key: WP
+  key: WEB
+  name: Website
+  enabled: true
+  rerunnable: true
+  description: Builds Wink marketing website
+stages:
+- Default Stage:
+    manual: false
+    final: false
+    jobs:
+    - Default Job
+Default Job:
+  key: JOB1
+  other:
+    clean-working-dir: true
+    all-other-apps:
+      custom:
+        auto: {}
+        buildHangingConfig.enabled: 'false'
+  tasks:
+  - checkout:
+      force-clean-build: false
+      description: Checkout Default Repository
+  - artifact-download:
+      artifacts:
+      - destination: schemas
+        name: OpenAPI Integrations
+      - destination: schemas
+        name: OpenAPI Partner
+      - destination: schemas
+        name: OpenAPI Inventory
+      source-plan: WP-MJ
+      description: Fetch OpenAPI schemas
+  - script:
+      interpreter: SHELL
+      scripts:
+      - "set -e\r\n\r\necho \"GH_API_TOKEN=${bamboo_GITHUB_PRIVATE_ACCESS_KEY}\" >> .env\r\nexport GH_API_TOKEN=\"${bamboo_GITHUB_PRIVATE_ACCESS_KEY}\"\r\nexport SENTRY_AUTH_TOKEN=\"${bamboo_SENTRY_AUTH_TOKEN}\"\r\n\r\neval \"$(fnm env --shell bash)\"\r\nfnm install 24.16.0\r\nfnm use 24.16.0\r\nnpm i -g typescript@5.9.3\r\n\r\n# site \r\nnpm ci\r\n\r\nnpm run build\r\nnpm run check:deploy\r\n\r\n# Firebase functions\r\ncd functions\r\nnpm ci\r\nnpm run build"
+      description: Build all
+  artifacts:
+  - name: Functions
+    location: functions
+    pattern: '**/*'
+    shared: true
+    required: true
+  - name: Firebase config
+    pattern: firebase.json
+    shared: true
+    required: true
+  - name: Firebase RC
+    pattern: .firebaserc
+    shared: true
+    required: true
+  - name: Website
+    location: dist
+    pattern: '**/*'
+    shared: true
+    required: true
+  - name: Predeploy check
+    location: scripts
+    pattern: predeploy-check.mjs
+    shared: true
+    required: true
+  artifact-subscriptions: []
+repositories:
+- Wink Website:
+    scope: global
+triggers:
+# Trigger com.atlassian.bamboo.triggers.atlassian-bamboo-triggers:poll is disabled. This state is not supported by YAML.
+- tag:
+    filter: v*
+    description: New version
+branches:
+  create: manually
+  delete:
+    after-deleted-days: 7
+    after-inactive-days: 30
+  link-to-jira: false
+notifications:
+- events:
+  - plan-failed
+  recipients:
+  - emails:
+    - ankush@unicornh.com
+  - emails:
+    - bjorn+bamboo@wink.travel
+labels: []
+dependencies:
+  require-all-stages-passing: false
+  enabled-for-branches: true
+  block-strategy: none
+  plans: []
+other:
+  concurrent-build-plugin:
+    number-of-concurrent-builds: system-default
+    execution-strategy: block-triggering
+---
+version: 2
+plan:
+  key: WP-WEB
+plan-permissions:
+- users:
+  - admin
+  permissions:
+  - view
+  - edit
+  - build
+  - clone
+  - admin
+  - view-configuration
+  - create-plan-branch
+- roles:
+  - logged-in
+  - anonymous
+  permissions:
+  - view
+...
