@@ -13,25 +13,26 @@ Sa Wink, nagpapatakbo kami ng 2 kapaligiran para sa lahat ng aming ginagawa sa l
 Kung ikaw ay isang integrator, hotel, o ahente ng paglalakbay na nais maghanda para sa sertipikasyon o subukan ang Wink platform, gumawa ng account sa aming staging environment upang makapagsimula.
 
 :::note
-Ang staging environment ay available kapag hiniling. Ibig sabihin, ito ay papahingahin kung walang paggamit at muling bubuhayin kapag may paggamit. Mangyaring magtiyaga kung binubuhay mo ito. Tumagal ng halos isang minuto upang simulan ang lahat ng mga server pagkatapos mong unang kumonekta sa isa sa aming mga server o app.
+Ang staging environment ay available kapag hiniling. Ibig sabihin, ito ay papahingahin kung walang paggamit at muling bubuhayin kapag may aktibidad. Mangyaring magtiyaga kung ito ay binubuhay mo. Tumitagal ng humigit-kumulang isang minuto upang simulan ang lahat ng server pagkatapos mong unang kumonekta sa isa sa aming mga server o app.
 :::
 
 ## Mga Server
 
 Nasa ibaba ang matrix na naglalaman ng mga pangalan ng aming mga server at ang kanilang gamit.
 
-| Feature | Staging | Production
+| Tampok | Staging | Production
 | ------- | ------- | ---------- |
 | IAM | https://staging-iam.wink.travel | https://iam.wink.travel | 
 | Inventory | https://staging-api.wink.travel | https://api.wink.travel | 
 | Integrations | https://staging-integrations.wink.travel | https://integrations.wink.travel | 
+| Partner (gRPC) | https://staging-partner.wink.travel | https://partner.wink.travel | 
 <!-- | Payment | https://staging-api.trippay.io | https://api.trippay.io |  -->
 
 ## Mga Aplikasyon
 
 Ang aming mga aplikasyon ay mayroon ding test at production na kapaligiran para sa aming mga customer.
 
-| Application | Staging | Production
+| Aplikasyon | Staging | Production
 | ------- | ------- | ---------- |
 | Portal | https://staging-app.wink.travel | https://app.wink.travel | 
 | Booking engine | https://staging-book.wink.travel | https://book.wink.travel | 

@@ -13,7 +13,7 @@ Wink'te, yaptığımız her şey için her zaman 2 ortam çalıştırıyoruz:
 Eğer bir entegratör, otel veya seyahat acentasıysanız ve sertifikasyona hazırlanmak ya da Wink platformunu test etmek istiyorsanız, başlamak için staging ortamımızda bir hesap oluşturun.
 
 :::note
-Staging ortamı talep üzerine kullanılabilir. Bu, kullanım olmadığında uyku moduna geçeceği ve kullanım başladığında tekrar açılacağı anlamına gelir. Uyandırırken lütfen sabırlı olun. Sunucuların tamamının başlaması, bir sunucu veya uygulamamızla ilk bağlantınızı kurduktan sonra yaklaşık bir dakika sürer.
+Staging ortamı talep bazlıdır. Bu, kullanım olmadığında uyku moduna geçeceği ve kullanım başladığında tekrar açılacağı anlamına gelir. Uyandırırken lütfen sabırlı olun. Sunucuların tamamının başlaması, bir sunucumuz veya uygulamamız ile ilk bağlantınızı kurduktan sonra yaklaşık bir dakika sürer.
 :::
 
 ## Sunucular
@@ -25,6 +25,7 @@ Aşağıda sunucularımızın isimleri ve kullanım alanlarını içeren bir mat
 | IAM | https://staging-iam.wink.travel | https://iam.wink.travel | 
 | Inventory | https://staging-api.wink.travel | https://api.wink.travel | 
 | Integrations | https://staging-integrations.wink.travel | https://integrations.wink.travel | 
+| Partner (gRPC) | https://staging-partner.wink.travel | https://partner.wink.travel | 
 <!-- | Payment | https://staging-api.trippay.io | https://api.trippay.io |  -->
 
 ## Uygulamalar

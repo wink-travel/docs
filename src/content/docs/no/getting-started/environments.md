@@ -13,7 +13,7 @@ Hos Wink kjører vi 2 miljøer for alt vi gjør til enhver tid:
 Hvis du er en integrator, et hotell eller et reisebyrå som ønsker å forberede deg til sertifisering eller teste Wink-plattformen, opprett en konto i vårt staging-miljø for å komme i gang.
 
 :::note
-Staging-miljøet er tilgjengelig på forespørselsbasis. Det betyr at det går i dvale hvis det ikke er bruk, og slår seg på igjen når det er aktivitet. Vær tålmodig hvis du vekker det. Det tar omtrent ett minutt å starte alle serverne etter at du først kobler til en av våre servere eller apper.
+Staging-miljøet er tilgjengelig på forespørselsbasis. Det betyr at det går i dvale hvis det ikke er bruk, og slår seg på igjen når det er. Vær tålmodig hvis du vekker det. Det tar omtrent ett minutt å starte alle serverne etter at du først kobler til en av våre servere eller apper.
 :::
 
 ## Servere
@@ -24,7 +24,8 @@ Nedenfor er en matrise som inneholder navnene på våre servere og deres bruk.
 | ------- | ------- | ---------- |
 | IAM | https://staging-iam.wink.travel | https://iam.wink.travel | 
 | Inventory | https://staging-api.wink.travel | https://api.wink.travel | 
-| Integrasjoner | https://staging-integrations.wink.travel | https://integrations.wink.travel | 
+| Integrations | https://staging-integrations.wink.travel | https://integrations.wink.travel | 
+| Partner (gRPC) | https://staging-partner.wink.travel | https://partner.wink.travel | 
 <!-- | Payment | https://staging-api.trippay.io | https://api.trippay.io |  -->
 
 ## Applikasjoner
@@ -34,5 +35,5 @@ Våre applikasjoner har også test- og produksjonsmiljøer for våre kunder.
 | Applikasjon | Staging | Produksjon
 | ------- | ------- | ---------- |
 | Portal | https://staging-app.wink.travel | https://app.wink.travel | 
-| Bookingmotor | https://staging-book.wink.travel | https://book.wink.travel | 
+| Booking engine | https://staging-book.wink.travel | https://book.wink.travel | 
 | Link Manager | https://staging-i.trvl.as | https://i.trvl.as |

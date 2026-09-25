@@ -5,7 +5,7 @@ sidebar:
   order: 8
 ---
 
-Winkillä meillä on aina käytössä 2 ympäristöä kaikkeen toimintaamme:
+Winkillä meillä on jatkuvasti käytössä 2 ympäristöä kaikkeen toimintaamme:
 
 - Production on vakaa ympäristömme.
 - Staging on sertifiointi- ja testausympäristömme.
@@ -18,13 +18,14 @@ Staging-ympäristö on saatavilla pyynnöstä. Tämä tarkoittaa, että se menee
 
 ## Palvelimet
 
-Alla on matriisi, joka sisältää palvelimiemme nimet ja niiden käyttötarkoitukset.
+Alla on taulukko, joka sisältää palvelimiemme nimet ja niiden käyttötarkoitukset.
 
 | Ominaisuus | Staging | Production
 | ------- | ------- | ---------- |
 | IAM | https://staging-iam.wink.travel | https://iam.wink.travel | 
 | Inventory | https://staging-api.wink.travel | https://api.wink.travel | 
 | Integrations | https://staging-integrations.wink.travel | https://integrations.wink.travel | 
+| Partner (gRPC) | https://staging-partner.wink.travel | https://partner.wink.travel | 
 <!-- | Payment | https://staging-api.trippay.io | https://api.trippay.io |  -->
 
 ## Sovellukset

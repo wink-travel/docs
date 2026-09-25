@@ -25,6 +25,7 @@ Nachfolgend finden Sie eine Matrix mit den Namen unserer Server und deren Verwen
 | IAM | https://staging-iam.wink.travel | https://iam.wink.travel | 
 | Inventory | https://staging-api.wink.travel | https://api.wink.travel | 
 | Integrations | https://staging-integrations.wink.travel | https://integrations.wink.travel | 
+| Partner (gRPC) | https://staging-partner.wink.travel | https://partner.wink.travel | 
 <!-- | Payment | https://staging-api.trippay.io | https://api.trippay.io |  -->
 
 ## Anwendungen
@@ -34,5 +35,5 @@ Unsere Anwendungen haben ebenfalls Test- und Produktionsumgebungen für unsere K
 | Application | Staging | Production
 | ------- | ------- | ---------- |
 | Portal | https://staging-app.wink.travel | https://app.wink.travel | 
-| Booking engine | https://staging-book.wink.travel | https://book.wink.travel | 
+| Buchungsmaschine | https://staging-book.wink.travel | https://book.wink.travel | 
 | Link Manager | https://staging-i.trvl.as | https://i.trvl.as |

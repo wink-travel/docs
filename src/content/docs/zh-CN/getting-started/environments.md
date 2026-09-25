@@ -20,18 +20,19 @@ sidebar:
 
 下表列出了我们的服务器名称及其用途。
 
-| 功能 | 预发布环境 | 生产环境
+| 功能 | 预发布 | 生产
 | ------- | ------- | ---------- |
 | IAM | https://staging-iam.wink.travel | https://iam.wink.travel | 
 | 库存 | https://staging-api.wink.travel | https://api.wink.travel | 
 | 集成 | https://staging-integrations.wink.travel | https://integrations.wink.travel | 
+| 合作伙伴 (gRPC) | https://staging-partner.wink.travel | https://partner.wink.travel | 
 <!-- | 支付 | https://staging-api.trippay.io | https://api.trippay.io |  -->
 
 ## 应用程序
 
 我们的应用程序也为客户提供测试和生产环境。
 
-| 应用程序 | 预发布环境 | 生产环境
+| 应用程序 | 预发布 | 生产
 | ------- | ------- | ---------- |
 | 门户 | https://staging-app.wink.travel | https://app.wink.travel | 
 | 预订引擎 | https://staging-book.wink.travel | https://book.wink.travel | 

@@ -7,7 +7,7 @@ sidebar:
 
 Vo Wink prevádzkujeme neustále 2 prostredia pre všetko, čo robíme:
 
-- Production je naše stabilné prostredie.
+- Produkcia je naše stabilné prostredie.
 - Staging je naše certifikačné a testovacie prostredie.
 
 Ak ste integrátor, hotel alebo cestovná kancelária, ktorá chce pripraviť certifikáciu alebo otestovať platformu Wink, vytvorte si účet v našom staging prostredí, aby ste mohli začať.
@@ -18,21 +18,22 @@ Staging prostredie je dostupné na základe požiadavky. Znamená to, že sa usp
 
 ## Servery
 
-Nižšie je matica obsahujúca názvy našich serverov a ich využitie.
+Nižšie je matica obsahujúca názvy našich serverov a ich použitie.
 
-| Funkcia | Staging | Production
+| Funkcia | Staging | Produkcia
 | ------- | ------- | ---------- |
 | IAM | https://staging-iam.wink.travel | https://iam.wink.travel | 
 | Inventory | https://staging-api.wink.travel | https://api.wink.travel | 
 | Integrations | https://staging-integrations.wink.travel | https://integrations.wink.travel | 
+| Partner (gRPC) | https://staging-partner.wink.travel | https://partner.wink.travel | 
 <!-- | Payment | https://staging-api.trippay.io | https://api.trippay.io |  -->
 
 ## Aplikácie
 
 Naše aplikácie majú tiež testovacie a produkčné prostredia pre našich zákazníkov.
 
-| Aplikácia | Staging | Production
+| Aplikácia | Staging | Produkcia
 | ------- | ------- | ---------- |
 | Portal | https://staging-app.wink.travel | https://app.wink.travel | 
-| Booking engine | https://staging-book.wink.travel | https://book.wink.travel | 
+| Rezervačný engine | https://staging-book.wink.travel | https://book.wink.travel | 
 | Link Manager | https://staging-i.trvl.as | https://i.trvl.as |

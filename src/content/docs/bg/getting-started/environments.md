@@ -1,6 +1,6 @@
 ---
 title: Околни среди
-description: Тази статия съдържа информация за тестери и разработчици относно достъпа до нашите различни сървърни среди.
+description: Тази статия съдържа информация за тестери и разработчици относно достъпа до различните ни сървърни среди.
 sidebar:
   order: 8
 ---
@@ -25,6 +25,7 @@ Staging средата е достъпна при поискване. Това �
 | IAM | https://staging-iam.wink.travel | https://iam.wink.travel | 
 | Inventory | https://staging-api.wink.travel | https://api.wink.travel | 
 | Integrations | https://staging-integrations.wink.travel | https://integrations.wink.travel | 
+| Partner (gRPC) | https://staging-partner.wink.travel | https://partner.wink.travel | 
 <!-- | Payment | https://staging-api.trippay.io | https://api.trippay.io |  -->
 
 ## Приложения

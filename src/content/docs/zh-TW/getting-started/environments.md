@@ -1,6 +1,6 @@
 ---
 title: 環境
-description: 本文包含測試人員和開發人員如何取得我們不同伺服器環境存取權的相關資訊。
+description: 本文包含測試人員和開發人員如何取得我們不同伺服器環境存取權的資訊。
 sidebar:
   order: 8
 ---
@@ -13,7 +13,7 @@ sidebar:
 如果您是整合商、飯店或旅行社，想要準備認證或測試 Wink 平台，請在我們的 staging 環境中建立帳號以開始使用。
 
 :::note
-staging 環境是依需求提供。這表示如果沒有使用，它會進入休眠狀態，當有使用時會自動啟動。若您正在喚醒它，請耐心等候。首次連接我們的伺服器或應用程式後，啟動所有伺服器約需一分鐘。
+staging 環境採用申請制。這表示若無使用，環境會進入休眠狀態，當有使用時會自動啟動。若您正在喚醒環境，請耐心等候。首次連接我們的伺服器或應用程式後，啟動所有伺服器約需一分鐘。
 :::
 
 ## 伺服器
@@ -25,6 +25,7 @@ staging 環境是依需求提供。這表示如果沒有使用，它會進入休
 | IAM | https://staging-iam.wink.travel | https://iam.wink.travel | 
 | Inventory | https://staging-api.wink.travel | https://api.wink.travel | 
 | Integrations | https://staging-integrations.wink.travel | https://integrations.wink.travel | 
+| Partner (gRPC) | https://staging-partner.wink.travel | https://partner.wink.travel | 
 <!-- | Payment | https://staging-api.trippay.io | https://api.trippay.io |  -->
 
 ## 應用程式

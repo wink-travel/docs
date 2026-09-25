@@ -2,6 +2,8 @@
 
 Changelog of docs.
 
+## v1.2.1 (2026-09-25)
+
 ## v1.2.0 (2026-09-24)
 
 ### Features

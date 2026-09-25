@@ -10,10 +10,10 @@ Da Wink, gestiamo 2 ambienti per tutto ciò che facciamo in ogni momento:
 - Production è il nostro ambiente stabile.
 - Staging è il nostro ambiente di certificazione e test.
 
-Se sei un integratore, un hotel o un agente di viaggio che desidera prepararsi per la certificazione o testare la piattaforma Wink, crea un account nel nostro ambiente staging per iniziare.
+Se sei un integratore, un hotel o un'agenzia di viaggi che desidera prepararsi per la certificazione o testare la piattaforma Wink, crea un account nel nostro ambiente staging per iniziare.
 
 :::note
-L'ambiente staging è disponibile su richiesta. Ciò significa che andrà in standby se non viene utilizzato e si riattiverà quando necessario. Ti preghiamo di avere pazienza se lo stai risvegliando. Ci vuole circa un minuto per avviare tutti i server dopo la prima connessione con uno dei nostri server o app.
+L'ambiente staging è disponibile su richiesta. Ciò significa che andrà in standby se non viene utilizzato e si riattiverà quando necessario. Ti preghiamo di avere pazienza se lo stai risvegliando. Ci vuole circa un minuto per avviare tutti i server dopo la prima connessione a uno dei nostri server o app.
 :::
 
 ## Server
@@ -25,11 +25,12 @@ Di seguito una matrice contenente i nomi dei nostri server e il loro utilizzo.
 | IAM | https://staging-iam.wink.travel | https://iam.wink.travel | 
 | Inventory | https://staging-api.wink.travel | https://api.wink.travel | 
 | Integrations | https://staging-integrations.wink.travel | https://integrations.wink.travel | 
+| Partner (gRPC) | https://staging-partner.wink.travel | https://partner.wink.travel | 
 <!-- | Payment | https://staging-api.trippay.io | https://api.trippay.io |  -->
 
 ## Applicazioni
 
-Anche le nostre applicazioni hanno ambienti di test e produzione per i nostri clienti.
+Anche le nostre applicazioni hanno ambienti di test e di produzione per i nostri clienti.
 
 | Application | Staging | Production
 | ------- | ------- | ---------- |

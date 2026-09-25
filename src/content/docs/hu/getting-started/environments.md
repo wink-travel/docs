@@ -1,11 +1,11 @@
 ---
 title: Környezetek
-description: Ez a cikk információkat tartalmaz tesztelők és fejlesztők számára arról, hogyan férhetnek hozzá különböző szerverkörnyezetünkhöz.
+description: Ez a cikk információkat tartalmaz tesztelők és fejlesztők számára arról, hogyan férhetnek hozzá különböző szerverkörnyezetekhez.
 sidebar:
   order: 8
 ---
 
-A Winknél mindig két környezetet futtatunk minden tevékenységünkhöz:
+A Winknél mindig 2 környezetet működtetünk minden tevékenységünkhöz:
 
 - A Production a stabil környezetünk.
 - A Staging a tanúsítási és tesztelési környezetünk.
@@ -25,6 +25,7 @@ Az alábbi táblázat tartalmazza szervereink nevét és azok használatát.
 | IAM | https://staging-iam.wink.travel | https://iam.wink.travel | 
 | Inventory | https://staging-api.wink.travel | https://api.wink.travel | 
 | Integrations | https://staging-integrations.wink.travel | https://integrations.wink.travel | 
+| Partner (gRPC) | https://staging-partner.wink.travel | https://partner.wink.travel | 
 <!-- | Payment | https://staging-api.trippay.io | https://api.trippay.io |  -->
 
 ## Alkalmazások

@@ -23,9 +23,10 @@ Voici une matrice contenant les noms de nos serveurs et leur usage.
 | Fonctionnalité | Staging | Production
 | ------- | ------- | ---------- |
 | IAM | https://staging-iam.wink.travel | https://iam.wink.travel | 
-| Inventory | https://staging-api.wink.travel | https://api.wink.travel | 
-| Integrations | https://staging-integrations.wink.travel | https://integrations.wink.travel | 
-<!-- | Payment | https://staging-api.trippay.io | https://api.trippay.io |  -->
+| Inventaire | https://staging-api.wink.travel | https://api.wink.travel | 
+| Intégrations | https://staging-integrations.wink.travel | https://integrations.wink.travel | 
+| Partenaire (gRPC) | https://staging-partner.wink.travel | https://partner.wink.travel | 
+<!-- | Paiement | https://staging-api.trippay.io | https://api.trippay.io |  -->
 
 ## Applications
 
@@ -33,6 +34,6 @@ Nos applications disposent également d’environnements de test et de productio
 
 | Application | Staging | Production
 | ------- | ------- | ---------- |
-| Portal | https://staging-app.wink.travel | https://app.wink.travel | 
-| Booking engine | https://staging-book.wink.travel | https://book.wink.travel | 
+| Portail | https://staging-app.wink.travel | https://app.wink.travel | 
+| Moteur de réservation | https://staging-book.wink.travel | https://book.wink.travel | 
 | Link Manager | https://staging-i.trvl.as | https://i.trvl.as |

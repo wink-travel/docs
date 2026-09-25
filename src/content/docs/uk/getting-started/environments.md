@@ -20,18 +20,19 @@ sidebar:
 
 Нижче наведена матриця з назвами наших серверів та їх призначенням.
 
-| Функція | Staging | Production
+| Feature | Staging | Production
 | ------- | ------- | ---------- |
 | IAM | https://staging-iam.wink.travel | https://iam.wink.travel | 
 | Inventory | https://staging-api.wink.travel | https://api.wink.travel | 
 | Integrations | https://staging-integrations.wink.travel | https://integrations.wink.travel | 
+| Partner (gRPC) | https://staging-partner.wink.travel | https://partner.wink.travel | 
 <!-- | Payment | https://staging-api.trippay.io | https://api.trippay.io |  -->
 
 ## Додатки
 
 Наші додатки також мають тестове та продуктивне середовища для наших клієнтів.
 
-| Додаток | Staging | Production
+| Application | Staging | Production
 | ------- | ------- | ---------- |
 | Portal | https://staging-app.wink.travel | https://app.wink.travel | 
 | Booking engine | https://staging-book.wink.travel | https://book.wink.travel | 

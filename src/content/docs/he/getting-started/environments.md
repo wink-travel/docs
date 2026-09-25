@@ -13,7 +13,7 @@ sidebar:
 אם אתה אינטגרטור, מלון או סוכן נסיעות שמעוניין להתכונן לאישור או לבדוק את פלטפורמת Wink, צור חשבון בסביבת ה-staging שלנו כדי להתחיל.
 
 :::note
-סביבת ה-staging זמינה על בסיס בקשה. משמעות הדבר היא שהיא תיכנס למצב שינה אם אין שימוש ותתעורר מחדש כאשר יש שימוש. אנא היה סבלני אם אתה מעיר אותה. לוקח כדקה להפעיל את כל השרתים לאחר החיבור הראשון שלך לאחד מהשרתים או האפליקציות שלנו.
+סביבת ה-staging זמינה על בסיס בקשה. משמעות הדבר היא שהיא תיכנס למצב שינה אם אין שימוש ותתעורר מחדש כשיש. אנא היה סבלני אם אתה מעיר אותה. לוקח ככדקה להפעיל את כל השרתים לאחר החיבור הראשון שלך לאחד מהשרתים או האפליקציות שלנו.
 :::
 
 ## שרתים
@@ -25,6 +25,7 @@ sidebar:
 | IAM | https://staging-iam.wink.travel | https://iam.wink.travel | 
 | Inventory | https://staging-api.wink.travel | https://api.wink.travel | 
 | Integrations | https://staging-integrations.wink.travel | https://integrations.wink.travel | 
+| Partner (gRPC) | https://staging-partner.wink.travel | https://partner.wink.travel | 
 <!-- | Payment | https://staging-api.trippay.io | https://api.trippay.io |  -->
 
 ## אפליקציות

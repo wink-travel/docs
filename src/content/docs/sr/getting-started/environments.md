@@ -1,6 +1,6 @@
 ---
 title: Okruženja
-description: Ovaj članak sadrži informacije za testere i programere o tome kako pristupiti našim različitim serverskim okruženjima.
+description: Ovaj članak sadrži informacije za testere i programere o tome kako dobiti pristup našim različitim serverskim okruženjima.
 sidebar:
   order: 8
 ---
@@ -25,6 +25,7 @@ Ispod je matrica koja sadrži nazive naših servera i njihovu namenu.
 | IAM | https://staging-iam.wink.travel | https://iam.wink.travel | 
 | Inventory | https://staging-api.wink.travel | https://api.wink.travel | 
 | Integrations | https://staging-integrations.wink.travel | https://integrations.wink.travel | 
+| Partner (gRPC) | https://staging-partner.wink.travel | https://partner.wink.travel | 
 <!-- | Payment | https://staging-api.trippay.io | https://api.trippay.io |  -->
 
 ## Aplikacije

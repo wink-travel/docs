@@ -25,6 +25,7 @@ A continuación, una matriz que contiene los nombres de nuestros servidores y su
 | IAM | https://staging-iam.wink.travel | https://iam.wink.travel | 
 | Inventario | https://staging-api.wink.travel | https://api.wink.travel | 
 | Integraciones | https://staging-integrations.wink.travel | https://integrations.wink.travel | 
+| Partner (gRPC) | https://staging-partner.wink.travel | https://partner.wink.travel | 
 <!-- | Pago | https://staging-api.trippay.io | https://api.trippay.io |  -->
 
 ## Aplicaciones

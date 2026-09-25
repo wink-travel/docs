@@ -5,7 +5,7 @@ sidebar:
   order: 8
 ---
 
-Wink mes nuolat valdome 2 aplinkas viskam, ką darome:
+Wink platformoje mes nuolat veikiame 2 aplinkas:
 
 - Produkcija yra mūsų stabili aplinka.
 - Staging yra mūsų sertifikavimo ir testavimo aplinka.
@@ -13,7 +13,7 @@ Wink mes nuolat valdome 2 aplinkas viskam, ką darome:
 Jei esate integratorius, viešbutis ar kelionių agentas, norintis pasiruošti sertifikavimui arba išbandyti Wink platformą, sukurkite paskyrą mūsų staging aplinkoje, kad pradėtumėte.
 
 :::note
-Staging aplinka prieinama pagal užklausą. Tai reiškia, kad ji užmiega, jei nėra naudojama, ir pati įsijungia, kai yra naudojama. Prašome būti kantriems, jei ją pažadinote. Po pirmo prisijungimo prie vieno iš mūsų serverių ar programų užtrunka apie minutę, kol visi serveriai pilnai paleidžiami.
+Staging aplinka prieinama pagal užklausą. Tai reiškia, kad ji užmiega, jei nėra naudojama, ir pati įsijungia, kai yra naudojama. Prašome būti kantriems, jei ją pažadinote. Po pirmo prisijungimo prie vieno iš mūsų serverių ar programėlių užtrunka apie minutę, kol visi serveriai pilnai užsikrauna.
 :::
 
 ## Serveriai
@@ -25,11 +25,12 @@ Staging aplinka prieinama pagal užklausą. Tai reiškia, kad ji užmiega, jei n
 | IAM | https://staging-iam.wink.travel | https://iam.wink.travel | 
 | Inventorius | https://staging-api.wink.travel | https://api.wink.travel | 
 | Integracijos | https://staging-integrations.wink.travel | https://integrations.wink.travel | 
+| Partneris (gRPC) | https://staging-partner.wink.travel | https://partner.wink.travel | 
 <!-- | Mokėjimai | https://staging-api.trippay.io | https://api.trippay.io |  -->
 
 ## Programėlės
 
-Mūsų programėlės taip pat turi testavimo ir produkcijos aplinkas mūsų klientams.
+Mūsų programėlėms taip pat yra testavimo ir produkcijos aplinkos mūsų klientams.
 
 | Programėlė | Staging | Produkcija
 | ------- | ------- | ---------- |

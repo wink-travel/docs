@@ -8,7 +8,7 @@ sidebar:
 Tại Wink, chúng tôi vận hành 2 môi trường cho mọi hoạt động của mình mọi lúc:
 
 - Production là môi trường ổn định của chúng tôi.
-- Staging là môi trường chứng nhận và kiểm thử.
+- Staging là môi trường chứng nhận và kiểm thử của chúng tôi.
 
 Nếu bạn là một nhà tích hợp, khách sạn hoặc đại lý du lịch muốn chuẩn bị cho việc chứng nhận hoặc kiểm thử nền tảng Wink, hãy tạo tài khoản trong môi trường staging của chúng tôi để bắt đầu.
 
@@ -25,6 +25,7 @@ Dưới đây là bảng ma trận chứa tên các máy chủ và mục đích 
 | IAM | https://staging-iam.wink.travel | https://iam.wink.travel | 
 | Inventory | https://staging-api.wink.travel | https://api.wink.travel | 
 | Integrations | https://staging-integrations.wink.travel | https://integrations.wink.travel | 
+| Partner (gRPC) | https://staging-partner.wink.travel | https://partner.wink.travel | 
 <!-- | Payment | https://staging-api.trippay.io | https://api.trippay.io |  -->
 
 ## Ứng dụng
