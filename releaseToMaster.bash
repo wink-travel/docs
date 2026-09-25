@@ -80,4 +80,7 @@ git push --tags
 echo "==> Creating GitHub release..."
 gh release create "v${NEXT_VERSION}" --notes "See CHANGELOG.md for release notes" --target "$MAIN_BRANCH"
 
+echo "==> Creating Sentry release..."
+npm run sentry:prod
+
 echo "==> Release v${NEXT_VERSION} SUCCESSFUL"
