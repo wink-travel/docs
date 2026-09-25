@@ -71,10 +71,19 @@ published as a downloadable OpenAPI JSON document, generated straight from the c
 
 ## Testing
 
-You can explore and try out every endpoint interactively in our Scalar API reference:
+Test against our staging environment before going live. Staging mirrors production with less data,
+so you can experiment freely. Point your client at the staging host for the API you are using:
 
-- Production: <https://api.wink.travel/scalar>
-- Staging: <https://staging-api.wink.travel/scalar>
+| API | Staging | Production |
+| --- | ------- | ---------- |
+| Platform (`api`) | `https://staging-api.wink.travel` | `https://api.wink.travel` |
+| Integrations | `https://staging-integrations.wink.travel` | `https://integrations.wink.travel` |
+| Partner | `https://staging-partner.wink.travel` | `https://partner.wink.travel` |
+
+Staging has its own credentials and identity server, so request tokens from
+`https://staging-iam.wink.travel`. See [Environments](/getting-started/environments) for the full
+list of servers and how staging wakes up on demand, and [Authentication](/developers/authentication)
+for how to get a token.
 
 ## Usage
 
