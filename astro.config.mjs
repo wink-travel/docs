@@ -94,6 +94,8 @@ import icon from 'astro-icon';
 import markdoc from '@astrojs/markdoc';
 import sitemap from '@astrojs/sitemap';
 
+import sentry from '@sentry/astro';
+
 // https://astro.build/config
 // Built once at config load: one `git log` pass, reused for all ~16k URLs.
 const lastmodFor = makeLastmodLookup();
@@ -405,7 +407,11 @@ export default defineConfig({
       const lastmod = lastmodFor(item.url);
       return lastmod ? { ...item, lastmod } : item;
     },
-  }), icon(), markdoc()],
+  }), icon(), markdoc(), sentry({
+    project: 'javascript-astro',
+    org: 'wink2travel',
+    authToken: process.env.SENTRY_AUTH_TOKEN,
+  })],
   vite: {
     plugins: [tailwindcss()]
   }
