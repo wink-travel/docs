@@ -2,6 +2,12 @@
 
 Changelog of docs.
 
+## v1.3.0 (2026-09-25)
+
+### Features
+
+-  add sentry error tracking and release step (#82) ([43baa](https://github.com/wink-travel/docs/commit/43baa7175d69f67) Bjorn Harvold)  
+
 ## v1.2.1 (2026-09-25)
 
 ## v1.2.0 (2026-09-24)
