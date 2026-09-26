@@ -7,14 +7,45 @@ const mailersendApiKey = defineSecret("MAILERSEND_API_KEY");
 const ALLOWED_ORIGINS = [
   "https://wink.travel",
   "https://www.wink.travel",
+  // Firebase serves the same site on its default domains. A visitor who lands
+  // on one of them is still a real visitor and must be able to send the form.
+  "https://wink-academy.web.app",
+  "https://wink-academy.firebaseapp.com",
 ];
 
-function getCorsOrigin(request: { headers: { origin?: string } }): string | null {
-  const origin = request.headers.origin ?? "";
-  if (ALLOWED_ORIGINS.includes(origin)) {
-    return origin;
+// Google Translate proxies the site from a per-site subdomain. A reader working
+// in translation is exactly the kind of international enquiry we want.
+const ALLOWED_ORIGIN_SUFFIXES = [".translate.goog"];
+
+type OriginCheck =
+  /** Proceed. `header` is the value to echo back, or null when there is no Origin to echo. */
+  | { allowed: true; header: string | null }
+  | { allowed: false };
+
+export function checkOrigin(request: { headers: { origin?: string } }): OriginCheck {
+  const origin = request.headers.origin;
+
+  // A browser always sends Origin on a cross-origin POST, so a POST that
+  // arrives with NO Origin cannot be a cross-site submission. In practice it is
+  // a same-origin post whose header was stripped by a privacy setting, a VPN or
+  // corporate proxy, or an in-app browser. Rejecting it blocked genuine
+  // enquiries -- a partnership enquiry was lost this way -- and prevented no
+  // attack, since the honeypot and validation are what actually stop abuse.
+  if (origin === undefined || origin === "") {
+    return { allowed: true, header: null };
   }
-  return null;
+
+  if (ALLOWED_ORIGINS.includes(origin)) {
+    return { allowed: true, header: origin };
+  }
+
+  if (ALLOWED_ORIGIN_SUFFIXES.some((suffix) => origin.endsWith(suffix))) {
+    return { allowed: true, header: origin };
+  }
+
+  // An Origin that is present but unknown -- including the literal "null" of a
+  // sandboxed iframe -- is a genuine cross-origin attempt and still refused.
+  return { allowed: false };
 }
 
 interface ContactFormData {
@@ -60,10 +91,10 @@ function validateForm(data: ContactFormData): { valid: true; cleaned: Required<P
 export const contactForm = onRequest(
   { secrets: [mailersendApiKey], cors: false },
   async (req, res) => {
-    const origin = getCorsOrigin(req);
+    const originCheck = checkOrigin(req);
 
-    if (origin) {
-      res.set("Access-Control-Allow-Origin", origin);
+    if (originCheck.allowed && originCheck.header) {
+      res.set("Access-Control-Allow-Origin", originCheck.header);
       res.set("Access-Control-Allow-Methods", "POST, OPTIONS");
       res.set("Access-Control-Allow-Headers", "Content-Type");
     }
@@ -78,7 +109,7 @@ export const contactForm = onRequest(
       return;
     }
 
-    if (!origin) {
+    if (!originCheck.allowed) {
       res.status(403).json({ success: false, error: "Forbidden." });
       return;
     }
