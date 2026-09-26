@@ -21,6 +21,8 @@ const sectionStyles = tv({
   base: "@container mx-auto w-full max-w-3xl px-4 py-24",
 });
 
+const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
+
 const { badge = "Contact", heading = "Send Us a Message", description = "Fill out the form below and we'll get back to you as soon as possible.", class: className, ...rest } = Astro.props;
 ---
 
@@ -66,6 +68,9 @@ const { badge = "Contact", heading = "Send Us a Message", description = "Fill ou
           <input type="text" name="honeypot" tabindex="-1" autocomplete="off" />
         </div>
 
+        <!-- Cloudflare Turnstile: adds a hidden "cf-turnstile-response" field that the submit handler sends -->
+        <div class="cf-turnstile" data-sitekey={turnstileSiteKey} data-theme="auto"></div>
+
         <div class="flex flex-row gap-1">
           <div>
             <Button variant="primary" type="submit" class="w-full @xl:w-auto"> Send Message </Button>
@@ -82,7 +87,14 @@ const { badge = "Contact", heading = "Send Us a Message", description = "Fill ou
   <p class="text-muted-foreground mt-6 text-center text-sm">We typically respond within 1-2 business days.</p>
 </section>
 
+<script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
 <script>
+  // A Turnstile token is single-use, so the widget must issue a fresh one after every attempt.
+  function resetTurnstile() {
+    (window as unknown as { turnstile?: { reset: () => void } }).turnstile?.reset();
+  }
+
   function handleFormSubmit() {
     const form = document.querySelector("#contact-form-02") as HTMLFormElement;
     const messageEl = document.getElementById("form-message");
@@ -105,6 +117,7 @@ const { badge = "Contact", heading = "Send Us a Message", description = "Fill ou
         });
 
         const result = await response.json();
+        resetTurnstile();
 
         if (result.success) {
           messageEl.textContent = "Thank you! Your message has been sent.";

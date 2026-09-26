@@ -119,10 +119,19 @@ the separate `functions/` workspace (its own `package.json`, its own `node_modul
   the `functions/` workspace deliberately carries no schema library.
 - Origin-checked by hand (`cors: false` + an `ALLOWED_ORIGINS` allowlist); a non-allowlisted origin
   gets 403, and `OPTIONS` is answered directly for the preflight.
+- **Turnstile-verified**: every POST must carry a Cloudflare Turnstile token (`cf-turnstile-response`),
+  verified server-side in `functions/src/turnstile.ts` against `siteverify` (hostname-checked, fails
+  closed with a 503 if Cloudflare is unreachable). `Origin` is only a browser-side guard — a missing
+  `Origin` is allowed on purpose (privacy tools/proxies strip it), so Turnstile and the Cloudflare
+  rate-limit rule are the real abuse controls. Allowed origins are pinned in `functions/src/origin.ts`
+  (never suffix-matched). `npm test` in `functions/` runs the unit tests.
 - Honeypot spam protection returns a **200 with `success: true`** on a filled honeypot, so a bot
   cannot distinguish rejection from delivery.
 - Sends via MailerSend from `no-reply@wink.travel` to `hi@wink.travel`, with the submitter set as
   reply-to.
+
+**`TURNSTILE_SECRET_KEY` is a Firebase secret too** (`firebase functions:secrets:set TURNSTILE_SECRET_KEY`);
+its public counterpart `PUBLIC_TURNSTILE_SITE_KEY` (committed in `.env`, like the Cloudinary name) is read by `Contact2.astro`.
 
 **`MAILERSEND_API_KEY` is a Firebase secret, not a `.env.local` variable** — it is declared with
 `defineSecret` and resolved at invocation via `mailersendApiKey.value()`. Set it with

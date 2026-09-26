@@ -2,20 +2,11 @@ import { onRequest } from "firebase-functions/v2/https";
 import { defineSecret } from "firebase-functions/params";
 import { MailerSend, EmailParams, Sender, Recipient } from "mailersend";
 
+import { checkOrigin } from "./origin.js";
+import { verifyTurnstile } from "./turnstile.js";
+
 const mailersendApiKey = defineSecret("MAILERSEND_API_KEY");
-
-const ALLOWED_ORIGINS = [
-  "https://wink.travel",
-  "https://www.wink.travel",
-];
-
-function getCorsOrigin(request: { headers: { origin?: string } }): string | null {
-  const origin = request.headers.origin ?? "";
-  if (ALLOWED_ORIGINS.includes(origin)) {
-    return origin;
-  }
-  return null;
-}
+const turnstileSecretKey = defineSecret("TURNSTILE_SECRET_KEY");
 
 interface ContactFormData {
   name?: string;
@@ -23,6 +14,7 @@ interface ContactFormData {
   subject?: string;
   message?: string;
   honeypot?: string;
+  "cf-turnstile-response"?: string;
 }
 
 function validateForm(data: ContactFormData): { valid: true; cleaned: Required<Pick<ContactFormData, "name" | "email" | "subject" | "message">> } | { valid: false; errors: Record<string, string> } {
@@ -58,12 +50,12 @@ function validateForm(data: ContactFormData): { valid: true; cleaned: Required<P
 }
 
 export const contactForm = onRequest(
-  { secrets: [mailersendApiKey], cors: false },
+  { secrets: [mailersendApiKey, turnstileSecretKey], cors: false },
   async (req, res) => {
-    const origin = getCorsOrigin(req);
+    const originCheck = checkOrigin(req);
 
-    if (origin) {
-      res.set("Access-Control-Allow-Origin", origin);
+    if (originCheck.allowed && originCheck.header) {
+      res.set("Access-Control-Allow-Origin", originCheck.header);
       res.set("Access-Control-Allow-Methods", "POST, OPTIONS");
       res.set("Access-Control-Allow-Headers", "Content-Type");
     }
@@ -78,7 +70,7 @@ export const contactForm = onRequest(
       return;
     }
 
-    if (!origin) {
+    if (!originCheck.allowed) {
       res.status(403).json({ success: false, error: "Forbidden." });
       return;
     }
@@ -94,6 +86,23 @@ export const contactForm = onRequest(
 
     if (!result.valid) {
       res.status(400).json({ success: false, errors: result.errors });
+      return;
+    }
+
+    const forwardedIp = req.headers["cf-connecting-ip"];
+    const turnstile = await verifyTurnstile({
+      token: body["cf-turnstile-response"],
+      secret: turnstileSecretKey.value(),
+      remoteIp: typeof forwardedIp === "string" ? forwardedIp : req.ip,
+    });
+
+    if (turnstile.status === "rejected") {
+      res.status(403).json({ success: false, error: "Verification failed. Please reload the page and try again." });
+      return;
+    }
+
+    if (turnstile.status === "unavailable") {
+      res.status(503).json({ success: false, error: "Verification is temporarily unavailable. Please try again shortly." });
       return;
     }
 
