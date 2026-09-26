@@ -2,51 +2,11 @@ import { onRequest } from "firebase-functions/v2/https";
 import { defineSecret } from "firebase-functions/params";
 import { MailerSend, EmailParams, Sender, Recipient } from "mailersend";
 
+import { checkOrigin } from "./origin.js";
+import { verifyTurnstile } from "./turnstile.js";
+
 const mailersendApiKey = defineSecret("MAILERSEND_API_KEY");
-
-const ALLOWED_ORIGINS = [
-  "https://wink.travel",
-  "https://www.wink.travel",
-  // Firebase serves the same site on its default domains. A visitor who lands
-  // on one of them is still a real visitor and must be able to send the form.
-  "https://wink-academy.web.app",
-  "https://wink-academy.firebaseapp.com",
-];
-
-// Google Translate proxies the site from a per-site subdomain. A reader working
-// in translation is exactly the kind of international enquiry we want.
-const ALLOWED_ORIGIN_SUFFIXES = [".translate.goog"];
-
-type OriginCheck =
-  /** Proceed. `header` is the value to echo back, or null when there is no Origin to echo. */
-  | { allowed: true; header: string | null }
-  | { allowed: false };
-
-export function checkOrigin(request: { headers: { origin?: string } }): OriginCheck {
-  const origin = request.headers.origin;
-
-  // A browser always sends Origin on a cross-origin POST, so a POST that
-  // arrives with NO Origin cannot be a cross-site submission. In practice it is
-  // a same-origin post whose header was stripped by a privacy setting, a VPN or
-  // corporate proxy, or an in-app browser. Rejecting it blocked genuine
-  // enquiries -- a partnership enquiry was lost this way -- and prevented no
-  // attack, since the honeypot and validation are what actually stop abuse.
-  if (origin === undefined || origin === "") {
-    return { allowed: true, header: null };
-  }
-
-  if (ALLOWED_ORIGINS.includes(origin)) {
-    return { allowed: true, header: origin };
-  }
-
-  if (ALLOWED_ORIGIN_SUFFIXES.some((suffix) => origin.endsWith(suffix))) {
-    return { allowed: true, header: origin };
-  }
-
-  // An Origin that is present but unknown -- including the literal "null" of a
-  // sandboxed iframe -- is a genuine cross-origin attempt and still refused.
-  return { allowed: false };
-}
+const turnstileSecretKey = defineSecret("TURNSTILE_SECRET_KEY");
 
 interface ContactFormData {
   name?: string;
@@ -54,6 +14,7 @@ interface ContactFormData {
   subject?: string;
   message?: string;
   honeypot?: string;
+  "cf-turnstile-response"?: string;
 }
 
 function validateForm(data: ContactFormData): { valid: true; cleaned: Required<Pick<ContactFormData, "name" | "email" | "subject" | "message">> } | { valid: false; errors: Record<string, string> } {
@@ -89,7 +50,7 @@ function validateForm(data: ContactFormData): { valid: true; cleaned: Required<P
 }
 
 export const contactForm = onRequest(
-  { secrets: [mailersendApiKey], cors: false },
+  { secrets: [mailersendApiKey, turnstileSecretKey], cors: false },
   async (req, res) => {
     const originCheck = checkOrigin(req);
 
@@ -125,6 +86,23 @@ export const contactForm = onRequest(
 
     if (!result.valid) {
       res.status(400).json({ success: false, errors: result.errors });
+      return;
+    }
+
+    const forwardedIp = req.headers["cf-connecting-ip"];
+    const turnstile = await verifyTurnstile({
+      token: body["cf-turnstile-response"],
+      secret: turnstileSecretKey.value(),
+      remoteIp: typeof forwardedIp === "string" ? forwardedIp : req.ip,
+    });
+
+    if (turnstile.status === "rejected") {
+      res.status(403).json({ success: false, error: "Verification failed. Please reload the page and try again." });
+      return;
+    }
+
+    if (turnstile.status === "unavailable") {
+      res.status(503).json({ success: false, error: "Verification is temporarily unavailable. Please try again shortly." });
       return;
     }
 
