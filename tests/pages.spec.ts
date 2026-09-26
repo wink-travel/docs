@@ -49,7 +49,13 @@ test.describe("page renders cleanly", () => {
       );
 
       expect(consoleErrors, `console errors on ${route}:\n${consoleErrors.join("\n")}`).toEqual([]);
-      expect(pageErrors, `uncaught page errors on ${route}:\n${pageErrors.join("\n")}`).toEqual([]);
+      // WebKit raises a SecurityError when a third-party https iframe (YouTube,
+      // Cloudflare Turnstile) touches the http://localhost preview parent. It is
+      // an artifact of testing over http; production is https, so protocols match.
+      const realPageErrors = pageErrors.filter(
+        (message) => !(message.includes("Protocols must match") && message.includes("localhost")),
+      );
+      expect(realPageErrors, `uncaught page errors on ${route}:\n${realPageErrors.join("\n")}`).toEqual([]);
     });
   }
 });
