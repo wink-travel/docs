@@ -131,7 +131,7 @@ the separate `functions/` workspace (its own `package.json`, its own `node_modul
   reply-to.
 
 **`TURNSTILE_SECRET_KEY` is a Firebase secret too** (`firebase functions:secrets:set TURNSTILE_SECRET_KEY`);
-its public counterpart `PUBLIC_TURNSTILE_SITE_KEY` is a build-time env var read by `Contact2.astro`.
+its public counterpart `PUBLIC_TURNSTILE_SITE_KEY` (committed in `.env`, like the Cloudinary name) is read by `Contact2.astro`.
 
 **`MAILERSEND_API_KEY` is a Firebase secret, not a `.env.local` variable** — it is declared with
 `defineSecret` and resolved at invocation via `mailersendApiKey.value()`. Set it with
