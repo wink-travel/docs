@@ -2,6 +2,16 @@
 
 Changelog of docs.
 
+## v1.5.0 (2026-09-27)
+
+### Features
+
+-  **sentry**  :sparkles: file new Sentry groups for this repo as GitHub issues daily (#85) ([1e9ca](https://github.com/wink-travel/docs/commit/1e9cafa407557fa) Bjorn Harvold)  
+
+### Bug Fixes
+
+-  **functions**  set tsconfig rootDir and update firebase-functions to 7.4.0 (#87) ([364c5](https://github.com/wink-travel/docs/commit/364c53005fe11b6) Bjorn Harvold)  
+
 ## v1.4.0 (2026-09-26)
 
 ### Bug Fixes
