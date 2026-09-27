@@ -74,6 +74,51 @@ const BANNED: Rule[] = [
       "Partner API usage is metered in hotel-days, not requests: 10,000 hotel-days free per month, then $0.0001 per hotel-day. A hotel-day is one hotel priced for one night, not one API call.",
   },
   {
+    // A2: the hotel's rate passes through unchanged in every model, including
+    // the agent-collected one. AP 4.3 says so; a resource page said the agent
+    // "sets your own margin".
+    pattern: /set your own margin|mark(?:s|ing)? up the rate/i,
+    reason:
+      "Contradicts the no-markup position in AP 4.3. The hotel controls its own rate and Wink passes it through unchanged — no net-rate resale, no markup layer.",
+  },
+  {
+    // A7: commission is calculated after the platform fee and card processing.
+    pattern: /percentage of the booking total/i,
+    reason:
+      "Commission is a percentage of the booking value AFTER the 1.5% platform fee and card processing, not of the gross booking total.",
+  },
+  {
+    // A8: on the agent-collected route Wink is not in the funds flow at all,
+    // so what it charges is the platform fee, not a processing fee.
+    pattern: /1\.5% processing/i,
+    reason:
+      "On the agent-collected route Wink charges the 1.5% platform fee, not a processing fee. Write \"1.5% platform fee\".",
+  },
+  {
+    // A13: there is no booking modification, in the API or the catalogue.
+    pattern: /create\s*\/\s*update\s*\/\s*cancel|create, update and cancel/i,
+    reason:
+      "There is no booking update: the only booking PATCH operations are cancels, and the event catalogue has no booking update event. Say create and cancel.",
+  },
+  {
+    // A4: a hardcoded count drifts silently every time the catalogue changes.
+    pattern: /64\+\s*(?:webhook|platform|other)?\s*events?/i,
+    reason:
+      "Do not hardcode the webhook count. Import deliveredWebhookEventCount from @/lib/webhook-events so it tracks the schema.",
+  },
+  {
+    // A5: /developers/rest-and-grpc/ says we no longer publish them.
+    pattern: /official SDKs/i,
+    reason:
+      "We no longer publish language SDKs. Say generated clients from the schema.",
+  },
+  {
+    // The key is booking.create; booking.created subscribes to nothing.
+    pattern: /booking\.created/i,
+    reason:
+      "The webhook event key is `booking.create`. `booking.created` is not in the catalogue, so a developer copying it subscribes to nothing.",
+  },
+  {
     pattern: /look-to-book overage/i,
     reason:
       "Belongs to the retired request-based Partner API model. Hotel-day billing already prices search volume directly, so a separate look-to-book charge would meter the same behaviour twice.",
