@@ -2,6 +2,103 @@
 
 Changelog of docs.
 
+## v1.4.0 (2026-09-26)
+
+### Bug Fixes
+
+-  **footer**  keep the Legal link inside the current locale ([ca930](https://github.com/wink-travel/docs/commit/ca93078c4a2afc4) Bjorn Harvold)  
+
+### Other changes
+
+**Stop the contact form rejecting real enquiries with "Forbidden" (#83)**
+
+* Stop the contact form rejecting real enquiries with &quot;Forbidden&quot; 
+* A partnership enquiry was lost: the form returned &quot;Forbidden&quot; repeatedly, in 
+* two different browsers. 
+* The cause is the origin gate in contactForm. It returns 403 whenever the 
+* request&#x27;s Origin header is not one of two exact strings, and four legitimate 
+* situations hit that: 
+* - No Origin header at all. Privacy settings, VPNs, corporate proxies and some 
+* in-app browsers strip it. This is the likeliest cause here, since it follows 
+* the device or network rather than the browser, which matches one person 
+* failing in both Chrome and Samsung Internet. 
+* - Google Translate, which serves the site from a *.translate.goog subdomain. 
+* A reader working in translation is exactly the international enquiry we want. 
+* - https://wink-academy.web.app and .firebaseapp.com, which serve the live site 
+* today -- confirmed by request -- but were not on the list. 
+* - Origin: null. 
+* A missing Origin cannot be a cross-site submission: browsers always send Origin 
+* on a cross-origin POST, so its absence means a same-origin post whose header was 
+* stripped, or a non-browser client. Refusing it blocked genuine enquiries and 
+* prevented no attack -- the honeypot and validation are what actually stop abuse. 
+* Missing Origin is therefore allowed, the Firebase domains and translate.goog are 
+* added, and an Origin that is present but unknown -- including the literal &quot;null&quot; 
+* of a sandboxed iframe -- is still refused. 
+* Verified against production first: the function itself was fine (a direct call 
+* returned 400 validation), and the 403 reproduced only for the origins above. 
+* The decision table is covered by a unit test over 11 cases, including a 
+* suffix-spoof attempt (translate.goog.evil.com) that must stay refused. tsc 
+* clean. 
+* Needs &#x60;firebase deploy --only functions&#x60; -- a hosting deploy will not pick it up. 
+* Co-Authored-By: Claude Opus 5 &lt;noreply@anthropic.com&gt; 
+* feat(contact): pin origins and require a Turnstile token 
+* Origin is spoofable or omittable by any script, so it is no abuse control. 
+* Every POST now needs a Cloudflare Turnstile token, verified server-side 
+* (hostname-checked, fail-closed 503 if siteverify is unreachable). 
+* - pin allowed origins: wink.travel, www, and the exact 
+* wink-travel.translate.goog; drop the *.translate.goog suffix match and 
+* the web.app / firebaseapp.com origins 
+* - extract checkOrigin/verifyTurnstile into modules with node:test suites 
+* (&#x60;npm test&#x60; in functions/) 
+* - add the Turnstile widget to the contact form and reset it per attempt 
+* - document TURNSTILE_SECRET_KEY / PUBLIC_TURNSTILE_SITE_KEY 
+* Requires TURNSTILE_SECRET_KEY (firebase secret) and 
+* PUBLIC_TURNSTILE_SITE_KEY (build env) before release, or the form 403s. 
+* Co-Authored-By: Claude Sonnet 5 &lt;noreply@anthropic.com&gt; 
+* chore(contact): add public Turnstile site key 
+* The site key is public by design (rendered into the page), so it lives in 
+* the tracked .env next to PUBLIC_CLOUDINARY_CLOUD_NAME. The secret key is a 
+* Firebase secret and is not in the repo. 
+* Co-Authored-By: Claude Sonnet 5 &lt;noreply@anthropic.com&gt; 
+* test(e2e): ignore WebKit http-localhost cross-frame SecurityError 
+* WebKit raises an uncaught &quot;Protocols must match&quot; error when a third-party 
+* https iframe (YouTube on /hotels/, Cloudflare Turnstile on /contact/) 
+* touches the http://localhost preview parent. It is an artifact of testing 
+* over http and cannot occur on https production. Filter only that message 
+* so every other uncaught page error still fails the test. 
+* Co-Authored-By: Claude Sonnet 5 &lt;noreply@anthropic.com&gt; 
+* --------- 
+* Co-authored-by: Yann &lt;yann@Yanns-MacBook-Pro.local&gt; 
+* Co-authored-by: Claude Opus 5 &lt;noreply@anthropic.com&gt; 
+* Co-authored-by: Bjorn Harvold &lt;bjorn@harvold.com&gt; 
+
+[4f0f6](https://github.com/wink-travel/docs/commit/4f0f6bc779a29bf) YannWink *2026-09-26 14:42:57*
+
+**Link Contact and Careers from the footer (#84)**
+
+* An orphan audit of the built site -- every English page, its inbound link 
+* count, and whether the global nav or footer reaches it -- found two real pages 
+* the site chrome never links: 
+* - /contact/ was reachable only from /builders/, /team/, /jobs/ and one Booking 
+* Engine docs page. The contact page of a B2B site should not depend on finding 
+* one of those first. It is also the page a lost partnership enquiry was trying 
+* to use. 
+* - /jobs/ had exactly one inbound link, from /team/, which is itself only in the 
+* footer. One hop from invisible. 
+* Both now sit in the footer&#x27;s Company column beside About and Team, where /team/ 
+* was added for the same reason. 
+* Everything else the audit flagged as zero-inbound is a redirect stub Astro 
+* generates from the redirects config -- /studio/*, /extranet/*, /my-account/*, 
+* /payment/*, /social/*, /link-manager/*, /travel-agent/*, the old /terms/, 
+* /privacy/, /cookies/ and /acceptable-use/ paths, /home-v2/, and the 
+* per-agreement legal URLs. Each carries a canonical to its real destination, so 
+* they work as intended and are left alone. 
+* Co-authored-by: Yann &lt;yann@Yanns-MacBook-Pro.local&gt; 
+* Co-authored-by: Claude Opus 5 &lt;noreply@anthropic.com&gt; 
+
+[178ef](https://github.com/wink-travel/docs/commit/178ef58a27a5fbb) YannWink *2026-09-26 13:08:35*
+
+
 ## v1.3.0 (2026-09-25)
 
 ### Features
