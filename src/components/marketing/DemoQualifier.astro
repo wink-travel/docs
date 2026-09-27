@@ -17,14 +17,21 @@
  */
 const CAL_EVENT = "https://cal.com/wink-ws36dy/30min";
 
+/**
+ * `needsLink` marks the audiences that reliably have something to show. A hotel
+ * or an agency without a website is implausible; a creator's presence is a
+ * social profile and a pre-launch startup may have nothing yet. Requiring a URL
+ * of everyone turned the form away from two of the audiences we most want.
+ */
 const SEGMENTS = [
-  { value: "Hotel / accommodation provider", label: "Hotel or accommodation", hint: "I have rooms to sell", accent: "#ff6b35" },
-  { value: "Partner (agency, DMC, tour operator, publisher, loyalty)", label: "Partner", hint: "Agency, DMC, publisher, loyalty", accent: "#ec4899" },
-  { value: "Travel creator", label: "Travel creator", hint: "I have an audience", accent: "#a855f7" },
-  { value: "Developer / builder", label: "Developer", hint: "I want to build on the API", accent: "#22d3ee" },
-  { value: "Platform or AI product", label: "Platform or AI", hint: "I bring the demand", accent: "#6366f1" },
-  { value: "Other", label: "Something else", hint: "Press, partnership, other", accent: "#94a3b8" },
+  { value: "Hotel / accommodation provider", label: "Hotel or accommodation", hint: "I have rooms to sell", accent: "#ff6b35", needsLink: true },
+  { value: "Partner (agency, DMC, tour operator, publisher, loyalty)", label: "Partner", hint: "Agency, DMC, publisher, loyalty", accent: "#ec4899", needsLink: true },
+  { value: "Travel creator", label: "Travel creator", hint: "I have an audience", accent: "#a855f7", needsLink: false },
+  { value: "Developer / builder", label: "Developer", hint: "I want to build on the API", accent: "#22d3ee", needsLink: false },
+  { value: "Platform or AI product", label: "Platform or AI", hint: "I bring the demand", accent: "#6366f1", needsLink: true },
+  { value: "Other", label: "Something else", hint: "Press, partnership, other", accent: "#94a3b8", needsLink: false },
 ];
+const LINK_REQUIRED_FOR = SEGMENTS.filter((s) => s.needsLink).map((s) => s.value);
 
 const TIMELINES = [
   "As soon as possible",
@@ -46,16 +53,17 @@ const req = '<span class="text-primary" aria-hidden="true">*</span>';
         <input id="dq-name" name="name" type="text" autocomplete="name" required class={field} placeholder="Jane Chen" />
       </div>
       <div class="grid gap-2">
-        <label class={labelCls} for="dq-email">Work email <span class="text-primary" aria-hidden="true">*</span></label>
-        <input id="dq-email" name="email" type="email" autocomplete="email" required class={field} placeholder="jane@yourcompany.com" />
+        <label class={labelCls} for="dq-email">Email <span class="text-primary" aria-hidden="true">*</span></label>
+        <input id="dq-email" name="email" type="email" autocomplete="email" required class={field} placeholder="you@example.com" />
       </div>
       <div class="grid gap-2">
-        <label class={labelCls} for="dq-company">Company or brand <span class="text-primary" aria-hidden="true">*</span></label>
-        <input id="dq-company" name="company" type="text" autocomplete="organization" required class={field} placeholder="Hotel MYS" />
+        <label class={labelCls} for="dq-company">Company or brand <span class="text-muted-foreground font-normal">(optional)</span></label>
+        <input id="dq-company" name="company" type="text" autocomplete="organization" class={field} placeholder="Hotel MYS — or just your own name" />
       </div>
       <div class="grid gap-2">
-        <label class={labelCls} for="dq-website">Website <span class="text-primary" aria-hidden="true">*</span></label>
-        <input id="dq-website" name="website" type="text" autocomplete="url" required class={field} placeholder="yourcompany.com" />
+        <label class={labelCls} for="dq-website">Website or profile <span id="dq-website-req" class="text-primary" aria-hidden="true">*</span><span id="dq-website-opt" class="text-muted-foreground font-normal" hidden>(optional)</span></label>
+        <input id="dq-website" name="website" type="text" autocomplete="url" class={field} placeholder="hotelmys.com · instagram.com/yourhandle" />
+        <p id="dq-website-hint" class="text-muted-foreground text-xs">Anything that shows what you do. Skip it if you do not have one yet.</p>
       </div>
     </div>
 
@@ -114,7 +122,7 @@ const req = '<span class="text-primary" aria-hidden="true">*</span>';
   </form>
 </section>
 
-<script define:vars={{ CAL_EVENT }}>
+<script define:vars={{ CAL_EVENT, LINK_REQUIRED_FOR }}>
   function initDemoQualifier() {
     const form = document.getElementById("demo-qualifier");
     if (!form || form.dataset.bound === "1") return;
@@ -124,8 +132,13 @@ const req = '<span class="text-primary" aria-hidden="true">*</span>';
     const hint = document.getElementById("dq-hint");
     const get = (n) => form.querySelector(`[name="${n}"]`);
 
-    /** Required answers, in the order they read back to us. */
-    const REQUIRED = ["name", "email", "company", "website", "segment", "goal", "timeline"];
+    /** Always required, in the order they read back to us. */
+    const REQUIRED = ["name", "email", "segment", "goal", "timeline"];
+
+    /** A link is only required of audiences that reliably have one. */
+    function linkRequired() {
+      return LINK_REQUIRED_FOR.includes(value("segment"));
+    }
 
     function value(name) {
       const first = get(name);
@@ -146,10 +159,27 @@ const req = '<span class="text-primary" aria-hidden="true">*</span>';
         if (n === "email" && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) return false;
         if (n === "goal" && v.length < 20) return false;
       }
+      if (linkRequired() && !value("website")) return false;
       return true;
     }
 
+    /** Keep the website label honest about whether it is required right now. */
+    function syncWebsiteLabel() {
+      const required = linkRequired();
+      const star = document.getElementById("dq-website-req");
+      const opt = document.getElementById("dq-website-opt");
+      const hint = document.getElementById("dq-website-hint");
+      if (star) star.hidden = !required;
+      if (opt) opt.hidden = required;
+      if (hint) {
+        hint.textContent = required
+          ? "Your site — it is where we do our homework before the call."
+          : "A site or social profile if you have one. Skip it if you do not.";
+      }
+    }
+
     function refresh() {
+      syncWebsiteLabel();
       const ok = isComplete();
       submit.disabled = !ok;
       hint.textContent = ok
@@ -167,7 +197,16 @@ const req = '<span class="text-primary" aria-hidden="true">*</span>';
 
       const notes = [
         `Who: ${value("segment")}`,
-        `Company: ${value("company")} — ${value("website")}`,
+        // A creator's presence is a profile, not a company, and someone with
+        // neither should not produce a "not given" line for us to read past.
+        (() => {
+          const who = value("company");
+          const link = value("website");
+          if (who && link) return `Company: ${who} — ${link}`;
+          if (who) return `Company: ${who}`;
+          if (link) return `Find them at: ${link}`;
+          return "";
+        })(),
         `Wants from the call: ${value("goal")}`,
         `Timeline: ${value("timeline")}`,
         value("scale") ? `Size: ${value("scale")}` : "",
