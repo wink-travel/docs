@@ -64,6 +64,20 @@ const BANNED: Rule[] = [
     reason:
       "There is no flat payment fee any more; it is passed through at cost. 4.0% may only appear as a footnoted illustration.",
   },
+  {
+    // The Partner API was published with two incompatible billing models: a
+    // request-based one on /integrations/partner-api/ and the canonical
+    // hotel-day one on /pricing/. A partner modelling costs from the wrong page
+    // was out by an order of magnitude.
+    pattern: /per\s*1,?000\s*requests|10,?000\s*requests\s*per\s*(?:calendar\s*)?month/i,
+    reason:
+      "Partner API usage is metered in hotel-days, not requests: 10,000 hotel-days free per month, then $0.0001 per hotel-day. A hotel-day is one hotel priced for one night, not one API call.",
+  },
+  {
+    pattern: /look-to-book overage/i,
+    reason:
+      "Belongs to the retired request-based Partner API model. Hotel-day billing already prices search volume directly, so a separate look-to-book charge would meter the same behaviour twice.",
+  },
 ];
 
 /** Canonical statements that must remain present. */
@@ -72,6 +86,14 @@ const REQUIRED: { file: string; pattern: RegExp; reason: string }[] = [
     file: "public/llms.txt",
     pattern: /never the merchant of record/i,
     reason: "llms.txt must keep stating the canonical merchant-of-record position.",
+  },
+  {
+    // The unit is the thing integrators get wrong, so the definition has to
+    // stay on the page the rate lives on.
+    file: "src/content/docs/getting-started/pricing.md",
+    pattern: /hotel-day\*{0,2} is one hotel priced for one night/i,
+    reason:
+      "The canonical definition of a hotel-day must stay published, or the Partner API rate has no unit attached to it.",
   },
 ];
 
