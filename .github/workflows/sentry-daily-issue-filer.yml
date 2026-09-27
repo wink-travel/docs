@@ -1,0 +1,71 @@
+# Files a GitHub issue in THIS repo (docs) for every new unresolved Sentry group belonging to it, daily.
+# Groups from other Sentry projects are left for the sibling repo's copy of this workflow.
+#
+# Needs exactly ONE secret: SENTRY_USER_TOKEN (the `sntryu_…` USER token, not the `sntrys_…` org
+# token -- the org one 403s on every org read). No GITHUB_TOKEN is used: Sentry's installed GitHub
+# integration creates and links the issue itself, which is also what lets a workflow in this repo
+# file into wink-travel/monorepo-typescript. A GITHUB_TOKEN could not, being scoped to its own repo.
+name: Sentry daily issue filer
+
+on:
+  schedule:
+    # 06:00 UTC = 13:00 ICT. Cron here is always UTC.
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "List what would be filed without filing it"
+        type: boolean
+        default: true
+      lookback_hours:
+        description: "How far back to look for NEW groups (age:-Nh)"
+        type: string
+        default: "25"
+      min_events:
+        description: "Skip groups with fewer events than this (0 = file everything)"
+        type: string
+        default: "0"
+      max_issues:
+        description: "Hard cap per run, so a Sentry storm cannot open hundreds of issues"
+        type: string
+        default: "25"
+      ignore_title_patterns:
+        description: "Comma-separated case-insensitive regexes matched against the group title"
+        type: string
+        default: ""
+
+# Nothing is written to this repository; the filing happens through Sentry.
+permissions:
+  contents: read
+
+concurrency:
+  # Never let two runs file the same window concurrently. The annotations dedupe would mostly cover
+  # it, but two in-flight creates for one group can still race.
+  group: sentry-issue-filer
+  cancel-in-progress: false
+
+jobs:
+  file:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: File new Sentry groups as GitHub issues
+        env:
+          SENTRY_USER_TOKEN: ${{ secrets.SENTRY_USER_TOKEN }}
+          # A scheduled run files for real; a manual run defaults to dry.
+          DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run || 'false' }}
+          LOOKBACK_HOURS: ${{ inputs.lookback_hours || '25' }}
+          MIN_EVENTS: ${{ inputs.min_events || '0' }}
+          MAX_ISSUES: ${{ inputs.max_issues || '25' }}
+          IGNORE_TITLE_PATTERNS: ${{ inputs.ignore_title_patterns || '' }}
+          # Scope: only these Sentry projects are filed, into this repo (GITHUB_REPOSITORY).
+          # Labels must already exist in the repo.
+          SENTRY_PROJECTS: "marketing-website"
+          ISSUE_LABELS: "bug"
+        run: node scripts/sentry/file_sentry_issues.mjs
