@@ -71,7 +71,16 @@ const BANNED: Rule[] = [
     // was out by an order of magnitude.
     pattern: /per\s*1,?000\s*requests|10,?000\s*requests\s*per\s*(?:calendar\s*)?month/i,
     reason:
-      "Partner API usage is metered in hotel-days, not requests: 10,000 hotel-days free per month, then $0.0001 per hotel-day. A hotel-day is one hotel priced for one night, not one API call.",
+      "Partner API usage is metered in hotel-nights, not requests: 10,000 hotel-nights free per month, then $0.0001 per hotel-night. A hotel-night is one hotel priced for one night of stay, not one API call.",
+  },
+  {
+    // The unit was renamed: hotels sell nights, not days, and the old name had
+    // to be translated into nights every time it was used. The single
+    // transitional mention on /getting-started/pricing/ is allowed by the
+    // wording below, which only fires on the unit itself.
+    pattern: /hotel-days?\b(?! *[;,.] the unit and the rate are unchanged)/i,
+    reason:
+      "The Partner API unit is a hotel-night, not a hotel-day. One hotel priced for one night of stay.",
   },
   {
     pattern: /look-to-book overage/i,
@@ -91,9 +100,9 @@ const REQUIRED: { file: string; pattern: RegExp; reason: string }[] = [
     // The unit is the thing integrators get wrong, so the definition has to
     // stay on the page the rate lives on.
     file: "src/content/docs/getting-started/pricing.md",
-    pattern: /hotel-day\*{0,2} is one hotel priced for one night/i,
+    pattern: /hotel-night\*{0,2} is one hotel priced for one night/i,
     reason:
-      "The canonical definition of a hotel-day must stay published, or the Partner API rate has no unit attached to it.",
+      "The canonical definition of a hotel-night must stay published, or the Partner API rate has no unit attached to it.",
   },
 ];
 
