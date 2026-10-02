@@ -24,6 +24,8 @@ interface Rule {
   pattern: RegExp;
   /** Why it is wrong, and what to write instead. */
   reason: string;
+  /** Limit the rule to files whose repo-relative path matches; omitted = every scanned file. */
+  files?: RegExp;
 }
 
 const BANNED: Rule[] = [
@@ -70,22 +72,21 @@ const BANNED: Rule[] = [
     // hotel-day one on /pricing/. A partner modelling costs from the wrong page
     // was out by an order of magnitude.
     pattern: /per\s*1,?000\s*requests|10,?000\s*requests\s*per\s*(?:calendar\s*)?month/i,
+    files: /partner-api|pricing|hotel-booking-api|schemas\/partner|llms\.txt/,
     reason:
       "Partner API usage is metered in hotel-nights, not requests: 10,000 hotel-nights free per month, then $0.0001 per hotel-night. A hotel-night is one hotel priced for one night of stay, not one API call.",
   },
   {
     // The unit was renamed: hotels sell nights, not days, and the old name had
-    // to be translated into nights every time it was used. The single
-    // transitional mention on /getting-started/pricing/ is allowed by the
-    // wording below, which only fires on the unit itself.
-    pattern: /hotel-days?\b(?! *[;,.] the unit and the rate are unchanged)/i,
+    // to be translated into nights every time it was used.
+    pattern: /hotel[\s-]days?\b/i,
     reason:
       "The Partner API unit is a hotel-night, not a hotel-day. One hotel priced for one night of stay.",
   },
   {
     pattern: /look-to-book overage/i,
     reason:
-      "Belongs to the retired request-based Partner API model. Hotel-day billing already prices search volume directly, so a separate look-to-book charge would meter the same behaviour twice.",
+      "No look-to-book charge exists: monorepo-java defines LOOK_TO_BOOK_ALLOWANCE but never reads it, and billing is hotel-nights plus per-call units only.",
   },
 ];
 
@@ -125,15 +126,19 @@ function walk(dir: string, out: string[] = []): string[] {
   return out;
 }
 
-const targets = [join(ROOT, "src/content/docs"), join(ROOT, "src/components")].flatMap((d) =>
-  walk(d),
-);
+const targets = [
+  ...[join(ROOT, "src/content/docs"), join(ROOT, "src/components")].flatMap((d) => walk(d)),
+  // Integrators and AI crawlers read pricing here too, so it gets the same guard.
+  join(ROOT, "public/llms.txt"),
+  join(ROOT, "schemas/partner.json"),
+];
 
 let failures = 0;
 for (const file of targets) {
   const text = readFileSync(file, "utf8");
   text.split("\n").forEach((line, i) => {
     for (const rule of BANNED) {
+      if (rule.files && !rule.files.test(relative(ROOT, file))) continue;
       if (rule.pattern.test(line)) {
         failures++;
         console.error(`✗ ${relative(ROOT, file)}:${i + 1}`);

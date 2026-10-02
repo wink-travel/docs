@@ -91,7 +91,7 @@ Posts are priced by what's in them, because that's what they cost us to make. A 
 - Only a **generated** post published to a third-party network (Facebook, Instagram) is billable. A post you wrote yourself is free, wherever it goes.
 - **Publishing to WinkLinks is always free**, generated or not.
 - You're charged **on publish**, not per attempt. Regenerating a draft until you're happy with it doesn't add to your bill — you pay once for the post you actually ship. Attempts aren't unlimited, though: each post allows around 10 regenerations for images and 3 for video, which reflects what it costs us to produce them. You'll see how many you have left as you work.
-- On the Partner API, a **hotel-night** is one hotel priced for one night of stay — *not* one API call. It was previously called a hotel-day; the unit and the rate are unchanged. A search that returns 20 hotels for a 3-night stay is 60 hotel-nights from a single request. Lookup and autocomplete endpoints are free and never metered.
+- On the Partner API, a **hotel-night** is one hotel priced for one night of stay — *not* one API call. A search that returns 20 hotels for a 3-night stay is 60 hotel-nights from a single request. Content and Lookup (destination search and autocomplete) calls cost one unit each, whatever they return. Account endpoints are free.
 
 ### Turning it on
 
