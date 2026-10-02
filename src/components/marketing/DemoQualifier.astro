@@ -1,0 +1,227 @@
+---
+/**
+ * Qualification form that gates the call booking.
+ *
+ * Bookings were arriving with nothing but a name and an email, so every call
+ * started from zero. This asks the few things that make a call worth holding,
+ * blocks the booking button until the required ones are answered, then hands
+ * the answers to Cal.com.
+ *
+ * The answers travel in Cal's `notes` prefill rather than as custom booking
+ * questions, so this works against the existing Cal.com event with no
+ * configuration there. If booking questions are added later, map them by slug
+ * in `buildBookingUrl` instead of composing one block of text.
+ *
+ * Static site: all of this runs client-side. Nothing is stored or sent
+ * anywhere except Cal.com, which is already the booking processor.
+ */
+const CAL_EVENT = "https://cal.com/wink-ws36dy/30min";
+
+/**
+ * `needsLink` marks the audiences that reliably have something to show. A hotel
+ * or an agency without a website is implausible; a creator's presence is a
+ * social profile and a pre-launch startup may have nothing yet. Requiring a URL
+ * of everyone turned the form away from two of the audiences we most want.
+ */
+const SEGMENTS = [
+  { value: "Hotel / accommodation provider", label: "Hotel or accommodation", hint: "I have rooms to sell", accent: "#ff6b35", needsLink: true },
+  { value: "Partner (agency, DMC, tour operator, publisher, loyalty)", label: "Partner", hint: "Agency, DMC, publisher, loyalty", accent: "#ec4899", needsLink: true },
+  { value: "Travel creator", label: "Travel creator", hint: "I have an audience", accent: "#a855f7", needsLink: false },
+  { value: "Developer / builder", label: "Developer", hint: "I want to build on the API", accent: "#22d3ee", needsLink: false },
+  { value: "Platform or AI product", label: "Platform or AI", hint: "I bring the demand", accent: "#6366f1", needsLink: true },
+  { value: "Other", label: "Something else", hint: "Press, partnership, other", accent: "#94a3b8", needsLink: false },
+];
+const LINK_REQUIRED_FOR = SEGMENTS.filter((s) => s.needsLink).map((s) => s.value);
+
+const TIMELINES = [
+  "As soon as possible",
+  "Within 1–3 months",
+  "Within 3–6 months",
+  "Researching for later",
+];
+
+const field = "h-11 w-full rounded-md border border-border bg-background px-3.5 text-sm outline-none transition-colors placeholder:text-muted-foreground/70 focus:border-primary focus:ring-2 focus:ring-primary/20";
+const labelCls = "block text-sm font-medium text-foreground";
+const req = '<span class="text-primary" aria-hidden="true">*</span>';
+---
+
+<section class="@container mx-auto w-full max-w-3xl px-4 pb-20">
+  <form id="demo-qualifier" class="rounded-2xl border border-border bg-card p-6 shadow-sm @lg:p-8" novalidate>
+    <fieldset>
+      <legend class={labelCls}>Which best describes you? <span class="text-primary" aria-hidden="true">*</span></legend>
+      <div class="mt-3 grid gap-3 @sm:grid-cols-2 @lg:grid-cols-3">
+        {SEGMENTS.map((s) => (
+          <label class="dq-seg group relative flex cursor-pointer flex-col rounded-xl border border-border bg-background p-4 transition-colors hover:border-primary/40">
+            <input type="radio" name="segment" value={s.value} class="peer sr-only" required />
+            <span class="absolute inset-x-0 top-0 h-1 rounded-t-xl opacity-0 transition-opacity peer-checked:opacity-100" style={`background:${s.accent}`}></span>
+            <span class="text-sm font-semibold peer-checked:text-foreground">{s.label}</span>
+            <span class="text-muted-foreground mt-1 text-xs">{s.hint}</span>
+          </label>
+        ))}
+      </div>
+    </fieldset>
+
+    <div class="mt-7 grid gap-5 @md:grid-cols-2">
+      <div class="grid content-start gap-2">
+        <label class={labelCls} for="dq-name">Your name <span class="text-primary" aria-hidden="true">*</span></label>
+        <input id="dq-name" name="name" type="text" autocomplete="name" required class={field} placeholder="Jane Chen" />
+      </div>
+      <div class="grid content-start gap-2">
+        <label class={labelCls} for="dq-email">Email <span class="text-primary" aria-hidden="true">*</span></label>
+        <input id="dq-email" name="email" type="email" autocomplete="email" required class={field} placeholder="you@example.com" />
+      </div>
+      <div class="grid content-start gap-2">
+        <label class={labelCls} for="dq-company">Company or brand <span class="text-muted-foreground font-normal">(optional)</span></label>
+        <input id="dq-company" name="company" type="text" autocomplete="organization" class={field} placeholder="Hotel MYS — or just your own name" />
+      </div>
+      <div class="grid content-start gap-2">
+        <label class={labelCls} for="dq-website">Website or profile <span id="dq-website-req" class="text-primary" aria-hidden="true">*</span><span id="dq-website-opt" class="text-muted-foreground font-normal" hidden>(optional)</span></label>
+        <input id="dq-website" name="website" type="text" autocomplete="url" class={field} placeholder="hotelmys.com · instagram.com/yourhandle" />
+        <p id="dq-website-hint" class="text-muted-foreground text-xs">Anything that shows what you do. Skip it if you do not have one yet.</p>
+      </div>
+    </div>
+
+    <div class="mt-7 grid gap-2">
+      <label class={labelCls} for="dq-goal">What would you like to get out of the call? <span class="text-primary" aria-hidden="true">*</span></label>
+      <textarea id="dq-goal" name="goal" rows="4" required minlength="20"
+        class="w-full rounded-md border border-border bg-background p-3.5 text-sm outline-none transition-colors placeholder:text-muted-foreground/70 focus:border-primary focus:ring-2 focus:ring-primary/20"
+        placeholder="e.g. We run 40 properties in Thailand, pay 18% to OTAs, and want to move more of it direct. We'd like to understand how partner attribution works."></textarea>
+      <p class="text-muted-foreground text-xs">A sentence or two is plenty — it's what we prepare from.</p>
+    </div>
+
+    <div class="mt-7 grid gap-5 @md:grid-cols-2">
+      <div class="grid content-start gap-2">
+        <label class={labelCls} for="dq-timeline">When would you want to be live? <span class="text-primary" aria-hidden="true">*</span></label>
+        <select id="dq-timeline" name="timeline" required class={field}>
+          <option value="">Select…</option>
+          {TIMELINES.map((t) => <option value={t}>{t}</option>)}
+        </select>
+      </div>
+      <div class="grid content-start gap-2">
+        <label class={labelCls} for="dq-scale">Rough size <span class="text-muted-foreground font-normal">(optional)</span></label>
+        <input id="dq-scale" name="scale" type="text" class={field} placeholder="40 properties · 80k followers · 2M API calls" />
+      </div>
+    </div>
+
+    <div class="mt-5 grid gap-2">
+      <label class={labelCls} for="dq-source">How did you hear about Wink? <span class="text-muted-foreground font-normal">(optional)</span></label>
+      <input id="dq-source" name="source" type="text" class={field} placeholder="Search, a colleague, an AI assistant, an event…" />
+    </div>
+
+    <div class="mt-8 flex flex-col gap-3 @sm:flex-row @sm:items-center">
+      <button id="dq-submit" type="submit" disabled
+        class="inline-flex h-12 items-center justify-center rounded-md bg-[#ff6b35] px-7 text-base font-semibold text-white transition-all hover:bg-[#e85b29] disabled:cursor-not-allowed disabled:opacity-40">
+        Continue to pick a time
+      </button>
+      <p id="dq-hint" class="text-muted-foreground text-sm">Answer the marked questions to choose a slot.</p>
+    </div>
+
+    <p class="text-muted-foreground mt-6 border-t border-border pt-5 text-xs">
+      Your answers go to the calendar invite so we can prepare. Prefer to write instead? <a href="/contact/" class="text-primary underline underline-offset-4">Send a message</a>.
+    </p>
+  </form>
+</section>
+
+<script define:vars={{ CAL_EVENT, LINK_REQUIRED_FOR }}>
+  function initDemoQualifier() {
+    const form = document.getElementById("demo-qualifier");
+    if (!form || form.dataset.bound === "1") return;
+    form.dataset.bound = "1";
+
+    const submit = document.getElementById("dq-submit");
+    const hint = document.getElementById("dq-hint");
+    const get = (n) => form.querySelector(`[name="${n}"]`);
+
+    /** Always required, in the order they read back to us. */
+    const REQUIRED = ["name", "email", "segment", "goal", "timeline"];
+
+    /** A link is only required of audiences that reliably have one. */
+    function linkRequired() {
+      return LINK_REQUIRED_FOR.includes(value("segment"));
+    }
+
+    function value(name) {
+      const first = get(name);
+      if (!first) return "";
+      // A radio group has a value on every input, so falling back to the first
+      // one would read as answered while nothing is selected.
+      if (first.type === "radio") {
+        const checked = form.querySelector(`[name="${name}"]:checked`);
+        return checked ? checked.value.trim() : "";
+      }
+      return first.value ? first.value.trim() : "";
+    }
+
+    function isComplete() {
+      for (const n of REQUIRED) {
+        const v = value(n);
+        if (!v) return false;
+        if (n === "email" && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) return false;
+        if (n === "goal" && v.length < 20) return false;
+      }
+      if (linkRequired() && !value("website")) return false;
+      return true;
+    }
+
+    /** Keep the website label honest about whether it is required right now. */
+    function syncWebsiteLabel() {
+      const required = linkRequired();
+      const star = document.getElementById("dq-website-req");
+      const opt = document.getElementById("dq-website-opt");
+      const hint = document.getElementById("dq-website-hint");
+      if (star) star.hidden = !required;
+      if (opt) opt.hidden = required;
+      if (hint) {
+        hint.textContent = required
+          ? "Your site — it is where we do our homework before the call."
+          : "A site or social profile if you have one. Skip it if you do not.";
+      }
+    }
+
+    function refresh() {
+      syncWebsiteLabel();
+      const ok = isComplete();
+      submit.disabled = !ok;
+      hint.textContent = ok
+        ? "We read every answer before the call."
+        : "Answer the marked questions to choose a slot.";
+    }
+
+    form.addEventListener("input", refresh);
+    form.addEventListener("change", refresh);
+    refresh();
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      if (!isComplete()) { refresh(); return; }
+
+      const notes = [
+        `Who: ${value("segment")}`,
+        // A creator's presence is a profile, not a company, and someone with
+        // neither should not produce a "not given" line for us to read past.
+        (() => {
+          const who = value("company");
+          const link = value("website");
+          if (who && link) return `Company: ${who} — ${link}`;
+          if (who) return `Company: ${who}`;
+          if (link) return `Find them at: ${link}`;
+          return "";
+        })(),
+        `Wants from the call: ${value("goal")}`,
+        `Timeline: ${value("timeline")}`,
+        value("scale") ? `Size: ${value("scale")}` : "",
+        value("source") ? `Heard about Wink via: ${value("source")}` : "",
+      ].filter(Boolean).join("\n");
+
+      const url = new URL(CAL_EVENT);
+      url.searchParams.set("name", value("name"));
+      url.searchParams.set("email", value("email"));
+      url.searchParams.set("notes", notes);
+      window.location.href = url.toString();
+    });
+  }
+
+  initDemoQualifier();
+  document.addEventListener("astro:page-load", initDemoQualifier);
+  document.addEventListener("astro:after-swap", initDemoQualifier);
+</script>
