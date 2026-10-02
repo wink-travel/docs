@@ -15,11 +15,10 @@ Usage is metered in **hotel-nights**: one hotel priced for one night of stay —
 |---|---|---|---|
 | **Price** | $0 | Usage-based | Contact us |
 | **Best for** | Evaluation & low-volume integrations | Pay-as-you-go throughput at scale | Custom volume & negotiated terms |
-| Requests per minute | 30 (60 burst) | Unlimited | Unlimited |
-| Hotel-nights per month | 10,000 | Unlimited | Unlimited |
+| Units per month | 10,000 | Unlimited | Unlimited |
 | API response time (P95) | — | Under 500 ms | Under 500 ms |
-| Price per hotel-night | Free | $0.0001 | Custom |
-| Rate-limit response | 429 (pause / monthly hard stop) | None | None |
+| Price per unit (hotel-night) | Free | $0.0001 | Custom |
+| Response at the monthly allowance | 429 until the 1st of next month (UTC) | Billed, not blocked | Billed, not blocked |
 | Service Level Agreement | — | ✓ | ✓ |
 | Priority support | — | ✓ | ✓ |
 | Dedicated onboarding | — | — | ✓ |
@@ -53,16 +52,16 @@ If you'd rather generate a client ahead of time, the `.proto` source files are p
 
 The Free tier is designed to let you build, test, and run modest production traffic at no cost.
 
-- **Rate limit — 30 requests per minute, with a 60-request burst.** Short spikes above the sustained rate are absorbed by the burst allowance. If you exceed it, the API responds with **HTTP 429 (Too Many Requests)** and applies a **5-minute pause** before your key resumes serving traffic. Back off and retry after the pause window rather than hammering the endpoint.
-- **Monthly allowance — 10,000 hotel-nights per calendar month.** Once you reach the ceiling, the API returns **HTTP 429 for the remainder of the month** — a hard stop — together with a message inviting you to subscribe to the Paid tier to continue. The allowance is granted per account and resets on the 1st of every month (UTC).
+- **No published per-minute limit.** Wink monitors request rates and may apply fair-use limits to protect the service. If you receive an **HTTP 429 (Too Many Requests)**, wait for the number of seconds in the `Retry-After` header before retrying.
+- **Monthly allowance — 10,000 units per calendar month.** The allowance is granted per account and resets on the 1st of every month (UTC). Once you reach it, an account that has not enrolled in pay-as-you-go billing receives **HTTP 429 until the 1st of the next month** — a hard stop, with a `Retry-After` header and a message inviting you to subscribe to the Paid tier. An enrolled account keeps working and is billed for usage beyond the allowance.
 
 The Free tier does not include a Service Level Agreement or priority support.
 
 ### Paid tier
 
-The Paid tier removes the monthly ceiling and the rate-limit pauses, and bills you only for what you use.
+The Paid tier removes the monthly ceiling and bills you only for what you use.
 
-- **Metered hotel-nights — $0.0001 per hotel-night.** There is no monthly ceiling and no rate-limit throttling under normal use; you are billed on actual volume. Search and inventory calls bill per hotel-night priced; Content and Lookup calls bill one unit each, so batching your requests keeps the bill down.
+- **Metered hotel-nights — $0.0001 per hotel-night.** There is no monthly ceiling; you are billed on actual volume. Wink may still apply fair-use limits to protect the service. Search and inventory calls bill per hotel-night priced; Content and Lookup calls bill one unit each, so batching your requests keeps the bill down.
 
 The Paid tier includes the Service Level Agreement described below — a 99.9% uptime commitment and a P95 response-time target under 500 ms — and priority, severity-based support.
 
