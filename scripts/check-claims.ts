@@ -24,6 +24,8 @@ interface Rule {
   pattern: RegExp;
   /** Why it is wrong, and what to write instead. */
   reason: string;
+  /** Limit the rule to files whose repo-relative path matches; omitted = every scanned file. */
+  files?: RegExp;
 }
 
 const BANNED: Rule[] = [
@@ -64,6 +66,28 @@ const BANNED: Rule[] = [
     reason:
       "There is no flat payment fee any more; it is passed through at cost. 4.0% may only appear as a footnoted illustration.",
   },
+  {
+    // The Partner API was published with two incompatible billing models: a
+    // request-based one on /integrations/partner-api/ and the canonical
+    // hotel-day one on /pricing/. A partner modelling costs from the wrong page
+    // was out by an order of magnitude.
+    pattern: /per\s*1,?000\s*requests|10,?000\s*requests\s*per\s*(?:calendar\s*)?month/i,
+    files: /partner-api|pricing|hotel-booking-api|schemas\/partner|llms\.txt/,
+    reason:
+      "Partner API usage is metered in hotel-nights, not requests: 10,000 hotel-nights free per month, then $0.0001 per hotel-night. A hotel-night is one hotel priced for one night of stay, not one API call.",
+  },
+  {
+    // The unit was renamed: hotels sell nights, not days, and the old name had
+    // to be translated into nights every time it was used.
+    pattern: /hotel[\s-]days?\b/i,
+    reason:
+      "The Partner API unit is a hotel-night, not a hotel-day. One hotel priced for one night of stay.",
+  },
+  {
+    pattern: /look-to-book overage/i,
+    reason:
+      "No look-to-book charge exists: monorepo-java defines LOOK_TO_BOOK_ALLOWANCE but never reads it, and billing is hotel-nights plus per-call units only.",
+  },
 ];
 
 /** Canonical statements that must remain present. */
@@ -72,6 +96,14 @@ const REQUIRED: { file: string; pattern: RegExp; reason: string }[] = [
     file: "public/llms.txt",
     pattern: /never the merchant of record/i,
     reason: "llms.txt must keep stating the canonical merchant-of-record position.",
+  },
+  {
+    // The unit is the thing integrators get wrong, so the definition has to
+    // stay on the page the rate lives on.
+    file: "src/content/docs/getting-started/pricing.md",
+    pattern: /hotel-night\*{0,2} is one hotel priced for one night/i,
+    reason:
+      "The canonical definition of a hotel-night must stay published, or the Partner API rate has no unit attached to it.",
   },
 ];
 
@@ -94,15 +126,19 @@ function walk(dir: string, out: string[] = []): string[] {
   return out;
 }
 
-const targets = [join(ROOT, "src/content/docs"), join(ROOT, "src/components")].flatMap((d) =>
-  walk(d),
-);
+const targets = [
+  ...[join(ROOT, "src/content/docs"), join(ROOT, "src/components")].flatMap((d) => walk(d)),
+  // Integrators and AI crawlers read pricing here too, so it gets the same guard.
+  join(ROOT, "public/llms.txt"),
+  join(ROOT, "schemas/partner.json"),
+];
 
 let failures = 0;
 for (const file of targets) {
   const text = readFileSync(file, "utf8");
   text.split("\n").forEach((line, i) => {
     for (const rule of BANNED) {
+      if (rule.files && !rule.files.test(relative(ROOT, file))) continue;
       if (rule.pattern.test(line)) {
         failures++;
         console.error(`✗ ${relative(ROOT, file)}:${i + 1}`);
