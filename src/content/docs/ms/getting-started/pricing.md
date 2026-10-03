@@ -8,7 +8,7 @@ sidebar:
 Wink tidak mempunyai langganan, tiada tempat duduk dan tiada yuran penyediaan. Sebahagian besar platform adalah percuma, dan hanya ada dua perkara yang anda akan bayar:
 
 1. **Yuran platform setiap tempahan, ditambah pemprosesan kad pada kos** — hanya apabila tempahan dibuat.
-2. **Yuran penggunaan bayar-semasa** — pada beberapa ciri premium yang menelan kos setiap kali digunakan, setiap satu dengan elaun bulanan percuma.
+2. **Yuran penggunaan bayar-semasa** — pada beberapa ciri premium yang menelan kos setiap kali ia digunakan, setiap satu dengan elaun bulanan percuma.
 
 ## Apa yang percuma
 
@@ -18,7 +18,7 @@ Ini tidak dikenakan kos, selama-lamanya, tanpa elaun dan tanpa pengukuran:
 - **Pengurusan hartanah** — kandungan, foto, kadar, pelan kadar, ketersediaan, promosi dan polisi.
 - **Alat afiliasi** — pautan boleh dikongsi, senarai terpilih, grid, peta, kad dan widget yang boleh disematkan.
 - **Alat ejen pelancongan** — carian, kadar khusus dan tempahan bagi pihak pelanggan anda.
-- **WinkLinks** — tuntut URL vanity anda, bina halaman anda dan terbitkan seberapa kerap yang anda suka.
+- **WinkLinks** — tuntut URL vanity anda, bina halaman anda dan terbitkan seberapa kerap yang anda mahu.
 - **Catatan sosial manual** — apa sahaja yang anda tulis sendiri, di mana-mana rangkaian yang disambungkan.
 - **Analitik, papan pendahulu, tuntutan, tetapan** dan pengurusan akaun.
 - **API Pengguna dan Enjin Tempahan**, serta titik akhir carian dan autolengkap.
@@ -39,7 +39,7 @@ Wink mengenakan yuran platform 1.5% / tempahan. Ini meliputi penyelenggaraan pla
 :::
 
 :::note[Pemprosesan kad]
-Yuran pemprosesan pembayaran yang dikenakan untuk mengutip pembayaran tetamu disalurkan terus kepada hotel pada kos, tanpa margin. Ia berbeza mengikut kad tetamu dan kaedah pembayaran, dan jumlah tepatnya muncul dalam bahagian Perakaunan setiap tempahan. Jika tempahan dibatalkan atau dikembalikan wang, sebarang yuran yang disimpan oleh pemproses masih dikenakan; jika tiada yuran dikenakan, kami juga tidak mengenakan yuran.
+Yuran pemprosesan pembayaran yang dikenakan untuk mengutip pembayaran tetamu disalurkan terus kepada hotel pada kos, tanpa margin. Ia berbeza mengikut kad dan kaedah pembayaran tetamu, dan jumlah tepatnya dipaparkan dalam bahagian Perakaunan setiap tempahan. Jika tempahan dibatalkan atau dikembalikan wang, sebarang yuran yang disimpan oleh pemproses masih dikenakan; jika tiada yuran dikenakan, kami juga tidak mengenakan yuran.
 :::
 
 :::note[Pengagihan dana]
@@ -64,7 +64,7 @@ Menggunakan model ini, ejen pelancongan hanya membayar yuran platform Wink dan W
 
 ## Penggunaan (bayar-semasa)
 
-Beberapa ciri menelan kos setiap kali digunakan — AI generatif, API sosial pihak ketiga, dan penyajian harga langsung pada skala besar. Daripada menggabungkan ini ke dalam pelan bulanan yang mungkin anda tidak gunakan, anda hanya membayar untuk apa yang anda gunakan, dan hanya selepas anda menggunakan elaun bulanan percuma.
+Beberapa ciri menelan kos setiap kali ia digunakan — AI generatif, API sosial pihak ketiga, dan penyajian harga langsung secara besar-besaran. Daripada menggabungkan semua itu dalam pelan bulanan yang mungkin anda tidak gunakan, anda hanya membayar untuk apa yang anda gunakan, dan hanya selepas anda menggunakan elaun bulanan percuma.
 
 | Ciri | Percuma sebulan | Kemudian | Unit bil |
 | -- | -- | -- | -- |
@@ -74,7 +74,7 @@ Beberapa ciri menelan kos setiap kali digunakan — AI generatif, API sosial pih
 | Catatan sosial — video dijana AI | 0 | $14.00 | Satu catatan diterbitkan |
 | Balasan AI kepada komen atau DM | 5 | $0.05 | Satu balasan |
 | Jawapan chatbot | 5 | $0.05 | Satu jawapan |
-| API Rakan Kongsi | 10,000 | $0.0001 | Satu hotel-hari |
+| API Rakan Kongsi | 10,000 | $0.0001 | Satu malam hotel |
 
 Harga dalam USD. Elaun percuma diberikan **setiap akaun**, bukan setiap pengguna, dan diset semula pada 1 haribulan setiap bulan (UTC).
 
@@ -83,15 +83,15 @@ Harga dalam USD. Elaun percuma diberikan **setiap akaun**, bukan setiap pengguna
 Catatan dikenakan harga berdasarkan kandungannya, kerana itulah kos yang kami tanggung untuk membuatnya. Imej statik murah; video tidak; apa sahaja yang kami jana dengan AI menelan kos lebih tinggi daripada foto yang anda sediakan sendiri.
 
 - **Elaun percuma hanya meliputi catatan imej standard.** Anda mendapat satu setiap akaun setiap bulan. Catatan video dan media dijana AI dikenakan bayaran dari catatan pertama — tiada elaun percuma untuk kategori ini, jadi hartanah yang menyiarkan video harus menjangkakan caj pada bulan pertama.
-- **Video menang.** Jika catatan mengandungi sebarang video, keseluruhan catatan dikenakan pada kadar video. Catatan yang menggabungkan imej dan video dianggap catatan video.
+- **Video menang.** Jika catatan mengandungi sebarang video, keseluruhan catatan dikenakan pada kadar video. Catatan yang menggabungkan imej dan video adalah catatan video.
 - **Asal AI menetapkan kategori.** Media yang anda sediakan — foto dan video anda sendiri, atau apa sahaja dari perpustakaan kandungan Wink anda — dikenakan pada kadar standard. Media yang kami jana untuk anda dikenakan pada kadar AI.
 
 ### Apa yang diukur dan tidak diukur
 
 - Hanya catatan **dijana** yang diterbitkan ke rangkaian pihak ketiga (Facebook, Instagram) yang dikenakan bayaran. Catatan yang anda tulis sendiri adalah percuma, ke mana sahaja ia pergi.
 - **Penerbitan ke WinkLinks sentiasa percuma**, sama ada dijana atau tidak.
-- Anda dikenakan bayaran **pada masa terbit**, bukan setiap cubaan. Menghasilkan semula draf sehingga anda berpuas hati tidak menambah bil anda — anda hanya membayar sekali untuk catatan yang anda terbitkan. Cubaan tidak tanpa had: setiap catatan membenarkan kira-kira 10 penghasilan semula untuk imej dan 3 untuk video, yang mencerminkan kos kami untuk menghasilkan mereka. Anda akan melihat berapa banyak yang tinggal semasa anda bekerja.
-- Pada API Rakan Kongsi, satu **hotel-hari** adalah satu hotel yang dihargai untuk satu malam penginapan — *bukan* satu panggilan API. Carian yang mengembalikan 20 hotel untuk penginapan 3 malam adalah 60 hotel-hari dari satu permintaan. Titik akhir carian dan autolengkap adalah percuma dan tidak diukur.
+- Anda dikenakan bayaran **pada masa terbit**, bukan setiap cubaan. Menghasilkan semula draf sehingga anda berpuas hati tidak menambah bil anda — anda hanya bayar sekali untuk catatan yang anda terbitkan. Cubaan tidak tanpa had: setiap catatan membenarkan kira-kira 10 penghasilan semula untuk imej dan 3 untuk video, yang mencerminkan kos kami untuk menghasilkan mereka. Anda akan melihat berapa banyak yang tinggal semasa anda bekerja.
+- Pada API Rakan Kongsi, satu **malam hotel** adalah satu hotel yang dihargai untuk satu malam penginapan — *bukan* satu panggilan API. Carian yang memulangkan 20 hotel untuk penginapan 3 malam adalah 60 malam hotel dari satu permintaan. Panggilan Kandungan dan Carian (carian destinasi dan autolengkap) mengenakan satu unit setiap satu, tidak kira apa yang dipulangkan. Titik akhir akaun adalah percuma.
 
 ### Mengaktifkannya
 
@@ -102,7 +102,7 @@ Untuk melebihi elaun, **pemilik** akaun mengaktifkan bayar-semasa dan memilih ak
 Setelah diaktifkan, penggunaan anda diukur tetapi **tidak pernah disekat** — anda tidak akan mencapai had kadar untuk membelanjakan wang dengan kami.
 
 :::note[Jika anda tidak mengaktifkannya]
-Tiada apa yang rosak dan tiada bayaran dikenakan. Anda hanya berhenti pada elaun percuma untuk bulan itu: catatan dijana tidak akan diterbitkan dan panggilan API Rakan Kongsi akan mengembalikan `429` sehingga elaun diset semula.
+Tiada apa yang rosak dan tiada bayaran dikenakan. Anda hanya berhenti pada elaun percuma untuk bulan itu: catatan dijana tidak akan diterbitkan dan panggilan API Rakan Kongsi akan memulangkan `429` sehingga elaun diset semula.
 :::
 
 ### Status pengebilan

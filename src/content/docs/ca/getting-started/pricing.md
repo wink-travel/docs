@@ -21,13 +21,13 @@ Això no costa res, mai, sense franquícia ni mesurament:
 - **WinkLinks** — reclama la teva URL personalitzada, crea la teva pàgina i publica-hi tantes vegades com vulguis.
 - **Publicacions manuals a xarxes socials** — qualsevol cosa que escriguis tu mateix, a qualsevol xarxa connectada.
 - **Analítiques, classificacions, reclamacions, configuracions** i gestió del compte.
-- Les **APIs de Consumidor i Motor de Reserves**, més els endpoints de cerca i autocompleció.
+- Les **APIs de Consumidor i Motor de Reserves**, més els punts d’accés de cerca i autocompletat.
 
 ## Reserves
 
 Wink suporta dos models: que Wink reculli el pagament per a l’hotel, o que un agent de viatge autoritzat actuï com a comerciant registrat.
 
-### Model 1 — Wink recull el pagament per a l’hotel
+### Model 1 — Wink recull per a l’hotel
 
 Wink recull el pagament del client com a agent limitat de cobrament de l’hotel. L’hotel és el comerciant registrat, i el nom de l’hotel apareix a l’estat de compte de la targeta del client.
 Aquest model s’aplica al 95% de totes les reserves.
@@ -35,29 +35,29 @@ Aquest model s’aplica al 95% de totes les reserves.
 #### Desglossament
 
 :::note[Comissió de plataforma]
-Wink cobra una comissió del 1,5% per reserva. Això cobreix el manteniment de la plataforma i ens permet oferir tot el que s’ha llistat més amunt. No es cobra en una reserva cancel·lada.
+Wink cobra una comissió de plataforma de l’1,5% per reserva. Això cobreix el manteniment de la plataforma i ens permet oferir tot el que s’ha llistat més amunt. No es cobra en una reserva cancel·lada.
 :::
 
 :::note[Processament de targetes]
-La comissió pel processament del pagament que es cobra per recollir el pagament del client es traspassa a l’hotel al cost, sense marge. Varia segons la targeta i el mètode de pagament del client, i l’import exacte apareix a la secció de Comptabilitat de cada reserva. Si una reserva es cancel·la o es retorna, qualsevol comissió que el processador es quedi encara es cobra; si no cobra res, nosaltres tampoc.
+La comissió pel processament del pagament que es cobra per recollir el pagament del client es traspassa a l’hotel al cost, sense marge. Varia segons la targeta i el mètode de pagament del client, i l’import exacte apareix a la secció de Comptabilitat de cada reserva. Si una reserva es cancel·la o es retorna, qualsevol comissió que es quedi el processador encara es cobra; si no cobra res, nosaltres tampoc.
 :::
 
 :::note[Desemborsament de fons]
 Hi ha comissions associades a l’enviament de fons al teu compte. Això depèn del mètode de desemborsament que triïs. Actualment suportem:
 
-- **Transferència bancària** — El cost depèn del país on estàs ubicat, d’on s’envien els fons i de qualsevol conversió de moneda aplicada pel camí. La comissió de pagament i qualsevol cost de conversió els paga el receptor, al cost. Incloem un calculador de pressupost que pots utilitzar quan tinguis fons disponibles al teu compte.
+- **Transferència bancària** — El cost depèn del país on estàs, d’on s’envien els fons i de qualsevol conversió de moneda aplicada. La comissió de pagament i qualsevol cost de conversió els paga el receptor, al cost. Incloem un calculador de pressupost que pots utilitzar quan tinguis fons disponibles al teu compte.
 
 Si vols que suportem un altre mètode de pagament, envia’ns un correu electrònic.
 :::
 
 ### Model 2 — Agent de viatge com a comerciant registrat
 
-Aquest model només està disponible per a agències de viatge que tinguin llicència d’agència de viatges a la seva regió i que desitgin ser el comerciant registrat. Alguns dels nostres agents de viatge registrats volen ser responsables de gestionar el pagament i el desemborsament de fons als hotels. En aquest model, ells són responsables dels fons i disposen de les llicències necessàries per operar al seu país.
+Aquest model només està disponible per a agències de viatge que tinguin llicència d’agència de viatges a la seva regió i que desitgin ser el comerciant registrat. Alguns dels nostres agents de viatge registrats volen ser responsables de gestionar el pagament i el desemborsament de fons als hotels. En aquest model, ells són responsables dels fons i tenen les llicències necessàries per operar al seu país.
 
 #### Desglossament
 
 :::note[Comissió de plataforma]
-Wink cobra una comissió del 1,5% per reserva. Això cobreix el manteniment de la plataforma i ens permet oferir tot el que s’ha llistat més amunt.
+Wink cobra una comissió de plataforma de l’1,5% per reserva. Això cobreix el manteniment de la plataforma i ens permet oferir tot el que s’ha llistat més amunt.
 :::
 
 Amb aquest model, els agents de viatge només paguen la comissió de plataforma de Wink i Wink facturarà a l’agent de viatge mensualment.
@@ -74,13 +74,13 @@ Algunes funcions ens costen diners cada vegada que s’executen — IA generativ
 | Publicació social — vídeo generat per IA | 0 | 14,00 $ | Una publicació publicada |
 | Resposta IA a un comentari o DM | 5 | 0,05 $ | Una resposta |
 | Resposta de chatbot | 5 | 0,05 $ | Una resposta |
-| API de partner | 10.000 | 0,0001 $ | Un hotel-dia |
+| API de soci | 10.000 | 0,0001 $ | Una nit d’hotel |
 
 Els preus són en USD. La franquícia gratuïta s’atorga **per compte**, no per usuari, i es reinicia l’1 de cada mes (UTC).
 
 ### Com es preuen les publicacions
 
-Les publicacions es preuen segons el que contenen, perquè això és el que ens costa fer-les. Una imatge estàtica és barata; un vídeo no; qualsevol cosa que generem amb IA costa molt més que una foto que tu mateix hagis proporcionat.
+Les publicacions es preuen segons el que contenen, perquè això és el que ens costa fer-les. Una imatge fixa és barata; un vídeo no; qualsevol cosa que generem amb IA costa molt més que una foto que tu mateix hagis proporcionat.
 
 - **La franquícia gratuïta cobreix només publicacions d’imatges estàndard.** N’obtens una per compte i per mes. Les publicacions de vídeo i els mitjans generats per IA es facturen des de la primera publicació — no hi ha franquícia gratuïta en aquests nivells, així que una propietat que publiqui vídeo hauria d’esperar un càrrec el seu primer mes.
 - **El vídeo guanya.** Si una publicació conté qualsevol vídeo, tota la publicació es factura a la tarifa de vídeo. Una publicació que combina imatge i vídeo és una publicació de vídeo.
@@ -90,26 +90,26 @@ Les publicacions es preuen segons el que contenen, perquè això és el que ens 
 
 - Només una publicació **generada** publicada a una xarxa de tercers (Facebook, Instagram) és facturable. Una publicació que hagis escrit tu mateix és gratuïta, on sigui que es publiqui.
 - **Publicar a WinkLinks sempre és gratuït**, generat o no.
-- Se’t cobra **en publicar**, no per intent. Regenerar un esborrany fins que estiguis satisfet no afegeix a la factura — pagues una vegada per la publicació que realment envies. Els intents no són il·limitats, però: cada publicació permet unes 10 regeneracions per imatges i 3 per vídeo, que reflecteixen el que ens costa produir-les. Veureu quantes en queden mentre treballes.
-- A l’API de partner, un **hotel-dia** és un hotel preuat per una nit d’estada — *no* una trucada API. Una cerca que retorna 20 hotels per una estada de 3 nits són 60 hotel-dies d’una sola petició. Els endpoints de cerca i autocompleció són gratuïts i mai es mesuren.
+- Se’t cobra **en publicar**, no per intent. Regenerar un esborrany fins que estiguis satisfet no augmenta la factura — pagues una vegada per la publicació que realment envies. Els intents no són il·limitats, però: cada publicació permet unes 10 regeneracions per imatges i 3 per vídeo, que reflecteix el que ens costa produir-les. Veureu quantes en queden mentre treballes.
+- A l’API de soci, una **nit d’hotel** és un hotel preuat per una nit d’estada — *no* una trucada API. Una cerca que retorna 20 hotels per una estada de 3 nits són 60 nits d’hotel d’una sola petició. Les trucades de Contingut i Cerca (cerca de destinació i autocompletat) costen una unitat cadascuna, independentment del que retornin. Els punts d’accés de compte són gratuïts.
 
 ### Com activar-ho
 
 El pay-as-you-go està desactivat per defecte. Tothom obté la franquícia gratuïta sense fer res.
 
-Per superar la franquícia, el **propietari** d’un compte activa el pay-as-you-go i tria quins dels seus comptes es mesuren. L’ús de tots els comptes activats es consolida en una **única factura mensual**, que pots pagar automàticament amb targeta o rebre com a factura per pagar tu mateix.
+Per superar la franquícia, el **propietari** d’un compte activa el pay-as-you-go i tria quins dels seus comptes es mesuren. L’ús de tots els comptes activats es resumeix en una **factura mensual única**, que pots pagar automàticament amb targeta o rebre com a factura per pagar tu mateix.
 
 Un cop activat, el teu ús es mesura però **mai es limita** — no arribaràs a un límit de despesa amb nosaltres.
 
 :::note[Si no l’activeu]
-No es trenca res i no es cobra res. Simplement t’atures a la franquícia gratuïta d’aquell mes: les publicacions generades no es publicaran i les trucades a l’API de partner retornaran un `429` fins que es reiniciï la franquícia.
+No es trenca res i no es cobra res. Simplement t’atures a la franquícia gratuïta d’aquell mes: les publicacions generades no es publicaran i les trucades a l’API de soci retornaran un `429` fins que es reiniciï la franquícia.
 :::
 
 ### Estat de la facturació
 
 | Estat | Què significa |
 | -- | -- |
-| Bona situació | Tot funciona normalment. |
+| En bon estat | Tot funciona normalment. |
 | Endarrerit | Un pagament ha fallat i s’està intentant de nou. Les teves funcions continuen funcionant durant aquest període. |
 | Suspès | Una factura no s’ha pagat fins al final. Les accions facturables estan bloquejades fins que es resolgui; les funcions gratuïtes continuen com sempre. |
 

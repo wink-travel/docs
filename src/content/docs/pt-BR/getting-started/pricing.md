@@ -15,11 +15,11 @@ O Wink não tem assinaturas, nem assentos, nem taxas de configuração. A grande
 Estes não custam nada, para sempre, sem cota e sem medição:
 
 - O **motor de reservas** — no seu próprio site, na sua página WinkLinks ou em qualquer outro lugar onde você o incorpore.
-- **Gestão de propriedades** — conteúdo, fotos, tarifas, planos tarifários, disponibilidade, promoções e políticas.
+- **Gestão de propriedades** — conteúdo, fotos, tarifas, planos de tarifas, disponibilidade, promoções e políticas.
 - **Ferramentas de afiliados** — links compartilháveis, listas selecionadas, grades, mapas, cartões e widgets incorporáveis.
 - **Ferramentas para agentes de viagem** — busca, tarifas personalizadas e reservas em nome dos seus clientes.
 - **WinkLinks** — reivindique sua URL personalizada, construa sua página e publique nela quantas vezes quiser.
-- **Publicações sociais manuais** — qualquer coisa que você escreva, em qualquer rede conectada.
+- **Publicações manuais em redes sociais** — qualquer coisa que você escreva, em qualquer rede conectada.
 - **Análises, rankings, reivindicações, configurações** e gerenciamento de conta.
 - As **APIs do Consumidor e do Motor de Reservas**, além dos endpoints de busca e autocompletar.
 
@@ -45,14 +45,14 @@ A taxa de processamento do pagamento cobrada para coletar o pagamento do hósped
 :::note[Envio de fundos]
 Existem taxas associadas ao envio de fundos para sua conta. Isso depende do método de pagamento que você escolher. Atualmente suportamos:
 
-- **Transferência bancária** — O custo depende do país onde você está, de onde os fundos são enviados e de qualquer conversão de moeda aplicada no caminho. A taxa de pagamento e qualquer custo de conversão são pagos pelo recebedor, pelo custo. Incluímos uma calculadora de cotação que você pode usar quando tiver fundos disponíveis em sua conta.
+- **Transferência bancária** — O custo depende do país onde você está, de onde os fundos são enviados e de qualquer conversão de moeda aplicada no caminho. A taxa de pagamento e qualquer custo de conversão são pagos pelo recebedor, pelo custo. Incluímos uma calculadora de cotações que você pode usar quando tiver fundos disponíveis em sua conta.
 
 Se desejar que suportemos outro método de pagamento, envie-nos um e-mail.
 :::
 
 ### Modelo 2 — Agente de viagens como comerciante registrado
 
-Este modelo está disponível apenas para agências de viagens que possuem licença de agência de viagens em sua região e que desejam ser o comerciante registrado. Alguns de nossos agentes de viagens registrados querem ser responsáveis pelo manuseio do pagamento e pelo repasse dos fundos aos hotéis. Sob este modelo, eles são responsáveis pelos fundos e possuem as licenças necessárias para operar em seu país.
+Este modelo está disponível apenas para agências de viagens que possuem licença de agência de viagens em sua região e que desejam ser o comerciante registrado. Alguns de nossos agentes de viagens registrados querem ser responsáveis pelo manuseio do pagamento e pela distribuição dos fundos aos hotéis. Sob este modelo, eles são responsáveis pelos fundos e possuem as licenças necessárias para operar em seu país.
 
 #### Detalhamento
 
@@ -66,7 +66,7 @@ Usando este modelo, os agentes de viagens pagam apenas a taxa de plataforma do W
 
 Alguns recursos nos custam dinheiro toda vez que são usados — IA generativa, APIs sociais de terceiros e fornecimento de preços ao vivo em escala. Em vez de incluir esses custos em um plano mensal que você pode não usar, você paga apenas pelo que realmente consome, e somente depois de usar a cota mensal gratuita.
 
-| Recurso | Gratuito por mês | Depois | Unidade cobrada |
+| Recurso | Gratuito por mês | Depois | Unidade faturada |
 | -- | -- | -- | -- |
 | Publicação social — imagem | 1 | $1,50 | Uma publicação publicada |
 | Publicação social — imagem gerada por IA | 0 | $2,50 | Uma publicação publicada |
@@ -74,24 +74,24 @@ Alguns recursos nos custam dinheiro toda vez que são usados — IA generativa, 
 | Publicação social — vídeo gerado por IA | 0 | $14,00 | Uma publicação publicada |
 | Resposta de IA a um comentário ou DM | 5 | $0,05 | Uma resposta |
 | Resposta do chatbot | 5 | $0,05 | Uma resposta |
-| API Parceira | 10.000 | $0,0001 | Um hotel-dia |
+| API Parceira | 10.000 | $0,0001 | Uma diária de hotel |
 
-Os preços estão em USD. A cota gratuita é concedida **por conta**, não por usuário, e reinicia no dia 1º de cada mês (UTC).
+Os preços estão em USD. A cota gratuita é concedida **por conta**, não por usuário, e é reiniciada no dia 1º de cada mês (UTC).
 
 ### Como as publicações são precificadas
 
 As publicações são precificadas pelo que contêm, porque é isso que nos custa para produzir. Uma imagem estática é barata; um vídeo não; qualquer coisa gerada por IA custa materialmente mais do que uma foto que você forneceu.
 
-- **A cota gratuita cobre apenas publicações de imagem padrão.** Você recebe uma dessas por conta por mês. Publicações em vídeo e mídia gerada por IA são cobradas desde a primeira publicação — não há cota gratuita nesses níveis, então uma propriedade que publica vídeo deve esperar uma cobrança já no primeiro mês.
+- **A cota gratuita cobre apenas publicações de imagem padrão.** Você recebe uma por conta por mês. Publicações em vídeo e mídia gerada por IA são cobradas desde a primeira publicação — não há cota gratuita nessas categorias, então uma propriedade que publica vídeo deve esperar uma cobrança já no primeiro mês.
 - **O vídeo prevalece.** Se uma publicação contém qualquer vídeo, toda a publicação é cobrada na tarifa de vídeo. Uma publicação que mistura imagem e vídeo é considerada uma publicação de vídeo.
-- **A origem IA define o nível.** Mídia que você fornece — suas próprias fotos e vídeos, ou qualquer coisa da sua biblioteca de conteúdo Wink — é cobrada na tarifa padrão. Mídia que geramos para você é cobrada na tarifa de IA.
+- **A origem IA define a categoria.** Mídia que você fornece — suas próprias fotos e vídeos, ou qualquer coisa da sua biblioteca de conteúdo Wink — é cobrada na tarifa padrão. Mídia que geramos para você é cobrada na tarifa de IA.
 
 ### O que é e o que não é medido
 
 - Apenas uma publicação **gerada** e publicada em uma rede de terceiros (Facebook, Instagram) é cobrável. Uma publicação que você escreveu é gratuita, onde quer que seja publicada.
 - **Publicar no WinkLinks é sempre gratuito**, gerada ou não.
-- Você é cobrado **na publicação**, não por tentativa. Regenerar um rascunho até ficar satisfeito não aumenta sua conta — você paga uma vez pela publicação que realmente envia. Tentativas não são ilimitadas, porém: cada publicação permite cerca de 10 regenerações para imagens e 3 para vídeo, o que reflete o custo para nós de produzi-las. Você verá quantas restam enquanto trabalha.
-- Na API Parceira, um **hotel-dia** é um hotel precificado para uma noite de estadia — *não* uma chamada de API. Uma busca que retorna 20 hotéis para uma estadia de 3 noites é 60 hotel-dias em uma única requisição. Endpoints de busca e autocompletar são gratuitos e nunca medidos.
+- Você é cobrado **na publicação**, não por tentativa. Regenerar um rascunho até ficar satisfeito não aumenta sua conta — você paga uma vez pela publicação que realmente envia. As tentativas não são ilimitadas, porém: cada publicação permite cerca de 10 regenerações para imagens e 3 para vídeo, o que reflete o custo para nós produzi-las. Você verá quantas restam enquanto trabalha.
+- Na API Parceira, uma **diária de hotel** é um hotel precificado para uma noite de estadia — *não* uma chamada de API. Uma busca que retorna 20 hotéis para uma estadia de 3 noites é 60 diárias de hotel em uma única requisição. Chamadas de Conteúdo e Busca (busca de destino e autocompletar) custam uma unidade cada, independentemente do que retornam. Endpoints de conta são gratuitos.
 
 ### Como ativar
 
@@ -102,7 +102,7 @@ Para ultrapassar a cota, o **proprietário** da conta ativa o pay-as-you-go e es
 Uma vez ativado, seu uso é medido, mas **nunca limitado** — você não atingirá um limite de taxa por gastar dinheiro conosco.
 
 :::note[Se você não ativar]
-Nada quebra e nada é cobrado. Você simplesmente para na cota gratuita daquele mês: publicações geradas não serão publicadas e chamadas da API Parceira retornarão um `429` até a cota ser renovada.
+Nada para, nada é cobrado. Você simplesmente para na cota gratuita daquele mês: publicações geradas não serão publicadas e chamadas da API Parceira retornarão um `429` até a cota ser renovada.
 :::
 
 ### Status de faturamento
@@ -110,8 +110,8 @@ Nada quebra e nada é cobrado. Você simplesmente para na cota gratuita daquele 
 | Status | O que significa |
 | -- | -- |
 | Em dia | Tudo funciona normalmente. |
-| Em atraso | Um pagamento falhou e está sendo tentado novamente. Seus recursos continuam funcionando durante esse período. |
-| Suspenso | Uma fatura ficou sem pagamento até o final. Ações cobradas são bloqueadas até o pagamento; recursos gratuitos continuam normalmente. |
+| Atrasado | Um pagamento falhou e está sendo tentado novamente. Seus recursos continuam funcionando durante esse período. |
+| Suspenso | Uma fatura ficou sem pagamento até o final. Ações faturáveis são bloqueadas até o pagamento; recursos gratuitos continuam normalmente. |
 
 :::tip[Preços ao vivo]
 Os preços unitários e cotas gratuitas são sempre exibidos no Portal, diretamente do nosso sistema de faturamento, para que você possa consultá-los antes de se comprometer. Veja [Faturamento](/pt-BR/portal/plan) para ativar o pay-as-you-go, escolher suas contas e acompanhar o uso e faturas do mês. Veja [Social](/pt-BR/portal/social/what-is-social) para entender como o volume de publicações afeta seus gastos.

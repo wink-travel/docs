@@ -1,27 +1,25 @@
 ---
 title: Partner-API
-description: Priser, begrensninger og Service Level Agreement for den autentiserte Wink Partner-APIen.
+description: Prising, ratebegrensninger og tjenestenivåavtale for det autentiserte Wink Partner-API-et.
 sidebar:
   order: 0
 ---
 
-Wink **Partner-API** er den autentiserte, høyere gjennomstrømningsmåten for integratorer å hente bookbart reiseinventar — det samme tilbudet som driver våre innebygde widgets og offentlige browse-endepunkter, eksponert som et førsteklasses programmert grensesnitt. Der de gratis Web Components og offentlige browse-endepunktene er ment for lettvekts, menneskevendt innbygging, er Partner-APIen bygget for systemer som søker, priser og booker i stor skala. Tilgang er autentisert per integrator og faktureres per bruk, så du betaler kun for trafikken du faktisk sender.
+Wink **Partner-API** er den autentiserte, høyere gjennomstrømningsmåten for integratorer å hente bookbart reiseinventar — det samme tilbudet som driver våre innebygde widgets og offentlige søkeendepunkter, eksponert som et førsteklasses programmert grensesnitt. Der de gratis Web Components og offentlige søkeendepunktene er ment for lettvekts, menneskevendt innbygging, er Partner-API bygget for systemer som søker, priser og booker i stor skala. Tilgang er autentisert per integrator og faktureres per bruk, så du betaler kun for trafikken du faktisk sender.
 
 ## Planer og priser
 
-Én API-kall = én forespørsel. Målt bruk faktureres per 1 000 forespørsler.
+Bruk måles i **hotellnetter**: ett hotell priset for én natt opphold — *ikke* én API-forespørsel. Et søk som returnerer 20 hoteller for et 3-netters opphold er 60 hotellnetter fra én enkelt forespørsel. Content- og Lookup-kall (destinasjonssøk og autofullføring) er unntaket: hvert koster én enhet per kall, uansett hva det returnerer. Kontoendepunkter er gratis. [Priser](/no/pricing/) er sannhetskilden for satsene.
 
 | | Gratis | Betalt | Enterprise |
 |---|---|---|---|
-| **Pris** | 0 kr | Bruksbasert | Kontakt oss |
-| **Best for** | Evaluering og integrasjoner med lavt volum | Betal etter bruk ved stor gjennomstrømning | Tilpasset volum og forhandlede vilkår |
-| Forespørsler per minutt | 30 (60 burst) | Ubegrenset | Ubegrenset |
-| Forespørsler per måned | 10 000 | Ubegrenset | Ubegrenset |
+| **Pris** | 0 $ | Bruksbasert | Kontakt oss |
+| **Best for** | Evaluering og lavvolumsintegrasjoner | Betal-etter-bruk gjennomstrømning i stor skala | Tilpasset volum og forhandlede vilkår |
+| Enheter per måned | 10 000 | Ubegrenset | Ubegrenset |
 | API-responstid (P95) | — | Under 500 ms | Under 500 ms |
-| Pris per 1 000 forespørsler | Gratis | 10 kr | Tilpasset |
-| Look-to-book overforbruk (per 1 000 overskytende søk utover 5 000:1) | — | 20 kr | Tilpasset |
-| Rate-limit respons | 429 (pause / månedlig hard stopp) | Ingen | Ingen |
-| Service Level Agreement | — | ✓ | ✓ |
+| Pris per enhet (hotellnatt) | Gratis | 0,0001 $ | Tilpasset |
+| Respons ved månedlig kvote | 429 til 1. i neste måned (UTC) | Fakturert, ikke blokkert | Etter avtale |
+| Tjenestenivåavtale | — | ✓ | ✓ |
 | Prioritert support | — | ✓ | ✓ |
 | Dedikert onboarding | — | — | ✓ |
 
@@ -31,17 +29,17 @@ Wink **Partner-API** er den autentiserte, høyere gjennomstrømningsmåten for i
 
 To grensesnitt betjener bookbart inventar, og de samsvarer med de to nivåene ovenfor:
 
-- **Gratis — Consumer / Booking Engine API** (REST, `/api/public/**`): anonym, nettleser- og widget-vennlig. [Utforsk Booking Engine-referansen →](/no/api/booking-engine/)
+- **Gratis — Consumer / Booking Engine API** (REST, `/api/public/**`): anonym, nettleser- og widgetvendt. [Utforsk Booking Engine-referansen →](/no/api/booking-engine/)
 - **Betalt — Partner Integrator API** (**gRPC**, `wink.partner.v1`): autentisert, bruksmålt, bygget for server-til-server-integrasjon i stor skala. [Utforsk Integrator-referansen →](/no/partner-api/partner/)
 
 Partner Integrator API er gRPC, ikke REST. Du kaller det med en generert klient over HTTP/2 på
-`partner.wink.travel:443`, og sender med en bearer-token og kontoen du kaller for:
+`partner.wink.travel:443`, med en bearer-token og kontoen du kaller for:
 
 ```bash
 grpcurl -H "authorization: Bearer $WINK_TOKEN" partner.wink.travel:443 list
 ```
 
-Referansesiden ovenfor dokumenterer alle tjenester, meldinger og feilstater, og skjemaet er også
+Referansesiden ovenfor dokumenterer hver tjeneste, melding og feilstatus, og skjemaet er også
 tilgjengelig i kjøretid gjennom serverrefleksjon, så `grpcurl`, Postman og Insomnia oppdager det uten
 noe å laste ned.
 
@@ -52,92 +50,87 @@ Hvis du heller vil generere en klient på forhånd, er `.proto`-kildefilene publ
 
 ### Gratisnivå
 
-Gratisnivået er designet for at du skal kunne bygge, teste og kjøre moderat produksjonstrafikk uten kostnad.
+Gratisnivået er designet for å la deg bygge, teste og kjøre moderat produksjonstrafikk uten kostnad.
 
-- **Rate limit — 30 forespørsler per minutt, med en burst på 60 forespørsler.** Korte topper over den vedvarende hastigheten absorberes av burst-tillegget. Hvis du overskrider det, svarer APIen med **HTTP 429 (For mange forespørsler)** og pålegger en **5-minutters pause** før nøkkelen din kan betjene trafikk igjen. Gi deg og prøv på nytt etter pausevinduet i stedet for å overbelaste endepunktet.
-- **Månedlig kvote — 10 000 forespørsler per kalender måned.** Når du når den månedlige grensen, returnerer APIen **HTTP 429 for resten av måneden** — en hard stopp — sammen med en melding som inviterer deg til å abonnere på Betalt nivå for å fortsette. Telleren nullstilles ved starten av neste kalender måned.
+- **Ingen publisert per-minutt-grense.** Wink overvåker forespørselsrater og kan anvende rimelige bruksgrenser for å beskytte tjenesten. Hvis du mottar en **HTTP 429 (For mange forespørsler)**, vent det antall sekunder som står i `Retry-After`-headeren før du prøver igjen.
+- **Månedlig kvote — 10 000 enheter per kalendermåned.** Kvoten gis per konto og nullstilles den 1. i hver måned (UTC). Når du når den, vil en konto som ikke er påmeldt betalt fakturering motta **HTTP 429 til 1. i neste måned** — en hard stopp, med `Retry-After`-header og en melding som inviterer deg til å abonnere på Betalt nivå. En påmeldt konto fortsetter å fungere og faktureres for bruk utover kvoten.
 
-Gratisnivået inkluderer ikke Service Level Agreement eller prioritert support.
+Gratisnivået inkluderer ikke tjenestenivåavtale eller prioritert support.
 
 ### Betaltnivå
 
-Betaltnivået fjerner den månedlige grensen og rate-limit-pausene, og fakturerer deg kun for det du bruker.
+Betaltnivået fjerner den månedlige taket og fakturerer deg kun for det du bruker.
 
-- **Målt bruk — 10 kr per 1 000 forespørsler.** Det er ingen månedlig grense for forespørsler og ingen rate-limit-throttling ved normal bruk; du faktureres basert på faktisk volum.
-- **Look-to-book overforbruk — 20 kr per 1 000 overskytende søk.** For å holde tilbudet sunt måler vi forholdet mellom søk ("looks") og bekreftede bookinger. Du har rett til **5 000 søk per booking** før overforbruk gjelder. Overskytende søk beregnes som:
+- **Målt hotellnetter — 0,0001 $ per hotellnatt.** Det finnes ingen månedlig grense; du faktureres etter faktisk volum. Wink kan fortsatt anvende rimelige bruksgrenser for å beskytte tjenesten. Søke- og inventarkall faktureres per priset hotellnatt; Content- og Lookup-kall faktureres én enhet hver, så å samle forespørslene dine holder regningen nede.
 
-  `overskytende = max(0, søk − bookinger × 5 000)`
+Betaltnivået inkluderer tjenestenivåavtalen beskrevet nedenfor — en 99,9 % oppetidsforpliktelse og et P95-responstidsmål under 500 ms — og prioritert, alvorlighetsbasert support.
 
-  Overforbruk faktureres deretter med **20 kr per 1 000 overskytende søk**. Integrasjoner som konverterer godt, pådrar seg sjelden overforbruk; avgiften gjelder kun trafikk som søker langt mer enn den booker.
-
-Betaltnivået inkluderer Service Level Agreement beskrevet nedenfor — en oppetidsforpliktelse på 99,9 % og et P95-responstidsmål under 500 ms — samt prioritert, alvorlighetsbasert support.
-
-## Service Level Agreement
+## Tjenestenivåavtale
 
 _Ikrafttredelsesdato: 5. juli 2026 · Versjon 1.0_
 
-Denne Service Level Agreement (SLA) fastsetter tilgjengelighetsforpliktelsen, servicekreditter og supportmål som Wink ("Wink", "vi", "oss") gir til en kunde ("Kunde", "du") for den autentiserte Wink Partner-APIen (”Partner-API” eller ”Tjenesten”) på nivåer hvor en SLA er angitt å gjelde. Denne SLA er innlemmet i og regulert av avtalen mellom deg og Wink som gir deg tilgang til Partner-APIen (”Avtalen”), og gjelder så lenge du opprettholder et aktivt, betalt Partner-API-abonnement i god stand. Store bokstaver som ikke er definert her, har betydningen gitt i Avtalen.
+Denne tjenestenivåavtalen (SLA) fastsetter tilgjengelighetsforpliktelsen, tjenestekreditter og supportmål som Wink ("Wink", "vi", "oss") gir til en kunde ("Kunde", "du") for det autentiserte Wink Partner-API-et ("Partner-API" eller "Tjenesten") på nivåer hvor en SLA er angitt å gjelde. Denne SLA-en er innlemmet i og regulert av avtalen mellom deg og Wink som gir deg tilgang til Partner-API-et ("Avtalen"), og gjelder så lenge du opprettholder et aktivt, betalt Partner-API-abonnement i god stand. Store bokstaver som ikke er definert her, har betydningen gitt i Avtalen.
 
 ### 1. Definisjoner
 
-1. **"Oppetid"** betyr perioder hvor Partner-APIen er tilgjengelig for å motta og svare vellykket på korrekt formede, autentiserte forespørsler.
-2. **"Nedetid"** betyr enhver periode, målt i minutter, hvor Partner-APIen ikke svarer vellykket på korrekt formede, autentiserte forespørsler, unntatt perioder som faller innenfor unntakene i Seksjon 4. Isolerte feil som påvirker en ubetydelig andel av forespørsler regnes ikke som Nedetid alene.
-3. **"Månedlig oppetidsprosent"** betyr, for en gitt kalender måned, totalt antall minutter i måneden minus totalt antall Nedetidsminutter, delt på totalt antall minutter i måneden, uttrykt i prosent.
-4. **"Planlagt vedlikehold"** betyr planlagt vedlikehold av Tjenesten som Wink har gitt forhåndsvarsel om i henhold til Seksjon 4.
-5. **"Servicekreditt"** betyr en kreditt, beregnet som en prosentandel av gebyrene betalt eller forfalt til betaling av deg for Partner-APIen i den berørte kalender måneden, som brukes mot fremtidige Partner-API-gebyrer som eneste og eksklusive kompensasjon for manglende oppfyllelse av Oppetidsforpliktelsen.
-6. **"Responstid"** betyr tiden som går fra Wink mottar en korrekt formet, autentisert forespørsel ved Winks tjenestegrense til tidspunktet Wink begynner å returnere svaret, ekskludert nettverkstransport og eventuell klienttid utenfor Winks kontroll.
+1. **"Oppetid"** betyr perioder hvor Partner-API-et er tilgjengelig for å motta og svare vellykket på korrekt formede, autentiserte forespørsler.
+2. **"Nedetid"** betyr enhver periode, målt i minutter, hvor Partner-API-et ikke svarer vellykket på korrekt formede, autentiserte forespørsler, unntatt perioder som faller innenfor unntakene i seksjon 4. Isolerte feil som påvirker en uvesentlig andel av forespørsler er ikke i seg selv nedetid.
+3. **"Månedlig oppetidsprosent"** betyr, for en gitt kalendermåned, totalt antall minutter i måneden minus totalt antall nedetidsminutter, delt på totalt antall minutter i måneden, uttrykt i prosent.
+4. **"Planlagt vedlikehold"** betyr planlagt vedlikehold av Tjenesten som Wink har gitt forhåndsvarsel om i henhold til seksjon 4.
+5. **"Tjenestekreditt"** betyr en kreditt, beregnet som en prosentandel av gebyrene betalt eller betalbar av deg for Partner-API-et i den berørte kalendermåneden, som brukes mot fremtidige Partner-API-gebyrer som eneste og eksklusive erstatning for manglende oppfyllelse av oppetidsforpliktelsen.
+6. **"Responstid"** betyr tiden som går fra Wink mottar en korrekt formet, autentisert forespørsel ved Winks tjenestegrense til tidspunktet Wink begynner å returnere svaret, ekskludert nettverkstransitt og eventuell klienttid utenfor Winks kontroll.
 
 ### 2. Tilgjengelighets- og ytelsesforpliktelse
 
-Wink vil bruke kommersielt rimelige anstrengelser for å gjøre Partner-APIen tilgjengelig med en **månedlig oppetidsprosent på minst 99,9 %** i hver kalender måned i avtaleperioden (”Oppetidsforpliktelsen”). Oppetidsforpliktelsen måles ved Winks tjenestegrense og ekskluderer faktorer utenfor Winks rimelige kontroll, inkludert de som er beskrevet i Seksjon 4. Winks overvåkingssystemer er den autoritative kilden for måling av månedlig oppetidsprosent og responstid.
+Wink vil bruke kommersielt rimelige anstrengelser for å gjøre Partner-API-et tilgjengelig med en **månedlig oppetidsprosent på minst 99,9 %** i hver kalendermåned i avtaleperioden ("Oppetidsforpliktelsen"). Oppetidsforpliktelsen måles ved Winks tjenestegrense og ekskluderer faktorer utenfor Winks rimelige kontroll, inkludert de som er beskrevet i seksjon 4. Winks overvåkingssystemer er den autoritative kilden for måling av månedlig oppetidsprosent og responstid.
 
-Wink har videre som mål en **95. persentil (P95) responstid under 500 millisekunder** for vellykkede, korrekt formede, autentiserte forespørsler, målt ved Winks tjenestegrense over hver kalender måned (”Ytelsesmålet”). Ytelsesmålet ekskluderer faktorene beskrevet i Seksjon 4, forespørsler som returnerer applikasjonsnivåfeil forårsaket av selve forespørselen, og uvanlig store eller komplekse batch-forespørsler. Ytelsesmålet er et tjenestemål; Servicekredittene i Seksjon 3 gjelder for manglende oppfyllelse av **Oppetidsforpliktelsen** og er den eneste og eksklusive kompensasjon for tilgjengelighetsmangler.
+Wink har videre som mål en **95. persentil (P95) responstid under 500 millisekunder** for vellykkede, korrekt formede, autentiserte forespørsler, målt ved Winks tjenestegrense over hver kalendermåned ("Ytelsesmålet"). Ytelsesmålet ekskluderer faktorene beskrevet i seksjon 4, forespørsler som returnerer applikasjonsnivåfeil forårsaket av selve forespørselen, og uvanlig store eller komplekse batch-forespørsler. Ytelsesmålet er et tjenestemål; tjenestekredittene i seksjon 3 gjelder for manglende oppfyllelse av **Oppetidsforpliktelsen** og er eneste og eksklusive erstatning for tilgjengelighetsmangler.
 
-### 3. Servicekreditter
+### 3. Tjenestekreditter
 
-Hvis den månedlige oppetidsprosenten faller under Oppetidsforpliktelsen i en kalender måned, kan du være berettiget til en Servicekreditt beregnet som en prosentandel av Partner-API-gebyrene betalt eller forfalt til betaling av deg for den måneden, i henhold til følgende trappetrinn:
+Hvis den månedlige oppetidsprosenten faller under oppetidsforpliktelsen i en kalendermåned, kan du ha rett til en tjenestekreditt beregnet som en prosentandel av Partner-API-gebyrene betalt eller betalbar av deg for den måneden, i henhold til følgende trapp:
 
-| Månedlig oppetidsprosent | Servicekreditt |
+| Månedlig oppetidsprosent | Tjenestekreditt |
 |---|---|
 | Under 99,9 % men på eller over 99,0 % | 10 % |
 | Under 99,0 % men på eller over 95,0 % | 25 % |
 | Under 95,0 % | 50 % |
 
-1. **Krav om kreditt.** For å motta en Servicekreditt må du sende et skriftlig krav til Wink innen **tretti (30) dager** etter slutten av kalender måneden hvor mangelen oppstod. Kravet må inkludere datoer og klokkeslett for hver Nedetidshendelse du krever for, samt eventuelle støttende logger eller bevis som er rimelig tilgjengelig for deg. Krav sendt etter denne fristen er ikke kvalifisert.
-2. **Form for kreditt.** Godkjente Servicekreditter brukes mot fremtidige Partner-API-gebyrer og har ingen kontantverdi. De er ikke refusjoner og utbetales ikke med mindre det kreves av gjeldende lov.
-3. **Maksimal kreditt.** Totale Servicekreditter tildelt for en enkelt kalender måned vil ikke overstige 50 % av Partner-API-gebyrene betalt eller forfalt til betaling av deg for den måneden.
-4. **Eneste og eksklusive kompensasjon.** Servicekreditter er din **eneste og eksklusive kompensasjon** for enhver manglende oppfyllelse av Oppetidsforpliktelsen eller annen tilgjengelighetsmangel ved Partner-APIen.
+1. **Krav om kreditt.** For å motta en tjenestekreditt må du sende et skriftlig krav til Wink innen **tretti (30) dager** etter slutten av kalendermåneden hvor mangelen oppstod. Kravet må inkludere datoer og klokkeslett for hver nedetidshendelse du krever, samt eventuelle støttelogger eller bevis som er rimelig tilgjengelig for deg. Krav sendt etter denne fristen er ikke kvalifisert.
+2. **Form for kreditt.** Godkjente tjenestekreditter brukes mot fremtidige Partner-API-gebyrer og har ingen kontantverdi. De er ikke refusjoner og utbetales ikke med mindre det kreves av gjeldende lov.
+3. **Maksimal kreditt.** Totale tjenestekreditter tildelt for en enkelt kalendermåned vil ikke overstige 50 % av Partner-API-gebyrene betalt eller betalbar av deg for den måneden.
+4. **Eneste og eksklusive erstatning.** Tjenestekreditter er din **eneste og eksklusive erstatning** for enhver manglende oppfyllelse av oppetidsforpliktelsen eller annen tilgjengelighetsmangel ved Partner-API-et.
 
 ### 4. Unntak
 
-Oppetidsforpliktelsen og eventuelle Servicekreditter gjelder ikke, og Nedetid inkluderer ikke, noen utilgjengelighet, suspensjon, degradering eller ytelsesproblem som oppstår fra eller relaterer seg til:
+Oppetidsforpliktelsen og eventuelle tjenestekreditter gjelder ikke, og nedetid inkluderer ikke, noen utilgjengelighet, suspensjon, degradering eller ytelsesproblem som oppstår fra eller relaterer til:
 
 1. **Planlagt vedlikehold** som Wink har gitt forhåndsvarsel om, forutsatt at slikt varsel gis med rimelig varsel via en kanal Wink normalt bruker for å kommunisere med kunder;
-2. **Force majeure**-hendelser eller andre årsaker utenfor Winks rimelige kontroll, inkludert naturkatastrofer, myndighetstiltak, nettverks- eller strømbrudd, og denial-of-service eller andre ondsinnede angrep;
+2. **Force majeure**-hendelser eller andre årsaker utenfor Winks rimelige kontroll, inkludert naturkatastrofer, myndighetshandlinger, nettverks- eller strømbrudd, og tjenestenekt- eller andre ondsinnede angrep;
 3. problemer forårsaket av **dine** handlinger eller unnlatelser, ditt utstyr, programvare eller nettverk, eller av en hvilken som helst **tredjeparts** tjeneste, produkt eller leverandør som ikke er under Winks direkte kontroll;
-4. ditt **misbruk av Tjenesten** eller **brudd på Avtalen**, denne SLAen, akseptable bruksvilkår eller gjeldende ratebegrensninger, inkludert trafikk som Wink med rimelighet anser som overdreven, automatisert misbruk eller svindel; og
-5. enhver **suspensjon eller oppsigelse** av din tilgang som er korrekt iverksatt i henhold til Avtalen, inkludert suspensjon for manglende betaling.
+4. ditt **misbruk av tjenesten** eller **brudd på avtalen**, denne SLA-en, akseptable bruksvilkår eller gjeldende ratebegrensninger, inkludert trafikk som Wink med rimelighet anser som overdreven, automatisert misbruk eller svindel; og
+5. enhver **suspensjon eller oppsigelse** av din tilgang som er korrekt gjennomført i henhold til avtalen, inkludert suspensjon ved manglende betaling.
 
-### 5. Support- og responstidsmål
+### 5. Support og responstider
 
-Wink tilbyr support for Partner-APIen i ordinær arbeidstid, unntatt lokale helligdager. Wink vil bruke kommersielt rimelige anstrengelser for å bekrefte mottak av korrekt innsendte supporthenvendelser innen følgende mål for responstid, basert på alvorlighetsgrad du angir og Wink med rimelighet bekrefter:
+Wink tilbyr support for Partner-API-et i ordinær arbeidstid, unntatt lokale helligdager. Wink vil bruke kommersielt rimelige anstrengelser for å bekrefte mottak av korrekt innsendte supporthenvendelser innen følgende målresponstider, basert på alvorlighetsgrad du angir og Wink med rimelighet bekrefter:
 
 | Alvorlighetsgrad | Beskrivelse | Mål for første respons |
 |---|---|---|
-| **Sev 1 — Kritisk** | Partner-APIen er nede eller ubrukelig i produksjon uten omgåelse. | 4 timer |
-| **Sev 2 — Alvorlig** | Viktig funksjon er svekket eller degradert; omgåelse finnes. | 1 virkedag |
+| **Sev 1 — Kritisk** | Partner-API er nede eller ubrukelig i produksjon uten løsning. | 4 timer |
+| **Sev 2 — Alvorlig** | Viktig funksjon er svekket eller degradert; en løsning finnes. | 1 virkedag |
 | **Sev 3 — Mindre** | Generelle spørsmål, mindre problemer eller funksjonsforespørsler. | 2 virkedager |
 
-Mål for responstid beskriver når Wink sikter på å ta **første kontakt**; de er ikke garantier for løsningstid. Prioritert support og alvorlighetsbaserte mål gjelder på nivåer hvor de er oppgitt å være inkludert.
+Målresponstider beskriver når Wink sikter på å ta **første kontakt**; de er ikke garantier for løsningstid. Prioritert support og alvorlighetsbaserte mål gjelder på nivåer hvor de er angitt å være inkludert.
 
 ### 6. Data og sikkerhet
 
-Wink opprettholder kommersielt rimelige administrative, tekniske og organisatoriske tiltak designet for å beskytte konfidensialitet, integritet og tilgjengelighet av data behandlet gjennom Partner-APIen, og gjennomgår disse tiltakene periodisk. Winks behandling av personopplysninger reguleres av [Personvernerklæringen](/no/privacy) og eventuelle databehandlingsvilkår i Avtalen. Du er ansvarlig for å sikre dine egne API-legitimasjoner, for lovlig bruk av data du henter, og for å varsle Wink raskt om mistenkt kompromittering av legitimasjoner.
+Wink opprettholder kommersielt rimelige administrative, tekniske og organisatoriske tiltak designet for å beskytte konfidensialitet, integritet og tilgjengelighet av data behandlet gjennom Partner-API-et, og gjennomgår disse tiltakene periodisk. Winks behandling av personopplysninger reguleres av [Personvernerklæringen](/no/privacy) og eventuelle databehandlingsvilkår i avtalen. Du er ansvarlig for å sikre dine egne API-legitimasjoner, for lovlig bruk av data du henter, og for å varsle Wink raskt om mistenkt kompromittering av legitimasjoner.
 
 ### 7. Ansvarsbegrensning
 
-Servicekreditter er den **eneste og eksklusive kompensasjon** for utilgjengelighet eller manglende oppfyllelse av Oppetidsforpliktelsen, og gis i stedet for ethvert annet ansvar som oppstår fra slik svikt. Med mindre uttrykkelig angitt i denne SLAen, leveres Partner-APIen "som tilgjengelig". I den grad gjeldende lov tillater det, er Winks samlede ansvar knyttet til Tjenesten begrenset som angitt i Avtalen, og Wink er ikke ansvarlig for indirekte, tilfeldige, spesielle, følgeskader eller straffeskader, eller for tapt fortjeneste, inntekter, data eller goodwill, selv om det er advart om muligheten for slike skader.
+Tjenestekreditter er den **eneste og eksklusive erstatning** for utilgjengelighet eller manglende oppfyllelse av oppetidsforpliktelsen, og gis i stedet for ethvert annet ansvar som oppstår fra slik manglende oppfyllelse. Med mindre uttrykkelig angitt i denne SLA-en, leveres Partner-API-et "som tilgjengelig". I den grad gjeldende lov tillater det, er Winks samlede ansvar knyttet til tjenesten begrenset som angitt i avtalen, og Wink er ikke ansvarlig for indirekte, tilfeldige, spesielle, følgeskader eller straffeskader, eller for tapt fortjeneste, inntekter, data eller goodwill, selv om det er gitt beskjed om muligheten for slike skader.
 
 ### 8. Varighet, endringer og oppsigelse
 
-Denne SLAen gjelder så lenge du har et aktivt Partner-API-abonnement på et nivå hvor SLA er angitt å gjelde. Wink kan oppdatere denne SLAen fra tid til annen; vesentlige endringer vil bli kommunisert via en kanal Wink normalt bruker for å nå kunder, og fortsatt bruk av Partner-APIen etter at en oppdatering trer i kraft utgjør aksept av den oppdaterte SLAen. Denne SLAen opphører automatisk ved oppsigelse eller utløp av Avtalen eller ditt Partner-API-abonnement. Seksjoner som etter sin natur bør overleve oppsigelse — inkludert opptjente men utestående Servicekreditt-berettigelser, ansvarsbegrensning og definisjoner — overlever.
+Denne SLA-en gjelder så lenge du har et aktivt Partner-API-abonnement på et nivå hvor SLA er angitt å gjelde. Wink kan oppdatere denne SLA-en fra tid til annen; vesentlige endringer vil bli kommunisert via en kanal Wink normalt bruker for å nå kunder, og fortsatt bruk av Partner-API-et etter at en oppdatering trer i kraft utgjør aksept av den oppdaterte SLA-en. Denne SLA-en opphører automatisk ved oppsigelse eller utløp av avtalen eller ditt Partner-API-abonnement. Seksjoner som etter sin natur bør overleve oppsigelse — inkludert opptjent, men ikke krevd tjenestekredittberettigelse, ansvarsbegrensning og definisjoner — overlever.

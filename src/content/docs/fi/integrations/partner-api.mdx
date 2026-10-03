@@ -5,37 +5,35 @@ sidebar:
   order: 0
 ---
 
-Wink **Kumppani-API** on todennettu, suuremman läpimenon tarjoava tapa integraattoreille kysyä varattavissa olevaa matkavarastoa — sama tarjonta, joka pyörittää upotettavia widgettejämme ja julkisia selauspäätepisteitä, tarjottuna ensiluokkaisena ohjelmallisena rajapintana. Kun ilmaiset Web Components- ja julkiset selauspäätepisteet on tarkoitettu kevyisiin, ihmiskäyttäjille suunnattuihin upotuksiin, Kumppani-API on rakennettu järjestelmille, jotka hakevat, hinnoittelevat ja varaavat laajassa mittakaavassa. Käyttöoikeus on todennettu integraattorikohtaisesti ja laskutetaan käytön mukaan, joten maksat vain lähettämästäsi liikenteestä.
+Wink **Kumppani-API** on todennettu, suuremman läpimenon tarjoava tapa integraattoreille hakea varattavissa olevaa matkailuvarastoa — sama tarjonta, joka pyörittää upotettavia widgettejämme ja julkisia selauspäätepisteitä, tarjottuna ensiluokkaisena ohjelmallisena rajapintana. Kun ilmaiset Web Components- ja julkiset selauspäätepisteet on tarkoitettu kevyisiin, ihmiskäyttäjille suunnattuihin upotuksiin, Kumppani-API on rakennettu järjestelmille, jotka hakevat, hinnoittelevat ja varaavat laajassa mittakaavassa. Käyttö on todennettu integraattorikohtaisesti ja laskutetaan käytön mukaan, joten maksat vain lähettämästäsi liikenteestä.
 
 ## Suunnitelmat ja hinnoittelu
 
-Yksi API-kutsu = yksi pyyntö. Käytön mittaus laskutetaan 1 000 pyynnön erissä.
+Käyttö mitataan **hotelliyönä**: yksi hotelli hinnoiteltuna yhdeltä yöpymiseltä — *ei* yhtenä API-kutsuna. Haku, joka palauttaa 20 hotellia kolmen yön yöpymiselle, on 60 hotelliyötä yhdestä pyynnöstä. Sisältö- ja Haku (kohdehaun ja automaattisen täydennyksen) kutsut ovat poikkeus: ne maksavat yhden yksikön per kutsu, mitä tahansa ne palauttavatkin. Tilipäätepisteet ovat ilmaisia. [Hinnoittelu](/fi/pricing/) on totuuden lähde hinnalle.
 
 | | Ilmainen | Maksullinen | Yritys |
 |---|---|---|---|
 | **Hinta** | 0 $ | Käytön mukaan | Ota yhteyttä |
-| **Parhaiten sopii** | Arviointiin ja vähävolyymisiin integraatioihin | Käytön mukaan skaalautuva läpimeno | Räätälöity volyymi ja neuvotellut ehdot |
-| Pyynnöt minuutissa | 30 (60 piikki) | Rajoittamaton | Rajoittamaton |
-| Pyynnöt kuukaudessa | 10 000 | Rajoittamaton | Rajoittamaton |
+| **Parhaiten sopii** | Arviointiin & pienivolyymisiin integraatioihin | Maksu käytön mukaan suuressa mittakaavassa | Räätälöity volyymi & neuvotellut ehdot |
+| Yksiköt kuukaudessa | 10 000 | Rajoittamaton | Rajoittamaton |
 | API-vastausaika (P95) | — | Alle 500 ms | Alle 500 ms |
-| Hinta per 1 000 pyyntöä | Ilmainen | 1,00 $ | Räätälöity |
-| Look-to-book -ylitys (1 000 ylimääräistä hakua yli 5 000:1) | — | 2,00 $ | Räätälöity |
-| Käyttörajoitusvastaus | 429 (tauko / kuukausittainen pysäytys) | Ei | Ei |
+| Hinta per yksikkö (hotelliyö) | Ilmainen | 0,0001 $ | Räätälöity |
+| Vastaus kuukausittaiseen kiintiöön asti | 429 seuraavan kuukauden 1. päivään (UTC) asti | Laskutetaan, ei estä | Sopimuksen mukaan |
 | Palvelutasosopimus | — | ✓ | ✓ |
 | Prioriteettituki | — | ✓ | ✓ |
 | Omistettu käyttöönotto | — | — | ✓ |
 
-[Hanki API-avain](https://app.wink.travel/account/applications) · [Aloita käytön mukaan laskutus](https://app.wink.travel/account/applications) · [Ota yhteyttä myyntiin](/fi/demo/)
+[Hanki API-avain](https://app.wink.travel/account/applications) · [Aloita mittarilaskutus](https://app.wink.travel/account/applications) · [Ota yhteyttä myyntiin](/fi/demo/)
 
 ## API-viite
 
 Kaksi rajapintaa palvelee varattavaa varastoa, ja ne vastaavat yllä olevia kahta tasoa:
 
 - **Ilmainen — Kuluttaja / Varauskone-API** (REST, `/api/public/**`): anonyymi, selaimelle ja widgetille suunnattu. [Selaa Varauskoneen viitettä →](/fi/api/booking-engine/)
-- **Maksullinen — Kumppani-integraattori-API** (**gRPC**, `wink.partner.v1`): todennettu, käytön mukaan mitattu, rakennettu palvelin-palvelin-integraatioon laajassa mittakaavassa. [Selaa Integraattorin viitettä →](/fi/partner-api/partner/)
+- **Maksullinen — Kumppani-integraattori-API** (**gRPC**, `wink.partner.v1`): todennettu, käytön mukaan mitattu, rakennettu palvelin-palvelin-integraatioon suuressa mittakaavassa. [Selaa Integraattorin viitettä →](/fi/partner-api/partner/)
 
-Kumppani-integraattori-API on gRPC, ei REST. Kutsut sen generoimalla asiakkaalla HTTP/2:n yli osoitteessa
-`partner.wink.travel:443`, välittäen bearer-tokenin ja tilin, jota kutsut:
+Kumppani-integraattori-API on gRPC, ei REST. Kutsut tehdään generoitu client HTTP/2:n yli osoitteessa
+`partner.wink.travel:443`, välittäen bearer-token ja tilin, jota kutsut:
 
 ```bash
 grpcurl -H "authorization: Bearer $WINK_TOKEN" partner.wink.travel:443 list
@@ -44,7 +42,7 @@ grpcurl -H "authorization: Bearer $WINK_TOKEN" partner.wink.travel:443 list
 Yllä oleva viitesivu dokumentoi jokaisen palvelun, viestin ja virhetilan, ja skeema on myös
 saatavilla ajonaikaisesti palvelimen heijastuksen kautta, joten `grpcurl`, Postman ja Insomnia löytävät sen ilman latauksia.
 
-Jos haluat mieluummin generoida asiakkaan etukäteen, `.proto`-lähdetiedostot on julkaistu osoitteessa
+Jos haluat mieluummin generoida clientin etukäteen, `.proto`-lähdetiedostot on julkaistu osoitteessa
 [github.com/wink-travel/partner-api-proto](https://github.com/wink-travel/partner-api-proto).
 
 ## Kuinka käyttö ja rajat toimivat
@@ -53,21 +51,16 @@ Jos haluat mieluummin generoida asiakkaan etukäteen, `.proto`-lähdetiedostot o
 
 Ilmainen taso on suunniteltu antamaan mahdollisuus rakentaa, testata ja ajaa kohtuullista tuotantoliikennettä ilman kustannuksia.
 
-- **Käyttörajoitus — 30 pyyntöä minuutissa, 60 pyynnön piikki.** Lyhyet piikit yli jatkuvan rajan imeytyvät piikkimääräyksen kautta. Jos ylität sen, API vastaa **HTTP 429 (Liian monta pyyntöä)** -koodilla ja soveltaa **5 minuutin tauon**, ennen kuin avain jatkaa liikenteen palvelemista. Pidä tauko ja yritä uudelleen tauon jälkeen äläkä pommita päätepistettä.
-- **Kuukausikiintiö — 10 000 pyyntöä kalenterikuukaudessa.** Kun kuukausikattosi täyttyy, API palauttaa **HTTP 429 koko kuukauden loppuajaksi** — pysäytys — ja viestin, joka kehottaa tilaamaan Maksullisen tason jatkaaksesi. Laskuri nollautuu seuraavan kalenterikuukauden alussa.
+- **Ei julkistettua minuuttikohtaista rajaa.** Wink valvoo pyyntöjen määrää ja voi soveltaa kohtuullisen käytön rajoituksia palvelun suojaamiseksi. Jos saat **HTTP 429 (Liian monta pyyntöä)**, odota `Retry-After`-otsikossa ilmoitettu sekuntimäärä ennen uudelleenyritystä.
+- **Kuukausikiintiö — 10 000 yksikköä kalenterikuukaudessa.** Kiintiö myönnetään tilikohtaisesti ja nollautuu joka kuukauden 1. päivänä (UTC). Kun kiintiö ylittyy, tili, joka ei ole liittynyt maksulliseen laskutukseen, saa **HTTP 429 -vastauksen seuraavan kuukauden 1. päivään asti** — kovan eston, jossa on `Retry-After`-otsikko ja viesti, joka kehottaa tilaamaan Maksullisen tason. Liittynyt tili jatkaa toimintaansa ja laskutetaan kiintiön ylittävästä käytöstä.
 
 Ilmainen taso ei sisällä palvelutasosopimusta eikä prioriteettitukea.
 
 ### Maksullinen taso
 
-Maksullinen taso poistaa kuukausikaton ja käyttörajoitusten tauot, ja laskuttaa sinua vain käytön mukaan.
+Maksullinen taso poistaa kuukausittaisen katon ja laskuttaa vain käytöstä.
 
-- **Mitatut pyynnöt — 1,00 $ per 1 000 pyyntöä.** Kuukausittaista pyyntökattota ei ole eikä käyttörajoituksia normaalioloissa; laskutus perustuu todelliseen volyymiin.
-- **Look-to-book -ylitys — 2,00 $ per 1 000 ylimääräistä hakua.** Tarjonnan terveenä pitämiseksi mittaamme hakujen ("look") ja vahvistettujen varausten suhdetta. Oikeutesi on **5 000 hakua per varaus** ennen ylityksen soveltamista. Ylimääräiset haut lasketaan kaavalla:
-
-  `ylitys = max(0, haut − varaukset × 5 000)`
-
-  Ylitys laskutetaan **2,00 $ per 1 000 ylimääräistä hakua**. Hyvin konvertoivat integraatiot harvoin aiheuttavat ylityksiä; maksu koskee vain liikennettä, joka hakee paljon enemmän kuin varaa.
+- **Mittaustapa hotelliyöt — 0,0001 $ per hotelliyö.** Kuukausikattoraja puuttuu; laskutus perustuu todelliseen volyymiin. Wink voi silti soveltaa kohtuullisen käytön rajoituksia palvelun suojaamiseksi. Haku- ja varastokutsut laskutetaan hinnoitellun hotelliyön mukaan; Sisältö- ja Haku-kutsut laskutetaan yhden yksikön mukaan, joten pyyntöjen ryhmittely pitää laskun kurissa.
 
 Maksullinen taso sisältää alla kuvatun palvelutasosopimuksen — 99,9 % käyttöaikatakuun ja P95-vastausajan alle 500 ms — sekä prioriteetti- ja vakavuuspohjaisen tuen.
 
@@ -75,26 +68,26 @@ Maksullinen taso sisältää alla kuvatun palvelutasosopimuksen — 99,9 % käyt
 
 _Voimassa alkaen: 5. heinäkuuta 2026 · Versio 1.0_
 
-Tämä palvelutasosopimus ("SLA") määrittelee saatavuustakuun, palvelu hyvitykset ja tukitavoitteet, joita Wink ("Wink", "me", "meitä") tarjoaa asiakkaalle ("Asiakas", "sinä") todennetulle Wink Kumppani-API:lle ("Kumppani-API" tai "Palvelu") tasoilla, joilla SLA on voimassa. Tämä SLA sisältyy ja sitä säätelee sopimus sinun ja Wink:n välillä, jonka nojalla pääset Kumppani-API:in ("Sopimus"), ja se on voimassa niin kauan kuin ylläpidät aktiivista, maksettua Kumppani-API-tilausta hyvässä asemassa. Tässä määrittelemättömillä isoilla alkukirjaimilla varustetuilla termeillä on Sopimuksessa annetut merkitykset.
+Tämä Palvelutasosopimus ("SLA") määrittelee saatavuustakuun, palvelu hyvitykset ja tukitavoitteet, joita Wink ("Wink", "me", "meitä") tarjoaa asiakkaalle ("Asiakas", "sinä") todennetulle Wink Kumppani-API:lle ("Kumppani-API" tai "Palvelu") tasoilla, joilla SLA on voimassa. Tämä SLA sisältyy ja sitä säätelee sopimus sinun ja Winkin välillä, jonka nojalla pääset Kumppani-API:in ("Sopimus"), ja se on voimassa niin kauan kuin ylläpidät aktiivista, maksettua Kumppani-API-tilausta hyvässä asemassa. Tässä määrittelemättömillä isoilla kirjaimilla kirjoitetuilla termeillä on Sopimuksessa annetut merkitykset.
 
 ### 1. Määritelmät
 
-1. **"Käyttöaika"** tarkoittaa ajanjaksoja, jolloin Kumppani-API on käytettävissä vastaanottamaan ja onnistuneesti vastaamaan asianmukaisesti muodostettuihin, todennetuihin pyyntöihin.
-2. **"Käyttökatko"** tarkoittaa minuuteissa mitattua ajanjaksoa, jolloin Kumppani-API ei onnistu vastaamaan asianmukaisesti muodostettuihin, todennetuihin pyyntöihin, pois lukien kohdassa 4 määritellyt poikkeukset. Erilliset virheet, jotka vaikuttavat merkityksettömään osaan pyynnöistä, eivät yksinään ole Käyttökatko.
+1. **"Käyttöaika"** tarkoittaa ajanjaksoja, joiden aikana Kumppani-API on saatavilla vastaanottamaan ja onnistuneesti vastaamaan asianmukaisesti muodostettuihin, todennetuihin pyyntöihin.
+2. **"Käyttökatko"** tarkoittaa minuuteissa mitattua ajanjaksoa, jonka aikana Kumppani-API ei onnistu vastaamaan asianmukaisesti muodostettuihin, todennetuihin pyyntöihin, pois lukien kohdassa 4 määritellyt poikkeukset. Erilliset virheet, jotka vaikuttavat merkityksettömään osaan pyynnöistä, eivät yksinään ole Käyttökatko.
 3. **"Kuukausittainen käyttöaikaprosentti"** tarkoittaa tietyn kalenterikuukauden minuuttien kokonaismäärää vähennettynä Käyttökatko-minuuteilla, jaettuna kyseisen kuukauden minuuttien kokonaismäärällä, ilmaistuna prosentteina.
-4. **"Aikataulutettu huolto"** tarkoittaa suunniteltua Palvelun huoltoa, josta Wink on antanut ennakkoilmoituksen kohdassa 4 määritellyllä tavalla.
-5. **"Palveluhyvitys"** tarkoittaa hyvitystä, joka lasketaan prosenttiosuutena sinulta kyseiseltä kalenterikuukaudelta veloitetuista tai veloitettavista Kumppani-API-maksuista, ja joka hyvitetään tulevia Kumppani-API-maksuja vastaan ainoana ja yksinomaisena korvauksena käyttöaikatakuun rikkomisesta.
-6. **"Vastausaika"** tarkoittaa aikaa, joka kuluu Wink:n vastaanottaessa asianmukaisesti muodostetun, todennetun pyynnön Wink:n palvelurajapinnassa siihen pisteeseen, kun Wink alkaa palauttaa vastausta, pois lukien verkon siirtoaika ja asiakkaan puolen aika, joka ei ole Wink:n hallinnassa.
+4. **"Aikataulutettu huolto"** tarkoittaa suunniteltua Palvelun huoltoa, josta Wink on antanut ennakkoilmoituksen kohdan 4 mukaisesti.
+5. **"Palveluhyvitys"** tarkoittaa hyvitystä, joka lasketaan prosenttiosuutena sinulta kyseiseltä kalenterikuukaudelta maksetuista tai maksettavista Kumppani-API-maksuista, ja joka hyvitetään tulevia Kumppani-API-maksuja vastaan ainoana ja yksinomaisena korvauksena käyttöaikatakuun rikkomisesta.
+6. **"Vastausaika"** tarkoittaa aikaa, joka kuluu siitä, kun Wink vastaanottaa asianmukaisesti muodostetun, todennetun pyynnön Winkin palvelun rajapinnassa, siihen pisteeseen, kun Wink alkaa palauttaa vastausta, pois lukien verkon siirtoaika ja asiakkaan puolen aika, joka ei ole Winkin hallinnassa.
 
 ### 2. Saatavuus- ja suorituskykytakuu
 
-Wink käyttää kaupallisesti kohtuullisia ponnistuksia tehdäkseen Kumppani-API:n saatavaksi **vähintään 99,9 % kuukausittaisella käyttöaikaprosentilla** kunkin kalenterikuukauden aikana (”Käyttöaikatakuu”). Käyttöaikatakuu mitataan Wink:n palvelurajapinnassa ja se ei kata mitään Wink:n kohtuullisen hallinnan ulkopuolella olevia tekijöitä, mukaan lukien kohdassa 4 kuvatut. Wink:n valvontajärjestelmät ovat virallinen lähde Kuukausittaisen käyttöaikaprosentin ja Vastausajan mittaamiseen.
+Wink käyttää kaupallisesti kohtuullisia ponnistuksia tehdäkseen Kumppani-API:n saataville **vähintään 99,9 % kuukausittaisella käyttöaikaprosentilla** kunkin kalenterikuukauden aikana (”Käyttöaikatakuu”). Käyttöaikatakuu mitataan Winkin palvelun rajapinnassa ja se ei kata Winkin kohtuullisen hallinnan ulkopuolisia tekijöitä, mukaan lukien kohdan 4 kuvaukset. Winkin valvontajärjestelmät ovat virallinen lähde Kuukausittaisen käyttöaikaprosentin ja Vastausajan mittaamiseen.
 
-Wink asettaa lisäksi tavoitteen **95. prosenttipisteen (P95) vastausajalle alle 500 millisekuntia** onnistuneissa, asianmukaisesti muodostetuissa, todennetuissa pyynnöissä, mitattuna Wink:n palvelurajapinnassa kunkin kalenterikuukauden aikana (”Suorituskykytavoite”). Suorituskykytavoite ei kata kohdassa 4 kuvattuja tekijöitä, pyyntöjä, jotka palauttavat sovellustason virheitä pyynnön itsensä aiheuttamina, eikä epätavallisen suuria tai monimutkaisia eräpyyntöjä. Suorituskykytavoite on palvelutavoite; kohdassa 3 kuvatut Palveluhyvitykset koskevat vain Käyttöaikatakuun rikkomuksia ja ovat ainoa ja yksinomainen korvaus saatavuuden puutteista.
+Wink asettaa lisäksi tavoitteeksi **95. prosenttipisteen (P95) Vastausajan alle 500 millisekuntia** onnistuneille, asianmukaisesti muodostetuille, todennetuille pyynnöille, mitattuna Winkin palvelun rajapinnassa kunkin kalenterikuukauden aikana (”Suorituskykytavoite”). Suorituskykytavoite ei kata kohdassa 4 kuvattuja tekijöitä, pyyntöjä, jotka palauttavat sovellustason virheitä pyynnön itsensä aiheuttamina, eikä epätavallisen suuria tai monimutkaisia eräpyyntöjä. Suorituskykytavoite on palvelutavoite; kohdan 3 Palveluhyvitykset koskevat vain Käyttöaikatakuun rikkomuksia ja ovat ainoa ja yksinomainen korjauskeino saatavuuden puutteisiin.
 
 ### 3. Palveluhyvitykset
 
-Jos Kuukausittainen käyttöaikaprosentti alittaa Käyttöaikatakuun jossain kalenterikuukaudessa, voit olla oikeutettu Palveluhyvitykseen, joka lasketaan prosenttiosuutena kyseiseltä kuukaudelta maksamistasi tai maksettavista Kumppani-API-maksuista seuraavan taulukon mukaisesti:
+Jos Kuukausittainen käyttöaikaprosentti alittaa Käyttöaikatakuun jossain kalenterikuukaudessa, voit olla oikeutettu Palveluhyvitykseen, joka lasketaan prosenttiosuutena sinulta kyseiseltä kuukaudelta maksetuista tai maksettavista Kumppani-API-maksuista seuraavan taulukon mukaisesti:
 
 | Kuukausittainen käyttöaikaprosentti | Palveluhyvitys |
 |---|---|
@@ -102,41 +95,41 @@ Jos Kuukausittainen käyttöaikaprosentti alittaa Käyttöaikatakuun jossain kal
 | Alle 99,0 % mutta vähintään 95,0 % | 25 % |
 | Alle 95,0 % | 50 % |
 
-1. **Hyvityksen hakeminen.** Palveluhyvityksen saamiseksi sinun on toimitettava kirjallinen vaatimus Wink:lle **kolmenkymmenen (30) päivän kuluessa** kalenterikuukauden päättymisestä, jolloin puute tapahtui. Vaatimuksessa on ilmoitettava jokaisen Käyttökatkotapauksen päivämäärät ja ajat sekä mahdolliset kohtuudella saatavilla olevat tukilokit tai todisteet. Myöhästyneet vaatimukset eivät ole kelvollisia.
-2. **Hyvityksen muoto.** Hyväksytyt Palveluhyvitykset hyvitetään tulevia Kumppani-API-maksuja vastaan, eikä niillä ole käteisarvoa. Ne eivät ole palautuksia, eikä niitä makseta käteisenä, ellei sovellettava laki sitä vaadi.
-3. **Maksimihyvitys.** Yhden kalenterikuukauden aikana myönnettävien Palveluhyvitysten kokonaismäärä ei ylitä 50 % kyseiseltä kuukaudelta maksetuista tai maksettavista Kumppani-API-maksuista.
-4. **Ainoa ja yksinomainen korvaus.** Palveluhyvitykset ovat ainoa ja yksinomainen korvaus Wink:n minkä tahansa Käyttöaikatakuun rikkomuksen tai muun Kumppani-API:n saatavuuden puutteen johdosta.
+1. **Hyvityksen hakeminen.** Palveluhyvityksen saamiseksi sinun on toimitettava kirjallinen vaatimus Winkille **kolmenkymmenen (30) päivän kuluessa** kalenterikuukauden päättymisestä, jolloin puute tapahtui. Vaatimuksessa on ilmoitettava jokaisen Käyttökatkotapauksen päivämäärät ja ajat sekä kaikki kohtuudella saatavilla olevat tukilokit tai todisteet. Määräajan jälkeen jätetyt vaatimukset eivät ole kelvollisia.
+2. **Hyvityksen muoto.** Hyväksytyt Palveluhyvitykset hyvitetään tulevia Kumppani-API-maksuja vastaan, eikä niillä ole käteisarvoa. Ne eivät ole palautuksia, eikä niitä makseta ulos, paitsi sovellettavan lain vaatiessa.
+3. **Maksimihyvitys.** Yhden kalenterikuukauden aikana myönnettyjen Palveluhyvitysten kokonaismäärä ei ylitä 50 % kyseiseltä kuukaudelta maksetuista tai maksettavista Kumppani-API-maksuista.
+4. **Ainoa ja yksinomainen korjauskeino.** Palveluhyvitykset ovat sinun **ainoat ja yksinomaiset korjauskeinot** Winkin Kumppani-API:n Käyttöaikatakuun tai muun saatavuuden puutteen rikkomisesta.
 
 ### 4. Poikkeukset
 
-Käyttöaikatakuu ja siitä johtuvat Palveluhyvitykset eivät koske, eikä Käyttökatko sisällä, mitään saatavuuden puutetta, keskeytystä, heikkenemistä tai suorituskykyongelmaa, joka johtuu tai liittyy:
+Käyttöaikatakuu ja siitä mahdollisesti seuraavat Palveluhyvitykset eivät koske, eikä Käyttökatko sisällä, mitään seuraavista saatavuuden puutteista, keskeytyksistä, heikentymisistä tai suorituskykyongelmista, jotka johtuvat tai liittyvät:
 
-1. **Aikataulutettuun huoltoon**, josta Wink on antanut ennakkoilmoituksen kohtuullisessa ajassa etukäteen kanavalla, jota Wink normaalisti käyttää asiakkaille viestimiseen;
-2. **Force majeure** -tapahtumiin tai muihin Wink:n kohtuullisen hallinnan ulkopuolella oleviin syihin, mukaan lukien luonnonkatastrofit, hallituksen toimet, verkko- tai sähkökatkokset sekä palvelunestohyökkäykset tai muut haitalliset hyökkäykset;
-3. ongelmiin, jotka johtuvat **sinun** toimistasi tai laiminlyönneistäsi, laitteistostasi, ohjelmistostasi tai verkostasi, tai mistä tahansa **kolmannen osapuolen** palvelusta, tuotteesta tai toimittajasta, joka ei ole Wink:n suorassa hallinnassa;
-4. palvelun **väärinkäytöstä** tai **Sopimuksen, tämän SLA:n, hyväksyttävän käytön ehtojen tai sovellettavien käyttörajoitusten rikkomisesta**, mukaan lukien liikenne, jonka Wink kohtuudella katsoo liialliseksi, automatisoitu väärinkäyttö tai petollinen toiminta; sekä
-5. minkä tahansa **pääsyn keskeytyksen tai lopettamisen**, joka on asianmukaisesti toteutettu Sopimuksen mukaisesti, mukaan lukien keskeytys maksamattomuuden vuoksi.
+1. **Aikataulutettu huolto**, josta Wink on antanut ennakkoilmoituksen, edellyttäen, että ilmoitus on annettu kohtuullisessa ajassa etukäteen kanavassa, jota Wink normaalisti käyttää asiakkaille viestimiseen;
+2. **Force majeure** -tapahtumat tai muut Winkin kohtuullisen hallinnan ulkopuoliset syyt, mukaan lukien luonnonkatastrofit, hallituksen toimet, verkko- tai sähkökatkokset sekä palvelunestohyökkäykset tai muut haitalliset hyökkäykset;
+3. ongelmat, jotka johtuvat **sinun** toimistasi tai laiminlyönneistäsi, laitteistostasi, ohjelmistostasi tai verkostasi, tai mistä tahansa **kolmannen osapuolen** palvelusta, tuotteesta tai toimittajasta, joka ei ole Winkin suorassa hallinnassa;
+4. **Palvelun väärinkäyttösi** tai **Sopimuksen, tämän SLA:n, hyväksyttävän käytön ehtojen tai sovellettavien käyttörajoitusten rikkominen**, mukaan lukien liikenne, jonka Wink kohtuudella katsoo liialliseksi, automatisoitu väärinkäyttö tai petollinen toiminta; sekä
+5. mikä tahansa **pääsykielto tai tilin sulkeminen**, joka on asianmukaisesti toteutettu Sopimuksen mukaisesti, mukaan lukien maksamattomuuden vuoksi tapahtuva keskeytys.
 
 ### 5. Tuki ja vastaustavoitteet
 
-Wink tarjoaa tukea Kumppani-API:lle normaalina työaikana, pois lukien paikalliset pyhäpäivät. Wink käyttää kaupallisesti kohtuullisia ponnistuksia vastatakseen asianmukaisesti toimitettuihin tukipyyntöihin seuraavien vakavuuteen perustuvien tavoiteaikojen puitteissa, jotka perustuvat sinun määrittämääsi ja Wink:n kohtuudella vahvistamaan vakavuuteen:
+Wink tarjoaa tukea Kumppani-API:lle normaalina työaikana, pois lukien paikalliset pyhäpäivät. Wink käyttää kaupallisesti kohtuullisia ponnistuksia vastatakseen asianmukaisesti jätettyihin tukipyyntöihin seuraavien vakavuustasojen mukaisissa tavoiteajoissa, jotka perustuvat sinun määrittämääsi ja Winkin kohtuudella vahvistamaan vakavuuteen:
 
-| Vakavuus | Kuvaus | Tavoite ensimmäiselle vastaukselle |
+| Vakavuus | Kuvaus | Tavoite alkuperäiselle vastaukselle |
 |---|---|---|
-| **Sev 1 — Kriittinen** | Kumppani-API on alhaalla tai käyttökelvoton tuotannossa ilman kiertotietä. | 4 tuntia |
-| **Sev 2 — Merkittävä** | Merkittävä ominaisuuden heikkeneminen tai vika; kiertotie on olemassa. | 1 työpäivä |
-| **Sev 3 — Pieni** | Yleiset kysymykset, pienet ongelmat tai ominaisuuspyynnöt. | 2 työpäivää |
+| **Vakavuus 1 — Kriittinen** | Kumppani-API on alhaalla tai käyttökelvoton tuotannossa ilman kiertotietä. | 4 tuntia |
+| **Vakavuus 2 — Merkittävä** | Merkittävä ominaisuuden heikentyminen tai vika; kiertotie on olemassa. | 1 työpäivä |
+| **Vakavuus 3 — Pieni** | Yleiset kysymykset, pienet ongelmat tai ominaisuuspyynnöt. | 2 työpäivää |
 
-Tavoiteajat kuvaavat, milloin Wink pyrkii ottamaan **ensimmäisen yhteyden**; ne eivät ole takuita ongelman ratkaisusta. Prioriteettituki ja vakavuuteen perustuvat tavoitteet koskevat tasoja, joilla ne on ilmoitettu sisältyviksi.
+Tavoiteajat kuvaavat, milloin Wink pyrkii ottamaan **ensimmäisen yhteyden**; ne eivät ole takuita ongelman ratkaisusta. Prioriteettituki ja vakavuuspohjaiset tavoitteet koskevat tasoja, joilla ne on ilmoitettu sisältyviksi.
 
 ### 6. Tiedot ja turvallisuus
 
-Wink ylläpitää kaupallisesti kohtuullisia hallinnollisia, teknisiä ja organisatorisia toimenpiteitä, jotka on suunniteltu suojaamaan Kumppani-API:n kautta käsiteltyjen tietojen luottamuksellisuutta, eheyttä ja saatavuutta, ja tarkistaa nämä toimenpiteet säännöllisesti. Wink:n henkilötietojen käsittelyä säätelee [Tietosuojakäytäntö](/fi/privacy) ja Sopimuksen mahdolliset tietojenkäsittelyehdot. Sinä olet vastuussa omien API-tunnustesi suojaamisesta, hakemiesi tietojen laillisesta käytöstä ja Wink:n viipymättömästä ilmoittamisesta mahdollisista tunnusten väärinkäytösepäilyistä.
+Wink ylläpitää kaupallisesti kohtuullisia hallinnollisia, teknisiä ja organisatorisia toimenpiteitä, jotka on suunniteltu suojaamaan Kumppani-API:n kautta käsiteltyjen tietojen luottamuksellisuutta, eheyttä ja saatavuutta, ja tarkistaa nämä toimenpiteet säännöllisesti. Winkin henkilötietojen käsittelyä säätelee [Tietosuojakäytäntö](/fi/privacy) ja Sopimuksen mahdolliset tietojenkäsittelyehdot. Sinä olet vastuussa omien API-tunnustesi suojaamisesta, hakemiesi tietojen laillisesta käytöstä ja siitä, että ilmoitat Winkille viipymättä mahdollisesta tunnusten väärinkäytöstä.
 
 ### 7. Vastuunrajoitus
 
-Palveluhyvitykset ovat ainoa ja yksinomainen korvaus mistä tahansa saatavuuden puutteesta tai Käyttöaikatakuun rikkomisesta, ja ne korvaavat kaiken muun tästä johtuvan vastuun. Ellei tässä SLA:ssa toisin mainita, Kumppani-API tarjotaan "sellaisena kuin se on". Sovellettavan lain sallimassa laajuudessa Wink:n kokonaisvastuu Palvelusta on rajoitettu Sopimuksessa määritellyllä tavalla, eikä Wink ole vastuussa välillisistä, satunnaisista, erityisistä, seurannaisvahingoista tai rangaistusluonteisista vahingoista, eikä menetetyistä voitoista, tuloista, tiedoista tai liikearvosta, vaikka siitä olisi varoitettu.
+Palveluhyvitykset ovat **ainoat ja yksinomaiset korjauskeinot** Kumppani-API:n saatavuuden puutteesta tai Käyttöaikatakuun rikkomisesta, ja ne annetaan korvauksena muista tällaisista rikkomuksista aiheutuvista vastuista. Lukuun ottamatta tässä SLA:ssa nimenomaisesti mainittuja asioita, Kumppani-API tarjotaan "sellaisena kuin se on". Sovellettavan lain sallimassa laajuudessa Winkin kokonaisvastuu Palvelusta on rajoitettu Sopimuksessa määritellyllä tavalla, eikä Wink ole vastuussa välillisistä, satunnaisista, erityisistä, seurannaisista tai rangaistuksellisista vahingoista, tai menetetyistä voitoista, tuloista, tiedoista tai liikearvosta, vaikka olisi varoitettu tällaisten vahinkojen mahdollisuudesta.
 
 ### 8. Kesto, muutokset ja päättäminen
 
-Tämä SLA on voimassa niin kauan kuin sinulla on aktiivinen Kumppani-API-tilaus tasolla, jolla SLA on voimassa. Wink voi päivittää tätä SLA:ta aika ajoin; merkittävät muutokset tiedotetaan kanavalla, jota Wink normaalisti käyttää asiakkaille viestimiseen, ja Kumppani-API:n jatkokäyttö päivityksen voimaantulon jälkeen tarkoittaa päivitetyn SLA:n hyväksymistä. Tämä SLA päättyy automaattisesti Sopimuksen tai Kumppani-API-tilauksesi päättyessä tai vanhentuessa. Luonnostaan päättämisen jälkeen voimassa pysyvät kohdat — mukaan lukien kertyneet mutta vaatimattomat Palveluhyvitysoikeudet, vastuunrajoitus ja määritelmät — pysyvät voimassa.
+Tämä SLA on voimassa niin kauan kuin sinulla on aktiivinen Kumppani-API-tilaus tasolla, jolla SLA on voimassa. Wink voi päivittää tätä SLA:ta aika ajoin; merkittävät muutokset tiedotetaan kanavassa, jota Wink normaalisti käyttää asiakkaille viestimiseen, ja Kumppani-API:n jatkokäyttö päivityksen voimaantulon jälkeen tarkoittaa päivitetyn SLA:n hyväksymistä. Tämä SLA päättyy automaattisesti Sopimuksen tai Kumppani-API-tilauksesi päättyessä tai vanhentuessa. Luonnostaan päättymisen jälkeen voimassa pysyvät kohdat — mukaan lukien kertyneet mutta vaatimattomat Palveluhyvitysoikeudet, vastuunrajoitus ja määritelmät — pysyvät voimassa.

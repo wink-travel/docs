@@ -39,7 +39,7 @@ import IconArrowRight from "@tabler/icons/outline/arrow-right.svg";
 <section class="mx-auto w-full max-w-3xl px-4">
   <div class="rounded-2xl border-l-4 border-primary bg-primary/[0.04] p-6">
     <p class="text-xs font-semibold uppercase tracking-wider text-primary">La respuesta corta</p>
-    <p class="mt-3 text-pretty text-foreground/90">Necesitas cuatro cosas: <strong>tarifas y disponibilidad en tiempo real</strong>, <strong>creación de reserva</strong>, <strong>pago</strong> y <strong>confirmación más webhooks</strong>. Las APIs de solo lectura terminan en la primera. En Wink, las APIs Consumer y Booking Engine son gratuitas, la creación de reservas se realiza vía REST con OAuth2, hay más de 64 eventos webhook incluyendo <code>booking.created</code>, y el pago se cobra para el hotel — que sigue siendo el comerciante registrado — por lo que no tienes que convertirte en uno. Un servidor MCP expone las mismas capacidades para agentes de IA, y los componentes web cubren los casos donde quieres un camino de reserva sin construir una interfaz de usuario.</p>
+    <p class="mt-3 text-pretty text-foreground/90">Necesitas cuatro cosas: <strong>tarifas y disponibilidad en tiempo real</strong>, <strong>creación de reserva</strong>, <strong>pago</strong> y <strong>confirmación más webhooks</strong>. Las APIs de solo lectura de contenido se detienen en la primera. En Wink, las APIs Consumer y Booking Engine son gratuitas, la creación de reservas se realiza vía REST con OAuth2, hay más de 64 eventos webhook incluyendo <code>booking.created</code>, y el pago se cobra para el hotel — que sigue siendo el comerciante registrado — por lo que no tienes que convertirte en uno. Un servidor MCP expone las mismas capacidades para agentes de IA, y los componentes web cubren los casos donde quieres un camino de reserva sin construir una interfaz de usuario.</p>
   </div>
 </section>
 
@@ -50,10 +50,10 @@ import IconArrowRight from "@tabler/icons/outline/arrow-right.svg";
 
 | Capacidad | Qué significa | Por qué los productos se estancan sin ella |
 |---|---|---|
-| Tarifas y disponibilidad en tiempo real | Precios actuales y lo que realmente se puede reservar, por rango de fechas | Las tarifas en caché fallan en la confirmación y erosionan la confianza |
+| Tarifas y disponibilidad en tiempo real | Precios actuales y lo que realmente es reservable, por rango de fechas | Las tarifas en caché fallan en la confirmación y erosionan la confianza |
 | Creación de reserva | Crear una reserva real que el hotel recibe | Sin esto eres un enlace de referencia, no un producto |
 | Pago | Recibir dinero como parte de la reserva | Un traspaso a otro sitio es donde muere la conversión |
-| Confirmación y webhooks | Informar al huésped, hotel y tu sistema qué ocurrió | Soportar carga y evitar brechas en la conciliación |
+| Confirmación y webhooks | Informar al huésped, hotel y tu sistema qué ocurrió | Soporta la carga y evita brechas en la conciliación |
 
 La mayoría de las "APIs de hotel" que un desarrollador encuentra cubren la primera y a veces la segunda. La transacción es la parte difícil, y es la que decide si tienes un producto.
 
@@ -61,7 +61,7 @@ La mayoría de las "APIs de hotel" que un desarrollador encuentra cubren la prim
 
 Esta pregunta define todo lo que viene después. La oferta revendida a través de una cadena llega con un margen dentro de la tarifa, disponibilidad más obsoleta y sin ruta de regreso al hotel para una consulta sobre la reserva. La oferta que viene directamente del hotel lleva la tarifa propia del hotel, disponibilidad en tiempo real y un hotel que sabe que la reserva existe.
 
-Para cualquier cosa donde el viajero compare con el sitio web del hotel — que es la mayoría — la oferta controlada por el hotel evita el momento incómodo cuando tu precio es peor.
+Para cualquier cosa donde el viajero compare con el sitio web propio del hotel — que es la mayoría — la oferta controlada por el hotel evita el momento incómodo cuando tu precio es peor.
 
 ## Quién es el comerciante registrado
 
@@ -71,7 +71,7 @@ En Wink el **hotel sigue siendo el comerciante registrado** y el pago se cobra p
 
 ## Tres niveles de integración
 
-1. **Componentes web.** Inserta una búsqueda reservable, lista de habitaciones o checkout en una página existente. Sin trabajo backend; menos control sobre el diseño.
+1. **Componentes web.** Inserta una búsqueda reservable, lista de habitaciones o pago en una página existente. Sin trabajo backend; menos control sobre el diseño.
 2. **API REST.** Control total sobre búsqueda, tarifas, creación de reserva y confirmación, autenticado con OAuth2. Úsalo cuando el flujo de reserva sea parte de la experiencia propia de tu producto.
 3. **Servidor MCP.** Las mismas capacidades expuestas para agentes de IA, para que un asistente pueda buscar, cotizar y completar una reserva en lugar de derivar al usuario a un sitio web.
 
@@ -81,7 +81,7 @@ Los tres no son excluyentes — un producto comúnmente usa componentes para una
 
 - **Buscar y cotizar para una ciudad y un rango de fechas.** Obtén tarifas reales antes de diseñar nada.
 - **Crear una reserva de prueba completa**, incluyendo pago y confirmación.
-- **Suscribirse a `booking.created` y a los eventos de cancelación** antes de construir cualquier UI encima.
+- **Suscribirse a `booking.created` y a los eventos de cancelación** antes de construir cualquier interfaz encima.
 - **Decidir tu modelo de atribución temprano** — el contexto de la fuente debe viajar con la reserva, o tu reporte será conjetura después.
 - **Manejar los casos de fallo**: disponibilidad perdida entre cotización y reserva, pago rechazado, reembolsos parciales.
 
@@ -127,7 +127,7 @@ Las **APIs Consumer y Booking Engine son gratuitas**. La **API Partner** incluye
     { title: "¿Tengo que convertirme en comerciante registrado?", content: "No. El hotel sigue siendo el comerciante registrado y el pago se cobra para el hotel. Existen acuerdos de comerciante registrado para integraciones API que realmente necesitan cobrar el pago, con sus propios requisitos de licencia." },
     { title: "¿Pueden los agentes de IA reservar con las mismas capacidades?", content: "Sí. Un servidor MCP expone búsqueda, precios y reserva a agentes, para que un asistente pueda completar una reserva en lugar de derivar al usuario a un sitio web." },
     { title: "¿Cómo me pagan como integrador?", content: "Se aplica una comisión predeterminada del 10% en reservas que tu producto generó, calculada después de la comisión de plataforma del hotel y el procesamiento de tarjeta, con atribución que dura 6 meses por clic." },
-    { title: "¿Necesito construir una interfaz de usuario?", content: "No necesariamente. Los componentes web proporcionan búsqueda reservable, listas de habitaciones y checkout que se insertan en una página existente; la API REST está disponible cuando el flujo debe ser tuyo." },
+    { title: "¿Necesito construir una interfaz de usuario?", content: "No necesariamente. Los componentes web proporcionan búsqueda reservable, listas de habitaciones y pago que se insertan en una página existente; la API REST está disponible cuando el flujo debe ser tuyo." },
   ]}
 />
 
@@ -135,7 +135,7 @@ Las **APIs Consumer y Booking Engine son gratuitas**. La **API Partner** incluye
 <section class="w-full border-y border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white">
   <div class="mx-auto w-full max-w-7xl px-4 py-24 text-center">
     <h2 class="mkt-h2 font-heading">Construye un producto que realmente pueda reservar.</h2>
-    <p class="mx-auto mt-4 max-w-2xl text-pretty text-white/70 @lg:text-lg">Oferta hotelera en vivo, creación de reservas vía REST, webhooks, un servidor MCP para agentes y pagos que no tienes que gestionar.</p>
+    <p class="mx-auto mt-4 max-w-2xl text-pretty text-white/70 @lg:text-lg">Oferta hotelera en vivo, creación de reservas vía REST, webhooks, un servidor MCP para agentes y pagos que no tienes que poseer.</p>
     <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
       <a href="/api/overview/" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-[#ff6b35] px-8 text-base font-semibold text-white hover:bg-[#e85b29] sm:w-auto">Comenzar</a>
       <a href="/builders/" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-white px-8 text-base font-semibold text-[#1f0a40] hover:bg-white/90 sm:w-auto">Para Constructores</a>

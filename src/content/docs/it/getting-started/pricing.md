@@ -5,21 +5,21 @@ sidebar:
   order: 4
 ---
 
-Wink non prevede abbonamenti, posti a sedere né costi di configurazione. La stragrande maggioranza della piattaforma è gratuita, e ci sono solo due cose per cui pagherai:
+Wink non prevede abbonamenti, posti a sedere o costi di configurazione. La stragrande maggioranza della piattaforma è gratuita, e ci sono solo due cose per cui pagherai:
 
 1. **Una commissione di piattaforma per prenotazione, più il costo di elaborazione della carta** — solo quando viene effettuata una prenotazione.
 2. **Tariffe pay-as-you-go** — su alcune funzionalità premium che ci costano ogni volta che vengono utilizzate, ciascuna con una franchigia mensile gratuita.
 
 ## Cosa è gratuito
 
-Questi non costano nulla, per sempre, senza franchigia né misurazione:
+Questi non costano nulla, mai, senza franchigia e senza misurazione:
 
 - Il **motore di prenotazione** — sul tuo sito, nella tua pagina WinkLinks o ovunque tu lo incorpori.
 - **Gestione della proprietà** — contenuti, foto, tariffe, piani tariffari, disponibilità, promozioni e politiche.
 - **Strumenti affiliati** — link condivisibili, liste curate, griglie, mappe, schede e widget incorporabili.
 - **Strumenti per agenti di viaggio** — ricerca, tariffe personalizzate e prenotazioni per conto dei tuoi clienti.
 - **WinkLinks** — richiedi il tuo URL personalizzato, crea la tua pagina e pubblica tutte le volte che vuoi.
-- **Post social manuali** — qualsiasi contenuto scritto da te, su qualsiasi rete connessa.
+- **Post social manuali** — qualsiasi cosa scrivi tu stesso, su qualsiasi rete connessa.
 - **Analisi, classifiche, reclami, impostazioni** e gestione account.
 - Le **API Consumer e Booking Engine**, più endpoint di ricerca e completamento automatico.
 
@@ -35,7 +35,7 @@ Questo modello si applica al 95% di tutte le prenotazioni.
 #### Dettaglio
 
 :::note[Commissione di piattaforma]
-Wink applica una commissione di piattaforma dell’1,5% per prenotazione. Questa copre la manutenzione della piattaforma ed è ciò che ci permette di offrire gratuitamente tutto quanto elencato sopra. Non viene addebitata su prenotazioni cancellate.
+Wink addebita una commissione di piattaforma dell’1,5% per prenotazione. Questa copre la manutenzione della piattaforma ed è ciò che ci permette di offrire gratuitamente tutto quanto elencato sopra. Non viene addebitata su prenotazioni cancellate.
 :::
 
 :::note[Elaborazione carta]
@@ -45,7 +45,7 @@ La commissione per l’elaborazione del pagamento addebitata per incassare il pa
 :::note[Disposizione fondi]
 Ci sono commissioni associate all’invio dei fondi al tuo conto. Questo dipende dal metodo di pagamento scelto. Attualmente supportiamo:
 
-- **Bonifico bancario** — Il costo dipende dal paese in cui ti trovi, da dove vengono inviati i fondi e da eventuali conversioni di valuta applicate. La commissione di pagamento e qualsiasi costo di conversione sono a carico del beneficiario, al costo. Forniamo un calcolatore di preventivi che puoi usare quando hai fondi disponibili nel tuo account.
+- **Bonifico bancario** — Il costo dipende dal paese in cui ti trovi, da dove vengono inviati i fondi e da eventuali conversioni di valuta applicate. La commissione di pagamento e qualsiasi costo di conversione sono a carico del beneficiario, al costo. Includiamo un calcolatore di preventivi che puoi usare quando hai fondi disponibili nel tuo account.
 
 Se desideri che supportiamo un altro metodo di pagamento, inviaci un’e-mail.
 :::
@@ -57,7 +57,7 @@ Questo modello è disponibile solo per agenzie di viaggio che possiedono una lic
 #### Dettaglio
 
 :::note[Commissione di piattaforma]
-Wink applica una commissione di piattaforma dell’1,5% per prenotazione. Questa copre la manutenzione della piattaforma ed è ciò che ci permette di offrire gratuitamente tutto quanto elencato sopra.
+Wink addebita una commissione di piattaforma dell’1,5% per prenotazione. Questa copre la manutenzione della piattaforma ed è ciò che ci permette di offrire gratuitamente tutto quanto elencato sopra.
 :::
 
 Con questo modello, gli agenti di viaggio pagano solo la commissione di piattaforma di Wink e Wink fatturerà l’agente di viaggio su base mensile.
@@ -74,32 +74,32 @@ Alcune funzionalità ci costano denaro ogni volta che vengono utilizzate — AI 
 | Post social — video generato da AI | 0 | $14.00 | Un post pubblicato |
 | Risposta AI a commento o DM | 5 | $0.05 | Una risposta |
 | Risposta chatbot | 5 | $0.05 | Una risposta |
-| API Partner | 10.000 | $0.0001 | Un hotel-giorno |
+| API Partner | 10.000 | $0.0001 | Una notte hotel |
 
 I prezzi sono in USD. La franchigia gratuita è concessa **per account**, non per utente, e si azzera il 1° di ogni mese (UTC).
 
 ### Come vengono tariffati i post
 
-I post sono tariffati in base a cosa contengono, perché è quello che ci costa produrli. Un’immagine statica è economica; un video no; qualsiasi cosa generata con AI costa molto più di una foto fornita da te.
+I post sono tariffati in base a ciò che contengono, perché è ciò che ci costa produrli. Un’immagine statica è economica; un video no; qualsiasi cosa generata con AI costa molto più di una foto fornita da te.
 
-- **La franchigia gratuita copre solo i post con immagini standard.** Ne hai uno per account al mese. I post video e i media generati da AI sono fatturati fin dal primo post — non c’è franchigia gratuita per questi livelli, quindi una struttura che pubblica video deve aspettarsi un addebito nel primo mese.
+- **La franchigia gratuita copre solo i post con immagini standard.** Ne ottieni uno per account al mese. I post video e i media generati da AI sono fatturati fin dal primo post — non c’è franchigia gratuita per questi livelli, quindi una struttura che pubblica video dovrebbe aspettarsi un addebito nel primo mese.
 - **Il video prevale.** Se un post contiene anche solo un video, l’intero post viene fatturato al prezzo del video. Un post che mescola immagine e video è considerato un post video.
-- **La provenienza AI determina il livello.** I media forniti da te — tue foto e video, o qualsiasi cosa dalla libreria contenuti Wink — sono fatturati al prezzo standard. I media generati da noi per te sono fatturati al prezzo AI.
+- **La provenienza AI determina il livello.** I media che fornisci — tue foto e video, o qualsiasi cosa dalla tua libreria contenuti Wink — sono fatturati al prezzo standard. I media che generiamo per te sono fatturati al prezzo AI.
 
 ### Cosa viene e non viene misurato
 
 - Solo un post **generato** pubblicato su una rete di terze parti (Facebook, Instagram) è fatturabile. Un post scritto da te è gratuito, ovunque venga pubblicato.
 - **La pubblicazione su WinkLinks è sempre gratuita**, generata o meno.
-- Viene addebitato **al momento della pubblicazione**, non per tentativo. Rigenerare una bozza finché non sei soddisfatto non aumenta la fattura — paghi una volta per il post che effettivamente pubblichi. I tentativi non sono illimitati: ogni post consente circa 10 rigenerazioni per immagini e 3 per video, riflettendo il costo per noi di produrli. Vedrai quanti ne hai rimasti mentre lavori.
-- Sull’API Partner, un **hotel-giorno** è un hotel valutato per una notte di soggiorno — *non* una chiamata API. Una ricerca che restituisce 20 hotel per un soggiorno di 3 notti equivale a 60 hotel-giorni da una singola richiesta. Gli endpoint di ricerca e completamento automatico sono gratuiti e mai misurati.
+- Viene addebitato **al momento della pubblicazione**, non per tentativo. Rigenerare una bozza finché non sei soddisfatto non aumenta la fattura — paghi una volta per il post che effettivamente pubblichi. I tentativi non sono illimitati: ogni post consente circa 10 rigenerazioni per immagini e 3 per video, che riflettono il costo per noi di produrli. Vedrai quanti ne hai rimasti mentre lavori.
+- Sull’API Partner, una **notte hotel** è un hotel con prezzo per una notte di soggiorno — *non* una chiamata API. Una ricerca che restituisce 20 hotel per un soggiorno di 3 notti equivale a 60 notti hotel da una singola richiesta. Le chiamate Content e Lookup (ricerca destinazioni e completamento automatico) costano un’unità ciascuna, qualunque cosa restituiscano. Gli endpoint account sono gratuiti.
 
 ### Attivazione
 
 Il pay-as-you-go è disattivato di default. Tutti ricevono la franchigia gratuita senza fare nulla.
 
-Per superare la franchigia, il **proprietario** di un account abilita il pay-as-you-go e sceglie quali dei suoi account sono misurati. L’utilizzo di tutti gli account abilitati viene consolidato in una **singola fattura mensile**, che puoi saldare automaticamente con carta o ricevere come fattura da pagare autonomamente.
+Per superare la franchigia, il **proprietario** di un account abilita il pay-as-you-go e sceglie quali dei suoi account sono misurati. L’utilizzo di tutti gli account abilitati viene aggregato in una **singola fattura mensile**, che puoi saldare automaticamente con carta o ricevere come fattura da pagare autonomamente.
 
-Una volta abilitato, il tuo utilizzo viene misurato ma **mai limitato** — non raggiungerai mai un limite di spesa con noi.
+Una volta abilitato, il tuo utilizzo viene misurato ma **mai limitato** — non raggiungerai un limite di spesa con noi.
 
 :::note[Se non lo abiliti]
 Niente si interrompe e niente viene addebitato. Ti fermi semplicemente alla franchigia gratuita per quel mese: i post generati non verranno pubblicati e le chiamate API Partner restituiranno un `429` finché la franchigia non si azzera.
@@ -111,7 +111,7 @@ Niente si interrompe e niente viene addebitato. Ti fermi semplicemente alla fran
 | -- | -- |
 | In regola | Tutto funziona normalmente. |
 | Scaduto | Un pagamento è fallito e viene ritentato. Le tue funzionalità continuano a funzionare durante questo periodo. |
-| Sospeso | Una fattura non è stata pagata fino alla fine. Le azioni fatturabili sono bloccate finché non viene saldata; le funzionalità gratuite continuano normalmente. |
+| Sospeso | Una fattura è rimasta non pagata fino alla fine. Le azioni fatturabili sono bloccate finché non viene saldata; le funzionalità gratuite continuano normalmente. |
 
 :::tip[Prezzi in tempo reale]
 I prezzi unitari e le franchigie gratuite sono sempre mostrati nel Portale, direttamente dal nostro sistema di fatturazione, così puoi verificarli prima di impegnarti. Vedi [Fatturazione](/it/portal/plan) per abilitare il pay-as-you-go, scegliere i tuoi account e monitorare l’utilizzo e le fatture del mese in corso. Vedi [Social](/it/portal/social/what-is-social) per capire come il volume dei post influisce sulla spesa.
@@ -119,6 +119,6 @@ I prezzi unitari e le franchigie gratuite sono sempre mostrati nel Portale, dire
 
 ## Effetto piattaforma
 
-Infine, mentre continuiamo a crescere sia in dimensioni che in prenotazioni, vogliamo poter condividere con te alcuni degli effetti di scala della piattaforma. Più prenotazioni portano opportunità di sconti per volume dal nostro processore di pagamenti. Poiché l’elaborazione delle carte viene trasferita al costo, ogni risparmio che negoziamo va direttamente agli hotel.
+Infine, mentre continuiamo a crescere sia in dimensioni che in prenotazioni, vogliamo poter condividere con te alcuni degli effetti di piattaforma. Più prenotazioni portano opportunità di sconti per volume dal nostro processore di pagamenti. Poiché l’elaborazione delle carte viene trasferita al costo, qualsiasi risparmio negoziato va direttamente agli hotel.
 
 Unisciti a Wink oggi e scopri un modo nuovo e redditizio di fare business nell’industria dell’ospitalità!

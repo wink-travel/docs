@@ -7,7 +7,7 @@ sidebar:
 
 Wink nema pretplate, nema mjesta i nema naknada za postavljanje. Velika većina platforme je besplatna, a postoje samo dvije stvari za koje ćete ikada platiti:
 
-1. **Naknada za platformu po rezervaciji, plus trošak obrade kartice** — samo kada se napravi rezervacija.
+1. **Naknada za platformu po rezervaciji, plus trošak obrade kartice** — samo kada se izvrši rezervacija.
 2. **Naknade po korištenju** — za nekoliko premium značajki koje nas koštaju svaki put kad se koriste, svaka s besplatnim mjesečnim ograničenjem.
 
 ## Što je besplatno
@@ -25,7 +25,7 @@ Ovo ne košta ništa, zauvijek, bez ograničenja i mjerenja:
 
 ## Rezervacije
 
-Wink podržava dva modela: Wink prikuplja uplatu za hotel i licencirani turistički agent koji djeluje kao trgovac zapisa.
+Wink podržava dva modela: Wink prikuplja uplatu za hotel, ili licencirani turistički agent djeluje kao trgovac zapisa.
 
 ### Model 1 — Wink prikuplja za hotel
 
@@ -35,7 +35,7 @@ Ovaj model se primjenjuje na 95% svih rezervacija.
 #### Razrada
 
 :::note[Naknada za platformu]
-Wink naplaćuje 1,5% naknade za platformu po rezervaciji. To pokriva održavanje platforme i omogućuje nam da besplatno ponudimo sve gore navedeno. Naknada se ne naplaćuje za otkazanu rezervaciju.
+Wink naplaćuje 1,5% naknade za platformu po rezervaciji. To pokriva održavanje platforme i omogućuje nam da besplatno pružimo sve gore navedeno. Ne naplaćuje se za otkazane rezervacije.
 :::
 
 :::note[Obrada kartice]
@@ -45,7 +45,7 @@ Naknada za obradu plaćanja koja se naplaćuje za prikupljanje uplate gosta pros
 :::note[Isplata sredstava]
 Postoje naknade povezane s isplatom sredstava na vaš račun. To ovisi o metodi isplate koju odaberete. Trenutno podržavamo:
 
-- **Bankovni transfer** — Trošak ovisi o zemlji u kojoj se nalazite, odakle se sredstva šalju i o bilo kojoj konverziji valute na putu. Naknadu za isplatu i bilo koji trošak konverzije plaća primatelj, po trošku. Uključujemo kalkulator ponuda koji možete koristiti kada imate dostupna sredstva na računu.
+- **Bankovni transfer** — Trošak ovisi o zemlji u kojoj se nalazite, odakle se sredstva šalju i o bilo kojoj konverziji valute na putu. Naknadu za isplatu i troškove konverzije plaća primatelj, po trošku. Uključujemo kalkulator ponude koji možete koristiti kada imate dostupna sredstva na računu.
 
 Ako želite da podržimo drugu metodu isplate, pošaljite nam e-mail.
 :::
@@ -57,7 +57,7 @@ Ovaj model je dostupan samo turističkim agencijama koje imaju licencu za turist
 #### Razrada
 
 :::note[Naknada za platformu]
-Wink naplaćuje 1,5% naknade za platformu po rezervaciji. To pokriva održavanje platforme i omogućuje nam da besplatno ponudimo sve gore navedeno.
+Wink naplaćuje 1,5% naknade za platformu po rezervaciji. To pokriva održavanje platforme i omogućuje nam da besplatno pružimo sve gore navedeno.
 :::
 
 Koristeći ovaj model, turistički agenti plaćaju samo Wink-ovu naknadu za platformu, a Wink će turističkom agentu fakturirati mjesečno.
@@ -74,9 +74,9 @@ Nekoliko značajki nas košta svaki put kad se koriste — generativni AI, API-j
 | Objave na društvenim mrežama — AI-generirani video | 0 | $14.00 | Jedna objavljena objava |
 | AI odgovor na komentar ili DM | 5 | $0.05 | Jedan odgovor |
 | Odgovor chatbota | 5 | $0.05 | Jedan odgovor |
-| Partner API | 10,000 | $0.0001 | Jedan hotel-dan |
+| Partner API | 10,000 | $0.0001 | Jedna hotelska noć |
 
-Cijene su u USD. Besplatni limit se dodjeljuje **po računu**, ne po korisniku, i resetira se 1. u mjesecu (UTC).
+Cijene su u USD. Besplatni limit se dodjeljuje **po računu**, ne po korisniku, i resetira se prvog u mjesecu (UTC).
 
 ### Kako se cijene objava određuju
 
@@ -89,9 +89,9 @@ Objave se cijene prema sadržaju jer nas to košta za izradu. Statična slika je
 ### Što se mjeri, a što ne
 
 - Samo **generirana** objava objavljena na mreži treće strane (Facebook, Instagram) se naplaćuje. Objave koje ste sami napisali su besplatne, gdje god se objave.
-- **Objavljivanje na WinkLinks je uvijek besplatno**, generirano ili ne.
+- **Objavljivanje na WinkLinks je uvijek besplatno**, bilo generirano ili ne.
 - Naplaćuje se **pri objavi**, ne po pokušaju. Ponovno generiranje nacrta dok ne budete zadovoljni ne povećava račun — plaćate samo za objavu koju stvarno objavite. Pokušaji nisu neograničeni: svaka objava dopušta oko 10 ponovnih generiranja za slike i 3 za video, što odražava trošak njihove proizvodnje. Vidjet ćete koliko vam je preostalo dok radite.
-- Na Partner API-ju, **hotel-dan** je jedan hotel cijenjen za jednu noć boravka — *ne* jedan API poziv. Pretraživanje koje vraća 20 hotela za 3 noći je 60 hotel-dana iz jednog zahtjeva. Lookup i autocomplete krajnje točke su besplatne i nikada se ne mjere.
+- Na Partner API-ju, **hotelska noć** je jedan hotel s cijenom za jednu noć boravka — *ne* jedan API poziv. Pretraživanje koje vraća 20 hotela za 3 noći je 60 hotelskih noći iz jednog zahtjeva. Pozivi za sadržaj i pretraživanje (destination search i autocomplete) koštaju po jednoj jedinici, bez obzira na rezultat. Krajnje točke računa su besplatne.
 
 ### Kako uključiti
 

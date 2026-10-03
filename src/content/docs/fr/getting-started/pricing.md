@@ -18,18 +18,18 @@ Ces éléments ne coûtent rien, pour toujours, sans quota ni mesure :
 - La **gestion des propriétés** — contenu, photos, tarifs, plans tarifaires, disponibilités, promotions et politiques.
 - Les **outils affiliés** — liens partageables, listes sélectionnées, grilles, cartes, cartes et widgets intégrables.
 - Les **outils pour agents de voyage** — recherche, tarifs personnalisés et réservation pour vos clients.
-- **WinkLinks** — réclamez votre URL personnalisée, créez votre page et publiez autant que vous le souhaitez.
-- **Publications sociales manuelles** — tout ce que vous écrivez vous-même, sur n’importe quel réseau connecté.
-- **Analyses, classements, réclamations, paramètres** et gestion de compte.
+- Les **WinkLinks** — réclamez votre URL personnalisée, créez votre page et publiez autant que vous le souhaitez.
+- Les **publications sociales manuelles** — tout ce que vous écrivez vous-même, sur n’importe quel réseau connecté.
+- Les **analyses, classements, réclamations, paramètres** et gestion de compte.
 - Les **API Consumer et Booking Engine**, ainsi que les points d’accès lookup et autocomplete.
 
 ## Réservations
 
-Wink prend en charge deux modèles : Wink collecte le paiement pour l’hôtel, ou un agent de voyage agréé agit en tant que commerçant enregistré.
+Wink prend en charge deux modèles : Wink collecte le paiement pour l’hôtel, ou un agent de voyage agréé agit en tant que commerçant officiel.
 
 ### Modèle 1 — Wink collecte pour l’hôtel
 
-Wink collecte le paiement du client en tant qu’agent de collecte de paiement limité pour l’hôtel. L’hôtel est le commerçant enregistré, et son nom apparaît sur le relevé bancaire du client.
+Wink collecte le paiement du client en tant qu’agent de paiement limité de l’hôtel. L’hôtel est le commerçant officiel, et son nom apparaît sur le relevé bancaire du client.
 Ce modèle concerne 95 % de toutes les réservations.
 
 #### Détail
@@ -45,14 +45,14 @@ Les frais de traitement du paiement facturés pour collecter le paiement du clie
 :::note[Versement des fonds]
 Des frais sont associés à l’envoi des fonds sur votre compte. Cela dépend du mode de versement que vous choisissez. Nous supportons actuellement :
 
-- **Virement bancaire** — Le coût dépend du pays où vous vous trouvez, de l’origine des fonds et de toute conversion de devise appliquée en cours de route. Les frais de versement et les coûts de conversion éventuels sont à la charge du bénéficiaire, au coût réel. Nous incluons un calculateur de devis que vous pouvez utiliser lorsque vous avez des fonds disponibles sur votre compte.
+- **Virement bancaire** — Le coût dépend du pays où vous vous trouvez, de l’origine des fonds et de toute conversion de devise appliquée en cours de route. Les frais de paiement et les coûts de conversion éventuels sont à la charge du bénéficiaire, au coût réel. Nous incluons un calculateur de devis que vous pouvez utiliser lorsque vous avez des fonds disponibles sur votre compte.
 
 Si vous souhaitez que nous supportions un autre mode de versement, envoyez-nous un e-mail.
 :::
 
-### Modèle 2 — Agent de voyage en tant que commerçant enregistré
+### Modèle 2 — Agent de voyage en tant que commerçant officiel
 
-Ce modèle est uniquement disponible pour les agences de voyage titulaires d’une licence dans leur région et souhaitant être le commerçant enregistré. Certains de nos agents de voyage enregistrés veulent être responsables de la gestion des paiements et du versement des fonds aux hôtels. Dans ce modèle, ils sont responsables des fonds et disposent des licences nécessaires pour opérer dans leur pays.
+Ce modèle est uniquement disponible pour les agences de voyage titulaires d’une licence dans leur région et souhaitant être le commerçant officiel. Certains de nos agents de voyage enregistrés veulent être responsables de la gestion du paiement et du versement des fonds aux hôtels. Dans ce modèle, ils sont responsables des fonds et disposent des licences nécessaires pour opérer dans leur pays.
 
 #### Détail
 
@@ -60,7 +60,7 @@ Ce modèle est uniquement disponible pour les agences de voyage titulaires d’u
 Wink facture une commission de 1,5 % par réservation. Cela couvre la maintenance de la plateforme et nous permet d’offrir gratuitement tout ce qui est listé ci-dessus.
 :::
 
-Avec ce modèle, les agents de voyage ne paient que la commission plateforme de Wink, et Wink leur facture mensuellement.
+Avec ce modèle, les agents de voyage ne paient que la commission plateforme de Wink, qui leur facturera mensuellement.
 
 ## Usage (pay-as-you-go)
 
@@ -74,7 +74,7 @@ Quelques fonctionnalités nous coûtent de l’argent à chaque utilisation — 
 | Publication sociale — vidéo générée par IA | 0 | 14,00 $ | Une publication publiée |
 | Réponse IA à un commentaire ou DM | 5 | 0,05 $ | Une réponse |
 | Réponse chatbot | 5 | 0,05 $ | Une réponse |
-| API partenaire | 10 000 | 0,0001 $ | Un hôtel-jour |
+| API partenaire | 10 000 | 0,0001 $ | Une nuitée hôtel |
 
 Les prix sont en USD. Le quota gratuit est accordé **par compte**, pas par utilisateur, et se réinitialise le 1er de chaque mois (UTC).
 
@@ -82,16 +82,16 @@ Les prix sont en USD. Le quota gratuit est accordé **par compte**, pas par util
 
 Les publications sont tarifées selon leur contenu, car c’est ce qui nous coûte à produire. Une image fixe est peu coûteuse ; une vidéo ne l’est pas ; tout ce que nous générons avec l’IA coûte nettement plus qu’une photo que vous fournissez vous-même.
 
-- **Le quota gratuit couvre uniquement les publications d’images standard.** Vous en avez une par compte et par mois. Les publications vidéo et les médias générés par IA sont facturés dès la première publication — il n’y a pas de quota gratuit pour ces catégories, donc une propriété qui publie des vidéos doit s’attendre à une facturation dès son premier mois.
+- **Le quota gratuit couvre uniquement les publications d’images standard.** Vous en avez une par compte et par mois. Les publications vidéo et les médias générés par IA sont facturés dès la première publication — il n’y a pas de quota gratuit sur ces catégories, donc une propriété qui publie des vidéos doit s’attendre à une facturation dès son premier mois.
 - **La vidéo prime.** Si une publication contient une vidéo, elle est facturée au tarif vidéo. Une publication mélangeant image et vidéo est une publication vidéo.
-- **La provenance IA détermine le tarif.** Les médias que vous fournissez — vos propres photos et vidéos, ou tout contenu de votre bibliothèque Wink — sont facturés au tarif standard. Les médias générés pour vous sont facturés au tarif IA.
+- **La provenance IA détermine le tarif.** Les médias que vous fournissez — vos propres photos et vidéos, ou tout contenu de votre bibliothèque Wink — sont facturés au tarif standard. Les médias que nous générons pour vous sont facturés au tarif IA.
 
-### Ce qui est et n’est pas mesuré
+### Ce qui est mesuré ou non
 
 - Seule une publication **générée** et publiée sur un réseau tiers (Facebook, Instagram) est facturable. Une publication que vous écrivez vous-même est gratuite, où qu’elle soit publiée.
 - **Publier sur WinkLinks est toujours gratuit**, généré ou non.
-- Vous êtes facturé **à la publication**, pas à chaque tentative. Régénérer un brouillon jusqu’à satisfaction ne fait pas augmenter votre facture — vous payez une fois pour la publication que vous diffusez réellement. Les tentatives ne sont pas illimitées : chaque publication permet environ 10 régénérations pour les images et 3 pour les vidéos, ce qui reflète ce que cela nous coûte de les produire. Vous verrez combien il vous en reste au fur et à mesure.
-- Sur l’API partenaire, un **hôtel-jour** correspond à un hôtel tarifé pour une nuitée — *pas* un appel API. Une recherche qui retourne 20 hôtels pour un séjour de 3 nuits correspond à 60 hôtel-jours pour une seule requête. Les points d’accès lookup et autocomplete sont gratuits et jamais mesurés.
+- Vous êtes facturé **à la publication**, pas à chaque tentative. Régénérer un brouillon jusqu’à satisfaction ne fait pas augmenter la facture — vous payez une fois pour la publication que vous diffusez réellement. Les tentatives ne sont pas illimitées : chaque publication permet environ 10 régénérations pour les images et 3 pour les vidéos, ce qui reflète nos coûts de production. Vous verrez combien il vous en reste au fur et à mesure.
+- Sur l’API partenaire, une **nuitée hôtel** correspond à un hôtel facturé pour une nuit — *pas* un appel API. Une recherche retournant 20 hôtels pour un séjour de 3 nuits correspond à 60 nuitées hôtel pour une seule requête. Les appels Content et Lookup (recherche de destination et autocomplétion) coûtent une unité chacun, quel que soit leur résultat. Les points d’accès compte sont gratuits.
 
 ### Activation
 
@@ -99,10 +99,10 @@ Le pay-as-you-go est désactivé par défaut. Tout le monde bénéficie du quota
 
 Pour dépasser ce quota, le **propriétaire** d’un compte active le pay-as-you-go et choisit quels comptes sont mesurés. L’usage de tous vos comptes activés est regroupé dans une **facture mensuelle unique**, que vous pouvez régler automatiquement par carte ou recevoir en facture à payer vous-même.
 
-Une fois activé, votre usage est mesuré mais **jamais limité** — vous ne serez pas soumis à un plafond de dépenses.
+Une fois activé, votre usage est mesuré mais **jamais limité** — vous ne serez pas soumis à une limite de débit pour dépenser avec nous.
 
 :::note[Si vous ne l’activez pas]
-Rien ne se casse et rien n’est facturé. Vous vous arrêtez simplement au quota gratuit pour ce mois : les publications générées ne seront pas publiées et les appels API partenaires renverront un `429` jusqu’à la réinitialisation du quota.
+Rien ne se casse et rien n’est facturé. Vous vous arrêtez simplement au quota gratuit pour ce mois : les publications générées ne seront pas publiées et les appels API partenaire renverront un `429` jusqu’à la réinitialisation du quota.
 :::
 
 ### Statut de facturation
@@ -111,14 +111,14 @@ Rien ne se casse et rien n’est facturé. Vous vous arrêtez simplement au quot
 | -- | -- |
 | En règle | Tout fonctionne normalement. |
 | En retard | Un paiement a échoué et est en cours de nouvelle tentative. Vos fonctionnalités continuent de fonctionner pendant cette période. |
-| Suspendu | Une facture est restée impayée jusqu’au bout. Les actions facturables sont bloquées jusqu’au règlement ; les fonctionnalités gratuites continuent normalement. |
+| Suspendu | Une facture est restée impayée jusqu’à la fin. Les actions facturables sont bloquées jusqu’au règlement ; les fonctionnalités gratuites continuent normalement. |
 
 :::tip[Tarifs en temps réel]
-Les prix unitaires et les quotas gratuits sont toujours affichés dans le Portal, directement depuis notre système de facturation, pour que vous puissiez les vérifier avant de vous engager. Consultez [Facturation](/fr/portal/plan) pour activer le pay-as-you-go, choisir vos comptes et suivre l’usage et les factures du mois en cours. Consultez [Social](/fr/portal/social/what-is-social) pour comprendre comment le volume de publications impacte vos dépenses.
+Les prix unitaires et quotas gratuits sont toujours affichés dans le Portail, directement depuis notre système de facturation, pour que vous puissiez les consulter avant de vous engager. Voir [Facturation](/fr/portal/plan) pour activer le pay-as-you-go, choisir vos comptes et suivre l’usage et les factures du mois en cours. Voir [Social](/fr/portal/social/what-is-social) pour comprendre comment le volume de publications impacte vos dépenses.
 :::
 
 ## Effet plateforme
 
-Enfin, à mesure que nous grandissons en taille et en nombre de réservations, nous souhaitons pouvoir partager certains effets de plateforme avec vous. Plus de réservations signifie des opportunités de remises sur volume auprès de notre processeur de paiement. Comme le traitement des cartes est répercuté au coût réel, toute économie négociée est directement reversée aux hôtels.
+Enfin, à mesure que nous grandissons en taille et en nombre de réservations, nous souhaitons pouvoir partager certains effets de plateforme avec vous. Plus de réservations apportent des opportunités de remises sur volume auprès de notre processeur de paiement. Comme le traitement des cartes est répercuté au coût réel, toute économie négociée est directement reversée aux hôtels.
 
 Rejoignez Wink dès aujourd’hui et découvrez une nouvelle manière lucrative de faire des affaires dans l’industrie hôtelière !

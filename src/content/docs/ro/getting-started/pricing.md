@@ -5,7 +5,7 @@ sidebar:
   order: 4
 ---
 
-Wink nu are abonamente, locuri sau taxe de configurare. Marea majoritate a platformei este gratuită, iar există doar două lucruri pentru care veți plăti vreodată:
+Wink nu are abonamente, locuri sau taxe de configurare. Majoritatea platformei este gratuită, iar singurele două lucruri pentru care veți plăti vreodată sunt:
 
 1. **O taxă de platformă per rezervare, plus procesarea cardului la cost** — doar când se face o rezervare.
 2. **Taxe de utilizare pay-as-you-go** — pentru câteva funcții premium care ne costă bani de fiecare dată când sunt folosite, fiecare cu o alocație lunară gratuită.
@@ -15,7 +15,7 @@ Wink nu are abonamente, locuri sau taxe de configurare. Marea majoritate a platf
 Acestea nu costă nimic, niciodată, fără alocație și fără măsurare:
 
 - **Motorul de rezervări** — pe propriul site, în pagina ta WinkLinks sau oriunde îl încorporezi.
-- **Managementul proprietăților** — conținut, fotografii, tarife, planuri tarifare, disponibilitate, promoții și politici.
+- **Managementul proprietății** — conținut, fotografii, tarife, planuri tarifare, disponibilitate, promoții și politici.
 - **Instrumente pentru afiliați** — linkuri partajabile, liste selectate, grile, hărți, carduri și widgeturi încorporabile.
 - **Instrumente pentru agenții de turism** — căutare, tarife personalizate și rezervări în numele clienților tăi.
 - **WinkLinks** — revendică-ți URL-ul personalizat, construiește-ți pagina și publică oricât de des dorești.
@@ -60,49 +60,49 @@ Acest model este disponibil doar agențiilor de turism care dețin o licență d
 Wink percepe o taxă de platformă de 1,5% per rezervare. Aceasta acoperă întreținerea platformei și ne permite să oferim gratuit tot ce este listat mai sus.
 :::
 
-Folosind acest model, agenții de turism plătesc doar taxa de platformă Wink, iar Wink va factura agentul lunar.
+În acest model, agenții de turism plătesc doar taxa de platformă Wink, iar Wink va factura agentul lunar.
 
 ## Utilizare (pay-as-you-go)
 
-Câteva funcții ne costă bani de fiecare dată când sunt folosite — AI generativ, API-uri sociale terțe și afișarea prețurilor live la scară largă. În loc să le includem într-un plan lunar pe care s-ar putea să nu-l folosești, plătești doar pentru ceea ce consumi efectiv, și doar după ce ai epuizat alocația lunară gratuită.
+Câteva funcții ne costă bani de fiecare dată când sunt folosite — AI generativ, API-uri sociale terțe și afișarea prețurilor live la scară largă. În loc să le includem într-un abonament lunar pe care s-ar putea să nu-l folosești, plătești doar pentru ceea ce consumi efectiv, și doar după ce ai epuizat alocația lunară gratuită.
 
 | Funcție | Gratuit pe lună | Apoi | Unitate facturată |
 | -- | -- | -- | -- |
-| Postare socială — imagine | 1 | 1,50 USD | O postare publicată |
-| Postare socială — imagine generată de AI | 0 | 2,50 USD | O postare publicată |
-| Postare socială — video îmbunătățit de AI | 0 | 4,00 USD | O postare publicată |
-| Postare socială — video generat de AI | 0 | 14,00 USD | O postare publicată |
-| Răspuns AI la un comentariu sau DM | 5 | 0,05 USD | Un răspuns |
-| Răspuns chatbot | 5 | 0,05 USD | Un răspuns |
-| API partener | 10.000 | 0,0001 USD | O zi-hotel |
+| Postare socială — imagine | 1 | 1,50 $ | O postare publicată |
+| Postare socială — imagine generată de AI | 0 | 2,50 $ | O postare publicată |
+| Postare socială — video îmbunătățit de AI | 0 | 4,00 $ | O postare publicată |
+| Postare socială — video generat de AI | 0 | 14,00 $ | O postare publicată |
+| Răspuns AI la un comentariu sau DM | 5 | 0,05 $ | Un răspuns |
+| Răspuns chatbot | 5 | 0,05 $ | Un răspuns |
+| API partener | 10.000 | 0,0001 $ | O noapte de hotel |
 
 Prețurile sunt în USD. Alocația gratuită este acordată **per cont**, nu per utilizator, și se resetează în prima zi a fiecărei luni (UTC).
 
 ### Cum se tarifează postările
 
-Postările sunt tarifate în funcție de conținutul lor, pentru că asta ne costă să le producem. O imagine statică este ieftină; un video nu; orice generăm cu AI costă semnificativ mai mult decât o fotografie furnizată de tine.
+Postările sunt tarifate în funcție de conținutul lor, pentru că asta ne costă să le realizăm. O imagine statică este ieftină; un video nu; orice generăm cu AI costă semnificativ mai mult decât o fotografie furnizată de tine.
 
 - **Alocația gratuită acoperă doar postările standard cu imagini.** Primești una pe cont pe lună. Postările video și media generate de AI sunt facturate de la prima postare — nu există alocație gratuită pentru aceste categorii, deci o proprietate care postează video trebuie să se aștepte la o taxă în prima lună.
-- **Video câștigă.** Dacă o postare conține orice video, întreaga postare este tarifată la tariful video. O postare care combină o imagine și un video este considerată postare video.
-- **Proveniența AI stabilește categoria.** Media pe care o furnizezi — propriile tale fotografii și video sau orice din biblioteca ta de conținut Wink — este tarifată la tariful standard. Media generată de noi pentru tine este tarifată la tariful AI.
+- **Video câștigă.** Dacă o postare conține orice fel de video, întreaga postare este tarifată la tariful video. O postare care combină o imagine și un video este considerată postare video.
+- **Originea AI stabilește nivelul tarifar.** Media pe care o furnizezi — propriile fotografii și video sau orice din biblioteca ta de conținut Wink — este tarifată la tariful standard. Media generată de noi pentru tine este tarifată la tariful AI.
 
-### Ce este și ce nu este măsurat
+### Ce se măsoară și ce nu
 
 - Doar o postare **generată** publicată pe o rețea terță (Facebook, Instagram) este facturabilă. O postare scrisă de tine este gratuită, oriunde ar fi publicată.
 - **Publicarea pe WinkLinks este întotdeauna gratuită**, generată sau nu.
 - Ești taxat **la publicare**, nu per încercare. Regenerarea unui draft până ești mulțumit nu crește factura — plătești o singură dată pentru postarea pe care o publici efectiv. Încercările nu sunt nelimitate: fiecare postare permite aproximativ 10 regenerări pentru imagini și 3 pentru video, reflectând costul nostru de producție. Vei vedea câte regenerări mai ai pe măsură ce lucrezi.
-- La API-ul partener, o **zi-hotel** este un hotel tarifat pentru o noapte de cazare — *nu* un apel API. O căutare care returnează 20 de hoteluri pentru 3 nopți este 60 de zile-hotel dintr-o singură cerere. Endpoint-urile de căutare și completare automată sunt gratuite și nu sunt măsurate.
+- La API-ul partener, o **noapte de hotel** este un hotel tarifat pentru o noapte de cazare — *nu* un apel API. O căutare care returnează 20 de hoteluri pentru 3 nopți este 60 de nopți de hotel dintr-o singură cerere. Apelurile Content și Lookup (căutare destinație și completare automată) costă o unitate fiecare, indiferent ce returnează. Endpoint-urile contului sunt gratuite.
 
 ### Activarea
 
 Pay-as-you-go este dezactivat implicit. Toată lumea primește alocația gratuită fără să facă nimic.
 
-Pentru a depăși alocația, **proprietarul** unui cont activează pay-as-you-go și alege care dintre conturile sale sunt măsurate. Utilizarea din toate conturile activate se cumulează într-o **singură factură lunară**, pe care o poți plăti automat cu cardul sau o primești ca factură pentru plată manuală.
+Pentru a depăși alocația, **proprietarul** contului activează pay-as-you-go și alege care dintre conturile sale sunt măsurate. Utilizarea din toate conturile activate se cumulează într-o **singură factură lunară**, pe care o poți plăti automat cu cardul sau o poți primi pentru plată manuală.
 
-Odată activat, utilizarea ta este măsurată, dar **niciodată limitată** — nu vei atinge o limită de rată pentru cheltuielile cu noi.
+Odată activat, utilizarea ta este măsurată, dar **niciodată limitată** — nu vei atinge o limită de rată pentru a cheltui bani cu noi.
 
 :::note[Dacă nu îl activezi]
-Nimic nu se strică și nimic nu este taxat. Pur și simplu te oprești la alocația gratuită pentru luna respectivă: postările generate nu vor fi publicate, iar apelurile API partener vor returna un `429` până la resetarea alocației.
+Nimic nu se strică și nimic nu se taxează. Pur și simplu te oprești la alocația gratuită pentru luna respectivă: postările generate nu vor fi publicate, iar apelurile API partener vor returna un `429` până la resetarea alocației.
 :::
 
 ### Starea facturării
@@ -111,14 +111,14 @@ Nimic nu se strică și nimic nu este taxat. Pur și simplu te oprești la aloca
 | -- | -- |
 | În regulă | Totul funcționează normal. |
 | Restanță | O plată a eșuat și se încearcă din nou. Funcțiile tale continuă să funcționeze în această perioadă. |
-| Suspendat | O factură a rămas neplătită până la final. Acțiunile facturabile sunt blocate până la plata ei; funcțiile gratuite continuă normal. |
+| Suspendat | O factură a rămas neachitată până la final. Acțiunile facturabile sunt blocate până la plata ei; funcțiile gratuite continuă normal. |
 
 :::tip[Prețuri live]
-Prețurile unitare și alocațiile gratuite sunt afișate întotdeauna în Portal, direct din sistemul nostru de facturare, astfel încât să le poți verifica înainte de a te angaja. Vezi [Facturare](/ro/portal/plan) pentru a activa pay-as-you-go, a alege conturile și a urmări utilizarea și facturile lunare. Vezi [Social](/ro/portal/social/what-is-social) pentru cum volumul postărilor influențează cheltuielile.
+Prețurile unitare și alocațiile gratuite sunt afișate întotdeauna în Portal, direct din sistemul nostru de facturare, astfel încât să le poți verifica înainte de a te angaja la ceva. Vezi [Facturare](/ro/portal/plan) pentru a activa pay-as-you-go, a alege conturile și a urmări utilizarea și facturile lunare. Vezi [Social](/ro/portal/social/what-is-social) pentru cum volumul postărilor influențează cheltuielile.
 :::
 
 ## Efectul platformei
 
-În final, pe măsură ce continuăm să creștem atât ca dimensiune, cât și ca număr de rezervări, vrem să putem împărtăși cu tine unele dintre efectele platformei. Mai multe rezervări aduc oportunități de discounturi de volum de la procesatorul nostru de plăți. Deoarece procesarea cardurilor este transmisă la cost, orice economii negociem merg direct către hoteluri.
+În cele din urmă, pe măsură ce continuăm să creștem atât ca dimensiune, cât și ca număr de rezervări, dorim să putem împărtăși cu tine unele dintre efectele platformei. Mai multe rezervări aduc oportunități de discounturi de volum de la procesatorul nostru de plăți. Deoarece procesarea cardurilor este transmisă la cost, orice economii negociem merg direct către hoteluri.
 
 Alătură-te Wink astăzi și descoperă o nouă modalitate profitabilă de a face afaceri în industria ospitalității!

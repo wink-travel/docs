@@ -18,7 +18,7 @@ Disse koster ingenting, for alltid, uten kvote og uten måling:
 - **Eiendomsadministrasjon** — innhold, bilder, priser, prisplaner, tilgjengelighet, kampanjer og retningslinjer.
 - **Affiliate-verktøy** — delbare lenker, kuraterte lister, rutenett, kart, kort og innebygde widgets.
 - **Reisebyråverktøy** — søk, skreddersydde priser og booking på vegne av dine kunder.
-- **WinkLinks** — krev ditt eget vanity-URL, bygg siden din og publiser så ofte du vil.
+- **WinkLinks** — reserver din egen vanity-URL, bygg siden din og publiser så ofte du vil.
 - **Manuelle sosiale innlegg** — alt du skriver selv, på hvilket som helst tilkoblet nettverk.
 - **Analyse, topplister, krav, innstillinger** og kontoadministrasjon.
 - **Consumer og Booking Engine API-er**, pluss oppslags- og autofullfør-endepunkter.
@@ -29,17 +29,17 @@ Wink støtter to modeller: Wink som samler inn betaling for hotellet, og et lise
 
 ### Modell 1 — Wink samler inn for hotellet
 
-Wink samler inn gjestens betaling som hotellets begrensede betalingsinnsamlingsagent. Hotellet er betalingsmottaker, og hotellets navn vises på gjestens kortutskrift.
+Wink samler inn gjestens betaling som hotellets begrensede betalingsinnsamlingsagent. Hotellet er betalingsmottaker, og hotellets navn vises på gjestens kortutskrift.  
 Denne modellen gjelder for 95 % av alle bookinger.
 
 #### Detaljer
 
 :::note[Plattformgebyr]
-Wink tar 1,5 % plattformgebyr per booking. Dette dekker vedlikehold av plattformen og gjør at vi kan gi bort alt som er listet ovenfor. Det belastes ikke på en kansellert booking.
+Wink tar et plattformgebyr på 1,5 % per booking. Dette dekker vedlikehold av plattformen og gjør at vi kan gi bort alt som er listet ovenfor. Det belastes ikke på avbestilte bookinger.
 :::
 
 :::note[Kortbehandling]
-Gebyr for betalingsbehandling som belastes for å samle inn gjestens betaling, viderefaktureres hotellet til kostpris, uten påslag. Det varierer med gjestens kort og betalingsmetode, og det eksakte beløpet vises i regnskapsdelen for hver booking. Hvis en booking kanselleres eller refunderes, belastes eventuelle gebyrer som betalingsprosessoren beholder fortsatt; hvis den ikke belaster noe, gjør heller ikke vi det.
+Gebyr for betalingsbehandling som belastes for å samle inn gjestens betaling, viderefaktureres hotellet til kostpris, uten påslag. Det varierer med gjestens kort og betalingsmetode, og det eksakte beløpet vises i regnskapsdelen for hver booking. Hvis en booking avbestilles eller refunderes, belastes eventuelle gebyrer som betalingsprosessoren beholder fortsatt; hvis den ikke belaster noe, gjør heller ikke vi det.
 :::
 
 :::note[Utbetaling av midler]
@@ -57,7 +57,7 @@ Denne modellen er kun tilgjengelig for reisebyråer som har reisebyrålisens i s
 #### Detaljer
 
 :::note[Plattformgebyr]
-Wink tar 1,5 % plattformgebyr per booking. Dette dekker vedlikehold av plattformen og gjør at vi kan gi bort alt som er listet ovenfor.
+Wink tar et plattformgebyr på 1,5 % per booking. Dette dekker vedlikehold av plattformen og gjør at vi kan gi bort alt som er listet ovenfor.
 :::
 
 Med denne modellen betaler reisebyråene kun Wink sitt plattformgebyr, og Wink fakturerer reisebyrået månedlig.
@@ -74,7 +74,7 @@ Noen få funksjoner koster oss penger hver gang de brukes — generativ AI, tred
 | Sosialt innlegg — AI-generert video | 0 | $14.00 | Ett publisert innlegg |
 | AI-svar på kommentar eller DM | 5 | $0.05 | Ett svar |
 | Chatbot-svar | 5 | $0.05 | Ett svar |
-| Partner API | 10,000 | $0.0001 | Én hotell-dag |
+| Partner API | 10 000 | $0.0001 | Én hotellnatt |
 
 Prisene er i USD. Den gratis kvoten gis **per konto**, ikke per bruker, og nullstilles den 1. i hver måned (UTC).
 
@@ -82,16 +82,16 @@ Prisene er i USD. Den gratis kvoten gis **per konto**, ikke per bruker, og nulls
 
 Innlegg prises etter hva de inneholder, fordi det er det som koster oss å lage dem. Et stillbilde er billig; en video er ikke; alt vi genererer med AI koster betydelig mer enn et bilde du selv har levert.
 
-- **Den gratis kvoten dekker kun standard bildeinnlegg.** Du får ett av disse per konto per måned. Videoinnlegg og AI-generert media faktureres fra første innlegg — det finnes ingen gratis kvote på disse nivåene, så en eiendom som legger ut video må regne med kostnad allerede i sin første måned.
-- **Video vinner.** Hvis et innlegg inneholder video i det hele tatt, faktureres hele innlegget til videoprisen. Et innlegg som blander bilde og video regnes som videoinnlegg.
-- **AI-opprinnelse bestemmer nivået.** Media du leverer — dine egne bilder og videoer, eller noe fra Wink sitt innholdsbibliotek — faktureres til standard pris. Media vi genererer for deg faktureres til AI-pris.
+- **Den gratis kvoten dekker kun standard bildeinnlegg.** Du får ett slikt per konto per måned. Video- og AI-genererte medier faktureres fra første innlegg — det finnes ingen gratis kvote på disse nivåene, så en eiendom som poster video må regne med kostnad allerede i sin første måned.
+- **Video vinner.** Hvis et innlegg inneholder video i det hele tatt, faktureres hele innlegget til videoprisen. Et innlegg som blander bilde og video er et videoinnlegg.
+- **AI-opprinnelse bestemmer nivået.** Medier du leverer — egne bilder og videoer, eller noe fra Wink sitt innholdsbibliotek — faktureres til standard pris. Medier vi genererer for deg faktureres til AI-pris.
 
 ### Hva som måles og ikke måles
 
 - Kun et **generert** innlegg publisert til et tredjepartsnettverk (Facebook, Instagram) er fakturerbart. Et innlegg du har skrevet selv er gratis, uansett hvor det publiseres.
 - **Publisering til WinkLinks er alltid gratis**, generert eller ikke.
 - Du blir belastet **ved publisering**, ikke per forsøk. Å regenerere et utkast til du er fornøyd, øker ikke regningen — du betaler kun for innlegget du faktisk publiserer. Forsøk er ikke ubegrenset: hvert innlegg tillater rundt 10 regenereringer for bilder og 3 for video, noe som reflekterer hva det koster oss å produsere dem. Du vil se hvor mange du har igjen mens du jobber.
-- På Partner API er en **hotell-dag** ett hotell priset for én natt — *ikke* én API-forespørsel. Et søk som returnerer 20 hoteller for 3 netter er 60 hotell-dager fra én enkelt forespørsel. Oppslags- og autofullfør-endepunkter er gratis og måles aldri.
+- På Partner API er en **hotellnatt** ett hotell priset for én natt — *ikke* én API-forespørsel. Et søk som returnerer 20 hoteller for 3 netter er 60 hotellnetter fra én enkelt forespørsel. Content og Lookup (destinasjonssøk og autofullfør) koster én enhet hver, uansett hva de returnerer. Konto-endepunkter er gratis.
 
 ### Slik aktiverer du det
 
@@ -99,7 +99,7 @@ Pay-as-you-go er som standard av. Alle får den gratis kvoten uten å gjøre noe
 
 For å gå utover kvoten må **eieren** av en konto aktivere pay-as-you-go og velge hvilke av sine kontoer som skal måles. Forbruk fra alle dine aktiverte kontoer samles i en **enkel månedlig faktura**, som du kan betale automatisk med kort eller motta som faktura for manuell betaling.
 
-Når det er aktivert, måles forbruket ditt, men **aldri begrenses** — du vil ikke treffe noen grense for hvor mye du kan bruke hos oss.
+Når det er aktivert, måles forbruket ditt, men **det blir aldri begrenset** — du vil ikke treffe noen grense for hvor mye du kan bruke hos oss.
 
 :::note[Hvis du ikke aktiverer det]
 Ingenting brytes og ingenting belastes. Du stopper bare ved den gratis kvoten for den måneden: genererte innlegg vil ikke publiseres, og Partner API-kall returnerer en `429` til kvoten nullstilles.
@@ -109,16 +109,16 @@ Ingenting brytes og ingenting belastes. Du stopper bare ved den gratis kvoten fo
 
 | Status | Hva det betyr |
 | -- | -- |
-| God standing | Alt fungerer som normalt. |
-| Forfalt | En betaling feilet og forsøkes på nytt. Dine funksjoner fungerer fortsatt i denne perioden. |
-| Suspendert | En faktura er ubetalt til fristens slutt. Fakturerbare handlinger blokkeres til den er betalt; gratis funksjoner fortsetter som normalt. |
+| God status | Alt fungerer som normalt. |
+| Forfalt | En betaling mislyktes og forsøkes på nytt. Dine funksjoner fungerer fortsatt i denne perioden. |
+| Suspendert | En faktura ble ikke betalt innen fristen. Fakturerbare handlinger blokkeres til den er betalt; gratis funksjoner fortsetter som normalt. |
 
 :::tip[Live priser]
-Enhetspriser og gratis kvoter vises alltid i Portal, direkte fra vårt faktureringssystem, slik at du kan sjekke dem før du binder deg til noe. Se [Billing](/no/portal/plan) for å aktivere pay-as-you-go, velge kontoer og følge månedlig forbruk og fakturaer. Se [Social](/no/portal/social/what-is-social) for hvordan postvolum påvirker hva du betaler.
+Enhetspriser og gratis kvoter vises alltid i Portal, direkte fra vårt faktureringssystem, slik at du kan sjekke dem før du binder deg til noe. Se [Billing](/no/portal/plan) for å aktivere pay-as-you-go, velge kontoer og følge med på forbruk og fakturaer så langt i måneden. Se [Social](/no/portal/social/what-is-social) for hvordan volum av innlegg påvirker hva du bruker.
 :::
 
-## Plattform-effekt
+## Plattformens effekt
 
-Til slutt, mens vi fortsetter å vokse i både størrelse og antall bookinger, ønsker vi å kunne dele noen av plattform-effektene med deg. Flere bookinger gir muligheter for volumrabatter fra vår betalingsprosessor. Fordi kortbehandling viderefaktureres til kostpris, går enhver besparelse vi forhandler direkte til hotellene.
+Til slutt, mens vi fortsetter å vokse både i størrelse og antall bookinger, ønsker vi å kunne dele noen av plattformens fordeler med deg. Flere bookinger gir muligheter for volumrabatter fra vår betalingsprosessor. Fordi kortbehandling viderefaktureres til kostpris, går enhver besparelse vi forhandler direkte til hotellene.
 
 Bli med i Wink i dag og oppdag en ny, lønnsom måte å drive virksomhet i reiselivsbransjen på!

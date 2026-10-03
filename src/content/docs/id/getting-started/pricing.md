@@ -8,7 +8,7 @@ sidebar:
 Wink tidak memiliki langganan, tidak ada kursi, dan tidak ada biaya pengaturan. Sebagian besar platform ini gratis, dan hanya ada dua hal yang akan Anda bayar:
 
 1. **Biaya platform per pemesanan, plus biaya pemrosesan kartu sesuai biaya** — hanya saat pemesanan dilakukan.
-2. **Biaya penggunaan pay-as-you-go** — pada beberapa fitur premium yang mengeluarkan biaya setiap kali digunakan, masing-masing dengan kuota gratis bulanan.
+2. **Biaya penggunaan pay-as-you-go** — pada beberapa fitur premium yang menghabiskan biaya setiap kali digunakan, masing-masing dengan kuota gratis bulanan.
 
 ## Apa yang gratis
 
@@ -39,7 +39,7 @@ Wink mengenakan biaya platform 1,5% per pemesanan. Ini mencakup pemeliharaan pla
 :::
 
 :::note[Biaya pemrosesan kartu]
-Biaya pemrosesan pembayaran yang dikenakan untuk mengumpulkan pembayaran tamu diteruskan ke hotel sesuai biaya, tanpa margin. Biaya ini bervariasi tergantung kartu dan metode pembayaran tamu, dan jumlah pastinya muncul di bagian Akuntansi setiap pemesanan. Jika pemesanan dibatalkan atau dikembalikan, biaya yang dipertahankan oleh pemroses tetap dikenakan; jika tidak ada biaya, kami juga tidak mengenakan biaya.
+Biaya pemrosesan pembayaran yang dikenakan untuk mengumpulkan pembayaran tamu diteruskan ke hotel sesuai biaya, tanpa margin. Biaya ini bervariasi tergantung kartu dan metode pembayaran tamu, dan jumlah tepatnya muncul di bagian Akuntansi setiap pemesanan. Jika pemesanan dibatalkan atau dikembalikan, biaya yang dipertahankan oleh pemroses tetap dikenakan; jika tidak ada biaya, kami juga tidak mengenakan biaya.
 :::
 
 :::note[Pencairan dana]
@@ -64,25 +64,25 @@ Dengan model ini, agen perjalanan hanya membayar biaya platform Wink dan Wink ak
 
 ## Penggunaan (pay-as-you-go)
 
-Beberapa fitur mengeluarkan biaya setiap kali digunakan — AI generatif, API sosial pihak ketiga, dan penyajian harga langsung dalam skala besar. Daripada menggabungkan fitur tersebut dalam paket bulanan yang mungkin tidak Anda gunakan, Anda hanya membayar untuk apa yang benar-benar Anda konsumsi, dan hanya setelah Anda menggunakan kuota gratis bulanan.
+Beberapa fitur menghabiskan biaya setiap kali digunakan — AI generatif, API sosial pihak ketiga, dan penyajian harga langsung dalam skala besar. Daripada menggabungkan fitur tersebut dalam paket bulanan yang mungkin tidak Anda gunakan, Anda hanya membayar untuk apa yang benar-benar Anda konsumsi, dan hanya setelah Anda menggunakan kuota gratis bulanan.
 
 | Fitur | Gratis per bulan | Selanjutnya | Unit penagihan |
 | -- | -- | -- | -- |
 | Posting sosial — gambar | 1 | $1.50 | Satu posting yang dipublikasikan |
-| Posting sosial — gambar AI | 0 | $2.50 | Satu posting yang dipublikasikan |
-| Posting sosial — video AI yang ditingkatkan | 0 | $4.00 | Satu posting yang dipublikasikan |
-| Posting sosial — video AI | 0 | $14.00 | Satu posting yang dipublikasikan |
+| Posting sosial — gambar AI-generated | 0 | $2.50 | Satu posting yang dipublikasikan |
+| Posting sosial — video AI-enhanced | 0 | $4.00 | Satu posting yang dipublikasikan |
+| Posting sosial — video AI-generated | 0 | $14.00 | Satu posting yang dipublikasikan |
 | Balasan AI untuk komentar atau DM | 5 | $0.05 | Satu balasan |
 | Jawaban chatbot | 5 | $0.05 | Satu jawaban |
-| API Mitra | 10.000 | $0.0001 | Satu hotel-hari |
+| Partner API | 10.000 | $0.0001 | Satu malam hotel |
 
 Harga dalam USD. Kuota gratis diberikan **per akun**, bukan per pengguna, dan direset pada tanggal 1 setiap bulan (UTC).
 
 ### Cara penetapan harga posting
 
-Posting dihargai berdasarkan isinya, karena itulah yang mengeluarkan biaya bagi kami untuk membuatnya. Gambar diam murah; video tidak; apa pun yang kami hasilkan dengan AI biayanya jauh lebih tinggi daripada foto yang Anda sediakan sendiri.
+Posting dihargai berdasarkan isinya, karena itulah yang menghabiskan biaya untuk kami buat. Gambar diam murah; video tidak; apa pun yang kami hasilkan dengan AI biayanya jauh lebih tinggi daripada foto yang Anda sediakan sendiri.
 
-- **Kuota gratis hanya mencakup posting gambar standar.** Anda mendapatkan satu per akun per bulan. Posting video dan media yang dihasilkan AI dikenakan biaya sejak posting pertama — tidak ada kuota gratis untuk kategori ini, jadi properti yang memposting video harus mengantisipasi biaya pada bulan pertama.
+- **Kuota gratis hanya mencakup posting gambar standar.** Anda mendapatkan satu per akun per bulan. Posting video dan media AI-generated dikenakan biaya sejak posting pertama — tidak ada kuota gratis untuk kategori ini, jadi properti yang memposting video harus mengantisipasi biaya pada bulan pertama.
 - **Video menang.** Jika sebuah posting mengandung video sama sekali, seluruh posting dikenakan tarif video. Posting yang mencampur gambar dan video dianggap sebagai posting video.
 - **Asal AI menentukan kategori.** Media yang Anda sediakan — foto dan video Anda sendiri, atau apa pun dari perpustakaan konten Wink Anda — dikenakan tarif standar. Media yang kami hasilkan untuk Anda dikenakan tarif AI.
 
@@ -90,19 +90,19 @@ Posting dihargai berdasarkan isinya, karena itulah yang mengeluarkan biaya bagi 
 
 - Hanya posting **yang dihasilkan** dan dipublikasikan ke jaringan pihak ketiga (Facebook, Instagram) yang dikenakan biaya. Posting yang Anda tulis sendiri gratis, ke mana pun dipublikasikan.
 - **Publikasi ke WinkLinks selalu gratis**, baik dihasilkan atau tidak.
-- Anda dikenakan biaya **saat dipublikasikan**, bukan per percobaan. Menghasilkan ulang draf sampai Anda puas tidak menambah tagihan — Anda membayar sekali untuk posting yang benar-benar Anda kirim. Percobaan tidak tak terbatas: setiap posting memungkinkan sekitar 10 regenerasi untuk gambar dan 3 untuk video, yang mencerminkan biaya produksi kami. Anda akan melihat berapa banyak yang tersisa saat bekerja.
-- Pada API Mitra, **hotel-hari** adalah satu hotel yang dihitung untuk satu malam menginap — *bukan* satu panggilan API. Pencarian yang mengembalikan 20 hotel untuk 3 malam adalah 60 hotel-hari dari satu permintaan. Endpoint pencarian dan autocomplete gratis dan tidak diukur.
+- Anda dikenakan biaya **saat publikasi**, bukan per percobaan. Menghasilkan ulang draf sampai Anda puas tidak menambah tagihan — Anda membayar sekali untuk posting yang benar-benar Anda kirim. Percobaan tidak tak terbatas: setiap posting memungkinkan sekitar 10 regenerasi untuk gambar dan 3 untuk video, yang mencerminkan biaya produksi kami. Anda akan melihat berapa banyak yang tersisa saat bekerja.
+- Pada Partner API, **hotel-malam** adalah satu hotel dengan harga untuk satu malam menginap — *bukan* satu panggilan API. Pencarian yang mengembalikan 20 hotel untuk 3 malam adalah 60 hotel-malam dari satu permintaan. Panggilan Konten dan Pencarian (pencarian tujuan dan autocomplete) dikenakan satu unit per panggilan, apa pun hasilnya. Endpoint akun gratis.
 
 ### Mengaktifkannya
 
 Pay-as-you-go mati secara default. Semua orang mendapatkan kuota gratis tanpa melakukan apa pun.
 
-Untuk melebihi kuota, **pemilik** akun mengaktifkan pay-as-you-go dan memilih akun mana yang akan diukur. Penggunaan dari semua akun yang diaktifkan digabungkan menjadi **faktur bulanan tunggal**, yang dapat Anda bayar otomatis dengan kartu atau terima faktur untuk dibayar sendiri.
+Untuk menggunakan lebih dari kuota, **pemilik** akun mengaktifkan pay-as-you-go dan memilih akun mana yang akan diukur. Penggunaan dari semua akun yang diaktifkan digabungkan menjadi **faktur bulanan tunggal**, yang dapat Anda bayar otomatis dengan kartu atau terima sebagai faktur untuk dibayar sendiri.
 
 Setelah diaktifkan, penggunaan Anda diukur tetapi **tidak pernah dibatasi** — Anda tidak akan terkena batas kecepatan karena membayar kepada kami.
 
 :::note[Jika Anda tidak mengaktifkannya]
-Tidak ada yang rusak dan tidak ada biaya yang dikenakan. Anda hanya berhenti pada kuota gratis untuk bulan itu: posting yang dihasilkan tidak akan dipublikasikan dan panggilan API Mitra akan mengembalikan `429` sampai kuota direset.
+Tidak ada yang rusak dan tidak ada biaya yang dikenakan. Anda hanya berhenti pada kuota gratis untuk bulan itu: posting yang dihasilkan tidak akan dipublikasikan dan panggilan Partner API mengembalikan `429` sampai kuota direset.
 :::
 
 ### Status penagihan
