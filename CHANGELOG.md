@@ -2,6 +2,12 @@
 
 Changelog of docs.
 
+## v1.5.1 (2026-09-27)
+
+### Bug Fixes
+
+-  **sentry**  use correct sentry project for prod release script ([6f776](https://github.com/wink-travel/docs/commit/6f7765c775db38a) Bjorn Harvold)  
+
 ## v1.5.0 (2026-09-27)
 
 ### Features
