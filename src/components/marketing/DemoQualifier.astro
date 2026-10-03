@@ -42,11 +42,10 @@ const TIMELINES = [
 
 const field = "h-11 w-full rounded-md border border-border bg-background px-3.5 text-sm outline-none transition-colors placeholder:text-muted-foreground/70 focus:border-primary focus:ring-2 focus:ring-primary/20";
 const labelCls = "block text-sm font-medium text-foreground";
-const req = '<span class="text-primary" aria-hidden="true">*</span>';
 ---
 
 <section class="@container mx-auto w-full max-w-3xl px-4 pb-20">
-  <form id="demo-qualifier" class="rounded-2xl border border-border bg-card p-6 shadow-sm @lg:p-8" novalidate>
+  <form id="demo-qualifier" data-link-required-for={JSON.stringify(LINK_REQUIRED_FOR)} class="rounded-2xl border border-border bg-card p-6 shadow-sm @lg:p-8" novalidate>
     <fieldset>
       <legend class={labelCls}>Which best describes you? <span class="text-primary" aria-hidden="true">*</span></legend>
       <div class="mt-3 grid gap-3 @sm:grid-cols-2 @lg:grid-cols-3">
@@ -122,7 +121,7 @@ const req = '<span class="text-primary" aria-hidden="true">*</span>';
   </form>
 </section>
 
-<script define:vars={{ CAL_EVENT, LINK_REQUIRED_FOR }}>
+<script is:inline define:vars={{ CAL_EVENT }}>
   function initDemoQualifier() {
     const form = document.getElementById("demo-qualifier");
     if (!form || form.dataset.bound === "1") return;
@@ -137,7 +136,7 @@ const req = '<span class="text-primary" aria-hidden="true">*</span>';
 
     /** A link is only required of audiences that reliably have one. */
     function linkRequired() {
-      return LINK_REQUIRED_FOR.includes(value("segment"));
+      return JSON.parse(form.dataset.linkRequiredFor).includes(value("segment"));
     }
 
     function value(name) {
