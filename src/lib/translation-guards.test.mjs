@@ -48,6 +48,35 @@ test("restoreAstEntities does nothing when line counts diverge (cannot align saf
   assert.equal(restoreAstEntities(SOURCE, translated), translated);
 });
 
+test("restoreAstEntities still restores when the translator dropped a line, if the footnote lines pair up 1:1", () => {
+  const translated = [
+    "<p><span>~15%*</span> <span>ทั้งหมด*</span></p>",
+    "<p>*การประมวลผลบัตร</p>",
+  ].join("\n");
+  assert.equal(
+    restoreAstEntities(SOURCE, translated),
+    [
+      "<p><span>~15%&ast;</span> <span>ทั้งหมด&ast;</span></p>",
+      "<p>&ast;การประมวลผลบัตร</p>",
+    ].join("\n"),
+  );
+});
+
+test("restoreAstEntities ignores JSX comment delimiters when the line count diverges", () => {
+  const source = ["{/* Hero */}", "<p><span>~15%&ast;</span></p>", "{/* Next */}", "extra"].join("\n");
+  const translated = ["{/* ฮีโร่ */}", "<p><span>~15%*</span></p>", "{/* ถัดไป */}"].join("\n");
+  assert.equal(
+    restoreAstEntities(source, translated),
+    ["{/* ฮีโร่ */}", "<p><span>~15%&ast;</span></p>", "{/* ถัดไป */}"].join("\n"),
+  );
+});
+
+test("restoreAstEntities leaves a line-count mismatch alone when the source uses a real lone asterisk", () => {
+  const source = "*italic* text\n<span>cost&ast;</span>\nextra";
+  const translated = "*курсив* текст\n<span>цена*</span>";
+  assert.equal(restoreAstEntities(source, translated), translated);
+});
+
 test("normalizeDigitTildeRanges turns 15~25% into 15–25% when the source has no such range", () => {
   const source = "cheaper than the 15–25% OTAs charge";
   assert.equal(

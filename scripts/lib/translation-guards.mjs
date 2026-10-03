@@ -13,27 +13,40 @@
  */
 
 const AST_ENTITY = "&ast;";
-// A single `*` that is neither half of `**` bold nor already part of an entity.
-const LONE_ASTERISK = /(?<!\*)\*(?!\*)/g;
+// A single `*` that is neither half of `**` bold nor part of a `/* ... */` JSX comment delimiter.
+const LONE_ASTERISK = /(?<![*/])\*(?![*/])/g;
 const DIGIT_TILDE_DIGIT = /(\d)~(?=\d)/g;
 
 /**
- * Puts `&ast;` back on every line where the English source used it and the
- * translation replaced it with a raw `*`. Aligns by line index, so it only
- * acts when source and translation have the same number of lines; otherwise
- * it returns the translation unchanged and leaves the MDX compile check to
- * catch anything that broke.
+ * Puts `&ast;` back wherever the English source used it and the translation
+ * replaced it with a raw `*`.
+ *
+ * Same line count: aligns by line index. Different line count (the model
+ * sometimes drops or merges a line, which used to leave every raw `*` in
+ * place and fail the compile on both attempts): falls back to restoring every
+ * line holding a lone `*`, but only when that is unambiguous — the source has
+ * no lone `*` of its own (no real italics to protect) and the number of such
+ * translated lines equals the number of source lines using `&ast;`. Anything
+ * else is returned unchanged for the MDX compile check to catch.
  */
 export function restoreAstEntities(source, translated) {
   const sourceLines = source.split("\n");
   const translatedLines = translated.split("\n");
-  if (sourceLines.length !== translatedLines.length) return translated;
+  const restore = (line) => line.replace(LONE_ASTERISK, AST_ENTITY);
 
-  return translatedLines
-    .map((line, i) =>
-      sourceLines[i].includes(AST_ENTITY) ? line.replace(LONE_ASTERISK, AST_ENTITY) : line,
-    )
-    .join("\n");
+  if (sourceLines.length === translatedLines.length) {
+    return translatedLines
+      .map((line, i) => (sourceLines[i].includes(AST_ENTITY) ? restore(line) : line))
+      .join("\n");
+  }
+
+  const hasLoneAsterisk = (line) => new RegExp(LONE_ASTERISK.source).test(line);
+  if (sourceLines.some(hasLoneAsterisk)) return translated;
+  const expected = sourceLines.filter((line) => line.includes(AST_ENTITY)).length;
+  const actual = translatedLines.filter(hasLoneAsterisk).length;
+  if (expected === 0 || expected !== actual) return translated;
+
+  return translatedLines.map((line) => (hasLoneAsterisk(line) ? restore(line) : line)).join("\n");
 }
 
 /**
