@@ -30,6 +30,12 @@ interface Rule {
 
 const BANNED: Rule[] = [
   {
+    // Case-sensitive on purpose so "otherwise" and "likewise" never match.
+    pattern: /\bWise\b|TransferWise|wise\.com/,
+    reason:
+      "Payouts go by bank transfer through Revolut; Wink does not pay out with Wise. Write \"bank transfer\".",
+  },
+  {
     pattern: /Wink is the merchant of record/i,
     reason:
       "The hotel is the merchant of record; TripPay collects as its limited payment collection agent. Write \"collected for the hotel, which stays merchant of record\".",
@@ -87,12 +93,6 @@ const BANNED: Rule[] = [
     pattern: /look-to-book overage/i,
     reason:
       "No look-to-book charge exists: monorepo-java defines LOOK_TO_BOOK_ALLOWANCE but never reads it, and billing is hotel-nights plus per-call units only.",
-  },
-  {
-    // Case-sensitive on purpose so "otherwise" and "likewise" never match.
-    pattern: /\bWise\b|TransferWise|wise\.com/,
-    reason:
-      "Payouts go by bank transfer through Revolut; Wink does not pay out with Wise. Write \"bank transfer\".",
   },
 ];
 
