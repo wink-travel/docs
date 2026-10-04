@@ -88,6 +88,12 @@ const BANNED: Rule[] = [
     reason:
       "No look-to-book charge exists: monorepo-java defines LOOK_TO_BOOK_ALLOWANCE but never reads it, and billing is hotel-nights plus per-call units only.",
   },
+  {
+    // Case-sensitive on purpose so "otherwise" and "likewise" never match.
+    pattern: /\bWise\b|TransferWise|wise\.com/,
+    reason:
+      "Payouts go by bank transfer through Revolut; Wink does not pay out with Wise. Write \"bank transfer\".",
+  },
 ];
 
 /** Canonical statements that must remain present. */
