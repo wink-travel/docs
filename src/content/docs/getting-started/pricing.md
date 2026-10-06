@@ -60,7 +60,7 @@ This model is only available to travel agencies who hold a travel agency license
 Wink charges a 1.5% platform fee / booking. This covers platform maintenance and is what lets us give away everything listed above.
 :::
 
-Using this model, travel agents only pay Wink's platform fee and Wink will invoice the travel agent on a monthly basis.
+Using this model, travel agents pay Wink's 1.5% fee plus any Partner API usage above the free allowance, invoiced monthly.
 
 ## What partners pay
 
