@@ -134,11 +134,12 @@ const BANNED: Rule[] = [
       "No look-to-book charge exists: monorepo-java defines LOOK_TO_BOOK_ALLOWANCE but never reads it, and billing is hotel-nights plus per-call units only.",
   },
   {
-    // Only channel managers are certified. Every other developer moves from
-    // staging to production on their own, with a production application.
+    // Only channel managers and travel agents are certified. Developers move
+    // from staging to production on their own, with a production application.
     pattern: /we (?:will )?certify your (?:account|application)/i,
+    files: /developers|builders|platforms|environments|llms\.txt/,
     reason:
-      "Only channel managers go through certification. Everyone else moves to production themselves: create a production application and drop `staging-` from the URLs.",
+      "Developers are not certified: only channel managers and travel agents are. Everyone else moves to production themselves: create a production application and drop `staging-` from the URLs.",
   },
 ];
 
