@@ -62,6 +62,25 @@ Wink charges a 1.5% platform fee / booking. This covers platform maintenance and
 
 Using this model, travel agents only pay Wink's platform fee and Wink will invoice the travel agent on a monthly basis.
 
+## What partners pay
+
+For partners who send bookings: creators, affiliates, platforms, developers and travel agents. Partnerships are non-exclusive, with no territories.
+
+| | Payment collected for the hotel (most partners) | You are merchant of record (API partners only) |
+|---|---|---|
+| Licence or territory fee | None | None |
+| Setup fee | None | None |
+| Subscription or monthly fee | None | None |
+| Minimum commitment or term | None | None. A credit limit applies. |
+| Partner API access | 10,000 hotel-nights a month free, then $0.0001 per hotel-night. Pay-as-you-go is off by default; at the free allowance, calls return `429`. | Same |
+| Transaction fee | None. You earn commission (10% default). | 1.5% Booking Fee on booking value, invoiced monthly in USD, due within 15 days |
+| Other charges | Payout transfer fees, at cost | Possible prepayment or deposit at approval. Interest of 1.5% a month on overdue invoices only. |
+| When fees change | 30 days' notice; applies only to bookings made after the change | Same. Wink may also vary your credit limit on notice. |
+
+<!-- TODO(yann): confirm "no support fee" before adding a Support row. -->
+
+The merchant-of-record route needs Wink's prior written approval. See [Model 2](#model-2--travel-agent-as-merchant-of-record) above and the [Partner API](/integrations/partner-api/) page.
+
 ## Usage (pay-as-you-go)
 
 A few features cost us money every single time they run — generative AI, third-party social APIs, and serving live pricing at scale. Rather than bundle those into a monthly plan you may not use, you pay only for what you actually consume, and only after you've used up a free monthly allowance.
