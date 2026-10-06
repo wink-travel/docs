@@ -52,7 +52,7 @@ If you want us to support another pay-out method, send us an e-mail.
 
 ### Model 2 — Travel agent as merchant of record
 
-This model is only available to travel agencies who hold a travel agency license in their region and who desire to be the merchant of record. Some of our registered travel agents want to be responsible for handling the payment and disbursing of funds to hotels. Under this model, they are responsible for the funds and carry the necessary licenses to operate in their country.
+This model is only available to travel agencies who hold a travel agency license in their region and who desire to be the merchant of record. It is available to API partners only, booking through the [Partner API](/integrations/partner-api/), and needs Wink's prior written approval. Some of our registered travel agents want to be responsible for handling the payment and disbursing of funds to hotels. Under this model, they are responsible for the funds and carry the necessary licenses to operate in their country.
 
 #### Breakdown
 
