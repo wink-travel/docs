@@ -21,7 +21,7 @@ These cost nothing, forever, with no allowance and no metering:
 - **WinkLinks** — claim your vanity URL, build your page and publish to it as often as you like.
 - **Manual social posts** — anything you write yourself, on any connected network.
 - **Analytics, leaderboards, claims, settings** and account management.
-- The **Consumer and Booking Engine APIs**, plus lookup and autocomplete endpoints.
+- The **Consumer and Booking Engine APIs**, including their lookup and autocomplete endpoints. On the **Partner API**, Lookup and Content calls are metered at one unit each (see [Usage](#what-is-and-isnt-metered) below).
 
 ## Bookings
 
