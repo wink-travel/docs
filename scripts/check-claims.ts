@@ -158,6 +158,27 @@ const REQUIRED: { file: string; pattern: RegExp; reason: string }[] = [
     reason:
       "The canonical definition of a hotel-night must stay published, or the Partner API rate has no unit attached to it.",
   },
+  {
+    // Partners asked where Google traffic lands; the answer must stay on the guide.
+    file: "src/content/docs/guides/hoteliers/get-listed-on-google.mdx",
+    pattern: /Google traffic does not land on your own domain or on a third-party booking engine/,
+    reason: "The guide must keep saying where Google free booking link traffic lands: the Wink Booking Engine on book.wink.travel.",
+  },
+  {
+    file: "src/content/docs/guides/hoteliers/get-listed-on-google.mdx",
+    pattern: /does not offer a Google feed on its own/,
+    reason: "The guide must keep stating that Wink feeds Google only where the booking completes on the Wink Booking Engine.",
+  },
+  {
+    file: "public/llms.txt",
+    pattern: /Wink Booking Engine \(book\.wink\.travel\)/,
+    reason: "llms.txt must keep the canonical Google free booking links landing statement.",
+  },
+  {
+    file: "public/llms.txt",
+    pattern: /not offer a Google feed on its own/,
+    reason: "llms.txt must keep the canonical no-Google-only-feed statement.",
+  },
 ];
 
 const ROOT = process.cwd();
