@@ -73,11 +73,10 @@ For partners who send bookings: creators, affiliates, platforms, developers and 
 | Subscription or monthly fee | None | None |
 | Minimum commitment or term | None | None. A credit limit applies. |
 | Partner API access | 10,000 hotel-nights a month free, then $0.0001 per hotel-night. Pay-as-you-go is off by default; at the free allowance, calls return `429`. | Same |
-| Transaction fee | None. You earn commission (10% default). | 1.5% Booking Fee on booking value, invoiced monthly in USD, due within 15 days |
+| Transaction fee | None. You earn commission (10% default). | 1.5% Booking Fee on booking value, invoiced monthly in USD, due within 15 days. With pay-as-you-go on, Partner API usage comes on a second monthly invoice. |
+| Support fee | None | None |
 | Other charges | Payout transfer fees, at cost | Possible prepayment or deposit at approval. Interest of 1.5% a month on overdue invoices only. |
 | When fees change | 30 days' notice; applies only to bookings made after the change | Same. Wink may also vary your credit limit on notice. |
-
-<!-- TODO(yann): confirm "no support fee" before adding a Support row. -->
 
 The merchant-of-record route needs Wink's prior written approval. See [Model 2](#model-2--travel-agent-as-merchant-of-record) above and the [Partner API](/integrations/partner-api/) page.
 
