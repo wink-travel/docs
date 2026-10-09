@@ -108,7 +108,15 @@ const BANNED: Rule[] = [
     // so what it charges is the platform fee, not a processing fee.
     pattern: /1\.5% processing/i,
     reason:
-      "On the agent-collected route Wink charges the 1.5% platform fee, not a processing fee. Write \"1.5% platform fee\".",
+      "On the agent-collected route Wink charges the 1.5% Booking Fee (Travel Agent Agreement 4.1), not a processing fee. Write \"1.5% Booking Fee\".",
+  },
+  {
+    // W-04/W-14: on the agent-collected route the agent pays the 1.5% Booking
+    // Fee plus any Partner API usage above the free allowance (second monthly
+    // invoice). "Platform fee only" understated it on seven pages.
+    pattern: /platform fee only/i,
+    reason:
+      "On the agent-collected route the agent pays a 1.5% Booking Fee (Travel Agent Agreement 4.1) plus any Partner API usage above the free allowance. Do not write \"platform fee only\".",
   },
   {
     // A13: there is no booking modification, in the API or the catalogue.
