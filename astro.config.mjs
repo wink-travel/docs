@@ -290,6 +290,7 @@ export default defineConfig({
           { label: 'For Creators', collapsed: true, items: [{ autogenerate: { directory: 'guides/creators' } }] },
           { label: 'For Hoteliers', collapsed: true, items: [{ autogenerate: { directory: 'guides/hoteliers' } }] },
           { label: 'For Integrators', collapsed: true, items: [{ autogenerate: { directory: 'guides/integrators' } }] },
+          { label: 'For Travel Agents', collapsed: true, items: [{ autogenerate: { directory: 'guides/travel-agents' } }] },
           { label: 'General', collapsed: true, items: [{ autogenerate: { directory: 'guides/general' } }] },
         ],
       },
