@@ -84,9 +84,62 @@ const BANNED: Rule[] = [
       "The Partner API unit is a hotel-night, not a hotel-day. One hotel priced for one night of stay.",
   },
   {
+    // A2: the hotel's rate passes through unchanged in every model, including
+    // the agent-collected one. AP 4.3 says so; a resource page said the agent
+    // "sets your own margin".
+    pattern: /set your own margin|mark(?:s|ing)? up the rate/i,
+    reason:
+      "Contradicts the no-markup position in AP 4.3. The hotel controls its own rate and Wink passes it through unchanged — no net-rate resale, no markup layer.",
+  },
+  {
+    // A7: commission is calculated after the platform fee and card processing.
+    pattern: /percentage of the booking total/i,
+    reason:
+      "Commission is a percentage of the booking value AFTER the 1.5% platform fee and card processing, not of the gross booking total.",
+  },
+  {
+    // A8: on the agent-collected route Wink is not in the funds flow at all,
+    // so what it charges is the platform fee, not a processing fee.
+    pattern: /1\.5% processing/i,
+    reason:
+      "On the agent-collected route Wink charges the 1.5% platform fee, not a processing fee. Write \"1.5% platform fee\".",
+  },
+  {
+    // A13: there is no booking modification, in the API or the catalogue.
+    pattern: /create\s*\/\s*update\s*\/\s*cancel|create, update and cancel/i,
+    reason:
+      "There is no booking update: the only booking PATCH operations are cancels, and the event catalogue has no booking update event. Say create and cancel.",
+  },
+  {
+    // A4: a hardcoded count drifts silently every time the catalogue changes.
+    pattern: /64\+\s*(?:webhook|platform|other)?\s*events?/i,
+    reason:
+      "Do not hardcode the webhook count. Import deliveredWebhookEventCount from @/lib/webhook-events so it tracks the schema.",
+  },
+  {
+    // A5: /developers/rest-and-grpc/ says we no longer publish them.
+    pattern: /official SDKs/i,
+    reason:
+      "We no longer publish language SDKs. Say generated clients from the schema.",
+  },
+  {
+    // The key is booking.create; booking.created subscribes to nothing.
+    pattern: /booking\.created/i,
+    reason:
+      "The webhook event key is `booking.create`. `booking.created` is not in the catalogue, so a developer copying it subscribes to nothing.",
+  },
+  {
     pattern: /look-to-book overage/i,
     reason:
       "No look-to-book charge exists: monorepo-java defines LOOK_TO_BOOK_ALLOWANCE but never reads it, and billing is hotel-nights plus per-call units only.",
+  },
+  {
+    // Only channel managers and travel agents are certified. Developers move
+    // from staging to production on their own, with a production application.
+    pattern: /we (?:will )?certify your (?:account|application)/i,
+    files: /developers|builders|platforms|environments|llms\.txt/,
+    reason:
+      "Developers are not certified: only channel managers and travel agents are. Everyone else moves to production themselves: create a production application and drop `staging-` from the URLs.",
   },
 ];
 
@@ -104,6 +157,27 @@ const REQUIRED: { file: string; pattern: RegExp; reason: string }[] = [
     pattern: /hotel-night\*{0,2} is one hotel priced for one night/i,
     reason:
       "The canonical definition of a hotel-night must stay published, or the Partner API rate has no unit attached to it.",
+  },
+  {
+    // Partners asked where Google traffic lands; the answer must stay on the guide.
+    file: "src/content/docs/guides/hoteliers/get-listed-on-google.mdx",
+    pattern: /Google traffic does not land on your own domain or on a third-party booking engine/,
+    reason: "The guide must keep saying where Google free booking link traffic lands: the Wink Booking Engine on book.wink.travel.",
+  },
+  {
+    file: "src/content/docs/guides/hoteliers/get-listed-on-google.mdx",
+    pattern: /does not offer a Google feed on its own/,
+    reason: "The guide must keep stating that Wink feeds Google only where the booking completes on the Wink Booking Engine.",
+  },
+  {
+    file: "public/llms.txt",
+    pattern: /Wink Booking Engine \(book\.wink\.travel\)/,
+    reason: "llms.txt must keep the canonical Google free booking links landing statement.",
+  },
+  {
+    file: "public/llms.txt",
+    pattern: /not offer a Google feed on its own/,
+    reason: "llms.txt must keep the canonical no-Google-only-feed statement.",
   },
 ];
 
