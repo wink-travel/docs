@@ -27,7 +27,7 @@ Learn how Wink compares to other online travel segments in the market. Below is 
 | Track ROI | 🟢 | 🟢 | ⚫️ | ⚫️ | 
 | Pay-per-Performance | 🟢 | 🟢 | ⚫️ | 🟢 | 
 | Integrated payment gateway | 🟢 | 🟢 | 🟢 | ⚫️ | 
-| Payouts with Wise | 🟢 | 🟢 | ⚫️ | ⚫️ | 
+| Bank-transfer payouts | 🟢 | 🟢 | ⚫️ | ⚫️ | 
 
 
 ## Wink vs Internet Booking Engine (IBE)

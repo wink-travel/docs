@@ -30,6 +30,12 @@ interface Rule {
 
 const BANNED: Rule[] = [
   {
+    // Case-sensitive on purpose so "otherwise" and "likewise" never match.
+    pattern: /\bWise\b|TransferWise|wise\.com/,
+    reason:
+      "Payouts go by bank transfer through Revolut; Wink does not pay out with Wise. Write \"bank transfer\".",
+  },
+  {
     pattern: /Wink is the merchant of record/i,
     reason:
       "The hotel is the merchant of record; TripPay collects as its limited payment collection agent. Write \"collected for the hotel, which stays merchant of record\".",
