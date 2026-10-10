@@ -155,6 +155,25 @@ const BANNED: Rule[] = [
     reason:
       "Developers are not certified: only channel managers and travel agents are. Everyone else moves to production themselves: create a production application and drop `staging-` from the URLs.",
   },
+  {
+    // Neither the portal nor the sales-channel service checks a booking count
+    // before a direct-connection request (SalesChannelRequestServiceImpl).
+    pattern: /\b(?:5|five) (?:past |completed )?bookings\b[^.]{0,60}(?:request|connection)/i,
+    reason:
+      "There is no booking minimum for a direct-connection request. Write \"you can ask any hotel for a direct connection\".",
+  },
+  {
+    // SalesChannelRequestServiceImpl rejects a re-apply within 90 days.
+    pattern: /two months after the rejection|re-?apply[^.]{0,40}two months/i,
+    reason: "The wait before re-applying after a rejection is 90 days.",
+  },
+  {
+    // The portal labels it "Channel discount" (CHANNEL.MEMBER_DISCOUNT).
+    pattern: /\bmember(?:ship)? discounts?\b/i,
+    files: /portal|guides|products|llms\.txt/,
+    reason:
+      "The hotel sets a channel discount per sales channel, and the portal calls it that. Write \"channel discount\".",
+  },
 ];
 
 /** Canonical statements that must remain present. */
@@ -192,6 +211,11 @@ const REQUIRED: { file: string; pattern: RegExp; reason: string }[] = [
     file: "public/llms.txt",
     pattern: /not offer a Google feed on its own/,
     reason: "llms.txt must keep the canonical no-Google-only-feed statement.",
+  },
+  {
+    file: "public/llms.txt",
+    pattern: /no booking minimum[\s\S]{0,400}re-apply after 90 days/i,
+    reason: "llms.txt must keep the canonical direct-connection rules: no booking minimum, re-apply after 90 days.",
   },
 ];
 
