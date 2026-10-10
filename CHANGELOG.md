@@ -2,6 +2,194 @@
 
 Changelog of docs.
 
+## v1.5.2 (2026-10-03)
+
+### Bug Fixes
+
+-  **i18n**  restore &ast; when translator drops a line ([90060](https://github.com/wink-travel/docs/commit/900602d4f7cb78f) Bjorn Harvold)  
+-  **demo-qualifier**  clear astro check ts warnings ([c881c](https://github.com/wink-travel/docs/commit/c881c78008cce6a) Bjorn Harvold)  
+
+### Other changes
+
+**Publish one Partner API price, and stop the other one coming back (#89)**
+
+* Publish one Partner API price, and stop the other one coming back 
+* The Partner API was published with two incompatible billing models: 
+* /pricing/, /getting-started/pricing/, /resources/hotel-booking-api/ 
+* 10,000 hotel-days free per month, then $0.0001 per hotel-day 
+* /integrations/partner-api/ 
+* 10,000 requests free per month, then $1.00 per 1,000 requests 
+* Different units and different prices, so a partner modelling costs from the 
+* wrong page was out by an order of magnitude. The hotel-day model is correct; 
+* the integrations page is rewritten onto it, with the canonical definition 
+* carried over rather than paraphrased: a hotel-day is one hotel priced for one 
+* night of stay, not one API call, so a search returning 20 hotels for a 3-night 
+* stay is 60 hotel-days from a single request. 
+* Rate limits stay as they are. Requests per minute is a throughput control, not 
+* a price, and the two can coexist. 
+* The look-to-book overage is removed rather than converted. It existed to 
+* penalise a high search-to-booking ratio, which hotel-day billing already prices 
+* directly -- every one of those searches is metered as priced supply. Keeping it 
+* would meter the same behaviour twice. It appeared nowhere else on the site or 
+* in the agreements. Flagged for the record: if it is a live commercial term 
+* rather than part of the retired model, it needs restating in hotel-day terms. 
+* The guard gains the rules that would have caught this, because a contradiction 
+* fixed by hand comes back. Two banned patterns -- request-based pricing and the 
+* look-to-book charge -- and one required statement, so the definition of a 
+* hotel-day cannot be deleted from the page the rate lives on. 
+* Probed both directions against the real script: all three banned phrasings exit 
+* 1, the canonical wording and &quot;30 requests per minute&quot; both exit 0, and removing 
+* the definition exits 1. 
+* Co-Authored-By: Claude Opus 5 &lt;noreply@anthropic.com&gt; 
+* Rename the Partner API unit to hotel-night 
+* Hotels sell nights, not days. The unit was called a hotel-day and then had to 
+* be translated back into nights every time it appeared -- &quot;a hotel-day is one 
+* hotel priced for one night of stay&quot; -- which is a sign the name was fighting 
+* the concept. room-night is the unit the industry already thinks in, so the 
+* worked example now reads without a translation step: 20 hotels for a 3-night 
+* stay is 60 hotel-nights. 
+* The unit and the rate are unchanged: 10,000 free per month, then $0.0001. 
+* 15 occurrences across the four English pages, plus one in UsagePricing.astro 
+* that the content pass missed and the guard caught -- the same shared component 
+* renders the table on /pricing/ and /products/social/, so it would have 
+* contradicted both pages it feeds. 
+* /getting-started/pricing/ keeps a single line saying the unit was previously 
+* called a hotel-day, because the old name is already live on production and 
+* anyone who has modelled their costs will search for it. 
+* The guard follows: the required definition now names the new unit, and the 
+* retired name is banned except in that transitional sentence. Probed in both 
+* directions -- the old unit exits 1, the new one exits 0, the request-based 
+* model stays banned, and deleting the definition still fails. 
+* Locale copies keep the old term until the next i18n run. 
+* Co-Authored-By: Claude Opus 5 &lt;noreply@anthropic.com&gt; 
+* fix(pricing): align Partner API docs with what monorepo-java meters 
+* Lookup and Content are @Metered(PER_CALL), one unit per call, not free. 
+* Account endpoints are free. The look-to-book allowance constant is never 
+* read, so no overage exists. Rename hotel-day to hotel-night in the partner 
+* schema, drop the unsupported &#x27;bill tracks priced supply&#x27; claim, and make the 
+* claims guard scan schemas/llms.txt, ban every hotel-day spelling and scope 
+* the requests-pricing ban to pricing pages. 
+* Co-Authored-By: Claude Sonnet 5.5 &lt;noreply@anthropic.com&gt; 
+* docs(partner-api): document only the limits the code enforces 
+* Per-minute limiting is LOG-only in monorepo-java, so drop the 30 req/min, 
+* 60 burst and 5-minute pause claims. Document the enforced behaviour: a 
+* 10,000-unit monthly allowance, then 429 until the 1st (UTC) for accounts not 
+* enrolled in pay-as-you-go, and billing for enrolled accounts. 
+* Co-Authored-By: Claude Sonnet 5.5 &lt;noreply@anthropic.com&gt; 
+* docs(partner-api): leave Enterprise billing to the agreement 
+* Co-Authored-By: Claude Sonnet 5.5 &lt;noreply@anthropic.com&gt; 
+* chore: remove stray sed backup file schemas/partner.json-E 
+* Co-Authored-By: Claude Sonnet 5.5 &lt;noreply@anthropic.com&gt; 
+* --------- 
+* Co-authored-by: Yann &lt;yann@Yanns-MacBook-Pro.local&gt; 
+* Co-authored-by: Claude Opus 5 &lt;noreply@anthropic.com&gt; 
+* Co-authored-by: Bjorn Harvold &lt;bjorn@harvold.com&gt; 
+
+[1ca70](https://github.com/wink-travel/docs/commit/1ca70e33e32e4a6) YannWink *2026-10-02 14:13:03*
+
+**Qualify call bookings before they reach the calendar (#86)**
+
+* Qualify call bookings before they reach the calendar 
+* Bookings were arriving with a name, an email and nothing else, so every call 
+* started from a blank page. Forty-five CTAs across the site -- &quot;Request a demo&quot;, 
+* &quot;Talk to us&quot;, &quot;Pick a time&quot; -- all pointed straight at one generic Cal.com link 
+* offering two durations and Cal&#x27;s default fields. 
+* A new /demo/ page asks the few things that make a call worth holding, and the 
+* booking button stays disabled until the required ones are answered: 
+* required   name, work email, company, website, which of the five audience 
+* lanes they belong to, what they want out of the call (20 chars 
+* minimum, so &quot;hi&quot; does not pass), and when they want to be live 
+* optional   rough size, how they heard about Wink 
+* Timeline is required on purpose: it is the cheapest signal of whether someone 
+* is actually moving or just browsing. 
+* The answers are composed into Cal&#x27;s &#x60;notes&#x60; prefill, so they arrive in the 
+* calendar invite and the notification email with no Cal.com configuration at 
+* all. If booking questions are added there later, map them by slug in 
+* buildBookingUrl instead -- the component says so. 
+* Every CTA now routes through the page, locale-aware (/es/demo/ and friends, 
+* which resolve through Starlight&#x27;s English fallback until the next i18n run), 
+* and only the component knows the Cal.com URL. llms.txt points at /demo/ too, so 
+* an AI assistant recommending a call sends people through the same door. 
+* Verified in a browser, not by reading: the button stays disabled with every 
+* field filled but the audience unselected -- an early version passed there, 
+* because a radio group carries a value on every input and the fallback read the 
+* first one as answered -- re-blocks on a malformed email and on a too-short 
+* answer, and the composed notes come out as the booking summary we want. Guards 
+* and astro check clean. 
+* Co-Authored-By: Claude Opus 5 &lt;noreply@anthropic.com&gt; 
+* Stop the form turning away creators and pre-launch teams 
+* Requiring a company and a website of everyone excluded two of the audiences we 
+* most want. A creator&#x27;s brand is their own name and their presence is a social 
+* profile; a startup that has not launched has neither. The form quietly told 
+* both that it was not for them. 
+* Company is now optional throughout, and labelled &quot;Company or brand&quot; with a 
+* placeholder that says &quot;or just your own name&quot;. 
+* The link is required only of the audiences that reliably have one -- hotels, 
+* partners, and platforms, where no website is implausible -- and optional for 
+* creators, developers and &quot;something else&quot;. The field is now &quot;Website or 
+* profile&quot; with an Instagram handle alongside the domain in the placeholder, and 
+* its required marker, its hint text and the validation all follow the selected 
+* audience rather than sitting fixed. 
+* &quot;Work email&quot; is now just &quot;Email&quot;: a creator using a personal address is not a 
+* worse lead. 
+* The booking summary adapts too. A profile is no longer labelled &quot;Company&quot;, and 
+* someone with neither produces no line at all rather than &quot;Company: not given&quot; 
+* for us to read past: 
+* Company: Hotel MYS — hotelmys.com     both 
+* Company: Ana Travels                  company only 
+* Find them at: instagram.com/anatravels   profile only 
+* (line omitted)                        neither 
+* Verified in a browser across the audiences: a creator with no company and no 
+* link can book, a hotel without a link cannot, the hotel can once a link is 
+* given, and the required marker appears and disappears as the audience changes. 
+* Co-Authored-By: Claude Opus 5 &lt;noreply@anthropic.com&gt; 
+* Ask who they are first 
+* The audience question now opens the form instead of sitting below the identity 
+* fields. 
+* It reads better -- the rest of the form makes more sense once you have said 
+* which side of the marketplace you are on -- but it also fixes a real wrinkle: 
+* that answer decides whether the website field is required, so asking it last 
+* meant the requirement changed under someone who had already filled the form in. 
+* Asked first, the form settles before they start typing. 
+* It is also the cheapest question on the page: one click, no typing, which is a 
+* better first step than an empty text field. 
+* Verified in the browser: fields now read audience, name, email, company, 
+* website or profile, goal, timeline, size, source; and exactly one of the 
+* required marker or &quot;(optional)&quot; is visible on the website field at any time, 
+* flipping as the audience changes. 
+* Co-Authored-By: Claude Opus 5 &lt;noreply@anthropic.com&gt; 
+* Fix what a browse of the site turned up 
+* Form alignment: the Company and Website inputs sat 20px apart because the 
+* website cell carries a hint paragraph and the grid row stretched, pushing the 
+* neighbouring cell&#x27;s input down. Name/Email and Timeline/Size were already 
+* level, which is what made it look like a mistake rather than a style. Cells are 
+* now pinned to the top of their row; all three pairs measure 0px apart. 
+* Heading order: /travel-creators/ went straight from the h1 to two h3s, so the 
+* outline skipped a level. Both are the first headings after the h1 and are now 
+* h2, with no visual change -- the size comes from the classes, not the tag. 
+* Titles were being truncated in search results. Starlight appends &quot; | Wink&quot;, so 
+* the budget is about 55 characters: 
+* pricing          73 -&gt; 47 
+* travel-creators  68 -&gt; 55 
+* agentic-ai       64 -&gt; 57 
+* The pricing meta description was 183 characters against a ~160 limit, so the 
+* part naming who earns was being cut. Tightened to 163 without losing it. 
+* Co-Authored-By: Claude Opus 5 &lt;noreply@anthropic.com&gt; 
+* chore(i18n): refresh locale file hashes for demo link changes 
+* The English source only had its Request-a-demo links repointed to /demo/, 
+* and the locale copies were updated to match, so refresh the stored hashes 
+* instead of re-translating. pricing, agentic-ai and travel-creators are 
+* left untouched because their titles/descriptions/headings also changed 
+* and still need re-translation. 
+* Co-Authored-By: Claude Sonnet 5.5 &lt;noreply@anthropic.com&gt; 
+* --------- 
+* Co-authored-by: Yann &lt;yann@Yanns-MacBook-Pro.local&gt; 
+* Co-authored-by: Claude Opus 5 &lt;noreply@anthropic.com&gt; 
+* Co-authored-by: Bjorn Harvold &lt;bjorn@harvold.com&gt; 
+
+[cc6d2](https://github.com/wink-travel/docs/commit/cc6d20da7f82b82) YannWink *2026-10-02 13:18:37*
+
+
 ## v1.5.1 (2026-09-27)
 
 ### Bug Fixes
