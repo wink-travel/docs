@@ -5,18 +5,18 @@ sidebar:
   order: 0
 ---
 
-Lausn okkar fyrir skráða ferðaskipuleggjendur er [Wink Agent](https://agent.wink.travel). Þetta er sjálfsafgreiðsluvefur sem umboðsmenn geta notað til að leita að og bóka fyrir viðskiptavini sína og afla sér þóknunar fyrir hverja bókun.
+Skráðir ferðaskipuleggjendur nota sama vefgátt og allir aðrir, á [app.wink.travel](https://app.wink.travel), með Travel Agent reikning. Umboðsmenn leita og bóka fyrir hönd viðskiptavina sinna og fá þóknun fyrir hverja bókun. Til að stofna reikning, fylgdu leiðbeiningunum í [Getting Started as a Travel Agency](/is/guides/travel-agents/getting-started/).
 
-Meiri háttar ferðaskipuleggjendur geta valið að samþætta á API-stigi til að meðhöndla greiðslur og útborganir utan Wink-vettvangsins.
+Skrifstofur sem hafa leyfi til að innheimta greiðslur sjálfar starfa sem kaupmaður og sjá um greiðslur utan Wink vettvangsins. Skrifstofur með eigin kerfi geta tengst í gegnum [Partner API](/is/integrations/partner-api/).
 
-Ferðaskipuleggjendur hafa undirsett af sömu eiginleikum vefsins og [Studio](/is/portal/studio/what-is-studio) svo við munum ekki fara yfir þá aftur hér.
+Ferðaskipuleggjendur hafa hluta af sömu eiginleikum og [Studio](/is/portal/studio/what-is-studio) svo við munum ekki fara nánar í þá hér.
 
-## Leit
+## Leita
 
 Farðu á [Search](/is/portal/studio/search) til að læra hvernig á að leita að og bóka hótel.
 
-Annars, haltu áfram í næsta kafla.
+Annars skaltu halda áfram í næsta kafla.
 
 ## API
 
-Forritarar sem vilja stjórna `Travel Agent` geta farið á [Developers > API > Travel Agent](/is/api/overview/).
+Skrifstofur geta leitað og bókað í gegnum [Partner API](/is/partner-api/partner/), sem kemur í stað eldri Travel Agent REST endapunkta.

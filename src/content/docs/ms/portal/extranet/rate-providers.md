@@ -14,7 +14,7 @@ Pilih penyedia kadar anda dari senarai dropdown dan klik butang `Save`. Ini akan
 
 ### SynXis
 
-Jika hartanah anda menggunakan pengurus saluran SynXis, terdapat satu langkah lagi yang diperlukan sebelum anda bersedia untuk berhubung dengan Wink.
+Jika hartanah anda menggunakan Sabre SynXis, terdapat satu langkah lagi yang diperlukan sebelum anda bersedia untuk berhubung dengan Wink.
 
 - Sila hubungi wakil akaun SynXis anda atau khidmat pelanggan (SHSCustomerCare@sabre.com).
 - Beritahu mereka anda ingin berhubung dengan Wink melalui Channel Connect Express (***CCX***).

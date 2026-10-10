@@ -1,0 +1,198 @@
+---
+title: Snel aan de slag
+description: "Van nul naar een werkende integratie in staging: verkrijg referenties, zoek live hotelprijzen met de Partner API en stuur reizigers naar een boekingspagina die jou crediteert."
+sidebar:
+  order: 0.5
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+Deze gids neemt je in ongeveer 30 minuten mee van niets naar een werkende integratie. Aan het einde heb je:
+
+- live prijzen voor hotels in een stad, via de Partner API,
+- een boekingslink die boekingen aan jouw account toekent,
+- een testboeking en een webhook die je vertelt dat het is gebeurd.
+
+Alles gebeurt in **staging**, onze testomgeving. Je hoeft ons niet om toegang te vragen en overstappen naar productie later vereist ook geen goedkeuring.
+
+## Is dit de juiste gids voor jou?
+
+| Je wilt… | Begin hier |
+|---|---|
+| Hotels tonen in je app, site of AI-product en reizigers doorsturen om te boeken, waarbij je commissie verdient | **Deze gids** |
+| Boeken namens je klanten als een erkend reisbureau | Deze gids tot Stap 5, daarna [Boeken als reisbureau](#booking-as-a-travel-agency) |
+| Boekbare hotels insluiten zonder een integratie te schrijven | [Web Components](/nl/integrations/web-components/) |
+| Een AI-agent laten zoeken en boeken | [MCP Servers](/nl/developers/mcp/) en [Agentic Payments](/nl/developers/agentic-payments/) |
+| Een channel manager of PMS koppelen | [Voeg je channel manager toe](/nl/guides/integrators/add-your-channel-manager/) |
+
+## Hoe het werkt
+
+Je gebruikt de **Partner API** om hotels en hun live prijzen te vinden. Elk hotel heeft een stabiele `urlName`. Je maakt er een link van naar de Wink Booking Engine, `book.wink.travel`, met jouw ID’s. De reiziger boekt en betaalt daar, en de boeking wordt aan jouw account toegekend.
+
+## Voordat je begint
+
+Je hebt nodig:
+
+- [`grpcurl`](https://github.com/fullstorydev/grpcurl), of Postman of Insomnia. De Partner API is gRPC, geen REST.
+- `curl`.
+
+:::note
+Staging gaat in slaapstand als niemand het gebruikt. De eerste oproep na een rustige periode kan ongeveer een minuut duren terwijl de servers wakker worden.
+:::
+
+## Stap 1: Maak een staging-account aan
+
+Staging is volledig gescheiden van productie, met eigen inloggegevens en accounts.
+
+<Steps>
+1. Ga naar [staging-app.wink.travel](https://staging-app.wink.travel), klik op `Sign-In / Register` en registreer je.
+
+2. Klik in de linkerzijbalk op `Accounts`, daarna op `Create` en kies **I am an Affiliate**. Boekingen die je doorstuurt worden aan dit account toegekend. Zie [Account aanmaken](/nl/portal/create-account/).
+</Steps>
+
+## Stap 2: Maak een applicatie aan
+
+De applicatie geeft je code zijn referenties.
+
+<Steps>
+1. Klik op je accountkaart op `Actions` > `Manage account`, daarna op het tabblad `Applications`.
+
+2. Klik op `Create new application`, geef het een naam en kies **Machine-to-machine** als clienttype.
+
+3. Selecteer onder scopes **Inventory & rates** (lezen). De Partner API controleert op `inventory.read`.
+
+4. Klik op `Create application` en kopieer de **Client ID** en **Client secret**. Het secret wordt één keer getoond en kan later niet worden opgevraagd.
+</Steps>
+
+Zie [Applicaties](/nl/account/applications/) voor de andere clienttypes en scopes.
+
+## Stap 3: Verkrijg een access token
+
+```bash
+curl -X POST https://staging-iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_CLIENT_SECRET>" \
+  -d "scope=inventory.read"
+```
+
+Bewaar de `access_token` uit de respons:
+
+```bash
+export WINK_TOKEN=<access_token>
+```
+
+Tokens verlopen. Laat in je eigen code een OAuth2-bibliotheek ze ophalen en vernieuwen. Zie [Authenticatie](/nl/developers/authentication/).
+
+## Stap 4: Vind je account-ID
+
+Elke Partner API-aanroep noemt het account waarvoor je handelt in een `managing-entity-id` header. Lijst de accounts op waarvoor je token mag handelen:
+
+```bash
+grpcurl -H "authorization: Bearer $WINK_TOKEN" \
+  -d '{}' \
+  staging-partner.wink.travel:443 wink.partner.v1.Accounts/ListAccounts
+```
+
+Kopieer de `accountId` van het affiliate account uit Stap 1:
+
+```bash
+export WINK_ACCOUNT_ID=<accountId>
+```
+
+## Stap 5: Zoek hotels in een stad
+
+{/* TODO(Yann): bevestig de staging-stad van het testhotel met beschikbaarheid, en gebruik die hier. */}
+
+```bash
+grpcurl -H "authorization: Bearer $WINK_TOKEN" \
+  -H "managing-entity-id: $WINK_ACCOUNT_ID" \
+  -d '{
+    "urlName": "bangkok-thailand",
+    "userSession": {
+      "itinerary": {
+        "startDate": "2026-12-01",
+        "nights": 2,
+        "room": { "adults": 2 }
+      },
+      "currencyCode": "USD",
+      "languageCode": "en"
+    }
+  }' \
+  staging-partner.wink.travel:443 wink.partner.v1.Search/SearchByCity
+```
+
+Gebruik een incheckdatum in de toekomst; een datum in het verleden wordt geweigerd. Elk resultaat bevat:
+
+- `name`, `starRating` en `heroImageUrl`, genoeg om een resultaatregel te tonen,
+- `roomTypes`, de live aanbiedingen, goedkoopste kamer eerst,
+- `urlName`, de slug die je nodig hebt voor de boekingslink.
+
+Prijzen zijn gehele getallen in kleine eenheden: deel door 10 tot de macht van `currencyExponent` uit de respons (2 voor USD, dus `12500` is $125,00).
+
+Weet je de slug van een stad niet? Zoek die op met `wink.partner.v1.Lookup/Search`. Voor de volledige inhoud van een accommodatie gebruik je de `Content` service. De [Partner API referentie](/nl/partner-api/partner/) documenteert elke oproep.
+
+## Stap 6: Bouw de boekingslink
+
+```text
+https://staging-book.wink.travel/hotel/<urlName>?client-id=<YOUR_CLIENT_ID>&configuration-id=<YOUR_CUSTOMIZATION_ID>
+```
+
+- `<urlName>` is de `urlName` van het hotel uit Stap 5.
+- `client-id` is de Client ID van je applicatie uit Stap 2.
+- `configuration-id` is je customization ID: `Manage account` > `Customizations`. Een customization stelt ook je branding, standaardtaal en valuta in op de boekingspagina.
+
+:::caution
+Voeg beide ID’s toe. Zonder deze laadt de pagina wel, maar met standaardbranding, en **wordt de boeking niet aan jou toegekend**. Zet je client secret nooit in een link.
+:::
+
+Zie [Direct linken](/nl/booking-engine/features/#linking-directly) voor linken naar de startpagina van de booking engine in plaats van een enkel hotel.
+
+## Stap 7: Maak een testboeking
+
+Open je link, kies data en een kamer, en betaal met een [Stripe testkaart](https://docs.stripe.com/testing), bijvoorbeeld `4242 4242 4242 4242` met een willekeurige toekomstige vervaldatum en CVC. Er wordt geen echt bedrag afgeschreven in staging. Noteer de boekingscode op de bevestigingspagina; die begint met `WNK`.
+
+## Stap 8: Ontvang meldingen over boekingen
+
+<Steps>
+1. Ga in Portal naar `Applications > Webhooks` en voeg een endpoint toe dat `POST`-verzoeken accepteert.
+
+2. Abonneer je op `booking.create`, of laat de lijst met events leeg om alles te ontvangen tijdens het ontwikkelen.
+
+3. Stuur jezelf een testevent, maak daarna een nieuwe testboeking en zie het binnenkomen.
+</Steps>
+
+Verifieer de handtekening van elke levering voordat je deze vertrouwt. Zie [Webhook-integratie](/nl/developers/webhook-integration/) en de [Webhook Events Catalog](/nl/developers/webhook-events/).
+
+## Stap 9: Ga naar productie
+
+Er is geen goedkeuringsstap voor ontwikkelaars. (Reisbureau-accounts worden eerst gecertificeerd; zie [hieronder](#booking-as-a-travel-agency).) Als je integratie werkt in staging:
+
+<Steps>
+1. Maak een account en een applicatie aan op [app.wink.travel](https://app.wink.travel), zoals in Stap 1 en 2. Referenties worden niet overgedragen tussen omgevingen.
+
+2. Verwijder `staging-` uit elke host:
+
+   | Staging | Productie |
+   |---|---|
+   | `https://staging-iam.wink.travel` | `https://iam.wink.travel` |
+   | `staging-partner.wink.travel:443` | `partner.wink.travel:443` |
+   | `https://staging-book.wink.travel` | `https://book.wink.travel` |
+
+3. Zoek opnieuw je productie-account-ID (Stap 4) en customization ID (Stap 6). Deze verschillen van staging.
+</Steps>
+
+Partner API-gebruik wordt gemeten in hotelnachten, met een gratis maandelijkse limiet. Zie [Partner API](/nl/integrations/partner-api/) voor prijzen en limieten.
+
+## Boeken als reisbureau
+
+Als je account een erkend reisbureau is, hoef je reizigers niet naar `book.wink.travel` te sturen: je kunt boekingen direct aanmaken met `wink.partner.v1.Booking/CreateBooking` en beheren met de andere `Booking`-oproepen. Andere accounts sturen reizigers naar de boekingslink.
+
+Reisbureau-accounts worden gecertificeerd: Wink beoordeelt elke registratie voordat er geboekt kan worden. Bureaus die zelf betalingen van hun klanten willen innen als merchant of record, moeten via de Partner API boeken en schriftelijke goedkeuring van Wink krijgen. Zie [Aan de slag als reisbureau](/nl/guides/travel-agents/getting-started/) en de [Partner API referentie](/nl/partner-api/partner/).
+
+## Volgende stappen
+
+- [Genereer een getypeerde client](/nl/developers/rest-and-grpc/#generate-a-grpc-client) vanuit het `.proto`-schema in plaats van `grpcurl` handmatig te gebruiken.
+- Koppel de [MCP server](/nl/developers/mcp/) en gebruik de [AI Skills](/nl/developers/ai-skills/) om je code-assistent de integratie tegen de live API te laten schrijven.
+- Lees de volledige lijst van [omgevingen en hosts](/nl/getting-started/environments/).

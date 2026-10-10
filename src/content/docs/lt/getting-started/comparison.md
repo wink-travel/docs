@@ -27,7 +27,7 @@ Sužinokite, kaip Wink lyginamas su kitais internetinių kelionių segmentais ri
 | ROI sekimas | 🟢 | 🟢 | ⚫️ | ⚫️ | 
 | Mokėjimas už rezultatus | 🟢 | 🟢 | ⚫️ | 🟢 | 
 | Integruota mokėjimų sistema | 🟢 | 🟢 | 🟢 | ⚫️ | 
-| Išmokos per Wise | 🟢 | 🟢 | ⚫️ | ⚫️ | 
+| Banko pavedimų išmokos | 🟢 | 🟢 | ⚫️ | ⚫️ | 
 
 
 ## Wink vs Internetinė užsakymų sistema (IBE)
@@ -35,7 +35,7 @@ Sužinokite, kaip Wink lyginamas su kitais internetinių kelionių segmentais ri
 Kai kurie viešbučiai bando lyginti mus su jų internetine užsakymų sistema, kuri buvo įtraukta į jų kanalų valdymo sistemą, ir prašo pateikti fiksuotą mėnesinį mokestį, pagrįstą jų turto kambarių skaičiumi.
 
 Mes nesame IBE ir tikimės, kad tai padės išaiškinti skirtumą. Kiekviena paslauga turi savo privalumų ir trūkumų. Jei jūsų IBE tinka jūsų turtui, naudokitės juo.
-Wink egzistuoja tam, kad užpildytų kelias spragas kelionių pramonėje ir sujungtų viską vienoje vietoje.
+Wink egzistuoja tam, kad užpildytų kelias spragas kelionių pramonėje ir viską sujungtų į vieną vietą.
 
 :::tip
 Jums nereikia keisti savo esamos IBE. Tačiau rekomenduojame išbandyti mūsų socialiniams tinklams pritaikytą užsakymų sistemą arba nuorodų valdymo įrankį viename iš jūsų socialinių tinklų paskyrų, kad pamatytumėte, kaip jie konvertuoja. Jūs nieko nemokate, jei nėra užsakymų – ką galite prarasti? 😉

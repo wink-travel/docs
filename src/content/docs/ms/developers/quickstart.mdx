@@ -1,0 +1,198 @@
+---
+title: Mula Pantas
+description: "Dari sifar ke integrasi berfungsi dalam persekitaran staging: dapatkan kelayakan, cari harga hotel secara langsung dengan Partner API, dan hantar pengembara ke halaman tempahan yang mengkreditkan anda."
+sidebar:
+  order: 0.5
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+Panduan ini membawa anda dari tiada apa-apa ke integrasi berfungsi dalam kira-kira 30 minit. Pada akhirnya anda akan mempunyai:
+
+- harga langsung untuk hotel di sebuah bandar, dari Partner API,
+- pautan tempahan yang mengkreditkan tempahan ke akaun anda,
+- tempahan ujian, dan webhook yang memberitahu anda ia berlaku.
+
+Semua berlaku dalam **staging**, persekitaran ujian kami. Anda tidak perlu meminta akses daripada kami, dan beralih ke produksi kemudian juga tidak memerlukan kelulusan.
+
+## Adakah panduan ini sesuai untuk anda?
+
+| Anda mahu… | Mula di sini |
+|---|---|
+| Paparkan hotel dalam aplikasi, laman web atau produk AI anda dan hantar pengembara untuk menempah, memperoleh komisen | **Panduan ini** |
+| Tempah bagi pihak pelanggan anda sebagai agensi pelancongan berlesen | Panduan ini sehingga Langkah 5, kemudian [Tempahan sebagai agensi pelancongan](#booking-as-a-travel-agency) |
+| Benamkan hotel yang boleh ditempah tanpa menulis integrasi | [Komponen Web](/ms/integrations/web-components/) |
+| Benarkan ejen AI mencari dan menempah | [Pelayan MCP](/ms/developers/mcp/) dan [Pembayaran Agentic](/ms/developers/agentic-payments/) |
+| Sambungkan pengurus saluran atau PMS | [Tambah Pengurus Saluran Anda](/ms/guides/integrators/add-your-channel-manager/) |
+
+## Cara ia berfungsi
+
+Anda menggunakan **Partner API** untuk mencari hotel dan harga langsung mereka. Setiap hotel mempunyai `urlName` yang stabil. Anda menukarnya menjadi pautan ke Wink Booking Engine, `book.wink.travel`, yang membawa ID anda. Pengembara menempah dan membayar di sana, dan tempahan dikreditkan ke akaun anda.
+
+## Sebelum anda mula
+
+Anda perlukan:
+
+- [`grpcurl`](https://github.com/fullstorydev/grpcurl), atau Postman atau Insomnia. Partner API adalah gRPC, bukan REST.
+- `curl`.
+
+:::note
+Staging akan tidur apabila tiada siapa yang menggunakannya. Panggilan pertama selepas tempoh senyap boleh mengambil masa kira-kira satu minit semasa pelayan bangun.
+:::
+
+## Langkah 1: Buat akaun staging
+
+Staging adalah berasingan sepenuhnya daripada produksi, dengan log masuk dan akaun sendiri.
+
+<Steps>
+1. Pergi ke [staging-app.wink.travel](https://staging-app.wink.travel), klik `Sign-In / Register` dan daftar.
+
+2. Klik `Accounts` di bar sisi kiri, kemudian `Create`, dan pilih **I am an Affiliate**. Tempahan yang anda hantar dikreditkan ke akaun ini. Lihat [Buat Akaun](/ms/portal/create-account/).
+</Steps>
+
+## Langkah 2: Buat aplikasi
+
+Aplikasi memberikan kod anda kelayakan.
+
+<Steps>
+1. Pada kad akaun anda, klik `Actions` > `Manage account`, kemudian tab `Applications`.
+
+2. Klik `Create new application`, beri nama dan pilih **Machine-to-machine** sebagai jenis klien.
+
+3. Di bawah skop, pilih **Inventory & rates** (baca). Partner API memeriksa `inventory.read`.
+
+4. Klik `Create application` dan salin **Client ID** dan **Client secret**. Rahsia hanya dipaparkan sekali dan tidak boleh diperoleh semula.
+</Steps>
+
+Lihat [Applications](/ms/account/applications/) untuk jenis klien dan skop lain.
+
+## Langkah 3: Dapatkan token akses
+
+```bash
+curl -X POST https://staging-iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_CLIENT_SECRET>" \
+  -d "scope=inventory.read"
+```
+
+Simpan `access_token` dari respons:
+
+```bash
+export WINK_TOKEN=<access_token>
+```
+
+Token akan tamat tempoh. Dalam kod anda sendiri, biarkan perpustakaan OAuth2 mengambil dan menyegarkannya. Lihat [Authentication](/ms/developers/authentication/).
+
+## Langkah 4: Cari ID akaun anda
+
+Setiap panggilan Partner API menyatakan akaun yang anda wakili dalam header `managing-entity-id`. Senaraikan akaun yang token anda boleh wakili:
+
+```bash
+grpcurl -H "authorization: Bearer $WINK_TOKEN" \
+  -d '{}' \
+  staging-partner.wink.travel:443 wink.partner.v1.Accounts/ListAccounts
+```
+
+Salin `accountId` akaun affiliate dari Langkah 1:
+
+```bash
+export WINK_ACCOUNT_ID=<accountId>
+```
+
+## Langkah 5: Cari hotel di sebuah bandar
+
+{/* TODO(Yann): sahkan bandar staging hotel ujian dengan ketersediaan, dan gunakan di sini. */}
+
+```bash
+grpcurl -H "authorization: Bearer $WINK_TOKEN" \
+  -H "managing-entity-id: $WINK_ACCOUNT_ID" \
+  -d '{
+    "urlName": "bangkok-thailand",
+    "userSession": {
+      "itinerary": {
+        "startDate": "2026-12-01",
+        "nights": 2,
+        "room": { "adults": 2 }
+      },
+      "currencyCode": "USD",
+      "languageCode": "en"
+    }
+  }' \
+  staging-partner.wink.travel:443 wink.partner.v1.Search/SearchByCity
+```
+
+Gunakan tarikh daftar masuk di masa depan; tarikh lalu akan ditolak. Setiap hasil mengandungi:
+
+- `name`, `starRating` dan `heroImageUrl`, cukup untuk memaparkan baris hasil,
+- `roomTypes`, tawaran langsung, bilik termurah dahulu,
+- `urlName`, slug yang anda perlukan untuk pautan tempahan.
+
+Harga adalah integer dalam unit kecil: bahagi dengan 10 kuasa `currencyExponent` dari respons (2 untuk USD, jadi `12500` adalah $125.00).
+
+Tidak tahu slug bandar? Selesaikannya dengan `wink.partner.v1.Lookup/Search`. Untuk kandungan penuh hartanah, gunakan perkhidmatan `Content`. [Rujukan Partner API](/ms/partner-api/partner/) mendokumentasikan setiap panggilan.
+
+## Langkah 6: Bina pautan tempahan
+
+```text
+https://staging-book.wink.travel/hotel/<urlName>?client-id=<YOUR_CLIENT_ID>&configuration-id=<YOUR_CUSTOMIZATION_ID>
+```
+
+- `<urlName>` adalah `urlName` hotel dari Langkah 5.
+- `client-id` adalah Client ID aplikasi anda dari Langkah 2.
+- `configuration-id` adalah ID penyesuaian anda: `Manage account` > `Customizations`. Penyesuaian juga menetapkan penjenamaan, bahasa lalai dan mata wang pada halaman tempahan.
+
+:::caution
+Sertakan kedua-dua ID. Tanpa mereka halaman masih dimuatkan, tetapi dengan penjenamaan lalai, dan **tempahan tidak dikreditkan kepada anda**. Jangan sekali-kali letakkan rahsia klien anda dalam pautan.
+:::
+
+Lihat [Pautan terus](/ms/booking-engine/features/#linking-directly) untuk pautan ke halaman utama enjin tempahan dan bukannya hotel tunggal.
+
+## Langkah 7: Buat tempahan ujian
+
+Buka pautan anda, pilih tarikh dan bilik, dan bayar menggunakan [kad ujian Stripe](https://docs.stripe.com/testing), contohnya `4242 4242 4242 4242` dengan tarikh luput masa depan dan CVC apa pun. Tiada kad sebenar dikenakan bayaran dalam staging. Nota kod tempahan pada halaman pengesahan; ia bermula dengan `WNK`.
+
+## Langkah 8: Dapatkan pemberitahuan tentang tempahan
+
+<Steps>
+1. Dalam Portal, pergi ke `Applications > Webhooks` dan tambah titik akhir yang menerima permintaan `POST`.
+
+2. Langgan `booking.create`, atau biarkan senarai acara kosong untuk menerima semua semasa anda membangunkan.
+
+3. Hantar acara ujian kepada diri sendiri, kemudian buat tempahan ujian lain dan lihat ia tiba.
+</Steps>
+
+Sahkan tandatangan setiap penghantaran sebelum mempercayainya. Lihat [Integrasi Webhook](/ms/developers/webhook-integration/) dan [Katalog Acara Webhook](/ms/developers/webhook-events/).
+
+## Langkah 9: Pergi ke produksi
+
+Tiada langkah kelulusan untuk pembangun. (Akaun agensi pelancongan disahkan terlebih dahulu; lihat [di bawah](#booking-as-a-travel-agency).) Apabila integrasi anda berfungsi dalam staging:
+
+<Steps>
+1. Buat akaun dan aplikasi di [app.wink.travel](https://app.wink.travel), seperti dalam Langkah 1 dan 2. Kelayakan tidak dibawa antara persekitaran.
+
+2. Buang `staging-` dari setiap hos:
+
+   | Staging | Produksi |
+   |---|---|
+   | `https://staging-iam.wink.travel` | `https://iam.wink.travel` |
+   | `staging-partner.wink.travel:443` | `partner.wink.travel:443` |
+   | `https://staging-book.wink.travel` | `https://book.wink.travel` |
+
+3. Cari semula ID akaun produksi (Langkah 4) dan ID penyesuaian (Langkah 6). Ia berbeza daripada staging.
+</Steps>
+
+Penggunaan Partner API diukur dalam malam-hotel, dengan elaun bulanan percuma. Lihat [Partner API](/ms/integrations/partner-api/) untuk harga dan had.
+
+## Tempahan sebagai agensi pelancongan
+
+Jika akaun anda adalah agensi pelancongan berlesen, anda tidak perlu menghantar pengembara ke `book.wink.travel`: anda boleh membuat tempahan terus dengan `wink.partner.v1.Booking/CreateBooking`, dan mengurusnya dengan panggilan `Booking` lain. Akaun lain menghantar pengembara ke pautan tempahan.
+
+Akaun agensi pelancongan disahkan: Wink menyemak pendaftaran setiap agensi sebelum ia boleh membuat tempahan. Agensi yang mahu mengutip bayaran daripada pelanggan mereka sendiri, sebagai pedagang rekod, mesti menempah melalui Partner API dan mendapat kelulusan bertulis dari Wink. Lihat [Memulakan sebagai Agensi Pelancongan](/ms/guides/travel-agents/getting-started/) dan [Rujukan Partner API](/ms/partner-api/partner/).
+
+## Langkah seterusnya
+
+- [Jana klien bertipe](/ms/developers/rest-and-grpc/#generate-a-grpc-client) dari skema `.proto` daripada memanggil `grpcurl` secara manual.
+- Sambungkan [pelayan MCP](/ms/developers/mcp/) dan gunakan [Kemahiran AI](/ms/developers/ai-skills/) untuk membiarkan pembantu pengekodan anda menulis integrasi terhadap API langsung.
+- Baca senarai penuh [persekitaran dan hos](/ms/getting-started/environments/).

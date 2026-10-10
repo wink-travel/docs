@@ -1,19 +1,21 @@
 ---
 title: Ambientes
-description: Este artigo contém informações para testadores e desenvolvedores sobre como aceder aos nossos diferentes ambientes de servidor.
+description: Este artigo contém informações para testadores e desenvolvedores sobre como obter acesso aos nossos diferentes ambientes de servidor.
 sidebar:
   order: 8
 ---
 
-Na Wink, operamos 2 ambientes para tudo o que fazemos em todos os momentos:
+Na Wink, mantemos 2 ambientes para tudo o que fazemos em todos os momentos:
 
 - Produção é o nosso ambiente estável.
-- Staging é o nosso ambiente de certificação e testes.
+- Staging é o nosso ambiente de testes, e onde os channel managers e agentes de viagem são certificados.
 
-Se é um integrador, um hotel ou agente de viagens que deseja preparar-se para a certificação ou testar a plataforma Wink, crie uma conta no nosso ambiente de staging para começar.
+Se quiser testar a plataforma Wink, como desenvolvedor, hotel ou agente de viagens, crie uma conta no nosso ambiente de staging para começar. Os channel managers também realizam a sua [certificação](/pt-PT/guides/integrators/add-your-channel-manager/#certification) lá.
+
+Criar uma conta em staging ou produção requer a aceitação dos Termos e Condições da Wink e dos Termos de Pagamento, e essa aceitação é vinculativa. Os channel managers e agentes de viagem também precisam de certificação antes do acesso à produção; todos os outros passam para produção por sua conta.
 
 :::note
-O ambiente de staging está disponível mediante pedido. Isso significa que ele entra em modo de suspensão se não houver utilização e liga-se novamente quando houver. Por favor, seja paciente se estiver a acordá-lo. Demora cerca de um minuto a iniciar todos os servidores após a primeira ligação a um dos nossos servidores ou aplicações.
+O ambiente de staging está disponível mediante pedido. Isso significa que ele entra em modo de suspensão se não houver uso e liga-se novamente quando houver. Por favor, seja paciente se estiver a acordá-lo. Demora cerca de um minuto para iniciar todos os servidores após a primeira ligação a um dos nossos servidores ou aplicações.
 :::
 
 ## Servidores

@@ -1,13 +1,13 @@
 ---
-title: Apa itu Agent?
+title: Apa itu Agen?
 description: Pelajari bagaimana Wink mendukung agen perjalanan terdaftar.
 sidebar:
   order: 0
 ---
 
-Solusi kami untuk agen perjalanan terdaftar adalah [Wink Agent](https://agent.wink.travel). Ini adalah portal swalayan yang dapat digunakan agen untuk mencari dan memesan atas nama pelanggan mereka serta mendapatkan komisi untuk setiap pemesanan.
+Agen perjalanan terdaftar menggunakan portal yang sama seperti pengguna lain, di [app.wink.travel](https://app.wink.travel), dengan akun Travel Agent. Agen mencari dan memesan atas nama pelanggan mereka serta mendapatkan komisi dari setiap pemesanan. Untuk membuat akun, ikuti [Memulai sebagai Travel Agency](/id/guides/travel-agents/getting-started/).
 
-Agen perjalanan yang lebih maju dapat memilih untuk mengintegrasikan pada tingkat API untuk tujuan menangani pembayaran dan pencairan di luar platform Wink.
+Agen yang disetujui untuk mengelola pembayaran sendiri bertindak sebagai merchant of record dan menangani pembayaran di luar platform Wink. Agen dengan sistem mereka sendiri dapat mengintegrasikan melalui [Partner API](/id/integrations/partner-api/).
 
 Agen perjalanan memiliki sebagian fitur portal yang sama dengan [Studio](/id/portal/studio/what-is-studio) sehingga kami tidak akan membahasnya lagi di sini.
 
@@ -19,4 +19,4 @@ Jika tidak, lanjutkan ke bagian berikutnya.
 
 ## API
 
-Pengembang yang ingin mengelola `Travel Agent` dapat menuju ke [Developers > API > Travel Agent](/id/api/overview/).
+Agen dapat mencari dan memesan melalui [Partner API](/id/partner-api/partner/), yang menggantikan endpoint Travel Agent REST yang lama.

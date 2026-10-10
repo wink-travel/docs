@@ -5,7 +5,7 @@ sidebar:
   order: 5
 ---
 
-Saiba como o Wink se compara a outros segmentos de viagens online no mercado. Abaixo está um resumo rápido das funcionalidades que achamos importantes para comparar.
+Saiba como o Wink se compara a outros segmentos de viagens online no mercado. Abaixo está um rápido resumo das funcionalidades que achamos importantes para comparar.
 
 ## Matriz de funcionalidades
 
@@ -23,11 +23,11 @@ Saiba como o Wink se compara a outros segmentos de viagens online no mercado. Ab
 | Relacionamentos diretos | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | Comissões negociáveis por canal de venda | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | Conectividade com channel manager & PMS | 🟢 | 🟢 | 🟢 | 🟢 | 
-| Fornecedor detém o cliente | 🟢 | ⚫️ | 🟢 | 🟢 | 
+| Fornecedor é dono do cliente | 🟢 | ⚫️ | 🟢 | 🟢 | 
 | Acompanhar ROI | 🟢 | 🟢 | ⚫️ | ⚫️ | 
 | Pagamento por desempenho | 🟢 | 🟢 | ⚫️ | 🟢 | 
 | Gateway de pagamento integrado | 🟢 | 🟢 | 🟢 | ⚫️ | 
-| Pagamentos via Wise | 🟢 | 🟢 | ⚫️ | ⚫️ | 
+| Pagamentos por transferência bancária | 🟢 | 🟢 | ⚫️ | ⚫️ | 
 
 
 ## Wink vs Internet Booking Engine (IBE)
@@ -38,5 +38,5 @@ Nós não somos um IBE e esperamos que isso ajude a esclarecer a diferença. Exi
 O Wink existe para preencher várias lacunas na indústria de viagens e reunir tudo em um só lugar.
 
 :::tip
-Você não precisa substituir seu IBE atual. No entanto, recomendamos experimentar nosso motor de reservas amigável para redes sociais, ou gerenciador de links, em uma de suas contas de mídia social para ver como eles convertem. Você não paga nada se não houver reservas - O que você tem a perder? 😉
+Você não precisa substituir seu IBE atual. No entanto, recomendamos experimentar nosso motor de reservas amigável para redes sociais, ou gerenciador de links, em uma de suas contas de mídia social para ver como eles convertem. Você não paga nada se não houver reservas – O que você tem a perder? 😉
 :::

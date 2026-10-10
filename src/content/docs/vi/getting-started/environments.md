@@ -8,17 +8,19 @@ sidebar:
 Tại Wink, chúng tôi vận hành 2 môi trường cho mọi hoạt động của mình mọi lúc:
 
 - Production là môi trường ổn định của chúng tôi.
-- Staging là môi trường chứng nhận và kiểm thử của chúng tôi.
+- Staging là môi trường thử nghiệm, nơi các channel manager và đại lý du lịch được chứng nhận.
 
-Nếu bạn là một nhà tích hợp, khách sạn hoặc đại lý du lịch muốn chuẩn bị cho việc chứng nhận hoặc kiểm thử nền tảng Wink, hãy tạo tài khoản trong môi trường staging của chúng tôi để bắt đầu.
+Nếu bạn muốn thử nghiệm nền tảng Wink, với vai trò nhà phát triển, khách sạn hoặc đại lý du lịch, hãy tạo tài khoản trong môi trường staging để bắt đầu. Các channel manager cũng thực hiện [chứng nhận](/vi/guides/integrators/add-your-channel-manager/#certification) tại đó.
+
+Việc tạo tài khoản trong staging hoặc production yêu cầu chấp nhận Điều khoản và Điều khoản Thanh toán của Wink, và sự chấp nhận đó là ràng buộc. Channel manager và đại lý du lịch cũng cần chứng nhận trước khi truy cập production; những người khác sẽ tự chuyển sang production.
 
 :::note
-Môi trường staging được cung cấp theo yêu cầu. Điều này có nghĩa là nó sẽ tự động tạm ngưng nếu không có người sử dụng và tự bật lại khi có người dùng. Vui lòng kiên nhẫn nếu bạn đang khởi động lại nó. Quá trình khởi động tất cả các máy chủ mất khoảng một phút sau khi bạn kết nối lần đầu với một trong các máy chủ hoặc ứng dụng của chúng tôi.
+Môi trường staging chỉ được cung cấp theo yêu cầu. Điều này có nghĩa là nó sẽ tự động ngủ nếu không có sử dụng và tự bật lại khi có. Vui lòng kiên nhẫn nếu bạn đang đánh thức nó dậy. Quá trình khởi động tất cả các máy chủ mất khoảng một phút sau khi bạn kết nối lần đầu với một trong các máy chủ hoặc ứng dụng của chúng tôi.
 :::
 
 ## Máy chủ
 
-Dưới đây là bảng ma trận chứa tên các máy chủ và mục đích sử dụng của chúng.
+Dưới đây là bảng ma trận chứa tên các máy chủ và mục đích sử dụng của chúng tôi.
 
 | Tính năng | Staging | Production
 | ------- | ------- | ---------- |
@@ -30,7 +32,7 @@ Dưới đây là bảng ma trận chứa tên các máy chủ và mục đích 
 
 ## Ứng dụng
 
-Các ứng dụng của chúng tôi cũng có môi trường kiểm thử và môi trường sản xuất dành cho khách hàng.
+Các ứng dụng của chúng tôi cũng có môi trường thử nghiệm và production dành cho khách hàng.
 
 | Ứng dụng | Staging | Production
 | ------- | ------- | ---------- |

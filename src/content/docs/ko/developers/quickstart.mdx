@@ -1,0 +1,198 @@
+---
+title: 빠른 시작
+description: "제로에서 스테이징 환경에서 작동하는 통합까지: 자격 증명을 받고, Partner API로 실시간 호텔 가격을 검색하며, 예약 페이지로 여행자를 보내 수수료를 적립하세요."
+sidebar:
+  order: 0.5
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+이 가이드는 약 30분 만에 아무것도 없는 상태에서 작동하는 통합까지 안내합니다. 완료하면 다음을 갖게 됩니다:
+
+- Partner API를 통해 도시 내 호텔의 실시간 가격,
+- 예약을 귀하의 계정에 적립하는 예약 링크,
+- 테스트 예약 및 예약 발생을 알려주는 웹훅.
+
+모든 작업은 **스테이징**인 테스트 환경에서 이루어집니다. 별도의 접근 권한 요청이 필요 없으며, 나중에 프로덕션으로 전환할 때도 승인 절차가 필요 없습니다.
+
+## 이 가이드가 적합한가요?
+
+| 하고 싶은 일 | 시작하기 |
+|---|---|
+| 앱, 사이트 또는 AI 제품에 호텔을 보여주고 여행자를 예약 페이지로 보내 수수료를 벌고 싶다 | **이 가이드** |
+| 라이선스가 있는 여행사로서 고객을 대신해 예약하고 싶다 | 5단계까지 이 가이드, 이후 [여행사로서 예약하기](#booking-as-a-travel-agency) |
+| 통합 코딩 없이 예약 가능한 호텔을 임베드하고 싶다 | [웹 컴포넌트](/ko/integrations/web-components/) |
+| AI 에이전트가 검색하고 예약하게 하고 싶다 | [MCP 서버](/ko/developers/mcp/) 및 [Agentic Payments](/ko/developers/agentic-payments/) |
+| 채널 매니저 또는 PMS를 연결하고 싶다 | [채널 매니저 추가하기](/ko/guides/integrators/add-your-channel-manager/) |
+
+## 작동 방식
+
+**Partner API**를 사용해 호텔과 실시간 가격을 찾습니다. 각 호텔에는 안정적인 `urlName`이 있습니다. 이를 Wink 예약 엔진인 `book.wink.travel`로 연결하는 링크로 변환하며, 귀하의 ID가 포함됩니다. 여행자가 그곳에서 예약하고 결제하면 예약이 귀하의 계정에 적립됩니다.
+
+## 시작 전에
+
+필요한 것:
+
+- [`grpcurl`](https://github.com/fullstorydev/grpcurl) 또는 Postman, Insomnia. Partner API는 REST가 아닌 gRPC입니다.
+- `curl`.
+
+:::note
+스테이징은 사용자가 없으면 잠자기 모드로 들어갑니다. 한동안 사용하지 않다가 처음 호출하면 서버가 깨어나는 데 약 1분 정도 걸릴 수 있습니다.
+:::
+
+## 1단계: 스테이징 계정 만들기
+
+스테이징은 프로덕션과 완전히 분리되어 있으며, 별도의 로그인과 계정을 사용합니다.
+
+<Steps>
+1. [staging-app.wink.travel](https://staging-app.wink.travel)로 가서 `Sign-In / Register`를 클릭해 등록하세요.
+
+2. 왼쪽 사이드바에서 `Accounts`를 클릭한 후 `Create`를 클릭하고 **I am an Affiliate**를 선택하세요. 귀하가 보내는 예약은 이 계정에 적립됩니다. 자세한 내용은 [계정 만들기](/ko/portal/create-account/)를 참조하세요.
+</Steps>
+
+## 2단계: 애플리케이션 만들기
+
+애플리케이션은 귀하의 코드에 자격 증명을 제공합니다.
+
+<Steps>
+1. 계정 카드에서 `Actions` > `Manage account`를 클릭한 후 `Applications` 탭으로 이동하세요.
+
+2. `Create new application`을 클릭하고 이름을 지정한 뒤 클라이언트 유형으로 **Machine-to-machine**을 선택하세요.
+
+3. 권한 범위(scopes)에서 **Inventory & rates** (읽기)를 선택하세요. Partner API는 `inventory.read`를 확인합니다.
+
+4. `Create application`을 클릭하고 **Client ID**와 **Client secret**을 복사하세요. 비밀 키는 한 번만 표시되며 나중에 다시 볼 수 없습니다.
+</Steps>
+
+다른 클라이언트 유형과 권한 범위는 [Applications](/ko/account/applications/)를 참조하세요.
+
+## 3단계: 액세스 토큰 받기
+
+```bash
+curl -X POST https://staging-iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_CLIENT_SECRET>" \
+  -d "scope=inventory.read"
+```
+
+응답에서 `access_token`을 저장하세요:
+
+```bash
+export WINK_TOKEN=<access_token>
+```
+
+토큰은 만료됩니다. 자체 코드에서는 OAuth2 라이브러리를 사용해 토큰을 가져오고 갱신하세요. 자세한 내용은 [인증](/ko/developers/authentication/)을 참조하세요.
+
+## 4단계: 계정 ID 찾기
+
+모든 Partner API 호출은 `managing-entity-id` 헤더에 귀하가 대행하는 계정을 명시합니다. 토큰으로 액세스 가능한 계정 목록을 조회하세요:
+
+```bash
+grpcurl -H "authorization: Bearer $WINK_TOKEN" \
+  -d '{}' \
+  staging-partner.wink.travel:443 wink.partner.v1.Accounts/ListAccounts
+```
+
+1단계에서 만든 제휴 계정의 `accountId`를 복사하세요:
+
+```bash
+export WINK_ACCOUNT_ID=<accountId>
+```
+
+## 5단계: 도시 내 호텔 검색
+
+{/* TODO(Yann): 테스트 호텔의 스테이징 도시와 예약 가능 여부를 확인하고 여기에 사용하세요. */}
+
+```bash
+grpcurl -H "authorization: Bearer $WINK_TOKEN" \
+  -H "managing-entity-id: $WINK_ACCOUNT_ID" \
+  -d '{
+    "urlName": "bangkok-thailand",
+    "userSession": {
+      "itinerary": {
+        "startDate": "2026-12-01",
+        "nights": 2,
+        "room": { "adults": 2 }
+      },
+      "currencyCode": "USD",
+      "languageCode": "en"
+    }
+  }' \
+  staging-partner.wink.travel:443 wink.partner.v1.Search/SearchByCity
+```
+
+체크인 날짜는 미래 날짜를 사용하세요; 과거 날짜는 거부됩니다. 각 결과에는 다음이 포함됩니다:
+
+- 결과 행을 표시하기에 충분한 `name`, `starRating` 및 `heroImageUrl`,
+- 실시간 제공 상품인 `roomTypes`, 가장 저렴한 방부터,
+- 예약 링크에 필요한 슬러그인 `urlName`.
+
+가격은 소수 단위가 아닌 정수로 표시됩니다: 응답의 `currencyExponent`(USD는 2)만큼 10의 거듭제곱으로 나누세요 (`12500`은 $125.00).
+
+도시의 슬러그를 모르면 `wink.partner.v1.Lookup/Search`로 확인하세요. 숙소의 전체 콘텐츠는 `Content` 서비스를 사용하세요. 모든 호출은 [Partner API 참조](/ko/partner-api/partner/)에 문서화되어 있습니다.
+
+## 6단계: 예약 링크 만들기
+
+```text
+https://staging-book.wink.travel/hotel/<urlName>?client-id=<YOUR_CLIENT_ID>&configuration-id=<YOUR_CUSTOMIZATION_ID>
+```
+
+- `<urlName>`은 5단계에서 얻은 호텔의 `urlName`입니다.
+- `client-id`는 2단계에서 생성한 애플리케이션의 Client ID입니다.
+- `configuration-id`는 사용자 지정 ID입니다: `Manage account` > `Customizations`에서 확인하세요. 사용자 지정은 예약 페이지의 브랜딩, 기본 언어 및 통화도 설정합니다.
+
+:::caution
+두 ID를 모두 포함해야 합니다. 없으면 페이지는 로드되지만 기본 브랜딩으로 표시되며, **예약이 귀하에게 적립되지 않습니다**. 클라이언트 비밀 키는 절대 링크에 포함하지 마세요.
+:::
+
+단일 호텔 대신 예약 엔진 홈 페이지로 연결하려면 [직접 링크하기](/ko/booking-engine/features/#linking-directly)를 참조하세요.
+
+## 7단계: 테스트 예약하기
+
+링크를 열고 날짜와 객실을 선택한 후 [Stripe 테스트 카드](https://docs.stripe.com/testing)를 사용해 결제하세요. 예: `4242 4242 4242 4242`에 미래 만료일과 아무 CVC를 입력하세요. 스테이징에서는 실제 카드가 청구되지 않습니다. 확인 페이지에서 예약 코드를 확인하세요; `WNK`로 시작합니다.
+
+## 8단계: 예약 알림 받기
+
+<Steps>
+1. 포털에서 `Applications > Webhooks`로 가서 `POST` 요청을 받는 엔드포인트를 추가하세요.
+
+2. `booking.create` 이벤트를 구독하거나, 개발 중에는 이벤트 목록을 비워 모든 이벤트를 받으세요.
+
+3. 테스트 이벤트를 보내고, 다시 테스트 예약을 만들어 알림이 도착하는지 확인하세요.
+</Steps>
+
+모든 전달의 서명을 검증한 후 신뢰하세요. 자세한 내용은 [웹훅 통합](/ko/developers/webhook-integration/) 및 [웹훅 이벤트 카탈로그](/ko/developers/webhook-events/)를 참조하세요.
+
+## 9단계: 프로덕션으로 전환하기
+
+개발자에게는 승인 절차가 없습니다. (여행사 계정은 먼저 인증됩니다; 아래 [여행사로서 예약하기](#booking-as-a-travel-agency) 참조.) 스테이징에서 통합이 작동하면:
+
+<Steps>
+1. [app.wink.travel](https://app.wink.travel)에서 1단계와 2단계처럼 계정과 애플리케이션을 만드세요. 자격 증명은 환경 간에 이전되지 않습니다.
+
+2. 모든 호스트에서 `staging-` 접두사를 제거하세요:
+
+   | 스테이징 | 프로덕션 |
+   |---|---|
+   | `https://staging-iam.wink.travel` | `https://iam.wink.travel` |
+   | `staging-partner.wink.travel:443` | `partner.wink.travel:443` |
+   | `https://staging-book.wink.travel` | `https://book.wink.travel` |
+
+3. 프로덕션 계정 ID(4단계)와 사용자 지정 ID(6단계)를 다시 조회하세요. 스테이징과 다릅니다.
+</Steps>
+
+Partner API 사용량은 호텔-박 단위로 측정되며, 월별 무료 할당량이 있습니다. 가격 및 한도는 [Partner API](/ko/integrations/partner-api/)를 참조하세요.
+
+## 여행사로서 예약하기
+
+귀하의 계정이 라이선스가 있는 여행사인 경우, 여행자를 `book.wink.travel`로 보내지 않고 `wink.partner.v1.Booking/CreateBooking`을 통해 직접 예약을 생성할 수 있으며, 다른 `Booking` 호출로 관리할 수 있습니다. 다른 계정은 여행자를 예약 링크로 보냅니다.
+
+여행사 계정은 인증을 받습니다: Wink는 모든 여행사 등록을 검토한 후 예약 권한을 부여합니다. 고객으로부터 직접 결제를 수취하는 상인으로서 예약하려면 Partner API를 통해 예약하고 Wink의 서면 승인을 받아야 합니다. 자세한 내용은 [여행사 시작하기](/ko/guides/travel-agents/getting-started/) 및 [Partner API 참조](/ko/partner-api/partner/)를 참조하세요.
+
+## 다음 단계
+
+- `.proto` 스키마에서 [타입이 지정된 클라이언트 생성하기](/ko/developers/rest-and-grpc/#generate-a-grpc-client)로 `grpcurl`을 수동 호출하는 대신 사용하세요.
+- [MCP 서버](/ko/developers/mcp/)를 연결하고 [AI Skills](/ko/developers/ai-skills/)를 사용해 코딩 어시스턴트가 실시간 API에 맞는 통합 코드를 작성하게 하세요.
+- 전체 [환경 및 호스트 목록](/ko/getting-started/environments/)을 읽어보세요.

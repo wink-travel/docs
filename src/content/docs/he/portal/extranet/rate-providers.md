@@ -14,7 +14,7 @@ sidebar:
 
 ### SynXis
 
-אם הנכס שלך משתמש במנהל הערוצים SynXis, נדרש שלב נוסף לפני שתוכל להתחבר ל-Wink.
+אם הנכס שלך משתמש ב-Sabre SynXis, יש שלב נוסף שצריך להשלים לפני שתוכל להתחבר ל-Wink.
 
 - אנא צור קשר עם נציג החשבון שלך ב-SynXis או עם שירות הלקוחות (SHSCustomerCare@sabre.com).
 - הודע להם שברצונך להתחבר ל-Wink דרך Channel Connect Express (***CCX***).

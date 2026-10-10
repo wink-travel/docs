@@ -1,24 +1,24 @@
 ---
-title: 요금 제공업체
-description: Wink에서 직접 지원하는 최신 요금 제공업체 목록입니다.
+title: 요금 제공자
+description: Wink에서 직접 지원하는 최신 요금 제공자 목록입니다.
 sidebar:
   order: 24
 ---
 
-## 요금 제공업체 설정
+## 요금 제공자 설정
 
-요금 제공업체를 설정하려면 메인 내비게이션 바에서 `Distribution > Channel manager`를 클릭하세요.
+요금 제공자를 설정하려면, 메인 내비게이션 바에서 `Distribution > Channel manager`를 클릭하세요.
 
-드롭다운 목록에서 요금 제공업체를 선택한 후 `Save` 버튼을 클릭하세요. 이렇게 하면 요금 제공업체가 요금을 전송할 수 있으며, Wink에서 귀하의 숙소에 예약이 발생할 경우 해당 업체에 알림을 보냅니다.
+드롭다운 목록에서 요금 제공자를 선택한 후 `Save` 버튼을 클릭하세요. 이렇게 하면 요금 제공자가 요금을 전송할 수 있으며, Wink에서 귀하의 숙소에 예약이 발생할 경우 해당 요금 제공자에게 알림을 보냅니다.
 
 
 ### SynXis
 
-귀하의 숙소가 SynXis 채널 매니저를 사용하는 경우, Wink와 연결하기 전에 한 가지 추가 단계가 필요합니다.
+귀하의 숙소가 Sabre SynXis를 사용하는 경우, Wink와 연결하기 전에 한 가지 추가 단계가 필요합니다.
 
 - SynXis 계정 담당자 또는 고객 지원(SHSCustomerCare@sabre.com)에게 연락하세요.
-- Wink와 Channel Connect Express (***CCX***)를 통해 연결하고 싶다고 알려주세요.
-- 그들은 귀하에게 ***PRS*** 양식을 작성하도록 요청할 것입니다.
+- Channel Connect Express(***CCX***)를 통해 Wink에 연결하고 싶다고 알려주세요.
+- 그들은 ***PRS*** 양식을 작성하도록 안내할 것입니다.
   - Wink 사용자 자격 증명을 입력해야 합니다.
   - ...그리고 원하는 통화를 입력해야 합니다.
 - 양식을 작성하여 SynXis에 제출하세요.
@@ -29,9 +29,9 @@ sidebar:
 
 사용 가능한 유형:
 
-- 채널 매니저 (CM)
-- 숙소 관리 시스템 (PMS)
-- 중앙 예약 시스템 (CRS)
+- Channel Manager (CM)
+- Property Management System (PMS)
+- Central Reservation System (CRS)
 
 *공급업체에 프록시가 있는 경우, 프록시를 통해 간접적으로 공급업체로부터 요금을 받는다는 의미입니다.*
 

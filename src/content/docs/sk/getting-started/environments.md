@@ -8,9 +8,11 @@ sidebar:
 Vo Wink prevádzkujeme neustále 2 prostredia pre všetko, čo robíme:
 
 - Produkcia je naše stabilné prostredie.
-- Staging je naše certifikačné a testovacie prostredie.
+- Staging je naše testovacie prostredie, kde sa certifikujú channel manageri a cestovné kancelárie.
 
-Ak ste integrátor, hotel alebo cestovná kancelária, ktorá chce pripraviť certifikáciu alebo otestovať platformu Wink, vytvorte si účet v našom staging prostredí, aby ste mohli začať.
+Ak chcete testovať platformu Wink ako vývojár, hotel alebo cestovná kancelária, vytvorte si účet v našom staging prostredí, aby ste mohli začať. Channel manageri tiež vykonávajú svoju [certifikáciu](/sk/guides/integrators/add-your-channel-manager/#certification) tam.
+
+Vytvorenie účtu v staging alebo produkcii vyžaduje akceptovanie Podmienok Wink a Platobných podmienok, a toto akceptovanie je záväzné. Channel manageri a cestovné kancelárie tiež potrebujú certifikáciu pred prístupom do produkcie; ostatní prechádzajú do produkcie sami.
 
 :::note
 Staging prostredie je dostupné na základe požiadavky. Znamená to, že sa uspí, ak nie je používané, a znovu sa zapne, keď je potrebné. Prosíme o trpezlivosť, ak ho prebúdzate. Spustenie všetkých serverov po prvom pripojení k jednému z našich serverov alebo aplikácií trvá približne minútu.

@@ -15,10 +15,10 @@ Ismerje meg, hogyan viszonyul a Wink a piacon lévő egyéb online utazási szeg
 | Link-in-bio áruház | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | B2B partnerhálózat | 🟢 | 🟢 | ⚫️ | 🟢 | 
 | Utazási ügynöki támogatás | 🟢 | 🟢 | ⚫️ | 🟢 | 
-| Mesterséges intelligencia által támogatott terjesztés és marketing | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Mesterséges intelligencia alapú terjesztés és marketing | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | Közösségi média-barát eszközök | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | Jutalékmentes B2C csatorna | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
-| Ingyenes Google Szálláshely lista | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Ingyenes Google Szálláshely-listázás | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | Webkomponens / SDK / API hozzáférés | 🟢 | 🟢 | ⚫️ | 🟢 | 
 | Közvetlen kapcsolatok | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | Tárgyalható jutalékok értékesítési csatornánként | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
@@ -27,7 +27,7 @@ Ismerje meg, hogyan viszonyul a Wink a piacon lévő egyéb online utazási szeg
 | ROI követése | 🟢 | 🟢 | ⚫️ | ⚫️ | 
 | Teljesítmény alapú fizetés | 🟢 | 🟢 | ⚫️ | 🟢 | 
 | Integrált fizetési átjáró | 🟢 | 🟢 | 🟢 | ⚫️ | 
-| Kifizetések Wise-szal | 🟢 | 🟢 | ⚫️ | ⚫️ | 
+| Banki átutalásos kifizetések | 🟢 | 🟢 | ⚫️ | ⚫️ | 
 
 
 ## Wink vs Internetes Foglalási Motor (IBE)
@@ -35,8 +35,8 @@ Ismerje meg, hogyan viszonyul a Wink a piacon lévő egyéb online utazási szeg
 Néhány szálloda megpróbál minket összehasonlítani azzal az internetes foglalási motorral, amely a csatornamenedzserükkel együtt érkezett, és azt kérik, hogy adjunk nekik fix, havi árat az ingatlanuk szobaszáma alapján.
 
 Mi nem vagyunk IBE, és reméljük, ez segít tisztázni a különbséget. Minden szolgáltatásnak vannak előnyei és hátrányai. Ha az Ön IBE-je működik az ingatlanához, maradjon annál.  
-A Wink azért létezik, hogy több hiányosságot pótoljon az utazási iparban, és mindezt egy helyen egyesítse.
+A Wink azért létezik, hogy több hiányosságot pótoljon az utazási iparban, és mindezt egy helyen egyesítse. 
 
 :::tip
-Nem kell lecserélnie a meglévő IBE-jét. Azonban javasoljuk, hogy próbálja ki közösségi média-barát foglalási motorunkat vagy linkkezelőnket valamelyik közösségi média fiókján, hogy lássa, hogyan konvertálnak. Ha nincs foglalás, nem kell fizetnie – Mit veszíthet? 😉
+Nem kell lecserélnie a meglévő IBE-jét. Azonban javasoljuk, hogy próbálja ki közösségi média-barát foglalási motorunkat vagy linkkezelőnket valamelyik közösségi média fiókján, hogy lássa, hogyan konvertálnak. Ha nincs foglalás, semmit sem kell fizetnie – Mit veszíthet? 😉
 :::

@@ -1,0 +1,198 @@
+---
+title: Pornire rapidă
+description: "De la zero la o integrare funcțională în staging: obține acreditările, caută prețuri live la hoteluri cu Partner API și trimite călătorii către o pagină de rezervare care îți creditează comisioanele."
+sidebar:
+  order: 0.5
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+Acest ghid te duce de la nimic la o integrare funcțională în aproximativ 30 de minute. La final vei avea:
+
+- prețuri live pentru hoteluri într-un oraș, din Partner API,
+- un link de rezervare care creditează rezervările în contul tău,
+- o rezervare de test și un webhook care îți spune că s-a întâmplat.
+
+Totul se întâmplă în **staging**, mediul nostru de testare. Nu trebuie să ne ceri acces, iar trecerea la producție mai târziu nu necesită aprobare.
+
+## Este acest ghid potrivit pentru tine?
+
+| Vrei să… | Începe aici |
+|---|---|
+| Afișezi hoteluri în aplicația, site-ul sau produsul tău AI și trimiți călătorii să rezerve, câștigând comision | **Acest ghid** |
+| Rezervezi în numele clienților tăi ca agenție de turism autorizată | Acest ghid până la Pasul 5, apoi [Rezervarea ca agenție de turism](#booking-as-a-travel-agency) |
+| Integrezi hoteluri rezervabile fără să scrii o integrare | [Web Components](/ro/integrations/web-components/) |
+| Lași un agent AI să caute și să rezerve | [MCP Servers](/ro/developers/mcp/) și [Agentic Payments](/ro/developers/agentic-payments/) |
+| Conectezi un channel manager sau PMS | [Adaugă Channel Manager-ul tău](/ro/guides/integrators/add-your-channel-manager/) |
+
+## Cum funcționează
+
+Folosești **Partner API** pentru a găsi hoteluri și prețurile lor live. Fiecare hotel are un `urlName` stabil. Îl transformi într-un link către Wink Booking Engine, `book.wink.travel`, care poartă ID-urile tale. Călătorul rezervă și plătește acolo, iar rezervarea este creditată în contul tău.
+
+## Înainte să începi
+
+Ai nevoie de:
+
+- [`grpcurl`](https://github.com/fullstorydev/grpcurl), sau Postman sau Insomnia. Partner API este gRPC, nu REST.
+- `curl`.
+
+:::note
+Staging intră în repaus când nimeni nu îl folosește. Primul apel după o perioadă de inactivitate poate dura aproximativ un minut cât serverele se trezesc.
+:::
+
+## Pasul 1: Creează un cont în staging
+
+Staging este complet separat de producție, cu logări și conturi proprii.
+
+<Steps>
+1. Mergi la [staging-app.wink.travel](https://staging-app.wink.travel), apasă `Sign-In / Register` și înregistrează-te.
+
+2. Apasă `Accounts` în bara laterală din stânga, apoi `Create`, și alege **I am an Affiliate**. Rezervările pe care le trimiți sunt creditate acestui cont. Vezi [Create Account](/ro/portal/create-account/).
+</Steps>
+
+## Pasul 2: Creează o aplicație
+
+Aplicația oferă codului tău acreditările.
+
+<Steps>
+1. Pe cardul contului tău, apasă `Actions` > `Manage account`, apoi fila `Applications`.
+
+2. Apasă `Create new application`, dă-i un nume și alege **Machine-to-machine** ca tip client.
+
+3. La scopes, selectează **Inventory & rates** (read). Partner API verifică `inventory.read`.
+
+4. Apasă `Create application` și copiază **Client ID** și **Client secret**. Secretul este afișat o singură dată și nu poate fi recuperat ulterior.
+</Steps>
+
+Vezi [Applications](/ro/account/applications/) pentru celelalte tipuri de client și scopes.
+
+## Pasul 3: Obține un token de acces
+
+```bash
+curl -X POST https://staging-iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_CLIENT_SECRET>" \
+  -d "scope=inventory.read"
+```
+
+Salvează `access_token` din răspuns:
+
+```bash
+export WINK_TOKEN=<access_token>
+```
+
+Tokenurile expiră. În codul tău, lasă o bibliotecă OAuth2 să le obțină și să le reîmprospăteze. Vezi [Authentication](/ro/developers/authentication/).
+
+## Pasul 4: Găsește ID-ul contului tău
+
+Fiecare apel Partner API specifică contul pentru care acționezi în header-ul `managing-entity-id`. Listează conturile pentru care tokenul tău poate acționa:
+
+```bash
+grpcurl -H "authorization: Bearer $WINK_TOKEN" \
+  -d '{}' \
+  staging-partner.wink.travel:443 wink.partner.v1.Accounts/ListAccounts
+```
+
+Copiază `accountId` al contului afiliat din Pasul 1:
+
+```bash
+export WINK_ACCOUNT_ID=<accountId>
+```
+
+## Pasul 5: Caută hoteluri într-un oraș
+
+{/* TODO(Yann): confirmă orașul de staging al hotelului de test cu disponibilitate și folosește-l aici. */}
+
+```bash
+grpcurl -H "authorization: Bearer $WINK_TOKEN" \
+  -H "managing-entity-id: $WINK_ACCOUNT_ID" \
+  -d '{
+    "urlName": "bangkok-thailand",
+    "userSession": {
+      "itinerary": {
+        "startDate": "2026-12-01",
+        "nights": 2,
+        "room": { "adults": 2 }
+      },
+      "currencyCode": "USD",
+      "languageCode": "en"
+    }
+  }' \
+  staging-partner.wink.travel:443 wink.partner.v1.Search/SearchByCity
+```
+
+Folosește o dată de check-in în viitor; o dată trecută este respinsă. Fiecare rezultat conține:
+
+- `name`, `starRating` și `heroImageUrl`, suficiente pentru a afișa un rând de rezultat,
+- `roomTypes`, ofertele live, camera cea mai ieftină prima,
+- `urlName`, slug-ul de care ai nevoie pentru linkul de rezervare.
+
+Prețurile sunt întregi în unități minore: împarte la 10 la puterea `currencyExponent` din răspuns (2 pentru USD, deci `12500` este $125.00).
+
+Nu știi slug-ul unui oraș? Rezolvă-l cu `wink.partner.v1.Lookup/Search`. Pentru conținutul complet al unei proprietăți, folosește serviciul `Content`. Referința [Partner API](/ro/partner-api/partner/) documentează fiecare apel.
+
+## Pasul 6: Construiește linkul de rezervare
+
+```text
+https://staging-book.wink.travel/hotel/<urlName>?client-id=<YOUR_CLIENT_ID>&configuration-id=<YOUR_CUSTOMIZATION_ID>
+```
+
+- `<urlName>` este `urlName`-ul hotelului din Pasul 5.
+- `client-id` este Client ID-ul aplicației tale din Pasul 2.
+- `configuration-id` este ID-ul tău de personalizare: `Manage account` > `Customizations`. O personalizare setează și brandingul, limba implicită și moneda pe pagina de rezervare.
+
+:::caution
+Include ambele ID-uri. Fără ele pagina se încarcă, dar cu branding implicit, iar **rezervarea nu este creditată ție**. Nu pune niciodată secretul clientului într-un link.
+:::
+
+Vezi [Linking directly](/ro/booking-engine/features/#linking-directly) pentru a face legătura direct la pagina principală a motorului de rezervare în loc de un singur hotel.
+
+## Pasul 7: Fă o rezervare de test
+
+Deschide linkul tău, alege date și o cameră, și plătește cu un [card de test Stripe](https://docs.stripe.com/testing), de exemplu `4242 4242 4242 4242` cu orice dată de expirare viitoare și orice CVC. Nu se percepe nicio taxă reală în staging. Notează codul rezervării de pe pagina de confirmare; începe cu `WNK`.
+
+## Pasul 8: Primește notificări despre rezervări
+
+<Steps>
+1. În Portal, mergi la `Applications > Webhooks` și adaugă un endpoint care acceptă cereri `POST`.
+
+2. Abonează-te la `booking.create`, sau lasă lista de evenimente goală pentru a primi totul în timpul dezvoltării.
+
+3. Trimite-ți un eveniment de test, apoi fă o altă rezervare de test și urmărește cum sosește.
+</Steps>
+
+Verifică semnătura fiecărei livrări înainte să o accepți. Vezi [Webhook Integration](/ro/developers/webhook-integration/) și [Catalogul de evenimente Webhook](/ro/developers/webhook-events/).
+
+## Pasul 9: Treci la producție
+
+Nu există un pas de aprobare pentru dezvoltatori. (Conturile de agenție de turism sunt certificate mai întâi; vezi [mai jos](#booking-as-a-travel-agency).) Când integrarea ta funcționează în staging:
+
+<Steps>
+1. Creează un cont și o aplicație la [app.wink.travel](https://app.wink.travel), ca în Pașii 1 și 2. Acreditările nu se transferă între medii.
+
+2. Elimină `staging-` din fiecare host:
+
+   | Staging | Producție |
+   |---|---|
+   | `https://staging-iam.wink.travel` | `https://iam.wink.travel` |
+   | `staging-partner.wink.travel:443` | `partner.wink.travel:443` |
+   | `https://staging-book.wink.travel` | `https://book.wink.travel` |
+
+3. Caută din nou ID-ul contului de producție (Pasul 4) și ID-ul de personalizare (Pasul 6). Sunt diferite față de staging.
+</Steps>
+
+Utilizarea Partner API se măsoară în nopți de hotel, cu o alocație lunară gratuită. Vezi [Partner API](/ro/integrations/partner-api/) pentru prețuri și limite.
+
+## Rezervarea ca agenție de turism
+
+Dacă contul tău este o agenție de turism autorizată, nu trebuie să trimiți călătorii la `book.wink.travel`: poți crea rezervări direct cu `wink.partner.v1.Booking/CreateBooking` și să le gestionezi cu celelalte apeluri `Booking`. Alte conturi trimit călătorii către linkul de rezervare.
+
+Conturile de agenție de turism sunt certificate: Wink verifică înregistrarea fiecărei agenții înainte să poată rezerva. Agențiile care doresc să colecteze plata direct de la clienți, ca comerciant înregistrat, trebuie să rezerve prin Partner API și să obțină aprobarea scrisă a Wink. Vezi [Getting Started as a Travel Agency](/ro/guides/travel-agents/getting-started/) și referința [Partner API](/ro/partner-api/partner/).
+
+## Pașii următori
+
+- [Generează un client tipizat](/ro/developers/rest-and-grpc/#generate-a-grpc-client) din schema `.proto` în loc să apelezi `grpcurl` manual.
+- Conectează [serverul MCP](/ro/developers/mcp/) și folosește [AI Skills](/ro/developers/ai-skills/) pentru ca asistentul tău de codare să scrie integrarea împotriva API-ului live.
+- Citește lista completă de [medii și hosturi](/ro/getting-started/environments/).

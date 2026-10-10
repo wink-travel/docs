@@ -9,12 +9,12 @@ sidebar:
 
 For at indstille din pristilbyder skal du klikke på `Distribution > Channel manager` i hovednavigationslinjen.
 
-Vælg din pristilbyder fra dropdown-listen og klik på `Gem`-knappen. Dette vil give pristilbyderen mulighed for at sende os priser, og vi vil underrette dem, når der sker en booking på Wink for en af dine ejendomme.
+Vælg din pristilbyder fra dropdown-listen, og klik på knappen `Gem`. Dette vil give pristilbyderen mulighed for at sende os priser, og vi vil underrette dem, når der sker en booking på Wink for en af dine ejendomme.
 
 
 ### SynXis
 
-Hvis din ejendom bruger SynXis channel manager, er der et ekstra trin, før du er klar til at forbinde med Wink.
+Hvis din ejendom bruger Sabre SynXis, er der et ekstra trin, der skal gennemføres, før du er klar til at forbinde med Wink.
 
 - Kontakt venligst din SynXis-kontorepræsentant eller kundeservice (SHSCustomerCare@sabre.com).
 - Fortæl dem, at du ønsker at forbinde til Wink via Channel Connect Express (***CCX***).

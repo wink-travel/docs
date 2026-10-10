@@ -5,18 +5,18 @@ sidebar:
   order: 0
 ---
 
-Onze oplossing voor geregistreerde reisagenten is [Wink Agent](https://agent.wink.travel). Het is een selfserviceportaal dat agenten kunnen gebruiken om namens hun klanten te zoeken en te boeken en zo een commissie te verdienen op elke boeking.
+Geregistreerde reisagenten gebruiken dezelfde portal als iedereen, op [app.wink.travel](https://app.wink.travel), met een Travel Agent-account. Agenten zoeken en boeken namens hun klanten en verdienen een commissie op elke boeking. Om er een in te stellen, volg [Aan de slag als reisbureau](/nl/guides/travel-agents/getting-started/).
 
-Meer gevorderde reisagenten kunnen ervoor kiezen om op API-niveau te integreren voor het afhandelen van betalingen en uitbetalingen buiten het Wink-platform.
+Bureaus die zijn goedgekeurd om zelf betalingen te innen, fungeren als merchant of record en verwerken betalingen buiten het Wink-platform. Bureaus met eigen systemen kunnen integreren via de [Partner API](/nl/integrations/partner-api/).
 
-Reisagenten hebben een subset van dezelfde portaalfuncties als [Studio](/nl/portal/studio/what-is-studio), dus die zullen we hier niet opnieuw behandelen.
+Reisagenten hebben een subset van dezelfde portalfuncties als [Studio](/nl/portal/studio/what-is-studio), dus we behandelen ze hier niet opnieuw.
 
 ## Zoeken
 
 Ga naar [Zoeken](/nl/portal/studio/search) om te leren hoe je hotels kunt zoeken en boeken.
 
-Anders kun je doorgaan naar de volgende sectie.
+Ga anders door naar de volgende sectie.
 
 ## API
 
-Ontwikkelaars die `Travel Agent` willen beheren, kunnen terecht bij [Developers > API > Travel Agent](/nl/api/overview/).
+Bureaus kunnen zoeken en boeken via de [Partner API](/nl/partner-api/partner/), die de oudere Travel Agent REST-eindpunten vervangt.

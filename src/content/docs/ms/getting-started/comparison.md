@@ -1,6 +1,6 @@
 ---
 title: Perbandingan
-description: Ketahui bagaimana Wink dibandingkan dengan syarikat pelancongan dalam talian yang serupa dan apakah beberapa manfaat menyertai Wink.
+description: Ketahui bagaimana Wink dibandingkan dengan syarikat pelancongan dalam talian yang serupa dan apakah beberapa manfaat untuk menyertai Wink.
 sidebar:
   order: 5
 ---
@@ -18,7 +18,7 @@ Ketahui bagaimana Wink dibandingkan dengan segmen pelancongan dalam talian lain 
 | Pengedaran & pemasaran dibantu AI | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | Alat mesra sosial | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | Saluran B2C tanpa komisen | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
-| Penyenaraian hotel Google percuma | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Penyenaraian Hotel Google percuma | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | Akses Komponen Web / SDK / API | 🟢 | 🟢 | ⚫️ | 🟢 | 
 | Hubungan langsung | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | Komisen boleh dirunding mengikut saluran jualan | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
@@ -27,7 +27,7 @@ Ketahui bagaimana Wink dibandingkan dengan segmen pelancongan dalam talian lain 
 | Jejak ROI | 🟢 | 🟢 | ⚫️ | ⚫️ | 
 | Bayar mengikut prestasi | 🟢 | 🟢 | ⚫️ | 🟢 | 
 | Gerbang pembayaran bersepadu | 🟢 | 🟢 | 🟢 | ⚫️ | 
-| Pembayaran dengan Wise | 🟢 | 🟢 | ⚫️ | ⚫️ | 
+| Pembayaran pindahan bank | 🟢 | 🟢 | ⚫️ | ⚫️ | 
 
 
 ## Wink vs Internet Booking Engine (IBE)
@@ -38,5 +38,5 @@ Kami bukan IBE dan diharapkan ini membantu menjelaskan perbezaannya. Setiap perk
 Wink wujud untuk mengisi beberapa kekosongan dalam industri pelancongan dan menggabungkannya semua di satu tempat.
 
 :::tip
-Anda tidak perlu menggantikan IBE sedia ada anda. Walau bagaimanapun, kami mengesyorkan mencuba enjin tempahan mesra sosial kami, atau pengurus pautan, pada salah satu akaun media sosial anda untuk melihat bagaimana ia menukar. Anda tidak perlu membayar apa-apa jika tiada tempahan dibuat - Apa yang anda perlu rugi? 😉
+Anda tidak perlu menggantikan IBE sedia ada anda. Walau bagaimanapun, kami mengesyorkan mencuba enjin tempahan mesra sosial kami, atau pengurus pautan, pada salah satu akaun media sosial anda untuk melihat bagaimana ia menukar. Anda tidak perlu membayar apa-apa jika tiada tempahan dibuat – Apa yang anda perlu rugi? 😉
 :::

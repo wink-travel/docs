@@ -11,7 +11,7 @@ Dowiedz się, jak Wink wypada na tle innych segmentów turystyki online na rynku
 
 | Funkcja | Wink | OTA | IBE | Bed Bank
 | ----------------------- | -- | -- | -- | -- |
-| Internetowy silnik rezerwacji | 🟢 | 🟢 | 🟢 | ⚫️ | 
+| Silnik rezerwacji internetowej | 🟢 | 🟢 | 🟢 | ⚫️ | 
 | Sklep w linku w bio | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | Sieć afiliacyjna B2B | 🟢 | 🟢 | ⚫️ | 🟢 | 
 | Wsparcie dla agentów turystycznych | 🟢 | 🟢 | ⚫️ | 🟢 | 
@@ -23,19 +23,19 @@ Dowiedz się, jak Wink wypada na tle innych segmentów turystyki online na rynku
 | Bezpośrednie relacje | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | Negocjowalne prowizje w zależności od kanału sprzedaży | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | Menedżer kanałów i integracja z PMS | 🟢 | 🟢 | 🟢 | 🟢 | 
-| Dostawca posiada klienta | 🟢 | ⚫️ | 🟢 | 🟢 | 
+| Dostawca jest właścicielem klienta | 🟢 | ⚫️ | 🟢 | 🟢 | 
 | Śledzenie ROI | 🟢 | 🟢 | ⚫️ | ⚫️ | 
-| Płatność za efektywność | 🟢 | 🟢 | ⚫️ | 🟢 | 
+| Płatność za wyniki | 🟢 | 🟢 | ⚫️ | 🟢 | 
 | Zintegrowana bramka płatności | 🟢 | 🟢 | 🟢 | ⚫️ | 
-| Wypłaty przez Wise | 🟢 | 🟢 | ⚫️ | ⚫️ | 
+| Wypłaty przelewem bankowym | 🟢 | 🟢 | ⚫️ | ⚫️ | 
 
 
-## Wink vs Internetowy Silnik Rezerwacji (IBE)
+## Wink vs Internet Booking Engine (IBE)
 
-Niektóre hotele próbują porównywać nas do ich internetowego silnika rezerwacji, który jest dołączony do ich menedżera kanałów, i proszą o stałą, miesięczną cenę opartą na liczbie pokoi w ich obiekcie.
+Niektóre hotele próbują porównywać nas do swojego silnika rezerwacji internetowej, który jest dołączony do ich menedżera kanałów, i proszą o stałą, miesięczną cenę opartą na liczbie pokoi w obiekcie.
 
 Nie jesteśmy IBE i mamy nadzieję, że to pomoże wyjaśnić różnicę. Każda usługa ma swoje zalety i wady. Jeśli Twój IBE działa dla Twojego obiektu, pozostań przy nim.  
-Wink powstał, aby wypełnić kilka luk w branży turystycznej i połączyć wszystko w jednym miejscu. 
+Wink powstał, aby wypełnić kilka luk w branży turystycznej i połączyć wszystko w jednym miejscu.
 
 :::tip
 Nie musisz zastępować swojego obecnego IBE. Zalecamy jednak wypróbowanie naszego silnika rezerwacji przyjaznego mediom społecznościowym lub menedżera linków na jednym z Twoich kont w mediach społecznościowych, aby zobaczyć, jak się sprawdzają. Nie płacisz nic, jeśli nie ma rezerwacji – co możesz stracić? 😉

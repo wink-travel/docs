@@ -1,0 +1,198 @@
+---
+title: Hröð uppsetning
+description: "Frá engu að virku samþætti í prófunarumhverfi: fáðu aðgangsupplýsingar, leitaðu að lifandi hótelverðum með Partner API og sendu ferðalanga á bókunarsíðu sem skráir þig fyrir."
+sidebar:
+  order: 0.5
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+Þessi leiðarvísir tekur þig frá engu að virku samþætti á um það bil 30 mínútum. Í lokin munt þú hafa:
+
+- lifandi verð fyrir hótel í borg, frá Partner API,
+- bókunartengil sem skráir bókanir á reikninginn þinn,
+- prófunarbókun og webhook sem tilkynnir þér að hún hafi átt sér stað.
+
+Allt fer fram í **prófunarumhverfi**, okkar prófunarumhverfi. Þú þarft ekki að biðja um aðgang og að færa þig yfir í framleiðslu síðar þarf ekki samþykki.
+
+## Er þetta rétti leiðarvísirinn fyrir þig?
+
+| Þú vilt… | Byrja hér |
+|---|---|
+| Sýna hótel í appinu þínu, vef eða AI-vöru og senda ferðalanga til að bóka, og fá þóknun | **Þessi leiðarvísir** |
+| Bóka fyrir hönd viðskiptavina sem löggilt ferðaskrifstofa | Þessi leiðarvísir að Skrefi 5, síðan [Bókun sem ferðaskrifstofa](#booking-as-a-travel-agency) |
+| Innbyggja bókanleg hótel án þess að skrifa samþættingu | [Vefhlutir](/is/integrations/web-components/) |
+| Láta AI-umboð leita og bóka | [MCP Servers](/is/developers/mcp/) og [Agentic Payments](/is/developers/agentic-payments/) |
+| Tengja rásastjóra eða PMS | [Bæta við rásastjóra](/is/guides/integrators/add-your-channel-manager/) |
+
+## Hvernig þetta virkar
+
+Þú notar **Partner API** til að finna hótel og lifandi verð þeirra. Hvert hótel kemur með stöðugan `urlName`. Þú breytir því í tengil á Wink Booking Engine, `book.wink.travel`, sem ber með sér þín auðkenni. Ferðalangurinn bókar og greiðir þar, og bókunin er skráð á reikninginn þinn.
+
+## Áður en þú byrjar
+
+Þú þarft:
+
+- [`grpcurl`](https://github.com/fullstorydev/grpcurl), eða Postman eða Insomnia. Partner API er gRPC, ekki REST.
+- `curl`.
+
+:::note
+Prófunarumhverfið fer í dvala þegar enginn notar það. Fyrsta kallið eftir hlé getur tekið um eina mínútu á meðan þjónarnir vakna.
+:::
+
+## Skref 1: Búðu til prófunarreikning
+
+Prófunarumhverfið er algjörlega aðskilið frá framleiðslu, með eigin innskráningum og reikningum.
+
+<Steps>
+1. Farðu á [staging-app.wink.travel](https://staging-app.wink.travel), smelltu á `Sign-In / Register` og skráðu þig.
+
+2. Smelltu á `Accounts` í vinstri hliðarstiku, síðan `Create`, og veldu **I am an Affiliate**. Bókanir sem þú sendir eru skráðar á þennan reikning. Sjá [Create Account](/is/portal/create-account/).
+</Steps>
+
+## Skref 2: Búðu til umsókn
+
+Umsóknin gefur kóðanum þínum aðgangsupplýsingar.
+
+<Steps>
+1. Á reikningskortinu þínu, smelltu á `Actions` > `Manage account`, síðan flipann `Applications`.
+
+2. Smelltu á `Create new application`, gefðu henni nafn og veldu **Machine-to-machine** sem viðskiptavinatýpu.
+
+3. Undir scopes, veldu **Inventory & rates** (lesa). Partner API athugar fyrir `inventory.read`.
+
+4. Smelltu á `Create application` og afritaðu **Client ID** og **Client secret**. Leyndarmálið er sýnt einu sinni og er ekki hægt að nálgast aftur.
+</Steps>
+
+Sjá [Applications](/is/account/applications/) fyrir aðrar viðskiptavinatýpur og scopes.
+
+## Skref 3: Fáðu aðgangslykil
+
+```bash
+curl -X POST https://staging-iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_CLIENT_SECRET>" \
+  -d "scope=inventory.read"
+```
+
+Vistaðu `access_token` úr svari:
+
+```bash
+export WINK_TOKEN=<access_token>
+```
+
+Lyklar renna út. Í þínum eigin kóða, láttu OAuth2 bókasafn sækja og endurnýja þá. Sjá [Authentication](/is/developers/authentication/).
+
+## Skref 4: Finndu reikningsauðkenni þitt
+
+Allir Partner API kallar nefna reikninginn sem þú starfar fyrir í `managing-entity-id` haus. Skráðu reikninga sem lykillinn þinn getur starfað fyrir:
+
+```bash
+grpcurl -H "authorization: Bearer $WINK_TOKEN" \
+  -d '{}' \
+  staging-partner.wink.travel:443 wink.partner.v1.Accounts/ListAccounts
+```
+
+Afritaðu `accountId` fyrir tengdan reikning úr Skrefi 1:
+
+```bash
+export WINK_ACCOUNT_ID=<accountId>
+```
+
+## Skref 5: Leitaðu að hótelum í borg
+
+{/* TODO(Yann): staðfesta prófunarborg hótelsins með framboði og nota hana hér. */}
+
+```bash
+grpcurl -H "authorization: Bearer $WINK_TOKEN" \
+  -H "managing-entity-id: $WINK_ACCOUNT_ID" \
+  -d '{
+    "urlName": "bangkok-thailand",
+    "userSession": {
+      "itinerary": {
+        "startDate": "2026-12-01",
+        "nights": 2,
+        "room": { "adults": 2 }
+      },
+      "currencyCode": "USD",
+      "languageCode": "en"
+    }
+  }' \
+  staging-partner.wink.travel:443 wink.partner.v1.Search/SearchByCity
+```
+
+Notaðu innritunardagsetningu í framtíðinni; fyrri dagsetning er hafnað. Hvert niðurstaða inniheldur:
+
+- `name`, `starRating` og `heroImageUrl`, nægilegt til að sýna niðurstöðuröð,
+- `roomTypes`, lifandi tilboð, ódýrasta herbergið fyrst,
+- `urlName`, slugginn sem þú þarft fyrir bókunartengilinn.
+
+Verð eru heiltölur í minni einingum: deildu með 10 í veldi `currencyExponent` úr svarinu (2 fyrir USD, svo `12500` er $125,00).
+
+Þekkirðu ekki slugg borgar? Leystu það með `wink.partner.v1.Lookup/Search`. Fyrir fullan innihald eignar, notaðu `Content` þjónustuna. [Partner API tilvísun](/is/partner-api/partner/) skráir alla kalla.
+
+## Skref 6: Búðu til bókunartengilinn
+
+```text
+https://staging-book.wink.travel/hotel/<urlName>?client-id=<YOUR_CLIENT_ID>&configuration-id=<YOUR_CUSTOMIZATION_ID>
+```
+
+- `<urlName>` er `urlName` hótelsins úr Skrefi 5.
+- `client-id` er Client ID umsóknar þinnar úr Skrefi 2.
+- `configuration-id` er sérsniðna auðkenni þitt: `Manage account` > `Customizations`. Sérsniðin stilling setur einnig vörumerki þitt, sjálfgefna tungumál og gjaldmiðil á bókunarsíðunni.
+
+:::caution
+Innihalda báða auðkennin. Án þeirra hleðst síðunni samt, en með sjálfgefnu vörumerki, og **bókunin er ekki skráð á þig**. Settu aldrei Client secret í tengil.
+:::
+
+Sjá [Beint tenging](/is/booking-engine/features/#linking-directly) fyrir tengingu á heimasíðu bókunarvélarinnar í stað eins hótels.
+
+## Skref 7: Gerðu prófunarbókun
+
+Opnaðu tengilinn þinn, veldu dagsetningar og herbergi, og greiððu með [Stripe prófkorti](https://docs.stripe.com/testing), til dæmis `4242 4242 4242 4242` með hvaða framtíðar gildistíma og hvaða CVC sem er. Engin raunveruleg kort eru rukkuð í prófunarumhverfi. Skráðu bókunarkóðann á staðfestingarsíðunni; hann byrjar á `WNK`.
+
+## Skref 8: Fáðu tilkynningar um bókanir
+
+<Steps>
+1. Í Portal, farðu í `Applications > Webhooks` og bættu við endaþjón sem samþykkir `POST` beiðnir.
+
+2. Skráðu þig á `booking.create`, eða skildu atburðalistann auðan til að fá allt meðan þú þróar.
+
+3. Sendu þér prófunaratburð, gerðu svo aðra prófunarbókun og fylgstu með að hún berist.
+</Steps>
+
+Staðfestu undirskrift hvers afhendingar áður en þú treystir henni. Sjá [Webhook Integration](/is/developers/webhook-integration/) og [Webhook Events Catalog](/is/developers/webhook-events/).
+
+## Skref 9: Fara í framleiðslu
+
+Engin samþykktarferli eru fyrir forritara. (Ferðaskrifstofureikningar eru vottaðir fyrst; sjá [hér að neðan](#booking-as-a-travel-agency).) Þegar samþættingin þín virkar í prófunarumhverfi:
+
+<Steps>
+1. Búðu til reikning og umsókn á [app.wink.travel](https://app.wink.travel), eins og í Skrefum 1 og 2. Aðgangsupplýsingar flytjast ekki á milli umhverfa.
+
+2. Fjarlægðu `staging-` úr öllum hýsingum:
+
+   | Prófunarumhverfi | Framleiðsla |
+   |---|---|
+   | `https://staging-iam.wink.travel` | `https://iam.wink.travel` |
+   | `staging-partner.wink.travel:443` | `partner.wink.travel:443` |
+   | `https://staging-book.wink.travel` | `https://book.wink.travel` |
+
+3. Finndu framleiðslureikningsauðkenni (Skref 4) og sérsniðna auðkenni (Skref 6) aftur. Þau eru önnur en í prófunarumhverfi.
+</Steps>
+
+Notkun Partner API er mæld í hótelnóttum, með mánaðarlega ókeypis kvóta. Sjá [Partner API](/is/integrations/partner-api/) fyrir verðlagningu og takmarkanir.
+
+## Bókun sem ferðaskrifstofa
+
+Ef reikningurinn þinn er löggilt ferðaskrifstofa þarftu ekki að senda ferðalanga á `book.wink.travel`: þú getur búið til bókanir beint með `wink.partner.v1.Booking/CreateBooking` og stjórnað þeim með öðrum `Booking` köllum. Aðrir reikningar senda ferðalanga á bókunartengilinn í staðinn.
+
+Ferðaskrifstofureikningar eru vottaðir: Wink yfirfer skráningu hverrar skrifstofu áður en hún getur bókað. Skrifstofur sem vilja innheimta greiðslu frá viðskiptavinum sínum sjálfar, sem kaupmaður, verða að bóka í gegnum Partner API og fá skriflegt samþykki frá Wink. Sjá [Byrja sem ferðaskrifstofa](/is/guides/travel-agents/getting-started/) og [Partner API tilvísun](/is/partner-api/partner/).
+
+## Næstu skref
+
+- [Búðu til týndan viðskiptavin](/is/developers/rest-and-grpc/#generate-a-grpc-client) úr `.proto` skema í stað þess að kalla á `grpcurl` handvirkt.
+- Tengdu [MCP þjóninn](/is/developers/mcp/) og notaðu [AI Skills](/is/developers/ai-skills/) til að láta kóðaraðstoðina skrifa samþættinguna við lifandi API.
+- Lestu fulla lista yfir [umhverfi og hýsingar](/is/getting-started/environments/).

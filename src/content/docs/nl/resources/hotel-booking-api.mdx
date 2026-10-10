@@ -39,7 +39,7 @@ import IconArrowRight from "@tabler/icons/outline/arrow-right.svg";
 <section class="mx-auto w-full max-w-3xl px-4">
   <div class="rounded-2xl border-l-4 border-primary bg-primary/[0.04] p-6">
     <p class="text-xs font-semibold uppercase tracking-wider text-primary">Het korte antwoord</p>
-    <p class="mt-3 text-pretty text-foreground/90">Je hebt vier dingen nodig: <strong>live tarieven en beschikbaarheid</strong>, <strong>reserveringscreatie</strong>, <strong>betaling</strong> en <strong>bevestiging plus webhooks</strong>. Read-only content API's stoppen na het eerste. Op Wink zijn de Consumer en Booking Engine API's gratis te gebruiken, reserveringscreatie verloopt via REST met OAuth2, er zijn 64+ webhook-events waaronder <code>booking.created</code>, en betaling wordt geïnd voor het hotel — dat de merchant of record blijft — zodat jij dat niet hoeft te worden. Een MCP-server biedt dezelfde mogelijkheden aan AI-agents, en webcomponenten dekken de gevallen waarin je een reserveringspad wilt zonder een UI te bouwen.</p>
+    <p class="mt-3 text-pretty text-foreground/90">Je hebt vier dingen nodig: <strong>live tarieven en beschikbaarheid</strong>, <strong>reserveringscreatie</strong>, <strong>betaling</strong> en <strong>bevestiging plus webhooks</strong>. Read-only content API's stoppen na het eerste. Op Wink zijn de Consumer en Booking Engine API's gratis te gebruiken, reserveringscreatie verloopt via REST met OAuth2, er zijn 70 webhook-events waaronder <code>booking.create</code>, en betaling wordt geïnd voor het hotel — dat de merchant of record blijft — zodat jij dat niet hoeft te worden. Een MCP-server biedt dezelfde mogelijkheden aan AI-agents, en webcomponenten dekken de gevallen waarin je een reserveringspad wilt zonder een UI te bouwen.</p>
   </div>
 </section>
 
@@ -53,7 +53,7 @@ import IconArrowRight from "@tabler/icons/outline/arrow-right.svg";
 | Live tarieven en beschikbaarheid | Huidige prijzen en wat daadwerkelijk boekbaar is, per datumbereik | Gecachte tarieven falen bij bevestiging en ondermijnen vertrouwen |
 | Reserveringscreatie | Een echte reservering maken die het hotel ontvangt | Zonder dit ben je een doorverwijzingslink, geen product |
 | Betaling | Geld innen als onderdeel van de reservering | Een overdracht naar een andere site is waar conversie faalt |
-| Bevestiging en webhooks | Vertellen aan gast, hotel en jouw systeem wat er is gebeurd | Anders ontstaan er ondersteuningsdruk en reconciliatieproblemen |
+| Bevestiging en webhooks | Vertel gast, hotel en jouw systeem wat er is gebeurd | Anders ontstaan er ondersteuningsdruk en reconciliatieproblemen |
 
 De meeste "hotel-API's" die een ontwikkelaar vindt, dekken het eerste en soms het tweede. De transactie is het lastige deel, en dat bepaalt of je een product hebt.
 
@@ -61,11 +61,11 @@ De meeste "hotel-API's" die een ontwikkelaar vindt, dekken het eerste en soms he
 
 Deze vraag bepaalt alles wat daarna komt. Voorraad die via een keten wordt doorverkocht, komt met een opslag in het tarief, verouderde beschikbaarheid en geen route terug naar het hotel voor een reserveringsvraag. Voorraad die rechtstreeks van het hotel komt, draagt het eigen tarief van het hotel, live beschikbaarheid en een hotel dat weet dat de reservering bestaat.
 
-Voor alles waarbij de reiziger vergelijkt met de eigen website van het hotel — wat meestal het geval is — voorkomt hotelgestuurde voorraad het ongemakkelijke moment dat jouw prijs slechter is.
+Voor alles waarbij de reiziger vergelijkt met de eigen website van het hotel — wat het meeste is — voorkomt hotelgestuurde voorraad het ongemakkelijke moment dat jouw prijs slechter is.
 
 ## Wie is de merchant of record
 
-Als je zelf hotelreserveringen bouwt, betekent merchant of record worden dat je betalingsverantwoordelijkheid, chargebacks, terugbetalingen, belastingafhandeling en vaak een reisbureauvergunning in elke markt op je neemt.
+Als je zelf hotelreserveringen bouwt, betekent merchant of record worden dat je betalingsverantwoordelijkheid, chargebacks, terugbetalingen, belastingafhandeling en vaak een reisbureaulicentie in elke markt op je neemt.
 
 Bij Wink blijft het **hotel de merchant of record** en wordt betaling voor het hotel geïnd, zodat een integrator die verantwoordelijkheid niet overneemt. Merchant-of-record-regelingen zijn beschikbaar bij API-integraties waarbij een partner echt zelf betaling moet innen, en die route brengt eigen licentievereisten met zich mee.
 
@@ -77,11 +77,11 @@ Bij Wink blijft het **hotel de merchant of record** en wordt betaling voor het h
 
 De drie zijn niet exclusief — een product gebruikt vaak componenten voor een marketingoppervlak en de API voor de kernflow.
 
-## Wat eerst te bouwen
+## Wat eerst bouwen
 
 - **Zoek en prijs voor één stad en één datumbereik.** Zorg dat echte tarieven binnenkomen voordat je iets ontwerpt.
 - **Maak één testreservering van begin tot eind**, inclusief betaling en bevestiging.
-- **Abonneer je op `booking.created` en de annuleringsgebeurtenissen** voordat je een UI bouwt.
+- **Abonneer je op `booking.create` en de annulerings-events** voordat je een UI bouwt.
 - **Bepaal je attributiemodel vroeg** — broncontext moet meereizen met de reservering, anders is je rapportage later giswerk.
 - **Behandel de faalgevallen**: beschikbaarheid verloren tussen offerte en boeking, betaling geweigerd, gedeeltelijke terugbetalingen.
 
@@ -94,7 +94,7 @@ De **Consumer en Booking Engine API's zijn gratis**. De **Partner API** bevat ee
 - **Bouwen op gecachte tarieven.** Die lijken prima tijdens ontwikkeling maar falen in productie.
 - **Betaling overlaten aan een redirect.** Elke overdracht kost reserveringen.
 - **Webhooks negeren tot de lancering.** Reconciliatie wordt dan handwerk.
-- **Merchant of record worden zonder noodzaak.** Het is een beslissing over licenties en aansprakelijkheid, niet alleen technisch.
+- **Merchant of record worden zonder noodzaak.** Het is een licentie- en aansprakelijkheidsbeslissing, niet alleen technisch.
 - **Broncontext niet doorgeven.** Attributie kan later niet worden herbouwd.
 
 </article>

@@ -30,6 +30,7 @@ import IconTool from "@tabler/icons/outline/tool.svg";
 import IconCalendarCheck from "@tabler/icons/outline/calendar-check.svg";
 import RouteConvergence from "@/components/marketing/infographics/RouteConvergence.astro";
 import DevTerminal from "@/components/marketing/infographics/DevTerminal.astro";
+import { deliveredWebhookEventCount } from "@/lib/webhook-events";
 
 export const faqs = [
   { title: "Υπάρχει ξεχωριστή σελίδα προϊόντος για πρόσβαση API;", content: "Όχι. Η πρόσβαση API διαχειρίζεται μέσω της σελίδας Builders και της τεκμηρίωσης Build on Wink, όχι μέσω ξεχωριστής σελίδας προϊόντος marketing." },
@@ -37,8 +38,8 @@ export const faqs = [
   { title: "Μπορούν οι βοηθοί AI να χρησιμοποιήσουν το Wink;", content: "Ναι. Ένας φιλοξενούμενος MCP server επιτρέπει στους πράκτορες AI να διαβάζουν τα ζωντανά API συμβόλαια ώστε να μπορούν να αναζητούν ζωντανή ξενοδοχειακή προσφορά, να δημιουργούν κρατήσεις και να λαμβάνουν πληρωμές μέσω του Booking Engine — ολοκληρώνοντας μια κράτηση σε μία ροή, όχι απλώς δρομολογώντας τον χρήστη σε μια ιστοσελίδα. Κάθε ξενοδοχείο είναι έτοιμο για πράκτορα μόλις το προφίλ του είναι ζωντανό στο Wink." },
   { title: "Μπορώ να ενσωματώσω κάρτες ξενοδοχείων ή χάρτες χωρίς πλήρη ενσωμάτωση API;", content: "Ναι. Το Studio μπορεί να δημιουργήσει Web Components όπως κάρτες ξενοδοχείων, χάρτες, πλέγματα και άλλα ενσωματωμένα στοιχεία όταν μια πιο απλή διαδρομή είναι αρκετή — το Booking Engine ολοκληρώνει την κράτηση από κάτω." },
   { title: "Μπορούν οι ξενοδοχειακές αλυσίδες να χρησιμοποιήσουν πρόσβαση προγραμματιστή;", content: "Ναι. Οι ξενοδοχειακές αλυσίδες και οι τεχνικοί χειριστές μπορούν να χρησιμοποιήσουν πρόσβαση προγραμματιστή για να συνδέσουν την προσφορά, τις ροές κράτησης και αναφορών του Wink με εσωτερικά συστήματα." },
-  { title: "Πού πρέπει να ξεκινήσουν οι προγραμματιστές;", content: "Συνδεθείτε στον MCP server, διαβάστε την τεκμηρίωση Build on Wink, στη συνέχεια δημιουργήστε διαπιστευτήρια OAuth2 και ξεκινήστε την κατασκευή. Δεν υπάρχει αίτημα πρόσβασης και κανένα βήμα έγκρισης." },
-  { title: "Είναι η πρόσβαση προγραμματιστή ανοιχτή σε όλους;", content: "Ναι. Η τεκμηρίωση και ο MCP server είναι δημόσια, και κάθε προγραμματιστής μπορεί να δημιουργήσει διαπιστευτήρια OAuth2 και να ξεκινήσει την κατασκευή — δεν υπάρχει αίτημα πρόσβασης και κανένα βήμα έγκρισης." },
+  { title: "Πού πρέπει να ξεκινήσουν οι προγραμματιστές;", content: "Συνδεθείτε στον MCP server, διαβάστε την τεκμηρίωση Build on Wink, στη συνέχεια δημιουργήστε διαπιστευτήρια OAuth2 και ξεκινήστε την ανάπτυξη σε περιβάλλον staging — χωρίς αίτημα πρόσβασης, χωρίς αναμονή. Όταν είστε έτοιμοι, δημιουργήστε μια εφαρμογή σε παραγωγή και κατευθύνετε τον κώδικά σας στις διευθύνσεις URL παραγωγής." },
+  { title: "Είναι η πρόσβαση προγραμματιστή ανοιχτή σε όλους;", content: "Ναι. Η τεκμηρίωση και ο MCP server είναι δημόσια, και κάθε προγραμματιστής μπορεί να δημιουργήσει διαπιστευτήρια OAuth2 και να ξεκινήσει την ανάπτυξη σε staging χωρίς να μας ρωτήσει. Η μετάβαση σε παραγωγή δεν απαιτεί έγκριση. Μόνο οι διαχειριστές καναλιών και οι ταξιδιωτικοί πράκτορες περνούν από πιστοποίηση." },
 ];
 
 <div class="not-content mkt-page">
@@ -70,15 +71,15 @@ export const faqs = [
         <h1 class="font-heading mt-6 text-4xl font-extrabold leading-[1.05] tracking-tight text-balance @lg:text-5xl @2xl:text-[3.25rem]">
           Δημιουργήστε ξενοδοχειακό εμπόριο <span class="bg-gradient-to-r from-[#ff8a5c] via-[#ec4899] to-[#a855f7] bg-clip-text text-transparent">στο προϊόν σας.</span>
         </h1>
-        <p class="mt-5 max-w-xl text-pretty text-lg text-white/75 @lg:text-xl">API-first ξενοδοχειακό εμπόριο: αναζήτηση, κράτηση, πληρωμή, 64+ webhooks, απόδοση και παράδοση AI — με φιλοξενούμενο MCP server ώστε οι πράκτορες να διαβάζουν τα ζωντανά συμβόλαια, και το Booking Engine να ολοκληρώνει από κάτω.</p>
+        <p class="mt-5 max-w-xl text-pretty text-lg text-white/75 @lg:text-xl">API-first ξενοδοχειακό εμπόριο: αναζήτηση, κράτηση, πληρωμή, {deliveredWebhookEventCount} webhooks, απόδοση και παράδοση AI — με φιλοξενούμενο MCP server ώστε οι πράκτορες να διαβάζουν τα ζωντανά συμβόλαια, και το Booking Engine να ολοκληρώνει από κάτω.</p>
         <div class="mt-8 flex flex-col gap-3 sm:flex-row">
           <a href="/developers/build-on-wink/" class="inline-flex h-12 items-center justify-center rounded-md bg-[#ff6b35] px-7 text-base font-semibold text-white transition-colors hover:bg-[#e85b29]">Δείτε την τεκμηρίωση</a>
-          <a href="/api/overview/" class="inline-flex h-12 items-center justify-center rounded-md bg-white/10 px-7 text-base font-medium text-white ring-1 ring-white/20 backdrop-blur transition-colors hover:bg-white/15">Ξεκινήστε</a>
+          <a href="/developers/quickstart/" class="inline-flex h-12 items-center justify-center rounded-md bg-white/10 px-7 text-base font-medium text-white ring-1 ring-white/20 backdrop-blur transition-colors hover:bg-white/15">Ξεκινήστε</a>
         </div>
         <div class="mt-7 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-white/65">
           <span class="inline-flex items-center gap-1.5"><IconCheck class="size-4 text-[#ff8a5c]" /> REST + OAuth2 + SDKs</span>
           <span class="inline-flex items-center gap-1.5"><IconCheck class="size-4 text-[#ff8a5c]" /> Φιλοξενούμενος MCP server</span>
-          <span class="inline-flex items-center gap-1.5"><IconCheck class="size-4 text-[#ff8a5c]" /> 64+ γεγονότα webhook</span>
+          <span class="inline-flex items-center gap-1.5"><IconCheck class="size-4 text-[#ff8a5c]" /> {deliveredWebhookEventCount} γεγονότα webhook</span>
         </div>
       </div>
       {/* Terminal visual — swappable infographic (infographics/DevTerminal.astro) */}
@@ -90,7 +91,7 @@ export const faqs = [
 {/* Direct answer */}
 <section class="mx-auto w-full max-w-3xl px-4 pt-24 pb-24 text-center">
   <p class="mkt-kicker text-primary">Τι μπορούν να δημιουργήσουν οι προγραμματιστές με το Wink;</p>
-  <p class="mkt-sub text-muted-foreground mt-5">Οι προγραμματιστές μπορούν να δημιουργήσουν ροές εργασίας αναζήτησης ξενοδοχείων, κράτησης, πληρωμής, webhook, απόδοσης, αναφορών, παράδοσης AI και ενσωματωμένου εμπορίου στα δικά τους προϊόντα. Η πρόσβαση προγραμματιστή Wink λειτουργεί με προσφορά ελεγχόμενη από ξενοδοχεία μέσω Extranet, πλαίσιο συνεργατών από το υποκείμενο δίκτυο, παράδοση AI μέσω Agentic AI, και ολοκλήρωση Booking Engine για ξενοδοχειακό checkout, πληρωμή, επιβεβαίωση και ολοκλήρωση κράτησης.</p>
+  <p class="mkt-sub text-muted-foreground mt-5">Οι προγραμματιστές μπορούν να δημιουργήσουν ροές εργασίας ξενοδοχειακής αναζήτησης, κράτησης, πληρωμής, webhook, απόδοσης, αναφορών, παράδοσης AI και ενσωματωμένου εμπορίου στα δικά τους προϊόντα. Η πρόσβαση προγραμματιστή Wink λειτουργεί με προσφορά ελεγχόμενη από ξενοδοχεία μέσω Extranet, πλαίσιο συνεργατών από το υποκείμενο δίκτυο, παράδοση AI μέσω Agentic AI και ολοκλήρωση Booking Engine για ξενοδοχειακό checkout, πληρωμή, επιβεβαίωση και ολοκλήρωση κράτησης.</p>
 </section>
 
 {/* Who it's for */}
@@ -99,7 +100,7 @@ export const faqs = [
     <div class="mx-auto mb-14 max-w-2xl text-center">
       <p class="mkt-kicker text-primary">Για ποιους είναι</p>
       <h2 class="mkt-h2 font-heading mt-3">Για ομάδες που δημιουργούν ξενοδοχειακό εμπόριο, όχι απλώς διαβάζουν τεκμηρίωση.</h2>
-      <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">Η πρόσβαση προγραμματιστή ταιριάζει σε ομάδες προϊόντος, μηχανικών, AI, πλατφόρμας και λειτουργιών. Αξιολογείτε μια ενσωμάτωση για προϊόν AI, τράπεζα ή super app; Δείτε <a href="/platforms/" class="text-primary underline underline-offset-2">Για Πλατφόρμες &amp; AI</a>.</p>
+      <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">Η πρόσβαση προγραμματιστή ταιριάζει σε ομάδες προϊόντος, μηχανικής, AI, πλατφόρμας και λειτουργιών. Αξιολογείτε μια ενσωμάτωση για προϊόν AI, τράπεζα ή super app; Δείτε <a href="/platforms/" class="text-primary underline underline-offset-2">Για Πλατφόρμες &amp; AI</a>.</p>
     </div>
     <div class="mx-auto grid max-w-4xl gap-5 @md:grid-cols-2">
       {[
@@ -148,13 +149,13 @@ export const faqs = [
         </ul>
       </div>
       <div class="rounded-2xl border border-[#ff6b35]/30 bg-[#ff6b35]/[0.08] p-7">
-        <h3 class="font-heading text-lg font-semibold text-[#ff8a5c]">Χτίστε πάνω στο Wink</h3>
+        <h3 class="font-heading text-lg font-semibold text-[#ff8a5c]">Χτίστε στο Wink</h3>
         <ul class="mt-5 space-y-3">
           {[
             "Ενσωματώστε προσφορά εγκεκριμένη από ξενοδοχεία μέσω Extranet",
-            "Το Booking Engine διαχειρίζεται checkout, πληρωμή και επιβεβαίωση",
+            "Το Booking Engine χειρίζεται checkout, πληρωμή και επιβεβαίωση",
             "Διατηρείται απόδοση 6 μηνών ανά κλικ",
-            "Εγγραφείτε σε 64+ γεγονότα webhook",
+            `Εγγραφείτε σε ${deliveredWebhookEventCount} γεγονότα webhook`,
             "Δομημένη παράδοση AI μέσω MCP + Agentic AI",
             "1.5% + κόστος επεξεργασίας — Booking Engine κάτω από κάθε παράδοση",
           ].map((b) => (
@@ -178,7 +179,7 @@ export const faqs = [
       { t: "Συνδεθείτε", d: "Προσθέστε τον φιλοξενούμενο MCP server ή δημιουργήστε διαπιστευτήρια OAuth2 για να ξεκινήσετε με ζωντανά συμβόλαια." },
       { t: "Διαβάστε ζωντανά συμβόλαια", d: "Αναζητήστε λειτουργίες και διαβάστε τρέχοντα σχήματα αιτήσεων και απαντήσεων — χωρίς εικασίες, χωρίς ξεπερασμένα docs." },
       { t: "Χτίστε τη ροή", d: "Συνδέστε αναζήτηση, διαθεσιμότητα, κράτηση, πληρωμή και αναφορές στο προϊόν σας." },
-      { t: "Εγγραφείτε σε γεγονότα", d: "Αντιδράστε σε 64+ γεγονότα webhook: κατάσταση κράτησης, πληρωμές, επιστροφές, ακυρώσεις και αλλαγές καναλιών." },
+      { t: "Εγγραφείτε σε γεγονότα", d: `Αντιδράστε σε ${deliveredWebhookEventCount} γεγονότα webhook: κατάσταση κράτησης, πληρωμές, επιστροφές, ακυρώσεις και αλλαγές καναλιών.` },
       { t: "Ολοκληρώστε στο Booking Engine", d: "Κάθε κλήση ολοκληρώνεται στο Booking Engine για ξενοδοχειακό checkout, πληρωμή και επιβεβαίωση." },
     ].map((s, i) => (
       <li class="rounded-2xl border border-border bg-card p-6">
@@ -205,7 +206,7 @@ export const faqs = [
       <div class="flex flex-col rounded-2xl border border-border bg-card p-6">
         <span class="mb-4 flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-white"><IconPlug class="size-6" /></span>
         <h3 class="font-heading text-lg font-semibold">1 · Συνδέστε τον MCP server</h3>
-        <p class="text-muted-foreground mt-2 text-sm">Ροή HTTP endpoint (εναλλακτική SSE στο <code class="rounded bg-muted px-1 py-0.5 text-xs">/sse</code>). Από Claude Code:</p>
+        <p class="text-muted-foreground mt-2 text-sm">Ροή HTTP endpoint (SSE fallback στο <code class="rounded bg-muted px-1 py-0.5 text-xs">/sse</code>). Από Claude Code:</p>
         <pre class="mt-4 overflow-x-auto rounded-lg bg-[#1f0a40] p-4 font-mono text-xs leading-relaxed text-white/90"><code>claude mcp add --transport http \
   wink-docs https://docs.mcp.wink.travel/mcp</code></pre>
         <p class="text-muted-foreground mt-3 text-xs">Λειτουργεί επίσης με Codex, Cursor και VS Code — δείτε τα <a href="/developers/mcp/" class="text-primary underline underline-offset-2">MCP docs</a>.</p>
@@ -215,12 +216,12 @@ export const faqs = [
       <div class="flex flex-col rounded-2xl border border-border bg-card p-6">
         <span class="mb-4 flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-white"><IconSparkles class="size-6" /></span>
         <h3 class="font-heading text-lg font-semibold">2 · Αναζητήστε το ζωντανό API</h3>
-        <p class="text-muted-foreground mt-2 text-sm">Δύο εργαλεία μετατρέπουν την πρόθεση σε πραγματικές λειτουργίες και έννοιες docs:</p>
+        <p class="text-muted-foreground mt-2 text-sm">Δύο εργαλεία μεταφράζουν πρόθεση σε πραγματικές λειτουργίες και τεκμηρίωση εννοιών:</p>
         <ul class="mt-4 space-y-2 text-sm">
-          <li class="flex items-start gap-2"><code class="mt-0.5 rounded bg-muted px-1.5 py-0.5 text-xs text-primary">api_search</code><span class="text-muted-foreground">βρείτε τη λειτουργία για κλήση — π.χ. "αναζήτηση αποθέματος", "δημιουργία κράτησης", "απόδειξη πληρωμής"</span></li>
+          <li class="flex items-start gap-2"><code class="mt-0.5 rounded bg-muted px-1.5 py-0.5 text-xs text-primary">api_search</code><span class="text-muted-foreground">βρείτε τη λειτουργία που πρέπει να καλέσετε — π.χ. "αναζήτηση αποθέματος", "δημιουργία κράτησης", "απόδειξη πληρωμής"</span></li>
           <li class="flex items-start gap-2"><code class="mt-0.5 rounded bg-muted px-1.5 py-0.5 text-xs text-primary">docs_search</code><span class="text-muted-foreground">βρείτε έννοιες — "πιστοποίηση", "webhooks", "απόδοση"</span></li>
         </ul>
-        <p class="text-muted-foreground mt-3 text-xs">Κάθε αποτέλεσμα επιστρέφει ένα <code class="rounded bg-muted px-1 py-0.5 text-xs">wink://</code> URI — ανοίξτε τη λειτουργία, το σχήμα αιτήσεων/απαντήσεων ή τη <strong class="text-foreground/80">συνταγή</strong> εργασίας.</p>
+        <p class="text-muted-foreground mt-3 text-xs">Κάθε αποτέλεσμα επιστρέφει ένα <code class="rounded bg-muted px-1 py-0.5 text-xs">wink://</code> URI — ανοίξτε τη λειτουργία, το σχήμα αιτήσεων/απαντήσεων ή τη <strong class="text-foreground/80">συνταγή</strong> εργασίας της.</p>
       </div>
 
       {/* Build */}
@@ -235,8 +236,8 @@ export const faqs = [
       <div class="flex flex-col rounded-2xl border border-border bg-card p-6">
         <span class="mb-4 flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-white"><IconCalendarCheck class="size-6" /></span>
         <h3 class="font-heading text-lg font-semibold">4 · Παραδώστε στο Booking Engine</h3>
-        <p class="text-muted-foreground mt-2 text-sm">Δημιουργήστε την κράτηση μέσω API και το Booking Engine την ολοκληρώνει — checkout, πληρωμή, επιβεβαίωση και συγχρονισμός κράτησης με το συνδεδεμένο PMS ή διαχειριστή καναλιών, με διατήρηση πλαισίου πηγής.</p>
-        <p class="text-muted-foreground mt-3 text-xs">Εγγραφείτε σε <code class="rounded bg-muted px-1 py-0.5 text-xs">booking.created</code> και 63 άλλα γεγονότα για να αντιδράτε σε πραγματικό χρόνο.</p>
+        <p class="text-muted-foreground mt-2 text-sm">Δημιουργήστε την κράτηση μέσω του API και το Booking Engine την ολοκληρώνει — checkout, πληρωμή, επιβεβαίωση και συγχρονισμός κράτησης με το συνδεδεμένο PMS ή διαχειριστή καναλιών, με διατήρηση του πλαισίου προέλευσης.</p>
+        <p class="text-muted-foreground mt-3 text-xs">Εγγραφείτε σε <code class="rounded bg-muted px-1 py-0.5 text-xs">booking.create</code> και 63 άλλα γεγονότα για να αντιδράτε σε πραγματικό χρόνο.</p>
       </div>
     </div>
   </div>
@@ -260,7 +261,7 @@ export const faqs = [
     <RouteConvergence
       routes={["REST API", "MCP / agents", "Web Components", "WinkLinks", "Studio + network", "Partner apps"]}
       outcomeTitle="Επιβεβαιωμένη κράτηση"
-      outcomeNote="Πληρωμή ληφθείσα, επισκέπτης επιβεβαιωμένος, απόδοση και πλαίσιο πηγής διατηρούνται."
+      outcomeNote="Πληρωμή ληφθείσα, επισκέπτης επιβεβαιωμένος, απόδοση και πλαίσιο προέλευσης διατηρούνται."
     />
   </div>
 </section>
@@ -276,10 +277,10 @@ export const faqs = [
     <div class="grid gap-5 @md:grid-cols-2 @2xl:grid-cols-3">
       {[
         { icon: IconCode, title: "API & MCP", desc: "Δημιουργήστε ροές αναζήτησης, κράτησης, πληρωμής, webhook, απόδοσης και αναφορών πάνω σε REST + OAuth2 — με τον MCP server για ζωντανά συμβόλαια.", href: "/api/overview" },
-        { icon: IconRobot, title: "Agentic AI", desc: "Αφήστε τους πράκτορες AI να αναζητούν, να κλείνουν και να πληρώνουν με βάση ζωντανή ξενοδοχειακή προσφορά — ολοκληρώνοντας την κράτηση, όχι απλώς δρομολογώντας χρήστες σε ιστοσελίδα.", href: "/agentic-ai/" },
-        { icon: IconBolt, title: "Booking Engine", desc: "Φορτώνει δεδομένα ξενοδοχείου και διαχειρίζεται checkout, πληρωμή, επιβεβαίωση και ολοκλήρωση κράτησης.", href: "/products/booking-engine/" },
-        { icon: IconComponents, title: "Web Components", desc: "Προσθέστε κάρτες, χάρτες, πλέγματα, κουμπιά και ξενοδοχειακές ενότητες σε ιστοσελίδα ή επιφάνεια προϊόντος.", href: "/developers/build-on-wink/" },
-        { icon: IconDeviceMobile, title: "WinkLinks", desc: "Δημοσιεύστε επιμελημένες καταχωρήσεις ξενοδοχείων κάτω από έναν δημόσιο σύνδεσμο mobile-first.", href: "/products/winklinks/" },
+        { icon: IconRobot, title: "Agentic AI", desc: "Αφήστε τους πράκτορες AI να αναζητούν, να κάνουν κράτηση και να πληρώνουν με βάση ζωντανή ξενοδοχειακή προσφορά — ολοκληρώνοντας την κράτηση, όχι απλώς δρομολογώντας χρήστες σε ιστοσελίδα.", href: "/agentic-ai/" },
+        { icon: IconBolt, title: "Booking Engine", desc: "Φορτώνει δεδομένα ξενοδοχείου και χειρίζεται checkout, πληρωμή, επιβεβαίωση και ολοκλήρωση κράτησης.", href: "/products/booking-engine/" },
+        { icon: IconComponents, title: "Web Components", desc: "Προσθέστε κάρτες, χάρτες, πλέγματα, κουμπιά και ξενοδοχειακές ενότητες σε μια ιστοσελίδα ή επιφάνεια προϊόντος.", href: "/developers/build-on-wink/" },
+        { icon: IconDeviceMobile, title: "WinkLinks", desc: "Δημοσιεύστε επιμελημένες καταχωρήσεις ξενοδοχείων κάτω από έναν δημόσιο σύνδεσμο προσανατολισμένο σε κινητά.", href: "/products/winklinks/" },
         { icon: IconSearch, title: "Studio + network", desc: "Διαχειριστείτε πρόσβαση συνεργατών, κανάλια πωλήσεων και πλαίσιο απόδοσης για ζήτηση που οδηγείται από συνεργάτες.", href: "/products/studio/" },
       ].map((c) => (
         <a href={c.href} class="group flex h-full flex-col rounded-2xl border border-border bg-card p-6 transition-colors hover:border-primary/40">
@@ -298,14 +299,14 @@ export const faqs = [
   <div class="grid items-center gap-12 @lg:grid-cols-2 @lg:gap-16">
     <div class="@lg:order-2">
       <p class="mkt-kicker text-primary">Η πλήρης γκάμα</p>
-      <h2 class="mkt-h2 font-heading mt-3">Από πλήρη κατασκευή API μέχρι ένα ενσωματωμένο συστατικό.</h2>
+      <h2 class="mkt-h2 font-heading mt-3">Από πλήρη κατασκευή API μέχρι ένα έτοιμο συστατικό.</h2>
       <p class="text-muted-foreground mt-4 text-pretty @lg:text-lg">Πηγαίνετε τόσο βαθιά όσο μια πλήρης ενσωμάτωση REST + MCP — ή, όταν αυτό είναι περισσότερο από ό,τι χρειάζεται η δουλειά, ενσωματώστε ένα Studio Web Component: κάρτες ξενοδοχείων, χάρτες, πλέγματα και μονάδες κράτησης. Σε κάθε περίπτωση, το Booking Engine ολοκληρώνει την κράτηση από κάτω.</p>
       <ul class="mt-6 space-y-2.5">
-        {["Πλήρες REST + OAuth2 API, φιλοξενούμενος MCP server και SDKs", "Ή bookable Web Components — κάρτες, χάρτες και πλέγματα", "64+ γεγονότα webhook για συμφιλίωση σε πραγματικό χρόνο", "Ολοκλήρωση Booking Engine κάτω από κάθε επιφάνεια"].map((p) => (
+        {["Πλήρες REST + OAuth2 API, φιλοξενούμενος MCP server και παραγόμενοι πελάτες", "Ή bookable Web Components — κάρτες, χάρτες και πλέγματα", `${deliveredWebhookEventCount} γεγονότα webhook για συμφιλίωση σε πραγματικό χρόνο`, "Ολοκλήρωση Booking Engine κάτω από κάθε επιφάνεια"].map((p) => (
           <li class="flex items-start gap-2.5"><IconCheck class="mt-0.5 size-5 shrink-0 text-primary" /><span class="text-sm text-foreground/90">{p}</span></li>
         ))}
       </ul>
-      <a href="/developers/build-on-wink/" class="mt-7 inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline">Δείτε τα Build on Wink docs <IconArrowRight class="size-4" /></a>
+      <a href="/developers/build-on-wink/" class="mt-7 inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline">Δείτε την τεκμηρίωση Build on Wink <IconArrowRight class="size-4" /></a>
     </div>
     <div class="@lg:order-1">
       <DeviceFrame variant="plain" src="/mockups/studio/web-component/embedable-hotel-card.webp" alt="Ένα ενσωματώσιμο Web Component κάρτας ξενοδοχείου του Wink" class="mx-auto max-w-[300px]" />
@@ -328,7 +329,7 @@ export const faqs = [
   </div>
   <div class="relative mx-auto w-full max-w-7xl px-4 py-24 text-center">
     <h2 class="mkt-h2 font-heading">Έτοιμοι να ενσωματώσετε ξενοδοχειακό εμπόριο στο προϊόν σας;</h2>
-    <p class="mx-auto mt-4 max-w-2xl text-pretty text-white/70 @lg:text-lg">Συνδέστε τον MCP server, διαβάστε τα docs, επιλέξτε τη σωστή επιφάνεια ενσωμάτωσης. Τίποτα δεν είναι κλειδωμένο — ξεκινήστε όποτε το προϊόν σας είναι έτοιμο να συνδέσει εγκεκριμένη ζήτηση ξενοδοχείων με ολοκλήρωση Booking Engine.</p>
+    <p class="mx-auto mt-4 max-w-2xl text-pretty text-white/70 @lg:text-lg">Συνδέστε τον MCP server, διαβάστε την τεκμηρίωση, επιλέξτε τη σωστή επιφάνεια ενσωμάτωσης. Τίποτα δεν είναι κλειδωμένο — ξεκινήστε όποτε το προϊόν σας είναι έτοιμο να συνδέσει εγκεκριμένη ζήτηση ξενοδοχείων με την ολοκλήρωση Booking Engine.</p>
     <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
       <a href="/developers/build-on-wink/" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-[#ff6b35] px-8 text-base font-semibold text-white hover:bg-[#e85b29] sm:w-auto">Δείτε την τεκμηρίωση</a>
       <a href="/api/overview/" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-white px-8 text-base font-semibold text-[#1f0a40] hover:bg-white/90 sm:w-auto">Ξεκινήστε</a>

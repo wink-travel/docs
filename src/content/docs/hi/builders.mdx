@@ -30,15 +30,16 @@ import IconTool from "@tabler/icons/outline/tool.svg";
 import IconCalendarCheck from "@tabler/icons/outline/calendar-check.svg";
 import RouteConvergence from "@/components/marketing/infographics/RouteConvergence.astro";
 import DevTerminal from "@/components/marketing/infographics/DevTerminal.astro";
+import { deliveredWebhookEventCount } from "@/lib/webhook-events";
 
 export const faqs = [
   { title: "क्या API एक्सेस के लिए अलग उत्पाद पृष्ठ है?", content: "नहीं। API एक्सेस बिल्डर्स पेज और Build on Wink दस्तावेज़ के माध्यम से संभाला जाता है, न कि एक स्वतंत्र मार्केटिंग उत्पाद पृष्ठ के माध्यम से।" },
-  { title: "क्या API एक्सेस Booking Engine की जगह लेता है?", content: "नहीं। API एक्सेस मांग और एकीकरण लॉजिक को मार्गदर्शित करता है। Booking Engine होटल-विशिष्ट चेकआउट, भुगतान, पुष्टि और बुकिंग पूर्णता के लिए पूर्ति परत बनी रहती है।" },
+  { title: "क्या API एक्सेस Booking Engine की जगह लेता है?", content: "नहीं। API एक्सेस मांग और एकीकरण लॉजिक को मार्गदर्शित करता है। Booking Engine होटल-विशिष्ट चेकआउट, भुगतान, पुष्टि और बुकिंग पूर्णता के लिए पूर्ति पर बनी रहती है।" },
   { title: "क्या AI सहायक Wink का उपयोग कर सकते हैं?", content: "हाँ। एक होस्टेड MCP सर्वर AI एजेंट्स को लाइव API कॉन्ट्रैक्ट पढ़ने देता है ताकि वे लाइव होटल सप्लाई खोज सकें, बुकिंग बना सकें और Booking Engine के माध्यम से भुगतान ले सकें — एक ही फ्लो में बुकिंग पूरी करते हुए, केवल उपयोगकर्ता को वेबसाइट पर रूट करने के बजाय। कोई भी होटल एजेंट-तैयार होता है जब उसका प्रोफ़ाइल Wink पर लाइव होता है।" },
   { title: "क्या मैं बिना पूर्ण API एकीकरण के होटल कार्ड या मानचित्र एम्बेड कर सकता हूँ?", content: "हाँ। Studio वेब कॉम्पोनेंट्स जैसे होटल कार्ड, मानचित्र, ग्रिड और अन्य एम्बेडेड एसेट्स बना सकता है जब कम प्रयास वाला रास्ता पर्याप्त हो — Booking Engine नीचे बुकिंग को पूरा करता है।" },
   { title: "क्या होटल समूह डेवलपर एक्सेस का उपयोग कर सकते हैं?", content: "हाँ। होटल समूह और तकनीकी ऑपरेटर डेवलपर एक्सेस का उपयोग Wink सप्लाई, बुकिंग और रिपोर्टिंग वर्कफ़्लोज़ को आंतरिक सिस्टम से जोड़ने के लिए कर सकते हैं।" },
-  { title: "डेवलपर्स को कहाँ से शुरू करना चाहिए?", content: "MCP सर्वर से कनेक्ट करें, Build on Wink दस्तावेज़ पढ़ें, फिर OAuth2 क्रेडेंशियल बनाएं और निर्माण शुरू करें। कोई एक्सेस अनुरोध या अनुमोदन चरण नहीं है।" },
-  { title: "क्या डेवलपर एक्सेस सभी के लिए खुला है?", content: "हाँ। दस्तावेज़ और MCP सर्वर सार्वजनिक हैं, और कोई भी डेवलपर OAuth2 क्रेडेंशियल बना सकता है और निर्माण शुरू कर सकता है — कोई एक्सेस अनुरोध या अनुमोदन चरण नहीं है।" },
+  { title: "डेवलपर्स को कहाँ से शुरू करना चाहिए?", content: "MCP सर्वर से कनेक्ट करें, Build on Wink दस्तावेज़ पढ़ें, फिर OAuth2 क्रेडेंशियल बनाएं और स्टेजिंग में निर्माण शुरू करें — कोई एक्सेस अनुरोध या प्रतीक्षा नहीं। जब आप तैयार हों, तो प्रोडक्शन में एक एप्लिकेशन बनाएं और अपने कोड को प्रोडक्शन URL पर पॉइंट करें।" },
+  { title: "क्या डेवलपर एक्सेस सभी के लिए खुला है?", content: "हाँ। दस्तावेज़ और MCP सर्वर सार्वजनिक हैं, और कोई भी डेवलपर OAuth2 क्रेडेंशियल बना सकता है और बिना पूछे स्टेजिंग में निर्माण शुरू कर सकता है। प्रोडक्शन में जाने के लिए भी कोई अनुमोदन आवश्यक नहीं है। केवल चैनल मैनेजर और ट्रैवल एजेंट प्रमाणन से गुजरते हैं।" },
 ];
 
 <div class="not-content mkt-page">
@@ -70,15 +71,15 @@ export const faqs = [
         <h1 class="font-heading mt-6 text-4xl font-extrabold leading-[1.05] tracking-tight text-balance @lg:text-5xl @2xl:text-[3.25rem]">
           अपने उत्पाद में <span class="bg-gradient-to-r from-[#ff8a5c] via-[#ec4899] to-[#a855f7] bg-clip-text text-transparent">होटल कॉमर्स</span> बनाएं।
         </h1>
-        <p class="mt-5 max-w-xl text-pretty text-lg text-white/75 @lg:text-xl">API-प्रथम होटल कॉमर्स: खोज, बुकिंग, भुगतान, 64+ वेबहुक, एट्रिब्यूशन और AI हैंडऑफ — एक होस्टेड MCP सर्वर के साथ ताकि एजेंट लाइव कॉन्ट्रैक्ट पढ़ सकें, और Booking Engine नीचे पूर्ति करता है।</p>
+        <p class="mt-5 max-w-xl text-pretty text-lg text-white/75 @lg:text-xl">API-प्रथम होटल कॉमर्स: खोज, बुकिंग, भुगतान, {deliveredWebhookEventCount} वेबहुक, एट्रिब्यूशन और AI हैंडऑफ — एक होस्टेड MCP सर्वर के साथ ताकि एजेंट लाइव कॉन्ट्रैक्ट पढ़ सकें, और Booking Engine नीचे पूर्ति करता है।</p>
         <div class="mt-8 flex flex-col gap-3 sm:flex-row">
           <a href="/developers/build-on-wink/" class="inline-flex h-12 items-center justify-center rounded-md bg-[#ff6b35] px-7 text-base font-semibold text-white transition-colors hover:bg-[#e85b29]">दस्तावेज़ देखें</a>
-          <a href="/api/overview/" class="inline-flex h-12 items-center justify-center rounded-md bg-white/10 px-7 text-base font-medium text-white ring-1 ring-white/20 backdrop-blur transition-colors hover:bg-white/15">शुरू करें</a>
+          <a href="/developers/quickstart/" class="inline-flex h-12 items-center justify-center rounded-md bg-white/10 px-7 text-base font-medium text-white ring-1 ring-white/20 backdrop-blur transition-colors hover:bg-white/15">शुरू करें</a>
         </div>
         <div class="mt-7 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-white/65">
           <span class="inline-flex items-center gap-1.5"><IconCheck class="size-4 text-[#ff8a5c]" /> REST + OAuth2 + SDKs</span>
           <span class="inline-flex items-center gap-1.5"><IconCheck class="size-4 text-[#ff8a5c]" /> होस्टेड MCP सर्वर</span>
-          <span class="inline-flex items-center gap-1.5"><IconCheck class="size-4 text-[#ff8a5c]" /> 64+ वेबहुक इवेंट्स</span>
+          <span class="inline-flex items-center gap-1.5"><IconCheck class="size-4 text-[#ff8a5c]" /> {deliveredWebhookEventCount} वेबहुक इवेंट्स</span>
         </div>
       </div>
       {/* Terminal visual — swappable infographic (infographics/DevTerminal.astro) */}
@@ -99,7 +100,7 @@ export const faqs = [
     <div class="mx-auto mb-14 max-w-2xl text-center">
       <p class="mkt-kicker text-primary">यह किसके लिए है</p>
       <h2 class="mkt-h2 font-heading mt-3">केवल दस्तावेज़ पढ़ने के लिए नहीं, होटल कॉमर्स बनाने वाली टीमों के लिए।</h2>
-      <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">डेवलपर एक्सेस उत्पाद, इंजीनियरिंग, AI, प्लेटफ़ॉर्म और परिचालन टीमों के लिए उपयुक्त है। AI उत्पाद, बैंक या सुपर ऐप के लिए एकीकरण का मूल्यांकन कर रहे हैं? देखें <a href="/platforms/" class="text-primary underline underline-offset-2">प्लेटफ़ॉर्म और AI के लिए</a>।</p>
+      <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">डेवलपर एक्सेस उत्पाद, इंजीनियरिंग, AI, प्लेटफ़ॉर्म और संचालन टीमों के लिए उपयुक्त है। AI उत्पाद, बैंक या सुपर ऐप के लिए एकीकरण का मूल्यांकन कर रहे हैं? देखें <a href="/platforms/" class="text-primary underline underline-offset-2">प्लेटफ़ॉर्म और AI के लिए</a>।</p>
     </div>
     <div class="mx-auto grid max-w-4xl gap-5 @md:grid-cols-2">
       {[
@@ -138,10 +139,10 @@ export const faqs = [
           {[
             "सप्लाई, दर और नीति नियमों को फिर से बनाएं",
             "होटल-विशिष्ट डेटा से चेकआउट कनेक्ट करें",
-            "सेशन्स के बीच एट्रिब्यूशन जोड़ें",
+            "सेशंस के बीच एट्रिब्यूशन जोड़ें",
             "भुगतान, रिफंड और मिलान का प्रबंधन करें",
             "AI को गार्डरेल करें ताकि वह उपलब्धता का आविष्कार न करे",
-            "होटल रोज़ बदलते हैं, इसे बनाए रखें",
+            "होटल रोज़ाना बदलते हैं, इसे बनाए रखें",
           ].map((b) => (
             <li class="flex items-start gap-2.5"><IconX class="mt-0.5 size-5 shrink-0 text-white/30" /><span class="text-sm text-white/60">{b}</span></li>
           ))}
@@ -153,8 +154,8 @@ export const faqs = [
           {[
             "Extranet से होटल-स्वीकृत सप्लाई एकीकृत करें",
             "Booking Engine चेकआउट, भुगतान और पुष्टि संभालता है",
-            "प्रति क्लिक 6 महीने का एट्रिब्यूशन सुरक्षित रहता है",
-            "64+ वेबहुक इवेंट्स की सदस्यता लें",
+            "6 महीने प्रति क्लिक एट्रिब्यूशन संरक्षित",
+            `सब्सक्राइब करें ${deliveredWebhookEventCount} वेबहुक इवेंट्स को`,
             "MCP + Agentic AI के माध्यम से संरचित AI हैंडऑफ",
             "1.5% + लागत पर प्रोसेसिंग — हर हैंडऑफ के नीचे Booking Engine",
           ].map((b) => (
@@ -175,10 +176,10 @@ export const faqs = [
   </div>
   <ol class="grid gap-5 md:grid-cols-3 xl:grid-cols-5">
     {[
-      { t: "कनेक्ट करें", d: "होस्टेड MCP सर्वर जोड़ें या लाइव कॉन्ट्रैक्ट के खिलाफ शुरू करने के लिए OAuth2 क्रेडेंशियल बनाएं।" },
-      { t: "लाइव कॉन्ट्रैक्ट पढ़ें", d: "सर्च ऑपरेशंस और वर्तमान अनुरोध और प्रतिक्रिया स्कीमाएँ पढ़ें — अनुमान नहीं, पुरानी डॉक्यूमेंटेशन नहीं।" },
+      { t: "कनेक्ट करें", d: "होस्टेड MCP सर्वर जोड़ें या OAuth2 क्रेडेंशियल बनाएं ताकि लाइव कॉन्ट्रैक्ट के खिलाफ शुरू किया जा सके।" },
+      { t: "लाइव कॉन्ट्रैक्ट पढ़ें", d: "सर्च ऑपरेशंस और वर्तमान अनुरोध और प्रतिक्रिया स्कीमाओं को पढ़ें — कोई अनुमान नहीं, कोई पुराना दस्तावेज़ नहीं।" },
       { t: "फ्लो बनाएं", d: "खोज, उपलब्धता, बुकिंग, भुगतान और रिपोर्टिंग को अपने उत्पाद में जोड़ें।" },
-      { t: "इवेंट्स की सदस्यता लें", d: "64+ वेबहुक इवेंट्स पर प्रतिक्रिया दें: बुकिंग स्थिति, भुगतान, रिफंड, रद्दीकरण और चैनल परिवर्तन।" },
+      { t: "इवेंट्स को सब्सक्राइब करें", d: `प्रतिक्रिया दें ${deliveredWebhookEventCount} वेबहुक इवेंट्स पर: बुकिंग स्थिति, भुगतान, रिफंड, रद्दीकरण और चैनल परिवर्तन।` },
       { t: "Booking Engine में पूर्ति करें", d: "हर कॉल होटल-विशिष्ट चेकआउट, भुगतान और पुष्टि के लिए Booking Engine में हल होती है।" },
     ].map((s, i) => (
       <li class="rounded-2xl border border-border bg-card p-6">
@@ -197,7 +198,7 @@ export const faqs = [
     <div class="mx-auto mb-12 max-w-2xl text-center">
       <p class="mkt-kicker text-primary">AI एजेंट्स के लिए — यहाँ से शुरू करें</p>
       <h2 class="mkt-h2 font-heading mt-3">कनेक्ट करें, फिर लाइव कॉन्ट्रैक्ट पढ़ें।</h2>
-      <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">एक होस्टेड MCP सर्वर एजेंट को Wink के APIs खोजने और एंडपॉइंट्स का अनुमान लगाए बिना एक कार्यशील एकीकरण बनाने देता है।</p>
+      <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">एक होस्टेड MCP सर्वर एजेंट को Wink के APIs खोजने और बिना एंडपॉइंट्स का अनुमान लगाए एक कार्यशील एकीकरण बनाने देता है।</p>
     </div>
 
     <div class="grid gap-6 @lg:grid-cols-2">
@@ -215,10 +216,10 @@ export const faqs = [
       <div class="flex flex-col rounded-2xl border border-border bg-card p-6">
         <span class="mb-4 flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-white"><IconSparkles class="size-6" /></span>
         <h3 class="font-heading text-lg font-semibold">2 · लाइव API खोजें</h3>
-        <p class="text-muted-foreground mt-2 text-sm">दो उपकरण इरादे को वास्तविक ऑपरेशंस और अवधारणा दस्तावेज़ों में हल करते हैं:</p>
+        <p class="text-muted-foreground mt-2 text-sm">दो उपकरण वास्तविक ऑपरेशंस और कॉन्सेप्ट दस्तावेज़ों के लिए इरादे को हल करते हैं:</p>
         <ul class="mt-4 space-y-2 text-sm">
           <li class="flex items-start gap-2"><code class="mt-0.5 rounded bg-muted px-1.5 py-0.5 text-xs text-primary">api_search</code><span class="text-muted-foreground">कॉल करने के लिए ऑपरेशन खोजें — जैसे "इन्वेंटरी देखें", "बुकिंग बनाएं", "भुगतान रसीद"</span></li>
-          <li class="flex items-start gap-2"><code class="mt-0.5 rounded bg-muted px-1.5 py-0.5 text-xs text-primary">docs_search</code><span class="text-muted-foreground">अवधारणाएँ खोजें — "प्रमाणीकरण", "वेबहुक", "एट्रिब्यूशन"</span></li>
+          <li class="flex items-start gap-2"><code class="mt-0.5 rounded bg-muted px-1.5 py-0.5 text-xs text-primary">docs_search</code><span class="text-muted-foreground">कॉन्सेप्ट खोजें — "प्रमाणीकरण", "वेबहुक", "एट्रिब्यूशन"</span></li>
         </ul>
         <p class="text-muted-foreground mt-3 text-xs">प्रत्येक परिणाम एक <code class="rounded bg-muted px-1 py-0.5 text-xs">wink://</code> URI लौटाता है — ऑपरेशन, उसके अनुरोध/प्रतिक्रिया स्कीमा, या उसके टास्क <strong class="text-foreground/80">रेसिपी</strong> को खोलें।</p>
       </div>
@@ -227,16 +228,16 @@ export const faqs = [
       <div class="flex flex-col rounded-2xl border border-border bg-card p-6">
         <span class="mb-4 flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-white"><IconTool class="size-6" /></span>
         <h3 class="font-heading text-lg font-semibold">3 · AI Skill के साथ बनाएं</h3>
-        <p class="text-muted-foreground mt-2 text-sm"><code class="rounded bg-muted px-1.5 py-0.5 text-xs">wink-api-builder</code> MCP सर्वर को सत्य का स्रोत मानता है: api_search → लाइव कॉन्ट्रैक्ट → प्रमाणीकरण → सत्यापित कोड, और वर्तमान API के साथ किसी भी असंगति को चिह्नित करता है।</p>
+        <p class="text-muted-foreground mt-2 text-sm"><code class="rounded bg-muted px-1.5 py-0.5 text-xs">wink-api-builder</code> MCP सर्वर को सत्य स्रोत के रूप में उपयोग करता है: api_search → लाइव कॉन्ट्रैक्ट → प्रमाणीकरण → सत्यापित कोड, और वर्तमान API के साथ किसी भी असंगति को चिह्नित करता है।</p>
         <p class="text-muted-foreground mt-3 text-xs">Claude Code, Codex और Cursor के साथ काम करता है — देखें <a href="/developers/ai-skills/" class="text-primary underline underline-offset-2">AI Skills</a>।</p>
       </div>
 
       {/* Fulfill */}
       <div class="flex flex-col rounded-2xl border border-border bg-card p-6">
         <span class="mb-4 flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-white"><IconCalendarCheck class="size-6" /></span>
-        <h3 class="font-heading text-lg font-semibold">4 · Booking Engine को हैंडऑफ करें</h3>
-        <p class="text-muted-foreground mt-2 text-sm">API के माध्यम से बुकिंग बनाएं और Booking Engine इसे पूरा करता है — चेकआउट, भुगतान, पुष्टि और बुकिंग कनेक्टेड PMS या चैनल मैनेजर के साथ सिंक होती है, स्रोत संदर्भ सुरक्षित रहता है।</p>
-        <p class="text-muted-foreground mt-3 text-xs">रीयल टाइम में प्रतिक्रिया देने के लिए <code class="rounded bg-muted px-1 py-0.5 text-xs">booking.created</code> और 63 अन्य इवेंट्स की सदस्यता लें।</p>
+        <h3 class="font-heading text-lg font-semibold">4 · Booking Engine को हैंड ऑफ़ करें</h3>
+        <p class="text-muted-foreground mt-2 text-sm">API के माध्यम से बुकिंग बनाएं और Booking Engine इसे पूरा करता है — चेकआउट, भुगतान, पुष्टि और बुकिंग कनेक्टेड PMS या चैनल मैनेजर के साथ सिंक होती है, स्रोत संदर्भ संरक्षित रहता है।</p>
+        <p class="text-muted-foreground mt-3 text-xs">रियल टाइम प्रतिक्रिया के लिए <code class="rounded bg-muted px-1 py-0.5 text-xs">booking.create</code> और 63 अन्य इवेंट्स को सब्सक्राइब करें।</p>
       </div>
     </div>
   </div>
@@ -260,7 +261,7 @@ export const faqs = [
     <RouteConvergence
       routes={["REST API", "MCP / agents", "Web Components", "WinkLinks", "Studio + network", "Partner apps"]}
       outcomeTitle="पुष्टि की गई बुकिंग"
-      outcomeNote="भुगतान लिया गया, अतिथि पुष्टि, एट्रिब्यूशन और स्रोत संदर्भ सुरक्षित।"
+      outcomeNote="भुगतान लिया गया, अतिथि पुष्टि, एट्रिब्यूशन और स्रोत संदर्भ संरक्षित।"
     />
   </div>
 </section>
@@ -279,7 +280,7 @@ export const faqs = [
         { icon: IconRobot, title: "Agentic AI", desc: "AI एजेंट्स को लाइव होटल सप्लाई के खिलाफ खोज, बुकिंग और भुगतान करने दें — बुकिंग पूरी करें, केवल उपयोगकर्ताओं को वेबसाइट पर रूट न करें।", href: "/agentic-ai/" },
         { icon: IconBolt, title: "Booking Engine", desc: "होटल-विशिष्ट डेटा लोड करता है और चेकआउट, भुगतान, पुष्टि और बुकिंग पूर्णता संभालता है।", href: "/products/booking-engine/" },
         { icon: IconComponents, title: "Web Components", desc: "बुक करने योग्य कार्ड, मानचित्र, ग्रिड, बटन और होटल मॉड्यूल वेबसाइट या उत्पाद सतह पर जोड़ें।", href: "/developers/build-on-wink/" },
-        { icon: IconDeviceMobile, title: "WinkLinks", desc: "एक मोबाइल-प्रथम सार्वजनिक लिंक के तहत क्यूरेटेड होटल प्रविष्टियाँ प्रकाशित करें।", href: "/products/winklinks/" },
+        { icon: IconDeviceMobile, title: "WinkLinks", desc: "एक मोबाइल-प्रथम सार्वजनिक लिंक के तहत क्यूरेटेड होटल प्रविष्टियां प्रकाशित करें।", href: "/products/winklinks/" },
         { icon: IconSearch, title: "Studio + network", desc: "पार्टनर एक्सेस, बिक्री चैनल और पार्टनर-नेतृत्व वाली मांग के लिए एट्रिब्यूशन संदर्भ प्रबंधित करें।", href: "/products/studio/" },
       ].map((c) => (
         <a href={c.href} class="group flex h-full flex-col rounded-2xl border border-border bg-card p-6 transition-colors hover:border-primary/40">
@@ -301,7 +302,7 @@ export const faqs = [
       <h2 class="mkt-h2 font-heading mt-3">पूर्ण API निर्माण से लेकर ड्रॉप-इन कॉम्पोनेंट तक।</h2>
       <p class="text-muted-foreground mt-4 text-pretty @lg:text-lg">पूरी REST + MCP एकीकरण जितना गहरा जाएं — या, जब वह काम से अधिक हो, तो Studio वेब कॉम्पोनेंट ड्रॉप करें: होटल कार्ड, मानचित्र, ग्रिड और बुकिंग मॉड्यूल। किसी भी तरह, Booking Engine नीचे बुकिंग पूरी करता है।</p>
       <ul class="mt-6 space-y-2.5">
-        {["पूर्ण REST + OAuth2 API, होस्टेड MCP सर्वर और SDKs", "या बुक करने योग्य वेब कॉम्पोनेंट्स — कार्ड, मानचित्र और ग्रिड", "रीयल-टाइम मिलान के लिए 64+ वेबहुक इवेंट्स", "हर सतह के नीचे Booking Engine पूर्ति"].map((p) => (
+        {["पूर्ण REST + OAuth2 API, होस्टेड MCP सर्वर और जनरेटेड क्लाइंट्स", "या बुक करने योग्य Web Components — कार्ड, मानचित्र और ग्रिड", `${deliveredWebhookEventCount} वेबहुक इवेंट्स रियल-टाइम मिलान के लिए`, "हर सतह के नीचे Booking Engine पूर्ति"].map((p) => (
           <li class="flex items-start gap-2.5"><IconCheck class="mt-0.5 size-5 shrink-0 text-primary" /><span class="text-sm text-foreground/90">{p}</span></li>
         ))}
       </ul>

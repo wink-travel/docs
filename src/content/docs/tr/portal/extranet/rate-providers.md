@@ -14,14 +14,14 @@ Açılır listeden fiyat sağlayıcınızı seçin ve `Save` butonuna tıklayın
 
 ### SynXis
 
-Mülkünüz SynXis channel manager kullanıyorsa, Wink ile bağlantı kurmaya hazır olmadan önce bir adım daha gereklidir.
+Mülkünüz Sabre SynXis kullanıyorsa, Wink ile bağlantı kurmaya hazır olmadan önce bir adım daha gereklidir.
 
 - Lütfen SynXis hesap temsilciniz veya müşteri hizmetleri (SHSCustomerCare@sabre.com) ile iletişime geçin.
 - Wink ile Channel Connect Express (***CCX***) üzerinden bağlanmak istediğinizi bildirin.
 - Size ***PRS*** formunu doldurtacaklar.
   - Wink kullanıcı kimlik bilgilerinizi girmeniz istenecek.
-  - ...ve istediğiniz para birimini belirtmeniz gerekecek.
-- Formu tamamlayıp SynXis'e geri gönderin.
+  - ...ve istediğiniz para birimini belirtmeniz istenecek.
+- Formu tamamlayın ve SynXis'e geri gönderin.
 
 ## Sağlayıcılar
 
@@ -33,7 +33,7 @@ Mevcut türler:
 - Property Management System (PMS)
 - Central Reservation System (CRS)
 
-*Eğer sağlayıcının bir vekili (proxy) varsa, bu, fiyatları sağlayıcıdan vekil aracılığıyla dolaylı olarak aldığımız anlamına gelir.*
+*Eğer sağlayıcının bir vekili (proxy) varsa, bu, fiyatları dolaylı olarak vekil aracılığıyla aldığımız anlamına gelir.*
 
 | Sağlayıcı | Tür | Vekil | Başlangıç | Son değişiklik | Yorum
 | -- | -- | -- | -- | -- | -- |

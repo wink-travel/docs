@@ -9,18 +9,18 @@ sidebar:
 
 Para configurar tu proveedor de tarifas, haz clic en `Distribution > Channel manager` desde la barra de navegación principal.
 
-Selecciona tu proveedor de tarifas del menú desplegable y haz clic en el botón `Save`. Esto permitirá que el proveedor de tarifas nos envíe tarifas y nosotros les notificaremos cuando haya una reserva realizada en Wink para una de tus propiedades.
+Selecciona tu proveedor de tarifas del menú desplegable y haz clic en el botón `Save`. Esto permitirá que el proveedor de tarifas nos envíe tarifas y les notificaremos cuando haya una reserva realizada en Wink para alguna de tus propiedades.
 
 
 ### SynXis
 
-Si tu propiedad utiliza el channel manager SynXis, hay un paso más requerido antes de que estés listo para conectarte con Wink.
+Si tu propiedad utiliza Sabre SynXis, hay un paso más requerido antes de que estés listo para conectarte con Wink.
 
 - Por favor, comunícate con tu representante de cuenta de SynXis o con atención al cliente (SHSCustomerCare@sabre.com).
 - Indícales que quieres conectarte a Wink a través de Channel Connect Express (***CCX***).
-- Te harán completar el formulario ***PRS***.
-  - Te pedirán que completes tus credenciales de usuario de Wink.
-  - ...y tu moneda deseada.
+- Te pedirán que completes el formulario ***PRS***.
+  - Te solicitarán que ingreses tus credenciales de usuario de Wink.
+  - ...y la moneda deseada.
 - Completa el formulario y envíalo de vuelta a SynXis.
 
 ## Proveedores
@@ -35,7 +35,7 @@ Tipos disponibles:
 
 *Si el proveedor tiene un proxy, significa que recibimos tarifas indirectamente del proveedor a través del proxy.*
 
-| Proveedor | Tipo | Proxy | Desde | Última modificación | Comentario
+| Vendor | Type | Proxy | Since | Last modified | Comment
 | -- | -- | -- | -- | -- | -- |
 | Hoteliers Guru | CM |  | 2017 | 2017 | |
 | Travelclick | CM |  | 2016 | 2016 | |

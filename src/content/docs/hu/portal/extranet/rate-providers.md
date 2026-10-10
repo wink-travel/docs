@@ -14,14 +14,14 @@ Válassza ki az ár szolgáltatót a legördülő listából, majd kattintson a 
 
 ### SynXis
 
-Ha az ingatlana a SynXis channel managert használja, még egy lépés szükséges, mielőtt készen állna a Wink-kel való kapcsolódásra.
+Ha az ingatlana Sabre SynXis-t használ, még egy lépés szükséges, mielőtt készen állna a Wink-kel való kapcsolódásra.
 
 - Kérjük, vegye fel a kapcsolatot SynXis fiókkezelőjével vagy ügyfélszolgálatával (SHSCustomerCare@sabre.com).
 - Jelezze nekik, hogy a Wink-hez szeretne kapcsolódni a Channel Connect Express (***CCX***) segítségével.
-- Ki fogják tölteni Önnel a ***PRS*** űrlapot.
-  - Kérni fogják, hogy adja meg Wink felhasználói hitelesítő adatait.
-  - ...valamint a kívánt pénznemet.
-- Töltse ki az űrlapot, és küldje vissza a SynXisnek.
+- Ki fogják tölttetni Önnel a ***PRS*** űrlapot.
+  - Kérni fogják, hogy adja meg Wink felhasználói adatait.
+  - ...és a kívánt pénznemet.
+- Töltse ki az űrlapot, és küldje vissza a SynXis-nek.
 
 ## Szállítók
 

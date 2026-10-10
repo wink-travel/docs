@@ -5,18 +5,18 @@ sidebar:
   order: 0
 ---
 
-Penyelesaian kami untuk ejen pelancongan berdaftar ialah [Wink Agent](https://agent.wink.travel). Ia adalah portal layan diri yang boleh digunakan oleh ejen untuk mencari dan menempah bagi pihak pelanggan mereka serta memperoleh komisen untuk diri mereka sendiri bagi setiap tempahan.
+Ejen pelancongan berdaftar menggunakan portal yang sama seperti orang lain, di [app.wink.travel](https://app.wink.travel), dengan akaun Ejen Pelancongan. Ejen mencari dan menempah bagi pihak pelanggan mereka dan memperoleh komisen untuk setiap tempahan. Untuk menyediakan satu, ikut [Memulakan Sebagai Agensi Pelancongan](/ms/guides/travel-agents/getting-started/).
 
-Ejen pelancongan yang lebih maju boleh memilih untuk berintegrasi pada tahap API untuk tujuan mengendalikan pembayaran dan pengeluaran di luar platform Wink.
+Agensi yang diluluskan untuk mengutip pembayaran sendiri bertindak sebagai pedagang rekod dan mengendalikan pembayaran di luar platform Wink. Agensi yang mempunyai sistem sendiri boleh berintegrasi melalui [Partner API](/ms/integrations/partner-api/).
 
-Ejen pelancongan mempunyai sebahagian ciri portal yang sama seperti [Studio](/ms/portal/studio/what-is-studio) jadi kami tidak akan membincangkannya lagi di sini.
+Ejen pelancongan mempunyai subset ciri portal yang sama seperti [Studio](/ms/portal/studio/what-is-studio) jadi kami tidak akan membincangkannya lagi di sini.
 
 ## Carian
 
-Pergi ke [Search](/ms/portal/studio/search) untuk mempelajari cara mencari dan menempah hotel.
+Pergi ke [Search](/ms/portal/studio/search) untuk belajar cara mencari dan menempah hotel.
 
 Jika tidak, teruskan ke bahagian seterusnya.
 
 ## API
 
-Pembangun yang ingin mengurus `Travel Agent` boleh pergi ke [Developers > API > Travel Agent](/ms/api/overview/).
+Agensi boleh mencari dan menempah melalui [Partner API](/ms/partner-api/partner/), yang menggantikan endpoint REST Ejen Pelancongan yang lama.

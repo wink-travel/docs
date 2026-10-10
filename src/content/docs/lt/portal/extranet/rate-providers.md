@@ -14,9 +14,9 @@ Iš išskleidžiamojo sąrašo pasirinkite savo kainų tiekėją ir spustelėkit
 
 ### SynXis
 
-Jei jūsų objektas naudoja SynXis kanalų valdymo sistemą, prieš prisijungiant prie Wink reikia atlikti dar vieną žingsnį.
+Jei jūsų objektas naudoja Sabre SynXis, prieš prisijungdami prie Wink turite atlikti dar vieną žingsnį.
 
-- Susisiekite su savo SynXis paskyros atstovu arba klientų aptarnavimo skyriumi (SHSCustomerCare@sabre.com).
+- Susisiekite su savo SynXis paskyros atstovu arba klientų aptarnavimo tarnyba (SHSCustomerCare@sabre.com).
 - Praneškite, kad norite prisijungti prie Wink per Channel Connect Express (***CCX***).
 - Jie paprašys užpildyti formą ***PRS***.
   - Jums reikės įvesti savo Wink vartotojo duomenis.
@@ -29,13 +29,13 @@ Jei jūsų objektas naudoja SynXis kanalų valdymo sistemą, prieš prisijungian
 
 Galimi tipai:
 
-- Kanalų valdymo sistema (CM)
-- Nekilnojamojo turto valdymo sistema (PMS)
-- Centrinė rezervavimo sistema (CRS)
+- Channel Manager (CM)
+- Property Management System (PMS)
+- Central Reservation System (CRS)
 
 *Jei tiekėjas turi tarpininką, tai reiškia, kad mes netiesiogiai gauname kainas iš tiekėjo per tarpininką.*
 
-| Tiekėjas | Tipas | Tarpininkas | Nuo | Paskutinį kartą keista | Komentaras
+| Vendor | Type | Proxy | Since | Last modified | Comment
 | -- | -- | -- | -- | -- | -- |
 | Hoteliers Guru | CM |  | 2017 | 2017 | |
 | Travelclick | CM |  | 2016 | 2016 | |

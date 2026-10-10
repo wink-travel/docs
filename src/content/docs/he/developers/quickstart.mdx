@@ -1,0 +1,198 @@
+---
+title: התחלה מהירה
+description: "מאפס לאינטגרציה עובדת בסביבת staging: קבל אישורים, חפש מחירי מלונות חיים עם Partner API, ושלח נוסעים לעמוד הזמנה שמייחס לך קרדיט."
+sidebar:
+  order: 0.5
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+מדריך זה לוקח אותך מאפס לאינטגרציה עובדת בכ-30 דקות. בסופו יהיה לך:
+
+- מחירים חיים למלונות בעיר, מ-Partner API,
+- קישור הזמנה שמייחס הזמנות לחשבונך,
+- הזמנה לבדיקת תקינות, ו-webhook שמודיע לך שזה קרה.
+
+הכל קורה ב**staging**, סביבת הבדיקה שלנו. אין צורך לבקש מאיתנו גישה, ומעבר לייצור מאוחר יותר אינו דורש אישור.
+
+## האם זה המדריך המתאים עבורך?
+
+| אתה רוצה… | התחל כאן |
+|---|---|
+| להציג מלונות באפליקציה, באתר או במוצר AI ולשלוח נוסעים להזמין, ולהרוויח עמלה | **המדריך הזה** |
+| להזמין בשם הלקוחות שלך כסוכנות נסיעות מורשית | המדריך עד שלב 5, ואז [הזמנה כסוכנות נסיעות](#booking-as-a-travel-agency) |
+| לשלב מלונות להזמנה ללא כתיבת אינטגרציה | [Web Components](/he/integrations/web-components/) |
+| לאפשר לסוכן AI לחפש ולהזמין | [MCP Servers](/he/developers/mcp/) ו-[Agentic Payments](/he/developers/agentic-payments/) |
+| לחבר מנהל ערוצים או PMS | [הוסף את מנהל הערוצים שלך](/he/guides/integrators/add-your-channel-manager/) |
+
+## איך זה עובד
+
+אתה משתמש ב-**Partner API** כדי למצוא מלונות ומחיריהם החיים. לכל מלון יש `urlName` יציב. אתה הופך אותו לקישור למנוע ההזמנות של Wink, `book.wink.travel`, שנושא את מזהי הלקוח שלך. הנוסע מזמין ומשלם שם, וההזמנה משויכת לחשבונך.
+
+## לפני שמתחילים
+
+תזדקק ל:
+
+- [`grpcurl`](https://github.com/fullstorydev/grpcurl), או Postman או Insomnia. ה-Partner API הוא gRPC, לא REST.
+- `curl`.
+
+:::note
+סביבת staging נכנסת למצב שינה כשאף אחד לא משתמש בה. הקריאה הראשונה אחרי הפסקה שקטה יכולה לקחת כדקה בזמן שהשרתים מתעוררים.
+:::
+
+## שלב 1: צור חשבון ב-staging
+
+סביבת staging נפרדת לחלוטין מייצור, עם כניסות וחשבונות משלה.
+
+<Steps>
+1. עבור ל-[staging-app.wink.travel](https://staging-app.wink.travel), לחץ על `Sign-In / Register` והרשם.
+
+2. לחץ על `Accounts` בסרגל הצד השמאלי, ואז על `Create`, ובחר **I am an Affiliate**. ההזמנות שתשלח ייוחסו לחשבון זה. ראה [Create Account](/he/portal/create-account/).
+</Steps>
+
+## שלב 2: צור אפליקציה
+
+האפליקציה נותנת לקוד שלך את האישורים שלו.
+
+<Steps>
+1. בכרטיס החשבון שלך, לחץ על `Actions` > `Manage account`, ואז על לשונית `Applications`.
+
+2. לחץ על `Create new application`, תן לה שם ובחר **Machine-to-machine** כסוג הלקוח.
+
+3. תחת scopes, בחר **Inventory & rates** (קריאה). ה-Partner API בודק את `inventory.read`.
+
+4. לחץ על `Create application` והעתק את **Client ID** ו-**Client secret**. הסוד מוצג פעם אחת בלבד ואינו ניתן לשחזור.
+</Steps>
+
+ראה [Applications](/he/account/applications/) לסוגי לקוחות ו-scopes נוספים.
+
+## שלב 3: קבל אסימון גישה
+
+```bash
+curl -X POST https://staging-iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_CLIENT_SECRET>" \
+  -d "scope=inventory.read"
+```
+
+שמור את ה-`access_token` מהתגובה:
+
+```bash
+export WINK_TOKEN=<access_token>
+```
+
+אסימונים פוקעים. בקוד שלך, אפשר לספריית OAuth2 לקבל ולרענן אותם. ראה [Authentication](/he/developers/authentication/).
+
+## שלב 4: מצא את מזהה החשבון שלך
+
+כל קריאה ל-Partner API מציינת את החשבון שאתה פועל בשמו בכותרת `managing-entity-id`. רשום את החשבונות שהאסימון שלך יכול לפעול בשמם:
+
+```bash
+grpcurl -H "authorization: Bearer $WINK_TOKEN" \
+  -d '{}' \
+  staging-partner.wink.travel:443 wink.partner.v1.Accounts/ListAccounts
+```
+
+העתק את `accountId` של חשבון השותף משלב 1:
+
+```bash
+export WINK_ACCOUNT_ID=<accountId>
+```
+
+## שלב 5: חפש מלונות בעיר
+
+{/* TODO(Yann): confirm the staging city of the test hotel with availability, and use it here. */}
+
+```bash
+grpcurl -H "authorization: Bearer $WINK_TOKEN" \
+  -H "managing-entity-id: $WINK_ACCOUNT_ID" \
+  -d '{
+    "urlName": "bangkok-thailand",
+    "userSession": {
+      "itinerary": {
+        "startDate": "2026-12-01",
+        "nights": 2,
+        "room": { "adults": 2 }
+      },
+      "currencyCode": "USD",
+      "languageCode": "en"
+    }
+  }' \
+  staging-partner.wink.travel:443 wink.partner.v1.Search/SearchByCity
+```
+
+השתמש בתאריך צ'ק-אין עתידי; תאריך עבר נדחה. כל תוצאה כוללת:
+
+- `name`, `starRating` ו-`heroImageUrl`, מספיק להצגת שורת תוצאה,
+- `roomTypes`, ההצעות החיות, החדר הזול ביותר ראשון,
+- `urlName`, הסלאג הדרוש לקישור ההזמנה.
+
+המחירים הם מספרים שלמים ביחידות קטנות: חלק ב-10 בחזקת `currencyExponent` מהתגובה (2 ל-USD, כך ש-`12500` הוא $125.00).
+
+לא מכיר את הסלאג של עיר? פענח אותו עם `wink.partner.v1.Lookup/Search`. לתוכן מלא של נכס, השתמש בשירות `Content`. [מדריך Partner API](/he/partner-api/partner/) מתעד כל קריאה.
+
+## שלב 6: בנה את קישור ההזמנה
+
+```text
+https://staging-book.wink.travel/hotel/<urlName>?client-id=<YOUR_CLIENT_ID>&configuration-id=<YOUR_CUSTOMIZATION_ID>
+```
+
+- `<urlName>` הוא `urlName` של המלון משלב 5.
+- `client-id` הוא Client ID של האפליקציה שלך משלב 2.
+- `configuration-id` הוא מזהה ההתאמה האישית שלך: `Manage account` > `Customizations`. התאמה אישית גם מגדירה את המיתוג, שפת ברירת המחדל ומטבע ברירת המחדל בעמוד ההזמנה.
+
+:::caution
+כלול את שני המזהים. בלעדיהם העמוד עדיין נטען, אך עם מיתוג ברירת מחדל, ו**ההזמנה לא תיוחס אליך**. לעולם אל תכניס את סוד הלקוח שלך בקישור.
+:::
+
+ראה [קישור ישיר](/he/booking-engine/features/#linking-directly) לקישור לעמוד הבית של מנוע ההזמנות במקום למלון יחיד.
+
+## שלב 7: בצע הזמנה לבדיקת תקינות
+
+פתח את הקישור שלך, בחר תאריכים וחדר, וסיים עם [כרטיס בדיקה של Stripe](https://docs.stripe.com/testing), לדוגמה `4242 4242 4242 4242` עם כל תאריך תפוגה עתידי וכל CVC. לא יחויב כרטיס אמיתי ב-staging. שים לב לקוד ההזמנה בעמוד האישור; הוא מתחיל ב-`WNK`.
+
+## שלב 8: קבל התראות על הזמנות
+
+<Steps>
+1. בפורטל, עבור ל-`Applications > Webhooks` והוסף נקודת קצה שמקבלת בקשות `POST`.
+
+2. הירשם לאירוע `booking.create`, או השאר את רשימת האירועים ריקה כדי לקבל הכל בזמן הפיתוח.
+
+3. שלח לעצמך אירוע בדיקה, ואז בצע הזמנה נוספת וצפה בהגיעה.
+</Steps>
+
+אמת את חתימת כל משלוח לפני שאתה סומך עליו. ראה [Webhook Integration](/he/developers/webhook-integration/) ו-[קטלוג אירועי Webhook](/he/developers/webhook-events/).
+
+## שלב 9: עבור לייצור
+
+אין שלב אישור למפתחים. (חשבונות סוכנויות נסיעות מאושרים תחילה; ראה [להלן](#booking-as-a-travel-agency).) כשהאינטגרציה שלך עובדת ב-staging:
+
+<Steps>
+1. צור חשבון ואפליקציה ב-[app.wink.travel](https://app.wink.travel), כפי בשלב 1 ו-2. האישורים אינם מועברים בין הסביבות.
+
+2. הסר את `staging-` מכל מארח:
+
+   | Staging | ייצור |
+   |---|---|
+   | `https://staging-iam.wink.travel` | `https://iam.wink.travel` |
+   | `staging-partner.wink.travel:443` | `partner.wink.travel:443` |
+   | `https://staging-book.wink.travel` | `https://book.wink.travel` |
+
+3. חפש שוב את מזהה חשבון הייצור (שלב 4) ואת מזהה ההתאמה האישית (שלב 6). הם שונים מ-staging.
+</Steps>
+
+שימוש ב-Partner API נמדד בלילות במלון, עם הקצבה חודשית חינמית. ראה [Partner API](/he/integrations/partner-api/) למחירים ומגבלות.
+
+## הזמנה כסוכנות נסיעות
+
+אם החשבון שלך הוא סוכנות נסיעות מורשית, אין צורך לשלוח נוסעים ל-`book.wink.travel`: תוכל ליצור הזמנות ישירות עם `wink.partner.v1.Booking/CreateBooking`, ולנהל אותן עם שאר קריאות `Booking`. חשבונות אחרים שולחים את הנוסעים לקישור ההזמנה במקום.
+
+חשבונות סוכנויות נסיעות מאושרים: Wink בודקת את רישום כל סוכנות לפני שהיא יכולה להזמין. סוכנויות שרוצות לגבות תשלום מלקוחותיהן בעצמן, כסוחר רשום, חייבות להזמין דרך Partner API ולקבל אישור בכתב מ-Wink. ראה [התחלה כסוכנות נסיעות](/he/guides/travel-agents/getting-started/) ו-[מדריך Partner API](/he/partner-api/partner/).
+
+## השלבים הבאים
+
+- [צור לקוח טיפוסי](/he/developers/rest-and-grpc/#generate-a-grpc-client) מתוך סכמת `.proto` במקום לקרוא ל-`grpcurl` ידנית.
+- חבר את [שרת MCP](/he/developers/mcp/) והשתמש ב-[AI Skills](/he/developers/ai-skills/) כדי שסייע הקידוד שלך יכתוב את האינטגרציה מול ה-API החי.
+- קרא את הרשימה המלאה של [סביבות ומארחים](/he/getting-started/environments/).

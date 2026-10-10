@@ -1,0 +1,198 @@
+---
+title: クイックスタート
+description: "ゼロからステージング環境で動作する統合まで：認証情報の取得、Partner APIでのライブホテル価格検索、予約ページへの送客でクレジットを得る方法。"
+sidebar:
+  order: 0.5
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+このガイドでは、約30分で何もない状態から動作する統合までを案内します。最後には以下が手に入ります：
+
+- Partner APIから都市のホテルのライブ価格、
+- あなたのアカウントに予約がクレジットされる予約リンク、
+- テスト予約とその発生を知らせるWebhook。
+
+すべて**ステージング**、つまりテスト環境で行います。アクセス申請は不要で、本番移行も承認は必要ありません。
+
+## このガイドはあなたに合っていますか？
+
+| あなたがしたいこと | ここから始める |
+|---|---|
+| アプリ、サイト、AI製品でホテルを表示し、旅行者を予約に送ってコミッションを得たい | **このガイド** |
+| ライセンスを持つ旅行代理店としてクライアントの代わりに予約したい | ステップ5までこのガイドを進めてから[旅行代理店としての予約](#booking-as-a-travel-agency) |
+| 統合を書かずに予約可能なホテルを埋め込みたい | [Web Components](/ja/integrations/web-components/) |
+| AIエージェントに検索と予約をさせたい | [MCP Servers](/ja/developers/mcp/) と [Agentic Payments](/ja/developers/agentic-payments/) |
+| チャネルマネージャーやPMSを接続したい | [チャネルマネージャーの追加](/ja/guides/integrators/add-your-channel-manager/) |
+
+## 仕組み
+
+**Partner API**を使ってホテルとそのライブ価格を検索します。各ホテルには安定した`urlName`が付いています。これを使って、あなたのIDを含むリンクをWink Booking Engineの`book.wink.travel`に作成します。旅行者はそこで予約・支払いを行い、予約はあなたのアカウントにクレジットされます。
+
+## はじめる前に
+
+必要なもの：
+
+- [`grpcurl`](https://github.com/fullstorydev/grpcurl)、またはPostmanやInsomnia。Partner APIはgRPCで、RESTではありません。
+- `curl`
+
+:::note
+ステージングは利用がないとスリープ状態になります。しばらく使われていなかった後の最初の呼び出しは、サーバーの起動に約1分かかることがあります。
+:::
+
+## ステップ1：ステージングアカウントを作成する
+
+ステージングは本番環境と完全に分離されており、ログインやアカウントも別です。
+
+<Steps>
+1. [staging-app.wink.travel](https://staging-app.wink.travel)にアクセスし、`Sign-In / Register`をクリックして登録します。
+
+2. 左サイドバーの`Accounts`をクリックし、`Create`を選択して**I am an Affiliate**を選びます。あなたが送る予約はこのアカウントにクレジットされます。[アカウント作成](/ja/portal/create-account/)を参照してください。
+</Steps>
+
+## ステップ2：アプリケーションを作成する
+
+アプリケーションはあなたのコードに認証情報を与えます。
+
+<Steps>
+1. アカウントカードで`Actions` > `Manage account`をクリックし、`Applications`タブを開きます。
+
+2. `Create new application`をクリックし、名前を付けてクライアントタイプに**Machine-to-machine**を選択します。
+
+3. スコープで**Inventory & rates**（読み取り）を選択します。Partner APIは`inventory.read`をチェックします。
+
+4. `Create application`をクリックし、**Client ID**と**Client secret**をコピーします。シークレットは一度だけ表示され、後で取得できません。
+</Steps>
+
+他のクライアントタイプやスコープは[Applications](/ja/account/applications/)を参照してください。
+
+## ステップ3：アクセストークンを取得する
+
+```bash
+curl -X POST https://staging-iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_CLIENT_SECRET>" \
+  -d "scope=inventory.read"
+```
+
+レスポンスから`access_token`を保存します：
+
+```bash
+export WINK_TOKEN=<access_token>
+```
+
+トークンは期限切れになります。ご自身のコードではOAuth2ライブラリを使って取得・更新してください。[認証](/ja/developers/authentication/)を参照。
+
+## ステップ4：アカウントIDを調べる
+
+すべてのPartner API呼び出しは、`managing-entity-id`ヘッダーで操作対象のアカウントを指定します。トークンで操作可能なアカウントを一覧表示：
+
+```bash
+grpcurl -H "authorization: Bearer $WINK_TOKEN" \
+  -d '{}' \
+  staging-partner.wink.travel:443 wink.partner.v1.Accounts/ListAccounts
+```
+
+ステップ1で作成したアフィリエイトアカウントの`accountId`をコピー：
+
+```bash
+export WINK_ACCOUNT_ID=<accountId>
+```
+
+## ステップ5：都市のホテルを検索する
+
+{/* TODO(Yann): テストホテルの空室があるステージングの都市を確認し、ここで使う。 */}
+
+```bash
+grpcurl -H "authorization: Bearer $WINK_TOKEN" \
+  -H "managing-entity-id: $WINK_ACCOUNT_ID" \
+  -d '{
+    "urlName": "bangkok-thailand",
+    "userSession": {
+      "itinerary": {
+        "startDate": "2026-12-01",
+        "nights": 2,
+        "room": { "adults": 2 }
+      },
+      "currencyCode": "USD",
+      "languageCode": "en"
+    }
+  }' \
+  staging-partner.wink.travel:443 wink.partner.v1.Search/SearchByCity
+```
+
+未来の日付をチェックイン日に使ってください。過去の日付は拒否されます。結果には以下が含まれます：
+
+- `name`、`starRating`、`heroImageUrl`：結果行の表示に十分な情報、
+- `roomTypes`：ライブオファー、最安の部屋が最初、
+- `urlName`：予約リンクに必要なスラッグ。
+
+価格はマイナー単位の整数です。レスポンスの`currencyExponent`（USDなら2）で10のべき乗を割ってください（例：`12500`は$125.00）。
+
+都市のスラッグがわからない場合は`wink.partner.v1.Lookup/Search`で解決してください。物件の詳細は`Content`サービスを使います。[Partner APIリファレンス](/ja/partner-api/partner/)にすべての呼び出しが記載されています。
+
+## ステップ6：予約リンクを作成する
+
+```text
+https://staging-book.wink.travel/hotel/<urlName>?client-id=<YOUR_CLIENT_ID>&configuration-id=<YOUR_CUSTOMIZATION_ID>
+```
+
+- `<urlName>`はステップ5のホテルの`urlName`。
+- `client-id`はステップ2のアプリケーションのClient ID。
+- `configuration-id`はカスタマイズID：`Manage account` > `Customizations`で確認。カスタマイズは予約ページのブランディング、デフォルト言語、通貨も設定します。
+
+:::caution
+両方のIDを含めてください。どちらかがないとページは読み込まれますがデフォルトブランディングになり、**予約はあなたにクレジットされません**。クライアントシークレットをリンクに入れてはいけません。
+:::
+
+単一ホテルではなく予約エンジンのホームページにリンクする方法は[直接リンク](/ja/booking-engine/features/#linking-directly)を参照。
+
+## ステップ7：テスト予約をする
+
+リンクを開き、日付と部屋を選び、[Stripeのテストカード](https://docs.stripe.com/testing)（例：`4242 4242 4242 4242`、未来の有効期限と任意のCVC）でチェックアウトしてください。ステージングでは実際のカードは課金されません。確認ページに表示される予約コードを控えてください。`WNK`で始まります。
+
+## ステップ8：予約通知を受け取る
+
+<Steps>
+1. Portalで`Applications > Webhooks`に行き、`POST`リクエストを受け取るエンドポイントを追加。
+
+2. `booking.create`にサブスクライブするか、開発中はイベントリストを空にしてすべて受け取る。
+
+3. テストイベントを送信し、もう一度テスト予約をして通知を確認。
+</Steps>
+
+配信の署名を必ず検証してから信頼してください。[Webhook統合](/ja/developers/webhook-integration/)と[Webhookイベントカタログ](/ja/developers/webhook-events/)を参照。
+
+## ステップ9：本番環境へ移行
+
+開発者向けの承認ステップはありません。（旅行代理店アカウントは認証が必要です。詳細は[以下](#booking-as-a-travel-agency)参照。）ステージングで統合が動作したら：
+
+<Steps>
+1. [app.wink.travel](https://app.wink.travel)でアカウントとアプリケーションを作成します（ステップ1と2と同様）。認証情報は環境間で引き継がれません。
+
+2. すべてのホストから`staging-`を外します：
+
+   | ステージング | 本番 |
+   |---|---|
+   | `https://staging-iam.wink.travel` | `https://iam.wink.travel` |
+   | `staging-partner.wink.travel:443` | `partner.wink.travel:443` |
+   | `https://staging-book.wink.travel` | `https://book.wink.travel` |
+
+3. 本番のアカウントID（ステップ4）とカスタマイズID（ステップ6）を再度調べます。ステージングとは異なります。
+</Steps>
+
+Partner APIの利用はホテル宿泊数単位で計測され、無料の月間枠があります。[Partner API](/ja/integrations/partner-api/)で料金と制限を確認してください。
+
+## 旅行代理店としての予約
+
+アカウントがライセンスを持つ旅行代理店の場合、旅行者を`book.wink.travel`に送る必要はありません。`wink.partner.v1.Booking/CreateBooking`で直接予約を作成し、他の`Booking`呼び出しで管理できます。その他のアカウントは予約リンクに送客します。
+
+旅行代理店アカウントは認証済みです：Winkはすべての代理店登録を審査し、予約可能にします。クライアントからの支払いを自ら受け取るマーチャントオブレコードとして予約する代理店は、Partner API経由で予約し、Winkの書面承認を得る必要があります。[旅行代理店としての始め方](/ja/guides/travel-agents/getting-started/)と[Partner APIリファレンス](/ja/partner-api/partner/)を参照してください。
+
+## 次のステップ
+
+- `.proto`スキーマから[型付きクライアント](/ja/developers/rest-and-grpc/#generate-a-grpc-client)を生成し、手動で`grpcurl`を呼び出す代わりに使う。
+- [MCPサーバー](/ja/developers/mcp/)を接続し、[AIスキル](/ja/developers/ai-skills/)を使ってコーディングアシスタントにライブAPI向け統合を書かせる。
+- [環境とホストの一覧](/ja/getting-started/environments/)を全文読む。

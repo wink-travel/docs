@@ -13,7 +13,9 @@ import CloudinaryImage from '/src/components/cloudinary-image.astro';
 :::note
 テストは常に[ステージング環境](/ja/getting-started/environments)で行うべきです。そこにはデータが少ないですが、本番環境に影響を与えることなく自由にテストできます。
 
-本番稼働の準備が整ったら、アカウントとアプリケーションの認証を行い、本番環境でのリリースが可能になります。
+準備ができたら、ご自身で本番環境に移行してください：本番環境でアプリケーションを作成します（環境間で認証情報は引き継がれません）そしてURLから`staging-`を外します。例えば `https://staging-api.wink.travel` は `https://api.wink.travel` になります。開発者に対する承認ステップはありません。本番環境に移行する前に認定されるのは[チャネルマネージャー](/ja/guides/integrators/add-your-channel-manager/#certification)と[旅行代理店](/ja/portal/travel-agent/what-is-agent/)のみです。
+
+ステージングまたは本番環境でアカウントを作成するには、Winkの利用規約および支払い条件に同意する必要があり、その同意は拘束力を持ちます。
 :::
 
 以下の手順に従ってください：
@@ -29,7 +31,7 @@ import CloudinaryImage from '/src/components/cloudinary-image.astro';
 
 Winkでは、すべての画像および動画資産にCloudinaryを使用しています。旅行在庫にアクセスすると、Cloudinaryの高度な機能をすべて利用できます。
 
-当社の`cloud_name`は `traveliko`です。
+当社の`cloud_name`は `traveliko` です。
 
 ### Cloudinary
 
@@ -40,7 +42,7 @@ Winkでは、すべての画像および動画資産にCloudinaryを使用して
 
 ### 例
 
-サポートするすべての旅行在庫タイプには、`multimedias`というネストされたJSON配列があります。マルチメディアエントリのJSONは以下のようになります：
+サポートしているすべての旅行在庫タイプには、`multimedias`というネストされたJSON配列があります。マルチメディアエントリのJSONは以下のようになります：
 
 ```json {3}
 {
@@ -67,7 +69,7 @@ Winkでは、すべての画像および動画資産にCloudinaryを使用して
 }
 ```
 
-上記のハイライトされた行はCloudinaryのユニークID `partners/radisson_blu_logo`を示しています。これだけで、任意のフォーマット、品質、サイズで画像を取得できます。
+上記のハイライトされた行はCloudinaryのユニークID `partners/radisson_blu_logo` を示しています。これだけで、任意のフォーマット、品質、サイズで画像を取得できます。
 
 ## テスト
 
@@ -80,14 +82,14 @@ Winkでは、すべての画像および動画資産にCloudinaryを使用して
 この例では、`Search Lookups (OAuth2)` APIコールを使用します。
 
 :::tip[プロのヒント]
-使いやすさのために、統合者には`OAuth2`として指定されたエンドポイントの使用を推奨します。これらのエンドポイントはAPIコール元を認識し、URLに`companyIdentifier`を指定する必要がありません。
+使いやすさのために、統合者には`OAuth2`として指定されたエンドポイントの使用を推奨します。これらのエンドポイントはAPI呼び出し元を認識し、どのアカウントかを既に把握しているため、URLに`companyIdentifier`を指定する必要がありません。
 :::
 
 <Steps>
 1. [Lookup API](https://developer.wink.travel/lookup)を使って目的地やホテルを取得します。
 2. 左のナビゲーションバーで`Authentication`をクリックします。
 3. クライアントIDとクライアントシークレットを入力し、`Get TOKEN`ボタンをクリックします。
-4. 資格情報が有効であれば、APIキーが適用されたことが表示されます。
+4. 認証情報が有効であれば、APIキーが適用されたことが表示されます。
 5. これでlookupエンドポイントをテストできます。
 </Steps>
 
@@ -109,7 +111,7 @@ Postmanでも同様のことができます。
 
 <Steps>
 1. [Postman](https://www.postman.com/downloads)をダウンロードします。
-2. [Lookup API](https://developer.wink.travel/lookup)ページ上部の`Download OpenAPI spec`をクリックします。
+2. [Lookup API](https://developer.wink.travel/lookup)ページの上部から`Download OpenAPI spec`をクリックします。
 3. それをPostmanにインポートします。
 4. 新しいコレクション`Wink API`としてインポートした場合、コレクション名の横の横三点リーダー（3点）をクリックし、`Edit`を選択します。
 5. `Authorization`タブで`Auth type`をOAuth2に設定します。
@@ -123,9 +125,9 @@ Postmanでも同様のことができます。
 13. `Scope`に統合に必要なスペース区切りのスコープを設定します（例：`inventory.read inventory.write inventory.remove`）。完全なリストは[スコープリファレンス](/ja/developers/authentication#scopes)を参照してください。
 14. `Client Authentication`を`Send as Basic Auth header`に設定します。
 15. `Get New Access Token`ボタンをクリックしてトークンを取得し、保存します。
-16. Wink APIコレクション内のすべてのAPIコールで、認証タブが`Inherit auth from parent`になっていることを確認し、すべてのコールにトークンが含まれるようにします。
+16. Wink APIコレクション内のすべてのAPIコールで、認証タブが`Inherit auth from parent`になっていることを確認し、すべての呼び出しにトークンが含まれるようにします。
 </Steps>
 
 :::tip[プロのヒント]
-サーバードメイン、クライアントID、クライアントシークレットを環境変数にすることを推奨します。これにより、ステージングと本番環境の切り替えが容易になり、作成したすべての操作を再利用できます。
+サーバードメイン、クライアントID、クライアントシークレットを環境変数にすることを推奨します。これにより、ステージングと本番環境を簡単に切り替え、作成したすべての操作を再利用できます。
 :::

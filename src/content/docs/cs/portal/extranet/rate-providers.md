@@ -14,14 +14,14 @@ Vyberte svého poskytovatele sazeb ze seznamu a klikněte na tlačítko `Save`. 
 
 ### SynXis
 
-Pokud vaše nemovitost používá channel manager SynXis, je před připojením k Wink potřeba ještě jeden krok.
+Pokud vaše nemovitost používá Sabre SynXis, je před připojením k Wink potřeba ještě jeden krok.
 
 - Kontaktujte svého zástupce SynXis nebo zákaznickou podporu (SHSCustomerCare@sabre.com).
-- Informujte je, že chcete připojit Wink přes Channel Connect Express (***CCX***).
-- Budete požádáni o vyplnění formuláře ***PRS***.
-  - Budete muset zadat své přihlašovací údaje do Wink.
-  - ...a požadovanou měnu.
-- Vyplňte formulář a odešlete jej zpět do SynXis.
+- Sdělte jim, že se chcete připojit k Wink přes Channel Connect Express (***CCX***).
+- Budete vyzváni k vyplnění formuláře ***PRS***.
+  - Budete požádáni o zadání svých uživatelských údajů Wink.
+  - ...a o požadovanou měnu.
+- Formulář vyplňte a odešlete zpět do SynXis.
 
 ## Dodavatelé
 

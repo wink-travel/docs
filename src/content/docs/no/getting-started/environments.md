@@ -8,9 +8,11 @@ sidebar:
 Hos Wink kjører vi 2 miljøer for alt vi gjør til enhver tid:
 
 - Produksjon er vårt stabile miljø.
-- Staging er vårt sertifiserings- og testmiljø.
+- Staging er vårt testmiljø, og der kanaladministratorer og reisebyråer blir sertifisert.
 
-Hvis du er en integrator, et hotell eller et reisebyrå som ønsker å forberede deg til sertifisering eller teste Wink-plattformen, opprett en konto i vårt staging-miljø for å komme i gang.
+Hvis du vil teste Wink-plattformen, som utvikler, hotell eller reisebyrå, opprett en konto i vårt staging-miljø for å komme i gang. Kanaladministratorer kjører også sin [sertifisering](/no/guides/integrators/add-your-channel-manager/#certification) der.
+
+Å opprette en konto i staging eller produksjon krever aksept av Winks vilkår og betalingsbetingelser, og denne aksepten er bindende. Kanaladministratorer og reisebyråer trenger også sertifisering før tilgang til produksjon; alle andre går over til produksjon på egen hånd.
 
 :::note
 Staging-miljøet er tilgjengelig på forespørselsbasis. Det betyr at det går i dvale hvis det ikke er bruk, og slår seg på igjen når det er. Vær tålmodig hvis du vekker det. Det tar omtrent ett minutt å starte alle serverne etter at du først kobler til en av våre servere eller apper.

@@ -1,0 +1,198 @@
+---
+title: Greitas pradėjimas
+description: "Nuo nulio iki veikiančios integracijos testavimo aplinkoje: gaukite prisijungimo duomenis, ieškokite tiesioginių viešbučių kainų per Partner API ir siųskite keliautojus į užsakymo puslapį, kuriame jums bus priskiriami užsakymai."
+sidebar:
+  order: 0.5
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+Šis vadovas padės jums per maždaug 30 minučių sukurti veikiančią integraciją. Pabaigoje turėsite:
+
+- tiesiogines viešbučių kainas mieste, gautas per Partner API,
+- užsakymo nuorodą, kuri priskiria užsakymus jūsų paskyrai,
+- bandomąjį užsakymą ir webhook pranešimą apie jo įvykdymą.
+
+Visa tai vyksta **testavimo aplinkoje** (staging), mūsų testavimo aplinkoje. Jums nereikia prašyti prieigos, o perėjimas į gamybą vėliau taip pat nereikalauja patvirtinimo.
+
+## Ar šis vadovas jums tinkamas?
+
+| Jūs norite… | Pradėkite čia |
+|---|---|
+| Rodyti viešbučius savo programoje, svetainėje ar AI produkte ir siųsti keliautojus užsakyti, uždirbant komisinius | **Šis vadovas** |
+| Užsakyti klientų vardu kaip licencijuota kelionių agentūra | Šis vadovas iki 5 žingsnio, tada [Užsakymas kaip kelionių agentūra](#booking-as-a-travel-agency) |
+| Įterpti užsakomuosius viešbučius be integracijos rašymo | [Web Components](/lt/integrations/web-components/) |
+| Leisti AI agentui ieškoti ir užsakyti | [MCP Servers](/lt/developers/mcp/) ir [Agentic Payments](/lt/developers/agentic-payments/) |
+| Prijungti kanalų valdymo sistemą arba PMS | [Pridėti savo kanalų valdymo sistemą](/lt/guides/integrators/add-your-channel-manager/) |
+
+## Kaip tai veikia
+
+Naudojate **Partner API**, kad rastumėte viešbučius ir jų tiesiogines kainas. Kiekvienas viešbutis turi stabilų `urlName`. Jūs jį paverčiate nuoroda į Wink Booking Engine, `book.wink.travel`, perduodant savo ID. Keliautojas užsako ir apmoka ten, o užsakymas priskiriamas jūsų paskyrai.
+
+## Prieš pradėdami
+
+Jums reikės:
+
+- [`grpcurl`](https://github.com/fullstorydev/grpcurl), arba Postman ar Insomnia. Partner API yra gRPC, ne REST.
+- `curl`.
+
+:::note
+Testavimo aplinka užmiega, kai niekas jos nenaudoja. Pirmas kvietimas po ramybės trukmės gali užtrukti apie minutę, kol serveriai atsibus.
+:::
+
+## 1 žingsnis: Sukurkite testavimo paskyrą
+
+Testavimo aplinka yra visiškai atskirta nuo gamybos, su savo prisijungimais ir paskyromis.
+
+<Steps>
+1. Eikite į [staging-app.wink.travel](https://staging-app.wink.travel), spustelėkite `Sign-In / Register` ir užsiregistruokite.
+
+2. Kairėje šoninėje juostoje spustelėkite `Accounts`, tada `Create` ir pasirinkite **I am an Affiliate**. Užsakymai, kuriuos siunčiate, bus priskiriami šiai paskyrai. Žr. [Sukurti paskyrą](/lt/portal/create-account/).
+</Steps>
+
+## 2 žingsnis: Sukurkite programą
+
+Programa suteikia jūsų kodui prisijungimo duomenis.
+
+<Steps>
+1. Ant savo paskyros kortelės spustelėkite `Actions` > `Manage account`, tada skirtuką `Applications`.
+
+2. Spustelėkite `Create new application`, pavadinkite ją ir pasirinkite **Machine-to-machine** kaip kliento tipą.
+
+3. Skiltyje scopes pasirinkite **Inventory & rates** (skaitymas). Partner API tikrina `inventory.read`.
+
+4. Spustelėkite `Create application` ir nukopijuokite **Client ID** ir **Client secret**. Slaptažodis rodomas tik vieną kartą ir vėliau jo negalima atgauti.
+</Steps>
+
+Žr. [Applications](/lt/account/applications/) dėl kitų kliento tipų ir scopes.
+
+## 3 žingsnis: Gaukite prieigos žetoną
+
+```bash
+curl -X POST https://staging-iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_CLIENT_SECRET>" \
+  -d "scope=inventory.read"
+```
+
+Iš atsakymo išsaugokite `access_token`:
+
+```bash
+export WINK_TOKEN=<access_token>
+```
+
+Žetonai baigiasi. Savo kode leiskite OAuth2 bibliotekai juos gauti ir atnaujinti. Žr. [Autentifikacija](/lt/developers/authentication/).
+
+## 4 žingsnis: Suraskite savo paskyros ID
+
+Kiekviename Partner API kvietime nurodoma paskyra, už kurią veikiate, `managing-entity-id` antraštėje. Išvardinkite paskyras, už kurias jūsų žetonas gali veikti:
+
+```bash
+grpcurl -H "authorization: Bearer $WINK_TOKEN" \
+  -d '{}' \
+  staging-partner.wink.travel:443 wink.partner.v1.Accounts/ListAccounts
+```
+
+Nukopijuokite 1 žingsnyje sukurtos filialo paskyros `accountId`:
+
+```bash
+export WINK_ACCOUNT_ID=<accountId>
+```
+
+## 5 žingsnis: Ieškokite viešbučių mieste
+
+{/* TODO(Yann): patvirtinti testinio viešbučio testavimo aplinkos miestą su prieinamumu ir naudoti čia. */}
+
+```bash
+grpcurl -H "authorization: Bearer $WINK_TOKEN" \
+  -H "managing-entity-id: $WINK_ACCOUNT_ID" \
+  -d '{
+    "urlName": "bangkok-thailand",
+    "userSession": {
+      "itinerary": {
+        "startDate": "2026-12-01",
+        "nights": 2,
+        "room": { "adults": 2 }
+      },
+      "currencyCode": "USD",
+      "languageCode": "en"
+    }
+  }' \
+  staging-partner.wink.travel:443 wink.partner.v1.Search/SearchByCity
+```
+
+Naudokite ateities datą; praeities data bus atmesta. Kiekvienas rezultatas turi:
+
+- `name`, `starRating` ir `heroImageUrl`, pakankamai rezultatų eilutei parodyti,
+- `roomTypes`, tiesioginius pasiūlymus, nuo pigiausio kambario,
+- `urlName`, reikalingą užsakymo nuorodai.
+
+Kainos yra sveikieji skaičiai smulkiausiomis valiutos vienetų dalimis: padalinkite iš 10 laipsniu `currencyExponent` iš atsakymo (2 USD atveju, taigi `12500` yra 125,00 $).
+
+Nežinote miesto slugo? Išsiaiškinkite jį su `wink.partner.v1.Lookup/Search`. Pilnam objekto turiniui naudokite `Content` servisą. [Partner API dokumentacija](/lt/partner-api/partner/) aprašo kiekvieną kvietimą.
+
+## 6 žingsnis: Sukurkite užsakymo nuorodą
+
+```text
+https://staging-book.wink.travel/hotel/<urlName>?client-id=<YOUR_CLIENT_ID>&configuration-id=<YOUR_CUSTOMIZATION_ID>
+```
+
+- `<urlName>` yra viešbučio `urlName` iš 5 žingsnio.
+- `client-id` yra jūsų programos Client ID iš 2 žingsnio.
+- `configuration-id` yra jūsų pritaikymo ID: `Manage account` > `Customizations`. Pritaikymas taip pat nustato jūsų prekės ženklą, numatytą kalbą ir valiutą užsakymo puslapyje.
+
+:::caution
+Įtraukite abu ID. Be jų puslapis vis tiek užsikraus, bet su numatytuoju prekės ženklu, ir **užsakymas jums nebus priskirtas**. Niekada nedėkite savo kliento slapto rakto nuorodoje.
+:::
+
+Žr. [Tiesioginis susiejimas](/lt/booking-engine/features/#linking-directly), jei norite susieti su užsakymo variklio pagrindiniu puslapiu, o ne su vienu viešbučiu.
+
+## 7 žingsnis: Atlikite bandomąjį užsakymą
+
+Atidarykite savo nuorodą, pasirinkite datas ir kambarį, ir atsiskaitykite su [Stripe bandomąja kortele](https://docs.stripe.com/testing), pavyzdžiui `4242 4242 4242 4242` su bet kokia ateities galiojimo data ir bet kokiu CVC. Testavimo aplinkoje tikra kortelė nebus nuskaičiuota. Užsakymo patvirtinimo puslapyje užsirašykite užsakymo kodą; jis prasideda `WNK`.
+
+## 8 žingsnis: Gaukite pranešimus apie užsakymus
+
+<Steps>
+1. Portale eikite į `Applications > Webhooks` ir pridėkite galinį tašką, kuris priima `POST` užklausas.
+
+2. Užsiprenumeruokite `booking.create` arba palikite įvykių sąrašą tuščią, kad gautumėte viską kūrimo metu.
+
+3. Išsiųskite sau bandomąjį įvykį, tada atlikite dar vieną bandomąjį užsakymą ir stebėkite, kaip jis atkeliauja.
+</Steps>
+
+Prieš pasitikėdami, patikrinkite kiekvieno pranešimo parašą. Žr. [Webhook integracija](/lt/developers/webhook-integration/) ir [Webhook įvykių katalogą](/lt/developers/webhook-events/).
+
+## 9 žingsnis: Pereikite į gamybą
+
+Kūrėjams nereikia patvirtinimo žingsnio. (Kelionių agentūrų paskyros pirmiausia yra sertifikuojamos; žr. [žemiau](#booking-as-a-travel-agency).) Kai jūsų integracija veikia testavimo aplinkoje:
+
+<Steps>
+1. Sukurkite paskyrą ir programą [app.wink.travel](https://app.wink.travel), kaip 1 ir 2 žingsniuose. Prisijungimo duomenys nėra perkelti tarp aplinkų.
+
+2. Pašalinkite `staging-` iš kiekvieno hosto:
+
+   | Testavimo aplinka | Gamyba |
+   |---|---|
+   | `https://staging-iam.wink.travel` | `https://iam.wink.travel` |
+   | `staging-partner.wink.travel:443` | `partner.wink.travel:443` |
+   | `https://staging-book.wink.travel` | `https://book.wink.travel` |
+
+3. Dar kartą suraskite savo gamybos paskyros ID (4 žingsnis) ir pritaikymo ID (6 žingsnis). Jie skiriasi nuo testavimo aplinkos.
+</Steps>
+
+Partner API naudojimas matuojamas viešbučio nakvynėmis, su nemokamu mėnesiniu limitu. Žr. [Partner API](/lt/integrations/partner-api/) dėl kainodaros ir apribojimų.
+
+## Užsakymas kaip kelionių agentūra
+
+Jei jūsų paskyra yra licencijuota kelionių agentūra, jums nereikia siųsti keliautojų į `book.wink.travel`: galite kurti užsakymus tiesiogiai su `wink.partner.v1.Booking/CreateBooking` ir valdyti juos kitais `Booking` kvietimais. Kitos paskyros siunčia keliautojus į užsakymo nuorodą.
+
+Kelionių agentūrų paskyros yra sertifikuojamos: Wink peržiūri kiekvienos agentūros registraciją prieš leidžiant užsakyti. Agentūros, norinčios pačios rinkti mokėjimus iš klientų kaip oficialūs pardavėjai, privalo užsakyti per Partner API ir gauti Wink raštišką patvirtinimą. Žr. [Pradžia kelionių agentūroms](/lt/guides/travel-agents/getting-started/) ir [Partner API dokumentaciją](/lt/partner-api/partner/).
+
+## Tolimesni žingsniai
+
+- [Sugeneruokite tipizuotą klientą](/lt/developers/rest-and-grpc/#generate-a-grpc-client) iš `.proto` schemos vietoje rankinio `grpcurl` naudojimo.
+- Prijunkite [MCP serverį](/lt/developers/mcp/) ir naudokite [AI Skills](/lt/developers/ai-skills/), kad jūsų programavimo asistentas parašytų integraciją tiesiogiai su gyvu API.
+- Perskaitykite pilną [aplinkų ir hostų sąrašą](/lt/getting-started/environments/).

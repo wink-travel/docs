@@ -1,0 +1,198 @@
+---
+title: Hızlı Başlangıç
+description: "Sıfırdan staging ortamında çalışan bir entegrasyona: kimlik bilgileri alın, Partner API ile canlı otel fiyatlarını arayın ve size komisyon kazandıran bir rezervasyon sayfasına yolcuları gönderin."
+sidebar:
+  order: 0.5
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+Bu rehber sizi yaklaşık 30 dakika içinde hiçbir şeyden çalışan bir entegrasyona götürür. Sonunda şunlara sahip olacaksınız:
+
+- Partner API’den bir şehirdeki otellerin canlı fiyatları,
+- rezervasyonları hesabınıza yazan bir rezervasyon bağlantısı,
+- bir test rezervasyonu ve bunun gerçekleştiğini bildiren bir webhook.
+
+Her şey **staging** ortamında, test ortamımızda gerçekleşir. Bizden erişim istemenize gerek yoktur ve daha sonra üretime geçiş için onay gerekmez.
+
+## Bu rehber sizin için uygun mu?
+
+| Yapmak istiyorsunuz… | Buradan başlayın |
+|---|---|
+| Uygulamanızda, sitenizde veya AI ürününüzde otelleri gösterip yolcuları rezervasyon yapmaya göndererek komisyon kazanmak | **Bu rehber** |
+| Lisanslı bir seyahat acentesi olarak müşterileriniz adına rezervasyon yapmak | Bu rehberin 5. adıma kadar, sonra [Seyahat acentesi olarak rezervasyon](#booking-as-a-travel-agency) |
+| Entegrasyon yazmadan rezervasyon yapılabilir otelleri gömmek | [Web Bileşenleri](/tr/integrations/web-components/) |
+| Bir AI ajanının arama yapıp rezervasyon yapmasını sağlamak | [MCP Sunucuları](/tr/developers/mcp/) ve [Agentic Payments](/tr/developers/agentic-payments/) |
+| Bir kanal yöneticisi veya PMS bağlamak | [Kanal Yöneticinizi Ekleyin](/tr/guides/integrators/add-your-channel-manager/) |
+
+## Nasıl çalışır
+
+Otelleri ve canlı fiyatlarını bulmak için **Partner API** kullanırsınız. Her otelin sabit bir `urlName` değeri vardır. Bunu, kimlik bilgilerinizi taşıyan Wink Rezervasyon Motoru `book.wink.travel` bağlantısına dönüştürürsünüz. Yolcu orada rezervasyon yapar ve ödemeyi gerçekleştirir, rezervasyon hesabınıza yazılır.
+
+## Başlamadan önce
+
+Şunlara ihtiyacınız olacak:
+
+- [`grpcurl`](https://github.com/fullstorydev/grpcurl) veya Postman ya da Insomnia. Partner API gRPC tabanlıdır, REST değildir.
+- `curl`.
+
+:::note
+Staging ortamı kullanılmadığında uyku moduna geçer. Sessiz bir dönemden sonra yapılan ilk çağrı, sunucular uyanırken yaklaşık bir dakika sürebilir.
+:::
+
+## Adım 1: Staging hesabı oluşturun
+
+Staging, üretimden tamamen ayrı olup kendi giriş bilgileri ve hesapları vardır.
+
+<Steps>
+1. [staging-app.wink.travel](https://staging-app.wink.travel) adresine gidin, `Sign-In / Register` butonuna tıklayın ve kayıt olun.
+
+2. Sol kenar çubuğunda `Accounts`a tıklayın, sonra `Create` ve **I am an Affiliate** seçeneğini seçin. Gönderdiğiniz rezervasyonlar bu hesaba yazılır. Bkz. [Hesap Oluşturma](/tr/portal/create-account/).
+</Steps>
+
+## Adım 2: Bir uygulama oluşturun
+
+Uygulama, kodunuza kimlik bilgilerini verir.
+
+<Steps>
+1. Hesap kartınızda `Actions` > `Manage account`a tıklayın, ardından `Applications` sekmesine geçin.
+
+2. `Create new application`a tıklayın, bir isim verin ve istemci türü olarak **Machine-to-machine** seçin.
+
+3. Kapsamlar altında **Inventory & rates** (okuma) seçin. Partner API `inventory.read` kontrol eder.
+
+4. `Create application`a tıklayın ve **Client ID** ile **Client secret** değerlerini kopyalayın. Secret sadece bir kez gösterilir, sonra alınamaz.
+</Steps>
+
+Diğer istemci türleri ve kapsamlar için [Applications](/tr/account/applications/) sayfasına bakın.
+
+## Adım 3: Erişim belirteci alın
+
+```bash
+curl -X POST https://staging-iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_CLIENT_SECRET>" \
+  -d "scope=inventory.read"
+```
+
+Yanıttan `access_token` değerini kaydedin:
+
+```bash
+export WINK_TOKEN=<access_token>
+```
+
+Belirteçlerin süresi dolar. Kendi kodunuzda bir OAuth2 kütüphanesi kullanarak bunları alıp yenileyin. Bkz. [Kimlik Doğrulama](/tr/developers/authentication/).
+
+## Adım 4: Hesap ID’nizi bulun
+
+Her Partner API çağrısı, işlem yaptığınız hesabı `managing-entity-id` başlığında belirtir. Belirtecinizin işlem yapabileceği hesapları listeleyin:
+
+```bash
+grpcurl -H "authorization: Bearer $WINK_TOKEN" \
+  -d '{}' \
+  staging-partner.wink.travel:443 wink.partner.v1.Accounts/ListAccounts
+```
+
+Adım 1’deki bağlı hesap `accountId` değerini kopyalayın:
+
+```bash
+export WINK_ACCOUNT_ID=<accountId>
+```
+
+## Adım 5: Bir şehirde otel arayın
+
+{/* TODO(Yann): test otelinin müsait olduğu staging şehrini onaylayın ve burada kullanın. */}
+
+```bash
+grpcurl -H "authorization: Bearer $WINK_TOKEN" \
+  -H "managing-entity-id: $WINK_ACCOUNT_ID" \
+  -d '{
+    "urlName": "bangkok-thailand",
+    "userSession": {
+      "itinerary": {
+        "startDate": "2026-12-01",
+        "nights": 2,
+        "room": { "adults": 2 }
+      },
+      "currencyCode": "USD",
+      "languageCode": "en"
+    }
+  }' \
+  staging-partner.wink.travel:443 wink.partner.v1.Search/SearchByCity
+```
+
+Gelecekte bir giriş tarihi kullanın; geçmiş tarih reddedilir. Her sonuçta şunlar bulunur:
+
+- `name`, `starRating` ve `heroImageUrl`, bir sonuç satırı göstermek için yeterli,
+- `roomTypes`, canlı teklifler, en ucuz oda ilk,
+- `urlName`, rezervasyon bağlantısı için gereken slug.
+
+Fiyatlar küçük birimlerde tam sayıdır: yanıttaki `currencyExponent` değerinin (USD için 2) 10’un kuvvetiyle bölünür (örneğin `12500` 125,00 $’dır).
+
+Bir şehrin slug’ını bilmiyor musunuz? `wink.partner.v1.Lookup/Search` ile çözün. Bir mülkün tam içeriği için `Content` servisini kullanın. [Partner API referansı](/tr/partner-api/partner/) her çağrıyı belgeler.
+
+## Adım 6: Rezervasyon bağlantısını oluşturun
+
+```text
+https://staging-book.wink.travel/hotel/<urlName>?client-id=<YOUR_CLIENT_ID>&configuration-id=<YOUR_CUSTOMIZATION_ID>
+```
+
+- `<urlName>` Adım 5’teki otelin `urlName` değeridir.
+- `client-id` Adım 2’deki uygulamanızın Client ID’sidir.
+- `configuration-id` özelleştirme ID’nizdir: `Manage account` > `Customizations`. Bir özelleştirme, rezervasyon sayfasında markanızı, varsayılan dili ve para birimini de ayarlar.
+
+:::caution
+Her iki ID’yi de ekleyin. Bunlar olmadan sayfa yine de yüklenir, ancak varsayılan marka ile ve **rezervasyon size yazılmaz**. İstemci gizlinizi asla bağlantıya koymayın.
+:::
+
+Tek bir otel yerine rezervasyon motoru ana sayfasına bağlantı için [Doğrudan Bağlantı](/tr/booking-engine/features/#linking-directly) bölümüne bakın.
+
+## Adım 7: Test rezervasyonu yapın
+
+Bağlantınızı açın, tarih ve oda seçin, ve örneğin `4242 4242 4242 4242` numaralı [Stripe test kartı](https://docs.stripe.com/testing) ile ödeme yapın; herhangi bir gelecekteki son kullanma tarihi ve herhangi bir CVC kullanabilirsiniz. Staging ortamında gerçek karttan ücret alınmaz. Onay sayfasındaki rezervasyon kodunu not edin; `WNK` ile başlar.
+
+## Adım 8: Rezervasyon bildirimleri alın
+
+<Steps>
+1. Portal’da `Applications > Webhooks`a gidin ve `POST` isteklerini kabul eden bir uç nokta ekleyin.
+
+2. `booking.create` olayına abone olun veya geliştirme sırasında her şeyi almak için olay listesini boş bırakın.
+
+3. Kendinize bir test olayı gönderin, sonra başka bir test rezervasyonu yapın ve gelmesini izleyin.
+</Steps>
+
+Her teslimatın imzasını doğrulamadan güvenmeyin. Bkz. [Webhook Entegrasyonu](/tr/developers/webhook-integration/) ve [Webhook Olayları Kataloğu](/tr/developers/webhook-events/).
+
+## Adım 9: Üretime geçin
+
+Geliştiriciler için onay adımı yoktur. (Seyahat acentesi hesapları önce sertifikalandırılır; bkz. [aşağı](#booking-as-a-travel-agency).) Entegrasyonunuz staging’de çalıştığında:
+
+<Steps>
+1. [app.wink.travel](https://app.wink.travel) adresinde Adım 1 ve 2’deki gibi bir hesap ve uygulama oluşturun. Kimlik bilgileri ortamlar arasında taşınmaz.
+
+2. Her hosttan `staging-` önekini kaldırın:
+
+   | Staging | Üretim |
+   |---|---|
+   | `https://staging-iam.wink.travel` | `https://iam.wink.travel` |
+   | `staging-partner.wink.travel:443` | `partner.wink.travel:443` |
+   | `https://staging-book.wink.travel` | `https://book.wink.travel` |
+
+3. Üretim hesap ID’nizi (Adım 4) ve özelleştirme ID’nizi (Adım 6) tekrar bulun. Bunlar staging’den farklıdır.
+</Steps>
+
+Partner API kullanımı otel-geceleri üzerinden ölçülür ve aylık ücretsiz kontenjan vardır. Fiyatlandırma ve limitler için [Partner API](/tr/integrations/partner-api/) sayfasına bakın.
+
+## Seyahat acentesi olarak rezervasyon
+
+Hesabınız lisanslı bir seyahat acentesiyse, yolcuları `book.wink.travel` adresine göndermenize gerek yoktur: `wink.partner.v1.Booking/CreateBooking` ile doğrudan rezervasyon oluşturabilir ve diğer `Booking` çağrılarıyla yönetebilirsiniz. Diğer hesaplar yolcuları rezervasyon bağlantısına gönderir.
+
+Seyahat acentesi hesapları sertifikalandırılır: Wink her acentenin kaydını rezervasyon yapmadan önce inceler. Müşterilerinden doğrudan ödeme almak isteyen acenteler, kayıtlı satıcı olarak, Partner API üzerinden rezervasyon yapmalı ve Wink’in yazılı onayını almalıdır. Bkz. [Seyahat Acentesi Olarak Başlarken](/tr/guides/travel-agents/getting-started/) ve [Partner API referansı](/tr/partner-api/partner/).
+
+## Sonraki adımlar
+
+- `grpcurl` yerine `.proto` şemasından [tipli bir istemci oluşturun](/tr/developers/rest-and-grpc/#generate-a-grpc-client).
+- [MCP sunucusunu](/tr/developers/mcp/) bağlayın ve [AI Becerileri](/tr/developers/ai-skills/) ile canlı API’ye karşı entegrasyonu yazdırın.
+- Tüm [ortamlar ve hostlar](/tr/getting-started/environments/) listesini okuyun.

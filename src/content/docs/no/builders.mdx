@@ -1,5 +1,5 @@
 ---
-title: For utviklere — Hotellhandel API-tilgang
+title: For utviklere — Hotel Commerce API-tilgang
 description: "Bygg hotellhandel med Wink utviklertilgang: søk, booking, betaling, webhooks, MCP, AI-overlevering og Booking Engine-oppfyllelse."
 template: splash
 marketingNav: true
@@ -30,22 +30,23 @@ import IconTool from "@tabler/icons/outline/tool.svg";
 import IconCalendarCheck from "@tabler/icons/outline/calendar-check.svg";
 import RouteConvergence from "@/components/marketing/infographics/RouteConvergence.astro";
 import DevTerminal from "@/components/marketing/infographics/DevTerminal.astro";
+import { deliveredWebhookEventCount } from "@/lib/webhook-events";
 
 export const faqs = [
   { title: "Finnes det en egen produktside for API-tilgang?", content: "Nei. API-tilgang håndteres gjennom Builders-siden og Build on Wink-dokumentasjonen, ikke via en egen markedsføringsproduktside." },
-  { title: "Er API-tilgang en erstatning for Booking Engine?", content: "Nei. API-tilgang ruter etterspørsel og integrasjonslogikk. Booking Engine forblir oppfyllelseslaget for hotellspesifikk utsjekking, betaling, bekreftelse og fullføring av booking." },
+  { title: "Er API-tilgang en erstatning for Booking Engine?", content: "Nei. API-tilgang ruter etterspørsel og integrasjonslogikk. Booking Engine forblir oppfyllelseslaget for hotellspesifikk utsjekk, betaling, bekreftelse og fullføring av booking." },
   { title: "Kan AI-assistenter bruke Wink?", content: "Ja. En hostet MCP-server lar AI-agenter lese de levende API-kontraktene slik at de kan søke i live hotelltilbud, opprette bookinger og ta betaling gjennom Booking Engine — og fullføre en booking i én flyt, ikke bare rute brukeren til et nettsted. Ethvert hotell er agentklart når profilen er live på Wink." },
   { title: "Kan jeg legge inn hotellkort eller kart uten full API-integrasjon?", content: "Ja. Studio kan lage Web Components som hotellkort, kart, rutenett og andre innebygde elementer når en enklere løsning er tilstrekkelig — Booking Engine oppfyller bookingen under." },
   { title: "Kan hotellkjeder bruke utviklertilgang?", content: "Ja. Hotellkjeder og tekniske operatører kan bruke utviklertilgang for å koble Wink-tilbud, booking og rapporteringsarbeidsflyter med interne systemer." },
-  { title: "Hvor bør utviklere starte?", content: "Koble til MCP-serveren, les Build on Wink-dokumentasjonen, opprett OAuth2-legitimasjon og begynn å bygge. Det er ingen tilgangsforespørsel eller godkjenningssteg." },
-  { title: "Er utviklertilgang åpen for alle?", content: "Ja. Dokumentasjonen og MCP-serveren er offentlige, og enhver utvikler kan opprette OAuth2-legitimasjon og begynne å bygge — det er ingen tilgangsforespørsel eller godkjenningssteg." },
+  { title: "Hvor bør utviklere starte?", content: "Koble til MCP-serveren, les Build on Wink-dokumentasjonen, opprett OAuth2-legitimasjon og start bygging i staging — ingen tilgangsforespørsel, ingen venting. Når du er klar, opprett en applikasjon i produksjon og pek koden din mot produksjons-URLene." },
+  { title: "Er utviklertilgang åpen for alle?", content: "Ja. Dokumentasjonen og MCP-serveren er offentlige, og enhver utvikler kan opprette OAuth2-legitimasjon og begynne å bygge i staging uten å spørre oss. Overgang til produksjon krever heller ingen godkjenning. Kun kanalsjefer og reisebyråer går gjennom sertifisering." },
 ];
 
 <div class="not-content mkt-page">
 
 <FaqJsonLd faqs={faqs} />
 
-<BreadcrumbJsonLd items={[{ name: "Hjem", path: "/" }, { name: "Løsninger", path: "/solutions/" }, { name: "Utviklere" }]} />
+<BreadcrumbJsonLd items={[{ name: "Hjem", path: "/" }, { name: "Løsninger", path: "/solutions/" }, { name: "Builders" }]} />
 
 {/* Hero — dark, full-bleed (see `data-full-bleed` in src/styles/tweaks.css).
     The breadcrumb lives INSIDE the band: it shares the hero's content column, so
@@ -62,7 +63,7 @@ export const faqs = [
       <span class="px-1.5 text-white/55">/</span>
       <a href="/solutions/" class="transition-colors hover:text-white">Løsninger</a>
       <span class="px-1.5 text-white/55">/</span>
-      <span class="text-white">Utviklere</span>
+      <span class="text-white">Builders</span>
     </nav>
     <div class="mt-10 grid items-center gap-12 lg:mt-12 lg:min-h-[33rem] lg:grid-cols-2 lg:gap-16">
       <div>
@@ -70,15 +71,15 @@ export const faqs = [
         <h1 class="font-heading mt-6 text-4xl font-extrabold leading-[1.05] tracking-tight text-balance @lg:text-5xl @2xl:text-[3.25rem]">
           Bygg hotellhandel <span class="bg-gradient-to-r from-[#ff8a5c] via-[#ec4899] to-[#a855f7] bg-clip-text text-transparent">inn i produktet ditt.</span>
         </h1>
-        <p class="mt-5 max-w-xl text-pretty text-lg text-white/75 @lg:text-xl">API-først hotellhandel: søk, booking, betaling, 64+ webhooks, attribusjon og AI-overlevering — med en hostet MCP-server slik at agenter leser de levende kontraktene, og Booking Engine som oppfyller under.</p>
+        <p class="mt-5 max-w-xl text-pretty text-lg text-white/75 @lg:text-xl">API-først hotellhandel: søk, booking, betaling, {deliveredWebhookEventCount} webhooks, attribusjon og AI-overlevering — med en hostet MCP-server slik at agenter leser de levende kontraktene, og Booking Engine som oppfyller under.</p>
         <div class="mt-8 flex flex-col gap-3 sm:flex-row">
           <a href="/developers/build-on-wink/" class="inline-flex h-12 items-center justify-center rounded-md bg-[#ff6b35] px-7 text-base font-semibold text-white transition-colors hover:bg-[#e85b29]">Se dokumentasjon</a>
-          <a href="/api/overview/" class="inline-flex h-12 items-center justify-center rounded-md bg-white/10 px-7 text-base font-medium text-white ring-1 ring-white/20 backdrop-blur transition-colors hover:bg-white/15">Kom i gang</a>
+          <a href="/developers/quickstart/" class="inline-flex h-12 items-center justify-center rounded-md bg-white/10 px-7 text-base font-medium text-white ring-1 ring-white/20 backdrop-blur transition-colors hover:bg-white/15">Kom i gang</a>
         </div>
         <div class="mt-7 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-white/65">
           <span class="inline-flex items-center gap-1.5"><IconCheck class="size-4 text-[#ff8a5c]" /> REST + OAuth2 + SDK-er</span>
           <span class="inline-flex items-center gap-1.5"><IconCheck class="size-4 text-[#ff8a5c]" /> Hostet MCP-server</span>
-          <span class="inline-flex items-center gap-1.5"><IconCheck class="size-4 text-[#ff8a5c]" /> 64+ webhook-hendelser</span>
+          <span class="inline-flex items-center gap-1.5"><IconCheck class="size-4 text-[#ff8a5c]" /> {deliveredWebhookEventCount} webhook-hendelser</span>
         </div>
       </div>
       {/* Terminal visual — swappable infographic (infographics/DevTerminal.astro) */}
@@ -90,7 +91,7 @@ export const faqs = [
 {/* Direct answer */}
 <section class="mx-auto w-full max-w-3xl px-4 pt-24 pb-24 text-center">
   <p class="mkt-kicker text-primary">Hva kan utviklere bygge med Wink?</p>
-  <p class="mkt-sub text-muted-foreground mt-5">Utviklere kan bygge hotell-søk, booking, betaling, webhook, attribusjon, rapportering, AI-overlevering og innebygde handelsarbeidsflyter i sine egne produkter. Wink utviklertilgang fungerer med hotellkontrollert tilbud fra Extranet, partnerkontekst fra det underliggende nettverket, AI-overlevering gjennom Agentic AI, og Booking Engine-oppfyllelse for hotellspesifikk utsjekking, betaling, bekreftelse og fullføring av booking.</p>
+  <p class="mkt-sub text-muted-foreground mt-5">Utviklere kan bygge hotell-søk, booking, betaling, webhook, attribusjon, rapportering, AI-overlevering og innebygde handelsarbeidsflyter inn i sine egne produkter. Wink utviklertilgang fungerer med hotellkontrollert tilbud fra Extranet, partnerkontekst fra det underliggende nettverket, AI-overlevering gjennom Agentic AI, og Booking Engine-oppfyllelse for hotellspesifikk utsjekk, betaling, bekreftelse og fullføring av booking.</p>
 </section>
 
 {/* Who it's for */}
@@ -99,14 +100,14 @@ export const faqs = [
     <div class="mx-auto mb-14 max-w-2xl text-center">
       <p class="mkt-kicker text-primary">Hvem det er for</p>
       <h2 class="mkt-h2 font-heading mt-3">For team som bygger hotellhandel, ikke bare leser dokumentasjon.</h2>
-      <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">Utviklertilgang passer for produkt-, ingeniør-, AI-, plattform- og driftsteam. Vurderer du en integrasjon for et AI-produkt, bank eller superapp? Se <a href="/platforms/" class="text-primary underline underline-offset-2">For plattformer &amp; AI</a>.</p>
+      <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">Utviklertilgang passer for produkt-, ingeniør-, AI-, plattform- og driftsteam. Vurderer du en integrasjon for et AI-produkt, bank eller superapp? Se <a href="/platforms/" class="text-primary underline underline-offset-2">For Platforms &amp; AI</a>.</p>
     </div>
     <div class="mx-auto grid max-w-4xl gap-5 @md:grid-cols-2">
       {[
         { icon: IconBox, title: "Produktteam", desc: "Legg til hotellhandel i en eksisterende app eller plattform via utviklertilgang + Booking Engine." },
-        { icon: IconCpu, title: "AI-produktteam", desc: "Ruter assistentstyrt hotellintensjon inn i kontrollerte bookingflyter med Agentic AI og MCP-serveren." },
+        { icon: IconCpu, title: "AI-produktteam", desc: "Ruter assistentledet hotellintensjon inn i kontrollerte bookingflyter med Agentic AI og MCP-serveren." },
         { icon: IconAffiliate, title: "Byråer & DMC-er", desc: "Bygg tilpassede butikkfronter, bookingflyter eller reiseprodukter med Web Components." },
-        { icon: IconRefresh, title: "Channel manager / PMS", desc: "Koordiner tilgjengelighet, priser, reservasjoner og relaterte hendelsesflyter." },
+        { icon: IconRefresh, title: "Kanalsjef / PMS", desc: "Koordiner tilgjengelighet, priser, reservasjoner og relaterte hendelsesflyter." },
       ].map((c) => (
         <div class="flex flex-col rounded-2xl border border-border bg-card p-6">
           <span class="mb-4 flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-white"><c.icon class="size-6" /></span>
@@ -129,15 +130,15 @@ export const faqs = [
     <div class="mx-auto mb-12 max-w-2xl text-center">
       <p class="mkt-kicker text-[#ff8a5c]">Hvorfor bygge på det</p>
       <h2 class="mkt-h2 font-heading mt-3">Et hotellkort er enkelt. Et hotellbookingsystem er det ikke.</h2>
-      <p class="mkt-sub mx-auto mt-4 max-w-xl text-white/70">Hotellhandel krever regler for tilbud, tilgjengelighet, priser, tilbud, retningslinjer, utsjekking, betaling, bekreftelse, attribusjon og rapportering. Bygg på disse lagene i stedet for å bygge dem på nytt.</p>
+      <p class="mkt-sub mx-auto mt-4 max-w-xl text-white/70">Hotellhandel krever regler for tilbud, tilgjengelighet, priser, tilbud, retningslinjer, utsjekk, betaling, bekreftelse, attribusjon og rapportering. Bygg på disse lagene i stedet for å bygge dem på nytt.</p>
     </div>
     <div class="grid gap-6 @md:grid-cols-2">
       <div class="rounded-2xl border border-white/10 bg-white/[0.04] p-7">
         <h3 class="font-heading text-lg font-semibold text-white/60">Bygg det selv</h3>
         <ul class="mt-5 space-y-3">
           {[
-            "Bygg opp regler for tilbud, priser og retningslinjer på nytt",
-            "Koble utsjekking til hotellspesifikke data",
+            "Bygg opp tilbuds-, pris- og policyregler på nytt",
+            "Koble utsjekk til hotellspesifikke data",
             "Sy sammen attribusjon på tvers av økter",
             "Eie betalinger, refusjoner og avstemming",
             "Begrens AI slik at den ikke kan finne på tilgjengelighet",
@@ -152,9 +153,9 @@ export const faqs = [
         <ul class="mt-5 space-y-3">
           {[
             "Integrer hotell-godkjent tilbud fra Extranet",
-            "Booking Engine håndterer utsjekking, betaling og bekreftelse",
+            "Booking Engine håndterer utsjekk, betaling og bekreftelse",
             "6 måneders attribusjon bevart per klikk",
-            "Abonner på 64+ webhook-hendelser",
+            `Abonner på ${deliveredWebhookEventCount} webhook-hendelser`,
             "Strukturert AI-overlevering via MCP + Agentic AI",
             "1,5 % + kostnadsbasert behandling — Booking Engine under hver overlevering",
           ].map((b) => (
@@ -178,8 +179,8 @@ export const faqs = [
       { t: "Koble til", d: "Legg til den hostede MCP-serveren eller opprett OAuth2-legitimasjon for å starte mot levende kontrakter." },
       { t: "Les levende kontrakter", d: "Søk i operasjoner og les gjeldende forespørsels- og respons-skjemaer — ingen gjetting, ingen utdaterte dokumenter." },
       { t: "Bygg flyten", d: "Koble søk, tilgjengelighet, booking, betaling og rapportering inn i produktet ditt." },
-      { t: "Abonner på hendelser", d: "Reager på 64+ webhook-hendelser: bookingstatus, betalinger, refusjoner, kanselleringer og kanalendringer." },
-      { t: "Oppfyll i Booking Engine", d: "Hvert kall løses i Booking Engine for hotellspesifikk utsjekking, betaling og bekreftelse." },
+      { t: "Abonner på hendelser", d: `Reager på ${deliveredWebhookEventCount} webhook-hendelser: bookingstatus, betalinger, refusjoner, kanselleringer og kanalendringer.` },
+      { t: "Oppfyll i Booking Engine", d: "Hvert kall løses i Booking Engine for hotellspesifikk utsjekk, betaling og bekreftelse." },
     ].map((s, i) => (
       <li class="rounded-2xl border border-border bg-card p-6">
         <span class="flex size-9 items-center justify-center rounded-full bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-sm font-bold text-white shadow-sm">{i + 1}</span>
@@ -205,7 +206,7 @@ export const faqs = [
       <div class="flex flex-col rounded-2xl border border-border bg-card p-6">
         <span class="mb-4 flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-white"><IconPlug class="size-6" /></span>
         <h3 class="font-heading text-lg font-semibold">1 · Koble til MCP-serveren</h3>
-        <p class="text-muted-foreground mt-2 text-sm">Strømmbar HTTP-endepunkt (SSE fallback på <code class="rounded bg-muted px-1 py-0.5 text-xs">/sse</code>). Fra Claude Code:</p>
+        <p class="text-muted-foreground mt-2 text-sm">Strømmbar HTTP-endepunkt (SSE-fallback på <code class="rounded bg-muted px-1 py-0.5 text-xs">/sse</code>). Fra Claude Code:</p>
         <pre class="mt-4 overflow-x-auto rounded-lg bg-[#1f0a40] p-4 font-mono text-xs leading-relaxed text-white/90"><code>claude mcp add --transport http \
   wink-docs https://docs.mcp.wink.travel/mcp</code></pre>
         <p class="text-muted-foreground mt-3 text-xs">Fungerer også med Codex, Cursor og VS Code — se <a href="/developers/mcp/" class="text-primary underline underline-offset-2">MCP-dokumentasjonen</a>.</p>
@@ -220,7 +221,7 @@ export const faqs = [
           <li class="flex items-start gap-2"><code class="mt-0.5 rounded bg-muted px-1.5 py-0.5 text-xs text-primary">api_search</code><span class="text-muted-foreground">finn operasjonen som skal kalles — f.eks. "lookup inventory", "create booking", "payment receipt"</span></li>
           <li class="flex items-start gap-2"><code class="mt-0.5 rounded bg-muted px-1.5 py-0.5 text-xs text-primary">docs_search</code><span class="text-muted-foreground">finn konsepter — "authentication", "webhooks", "attribution"</span></li>
         </ul>
-        <p class="text-muted-foreground mt-3 text-xs">Hvert resultat returnerer en <code class="rounded bg-muted px-1 py-0.5 text-xs">wink://</code> URI — åpne operasjonen, dens forespørsels-/respons-skjema, eller dens oppgave <strong class="text-foreground/80">oppskrift</strong>.</p>
+        <p class="text-muted-foreground mt-3 text-xs">Hvert resultat returnerer en <code class="rounded bg-muted px-1 py-0.5 text-xs">wink://</code> URI — åpne operasjonen, dens forespørsels-/respons-skjema, eller dens oppgave-<strong class="text-foreground/80">oppskrift</strong>.</p>
       </div>
 
       {/* Build */}
@@ -235,8 +236,8 @@ export const faqs = [
       <div class="flex flex-col rounded-2xl border border-border bg-card p-6">
         <span class="mb-4 flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-white"><IconCalendarCheck class="size-6" /></span>
         <h3 class="font-heading text-lg font-semibold">4 · Overlever til Booking Engine</h3>
-        <p class="text-muted-foreground mt-2 text-sm">Opprett bookingen via API-et, og Booking Engine oppfyller den — utsjekking, betaling, bekreftelse og booking-synk til tilknyttet PMS eller channel manager, med bevart kildekontekst.</p>
-        <p class="text-muted-foreground mt-3 text-xs">Abonner på <code class="rounded bg-muted px-1 py-0.5 text-xs">booking.created</code> og 63 andre hendelser for å reagere i sanntid.</p>
+        <p class="text-muted-foreground mt-2 text-sm">Opprett bookingen via API-et, og Booking Engine oppfyller den — utsjekk, betaling, bekreftelse og booking-synk til tilkoblet PMS eller kanalsjef, med kildekontekst bevart.</p>
+        <p class="text-muted-foreground mt-3 text-xs">Abonner på <code class="rounded bg-muted px-1 py-0.5 text-xs">booking.create</code> og 63 andre hendelser for å reagere i sanntid.</p>
       </div>
     </div>
   </div>
@@ -277,10 +278,10 @@ export const faqs = [
       {[
         { icon: IconCode, title: "API & MCP", desc: "Bygg søk, booking, betaling, webhook, attribusjon og rapporteringsarbeidsflyter over REST + OAuth2 — med MCP-serveren for levende kontrakter.", href: "/api/overview" },
         { icon: IconRobot, title: "Agentic AI", desc: "La AI-agenter søke, booke og betale mot live hotelltilbud — fullfører bookingen, ikke bare ruter brukere til et nettsted.", href: "/agentic-ai/" },
-        { icon: IconBolt, title: "Booking Engine", desc: "Laster hotellspesifikke data og håndterer utsjekking, betaling, bekreftelse og fullføring av booking.", href: "/products/booking-engine/" },
+        { icon: IconBolt, title: "Booking Engine", desc: "Laster hotellspesifikke data og håndterer utsjekk, betaling, bekreftelse og fullføring av booking.", href: "/products/booking-engine/" },
         { icon: IconComponents, title: "Web Components", desc: "Legg til bookbare kort, kart, rutenett, knapper og hotellmoduler på et nettsted eller produktflate.", href: "/developers/build-on-wink/" },
         { icon: IconDeviceMobile, title: "WinkLinks", desc: "Publiser kuraterte hotelloppføringer under én mobil-først offentlig lenke.", href: "/products/winklinks/" },
-        { icon: IconSearch, title: "Studio + nettverk", desc: "Administrer partner-tilgang, salgskanaler og attribusjonskontekst for partnerstyrt etterspørsel.", href: "/products/studio/" },
+        { icon: IconSearch, title: "Studio + nettverk", desc: "Administrer partner-tilgang, salgskanaler og attribusjonskontekst for partnerledet etterspørsel.", href: "/products/studio/" },
       ].map((c) => (
         <a href={c.href} class="group flex h-full flex-col rounded-2xl border border-border bg-card p-6 transition-colors hover:border-primary/40">
           <span class="mb-4 flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-white"><c.icon class="size-6" /></span>
@@ -299,9 +300,9 @@ export const faqs = [
     <div class="@lg:order-2">
       <p class="mkt-kicker text-primary">Hele spekteret</p>
       <h2 class="mkt-h2 font-heading mt-3">Fra full API-bygging til en drop-in komponent.</h2>
-      <p class="text-muted-foreground mt-4 text-pretty @lg:text-lg">Gå så dypt som en full REST + MCP-integrasjon — eller, når det er mer enn jobben krever, bruk en Studio Web Component: hotellkort, kart, rutenett og bookingmoduler. Uansett oppfyller Booking Engine bookingen under.</p>
+      <p class="text-muted-foreground mt-4 text-pretty @lg:text-lg">Gå så dypt som en full REST + MCP-integrasjon — eller, når det er mer enn jobben krever, slipp inn en Studio Web Component: hotellkort, kart, rutenett og bookingmoduler. Uansett oppfyller Booking Engine bookingen under.</p>
       <ul class="mt-6 space-y-2.5">
-        {["Full REST + OAuth2 API, hostet MCP-server og SDK-er", "Eller bookbare Web Components — kort, kart og rutenett", "64+ webhook-hendelser for sanntidsavstemming", "Booking Engine-oppfyllelse under hver overflate"].map((p) => (
+        {["Full REST + OAuth2 API, hostet MCP-server og genererte klienter", "Eller bookbare Web Components — kort, kart og rutenett", `${deliveredWebhookEventCount} webhook-hendelser for sanntidsavstemming`, "Booking Engine-oppfyllelse under hver overflate"].map((p) => (
           <li class="flex items-start gap-2.5"><IconCheck class="mt-0.5 size-5 shrink-0 text-primary" /><span class="text-sm text-foreground/90">{p}</span></li>
         ))}
       </ul>

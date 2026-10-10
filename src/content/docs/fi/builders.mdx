@@ -1,6 +1,6 @@
 ---
-title: Rakentajille — Hotel Commerce API -käyttöoikeus
-description: "Rakenna hotellikauppaa Wink-kehittäjäkäyttöoikeudella: haku, varaus, maksu, webhooks, MCP, AI-siirto ja Booking Engine -täyttö."
+title: Rakentajille — Hotel Commerce API -pääsy
+description: "Rakenna hotellikauppaa Wink-kehittäjäpääsyllä: haku, varaus, maksu, webhooks, MCP, AI-siirto ja Booking Engine -täyttö."
 template: splash
 marketingNav: true
 ---
@@ -30,39 +30,40 @@ import IconTool from "@tabler/icons/outline/tool.svg";
 import IconCalendarCheck from "@tabler/icons/outline/calendar-check.svg";
 import RouteConvergence from "@/components/marketing/infographics/RouteConvergence.astro";
 import DevTerminal from "@/components/marketing/infographics/DevTerminal.astro";
+import { deliveredWebhookEventCount } from "@/lib/webhook-events";
 
 export const faqs = [
-  { title: "Onko olemassa erillistä API-käyttöoikeustuotesivua?", content: "Ei. API-käyttöoikeus hoidetaan Builders-sivun ja Build on Wink -dokumentaation kautta, ei erillisenä markkinointituotesivuna." },
-  { title: "Korvaako API-käyttöoikeus Booking Enginen?", content: "Ei. API-käyttöoikeus ohjaa kysyntää ja integraatiologiikkaa. Booking Engine toimii hotellikohtaisen kassaprosessin, maksun, vahvistuksen ja varauksen loppuunsaattamisen täyttökerroksena." },
-  { title: "Voivatko AI-avustajat käyttää Winkia?", content: "Kyllä. Isännöity MCP-palvelin antaa AI-agenttien lukea reaaliaikaiset API-sopimukset, jotta ne voivat hakea hotellitarjontaa, tehdä varauksia ja vastaanottaa maksuja Booking Enginen kautta — suorittaen varauksen yhdellä prosessilla, eivät vain ohjaten käyttäjää verkkosivustolle. Mikä tahansa hotelli on agenttivalmis, kun sen profiili on julkaistu Winkissä." },
+  { title: "Onko olemassa erillistä API-pääsytuotetta?", content: "Ei. API-pääsyä hallitaan Builders-sivun ja Build on Wink -dokumentaation kautta, ei erillisenä markkinointituotesivuna." },
+  { title: "Korvaako API-pääsy Booking Enginen?", content: "Ei. API-pääsy ohjaa kysyntää ja integraatiologiikkaa. Booking Engine toimii hotellikohtaisen kassaprosessin, maksun, vahvistuksen ja varauksen viimeistelykerroksena." },
+  { title: "Voivatko AI-avustajat käyttää Winkia?", content: "Kyllä. Isännöity MCP-palvelin antaa AI-agenttien lukea reaaliaikaiset API-sopimukset, jotta ne voivat hakea hotellitarjontaa, tehdä varauksia ja suorittaa maksun Booking Enginen kautta — varaus tehdään yhdellä prosessilla, ei pelkästään ohjata käyttäjää verkkosivustolle. Mikä tahansa hotelli on agenttivalmis, kun sen profiili on julkaistu Winkissä." },
   { title: "Voinko upottaa hotellikortteja tai karttoja ilman täyttä API-integraatiota?", content: "Kyllä. Studio voi luoda Web-komponentteja, kuten hotellikortteja, karttoja, ruudukkoja ja muita upotettuja elementtejä, kun kevyempi reitti riittää — Booking Engine hoitaa varauksen taustalla." },
-  { title: "Voivatko hotelliryhmät käyttää kehittäjäkäyttöoikeutta?", content: "Kyllä. Hotelliryhmät ja tekniset operaattorit voivat käyttää kehittäjäkäyttöoikeutta yhdistääkseen Wink-tarjonnan, varaus- ja raportointityönkulut sisäisiin järjestelmiin." },
-  { title: "Mistä kehittäjien tulisi aloittaa?", content: "Yhdistä MCP-palvelimeen, lue Build on Wink -dokumentaatio, luo OAuth2-tunnukset ja ala rakentaa. Ei ole pääsynhakua eikä hyväksymisvaihetta." },
-  { title: "Onko kehittäjäkäyttöoikeus avoin kaikille?", content: "Kyllä. Dokumentaatio ja MCP-palvelin ovat julkisia, ja kuka tahansa kehittäjä voi luoda OAuth2-tunnukset ja aloittaa rakentamisen — ei ole pääsynhakua eikä hyväksymisvaihetta." },
+  { title: "Voivatko hotelliryhmät käyttää kehittäjäpääsyä?", content: "Kyllä. Hotelliryhmät ja tekniset toimijat voivat käyttää kehittäjäpääsyä yhdistääkseen Wink-tarjonnan, varaus- ja raportointityönkulut sisäisiin järjestelmiin." },
+  { title: "Mistä kehittäjien tulisi aloittaa?", content: "Yhdistä MCP-palvelimeen, lue Build on Wink -dokumentaatio, luo OAuth2-tunnukset ja aloita rakentaminen staging-ympäristössä — ei pääsypyynnön tarvetta, ei odotusaikaa. Kun olet valmis, luo sovellus tuotantoon ja osoita koodisi tuotantourleihin." },
+  { title: "Onko kehittäjäpääsy avoin kaikille?", content: "Kyllä. Dokumentaatio ja MCP-palvelin ovat julkisia, ja kuka tahansa kehittäjä voi luoda OAuth2-tunnukset ja aloittaa rakentamisen stagingissä ilman lupaa. Tuotantoon siirtyminen ei myöskään vaadi hyväksyntää. Vain kanavapäälliköt ja matkatoimistot käyvät sertifioinnin läpi." },
 ];
 
 <div class="not-content mkt-page">
 
 <FaqJsonLd faqs={faqs} />
 
-<BreadcrumbJsonLd items={[{ name: "Etusivu", path: "/" }, { name: "Ratkaisut", path: "/solutions/" }, { name: "Rakentajat" }]} />
+<BreadcrumbJsonLd items={[{ name: "Etusivu", path: "/" }, { name: "Ratkaisut", path: "/solutions/" }, { name: "Builders" }]} />
 
-{/* Hero — tumma, koko leveys (katso `data-full-bleed` src/styles/tweaks.css).
-    Leipäpolku on BÄNDIN SISÄLLÄ: se jakaa hero-sisältösarakkeen, joten
-    se kohdistuu merkin ja otsikon kanssa eikä ole Starlightin
-    kapeammassa oletussarakkeessa kokolevyisen bändin yläpuolella. */}
+{/* Hero — dark, full-bleed (see `data-full-bleed` in src/styles/tweaks.css).
+    The breadcrumb lives INSIDE the band: it shares the hero's content column, so
+    it lines up with the badge and headline instead of sitting in Starlight's
+    narrower default column above a full-width band. */}
 <section data-full-bleed class="relative w-full overflow-hidden border-b border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white">
   <div class="pointer-events-none absolute inset-0" aria-hidden="true">
     <div class="absolute -left-24 -top-10 size-96 rounded-full bg-[#ff6b35]/20 blur-[120px]"></div>
     <div class="absolute -bottom-16 -right-16 size-[34rem] rounded-full bg-[#9333ea]/25 blur-[140px]"></div>
   </div>
   <div class="@container relative mx-auto w-full max-w-7xl px-4 pb-20 pt-8 lg:pb-24">
-    <nav aria-label="Leipäpolku" class="text-sm text-white/60">
+    <nav aria-label="Breadcrumb" class="text-sm text-white/60">
       <a href="/" class="transition-colors hover:text-white">Etusivu</a>
       <span class="px-1.5 text-white/55">/</span>
       <a href="/solutions/" class="transition-colors hover:text-white">Ratkaisut</a>
       <span class="px-1.5 text-white/55">/</span>
-      <span class="text-white">Rakentajat</span>
+      <span class="text-white">Builders</span>
     </nav>
     <div class="mt-10 grid items-center gap-12 lg:mt-12 lg:min-h-[33rem] lg:grid-cols-2 lg:gap-16">
       <div>
@@ -70,43 +71,43 @@ export const faqs = [
         <h1 class="font-heading mt-6 text-4xl font-extrabold leading-[1.05] tracking-tight text-balance @lg:text-5xl @2xl:text-[3.25rem]">
           Rakenna hotellikauppaa <span class="bg-gradient-to-r from-[#ff8a5c] via-[#ec4899] to-[#a855f7] bg-clip-text text-transparent">tuotteeseesi.</span>
         </h1>
-        <p class="mt-5 max-w-xl text-pretty text-lg text-white/75 @lg:text-xl">API-ensimmäinen hotellikauppa: haku, varaus, maksu, 64+ webhookia, attribuutio ja AI-siirto — isännöidyllä MCP-palvelimella, jotta agentit lukevat reaaliaikaiset sopimukset, ja Booking Engine hoitaa täytön taustalla.</p>
+        <p class="mt-5 max-w-xl text-pretty text-lg text-white/75 @lg:text-xl">API-ensimmäinen hotellikauppa: haku, varaus, maksu, {deliveredWebhookEventCount} webhookia, attribuutio ja AI-siirto — isännöidyllä MCP-palvelimella, jotta agentit lukevat reaaliaikaiset sopimukset, ja Booking Engine hoitaa täytön taustalla.</p>
         <div class="mt-8 flex flex-col gap-3 sm:flex-row">
           <a href="/developers/build-on-wink/" class="inline-flex h-12 items-center justify-center rounded-md bg-[#ff6b35] px-7 text-base font-semibold text-white transition-colors hover:bg-[#e85b29]">Katso dokumentaatio</a>
-          <a href="/api/overview/" class="inline-flex h-12 items-center justify-center rounded-md bg-white/10 px-7 text-base font-medium text-white ring-1 ring-white/20 backdrop-blur transition-colors hover:bg-white/15">Aloita</a>
+          <a href="/developers/quickstart/" class="inline-flex h-12 items-center justify-center rounded-md bg-white/10 px-7 text-base font-medium text-white ring-1 ring-white/20 backdrop-blur transition-colors hover:bg-white/15">Aloita</a>
         </div>
         <div class="mt-7 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-white/65">
           <span class="inline-flex items-center gap-1.5"><IconCheck class="size-4 text-[#ff8a5c]" /> REST + OAuth2 + SDK:t</span>
           <span class="inline-flex items-center gap-1.5"><IconCheck class="size-4 text-[#ff8a5c]" /> Isännöity MCP-palvelin</span>
-          <span class="inline-flex items-center gap-1.5"><IconCheck class="size-4 text-[#ff8a5c]" /> 64+ webhook-tapahtumaa</span>
+          <span class="inline-flex items-center gap-1.5"><IconCheck class="size-4 text-[#ff8a5c]" /> {deliveredWebhookEventCount} webhook-tapahtumaa</span>
         </div>
       </div>
-      {/* Terminal-visualisointi — vaihdettava infografiikka (infographics/DevTerminal.astro) */}
+      {/* Terminal visual — swappable infographic (infographics/DevTerminal.astro) */}
       <DevTerminal />
   </div>
 </div>
 </section>
 
-{/* Suora vastaus */}
+{/* Direct answer */}
 <section class="mx-auto w-full max-w-3xl px-4 pt-24 pb-24 text-center">
   <p class="mkt-kicker text-primary">Mitä kehittäjät voivat rakentaa Winkillä?</p>
-  <p class="mkt-sub text-muted-foreground mt-5">Kehittäjät voivat rakentaa hotellihakua, varausta, maksua, webhookkeja, attribuutiota, raportointia, AI-siirtoa ja upotettuja kaupankäyntityönkulkuja omiin tuotteisiinsa. Wink-kehittäjäkäyttöoikeus toimii hotellin hallitun tarjonnan Extranetin kautta, kumppanikontekstin verkon pohjalta, AI-siirron Agentic AI:n kautta ja Booking Enginen täytön hotellikohtaiseen kassaprosessiin, maksuun, vahvistukseen ja varauksen loppuunsaattamiseen.</p>
+  <p class="mkt-sub text-muted-foreground mt-5">Kehittäjät voivat rakentaa hotellihakua, varausta, maksua, webhookkeja, attribuutiota, raportointia, AI-siirtoa ja upotettua kaupankäyntiä omiin tuotteisiinsa. Wink-kehittäjäpääsy toimii hotellin hallitun tarjonnan Extranetin, alustan verkon partnerikontekstin, Agentic AI:n AI-siirron ja Booking Enginen hotellikohtaisen kassaprosessin, maksun, vahvistuksen ja varauksen viimeistelyn kanssa.</p>
 </section>
 
-{/* Kenelle se on */}
+{/* Who it's for */}
 <section class="@container w-full border-y border-border bg-muted/30">
   <div class="mx-auto w-full max-w-7xl px-4 py-24">
     <div class="mx-auto mb-14 max-w-2xl text-center">
-      <p class="mkt-kicker text-primary">Kenelle se on</p>
+      <p class="mkt-kicker text-primary">Kenelle se on tarkoitettu</p>
       <h2 class="mkt-h2 font-heading mt-3">Tiimeille, jotka rakentavat hotellikauppaa, eivät vain lue dokumentaatiota.</h2>
-      <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">Kehittäjäkäyttöoikeus sopii tuote-, insinööri-, AI-, alusta- ja operatiivisille tiimeille. Arvioitko integraatiota AI-tuotteelle, pankille tai super-sovellukselle? Katso <a href="/platforms/" class="text-primary underline underline-offset-2">Alustat &amp; AI</a>.</p>
+      <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">Kehittäjäpääsy sopii tuote-, insinööri-, AI-, alusta- ja operatiivisille tiimeille. Arvioitko integraatiota AI-tuotteelle, pankille tai super-sovellukselle? Katso <a href="/platforms/" class="text-primary underline underline-offset-2">Alustat &amp; AI</a>.</p>
     </div>
     <div class="mx-auto grid max-w-4xl gap-5 @md:grid-cols-2">
       {[
-        { icon: IconBox, title: "Tuotetiimit", desc: "Lisää hotellikauppa olemassa olevaan sovellukseen tai alustaan kehittäjäkäyttöoikeuden ja Booking Enginen avulla." },
-        { icon: IconCpu, title: "AI-tuotetiimit", desc: "Ohjaa avustajan hotellitarkoitus hallittuihin varausprosesseihin Agentic AI:n ja MCP-palvelimen avulla." },
+        { icon: IconBox, title: "Tuotetiimit", desc: "Lisää hotellikauppa olemassa olevaan sovellukseen tai alustaan kehittäjäpääsyn ja Booking Enginen avulla." },
+        { icon: IconCpu, title: "AI-tuotetiimit", desc: "Ohjaa avustajan ohjaama hotellitarkoitus hallittuihin varausprosesseihin Agentic AI:n ja MCP-palvelimen avulla." },
         { icon: IconAffiliate, title: "Toimistot & DMC:t", desc: "Rakenna räätälöityjä myymälöitä, varausprosesseja tai matkaohjelmatuotteita Web-komponenteilla." },
-        { icon: IconRefresh, title: "Kanavanhallinta / PMS", desc: "Koordinoi saatavuus, hinnat, varaukset ja niihin liittyvät tapahtumavirrat." },
+        { icon: IconRefresh, title: "Kanavapäällikkö / PMS", desc: "Koordinoi saatavuutta, hintoja, varauksia ja niihin liittyviä tapahtumavirtoja." },
       ].map((c) => (
         <div class="flex flex-col rounded-2xl border border-border bg-card p-6">
           <span class="mb-4 flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-white"><c.icon class="size-6" /></span>
@@ -118,7 +119,7 @@ export const faqs = [
   </div>
 </section>
 
-{/* Ongelma — tumma ennen/jälkeen */}
+{/* The problem — dark before/after */}
 <section class="relative w-full overflow-hidden border-y border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white">
   <div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
     <div class="absolute -left-24 -top-10 size-80 rounded-full bg-[#ff6b35]/20 blur-[100px]"></div>
@@ -127,8 +128,8 @@ export const faqs = [
   </div>
   <div class="@container relative mx-auto w-full max-w-5xl px-4 py-24">
     <div class="mx-auto mb-12 max-w-2xl text-center">
-      <p class="mkt-kicker text-[#ff8a5c]">Miksi rakentaa sen päälle</p>
-      <h2 class="mkt-h2 font-heading mt-3">Hotellikortti on helppo. Hotellivarausjärjestelmä ei ole.</h2>
+      <p class="mkt-kicker text-[#ff8a5c]">Miksi rakentaa sille</p>
+      <h2 class="mkt-h2 font-heading mt-3">Hotellikortti on helppo. Hotellivarauksen järjestelmä ei ole.</h2>
       <p class="mkt-sub mx-auto mt-4 max-w-xl text-white/70">Hotellikauppa tarvitsee tarjontasäännöt, saatavuuden, hinnat, tarjoukset, käytännöt, kassaprosessin, maksun, vahvistuksen, attribuution ja raportoinnin. Rakenna näiden kerrosten päälle sen sijaan, että rakentaisit ne uudelleen.</p>
     </div>
     <div class="grid gap-6 @md:grid-cols-2">
@@ -136,7 +137,7 @@ export const faqs = [
         <h3 class="font-heading text-lg font-semibold text-white/60">Rakenna itse</h3>
         <ul class="mt-5 space-y-3">
           {[
-            "Rakenna tarjonta-, hinta- ja käytäntösäännöt uudelleen",
+            "Rakenna uudelleen tarjonta-, hinta- ja käytäntösäännöt",
             "Yhdistä kassaprosessi hotellikohtaisiin tietoihin",
             "Yhdistä attribuutio istuntojen yli",
             "Hallinnoi maksuja, hyvityksiä ja selvityksiä",
@@ -154,7 +155,7 @@ export const faqs = [
             "Integroi Extranetin hotellin hyväksymä tarjonta",
             "Booking Engine hoitaa kassaprosessin, maksun ja vahvistuksen",
             "6 kuukauden attribuutio säilyy klikkausta kohden",
-            "Tilaa 64+ webhook-tapahtumaa",
+            `Tilaa ${deliveredWebhookEventCount} webhook-tapahtumaa`,
             "Rakenteinen AI-siirto MCP:n ja Agentic AI:n kautta",
             "1,5 % + kustannusperusteinen käsittely — Booking Engine jokaisen siirron alla",
           ].map((b) => (
@@ -166,19 +167,19 @@ export const faqs = [
   </div>
 </section>
 
-{/* Malli — miten se toimii numeroidut kortit */}
+{/* The model — how it works numbered cards */}
 <section class="@container mx-auto w-full max-w-7xl px-4 pt-24 pb-24">
   <div class="mx-auto mb-14 max-w-2xl text-center">
     <p class="mkt-kicker text-primary">Malli</p>
     <h2 class="mkt-h2 font-heading mt-3">Ensimmäisestä kutsusta vahvistettuun varaukseen.</h2>
-    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">Yksi integraatiopolku yhdistämisestä täyttöön.</p>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">Yksi integraatiopolku yhteydestä täyttöön.</p>
   </div>
   <ol class="grid gap-5 md:grid-cols-3 xl:grid-cols-5">
     {[
       { t: "Yhdistä", d: "Lisää isännöity MCP-palvelin tai luo OAuth2-tunnukset aloittaaksesi reaaliaikaisten sopimusten kanssa." },
       { t: "Lue reaaliaikaiset sopimukset", d: "Hae toimintoja ja lue nykyiset pyyntö- ja vastausskeemat — ei arvailua, ei vanhentuneita dokumentteja." },
-      { t: "Rakenna työnkulku", d: "Yhdistä haku, saatavuus, varaus, maksu ja raportointi tuotteeseesi." },
-      { t: "Tilaa tapahtumat", d: "Reagoi 64+ webhook-tapahtumaan: varauksen tila, maksut, hyvitykset, peruutukset ja kanavamuutokset." },
+      { t: "Rakenna prosessi", d: "Yhdistä haku, saatavuus, varaus, maksu ja raportointi tuotteeseesi." },
+      { t: "Tilaa tapahtumat", d: `Reagoi ${deliveredWebhookEventCount} webhook-tapahtumaan: varauksen tila, maksut, hyvitykset, peruutukset ja kanavamuutokset.` },
       { t: "Täytä Booking Enginessä", d: "Jokainen kutsu ratkaistaan Booking Enginen kautta hotellikohtaiseen kassaprosessiin, maksuun ja vahvistukseen." },
     ].map((s, i) => (
       <li class="rounded-2xl border border-border bg-card p-6">
@@ -190,7 +191,8 @@ export const faqs = [
   </ol>
 </section>
 
-{/* Agentin pika-aloitus — siirretty tänne /agentic-ai/-sivulta, jotta teesit-sivu perustelee ja tämä sivu toteuttaa. Linkitetty /agentic-ai/#agents. */}
+{/* Agent quickstart — moved here from /agentic-ai/ so the thesis page argues
+    the case and this page carries the implementation. Linked from /agentic-ai/#agents. */}
 <section id="agent-quickstart" class="@container w-full border-y border-border bg-muted/30" style="scroll-margin-top:5rem">
   <div class="mx-auto w-full max-w-5xl px-4 py-24">
     <div class="mx-auto mb-12 max-w-2xl text-center">
@@ -200,49 +202,49 @@ export const faqs = [
     </div>
 
     <div class="grid gap-6 @lg:grid-cols-2">
-      {/* Yhdistä */}
+      {/* Connect */}
       <div class="flex flex-col rounded-2xl border border-border bg-card p-6">
         <span class="mb-4 flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-white"><IconPlug class="size-6" /></span>
         <h3 class="font-heading text-lg font-semibold">1 · Yhdistä MCP-palvelimeen</h3>
-        <p class="text-muted-foreground mt-2 text-sm">Streamattava HTTP-päätepiste (SSE-varapolku osoitteessa <code class="rounded bg-muted px-1 py-0.5 text-xs">/sse</code>). Claude Code -komennolla:</p>
+        <p class="text-muted-foreground mt-2 text-sm">Streamattava HTTP-päätepiste (SSE-varayhteys osoitteessa <code class="rounded bg-muted px-1 py-0.5 text-xs">/sse</code>). Claude Code -komennolla:</p>
         <pre class="mt-4 overflow-x-auto rounded-lg bg-[#1f0a40] p-4 font-mono text-xs leading-relaxed text-white/90"><code>claude mcp add --transport http \
   wink-docs https://docs.mcp.wink.travel/mcp</code></pre>
         <p class="text-muted-foreground mt-3 text-xs">Toimii myös Codexin, Cursorin ja VS Coden kanssa — katso <a href="/developers/mcp/" class="text-primary underline underline-offset-2">MCP-dokumentaatio</a>.</p>
       </div>
 
-      {/* Haku */}
+      {/* Search */}
       <div class="flex flex-col rounded-2xl border border-border bg-card p-6">
         <span class="mb-4 flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-white"><IconSparkles class="size-6" /></span>
-        <h3 class="font-heading text-lg font-semibold">2 · Hae reaaliaikaisesta API:sta</h3>
+        <h3 class="font-heading text-lg font-semibold">2 · Hae reaaliaikaista API:a</h3>
         <p class="text-muted-foreground mt-2 text-sm">Kaksi työkalua ratkaisee tarkoituksen todellisiksi toiminnoiksi ja konseptidokumenteiksi:</p>
         <ul class="mt-4 space-y-2 text-sm">
-          <li class="flex items-start gap-2"><code class="mt-0.5 rounded bg-muted px-1.5 py-0.5 text-xs text-primary">api_search</code><span class="text-muted-foreground">etsi kutsuttava toiminto — esim. "inventory lookup", "create booking", "payment receipt"</span></li>
-          <li class="flex items-start gap-2"><code class="mt-0.5 rounded bg-muted px-1.5 py-0.5 text-xs text-primary">docs_search</code><span class="text-muted-foreground">etsi käsitteitä — "authentication", "webhooks", "attribution"</span></li>
+          <li class="flex items-start gap-2"><code class="mt-0.5 rounded bg-muted px-1.5 py-0.5 text-xs text-primary">api_search</code><span class="text-muted-foreground">etsi kutsuttava toiminto — esim. "varaston haku", "varauksen luonti", "maksukuitti"</span></li>
+          <li class="flex items-start gap-2"><code class="mt-0.5 rounded bg-muted px-1.5 py-0.5 text-xs text-primary">docs_search</code><span class="text-muted-foreground">etsi käsitteitä — "autentikointi", "webhookit", "attribuutio"</span></li>
         </ul>
         <p class="text-muted-foreground mt-3 text-xs">Jokainen tulos palauttaa <code class="rounded bg-muted px-1 py-0.5 text-xs">wink://</code> URI:n — avaa toiminto, sen pyyntö-/vastausskeema tai tehtävän <strong class="text-foreground/80">resepti</strong>.</p>
       </div>
 
-      {/* Rakenna */}
+      {/* Build */}
       <div class="flex flex-col rounded-2xl border border-border bg-card p-6">
         <span class="mb-4 flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-white"><IconTool class="size-6" /></span>
-        <h3 class="font-heading text-lg font-semibold">3 · Rakenna AI Skillillä</h3>
-        <p class="text-muted-foreground mt-2 text-sm"><code class="rounded bg-muted px-1.5 py-0.5 text-xs">wink-api-builder</code> käyttää MCP-palvelinta totuuden lähteenä: api_search → reaaliaikaiset sopimukset → autentikointi → varmennettu koodi, ja merkitsee kaikki nykyisen API:n poikkeamat.</p>
+        <h3 class="font-heading text-lg font-semibold">3 · Rakenna AI-taidolla</h3>
+        <p class="text-muted-foreground mt-2 text-sm"><code class="rounded bg-muted px-1.5 py-0.5 text-xs">wink-api-builder</code> käyttää MCP-palvelinta totuuden lähteenä: api_search → reaaliaikaiset sopimukset → autentikointi → varmennettu koodi, ja merkitsee kaikki ristiriidat nykyisen API:n kanssa.</p>
         <p class="text-muted-foreground mt-3 text-xs">Toimii Claude Coden, Codexin ja Cursorin kanssa — katso <a href="/developers/ai-skills/" class="text-primary underline underline-offset-2">AI Skills</a>.</p>
       </div>
 
-      {/* Täytä */}
+      {/* Fulfill */}
       <div class="flex flex-col rounded-2xl border border-border bg-card p-6">
         <span class="mb-4 flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-white"><IconCalendarCheck class="size-6" /></span>
         <h3 class="font-heading text-lg font-semibold">4 · Siirrä Booking Enginelle</h3>
-        <p class="text-muted-foreground mt-2 text-sm">Luo varaus API:n kautta ja Booking Engine hoitaa täytön — kassaprosessi, maksu, vahvistus ja varauksen synkronointi yhdistettyyn PMS:ään tai kanavanhallintaan, lähdetiedot säilyttäen.</p>
-        <p class="text-muted-foreground mt-3 text-xs">Tilaa <code class="rounded bg-muted px-1 py-0.5 text-xs">booking.created</code> ja 63 muuta tapahtumaa reagoidaksesi reaaliajassa.</p>
+        <p class="text-muted-foreground mt-2 text-sm">Luo varaus API:n kautta ja Booking Engine hoitaa sen — kassaprosessi, maksu, vahvistus ja varauksen synkronointi yhdistettyyn PMS:ään tai kanavapäällikköön, lähdetiedot säilyttäen.</p>
+        <p class="text-muted-foreground mt-3 text-xs">Tilaa <code class="rounded bg-muted px-1 py-0.5 text-xs">booking.create</code> ja 63 muuta tapahtumaa reagoidaksesi reaaliajassa.</p>
       </div>
     </div>
   </div>
 </section>
 
 
-{/* Tunnusomainen ominaisuus — integraatiot kokoontuvat Booking Engineen */}
+{/* Signature feature — integrations converge on Booking Engine */}
 <section class="relative w-full overflow-hidden border-y border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white">
   <div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
     <div class="absolute left-1/2 top-1/2 size-[28rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#9333ea]/25 blur-[130px]"></div>
@@ -250,36 +252,36 @@ export const faqs = [
   </div>
   <div class="@container relative mx-auto w-full max-w-6xl px-4 py-24">
     <div class="mx-auto mb-12 max-w-2xl text-center">
-      <p class="mkt-kicker text-[#ff8a5c]">Yksi moottori, jokainen integraatio</p>
-      <h2 class="mkt-h2 font-heading mt-3">Jokainen integraatio kokoontuu Booking Engineen.</h2>
-      <p class="mkt-sub mx-auto mt-4 max-w-xl text-white/70">Miten tuotteesi sitten lähettääkin kysyntää — API:n, agentin, komponentin tai linkin kautta — varaus ratkaistaan yhdessä hallitsemassasi paikassa.</p>
+      <p class="mkt-kicker text-[#ff8a5c]">Yksi moottori, kaikki integraatiot</p>
+      <h2 class="mkt-h2 font-heading mt-3">Jokainen integraatio päätyy Booking Engineen.</h2>
+      <p class="mkt-sub mx-auto mt-4 max-w-xl text-white/70">Riippumatta siitä, miten tuotteesi lähettää kysynnän — API:n, agentin, komponentin tai linkin kautta — varaus ratkaistaan yhdessä hallitsemassasi paikassa.</p>
     </div>
 
-    {/* Tunnusomainen infografiikka — vaihdettava (infographics/RouteConvergence.astro) */}
+    {/* Signature infographic — swappable (infographics/RouteConvergence.astro) */}
     <RouteConvergence
-      routes={["REST API", "MCP / agentit", "Web Components", "WinkLinks", "Studio + verkosto", "Kumppanisovellukset"]}
+      routes={["REST API", "MCP / agents", "Web Components", "WinkLinks", "Studio + network", "Partner apps"]}
       outcomeTitle="Vahvistettu varaus"
-      outcomeNote="Maksu vastaanotettu, vieras vahvistettu, attribuutio ja lähdetiedot säilytetty."
+      outcomeNote="Maksu suoritettu, vieras vahvistettu, attribuutio ja lähdetiedot säilytetty."
     />
   </div>
 </section>
 
-{/* Valitse pinta — liukuvärimerkinnät, kohdistetut CTA:t */}
+{/* Choose the surface — gradient badges, aligned CTAs */}
 <section class="@container w-full border-y border-border bg-muted/30">
   <div class="mx-auto w-full max-w-7xl px-4 py-24">
     <div class="mx-auto mb-14 max-w-2xl text-center">
-      <p class="mkt-kicker text-primary">Valitse pintasi</p>
-      <h2 class="mkt-h2 font-heading mt-3">Valitse oikea pinta ennen kuin rakennat liikaa.</h2>
-      <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">Täysin räätälöidystä integraatiosta kevyempään upotettuun reittiin.</p>
+      <p class="mkt-kicker text-primary">Valitse käyttöliittymä</p>
+      <h2 class="mkt-h2 font-heading mt-3">Valitse oikea käyttöliittymä ennen kuin rakennat liikaa.</h2>
+      <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">Täysin räätälöidystä integraatiosta kevyempään upotettuun ratkaisuun.</p>
     </div>
     <div class="grid gap-5 @md:grid-cols-2 @2xl:grid-cols-3">
       {[
-        { icon: IconCode, title: "API & MCP", desc: "Rakenna haku, varaus, maksu, webhook, attribuutio ja raportointityönkulut REST + OAuth2 -pohjaisesti — MCP-palvelimen avulla reaaliaikaisiin sopimuksiin.", href: "/api/overview" },
-        { icon: IconRobot, title: "Agentic AI", desc: "Anna AI-agenttien hakea, varata ja maksaa reaaliaikaisella hotellitarjonnalla — suorittaen varauksen, ei vain ohjaten käyttäjiä verkkosivulle.", href: "/agentic-ai/" },
-        { icon: IconBolt, title: "Booking Engine", desc: "Lataa hotellikohtaiset tiedot ja hoitaa kassaprosessin, maksun, vahvistuksen ja varauksen loppuunsaattamisen.", href: "/products/booking-engine/" },
+        { icon: IconCode, title: "API & MCP", desc: "Rakenna haku-, varaus-, maksu-, webhook-, attribuutio- ja raportointityönkulut REST + OAuth2 -pohjaisesti — MCP-palvelimen avulla reaaliaikaisiin sopimuksiin.", href: "/api/overview" },
+        { icon: IconRobot, title: "Agentic AI", desc: "Anna AI-agenttien hakea, varata ja maksaa reaaliaikaisen hotellitarjonnan perusteella — varaus tehdään kokonaan, ei pelkästään ohjata käyttäjiä verkkosivulle.", href: "/agentic-ai/" },
+        { icon: IconBolt, title: "Booking Engine", desc: "Lataa hotellikohtaiset tiedot ja hoitaa kassaprosessin, maksun, vahvistuksen ja varauksen viimeistelyn.", href: "/products/booking-engine/" },
         { icon: IconComponents, title: "Web Components", desc: "Lisää varattavia kortteja, karttoja, ruudukkoja, painikkeita ja hotellimoduuleja verkkosivulle tai tuotepintaan.", href: "/developers/build-on-wink/" },
-        { icon: IconDeviceMobile, title: "WinkLinks", desc: "Julkaise kuratoituja hotellimerkintöjä yhden mobiiliensisältöisen julkisen linkin alla.", href: "/products/winklinks/" },
-        { icon: IconSearch, title: "Studio + verkosto", desc: "Hallitse kumppanien pääsyä, myyntikanavia ja attribuutiokontekstia kumppanivetoinen kysyntä.", href: "/products/studio/" },
+        { icon: IconDeviceMobile, title: "WinkLinks", desc: "Julkaise kuratoituja hotellimerkintöjä yhden mobiiliensimmäisen julkisen linkin alla.", href: "/products/winklinks/" },
+        { icon: IconSearch, title: "Studio + verkosto", desc: "Hallitse partneripääsyä, myyntikanavia ja attribuutiokontekstia partneriohjattuun kysyntään.", href: "/products/studio/" },
       ].map((c) => (
         <a href={c.href} class="group flex h-full flex-col rounded-2xl border border-border bg-card p-6 transition-colors hover:border-primary/40">
           <span class="mb-4 flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-white"><c.icon class="size-6" /></span>
@@ -292,22 +294,22 @@ export const faqs = [
   </div>
 </section>
 
-{/* Web-komponenttinäyttö — hyöty */}
+{/* Web component showcase — the payoff */}
 <section class="@container mx-auto w-full max-w-7xl px-4 pt-24">
   <div class="grid items-center gap-12 @lg:grid-cols-2 @lg:gap-16">
     <div class="@lg:order-2">
       <p class="mkt-kicker text-primary">Täysi valikoima</p>
       <h2 class="mkt-h2 font-heading mt-3">Täydestä API-rakennuksesta valmiiseen komponenttiin.</h2>
-      <p class="text-muted-foreground mt-4 text-pretty @lg:text-lg">Mene niin syvälle kuin täysi REST + MCP -integraatio — tai kun se on liikaa tarpeeseen, pudota Studio Web Component: hotellikortit, kartat, ruudukot ja varausmoduulit. Joka tapauksessa Booking Engine hoitaa varauksen taustalla.</p>
+      <p class="text-muted-foreground mt-4 text-pretty @lg:text-lg">Mene niin syvälle kuin täysi REST + MCP -integraatio — tai kun se on liikaa tarpeeseen, käytä Studio Web-komponenttia: hotellikortteja, karttoja, ruudukkoja ja varausmoduuleja. Joka tapauksessa Booking Engine hoitaa varauksen taustalla.</p>
       <ul class="mt-6 space-y-2.5">
-        {["Täysi REST + OAuth2 API, isännöity MCP-palvelin ja SDK:t", "Tai varattavat Web Components — kortit, kartat ja ruudukot", "64+ webhook-tapahtumaa reaaliaikaiseen selvitykseen", "Booking Engine täyttää jokaisen pinnan alla"].map((p) => (
+        {["Täysi REST + OAuth2 API, isännöity MCP-palvelin ja generoituja asiakkaita", "Tai varattavat Web-komponentit — kortit, kartat ja ruudukot", `${deliveredWebhookEventCount} webhook-tapahtumaa reaaliaikaiseen selvitykseen`, "Booking Engine täyttää jokaisen käyttöliittymän alla"].map((p) => (
           <li class="flex items-start gap-2.5"><IconCheck class="mt-0.5 size-5 shrink-0 text-primary" /><span class="text-sm text-foreground/90">{p}</span></li>
         ))}
       </ul>
       <a href="/developers/build-on-wink/" class="mt-7 inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline">Katso Build on Wink -dokumentaatio <IconArrowRight class="size-4" /></a>
     </div>
     <div class="@lg:order-1">
-      <DeviceFrame variant="plain" src="/mockups/studio/web-component/embedable-hotel-card.webp" alt="Winkin upotettava hotellikortti Web Component" class="mx-auto max-w-[300px]" />
+      <DeviceFrame variant="plain" src="/mockups/studio/web-component/embedable-hotel-card.webp" alt="Winkin upotettava hotellikortti Web-komponentti" class="mx-auto max-w-[300px]" />
     </div>
   </div>
 </section>
@@ -319,7 +321,7 @@ export const faqs = [
   items={faqs}
 />
 
-{/* Lopullinen CTA */}
+{/* Final CTA */}
 <section class="relative w-full overflow-hidden border-y border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white">
   <div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
     <div class="absolute -left-20 -bottom-16 size-80 rounded-full bg-[#ff6b35]/20 blur-[110px]"></div>
@@ -327,7 +329,7 @@ export const faqs = [
   </div>
   <div class="relative mx-auto w-full max-w-7xl px-4 py-24 text-center">
     <h2 class="mkt-h2 font-heading">Valmis rakentamaan hotellikauppaa tuotteeseesi?</h2>
-    <p class="mx-auto mt-4 max-w-2xl text-pretty text-white/70 @lg:text-lg">Yhdistä MCP-palvelimeen, lue dokumentaatio, valitse oikea integraatiopinta. Mikään ei ole lukittu — aloita milloin tahansa, kun tuotteesi on valmis yhdistämään hyväksytty hotellikysyntä Booking Enginen täyttöön.</p>
+    <p class="mx-auto mt-4 max-w-2xl text-pretty text-white/70 @lg:text-lg">Yhdistä MCP-palvelimeen, lue dokumentaatio, valitse oikea integraatiopinta. Mikään ei ole estetty — aloita milloin tahansa, kun tuotteesi on valmis yhdistämään hyväksytty hotellikysyntä Booking Enginen täyttöön.</p>
     <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
       <a href="/developers/build-on-wink/" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-[#ff6b35] px-8 text-base font-semibold text-white hover:bg-[#e85b29] sm:w-auto">Katso dokumentaatio</a>
       <a href="/api/overview/" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-white px-8 text-base font-semibold text-[#1f0a40] hover:bg-white/90 sm:w-auto">Aloita</a>

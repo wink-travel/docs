@@ -1,0 +1,198 @@
+---
+title: Rýchly štart
+description: "Od nuly k fungujúcej integrácii v testovacom prostredí: získajte prihlasovacie údaje, vyhľadajte aktuálne ceny hotelov cez Partner API a pošlite cestujúcich na rezervačnú stránku, ktorá vám pripíše províziu."
+sidebar:
+  order: 0.5
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+Tento návod vás prevedie od úplného začiatku k fungujúcej integrácii približne za 30 minút. Na konci budete mať:
+
+- aktuálne ceny hotelov v meste z Partner API,
+- rezervačný odkaz, ktorý pripisuje rezervácie na váš účet,
+- testovaciu rezerváciu a webhook, ktorý vás o nej informuje.
+
+Všetko prebieha v **stagingu**, našom testovacom prostredí. Nemusíte si u nás žiadať prístup a prechod do produkcie neskôr nevyžaduje schválenie.
+
+## Je tento návod pre vás ten pravý?
+
+| Chcete… | Začať tu |
+|---|---|
+| Zobraziť hotely vo vašej aplikácii, na webe alebo v AI produkte a posielať cestujúcich na rezerváciu, pričom získate províziu | **Tento návod** |
+| Rezervovať v mene svojich klientov ako licencovaná cestovná kancelária | Tento návod do kroku 5, potom [Rezervovanie ako cestovná kancelária](#booking-as-a-travel-agency) |
+| Vložiť rezervovateľné hotely bez písania integrácie | [Web Components](/sk/integrations/web-components/) |
+| Nechať AI agenta vyhľadávať a rezervovať | [MCP Servers](/sk/developers/mcp/) a [Agentic Payments](/sk/developers/agentic-payments/) |
+| Pripojiť channel manager alebo PMS | [Pridajte svoj Channel Manager](/sk/guides/integrators/add-your-channel-manager/) |
+
+## Ako to funguje
+
+Používate **Partner API** na vyhľadávanie hotelov a ich aktuálnych cien. Každý hotel má stabilný `urlName`. Ten premeníte na odkaz do Wink Booking Engine, `book.wink.travel`, ktorý nesie vaše ID. Cestujúci tam rezervuje a platí a rezervácia sa pripíše na váš účet.
+
+## Pred začiatkom
+
+Budete potrebovať:
+
+- [`grpcurl`](https://github.com/fullstorydev/grpcurl), alebo Postman či Insomnia. Partner API je gRPC, nie REST.
+- `curl`.
+
+:::note
+Staging sa uspí, keď ho nikto nepoužíva. Prvý dotaz po prestávke môže trvať asi minútu, kým sa servery prebudia.
+:::
+
+## Krok 1: Vytvorte si staging účet
+
+Staging je úplne oddelený od produkcie, má vlastné prihlasovacie údaje a účty.
+
+<Steps>
+1. Choďte na [staging-app.wink.travel](https://staging-app.wink.travel), kliknite na `Sign-In / Register` a zaregistrujte sa.
+
+2. Kliknite na `Accounts` v ľavom bočnom paneli, potom na `Create` a vyberte **I am an Affiliate**. Rezervácie, ktoré pošlete, sa pripíšu na tento účet. Viac na [Create Account](/sk/portal/create-account/).
+</Steps>
+
+## Krok 2: Vytvorte aplikáciu
+
+Aplikácia poskytne vášmu kódu prihlasovacie údaje.
+
+<Steps>
+1. Na karte svojho účtu kliknite na `Actions` > `Manage account`, potom na záložku `Applications`.
+
+2. Kliknite na `Create new application`, pomenujte ju a vyberte **Machine-to-machine** ako typ klienta.
+
+3. V scope vyberte **Inventory & rates** (read). Partner API vyžaduje `inventory.read`.
+
+4. Kliknite na `Create application` a skopírujte **Client ID** a **Client secret**. Secret sa zobrazí iba raz a neskôr ho nemožno získať.
+</Steps>
+
+Viac o typoch klientov a scope nájdete v [Applications](/sk/account/applications/).
+
+## Krok 3: Získajte prístupový token
+
+```bash
+curl -X POST https://staging-iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_CLIENT_SECRET>" \
+  -d "scope=inventory.read"
+```
+
+Uložte si `access_token` z odpovede:
+
+```bash
+export WINK_TOKEN=<access_token>
+```
+
+Tokeny majú platnosť. Vo vlastnom kóde používajte OAuth2 knižnicu na ich získavanie a obnovovanie. Viac na [Authentication](/sk/developers/authentication/).
+
+## Krok 4: Nájdite ID svojho účtu
+
+Každý Partner API volanie uvádza účet, za ktorý konáte, v hlavičke `managing-entity-id`. Zobrazte si účty, za ktoré môže váš token konať:
+
+```bash
+grpcurl -H "authorization: Bearer $WINK_TOKEN" \
+  -d '{}' \
+  staging-partner.wink.travel:443 wink.partner.v1.Accounts/ListAccounts
+```
+
+Skopírujte `accountId` affiliate účtu z kroku 1:
+
+```bash
+export WINK_ACCOUNT_ID=<accountId>
+```
+
+## Krok 5: Vyhľadajte hotely v meste
+
+{/* TODO(Yann): potvrdiť staging mesto testovacieho hotela s dostupnosťou a použiť ho tu. */}
+
+```bash
+grpcurl -H "authorization: Bearer $WINK_TOKEN" \
+  -H "managing-entity-id: $WINK_ACCOUNT_ID" \
+  -d '{
+    "urlName": "bangkok-thailand",
+    "userSession": {
+      "itinerary": {
+        "startDate": "2026-12-01",
+        "nights": 2,
+        "room": { "adults": 2 }
+      },
+      "currencyCode": "USD",
+      "languageCode": "en"
+    }
+  }' \
+  staging-partner.wink.travel:443 wink.partner.v1.Search/SearchByCity
+```
+
+Použite dátum príchodu v budúcnosti; dátum v minulosti je odmietnutý. Každý výsledok obsahuje:
+
+- `name`, `starRating` a `heroImageUrl`, dosť na zobrazenie riadku výsledku,
+- `roomTypes`, aktuálne ponuky, najlacnejšia izba prvá,
+- `urlName`, slug potrebný pre rezervačný odkaz.
+
+Ceny sú celé čísla v menších jednotkách: vydelte ich 10 na mocninu `currencyExponent` z odpovede (2 pre USD, takže `12500` je 125,00 $).
+
+Neviete slug mesta? Zistite ho pomocou `wink.partner.v1.Lookup/Search`. Pre kompletný obsah objektu použite službu `Content`. [Partner API referencia](/sk/partner-api/partner/) dokumentuje všetky volania.
+
+## Krok 6: Vytvorte rezervačný odkaz
+
+```text
+https://staging-book.wink.travel/hotel/<urlName>?client-id=<YOUR_CLIENT_ID>&configuration-id=<YOUR_CUSTOMIZATION_ID>
+```
+
+- `<urlName>` je `urlName` hotela z kroku 5.
+- `client-id` je Client ID vašej aplikácie z kroku 2.
+- `configuration-id` je ID vašej customizácie: `Manage account` > `Customizations`. Customizácia nastavuje aj vaše branding, predvolený jazyk a menu na rezervačnej stránke.
+
+:::caution
+Zahrňte obe ID. Bez nich sa stránka načíta, ale s predvoleným brandingom a **rezervácia sa vám nepripíše**. Nikdy nezadávajte svoj client secret do odkazu.
+:::
+
+Viac o priamej linke nájdete v [Linking directly](/sk/booking-engine/features/#linking-directly), ak chcete odkazovať na domovskú stránku rezervačného systému namiesto jedného hotela.
+
+## Krok 7: Vykonajte testovaciu rezerváciu
+
+Otvorte svoj odkaz, vyberte dátumy a izbu a zaplaťte pomocou [testovacej karty Stripe](https://docs.stripe.com/testing), napríklad `4242 4242 4242 4242` s ľubovoľným budúcim dátumom expirácie a ľubovoľným CVC. V stagingu sa neúčtuje žiadna skutočná karta. Poznačte si rezervačný kód na potvrdení; začína na `WNK`.
+
+## Krok 8: Dostaňte notifikácie o rezerváciách
+
+<Steps>
+1. V Portáli choďte na `Applications > Webhooks` a pridajte endpoint, ktorý prijíma `POST` požiadavky.
+
+2. Prihláste sa na odber `booking.create`, alebo nechajte zoznam udalostí prázdny, aby ste dostávali všetko počas vývoja.
+
+3. Pošlite si testovaciu udalosť, potom urobte ďalšiu testovaciu rezerváciu a sledujte jej doručenie.
+</Steps>
+
+Pred dôverou overte podpis každej doručenej správy. Viac na [Webhook Integration](/sk/developers/webhook-integration/) a v [Webhook Events Catalog](/sk/developers/webhook-events/).
+
+## Krok 9: Prejdite do produkcie
+
+Pre vývojárov nie je potrebné schválenie. (Účty cestovných kancelárií sú najprv certifikované; viď [nižšie](#booking-as-a-travel-agency).) Keď vaša integrácia funguje v stagingu:
+
+<Steps>
+1. Vytvorte si účet a aplikáciu na [app.wink.travel](https://app.wink.travel), ako v krokoch 1 a 2. Prihlasovacie údaje sa medzi prostrediami neprenášajú.
+
+2. Odstráňte `staging-` z každého hostiteľa:
+
+   | Staging | Produkcia |
+   |---|---|
+   | `https://staging-iam.wink.travel` | `https://iam.wink.travel` |
+   | `staging-partner.wink.travel:443` | `partner.wink.travel:443` |
+   | `https://staging-book.wink.travel` | `https://book.wink.travel` |
+
+3. Znovu si vyhľadajte ID produkčného účtu (krok 4) a ID customizácie (krok 6). Líšia sa od stagingu.
+</Steps>
+
+Používanie Partner API sa meria v hotelových nociach, s mesačnou bezplatnou kvótou. Viac o cenách a limitoch na [Partner API](/sk/integrations/partner-api/).
+
+## Rezervovanie ako cestovná kancelária
+
+Ak máte účet licencovanej cestovnej kancelárie, nemusíte posielať cestujúcich na `book.wink.travel`: môžete vytvárať rezervácie priamo cez `wink.partner.v1.Booking/CreateBooking` a spravovať ich ďalšími volaniami `Booking`. Ostatné účty posielajú cestujúcich na rezervačný odkaz.
+
+Účty cestovných kancelárií sú certifikované: Wink preveruje registráciu každej kancelárie predtým, než môže rezervovať. Kancelárie, ktoré chcú vyberať platby priamo od svojich klientov ako merchant of record, musia rezervovať cez Partner API a získať písomné schválenie od Wink. Viac na [Začíname ako cestovná kancelária](/sk/guides/travel-agents/getting-started/) a v [Partner API referencii](/sk/partner-api/partner/).
+
+## Ďalšie kroky
+
+- [Vygenerujte typizovaného klienta](/sk/developers/rest-and-grpc/#generate-a-grpc-client) zo schémy `.proto` namiesto ručného volania `grpcurl`.
+- Pripojte [MCP server](/sk/developers/mcp/) a použite [AI Skills](/sk/developers/ai-skills/), aby vám váš kódovací asistent napísal integráciu proti živej API.
+- Prečítajte si kompletný zoznam [prostredí a hostiteľov](/sk/getting-started/environments/).

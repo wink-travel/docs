@@ -1,16 +1,18 @@
 ---
 title: Környezetek
-description: Ez a cikk információkat tartalmaz tesztelők és fejlesztők számára arról, hogyan férhetnek hozzá különböző szerverkörnyezetekhez.
+description: Ez a cikk információkat tartalmaz tesztelők és fejlesztők számára arról, hogyan férhetnek hozzá különböző szerverkörnyezetünkhöz.
 sidebar:
   order: 8
 ---
 
-A Winknél mindig 2 környezetet működtetünk minden tevékenységünkhöz:
+A Winknél mindig 2 környezetet működtetünk mindenhez:
 
 - A Production a stabil környezetünk.
-- A Staging a tanúsítási és tesztelési környezetünk.
+- A Staging a tesztkörnyezetünk, ahol a csatornamenedzserek és az utazási ügynökök tanúsítványt szereznek.
 
-Ha integrátor, szálloda vagy utazási ügynök vagy, aki fel szeretne készülni a tanúsításra vagy tesztelni szeretné a Wink platformot, hozz létre egy fiókot a staging környezetünkben a kezdéshez.
+Ha tesztelni szeretnéd a Wink platformot fejlesztőként, szállodaként vagy utazási ügynökként, hozz létre egy fiókot a staging környezetünkben a kezdéshez. A csatornamenedzserek is itt végzik a [tanúsítványuk megszerzését](/hu/guides/integrators/add-your-channel-manager/#certification).
+
+Fiók létrehozása a staging vagy a production környezetben a Wink Általános Szerződési Feltételeinek és Fizetési Feltételeinek elfogadását igényli, és ez az elfogadás kötelező érvényű. A csatornamenedzsereknek és az utazási ügynököknek a production hozzáférés előtt tanúsítványt kell szerezniük; mindenki más saját maga lép át a production környezetbe.
 
 :::note
 A staging környezet kérésre érhető el. Ez azt jelenti, hogy ha nincs használatban, akkor „elalszik”, és újra bekapcsol, amikor használatba veszik. Kérjük, légy türelemmel, ha ébreszted. Körülbelül egy percbe telik, amíg az összes szerver elindul, miután először csatlakozol valamelyik szerverünkhöz vagy alkalmazásunkhoz.
@@ -18,7 +20,7 @@ A staging környezet kérésre érhető el. Ez azt jelenti, hogy ha nincs haszn�
 
 ## Szerverek
 
-Az alábbi táblázat tartalmazza szervereink nevét és azok használatát.
+Az alábbi táblázat tartalmazza szervereink nevét és felhasználási területüket.
 
 | Funkció | Staging | Production
 | ------- | ------- | ---------- |

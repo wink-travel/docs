@@ -27,7 +27,7 @@ Leer hoe Wink zich verhoudt tot andere online reissegmenten op de markt. Hierond
 | ROI volgen | 🟢 | 🟢 | ⚫️ | ⚫️ | 
 | Pay-per-Performance | 🟢 | 🟢 | ⚫️ | 🟢 | 
 | Geïntegreerde betaalgateway | 🟢 | 🟢 | 🟢 | ⚫️ | 
-| Uitbetalingen met Wise | 🟢 | 🟢 | ⚫️ | ⚫️ | 
+| Uitbetalingen via bankoverschrijving | 🟢 | 🟢 | ⚫️ | ⚫️ | 
 
 
 ## Wink vs Internet Booking Engine (IBE)

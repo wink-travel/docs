@@ -5,18 +5,18 @@ sidebar:
   order: 0
 ---
 
-הפתרון שלנו לסוכני נסיעות רשומים הוא [Wink Agent](https://agent.wink.travel). זהו פורטל שירות עצמי שבו סוכנים יכולים לחפש ולהזמין עבור לקוחותיהם ולהרוויח עמלה על כל הזמנה.
+סוכני נסיעות רשומים משתמשים באותו פורטל כמו כולם, ב-[app.wink.travel](https://app.wink.travel), עם חשבון Travel Agent. סוכנים מחפשים ומבצעים הזמנות בשם הלקוחות שלהם ומרוויחים עמלה על כל הזמנה. כדי להקים חשבון, עקבו אחר [Getting Started as a Travel Agency](/he/guides/travel-agents/getting-started/).
 
-סוכני נסיעות מתקדמים יותר יכולים לבחור לשלב ברמת ה-API לצורך טיפול בתשלום ובפירעונות מחוץ לפלטפורמת Wink.
+סוכנויות שאושרו לגבות תשלום בעצמן פועלות כסוחרות רשומות ומטפלות בתשלום מחוץ לפלטפורמת Wink. סוכנויות עם מערכות משלהן יכולות להשתלב דרך ה-[Partner API](/he/integrations/partner-api/).
 
 לסוכני נסיעות יש תת-קבוצה של אותם תכונות פורטל כמו ב-[Studio](/he/portal/studio/what-is-studio) ולכן לא נרחיב עליהן כאן.
 
 ## חיפוש
 
-גש ל-[Search](/he/portal/studio/search) כדי ללמוד כיצד לחפש ולהזמין מלונות.
+גשו ל-[Search](/he/portal/studio/search) כדי ללמוד כיצד לחפש ולהזמין מלונות.
 
-אחרת, המשך לסעיף הבא.
+אחרת, המשיכו לסעיף הבא.
 
 ## API
 
-מפתחים שרוצים לנהל `Travel Agent` יכולים לגשת ל-[Developers > API > Travel Agent](/he/api/overview/).
+סוכנויות יכולות לחפש ולהזמין דרך ה-[Partner API](/he/partner-api/partner/), שמחליף את נקודות הקצה הישנות של Travel Agent REST.

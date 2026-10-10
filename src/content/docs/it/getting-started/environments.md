@@ -8,12 +8,14 @@ sidebar:
 Da Wink, gestiamo 2 ambienti per tutto ciò che facciamo in ogni momento:
 
 - Production è il nostro ambiente stabile.
-- Staging è il nostro ambiente di certificazione e test.
+- Staging è il nostro ambiente di test, e dove i channel manager e le agenzie di viaggio vengono certificati.
 
-Se sei un integratore, un hotel o un'agenzia di viaggi che desidera prepararsi per la certificazione o testare la piattaforma Wink, crea un account nel nostro ambiente staging per iniziare.
+Se vuoi testare la piattaforma Wink, come sviluppatore, hotel o agenzia di viaggio, crea un account nel nostro ambiente staging per iniziare. Anche i channel manager eseguono la loro [certificazione](/it/guides/integrators/add-your-channel-manager/#certification) lì.
+
+Creare un account in staging o production richiede l'accettazione dei Termini e delle Condizioni di Pagamento di Wink, e tale accettazione è vincolante. I channel manager e le agenzie di viaggio necessitano inoltre della certificazione prima dell'accesso in production; tutti gli altri passano a production in autonomia.
 
 :::note
-L'ambiente staging è disponibile su richiesta. Ciò significa che andrà in standby se non viene utilizzato e si riattiverà quando necessario. Ti preghiamo di avere pazienza se lo stai risvegliando. Ci vuole circa un minuto per avviare tutti i server dopo la prima connessione a uno dei nostri server o app.
+L'ambiente staging è disponibile su richiesta. Ciò significa che andrà in standby se non viene utilizzato e si riattiverà quando necessario. Ti preghiamo di avere pazienza se lo stai risvegliando. Occorre circa un minuto per avviare tutti i server dopo la prima connessione a uno dei nostri server o app.
 :::
 
 ## Server

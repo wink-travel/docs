@@ -13,23 +13,25 @@ Ovaj članak pokazuje kako se brzo postaviti kao developer i početi testirati n
 :::note
 Testiranje bi uvijek trebalo obavljati u našem [staging okruženju](/hr/getting-started/environments). Tamo ima puno manje podataka, ali slobodni ste testirati koliko god želite bez utjecaja na produkcijsko okruženje.
 
-Kada ste spremni za lansiranje, certificirat ćemo vaš račun i vašu aplikaciju te možete pokrenuti u produkcijskom okruženju.
+Kada ste spremni, sami prijeđite na produkciju: kreirajte aplikaciju u produkciji (podatci za pristup se ne prenose između okruženja) i uklonite `staging-` iz URL-ova, tako da `https://staging-api.wink.travel` postane `https://api.wink.travel`. Ne postoji korak odobrenja za developere. Samo su [channel manageri](/hr/guides/integrators/add-your-channel-manager/#certification) i [putnički agenti](/hr/portal/travel-agent/what-is-agent/) certificirani prije produkcije.
+
+Kreiranje računa u stagingu ili produkciji zahtijeva prihvaćanje Wink-ovih Uvjeta i Uvjeta plaćanja, a to prihvaćanje je obvezujuće.
 :::
 
 Slijedite ove korake:
 
 <Steps>
-1. [Registrirajte se](/hr/getting-started/sign-up) i napravite korisnički račun na Wink.
+1. [Registrirajte se](/hr/getting-started/sign-up) i kreirajte korisnički račun na Wink.
 2. [Kreirajte affiliate račun](/hr/portal/create-account). Trebat će vam za povezivanje vaše Aplikacije. Pogledajte [što je Studio](/hr/portal/studio/what-is-studio) za dodatni kontekst.
-3. [Kreirajte Aplikaciju](/hr/account/applications) i povežite je s affiliate računom koji ste napravili u Koraku 2. Za server-to-server API integracije odaberite **MACHINE_2_MACHINE** kao tip klijenta.
-4. Nakon što ste kreirali vašu `Application`, odmah kopirajte i spremite client-id i secret key — secret key se prikazuje samo jednom i ne može se ponovno dohvatiti.
+3. [Kreirajte Aplikaciju](/hr/account/applications) i povežite je s affiliate računom koji ste kreirali u Koraku 2. Za server-to-server API integracije, odaberite **MACHINE_2_MACHINE** kao tip klijenta.
+4. Nakon što ste kreirali svoju `Aplikaciju`, odmah kopirajte i spremite client-id i secret key — secret key se prikazuje samo jednom i ne može se ponovno dohvatiti.
 </Steps>
 
 ## CDN
 
-U Wink-u koristimo Cloudinary za sve naše slike i video materijale. Kada pristupate našem travel inventaru, imat ćete potpuni pristup svim naprednim značajkama Cloudinary-a.
+U Wink-u koristimo Cloudinary za sve naše slike i video materijale. Kada pristupate našem inventaru putovanja, imat ćete potpuni pristup svim naprednim značajkama Cloudinary-a.
 
-Naš `cloud_name` je  `traveliko`.
+Naš `cloud_name` je `traveliko`.
 
 ### Cloudinary
 
@@ -40,7 +42,7 @@ Naš `cloud_name` je  `traveliko`.
 
 ### Primjer
 
-Za svaki tip travel inventara koji podržavamo, postoji ugniježđeni JSON niz pod nazivom `multimedias`. JSON za jedan multimedijalni unos izgleda ovako:
+Za svaki tip inventara putovanja koji podržavamo, postoji ugniježđeni JSON niz nazvan `multimedias`. JSON za jedan multimedijski zapis izgleda ovako:
 
 ```json {3}
 {
@@ -71,23 +73,23 @@ Istaknuti redak iznad prikazuje jedinstveni Cloudinary ID `partners/radisson_blu
 
 ## Testiranje
 
-Idite na našu sekciju [API-je](/hr/api/overview/) i odaberite API s kojim želite raditi.
+Idite na našu sekciju [API-jevi](/hr/api/overview/) i odaberite API s kojim želite raditi.
 
 ### API dokumentacija
 
-Naša dokumentacija je postavljena tako da možete izvoditi API naredbe direktno sa stranice.
+Naša dokumentacija je postavljena tako da možete izvoditi API naredbe direktno unutar stranice.
 
 U ovom primjeru želite koristiti `Search Lookups (OAuth2)` API poziv.
 
 :::tip[Pro savjet]
-Radi lakše upotrebe, preporučujemo integratorima da koriste endpoint-e koje označavamo kao `OAuth2`. Ti endpoint-i znaju da očekuju API pozivatelje i već znaju na kojem ste računu pa ne morate specificirati `companyIdentifier` u URL-ovima.
+Radi lakše upotrebe, preporučujemo integratorima da koriste endpoint-e koje označavamo kao `OAuth2`. Ti endpoint-i znaju očekivati API pozivatelje i već znaju na kojem ste računu pa ne morate specificirati `companyIdentifier` u URL-ovima.
 :::
 
 <Steps>
 1. Koristite [Lookup API](https://developer.wink.travel/lookup) za dohvat destinacija ili hotela.
 2. U lijevom izborniku kliknite na `Authentication`.
-3. Unesite svoj client-id i client secret te kliknite na gumb `Get TOKEN`.
-4. Ako su vaše vjerodajnice valjane, vidjet ćete da je vaš API ključ primijenjen.
+3. Unesite svoj client-id i client secret i kliknite na gumb `Get TOKEN`.
+4. Ako su vaši podaci ispravni, vidjet ćete da je vaš API ključ primijenjen.
 5. Sada možete testirati lookup endpoint.
 </Steps>
 
@@ -105,7 +107,7 @@ Radi lakše upotrebe, preporučujemo integratorima da koriste endpoint-e koje oz
 </figure>
 
 ### Postman
-Isto možete napraviti i s Postmanom.
+Isto možete napraviti i s Postman-om.
 
 <Steps>
 1. Preuzmite [Postman](https://www.postman.com/downloads).
@@ -115,12 +117,12 @@ Isto možete napraviti i s Postmanom.
 5. U kartici `Authorization` postavite `Auth type` na OAuth2.
 6. Postavite polje `Add auth data to` na `Request headers`.
 7. Postavite polje `Header prefix` na `Bearer`.
-8. Postavite polje `Token Name` na naziv koji želite za spremljeni token u Postmanu, npr. Wink Staging.
+8. Postavite polje `Token Name` na naziv koji želite za svoj spremljeni token u Postmanu, npr. Wink Staging.
 9. Postavite polje `Grant type` na `Client Credentials`.
 10. Postavite polje `Access token URL` na https://staging-iam.wink.travel/oauth2/token.
 11. Postavite polje `Client ID` na Client ID koji je vaša aplikacija generirala.
 12. Postavite polje `Client Secret` na Client Secret koji je vaša aplikacija generirala.
-13. Postavite polje `Scope` na razmake odvojene opsege koje vaša integracija treba (npr. `inventory.read inventory.write inventory.remove`). Pogledajte [referencu scope-a](/hr/developers/authentication#scopes) za puni popis.
+13. Postavite polje `Scope` na razmakom odvojene opsege koje vaša integracija treba (npr. `inventory.read inventory.write inventory.remove`). Pogledajte [referencu scope-a](/hr/developers/authentication#scopes) za puni popis.
 14. Postavite polje `Client Authentication` na `Send as Basic Auth header`.
 15. Kliknite gumb `Get New Access Token` da dohvatite i spremite svoj token.
 16. Za sve API pozive unutar Wink API kolekcije, provjerite da kartica za autentifikaciju kaže `Inherit auth from parent` kako bi se vaš token uključivao u svaki poziv.

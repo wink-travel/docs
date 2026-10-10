@@ -8,19 +8,21 @@ sidebar:
 Na Wink, operamos 2 ambientes para tudo o que fazemos o tempo todo:
 
 - Produção é o nosso ambiente estável.
-- Staging é o nosso ambiente de certificação e testes.
+- Staging é o nosso ambiente de testes, e onde os channel managers e agentes de viagem são certificados.
 
-Se você é um integrador, hotel ou agente de viagens que deseja se preparar para certificação ou testar a plataforma Wink, crie uma conta em nosso ambiente de staging para começar.
+Se você quiser testar a plataforma Wink, como desenvolvedor, hotel ou agente de viagem, crie uma conta em nosso ambiente de staging para começar. Os channel managers também realizam sua [certificação](/pt-BR/guides/integrators/add-your-channel-manager/#certification) lá.
+
+Criar uma conta em staging ou produção requer aceitar os Termos e Condições e os Termos de Pagamento da Wink, e essa aceitação é vinculativa. Channel managers e agentes de viagem também precisam de certificação antes do acesso à produção; todos os outros migram para produção por conta própria.
 
 :::note
-O ambiente de staging está disponível mediante solicitação. Isso significa que ele entrará em modo de espera se não houver uso e será reativado quando houver. Por favor, tenha paciência ao acordá-lo. Leva cerca de um minuto para iniciar todos os servidores após a primeira conexão com um de nossos servidores ou aplicativos.
+O ambiente de staging está disponível mediante solicitação. Isso significa que ele entrará em modo de espera se não houver uso e será reativado quando houver. Por favor, seja paciente ao acordá-lo. Leva cerca de um minuto para iniciar todos os servidores após a primeira conexão com um de nossos servidores ou aplicativos.
 :::
 
 ## Servidores
 
 Abaixo está uma matriz contendo os nomes dos nossos servidores e seus usos.
 
-| Feature | Staging | Produção
+| Recurso | Staging | Produção
 | ------- | ------- | ---------- |
 | IAM | https://staging-iam.wink.travel | https://iam.wink.travel | 
 | Inventory | https://staging-api.wink.travel | https://api.wink.travel | 
@@ -32,7 +34,7 @@ Abaixo está uma matriz contendo os nomes dos nossos servidores e seus usos.
 
 Nossas aplicações também possuem ambientes de teste e produção para nossos clientes.
 
-| Application | Staging | Produção
+| Aplicação | Staging | Produção
 | ------- | ------- | ---------- |
 | Portal | https://staging-app.wink.travel | https://app.wink.travel | 
 | Booking engine | https://staging-book.wink.travel | https://book.wink.travel | 

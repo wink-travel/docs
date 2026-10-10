@@ -1,11 +1,11 @@
 ---
 title: Comparação
-description: Saiba como a Wink se compara a empresas de viagens online semelhantes e quais são alguns dos benefícios de aderir à Wink.
+description: Saiba como o Wink se compara a empresas de viagens online semelhantes e quais são alguns dos benefícios de aderir ao Wink.
 sidebar:
   order: 5
 ---
 
-Saiba como a Wink se compara a outros segmentos de viagens online no mercado. Abaixo está uma rápida análise das funcionalidades que considerámos importantes para comparar.
+Saiba como o Wink se compara a outros segmentos de viagens online no mercado. Abaixo está uma rápida análise das funcionalidades que considerámos importantes para comparar.
 
 ## Matriz de funcionalidades
 
@@ -27,15 +27,15 @@ Saiba como a Wink se compara a outros segmentos de viagens online no mercado. Ab
 | Acompanhamento do ROI | 🟢 | 🟢 | ⚫️ | ⚫️ | 
 | Pagamento por desempenho | 🟢 | 🟢 | ⚫️ | 🟢 | 
 | Gateway de pagamento integrado | 🟢 | 🟢 | 🟢 | ⚫️ | 
-| Pagamentos com Wise | 🟢 | 🟢 | ⚫️ | ⚫️ | 
+| Pagamentos por transferência bancária | 🟢 | 🟢 | ⚫️ | ⚫️ | 
 
 
 ## Wink vs Motor de Reservas Online (IBE)
 
-Alguns hotéis tentam comparar-nos com o seu motor de reservas online que veio incluído com o seu gestor de canais e pedem-nos um preço fixo mensal baseado no número de quartos da sua propriedade.
+Alguns hotéis tentam comparar-nos ao seu motor de reservas online que veio incluído com o seu gestor de canais e pedem-nos um preço fixo mensal baseado no número de quartos da sua propriedade.
 
-Nós não somos um IBE e esperamos que isto ajude a clarificar a diferença. Existem vantagens e desvantagens em qualquer serviço. Se o seu IBE funciona para a sua propriedade, mantenha-o.  
-A Wink existe para preencher várias lacunas na indústria de viagens e juntar tudo num só lugar.
+Nós não somos um IBE e esperamos que isto ajude a clarificar a diferença. Existem prós e contras em qualquer serviço. Se o seu IBE funciona para a sua propriedade, mantenha-o.  
+O Wink existe para preencher várias lacunas na indústria das viagens e juntar tudo num só lugar.
 
 :::tip
 Não precisa de substituir o seu IBE atual. No entanto, recomendamos que experimente o nosso motor de reservas amigável para redes sociais, ou gestor de links, numa das suas contas de redes sociais para ver como convertem. Não paga nada se não houver reservas – O que tem a perder? 😉

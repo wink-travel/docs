@@ -1,27 +1,29 @@
 ---
 title: Environnements
-description: Cet article contient des informations pour les testeurs et développeurs sur la manière d’accéder à nos différents environnements serveurs.
+description: Cet article contient des informations pour les testeurs et développeurs sur la manière d'accéder à nos différents environnements serveurs.
 sidebar:
   order: 8
 ---
 
 Chez Wink, nous exploitons 2 environnements pour tout ce que nous faisons en permanence :
 
-- Production est notre environnement stable.
-- Staging est notre environnement de certification et de test.
+- La production est notre environnement stable.
+- La préproduction est notre environnement de test, et c’est là que les channel managers et les agents de voyage sont certifiés.
 
-Si vous êtes un intégrateur, un hôtel ou une agence de voyage souhaitant préparer une certification ou tester la plateforme Wink, créez un compte dans notre environnement staging pour commencer.
+Si vous souhaitez tester la plateforme Wink, en tant que développeur, hôtelier ou agent de voyage, créez un compte dans notre environnement de préproduction pour commencer. Les channel managers y effectuent également leur [certification](/fr/guides/integrators/add-your-channel-manager/#certification).
+
+Créer un compte en préproduction ou en production nécessite d’accepter les Conditions générales et les Conditions de paiement de Wink, et cette acceptation est contraignante. Les channel managers et agents de voyage doivent aussi être certifiés avant d’accéder à la production ; tous les autres passent en production de leur propre initiative.
 
 :::note
-L’environnement staging est disponible sur demande. Cela signifie qu’il se mettra en veille s’il n’y a pas d’utilisation et se réactivera lorsqu’il y en aura. Merci de faire preuve de patience si vous le réveillez. Il faut environ une minute pour démarrer tous les serveurs après votre première connexion à l’un de nos serveurs ou applications.
+L’environnement de préproduction est disponible sur demande. Cela signifie qu’il se met en veille s’il n’est pas utilisé et se réactive lorsqu’il y a une utilisation. Merci de faire preuve de patience lors de son réveil. Il faut environ une minute pour démarrer tous les serveurs après votre première connexion à l’un de nos serveurs ou applications.
 :::
 
 ## Serveurs
 
-Voici une matrice contenant les noms de nos serveurs et leur usage.
+Voici un tableau contenant les noms de nos serveurs et leur usage.
 
-| Fonctionnalité | Staging | Production
-| ------- | ------- | ---------- |
+| Fonctionnalité | Préproduction | Production
+| -------------- | ------------- | ---------- |
 | IAM | https://staging-iam.wink.travel | https://iam.wink.travel | 
 | Inventaire | https://staging-api.wink.travel | https://api.wink.travel | 
 | Intégrations | https://staging-integrations.wink.travel | https://integrations.wink.travel | 
@@ -32,8 +34,8 @@ Voici une matrice contenant les noms de nos serveurs et leur usage.
 
 Nos applications disposent également d’environnements de test et de production pour nos clients.
 
-| Application | Staging | Production
-| ------- | ------- | ---------- |
+| Application | Préproduction | Production
+| ----------- | ------------- | ---------- |
 | Portail | https://staging-app.wink.travel | https://app.wink.travel | 
 | Moteur de réservation | https://staging-book.wink.travel | https://book.wink.travel | 
 | Link Manager | https://staging-i.trvl.as | https://i.trvl.as |

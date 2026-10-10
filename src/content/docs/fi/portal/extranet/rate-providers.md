@@ -7,14 +7,14 @@ sidebar:
 
 ## Aseta hintatarjoaja
 
-Asettaaksesi hintatarjoajan, klikkaa päävalikosta `Distribution > Channel manager`.
+Aseta hintatarjoajasi napsauttamalla päävalikosta `Distribution > Channel manager`.
 
-Valitse hintatarjoajasi pudotusvalikosta ja klikkaa `Save`-painiketta. Tämä mahdollistaa hintatarjoajan lähettää meille hintoja, ja ilmoitamme heille, kun Winkissä tehdään varaus jollekin kiinteistöistäsi.
+Valitse hintatarjoajasi avattavasta valikosta ja napsauta `Save`-painiketta. Tämä sallii hintatarjoajan lähettää meille hintoja, ja ilmoitamme heille, kun Winkissä tehdään varaus yhdelle kiinteistöistäsi.
 
 
 ### SynXis
 
-Jos kiinteistösi käyttää SynXis-kanavahallintaa, on vielä yksi vaihe ennen kuin olet valmis yhdistämään Winkiin.
+Jos kiinteistösi käyttää Sabre SynXis -järjestelmää, on vielä yksi vaihe suoritettavana ennen kuin voit yhdistää Winkiin.
 
 - Ota yhteyttä SynXis-tiliedustajaasi tai asiakaspalveluun (SHSCustomerCare@sabre.com).
 - Kerro heille, että haluat yhdistää Winkiin Channel Connect Expressin (***CCX***) kautta.
@@ -33,7 +33,7 @@ Saatavilla olevat tyypit:
 - Property Management System (PMS)
 - Central Reservation System (CRS)
 
-*Jos toimittajalla on välityspalvelin, se tarkoittaa, että vastaanotamme hinnat epäsuorasti toimittajalta välityspalvelimen kautta.*
+*Jos toimittajalla on välityspalvelin, se tarkoittaa, että vastaanotamme hinnat epäsuorasti toimittajan kautta välityspalvelimen.*
 
 | Vendor | Type | Proxy | Since | Last modified | Comment
 | -- | -- | -- | -- | -- | -- |

@@ -5,11 +5,11 @@ sidebar:
   order: 0
 ---
 
-Ang aming solusyon para sa mga rehistradong travel agent ay ang [Wink Agent](https://agent.wink.travel). Isa itong self-serve portal na maaaring gamitin ng mga agent upang maghanap at mag-book para sa kanilang mga customer at kumita ng komisyon para sa bawat booking.
+Gumagamit ang mga rehistradong travel agent ng parehong portal tulad ng iba pa, sa [app.wink.travel](https://app.wink.travel), gamit ang Travel Agent account. Naghahanap at nagbu-book ang mga agent para sa kanilang mga customer at kumikita ng komisyon sa bawat booking. Upang mag-set up nito, sundin ang [Getting Started as a Travel Agency](/tl/guides/travel-agents/getting-started/).
 
-Ang mga mas advanced na travel agent ay maaaring pumili na mag-integrate sa antas ng API para sa layunin ng paghawak ng bayad at payout sa labas ng Wink platform.
+Ang mga ahensya na aprubadong mangolekta ng bayad mismo ay kumikilos bilang merchant of record at humahawak ng bayad sa labas ng Wink platform. Ang mga ahensya na may sariling sistema ay maaaring mag-integrate sa pamamagitan ng [Partner API](/tl/integrations/partner-api/).
 
-Ang mga travel agent ay may bahagi ng parehong mga tampok ng portal tulad ng sa [Studio](/tl/portal/studio/what-is-studio) kaya hindi na namin ito uulitin dito.
+May bahagi ang mga travel agent ng parehong mga tampok ng portal tulad ng sa [Studio](/tl/portal/studio/what-is-studio) kaya hindi na namin ito uulitin dito.
 
 ## Search
 
@@ -19,4 +19,4 @@ Kung hindi, magpatuloy sa susunod na seksyon.
 
 ## API
 
-Ang mga developer na nais pamahalaan ang `Travel Agent` ay maaaring pumunta sa [Developers > API > Travel Agent](/tl/api/overview/).
+Maaaring maghanap at mag-book ang mga ahensya sa pamamagitan ng [Partner API](/tl/partner-api/partner/), na pumapalit sa mas lumang Travel Agent REST endpoints.

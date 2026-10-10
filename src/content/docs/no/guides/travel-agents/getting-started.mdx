@@ -1,0 +1,122 @@
+---
+title: Komme i gang som reisebyrå
+description: "Registrer byrået ditt, bestill hoteller for kundene dine og tjen provisjon, eller søk om å kunne motta betaling selv som merchant of record."
+sidebar:
+  order: 0
+  label: Komme i gang
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+Denne guiden tar et reisebyrå fra registrering til den første kunde-bestillingen. Den forklarer også de to måtene et byrå kan jobbe på i Wink, slik at du kan velge riktig før du starter.
+
+## Før du starter
+
+Du trenger:
+
+- Dine firmadetaljer.
+- Ditt reisebyråregistreringsnummer, eller IATA-koden din hvis du har en.
+- En bankkonto for provisjonen din.
+
+## Velg hvordan du vil jobbe
+
+| | Standard (de fleste byråer) | Agent-innkrevd betaling |
+|---|---|---|
+| Hvordan du bestiller | I Wink-portalen, eller gjennom Partner API | Gjennom [Partner API](/no/integrations/partner-api/), fra ditt eget system |
+| Hvem tar imot kundens betaling | Betalingen samles inn for hotellet, som forblir merchant of record. Du legger inn kundens kort ved utsjekk. | Du gjør det, som merchant of record. |
+| Hva du tjener | **10 % standard provisjon** på hver bestilling | Provisjonen i din egen avtale med hvert hotell |
+| Hva du betaler Wink | Ingenting | **1,5 %** bookinggebyr på hver bestillingsverdi, fakturert månedlig, pluss Partner API-bruk over gratisgrensen |
+| Betaling til hotellet | Håndteres for deg | Du betaler hvert hotell direkte, under din egen avtale med dem |
+| Refusjoner, chargebacks, betalingsregelverk | Håndteres for deg | Ditt ansvar |
+| Godkjenning | Din registrering gjennomgås før du kan bestille | Din registrering gjennomgås, pluss skriftlig godkjenning fra Wink for denne ruten, med en kredittgrense |
+
+Wink gjennomgår alle reisebyråregistreringer. De fleste byråer bruker standardruten. Agent-innkrevd betaling er kun for **API-partnere**: byråer som bestiller gjennom Partner API fra eget system, allerede samler inn kundebetalinger under egen lisens og kontrakt direkte med hoteller.
+
+## Steg 1: Registrer byrået ditt
+
+<Steps>
+1. Gå til [app.wink.travel](https://app.wink.travel), klikk `Sign-In / Register` og registrer deg.
+
+2. Klikk `Accounts` i venstre sidemeny, deretter `Create`, og velg **I am a Travel Agent**.
+
+3. Fyll inn byråets detaljer. Velg **Company** som enhetstype: det avgjør hvordan du blir betalt. Se [Create Account](/no/portal/create-account/).
+
+4. Hvis du skal samle inn betaling selv gjennom Partner API, velg denne ruten under registreringen. Dette er en forespørsel, ikke en godkjenning. Se [Steg 6](#step-6-collect-payment-yourself-api-partners-only).
+
+5. Wink gjennomgår alle reisebyråregistreringer. Vi sender e-post til din registrerte adresse og ber om dokumentasjon: firmadetaljer og ditt reisebyråregistreringsnummer eller IATA-kode. Du kan bestille når registreringen er godkjent.
+</Steps>
+
+## Steg 2: Legg til bankkontoen din
+
+Gå til `Account > Bank Accounts`, legg til byråets konto og merk den som **Primary**. Provisjon utbetales dit via bankoverføring. Wink sender utbetalinger gjennom Revolut, så en Revolut bedriftskonto er den enkleste løsningen, men hvilken som helst bankkonto fungerer. Se [Bank Accounts](/no/portal/settings/payouts/).
+
+## Steg 3: Finn hoteller for kunden din
+
+<Steps>
+1. Klikk `Browse > Hotels` i hovedmenyen.
+
+2. Søk etter destinasjon, datoer og antall personer, og filtrer til du har riktige alternativer for kunden.
+
+3. Lagre kortlister til en [kuratert liste](/no/portal/studio/curated-lists/) hvis du sammenligner alternativer med kunden.
+</Steps>
+
+Prisene du ser er hotellets egne. Wink videreformidler dem uendret, uten påslag: du tjener gjennom provisjon. Se [Search](/no/portal/studio/search/).
+
+## Steg 4: Bestill for kunden din
+
+<Steps>
+1. Velg rom og pris, og legg inn kundens navn og kontaktinformasjon som reisende.
+
+2. Ved utsjekk, legg inn kortet kunden ga deg for denne bestillingen. Betalingen samles inn for hotellet, og hotellet forblir merchant of record.
+
+3. Bekreft. Du, den reisende og hotellet mottar hver sin bekreftelses-e-post. Bestillingskoden starter med `WNK`.
+</Steps>
+
+:::caution[Håndter kundens kort med forsiktighet]
+Be kun om kortet for den bestillingen du gjør, og legg det inn direkte i utsjekken. Ikke skriv det ned, send det på e-post eller lagre det i egne arkiver.
+:::
+
+## Steg 5: Administrer bestillinger og få betalt
+
+- **Bestillinger:** klikk `Bookings` i hovedmenyen for å se alle bestillinger, filtrere, eksportere til CSV, sende bekreftelse på nytt eller avbestille innenfor hotellets avbestillingsregler. Se [Bookings](/no/portal/travel-agent/bookings/).
+- **Provisjon:** 10 % som standard. Når du jobber jevnlig med et hotell, kan du be om en [direkte tilkobling](/no/portal/studio/network/) og avtale en annen provisjon.
+- **Når du får betalt:** provisjonen blir tilgjengelig innen 24 timer etter at gjesten har sjekket inn, og går til din primære bankkonto. Overføringsgebyrer betales til kostpris. Se [Pricing](/no/getting-started/pricing/).
+
+## Steg 6: Samle inn betaling selv (kun API-partnere)
+
+Hopp over dette steget hvis du bestiller i portalen, eller er fornøyd med standardruten.
+
+<Steps>
+1. Integrer med [Partner API](/no/integrations/partner-api/). Denne ruten fungerer kun via API, fra ditt eget bookingsystem, ikke i portalen.
+
+2. Velg denne ruten under registreringen (Steg 1).
+
+3. Wink vurderer dette sammen med registreringsdokumentene dine, for eksempel din økonomiske status og regulatoriske posisjon, og bekrefter skriftlig. Godkjenning kommer med en **kredittgrense**: maks utestående bestillinger du kan ha til enhver tid.
+
+4. Inntil du er godkjent, kan du fortsette å bestille via standardruten.
+</Steps>
+
+Når du er godkjent, tar du imot kundens betaling selv og betaler hvert hotell direkte. For hver bestilling trekker du, i rekkefølge, 1,5 % Wink-gebyr og deretter din provisjon; resten betales til hotellet:
+
+| På en USD 1 000,00 bestilling med 10 % provisjon | |
+|---|---|
+| Bestillingsverdi | USD 1 000,00 |
+| Minus Wink-gebyr (1,5 % av bestillingsverdi) | USD 15,00 |
+| Delsum | USD 985,00 |
+| Minus din provisjon (10 % av delsum) | USD 98,50 |
+| **Til hotellet** | **USD 886,50** |
+
+Wink fakturerer 1,5 % bookinggebyr månedlig, i USD, med 15 dagers betalingsfrist, pluss eventuell Partner API-bruk over gratisgrensen. Du er ansvarlig for refusjoner, chargebacks, betalingssikkerhet (PCI-DSS) og eventuell lisens ditt land krever for å samle inn betaling. Fullstendige vilkår finnes i [Travel Agent Agreement](/no/legal/platform-agreements/).
+
+## Koble til dine egne systemer
+
+Byråer med egne bookingverktøy kan søke og bestille gjennom [Partner API](/no/integrations/partner-api/). Reisebyråkontoer kan opprette bestillinger direkte via API, og det er den eneste måten å jobbe på agent-innkrevd rute. Se [Partner API reference](/no/partner-api/partner/).
+
+## Din sjekkliste
+
+- [ ] Byrå registrert som Travel Agent-konto
+- [ ] Dokumentasjon sendt og registrering godkjent
+- [ ] Bankkonto lagt til og merket som Primary
+- [ ] Første hoteller funnet for en kunde
+- [ ] Første bestilling gjort, kort lagt inn ved utsjekk
+- [ ] Valgfritt, API-partnere: valgte å samle inn betaling selv ved registrering

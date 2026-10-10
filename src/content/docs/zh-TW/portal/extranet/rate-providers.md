@@ -1,6 +1,6 @@
 ---
 title: 價格供應商
-description: 這是我們在 Wink 直接支援的最新價格供應商清單。
+description: 這是我們在 Wink 上直接支援的最新價格供應商清單。
 sidebar:
   order: 24
 ---
@@ -9,19 +9,19 @@ sidebar:
 
 要設定您的價格供應商，請從主選單點擊 `Distribution > Channel manager`。
 
-從下拉清單中選擇您的價格供應商，然後點擊 `Save` 按鈕。這將允許價格供應商向我們傳送價格，當 Wink 上您的物業有訂單時，我們也會通知他們。
+從下拉清單中選擇您的價格供應商，然後點擊 `Save` 按鈕。這將允許價格供應商向我們傳送價格，當 Wink 上您的其中一個物業有訂單時，我們會通知他們。
 
 
 ### SynXis
 
-如果您的物業使用 SynXis 頻道管理系統，連接 Wink 前還需要完成一個步驟。
+如果您的物業使用 Sabre SynXis，連接 Wink 前還需要完成一個步驟。
 
-- 請聯繫您的 SynXis 客戶代表或客服 (SHSCustomerCare@sabre.com)。
+- 請聯繫您的 SynXis 帳戶代表或客服 (SHSCustomerCare@sabre.com)。
 - 告知他們您想透過 Channel Connect Express (***CCX***) 連接 Wink。
 - 他們會請您填寫 ***PRS*** 表格。
-  - 您需要填寫您的 Wink 使用者憑證。
+  - 您需要填入您的 Wink 使用者憑證。
   - 以及您想使用的貨幣。
-- 填寫完表格後，提交回 SynXis。
+- 填寫完成後，將表格提交回 SynXis。
 
 ## 供應商
 
@@ -29,13 +29,13 @@ sidebar:
 
 可用類型：
 
-- 頻道管理系統 (CM)
-- 物業管理系統 (PMS)
-- 中央訂房系統 (CRS)
+- Channel Manager (CM)
+- Property Management System (PMS)
+- Central Reservation System (CRS)
 
 *如果供應商有代理，表示我們是透過代理間接接收該供應商的價格。*
 
-| 供應商 | 類型 | 代理 | 起始年份 | 最後修改 | 備註
+| Vendor | Type | Proxy | Since | Last modified | Comment
 | -- | -- | -- | -- | -- | -- |
 | Hoteliers Guru | CM |  | 2017 | 2017 | |
 | Travelclick | CM |  | 2016 | 2016 | |

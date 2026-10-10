@@ -1,6 +1,6 @@
 ---
 title: Miljöer
-description: Denna artikel innehåller information för testare och utvecklare om hur man får tillgång till våra olika servermiljöer.
+description: Den här artikeln innehåller information för testare och utvecklare om hur man får tillgång till våra olika servermiljöer.
 sidebar:
   order: 8
 ---
@@ -8,17 +8,19 @@ sidebar:
 På Wink har vi alltid 2 miljöer för allt vi gör:
 
 - Produktion är vår stabila miljö.
-- Staging är vår certifierings- och testmiljö.
+- Staging är vår testmiljö, och där kanaladministratörer och resebyråer certifieras.
 
-Om du är en integratör, ett hotell eller en resebyrå som vill förbereda dig för certifiering eller testa Wink-plattformen, skapa ett konto i vår staging-miljö för att komma igång.
+Om du vill testa Wink-plattformen, som utvecklare, hotell eller resebyrå, skapa ett konto i vår staging-miljö för att komma igång. Kanaladministratörer genomför också sin [certifiering](/sv/guides/integrators/add-your-channel-manager/#certification) där.
+
+Att skapa ett konto i staging eller produktion kräver att du accepterar Winks villkor och betalningsvillkor, och det accepterandet är bindande. Kanaladministratörer och resebyråer behöver också certifiering innan de får tillgång till produktion; alla andra går över till produktion på egen hand.
 
 :::note
-Staging-miljön är tillgänglig på begäran. Det innebär att den går i vila om den inte används och startar om sig själv när den används igen. Var vänlig ha tålamod när du väcker den. Det tar ungefär en minut att starta alla servrar efter att du först ansluter till en av våra servrar eller appar.
+Staging-miljön är tillgänglig på begäran. Det innebär att den går i vila om den inte används och startar om sig själv när den används igen. Var vänlig ha tålamod om du väcker den. Det tar ungefär en minut att starta alla servrar efter att du först ansluter till en av våra servrar eller appar.
 :::
 
 ## Servrar
 
-Nedan finns en matris med namnen på våra servrar och deras användning.
+Nedan är en matris som innehåller namnen på våra servrar och deras användning.
 
 | Funktion | Staging | Produktion
 | ------- | ------- | ---------- |

@@ -7,14 +7,14 @@ sidebar:
 
 ## Ustaw dostawcę stawek
 
-Aby ustawić dostawcę stawek, kliknij `Dystrybucja > Channel manager` w głównym pasku nawigacyjnym.
+Aby ustawić dostawcę stawek, kliknij `Dystrybucja > Menedżer kanałów` w głównym pasku nawigacyjnym.
 
-Wybierz swojego dostawcę stawek z listy rozwijanej i kliknij przycisk `Zapisz`. Pozwoli to dostawcy stawek na przesyłanie nam stawek, a my powiadomimy go, gdy na Wink zostanie dokonana rezerwacja dla jednej z Twoich nieruchomości.
+Wybierz swojego dostawcę stawek z listy rozwijanej i kliknij przycisk `Zapisz`. Pozwoli to dostawcy stawek przesyłać nam stawki, a my powiadomimy go, gdy na Wink zostanie dokonana rezerwacja dla jednej z Twoich nieruchomości.
 
 
 ### SynXis
 
-Jeśli Twoja nieruchomość korzysta z channel managera SynXis, przed połączeniem z Wink jest wymagany jeszcze jeden krok.
+Jeśli Twoja nieruchomość korzysta z Sabre SynXis, przed połączeniem z Wink wymagana jest jeszcze jedna czynność.
 
 - Skontaktuj się ze swoim przedstawicielem konta SynXis lub działem obsługi klienta (SHSCustomerCare@sabre.com).
 - Poinformuj ich, że chcesz połączyć się z Wink za pomocą Channel Connect Express (***CCX***).
@@ -29,9 +29,9 @@ Poniżej znajduje się lista dostawców, których obsługujemy:
 
 Dostępne typy:
 
-- Channel Manager (CM)
-- Property Management System (PMS)
-- Central Reservation System (CRS)
+- Menedżer kanałów (CM)
+- System zarządzania nieruchomościami (PMS)
+- Centralny system rezerwacji (CRS)
 
 *Jeśli dostawca ma proxy, oznacza to, że pośrednio otrzymujemy stawki od dostawcy przez proxy.*
 

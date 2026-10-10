@@ -1,0 +1,198 @@
+---
+title: Schnellstart
+description: "Von null zu einer funktionierenden Integration in der Staging-Umgebung: Zugangsdaten erhalten, Live-Hotelpreise mit der Partner-API suchen und Reisende zu einer Buchungsseite weiterleiten, die Ihnen Gutschriften gibt."
+sidebar:
+  order: 0.5
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+Dieser Leitfaden führt Sie in etwa 30 Minuten von nichts zu einer funktionierenden Integration. Am Ende haben Sie:
+
+- Live-Preise für Hotels in einer Stadt, über die Partner-API,
+- einen Buchungslink, der Buchungen Ihrem Konto gutschreibt,
+- eine Testbuchung und einen Webhook, der Ihnen mitteilt, dass sie stattgefunden hat.
+
+Alles geschieht in **staging**, unserer Testumgebung. Sie müssen keinen Zugang bei uns beantragen, und der Wechsel in die Produktion benötigt später keine Genehmigung.
+
+## Ist dieser Leitfaden der richtige für Sie?
+
+| Sie möchten… | Starten Sie hier |
+|---|---|
+| Hotels in Ihrer App, Website oder KI-Produkt anzeigen und Reisende zur Buchung weiterleiten, um Provision zu verdienen | **Dieser Leitfaden** |
+| Im Auftrag Ihrer Kunden als lizenzierte Reiseagentur buchen | Dieser Leitfaden bis Schritt 5, dann [Buchung als Reiseagentur](#booking-as-a-travel-agency) |
+| Buchbare Hotels einbetten, ohne eine Integration zu schreiben | [Web Components](/de/integrations/web-components/) |
+| Einen KI-Agenten suchen und buchen lassen | [MCP Servers](/de/developers/mcp/) und [Agentic Payments](/de/developers/agentic-payments/) |
+| Einen Channel Manager oder PMS anbinden | [Fügen Sie Ihren Channel Manager hinzu](/de/guides/integrators/add-your-channel-manager/) |
+
+## Wie es funktioniert
+
+Sie verwenden die **Partner-API**, um Hotels und deren Live-Preise zu finden. Jedes Hotel hat einen stabilen `urlName`. Diesen wandeln Sie in einen Link zur Wink Booking Engine, `book.wink.travel`, um, der Ihre IDs überträgt. Der Reisende bucht und bezahlt dort, und die Buchung wird Ihrem Konto gutgeschrieben.
+
+## Bevor Sie starten
+
+Sie benötigen:
+
+- [`grpcurl`](https://github.com/fullstorydev/grpcurl) oder Postman oder Insomnia. Die Partner-API ist gRPC, nicht REST.
+- `curl`.
+
+:::note
+Staging geht in den Ruhezustand, wenn niemand es nutzt. Der erste Aufruf nach einer Ruhephase kann etwa eine Minute dauern, während die Server aufwachen.
+:::
+
+## Schritt 1: Erstellen Sie ein Staging-Konto
+
+Staging ist komplett getrennt von der Produktion, mit eigenen Logins und Konten.
+
+<Steps>
+1. Gehen Sie zu [staging-app.wink.travel](https://staging-app.wink.travel), klicken Sie auf `Sign-In / Register` und registrieren Sie sich.
+
+2. Klicken Sie in der linken Seitenleiste auf `Accounts`, dann auf `Create` und wählen Sie **I am an Affiliate**. Buchungen, die Sie senden, werden diesem Konto gutgeschrieben. Siehe [Konto erstellen](/de/portal/create-account/).
+</Steps>
+
+## Schritt 2: Erstellen Sie eine Anwendung
+
+Die Anwendung gibt Ihrem Code die Zugangsdaten.
+
+<Steps>
+1. Klicken Sie auf Ihrer Konto-Karte auf `Actions` > `Manage account`, dann auf den Tab `Applications`.
+
+2. Klicken Sie auf `Create new application`, geben Sie einen Namen ein und wählen Sie **Machine-to-machine** als Client-Typ.
+
+3. Wählen Sie unter Scopes **Inventory & rates** (lesen). Die Partner-API prüft auf `inventory.read`.
+
+4. Klicken Sie auf `Create application` und kopieren Sie die **Client ID** und das **Client secret**. Das Secret wird nur einmal angezeigt und kann später nicht abgerufen werden.
+</Steps>
+
+Siehe [Applications](/de/account/applications/) für die anderen Client-Typen und Scopes.
+
+## Schritt 3: Holen Sie sich ein Zugriffstoken
+
+```bash
+curl -X POST https://staging-iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_CLIENT_SECRET>" \
+  -d "scope=inventory.read"
+```
+
+Speichern Sie das `access_token` aus der Antwort:
+
+```bash
+export WINK_TOKEN=<access_token>
+```
+
+Tokens laufen ab. Lassen Sie in Ihrem eigenen Code eine OAuth2-Bibliothek diese abrufen und erneuern. Siehe [Authentifizierung](/de/developers/authentication/).
+
+## Schritt 4: Finden Sie Ihre Konto-ID
+
+Jeder Partner-API-Aufruf benennt das Konto, für das Sie handeln, im Header `managing-entity-id`. Listen Sie die Konten auf, für die Ihr Token handeln kann:
+
+```bash
+grpcurl -H "authorization: Bearer $WINK_TOKEN" \
+  -d '{}' \
+  staging-partner.wink.travel:443 wink.partner.v1.Accounts/ListAccounts
+```
+
+Kopieren Sie die `accountId` des Affiliate-Kontos aus Schritt 1:
+
+```bash
+export WINK_ACCOUNT_ID=<accountId>
+```
+
+## Schritt 5: Suchen Sie Hotels in einer Stadt
+
+{/* TODO(Yann): bestätigen Sie die Staging-Stadt des Testhotels mit Verfügbarkeit und verwenden Sie sie hier. */}
+
+```bash
+grpcurl -H "authorization: Bearer $WINK_TOKEN" \
+  -H "managing-entity-id: $WINK_ACCOUNT_ID" \
+  -d '{
+    "urlName": "bangkok-thailand",
+    "userSession": {
+      "itinerary": {
+        "startDate": "2026-12-01",
+        "nights": 2,
+        "room": { "adults": 2 }
+      },
+      "currencyCode": "USD",
+      "languageCode": "en"
+    }
+  }' \
+  staging-partner.wink.travel:443 wink.partner.v1.Search/SearchByCity
+```
+
+Verwenden Sie ein zukünftiges Check-in-Datum; ein vergangenes Datum wird abgelehnt. Jedes Ergebnis enthält:
+
+- `name`, `starRating` und `heroImageUrl`, ausreichend für eine Ergebniszeile,
+- `roomTypes`, die Live-Angebote, günstigstes Zimmer zuerst,
+- `urlName`, den Slug, den Sie für den Buchungslink benötigen.
+
+Preise sind Ganzzahlen in Untereinheiten: Teilen Sie durch 10 hoch `currencyExponent` aus der Antwort (2 für USD, also ist `12500` $125,00).
+
+Sie kennen den Slug einer Stadt nicht? Ermitteln Sie ihn mit `wink.partner.v1.Lookup/Search`. Für den vollständigen Inhalt einer Unterkunft verwenden Sie den `Content`-Service. Die [Partner-API-Referenz](/de/partner-api/partner/) dokumentiert jeden Aufruf.
+
+## Schritt 6: Erstellen Sie den Buchungslink
+
+```text
+https://staging-book.wink.travel/hotel/<urlName>?client-id=<YOUR_CLIENT_ID>&configuration-id=<YOUR_CUSTOMIZATION_ID>
+```
+
+- `<urlName>` ist der `urlName` des Hotels aus Schritt 5.
+- `client-id` ist die Client ID Ihrer Anwendung aus Schritt 2.
+- `configuration-id` ist Ihre Anpassungs-ID: `Manage account` > `Customizations`. Eine Anpassung legt auch Ihr Branding, die Standardsprache und Währung auf der Buchungsseite fest.
+
+:::caution
+Beide IDs müssen enthalten sein. Ohne sie lädt die Seite zwar, aber mit Standard-Branding, und **die Buchung wird Ihnen nicht gutgeschrieben**. Setzen Sie Ihr Client Secret niemals in einen Link.
+:::
+
+Siehe [Direktes Verlinken](/de/booking-engine/features/#linking-directly) für das Verlinken zur Startseite der Buchungsengine statt zu einem einzelnen Hotel.
+
+## Schritt 7: Machen Sie eine Testbuchung
+
+Öffnen Sie Ihren Link, wählen Sie Daten und ein Zimmer und bezahlen Sie mit einer [Stripe-Testkarte](https://docs.stripe.com/testing), z. B. `4242 4242 4242 4242` mit einem beliebigen zukünftigen Ablaufdatum und beliebigem CVC. In Staging wird keine echte Karte belastet. Notieren Sie den Buchungscode auf der Bestätigungsseite; er beginnt mit `WNK`.
+
+## Schritt 8: Lassen Sie sich über Buchungen benachrichtigen
+
+<Steps>
+1. Gehen Sie im Portal zu `Applications > Webhooks` und fügen Sie einen Endpunkt hinzu, der `POST`-Anfragen akzeptiert.
+
+2. Abonnieren Sie `booking.create` oder lassen Sie die Ereignisliste leer, um während der Entwicklung alles zu erhalten.
+
+3. Senden Sie sich ein Testereignis, machen Sie eine weitere Testbuchung und beobachten Sie, wie es ankommt.
+</Steps>
+
+Verifizieren Sie die Signatur jeder Lieferung, bevor Sie ihr vertrauen. Siehe [Webhook-Integration](/de/developers/webhook-integration/) und den [Webhook-Ereigniskatalog](/de/developers/webhook-events/).
+
+## Schritt 9: Wechseln Sie in die Produktion
+
+Für Entwickler gibt es keinen Genehmigungsschritt. (Reiseagentur-Konten werden zuerst zertifiziert; siehe [unten](#booking-as-a-travel-agency).) Wenn Ihre Integration in Staging funktioniert:
+
+<Steps>
+1. Erstellen Sie ein Konto und eine Anwendung unter [app.wink.travel](https://app.wink.travel), wie in den Schritten 1 und 2. Zugangsdaten werden nicht zwischen Umgebungen übertragen.
+
+2. Entfernen Sie `staging-` aus allen Hosts:
+
+   | Staging | Produktion |
+   |---|---|
+   | `https://staging-iam.wink.travel` | `https://iam.wink.travel` |
+   | `staging-partner.wink.travel:443` | `partner.wink.travel:443` |
+   | `https://staging-book.wink.travel` | `https://book.wink.travel` |
+
+3. Ermitteln Sie Ihre Produktions-Konto-ID (Schritt 4) und Anpassungs-ID (Schritt 6) erneut. Sie unterscheiden sich von Staging.
+</Steps>
+
+Die Nutzung der Partner-API wird in Hotelnächten gemessen, mit einem kostenlosen monatlichen Kontingent. Siehe [Partner-API](/de/integrations/partner-api/) für Preise und Limits.
+
+## Buchung als Reiseagentur
+
+Wenn Ihr Konto eine lizenzierte Reiseagentur ist, müssen Sie Reisende nicht zu `book.wink.travel` schicken: Sie können Buchungen direkt mit `wink.partner.v1.Booking/CreateBooking` erstellen und mit den anderen `Booking`-Aufrufen verwalten. Andere Konten leiten Reisende stattdessen zum Buchungslink weiter.
+
+Reiseagentur-Konten werden zertifiziert: Wink prüft jede Agenturregistrierung, bevor sie buchen kann. Agenturen, die Zahlungen von ihren Kunden selbst als Händler abwickeln wollen, müssen über die Partner-API buchen und eine schriftliche Genehmigung von Wink erhalten. Siehe [Erste Schritte als Reiseagentur](/de/guides/travel-agents/getting-started/) und die [Partner-API-Referenz](/de/partner-api/partner/).
+
+## Nächste Schritte
+
+- [Generieren Sie einen typisierten Client](/de/developers/rest-and-grpc/#generate-a-grpc-client) aus dem `.proto`-Schema, anstatt `grpcurl` manuell zu verwenden.
+- Verbinden Sie den [MCP-Server](/de/developers/mcp/) und nutzen Sie die [AI Skills](/de/developers/ai-skills/), damit Ihr Coding-Assistent die Integration gegen die Live-API schreibt.
+- Lesen Sie die vollständige Liste der [Umgebungen und Hosts](/de/getting-started/environments/).

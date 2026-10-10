@@ -13,7 +13,9 @@ import CloudinaryImage from '/src/components/cloudinary-image.astro';
 :::note
 การทดสอบควรทำใน [สภาพแวดล้อม staging](/th/getting-started/environments) เสมอ ที่นั่นจะมีข้อมูลน้อยกว่าแต่คุณสามารถทดสอบได้อย่างเต็มที่โดยไม่ส่งผลกระทบต่อสภาพแวดล้อม production
 
-เมื่อคุณพร้อมใช้งานจริง เราจะรับรองบัญชีและแอปพลิเคชันของคุณ และคุณสามารถเปิดใช้งานในสภาพแวดล้อม production ได้
+เมื่อคุณพร้อมแล้ว ให้ย้ายไปยัง production ด้วยตัวเอง: สร้างแอปพลิเคชันใน production (ข้อมูลรับรองจะไม่ถูกโอนระหว่างสภาพแวดล้อม) และลบ `staging-` ออกจาก URL เช่น `https://staging-api.wink.travel` จะกลายเป็น `https://api.wink.travel` ไม่มีขั้นตอนการอนุมัติสำหรับนักพัฒนา มีเพียง [channel managers](/th/guides/integrators/add-your-channel-manager/#certification) และ [travel agents](/th/portal/travel-agent/what-is-agent/) เท่านั้นที่ได้รับการรับรองก่อนเข้าสู่ production
+
+การสร้างบัญชีใน staging หรือ production ต้องยอมรับข้อกำหนดและเงื่อนไขของ Wink และข้อกำหนดการชำระเงิน และการยอมรับนั้นถือเป็นข้อผูกพัน
 :::
 
 ทำตามขั้นตอนเหล่านี้:
@@ -21,13 +23,13 @@ import CloudinaryImage from '/src/components/cloudinary-image.astro';
 <Steps>
 1. [ลงทะเบียน](/th/getting-started/sign-up) บัญชีผู้ใช้ของคุณบน Wink
 2. [สร้างบัญชีพันธมิตร](/th/portal/create-account) คุณจะต้องใช้บัญชีนี้เพื่อผูกกับแอปพลิเคชันของคุณ ดู [Studio คืออะไร](/th/portal/studio/what-is-studio) เพื่อบริบทเพิ่มเติม
-3. [สร้างแอปพลิเคชัน](/th/account/applications) และเชื่อมโยงกับบัญชีพันธมิตรที่คุณสร้างในขั้นตอนที่ 2 สำหรับการเชื่อมต่อ API แบบ server-to-server ให้เลือก **MACHINE_2_MACHINE** เป็นประเภทไคลเอนต์
-4. เมื่อคุณสร้าง `Application` แล้ว ให้คัดลอกและบันทึก client-id และ secret key ทันที — secret key จะแสดงเพียงครั้งเดียวและไม่สามารถเรียกคืนได้อีก
+3. [สร้างแอปพลิเคชัน](/th/account/applications) และเชื่อมโยงกับบัญชีพันธมิตรที่คุณสร้างในขั้นตอนที่ 2 สำหรับการรวม API แบบเซิร์ฟเวอร์ต่อเซิร์ฟเวอร์ ให้เลือก **MACHINE_2_MACHINE** เป็นประเภทไคลเอนต์
+4. เมื่อคุณสร้าง `Application` แล้ว ให้คัดลอกและบันทึก client-id และ secret key ทันที — secret key จะแสดงเพียงครั้งเดียวและไม่สามารถดึงคืนได้อีก
 </Steps>
 
 ## CDN
 
-ที่ Wink เราใช้ Cloudinary สำหรับภาพและวิดีโอทั้งหมดของเรา เมื่อคุณเข้าถึงสินค้าคงคลังการเดินทางของเรา คุณจะสามารถใช้ฟีเจอร์ขั้นสูงทั้งหมดของ Cloudinary ได้อย่างเต็มที่
+ที่ Wink เราใช้ Cloudinary สำหรับสินทรัพย์ภาพและวิดีโอทั้งหมดของเรา เมื่อคุณเข้าถึงสินค้าคงคลังการเดินทางของเรา คุณจะสามารถใช้ฟีเจอร์ขั้นสูงทั้งหมดของ Cloudinary ได้อย่างเต็มที่
 
 `cloud_name` ของเราคือ `traveliko`
 
@@ -40,7 +42,7 @@ import CloudinaryImage from '/src/components/cloudinary-image.astro';
 
 ### ตัวอย่าง
 
-สำหรับสินค้าคงคลังการเดินทางทุกประเภทที่เรารองรับ จะมีอาร์เรย์ JSON ซ้อนชื่อ `multimedias` JSON สำหรับรายการมัลติมีเดียมีลักษณะดังนี้:
+สำหรับทุกประเภทสินค้าคงคลังการเดินทางที่เรารองรับ จะมีอาร์เรย์ JSON ซ้อนชื่อ `multimedias` JSON สำหรับรายการมัลติมีเดียมีลักษณะดังนี้:
 
 ```json {3}
 {
@@ -67,7 +69,7 @@ import CloudinaryImage from '/src/components/cloudinary-image.astro';
 }
 ```
 
-บรรทัดที่เน้นด้านบนแสดง ID เฉพาะของ Cloudinary คือ `partners/radisson_blu_logo` นั่นคือสิ่งที่คุณต้องใช้เพื่อดึงภาพในรูปแบบ คุณภาพ และขนาดที่คุณต้องการ
+บรรทัดที่เน้นด้านบนแสดง ID เฉพาะของ Cloudinary คือ `partners/radisson_blu_logo` นั่นคือทั้งหมดที่คุณต้องใช้เพื่อดึงภาพในรูปแบบ คุณภาพ และขนาดที่คุณต้องการ
 
 ## การทดสอบ
 
@@ -77,10 +79,10 @@ import CloudinaryImage from '/src/components/cloudinary-image.astro';
 
 เว็บไซต์เอกสารของเราถูกตั้งค่าให้คุณสามารถรันคำสั่ง API ได้จากภายในเว็บไซต์
 
-ในตัวอย่างนี้ คุณต้องการใช้คำสั่ง API `Search Lookups (OAuth2)`
+ในตัวอย่างนี้ คุณต้องการใช้การเรียก API `Search Lookups (OAuth2)`
 
 :::tip[เคล็ดลับมือโปร]
-เพื่อความสะดวก เราแนะนำให้นักพัฒนาระบบใช้ endpoints ที่เรากำหนดเป็น `OAuth2` endpoints เหล่านี้จะรู้ว่าผู้เรียก API คือใครและรู้ว่าคุณอยู่ในบัญชีใด ดังนั้นคุณไม่ต้องระบุ `companyIdentifier` ใน URL ของคุณ
+เพื่อความสะดวก เราแนะนำให้นักรวมระบบใช้ endpoints ที่เรากำหนดเป็น `OAuth2` endpoints เหล่านั้นจะรู้ว่าคำเรียก API มาจากใครและรู้ว่าคุณอยู่ในบัญชีใด ดังนั้นคุณไม่ต้องระบุ `companyIdentifier` ใน URL ของคุณ
 :::
 
 <Steps>
@@ -110,8 +112,8 @@ import CloudinaryImage from '/src/components/cloudinary-image.astro';
 <Steps>
 1. ดาวน์โหลด [Postman](https://www.postman.com/downloads)
 2. คลิกที่ `Download OpenAPI spec` จากด้านบนของหน้า [Lookup API](https://developer.wink.travel/lookup)
-3. นำเข้าไฟล์นี้เข้าสู่ Postman
-4. หากคุณนำเข้าเป็นคอลเลกชันใหม่ชื่อ `Wink API` ให้คลิกที่จุดสามจุดแนวนอนข้างชื่อคอลเลกชันแล้วคลิก `Edit`
+3. นำเข้าไฟล์นั้นเข้าสู่ Postman
+4. หากคุณนำเข้าเป็นคอลเลกชันใหม่ชื่อ `Wink API` ให้คลิกที่จุดสามจุดแนวนอนถัดจากชื่อคอลเลกชันแล้วคลิก `Edit`
 5. ในแท็บ `Authorization` ตั้งค่า `Auth type` เป็น OAuth2
 6. ตั้งค่า `Add auth data to` เป็น `Request headers`
 7. ตั้งค่า `Header prefix` เป็น `Bearer`
@@ -120,12 +122,12 @@ import CloudinaryImage from '/src/components/cloudinary-image.astro';
 10. ตั้งค่า `Access token URL` เป็น https://staging-iam.wink.travel/oauth2/token
 11. ตั้งค่า `Client ID` เป็น Client ID ที่แอปของคุณช่วยสร้าง
 12. ตั้งค่า `Client Secret` เป็น Client Secret ที่แอปของคุณช่วยสร้าง
-13. ตั้งค่า `Scope` เป็นสโคปที่การเชื่อมต่อของคุณต้องการโดยเว้นวรรค เช่น `inventory.read inventory.write inventory.remove` ดู [รายการสโคป](/th/developers/authentication#scopes) สำหรับรายการทั้งหมด
+13. ตั้งค่า `Scope` เป็นสโคปที่การรวมระบบของคุณต้องการโดยเว้นวรรค เช่น `inventory.read inventory.write inventory.remove` ดู [รายการสโคป](/th/developers/authentication#scopes) สำหรับรายการเต็ม
 14. ตั้งค่า `Client Authentication` เป็น `Send as Basic Auth header`
-15. คลิกปุ่ม `Get New Access Token` เพื่อดึงโทเค็นและบันทึกไว้
-16. สำหรับคำสั่ง API ทั้งหมดในคอลเลกชัน Wink API ให้แน่ใจว่าแท็บการรับรองความถูกต้องระบุว่า `Inherit auth from parent` เพื่อให้โทเค็นของคุณถูกแนบไปกับทุกคำสั่ง
+15. คลิกปุ่ม `Get New Access Token` เพื่อดึงโทเค็นและบันทึกมัน
+16. สำหรับการเรียก API ทั้งหมดภายใต้คอลเลกชัน Wink API ให้แน่ใจว่าแท็บการรับรองความถูกต้องระบุว่า `Inherit auth from parent` เพื่อให้รวมโทเค็นของคุณในทุกคำเรียก
 </Steps>
 
 :::tip[เคล็ดลับมือโปร]
-แนะนำให้ตั้งค่าชื่อโดเมนเซิร์ฟเวอร์, Client ID และ Client Secret เป็นตัวแปรสภาพแวดล้อม เพื่อให้คุณสามารถสลับระหว่างสภาพแวดล้อม staging และ production ได้อย่างง่ายดาย และใช้ซ้ำการดำเนินการทั้งหมดที่คุณสร้างไว้
+แนะนำให้ตั้งค่าชื่อโดเมนเซิร์ฟเวอร์, Client ID และ Client Secret เป็นตัวแปรสภาพแวดล้อม เพื่อให้คุณสามารถสลับระหว่างสภาพแวดล้อม staging และ production ได้ง่ายและใช้ซ้ำทุกการดำเนินการที่คุณสร้างไว้
 :::

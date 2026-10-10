@@ -1,15 +1,15 @@
 ---
-title: O que é o Agent?
-description: Saiba como o Wink apoia agentes de viagens registados.
+title: O que é um Agente?
+description: Saiba como a Wink apoia agentes de viagens registados.
 sidebar:
   order: 0
 ---
 
-A nossa solução para agentes de viagens registados é o [Wink Agent](https://agent.wink.travel). É um portal self-service que os agentes podem usar para pesquisar e reservar em nome dos seus clientes e ganhar uma comissão por cada reserva.
+Os agentes de viagens registados utilizam o mesmo portal que todos os outros, em [app.wink.travel](https://app.wink.travel), com uma conta de Agente de Viagens. Os agentes pesquisam e reservam em nome dos seus clientes e ganham uma comissão por cada reserva. Para criar uma conta, siga [Começar como Agência de Viagens](/pt-PT/guides/travel-agents/getting-started/).
 
-Agentes de viagens mais avançados podem optar por integrar ao nível da API para gerir pagamentos e pagamentos fora da plataforma Wink.
+As agências aprovadas para cobrar diretamente atuam como comerciante registado e gerem o pagamento fora da plataforma Wink. As agências com os seus próprios sistemas podem integrar-se através da [Partner API](/pt-PT/integrations/partner-api/).
 
-Os agentes de viagens têm um subconjunto das mesmas funcionalidades do portal que o [Studio](/pt-PT/portal/studio/what-is-studio), por isso não as abordaremos novamente aqui.
+Os agentes de viagens têm um subconjunto das mesmas funcionalidades do portal que o [Studio](/pt-PT/portal/studio/what-is-studio), pelo que não as abordaremos novamente aqui.
 
 ## Pesquisa
 
@@ -19,4 +19,4 @@ Caso contrário, continue para a próxima secção.
 
 ## API
 
-Os desenvolvedores que querem gerir `Travel Agent` podem ir a [Developers > API > Travel Agent](/pt-PT/api/overview/).
+As agências podem pesquisar e reservar através da [Partner API](/pt-PT/partner-api/partner/), que substitui os antigos endpoints REST para Agentes de Viagens.

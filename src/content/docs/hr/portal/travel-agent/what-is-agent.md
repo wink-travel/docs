@@ -1,22 +1,22 @@
 ---
 title: Što je Agent?
-description: Saznajte kako Wink podržava registrirane putničke agente.
+description: Saznajte kako Wink podržava registrirane turističke agente.
 sidebar:
   order: 0
 ---
 
-Naše rješenje za registrirane putničke agente je [Wink Agent](https://agent.wink.travel). To je portal za samostalno korištenje koji agenti mogu koristiti za pretraživanje i rezervaciju u ime svojih klijenata te zaraditi proviziju za sebe na svakoj rezervaciji.
+Registrirani turistički agenti koriste isti portal kao i svi ostali, na [app.wink.travel](https://app.wink.travel), s računom za turističkog agenta. Agenti pretražuju i rezerviraju u ime svojih klijenata te zarađuju proviziju na svaku rezervaciju. Za postavljanje računa slijedite [Početak rada kao turistička agencija](/hr/guides/travel-agents/getting-started/).
 
-Napredniji putnički agenti mogu odabrati integraciju na razini API-ja radi upravljanja plaćanjima i isplatama izvan Wink platforme.
+Agencije odobrene za samostalno naplaćivanje djeluju kao trgovac zapisa i obrađuju plaćanja izvan Wink platforme. Agencije sa svojim sustavima mogu se integrirati putem [Partner API-ja](/hr/integrations/partner-api/).
 
-Putnički agenti imaju podskup istih značajki portala kao i [Studio](/hr/portal/studio/what-is-studio), pa ih ovdje nećemo ponovno obrađivati.
+Turistički agenti imaju podskup istih značajki portala kao i [Studio](/hr/portal/studio/what-is-studio), stoga ih ovdje nećemo ponovno obrađivati.
 
 ## Pretraživanje
 
-Idite na [Pretraživanje](/hr/portal/studio/search) da biste naučili kako pretraživati i rezervirati hotele.
+Idite na [Pretraživanje](/hr/portal/studio/search) kako biste naučili kako pretraživati i rezervirati hotele.
 
 U suprotnom, nastavite na sljedeći odjeljak.
 
 ## API
 
-Programeri koji žele upravljati `Travel Agent` mogu otići na [Developers > API > Travel Agent](/hr/api/overview/).
+Agencije mogu pretraživati i rezervirati putem [Partner API-ja](/hr/partner-api/partner/), koji zamjenjuje starije REST krajnje točke za turističke agente.

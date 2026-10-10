@@ -5,7 +5,7 @@ sidebar:
   order: 5
 ---
 
-Zjistěte, jak se Wink srovnává s ostatními segmenty online cestovního ruchu na trhu. Níže je rychlý přehled funkcí, které jsme považovali za důležité k porovnání.
+Zjistěte, jak se Wink srovnává s ostatními segmenty online cestovního ruchu na trhu. Níže je rychlý přehled funkcí, které jsme považovali za důležité porovnat.
 
 ## Matice funkcí
 
@@ -15,9 +15,9 @@ Zjistěte, jak se Wink srovnává s ostatními segmenty online cestovního ruchu
 | Link-in-bio prodejna | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | B2B affiliate síť | 🟢 | 🟢 | ⚫️ | 🟢 | 
 | Podpora cestovních agentů | 🟢 | 🟢 | ⚫️ | 🟢 | 
-| Distribuce a marketing s asistencí AI | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Distribuce a marketing s podporou AI | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | Nástroje přátelské k sociálním sítím | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
-| B2C kanál bez provizí | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| B2C kanál bez provize | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | Zdarma Google Hotel listing | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | Přístup k Web Component / SDK / API | 🟢 | 🟢 | ⚫️ | 🟢 | 
 | Přímé vztahy | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
@@ -27,16 +27,16 @@ Zjistěte, jak se Wink srovnává s ostatními segmenty online cestovního ruchu
 | Sledování návratnosti investic (ROI) | 🟢 | 🟢 | ⚫️ | ⚫️ | 
 | Platba za výkon | 🟢 | 🟢 | ⚫️ | 🟢 | 
 | Integrovaná platební brána | 🟢 | 🟢 | 🟢 | ⚫️ | 
-| Výplaty přes Wise | 🟢 | 🟢 | ⚫️ | ⚫️ | 
+| Výplaty bankovním převodem | 🟢 | 🟢 | ⚫️ | ⚫️ | 
 
 
 ## Wink vs Internet Booking Engine (IBE)
 
-Některé hotely se nás snaží srovnávat s jejich internetovým rezervačním enginem, který je součástí jejich channel managera, a žádají nás o pevnou měsíční cenu založenou na počtu pokojů jejich zařízení.
+Některé hotely se nás snaží srovnávat s jejich internetovým rezervačním enginem, který je součástí jejich channel managera, a žádají nás o pevnou měsíční cenu založenou na počtu pokojů jejich objektu.
 
 Nejsme IBE a doufáme, že toto pomůže objasnit rozdíl. Každá služba má své výhody a nevýhody. Pokud vám váš IBE vyhovuje, zůstaňte u něj.  
-Wink existuje, aby vyplnil několik mezer v cestovním průmyslu a spojil vše na jednom místě.
+Wink existuje, aby vyplnil několik mezer v cestovním průmyslu a vše spojil na jednom místě.
 
 :::tip
-Nemusíte nahrazovat svůj stávající IBE. Doporučujeme však vyzkoušet náš sociálně přátelský rezervační engine nebo správce odkazů na jednom z vašich sociálních účtů, abyste viděli, jak se konvertují. Neplatíte nic, pokud nejsou žádné rezervace – co tedy můžete ztratit? 😉
+Nemusíte nahrazovat svůj stávající IBE. Doporučujeme však vyzkoušet náš sociálně přátelský rezervační engine nebo správce odkazů na jednom z vašich sociálních účtů a zjistit, jak se konvertují. Neplatíte nic, pokud nejsou žádné rezervace – co můžete ztratit? 😉
 :::

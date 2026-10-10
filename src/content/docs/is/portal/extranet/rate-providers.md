@@ -14,7 +14,7 @@ Veldu gjalddagaðilann þinn úr fellilistanum og smelltu á `Save` hnappinn. Þ
 
 ### SynXis
 
-Ef eignin þín notar SynXis rásarstjóra, þarf einn skref í viðbót áður en þú ert tilbúinn að tengjast Wink.
+Ef eignin þín notar Sabre SynXis, þarf einn aukaskref áður en þú ert tilbúinn að tengjast Wink.
 
 - Vinsamlegast hafðu samband við SynXis reikningsfulltrúa þinn eða þjónustudeild (SHSCustomerCare@sabre.com).
 - Láttu þá vita að þú viljir tengjast Wink í gegnum Channel Connect Express (***CCX***).
@@ -27,15 +27,15 @@ Ef eignin þín notar SynXis rásarstjóra, þarf einn skref í viðbót áður 
 
 Hér að neðan er listi yfir seljendur sem við styðjum:
 
-Tiltækar tegundir:
+Fáanlegir gerðir:
 
 - Channel Manager (CM)
 - Property Management System (PMS)
 - Central Reservation System (CRS)
 
-*Ef seljandi hefur umboðsmann, þýðir það að við fáum óbeint gjöld frá seljandanum í gegnum umboðsmanninn.*
+*Ef seljandi hefur umboðsmann, þýðir það að við fáum gjöld óbeint frá seljandanum í gegnum umboðsmanninn.*
 
-| Seljandi | Tegund | Umboðsmaður | Síðan | Síðast breytt | Athugasemd
+| Seljandi | Tegund | Umboðsmaður | Frá | Síðast breytt | Athugasemd
 | -- | -- | -- | -- | -- | -- |
 | Hoteliers Guru | CM |  | 2017 | 2017 | |
 | Travelclick | CM |  | 2016 | 2016 | |

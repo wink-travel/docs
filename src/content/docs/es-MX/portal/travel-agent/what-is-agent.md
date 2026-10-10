@@ -5,18 +5,18 @@ sidebar:
   order: 0
 ---
 
-Nuestra solución para agentes de viajes registrados es [Wink Agent](https://agent.wink.travel). Es un portal de autoservicio que los agentes pueden usar para buscar y reservar en nombre de sus clientes y ganar una comisión por cada reserva.
+Los agentes de viajes registrados usan el mismo portal que todos los demás, en [app.wink.travel](https://app.wink.travel), con una cuenta de Travel Agent. Los agentes buscan y reservan en nombre de sus clientes y ganan una comisión por cada reserva. Para configurar una, sigue [Comenzando como agencia de viajes](/es-MX/guides/travel-agents/getting-started/).
 
-Los agentes de viajes más avanzados pueden optar por integrarse a nivel de API con el fin de manejar pagos y desembolsos fuera de la plataforma Wink.
+Las agencias aprobadas para cobrar el pago por sí mismas actúan como comerciante registrado y manejan el pago fuera de la plataforma Wink. Las agencias con sus propios sistemas pueden integrarse a través del [Partner API](/es-MX/integrations/partner-api/).
 
 Los agentes de viajes tienen un subconjunto de las mismas funciones del portal que [Studio](/es-MX/portal/studio/what-is-studio), por lo que no las cubriremos nuevamente aquí.
 
-## Buscar
+## Búsqueda
 
-Ve a [Buscar](/es-MX/portal/studio/search) para aprender cómo buscar y reservar hoteles.
+Ve a [Search](/es-MX/portal/studio/search) para aprender cómo buscar y reservar hoteles.
 
 De lo contrario, continúa con la siguiente sección.
 
 ## API
 
-Los desarrolladores que quieran gestionar `Travel Agent` pueden dirigirse a [Developers > API > Travel Agent](/es-MX/api/overview/).
+Las agencias pueden buscar y reservar a través del [Partner API](/es-MX/partner-api/partner/), que reemplaza los antiguos endpoints REST para Travel Agent.

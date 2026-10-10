@@ -1,0 +1,198 @@
+---
+title: Kom godt i gang
+description: "Fra nul til en fungerende integration i staging: få legitimationsoplysninger, søg live hotelpriser med Partner API, og send rejsende til en bookingside, der krediterer dig."
+sidebar:
+  order: 0.5
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+Denne guide tager dig fra ingenting til en fungerende integration på cirka 30 minutter. Når du er færdig, vil du have:
+
+- live priser for hoteller i en by, fra Partner API,
+- et bookingslink, der krediterer bookinger til din konto,
+- en testbooking og en webhook, der fortæller dig, at den er sket.
+
+Alt foregår i **staging**, vores testmiljø. Du behøver ikke at bede os om adgang, og at gå i produktion senere kræver heller ikke godkendelse.
+
+## Er denne guide den rigtige for dig?
+
+| Du vil… | Start her |
+|---|---|
+| Vise hoteller i din app, på dit site eller i dit AI-produkt og sende rejsende til booking, så du tjener kommission | **Denne guide** |
+| Booke på vegne af dine kunder som et autoriseret rejsebureau | Denne guide op til trin 5, derefter [Booking som rejsebureau](#booking-as-a-travel-agency) |
+| Indlejre bookbare hoteller uden at skrive en integration | [Web Components](/da/integrations/web-components/) |
+| Lade en AI-agent søge og booke | [MCP Servers](/da/developers/mcp/) og [Agentic Payments](/da/developers/agentic-payments/) |
+| Tilkoble en channel manager eller PMS | [Tilføj din channel manager](/da/guides/integrators/add-your-channel-manager/) |
+
+## Sådan fungerer det
+
+Du bruger **Partner API** til at finde hoteller og deres live priser. Hvert hotel har et stabilt `urlName`. Du laver det om til et link til Wink Booking Engine, `book.wink.travel`, som bærer dine ID’er. Den rejsende booker og betaler der, og bookingen krediteres din konto.
+
+## Før du går i gang
+
+Du skal bruge:
+
+- [`grpcurl`](https://github.com/fullstorydev/grpcurl), eller Postman eller Insomnia. Partner API er gRPC, ikke REST.
+- `curl`.
+
+:::note
+Staging går i dvale, når ingen bruger det. Det første kald efter en stille periode kan tage cirka et minut, mens serverne vågner op.
+:::
+
+## Trin 1: Opret en staging-konto
+
+Staging er helt adskilt fra produktion med egne login og konti.
+
+<Steps>
+1. Gå til [staging-app.wink.travel](https://staging-app.wink.travel), klik på `Sign-In / Register` og registrer dig.
+
+2. Klik på `Accounts` i venstre sidebjælke, derefter `Create`, og vælg **I am an Affiliate**. Bookinger, du sender, krediteres denne konto. Se [Opret konto](/da/portal/create-account/).
+</Steps>
+
+## Trin 2: Opret en applikation
+
+Applikationen giver din kode sine legitimationsoplysninger.
+
+<Steps>
+1. På dit kontokort klikker du `Actions` > `Manage account`, og derefter fanen `Applications`.
+
+2. Klik `Create new application`, giv den et navn og vælg **Machine-to-machine** som klienttype.
+
+3. Under scopes vælger du **Inventory & rates** (read). Partner API tjekker for `inventory.read`.
+
+4. Klik `Create application` og kopier **Client ID** og **Client secret**. Secret vises én gang og kan ikke hentes igen.
+</Steps>
+
+Se [Applications](/da/account/applications/) for de andre klienttyper og scopes.
+
+## Trin 3: Få et adgangstoken
+
+```bash
+curl -X POST https://staging-iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_CLIENT_SECRET>" \
+  -d "scope=inventory.read"
+```
+
+Gem `access_token` fra svaret:
+
+```bash
+export WINK_TOKEN=<access_token>
+```
+
+Tokens udløber. I din egen kode skal du lade et OAuth2-bibliotek hente og opdatere dem. Se [Authentication](/da/developers/authentication/).
+
+## Trin 4: Find dit konto-ID
+
+Hvert Partner API-kald angiver den konto, du handler for, i en `managing-entity-id` header. List de konti, dit token kan handle for:
+
+```bash
+grpcurl -H "authorization: Bearer $WINK_TOKEN" \
+  -d '{}' \
+  staging-partner.wink.travel:443 wink.partner.v1.Accounts/ListAccounts
+```
+
+Kopier `accountId` for affiliate-kontoen fra trin 1:
+
+```bash
+export WINK_ACCOUNT_ID=<accountId>
+```
+
+## Trin 5: Søg hoteller i en by
+
+{/* TODO(Yann): bekræft staging-byen for testhotellet med tilgængelighed, og brug den her. */}
+
+```bash
+grpcurl -H "authorization: Bearer $WINK_TOKEN" \
+  -H "managing-entity-id: $WINK_ACCOUNT_ID" \
+  -d '{
+    "urlName": "bangkok-thailand",
+    "userSession": {
+      "itinerary": {
+        "startDate": "2026-12-01",
+        "nights": 2,
+        "room": { "adults": 2 }
+      },
+      "currencyCode": "USD",
+      "languageCode": "en"
+    }
+  }' \
+  staging-partner.wink.travel:443 wink.partner.v1.Search/SearchByCity
+```
+
+Brug en check-in dato i fremtiden; en tidligere dato afvises. Hvert resultat indeholder:
+
+- `name`, `starRating` og `heroImageUrl`, nok til at vise en resultatlinje,
+- `roomTypes`, de live tilbud, billigste værelse først,
+- `urlName`, sluggen du skal bruge til bookingslinket.
+
+Priser er heltal i mindreenheder: divider med 10 opløftet til `currencyExponent` fra svaret (2 for USD, så `12500` er $125,00).
+
+Kender du ikke en bys slug? Find den med `wink.partner.v1.Lookup/Search`. For en ejendoms fulde indhold, brug `Content`-servicen. [Partner API-referencen](/da/partner-api/partner/) dokumenterer alle kald.
+
+## Trin 6: Byg bookingslinket
+
+```text
+https://staging-book.wink.travel/hotel/<urlName>?client-id=<YOUR_CLIENT_ID>&configuration-id=<YOUR_CUSTOMIZATION_ID>
+```
+
+- `<urlName>` er hotellets `urlName` fra trin 5.
+- `client-id` er din applikations Client ID fra trin 2.
+- `configuration-id` er dit tilpasnings-ID: `Manage account` > `Customizations`. En tilpasning sætter også dit branding, standardsprog og valuta på bookingsiden.
+
+:::caution
+Inkluder begge ID’er. Uden dem loader siden stadig, men med standardbranding, og **bookingen krediteres ikke til dig**. Sæt aldrig din client secret i et link.
+:::
+
+Se [Linking directly](/da/booking-engine/features/#linking-directly) for at linke til bookingengineens startside i stedet for et enkelt hotel.
+
+## Trin 7: Lav en testbooking
+
+Åbn dit link, vælg datoer og et værelse, og betal med et [Stripe testkort](https://docs.stripe.com/testing), for eksempel `4242 4242 4242 4242` med en hvilken som helst fremtidig udløbsdato og en vilkårlig CVC. Intet rigtigt kort bliver trukket i staging. Bemærk bookingkoden på bekræftelsessiden; den starter med `WNK`.
+
+## Trin 8: Bliv underrettet om bookinger
+
+<Steps>
+1. I Portal, gå til `Applications > Webhooks` og tilføj et endpoint, der accepterer `POST`-anmodninger.
+
+2. Abonner på `booking.create`, eller lad begivenhedslisten være tom for at modtage alt, mens du udvikler.
+
+3. Send dig selv en testbegivenhed, lav en ny testbooking og se den komme frem.
+</Steps>
+
+Verificer hver leverings signatur, før du stoler på den. Se [Webhook Integration](/da/developers/webhook-integration/) og [Webhook Events Catalog](/da/developers/webhook-events/).
+
+## Trin 9: Gå i produktion
+
+Der er intet godkendelsestrin for udviklere. (Rejsebureaukonti certificeres først; se [nedenfor](#booking-as-a-travel-agency).) Når din integration virker i staging:
+
+<Steps>
+1. Opret en konto og en applikation på [app.wink.travel](https://app.wink.travel), som i trin 1 og 2. Legitimation overføres ikke mellem miljøer.
+
+2. Fjern `staging-` fra alle hosts:
+
+   | Staging | Produktion |
+   |---|---|
+   | `https://staging-iam.wink.travel` | `https://iam.wink.travel` |
+   | `staging-partner.wink.travel:443` | `partner.wink.travel:443` |
+   | `https://staging-book.wink.travel` | `https://book.wink.travel` |
+
+3. Find dit produktionskonto-ID (trin 4) og tilpasnings-ID (trin 6) igen. De er forskellige fra staging.
+</Steps>
+
+Partner API-brug måles i hotel-nætter med en gratis månedlig kvote. Se [Partner API](/da/integrations/partner-api/) for priser og grænser.
+
+## Booking som rejsebureau
+
+Hvis din konto er et autoriseret rejsebureau, behøver du ikke sende rejsende til `book.wink.travel`: du kan oprette bookinger direkte med `wink.partner.v1.Booking/CreateBooking` og administrere dem med de andre `Booking`-kald. Andre konti sender rejsende til bookingslinket i stedet.
+
+Rejsebureaukonti certificeres: Wink gennemgår hvert bureaus registrering, før det kan booke. Bureauer, der ønsker at opkræve betaling fra deres kunder selv som merchant of record, skal booke gennem Partner API og have Winks skriftlige godkendelse. Se [Kom godt i gang som rejsebureau](/da/guides/travel-agents/getting-started/) og [Partner API-referencen](/da/partner-api/partner/).
+
+## Næste skridt
+
+- [Generer en typed client](/da/developers/rest-and-grpc/#generate-a-grpc-client) fra `.proto`-skemaet i stedet for at kalde `grpcurl` manuelt.
+- Tilslut [MCP-serveren](/da/developers/mcp/) og brug [AI Skills](/da/developers/ai-skills/) til at få din kodeassistent til at skrive integrationen mod live API.
+- Læs den fulde liste over [miljøer og hosts](/da/getting-started/environments/).

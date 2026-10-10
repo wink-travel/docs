@@ -1,11 +1,11 @@
 ---
 title: Jämförelse
-description: Lär dig hur Wink jämför sig med liknande online reseföretag och vilka fördelar det finns med att ansluta sig till Wink.
+description: Lär dig hur Wink jämför sig med liknande online reseföretag och vilka fördelar det finns med att gå med i Wink.
 sidebar:
   order: 5
 ---
 
-Lär dig hur Wink jämför sig med andra online resesegment på marknaden. Nedan följer en snabb översikt över funktioner som vi tyckte var viktiga att jämföra.
+Lär dig hur Wink jämför sig med andra online resesegment på marknaden. Nedan är en snabb översikt över funktioner som vi tyckte var viktiga att jämföra.
 
 ## Funktionsmatris
 
@@ -18,7 +18,7 @@ Lär dig hur Wink jämför sig med andra online resesegment på marknaden. Nedan
 | AI-assisterad distribution & marknadsföring | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | Sociala verktyg | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | Provisionsfri B2C-kanal | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
-| Gratis Google Hotel-listning | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Gratis Google Hotell-listning | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | Web Component / SDK / API-åtkomst | 🟢 | 🟢 | ⚫️ | 🟢 | 
 | Direktrelationer | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | Förhandlingsbara provisioner per försäljningskanal | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
@@ -27,7 +27,7 @@ Lär dig hur Wink jämför sig med andra online resesegment på marknaden. Nedan
 | Spåra ROI | 🟢 | 🟢 | ⚫️ | ⚫️ | 
 | Pay-per-Performance | 🟢 | 🟢 | ⚫️ | 🟢 | 
 | Integrerad betalningsgateway | 🟢 | 🟢 | 🟢 | ⚫️ | 
-| Utbetalningar med Wise | 🟢 | 🟢 | ⚫️ | ⚫️ | 
+| Utbetalningar via banköverföring | 🟢 | 🟢 | ⚫️ | ⚫️ | 
 
 
 ## Wink vs Internet Booking Engine (IBE)

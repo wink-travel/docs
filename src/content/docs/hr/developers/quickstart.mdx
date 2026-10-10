@@ -1,0 +1,198 @@
+---
+title: Brzi početak
+description: "Od nule do funkcionalne integracije u staging okruženju: nabavite vjerodajnice, pretražujte cijene hotela uživo putem Partner API-ja i šaljite putnike na stranicu za rezervaciju koja vam pripisuje zasluge."
+sidebar:
+  order: 0.5
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+Ovaj vodič vodi vas od početka do funkcionalne integracije za otprilike 30 minuta. Na kraju ćete imati:
+
+- cijene hotela uživo u nekom gradu, iz Partner API-ja,
+- poveznicu za rezervaciju koja pripisuje rezervacije na vaš račun,
+- testnu rezervaciju i webhook koji vas obavještava da se dogodila.
+
+Sve se odvija u **staging** okruženju, našem testnom okruženju. Ne trebate tražiti pristup od nas, a prelazak u produkciju kasnije također ne zahtijeva odobrenje.
+
+## Je li ovaj vodič pravi za vas?
+
+| Želite… | Počnite ovdje |
+|---|---|
+| Prikazivati hotele u svojoj aplikaciji, web stranici ili AI proizvodu i slati putnike na rezervaciju, zarađujući proviziju | **Ovaj vodič** |
+| Rezervirati u ime svojih klijenata kao licencirana putnička agencija | Ovaj vodič do Koraka 5, zatim [Rezervacija kao putnička agencija](#booking-as-a-travel-agency) |
+| Ugraditi rezervabilne hotele bez pisanja integracije | [Web Components](/hr/integrations/web-components/) |
+| Dopustiti AI agentu da pretražuje i rezervira | [MCP Servers](/hr/developers/mcp/) i [Agentic Payments](/hr/developers/agentic-payments/) |
+| Povezati channel manager ili PMS | [Dodajte svoj Channel Manager](/hr/guides/integrators/add-your-channel-manager/) |
+
+## Kako to funkcionira
+
+Koristite **Partner API** za pronalazak hotela i njihovih cijena uživo. Svaki hotel ima stabilan `urlName`. Pretvarate ga u poveznicu na Wink Booking Engine, `book.wink.travel`, koja nosi vaše ID-jeve. Putnik rezervira i plaća tamo, a rezervacija se pripisuje vašem računu.
+
+## Prije nego što počnete
+
+Trebat će vam:
+
+- [`grpcurl`](https://github.com/fullstorydev/grpcurl), ili Postman ili Insomnia. Partner API je gRPC, ne REST.
+- `curl`.
+
+:::note
+Staging okruženje ide u stanje mirovanja kad ga nitko ne koristi. Prvi poziv nakon duže pauze može potrajati oko minute dok se serveri ne probude.
+:::
+
+## Korak 1: Kreirajte staging račun
+
+Staging je potpuno odvojen od produkcije, s vlastitim prijavama i računima.
+
+<Steps>
+1. Idite na [staging-app.wink.travel](https://staging-app.wink.travel), kliknite `Sign-In / Register` i registrirajte se.
+
+2. Kliknite `Accounts` u lijevom izborniku, zatim `Create` i odaberite **I am an Affiliate**. Rezervacije koje šaljete pripisuju se ovom računu. Pogledajte [Create Account](/hr/portal/create-account/).
+</Steps>
+
+## Korak 2: Kreirajte aplikaciju
+
+Aplikacija daje vašem kodu vjerodajnice.
+
+<Steps>
+1. Na kartici svog računa kliknite `Actions` > `Manage account`, zatim karticu `Applications`.
+
+2. Kliknite `Create new application`, dajte joj ime i odaberite **Machine-to-machine** kao tip klijenta.
+
+3. Pod scopes odaberite **Inventory & rates** (read). Partner API provjerava `inventory.read`.
+
+4. Kliknite `Create application` i kopirajte **Client ID** i **Client secret**. Tajni ključ se prikazuje samo jednom i kasnije se ne može dohvatiti.
+</Steps>
+
+Pogledajte [Applications](/hr/account/applications/) za ostale tipove klijenata i scope-ove.
+
+## Korak 3: Nabavite pristupni token
+
+```bash
+curl -X POST https://staging-iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_CLIENT_SECRET>" \
+  -d "scope=inventory.read"
+```
+
+Spremite `access_token` iz odgovora:
+
+```bash
+export WINK_TOKEN=<access_token>
+```
+
+Tokeni istječu. U vlastitom kodu koristite OAuth2 biblioteku za dohvat i osvježavanje tokena. Pogledajte [Authentication](/hr/developers/authentication/).
+
+## Korak 4: Pronađite svoj ID računa
+
+Svaki Partner API poziv navodi račun za koji djelujete u zaglavlju `managing-entity-id`. Nabrojite račune za koje vaš token može djelovati:
+
+```bash
+grpcurl -H "authorization: Bearer $WINK_TOKEN" \
+  -d '{}' \
+  staging-partner.wink.travel:443 wink.partner.v1.Accounts/ListAccounts
+```
+
+Kopirajte `accountId` affiliate računa iz Koraka 1:
+
+```bash
+export WINK_ACCOUNT_ID=<accountId>
+```
+
+## Korak 5: Pretražite hotele u gradu
+
+{/* TODO(Yann): potvrditi staging grad testnog hotela s dostupnošću i koristiti ga ovdje. */}
+
+```bash
+grpcurl -H "authorization: Bearer $WINK_TOKEN" \
+  -H "managing-entity-id: $WINK_ACCOUNT_ID" \
+  -d '{
+    "urlName": "bangkok-thailand",
+    "userSession": {
+      "itinerary": {
+        "startDate": "2026-12-01",
+        "nights": 2,
+        "room": { "adults": 2 }
+      },
+      "currencyCode": "USD",
+      "languageCode": "en"
+    }
+  }' \
+  staging-partner.wink.travel:443 wink.partner.v1.Search/SearchByCity
+```
+
+Koristite datum prijave u budućnosti; prošli datum se odbija. Svaki rezultat sadrži:
+
+- `name`, `starRating` i `heroImageUrl`, dovoljno za prikaz retka rezultata,
+- `roomTypes`, ponude uživo, najjeftinija soba prva,
+- `urlName`, slug koji vam treba za poveznicu za rezervaciju.
+
+Cijene su cijeli brojevi u manjim jedinicama: podijelite s 10 na potenciju `currencyExponent` iz odgovora (2 za USD, pa je `12500` $125.00).
+
+Ne znate slug grada? Riješite ga s `wink.partner.v1.Lookup/Search`. Za puni sadržaj objekta koristite servis `Content`. [Partner API referenca](/hr/partner-api/partner/) dokumentira svaki poziv.
+
+## Korak 6: Izradite poveznicu za rezervaciju
+
+```text
+https://staging-book.wink.travel/hotel/<urlName>?client-id=<YOUR_CLIENT_ID>&configuration-id=<YOUR_CUSTOMIZATION_ID>
+```
+
+- `<urlName>` je `urlName` hotela iz Koraka 5.
+- `client-id` je Client ID vaše aplikacije iz Koraka 2.
+- `configuration-id` je vaš ID prilagodbe: `Manage account` > `Customizations`. Prilagodba također postavlja vaš branding, zadani jezik i valutu na stranici za rezervaciju.
+
+:::caution
+Uključite oba ID-ja. Bez njih se stranica i dalje učitava, ali s zadanim brendingom, i **rezervacija vam se ne pripisuje**. Nikada ne stavljajte svoj client secret u poveznicu.
+:::
+
+Pogledajte [Linking directly](/hr/booking-engine/features/#linking-directly) za povezivanje na početnu stranicu booking enginea umjesto na pojedinačni hotel.
+
+## Korak 7: Napravite testnu rezervaciju
+
+Otvorite svoju poveznicu, odaberite datume i sobu, te platite s [Stripe test karticom](https://docs.stripe.com/testing), na primjer `4242 4242 4242 4242` s bilo kojim budućim datumom isteka i bilo kojim CVC-om. U stagingu se ne naplaćuje stvarna kartica. Zabilježite kod rezervacije na potvrdi; počinje s `WNK`.
+
+## Korak 8: Primajte obavijesti o rezervacijama
+
+<Steps>
+1. U Portalu idite na `Applications > Webhooks` i dodajte endpoint koji prihvaća `POST` zahtjeve.
+
+2. Pretplatite se na `booking.create`, ili ostavite popis događaja prazan da primate sve dok razvijate.
+
+3. Pošaljite sebi testni događaj, zatim napravite još jednu testnu rezervaciju i pratite dolazak.
+</Steps>
+
+Provjerite potpis svake isporuke prije nego joj vjerujete. Pogledajte [Webhook Integration](/hr/developers/webhook-integration/) i [Webhook Events Catalog](/hr/developers/webhook-events/).
+
+## Korak 9: Pređite u produkciju
+
+Ne postoji korak odobrenja za developere. (Računi putničkih agencija se prvo certificiraju; pogledajte [dolje](#booking-as-a-travel-agency).) Kad vaša integracija radi u stagingu:
+
+<Steps>
+1. Kreirajte račun i aplikaciju na [app.wink.travel](https://app.wink.travel), kao u Koracima 1 i 2. Vjerodajnice se ne prenose između okruženja.
+
+2. Uklonite `staging-` iz svakog hosta:
+
+   | Staging | Produkcija |
+   |---|---|
+   | `https://staging-iam.wink.travel` | `https://iam.wink.travel` |
+   | `staging-partner.wink.travel:443` | `partner.wink.travel:443` |
+   | `https://staging-book.wink.travel` | `https://book.wink.travel` |
+
+3. Ponovno pronađite svoj produkcijski ID računa (Korak 4) i ID prilagodbe (Korak 6). Oni se razlikuju od staginga.
+</Steps>
+
+Korištenje Partner API-ja mjeri se u noćenjima u hotelu, s mjesečnim besplatnim limitom. Pogledajte [Partner API](/hr/integrations/partner-api/) za cijene i ograničenja.
+
+## Rezervacija kao putnička agencija
+
+Ako je vaš račun licencirana putnička agencija, ne morate slati putnike na `book.wink.travel`: možete stvarati rezervacije izravno s `wink.partner.v1.Booking/CreateBooking` i upravljati njima s ostalim `Booking` pozivima. Ostali računi šalju putnike na poveznicu za rezervaciju.
+
+Računi putničkih agencija se certificiraju: Wink pregledava registraciju svake agencije prije nego što može rezervirati. Agencije koje žele same naplaćivati svoje klijente, kao trgovci, moraju rezervirati preko Partner API-ja i dobiti pismeno odobrenje Wink-a. Pogledajte [Getting Started as a Travel Agency](/hr/guides/travel-agents/getting-started/) i [Partner API referencu](/hr/partner-api/partner/).
+
+## Sljedeći koraci
+
+- [Generirajte tipiziranog klijenta](/hr/developers/rest-and-grpc/#generate-a-grpc-client) iz `.proto` sheme umjesto ručnog poziva `grpcurl`.
+- Povežite [MCP server](/hr/developers/mcp/) i koristite [AI Skills](/hr/developers/ai-skills/) da vaš kodni asistent napiše integraciju prema live API-ju.
+- Pročitajte puni popis [okruženja i hostova](/hr/getting-started/environments/).

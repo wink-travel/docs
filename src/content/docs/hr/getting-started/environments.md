@@ -1,19 +1,21 @@
 ---
 title: Okruženja
-description: Ovaj članak sadrži informacije za testere i programere o tome kako pristupiti našim različitim serverskim okruženjima.
+description: Ovaj članak sadrži informacije za testere i programere o tome kako dobiti pristup našim različitim serverskim okruženjima.
 sidebar:
   order: 8
 ---
 
-U Wink-u uvijek imamo 2 okruženja za sve što radimo:
+U Wink-u, uvijek imamo 2 okruženja za sve što radimo:
 
 - Production je naše stabilno okruženje.
-- Staging je naše okruženje za certifikaciju i testiranje.
+- Staging je naše testno okruženje, i mjesto gdje se certificiraju channel manageri i turističke agencije.
 
-Ako ste integrator, hotel ili turistička agencija koja želi pripremiti certifikaciju ili testirati Wink platformu, kreirajte račun u našem staging okruženju da biste započeli.
+Ako želite testirati Wink platformu, kao programer, hotel ili turistička agencija, kreirajte račun u našem staging okruženju da biste započeli. Channel manageri također tamo obavljaju svoju [certifikaciju](/hr/guides/integrators/add-your-channel-manager/#certification).
+
+Kreiranje računa u staging ili production zahtijeva prihvaćanje Wink-ovih Uvjeta i Uvjeta plaćanja, a to prihvaćanje je obvezujuće. Channel manageri i turističke agencije također trebaju certifikaciju prije pristupa production okruženju; svi ostali prelaze u production samostalno.
 
 :::note
-Staging okruženje je dostupno na zahtjev. To znači da će ući u stanje mirovanja ako nema korištenja i ponovno se uključiti kada ga netko koristi. Molimo vas za strpljenje dok ga budite. Pokretanje svih servera traje oko minute nakon što se prvi put povežete s jednim od naših servera ili aplikacija.
+Staging okruženje je dostupno na zahtjev. To znači da će otići u stanje mirovanja ako nema korištenja i ponovno se uključiti kada ga netko koristi. Molimo budite strpljivi ako ga budite. Potrebno je oko minute da se svi serveri pokrenu nakon što se prvi put povežete s jednim od naših servera ili aplikacija.
 :::
 
 ## Serveri

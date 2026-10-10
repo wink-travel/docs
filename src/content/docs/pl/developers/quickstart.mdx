@@ -1,0 +1,198 @@
+---
+title: Szybki start
+description: "Od zera do działającej integracji na środowisku testowym: zdobądź dane uwierzytelniające, wyszukuj ceny hoteli na żywo za pomocą Partner API i kieruj podróżnych na stronę rezerwacji, która przypisuje Ci prowizję."
+sidebar:
+  order: 0.5
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+Ten przewodnik przeprowadzi Cię od zera do działającej integracji w około 30 minut. Na końcu będziesz mieć:
+
+- ceny hoteli na żywo w mieście, z Partner API,
+- link do rezerwacji, który przypisuje rezerwacje do Twojego konta,
+- testową rezerwację oraz webhook informujący o jej dokonaniu.
+
+Wszystko dzieje się w **stagingu**, naszym środowisku testowym. Nie musisz prosić nas o dostęp, a przejście na produkcję później nie wymaga zatwierdzenia.
+
+## Czy to jest odpowiedni przewodnik dla Ciebie?
+
+| Chcesz… | Zacznij tutaj |
+|---|---|
+| Pokazać hotele w swojej aplikacji, na stronie lub w produkcie AI i kierować podróżnych do rezerwacji, zarabiając prowizję | **Ten przewodnik** |
+| Rezerwować w imieniu swoich klientów jako licencjonowane biuro podróży | Ten przewodnik do Kroku 5, potem [Rezerwacje jako biuro podróży](#booking-as-a-travel-agency) |
+| Osadzić rezerwowalne hotele bez pisania integracji | [Web Components](/pl/integrations/web-components/) |
+| Pozwolić agentowi AI wyszukiwać i rezerwować | [MCP Servers](/pl/developers/mcp/) oraz [Agentic Payments](/pl/developers/agentic-payments/) |
+| Podłączyć channel managera lub PMS | [Dodaj swojego channel managera](/pl/guides/integrators/add-your-channel-manager/) |
+
+## Jak to działa
+
+Używasz **Partner API**, aby znaleźć hotele i ich aktualne ceny. Każdy hotel ma stabilny `urlName`. Zamieniasz go na link do Wink Booking Engine, `book.wink.travel`, zawierający Twoje identyfikatory. Podróżny dokonuje rezerwacji i płatności tam, a rezerwacja jest przypisywana do Twojego konta.
+
+## Zanim zaczniesz
+
+Będziesz potrzebować:
+
+- [`grpcurl`](https://github.com/fullstorydev/grpcurl), lub Postman albo Insomnia. Partner API to gRPC, nie REST.
+- `curl`.
+
+:::note
+Staging usypia, gdy nikt go nie używa. Pierwsze wywołanie po przerwie może potrwać około minuty, gdy serwery się budzą.
+:::
+
+## Krok 1: Utwórz konto na stagingu
+
+Staging jest całkowicie oddzielony od produkcji, z własnymi loginami i kontami.
+
+<Steps>
+1. Wejdź na [staging-app.wink.travel](https://staging-app.wink.travel), kliknij `Sign-In / Register` i zarejestruj się.
+
+2. Kliknij `Accounts` w lewym pasku bocznym, potem `Create` i wybierz **I am an Affiliate**. Rezerwacje, które wyślesz, będą przypisane do tego konta. Zobacz [Utwórz konto](/pl/portal/create-account/).
+</Steps>
+
+## Krok 2: Utwórz aplikację
+
+Aplikacja nada Twojemu kodowi dane uwierzytelniające.
+
+<Steps>
+1. Na karcie konta kliknij `Actions` > `Manage account`, a następnie zakładkę `Applications`.
+
+2. Kliknij `Create new application`, nadaj jej nazwę i wybierz **Machine-to-machine** jako typ klienta.
+
+3. W sekcji scopes wybierz **Inventory & rates** (odczyt). Partner API wymaga `inventory.read`.
+
+4. Kliknij `Create application` i skopiuj **Client ID** oraz **Client secret**. Sekret jest pokazany tylko raz i nie można go później odzyskać.
+</Steps>
+
+Zobacz [Applications](/pl/account/applications/) dla innych typów klientów i zakresów.
+
+## Krok 3: Pobierz token dostępu
+
+```bash
+curl -X POST https://staging-iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_CLIENT_SECRET>" \
+  -d "scope=inventory.read"
+```
+
+Zapisz `access_token` z odpowiedzi:
+
+```bash
+export WINK_TOKEN=<access_token>
+```
+
+Tokeny wygasają. W swoim kodzie pozwól bibliotece OAuth2 pobierać i odnawiać je automatycznie. Zobacz [Authentication](/pl/developers/authentication/).
+
+## Krok 4: Znajdź ID swojego konta
+
+Każde wywołanie Partner API wskazuje konto, na które działasz, w nagłówku `managing-entity-id`. Wyświetl listę kont, na które Twój token ma uprawnienia:
+
+```bash
+grpcurl -H "authorization: Bearer $WINK_TOKEN" \
+  -d '{}' \
+  staging-partner.wink.travel:443 wink.partner.v1.Accounts/ListAccounts
+```
+
+Skopiuj `accountId` konta afilianta z Kroku 1:
+
+```bash
+export WINK_ACCOUNT_ID=<accountId>
+```
+
+## Krok 5: Wyszukaj hotele w mieście
+
+{/* TODO(Yann): potwierdź miasto testowego hotelu na stagingu z dostępnością i użyj go tutaj. */}
+
+```bash
+grpcurl -H "authorization: Bearer $WINK_TOKEN" \
+  -H "managing-entity-id: $WINK_ACCOUNT_ID" \
+  -d '{
+    "urlName": "bangkok-thailand",
+    "userSession": {
+      "itinerary": {
+        "startDate": "2026-12-01",
+        "nights": 2,
+        "room": { "adults": 2 }
+      },
+      "currencyCode": "USD",
+      "languageCode": "en"
+    }
+  }' \
+  staging-partner.wink.travel:443 wink.partner.v1.Search/SearchByCity
+```
+
+Użyj daty zameldowania w przyszłości; data z przeszłości zostanie odrzucona. Każdy wynik zawiera:
+
+- `name`, `starRating` i `heroImageUrl`, wystarczające do pokazania wiersza wyniku,
+- `roomTypes`, aktualne oferty, najtańszy pokój pierwszy,
+- `urlName`, slug potrzebny do linku rezerwacji.
+
+Ceny są liczbami całkowitymi w jednostkach podrzędnych: podziel przez 10 do potęgi `currencyExponent` z odpowiedzi (2 dla USD, więc `12500` to 125,00 USD).
+
+Nie znasz sluga miasta? Rozwiąż go za pomocą `wink.partner.v1.Lookup/Search`. Pełną zawartość obiektu uzyskasz przez serwis `Content`. Dokumentacja [Partner API](/pl/partner-api/partner/) opisuje każde wywołanie.
+
+## Krok 6: Zbuduj link do rezerwacji
+
+```text
+https://staging-book.wink.travel/hotel/<urlName>?client-id=<YOUR_CLIENT_ID>&configuration-id=<YOUR_CUSTOMIZATION_ID>
+```
+
+- `<urlName>` to `urlName` hotelu z Kroku 5.
+- `client-id` to Client ID Twojej aplikacji z Kroku 2.
+- `configuration-id` to Twój ID personalizacji: `Manage account` > `Customizations`. Personalizacja ustawia też branding, domyślny język i walutę na stronie rezerwacji.
+
+:::caution
+Dołącz oba ID. Bez nich strona się załaduje, ale z domyślnym brandingiem, a **rezerwacja nie zostanie przypisana do Ciebie**. Nigdy nie umieszczaj swojego client secret w linku.
+:::
+
+Zobacz [Linking directly](/pl/booking-engine/features/#linking-directly) aby linkować do strony głównej booking engine zamiast pojedynczego hotelu.
+
+## Krok 7: Wykonaj testową rezerwację
+
+Otwórz swój link, wybierz daty i pokój, a następnie dokonaj płatności testową kartą [Stripe](https://docs.stripe.com/testing), np. `4242 4242 4242 4242` z dowolną przyszłą datą ważności i dowolnym CVC. Na stagingu nie obciążamy prawdziwych kart. Zanotuj kod rezerwacji na stronie potwierdzenia; zaczyna się od `WNK`.
+
+## Krok 8: Otrzymuj powiadomienia o rezerwacjach
+
+<Steps>
+1. W Portalu przejdź do `Applications > Webhooks` i dodaj endpoint, który akceptuje żądania `POST`.
+
+2. Subskrybuj `booking.create` lub pozostaw listę zdarzeń pustą, aby otrzymywać wszystko podczas rozwoju.
+
+3. Wyślij sobie testowe zdarzenie, potem wykonaj kolejną testową rezerwację i obserwuj jej przyjście.
+</Steps>
+
+Zweryfikuj podpis każdego dostarczenia zanim mu zaufasz. Zobacz [Webhook Integration](/pl/developers/webhook-integration/) oraz [Webhook Events Catalog](/pl/developers/webhook-events/).
+
+## Krok 9: Przejdź na produkcję
+
+Nie ma kroku zatwierdzania dla deweloperów. (Konta biur podróży są najpierw certyfikowane; zobacz [poniżej](#booking-as-a-travel-agency).) Gdy Twoja integracja działa na stagingu:
+
+<Steps>
+1. Utwórz konto i aplikację na [app.wink.travel](https://app.wink.travel), jak w Krokach 1 i 2. Dane uwierzytelniające nie przenoszą się między środowiskami.
+
+2. Usuń `staging-` z każdego hosta:
+
+   | Staging | Produkcja |
+   |---|---|
+   | `https://staging-iam.wink.travel` | `https://iam.wink.travel` |
+   | `staging-partner.wink.travel:443` | `partner.wink.travel:443` |
+   | `https://staging-book.wink.travel` | `https://book.wink.travel` |
+
+3. Ponownie sprawdź ID konta produkcyjnego (Krok 4) i ID personalizacji (Krok 6). Różnią się od stagingu.
+</Steps>
+
+Korzystanie z Partner API jest rozliczane w noclegach hotelowych, z darmowym miesięcznym limitem. Zobacz [Partner API](/pl/integrations/partner-api/) dla cen i limitów.
+
+## Rezerwacje jako biuro podróży
+
+Jeśli Twoje konto to licencjonowane biuro podróży, nie musisz kierować podróżnych do `book.wink.travel`: możesz tworzyć rezerwacje bezpośrednio przez `wink.partner.v1.Booking/CreateBooking` i zarządzać nimi innymi wywołaniami `Booking`. Inne konta kierują podróżnych do linku rezerwacji.
+
+Konta biur podróży są certyfikowane: Wink weryfikuje każde zgłoszenie agencji przed umożliwieniem rezerwacji. Agencje, które chcą same pobierać płatności od klientów jako merchant of record, muszą rezerwować przez Partner API i uzyskać pisemną zgodę Wink. Zobacz [Rozpoczęcie pracy jako biuro podróży](/pl/guides/travel-agents/getting-started/) oraz dokumentację [Partner API](/pl/partner-api/partner/).
+
+## Kolejne kroki
+
+- [Wygeneruj typowanego klienta](/pl/developers/rest-and-grpc/#generate-a-grpc-client) z schematu `.proto` zamiast wywoływać `grpcurl` ręcznie.
+- Podłącz [MCP server](/pl/developers/mcp/) i użyj [AI Skills](/pl/developers/ai-skills/), aby Twój asystent programistyczny napisał integrację z żywym API.
+- Przeczytaj pełną listę [środowisk i hostów](/pl/getting-started/environments/).

@@ -12,7 +12,7 @@ Spoznajte, kako se Wink primerja z drugimi spletnimi potovalnimi segmenti na trg
 | Funkcija | Wink | OTA | IBE | Bed Bank
 | ----------------------- | -- | -- | -- | -- |
 | Internetni rezervacijski sistem | 🟢 | 🟢 | 🟢 | ⚫️ | 
-| Link-in-bio trgovina | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Link-in-bio prodajalna | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | B2B partnerska mreža | 🟢 | 🟢 | ⚫️ | 🟢 | 
 | Podpora potovalnim agentom | 🟢 | 🟢 | ⚫️ | 🟢 | 
 | Distribucija in marketing z AI pomočjo | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
@@ -23,18 +23,18 @@ Spoznajte, kako se Wink primerja z drugimi spletnimi potovalnimi segmenti na trg
 | Neposredni odnosi | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | Pogajljive provizije po prodajnem kanalu | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | Povezljivost z upravljalcem kanalov in PMS | 🟢 | 🟢 | 🟢 | 🟢 | 
-| Dobavitelj je lastnik stranke | 🟢 | ⚫️ | 🟢 | 🟢 | 
+| Dobavitelj ima lastništvo nad stranko | 🟢 | ⚫️ | 🟢 | 🟢 | 
 | Sledenje ROI | 🟢 | 🟢 | ⚫️ | ⚫️ | 
 | Plačilo po uspešnosti | 🟢 | 🟢 | ⚫️ | 🟢 | 
 | Integriran plačilni prehod | 🟢 | 🟢 | 🟢 | ⚫️ | 
-| Izplačila preko Wise | 🟢 | 🟢 | ⚫️ | ⚫️ | 
+| Izplačila preko bančnega nakazila | 🟢 | 🟢 | ⚫️ | ⚫️ | 
 
 
 ## Wink vs Internetni rezervacijski sistem (IBE)
 
 Nekateri hoteli nas poskušajo primerjati z njihovim internetnim rezervacijskim sistemom, ki je priložen njihovemu upravljalcu kanalov, in nas prosijo, da jim ponudimo fiksno mesečno ceno glede na število sob njihovega objekta.
 
-Nismo IBE in upamo, da to pomaga razjasniti razliko. Vsaka storitev ima svoje prednosti in slabosti. Če vaš IBE ustreza vašemu objektu, ga uporabljajte.  
+Nismo IBE in upamo, da to pomaga razjasniti razliko. Vsaka storitev ima svoje prednosti in slabosti. Če vaš IBE deluje za vaš objekt, ga uporabljajte.  
 Wink obstaja, da zapolni več vrzeli v potovalni industriji in vse to združi na enem mestu. 
 
 :::tip

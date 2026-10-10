@@ -1,31 +1,31 @@
 ---
 title: Proveïdors de tarifes
-description: Aquí tens la llista actualitzada de proveïdors de tarifes que suportem directament a Wink.
+description: Aquí teniu la llista actualitzada de proveïdors de tarifes que suportem directament a Wink.
 sidebar:
   order: 24
 ---
 
 ## Configura el proveïdor de tarifes
 
-Per configurar el teu proveïdor de tarifes, fes clic a `Distribució > Channel manager` des de la barra de navegació principal.
+Per configurar el vostre proveïdor de tarifes, feu clic a `Distribution > Channel manager` des de la barra de navegació principal.
 
-Selecciona el teu proveïdor de tarifes del menú desplegable i fes clic al botó `Desa`. Això permetrà que el proveïdor de tarifes ens enviï tarifes i els notificarem quan hi hagi una reserva que s'hagi fet a Wink per alguna de les teves propietats.
+Seleccioneu el vostre proveïdor de tarifes de la llista desplegable i feu clic al botó `Save`. Això permetrà que el proveïdor de tarifes ens enviï tarifes i els notificarem quan hi hagi una reserva que s'hagi realitzat a Wink per a una de les vostres propietats.
 
 
 ### SynXis
 
-Si la teva propietat utilitza el channel manager SynXis, hi ha un pas més que cal fer abans d'estar llest per connectar amb Wink.
+Si la vostra propietat utilitza Sabre SynXis, hi ha un pas més que cal fer abans d'estar preparats per connectar-vos amb Wink.
 
-- Si us plau, posa't en contacte amb el teu representant de compte de SynXis o amb l'atenció al client (SHSCustomerCare@sabre.com).
-- Informa'ls que vols connectar amb Wink a través de Channel Connect Express (***CCX***).
-- Et faran completar el formulari ***PRS***.
-  - Se't demanarà que omplis les teves credencials d'usuari de Wink.
-  - ...i la moneda que desitges.
-- Completa el formulari i envia'l de nou a SynXis.
+- Poseu-vos en contacte amb el vostre representant de compte SynXis o amb l'atenció al client (SHSCustomerCare@sabre.com).
+- Informeu-los que voleu connectar-vos a Wink a través de Channel Connect Express (***CCX***).
+- Us faran completar el formulari ***PRS***.
+  - Us demanaran que introduïu les vostres credencials d'usuari de Wink.
+  - ...i la moneda desitjada.
+- Completeu el formulari i envieu-lo de nou a SynXis.
 
 ## Proveïdors
 
-A continuació tens una llista de proveïdors que suportem:
+A continuació, una llista de proveïdors que suportem:
 
 Tipus disponibles:
 
@@ -33,7 +33,7 @@ Tipus disponibles:
 - Property Management System (PMS)
 - Central Reservation System (CRS)
 
-*Si el proveïdor té un proxy, vol dir que rebem tarifes indirectament del proveïdor a través del proxy.*
+*Si el proveïdor té un proxy, significa que rebem tarifes indirectament del proveïdor a través del proxy.*
 
 | Proveïdor | Tipus | Proxy | Des de | Última modificació | Comentari
 | -- | -- | -- | -- | -- | -- |

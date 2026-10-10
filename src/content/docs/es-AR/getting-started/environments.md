@@ -8,32 +8,34 @@ sidebar:
 En Wink, mantenemos 2 entornos para todo lo que hacemos en todo momento:
 
 - Producción es nuestro entorno estable.
-- Staging es nuestro entorno de certificación y pruebas.
+- Staging es nuestro entorno de pruebas, y donde se certifican los channel managers y agentes de viaje.
 
-Si sos un integrador, un hotel o una agencia de viajes que desea prepararse para la certificación o probar la plataforma Wink, creá una cuenta en nuestro entorno de staging para comenzar.
+Si querés probar la plataforma Wink, como desarrollador, hotel o agente de viaje, creá una cuenta en nuestro entorno staging para comenzar. Los channel managers también realizan su [certificación](/es-AR/guides/integrators/add-your-channel-manager/#certification) allí.
+
+Crear una cuenta en staging o producción requiere aceptar los Términos y Condiciones y los Términos de Pago de Wink, y esa aceptación es vinculante. Los channel managers y agentes de viaje también necesitan certificación antes del acceso a producción; el resto pasa a producción por su cuenta.
 
 :::note
-El entorno de staging está disponible bajo pedido. Esto significa que se pondrá en modo suspensión si no hay uso y se volverá a activar cuando lo haya. Por favor, tené paciencia si lo estás despertando. Tarda aproximadamente un minuto en iniciar todos los servidores después de conectarte por primera vez con uno de nuestros servidores o aplicaciones.
+El entorno staging está disponible bajo pedido. Esto significa que se pondrá en modo suspensión si no hay uso y se activará nuevamente cuando lo haya. Por favor, tené paciencia si lo estás despertando. Tarda aproximadamente un minuto en iniciar todos los servidores después de conectarte por primera vez con uno de nuestros servidores o aplicaciones.
 :::
 
 ## Servidores
 
-A continuación, una matriz que contiene los nombres de nuestros servidores y su uso.
+A continuación, una matriz con los nombres de nuestros servidores y su uso.
 
-| Feature | Staging | Producción
+| Función | Staging | Producción
 | ------- | ------- | ---------- |
 | IAM | https://staging-iam.wink.travel | https://iam.wink.travel | 
-| Inventory | https://staging-api.wink.travel | https://api.wink.travel | 
-| Integrations | https://staging-integrations.wink.travel | https://integrations.wink.travel | 
+| Inventario | https://staging-api.wink.travel | https://api.wink.travel | 
+| Integraciones | https://staging-integrations.wink.travel | https://integrations.wink.travel | 
 | Partner (gRPC) | https://staging-partner.wink.travel | https://partner.wink.travel | 
-<!-- | Payment | https://staging-api.trippay.io | https://api.trippay.io |  -->
+<!-- | Pago | https://staging-api.trippay.io | https://api.trippay.io |  -->
 
 ## Aplicaciones
 
 Nuestras aplicaciones también tienen entornos de prueba y producción para nuestros clientes.
 
-| Application | Staging | Producción
+| Aplicación | Staging | Producción
 | ------- | ------- | ---------- |
 | Portal | https://staging-app.wink.travel | https://app.wink.travel | 
-| Booking engine | https://staging-book.wink.travel | https://book.wink.travel | 
+| Motor de reservas | https://staging-book.wink.travel | https://book.wink.travel | 
 | Link Manager | https://staging-i.trvl.as | https://i.trvl.as |

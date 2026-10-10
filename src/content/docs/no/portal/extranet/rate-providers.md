@@ -14,9 +14,9 @@ Velg din pristilbyder fra nedtrekkslisten og klikk på `Save`-knappen. Dette vil
 
 ### SynXis
 
-Hvis din eiendom bruker SynXis channel manager, er det ett steg til før du er klar til å koble til Wink.
+Hvis din eiendom bruker Sabre SynXis, kreves det ett steg til før du er klar til å koble til Wink.
 
-- Ta kontakt med din SynXis-kontaktperson eller kundeservice (SHSCustomerCare@sabre.com).
+- Ta kontakt med din SynXis-kontorepresentant eller kundeservice (SHSCustomerCare@sabre.com).
 - Gi beskjed om at du ønsker å koble til Wink via Channel Connect Express (***CCX***).
 - De vil be deg fylle ut skjemaet ***PRS***.
   - Du vil bli bedt om å fylle inn dine Wink-brukeropplysninger.
@@ -33,7 +33,7 @@ Tilgjengelige typer:
 - Property Management System (PMS)
 - Central Reservation System (CRS)
 
-*Hvis leverandøren har en proxy, betyr det at vi indirekte mottar priser fra leverandøren via proxien.*
+*Hvis leverandøren har en proxy, betyr det at vi indirekte mottar priser fra leverandøren gjennom proxien.*
 
 | Vendor | Type | Proxy | Since | Last modified | Comment
 | -- | -- | -- | -- | -- | -- |

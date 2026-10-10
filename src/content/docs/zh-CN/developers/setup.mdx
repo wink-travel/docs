@@ -11,9 +11,11 @@ import CloudinaryImage from '/src/components/cloudinary-image.astro';
 本文介绍如何快速作为开发者完成设置并开始在 Wink 上测试我们的 API。
 
 :::note
-测试应始终在我们的[预发布环境](/zh-CN/getting-started/environments)进行。那里数据较少，但您可以自由测试，无需影响生产环境。
+测试应始终在我们的[预发布环境](/zh-CN/getting-started/environments)进行。该环境中的数据较少，但您可以自由测试，无需影响生产环境。
 
-一旦准备上线，我们将认证您的账户和应用，您即可在生产环境中发布。
+准备好后，您可以自行切换到生产环境：在生产环境中创建应用（凭证不会在环境间共享），并将 URL 中的 `staging-` 去掉，例如将 `https://staging-api.wink.travel` 改为 `https://api.wink.travel`。开发者无需审批步骤。只有[渠道经理](/zh-CN/guides/integrators/add-your-channel-manager/#certification)和[旅行社](/zh-CN/portal/travel-agent/what-is-agent/)在生产前需要认证。
+
+在预发布或生产环境创建账户时，需接受 Wink 的条款和付款条款，该接受具有约束力。
 :::
 
 请按照以下步骤操作：
@@ -21,7 +23,7 @@ import CloudinaryImage from '/src/components/cloudinary-image.astro';
 <Steps>
 1. 在 Wink 上[注册](/zh-CN/getting-started/sign-up)您的用户账户。
 2. [创建一个分销账户](/zh-CN/portal/create-account)。您需要绑定您的应用程序。更多背景请参见[什么是 Studio](/zh-CN/portal/studio/what-is-studio)。
-3. [创建一个应用程序](/zh-CN/account/applications)，并将其关联到步骤 2 中创建的分销账户。对于服务器到服务器的 API 集成，选择 **MACHINE_2_MACHINE** 作为客户端类型。
+3. [创建一个应用](/zh-CN/account/applications)，并将其关联到您在步骤 2 中创建的分销账户。对于服务器到服务器的 API 集成，选择 **MACHINE_2_MACHINE** 作为客户端类型。
 4. 创建 `Application` 后，请立即复制并保存 client-id 和 secret key —— secret key 只显示一次，无法再次获取。
 </Steps>
 
@@ -67,7 +69,7 @@ import CloudinaryImage from '/src/components/cloudinary-image.astro';
 }
 ```
 
-上面高亮的行显示了 Cloudinary 的唯一 ID `partners/radisson_blu_logo`。这就是您获取任意格式、质量和尺寸图片所需的全部信息。
+上面高亮的行显示了 Cloudinary 的唯一 ID `partners/radisson_blu_logo`。您只需此 ID 即可以任意格式、质量和尺寸获取图片。
 
 ## 测试
 
@@ -80,7 +82,7 @@ import CloudinaryImage from '/src/components/cloudinary-image.astro';
 本例中，您将使用 `Search Lookups (OAuth2)` API 调用。
 
 :::tip[专业提示]
-为方便使用，我们建议集成者使用标记为 `OAuth2` 的端点。这些端点会自动识别调用者账户，无需您在 URL 中指定 `companyIdentifier`。
+为方便使用，我们建议集成者使用我们标记为 `OAuth2` 的端点。这些端点会自动识别调用者账户，无需在 URL 中指定 `companyIdentifier`。
 :::
 
 <Steps>
@@ -101,7 +103,7 @@ import CloudinaryImage from '/src/components/cloudinary-image.astro';
       src="academy/lookup-api-call"
       errorImage="noimage_opaque_nyrtl0.png"
 />
-<figcaption>*搜索 Lookups (OAuth2) 示例*</figcaption>
+<figcaption>*示例 Search Lookups (OAuth2)*</figcaption>
 </figure>
 
 ### Postman
@@ -123,9 +125,9 @@ import CloudinaryImage from '/src/components/cloudinary-image.astro';
 13. 将 `Scope` 设置为您的集成所需的空格分隔权限（例如 `inventory.read inventory.write inventory.remove`）。完整列表请参见[权限参考](/zh-CN/developers/authentication#scopes)。
 14. 将 `Client Authentication` 设置为 `Send as Basic Auth header`。
 15. 点击 `Get New Access Token` 按钮获取并保存令牌。
-16. 对 Wink API 集合下的所有 API 调用，确保认证标签页显示 `Inherit auth from parent`，以便每次调用都包含您的令牌。
+16. 在 Wink API 集合下的所有 API 调用中，确保认证标签页显示 `Inherit auth from parent`，以便每次调用都包含您的令牌。
 </Steps>
 
 :::tip[专业提示]
-建议将服务器域名、Client ID 和 Client Secret 设置为环境变量。这样您可以轻松切换预发布和生产环境，并重用所有已创建的操作。
+建议将服务器域名、Client ID 和 Client Secret 设置为环境变量。这样可以轻松切换预发布和生产环境，并重用所有已创建的操作。
 :::

@@ -5,18 +5,18 @@ sidebar:
   order: 0
 ---
 
-Mūsų sprendimas registruotiems kelionių agentams yra [Wink Agent](https://agent.wink.travel). Tai savitarnos portalas, kurį agentai gali naudoti ieškodami ir užsakydami klientų vardu bei už kiekvieną užsakymą užsidirbti komisinį atlyginimą.
+Registruoti kelionių agentai naudoja tą patį portalą kaip ir visi kiti, adresu [app.wink.travel](https://app.wink.travel), su Kelionių Agentų paskyra. Agentai ieško ir rezervuoja klientų vardu bei už kiekvieną rezervaciją gauna komisinį atlyginimą. Norėdami ją susikurti, sekite [Pradžia kaip kelionių agentūra](/lt/guides/travel-agents/getting-started/).
 
-Pažangesni kelionių agentai gali pasirinkti integraciją API lygiu, kad galėtų tvarkyti mokėjimus ir išmokas už Wink platformos ribų.
+Agentūros, kurioms patvirtinta pačioms rinkti mokėjimus, veikia kaip prekybininkai ir tvarko mokėjimus už Wink platformos ribų. Agentūros, turinčios savo sistemas, gali integruotis per [Partnerių API](/lt/integrations/partner-api/).
 
 Kelionių agentai turi dalį tų pačių portalo funkcijų kaip ir [Studio](/lt/portal/studio/what-is-studio), todėl čia jų neaptarsime iš naujo.
 
 ## Paieška
 
-Eikite į [Paieška](/lt/portal/studio/search), kad sužinotumėte, kaip ieškoti ir užsakyti viešbučius.
+Eikite į [Paieška](/lt/portal/studio/search), kad sužinotumėte, kaip ieškoti ir rezervuoti viešbučius.
 
 Kitu atveju tęskite kitą skyrių.
 
 ## API
 
-Kūrėjai, norintys valdyti `Travel Agent`, gali apsilankyti [Developers > API > Travel Agent](/lt/api/overview/).
+Agentūros gali ieškoti ir rezervuoti per [Partnerių API](/lt/partner-api/partner/), kuris pakeičia senesnius Kelionių Agentų REST galinius taškus.

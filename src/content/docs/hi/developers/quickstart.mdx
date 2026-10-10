@@ -1,0 +1,198 @@
+---
+title: त्वरित आरंभ
+description: "शून्य से लेकर स्टेजिंग में एक कार्यशील एकीकरण तक: क्रेडेंशियल प्राप्त करें, Partner API के साथ लाइव होटल कीमतें खोजें, और यात्रियों को एक बुकिंग पृष्ठ पर भेजें जो आपको क्रेडिट करता है।"
+sidebar:
+  order: 0.5
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+यह गाइड आपको लगभग 30 मिनट में कुछ भी न होने से एक कार्यशील एकीकरण तक ले जाता है। अंत तक आपके पास होगा:
+
+- Partner API से किसी शहर के होटलों के लिए लाइव कीमतें,
+- एक बुकिंग लिंक जो बुकिंग को आपके खाते में क्रेडिट करता है,
+- एक परीक्षण बुकिंग, और एक वेबहुक जो आपको बताता है कि यह हुआ।
+
+सब कुछ **स्टेजिंग** में होता है, हमारा परीक्षण वातावरण। आपको हमसे एक्सेस मांगने की जरूरत नहीं है, और बाद में प्रोडक्शन में जाने के लिए भी कोई अनुमोदन आवश्यक नहीं है।
+
+## क्या यह गाइड आपके लिए सही है?
+
+| आप क्या करना चाहते हैं… | यहाँ से शुरू करें |
+|---|---|
+| अपने ऐप, साइट या AI उत्पाद में होटल दिखाएं और यात्रियों को बुकिंग के लिए भेजें, कमीशन कमाएं | **यह गाइड** |
+| एक लाइसेंस प्राप्त ट्रैवल एजेंसी के रूप में अपने ग्राहकों की ओर से बुकिंग करें | इस गाइड को चरण 5 तक करें, फिर [Booking as a travel agency](#booking-as-a-travel-agency) देखें |
+| बिना एकीकरण लिखे बुक करने योग्य होटल एम्बेड करें | [Web Components](/hi/integrations/web-components/) |
+| एक AI एजेंट को खोजने और बुक करने दें | [MCP Servers](/hi/developers/mcp/) और [Agentic Payments](/hi/developers/agentic-payments/) |
+| एक चैनल मैनेजर या PMS कनेक्ट करें | [Add Your Channel Manager](/hi/guides/integrators/add-your-channel-manager/) |
+
+## यह कैसे काम करता है
+
+आप **Partner API** का उपयोग होटल और उनकी लाइव कीमतें खोजने के लिए करते हैं। प्रत्येक होटल के साथ एक स्थिर `urlName` आता है। आप इसे Wink Booking Engine, `book.wink.travel` के लिए एक लिंक में बदलते हैं, जिसमें आपके आईडी होते हैं। यात्री वहां बुकिंग करता है और भुगतान करता है, और बुकिंग आपके खाते को क्रेडिट की जाती है।
+
+## शुरू करने से पहले
+
+आपको चाहिए:
+
+- [`grpcurl`](https://github.com/fullstorydev/grpcurl), या Postman या Insomnia। Partner API gRPC है, REST नहीं।
+- `curl`।
+
+:::note
+जब कोई इसका उपयोग नहीं कर रहा होता है तो स्टेजिंग सो जाता है। एक शांत अवधि के बाद पहली कॉल में लगभग एक मिनट लग सकता है जब सर्वर जागते हैं।
+:::
+
+## चरण 1: एक स्टेजिंग खाता बनाएं
+
+स्टेजिंग प्रोडक्शन से पूरी तरह अलग है, इसके अपने लॉगिन और खाते हैं।
+
+<Steps>
+1. [staging-app.wink.travel](https://staging-app.wink.travel) पर जाएं, `Sign-In / Register` पर क्लिक करें और पंजीकरण करें।
+
+2. बाएं साइडबार में `Accounts` पर क्लिक करें, फिर `Create` पर क्लिक करें, और **I am an Affiliate** चुनें। आप जो बुकिंग भेजेंगे वे इस खाते को क्रेडिट की जाएंगी। देखें [Create Account](/hi/portal/create-account/)।
+</Steps>
+
+## चरण 2: एक एप्लिकेशन बनाएं
+
+एप्लिकेशन आपके कोड को उसके क्रेडेंशियल देता है।
+
+<Steps>
+1. अपने खाते के कार्ड पर, `Actions` > `Manage account` पर क्लिक करें, फिर `Applications` टैब पर जाएं।
+
+2. `Create new application` पर क्लिक करें, इसे एक नाम दें और क्लाइंट प्रकार के रूप में **Machine-to-machine** चुनें।
+
+3. स्कोप के तहत, **Inventory & rates** (पढ़ें) चुनें। Partner API `inventory.read` की जांच करता है।
+
+4. `Create application` पर क्लिक करें और **Client ID** और **Client secret** कॉपी करें। सीक्रेट केवल एक बार दिखाया जाता है और बाद में पुनः प्राप्त नहीं किया जा सकता।
+</Steps>
+
+अन्य क्लाइंट प्रकारों और स्कोप के लिए देखें [Applications](/hi/account/applications/)।
+
+## चरण 3: एक एक्सेस टोकन प्राप्त करें
+
+```bash
+curl -X POST https://staging-iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_CLIENT_SECRET>" \
+  -d "scope=inventory.read"
+```
+
+प्रतिक्रिया से `access_token` सहेजें:
+
+```bash
+export WINK_TOKEN=<access_token>
+```
+
+टोकन की अवधि समाप्त हो जाती है। अपने कोड में, OAuth2 लाइब्रेरी से इन्हें प्राप्त और ताज़ा करें। देखें [Authentication](/hi/developers/authentication/)।
+
+## चरण 4: अपना खाता ID खोजें
+
+हर Partner API कॉल में उस खाते का नाम होता है जिसके लिए आप कार्य कर रहे हैं, `managing-entity-id` हेडर में। उन खातों की सूची बनाएं जिनके लिए आपका टोकन कार्य कर सकता है:
+
+```bash
+grpcurl -H "authorization: Bearer $WINK_TOKEN" \
+  -d '{}' \
+  staging-partner.wink.travel:443 wink.partner.v1.Accounts/ListAccounts
+```
+
+चरण 1 के सहायक खाते का `accountId` कॉपी करें:
+
+```bash
+export WINK_ACCOUNT_ID=<accountId>
+```
+
+## चरण 5: किसी शहर में होटल खोजें
+
+{/* TODO(Yann): पुष्टि करें कि परीक्षण होटल के लिए स्टेजिंग शहर उपलब्धता के साथ क्या है, और इसे यहाँ उपयोग करें। */}
+
+```bash
+grpcurl -H "authorization: Bearer $WINK_TOKEN" \
+  -H "managing-entity-id: $WINK_ACCOUNT_ID" \
+  -d '{
+    "urlName": "bangkok-thailand",
+    "userSession": {
+      "itinerary": {
+        "startDate": "2026-12-01",
+        "nights": 2,
+        "room": { "adults": 2 }
+      },
+      "currencyCode": "USD",
+      "languageCode": "en"
+    }
+  }' \
+  staging-partner.wink.travel:443 wink.partner.v1.Search/SearchByCity
+```
+
+भविष्य की चेक-इन तिथि का उपयोग करें; पिछली तिथि अस्वीकार कर दी जाती है। प्रत्येक परिणाम में होता है:
+
+- `name`, `starRating` और `heroImageUrl`, एक परिणाम पंक्ति दिखाने के लिए पर्याप्त,
+- `roomTypes`, लाइव ऑफ़र, सबसे सस्ता कमरा पहले,
+- `urlName`, वह स्लग जो आपको बुकिंग लिंक के लिए चाहिए।
+
+कीमतें छोटे इकाइयों में पूर्णांक होती हैं: प्रतिक्रिया से `currencyExponent` की शक्ति के 10 से विभाजित करें (USD के लिए 2, इसलिए `12500` $125.00 है)।
+
+शहर का स्लग नहीं पता? इसे `wink.partner.v1.Lookup/Search` से हल करें। किसी संपत्ति की पूरी सामग्री के लिए, `Content` सेवा का उपयोग करें। [Partner API संदर्भ](/hi/partner-api/partner/) हर कॉल का दस्तावेज़ीकरण करता है।
+
+## चरण 6: बुकिंग लिंक बनाएं
+
+```text
+https://staging-book.wink.travel/hotel/<urlName>?client-id=<YOUR_CLIENT_ID>&configuration-id=<YOUR_CUSTOMIZATION_ID>
+```
+
+- `<urlName>` चरण 5 से होटल का `urlName` है।
+- `client-id` आपके एप्लिकेशन का Client ID है, जो चरण 2 में मिला।
+- `configuration-id` आपका कस्टमाइज़ेशन ID है: `Manage account` > `Customizations`। एक कस्टमाइज़ेशन आपके ब्रांडिंग, डिफ़ॉल्ट भाषा और मुद्रा को बुकिंग पृष्ठ पर सेट करता है।
+
+:::caution
+दोनों ID शामिल करें। इनके बिना पृष्ठ लोड तो हो जाएगा, लेकिन डिफ़ॉल्ट ब्रांडिंग के साथ, और **बुकिंग आपको क्रेडिट नहीं की जाएगी**। कभी भी अपने क्लाइंट सीक्रेट को लिंक में न डालें।
+:::
+
+एकल होटल के बजाय बुकिंग इंजन होम पेज से लिंक करने के लिए देखें [Linking directly](/hi/booking-engine/features/#linking-directly)।
+
+## चरण 7: एक परीक्षण बुकिंग करें
+
+अपना लिंक खोलें, तिथियां और एक कमरा चुनें, और [Stripe टेस्ट कार्ड](https://docs.stripe.com/testing) के साथ चेक आउट करें, उदाहरण के लिए `4242 4242 4242 4242` किसी भी भविष्य की समाप्ति तिथि और किसी भी CVC के साथ। स्टेजिंग में कोई वास्तविक कार्ड चार्ज नहीं होता। पुष्टि पृष्ठ पर बुकिंग कोड नोट करें; यह `WNK` से शुरू होता है।
+
+## चरण 8: बुकिंग के बारे में सूचित हों
+
+<Steps>
+1. पोर्टल में, `Applications > Webhooks` पर जाएं और एक ऐसा एंडपॉइंट जोड़ें जो `POST` अनुरोध स्वीकार करता हो।
+
+2. `booking.create` को सब्सक्राइब करें, या विकास के दौरान सब कुछ प्राप्त करने के लिए इवेंट सूची खाली छोड़ दें।
+
+3. खुद को एक परीक्षण इवेंट भेजें, फिर एक और परीक्षण बुकिंग करें और देखें कि यह आता है।
+</Steps>
+
+हर डिलीवरी के सिग्नेचर को सत्यापित करें इससे पहले कि आप उस पर भरोसा करें। देखें [Webhook Integration](/hi/developers/webhook-integration/) और [Webhook Events Catalog](/hi/developers/webhook-events/)।
+
+## चरण 9: प्रोडक्शन में जाएं
+
+डेवलपर्स के लिए कोई अनुमोदन चरण नहीं है। (ट्रैवल एजेंसी खाते पहले प्रमाणित होते हैं; नीचे देखें (#booking-as-a-travel-agency)।) जब आपका एकीकरण स्टेजिंग में काम करता है:
+
+<Steps>
+1. [app.wink.travel](https://app.wink.travel) पर एक खाता और एक एप्लिकेशन बनाएं, जैसे चरण 1 और 2 में। क्रेडेंशियल्स वातावरणों के बीच स्थानांतरित नहीं होते।
+
+2. हर होस्ट से `staging-` हटा दें:
+
+   | स्टेजिंग | प्रोडक्शन |
+   |---|---|
+   | `https://staging-iam.wink.travel` | `https://iam.wink.travel` |
+   | `staging-partner.wink.travel:443` | `partner.wink.travel:443` |
+   | `https://staging-book.wink.travel` | `https://book.wink.travel` |
+
+3. फिर से अपने प्रोडक्शन खाता ID (चरण 4) और कस्टमाइज़ेशन ID (चरण 6) देखें। वे स्टेजिंग से अलग होंगे।
+</Steps>
+
+Partner API उपयोग होटल-रातों में मापा जाता है, जिसमें एक मुफ्त मासिक आवंटन होता है। मूल्य निर्धारण और सीमाओं के लिए देखें [Partner API](/hi/integrations/partner-api/)।
+
+## ट्रैवल एजेंसी के रूप में बुकिंग
+
+यदि आपका खाता एक लाइसेंस प्राप्त ट्रैवल एजेंसी है, तो आपको यात्रियों को `book.wink.travel` पर भेजने की आवश्यकता नहीं है: आप सीधे `wink.partner.v1.Booking/CreateBooking` के साथ बुकिंग बना सकते हैं, और अन्य `Booking` कॉल के साथ उनका प्रबंधन कर सकते हैं। अन्य खाते यात्रियों को बुकिंग लिंक पर भेजते हैं।
+
+ट्रैवल एजेंसी खाते प्रमाणित होते हैं: Wink हर एजेंसी के पंजीकरण की समीक्षा करता है इससे पहले कि वह बुक कर सके। जो एजेंसियां अपने ग्राहकों से स्वयं भुगतान एकत्र करना चाहती हैं, रिकॉर्ड के व्यापारी के रूप में, उन्हें Partner API के माध्यम से बुक करना होगा और Wink की लिखित मंजूरी प्राप्त करनी होगी। देखें [Getting Started as a Travel Agency](/hi/guides/travel-agents/getting-started/) और [Partner API reference](/hi/partner-api/partner/)।
+
+## अगले कदम
+
+- `.proto` स्कीमा से [टाइप्ड क्लाइंट जनरेट करें](/hi/developers/rest-and-grpc/#generate-a-grpc-client) बजाय `grpcurl` को हाथ से कॉल करने के।
+- [MCP सर्वर](/hi/developers/mcp/) कनेक्ट करें और [AI Skills](/hi/developers/ai-skills/) का उपयोग करें ताकि आपका कोडिंग सहायक लाइव API के खिलाफ एकीकरण लिख सके।
+- [पर्यावरण और होस्ट की पूरी सूची पढ़ें](/hi/getting-started/environments/)।

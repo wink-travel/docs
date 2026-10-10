@@ -7,7 +7,7 @@ sidebar:
 
 Wink tidak memiliki langganan, tidak ada kursi, dan tidak ada biaya pengaturan. Sebagian besar platform ini gratis, dan hanya ada dua hal yang akan Anda bayar:
 
-1. **Biaya platform per pemesanan, plus biaya pemrosesan kartu sesuai biaya** — hanya saat pemesanan dilakukan.
+1. **Biaya platform per pemesanan, plus biaya pemrosesan kartu sesuai biaya** — hanya saat pemesanan dibuat.
 2. **Biaya penggunaan pay-as-you-go** — pada beberapa fitur premium yang menghabiskan biaya setiap kali digunakan, masing-masing dengan kuota gratis bulanan.
 
 ## Apa yang gratis
@@ -19,9 +19,9 @@ Ini tidak dikenakan biaya, selamanya, tanpa kuota dan tanpa pengukuran:
 - **Alat afiliasi** — tautan yang dapat dibagikan, daftar kurasi, grid, peta, kartu, dan widget yang dapat disematkan.
 - **Alat agen perjalanan** — pencarian, tarif khusus, dan pemesanan atas nama klien Anda.
 - **WinkLinks** — klaim URL vanity Anda, buat halaman Anda, dan publikasikan sesering yang Anda mau.
-- **Posting sosial manual** — apa pun yang Anda tulis sendiri, di jaringan yang terhubung.
+- **Posting sosial manual** — apa pun yang Anda tulis sendiri, di jaringan yang terhubung mana pun.
 - **Analitik, papan peringkat, klaim, pengaturan** dan manajemen akun.
-- **API Konsumen dan Mesin Pemesanan**, plus endpoint pencarian dan autocomplete.
+- **API Konsumen dan Mesin Pemesanan**, termasuk endpoint pencarian dan autocomplete mereka. Pada **Partner API**, panggilan Lookup dan Content dihitung satu unit masing-masing (lihat [Penggunaan](#what-is-and-isnt-metered) di bawah).
 
 ## Pemesanan
 
@@ -29,7 +29,7 @@ Wink mendukung dua model: Wink mengumpulkan pembayaran untuk hotel, dan agen per
 
 ### Model 1 — Wink mengumpulkan untuk hotel
 
-Wink mengumpulkan pembayaran tamu sebagai agen pengumpulan pembayaran terbatas hotel. Hotel adalah merchant of record, dan nama hotel muncul di pernyataan kartu tamu.  
+Wink mengumpulkan pembayaran tamu sebagai agen pengumpulan pembayaran terbatas hotel. Hotel adalah merchant of record, dan nama hotel muncul di pernyataan kartu tamu.
 Model ini berlaku untuk 95% dari semua pemesanan.
 
 #### Rincian
@@ -39,7 +39,7 @@ Wink mengenakan biaya platform 1,5% per pemesanan. Ini mencakup pemeliharaan pla
 :::
 
 :::note[Biaya pemrosesan kartu]
-Biaya pemrosesan pembayaran yang dikenakan untuk mengumpulkan pembayaran tamu diteruskan ke hotel sesuai biaya, tanpa margin. Biaya ini bervariasi tergantung kartu dan metode pembayaran tamu, dan jumlah tepatnya muncul di bagian Akuntansi setiap pemesanan. Jika pemesanan dibatalkan atau dikembalikan, biaya yang dipertahankan oleh pemroses tetap dikenakan; jika tidak ada biaya, kami juga tidak mengenakan biaya.
+Biaya pemrosesan pembayaran yang dikenakan untuk mengumpulkan pembayaran tamu diteruskan ke hotel sesuai biaya, tanpa margin. Biaya ini bervariasi tergantung kartu dan metode pembayaran tamu, dan jumlah tepatnya muncul di bagian Akuntansi setiap pemesanan. Jika pemesanan dibatalkan atau dikembalikan, biaya yang disimpan oleh pemroses tetap dikenakan; jika tidak ada biaya, kami juga tidak mengenakan biaya.
 :::
 
 :::note[Pencairan dana]
@@ -52,7 +52,7 @@ Jika Anda ingin kami mendukung metode pencairan lain, kirimkan email kepada kami
 
 ### Model 2 — Agen perjalanan sebagai merchant of record
 
-Model ini hanya tersedia untuk agen perjalanan yang memiliki lisensi agen perjalanan di wilayah mereka dan yang ingin menjadi merchant of record. Beberapa agen perjalanan terdaftar kami ingin bertanggung jawab atas penanganan pembayaran dan pencairan dana ke hotel. Dalam model ini, mereka bertanggung jawab atas dana dan memiliki lisensi yang diperlukan untuk beroperasi di negara mereka.
+Model ini hanya tersedia untuk agen perjalanan yang memiliki lisensi agen perjalanan di wilayah mereka dan yang ingin menjadi merchant of record. Model ini hanya tersedia untuk mitra API, pemesanan melalui [Partner API](/id/integrations/partner-api/), dan memerlukan persetujuan tertulis dari Wink sebelumnya. Beberapa agen perjalanan terdaftar kami ingin bertanggung jawab atas penanganan pembayaran dan pencairan dana ke hotel. Dalam model ini, mereka bertanggung jawab atas dana dan memiliki lisensi yang diperlukan untuk beroperasi di negara mereka.
 
 #### Rincian
 
@@ -60,21 +60,39 @@ Model ini hanya tersedia untuk agen perjalanan yang memiliki lisensi agen perjal
 Wink mengenakan biaya platform 1,5% per pemesanan. Ini mencakup pemeliharaan platform dan memungkinkan kami memberikan semua yang tercantum di atas secara gratis.
 :::
 
-Dengan model ini, agen perjalanan hanya membayar biaya platform Wink dan Wink akan mengirimkan faktur kepada agen perjalanan setiap bulan.
+Dengan model ini, agen perjalanan membayar biaya 1,5% Wink plus penggunaan Partner API di atas kuota gratis, ditagihkan setiap bulan.
+
+## Apa yang dibayar mitra
+
+Untuk mitra yang mengirim pemesanan: pembuat, afiliasi, platform, pengembang, dan agen perjalanan. Kemitraan bersifat non-eksklusif, tanpa wilayah.
+
+| | Pembayaran dikumpulkan untuk hotel (kebanyakan mitra) | Anda adalah merchant of record (hanya mitra API) |
+|---|---|---|
+| Biaya lisensi atau wilayah | Tidak ada | Tidak ada |
+| Biaya pengaturan | Tidak ada | Tidak ada |
+| Biaya langganan atau bulanan | Tidak ada | Tidak ada |
+| Komitmen minimum atau jangka waktu | Tidak ada | Tidak ada. Ada batas kredit yang berlaku. |
+| Akses Partner API | 10.000 malam hotel per bulan gratis, kemudian $0,0001 per malam hotel. Pay-as-you-go mati secara default; pada kuota gratis, panggilan mengembalikan `429`. | Sama |
+| Biaya transaksi | Tidak ada. Anda mendapatkan komisi (default 10%). | Biaya Pemesanan 1,5% dari nilai pemesanan, ditagihkan bulanan dalam USD, jatuh tempo dalam 15 hari. Dengan pay-as-you-go aktif, penggunaan Partner API ditagihkan pada faktur bulanan kedua. |
+| Biaya dukungan | Tidak ada | Tidak ada |
+| Biaya lain | Biaya transfer pencairan, sesuai biaya | Mungkin prabayar atau deposit saat persetujuan. Bunga 1,5% per bulan hanya untuk faktur yang terlambat dibayar. |
+| Saat biaya berubah | Pemberitahuan 30 hari; berlaku hanya untuk pemesanan setelah perubahan | Sama. Wink juga dapat mengubah batas kredit Anda dengan pemberitahuan. |
+
+Jalur merchant-of-record memerlukan persetujuan tertulis dari Wink sebelumnya. Lihat [Model 2](#model-2--travel-agent-as-merchant-of-record) di atas dan halaman [Partner API](/id/integrations/partner-api/).
 
 ## Penggunaan (pay-as-you-go)
 
-Beberapa fitur menghabiskan biaya setiap kali digunakan — AI generatif, API sosial pihak ketiga, dan penyajian harga langsung dalam skala besar. Daripada menggabungkan fitur tersebut dalam paket bulanan yang mungkin tidak Anda gunakan, Anda hanya membayar untuk apa yang benar-benar Anda konsumsi, dan hanya setelah Anda menggunakan kuota gratis bulanan.
+Beberapa fitur menghabiskan biaya setiap kali digunakan — AI generatif, API sosial pihak ketiga, dan penyajian harga langsung dalam skala besar. Daripada menggabungkan fitur tersebut ke dalam paket bulanan yang mungkin tidak Anda gunakan, Anda hanya membayar untuk apa yang benar-benar Anda konsumsi, dan hanya setelah Anda menggunakan kuota gratis bulanan.
 
-| Fitur | Gratis per bulan | Selanjutnya | Unit penagihan |
+| Fitur | Gratis per bulan | Kemudian | Unit penagihan |
 | -- | -- | -- | -- |
-| Posting sosial — gambar | 1 | $1.50 | Satu posting yang dipublikasikan |
-| Posting sosial — gambar AI-generated | 0 | $2.50 | Satu posting yang dipublikasikan |
-| Posting sosial — video AI-enhanced | 0 | $4.00 | Satu posting yang dipublikasikan |
-| Posting sosial — video AI-generated | 0 | $14.00 | Satu posting yang dipublikasikan |
-| Balasan AI untuk komentar atau DM | 5 | $0.05 | Satu balasan |
-| Jawaban chatbot | 5 | $0.05 | Satu jawaban |
-| Partner API | 10.000 | $0.0001 | Satu malam hotel |
+| Posting sosial — gambar | 1 | $1,50 | Satu posting yang dipublikasikan |
+| Posting sosial — gambar AI-generatif | 0 | $2,50 | Satu posting yang dipublikasikan |
+| Posting sosial — video AI-ditingkatkan | 0 | $4,00 | Satu posting yang dipublikasikan |
+| Posting sosial — video AI-generatif | 0 | $14,00 | Satu posting yang dipublikasikan |
+| Balasan AI untuk komentar atau DM | 5 | $0,05 | Satu balasan |
+| Jawaban chatbot | 5 | $0,05 | Satu jawaban |
+| Partner API | 10.000 | $0,0001 | Satu malam hotel |
 
 Harga dalam USD. Kuota gratis diberikan **per akun**, bukan per pengguna, dan direset pada tanggal 1 setiap bulan (UTC).
 
@@ -82,7 +100,7 @@ Harga dalam USD. Kuota gratis diberikan **per akun**, bukan per pengguna, dan di
 
 Posting dihargai berdasarkan isinya, karena itulah yang menghabiskan biaya untuk kami buat. Gambar diam murah; video tidak; apa pun yang kami hasilkan dengan AI biayanya jauh lebih tinggi daripada foto yang Anda sediakan sendiri.
 
-- **Kuota gratis hanya mencakup posting gambar standar.** Anda mendapatkan satu per akun per bulan. Posting video dan media AI-generated dikenakan biaya sejak posting pertama — tidak ada kuota gratis untuk kategori ini, jadi properti yang memposting video harus mengantisipasi biaya pada bulan pertama.
+- **Kuota gratis hanya mencakup posting gambar standar.** Anda mendapatkan satu per akun per bulan. Posting video dan media AI-generatif dikenakan biaya sejak posting pertama — tidak ada kuota gratis untuk kategori ini, jadi properti yang memposting video harus mengantisipasi biaya pada bulan pertama.
 - **Video menang.** Jika sebuah posting mengandung video sama sekali, seluruh posting dikenakan tarif video. Posting yang mencampur gambar dan video dianggap sebagai posting video.
 - **Asal AI menentukan kategori.** Media yang Anda sediakan — foto dan video Anda sendiri, atau apa pun dari perpustakaan konten Wink Anda — dikenakan tarif standar. Media yang kami hasilkan untuk Anda dikenakan tarif AI.
 
@@ -91,13 +109,13 @@ Posting dihargai berdasarkan isinya, karena itulah yang menghabiskan biaya untuk
 - Hanya posting **yang dihasilkan** dan dipublikasikan ke jaringan pihak ketiga (Facebook, Instagram) yang dikenakan biaya. Posting yang Anda tulis sendiri gratis, ke mana pun dipublikasikan.
 - **Publikasi ke WinkLinks selalu gratis**, baik dihasilkan atau tidak.
 - Anda dikenakan biaya **saat publikasi**, bukan per percobaan. Menghasilkan ulang draf sampai Anda puas tidak menambah tagihan — Anda membayar sekali untuk posting yang benar-benar Anda kirim. Percobaan tidak tak terbatas: setiap posting memungkinkan sekitar 10 regenerasi untuk gambar dan 3 untuk video, yang mencerminkan biaya produksi kami. Anda akan melihat berapa banyak yang tersisa saat bekerja.
-- Pada Partner API, **hotel-malam** adalah satu hotel dengan harga untuk satu malam menginap — *bukan* satu panggilan API. Pencarian yang mengembalikan 20 hotel untuk 3 malam adalah 60 hotel-malam dari satu permintaan. Panggilan Konten dan Pencarian (pencarian tujuan dan autocomplete) dikenakan satu unit per panggilan, apa pun hasilnya. Endpoint akun gratis.
+- Pada Partner API, **malam hotel** adalah satu hotel yang dihitung untuk satu malam menginap — *bukan* satu panggilan API. Pencarian yang mengembalikan 20 hotel untuk 3 malam adalah 60 malam hotel dari satu permintaan. Panggilan Content dan Lookup (pencarian tujuan dan autocomplete) dihitung satu unit masing-masing, apa pun hasilnya. Endpoint akun gratis.
 
 ### Mengaktifkannya
 
 Pay-as-you-go mati secara default. Semua orang mendapatkan kuota gratis tanpa melakukan apa pun.
 
-Untuk menggunakan lebih dari kuota, **pemilik** akun mengaktifkan pay-as-you-go dan memilih akun mana yang akan diukur. Penggunaan dari semua akun yang diaktifkan digabungkan menjadi **faktur bulanan tunggal**, yang dapat Anda bayar otomatis dengan kartu atau terima sebagai faktur untuk dibayar sendiri.
+Untuk melebihi kuota, **pemilik** akun mengaktifkan pay-as-you-go dan memilih akun mana yang akan diukur. Penggunaan dari semua akun yang diaktifkan digabungkan menjadi **faktur bulanan tunggal**, yang dapat Anda bayar otomatis dengan kartu atau terima sebagai faktur untuk dibayar sendiri.
 
 Setelah diaktifkan, penggunaan Anda diukur tetapi **tidak pernah dibatasi** — Anda tidak akan terkena batas kecepatan karena membayar kepada kami.
 
@@ -109,7 +127,7 @@ Tidak ada yang rusak dan tidak ada biaya yang dikenakan. Anda hanya berhenti pad
 
 | Status | Artinya |
 | -- | -- |
-| Dalam kondisi baik | Semua berfungsi normal. |
+| Status baik | Semua berfungsi normal. |
 | Lewat jatuh tempo | Pembayaran gagal dan sedang dicoba ulang. Fitur Anda tetap berfungsi selama periode ini. |
 | Ditangguhkan | Faktur tidak dibayar sampai akhir. Tindakan yang dikenakan biaya diblokir sampai diselesaikan; fitur gratis tetap berjalan normal. |
 

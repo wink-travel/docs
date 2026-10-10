@@ -1,0 +1,198 @@
+---
+title: Ātrā sākšana
+description: "No nulles līdz darbīgai integrācijai testēšanas vidē: iegūsti akreditācijas datus, meklē tiešās viesnīcu cenas ar Partner API un nosūti ceļotājus uz rezervēšanas lapu, kas pieskaita tev."
+sidebar:
+  order: 0.5
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+Šis ceļvedis ved tevi no nekā līdz darbīgai integrācijai aptuveni 30 minūtēs. Beigās tev būs:
+
+- tiešās cenas viesnīcām pilsētā, no Partner API,
+- rezervēšanas saite, kas pieskaita rezervācijas tavā kontā,
+- testa rezervācija un webhook, kas paziņo, ka tā notikusi.
+
+Viss notiek **staging** vidē, mūsu testēšanas vidē. Tev nav jālūdz piekļuve, un pāreja uz ražošanu vēlāk neprasa apstiprinājumu.
+
+## Vai šis ceļvedis ir tev piemērots?
+
+| Tu vēlies… | Sāc šeit |
+|---|---|
+| Rādīt viesnīcas savā lietotnē, vietnē vai AI produktā un nosūtīt ceļotājus rezervēt, pelnot komisiju | **Šis ceļvedis** |
+| Rezervēt klientu vārdā kā licencēta ceļojumu aģentūra | Šis ceļvedis līdz 5. solim, tad [Rezervēšana kā ceļojumu aģentūra](#booking-as-a-travel-agency) |
+| Iegult rezervējamas viesnīcas bez integrācijas rakstīšanas | [Web Components](/lv/integrations/web-components/) |
+| Ļaut AI aģentam meklēt un rezervēt | [MCP Servers](/lv/developers/mcp/) un [Agentic Payments](/lv/developers/agentic-payments/) |
+| Pieslēgt kanālu pārvaldnieku vai PMS | [Pievieno savu kanālu pārvaldnieku](/lv/guides/integrators/add-your-channel-manager/) |
+
+## Kā tas darbojas
+
+Tu izmanto **Partner API**, lai atrastu viesnīcas un to tiešās cenas. Katrai viesnīcai ir stabils `urlName`. Tu to pārvērš saitei uz Wink Booking Engine, `book.wink.travel`, kas nes tavus ID. Ceļotājs rezervē un maksā tur, un rezervācija tiek pieskaitīta tavā kontā.
+
+## Pirms sākt
+
+Tev būs nepieciešams:
+
+- [`grpcurl`](https://github.com/fullstorydev/grpcurl), vai Postman vai Insomnia. Partner API ir gRPC, nevis REST.
+- `curl`.
+
+:::note
+Staging vide iemieg, kad to neviens nelieto. Pirmais pieprasījums pēc klusuma perioda var aizņemt aptuveni minūti, kamēr serveri pamostas.
+:::
+
+## 1. solis: Izveido staging kontu
+
+Staging ir pilnīgi atsevišķa no ražošanas vides, ar saviem pieteikšanās datiem un kontiem.
+
+<Steps>
+1. Dodies uz [staging-app.wink.travel](https://staging-app.wink.travel), klikšķini `Sign-In / Register` un reģistrējies.
+
+2. Kreisajā sānjoslā klikšķini `Accounts`, tad `Create` un izvēlies **I am an Affiliate**. Rezervācijas, ko tu sūti, tiek pieskaitītas šim kontam. Skatīt [Izveidot kontu](/lv/portal/create-account/).
+</Steps>
+
+## 2. solis: Izveido lietotni
+
+Lietotne nodrošina tavam kodam akreditācijas datus.
+
+<Steps>
+1. Savā konta kartītē klikšķini `Actions` > `Manage account`, tad cilni `Applications`.
+
+2. Klikšķini `Create new application`, piešķir tai nosaukumu un izvēlies **Machine-to-machine** kā klienta tipu.
+
+3. Izvēlies piekļuves tiesības (scopes) — **Inventory & rates** (lasīšana). Partner API pārbauda `inventory.read`.
+
+4. Klikšķini `Create application` un nokopē **Client ID** un **Client secret**. Slepenais atslēgas kods tiek rādīts tikai vienreiz un vēlāk to nevarēs iegūt.
+</Steps>
+
+Skatīt [Lietotnes](/lv/account/applications/) par citiem klientu tipiem un piekļuves tiesībām.
+
+## 3. solis: Iegūsti piekļuves tokenu
+
+```bash
+curl -X POST https://staging-iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_CLIENT_SECRET>" \
+  -d "scope=inventory.read"
+```
+
+Saglabā `access_token` no atbildes:
+
+```bash
+export WINK_TOKEN=<access_token>
+```
+
+Tokeni beidzas. Savā kodā izmanto OAuth2 bibliotēku, lai tos iegūtu un atjaunotu. Skatīt [Autentifikācija](/lv/developers/authentication/).
+
+## 4. solis: Atrodi sava konta ID
+
+Katrs Partner API pieprasījums norāda kontu, kura vārdā tu darbojies, ar `managing-entity-id` galveni. Uzskaiti kontus, kuros tavs tokens var darboties:
+
+```bash
+grpcurl -H "authorization: Bearer $WINK_TOKEN" \
+  -d '{}' \
+  staging-partner.wink.travel:443 wink.partner.v1.Accounts/ListAccounts
+```
+
+Nokopē 1. solī izveidotā affiliate konta `accountId`:
+
+```bash
+export WINK_ACCOUNT_ID=<accountId>
+```
+
+## 5. solis: Meklē viesnīcas pilsētā
+
+{/* TODO(Yann): apstiprināt staging pilsētu testa viesnīcai ar pieejamību un izmantot to šeit. */}
+
+```bash
+grpcurl -H "authorization: Bearer $WINK_TOKEN" \
+  -H "managing-entity-id: $WINK_ACCOUNT_ID" \
+  -d '{
+    "urlName": "bangkok-thailand",
+    "userSession": {
+      "itinerary": {
+        "startDate": "2026-12-01",
+        "nights": 2,
+        "room": { "adults": 2 }
+      },
+      "currencyCode": "USD",
+      "languageCode": "en"
+    }
+  }' \
+  staging-partner.wink.travel:443 wink.partner.v1.Search/SearchByCity
+```
+
+Izmanto nākotnes ierašanās datumu; pagātnes datums tiks noraidīts. Katrs rezultāts satur:
+
+- `name`, `starRating` un `heroImageUrl`, pietiekami, lai parādītu rezultāta rindu,
+- `roomTypes`, tiešās cenas piedāvājumi, sākot ar lētāko numuru,
+- `urlName`, slugu, kas nepieciešams rezervēšanas saitei.
+
+Cenas ir veseli skaitļi mazākajās vienībās: daliet ar 10 pakāpi `currencyExponent` no atbildes (2 USD gadījumā, tāpēc `12500` ir $125.00).
+
+Nezini pilsētas slugu? Atrodi to ar `wink.partner.v1.Lookup/Search`. Lai iegūtu īpašuma pilnu saturu, izmanto `Content` servisu. [Partner API atsauce](/lv/partner-api/partner/) dokumentē katru pieprasījumu.
+
+## 6. solis: Izveido rezervēšanas saiti
+
+```text
+https://staging-book.wink.travel/hotel/<urlName>?client-id=<YOUR_CLIENT_ID>&configuration-id=<YOUR_CUSTOMIZATION_ID>
+```
+
+- `<urlName>` ir viesnīcas `urlName` no 5. soļa.
+- `client-id` ir tava lietotnes Client ID no 2. soļa.
+- `configuration-id` ir tava pielāgošanas ID: `Manage account` > `Customizations`. Pielāgošana arī nosaka tavu zīmolu, noklusējuma valodu un valūtu rezervēšanas lapā.
+
+:::caution
+Iekļauj abus ID. Bez tiem lapa joprojām ielādēsies, bet ar noklusējuma zīmolu, un **rezervācija netiks pieskaitīta tev**. Nekad neliec klienta slepeno atslēgu saitē.
+:::
+
+Skatīt [Tieša saite](/lv/booking-engine/features/#linking-directly) par saites veidošanu uz rezervēšanas dzinēja sākumlapu, nevis uz vienu viesnīcu.
+
+## 7. solis: Veic testa rezervāciju
+
+Atver savu saiti, izvēlies datumus un numuru, un veic norēķinu ar [Stripe testa karti](https://docs.stripe.com/testing), piemēram, `4242 4242 4242 4242` ar jebkuru nākotnes derīguma termiņu un jebkuru CVC. Staging vidē netiek iekasēta reāla maksa. Piefiksē rezervācijas kodu apstiprinājuma lapā; tas sākas ar `WNK`.
+
+## 8. solis: Saņem paziņojumus par rezervācijām
+
+<Steps>
+1. Portalā dodies uz `Applications > Webhooks` un pievieno galapunktu, kas pieņem `POST` pieprasījumus.
+
+2. Abonē `booking.create`, vai atstāj notikumu sarakstu tukšu, lai saņemtu visu attīstības laikā.
+
+3. Nosūti sev testa notikumu, tad veic vēl vienu testa rezervāciju un vēro, kā tas pienāk.
+</Steps>
+
+Pārbaudi katra piegādes parakstu pirms uzticies tam. Skatīt [Webhook integrācija](/lv/developers/webhook-integration/) un [Webhook notikumu katalogs](/lv/developers/webhook-events/).
+
+## 9. solis: Pārej uz ražošanu
+
+Izstrādātājiem nav apstiprināšanas soļa. (Ceļojumu aģentūru konti tiek sertificēti vispirms; skatīt [zemāk](#booking-as-a-travel-agency).) Kad tava integrācija darbojas staging vidē:
+
+<Steps>
+1. Izveido kontu un lietotni [app.wink.travel](https://app.wink.travel), kā 1. un 2. solī. Akreditācijas dati netiek pārnesti starp vidēm.
+
+2. Noņem `staging-` no katra hosta:
+
+   | Staging | Ražošana |
+   |---|---|
+   | `https://staging-iam.wink.travel` | `https://iam.wink.travel` |
+   | `staging-partner.wink.travel:443` | `partner.wink.travel:443` |
+   | `https://staging-book.wink.travel` | `https://book.wink.travel` |
+
+3. Atrodi savu ražošanas konta ID (4. solis) un pielāgošanas ID (6. solis) vēlreiz. Tie atšķiras no staging.
+</Steps>
+
+Partner API lietošana tiek mērīta viesnīcu naktīs, ar bezmaksas mēneša limitu. Skatīt [Partner API](/lv/integrations/partner-api/) par cenām un ierobežojumiem.
+
+## Rezervēšana kā ceļojumu aģentūra
+
+Ja tavs konts ir licencēta ceļojumu aģentūra, tev nav jānosūta ceļotāji uz `book.wink.travel`: tu vari veidot rezervācijas tieši ar `wink.partner.v1.Booking/CreateBooking` un pārvaldīt tās ar citiem `Booking` pieprasījumiem. Citi konti nosūta ceļotājus uz rezervēšanas saiti.
+
+Ceļojumu aģentūru konti tiek sertificēti: Wink pārskata katras aģentūras reģistrāciju pirms tā var rezervēt. Aģentūras, kas vēlas pašas iekasēt maksājumus no klientiem kā reģistrēts tirgotājs, ir jārezervē caur Partner API un jāsaņem Wink rakstiska atļauja. Skatīt [Sākšana kā ceļojumu aģentūrai](/lv/guides/travel-agents/getting-started/) un [Partner API atsauce](/lv/partner-api/partner/).
+
+## Nākamie soļi
+
+- [Ģenerē tipizētu klientu](/lv/developers/rest-and-grpc/#generate-a-grpc-client) no `.proto` shēmas, nevis izmanto `grpcurl` manuāli.
+- Pieslēdz [MCP serveri](/lv/developers/mcp/) un izmanto [AI prasmes](/lv/developers/ai-skills/), lai tava kodēšanas asistents uzrakstītu integrāciju pret tiešo API.
+- Izlasi pilnu [vides un hostu sarakstu](/lv/getting-started/environments/).

@@ -1,6 +1,6 @@
 ---
 title: Aplinkos
-description: Šiame straipsnyje pateikiama informacija testuotojams ir kūrėjams apie prieigą prie mūsų skirtingų serverių aplinkų.
+description: Šiame straipsnyje pateikta informacija testuotojams ir kūrėjams apie prieigą prie mūsų skirtingų serverių aplinkų.
 sidebar:
   order: 8
 ---
@@ -8,12 +8,14 @@ sidebar:
 Wink platformoje mes nuolat veikiame 2 aplinkas:
 
 - Produkcija yra mūsų stabili aplinka.
-- Staging yra mūsų sertifikavimo ir testavimo aplinka.
+- Staging yra mūsų testavimo aplinka, kurioje sertifikuojami kanalų valdytojai ir kelionių agentai.
 
-Jei esate integratorius, viešbutis ar kelionių agentas, norintis pasiruošti sertifikavimui arba išbandyti Wink platformą, sukurkite paskyrą mūsų staging aplinkoje, kad pradėtumėte.
+Jei norite išbandyti Wink platformą kaip kūrėjas, viešbutis ar kelionių agentas, sukurkite paskyrą mūsų staging aplinkoje, kad pradėtumėte. Kanalų valdytojai taip pat vykdo savo [sertifikavimą](/lt/guides/integrators/add-your-channel-manager/#certification) ten.
+
+Sukurti paskyrą staging arba produkcijos aplinkoje reikalauja sutikimo su Wink naudojimo sąlygomis ir mokėjimo sąlygomis, o šis sutikimas yra įpareigojantis. Kanalų valdytojams ir kelionių agentams taip pat reikalingas sertifikavimas prieš prieigą prie produkcijos; visi kiti patys pereina į produkciją.
 
 :::note
-Staging aplinka prieinama pagal užklausą. Tai reiškia, kad ji užmiega, jei nėra naudojama, ir pati įsijungia, kai yra naudojama. Prašome būti kantriems, jei ją pažadinote. Po pirmo prisijungimo prie vieno iš mūsų serverių ar programėlių užtrunka apie minutę, kol visi serveriai pilnai užsikrauna.
+Staging aplinka prieinama pagal užklausą. Tai reiškia, kad ji užmiega, jei nėra naudojama, ir pati įsijungia, kai yra naudojama. Prašome kantrybės, jei ją pažadinote. Po pirmo prisijungimo prie vieno iš mūsų serverių ar programų užtrunka apie minutę, kol visi serveriai paleidžiami.
 :::
 
 ## Serveriai
@@ -30,10 +32,10 @@ Staging aplinka prieinama pagal užklausą. Tai reiškia, kad ji užmiega, jei n
 
 ## Programėlės
 
-Mūsų programėlėms taip pat yra testavimo ir produkcijos aplinkos mūsų klientams.
+Mūsų programėlės taip pat turi testavimo ir produkcijos aplinkas mūsų klientams.
 
 | Programėlė | Staging | Produkcija
 | ------- | ------- | ---------- |
 | Portalas | https://staging-app.wink.travel | https://app.wink.travel | 
 | Rezervavimo variklis | https://staging-book.wink.travel | https://book.wink.travel | 
-| Nuorodų valdytojas | https://staging-i.trvl.as | https://i.trvl.as |
+| Link Manager | https://staging-i.trvl.as | https://i.trvl.as |

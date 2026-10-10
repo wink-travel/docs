@@ -7,14 +7,14 @@ sidebar:
 
 ## Nastavite ponudnika cen
 
-Za nastavitev ponudnika cen kliknite na `Distribution > Channel manager` v glavnem navigacijskem meniju.
+Za nastavitev ponudnika cen kliknite na `Distribution > Channel manager` v glavni navigacijski vrstici.
 
-Izberite svojega ponudnika cen iz spustnega seznama in kliknite gumb `Save`. To bo omogočilo ponudniku cen, da nam pošilja cene, mi pa jih bomo obvestili, ko bo na Wink opravljen rezervacija za eno od vaših nepremičnin.
+Izberite svojega ponudnika cen iz spustnega seznama in kliknite gumb `Save`. To bo omogočilo ponudniku cen, da nam pošilja cene, mi pa jih bomo obvestili, ko bo na Wink opravljen rezervacija za eno od vaših nastanitev.
 
 
 ### SynXis
 
-Če vaša nepremičnina uporablja kanalnega upravitelja SynXis, je pred povezavo z Wink potreben še en korak.
+Če vaša nastanitev uporablja Sabre SynXis, je pred povezavo z Wink potreben še en korak.
 
 - Prosimo, obrnite se na svojega predstavnika za SynXis ali službo za pomoč strankam (SHSCustomerCare@sabre.com).
 - Sporočite jim, da se želite povezati z Wink preko Channel Connect Express (***CCX***).

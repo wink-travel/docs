@@ -9,15 +9,15 @@ sidebar:
 
 Per impostare il tuo fornitore di tariffe, clicca su `Distribution > Channel manager` dalla barra di navigazione principale.
 
-Seleziona il tuo fornitore di tariffe dal menu a tendina e clicca sul pulsante `Save`. Questo permetterà al fornitore di tariffe di inviarci le tariffe e noi li notificheremo quando si verifica una prenotazione su Wink per una delle tue proprietà.
+Seleziona il tuo fornitore di tariffe dal menu a tendina e clicca sul pulsante `Save`. Questo permetterà al fornitore di tariffe di inviarci le tariffe e li notificheremo quando si verifica una prenotazione su Wink per una delle tue proprietà.
 
 
 ### SynXis
 
-Se la tua struttura utilizza il channel manager SynXis, c'è un ulteriore passaggio richiesto prima di essere pronto a connetterti con Wink.
+Se la tua struttura utilizza Sabre SynXis, è necessario un ulteriore passaggio prima di poter collegare Wink.
 
-- Ti preghiamo di metterti in contatto con il tuo rappresentante account SynXis o con l'assistenza clienti (SHSCustomerCare@sabre.com).
-- Comunica loro che vuoi connetterti a Wink tramite Channel Connect Express (***CCX***).
+- Contatta il tuo rappresentante SynXis o il servizio clienti (SHSCustomerCare@sabre.com).
+- Comunica loro che desideri collegarti a Wink tramite Channel Connect Express (***CCX***).
 - Ti faranno compilare il modulo ***PRS***.
   - Ti verrà chiesto di inserire le tue credenziali utente Wink.
   - ...e la valuta desiderata.

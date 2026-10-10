@@ -5,18 +5,18 @@ sidebar:
   order: 0
 ---
 
-Kayıtlı seyahat acenteleri için çözümümüz [Wink Agent](https://agent.wink.travel). Bu, acentelerin müşterileri adına arama yapıp rezervasyon yapabilecekleri ve her rezervasyondan kendileri için komisyon kazanabilecekleri kendi kendine hizmet portalıdır.
+Kayıtlı seyahat acenteleri, [app.wink.travel](https://app.wink.travel) adresinde, bir Seyahat Acentesi hesabıyla herkesin kullandığı aynı portalı kullanır. Acenteler, müşterileri adına arama yapar ve rezervasyon yapar, her rezervasyondan komisyon kazanır. Bir hesap oluşturmak için [Seyahat Acentesi Olarak Başlarken](/tr/guides/travel-agents/getting-started/) rehberini takip edin.
 
-Daha gelişmiş seyahat acenteleri, ödeme ve ödemeleri Wink platformu dışında yönetmek amacıyla API düzeyinde entegrasyon yapmayı tercih edebilirler.
+Ödemeyi kendileri tahsil etmeye onaylı acenteler, kayıtlı satıcı olarak hareket eder ve ödemeyi Wink platformu dışında yönetir. Kendi sistemleri olan acenteler, [Partner API](/tr/integrations/partner-api/) aracılığıyla entegrasyon yapabilir.
 
-Seyahat acenteleri, [Studio](/tr/portal/studio/what-is-studio) ile aynı portal özelliklerinin bir alt kümesine sahiptir, bu yüzden burada tekrar ele almayacağız.
+Seyahat acenteleri, [Studio](/tr/portal/studio/what-is-studio) portalının bir alt kümesi olan özelliklere sahiptir, bu nedenle burada tekrar ele alınmayacaktır.
 
 ## Arama
 
-Otel arama ve rezervasyon yapmayı öğrenmek için [Search](/tr/portal/studio/search) sayfasına gidin.
+Otel arama ve rezervasyon yapmayı öğrenmek için [Arama](/tr/portal/studio/search) sayfasına gidin.
 
 Aksi takdirde, bir sonraki bölüme devam edin.
 
 ## API
 
-`Travel Agent` yönetmek isteyen geliştiriciler [Developers > API > Travel Agent](/tr/api/overview/) sayfasına gidebilirler.
+Acenteler, eski Seyahat Acentesi REST uç noktalarının yerini alan [Partner API](/tr/partner-api/partner/) üzerinden arama yapabilir ve rezervasyon oluşturabilir.

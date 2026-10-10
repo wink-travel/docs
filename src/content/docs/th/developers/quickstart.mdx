@@ -1,0 +1,198 @@
+---
+title: เริ่มต้นอย่างรวดเร็ว
+description: "จากศูนย์สู่การรวมระบบที่ใช้งานได้ในสเตจจิ้ง: รับข้อมูลรับรอง ค้นหาราคาห้องพักโรงแรมแบบสดผ่าน Partner API และส่งนักเดินทางไปยังหน้าการจองที่ให้เครดิตกับคุณ"
+sidebar:
+  order: 0.5
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+คำแนะนำนี้จะพาคุณจากไม่มีอะไรเลยจนถึงการรวมระบบที่ใช้งานได้ภายในเวลาประมาณ 30 นาที เมื่อจบแล้วคุณจะมี:
+
+- ราคาห้องพักโรงแรมแบบสดในเมืองหนึ่ง ๆ จาก Partner API,
+- ลิงก์การจองที่ให้เครดิตการจองกับบัญชีของคุณ,
+- การจองทดสอบ และ webhook แจ้งเตือนเมื่อมีการจองเกิดขึ้น
+
+ทุกอย่างเกิดขึ้นใน **สเตจจิ้ง** ซึ่งเป็นสภาพแวดล้อมสำหรับการทดสอบของเรา คุณไม่จำเป็นต้องขออนุญาตเข้าถึง และการย้ายไปยังสภาพแวดล้อมจริงในภายหลังก็ไม่ต้องขออนุมัติเช่นกัน
+
+## คำแนะนำนี้เหมาะกับคุณหรือไม่?
+
+| คุณต้องการ… | เริ่มที่นี่ |
+|---|---|
+| แสดงโรงแรมในแอป เว็บไซต์ หรือผลิตภัณฑ์ AI ของคุณ และส่งนักเดินทางไปจองเพื่อรับค่าคอมมิชชั่น | **คำแนะนำนี้** |
+| จองแทนลูกค้าในฐานะตัวแทนท่องเที่ยวที่ได้รับใบอนุญาต | คำแนะนำนี้จนถึงขั้นตอนที่ 5 แล้วไปที่ [การจองในฐานะตัวแทนท่องเที่ยว](#booking-as-a-travel-agency) |
+| ฝังโรงแรมที่จองได้โดยไม่ต้องเขียนโค้ดรวมระบบ | [Web Components](/th/integrations/web-components/) |
+| ให้เอเจนต์ AI ค้นหาและจอง | [MCP Servers](/th/developers/mcp/) และ [Agentic Payments](/th/developers/agentic-payments/) |
+| เชื่อมต่อกับ channel manager หรือ PMS | [เพิ่ม Channel Manager ของคุณ](/th/guides/integrators/add-your-channel-manager/) |
+
+## วิธีการทำงาน
+
+คุณใช้ **Partner API** เพื่อค้นหาโรงแรมและราคาห้องพักแบบสด โรงแรมแต่ละแห่งจะมี `urlName` ที่คงที่ คุณเปลี่ยนมันเป็นลิงก์ไปยัง Wink Booking Engine ที่ `book.wink.travel` พร้อมส่ง ID ของคุณไปด้วย นักเดินทางจะจองและชำระเงินที่นั่น และการจองจะถูกให้เครดิตกับบัญชีของคุณ
+
+## ก่อนเริ่มต้น
+
+คุณจะต้องมี:
+
+- [`grpcurl`](https://github.com/fullstorydev/grpcurl) หรือ Postman หรือ Insomnia Partner API ใช้ gRPC ไม่ใช่ REST
+- `curl`
+
+:::note
+สเตจจิ้งจะเข้าสู่โหมดพักเมื่อไม่มีใครใช้งาน การเรียกครั้งแรกหลังจากช่วงเวลาที่ไม่มีการใช้งานอาจใช้เวลาประมาณหนึ่งนาทีในขณะที่เซิร์ฟเวอร์กำลังตื่นขึ้น
+:::
+
+## ขั้นตอนที่ 1: สร้างบัญชีในสเตจจิ้ง
+
+สเตจจิ้งแยกจากสภาพแวดล้อมจริงอย่างสมบูรณ์ มีการเข้าสู่ระบบและบัญชีแยกกัน
+
+<Steps>
+1. ไปที่ [staging-app.wink.travel](https://staging-app.wink.travel) คลิก `Sign-In / Register` และลงทะเบียน
+
+2. คลิก `Accounts` ในแถบด้านข้างซ้าย จากนั้นคลิก `Create` และเลือก **I am an Affiliate** การจองที่คุณส่งจะได้รับเครดิตกับบัญชีนี้ ดู [สร้างบัญชี](/th/portal/create-account/)
+</Steps>
+
+## ขั้นตอนที่ 2: สร้างแอปพลิเคชัน
+
+แอปพลิเคชันจะให้ข้อมูลรับรองแก่โค้ดของคุณ
+
+<Steps>
+1. บนการ์ดบัญชีของคุณ คลิก `Actions` > `Manage account` แล้วไปที่แท็บ `Applications`
+
+2. คลิก `Create new application` ตั้งชื่อและเลือก **Machine-to-machine** เป็นประเภทไคลเอนต์
+
+3. ในส่วน scopes เลือก **Inventory & rates** (อ่าน) Partner API จะตรวจสอบ `inventory.read`
+
+4. คลิก `Create application` และคัดลอก **Client ID** และ **Client secret** รหัสลับจะแสดงเพียงครั้งเดียวและไม่สามารถเรียกคืนได้ในภายหลัง
+</Steps>
+
+ดู [Applications](/th/account/applications/) สำหรับประเภทไคลเอนต์และ scopes อื่น ๆ
+
+## ขั้นตอนที่ 3: รับ access token
+
+```bash
+curl -X POST https://staging-iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_CLIENT_SECRET>" \
+  -d "scope=inventory.read"
+```
+
+บันทึก `access_token` จากการตอบกลับ:
+
+```bash
+export WINK_TOKEN=<access_token>
+```
+
+โทเค็นจะหมดอายุ ในโค้ดของคุณเอง ให้ใช้ไลบรารี OAuth2 เพื่อดึงและรีเฟรชโทเค็น ดู [Authentication](/th/developers/authentication/)
+
+## ขั้นตอนที่ 4: ค้นหา account ID ของคุณ
+
+ทุกการเรียก Partner API จะระบุบัญชีที่คุณทำงานแทนใน header `managing-entity-id` แสดงรายการบัญชีที่โทเค็นของคุณสามารถทำงานแทนได้:
+
+```bash
+grpcurl -H "authorization: Bearer $WINK_TOKEN" \
+  -d '{}' \
+  staging-partner.wink.travel:443 wink.partner.v1.Accounts/ListAccounts
+```
+
+คัดลอก `accountId` ของบัญชี affiliate จากขั้นตอนที่ 1:
+
+```bash
+export WINK_ACCOUNT_ID=<accountId>
+```
+
+## ขั้นตอนที่ 5: ค้นหาโรงแรมในเมือง
+
+{/* TODO(Yann): confirm the staging city of the test hotel with availability, and use it here. */}
+
+```bash
+grpcurl -H "authorization: Bearer $WINK_TOKEN" \
+  -H "managing-entity-id: $WINK_ACCOUNT_ID" \
+  -d '{
+    "urlName": "bangkok-thailand",
+    "userSession": {
+      "itinerary": {
+        "startDate": "2026-12-01",
+        "nights": 2,
+        "room": { "adults": 2 }
+      },
+      "currencyCode": "USD",
+      "languageCode": "en"
+    }
+  }' \
+  staging-partner.wink.travel:443 wink.partner.v1.Search/SearchByCity
+```
+
+ใช้วันที่เช็คอินในอนาคต วันที่ในอดีตจะถูกปฏิเสธ ผลลัพธ์แต่ละรายการจะมี:
+
+- `name`, `starRating` และ `heroImageUrl` เพียงพอสำหรับแสดงแถวผลลัพธ์,
+- `roomTypes` ข้อเสนอแบบสด เรียงจากห้องที่ถูกที่สุด,
+- `urlName` slug ที่คุณต้องใช้สำหรับลิงก์การจอง
+
+ราคาจะเป็นจำนวนเต็มในหน่วยย่อย: หารด้วย 10 ยกกำลัง `currencyExponent` จากการตอบกลับ (2 สำหรับ USD ดังนั้น `12500` คือ $125.00)
+
+ไม่ทราบ slug ของเมือง? ใช้ `wink.partner.v1.Lookup/Search` เพื่อค้นหา สำหรับเนื้อหาเต็มของที่พัก ใช้บริการ `Content` ดู [เอกสารอ้างอิง Partner API](/th/partner-api/partner/) สำหรับการเรียกทั้งหมด
+
+## ขั้นตอนที่ 6: สร้างลิงก์การจอง
+
+```text
+https://staging-book.wink.travel/hotel/<urlName>?client-id=<YOUR_CLIENT_ID>&configuration-id=<YOUR_CUSTOMIZATION_ID>
+```
+
+- `<urlName>` คือ `urlName` ของโรงแรมจากขั้นตอนที่ 5
+- `client-id` คือ Client ID ของแอปพลิเคชันคุณจากขั้นตอนที่ 2
+- `configuration-id` คือ ID การปรับแต่งของคุณ: `Manage account` > `Customizations` การปรับแต่งจะตั้งค่าแบรนด์ ภาษาเริ่มต้น และสกุลเงินบนหน้าการจอง
+
+:::caution
+ต้องใส่ทั้งสอง ID หากไม่มีจะโหลดหน้าได้แต่ใช้แบรนด์เริ่มต้น และ **การจองจะไม่ถูกให้เครดิตกับคุณ** ห้ามใส่ client secret ในลิงก์เด็ดขาด
+:::
+
+ดู [การลิงก์โดยตรง](/th/booking-engine/features/#linking-directly) สำหรับการลิงก์ไปยังหน้าแรกของ booking engine แทนที่จะเป็นโรงแรมเดียว
+
+## ขั้นตอนที่ 7: ทำการจองทดสอบ
+
+เปิดลิงก์ของคุณ เลือกวันที่และห้องพัก แล้วชำระเงินด้วย [บัตรทดสอบ Stripe](https://docs.stripe.com/testing) เช่น `4242 4242 4242 4242` พร้อมวันหมดอายุในอนาคตและ CVC ใดก็ได้ ไม่มีการเรียกเก็บเงินจริงในสเตจจิ้ง จดรหัสการจองบนหน้ายืนยันไว้ รหัสจะขึ้นต้นด้วย `WNK`
+
+## ขั้นตอนที่ 8: รับแจ้งเตือนเกี่ยวกับการจอง
+
+<Steps>
+1. ใน Portal ไปที่ `Applications > Webhooks` และเพิ่ม endpoint ที่รับคำขอ `POST`
+
+2. สมัครรับเหตุการณ์ `booking.create` หรือเว้นรายการเหตุการณ์ว่างเพื่อรับทุกเหตุการณ์ในช่วงพัฒนา
+
+3. ส่งเหตุการณ์ทดสอบให้ตัวเอง จากนั้นทำการจองทดสอบอีกครั้งและดูว่ามาถึงหรือไม่
+</Steps>
+
+ตรวจสอบลายเซ็นของทุกการส่งก่อนเชื่อถือ ดู [Webhook Integration](/th/developers/webhook-integration/) และ [Webhook Events Catalog](/th/developers/webhook-events/)
+
+## ขั้นตอนที่ 9: ไปยังสภาพแวดล้อมจริง
+
+ไม่มีขั้นตอนการอนุมัติสำหรับนักพัฒนา (บัญชีนายหน้าท่องเที่ยวจะได้รับการรับรองก่อน ดู [ด้านล่าง](#booking-as-a-travel-agency)) เมื่อการรวมระบบของคุณทำงานในสเตจจิ้ง:
+
+<Steps>
+1. สร้างบัญชีและแอปพลิเคชันที่ [app.wink.travel](https://app.wink.travel) ตามขั้นตอนที่ 1 และ 2 ข้อมูลรับรองจะไม่ถูกโอนข้ามสภาพแวดล้อม
+
+2. ลบ `staging-` ออกจากทุกโฮสต์:
+
+   | สเตจจิ้ง | สภาพแวดล้อมจริง |
+   |---|---|
+   | `https://staging-iam.wink.travel` | `https://iam.wink.travel` |
+   | `staging-partner.wink.travel:443` | `partner.wink.travel:443` |
+   | `https://staging-book.wink.travel` | `https://book.wink.travel` |
+
+3. ค้นหา account ID (ขั้นตอนที่ 4) และ customization ID (ขั้นตอนที่ 6) ของสภาพแวดล้อมจริงอีกครั้ง ซึ่งจะแตกต่างจากสเตจจิ้ง
+</Steps>
+
+การใช้งาน Partner API จะคิดตามจำนวนคืนของโรงแรม โดยมีโควต้าใช้ฟรีรายเดือน ดู [Partner API](/th/integrations/partner-api/) สำหรับราคาและข้อจำกัด
+
+## การจองในฐานะตัวแทนท่องเที่ยว
+
+ถ้าบัญชีของคุณเป็นตัวแทนท่องเที่ยวที่ได้รับใบอนุญาต คุณไม่จำเป็นต้องส่งนักเดินทางไปที่ `book.wink.travel` คุณสามารถสร้างการจองโดยตรงด้วย `wink.partner.v1.Booking/CreateBooking` และจัดการด้วยคำสั่ง `Booking` อื่น ๆ บัญชีอื่นจะส่งนักเดินทางไปยังลิงก์การจองแทน
+
+บัญชีนายหน้าท่องเที่ยวจะได้รับการรับรอง: Wink จะตรวจสอบการลงทะเบียนของตัวแทนทุกแห่งก่อนที่จะสามารถจองได้ ตัวแทนที่ต้องการเก็บเงินจากลูกค้าเองในฐานะผู้ค้ารายการต้องจองผ่าน Partner API และได้รับการอนุมัติเป็นลายลักษณ์อักษรจาก Wink ดู [เริ่มต้นใช้งานในฐานะตัวแทนท่องเที่ยว](/th/guides/travel-agents/getting-started/) และ [เอกสารอ้างอิง Partner API](/th/partner-api/partner/)
+
+## ขั้นตอนถัดไป
+
+- [สร้างไคลเอนต์แบบ typed](/th/developers/rest-and-grpc/#generate-a-grpc-client) จากสคีมา `.proto` แทนการเรียก `grpcurl` ด้วยมือ
+- เชื่อมต่อ [MCP server](/th/developers/mcp/) และใช้ [AI Skills](/th/developers/ai-skills/) ให้ผู้ช่วยเขียนโค้ดของคุณสร้างการรวมระบบกับ API แบบสด
+- อ่านรายการเต็มของ [สภาพแวดล้อมและโฮสต์](/th/getting-started/environments/)

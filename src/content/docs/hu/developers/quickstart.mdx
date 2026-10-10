@@ -1,0 +1,198 @@
+---
+title: Gyors kezdés
+description: "Nulláról működő integrációig staging környezetben: szerezd meg a hitelesítő adatokat, keresd meg élő szállodai árakat a Partner API-val, és küldd az utazókat egy foglalási oldalra, amely jóváírja neked a foglalásokat."
+sidebar:
+  order: 0.5
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+Ez az útmutató körülbelül 30 perc alatt eljuttat a semmitől egy működő integrációig. A végére rendelkezel:
+
+- élő árakkal egy város szállodáira a Partner API-ból,
+- egy foglalási linkkel, amely a foglalásokat a te fiókodhoz írja jóvá,
+- egy tesztfoglalással és egy webhookkal, amely jelzi, hogy megtörtént.
+
+Minden a **staging** környezetben történik, ami a tesztkörnyezetünk. Nem kell engedélyt kérned tőlünk, és a későbbi élesítéshez sem szükséges jóváhagyás.
+
+## Ez az útmutató neked való?
+
+| Szeretnéd… | Innen indulj |
+|---|---|
+| Szállodákat megjeleníteni az alkalmazásodban, weboldaladon vagy AI termékedben, és az utazókat foglalásra küldeni, jutalékot keresve | **Ez az útmutató** |
+| Ügyfeleid nevében foglalni, mint engedélyezett utazási iroda | Ez az útmutató 5. lépésig, majd [Foglalás utazási irodaként](#booking-as-a-travel-agency) |
+| Foglalható szállodákat beágyazni integráció írása nélkül | [Web Components](/hu/integrations/web-components/) |
+| AI ügynököt keresésre és foglalásra használni | [MCP Servers](/hu/developers/mcp/) és [Agentic Payments](/hu/developers/agentic-payments/) |
+| Csatornakezelőt vagy PMS-t csatlakoztatni | [Csatornakezelő hozzáadása](/hu/guides/integrators/add-your-channel-manager/) |
+
+## Hogyan működik
+
+A **Partner API** segítségével keresed meg a szállodákat és azok élő árait. Minden szállodához tartozik egy stabil `urlName`. Ezt egy linkké alakítod a Wink Foglalási Motorhoz, a `book.wink.travel`-hez, amely viszi az azonosítóidat. Az utazó ott foglal és fizet, és a foglalás a te fiókodhoz kerül jóváírásra.
+
+## Mielőtt elkezdenéd
+
+Szükséged lesz:
+
+- [`grpcurl`](https://github.com/fullstorydev/grpcurl), vagy Postman vagy Insomnia. A Partner API gRPC alapú, nem REST.
+- `curl`.
+
+:::note
+A staging akkor „alszik”, ha senki nem használja. Az első hívás egy csendes időszak után körülbelül egy percet is igénybe vehet, amíg a szerverek felébrednek.
+:::
+
+## 1. lépés: Hozz létre egy staging fiókot
+
+A staging teljesen különáll az éles környezettől, saját bejelentkezésekkel és fiókokkal.
+
+<Steps>
+1. Látogass el a [staging-app.wink.travel](https://staging-app.wink.travel) oldalra, kattints a `Sign-In / Register` gombra, és regisztrálj.
+
+2. A bal oldali menüben kattints az `Accounts` menüpontra, majd a `Create` gombra, és válaszd az **I am an Affiliate** opciót. Az általad küldött foglalások ehhez a fiókhoz lesznek jóváírva. Lásd [Fiók létrehozása](/hu/portal/create-account/).
+</Steps>
+
+## 2. lépés: Hozz létre egy alkalmazást
+
+Az alkalmazás adja meg a kódodnak a hitelesítő adatokat.
+
+<Steps>
+1. A fiók kártyádon kattints az `Actions` > `Manage account` menüpontra, majd az `Applications` fülre.
+
+2. Kattints a `Create new application` gombra, adj neki nevet, és válaszd a **Machine-to-machine** kliens típust.
+
+3. A scopes alatt válaszd az **Inventory & rates** (olvasás) opciót. A Partner API az `inventory.read` jogosultságot ellenőrzi.
+
+4. Kattints a `Create application` gombra, és másold ki a **Client ID** és **Client secret** értékeket. A titok egyszer jelenik meg, később nem kérhető le újra.
+</Steps>
+
+Lásd az [Applications](/hu/account/applications/) oldalt a többi kliens típus és scope részleteiért.
+
+## 3. lépés: Szerezz hozzáférési tokent
+
+```bash
+curl -X POST https://staging-iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_CLIENT_SECRET>" \
+  -d "scope=inventory.read"
+```
+
+Mentsd el a válaszból az `access_token` értéket:
+
+```bash
+export WINK_TOKEN=<access_token>
+```
+
+A tokenek lejárnak. Saját kódodban használj OAuth2 könyvtárat a lekéréshez és frissítéshez. Lásd [Hitelesítés](/hu/developers/authentication/).
+
+## 4. lépés: Találd meg a fiókazonosítódat
+
+Minden Partner API hívásban meg kell adni, hogy melyik fiók nevében jársz el a `managing-entity-id` fejlécben. Listázd ki azokat a fiókokat, amelyekhez a tokened jogosultsággal bír:
+
+```bash
+grpcurl -H "authorization: Bearer $WINK_TOKEN" \
+  -d '{}' \
+  staging-partner.wink.travel:443 wink.partner.v1.Accounts/ListAccounts
+```
+
+Másold ki az 1. lépésben létrehozott affiliate fiók `accountId` értékét:
+
+```bash
+export WINK_ACCOUNT_ID=<accountId>
+```
+
+## 5. lépés: Keresés szállodákra egy városban
+
+{/* TODO(Yann): erősítsd meg a staging várost a teszt szállodával és elérhetőséggel, és használd itt. */}
+
+```bash
+grpcurl -H "authorization: Bearer $WINK_TOKEN" \
+  -H "managing-entity-id: $WINK_ACCOUNT_ID" \
+  -d '{
+    "urlName": "bangkok-thailand",
+    "userSession": {
+      "itinerary": {
+        "startDate": "2026-12-01",
+        "nights": 2,
+        "room": { "adults": 2 }
+      },
+      "currencyCode": "USD",
+      "languageCode": "en"
+    }
+  }' \
+  staging-partner.wink.travel:443 wink.partner.v1.Search/SearchByCity
+```
+
+Használj jövőbeli bejelentkezési dátumot; a múltbeli dátumot elutasítja a rendszer. Minden találat tartalmazza:
+
+- `name`, `starRating` és `heroImageUrl`, elegendő egy találati sor megjelenítéséhez,
+- `roomTypes`, az élő ajánlatokat, a legolcsóbb szobával kezdve,
+- `urlName`, a slug, amire szükséged van a foglalási linkhez.
+
+Az árak egész számok kisebb egységekben: oszd el tíz a `currencyExponent` hatványával a válaszból (USD esetén 2, tehát a `12500` 125,00 dollár).
+
+Nem ismered egy város slugját? Keresd meg a `wink.partner.v1.Lookup/Search` hívással. Egy ingatlan teljes tartalmához használd a `Content` szolgáltatást. A [Partner API referencia](/hu/partner-api/partner/) dokumentál minden hívást.
+
+## 6. lépés: Építsd meg a foglalási linket
+
+```text
+https://staging-book.wink.travel/hotel/<urlName>?client-id=<YOUR_CLIENT_ID>&configuration-id=<YOUR_CUSTOMIZATION_ID>
+```
+
+- `<urlName>` a szálloda `urlName` értéke az 5. lépésből.
+- `client-id` az alkalmazásod Client ID-je a 2. lépésből.
+- `configuration-id` a testreszabási azonosítód: `Manage account` > `Customizations`. Egy testreszabás beállítja a brandinget, az alapértelmezett nyelvet és pénznemet a foglalási oldalon.
+
+:::caution
+Mindkét azonosítót add meg. Nélkülük az oldal betöltődik, de alapértelmezett brandinggel, és **a foglalás nem kerül jóváírásra neked**. Soha ne tedd bele a kliens titkodat a linkbe.
+:::
+
+Lásd a [Közvetlen linkelés](/hu/booking-engine/features/#linking-directly) részt, ha a foglalási motor kezdőoldalára szeretnél linkelni egyetlen szálloda helyett.
+
+## 7. lépés: Készíts egy tesztfoglalást
+
+Nyisd meg a linkedet, válassz dátumokat és szobát, majd fizess egy [Stripe tesztkártyával](https://docs.stripe.com/testing), például `4242 4242 4242 4242` bármilyen jövőbeli lejárati dátummal és bármilyen CVC-vel. A staging környezetben nem terhelnek valódi kártyát. Jegyezd meg a foglalási kódot a visszaigazoló oldalon; `WNK`-val kezdődik.
+
+## 8. lépés: Értesülj a foglalásokról
+
+<Steps>
+1. A Portalban menj az `Applications > Webhooks` menüpontra, és adj hozzá egy végpontot, amely elfogad `POST` kéréseket.
+
+2. Iratkozz fel a `booking.create` eseményre, vagy hagyd üresen az eseménylistát, hogy fejlesztés közben mindent megkapj.
+
+3. Küldj magadnak egy teszt eseményt, majd készíts egy újabb tesztfoglalást, és figyeld, hogy megérkezik.
+</Steps>
+
+Minden kézbesítés aláírását ellenőrizd, mielőtt megbízol benne. Lásd a [Webhook integráció](/hu/developers/webhook-integration/) és a [Webhook események katalógusa](/hu/developers/webhook-events/).
+
+## 9. lépés: Lépj éles környezetbe
+
+Fejlesztőknek nincs jóváhagyási lépés. (Az utazási iroda fiókokat előzetesen tanúsítják; lásd lentebb a [Foglalás utazási irodaként](#booking-as-a-travel-agency) részt.) Ha az integrációd működik stagingben:
+
+<Steps>
+1. Hozz létre egy fiókot és egy alkalmazást az [app.wink.travel](https://app.wink.travel) oldalon, ahogy az 1. és 2. lépésben. A hitelesítő adatok nem vihetők át a környezetek között.
+
+2. Távolítsd el a `staging-` előtagot minden hosztnév elől:
+
+   | Staging | Éles környezet |
+   |---|---|
+   | `https://staging-iam.wink.travel` | `https://iam.wink.travel` |
+   | `staging-partner.wink.travel:443` | `partner.wink.travel:443` |
+   | `https://staging-book.wink.travel` | `https://book.wink.travel` |
+
+3. Keresd meg újra az éles fiókazonosítódat (4. lépés) és a testreszabási azonosítódat (6. lépés). Ezek eltérnek a stagingtől.
+</Steps>
+
+A Partner API használata szállodai éjszakák alapján mérhető, havi ingyenes kerettel. Lásd a [Partner API](/hu/integrations/partner-api/) oldalt az árakról és korlátokról.
+
+## Foglalás utazási irodaként
+
+Ha a fiókod engedélyezett utazási iroda, nem kell az utazókat a `book.wink.travel` oldalra küldened: közvetlenül létrehozhatsz foglalásokat a `wink.partner.v1.Booking/CreateBooking` hívással, és kezelheted azokat a többi `Booking` hívással. Más fiókok az utazókat a foglalási linkre küldik.
+
+Az utazási iroda fiókokat tanúsítják: a Wink minden iroda regisztrációját ellenőrzi, mielőtt foglalhatna. Azok az irodák, amelyek maguk szeretnék beszedni az ügyfelek fizetését, mint kereskedő, a Partner API-n keresztül kell foglaljanak, és írásos jóváhagyást kell kapjanak a Wink-től. Lásd a [Utazási irodaként kezdés](/hu/guides/travel-agents/getting-started/) és a [Partner API referencia](/hu/partner-api/partner/) oldalakat.
+
+## Következő lépések
+
+- [Generálj típusos klienst](/hu/developers/rest-and-grpc/#generate-a-grpc-client) a `.proto` séma alapján a kézi `grpcurl` hívások helyett.
+- Csatlakoztasd az [MCP szervert](/hu/developers/mcp/) és használd az [AI Skills](/hu/developers/ai-skills/) funkciókat, hogy a kódoló asszisztensed megírja az integrációt az élő API ellen.
+- Olvasd el a teljes listát az [környezetekről és hosztokról](/hu/getting-started/environments/).

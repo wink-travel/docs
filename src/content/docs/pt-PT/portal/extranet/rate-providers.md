@@ -14,7 +14,7 @@ Selecione o seu fornecedor de tarifas na lista suspensa e clique no botão `Save
 
 ### SynXis
 
-Se a sua propriedade utiliza o channel manager SynXis, há mais um passo necessário antes de estar pronto para se conectar com a Wink.
+Se a sua propriedade utiliza Sabre SynXis, há mais um passo necessário antes de estar pronto para se conectar com a Wink.
 
 - Por favor, entre em contacto com o seu representante de conta SynXis ou com o serviço de apoio ao cliente (SHSCustomerCare@sabre.com).
 - Informe-os que pretende conectar-se à Wink via Channel Connect Express (***CCX***).
@@ -35,7 +35,7 @@ Tipos disponíveis:
 
 *Se o fornecedor tiver um proxy, significa que recebemos tarifas indiretamente do fornecedor através do proxy.*
 
-| Fornecedor | Tipo | Proxy | Desde | Última modificação | Comentário
+| Vendor | Type | Proxy | Since | Last modified | Comment
 | -- | -- | -- | -- | -- | -- |
 | Hoteliers Guru | CM |  | 2017 | 2017 | |
 | Travelclick | CM |  | 2016 | 2016 | |

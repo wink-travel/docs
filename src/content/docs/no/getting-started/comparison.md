@@ -21,22 +21,22 @@ Lær hvordan Wink sammenlignes med andre nettbaserte reisesegmenter på markedet
 | Gratis Google Hotelloppføring | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | Webkomponent / SDK / API-tilgang | 🟢 | 🟢 | ⚫️ | 🟢 | 
 | Direkte relasjoner | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
-| Forhandlelige provisjoner per salgskanal | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Forhandlebare provisjoner per salgskanal | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | Kanaladministrator & PMS-tilkobling | 🟢 | 🟢 | 🟢 | 🟢 | 
 | Leverandør eier kunden | 🟢 | ⚫️ | 🟢 | 🟢 | 
 | Spor ROI | 🟢 | 🟢 | ⚫️ | ⚫️ | 
 | Betal-per-ytelse | 🟢 | 🟢 | ⚫️ | 🟢 | 
 | Integrert betalingsgateway | 🟢 | 🟢 | 🟢 | ⚫️ | 
-| Utbetalinger med Wise | 🟢 | 🟢 | ⚫️ | ⚫️ | 
+| Utbetalinger via bankoverføring | 🟢 | 🟢 | ⚫️ | ⚫️ | 
 
 
 ## Wink vs Internett Bookingmotor (IBE)
 
-Noen hoteller prøver å sammenligne oss med deres internett bookingmotor som fulgte med kanaladministratoren deres, og ber oss gi dem en fast, månedlig pris basert på antall rom på eiendommen.
+Noen hoteller prøver å sammenligne oss med deres internett bookingmotor som fulgte med kanaladministratoren deres, og ber oss gi en fast, månedlig pris basert på antall rom på eiendommen.
 
 Vi er ikke en IBE, og forhåpentligvis hjelper dette med å klargjøre forskjellen. Det finnes fordeler og ulemper med alle tjenester. Hvis din IBE fungerer for din eiendom, bør du fortsette med den.  
 Wink eksisterer for å fylle flere hull i reiselivsbransjen og samle alt på ett sted. 
 
 :::tip
-Du trenger ikke å erstatte din eksisterende IBE. Vi anbefaler likevel at du prøver vår sosialvennlige bookingmotor, eller linkmanager, på en av dine sosiale mediekontoer for å se hvordan de konverterer. Du betaler ingenting hvis det ikke blir noen bestillinger – hva har du å tape? 😉
+Du trenger ikke å erstatte din eksisterende IBE. Vi anbefaler likevel at du prøver vår sosialvennlige bookingmotor, eller link-manager, på en av dine sosiale mediekontoer for å se hvordan de konverterer. Du betaler ingenting hvis det ikke blir noen bestillinger – hva har du å tape? 😉
 :::

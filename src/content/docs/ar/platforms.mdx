@@ -28,11 +28,12 @@ import IconSearch from "@tabler/icons/outline/search.svg";
 import IconBuildingBank from "@tabler/icons/outline/building-bank.svg";
 import IconDeviceMobile from "@tabler/icons/outline/device-mobile.svg";
 import IconBriefcase from "@tabler/icons/outline/briefcase.svg";
+import { deliveredWebhookEventCount } from "@/lib/webhook-events";
 
 export const faqs = [
-  { title: "لمن حل المنصات؟", content: "أي منصة تولد نية السفر وترغب في تحويلها إلى حجوزات فنادق مؤكدة ومدفوعة: مساعدو الذكاء الاصطناعي والوكلاء، نماذج اللغة الكبيرة، محركات البحث والإجابة، البنوك والتكنولوجيا المالية، التطبيقات الشاملة، ومنصات السفر المؤسسي أو الولاء. أنت تجلب الطلب؛ Wink يوفر مخزون الفنادق، الحجز، التتبع، الدفع وبنية التسوية خلف ذلك." },
-  { title: "هل تعيد Wink بيع المخزون مثل bedbank أو OTA؟", content: "لا. Wink لا تملك المخزون. الفنادق تتحكم في العرض، الأسعار، التوافر، العروض الترويجية والعمولات. منصتك تتعامل مباشرة مع العرض الذي تتحكم فيه الفنادق عبر Wink — الفندق يحتفظ بالتحكم وعلاقة الضيف، وتتجنب هوامش إعادة البيع الخاصة بـ OTA." },
-  { title: "كيف تدمج المنصة مع Wink؟", content: "من خلال تكامل واحد: REST API (OAuth2، SDKs) للبحث في المخزون، التوافر، الحجز، الدفع، التتبع والويب هوكس، بالإضافة إلى خادم MCP مستضاف حتى يتمكن وكلاء الذكاء الاصطناعي والعملاء البرمجيون من قراءة العقود الحية. محرك الحجز ينفذ المعاملة تحت السطح، ويجمع الدفع للفندق، الذي يبقى التاجر المسجل. الـ API مفتوح — أنشئ بيانات اعتماد OAuth2 وابدأ البناء." },
+  { title: "لمن حل المنصات موجه؟", content: "أي منصة تولد نية السفر وترغب في تحويلها إلى حجوزات فنادق مؤكدة ومدفوعة: مساعدو الذكاء الاصطناعي والوكلاء، نماذج اللغة الكبيرة، محركات البحث والإجابة، البنوك والتكنولوجيا المالية، التطبيقات الشاملة، ومنصات السفر المؤسسية أو الولاء. أنت تجلب الطلب؛ Wink يوفر مخزون الفنادق، الحجز، النسبة، الدفع وبنية التسوية خلف ذلك." },
+  { title: "هل تعيد Wink بيع المخزون مثل bedbank أو OTA؟", content: "لا. الفندق يتحكم في سعره الخاص وWink يمرره دون تغيير — لا إعادة بيع بسعر صافي، ولا طبقة زيادة سعر. Wink لا تملك المخزون. الفنادق تتحكم في العرض، الأسعار، التوافر، العروض والعمولات. منصتك تتعامل مباشرة مع العرض الذي يتحكم فيه الفندق عبر Wink — الفندق يحتفظ بالتحكم وعلاقة الضيف، وتتجنب هوامش إعادة البيع الخاصة بـ OTA." },
+  { title: "كيف تدمج المنصة مع Wink؟", content: "من خلال تكامل واحد: REST API (OAuth2، SDKs) للبحث في المخزون، التوافر، الحجز، الدفع، النسبة والويب هوكس، بالإضافة إلى خادم MCP مستضاف حتى يتمكن وكلاء الذكاء الاصطناعي والعملاء البرمجيون من قراءة العقود الحية. محرك الحجز ينفذ المعاملة تحت ذلك، ويجمع الدفع للفندق، الذي يبقى تاجر السجل. الـ API مفتوح — أنشئ بيانات اعتماد OAuth2 وابدأ البناء." },
   { title: "كيف تكسب منصتي؟", content: "عندما تدفع منصتك حجزًا، يمكنك كسب عمولة تصل إلى 10%. رسوم منصة Wink بنسبة 1.5% ورسوم معالجة البطاقة للحجز تُخصم أولاً، ثم تُحسب العمولة على الباقي، لذا فإن التكلفة الإجمالية للفندق على حجز مدفوع من المنصة حوالي 15%، بافتراض رسوم بطاقة 4.0% — مقابل 15–25% على OTAs. يتم مكافأة مصدر الطلب والفندق يحتفظ بالتحكم. راجع صفحة التسعير للتفاصيل." },
   { title: "هل يمكن لوكلاء الذكاء الاصطناعي ونماذج اللغة الكبيرة إجراء المعاملات، وليس فقط التوصية؟", content: "نعم. يمكن للوكيل البحث في العرض الحي المملوك للفندق، إنشاء حجز وأخذ الدفع في تدفق واحد عبر REST API وخادم MCP المستضاف — وليس فقط تحويل المسافر إلى موقع ويب. راجع صفحة Agentic AI لمعرفة كيف يكتشف الوكلاء ويحجزون ويدفعون." },
 ];
@@ -65,9 +66,9 @@ export const faqs = [
         <h1 class="font-heading mt-6 text-4xl font-extrabold leading-[1.05] tracking-tight text-balance @lg:text-5xl @2xl:text-[3.25rem]">
           طبقة المعاملات خلف <span class="bg-gradient-to-r from-[#ff8a5c] via-[#ec4899] to-[#a855f7] bg-clip-text text-transparent">تجربة السفر الخاصة بك.</span>
         </h1>
-        <p class="mt-5 max-w-xl text-pretty text-lg text-white/75 @lg:text-xl">مساعدو الذكاء الاصطناعي، نماذج اللغة الكبيرة، الوكلاء، البنوك، التطبيقات الشاملة والمنصات تولد النية. Wink هو مخزون الفنادق، الحجز، التتبع، الدفع والتسوية التي تتصل بها — تكامل واحد، عرض يتحكم فيه الفندق، مستخدموك يحجزون مباشرة.</p>
+        <p class="mt-5 max-w-xl text-pretty text-lg text-white/75 @lg:text-xl">مساعدو الذكاء الاصطناعي، نماذج اللغة الكبيرة، الوكلاء، البنوك، التطبيقات الشاملة والمنصات تولد النية. Wink هو مخزون الفنادق، الحجز، النسبة، الدفع والتسوية التي تتصل بها — تكامل واحد، عرض يتحكم فيه الفندق، مستخدموك يحجزون مباشرة.</p>
         <div class="mt-8 flex flex-col gap-3 sm:flex-row">
-          <a href="/api/overview/" class="inline-flex h-12 items-center justify-center rounded-md bg-[#ff6b35] px-7 text-base font-semibold text-white transition-colors hover:bg-[#e85b29]">ابدأ الآن</a>
+          <a href="/developers/quickstart/" class="inline-flex h-12 items-center justify-center rounded-md bg-[#ff6b35] px-7 text-base font-semibold text-white transition-colors hover:bg-[#e85b29]">ابدأ الآن</a>
           <a href="/builders/" class="inline-flex h-12 items-center justify-center rounded-md bg-white/10 px-7 text-base font-medium text-white ring-1 ring-white/20 backdrop-blur transition-colors hover:bg-white/15">للبنائين</a>
         </div>
         <div class="mt-7 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-white/65">
@@ -85,7 +86,7 @@ export const faqs = [
 {/* Direct answer */}
 <section class="mx-auto w-full max-w-3xl px-4 pt-24 pb-24 text-center">
   <p class="mkt-kicker text-primary">النية ليست حجزًا</p>
-  <p class="mkt-sub text-muted-foreground mt-5">يمكن لمنتجك أن يوصي بأفضل فندق. تحويل ذلك إلى إقامة مؤكدة ومدفوعة يحتاج إلى مخزون حي، توافر، حجز، تتبع، دفع، تسوية وخدمة ما بعد الحجز — مدعومة بعلاقات حقيقية مع الفنادق. هذه <strong class="text-foreground">مشاكل بنية تحتية للتجارة، وليست مشاكل ذكاء اصطناعي</strong>. Wink تحلها بالفعل، لذا يمكنك التركيز على الذكاء والتجربة.</p>
+  <p class="mkt-sub text-muted-foreground mt-5">يمكن لمنتجك أن يوصي بالفندق المثالي. تحويل ذلك إلى إقامة مؤكدة ومدفوعة يحتاج إلى مخزون حي، توافر، حجز، نسبة، دفع، تسوية وخدمة ما بعد الحجز — مدعومة بعلاقات حقيقية مع الفنادق. هذه <strong class="text-foreground">مشاكل بنية تحتية للتجارة، وليست مشاكل ذكاء اصطناعي</strong>. Wink تحلها بالفعل، لذا يمكنك التركيز على الذكاء والتجربة.</p>
 </section>
 
 {/* What Wink provides — the transaction layer (dark) */}
@@ -103,13 +104,13 @@ export const faqs = [
     <div class="grid gap-4 @md:grid-cols-2 @2xl:grid-cols-4">
       {[
         { icon: IconBuildingStore, n: "01", title: "الوصول إلى المخزون", desc: "عرض يتحكم فيه الفندق عبر 11 مدير قناة متصل — ليس مقتطفًا من الويب أو معاد بيعه." },
-        { icon: IconCalendarStats, n: "02", title: "التوافر والأسعار الحية", desc: "توافر وأسعار ومخزون في الوقت الحقيقي، بما في ذلك البحث المكاني الجغرافي." },
-        { icon: IconCalendarCheck, n: "03", title: "الحجز ودورة الحياة", desc: "إنشاء الحجوزات ومزامنة الإنشاء / التحديث / الإلغاء مع نظام إدارة الممتلكات أو مدير القناة." },
-        { icon: IconTargetArrow, n: "04", title: "التتبع", desc: "مصدر وسياق الحملة محفوظان — تتبع النقرات لمدة 6 أشهر يحدد من يحصل على الاعتماد." },
-        { icon: IconCreditCard, n: "05", title: "المدفوعات", desc: "Wink تتولى الدفع، منطق سياسة الإلغاء والدفع — يتم جمعها للفندق، الذي يبقى التاجر المسجل." },
-        { icon: IconWallet, n: "06", title: "التسوية والمدفوعات", desc: "إدارة العمولات، المدفوعات والتسوية بين الأطراف تتم عبر منصة واحدة." },
-        { icon: IconRefresh, n: "07", title: "التنفيذ والخدمة", desc: "التأكيد، مزامنة الحجز و64+ حدث ويب هوك لخدمة ما بعد الحجز والمصالحة." },
-        { icon: IconCode, n: "08", title: "REST API + خادم MCP", desc: "OAuth2، SDKs الرسمية وخادم MCP مستضاف حتى يقرأ الوكلاء والعملاء البرمجيون العقود الحية." },
+        { icon: IconCalendarStats, n: "02", title: "التوافر والأسعار الحية", desc: "التوافر، الأسعار والمخزون في الوقت الحقيقي، بما في ذلك البحث المكاني الجغرافي." },
+        { icon: IconCalendarCheck, n: "03", title: "الحجز ودورة الحياة", desc: "إنشاء الحجوزات ومزامنة الإنشاء والإلغاء مع نظام إدارة الممتلكات أو مدير القناة." },
+        { icon: IconTargetArrow, n: "04", title: "النسبة", desc: "مصدر وسياق الحملة محفوظان — نسبة النقر لمدة 6 أشهر تحدد من يحصل على الاعتماد." },
+        { icon: IconCreditCard, n: "05", title: "المدفوعات", desc: "Wink يتولى الدفع، منطق سياسة الإلغاء والدفع — يتم جمعها للفندق، الذي يبقى تاجر السجل." },
+        { icon: IconWallet, n: "06", title: "التسوية والدفع", desc: "إدارة العمولات، المدفوعات والتسوية بين الأطراف تتم عبر منصة واحدة." },
+        { icon: IconRefresh, n: "07", title: "التنفيذ والخدمة", desc: `التأكيد، مزامنة الحجز و${deliveredWebhookEventCount} حدث ويب هوك لخدمة ما بعد الحجز والمصالحة.` },
+        { icon: IconCode, n: "08", title: "REST API + خادم MCP", desc: "OAuth2، عملاء مولدين من المخطط، وخادم MCP مستضاف حتى يقرأ الوكلاء والعملاء البرمجيون العقود الحية." },
       ].map((c) => (
         <div class="flex flex-col rounded-2xl border border-white/10 bg-white/[0.04] p-6 backdrop-blur transition-colors hover:border-[#ff6b35]/40">
           <div class="flex items-center justify-between">
@@ -133,11 +134,11 @@ export const faqs = [
   <div class="grid gap-5 @md:grid-cols-2 @2xl:grid-cols-3">
     {[
       { icon: IconRobot, title: "مساعدو الذكاء الاصطناعي والوكلاء", desc: "منتجات محادثة ووكيلية تكتشف، توصي والآن تجري المعاملات نيابة عن المسافر.", accent: "#6366f1" },
-      { icon: IconSparkles, title: "نماذج اللغة الكبيرة", desc: "نماذج توصي بالإقامات في السياق وتحتاج إلى مسار حقيقي للحجز — وليس رابطًا مسدودًا.", accent: "#a855f7" },
+      { icon: IconSparkles, title: "نماذج اللغة الكبيرة", desc: "نماذج توصي بالإقامات في السياق وتحتاج إلى مسار حجز حقيقي — وليس رابطًا مسدودًا.", accent: "#a855f7" },
       { icon: IconSearch, title: "محركات البحث والإجابة", desc: "واجهات تجيب على أسئلة السفر وترغب في تحويل الإجابة إلى حجز مؤكد.", accent: "#06b6d4" },
       { icon: IconBuildingBank, title: "البنوك والتكنولوجيا المالية", desc: "إضافة تجارة الفنادق والسفر المدفوع بالمكافآت إلى قاعدة عملاء موجودة.", accent: "#10b981" },
       { icon: IconDeviceMobile, title: "التطبيقات الشاملة", desc: "دمج مخزون الفنادق القابل للحجز في تطبيق يومي دون أن تصبح شركة سفر.", accent: "#ec4899" },
-      { icon: IconBriefcase, title: "السفر المؤسسي والولاء", desc: "برامج ومنصات توجه الطلب إلى تدفقات حجز محكومة ومتبعة.", accent: "#f59e0b" },
+      { icon: IconBriefcase, title: "السفر المؤسسي والولاء", desc: "برامج ومنصات توجه الطلب إلى تدفقات حجز محكومة ومنسوبة.", accent: "#f59e0b" },
     ].map((c) => (
       <div class="flex flex-col overflow-hidden rounded-2xl border border-border bg-card p-6 transition-transform hover:-translate-y-1" style={`border-top:3px solid ${c.accent}`}>
         <span class="mb-4 flex size-11 items-center justify-center rounded-xl text-white" style={`background-color:${c.accent}`}><c.icon class="size-6" /></span>
@@ -158,11 +159,11 @@ export const faqs = [
     <div class="mx-auto mb-12 max-w-2xl text-center">
       <p class="text-xs font-semibold uppercase tracking-wider text-white/70">الاقتصاديات</p>
       <h2 class="mkt-h2 font-heading mt-3">يتحكم فيه الفندق. تكسب على ما ترسله.</h2>
-      <p class="mkt-sub mx-auto mt-4 max-w-2xl text-white/85">الفنادق تتحكم في العرض، التسعير، العروض الترويجية والعمولات. عندما تدفع منصتك حجزًا يمكنك كسب عمولة تصل إلى 10% — تكلفة إجمالية للفندق حوالي 15%، بافتراض رسوم بطاقة 4.0%، مقابل 15–25% على OTAs. يتم مكافأة مصدر الطلب؛ الفندق يحتفظ بالتحكم والضيف.</p>
+      <p class="mkt-sub mx-auto mt-4 max-w-2xl text-white/85">الفنادق تتحكم في العرض، التسعير، العروض والعمولات. عندما تدفع منصتك حجزًا يمكنك كسب عمولة تصل إلى 10% — تكلفة إجمالية للفندق حوالي 15%، بافتراض رسوم بطاقة 4.0%، مقابل 15–25% على OTAs. يتم مكافأة مصدر الطلب؛ الفندق يحتفظ بالتحكم والضيف.</p>
     </div>
     <div class="grid gap-5 @md:grid-cols-3">
       {[
-        { stat: "مملوك للفندق", label: "العرض، التسعير والعروض الترويجية — غير معاد بيعها" },
+        { stat: "مملوك للفندق", label: "العرض، التسعير والعروض — غير معاد بيعه" },
         { stat: "حتى 10%", label: "عمولة لمصدر الطلب الذي تجلبه" },
         { stat: "~15%", label: "تكلفة مدفوعة من المنصة مع رسوم بطاقة 4.0%، مقابل 15–25% على OTAs" },
       ].map((s) => (
@@ -185,7 +186,7 @@ export const faqs = [
     <div class="rounded-2xl border border-border bg-muted/30 p-7">
       <h3 class="font-heading text-lg font-semibold text-muted-foreground">ابنها بنفسك</h3>
       <ul class="mt-5 space-y-3">
-        {["عقود وعلاقات الفنادق", "اتصال PMS / مدير القناة", "المدفوعات، التسوية والمدفوعات", "التتبع والخدمة"].map((b) => (
+        {["عقود وعلاقات الفنادق", "اتصال نظام إدارة الممتلكات / مدير القناة", "المدفوعات، التسوية والمدفوعات", "النسبة والخدمة"].map((b) => (
           <li class="flex items-start gap-2.5"><IconX class="mt-0.5 size-5 shrink-0 text-muted-foreground/60" /><span class="text-sm text-muted-foreground">{b}</span></li>
         ))}
       </ul>
@@ -194,7 +195,7 @@ export const faqs = [
     <div class="rounded-2xl border border-border bg-muted/30 p-7">
       <h3 class="font-heading text-lg font-semibold text-muted-foreground">واجهات برمجة تطبيقات OTA / bedbank</h3>
       <ul class="mt-5 space-y-3">
-        {["مخزون معاد بيعه، غير متحكم فيه من الفندق", "لا تحكم في التسعير أو الضيف", "تكلفة 15–25%", "لا تملك العلاقة"].map((b) => (
+        {["مخزون معاد بيعه، غير متحكم به من الفندق", "لا تحكم في التسعير أو الضيف", "تكلفة 15–25%", "لا تملك العلاقة"].map((b) => (
           <li class="flex items-start gap-2.5"><IconX class="mt-0.5 size-5 shrink-0 text-muted-foreground/60" /><span class="text-sm text-muted-foreground">{b}</span></li>
         ))}
       </ul>
@@ -203,11 +204,11 @@ export const faqs = [
     <div class="rounded-2xl border-2 border-primary/30 bg-primary/[0.04] p-7">
       <h3 class="font-heading text-lg font-semibold text-primary">Wink</h3>
       <ul class="mt-5 space-y-3">
-        {["تكامل واحد، متاح اليوم", "عرض مملوك ومتحكم فيه من الفندق", "حوالي 15% إجمالي — وأنت تكسب", "الفندق يحتفظ بالتحكم والضيف"].map((b) => (
+        {["تكامل واحد، متاح اليوم", "عرض مملوك ومتحكم به من الفندق", "حوالي 15% إجمالي — وأنت تكسب", "الفندق يحتفظ بالتحكم والضيف"].map((b) => (
           <li class="flex items-start gap-2.5"><IconCheck class="mt-0.5 size-5 shrink-0 text-primary" /><span class="text-sm text-foreground/90">{b}</span></li>
         ))}
       </ul>
-      <p class="mt-6 text-sm font-semibold text-primary">اتصل وابدأ المعاملات.</p>
+      <p class="mt-6 text-sm font-semibold text-primary">اتصل وأجرِ المعاملات.</p>
     </div>
   </div>
 </section>
@@ -239,9 +240,9 @@ export const faqs = [
   </div>
   <div class="relative mx-auto w-full max-w-3xl px-4 py-24 text-center">
     <h2 class="mkt-h2 font-heading">ابنِ تجارة السفر في منصتك.</h2>
-    <p class="mkt-sub mx-auto mt-5 max-w-xl text-white/70">أنت تجلب النية. Wink تتولى الحجز، الدفع والتسوية — تكامل واحد، عرض يتحكم فيه الفندق.</p>
+    <p class="mkt-sub mx-auto mt-5 max-w-xl text-white/70">أنت تجلب النية. Wink يتولى الحجز، الدفع والتسوية — تكامل واحد، عرض يتحكم فيه الفندق.</p>
     <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
-      <a href="/api/overview/" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-[#ff6b35] px-8 text-base font-semibold text-white hover:bg-[#e85b29] sm:w-auto">ابدأ الآن</a>
+      <a href="/developers/quickstart/" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-[#ff6b35] px-8 text-base font-semibold text-white hover:bg-[#e85b29] sm:w-auto">ابدأ الآن</a>
       <a href="/builders/" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-white px-8 text-base font-semibold text-[#1f0a40] hover:bg-white/90 sm:w-auto">للبنائين</a>
     </div>
   </div>

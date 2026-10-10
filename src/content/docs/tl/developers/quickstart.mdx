@@ -1,0 +1,198 @@
+---
+title: Mabilisang Pagsisimula
+description: "Mula wala hanggang gumaganang integrasyon sa staging: kumuha ng mga kredensyal, maghanap ng mga live na presyo ng hotel gamit ang Partner API, at ipadala ang mga biyahero sa isang pahina ng booking na nagbibigay ng kredito sa iyo."
+sidebar:
+  order: 0.5
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+Ang gabay na ito ay magdadala sa iyo mula wala hanggang sa isang gumaganang integrasyon sa loob ng humigit-kumulang 30 minuto. Sa katapusan ay magkakaroon ka ng:
+
+- mga live na presyo para sa mga hotel sa isang lungsod, mula sa Partner API,
+- isang link ng booking na nagbibigay ng kredito sa iyong account,
+- isang test booking, at isang webhook na nagsasabi sa iyo na ito ay nangyari.
+
+Lahat ng ito ay nangyayari sa **staging**, ang aming testing environment. Hindi mo kailangang humingi ng access sa amin, at ang paglipat sa production mamaya ay hindi na nangangailangan ng pag-apruba.
+
+## Tama ba ang gabay na ito para sa iyo?
+
+| Gusto mong… | Magsimula dito |
+|---|---|
+| Ipakita ang mga hotel sa iyong app, site o AI na produkto at ipadala ang mga biyahero upang mag-book, kumita ng komisyon | **Ang gabay na ito** |
+| Mag-book para sa iyong mga kliyente bilang isang lisensyadong travel agency | Ang gabay na ito hanggang Step 5, pagkatapos ay [Booking bilang isang travel agency](#booking-as-a-travel-agency) |
+| I-embed ang mga bookable na hotel nang hindi nagsusulat ng integrasyon | [Web Components](/tl/integrations/web-components/) |
+| Hayaan ang isang AI agent na maghanap at mag-book | [MCP Servers](/tl/developers/mcp/) at [Agentic Payments](/tl/developers/agentic-payments/) |
+| Ikonekta ang isang channel manager o PMS | [Add Your Channel Manager](/tl/guides/integrators/add-your-channel-manager/) |
+
+## Paano ito gumagana
+
+Ginagamit mo ang **Partner API** upang hanapin ang mga hotel at ang kanilang mga live na presyo. Bawat hotel ay may kasamang matatag na `urlName`. Ginagawa mo itong link papunta sa Wink Booking Engine, `book.wink.travel`, na may dalang iyong mga ID. Ang biyahero ay magbu-book at magbabayad doon, at ang booking ay ikikredito sa iyong account.
+
+## Bago ka magsimula
+
+Kakailanganin mo:
+
+- [`grpcurl`](https://github.com/fullstorydev/grpcurl), o Postman o Insomnia. Ang Partner API ay gRPC, hindi REST.
+- `curl`.
+
+:::note
+Ang staging ay natutulog kapag walang gumagamit. Ang unang tawag pagkatapos ng isang tahimik na panahon ay maaaring tumagal ng humigit-kumulang isang minuto habang nagigising ang mga server.
+:::
+
+## Step 1: Gumawa ng staging account
+
+Ang staging ay ganap na hiwalay sa production, na may sarili nitong mga login at account.
+
+<Steps>
+1. Pumunta sa [staging-app.wink.travel](https://staging-app.wink.travel), i-click ang `Sign-In / Register` at magrehistro.
+
+2. I-click ang `Accounts` sa kaliwang sidebar, pagkatapos ay `Create`, at piliin ang **I am an Affiliate**. Ang mga booking na iyong ipapadala ay ikikredito sa account na ito. Tingnan ang [Create Account](/tl/portal/create-account/).
+</Steps>
+
+## Step 2: Gumawa ng application
+
+Ang application ang nagbibigay ng kredensyal sa iyong code.
+
+<Steps>
+1. Sa iyong account card, i-click ang `Actions` > `Manage account`, pagkatapos ang tab na `Applications`.
+
+2. I-click ang `Create new application`, bigyan ito ng pangalan at piliin ang **Machine-to-machine** bilang client type.
+
+3. Sa ilalim ng scopes, piliin ang **Inventory & rates** (read). Sinusuri ng Partner API ang `inventory.read`.
+
+4. I-click ang `Create application` at kopyahin ang **Client ID** at **Client secret**. Ang secret ay ipinapakita lamang isang beses at hindi na maaaring makuha muli.
+</Steps>
+
+Tingnan ang [Applications](/tl/account/applications/) para sa iba pang client types at scopes.
+
+## Step 3: Kumuha ng access token
+
+```bash
+curl -X POST https://staging-iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_CLIENT_SECRET>" \
+  -d "scope=inventory.read"
+```
+
+I-save ang `access_token` mula sa tugon:
+
+```bash
+export WINK_TOKEN=<access_token>
+```
+
+Ang mga token ay may expiration. Sa iyong sariling code, hayaang kumuha at mag-refresh ang isang OAuth2 library ng mga ito. Tingnan ang [Authentication](/tl/developers/authentication/).
+
+## Step 4: Hanapin ang iyong account ID
+
+Bawat tawag sa Partner API ay naglalaman ng pangalan ng account na iyong kinakatawan sa `managing-entity-id` header. Ilista ang mga account na maaaring gamitin ng iyong token:
+
+```bash
+grpcurl -H "authorization: Bearer $WINK_TOKEN" \
+  -d '{}' \
+  staging-partner.wink.travel:443 wink.partner.v1.Accounts/ListAccounts
+```
+
+Kopyahin ang `accountId` ng affiliate account mula sa Step 1:
+
+```bash
+export WINK_ACCOUNT_ID=<accountId>
+```
+
+## Step 5: Maghanap ng mga hotel sa isang lungsod
+
+{/* TODO(Yann): kumpirmahin ang staging city ng test hotel na may availability, at gamitin ito dito. */}
+
+```bash
+grpcurl -H "authorization: Bearer $WINK_TOKEN" \
+  -H "managing-entity-id: $WINK_ACCOUNT_ID" \
+  -d '{
+    "urlName": "bangkok-thailand",
+    "userSession": {
+      "itinerary": {
+        "startDate": "2026-12-01",
+        "nights": 2,
+        "room": { "adults": 2 }
+      },
+      "currencyCode": "USD",
+      "languageCode": "en"
+    }
+  }' \
+  staging-partner.wink.travel:443 wink.partner.v1.Search/SearchByCity
+```
+
+Gumamit ng petsa ng check-in sa hinaharap; tinatanggihan ang mga nakaraang petsa. Bawat resulta ay may:
+
+- `name`, `starRating` at `heroImageUrl`, sapat upang ipakita ang isang resulta sa listahan,
+- `roomTypes`, ang mga live na alok, pinakamurang kuwarto muna,
+- `urlName`, ang slug na kailangan mo para sa booking link.
+
+Ang mga presyo ay mga integer sa minor units: hatiin sa 10 na may power ng `currencyExponent` mula sa tugon (2 para sa USD, kaya ang `12500` ay $125.00).
+
+Hindi mo alam ang slug ng isang lungsod? I-resolve ito gamit ang `wink.partner.v1.Lookup/Search`. Para sa buong nilalaman ng isang property, gamitin ang `Content` service. Ang [Partner API reference](/tl/partner-api/partner/) ay nagdodokumento ng bawat tawag.
+
+## Step 6: Buuhin ang booking link
+
+```text
+https://staging-book.wink.travel/hotel/<urlName>?client-id=<YOUR_CLIENT_ID>&configuration-id=<YOUR_CUSTOMIZATION_ID>
+```
+
+- Ang `<urlName>` ay ang `urlName` ng hotel mula sa Step 5.
+- Ang `client-id` ay ang Client ID ng iyong application mula sa Step 2.
+- Ang `configuration-id` ay ang iyong customization ID: `Manage account` > `Customizations`. Ang isang customization ay nagse-set din ng iyong branding, default na wika at pera sa pahina ng booking.
+
+:::caution
+Isama ang parehong mga ID. Kung wala ang mga ito, maglo-load pa rin ang pahina, ngunit gamit ang default na branding, at **hindi ikikredito sa iyo ang booking**. Huwag kailanman ilagay ang iyong client secret sa isang link.
+:::
+
+Tingnan ang [Linking directly](/tl/booking-engine/features/#linking-directly) para sa pag-link direkta sa home page ng booking engine sa halip na sa isang hotel lang.
+
+## Step 7: Gumawa ng test booking
+
+Buksan ang iyong link, pumili ng mga petsa at kuwarto, at mag-check out gamit ang isang [Stripe test card](https://docs.stripe.com/testing), halimbawa `4242 4242 4242 4242` na may anumang future expiry date at anumang CVC. Walang totoong card na sisingilin sa staging. Tandaan ang booking code sa confirmation page; nagsisimula ito sa `WNK`.
+
+## Step 8: Makakuha ng abiso tungkol sa mga booking
+
+<Steps>
+1. Sa Portal, pumunta sa `Applications > Webhooks` at magdagdag ng endpoint na tumatanggap ng mga `POST` request.
+
+2. Mag-subscribe sa `booking.create`, o iwanang walang laman ang listahan ng event upang makatanggap ng lahat habang ikaw ay nagde-develop.
+
+3. Magpadala ng test event sa iyong sarili, pagkatapos ay gumawa ng isa pang test booking at panoorin itong dumating.
+</Steps>
+
+Suriin ang lagda ng bawat delivery bago ito pagkatiwalaan. Tingnan ang [Webhook Integration](/tl/developers/webhook-integration/) at ang [Webhook Events Catalog](/tl/developers/webhook-events/).
+
+## Step 9: Lumipat sa production
+
+Walang approval step para sa mga developer. (Ang mga travel agency account ay kinukumpirma muna; tingnan sa ibaba sa [booking-as-a-travel-agency](#booking-as-a-travel-agency).) Kapag gumagana na ang iyong integrasyon sa staging:
+
+<Steps>
+1. Gumawa ng account at application sa [app.wink.travel](https://app.wink.travel), tulad ng sa Steps 1 at 2. Hindi naililipat ang mga kredensyal sa pagitan ng mga environment.
+
+2. Alisin ang `staging-` mula sa bawat host:
+
+   | Staging | Production |
+   |---|---|
+   | `https://staging-iam.wink.travel` | `https://iam.wink.travel` |
+   | `staging-partner.wink.travel:443` | `partner.wink.travel:443` |
+   | `https://staging-book.wink.travel` | `https://book.wink.travel` |
+
+3. Hanapin muli ang iyong production account ID (Step 4) at customization ID (Step 6). Iba ito sa staging.
+</Steps>
+
+Ang paggamit ng Partner API ay sinusukat sa hotel-nights, na may libreng buwanang allowance. Tingnan ang [Partner API](/tl/integrations/partner-api/) para sa pagpepresyo at mga limitasyon.
+
+## Booking bilang isang travel agency
+
+Kung ang iyong account ay isang lisensyadong travel agency, hindi mo kailangang ipadala ang mga biyahero sa `book.wink.travel`: maaari kang gumawa ng mga booking nang direkta gamit ang `wink.partner.v1.Booking/CreateBooking`, at pamahalaan ang mga ito gamit ang iba pang `Booking` calls. Ang ibang mga account ay nagpapadala ng mga biyahero sa booking link.
+
+Ang mga travel agency account ay kinukumpirma: nire-review ng Wink ang bawat rehistrasyon ng ahensya bago ito makapag-book. Ang mga ahensya na nais kolektahin ang bayad mula sa kanilang mga kliyente bilang merchant of record ay dapat mag-book sa pamamagitan ng Partner API at makakuha ng nakasulat na pag-apruba mula sa Wink. Tingnan ang [Getting Started as a Travel Agency](/tl/guides/travel-agents/getting-started/) at ang [Partner API reference](/tl/partner-api/partner/).
+
+## Mga susunod na hakbang
+
+- [Gumawa ng typed client](/tl/developers/rest-and-grpc/#generate-a-grpc-client) mula sa `.proto` schema sa halip na tawagan ang `grpcurl` nang mano-mano.
+- Ikonekta ang [MCP server](/tl/developers/mcp/) at gamitin ang [AI Skills](/tl/developers/ai-skills/) upang ang iyong coding assistant ang sumulat ng integrasyon laban sa live API.
+- Basahin ang buong listahan ng [environments at hosts](/tl/getting-started/environments/).

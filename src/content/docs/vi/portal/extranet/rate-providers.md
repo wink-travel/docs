@@ -14,10 +14,10 @@ Chọn nhà cung cấp giá của bạn từ danh sách thả xuống và nhấp
 
 ### SynXis
 
-Nếu cơ sở của bạn sử dụng channel manager SynXis, còn một bước nữa trước khi bạn sẵn sàng kết nối với Wink.
+Nếu cơ sở của bạn sử dụng Sabre SynXis, còn một bước nữa cần thực hiện trước khi bạn sẵn sàng kết nối với Wink.
 
-- Vui lòng liên hệ với đại diện tài khoản SynXis hoặc bộ phận chăm sóc khách hàng (SHSCustomerCare@sabre.com).
-- Thông báo cho họ rằng bạn muốn kết nối với Wink qua Channel Connect Express (***CCX***).
+- Vui lòng liên hệ với đại diện tài khoản SynXis hoặc bộ phận chăm sóc khách hàng của bạn (SHSCustomerCare@sabre.com).
+- Cho họ biết bạn muốn kết nối với Wink qua Channel Connect Express (***CCX***).
 - Họ sẽ yêu cầu bạn hoàn thành mẫu ***PRS***.
   - Bạn sẽ được yêu cầu điền thông tin đăng nhập người dùng Wink của bạn.
   - ...và loại tiền tệ bạn mong muốn.
@@ -33,7 +33,7 @@ Các loại có sẵn:
 - Property Management System (PMS)
 - Central Reservation System (CRS)
 
-*Nếu nhà cung cấp có proxy, điều đó có nghĩa là chúng tôi nhận giá gián tiếp từ nhà cung cấp thông qua proxy.*
+*Nếu nhà cung cấp có proxy, điều đó có nghĩa là chúng tôi nhận giá gián tiếp từ nhà cung cấp thông qua proxy đó.*
 
 | Vendor | Type | Proxy | Since | Last modified | Comment
 | -- | -- | -- | -- | -- | -- |
@@ -44,7 +44,7 @@ Các loại có sẵn:
 | Cloudbeds | CM |  | 2016 | 2016 | |
 | MyAllocator | CM |  | 2016 | 2016 | |
 | ResAvenue | CM |  | 2017 | 2017 | |
-| Fastbooking | CM |  | 2016 | 2016 | Now d-edge |
+| Fastbooking | CM |  | 2016 | 2016 | Hiện là d-edge |
 | Omnibees | CM |  | 2019 | 2019 | |
 | Hotel Link | CM |  | 2017 | 2017 | |
 | RateGain | CM |  | 2016 | 2018 | |

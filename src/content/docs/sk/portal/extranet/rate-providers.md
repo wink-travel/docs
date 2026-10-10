@@ -5,16 +5,16 @@ sidebar:
   order: 24
 ---
 
-## Nastavenie poskytovateľa cien
+## Nastaviť poskytovateľa cien
 
-Ak chcete nastaviť svojho poskytovateľa cien, kliknite v hlavnom navigačnom paneli na `Distribution > Channel manager`.
+Ak chcete nastaviť svojho poskytovateľa cien, kliknite v hlavnom navigačnom paneli na `Distribúcia > Channel manager`.
 
-Vyberte svojho poskytovateľa cien zo zoznamu a kliknite na tlačidlo `Save`. Tým umožníte poskytovateľovi cien zasielať nám ceny a my ich budeme informovať, keď dôjde k rezervácii na Wink pre jednu z vašich nehnuteľností.
+Vyberte svojho poskytovateľa cien zo zoznamu a kliknite na tlačidlo `Uložiť`. Tým umožníte poskytovateľovi cien zasielať nám ceny a budeme ich informovať, keď dôjde k rezervácii na Wink pre jednu z vašich nehnuteľností.
 
 
 ### SynXis
 
-Ak vaša nehnuteľnosť používa channel manager SynXis, je potrebný ešte jeden krok predtým, než budete pripravení sa pripojiť k Wink.
+Ak vaša nehnuteľnosť používa Sabre SynXis, je potrebný ešte jeden krok predtým, než budete pripravení sa pripojiť k Wink.
 
 - Prosím, kontaktujte svojho zástupcu účtu SynXis alebo zákaznícku podporu (SHSCustomerCare@sabre.com).
 - Informujte ich, že sa chcete pripojiť k Wink cez Channel Connect Express (***CCX***).
@@ -35,7 +35,7 @@ Dostupné typy:
 
 *Ak má dodávateľ proxy, znamená to, že ceny od dodávateľa prijímame nepriamo cez proxy.*
 
-| Vendor | Type | Proxy | Since | Last modified | Comment
+| Dodávateľ | Typ | Proxy | Od | Posledná úprava | Komentár
 | -- | -- | -- | -- | -- | -- |
 | Hoteliers Guru | CM |  | 2017 | 2017 | |
 | Travelclick | CM |  | 2016 | 2016 | |

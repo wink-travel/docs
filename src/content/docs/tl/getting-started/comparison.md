@@ -27,14 +27,14 @@ Alamin kung paano ikinukumpara ng Wink sa iba pang mga online travel segment sa 
 | Track ROI | 🟢 | 🟢 | ⚫️ | ⚫️ | 
 | Pay-per-Performance | 🟢 | 🟢 | ⚫️ | 🟢 | 
 | Integrated payment gateway | 🟢 | 🟢 | 🟢 | ⚫️ | 
-| Payouts with Wise | 🟢 | 🟢 | ⚫️ | ⚫️ | 
+| Bank-transfer payouts | 🟢 | 🟢 | ⚫️ | ⚫️ | 
 
 
 ## Wink vs Internet Booking Engine (IBE)
 
 May ilang hotel na sinusubukang ikumpara kami sa kanilang internet booking engine na kasama sa kanilang channel manager at hinihiling sa amin na magbigay ng isang nakapirming buwanang presyo base sa bilang ng mga susi ng kanilang property.
 
-Hindi kami isang IBE at sana makatulong ito upang linawin ang pagkakaiba. May mga kalamangan at kahinaan ang anumang serbisyo. Kung ang iyong IBE ay gumagana para sa iyong property, manatili ka doon.  
+Hindi kami isang IBE at sana ay makatulong ito upang linawin ang pagkakaiba. May mga kalamangan at kahinaan ang anumang serbisyo. Kung ang iyong IBE ay gumagana para sa iyong property, manatili ka doon.  
 Ang Wink ay umiiral upang punan ang ilang mga puwang sa industriya ng paglalakbay at pagsamahin ang lahat sa isang lugar. 
 
 :::tip

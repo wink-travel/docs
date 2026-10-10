@@ -5,11 +5,11 @@ sidebar:
   order: 0
 ---
 
-Naszym rozwiązaniem dla zarejestrowanych agentów turystycznych jest [Wink Agent](https://agent.wink.travel). To portal samoobsługowy, z którego agenci mogą korzystać, aby wyszukiwać i rezerwować w imieniu swoich klientów oraz zarabiać prowizję od każdej rezerwacji.
+Zarejestrowani agenci turystyczni korzystają z tego samego portalu co wszyscy inni, pod adresem [app.wink.travel](https://app.wink.travel), używając konta Travel Agent. Agenci wyszukują i rezerwują w imieniu swoich klientów oraz zarabiają prowizję od każdej rezerwacji. Aby założyć konto, postępuj zgodnie z instrukcjami w [Pierwsze kroki jako agencja turystyczna](/pl/guides/travel-agents/getting-started/).
 
-Bardziej zaawansowani agenci turystyczni mogą zdecydować się na integrację na poziomie API w celu obsługi płatności i wypłat poza platformą Wink.
+Agencje zatwierdzone do samodzielnego pobierania płatności działają jako merchant of record i obsługują płatności poza platformą Wink. Agencje posiadające własne systemy mogą integrować się za pomocą [Partner API](/pl/integrations/partner-api/).
 
-Agenci turystyczni mają podzbiór tych samych funkcji portalu co [Studio](/pl/portal/studio/what-is-studio), więc nie będziemy ich tutaj ponownie omawiać.
+Agenci turystyczni mają podzbiór tych samych funkcji portalu co [Studio](/pl/portal/studio/what-is-studio), dlatego nie będziemy ich tu ponownie omawiać.
 
 ## Wyszukiwanie
 
@@ -19,4 +19,4 @@ W przeciwnym razie kontynuuj do następnej sekcji.
 
 ## API
 
-Deweloperzy, którzy chcą zarządzać `Travel Agent`, mogą przejść do [Developers > API > Travel Agent](/pl/api/overview/).
+Agencje mogą wyszukiwać i rezerwować za pomocą [Partner API](/pl/partner-api/partner/), które zastępuje starsze endpointy Travel Agent REST.

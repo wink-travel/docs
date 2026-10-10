@@ -1,22 +1,22 @@
 ---
-title: Mikä on Agent?
+title: Mikä on Agentti?
 description: Opi, miten Wink tukee rekisteröityjä matkatoimistoja.
 sidebar:
   order: 0
 ---
 
-Ratkaisumme rekisteröidyille matkatoimistoille on [Wink Agent](https://agent.wink.travel). Se on itsepalveluportaali, jota agentit voivat käyttää asiakkaidensa puolesta etsiäkseen ja varatakseen matkoja sekä ansaitakseen palkkion jokaisesta varauksesta.
+Rekisteröityneet matkatoimistot käyttävät samaa portaalia kuin muutkin, osoitteessa [app.wink.travel](https://app.wink.travel), Travel Agent -tilillä. Agentit etsivät ja varaavat asiakkaidensa puolesta ja ansaitsevat palkkion jokaisesta varauksesta. Tilin luomiseksi seuraa ohjetta [Getting Started as a Travel Agency](/fi/guides/travel-agents/getting-started/).
 
-Kokeneemmat matkatoimistot voivat valita integraation API-tasolla maksujen ja suoritusten hallintaa varten Wink-alustan ulkopuolella.
+Maksun itse keräämiseen hyväksytyt toimistot toimivat kauppiaana ja hoitavat maksut Wink-alustan ulkopuolella. Omilla järjestelmillä varustetut toimistot voivat integroitua [Partner API:n](/fi/integrations/partner-api/) kautta.
 
-Matkatoimistoilla on osa samoista portaalin ominaisuuksista kuin [Studio](/fi/portal/studio/what-is-studio) -palvelussa, joten emme käsittele niitä tässä uudelleen.
+Matkatoimistoilla on osa samoista portaaliominaisuuksista kuin [Studio](/fi/portal/studio/what-is-studio) -palvelussa, joten emme käsittele niitä tässä uudelleen.
 
 ## Haku
 
-Siirry kohtaan [Haku](/fi/portal/studio/search) oppiaksesi, miten hotelleja haetaan ja varataan.
+Siirry kohtaan [Search](/fi/portal/studio/search) oppiaksesi, miten hotelleja haetaan ja varataan.
 
 Muussa tapauksessa jatka seuraavaan osioon.
 
 ## API
 
-Kehittäjät, jotka haluavat hallita `Travel Agent` -toimintoja, voivat siirtyä kohtaan [Developers > API > Travel Agent](/fi/api/overview/).
+Toimistot voivat hakea ja varata [Partner API:n](/fi/partner-api/partner/) kautta, joka korvaa vanhemmat Travel Agent REST -rajapinnat.

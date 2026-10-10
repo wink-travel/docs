@@ -9,12 +9,12 @@ sidebar:
 
 Upang itakda ang iyong tagapagbigay ng rate, i-click ang `Distribution > Channel manager` mula sa pangunahing nav bar.
 
-Piliin ang iyong tagapagbigay ng rate mula sa dropdown list at i-click ang `Save` button. Papayagan nito ang tagapagbigay ng rate na magpadala sa amin ng mga rate at ipapaalam namin sa kanila kapag may booking na nangyari sa Wink para sa isa sa iyong mga property.
+Piliin ang iyong tagapagbigay ng rate mula sa dropdown list at i-click ang button na `Save`. Papayagan nito ang tagapagbigay ng rate na magpadala sa amin ng mga rate at ipapaalam namin sa kanila kapag may booking na naganap sa Wink para sa isa sa iyong mga property.
 
 
 ### SynXis
 
-Kung ang iyong property ay gumagamit ng SynXis channel manager, may isa pang hakbang na kinakailangan bago ka handang kumonekta sa Wink.
+Kung ang iyong property ay gumagamit ng Sabre SynXis, may isa pang hakbang na kinakailangan bago ka handang kumonekta sa Wink.
 
 - Mangyaring makipag-ugnayan sa iyong SynXis account representative o customer care (SHSCustomerCare@sabre.com).
 - Sabihin sa kanila na nais mong kumonekta sa Wink sa pamamagitan ng Channel Connect Express (***CCX***).

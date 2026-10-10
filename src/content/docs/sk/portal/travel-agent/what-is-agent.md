@@ -5,11 +5,11 @@ sidebar:
   order: 0
 ---
 
-Naše riešenie pre registrovaných cestovných agentov je [Wink Agent](https://agent.wink.travel). Je to samoobslužný portál, ktorý môžu agenti používať na vyhľadávanie a rezervovanie v mene svojich zákazníkov a zároveň si za každú rezerváciu zarobiť províziu.
+Registrovaní cestovní agenti používajú rovnaký portál ako všetci ostatní, na [app.wink.travel](https://app.wink.travel), s účtom Travel Agent. Agentí vyhľadávajú a rezervujú v mene svojich zákazníkov a získavajú províziu z každej rezervácie. Ak chcete vytvoriť účet, postupujte podľa [Začíname ako cestovná agentúra](/sk/guides/travel-agents/getting-started/).
 
-Pokročilejší cestovní agenti si môžu zvoliť integráciu na úrovni API za účelom správy platieb a výplat mimo platformy Wink.
+Agentúry schválené na vlastné inkasovanie platieb vystupujú ako obchodník zodpovedný za platbu a spracovávajú platby mimo platformy Wink. Agentúry s vlastnými systémami sa môžu integrovať cez [Partner API](/sk/integrations/partner-api/).
 
-Cestovní agenti majú podmnožinu rovnakých funkcií portálu ako [Studio](/sk/portal/studio/what-is-studio), preto ich tu nebudeme znova rozoberať.
+Cestovní agenti majú podmnožinu rovnakých funkcií portálu ako [Studio](/sk/portal/studio/what-is-studio), preto ich tu nebudeme opakovať.
 
 ## Vyhľadávanie
 
@@ -19,4 +19,4 @@ Inak pokračujte do ďalšej sekcie.
 
 ## API
 
-Vývojári, ktorí chcú spravovať `Travel Agent`, môžu prejsť na [Developers > API > Travel Agent](/sk/api/overview/).
+Agentúry môžu vyhľadávať a rezervovať cez [Partner API](/sk/partner-api/partner/), ktoré nahrádza staršie REST endpointy pre cestovných agentov.

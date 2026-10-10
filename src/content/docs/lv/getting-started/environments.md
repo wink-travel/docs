@@ -5,12 +5,14 @@ sidebar:
   order: 8
 ---
 
-Wink platformā mēs vienmēr uzturam 2 vides visām mūsu darbībām:
+Wink platformā mēs vienmēr darbojam divas vides:
 
 - Ražošana ir mūsu stabilā vide.
-- Staging ir mūsu sertifikācijas un testēšanas vide.
+- Staging ir mūsu testēšanas vide, kur tiek sertificēti kanālu pārvaldnieki un ceļojumu aģenti.
 
-Ja esat integrators, viesnīca vai ceļojumu aģents, kas vēlas sagatavoties sertifikācijai vai testēt Wink platformu, izveidojiet kontu mūsu staging vidē, lai sāktu darbu.
+Ja vēlaties testēt Wink platformu kā izstrādātājs, viesnīca vai ceļojumu aģents, izveidojiet kontu mūsu staging vidē, lai sāktu darbu. Kanālu pārvaldnieki arī veic savu [sertifikāciju](/lv/guides/integrators/add-your-channel-manager/#certification) tur.
+
+Kontu izveide staging vai ražošanas vidē prasa piekrišanu Wink Noteikumiem un Maksājumu noteikumiem, un šī piekrišana ir saistoša. Kanālu pārvaldniekiem un ceļojumu aģentiem pirms piekļuves ražošanai nepieciešama sertifikācija; pārējiem pāreja uz ražošanu notiek pašiem.
 
 :::note
 Staging vide ir pieejama pēc pieprasījuma. Tas nozīmē, ka tā iemieg, ja netiek izmantota, un pati atkal ieslēdzas, kad tiek izmantota. Lūdzu, esiet pacietīgi, ja to pamodināt. Pēc pirmās savienojuma izveides ar kādu no mūsu serveriem vai lietotnēm visu serveru startēšana aizņem apmēram minūti.
@@ -18,7 +20,7 @@ Staging vide ir pieejama pēc pieprasījuma. Tas nozīmē, ka tā iemieg, ja net
 
 ## Serveri
 
-Zemāk ir matrica ar mūsu serveru nosaukumiem un to izmantošanu.
+Zemāk ir tabula ar mūsu serveru nosaukumiem un to izmantošanu.
 
 | Funkcija | Staging | Ražošana
 | ------- | ------- | ---------- |

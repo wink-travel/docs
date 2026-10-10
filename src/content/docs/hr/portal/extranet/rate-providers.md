@@ -14,7 +14,7 @@ Odaberite svog pružatelja cijena s padajućeg popisa i kliknite gumb `Save`. To
 
 ### SynXis
 
-Ako vaša nekretnina koristi SynXis channel manager, postoji još jedan korak prije nego što budete spremni za povezivanje s Wink.
+Ako vaša nekretnina koristi Sabre SynXis, potrebno je još jedan korak prije nego što budete spremni za povezivanje s Wink.
 
 - Molimo kontaktirajte svog SynXis predstavnika za račun ili korisničku podršku (SHSCustomerCare@sabre.com).
 - Obavijestite ih da želite povezati Wink putem Channel Connect Express (***CCX***).

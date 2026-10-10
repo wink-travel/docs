@@ -1,5 +1,5 @@
 ---
-title: Varaa-moottori — Vahvistaa varaukset missä tahansa verkossa
+title: Varaa-moottori — Varausten voimanlähde missä tahansa verkossa
 description: Wink Booking Engine mahdollistaa suorat varaukset hotellisi verkkosivustolla ja on transaktiokerros jokaisen kumppanin, sisällöntuottajan ja tekoälyreitin takana — maksu, synkronointi ja attribuutio sisäänrakennettuina.
 template: splash
 marketingNav: true
@@ -15,16 +15,17 @@ import MoneyFlow from "@/components/marketing/infographics/MoneyFlow.astro";
 
 import IconArrowRight from "@tabler/icons/outline/arrow-right.svg";
 import IconCheck from "@tabler/icons/outline/check.svg";
+import { deliveredWebhookEventCount } from "@/lib/webhook-events";
 
 export const faqs = [
-  { title: "Mikä on Wink Booking Engine?", content: "Wink Booking Engine on samaan aikaan kaksi asiaa. Verkkosivustollesi se on täydellinen varausmoottori — huoneet, hinnat, saatavuus, kassaprosessi, maksu ja vahvistus omalla brändätyllä sivustollasi. Alustallesi se on transaktiokerros, joka myös muuntaa kysynnän Wink-kumppaneilta, sisällöntuottajilta, tekoälyagenteilta ja kehittäjäsovelluksilta — jokainen varaus kohdistuu hotelliin, ja hotelli hallitsee prosessia." },
-  { title: "Voiko Booking Engine myydä muutakin kuin huoneita?", content: "Kyllä. Missä se on määritetty, se myy koko oleskelun huoneen ympärillä: hintasuunnitelmat, paketit, lisäpalvelut, ruokailu, kylpylä, elämykset, kuljetukset, päivitykset, aikainen sisäänkirjautuminen ja myöhäinen uloskirjautuminen — ei pelkästään huoneyötä." },
-  { title: "Mitkä reitit Booking Engine toteuttaa?", content: "Oma hotellisi verkkosivusto sekä kaikki muut Wink-reitit: jaettavat linkit, QR-koodit, Web Components -komponentit, WinkLinks-myymälät, sosiaalisen median julkaisut, kumppanien myymälät, Traveliko, Agentic AI -siirrot ja kehittäjien sovellukset. Ne kaikki ohjautuvat samaan moottoriin." },
+  { title: "Mikä on Wink Booking Engine?", content: "Wink Booking Engine on samanaikaisesti kaksi asiaa. Verkkosivustollesi se on täydellinen varausmoottori — huoneet, hinnat, saatavuus, kassaprosessi, maksu ja vahvistus omalla brändätyllä sivustollasi. Alustallesi se on transaktiokerros, joka myös muuntaa kysynnän Wink-kumppaneilta, sisällöntuottajilta, tekoälyagenteilta ja kehittäjäsovelluksilta — jokainen varaus kohdistuu hotelliin, ja hotelli hallitsee prosessia." },
+  { title: "Voiko Booking Engine myydä muutakin kuin huoneita?", content: "Kyllä. Missä se on määritetty, se myy koko oleskelun huoneen ympärillä: hintasuunnitelmat, paketit, lisäpalvelut, ruokailu, spa, elämykset, kuljetukset, päivitykset, aikainen sisäänkirjautuminen ja myöhäinen uloskirjautuminen — ei pelkästään huoneyötä." },
+  { title: "Mitkä reitit Booking Engine toteuttaa?", content: "Oma hotellisi verkkosivusto sekä kaikki muut Wink-reitit: jaettavat linkit, QR-koodit, Web Components, WinkLinks-kaupat, sosiaalisen median julkaisut, kumppanikaupat, Traveliko, Agentic AI -siirrot ja kehittäjien sovellukset. Ne kaikki ohjautuvat samaan moottoriin." },
   { title: "Miten maksu toimii?", content: "Maksu kerätään hotellin puolesta sen agenttina, joten hotelli pysyy kauppiaana. Booking Engine hoitaa kassakäyttöliittymän, peruutusehtojen logiikan, tokenoidut kortit, 3DS:n, monivaluutan ja jaetut maksut. Koko varauksen summa kerätään hotellille ja vapautetaan vieraan sisäänkirjautuessa, 1,5 %:n alustan maksun, kortinkäsittelykulujen ja mahdollisten provisioiden jälkeen." },
-  { title: "Miten Booking Engine on yhteydessä Extranetiin?", content: "Extranet on paikka, jossa hotellit hallinnoivat sisältöä, huoneita, hintoja, saatavuutta, kampanjoita, sääntöjä ja kanavien asetuksia. Booking Engine käyttää tätä hyväksyttyä tarjontaa näyttääkseen tarjoukset ja viimeistelläkseen kassaprosessin — kaksi yhdistettyä kerrosta, ei koskaan sama käyttöliittymä, jotta hotelli pysyy hallinnassa." },
-  { title: "Voivatko kehittäjät ja tekoälyagentit luoda varauksia?", content: "Kyllä. Varausten luonti on REST API -toiminto, kaikki ominaisuudet ovat kutsuttavissa ulkoisesti OAuth2:lla, ja isännöity MCP-palvelin antaa tekoälyagenteille mahdollisuuden lukea reaaliaikaisia sopimuksia. Tilaa booking.created- ja yli 64 webhook-tapahtumaa tai upota varattava inventaario Web Components -komponenteilla. Suorissa API-integraatioissa voit myös olla oma kauppiaasi ja hoitaa maksut itse." },
+  { title: "Miten Booking Engine on yhteydessä Extranetiin?", content: "Extranet on paikka, jossa hotellit hallinnoivat sisältöä, huoneita, hintoja, saatavuutta, kampanjoita, sääntöjä ja kanavia. Booking Engine käyttää tätä hyväksyttyä tarjontaa näyttääkseen tarjoukset ja viimeistelläkseen kassaprosessin — kaksi yhdistettyä kerrosta, ei koskaan sama pinta, jotta hotelli säilyttää hallinnan." },
+  { title: "Voivatko kehittäjät ja tekoälyagentit luoda varauksia?", content: `Kyllä. Varausten luonti on REST API -toiminto, kaikki ominaisuudet ovat kutsuttavissa ulkoisesti OAuth2:lla, ja isännöity MCP-palvelin antaa tekoälyagenteille mahdollisuuden lukea reaaliaikaisia sopimuksia. Tilaa booking.create ja ${deliveredWebhookEventCount} webhook-tapahtumaa, tai upota varattava inventaario Web Components -komponenteilla. Suorissa API-integraatioissa voit myös olla oma kauppiaasi ja hoitaa maksut itse.` },
   { title: "Synkronoiko Booking Engine varaukset PMS:ään tai kanavahallintaan?", content: "Kyllä. Kun varaukset luodaan, päivitetään tai peruutetaan, ne synkronoidaan liitettyyn PMS:ään tai kanavahallintaan täydellisellä elinkaarenseurannalla, ja hotelli, matkustaja ja (tarvittaessa) kumppani saavat vahvistuksen." },
-  { title: "Onko Booking Engine sama kuin OTA?", content: "Ei. Se on toteutus- ja transaktiokerros — se ei koskaan korvaa hotellin brändiä OTA-brändillä. Se auttaa hotellin hallinnoimaa tarjontaa muuntumaan verkkosivustollasi, kumppaneilla, sisällöntuottajilla, Travelikolla, tekoälyllä ja kehittäjäreiteillä, säilyttäen attribuution." },
+  { title: "Onko Booking Engine sama kuin OTA?", content: "Ei. Se on toteutus- ja transaktiokerros — se ei koskaan korvaa hotellin brändiä OTA-brändillä. Se auttaa hotellin hallinnoimaa tarjontaa konvertoitumaan verkkosivustollasi, kumppaneilla, sisällöntuottajilla, Travelikolla, tekoälyllä ja kehittäjäreiteillä, säilyttäen attribuution." },
 ];
 
 <div class="not-content mkt-page">
@@ -34,7 +35,7 @@ export const faqs = [
   url="https://wink.travel/products/booking-engine/"
   applicationCategory="BusinessApplication"
   description="Täydellinen varausmoottori hotellin omalle verkkosivustolle ja transaktiokerros jokaisen kumppanin, sisällöntuottajan ja tekoälyreitin takana — maksu, varauksen synkronointi ja attribuutio sisäänrakennettuina."
-  features={["Täydellinen varausmoottori hotellin omalla brändätyllä verkkosivustolla", "Transaktiokerros kumppani-, sisällöntuottaja-, tekoäly- ja kehittäjäreiteille", "Myy huoneita, hintasuunnitelmia, paketteja, lisäpalveluita, ruokailua, kylpylää, elämyksiä ja kuljetuksia", "Maksu kerätään hotellille", "Voit olla kauppias API-integraatioissa", "Varausten luonti REST API:n kautta OAuth2:lla", "Yli 64 webhook-tapahtumaa, mukaan lukien booking.created", "Varauksen synkronointi PMS:ään / kanavahallintaan", "Lähde- ja kumppaniattribuutio säilytetään", "Vieras-, hotelli- ja kumppanivahvistus"]}
+  features={["Täydellinen varausmoottori hotellin omalla brändätyllä verkkosivustolla", "Transaktiokerros kumppani-, sisällöntuottaja-, tekoäly- ja kehittäjäreiteille", "Myy huoneita, hintasuunnitelmia, paketteja, lisäpalveluita, ruokailua, spa-palveluita, elämyksiä ja kuljetuksia", "Maksu kerätään hotellille", "Voit olla kauppias API-integraatioissa", "Varausten luonti REST API:n kautta OAuth2:lla", `${deliveredWebhookEventCount} webhook-tapahtumaa mukaan lukien booking.create`, "Varausten synkronointi PMS:ään / kanavahallintaan", "Lähde- ja kumppaniattribuutio säilytetty", "Vieras-, hotelli- ja kumppanivahvistus"]}
   faqs={faqs}
 />
 
@@ -60,12 +61,12 @@ export const faqs = [
       <div>
         <span class="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-xs font-extrabold uppercase tracking-wider text-[#ff8a5c] ring-1 ring-white/15 backdrop-blur"><span class="size-1.5 rounded-full bg-gradient-to-r from-[#ff6b35] to-[#ec4899]"></span> Booking Engine</span>
         <h1 class="font-heading mt-6 text-4xl font-extrabold leading-[1.05] tracking-tight text-balance @lg:text-5xl @2xl:text-[3.25rem]">
-          Vahvistaa varaukset missä tahansa verkossa — <span class="bg-gradient-to-r from-[#ff8a5c] via-[#ec4899] to-[#a855f7] bg-clip-text text-transparent">verkkosivustollasi, alustallasi.</span>
+          Varausten voimanlähde missä tahansa verkossa — <span class="bg-gradient-to-r from-[#ff8a5c] via-[#ec4899] to-[#a855f7] bg-clip-text text-transparent">verkkosivustosi, alustasi.</span>
         </h1>
-        <p class="mt-5 max-w-xl text-pretty text-lg text-white/75 @lg:text-xl">Hotellit käyttävät Wink Booking Enginea omilla verkkosivuillaan muuttaakseen suoran kysynnän vahvistetuiksi varauksiksi, jotka myyvät koko oleskelun. Se on myös transaktiokerros, jonka päälle koko Wink-alusta rakentuu — joten kaikki muut reitit ohjautuvat samaan kassaprosessiin. Maksu, vahvistus ja attribuutio sisältyvät.</p>
+        <p class="mt-5 max-w-xl text-pretty text-lg text-white/75 @lg:text-xl">Hotellit käyttävät Wink Booking Enginea omilla verkkosivuillaan muuttaakseen suoran kysynnän vahvistetuiksi varauksiksi, jotka myyvät koko oleskelun. Se on myös transaktiokerros, jonka päälle koko Wink-alusta rakentuu — joten kaikki muut reitit ohjautuvat samaan kassaan. Maksu, vahvistus ja attribuutio sisältyvät.</p>
         <div class="mt-8 flex flex-col gap-3 sm:flex-row">
           <a href="https://app.wink.travel" class="inline-flex h-12 items-center justify-center rounded-md bg-[#ff6b35] px-7 text-base font-semibold text-white transition-colors hover:bg-[#e85b29]">Aloita</a>
-          <a href="/fi/demo/" class="inline-flex h-12 items-center justify-center rounded-md bg-white/10 px-7 text-base font-medium text-white ring-1 ring-white/20 backdrop-blur transition-colors hover:bg-white/15">Pyydä demo</a>
+          <a href="/demo/" class="inline-flex h-12 items-center justify-center rounded-md bg-white/10 px-7 text-base font-medium text-white ring-1 ring-white/20 backdrop-blur transition-colors hover:bg-white/15">Pyydä demo</a>
         </div>
         <div class="mt-7 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-white/65">
           <span class="inline-flex items-center gap-1.5"><IconCheck class="size-4 text-[#ff8a5c]" /> Verkkosivustosi</span>
@@ -107,7 +108,7 @@ export const faqs = [
       <h3 class="font-heading mt-4 text-xl font-semibold">Täydellinen varausmoottori omalla sivustollasi</h3>
       <p class="text-muted-foreground mt-2 text-sm text-pretty">Kaikki, mitä odotat tavalliselta varausmoottorilta — brändisi, hintasi, suorat varaukset, jotka myyvät koko oleskelun. Jos olet käyttänyt varausmoottoria aiemmin, mitään uutta ei tarvitse opetella.</p>
       <ul class="mt-5 space-y-2.5">
-        {["Hotellin brändätty kassaprosessi omalla domainillasi", "Huoneet, hinnat, saatavuus ja säännöt", "Maksu, vahvistus ja PMS/kanavahallinnan synkronointi"].map((p) => (
+        {["Hotellibrändätty kassaprosessi omalla domainillasi", "Huoneet, hinnat, saatavuus ja säännöt", "Maksu, vahvistus ja PMS/kanavahallinnan synkronointi"].map((p) => (
           <li class="flex items-start gap-2.5"><IconCheck class="mt-0.5 size-5 shrink-0 text-primary" /><span class="text-sm text-foreground/90">{p}</span></li>
         ))}
       </ul>
@@ -115,7 +116,7 @@ export const faqs = [
     <div class="flex flex-col rounded-2xl border border-border bg-card p-7">
       <span class="inline-flex w-fit items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-primary">Alustasi</span>
       <h3 class="font-heading mt-4 text-xl font-semibold">Lisäksi transaktiokerros jokaiselle kumppanireitille</h3>
-      <p class="text-muted-foreground mt-2 text-sm text-pretty">Sama moottori mahdollistaa myös varaukset, jotka tulevat Wink-kumppaneilta, sisällöntuottajilta, tekoälyagenteilta ja kehittäjäsovelluksilta — kysyntä, johon tavallinen varausmoottori ei yllä. Jokainen varaus kohdistuu edelleen sinulle: hintasi, inventaariosi, brändisi, täydellinen attribuutio. Saat jakelun menettämättä hallintaa.</p>
+      <p class="text-muted-foreground mt-2 text-sm text-pretty">Sama moottori mahdollistaa varaukset, jotka tulevat Wink-kumppaneilta, sisällöntuottajilta, tekoälyagenteilta ja kehittäjäsovelluksilta — kysyntä, johon tavallinen varausmoottori ei yllä. Jokainen varaus kohdistuu edelleen sinulle: hintasi, inventaariosi, brändisi, täydellinen attribuutio. Saat jakelun menettämättä hallintaa.</p>
       <div class="mt-5 flex flex-wrap gap-2">
         {["Kumppanit", "Sisällöntuottajat", "Tekoälyagentit", "Jaettavat linkit", "WinkLinks", "Sosiaalinen media", "Traveliko", "Kehittäjäsovellukset"].map((r) => (
           <span class="inline-flex items-center gap-1.5 rounded-full border border-border bg-background px-3 py-1 text-xs font-medium">
@@ -136,7 +137,7 @@ export const faqs = [
       <h2 class="mkt-h2 font-heading mt-3">Enemmän kuin huoneyö.</h2>
       <p class="text-muted-foreground mt-4 text-pretty @lg:text-lg">Useimmat varausmoottorit pysähtyvät huoneeseen. Wink myy koko oleskelun samassa virrassa — joten keskimääräinen varaus on arvokkaampi ja vieras saapuu matkan jo valmiina.</p>
       <div class="mt-6 flex flex-wrap gap-2.5">
-        {["Huoneet", "Hintasuunnitelmat", "Paketit", "Lisäpalvelut", "Ruokailu", "Kylpylä & hyvinvointi", "Elämykset", "Kuljetukset", "Päivitykset", "Aikainen sisäänkirjautuminen", "Myöhäinen uloskirjautuminen"].map((c) => (
+        {["Huoneet", "Hintasuunnitelmat", "Paketit", "Lisäpalvelut", "Ruokailu", "Spa & hyvinvointi", "Elämykset", "Kuljetukset", "Päivitykset", "Aikainen sisäänkirjautuminen", "Myöhäinen uloskirjautuminen"].map((c) => (
           <span class="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3.5 py-1.5 text-sm font-medium">
             <span class="size-1.5 rounded-full bg-primary" aria-hidden="true"></span>{c}
           </span>
@@ -165,15 +166,15 @@ export const faqs = [
   <div class="mx-auto mb-12 max-w-2xl text-center">
     <p class="mkt-kicker text-primary">Varausprosessi</p>
     <h2 class="mkt-h2 font-heading mt-3">Mistä tahansa reitistä vahvistettuun varaukseen.</h2>
-    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">Samat neljä vaihetta toimivat jokaisen reitin takana — omalla verkkosivustollasi tai kumppanin — siististi työpöydällä, mobiiliin suunniteltuna.</p>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">Samat neljä vaihetta toimivat jokaisen reitin takana — omalla verkkosivustollasi tai kumppanin — siististi työpöydällä, mobiilille rakennettuna.</p>
   </div>
 
   <div class="space-y-20">
     <ShowcaseRow
       step="Vaihe 01 · Valitse huone"
-      title="Huoneet hotellin hyväksymästä tarjonnasta"
+      title="Huoneet latautuvat hotellin hyväksymästä tarjonnasta"
       desc="Oikeat huoneet, kuvat ja saatavuus latautuvat suoraan Extranetista vieraan saapumisreitille."
-      points={["Reaaliaikainen saatavuus ja inventaarion säännöt", "Hotellin hallinnoima sisältö ja kuvat", "Päivämäärät, vieraat ja käyttöasteen logiikka"]}
+      points={["Reaaliaikainen saatavuus ja inventaarion säännöt", "Hotellin hallinnoima sisältö ja kuvat", "Päivät, vieraat ja käyttöasteen logiikka"]}
       image="/mockups/booking-engine/room-card-booking-engine-desktop.webp"
       alt="Booking Engine huonevalinta saatavuuden ja hinnoittelun kanssa"
       url="book.wink.travel/rooms"
@@ -182,17 +183,17 @@ export const faqs = [
       reverse
       step="Vaihe 02 · Hintasuunnitelma & lisäpalvelut"
       title="Valitse hinta, lisää sitten oleskeluun"
-      desc="Hintasuunnitelmat, peruutusvaihtoehdot ja määritetyt lisäpalvelut — paketit, ruokailu, kylpylä, kuljetukset — samassa virrassa."
+      desc="Hintasuunnitelmat, peruutusvaihtoehdot ja määritetyt lisäpalvelut — paketit, ruokailu, spa, kuljetukset — samassa virrassa."
       points={["Ruokailusuunnitelmat, jäsenhinnat ja kampanjat", "Lisäpalvelut ja elämykset, missä määritetty", "Säännöt ja peruutusvaihtoehdot näkyvissä heti alussa"]}
       image="/mockups/booking-engine/rate-plan-page-booking-engine-desktop.webp"
       alt="Booking Engine hintasuunnitelman valinta lisäpalveluilla"
       url="book.wink.travel/rate-plan"
     />
     <ShowcaseRow
-      step="Vaihe 03 · Kassaprosessi & maksu"
+      step="Vaihe 03 · Kassa & maksu"
       title="Yksi kassa, maksu kerätään hotellille"
-      desc="Vieras tarkistaa oleskelun ja maksaa yhdellä hotellin brändäämällä kassalla — maksu kerätään hotellille, joka pysyy kauppiaana."
-      points={["Hotellin brändäämä, mobiiliensimmäinen kassa", "Maksu kerätään hotellille", "Varaustieto sidottu hotelliin ja reittiin"]}
+      desc="Vieras tarkistaa oleskelun ja maksaa yhdellä hotellibrändätyllä kassalla — maksu kerätään hotellille, joka pysyy kauppiaana."
+      points={["Hotellibrändätty, mobiiliystävällinen kassa", "Maksu kerätään hotellille", "Varaustieto sidottu hotelliin ja reittiin"]}
       image="/mockups/booking-engine/checkout-page-booking-engine-desktop.webp"
       alt="Booking Engine kassa ja maksun yhteenveto"
       url="book.wink.travel/checkout"
@@ -203,7 +204,7 @@ export const faqs = [
       step="Vaihe 04 · Vahvistus"
       title="Vahvistus vieraalle, hotellille ja kumppanille"
       desc="Varaus vahvistetaan ja se pysyy yhteydessä reittiin, kampanjaan, kanavaan tai kumppaniin, joka loi kysynnän — ja synkronoituu liitettyyn PMS:ään tai kanavahallintaan."
-      points={["Välitön vieraan vahvistus", "Hotelli ja kumppani saavat ilmoituksen", "Synkronoitu PMS:ään / kanavahallintaan, attribuutio säilytetään"]}
+      points={["Välitön vieraan vahvistus", "Hotelli ja kumppani saavat ilmoituksen", "Synkronoitu PMS:ään / kanavahallintaan, attribuutio säilytetty"]}
       image="/mockups/booking-engine/booking-confirmation.webp"
       alt="Booking Engine vahvistusnäyttö varausviitteellä ja oleskelun yhteenvedolla"
     />
@@ -216,7 +217,7 @@ export const faqs = [
     <div class="grid items-center gap-12 @lg:grid-cols-2 @lg:gap-16">
       <div>
         <p class="mkt-kicker text-primary">Miten maksu toimii</p>
-        <h2 class="mkt-h2 font-heading mt-3">Maksu ja maksunjakelu, hotellin puolesta hoidettu.</h2>
+        <h2 class="mkt-h2 font-heading mt-3">Maksu ja maksunjakelu, hotellin puolesta hoidettuna.</h2>
         <p class="text-muted-foreground mt-4 text-pretty @lg:text-lg">Maksu kerätään hotellin puolesta sen agenttina, ja Wink hoitaa kassaprosessin, säännöt ja selvityksen — joten hotelli ei koskaan yhdistä maksunvälittäjää, ja kortinkäsittelykulut välitetään kustannuksina.</p>
         <ul class="mt-6 space-y-3">
           {[
@@ -229,7 +230,7 @@ export const faqs = [
         </ul>
         <div class="mt-7 flex items-baseline gap-3 rounded-xl border border-border bg-card px-5 py-4">
           <span class="font-heading text-3xl font-bold text-foreground">1,5 %</span>
-          <span class="text-muted-foreground text-sm text-pretty">alustan maksu vahvistetuista suorista varauksista, plus kortinkäsittely kustannuksin — ei erillistä maksunvälittäjäsopimusta. <a href="/pricing/" class="text-primary underline underline-offset-4">Katso hinnoittelu</a>.</span>
+          <span class="text-muted-foreground text-sm text-pretty">alustan maksu vahvistetuista suorista varauksista, plus kortinkäsittely kustannushintaan — ei erillistä maksunvälittäjäsopimusta. <a href="/pricing/" class="text-primary underline underline-offset-4">Katso hinnoittelu</a>.</span>
         </div>
       </div>
       {/* Money flow — swappable infographic (infographics/MoneyFlow.astro) */}
@@ -247,10 +248,10 @@ export const faqs = [
   </div>
   <div class="grid grid-cols-2 justify-items-center gap-6 @md:grid-cols-4 @lg:gap-8">
     {[
-      { src: "/mockups/booking-engine/hotel-card-mobile.webp", alt: "Mobiili hotellikortti ja saatavuus", cap: "Löydä" },
-      { src: "/mockups/booking-engine/room-details-mobile.webp", alt: "Mobiili huonetiedot", cap: "Valitse" },
-      { src: "/mockups/booking-engine/moble-add-on.webp", alt: "Mobiili lisäpalvelut ja ekstrat", cap: "Lisää oleskeluun" },
-      { src: "/mockups/booking-engine/checkout-mobile.webp", alt: "Mobiili kassa ja maksu", cap: "Maksa" },
+      { src: "/mockups/booking-engine/hotel-card-mobile.webp", alt: "Mobiilihotellikortti ja saatavuus", cap: "Löydä" },
+      { src: "/mockups/booking-engine/room-details-mobile.webp", alt: "Mobiilihuonetiedot", cap: "Valitse" },
+      { src: "/mockups/booking-engine/moble-add-on.webp", alt: "Mobiililisäpalvelut ja lisäosat", cap: "Lisää oleskeluun" },
+      { src: "/mockups/booking-engine/checkout-mobile.webp", alt: "Mobiilikassa ja maksu", cap: "Maksa" },
     ].map((m) => (
       <div class="w-full max-w-[230px]">
         <DeviceFrame variant="phone" src={m.src} alt={m.alt} aspect="9/19.5" />
@@ -268,10 +269,10 @@ export const faqs = [
   </div>
   <div class="@container relative mx-auto w-full max-w-4xl px-4 py-24 text-center">
     <p class="text-sm font-bold uppercase tracking-wider text-[#ff8a5c]">Kehittäjät &amp; tekoälyagentit</p>
-    <h2 class="mkt-h2 font-heading mt-3">Toteutuskerros, <span class="bg-gradient-to-r from-[#ff8a5c] via-[#ec4899] to-[#a855f7] bg-clip-text text-transparent">valmiina käyttöön.</span></h2>
-    <p class="mkt-sub mx-auto mt-4 max-w-2xl text-white/75">Jokainen Agentic AI -siirto ja kehittäjäintegraatio ohjautuu Booking Engineen — varauksen luonti RESTin kautta OAuth2:lla, yli 64 webhook-tapahtumaa, PMS- ja kanavahallinnan synkronointi, Web Components -komponentit ja isännöity MCP-palvelin, jota agentit voivat lukea. Käytä Winkia maksuihin ja selvitykseen tai — suorissa API-integraatioissa — ole oma kauppiaasi ja hoida maksut itse.</p>
+    <h2 class="mkt-h2 font-heading mt-3">Toteutuskerros, <span class="bg-gradient-to-r from-[#ff8a5c] via-[#ec4899] to-[#a855f7] bg-clip-text text-transparent">valmiina käytettäväksi.</span></h2>
+    <p class="mkt-sub mx-auto mt-4 max-w-2xl text-white/75">Jokainen Agentic AI -siirto ja kehittäjän integraatio ohjautuu Booking Engineen — varauksen luonti RESTin kautta OAuth2:lla, {deliveredWebhookEventCount} webhook-tapahtumaa, PMS- ja kanavahallinnan synkronointi, Web Components ja isännöity MCP-palvelin, jota agentit voivat lukea. Käytä Winkia maksuihin ja selvitykseen, tai — suorissa API-integraatioissa — ole oma kauppiaasi ja hoida maksut itse.</p>
     <div class="mx-auto mt-8 flex max-w-2xl flex-wrap justify-center gap-2.5">
-      {["Luo varauksia RESTin kautta", "OAuth2 + SDK:t", "Yli 64 webhook-tapahtumaa", "Varauksen synkronointi", "Web Components", "Isännöity MCP-palvelin", "Ole oma kauppiaasi (API)"].map((r) => (
+      {["Luo varauksia RESTin kautta", "OAuth2 + generoituja asiakkaita", `${deliveredWebhookEventCount} webhook-tapahtumaa`, "Varausten synkronointi", "Web Components", "Isännöity MCP-palvelin", "Ole oma kauppiaasi (API)"].map((r) => (
         <span class="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white/90 ring-1 ring-white/15 backdrop-blur">
           <span class="size-1.5 rounded-full bg-[#ff8a5c]" aria-hidden="true"></span>{r}
         </span>
@@ -288,14 +289,14 @@ export const faqs = [
 {/* 8 — Who it's for (white, accent cards) */}
 <section class="@container mx-auto w-full max-w-7xl px-4 pt-24">
   <div class="mx-auto mb-12 max-w-2xl text-center">
-    <p class="mkt-kicker text-primary">Kenelle toteutetaan</p>
+    <p class="mkt-kicker text-primary">Kenelle se toteuttaa</p>
     <h2 class="mkt-h2 font-heading mt-3">Yksi moottori, kolme käyttötapaa.</h2>
   </div>
   <div class="grid gap-5 @md:grid-cols-3">
     {[
-      { eyebrow: "Hotelleille", title: "Muunna suora kysyntäsi", desc: "Vahvista varaukset omilla verkkosivuillasi, linkeissä, QR-koodeissa, Web Components -komponenteissa, WinkLinksissä ja Travelikossa — myy koko oleskelu ja pidä vieras hallinnassa.", href: "/hotels/", cta: "Tutustu hotelleille", accent: "#ff6b35" },
-      { eyebrow: "Kumppaneille", title: "Toteuta luomasi kysyntä", desc: "Lähetä vieraat linkeistäsi, myymälöistäsi ja kampanjoistasi oikeaan kassaan — attribuutio säilyy vahvistuksen ja maksunjaon ajan.", href: "/partners/", cta: "Tutustu kumppaneille", accent: "#ec4899" },
-      { eyebrow: "Kehittäjille", title: "Rakenna hotellikaupankäynnin päälle", desc: "Käytä Booking Enginea toteutuskerroksena haulle, varaukselle, maksulle ja vahvistukselle — mukaan lukien kauppias API-integraatioissa.", href: "/builders/", cta: "Katso dokumentaatio", accent: "#22d3ee" },
+      { eyebrow: "Hotelleille", title: "Muunna suora kysyntäsi", desc: "Vahvista varaukset omalla verkkosivustollasi, linkeissä, QR-koodeissa, Web Componentsissa, WinkLinksissä ja Travelikossa — myy koko oleskelu ja pidä vieras.", href: "/hotels/", cta: "Tutustu hotelleille", accent: "#ff6b35" },
+      { eyebrow: "Kumppaneille", title: "Toteuta luomasi kysyntä", desc: "Lähetä vieraat linkeistäsi, kaupoistasi ja kampanjoistasi oikeaan kassaan — attribuutio säilyy vahvistuksen ja maksunjaon ajan.", href: "/partners/", cta: "Tutustu kumppaneille", accent: "#ec4899" },
+      { eyebrow: "Kehittäjille", title: "Rakenna hotellikaupalle", desc: "Käytä Booking Enginea toteutuskerroksena haun, varauksen, maksun ja vahvistuksen takana — mukaan lukien kauppias API-integraatioissa.", href: "/builders/", cta: "Katso dokumentaatio", accent: "#22d3ee" },
     ].map((c) => (
       <a href={c.href} class="group flex flex-col rounded-2xl border border-border bg-card p-7 shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg" style={`border-top:3px solid ${c.accent}`}>
         <span class="text-xs font-bold uppercase tracking-wider" style={`color:${c.accent}`}>{c.eyebrow}</span>
@@ -309,7 +310,7 @@ export const faqs = [
 
 {/* 9 — FAQ */}
 <FaqGrid
-  heading="Booking Engine Usein Kysytyt Kysymykset"
+  heading="Booking Engine - Usein kysytyt kysymykset"
   description="Kaksi tehtävää, reitit, maksu ja miten rakentaa sen päälle."
   items={faqs}
 />
@@ -318,10 +319,10 @@ export const faqs = [
 <section class="w-full border-y border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white">
   <div class="mx-auto w-full max-w-7xl px-4 py-24 text-center">
     <h2 class="mkt-h2 font-heading">Yksi moottori verkkosivustollesi ja alustallesi.</h2>
-    <p class="mx-auto mt-4 max-w-2xl text-pretty text-white/70 @lg:text-lg">Muunna kysyntä vahvistetuiksi varauksiksi omilla verkkosivuillasi — ja jokaisella kumppani-, sisällöntuottaja-, tekoäly- ja kehittäjäreitillä — maksu, vahvistus ja attribuutio sisäänrakennettuina.</p>
+    <p class="mx-auto mt-4 max-w-2xl text-pretty text-white/70 @lg:text-lg">Muunna kysyntä vahvistetuiksi varauksiksi omalla verkkosivustollasi — ja jokaisella kumppani-, sisällöntuottaja-, tekoäly- ja kehittäjäreitillä — maksu, vahvistus ja attribuutio sisäänrakennettuina.</p>
     <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
       <a href="https://app.wink.travel" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-[#ff6b35] px-8 text-base font-semibold text-white hover:bg-[#e85b29] sm:w-auto">Aloita</a>
-      <a href="/fi/demo/" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-white px-8 text-base font-semibold text-[#1f0a40] hover:bg-white/90 sm:w-auto">Pyydä demo</a>
+      <a href="/demo/" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-white px-8 text-base font-semibold text-[#1f0a40] hover:bg-white/90 sm:w-auto">Pyydä demo</a>
     </div>
   </div>
 </section>

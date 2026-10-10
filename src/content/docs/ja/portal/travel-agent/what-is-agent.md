@@ -1,22 +1,22 @@
 ---
 title: Agentとは？
-description: Winkが登録済み旅行代理店をどのようにサポートしているかを学びましょう。
+description: Winkが登録済みの旅行代理店をどのようにサポートしているかを学びましょう。
 sidebar:
   order: 0
 ---
 
-登録済み旅行代理店向けのソリューションは[Wink Agent](https://agent.wink.travel)です。これは、代理店が顧客の代わりに検索・予約を行い、各予約ごとに手数料を得ることができるセルフサービスのポータルです。
+登録済みの旅行代理店は、Travel Agentアカウントで[app.wink.travel](https://app.wink.travel)の他のユーザーと同じポータルを利用します。代理店は顧客の代わりに検索・予約を行い、予約ごとにコミッションを獲得します。設定方法は[旅行代理店としての始め方](/ja/guides/travel-agents/getting-started/)をご覧ください。
 
-より高度な旅行代理店は、Winkプラットフォーム外での支払いおよび支払い処理を目的として、APIレベルでの統合を選択できます。
+支払いを自社で回収することが承認された代理店は、マーチャント・オブ・レコードとしてWinkプラットフォーム外で支払いを処理します。独自のシステムを持つ代理店は[Partner API](/ja/integrations/partner-api/)を通じて連携可能です。
 
 旅行代理店は[Studio](/ja/portal/studio/what-is-studio)と同じポータル機能の一部を利用できるため、ここでは再度説明しません。
 
 ## 検索
 
-ホテルの検索と予約方法については、[Search](/ja/portal/studio/search)をご覧ください。
+ホテルの検索と予約方法については[Search](/ja/portal/studio/search)をご覧ください。
 
-それ以外の場合は、次のセクションに進んでください。
+それ以外は次のセクションに進んでください。
 
 ## API
 
-`Travel Agent`を管理したい開発者は、[Developers > API > Travel Agent](/ja/api/overview/)にアクセスしてください。
+代理店は[Partner API](/ja/partner-api/partner/)を通じて検索・予約が可能で、これは旧来のTravel Agent RESTエンドポイントに代わるものです。

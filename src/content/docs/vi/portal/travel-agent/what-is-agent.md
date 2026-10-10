@@ -5,18 +5,18 @@ sidebar:
   order: 0
 ---
 
-Giải pháp của chúng tôi dành cho các đại lý du lịch đã đăng ký là [Wink Agent](https://agent.wink.travel). Đây là một cổng tự phục vụ mà các đại lý có thể sử dụng để tìm kiếm và đặt chỗ thay mặt khách hàng của họ và kiếm hoa hồng cho mỗi đặt chỗ.
+Các đại lý du lịch đã đăng ký sử dụng cùng một cổng thông tin như mọi người khác, tại [app.wink.travel](https://app.wink.travel), với tài khoản Travel Agent. Đại lý tìm kiếm và đặt phòng thay cho khách hàng của họ và nhận hoa hồng trên mỗi đặt phòng. Để thiết lập tài khoản, làm theo hướng dẫn [Bắt đầu với Travel Agency](/vi/guides/travel-agents/getting-started/).
 
-Các đại lý du lịch có kinh nghiệm hơn có thể chọn tích hợp ở cấp độ API nhằm mục đích xử lý thanh toán và chi trả ngoài nền tảng Wink.
+Các đại lý được phê duyệt để tự thu tiền sẽ đóng vai trò là merchant of record và xử lý thanh toán ngoài nền tảng Wink. Các đại lý có hệ thống riêng có thể tích hợp qua [Partner API](/vi/integrations/partner-api/).
 
-Các đại lý du lịch có một tập hợp các tính năng cổng tương tự như [Studio](/vi/portal/studio/what-is-studio) nên chúng tôi sẽ không đề cập lại ở đây.
+Đại lý du lịch có một tập hợp con các tính năng của cổng thông tin giống như [Studio](/vi/portal/studio/what-is-studio) nên chúng tôi sẽ không đề cập lại ở đây.
 
 ## Tìm kiếm
 
-Truy cập [Tìm kiếm](/vi/portal/studio/search) để tìm hiểu cách tìm kiếm và đặt khách sạn.
+Truy cập [Search](/vi/portal/studio/search) để tìm hiểu cách tìm kiếm và đặt phòng khách sạn.
 
 Nếu không, hãy tiếp tục đến phần tiếp theo.
 
 ## API
 
-Các nhà phát triển muốn quản lý `Travel Agent` có thể truy cập [Developers > API > Travel Agent](/vi/api/overview/).
+Các đại lý có thể tìm kiếm và đặt phòng qua [Partner API](/vi/partner-api/partner/), thay thế cho các điểm cuối Travel Agent REST cũ hơn.

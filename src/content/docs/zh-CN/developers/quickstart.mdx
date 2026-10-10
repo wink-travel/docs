@@ -1,0 +1,198 @@
+---
+title: 快速入门
+description: "从零开始到在测试环境中完成集成：获取凭证，使用 Partner API 搜索实时酒店价格，并将旅客发送到计入您账户的预订页面。"
+sidebar:
+  order: 0.5
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+本指南将带您在大约 30 分钟内完成从无到有的集成。到最后，您将拥有：
+
+- 来自 Partner API 的某城市酒店实时价格，
+- 一个将预订计入您账户的预订链接，
+- 一次测试预订，以及通知您预订发生的 webhook。
+
+所有操作均在 **staging**（测试环境）中进行。您无需向我们申请访问权限，后续切换到生产环境也无需审批。
+
+## 这份指南适合您吗？
+
+| 您想要… | 从这里开始 |
+|---|---|
+| 在您的应用、网站或 AI 产品中展示酒店并引导旅客预订，赚取佣金 | **本指南** |
+| 作为持牌旅行社代表客户预订 | 本指南至第 5 步，然后参见 [作为旅行社预订](#booking-as-a-travel-agency) |
+| 嵌入可预订酒店，无需编写集成代码 | [Web 组件](/zh-CN/integrations/web-components/) |
+| 让 AI 代理搜索并预订 | [MCP 服务器](/zh-CN/developers/mcp/) 和 [Agentic Payments](/zh-CN/developers/agentic-payments/) |
+| 连接渠道管理器或 PMS | [添加您的渠道管理器](/zh-CN/guides/integrators/add-your-channel-manager/) |
+
+## 工作原理
+
+您使用 **Partner API** 查找酒店及其实时价格。每家酒店都有一个稳定的 `urlName`。您将其转换为指向 Wink 预订引擎 `book.wink.travel` 的链接，携带您的 ID。旅客在该处预订并付款，预订将计入您的账户。
+
+## 开始前准备
+
+您需要：
+
+- [`grpcurl`](https://github.com/fullstorydev/grpcurl)，或 Postman 或 Insomnia。Partner API 是 gRPC 协议，不是 REST。
+- `curl`。
+
+:::note
+测试环境在无人使用时会进入休眠状态。静默一段时间后的首次调用可能需要约一分钟，等待服务器唤醒。
+:::
+
+## 第 1 步：创建测试账户
+
+测试环境与生产环境完全分离，拥有独立的登录和账户。
+
+<Steps>
+1. 访问 [staging-app.wink.travel](https://staging-app.wink.travel)，点击 `Sign-In / Register` 并注册。
+
+2. 点击左侧边栏的 `Accounts`，然后点击 `Create`，选择 **I am an Affiliate**。您发送的预订将计入此账户。详见 [创建账户](/zh-CN/portal/create-account/)。
+</Steps>
+
+## 第 2 步：创建应用
+
+应用为您的代码提供凭证。
+
+<Steps>
+1. 在您的账户卡片上，点击 `Actions` > `Manage account`，然后切换到 `Applications` 标签。
+
+2. 点击 `Create new application`，输入名称，选择 **Machine-to-machine** 作为客户端类型。
+
+3. 在 scopes 中，选择 **Inventory & rates**（只读）。Partner API 会检查 `inventory.read` 权限。
+
+4. 点击 `Create application`，复制 **Client ID** 和 **Client secret**。Secret 只显示一次，之后无法再获取。
+</Steps>
+
+详见 [应用](/zh-CN/account/applications/) 了解其他客户端类型和权限。
+
+## 第 3 步：获取访问令牌
+
+```bash
+curl -X POST https://staging-iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_CLIENT_SECRET>" \
+  -d "scope=inventory.read"
+```
+
+保存响应中的 `access_token`：
+
+```bash
+export WINK_TOKEN=<access_token>
+```
+
+令牌会过期。在您自己的代码中，请使用 OAuth2 库自动获取和刷新令牌。详见 [认证](/zh-CN/developers/authentication/)。
+
+## 第 4 步：查找您的账户 ID
+
+每次调用 Partner API 时，需在 `managing-entity-id` 头中指定您代表的账户。列出您的令牌可操作的账户：
+
+```bash
+grpcurl -H "authorization: Bearer $WINK_TOKEN" \
+  -d '{}' \
+  staging-partner.wink.travel:443 wink.partner.v1.Accounts/ListAccounts
+```
+
+复制第 1 步中联盟账户的 `accountId`：
+
+```bash
+export WINK_ACCOUNT_ID=<accountId>
+```
+
+## 第 5 步：搜索某城市的酒店
+
+{/* TODO(Yann): 确认测试酒店所在的测试城市，并在此使用。 */}
+
+```bash
+grpcurl -H "authorization: Bearer $WINK_TOKEN" \
+  -H "managing-entity-id: $WINK_ACCOUNT_ID" \
+  -d '{
+    "urlName": "bangkok-thailand",
+    "userSession": {
+      "itinerary": {
+        "startDate": "2026-12-01",
+        "nights": 2,
+        "room": { "adults": 2 }
+      },
+      "currencyCode": "USD",
+      "languageCode": "en"
+    }
+  }' \
+  staging-partner.wink.travel:443 wink.partner.v1.Search/SearchByCity
+```
+
+请使用未来的入住日期；过去的日期会被拒绝。每个结果包含：
+
+- `name`、`starRating` 和 `heroImageUrl`，足以展示结果行，
+- `roomTypes`，实时报价，最便宜的房型排在前面，
+- `urlName`，预订链接所需的 slug。
+
+价格为整数，单位为最小货币单位：除以响应中的 `currencyExponent` 的 10 次方（美元为 2，因此 `12500` 表示 125.00 美元）。
+
+不知道城市的 slug？使用 `wink.partner.v1.Lookup/Search` 解析。要获取酒店的完整内容，请使用 `Content` 服务。[Partner API 参考](/zh-CN/partner-api/partner/) 记录了所有调用。
+
+## 第 6 步：构建预订链接
+
+```text
+https://staging-book.wink.travel/hotel/<urlName>?client-id=<YOUR_CLIENT_ID>&configuration-id=<YOUR_CUSTOMIZATION_ID>
+```
+
+- `<urlName>` 是第 5 步中酒店的 `urlName`。
+- `client-id` 是第 2 步中应用的 Client ID。
+- `configuration-id` 是您的自定义 ID：`Manage account` > `Customizations`。自定义还设置了预订页面的品牌、默认语言和货币。
+
+:::caution
+请同时包含这两个 ID。缺少它们页面仍会加载，但使用默认品牌，且**预订不会计入您的账户**。切勿在链接中放入您的客户端密钥。
+:::
+
+如需链接到预订引擎首页而非单个酒店，请参见 [直接链接](/zh-CN/booking-engine/features/#linking-directly)。
+
+## 第 7 步：进行测试预订
+
+打开您的链接，选择日期和房型，使用 [Stripe 测试卡](https://docs.stripe.com/testing) 结账，例如卡号 `4242 4242 4242 4242`，任意未来有效期和任意 CVC。测试环境不会扣费。请记下确认页上的预订代码，代码以 `WNK` 开头。
+
+## 第 8 步：接收预订通知
+
+<Steps>
+1. 在 Portal 中，进入 `Applications > Webhooks`，添加一个接受 `POST` 请求的端点。
+
+2. 订阅 `booking.create`，或在开发阶段将事件列表留空以接收所有事件。
+
+3. 发送测试事件给自己，然后再做一次测试预订，观察通知是否到达。
+</Steps>
+
+请在信任每次推送前验证其签名。详见 [Webhook 集成](/zh-CN/developers/webhook-integration/) 和 [Webhook 事件目录](/zh-CN/developers/webhook-events/)。
+
+## 第 9 步：切换到生产环境
+
+开发者无需审批步骤。（旅行社账户需先认证，详见下文 [作为旅行社预订](#booking-as-a-travel-agency)。）当您的集成在测试环境正常工作后：
+
+<Steps>
+1. 在 [app.wink.travel](https://app.wink.travel) 创建账户和应用，步骤同第 1 和第 2 步。凭证不会跨环境共享。
+
+2. 将所有主机名中的 `staging-` 去掉：
+
+   | 测试环境 | 生产环境 |
+   |---|---|
+   | `https://staging-iam.wink.travel` | `https://iam.wink.travel` |
+   | `staging-partner.wink.travel:443` | `partner.wink.travel:443` |
+   | `https://staging-book.wink.travel` | `https://book.wink.travel` |
+
+3. 重新查询生产环境的账户 ID（第 4 步）和自定义 ID（第 6 步），它们与测试环境不同。
+</Steps>
+
+Partner API 的使用按酒店夜数计费，且有免费月度额度。详见 [Partner API](/zh-CN/integrations/partner-api/) 了解价格和限制。
+
+## 作为旅行社预订
+
+如果您的账户是持牌旅行社，您无需将旅客发送到 `book.wink.travel`：可以直接使用 `wink.partner.v1.Booking/CreateBooking` 创建预订，并通过其他 `Booking` 接口管理预订。其他账户则需引导旅客使用预订链接。
+
+旅行社账户需认证：Wink 会审核每个旅行社的注册信息后方可预订。希望作为商户自行收款的旅行社，必须通过 Partner API 预订并获得 Wink 的书面批准。详见 [旅行社入门指南](/zh-CN/guides/travel-agents/getting-started/) 和 [Partner API 参考](/zh-CN/partner-api/partner/)。
+
+## 后续步骤
+
+- 从 `.proto` 模式生成[类型化客户端](/zh-CN/developers/rest-and-grpc/#generate-a-grpc-client)，而非手动调用 `grpcurl`。
+- 连接 [MCP 服务器](/zh-CN/developers/mcp/)，使用 [AI Skills](/zh-CN/developers/ai-skills/) 让您的编码助手针对实时 API 编写集成代码。
+- 阅读完整的[环境和主机列表](/zh-CN/getting-started/environments/)。

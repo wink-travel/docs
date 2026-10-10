@@ -21,13 +21,13 @@ Lær hvordan Wink sammenlignes med andre online rejse-segmenter på markedet. Ne
 | Gratis Google Hotel liste | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | Webkomponent / SDK / API adgang | 🟢 | 🟢 | ⚫️ | 🟢 | 
 | Direkte relationer | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
-| Forhandlelige kommissioner pr. salgskanal | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Forhandlingsbare kommissioner pr. salgskanal | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | Channel manager & PMS forbindelse | 🟢 | 🟢 | 🟢 | 🟢 | 
 | Leverandøren ejer kunden | 🟢 | ⚫️ | 🟢 | 🟢 | 
 | Spor ROI | 🟢 | 🟢 | ⚫️ | ⚫️ | 
 | Pay-per-Performance | 🟢 | 🟢 | ⚫️ | 🟢 | 
 | Integreret betalingsgateway | 🟢 | 🟢 | 🟢 | ⚫️ | 
-| Udbetalinger med Wise | 🟢 | 🟢 | ⚫️ | ⚫️ | 
+| Udbetalinger via bankoverførsel | 🟢 | 🟢 | ⚫️ | ⚫️ | 
 
 
 ## Wink vs Internet Booking Engine (IBE)

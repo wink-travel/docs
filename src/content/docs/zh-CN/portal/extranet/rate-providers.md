@@ -14,7 +14,7 @@ sidebar:
 
 ### SynXis
 
-如果您的物业使用 SynXis 渠道管理器，连接 Wink 之前还需完成一步操作。
+如果您的物业使用 Sabre SynXis，连接 Wink 之前还需完成一步操作。
 
 - 请联系您的 SynXis 客户代表或客户服务（SHSCustomerCare@sabre.com）。
 - 告诉他们您想通过 Channel Connect Express (***CCX***) 连接 Wink。
@@ -29,13 +29,13 @@ sidebar:
 
 可用类型：
 
-- 渠道管理器 (CM)
-- 物业管理系统 (PMS)
-- 中央预订系统 (CRS)
+- Channel Manager (CM)
+- Property Management System (PMS)
+- Central Reservation System (CRS)
 
 *如果供应商有代理，表示我们通过代理间接接收该供应商的费率。*
 
-| 供应商 | 类型 | 代理 | 起始时间 | 最后修改 | 备注
+| Vendor | Type | Proxy | Since | Last modified | Comment
 | -- | -- | -- | -- | -- | -- |
 | Hoteliers Guru | CM |  | 2017 | 2017 | |
 | Travelclick | CM |  | 2016 | 2016 | |

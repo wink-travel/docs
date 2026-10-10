@@ -1,0 +1,198 @@
+---
+title: Pikakäynnistys
+description: "Nollasta toimivaan integraatioon staging-ympäristössä: hanki tunnistetiedot, hae hotellien reaaliaikaiset hinnat Partner API:lla ja ohjaa matkustajat varaus-sivulle, joka hyvittää sinulle."
+sidebar:
+  order: 0.5
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+Tämä opas vie sinut tyhjästä toimivaan integraatioon noin 30 minuutissa. Lopuksi sinulla on:
+
+- hotellien reaaliaikaiset hinnat kaupungissa Partner API:sta,
+- varauslinkki, joka hyvittää varaukset tilillesi,
+- testivaraus ja webhook-ilmoitus varauksesta.
+
+Kaikki tapahtuu **staging-ympäristössä**, testausympäristössämme. Sinun ei tarvitse pyytää meiltä pääsyä, eikä tuotantoon siirtyminen myöhemmin vaadi hyväksyntää.
+
+## Onko tämä oikea opas sinulle?
+
+| Haluat… | Aloita tästä |
+|---|---|
+| Näyttää hotelleja sovelluksessasi, sivustollasi tai tekoälytuotteessasi ja ohjata matkustajat varaamaan, ansaiten komission | **Tämä opas** |
+| Tehdä varauksia asiakkaidesi puolesta lisensoituna matkatoimistona | Tämä opas vaiheeseen 5 asti, sitten [Varaaminen matkatoimistona](#booking-as-a-travel-agency) |
+| Upottaa varattavia hotelleja ilman integraation kirjoittamista | [Web Components](/fi/integrations/web-components/) |
+| Antaa tekoälyagentin hakea ja varata | [MCP Servers](/fi/developers/mcp/) ja [Agentic Payments](/fi/developers/agentic-payments/) |
+| Yhdistää kanavahallinnan tai PMS:n | [Lisää kanavahallintasi](/fi/guides/integrators/add-your-channel-manager/) |
+
+## Miten se toimii
+
+Käytät **Partner API:a** löytääksesi hotellit ja niiden reaaliaikaiset hinnat. Jokaisella hotellilla on vakaa `urlName`. Muunnat sen linkiksi Wink Booking Engineen, `book.wink.travel`, joka välittää tunnisteesi. Matkustaja varaa ja maksaa siellä, ja varaus hyvitetään tilillesi.
+
+## Ennen aloittamista
+
+Tarvitset:
+
+- [`grpcurl`](https://github.com/fullstorydev/grpcurl), tai Postmanin tai Insomnian. Partner API on gRPC, ei REST.
+- `curl`.
+
+:::note
+Staging menee lepotilaan, kun kukaan ei käytä sitä. Ensimmäinen kutsu hiljaisen jakson jälkeen voi kestää noin minuutin, kun palvelimet heräävät.
+:::
+
+## Vaihe 1: Luo staging-tili
+
+Staging on täysin erillinen tuotannosta, omilla kirjautumisilla ja tileillä.
+
+<Steps>
+1. Mene osoitteeseen [staging-app.wink.travel](https://staging-app.wink.travel), klikkaa `Sign-In / Register` ja rekisteröidy.
+
+2. Klikkaa vasemmasta sivupalkista `Accounts`, sitten `Create` ja valitse **I am an Affiliate**. Lähettämäsi varaukset hyvitetään tälle tilille. Katso [Luo tili](/fi/portal/create-account/).
+</Steps>
+
+## Vaihe 2: Luo sovellus
+
+Sovellus antaa koodillesi tunnistetiedot.
+
+<Steps>
+1. Tilikortiltasi klikkaa `Actions` > `Manage account`, sitten `Applications` -välilehti.
+
+2. Klikkaa `Create new application`, anna nimi ja valitse asiakastyypiksi **Machine-to-machine**.
+
+3. Valitse scopes-kohdasta **Inventory & rates** (luku). Partner API tarkistaa `inventory.read`.
+
+4. Klikkaa `Create application` ja kopioi **Client ID** ja **Client secret**. Salaisuus näytetään vain kerran eikä sitä voi hakea myöhemmin.
+</Steps>
+
+Katso [Sovellukset](/fi/account/applications/) muista asiakastyypeistä ja scopes-asetuksista.
+
+## Vaihe 3: Hanki käyttöoikeustunnus
+
+```bash
+curl -X POST https://staging-iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_CLIENT_SECRET>" \
+  -d "scope=inventory.read"
+```
+
+Tallenna vastauksesta `access_token`:
+
+```bash
+export WINK_TOKEN=<access_token>
+```
+
+Tunnukset vanhenevat. Omassa koodissasi anna OAuth2-kirjaston hakea ja päivittää ne. Katso [Autentikointi](/fi/developers/authentication/).
+
+## Vaihe 4: Etsi tilisi tunnus
+
+Jokainen Partner API -kutsu nimeää tilin, jota edustat, `managing-entity-id` -otsikossa. Listaa tunnuksellasi hallinnoitavat tilit:
+
+```bash
+grpcurl -H "authorization: Bearer $WINK_TOKEN" \
+  -d '{}' \
+  staging-partner.wink.travel:443 wink.partner.v1.Accounts/ListAccounts
+```
+
+Kopioi vaiheessa 1 luodun affiliate-tilin `accountId`:
+
+```bash
+export WINK_ACCOUNT_ID=<accountId>
+```
+
+## Vaihe 5: Hae hotelleja kaupungista
+
+{/* TODO(Yann): vahvista stagingin testihotellin kaupunki ja käytä sitä tässä. */}
+
+```bash
+grpcurl -H "authorization: Bearer $WINK_TOKEN" \
+  -H "managing-entity-id: $WINK_ACCOUNT_ID" \
+  -d '{
+    "urlName": "bangkok-thailand",
+    "userSession": {
+      "itinerary": {
+        "startDate": "2026-12-01",
+        "nights": 2,
+        "room": { "adults": 2 }
+      },
+      "currencyCode": "USD",
+      "languageCode": "en"
+    }
+  }' \
+  staging-partner.wink.travel:443 wink.partner.v1.Search/SearchByCity
+```
+
+Käytä tulevaa sisäänkirjautumispäivää; mennyt päivä hylätään. Jokainen tulos sisältää:
+
+- `name`, `starRating` ja `heroImageUrl`, riittävästi tulosriville,
+- `roomTypes`, reaaliaikaiset tarjoukset, halvin huone ensin,
+- `urlName`, slug, jota tarvitset varauslinkissä.
+
+Hinnat ovat kokonaislukuina pienissä yksiköissä: jaa vastauskentän `currencyExponent` potenssilla 10 (USD:llä 2, joten `12500` on 125,00 $).
+
+Et tiedä kaupungin slugia? Hae se `wink.partner.v1.Lookup/Search` -kutsulla. Kohteen koko sisältö löytyy `Content`-palvelusta. [Partner API:n dokumentaatio](/fi/partner-api/partner/) kuvaa kaikki kutsut.
+
+## Vaihe 6: Rakenna varauslinkki
+
+```text
+https://staging-book.wink.travel/hotel/<urlName>?client-id=<YOUR_CLIENT_ID>&configuration-id=<YOUR_CUSTOMIZATION_ID>
+```
+
+- `<urlName>` on hotellin `urlName` vaiheesta 5.
+- `client-id` on sovelluksesi Client ID vaiheesta 2.
+- `configuration-id` on muokkaustunnuksesi: `Manage account` > `Customizations`. Muokkaus asettaa myös brändäyksen, oletuskielen ja valuutan varaus-sivulle.
+
+:::caution
+Sisällytä molemmat tunnukset. Ilman niitä sivu latautuu oletusbrändäyksellä, mutta **varaus ei hyvity sinulle**. Älä koskaan laita client secret -tunnustasi linkkiin.
+:::
+
+Katso [Suora linkitys](/fi/booking-engine/features/#linking-directly) varausmoottorin kotisivulle linkittämisestä yksittäisen hotellin sijaan.
+
+## Vaihe 7: Tee testivaraus
+
+Avaa linkkisi, valitse päivät ja huone, ja maksa esimerkiksi [Stripe testikortilla](https://docs.stripe.com/testing), kuten `4242 4242 4242 4242` minkä tahansa tulevan voimassaolopäivän ja CVC:n kanssa. Stagingissa ei veloiteta oikeaa korttia. Huomaa varauskoodi vahvistussivulla; se alkaa `WNK`.
+
+## Vaihe 8: Saat ilmoituksia varauksista
+
+<Steps>
+1. Portaalissa mene kohtaan `Applications > Webhooks` ja lisää päätepiste, joka hyväksyy `POST`-pyynnöt.
+
+2. Tilaa `booking.create` -tapahtuma, tai jätä tapahtumalista tyhjäksi saadaksesi kaikki kehityksen aikana.
+
+3. Lähetä itsellesi testitapahtuma, tee toinen testivaraus ja seuraa sen saapumista.
+</Steps>
+
+Varmista jokaisen toimituksen allekirjoitus ennen kuin luotat siihen. Katso [Webhook-integraatio](/fi/developers/webhook-integration/) ja [Webhook-tapahtumaluettelo](/fi/developers/webhook-events/).
+
+## Vaihe 9: Siirry tuotantoon
+
+Kehittäjille ei ole hyväksyntävaihetta. (Matkatoimistotilit sertifioidaan ensin; katso [alla](#booking-as-a-travel-agency).) Kun integraatiosi toimii stagingissa:
+
+<Steps>
+1. Luo tili ja sovellus osoitteessa [app.wink.travel](https://app.wink.travel) kuten vaiheissa 1 ja 2. Tunnistetiedot eivät siirry ympäristöjen välillä.
+
+2. Poista `staging-` kaikista isäntänimistä:
+
+   | Staging | Tuotanto |
+   |---|---|
+   | `https://staging-iam.wink.travel` | `https://iam.wink.travel` |
+   | `staging-partner.wink.travel:443` | `partner.wink.travel:443` |
+   | `https://staging-book.wink.travel` | `https://book.wink.travel` |
+
+3. Hae tuotantotilin tunnus (vaihe 4) ja muokkaustunnus (vaihe 6) uudelleen. Ne eroavat stagingista.
+</Steps>
+
+Partner API:n käyttö mitataan hotelliyönä, ja kuukausittain on ilmainen kiintiö. Katso [Partner API](/fi/integrations/partner-api/) hinnoittelusta ja rajoituksista.
+
+## Varaaminen matkatoimistona
+
+Jos tilisi on lisensoitu matkatoimisto, sinun ei tarvitse ohjata matkustajia `book.wink.travel` -sivulle: voit tehdä varaukset suoraan `wink.partner.v1.Booking/CreateBooking` -kutsulla ja hallita niitä muilla `Booking`-kutsuilla. Muut tilit ohjaavat matkustajat varauslinkkiin.
+
+Matkatoimistotilit sertifioidaan: Wink tarkistaa jokaisen toimiston rekisteröinnin ennen varausoikeuden myöntämistä. Toimistot, jotka haluavat kerätä maksut asiakkailtaan itse kauppiaana, on tehtävä varaukset Partner API:n kautta ja saatava Winkin kirjallinen hyväksyntä. Katso [Aloittaminen matkatoimistona](/fi/guides/travel-agents/getting-started/) ja [Partner API:n dokumentaatio](/fi/partner-api/partner/).
+
+## Seuraavat askeleet
+
+- [Luo tyypitetty asiakas](/fi/developers/rest-and-grpc/#generate-a-grpc-client) `.proto`-skeemasta sen sijaan, että kutsut `grpcurl`ia käsin.
+- Yhdistä [MCP-palvelin](/fi/developers/mcp/) ja käytä [AI Skills](/fi/developers/ai-skills/) saadaksesi koodausavustajan kirjoittamaan integraation live-API:lle.
+- Lue täydellinen lista [ympäristöistä ja isäntänimistä](/fi/getting-started/environments/).

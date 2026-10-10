@@ -14,11 +14,11 @@ Wählen Sie Ihren Tarifanbieter aus der Dropdown-Liste aus und klicken Sie auf d
 
 ### SynXis
 
-Wenn Ihre Unterkunft den SynXis Channel Manager verwendet, ist vor der Verbindung mit Wink noch ein weiterer Schritt erforderlich.
+Wenn Ihre Unterkunft Sabre SynXis verwendet, ist ein weiterer Schritt erforderlich, bevor Sie die Verbindung mit Wink herstellen können.
 
-- Bitte nehmen Sie Kontakt mit Ihrem SynXis-Kundenbetreuer oder dem Kundenservice (SHSCustomerCare@sabre.com) auf.
+- Bitte wenden Sie sich an Ihren SynXis-Kundenbetreuer oder den Kundendienst (SHSCustomerCare@sabre.com).
 - Teilen Sie ihnen mit, dass Sie die Verbindung zu Wink über Channel Connect Express (***CCX***) herstellen möchten.
-- Sie werden gebeten, das Formular ***PRS*** auszufüllen.
+- Sie werden Sie bitten, das Formular ***PRS*** auszufüllen.
   - Sie müssen Ihre Wink-Benutzerdaten eingeben.
   - ...und Ihre gewünschte Währung.
 - Füllen Sie das Formular aus und senden Sie es an SynXis zurück.
@@ -35,7 +35,7 @@ Verfügbare Typen:
 
 *Wenn der Anbieter einen Proxy hat, bedeutet dies, dass wir die Tarife indirekt vom Anbieter über den Proxy erhalten.*
 
-| Anbieter | Typ | Proxy | Seit | Zuletzt geändert | Kommentar
+| Anbieter | Typ | Proxy | Seit | Letzte Änderung | Kommentar
 | -- | -- | -- | -- | -- | -- |
 | Hoteliers Guru | CM |  | 2017 | 2017 | |
 | Travelclick | CM |  | 2016 | 2016 | |

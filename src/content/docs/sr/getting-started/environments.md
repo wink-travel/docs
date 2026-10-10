@@ -8,9 +8,11 @@ sidebar:
 U Wink-u, uvek imamo 2 okruženja za sve što radimo:
 
 - Production je naše stabilno okruženje.
-- Staging je naše okruženje za sertifikaciju i testiranje.
+- Staging je naše testno okruženje, i mesto gde se sertifikuju channel manageri i turističke agencije.
 
-Ako ste integrator, hotel ili turistički agent koji želi da se pripremi za sertifikaciju ili testira Wink platformu, napravite nalog u našem staging okruženju da biste započeli.
+Ako želite da testirate Wink platformu, kao programer, hotel ili turistička agencija, napravite nalog u našem staging okruženju da biste započeli. Channel manageri takođe tamo obavljaju svoju [sertifikaciju](/sr/guides/integrators/add-your-channel-manager/#certification).
+
+Kreiranje naloga u staging ili production okruženju zahteva prihvatanje Wink-ovih Uslova i Uslova plaćanja, a to prihvatanje je obavezujuće. Channel manageri i turističke agencije takođe moraju proći sertifikaciju pre pristupa production okruženju; svi ostali prelaze u production samostalno.
 
 :::note
 Staging okruženje je dostupno na zahtev. To znači da će otići u stanje mirovanja ako nema korišćenja i ponovo se uključiti kada ga neko koristi. Molimo vas za strpljenje dok ga budite. Potrebno je oko minut da se svi serveri pokrenu nakon što se prvi put povežete sa jednim od naših servera ili aplikacija.
@@ -20,7 +22,7 @@ Staging okruženje je dostupno na zahtev. To znači da će otići u stanje mirov
 
 Ispod je matrica koja sadrži nazive naših servera i njihovu namenu.
 
-| Feature | Staging | Production
+| Funkcija | Staging | Production
 | ------- | ------- | ---------- |
 | IAM | https://staging-iam.wink.travel | https://iam.wink.travel | 
 | Inventory | https://staging-api.wink.travel | https://api.wink.travel | 
@@ -30,9 +32,9 @@ Ispod je matrica koja sadrži nazive naših servera i njihovu namenu.
 
 ## Aplikacije
 
-Naše aplikacije takođe imaju testna i produkcijska okruženja za naše korisnike.
+Naše aplikacije takođe imaju testna i produkciona okruženja za naše korisnike.
 
-| Application | Staging | Production
+| Aplikacija | Staging | Production
 | ------- | ------- | ---------- |
 | Portal | https://staging-app.wink.travel | https://app.wink.travel | 
 | Booking engine | https://staging-book.wink.travel | https://book.wink.travel | 

@@ -1,0 +1,198 @@
+---
+title: Bắt đầu nhanh
+description: "Từ con số không đến tích hợp hoạt động trong môi trường staging: lấy thông tin đăng nhập, tìm giá khách sạn trực tiếp với Partner API, và gửi khách du lịch đến trang đặt phòng được ghi nhận cho bạn."
+sidebar:
+  order: 0.5
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+Hướng dẫn này đưa bạn từ con số không đến tích hợp hoạt động trong khoảng 30 phút. Cuối cùng bạn sẽ có:
+
+- giá trực tiếp cho các khách sạn trong một thành phố, từ Partner API,
+- một liên kết đặt phòng ghi nhận các đặt phòng vào tài khoản của bạn,
+- một đặt phòng thử nghiệm, và một webhook thông báo cho bạn khi có đặt phòng.
+
+Mọi thứ đều diễn ra trong **staging**, môi trường thử nghiệm của chúng tôi. Bạn không cần phải xin phép truy cập, và việc chuyển sang môi trường sản xuất sau này cũng không cần phê duyệt.
+
+## Đây có phải là hướng dẫn phù hợp với bạn?
+
+| Bạn muốn… | Bắt đầu tại đây |
+|---|---|
+| Hiển thị khách sạn trong ứng dụng, trang web hoặc sản phẩm AI của bạn và gửi khách du lịch để đặt phòng, kiếm hoa hồng | **Hướng dẫn này** |
+| Đặt phòng thay cho khách hàng của bạn với tư cách đại lý du lịch có giấy phép | Hướng dẫn này đến Bước 5, sau đó [Đặt phòng với tư cách đại lý du lịch](#booking-as-a-travel-agency) |
+| Nhúng khách sạn có thể đặt mà không cần viết tích hợp | [Web Components](/vi/integrations/web-components/) |
+| Cho phép một đại lý AI tìm kiếm và đặt phòng | [MCP Servers](/vi/developers/mcp/) và [Agentic Payments](/vi/developers/agentic-payments/) |
+| Kết nối với channel manager hoặc PMS | [Thêm Channel Manager của bạn](/vi/guides/integrators/add-your-channel-manager/) |
+
+## Cách hoạt động
+
+Bạn sử dụng **Partner API** để tìm khách sạn và giá trực tiếp của chúng. Mỗi khách sạn có một `urlName` ổn định. Bạn biến nó thành một liên kết đến Wink Booking Engine, `book.wink.travel`, mang theo các ID của bạn. Khách du lịch đặt phòng và thanh toán tại đó, và đặt phòng được ghi nhận vào tài khoản của bạn.
+
+## Trước khi bắt đầu
+
+Bạn sẽ cần:
+
+- [`grpcurl`](https://github.com/fullstorydev/grpcurl), hoặc Postman hoặc Insomnia. Partner API dùng gRPC, không phải REST.
+- `curl`.
+
+:::note
+Staging sẽ ngủ khi không có ai sử dụng. Lần gọi đầu tiên sau một thời gian yên tĩnh có thể mất khoảng một phút trong khi các máy chủ khởi động lại.
+:::
+
+## Bước 1: Tạo tài khoản staging
+
+Staging hoàn toàn tách biệt với sản xuất, với đăng nhập và tài khoản riêng.
+
+<Steps>
+1. Truy cập [staging-app.wink.travel](https://staging-app.wink.travel), nhấn `Sign-In / Register` và đăng ký.
+
+2. Nhấn `Accounts` ở thanh bên trái, sau đó `Create`, và chọn **I am an Affiliate**. Các đặt phòng bạn gửi sẽ được ghi nhận vào tài khoản này. Xem [Tạo tài khoản](/vi/portal/create-account/).
+</Steps>
+
+## Bước 2: Tạo ứng dụng
+
+Ứng dụng cung cấp thông tin đăng nhập cho mã của bạn.
+
+<Steps>
+1. Trên thẻ tài khoản của bạn, nhấn `Actions` > `Manage account`, sau đó tab `Applications`.
+
+2. Nhấn `Create new application`, đặt tên và chọn **Machine-to-machine** làm loại client.
+
+3. Ở phần scopes, chọn **Inventory & rates** (đọc). Partner API kiểm tra `inventory.read`.
+
+4. Nhấn `Create application` và sao chép **Client ID** và **Client secret**. Mật khẩu chỉ hiển thị một lần và không thể lấy lại sau.
+</Steps>
+
+Xem [Applications](/vi/account/applications/) để biết các loại client và scope khác.
+
+## Bước 3: Lấy access token
+
+```bash
+curl -X POST https://staging-iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_CLIENT_SECRET>" \
+  -d "scope=inventory.read"
+```
+
+Lưu `access_token` từ phản hồi:
+
+```bash
+export WINK_TOKEN=<access_token>
+```
+
+Token có thời hạn. Trong mã của bạn, hãy để thư viện OAuth2 tự động lấy và làm mới token. Xem [Xác thực](/vi/developers/authentication/).
+
+## Bước 4: Tìm ID tài khoản của bạn
+
+Mỗi lần gọi Partner API đều đặt tên tài khoản bạn đang đại diện trong header `managing-entity-id`. Liệt kê các tài khoản mà token của bạn có thể đại diện:
+
+```bash
+grpcurl -H "authorization: Bearer $WINK_TOKEN" \
+  -d '{}' \
+  staging-partner.wink.travel:443 wink.partner.v1.Accounts/ListAccounts
+```
+
+Sao chép `accountId` của tài khoản affiliate từ Bước 1:
+
+```bash
+export WINK_ACCOUNT_ID=<accountId>
+```
+
+## Bước 5: Tìm khách sạn trong một thành phố
+
+{/* TODO(Yann): xác nhận thành phố staging của khách sạn thử nghiệm có sẵn phòng, và sử dụng ở đây. */}
+
+```bash
+grpcurl -H "authorization: Bearer $WINK_TOKEN" \
+  -H "managing-entity-id: $WINK_ACCOUNT_ID" \
+  -d '{
+    "urlName": "bangkok-thailand",
+    "userSession": {
+      "itinerary": {
+        "startDate": "2026-12-01",
+        "nights": 2,
+        "room": { "adults": 2 }
+      },
+      "currencyCode": "USD",
+      "languageCode": "en"
+    }
+  }' \
+  staging-partner.wink.travel:443 wink.partner.v1.Search/SearchByCity
+```
+
+Dùng ngày nhận phòng trong tương lai; ngày trong quá khứ sẽ bị từ chối. Mỗi kết quả có:
+
+- `name`, `starRating` và `heroImageUrl`, đủ để hiển thị một dòng kết quả,
+- `roomTypes`, các ưu đãi trực tiếp, phòng rẻ nhất trước,
+- `urlName`, slug bạn cần cho liên kết đặt phòng.
+
+Giá là số nguyên tính theo đơn vị nhỏ: chia cho 10 mũ `currencyExponent` từ phản hồi (2 cho USD, nên `12500` là $125.00).
+
+Không biết slug của thành phố? Tra cứu với `wink.partner.v1.Lookup/Search`. Để lấy nội dung đầy đủ của một bất động sản, dùng dịch vụ `Content`. [Tham khảo Partner API](/vi/partner-api/partner/) mô tả mọi lệnh gọi.
+
+## Bước 6: Tạo liên kết đặt phòng
+
+```text
+https://staging-book.wink.travel/hotel/<urlName>?client-id=<YOUR_CLIENT_ID>&configuration-id=<YOUR_CUSTOMIZATION_ID>
+```
+
+- `<urlName>` là `urlName` của khách sạn từ Bước 5.
+- `client-id` là Client ID của ứng dụng bạn từ Bước 2.
+- `configuration-id` là ID tùy chỉnh của bạn: `Manage account` > `Customizations`. Một tùy chỉnh cũng thiết lập thương hiệu, ngôn ngữ mặc định và tiền tệ trên trang đặt phòng.
+
+:::caution
+Phải bao gồm cả hai ID. Nếu không có chúng, trang vẫn tải được nhưng với thương hiệu mặc định, và **đặt phòng sẽ không được ghi nhận cho bạn**. Không bao giờ đặt client secret của bạn vào liên kết.
+:::
+
+Xem [Liên kết trực tiếp](/vi/booking-engine/features/#linking-directly) để liên kết đến trang chủ booking engine thay vì một khách sạn đơn lẻ.
+
+## Bước 7: Thực hiện đặt phòng thử nghiệm
+
+Mở liên kết của bạn, chọn ngày và phòng, và thanh toán với [thẻ thử nghiệm Stripe](https://docs.stripe.com/testing), ví dụ `4242 4242 4242 4242` với ngày hết hạn tương lai và bất kỳ CVC nào. Không có thẻ thật nào bị trừ tiền trong staging. Ghi lại mã đặt phòng trên trang xác nhận; nó bắt đầu bằng `WNK`.
+
+## Bước 8: Nhận thông báo về đặt phòng
+
+<Steps>
+1. Trong Portal, vào `Applications > Webhooks` và thêm một endpoint chấp nhận yêu cầu `POST`.
+
+2. Đăng ký sự kiện `booking.create`, hoặc để trống danh sách sự kiện để nhận tất cả trong quá trình phát triển.
+
+3. Gửi một sự kiện thử nghiệm cho chính bạn, sau đó thực hiện một đặt phòng thử nghiệm khác và theo dõi sự kiện đến.
+</Steps>
+
+Xác minh chữ ký của mỗi lần gửi trước khi tin tưởng. Xem [Tích hợp Webhook](/vi/developers/webhook-integration/) và [Danh mục sự kiện Webhook](/vi/developers/webhook-events/).
+
+## Bước 9: Chuyển sang sản xuất
+
+Không có bước phê duyệt cho nhà phát triển. (Tài khoản đại lý du lịch được chứng nhận trước; xem [phần dưới](#booking-as-a-travel-agency).) Khi tích hợp của bạn hoạt động trong staging:
+
+<Steps>
+1. Tạo tài khoản và ứng dụng tại [app.wink.travel](https://app.wink.travel), như các Bước 1 và 2. Thông tin đăng nhập không được chuyển giữa các môi trường.
+
+2. Bỏ `staging-` khỏi mọi host:
+
+   | Staging | Sản xuất |
+   |---|---|
+   | `https://staging-iam.wink.travel` | `https://iam.wink.travel` |
+   | `staging-partner.wink.travel:443` | `partner.wink.travel:443` |
+   | `https://staging-book.wink.travel` | `https://book.wink.travel` |
+
+3. Tra cứu lại ID tài khoản sản xuất (Bước 4) và ID tùy chỉnh (Bước 6). Chúng khác với staging.
+</Steps>
+
+Việc sử dụng Partner API được tính theo đêm khách sạn, với một hạn mức miễn phí hàng tháng. Xem [Partner API](/vi/integrations/partner-api/) để biết giá và giới hạn.
+
+## Đặt phòng với tư cách đại lý du lịch
+
+Nếu tài khoản của bạn là đại lý du lịch có giấy phép, bạn không cần gửi khách du lịch đến `book.wink.travel`: bạn có thể tạo đặt phòng trực tiếp với `wink.partner.v1.Booking/CreateBooking`, và quản lý chúng với các lệnh gọi `Booking` khác. Các tài khoản khác sẽ gửi khách du lịch đến liên kết đặt phòng.
+
+Tài khoản đại lý du lịch được chứng nhận: Wink xem xét đăng ký của mỗi đại lý trước khi họ có thể đặt phòng. Các đại lý muốn thu tiền trực tiếp từ khách hàng của họ, với tư cách là người bán hàng chính thức, phải đặt phòng qua Partner API và được Wink chấp thuận bằng văn bản. Xem [Bắt đầu với tư cách đại lý du lịch](/vi/guides/travel-agents/getting-started/) và [Tham khảo Partner API](/vi/partner-api/partner/).
+
+## Các bước tiếp theo
+
+- [Tạo client có kiểu](/vi/developers/rest-and-grpc/#generate-a-grpc-client) từ schema `.proto` thay vì gọi `grpcurl` thủ công.
+- Kết nối [MCP server](/vi/developers/mcp/) và sử dụng [AI Skills](/vi/developers/ai-skills/) để trợ lý lập trình của bạn viết tích hợp với API trực tiếp.
+- Đọc danh sách đầy đủ [môi trường và host](/vi/getting-started/environments/).

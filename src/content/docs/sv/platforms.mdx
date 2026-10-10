@@ -28,13 +28,14 @@ import IconSearch from "@tabler/icons/outline/search.svg";
 import IconBuildingBank from "@tabler/icons/outline/building-bank.svg";
 import IconDeviceMobile from "@tabler/icons/outline/device-mobile.svg";
 import IconBriefcase from "@tabler/icons/outline/briefcase.svg";
+import { deliveredWebhookEventCount } from "@/lib/webhook-events";
 
 export const faqs = [
-  { title: "Vem är plattforms-lösningen för?", content: "Alla plattformar som genererar reseavsikt och vill omvandla den till bekräftade, betalda hotellbokningar: AI-assistenter och agenter, LLM:er, sök- och svarsmotorer, banker och fintech, superappar samt företagsrese- eller lojalitetsplattformar. Du tillför efterfrågan; Wink tillhandahåller hotellens lager, bokning, attribuering, betalning och avräkningsinfrastruktur bakom det." },
-  { title: "Återförsäljer Wink lager som en bedbank eller OTA?", content: "Nej. Wink äger inte något lager. Hotellen kontrollerar sitt utbud, priser, tillgänglighet, kampanjer och provisioner. Din plattform transagerar direkt mot hotellkontrollerat utbud via Wink — hotellet behåller kontrollen och gästrelationen, och du undviker OTA-återförsäljningsmarginaler." },
-  { title: "Hur integrerar en plattform med Wink?", content: "Genom en integration: ett REST API (OAuth2, SDK:er) för lagersökning, tillgänglighet, bokning, betalning, attribuering och webhooks, plus en hostad MCP-server så att AI-agenter och kodklienter kan läsa live-kontrakten. Booking Engine fullföljer transaktionen under ytan, samlar in betalning för hotellet som förblir registrerad som handlare. API:et är öppet — skapa OAuth2-uppgifter och börja bygga." },
-  { title: "Hur tjänar min plattform pengar?", content: "När din plattform genererar en bokning kan du tjäna upp till 10 % i provision. Winks plattformsavgift på 1,5 % och bokningens kortavgift dras först, sedan beräknas provisionen på resten, så den totala kostnaden för hotellet för en plattformsdriven bokning är cirka 15 %, förutsatt en kortavgift på 4,0 % — jämfört med 15–25 % hos OTA:erna. Efterfrågekällan belönas och hotellet behåller kontrollen. Se sidan Prissättning för detaljer." },
-  { title: "Kan AI-agenter och LLM:er transagera, inte bara rekommendera?", content: "Ja. En agent kan söka i live hotellägt utbud, skapa en bokning och ta emot betalning i ett flöde via REST API och hostad MCP-server — inte bara hänvisa resenären till en webbplats. Se sidan Agentic AI för hur agenter upptäcker, bokar och betalar." },
+  { title: "Vem är plattforms-lösningen för?", content: "Alla plattformar som genererar reseavsikt och vill omvandla den till bekräftade, betalda hotellbokningar: AI-assistenter och agenter, LLM:er, sök- och svarsmotorer, banker och fintech, superappar samt affärsrese- eller lojalitetsplattformar. Du tillför efterfrågan; Wink tillhandahåller hotellens lager, bokning, attribuering, betalning och avräkningsinfrastruktur bakom det." },
+  { title: "Återförsäljer Wink lager som en bedbank eller OTA?", content: "Nej. Hotellet kontrollerar sina egna priser och Wink förmedlar dem oförändrade — ingen nettopris-återförsäljning, inget påslag. Wink äger inte lagret. Hotellen styr sin tillgång, priser, tillgänglighet, kampanjer och provisioner. Din plattform transagerar direkt mot hotellkontrollerad tillgång via Wink — hotellet behåller kontrollen och gästrelationen, och du undviker OTA-återförsäljningsmarginaler." },
+  { title: "Hur integrerar en plattform med Wink?", content: "Genom en integration: ett REST API (OAuth2, SDK:er) för lagersökning, tillgänglighet, bokning, betalning, attribuering och webhooks, plus en hostad MCP-server så att AI-agenter och kodklienter kan läsa live-kontrakt. Booking Engine fullföljer transaktionen under ytan, samlar in betalning för hotellet som förblir registrerad handlare. API:et är öppet — skapa OAuth2-uppgifter och börja bygga." },
+  { title: "Hur tjänar min plattform pengar?", content: "När din plattform driver en bokning kan du tjäna upp till 10 % i provision. Winks plattformsavgift på 1,5 % och bokningens kortavgift dras först, sedan beräknas provisionen på resten, så den totala kostnaden för hotellet för en plattformsdriven bokning är cirka 15 %, förutsatt en kortavgift på 4,0 % — jämfört med 15–25 % hos OTA:erna. Efterfrågekällan belönas och hotellet behåller kontrollen. Se prissättningssidan för detaljerad uträkning." },
+  { title: "Kan AI-agenter och LLM:er transagera, inte bara rekommendera?", content: "Ja. En agent kan söka i live-hotellägd tillgång, skapa en bokning och ta emot betalning i ett flöde via REST API och hostad MCP-server — inte bara skicka resenären vidare till en webbplats. Se sidan Agentic AI för hur agenter upptäcker, bokar och betalar." },
 ];
 
 <div class="not-content mkt-page">
@@ -65,14 +66,14 @@ export const faqs = [
         <h1 class="font-heading mt-6 text-4xl font-extrabold leading-[1.05] tracking-tight text-balance @lg:text-5xl @2xl:text-[3.25rem]">
           Transaktionslagret bakom din <span class="bg-gradient-to-r from-[#ff8a5c] via-[#ec4899] to-[#a855f7] bg-clip-text text-transparent">reseupplevelse.</span>
         </h1>
-        <p class="mt-5 max-w-xl text-pretty text-lg text-white/75 @lg:text-xl">AI-assistenter, LLM:er, agenter, banker, superappar och plattformar genererar avsikten. Wink är hotellens lager, bokning, attribuering, betalning och avräkning som du kopplar in dig på — en integration, hotellkontrollerat utbud, dina användare bokar direkt.</p>
+        <p class="mt-5 max-w-xl text-pretty text-lg text-white/75 @lg:text-xl">AI-assistenter, LLM:er, agenter, banker, superappar och plattformar skapar avsikten. Wink är hotellens lager, bokning, attribuering, betalning och avräkning som du kopplar in dig på — en integration, hotellkontrollerad tillgång, dina användare bokar direkt.</p>
         <div class="mt-8 flex flex-col gap-3 sm:flex-row">
-          <a href="/api/overview/" class="inline-flex h-12 items-center justify-center rounded-md bg-[#ff6b35] px-7 text-base font-semibold text-white transition-colors hover:bg-[#e85b29]">Kom igång</a>
+          <a href="/developers/quickstart/" class="inline-flex h-12 items-center justify-center rounded-md bg-[#ff6b35] px-7 text-base font-semibold text-white transition-colors hover:bg-[#e85b29]">Kom igång</a>
           <a href="/builders/" class="inline-flex h-12 items-center justify-center rounded-md bg-white/10 px-7 text-base font-medium text-white ring-1 ring-white/20 backdrop-blur transition-colors hover:bg-white/15">För utvecklare</a>
         </div>
         <div class="mt-7 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-white/65">
           <span class="inline-flex items-center gap-1.5"><IconCheck class="size-4 text-[#ff8a5c]" /> En integration</span>
-          <span class="inline-flex items-center gap-1.5"><IconCheck class="size-4 text-[#ff8a5c]" /> Hotellkontrollerat utbud</span>
+          <span class="inline-flex items-center gap-1.5"><IconCheck class="size-4 text-[#ff8a5c]" /> Hotellkontrollerad tillgång</span>
           <span class="inline-flex items-center gap-1.5"><IconCheck class="size-4 text-[#ff8a5c]" /> Avräkning &amp; utbetalningar hanteras</span>
         </div>
       </div>
@@ -98,18 +99,18 @@ export const faqs = [
     <div class="mx-auto mb-14 max-w-2xl text-center">
       <p class="mkt-kicker text-[#ff8a5c]">Handelsinfrastruktur</p>
       <h2 class="mkt-h2 font-heading mt-3">Allt mellan avsikt och en bekräftad, betald vistelse.</h2>
-      <p class="mkt-sub mx-auto mt-4 max-w-xl text-white/70">Anslut en gång via REST eller den hostade MCP-servern. Wink tillhandahåller hela transaktionslagret för hotellkontrollerat utbud.</p>
+      <p class="mkt-sub mx-auto mt-4 max-w-xl text-white/70">Anslut en gång via REST eller den hostade MCP-servern. Wink tillhandahåller hela transaktionslagret för hotellkontrollerad tillgång.</p>
     </div>
     <div class="grid gap-4 @md:grid-cols-2 @2xl:grid-cols-4">
       {[
-        { icon: IconBuildingStore, n: "01", title: "Tillgång till lager", desc: "Hotellkontrollerat utbud via 11 anslutna channel managers — inte webbscrapade eller återförsäljda." },
-        { icon: IconCalendarStats, n: "02", title: "Live tillgänglighet & priser", desc: "Realtidstillgänglighet, priser och lager, inklusive geolokaliserad rumsökning." },
-        { icon: IconCalendarCheck, n: "03", title: "Bokning & livscykel", desc: "Skapa bokningar och synkronisera skapa / uppdatera / avboka till PMS eller channel manager." },
+        { icon: IconBuildingStore, n: "01", title: "Tillgång till lager", desc: "Hotellkontrollerad tillgång via 11 anslutna channel managers — inte webbscrapad eller återförsedd." },
+        { icon: IconCalendarStats, n: "02", title: "Live-tillgänglighet & priser", desc: "Realtidstillgänglighet, priser och lager, inklusive geolokaliserad rumsökning." },
+        { icon: IconCalendarCheck, n: "03", title: "Bokning & livscykel", desc: "Skapa bokningar och synkronisera skapande och avbokning till PMS eller channel manager." },
         { icon: IconTargetArrow, n: "04", title: "Attribuering", desc: "Källa och kampanjkontext bevaras — 6-månaders per-klick attribuering avgör vem som får kredit." },
-        { icon: IconCreditCard, n: "05", title: "Betalningar", desc: "Wink hanterar checkout, avbokningspolicylogik och betalning — insamlad för hotellet som förblir registrerad som handlare." },
-        { icon: IconWallet, n: "06", title: "Avräkning & utbetalningar", desc: "Provisionshantering, utbetalningar och tvärpartsavräkning hanteras via en plattform." },
-        { icon: IconRefresh, n: "07", title: "Fullgörande & service", desc: "Bekräftelse, bokningssynk och 64+ webhook-händelser för efterbokningsservice och avstämning." },
-        { icon: IconCode, n: "08", title: "REST API + MCP-server", desc: "OAuth2, officiella SDK:er och en hostad MCP-server så att agenter och kodklienter kan läsa live-kontrakt." },
+        { icon: IconCreditCard, n: "05", title: "Betalningar", desc: "Wink hanterar checkout, avbokningspolicylogik och betalning — insamlad för hotellet som förblir registrerad handlare." },
+        { icon: IconWallet, n: "06", title: "Avräkning & utbetalningar", desc: "Provisionshantering, utbetalningar och avräkning mellan parter hanteras via en plattform." },
+        { icon: IconRefresh, n: "07", title: "Fullföljande & service", desc: `Bekräftelse, bokningssynk och ${deliveredWebhookEventCount} webhook-händelser för efterbokningsservice och avstämning.` },
+        { icon: IconCode, n: "08", title: "REST API + MCP-server", desc: "OAuth2, genererade klienter från schemat, och en hostad MCP-server så att agenter och kodklienter kan läsa live-kontrakt." },
       ].map((c) => (
         <div class="flex flex-col rounded-2xl border border-white/10 bg-white/[0.04] p-6 backdrop-blur transition-colors hover:border-[#ff6b35]/40">
           <div class="flex items-center justify-between">
@@ -137,7 +138,7 @@ export const faqs = [
       { icon: IconSearch, title: "Sök- & svarsmotorer", desc: "Ytor som svarar på resefrågor och vill att svaret ska konvertera till en bekräftad bokning.", accent: "#06b6d4" },
       { icon: IconBuildingBank, title: "Banker & fintech", desc: "Lägg till hotellhandel och belöningsdriven resa till en befintlig kundbas.", accent: "#10b981" },
       { icon: IconDeviceMobile, title: "Superappar", desc: "Integrera bokningsbart hotellager i en vardagsapp utan att bli ett reseföretag.", accent: "#ec4899" },
-      { icon: IconBriefcase, title: "Företagsresor & lojalitet", desc: "Program och plattformar som styr efterfrågan till kontrollerade, attribuerade bokningsflöden.", accent: "#f59e0b" },
+      { icon: IconBriefcase, title: "Affärsresor & lojalitet", desc: "Program och plattformar som styr efterfrågan in i kontrollerade, attribuerade bokningsflöden.", accent: "#f59e0b" },
     ].map((c) => (
       <div class="flex flex-col overflow-hidden rounded-2xl border border-border bg-card p-6 transition-transform hover:-translate-y-1" style={`border-top:3px solid ${c.accent}`}>
         <span class="mb-4 flex size-11 items-center justify-center rounded-xl text-white" style={`background-color:${c.accent}`}><c.icon class="size-6" /></span>
@@ -158,13 +159,13 @@ export const faqs = [
     <div class="mx-auto mb-12 max-w-2xl text-center">
       <p class="text-xs font-semibold uppercase tracking-wider text-white/70">Ekonomin</p>
       <h2 class="mkt-h2 font-heading mt-3">Hotellkontrollerat. Du tjänar på det du skickar.</h2>
-      <p class="mkt-sub mx-auto mt-4 max-w-2xl text-white/85">Hotellen kontrollerar utbud, prissättning, kampanjer och provisioner. När din plattform genererar en bokning kan du tjäna upp till 10 % i provision — en total kostnad för hotellet på cirka 15 %, förutsatt en kortavgift på 4,0 %, jämfört med 15–25 % hos OTA:erna. Efterfrågekällan belönas; hotellet behåller kontrollen och gästen.</p>
+      <p class="mkt-sub mx-auto mt-4 max-w-2xl text-white/85">Hotellen styr tillgång, prissättning, kampanjer och provisioner. När din plattform driver en bokning kan du tjäna upp till 10 % i provision — en total kostnad för hotellet på cirka 15 %, förutsatt en kortavgift på 4,0 %, jämfört med 15–25 % hos OTA:erna. Efterfrågekällan belönas; hotellet behåller kontrollen och gästen.</p>
     </div>
     <div class="grid gap-5 @md:grid-cols-3">
       {[
-        { stat: "Hotellägt", label: "Utbud, prissättning och kampanjer — inte återförsäljda" },
+        { stat: "Hotellägt", label: "Tillgång, prissättning och kampanjer — inte återförsäljning" },
         { stat: "Upp till 10%", label: "Provision till den efterfrågekälla du tillför" },
-        { stat: "~15%", label: "Plattformsdriven kostnad med 4,0 % kortavgift, vs 15–25 % hos OTA:erna" },
+        { stat: "Ca 15%", label: "Plattformsdriven kostnad med 4,0 % kortavgift, vs 15–25 % hos OTA:erna" },
       ].map((s) => (
         <div class="rounded-2xl border border-white/20 bg-white/10 p-8 text-center backdrop-blur">
           <p class="font-heading text-3xl font-semibold text-white @lg:text-4xl">{s.stat}</p>
@@ -194,7 +195,7 @@ export const faqs = [
     <div class="rounded-2xl border border-border bg-muted/30 p-7">
       <h3 class="font-heading text-lg font-semibold text-muted-foreground">OTA / bedbank-API:er</h3>
       <ul class="mt-5 space-y-3">
-        {["Återförsäljt lager, inte hotellkontrollerat", "Ingen kontroll över prissättning eller gäst", "15–25 % kostnad", "Du äger inte relationen"].map((b) => (
+        {["Återförsedd tillgång, inte hotellkontrollerad", "Ingen kontroll över prissättning eller gäst", "15–25 % kostnad", "Du äger inte relationen"].map((b) => (
           <li class="flex items-start gap-2.5"><IconX class="mt-0.5 size-5 shrink-0 text-muted-foreground/60" /><span class="text-sm text-muted-foreground">{b}</span></li>
         ))}
       </ul>
@@ -203,7 +204,7 @@ export const faqs = [
     <div class="rounded-2xl border-2 border-primary/30 bg-primary/[0.04] p-7">
       <h3 class="font-heading text-lg font-semibold text-primary">Wink</h3>
       <ul class="mt-5 space-y-3">
-        {["En integration, live idag", "Hotellägt, kontrollerat utbud", "Cirka 15 % totalt — och du tjänar", "Hotellet behåller kontroll och gäst"].map((b) => (
+        {["En integration, live idag", "Hotellägt, kontrollerat lager", "Cirka 15 % totalt — och du tjänar", "Hotellet behåller kontroll och gäst"].map((b) => (
           <li class="flex items-start gap-2.5"><IconCheck class="mt-0.5 size-5 shrink-0 text-primary" /><span class="text-sm text-foreground/90">{b}</span></li>
         ))}
       </ul>
@@ -239,9 +240,9 @@ export const faqs = [
   </div>
   <div class="relative mx-auto w-full max-w-3xl px-4 py-24 text-center">
     <h2 class="mkt-h2 font-heading">Bygg in resehandel i din plattform.</h2>
-    <p class="mkt-sub mx-auto mt-5 max-w-xl text-white/70">Du tillför avsikten. Wink hanterar bokning, betalning och avräkning — en integration, hotellkontrollerat utbud.</p>
+    <p class="mkt-sub mx-auto mt-5 max-w-xl text-white/70">Du tillför avsikten. Wink hanterar bokning, betalning och avräkning — en integration, hotellkontrollerad tillgång.</p>
     <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
-      <a href="/api/overview/" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-[#ff6b35] px-8 text-base font-semibold text-white hover:bg-[#e85b29] sm:w-auto">Kom igång</a>
+      <a href="/developers/quickstart/" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-[#ff6b35] px-8 text-base font-semibold text-white hover:bg-[#e85b29] sm:w-auto">Kom igång</a>
       <a href="/builders/" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-white px-8 text-base font-semibold text-[#1f0a40] hover:bg-white/90 sm:w-auto">För utvecklare</a>
     </div>
   </div>

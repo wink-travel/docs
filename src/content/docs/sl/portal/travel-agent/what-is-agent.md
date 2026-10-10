@@ -5,11 +5,11 @@ sidebar:
   order: 0
 ---
 
-Naša rešitev za registrirane potovalne agente je [Wink Agent](https://agent.wink.travel). To je samopostrežni portal, ki ga agenti lahko uporabljajo za iskanje in rezervacijo v imenu svojih strank ter si ob vsaki rezervaciji prislužijo provizijo.
+Registrirani potovalni agenti uporabljajo isti portal kot vsi ostali, na [app.wink.travel](https://app.wink.travel), z računom Travel Agent. Agenti iščejo in rezervirajo v imenu svojih strank ter zaslužijo provizijo za vsako rezervacijo. Za nastavitev sledite [Začetku kot potovalna agencija](/sl/guides/travel-agents/getting-started/).
 
-Naprednejši potovalni agenti se lahko odločijo za integracijo na ravni API za upravljanje plačil in izplačil zunaj platforme Wink.
+Agencije, ki so odobrene za samostojno pobiranje plačil, delujejo kot trgovec v imenu in urejajo plačila zunaj platforme Wink. Agencije z lastnimi sistemi se lahko povežejo preko [Partner API](/sl/integrations/partner-api/).
 
-Potovalni agenti imajo podmnožico istih funkcij portala kot [Studio](/sl/portal/studio/what-is-studio), zato jih tukaj ne bomo znova obravnavali.
+Potovalni agenti imajo podmnožico istih funkcij portala kot [Studio](/sl/portal/studio/what-is-studio), zato jih tukaj ne bomo ponovno obravnavali.
 
 ## Iskanje
 
@@ -19,4 +19,4 @@ V nasprotnem primeru nadaljujte na naslednji razdelek.
 
 ## API
 
-Razvijalci, ki želijo upravljati `Travel Agent`, lahko obiščejo [Developers > API > Travel Agent](/sl/api/overview/).
+Agencije lahko iščejo in rezervirajo preko [Partner API](/sl/partner-api/partner/), ki nadomešča starejše REST končne točke za potovalne agente.

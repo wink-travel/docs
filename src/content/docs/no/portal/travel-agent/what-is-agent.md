@@ -5,18 +5,18 @@ sidebar:
   order: 0
 ---
 
-Vår løsning for registrerte reisebyråer er [Wink Agent](https://agent.wink.travel). Det er en selvbetjent portal som agenter kan bruke for å søke og booke på vegne av kundene sine, og tjene provisjon på hver booking.
+Registrerte reisebyråer bruker samme portal som alle andre, på [app.wink.travel](https://app.wink.travel), med en Reisebyrå-konto. Agenter søker og bestiller på vegne av kundene sine og tjener provisjon på hver bestilling. For å opprette en konto, følg [Kom i gang som reisebyrå](/no/guides/travel-agents/getting-started/).
 
-Mer avanserte reisebyråer kan velge å integrere på API-nivå for å håndtere betaling og utbetalinger utenfor Wink-plattformen.
+Byråer som er godkjent til å innkreve betaling selv, fungerer som merchant of record og håndterer betaling utenfor Wink-plattformen. Byråer med egne systemer kan integrere gjennom [Partner API](/no/integrations/partner-api/).
 
 Reisebyråer har et delsett av de samme portalfunksjonene som [Studio](/no/portal/studio/what-is-studio), så vi vil ikke dekke dem på nytt her.
 
 ## Søk
 
-Gå til [Search](/no/portal/studio/search) for å lære hvordan du søker etter og booker hoteller.
+Gå til [Søk](/no/portal/studio/search) for å lære hvordan du søker etter og bestiller hoteller.
 
-Ellers kan du fortsette til neste seksjon.
+Ellers, fortsett til neste seksjon.
 
 ## API
 
-Utviklere som ønsker å administrere `Travel Agent` kan gå til [Developers > API > Travel Agent](/no/api/overview/).
+Byråer kan søke og bestille gjennom [Partner API](/no/partner-api/partner/), som erstatter de eldre Travel Agent REST-endepunktene.

@@ -14,7 +14,7 @@ Pilih penyedia tarif Anda dari daftar dropdown dan klik tombol `Save`. Ini akan 
 
 ### SynXis
 
-Jika properti Anda menggunakan channel manager SynXis, ada satu langkah lagi yang diperlukan sebelum Anda siap terhubung dengan Wink.
+Jika properti Anda menggunakan Sabre SynXis, ada satu langkah lagi yang diperlukan sebelum Anda siap terhubung dengan Wink.
 
 - Silakan hubungi perwakilan akun SynXis Anda atau layanan pelanggan (SHSCustomerCare@sabre.com).
 - Beri tahu mereka bahwa Anda ingin terhubung ke Wink melalui Channel Connect Express (***CCX***).

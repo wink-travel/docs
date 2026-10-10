@@ -8,9 +8,11 @@ sidebar:
 Di Wink, kami menjalankan 2 lingkungan untuk semua yang kami lakukan setiap saat:
 
 - Production adalah lingkungan stabil kami.
-- Staging adalah lingkungan sertifikasi dan pengujian kami.
+- Staging adalah lingkungan pengujian kami, dan tempat channel manager serta agen perjalanan disertifikasi.
 
-Jika Anda adalah integrator, hotel, atau agen perjalanan yang ingin mempersiapkan sertifikasi atau menguji platform Wink, buat akun di lingkungan staging kami untuk memulai.
+Jika Anda ingin menguji platform Wink, sebagai pengembang, hotel, atau agen perjalanan, buat akun di lingkungan staging kami untuk memulai. Channel manager juga menjalankan [sertifikasi](/id/guides/integrators/add-your-channel-manager/#certification) di sana.
+
+Membuat akun di staging atau production mengharuskan menerima Ketentuan dan Ketentuan Pembayaran Wink, dan penerimaan tersebut bersifat mengikat. Channel manager dan agen perjalanan juga memerlukan sertifikasi sebelum akses production; semua orang lain pindah ke production secara mandiri.
 
 :::note
 Lingkungan staging tersedia berdasarkan permintaan. Artinya, lingkungan ini akan tidur jika tidak ada penggunaan dan akan menyala kembali saat ada penggunaan. Harap bersabar jika Anda sedang membangunkannya. Dibutuhkan sekitar satu menit untuk memulai semua server setelah Anda pertama kali terhubung dengan salah satu server atau aplikasi kami.
