@@ -274,7 +274,7 @@ export default defineConfig({
           { label: 'Payment', collapsed: true, items: [{ autogenerate: { directory: 'portal/payment' } }] },
           { label: 'Settings', collapsed: true, items: [{ autogenerate: { directory: 'portal/settings' } }] },
           { label: 'Social', collapsed: true, items: [{ autogenerate: { directory: 'portal/social' } }] },
-          { label: 'Studio', collapsed: true, items: [{ autogenerate: { directory: 'portal/studio' } }] },
+          { label: 'Marketing', collapsed: true, items: [{ autogenerate: { directory: 'portal/studio' } }] },
           { label: 'Travel Agent', collapsed: true, items: [{ autogenerate: { directory: 'portal/travel-agent' } }] },
         ],
       },

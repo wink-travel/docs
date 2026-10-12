@@ -9,7 +9,7 @@ Registered travel agents use the same portal as everyone else, at [app.wink.trav
 
 Agencies approved to collect payment themselves act as merchant of record and handle payment outside the Wink platform. Agencies with their own systems can integrate through the [Partner API](/integrations/partner-api/).
 
-Travel agents have a subset of the same portal features as [Studio](/portal/studio/what-is-studio) so we won't cover them again here.
+Travel agents have a subset of the same portal features as [Marketing](/portal/studio/what-is-studio) so we won't cover them again here.
 
 ## Search
 
