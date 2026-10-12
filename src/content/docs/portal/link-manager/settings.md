@@ -5,9 +5,9 @@ sidebar:
   order: 4
 ---
 
-To manage your WinkLinks settings, navigate to `Link manager > Design` in the main nav bar.
+To manage your WinkLinks settings, navigate to `Link manager > Settings` in the main nav bar.
 
-Here are the ways you can configure your WinkLinks behavior with `Design`:
+Here are the ways you can configure your WinkLinks behavior with `Settings`:
 
 - **Intelligent** By enabling intelligence, we try to retrieve the `rich` content available from sites like, `Wink`, `Spotify`, `Instagram`, `Facebook`, `YouTube`, `X (formerly Twitter)` and others. *e.g. If you share an IG post on WinkLinks, the post will be displayed as you see it on IG, with likes, comments and a way to interact with the post.*
 - **Initial display** Control how your audience first interacts with your site and sees your content. There are three options available to you:
