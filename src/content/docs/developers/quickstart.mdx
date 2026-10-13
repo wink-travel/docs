@@ -85,6 +85,16 @@ export WINK_TOKEN=<access_token>
 
 Tokens expire. In your own code, let an OAuth2 library fetch and refresh them. See [Authentication](/developers/authentication/).
 
+:::note[If the token request fails]
+- **Use staging credentials.** The application must come from [staging-app.wink.travel](https://staging-app.wink.travel). Production credentials don't work on `staging-iam`, and staging credentials don't work in production.
+- **Ask only for scopes the application has.** The application must be saved with **Inventory & rates** (read), and the request must ask for `scope=inventory.read`, spelled exactly. A scope the application isn't registered for fails at token issuance.
+- **Send a form, not JSON.** The body is `application/x-www-form-urlencoded`, as in the example above.
+- **Give staging a minute.** The first call after a quiet spell can take about a minute while staging wakes up. If it times out, retry.
+
+Never send your client secret to anyone, including Wink support. If you think it has been exposed, [rotate it](/account/applications/#rotate-credentials).
+:::
+{/* TODO(yann): add the HTTP status and OAuth error code staging-iam returns for each case (invalid_client, invalid_scope, unauthorized_client), confirmed by Bjorn. */}
+
 ## Step 4: Find your account ID
 
 Every Partner API call names the account you are acting for in a `managing-entity-id` header. List the accounts your token can act for:
@@ -146,6 +156,27 @@ https://staging-book.wink.travel/hotel/<urlName>?client-id=<YOUR_CLIENT_ID>&conf
 :::caution
 Include both IDs. Without them the page still loads, but with default branding, and **the booking is not credited to you**. Never put your client secret in a link.
 :::
+
+### Pass the traveller's search
+
+Add the traveller's dates, guests, language and currency to the same link so the hotel page opens with them filled in:
+
+```text
+https://staging-book.wink.travel/hotel/<urlName>?client-id=<YOUR_CLIENT_ID>&configuration-id=<YOUR_CUSTOMIZATION_ID>&sd=2027-03-14&n=2&rc=a2&l=en&c=USD
+```
+
+| Parameter | Meaning | Example |
+|---|---|---|
+| `sd` | Check-in date | `sd=2027-03-14` |
+| `n` or `ed` | Number of nights, or check-out date | `n=2` or `ed=2027-03-16` |
+| `rc` | Guests per room | `rc=a2` (2 adults) |
+| `l` | Display language | `l=en` |
+| `c` | Display currency | `c=USD` |
+| `p` | Promotion code | `p=ABC123` |
+
+These parameters override the defaults set in your customization. The [Book Now button guide](/guides/hoteliers/the-book-now-button/#advanced) covers the full `rc` format, including children and several rooms.
+
+The link opens the hotel page; it can't pre-select a room or a rate. The traveller picks the room on the hotel page, at the live price.
 
 See [Linking directly](/booking-engine/features/#linking-directly) for linking to the booking engine home page instead of a single hotel.
 

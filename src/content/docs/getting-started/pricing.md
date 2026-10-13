@@ -72,7 +72,7 @@ For partners who send bookings: creators, affiliates, platforms, developers and 
 | Setup fee | None | None |
 | Subscription or monthly fee | None | None |
 | Minimum commitment or term | None | None. A credit limit applies. |
-| Partner API access | 10,000 hotel-nights a month free, then $0.0001 per hotel-night. Pay-as-you-go is off by default; at the free allowance, calls return `429`. | Same |
+| Partner API access | 10,000 hotel-nights a month free, then $0.0001 per hotel-night. Pay-as-you-go is off by default; at the free allowance, calls fail with the gRPC status `RESOURCE_EXHAUSTED`. | Same |
 | Transaction fee | None. You earn commission (10% default). | 1.5% Booking Fee on booking value, invoiced monthly in USD, due within 15 days. With pay-as-you-go on, Partner API usage comes on a second monthly invoice. |
 | Support fee | None | None |
 | Other charges | Payout transfer fees, at cost | Possible prepayment or deposit at approval. Interest of 1.5% a month on overdue invoices only. |
@@ -120,7 +120,7 @@ To go beyond the allowance, the **owner** of an account enables pay-as-you-go an
 Once enabled, your usage is metered but **never throttled** — you won't hit a rate limit for spending money with us.
 
 :::note[If you don't enable it]
-Nothing breaks and nothing is charged. You simply stop at the free allowance for that month: generated posts won't publish and Partner API calls return a `429` until the allowance resets.
+Nothing breaks and nothing is charged. You simply stop at the free allowance for that month: generated posts won't publish and Partner API calls fail with the gRPC status `RESOURCE_EXHAUSTED` until the allowance resets.
 :::
 
 ### Billing status
