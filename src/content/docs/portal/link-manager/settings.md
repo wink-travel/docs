@@ -2,7 +2,7 @@
 title: Settings
 description: In this article, we tell you how you can customize your WinkLinks page using the features available to you under settings.
 sidebar:
-  order: 4
+  order: 5
 ---
 
 To manage your WinkLinks settings, navigate to `Link manager > Settings` in the main nav bar.
