@@ -158,8 +158,8 @@ const BANNED: Rule[] = [
   {
     // The Partner API is gRPC: the monthly quota stop is the status
     // RESOURCE_EXHAUSTED in the trailers, never an HTTP 429 (Bjorn, Oct 2026).
-    pattern: /\bHTTP 429\b|`429`|\b429 until\b/,
-    files: /integrations\/partner-api|getting-started\/pricing|developers\/quickstart|llms\.txt/,
+    pattern: /\b429\b/,
+    files: /integrations\/partner-api|getting-started\/pricing|developers\/quickstart|schemas\/partner\.json|llms\.txt/,
     reason:
       "The Partner API is gRPC. At the monthly allowance calls fail with the gRPC status `RESOURCE_EXHAUSTED` (trailers: retry-after, x-ratelimit-*), not HTTP 429.",
   },
