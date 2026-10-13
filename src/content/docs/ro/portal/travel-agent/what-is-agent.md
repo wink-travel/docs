@@ -9,11 +9,11 @@ Agenții de turism înregistrați folosesc același portal ca toată lumea, la [
 
 Agențiile aprobate să colecteze plata direct acționează ca comerciant înregistrat și gestionează plata în afara platformei Wink. Agențiile cu propriile sisteme pot integra prin [Partner API](/ro/integrations/partner-api/).
 
-Agenții de turism au un subset din aceleași funcționalități ale portalului ca [Studio](/ro/portal/studio/what-is-studio), așa că nu le vom acoperi din nou aici.
+Agenții de turism au un subset din aceleași funcționalități ale portalului ca [Studio](/ro/portal/marketing/what-is-marketing), așa că nu le vom acoperi din nou aici.
 
 ## Căutare
 
-Accesați [Căutare](/ro/portal/studio/search) pentru a învăța cum să căutați și să rezervați hoteluri.
+Accesați [Căutare](/ro/portal/marketing/browse-hotels) pentru a învăța cum să căutați și să rezervați hoteluri.
 
 Altfel, continuați la secțiunea următoare.
 

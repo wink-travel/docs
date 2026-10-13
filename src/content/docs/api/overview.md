@@ -44,7 +44,7 @@ Not every integrator needs every API, so endpoints are grouped by **audience** i
 - **Consumer** — for developers who consume the platform: look up inventory, drive checkout and
   booking, the customization engine, and an agent-facilitated travel-agent surface.
 - **Affiliate** — for resellers and content creators: browse and curate inventory (lists, maps,
-  grids), manage sales channels, and run WinkLinks pages.
+  grids), manage sales channels, and run Link manager pages.
 - **Account** — account self-management for a managing entity: payment and payout accounts, the
   ledger and withdrawals, managers, applications, webhooks, features, and customization.
 - **Partner** — for technology partners that integrate at the infrastructure layer (channel managers

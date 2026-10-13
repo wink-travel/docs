@@ -9,11 +9,11 @@ sidebar:
 
 결제를 직접 수집하도록 승인된 여행사는 상인 기록자로서 Wink 플랫폼 외부에서 결제를 처리합니다. 자체 시스템이 있는 여행사는 [Partner API](/ko/integrations/partner-api/)를 통해 통합할 수 있습니다.
 
-여행사는 [Studio](/ko/portal/studio/what-is-studio)와 동일한 포털 기능의 일부만 사용할 수 있으므로 여기서는 다시 다루지 않습니다.
+여행사는 [Studio](/ko/portal/marketing/what-is-marketing)와 동일한 포털 기능의 일부만 사용할 수 있으므로 여기서는 다시 다루지 않습니다.
 
 ## 검색
 
-호텔 검색 및 예약 방법은 [검색](/ko/portal/studio/search)에서 확인하세요.
+호텔 검색 및 예약 방법은 [검색](/ko/portal/marketing/browse-hotels)에서 확인하세요.
 
 그렇지 않으면 다음 섹션으로 계속 진행하세요.
 

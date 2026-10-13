@@ -9,11 +9,11 @@ Reģistrētie ceļojumu aģenti izmanto to pašu portālu kā visi pārējie, pi
 
 Aģentūras, kuras ir apstiprinātas pašas veikt maksājumus, darbojas kā tirgotājs un apstrādā maksājumus ārpus Wink platformas. Aģentūras ar savām sistēmām var integrēties caur [Partner API](/lv/integrations/partner-api/).
 
-Ceļojumu aģentiem ir pieejama daļa no tādām pašām portāla funkcijām kā [Studio](/lv/portal/studio/what-is-studio), tāpēc šeit tās netiks atkārtoti aprakstītas.
+Ceļojumu aģentiem ir pieejama daļa no tādām pašām portāla funkcijām kā [Studio](/lv/portal/marketing/what-is-marketing), tāpēc šeit tās netiks atkārtoti aprakstītas.
 
 ## Meklēšana
 
-Dodieties uz [Meklēšana](/lv/portal/studio/search), lai uzzinātu, kā meklēt un rezervēt viesnīcas.
+Dodieties uz [Meklēšana](/lv/portal/marketing/browse-hotels), lai uzzinātu, kā meklēt un rezervēt viesnīcas.
 
 Citādi turpiniet uz nākamo sadaļu.
 

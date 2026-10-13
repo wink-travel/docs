@@ -17,7 +17,7 @@ A márkáknak és láncoknak kissé eltérő igényeik vannak egyetlen szállás
 
 - Több szálláshelyet kezelni egyetlen fiók alatt.
 - Menedzsereket kijelölni a szálláshelyekhez
-- Használni a [WinkLinks](/hu/portal/link-manager/wink-links), [WordPress](/hu/integrations/wordpress) és a [Web Components](/hu/integrations/web-components) eszközeinket, hogy több szálláshelyet egy helyen marketingeljenek és értékesítsenek.
+- Használni a [WinkLinks](/hu/portal/link-manager/what-is-link-manager), [WordPress](/hu/integrations/wordpress) és a [Web Components](/hu/integrations/web-components) eszközeinket, hogy több szálláshelyet egy helyen marketingeljenek és értékesítsenek.
 
 ## Menedzsment cégek
 

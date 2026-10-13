@@ -9,11 +9,11 @@ Zarejestrowani agenci turystyczni korzystają z tego samego portalu co wszyscy i
 
 Agencje zatwierdzone do samodzielnego pobierania płatności działają jako merchant of record i obsługują płatności poza platformą Wink. Agencje posiadające własne systemy mogą integrować się za pomocą [Partner API](/pl/integrations/partner-api/).
 
-Agenci turystyczni mają podzbiór tych samych funkcji portalu co [Studio](/pl/portal/studio/what-is-studio), dlatego nie będziemy ich tu ponownie omawiać.
+Agenci turystyczni mają podzbiór tych samych funkcji portalu co [Studio](/pl/portal/marketing/what-is-marketing), dlatego nie będziemy ich tu ponownie omawiać.
 
 ## Wyszukiwanie
 
-Przejdź do [Wyszukiwania](/pl/portal/studio/search), aby dowiedzieć się, jak wyszukiwać i rezerwować hotele.
+Przejdź do [Wyszukiwania](/pl/portal/marketing/browse-hotels), aby dowiedzieć się, jak wyszukiwać i rezerwować hotele.
 
 W przeciwnym razie kontynuuj do następnej sekcji.
 

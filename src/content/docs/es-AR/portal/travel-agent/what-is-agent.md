@@ -9,11 +9,11 @@ Los agentes de viajes registrados usan el mismo portal que todos los demás, en 
 
 Las agencias aprobadas para cobrar el pago por sí mismas actúan como comerciante registrado y manejan el pago fuera de la plataforma Wink. Las agencias con sus propios sistemas pueden integrarse a través del [Partner API](/es-AR/integrations/partner-api/).
 
-Los agentes de viajes tienen un subconjunto de las mismas funciones del portal que [Studio](/es-AR/portal/studio/what-is-studio), por lo que no las cubriremos nuevamente aquí.
+Los agentes de viajes tienen un subconjunto de las mismas funciones del portal que [Studio](/es-AR/portal/marketing/what-is-marketing), por lo que no las cubriremos nuevamente aquí.
 
 ## Búsqueda
 
-Ve a [Search](/es-AR/portal/studio/search) para aprender cómo buscar y reservar hoteles.
+Ve a [Search](/es-AR/portal/marketing/browse-hotels) para aprender cómo buscar y reservar hoteles.
 
 De lo contrario, continúa con la siguiente sección.
 

@@ -9,11 +9,11 @@ Registrierte Reisebüros nutzen dasselbe Portal wie alle anderen, unter [app.win
 
 Agenturen, die zur eigenen Zahlungsabwicklung zugelassen sind, fungieren als Händler und wickeln die Zahlung außerhalb der Wink-Plattform ab. Agenturen mit eigenen Systemen können sich über die [Partner API](/de/integrations/partner-api/) integrieren.
 
-Reisebüros haben einen Teil der gleichen Portal-Funktionen wie [Studio](/de/portal/studio/what-is-studio), daher werden wir diese hier nicht erneut behandeln.
+Reisebüros haben einen Teil der gleichen Portal-Funktionen wie [Studio](/de/portal/marketing/what-is-marketing), daher werden wir diese hier nicht erneut behandeln.
 
 ## Suche
 
-Gehen Sie zu [Suche](/de/portal/studio/search), um zu erfahren, wie Sie Hotels suchen und buchen.
+Gehen Sie zu [Suche](/de/portal/marketing/browse-hotels), um zu erfahren, wie Sie Hotels suchen und buchen.
 
 Andernfalls fahren Sie mit dem nächsten Abschnitt fort.
 

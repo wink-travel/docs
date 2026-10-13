@@ -17,7 +17,7 @@ Blagovne znamke in verige imajo nekoliko drugačne potrebe kot posamezna nepremi
 
 - Upravljajo več nepremičnin pod enim računom.
 - Dodelijo upravitelje nepremičninam.
-- Uporabljajo [WinkLinks](/sl/portal/link-manager/wink-links), [WordPress](/sl/integrations/wordpress) in naše [Web Components](/sl/integrations/web-components) za trženje in prodajo več nepremičnin na enem mestu.
+- Uporabljajo [WinkLinks](/sl/portal/link-manager/what-is-link-manager), [WordPress](/sl/integrations/wordpress) in naše [Web Components](/sl/integrations/web-components) za trženje in prodajo več nepremičnin na enem mestu.
 
 ## Upravljavske družbe
 

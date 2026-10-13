@@ -17,7 +17,7 @@ May bahagyang ibang pangangailangan ang mga brand at chain kumpara sa isang solo
 
 - Pamahalaan ang maraming ari-arian sa ilalim ng isang account.
 - Magtalaga ng mga manager sa mga ari-arian
-- Gamitin ang [WinkLinks](/tl/portal/link-manager/wink-links), [WordPress](/tl/integrations/wordpress) at ang aming [Web Components](/tl/integrations/web-components) upang i-market at ibenta ang maraming ari-arian sa iisang lugar.
+- Gamitin ang [WinkLinks](/tl/portal/link-manager/what-is-link-manager), [WordPress](/tl/integrations/wordpress) at ang aming [Web Components](/tl/integrations/web-components) upang i-market at ibenta ang maraming ari-arian sa iisang lugar.
 
 ## Mga Kumpanya ng Pamamahala
 

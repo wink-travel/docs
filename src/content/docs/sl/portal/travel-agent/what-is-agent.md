@@ -9,11 +9,11 @@ Registrirani potovalni agenti uporabljajo isti portal kot vsi ostali, na [app.wi
 
 Agencije, ki so odobrene za samostojno pobiranje plačil, delujejo kot trgovec v imenu in urejajo plačila zunaj platforme Wink. Agencije z lastnimi sistemi se lahko povežejo preko [Partner API](/sl/integrations/partner-api/).
 
-Potovalni agenti imajo podmnožico istih funkcij portala kot [Studio](/sl/portal/studio/what-is-studio), zato jih tukaj ne bomo ponovno obravnavali.
+Potovalni agenti imajo podmnožico istih funkcij portala kot [Studio](/sl/portal/marketing/what-is-marketing), zato jih tukaj ne bomo ponovno obravnavali.
 
 ## Iskanje
 
-Pojdite na [Iskanje](/sl/portal/studio/search), da se naučite, kako iskati in rezervirati hotele.
+Pojdite na [Iskanje](/sl/portal/marketing/browse-hotels), da se naučite, kako iskati in rezervirati hotele.
 
 V nasprotnem primeru nadaljujte na naslednji razdelek.
 

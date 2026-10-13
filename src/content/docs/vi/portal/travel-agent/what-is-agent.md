@@ -9,11 +9,11 @@ Các đại lý du lịch đã đăng ký sử dụng cùng một cổng thông 
 
 Các đại lý được phê duyệt để tự thu tiền sẽ đóng vai trò là merchant of record và xử lý thanh toán ngoài nền tảng Wink. Các đại lý có hệ thống riêng có thể tích hợp qua [Partner API](/vi/integrations/partner-api/).
 
-Đại lý du lịch có một tập hợp con các tính năng của cổng thông tin giống như [Studio](/vi/portal/studio/what-is-studio) nên chúng tôi sẽ không đề cập lại ở đây.
+Đại lý du lịch có một tập hợp con các tính năng của cổng thông tin giống như [Studio](/vi/portal/marketing/what-is-marketing) nên chúng tôi sẽ không đề cập lại ở đây.
 
 ## Tìm kiếm
 
-Truy cập [Search](/vi/portal/studio/search) để tìm hiểu cách tìm kiếm và đặt phòng khách sạn.
+Truy cập [Search](/vi/portal/marketing/browse-hotels) để tìm hiểu cách tìm kiếm và đặt phòng khách sạn.
 
 Nếu không, hãy tiếp tục đến phần tiếp theo.
 

@@ -14,11 +14,11 @@ Wink has no subscriptions, no seats and no setup fees. The vast majority of the 
 
 These cost nothing, forever, with no allowance and no metering:
 
-- The **booking engine** — on your own site, in your WinkLinks page, or anywhere else you embed it.
+- The **booking engine** — on your own site, in your Link manager page, or anywhere else you embed it.
 - **Property management** — content, photos, rates, rate plans, availability, promotions and policies.
 - **Affiliate tools** — shareable links, curated lists, grids, maps, cards and embeddable widgets.
 - **Travel agent tools** — search, bespoke rates and booking on behalf of your clients.
-- **WinkLinks** — claim your vanity URL, build your page and publish to it as often as you like.
+- **Link manager** — claim your vanity URL, build your page and publish to it as often as you like.
 - **Manual social posts** — anything you write yourself, on any connected network.
 - **Analytics, leaderboards, claims, settings** and account management.
 - The **Consumer and Booking Engine APIs**, including their lookup and autocomplete endpoints. On the **Partner API**, Lookup and Content calls are metered at one unit each (see [Usage](#what-is-and-isnt-metered) below).
@@ -107,7 +107,7 @@ Posts are priced by what's in them, because that's what they cost us to make. A 
 ### What is and isn't metered
 
 - Only a **generated** post published to a third-party network (Facebook, Instagram) is billable. A post you wrote yourself is free, wherever it goes.
-- **Publishing to WinkLinks is always free**, generated or not.
+- **Publishing to Link manager is always free**, generated or not.
 - You're charged **on publish**, not per attempt. Regenerating a draft until you're happy with it doesn't add to your bill — you pay once for the post you actually ship. Attempts aren't unlimited, though: each post allows around 10 regenerations for images and 3 for video, which reflects what it costs us to produce them. You'll see how many you have left as you work.
 - On the Partner API, a **hotel-night** is one hotel priced for one night of stay — *not* one API call. A search that returns 20 hotels for a 3-night stay is 60 hotel-nights from a single request. Content and Lookup (destination search and autocomplete) calls cost one unit each, whatever they return. Account endpoints are free.
 

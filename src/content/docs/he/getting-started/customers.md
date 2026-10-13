@@ -17,7 +17,7 @@ Wink החלה באינטגרציה עם בתי מלון לפני עשור. בת�
 
 - לנהל נכסים מרובים תחת חשבון אחד.
 - להקצות מנהלים לנכסים
-- להשתמש ב-[WinkLinks](/he/portal/link-manager/wink-links), [WordPress](/he/integrations/wordpress) וב-[Web Components](/he/integrations/web-components) שלנו כדי לשווק ולמכור נכסים מרובים במקום אחד.
+- להשתמש ב-[WinkLinks](/he/portal/link-manager/what-is-link-manager), [WordPress](/he/integrations/wordpress) וב-[Web Components](/he/integrations/web-components) שלנו כדי לשווק ולמכור נכסים מרובים במקום אחד.
 
 ## חברות ניהול
 

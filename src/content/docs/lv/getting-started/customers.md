@@ -17,7 +17,7 @@ Zīmoliem un ķēdēm ir nedaudz atšķirīgas vajadzības nekā vienam īpašum
 
 - Pārvaldīt vairākus īpašumus vienā kontā.
 - Piešķirt pārvaldniekus īpašumiem.
-- Izmantot [WinkLinks](/lv/portal/link-manager/wink-links), [WordPress](/lv/integrations/wordpress) un mūsu [Web Components](/lv/integrations/web-components), lai tirgotu un pārdotu vairākus īpašumus vienuviet.
+- Izmantot [WinkLinks](/lv/portal/link-manager/what-is-link-manager), [WordPress](/lv/integrations/wordpress) un mūsu [Web Components](/lv/integrations/web-components), lai tirgotu un pārdotu vairākus īpašumus vienuviet.
 
 ## Pārvaldības uzņēmumi
 

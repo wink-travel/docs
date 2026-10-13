@@ -17,7 +17,7 @@ Varumärken och kedjor har något annorlunda behov än en enskild fastighet. På
 
 - Hantera flera fastigheter under ett enda konto.
 - Tilldela chefer till fastigheter
-- Använda [WinkLinks](/sv/portal/link-manager/wink-links), [WordPress](/sv/integrations/wordpress) och våra [Web Components](/sv/integrations/web-components) för att marknadsföra och sälja flera fastigheter på ett och samma ställe.
+- Använda [WinkLinks](/sv/portal/link-manager/what-is-link-manager), [WordPress](/sv/integrations/wordpress) och våra [Web Components](/sv/integrations/web-components) för att marknadsföra och sälja flera fastigheter på ett och samma ställe.
 
 ## Förvaltningsbolag
 

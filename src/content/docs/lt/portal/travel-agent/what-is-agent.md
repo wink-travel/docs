@@ -9,11 +9,11 @@ Registruoti kelionių agentai naudoja tą patį portalą kaip ir visi kiti, adre
 
 Agentūros, kurioms patvirtinta pačioms rinkti mokėjimus, veikia kaip prekybininkai ir tvarko mokėjimus už Wink platformos ribų. Agentūros, turinčios savo sistemas, gali integruotis per [Partnerių API](/lt/integrations/partner-api/).
 
-Kelionių agentai turi dalį tų pačių portalo funkcijų kaip ir [Studio](/lt/portal/studio/what-is-studio), todėl čia jų neaptarsime iš naujo.
+Kelionių agentai turi dalį tų pačių portalo funkcijų kaip ir [Studio](/lt/portal/marketing/what-is-marketing), todėl čia jų neaptarsime iš naujo.
 
 ## Paieška
 
-Eikite į [Paieška](/lt/portal/studio/search), kad sužinotumėte, kaip ieškoti ir rezervuoti viešbučius.
+Eikite į [Paieška](/lt/portal/marketing/browse-hotels), kad sužinotumėte, kaip ieškoti ir rezervuoti viešbučius.
 
 Kitu atveju tęskite kitą skyrių.
 

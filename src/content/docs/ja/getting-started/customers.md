@@ -17,7 +17,7 @@ Winkは10年前にホテルのオンボーディングを開始しました。�
 
 - 単一のアカウントで複数の施設を管理する。
 - 施設にマネージャーを割り当てる。
-- [WinkLinks](/ja/portal/link-manager/wink-links)、[WordPress](/ja/integrations/wordpress)、および当社の[Web Components](/ja/integrations/web-components)を使って、複数の施設を一か所でマーケティングおよび販売する。
+- [WinkLinks](/ja/portal/link-manager/what-is-link-manager)、[WordPress](/ja/integrations/wordpress)、および当社の[Web Components](/ja/integrations/web-components)を使って、複数の施設を一か所でマーケティングおよび販売する。
 
 ## マネジメント会社
 

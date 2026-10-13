@@ -17,7 +17,7 @@ Marken und Ketten haben etwas andere Bedürfnisse als eine einzelne Unterkunft. 
 
 - Mehrere Unterkünfte unter einem einzigen Konto verwalten.
 - Manager für Unterkünfte zuweisen.
-- [WinkLinks](/de/portal/link-manager/wink-links), [WordPress](/de/integrations/wordpress) und unsere [Web Components](/de/integrations/web-components) nutzen, um mehrere Unterkünfte an einem Ort zu vermarkten und zu verkaufen.
+- [WinkLinks](/de/portal/link-manager/what-is-link-manager), [WordPress](/de/integrations/wordpress) und unsere [Web Components](/de/integrations/web-components) nutzen, um mehrere Unterkünfte an einem Ort zu vermarkten und zu verkaufen.
 
 ## Managementgesellschaften
 

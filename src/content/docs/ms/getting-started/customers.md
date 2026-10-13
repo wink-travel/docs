@@ -17,7 +17,7 @@ Jenama dan rangkaian mempunyai keperluan yang sedikit berbeza daripada hartanah 
 
 - Mengurus pelbagai hartanah di bawah satu akaun.
 - Menugaskan pengurus kepada hartanah
-- Menggunakan [WinkLinks](/ms/portal/link-manager/wink-links), [WordPress](/ms/integrations/wordpress) dan [Komponen Web](/ms/integrations/web-components) kami untuk memasarkan dan menjual pelbagai hartanah di satu tempat.
+- Menggunakan [WinkLinks](/ms/portal/link-manager/what-is-link-manager), [WordPress](/ms/integrations/wordpress) dan [Komponen Web](/ms/integrations/web-components) kami untuk memasarkan dan menjual pelbagai hartanah di satu tempat.
 
 ## Syarikat pengurusan
 

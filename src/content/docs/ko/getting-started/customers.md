@@ -17,7 +17,7 @@ Wink는 10년 전부터 호텔 온보딩을 시작했습니다. 호텔은 Wink�
 
 - 단일 계정으로 여러 숙소를 관리합니다.
 - 숙소에 매니저를 지정합니다.
-- [WinkLinks](/ko/portal/link-manager/wink-links), [WordPress](/ko/integrations/wordpress) 및 우리의 [웹 컴포넌트](/ko/integrations/web-components)를 사용하여 한 곳에서 여러 숙소를 마케팅하고 판매합니다.
+- [WinkLinks](/ko/portal/link-manager/what-is-link-manager), [WordPress](/ko/integrations/wordpress) 및 우리의 [웹 컴포넌트](/ko/integrations/web-components)를 사용하여 한 곳에서 여러 숙소를 마케팅하고 판매합니다.
 
 ## 관리 회사
 

@@ -17,7 +17,7 @@ Prekės ženklai ir tinklai turi šiek tiek kitokius poreikius nei atskira vieš
 
 - Valdyti kelias savybes viename paskyroje.
 - Paskirti valdytojus savybėms.
-- Naudoti [WinkLinks](/lt/portal/link-manager/wink-links), [WordPress](/lt/integrations/wordpress) ir mūsų [Web Components](/lt/integrations/web-components), kad rinkodaros ir pardavimų veikla būtų vykdoma kelioms savybėms vienoje vietoje.
+- Naudoti [WinkLinks](/lt/portal/link-manager/what-is-link-manager), [WordPress](/lt/integrations/wordpress) ir mūsų [Web Components](/lt/integrations/web-components), kad rinkodaros ir pardavimų veikla būtų vykdoma kelioms savybėms vienoje vietoje.
 
 ## Valdymo įmonės
 

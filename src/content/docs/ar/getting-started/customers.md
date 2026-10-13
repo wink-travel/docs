@@ -17,7 +17,7 @@ sidebar:
 
 - إدارة عدة عقارات تحت حساب واحد.
 - تعيين مدراء للعقارات
-- استخدام [WinkLinks](/ar/portal/link-manager/wink-links)، و[WordPress](/ar/integrations/wordpress) ومكوناتنا [Web Components](/ar/integrations/web-components) لتسويق وبيع عدة عقارات في مكان واحد.
+- استخدام [WinkLinks](/ar/portal/link-manager/what-is-link-manager)، و[WordPress](/ar/integrations/wordpress) ومكوناتنا [Web Components](/ar/integrations/web-components) لتسويق وبيع عدة عقارات في مكان واحد.
 
 ## شركات الإدارة
 

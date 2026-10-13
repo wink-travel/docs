@@ -9,11 +9,11 @@ Ejen pelancongan berdaftar menggunakan portal yang sama seperti orang lain, di [
 
 Agensi yang diluluskan untuk mengutip pembayaran sendiri bertindak sebagai pedagang rekod dan mengendalikan pembayaran di luar platform Wink. Agensi yang mempunyai sistem sendiri boleh berintegrasi melalui [Partner API](/ms/integrations/partner-api/).
 
-Ejen pelancongan mempunyai subset ciri portal yang sama seperti [Studio](/ms/portal/studio/what-is-studio) jadi kami tidak akan membincangkannya lagi di sini.
+Ejen pelancongan mempunyai subset ciri portal yang sama seperti [Studio](/ms/portal/marketing/what-is-marketing) jadi kami tidak akan membincangkannya lagi di sini.
 
 ## Carian
 
-Pergi ke [Search](/ms/portal/studio/search) untuk belajar cara mencari dan menempah hotel.
+Pergi ke [Search](/ms/portal/marketing/browse-hotels) untuk belajar cara mencari dan menempah hotel.
 
 Jika tidak, teruskan ke bahagian seterusnya.
 

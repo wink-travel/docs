@@ -17,7 +17,7 @@ sidebar:
 
 - Να διαχειρίζονται πολλαπλές ιδιοκτησίες κάτω από έναν λογαριασμό.
 - Να αναθέτουν διαχειριστές σε ιδιοκτησίες.
-- Να χρησιμοποιούν τα [WinkLinks](/el/portal/link-manager/wink-links), [WordPress](/el/integrations/wordpress) και τα [Web Components](/el/integrations/web-components) για να προωθούν και να πωλούν πολλαπλές ιδιοκτησίες σε ένα μέρος.
+- Να χρησιμοποιούν τα [WinkLinks](/el/portal/link-manager/what-is-link-manager), [WordPress](/el/integrations/wordpress) και τα [Web Components](/el/integrations/web-components) για να προωθούν και να πωλούν πολλαπλές ιδιοκτησίες σε ένα μέρος.
 
 ## Εταιρείες διαχείρισης
 
