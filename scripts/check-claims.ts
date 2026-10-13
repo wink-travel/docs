@@ -155,6 +155,14 @@ const BANNED: Rule[] = [
     reason:
       "Developers are not certified: only channel managers and travel agents are. Everyone else moves to production themselves: create a production application and drop `staging-` from the URLs.",
   },
+  {
+    // The Partner API is gRPC: the monthly quota stop is the status
+    // RESOURCE_EXHAUSTED in the trailers, never an HTTP 429 (Bjorn, Oct 2026).
+    pattern: /\b429\b/,
+    files: /integrations\/partner-api|getting-started\/pricing|developers\/quickstart|schemas\/partner\.json|llms\.txt/,
+    reason:
+      "The Partner API is gRPC. At the monthly allowance calls fail with the gRPC status `RESOURCE_EXHAUSTED` (trailers: retry-after, x-ratelimit-*), not HTTP 429.",
+  },
 ];
 
 /** Canonical statements that must remain present. */
@@ -192,6 +200,16 @@ const REQUIRED: { file: string; pattern: RegExp; reason: string }[] = [
     file: "public/llms.txt",
     pattern: /not offer a Google feed on its own/,
     reason: "llms.txt must keep the canonical no-Google-only-feed statement.",
+  },
+  {
+    file: "src/content/docs/integrations/partner-api.mdx",
+    pattern: /Partner API usage quota exceeded \(MONTH\)/,
+    reason: "The Partner API page must keep the exact quota status message integrators match on.",
+  },
+  {
+    file: "public/llms.txt",
+    pattern: /RESOURCE_EXHAUSTED/,
+    reason: "llms.txt must keep the canonical Partner API pricing and quota statement.",
   },
 ];
 
