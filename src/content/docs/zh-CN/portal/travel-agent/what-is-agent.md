@@ -9,11 +9,11 @@ sidebar:
 
 获批自行收款的旅行社作为商户记录，并在 Wink 平台外处理付款。拥有自己系统的旅行社可以通过 [Partner API](/zh-CN/integrations/partner-api/) 进行集成。
 
-旅行代理商拥有与 [Studio](/zh-CN/portal/studio/what-is-studio) 部分相同门户功能的子集，因此这里不再重复介绍。
+旅行代理商拥有与 [Studio](/zh-CN/portal/marketing/what-is-marketing) 部分相同门户功能的子集，因此这里不再重复介绍。
 
 ## 搜索
 
-访问 [搜索](/zh-CN/portal/studio/search) 了解如何搜索和预订酒店。
+访问 [搜索](/zh-CN/portal/marketing/browse-hotels) 了解如何搜索和预订酒店。
 
 否则，请继续阅读下一部分。
 

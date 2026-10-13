@@ -9,11 +9,11 @@ Registrerede rejsebureauer bruger den samme portal som alle andre, på [app.wink
 
 Bureauer, der er godkendt til selv at opkræve betaling, fungerer som merchant of record og håndterer betaling uden for Wink-platformen. Bureauer med egne systemer kan integrere gennem [Partner API](/da/integrations/partner-api/).
 
-Rejsebureauer har et delmængde af de samme portalfunktioner som [Studio](/da/portal/studio/what-is-studio), så vi vil ikke gennemgå dem igen her.
+Rejsebureauer har et delmængde af de samme portalfunktioner som [Studio](/da/portal/marketing/what-is-marketing), så vi vil ikke gennemgå dem igen her.
 
 ## Søg
 
-Gå til [Search](/da/portal/studio/search) for at lære, hvordan man søger efter og booker hoteller.
+Gå til [Search](/da/portal/marketing/browse-hotels) for at lære, hvordan man søger efter og booker hoteller.
 
 Ellers fortsæt til næste afsnit.
 

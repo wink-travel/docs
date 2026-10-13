@@ -9,11 +9,11 @@ Gumagamit ang mga rehistradong travel agent ng parehong portal tulad ng iba pa, 
 
 Ang mga ahensya na aprubadong mangolekta ng bayad mismo ay kumikilos bilang merchant of record at humahawak ng bayad sa labas ng Wink platform. Ang mga ahensya na may sariling sistema ay maaaring mag-integrate sa pamamagitan ng [Partner API](/tl/integrations/partner-api/).
 
-May bahagi ang mga travel agent ng parehong mga tampok ng portal tulad ng sa [Studio](/tl/portal/studio/what-is-studio) kaya hindi na namin ito uulitin dito.
+May bahagi ang mga travel agent ng parehong mga tampok ng portal tulad ng sa [Studio](/tl/portal/marketing/what-is-marketing) kaya hindi na namin ito uulitin dito.
 
 ## Search
 
-Pumunta sa [Search](/tl/portal/studio/search) upang matutunan kung paano maghanap at mag-book ng mga hotel.
+Pumunta sa [Search](/tl/portal/marketing/browse-hotels) upang matutunan kung paano maghanap at mag-book ng mga hotel.
 
 Kung hindi, magpatuloy sa susunod na seksyon.
 

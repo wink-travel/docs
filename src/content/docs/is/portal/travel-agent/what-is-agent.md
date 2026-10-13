@@ -9,11 +9,11 @@ Skráðir ferðaskipuleggjendur nota sama vefgátt og allir aðrir, á [app.wink
 
 Skrifstofur sem hafa leyfi til að innheimta greiðslur sjálfar starfa sem kaupmaður og sjá um greiðslur utan Wink vettvangsins. Skrifstofur með eigin kerfi geta tengst í gegnum [Partner API](/is/integrations/partner-api/).
 
-Ferðaskipuleggjendur hafa hluta af sömu eiginleikum og [Studio](/is/portal/studio/what-is-studio) svo við munum ekki fara nánar í þá hér.
+Ferðaskipuleggjendur hafa hluta af sömu eiginleikum og [Studio](/is/portal/marketing/what-is-marketing) svo við munum ekki fara nánar í þá hér.
 
 ## Leita
 
-Farðu á [Search](/is/portal/studio/search) til að læra hvernig á að leita að og bóka hótel.
+Farðu á [Search](/is/portal/marketing/browse-hotels) til að læra hvernig á að leita að og bóka hótel.
 
 Annars skaltu halda áfram í næsta kafla.
 

@@ -17,7 +17,7 @@ Markalar ve zincirlerin tek bir tesisten biraz farklı ihtiyaçları vardır. Wi
 
 - Tek bir hesap altında birden fazla tesisi yönetmek.
 - Tesislere yöneticiler atamak.
-- Birden fazla tesisi tek bir yerde pazarlamak ve satmak için [WinkLinks](/tr/portal/link-manager/wink-links), [WordPress](/tr/integrations/wordpress) ve [Web Components](/tr/integrations/web-components) kullanmak.
+- Birden fazla tesisi tek bir yerde pazarlamak ve satmak için [WinkLinks](/tr/portal/link-manager/what-is-link-manager), [WordPress](/tr/integrations/wordpress) ve [Web Components](/tr/integrations/web-components) kullanmak.
 
 ## Yönetim Şirketleri
 

@@ -9,11 +9,11 @@ sidebar:
 
 獲批准自行收款的旅行社，將作為商戶記錄並在 Wink 平台外處理付款。有自己系統的旅行社可透過 [Partner API](/zh-TW/integrations/partner-api/) 進行整合。
 
-旅行社擁有與 [Studio](/zh-TW/portal/studio/what-is-studio) 部分相同的入口網站功能，因此此處不再重複說明。
+旅行社擁有與 [Studio](/zh-TW/portal/marketing/what-is-marketing) 部分相同的入口網站功能，因此此處不再重複說明。
 
 ## 搜尋
 
-請前往 [搜尋](/zh-TW/portal/studio/search) 了解如何搜尋及預訂飯店。
+請前往 [搜尋](/zh-TW/portal/marketing/browse-hotels) 了解如何搜尋及預訂飯店。
 
 否則，請繼續閱讀下一節。
 

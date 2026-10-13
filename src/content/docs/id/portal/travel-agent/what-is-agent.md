@@ -9,11 +9,11 @@ Agen perjalanan terdaftar menggunakan portal yang sama seperti pengguna lain, di
 
 Agen yang disetujui untuk mengelola pembayaran sendiri bertindak sebagai merchant of record dan menangani pembayaran di luar platform Wink. Agen dengan sistem mereka sendiri dapat mengintegrasikan melalui [Partner API](/id/integrations/partner-api/).
 
-Agen perjalanan memiliki sebagian fitur portal yang sama dengan [Studio](/id/portal/studio/what-is-studio) sehingga kami tidak akan membahasnya lagi di sini.
+Agen perjalanan memiliki sebagian fitur portal yang sama dengan [Studio](/id/portal/marketing/what-is-marketing) sehingga kami tidak akan membahasnya lagi di sini.
 
 ## Pencarian
 
-Kunjungi [Search](/id/portal/studio/search) untuk mempelajari cara mencari dan memesan hotel.
+Kunjungi [Search](/id/portal/marketing/browse-hotels) untuk mempelajari cara mencari dan memesan hotel.
 
 Jika tidak, lanjutkan ke bagian berikutnya.
 

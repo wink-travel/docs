@@ -17,7 +17,7 @@ Wink เริ่มรับโรงแรมเข้าระบบเมื
 
 - จัดการหลายโรงแรมภายใต้บัญชีเดียว
 - มอบหมายผู้จัดการให้กับแต่ละโรงแรม
-- ใช้ [WinkLinks](/th/portal/link-manager/wink-links), [WordPress](/th/integrations/wordpress) และ [Web Components](/th/integrations/web-components) ของเราเพื่อทำการตลาดและขายหลายโรงแรมในที่เดียวกัน
+- ใช้ [WinkLinks](/th/portal/link-manager/what-is-link-manager), [WordPress](/th/integrations/wordpress) และ [Web Components](/th/integrations/web-components) ของเราเพื่อทำการตลาดและขายหลายโรงแรมในที่เดียวกัน
 
 ## บริษัทบริหารจัดการ
 

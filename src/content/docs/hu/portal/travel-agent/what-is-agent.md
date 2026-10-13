@@ -9,11 +9,11 @@ A regisztrált utazási ügynökök ugyanazt a portált használják, mint minde
 
 Azok az ügynökségek, amelyek jóváhagyást kaptak a fizetés önálló beszedésére, kereskedőként járnak el, és a fizetést a Wink platformon kívül kezelik. Azok az ügynökségek, amelyek saját rendszerekkel rendelkeznek, integrálódhatnak a [Partner API](/hu/integrations/partner-api/) segítségével.
 
-Az utazási ügynökök a portál [Studio](/hu/portal/studio/what-is-studio) funkcióinak egy részhalmazát használják, ezért itt nem térünk ki rájuk újra.
+Az utazási ügynökök a portál [Studio](/hu/portal/marketing/what-is-marketing) funkcióinak egy részhalmazát használják, ezért itt nem térünk ki rájuk újra.
 
 ## Keresés
 
-Látogasson el a [Search](/hu/portal/studio/search) oldalra, hogy megtanulja, hogyan keressen és foglaljon szállodákat.
+Látogasson el a [Search](/hu/portal/marketing/browse-hotels) oldalra, hogy megtanulja, hogyan keressen és foglaljon szállodákat.
 
 Egyébként folytassa a következő szakaszra.
 

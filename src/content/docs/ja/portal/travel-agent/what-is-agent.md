@@ -9,11 +9,11 @@ sidebar:
 
 支払いを自社で回収することが承認された代理店は、マーチャント・オブ・レコードとしてWinkプラットフォーム外で支払いを処理します。独自のシステムを持つ代理店は[Partner API](/ja/integrations/partner-api/)を通じて連携可能です。
 
-旅行代理店は[Studio](/ja/portal/studio/what-is-studio)と同じポータル機能の一部を利用できるため、ここでは再度説明しません。
+旅行代理店は[Studio](/ja/portal/marketing/what-is-marketing)と同じポータル機能の一部を利用できるため、ここでは再度説明しません。
 
 ## 検索
 
-ホテルの検索と予約方法については[Search](/ja/portal/studio/search)をご覧ください。
+ホテルの検索と予約方法については[Search](/ja/portal/marketing/browse-hotels)をご覧ください。
 
 それ以外は次のセクションに進んでください。
 

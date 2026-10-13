@@ -9,11 +9,11 @@ Geregistreerde reisagenten gebruiken dezelfde portal als iedereen, op [app.wink.
 
 Bureaus die zijn goedgekeurd om zelf betalingen te innen, fungeren als merchant of record en verwerken betalingen buiten het Wink-platform. Bureaus met eigen systemen kunnen integreren via de [Partner API](/nl/integrations/partner-api/).
 
-Reisagenten hebben een subset van dezelfde portalfuncties als [Studio](/nl/portal/studio/what-is-studio), dus we behandelen ze hier niet opnieuw.
+Reisagenten hebben een subset van dezelfde portalfuncties als [Studio](/nl/portal/marketing/what-is-marketing), dus we behandelen ze hier niet opnieuw.
 
 ## Zoeken
 
-Ga naar [Zoeken](/nl/portal/studio/search) om te leren hoe je hotels kunt zoeken en boeken.
+Ga naar [Zoeken](/nl/portal/marketing/browse-hotels) om te leren hoe je hotels kunt zoeken en boeken.
 
 Ga anders door naar de volgende sectie.
 

@@ -9,11 +9,11 @@ Registrirani turistički agenti koriste isti portal kao i svi ostali, na [app.wi
 
 Agencije odobrene za samostalno naplaćivanje djeluju kao trgovac zapisa i obrađuju plaćanja izvan Wink platforme. Agencije sa svojim sustavima mogu se integrirati putem [Partner API-ja](/hr/integrations/partner-api/).
 
-Turistički agenti imaju podskup istih značajki portala kao i [Studio](/hr/portal/studio/what-is-studio), stoga ih ovdje nećemo ponovno obrađivati.
+Turistički agenti imaju podskup istih značajki portala kao i [Studio](/hr/portal/marketing/what-is-marketing), stoga ih ovdje nećemo ponovno obrađivati.
 
 ## Pretraživanje
 
-Idite na [Pretraživanje](/hr/portal/studio/search) kako biste naučili kako pretraživati i rezervirati hotele.
+Idite na [Pretraživanje](/hr/portal/marketing/browse-hotels) kako biste naučili kako pretraživati i rezervirati hotele.
 
 U suprotnom, nastavite na sljedeći odjeljak.
 

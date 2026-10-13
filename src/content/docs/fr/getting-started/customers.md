@@ -17,7 +17,7 @@ Les marques et chaînes ont des besoins légèrement différents d’une propri�
 
 - Gérer plusieurs propriétés sous un seul compte.
 - Assigner des gestionnaires aux propriétés.
-- Utiliser [WinkLinks](/fr/portal/link-manager/wink-links), [WordPress](/fr/integrations/wordpress) et nos [Web Components](/fr/integrations/web-components) pour commercialiser et vendre plusieurs propriétés au même endroit.
+- Utiliser [WinkLinks](/fr/portal/link-manager/what-is-link-manager), [WordPress](/fr/integrations/wordpress) et nos [Web Components](/fr/integrations/web-components) pour commercialiser et vendre plusieurs propriétés au même endroit.
 
 ## Sociétés de gestion
 

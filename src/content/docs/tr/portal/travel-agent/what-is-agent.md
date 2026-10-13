@@ -9,11 +9,11 @@ Kayıtlı seyahat acenteleri, [app.wink.travel](https://app.wink.travel) adresin
 
 Ödemeyi kendileri tahsil etmeye onaylı acenteler, kayıtlı satıcı olarak hareket eder ve ödemeyi Wink platformu dışında yönetir. Kendi sistemleri olan acenteler, [Partner API](/tr/integrations/partner-api/) aracılığıyla entegrasyon yapabilir.
 
-Seyahat acenteleri, [Studio](/tr/portal/studio/what-is-studio) portalının bir alt kümesi olan özelliklere sahiptir, bu nedenle burada tekrar ele alınmayacaktır.
+Seyahat acenteleri, [Studio](/tr/portal/marketing/what-is-marketing) portalının bir alt kümesi olan özelliklere sahiptir, bu nedenle burada tekrar ele alınmayacaktır.
 
 ## Arama
 
-Otel arama ve rezervasyon yapmayı öğrenmek için [Arama](/tr/portal/studio/search) sayfasına gidin.
+Otel arama ve rezervasyon yapmayı öğrenmek için [Arama](/tr/portal/marketing/browse-hotels) sayfasına gidin.
 
 Aksi takdirde, bir sonraki bölüme devam edin.
 

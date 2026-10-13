@@ -9,11 +9,11 @@ Registrovaní cestovní agenti používají stejný portál jako všichni ostatn
 
 Agentury schválené k přímému vybírání plateb vystupují jako obchodník zapsaný v registru a zpracovávají platby mimo platformu Wink. Agentury s vlastními systémy se mohou integrovat přes [Partner API](/cs/integrations/partner-api/).
 
-Cestovní agenti mají podmnožinu stejných funkcí portálu jako [Studio](/cs/portal/studio/what-is-studio), proto je zde nebudeme znovu popisovat.
+Cestovní agenti mají podmnožinu stejných funkcí portálu jako [Studio](/cs/portal/marketing/what-is-marketing), proto je zde nebudeme znovu popisovat.
 
 ## Vyhledávání
 
-Přejděte na [Vyhledávání](/cs/portal/studio/search) a naučte se, jak vyhledávat a rezervovat hotely.
+Přejděte na [Vyhledávání](/cs/portal/marketing/browse-hotels) a naučte se, jak vyhledávat a rezervovat hotely.
 
 Jinak pokračujte do další sekce.
 

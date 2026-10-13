@@ -9,11 +9,11 @@ Les agents de voyage enregistrés utilisent le même portail que tout le monde, 
 
 Les agences autorisées à encaisser elles-mêmes agissent en tant que commerçant de référence et gèrent le paiement en dehors de la plateforme Wink. Les agences disposant de leurs propres systèmes peuvent s’intégrer via l’[API partenaire](/fr/integrations/partner-api/).
 
-Les agents de voyage disposent d’un sous-ensemble des mêmes fonctionnalités du portail que [Studio](/fr/portal/studio/what-is-studio), nous ne les couvrirons donc pas à nouveau ici.
+Les agents de voyage disposent d’un sous-ensemble des mêmes fonctionnalités du portail que [Studio](/fr/portal/marketing/what-is-marketing), nous ne les couvrirons donc pas à nouveau ici.
 
 ## Recherche
 
-Rendez-vous sur [Recherche](/fr/portal/studio/search) pour apprendre à rechercher et réserver des hôtels.
+Rendez-vous sur [Recherche](/fr/portal/marketing/browse-hotels) pour apprendre à rechercher et réserver des hôtels.
 
 Sinon, continuez à la section suivante.
 

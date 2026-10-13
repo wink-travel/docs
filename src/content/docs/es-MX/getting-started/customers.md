@@ -17,7 +17,7 @@ Las marcas y cadenas tienen necesidades ligeramente diferentes a una propiedad i
 
 - Gestionar múltiples propiedades bajo una sola cuenta.
 - Asignar gerentes a las propiedades.
-- Usar [WinkLinks](/es-MX/portal/link-manager/wink-links), [WordPress](/es-MX/integrations/wordpress) y nuestros [Componentes Web](/es-MX/integrations/web-components) para promocionar y vender múltiples propiedades en un solo lugar.
+- Usar [WinkLinks](/es-MX/portal/link-manager/what-is-link-manager), [WordPress](/es-MX/integrations/wordpress) y nuestros [Componentes Web](/es-MX/integrations/web-components) para promocionar y vender múltiples propiedades en un solo lugar.
 
 ## Empresas de gestión
 

@@ -9,11 +9,11 @@ sidebar:
 
 סוכנויות שאושרו לגבות תשלום בעצמן פועלות כסוחרות רשומות ומטפלות בתשלום מחוץ לפלטפורמת Wink. סוכנויות עם מערכות משלהן יכולות להשתלב דרך ה-[Partner API](/he/integrations/partner-api/).
 
-לסוכני נסיעות יש תת-קבוצה של אותם תכונות פורטל כמו ב-[Studio](/he/portal/studio/what-is-studio) ולכן לא נרחיב עליהן כאן.
+לסוכני נסיעות יש תת-קבוצה של אותם תכונות פורטל כמו ב-[Studio](/he/portal/marketing/what-is-marketing) ולכן לא נרחיב עליהן כאן.
 
 ## חיפוש
 
-גשו ל-[Search](/he/portal/studio/search) כדי ללמוד כיצד לחפש ולהזמין מלונות.
+גשו ל-[Search](/he/portal/marketing/browse-hotels) כדי ללמוד כיצד לחפש ולהזמין מלונות.
 
 אחרת, המשיכו לסעיף הבא.
 
