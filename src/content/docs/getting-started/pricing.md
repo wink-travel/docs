@@ -96,6 +96,12 @@ A few features cost us money every single time they run — generative AI, third
 
 Prices are in USD. The free allowance is granted **per account**, not per user, and resets on the 1st of every month (UTC).
 
+### Abuse of free allowances
+
+Free allowances exist so you can try things out, not so you can avoid paying. Getting around a free allowance by opening multiple accounts is abuse and gets every account involved **banned immediately and permanently**. We may use account, payment-method, device and network signals to detect it, and accounts under common control count as one.
+
+The same goes for anything else we reasonably judge to lower service quality for other accounts or threaten our revenue. If you need more than the allowance, turn on pay-as-you-go. See [section 9 of the General Terms of Service](/legal/terms/).
+
 ### How posts are priced
 
 Posts are priced by what's in them, because that's what they cost us to make. A still image is cheap; a video is not; anything we generate with AI costs materially more than a photo you supplied yourself.
